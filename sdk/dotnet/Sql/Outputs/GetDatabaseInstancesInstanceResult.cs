@@ -54,6 +54,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> DnsNames;
+        /// <summary>
+        /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+        /// </summary>
+        public readonly bool EncryptionConfidentialMode;
         public readonly string EncryptionKeyName;
         /// <summary>
         /// Whether to enforce the new SQL network architecture.
@@ -180,6 +184,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> dnsNames,
 
+            bool encryptionConfidentialMode,
+
             string encryptionKeyName,
 
             bool enforceNewSqlNetworkArchitecture,
@@ -247,6 +253,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DeletionProtection = deletionProtection;
             DnsName = dnsName;
             DnsNames = dnsNames;
+            EncryptionConfidentialMode = encryptionConfidentialMode;
             EncryptionKeyName = encryptionKeyName;
             EnforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             FinalBackupDescription = finalBackupDescription;

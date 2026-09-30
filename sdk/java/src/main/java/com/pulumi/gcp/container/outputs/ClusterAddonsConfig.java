@@ -165,18 +165,10 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
     /**
-     * @return . The status of the [Ray Operator
+     * @return The status of the [Ray Operator
      * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
      * It is disabled by default. Set `enabled = true` to enable. The minimum
-     * cluster version to enable Ray is 1.30.0-gke.1747000.
-     * 
-     * Ray Operator config has optional subfields
-     * `ray_cluster_logging_config.enabled` and
-     * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-     * and monitoring respectively. See [Collect and view logs and metrics for Ray
-     * clusters on
-     * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-     * for more information.
+     * cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
      * 
      */
     private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
@@ -372,18 +364,10 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.podSnapshotConfig);
     }
     /**
-     * @return . The status of the [Ray Operator
+     * @return The status of the [Ray Operator
      * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
      * It is disabled by default. Set `enabled = true` to enable. The minimum
-     * cluster version to enable Ray is 1.30.0-gke.1747000.
-     * 
-     * Ray Operator config has optional subfields
-     * `ray_cluster_logging_config.enabled` and
-     * `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-     * and monitoring respectively. See [Collect and view logs and metrics for Ray
-     * clusters on
-     * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-     * for more information.
+     * cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
      * 
      */
     public List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs() {

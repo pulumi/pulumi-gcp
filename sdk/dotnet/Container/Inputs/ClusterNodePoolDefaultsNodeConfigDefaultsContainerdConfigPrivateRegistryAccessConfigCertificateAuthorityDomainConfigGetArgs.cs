@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Parameters for configuring a certificate hosted in GCP SecretManager.
+        /// Parameters for configuring a certificate hosted in GCP SecretManager:
         /// </summary>
         [Input("gcpSecretManagerCertificateConfig", required: true)]
         public Input<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigGetArgs> GcpSecretManagerCertificateConfig { get; set; } = null!;

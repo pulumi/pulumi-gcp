@@ -21,6 +21,9 @@ import * as utilities from "../utilities";
  *
  * For more details, refer to the Terraform lifecycle documentation.
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ### Regional Secret Version Basic
@@ -36,6 +39,45 @@ import * as utilities from "../utilities";
  * const regionalSecretVersionBasic = new gcp.secretmanager.RegionalSecretVersion("regional_secret_version_basic", {
  *     secret: secret_basic.id,
  *     secretData: "secret-data",
+ * });
+ * ```
+ * ### Regional Secret Version Basic Write Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic_write_only = new gcp.secretmanager.RegionalSecret("secret-basic-write-only", {
+ *     secretId: "regional-secret-version-write-only",
+ *     location: "us-central1",
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ * });
+ * const regional_secret_version_basic_write_only = new gcp.secretmanager.RegionalSecretVersion("regional-secret-version-basic-write-only", {
+ *     secret: secret_basic_write_only.id,
+ *     secretDataWoVersion: "1",
+ *     secretDataWo: "regional-secret-data-write-only",
+ * });
+ * ```
+ * ### Regional Secret Version With Base64 String Secret Data Write Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const secret_basic = new gcp.secretmanager.RegionalSecret("secret-basic", {
+ *     secretId: "regional-secret-version-base64-write-only",
+ *     location: "us-central1",
+ * });
+ * const regional_secret_version_base64_write_only = new gcp.secretmanager.RegionalSecretVersion("regional-secret-version-base64-write-only", {
+ *     secret: secret_basic.id,
+ *     isSecretDataBase64: true,
+ *     secretDataWoVersion: "1",
+ *     secretDataWo: std.filebase64({
+ *         input: "regional-secret-data-base64-write-only.pfx",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  * ### Regional Secret Version With Base64 Data
@@ -199,7 +241,20 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    declare public readonly secretData: pulumi.Output<string>;
+    declare public readonly secretData: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     *
+     * > **Note:** One of `secretData` or `secretDataWo` can only be set.
+     */
+    declare public readonly secretDataWo: pulumi.Output<string | undefined>;
+    /**
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     */
+    declare public readonly secretDataWoVersion: pulumi.Output<string | undefined>;
     /**
      * The version of the Regional Secret.
      */
@@ -228,20 +283,21 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["secretData"] = state?.secretData;
+            resourceInputs["secretDataWo"] = state?.secretDataWo;
+            resourceInputs["secretDataWoVersion"] = state?.secretDataWoVersion;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as RegionalSecretVersionArgs | undefined;
             if (args?.secret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            if (args?.secretData === undefined && !opts.urn) {
-                throw new Error("Missing required property 'secretData'");
-            }
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["isSecretDataBase64"] = args?.isSecretDataBase64;
             resourceInputs["secret"] = args?.secret;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
+            resourceInputs["secretDataWo"] = args?.secretDataWo ? pulumi.secret(args.secretDataWo) : undefined;
+            resourceInputs["secretDataWoVersion"] = args?.secretDataWoVersion;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["customerManagedEncryptions"] = undefined /*out*/;
             resourceInputs["destroyTime"] = undefined /*out*/;
@@ -250,7 +306,7 @@ export class RegionalSecretVersion extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secretData"] };
+        const secretOpts = { additionalSecretOutputs: ["secretData", "secretDataWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(RegionalSecretVersion.__pulumiType, name, resourceInputs, opts);
     }
@@ -315,6 +371,19 @@ export interface RegionalSecretVersionState {
      */
     secretData?: pulumi.Input<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     *
+     * > **Note:** One of `secretData` or `secretDataWo` can only be set.
+     */
+    secretDataWo?: pulumi.Input<string | undefined>;
+    /**
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     */
+    secretDataWoVersion?: pulumi.Input<string | undefined>;
+    /**
      * The version of the Regional Secret.
      */
     version?: pulumi.Input<string | undefined>;
@@ -355,5 +424,18 @@ export interface RegionalSecretVersionArgs {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secretData: pulumi.Input<string>;
+    secretData?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     *
+     * > **Note:** One of `secretData` or `secretDataWo` can only be set.
+     */
+    secretDataWo?: pulumi.Input<string | undefined>;
+    /**
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     */
+    secretDataWoVersion?: pulumi.Input<string | undefined>;
 }

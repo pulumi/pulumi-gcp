@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -103,6 +103,7 @@ type LookupServiceResult struct {
 	PulumiLabels          map[string]string              `pulumi:"pulumiLabels"`
 	Reconciling           bool                           `pulumi:"reconciling"`
 	Scalings              []GetServiceScaling            `pulumi:"scalings"`
+	SshEnabled            bool                           `pulumi:"sshEnabled"`
 	Tags                  map[string]string              `pulumi:"tags"`
 	Templates             []GetServiceTemplate           `pulumi:"templates"`
 	TerminalConditions    []GetServiceTerminalCondition  `pulumi:"terminalConditions"`
@@ -294,6 +295,10 @@ func (o LookupServiceResultOutput) Reconciling() pulumi.BoolOutput {
 
 func (o LookupServiceResultOutput) Scalings() GetServiceScalingArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []GetServiceScaling { return v.Scalings }).(GetServiceScalingArrayOutput)
+}
+
+func (o LookupServiceResultOutput) SshEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.SshEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceResultOutput) Tags() pulumi.StringMapOutput {

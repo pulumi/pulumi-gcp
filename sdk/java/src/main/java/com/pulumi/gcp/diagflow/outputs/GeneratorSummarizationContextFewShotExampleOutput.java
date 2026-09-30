@@ -5,6 +5,8 @@ package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.diagflow.outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion;
+import com.pulumi.gcp.diagflow.outputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfo;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,12 @@ public final class GeneratorSummarizationContextFewShotExampleOutput {
      * 
      */
     private @Nullable GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion summarySuggestion;
+    /**
+     * @return List of request and response for tool calls executed.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfo> toolCallInfos;
 
     private GeneratorSummarizationContextFewShotExampleOutput() {}
     /**
@@ -26,6 +34,14 @@ public final class GeneratorSummarizationContextFewShotExampleOutput {
      */
     public Optional<GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion> summarySuggestion() {
         return Optional.ofNullable(this.summarySuggestion);
+    }
+    /**
+     * @return List of request and response for tool calls executed.
+     * Structure is documented below.
+     * 
+     */
+    public List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfo> toolCallInfos() {
+        return this.toolCallInfos == null ? List.of() : this.toolCallInfos;
     }
 
     public static Builder builder() {
@@ -38,10 +54,12 @@ public final class GeneratorSummarizationContextFewShotExampleOutput {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion summarySuggestion;
+        private @Nullable List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfo> toolCallInfos;
         public Builder() {}
         public Builder(GeneratorSummarizationContextFewShotExampleOutput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.summarySuggestion = defaults.summarySuggestion;
+    	      this.toolCallInfos = defaults.toolCallInfos;
         }
 
         @CustomType.Setter
@@ -50,9 +68,19 @@ public final class GeneratorSummarizationContextFewShotExampleOutput {
             this.summarySuggestion = summarySuggestion;
             return this;
         }
+        @CustomType.Setter
+        public Builder toolCallInfos(@Nullable List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfo> toolCallInfos) {
+
+            this.toolCallInfos = toolCallInfos;
+            return this;
+        }
+        public Builder toolCallInfos(GeneratorSummarizationContextFewShotExampleOutputToolCallInfo... toolCallInfos) {
+            return toolCallInfos(List.of(toolCallInfos));
+        }
         public GeneratorSummarizationContextFewShotExampleOutput build() {
             final var _resultValue = new GeneratorSummarizationContextFewShotExampleOutput();
             _resultValue.summarySuggestion = summarySuggestion;
+            _resultValue.toolCallInfos = toolCallInfos;
             return _resultValue;
         }
     }

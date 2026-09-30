@@ -19,6 +19,10 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindow {
      * 
      */
     private @Nullable String duration;
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     private String startTime;
 
     private ClusterMaintenancePolicyDailyMaintenanceWindow() {}
@@ -31,6 +35,10 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindow {
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodeConfigContainerdConfigRegistryHostHostArgs>? _hosts;
 
         /// <summary>
-        /// Configures a list of host-specific configurations for the server.
+        /// Configures a list of host-specific configurations for the server:
         /// </summary>
         public InputList<Inputs.ClusterNodeConfigContainerdConfigRegistryHostHostArgs> Hosts
         {

@@ -493,15 +493,15 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sourceContents", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sourceContents;
+    private Output<String> sourceContents;
 
     /**
      * @return Workflow code to be executed. The size limit is 128KB.
      * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
-    public Output<Optional<String>> sourceContents() {
-        return Codegen.optional(this.sourceContents);
+    public Output<String> sourceContents() {
+        return this.sourceContents;
     }
     /**
      * State of the workflow deployment.
@@ -576,7 +576,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Workflow(java.lang.String name, @Nullable WorkflowArgs args) {
+    public Workflow(java.lang.String name, WorkflowArgs args) {
         this(name, args, null);
     }
     /**
@@ -585,7 +585,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Workflow(java.lang.String name, @Nullable WorkflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Workflow(java.lang.String name, WorkflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:workflows/workflow:Workflow", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -593,7 +593,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
         super("gcp:workflows/workflow:Workflow", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static WorkflowArgs makeArgs(@Nullable WorkflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static WorkflowArgs makeArgs(WorkflowArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

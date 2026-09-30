@@ -14,31 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAddonsConfigRayOperatorConfig {
+    /**
+     * @return Whether the Ray Operator addon is enabled.
+     * 
+     */
     private Boolean enabled;
     /**
-     * @return The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+     * @return The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
      * 
      */
     private @Nullable ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig rayClusterLoggingConfig;
     /**
-     * @return The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+     * @return The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
      * 
      */
     private @Nullable ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig rayClusterMonitoringConfig;
 
     private ClusterAddonsConfigRayOperatorConfig() {}
+    /**
+     * @return Whether the Ray Operator addon is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+     * @return The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
      * 
      */
     public Optional<ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig> rayClusterLoggingConfig() {
         return Optional.ofNullable(this.rayClusterLoggingConfig);
     }
     /**
-     * @return The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+     * @return The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
      * 
      */
     public Optional<ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig> rayClusterMonitoringConfig() {

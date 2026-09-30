@@ -343,7 +343,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var net = new Gcp.Compute.Network("net", new()
     ///     {
-    ///         Name = "test-net",
+    ///         Name = "fw-policy-net",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 

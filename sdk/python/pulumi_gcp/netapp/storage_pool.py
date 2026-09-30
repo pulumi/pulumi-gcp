@@ -38,7 +38,6 @@ class StoragePoolArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  qos_type: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_type: pulumi.Input[Optional[_builtins.str]] = None,
                  total_iops: pulumi.Input[Optional[_builtins.str]] = None,
                  total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
@@ -89,12 +88,6 @@ class StoragePoolArgs:
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta, Deprecated)
-               The effective scale tier of the storage pool. If `scale_tier` is not
-               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-               
-               > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
         :param pulumi.Input[_builtins.str] scale_type: The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
                Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
         :param pulumi.Input[_builtins.str] total_iops: Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
@@ -141,11 +134,6 @@ class StoragePoolArgs:
             pulumi.set(__self__, "qos_type", qos_type)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
-        if scale_tier is not None:
-            warnings.warn("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""", DeprecationWarning)
-            pulumi.log.warn("""scale_tier is deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-        if scale_tier is not None:
-            pulumi.set(__self__, "scale_tier", scale_tier)
         if scale_type is not None:
             pulumi.set(__self__, "scale_type", scale_type)
         if total_iops is not None:
@@ -409,24 +397,6 @@ class StoragePoolArgs:
         pulumi.set(self, "replica_zone", value)
 
     @_builtins.property
-    @pulumi.getter(name="scaleTier")
-    @_utilities.deprecated("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-    def scale_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        (Optional, Beta, Deprecated)
-        The effective scale tier of the storage pool. If `scale_tier` is not
-        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-
-        > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-        """
-        return pulumi.get(self, "scale_tier")
-
-    @scale_tier.setter
-    def scale_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "scale_tier", value)
-
-    @_builtins.property
     @pulumi.getter(name="scaleType")
     def scale_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -520,7 +490,6 @@ class _StoragePoolState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  qos_type: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_level: pulumi.Input[Optional[_builtins.str]] = None,
                  total_iops: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,12 +548,6 @@ class _StoragePoolState:
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta, Deprecated)
-               The effective scale tier of the storage pool. If `scale_tier` is not
-               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-               
-               > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
         :param pulumi.Input[_builtins.str] scale_type: The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
                Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
@@ -649,11 +612,6 @@ class _StoragePoolState:
             pulumi.set(__self__, "qos_type", qos_type)
         if replica_zone is not None:
             pulumi.set(__self__, "replica_zone", replica_zone)
-        if scale_tier is not None:
-            warnings.warn("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""", DeprecationWarning)
-            pulumi.log.warn("""scale_tier is deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-        if scale_tier is not None:
-            pulumi.set(__self__, "scale_tier", scale_tier)
         if scale_type is not None:
             pulumi.set(__self__, "scale_type", scale_type)
         if service_level is not None:
@@ -983,24 +941,6 @@ class _StoragePoolState:
         pulumi.set(self, "replica_zone", value)
 
     @_builtins.property
-    @pulumi.getter(name="scaleTier")
-    @_utilities.deprecated("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-    def scale_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        (Optional, Beta, Deprecated)
-        The effective scale tier of the storage pool. If `scale_tier` is not
-        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-
-        > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-        """
-        return pulumi.get(self, "scale_tier")
-
-    @scale_tier.setter
-    def scale_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "scale_tier", value)
-
-    @_builtins.property
     @pulumi.getter(name="scaleType")
     def scale_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1128,7 +1068,6 @@ class StoragePool(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  qos_type: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_level: pulumi.Input[Optional[_builtins.str]] = None,
                  total_iops: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1266,12 +1205,6 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta, Deprecated)
-               The effective scale tier of the storage pool. If `scale_tier` is not
-               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-               
-               > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
         :param pulumi.Input[_builtins.str] scale_type: The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
                Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
@@ -1413,7 +1346,6 @@ class StoragePool(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  qos_type: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_level: pulumi.Input[Optional[_builtins.str]] = None,
                  total_iops: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1453,7 +1385,6 @@ class StoragePool(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["qos_type"] = qos_type
             __props__.__dict__["replica_zone"] = replica_zone
-            __props__.__dict__["scale_tier"] = scale_tier
             __props__.__dict__["scale_type"] = scale_type
             if service_level is None and not opts.urn:
                 raise TypeError("Missing required property 'service_level'")
@@ -1506,7 +1437,6 @@ class StoragePool(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             qos_type: pulumi.Input[Optional[_builtins.str]] = None,
             replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
             scale_type: pulumi.Input[Optional[_builtins.str]] = None,
             service_level: pulumi.Input[Optional[_builtins.str]] = None,
             total_iops: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1569,12 +1499,6 @@ class StoragePool(pulumi.CustomResource):
                Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
         :param pulumi.Input[_builtins.str] replica_zone: Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
                [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-        :param pulumi.Input[_builtins.str] scale_tier: (Optional, Beta, Deprecated)
-               The effective scale tier of the storage pool. If `scale_tier` is not
-               specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-               Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-               
-               > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
         :param pulumi.Input[_builtins.str] scale_type: The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
                Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
         :param pulumi.Input[_builtins.str] service_level: Service level of the storage pool.
@@ -1619,7 +1543,6 @@ class StoragePool(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["qos_type"] = qos_type
         __props__.__dict__["replica_zone"] = replica_zone
-        __props__.__dict__["scale_tier"] = scale_tier
         __props__.__dict__["scale_type"] = scale_type
         __props__.__dict__["service_level"] = service_level
         __props__.__dict__["total_iops"] = total_iops
@@ -1844,20 +1767,6 @@ class StoragePool(pulumi.CustomResource):
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
         """
         return pulumi.get(self, "replica_zone")
-
-    @_builtins.property
-    @pulumi.getter(name="scaleTier")
-    @_utilities.deprecated("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-    def scale_tier(self) -> pulumi.Output[_builtins.str]:
-        """
-        (Optional, Beta, Deprecated)
-        The effective scale tier of the storage pool. If `scale_tier` is not
-        specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-        Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-
-        > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-        """
-        return pulumi.get(self, "scale_tier")
 
     @_builtins.property
     @pulumi.getter(name="scaleType")

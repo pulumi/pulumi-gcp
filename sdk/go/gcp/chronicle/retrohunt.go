@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,52 +29,53 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
-// Location: pulumi.String("us"),
-// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-// DeletionPolicy: pulumi.String("FORCE"),
-// Text: pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
-// })
-// if err != nil {
-// return err
-// }
-// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
-// Separator: "/",
-// Text: googleChronicleRule.MyRule.Name,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
-// Separator: "/",
-// Text: googleChronicleRule.MyRule.Name,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// _, err = chronicle.NewRetrohunt(ctx, "example", &chronicle.RetrohuntArgs{
-// Location: pulumi.String("us"),
-// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-// Rule: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
-// ProcessInterval: &chronicle.RetrohuntProcessIntervalArgs{
-// StartTime: pulumi.String("2025-01-01T00:00:00Z"),
-// EndTime: pulumi.String("2025-01-01T12:00:00Z"),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
+//				Location:       pulumi.String("us"),
+//				Instance:       pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				DeletionPolicy: pulumi.String("FORCE"),
+//				Text:           pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+//				Separator: "/",
+//				Text:      googleChronicleRule.MyRule.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+//				Separator: "/",
+//				Text:      googleChronicleRule.MyRule.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = chronicle.NewRetrohunt(ctx, "example", &chronicle.RetrohuntArgs{
+//				Location: pulumi.String("us"),
+//				Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				Rule:     pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				ProcessInterval: &chronicle.RetrohuntProcessIntervalArgs{
+//					StartTime: pulumi.String("2025-01-01T00:00:00Z"),
+//					EndTime:   pulumi.String("2025-01-01T12:00:00Z"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FleetDefaultClusterConfigBinaryAuthorizationConfig? BinaryAuthorizationConfig;
         /// <summary>
+        /// Enable/Disable Compliance Posture features for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FleetDefaultClusterConfigCompliancePostureConfig? CompliancePostureConfig;
+        /// <summary>
         /// Enable/Disable Security Posture features for the cluster.
         /// Structure is documented below.
         /// </summary>
@@ -28,9 +33,12 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         private FleetDefaultClusterConfig(
             Outputs.FleetDefaultClusterConfigBinaryAuthorizationConfig? binaryAuthorizationConfig,
 
+            Outputs.FleetDefaultClusterConfigCompliancePostureConfig? compliancePostureConfig,
+
             Outputs.FleetDefaultClusterConfigSecurityPostureConfig? securityPostureConfig)
         {
             BinaryAuthorizationConfig = binaryAuthorizationConfig;
+            CompliancePostureConfig = compliancePostureConfig;
             SecurityPostureConfig = securityPostureConfig;
         }
     }

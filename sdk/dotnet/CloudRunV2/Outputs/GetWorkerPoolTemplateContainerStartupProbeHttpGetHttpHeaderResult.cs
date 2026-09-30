@@ -18,10 +18,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The header field name
-        /// </summary>
-        public readonly int Port;
-        /// <summary>
         /// Optional. The header field value
         /// </summary>
         public readonly string Value;
@@ -30,12 +26,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderResult(
             string name,
 
-            int port,
-
             string value)
         {
             Name = name;
-            Port = port;
             Value = value;
         }
     }

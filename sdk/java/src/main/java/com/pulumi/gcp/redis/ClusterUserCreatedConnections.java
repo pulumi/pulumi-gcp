@@ -78,13 +78,13 @@ import javax.annotation.Nullable;
  *         var subnetNetwork1 = new Subnetwork("subnetNetwork1", SubnetworkArgs.builder()
  *             .name("subnet-net1")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .network(network1.id())
  *             .build());
  * 
  *         var ip1Network1 = new Address("ip1Network1", AddressArgs.builder()
  *             .name("ip1-net1")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .subnetwork(subnetNetwork1.id())
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -94,14 +94,14 @@ import javax.annotation.Nullable;
  *         var cluster_user_connCluster = new Cluster("cluster-user-connCluster", ClusterArgs.builder()
  *             .name("cluster-user-conn")
  *             .shardCount(3)
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .replicaCount(0)
  *             .deletionProtectionEnabled(false)
  *             .build());
  * 
  *         var forwardingRule1Network1 = new ForwardingRule("forwardingRule1Network1", ForwardingRuleArgs.builder()
  *             .name("fwd1-net1")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .ipAddress(ip1Network1.id())
  *             .loadBalancingScheme("")
  *             .network(network1.id())
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * 
  *         var ip2Network1 = new Address("ip2Network1", AddressArgs.builder()
  *             .name("ip2-net1")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .subnetwork(subnetNetwork1.id())
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  *         var forwardingRule2Network1 = new ForwardingRule("forwardingRule2Network1", ForwardingRuleArgs.builder()
  *             .name("fwd2-net1")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .ipAddress(ip2Network1.id())
  *             .loadBalancingScheme("")
  *             .network(network1.id())
@@ -133,13 +133,13 @@ import javax.annotation.Nullable;
  *         var subnetNetwork2 = new Subnetwork("subnetNetwork2", SubnetworkArgs.builder()
  *             .name("subnet-net2")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .network(network2.id())
  *             .build());
  * 
  *         var ip1Network2 = new Address("ip1Network2", AddressArgs.builder()
  *             .name("ip1-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .subnetwork(subnetNetwork2.id())
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * 
  *         var forwardingRule1Network2 = new ForwardingRule("forwardingRule1Network2", ForwardingRuleArgs.builder()
  *             .name("fwd1-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .ipAddress(ip1Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  * 
  *         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
  *             .name("ip2-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .subnetwork(subnetNetwork2.id())
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  * 
  *         var forwardingRule2Network2 = new ForwardingRule("forwardingRule2Network2", ForwardingRuleArgs.builder()
  *             .name("fwd2-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .ipAddress(ip2Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_user_conn = new ClusterUserCreatedConnections("cluster-user-conn", ClusterUserCreatedConnectionsArgs.builder()
  *             .name("cluster-user-conn")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .clusterEndpoints(            
  *                 ClusterUserCreatedConnectionsClusterEndpointArgs.builder()
  *                     .connections(                    
@@ -277,13 +277,13 @@ import javax.annotation.Nullable;
  *         var subnetNetwork2 = new Subnetwork("subnetNetwork2", SubnetworkArgs.builder()
  *             .name("subnet-net2")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .network(network2.id())
  *             .build());
  * 
  *         var ip1Network2 = new Address("ip1Network2", AddressArgs.builder()
  *             .name("ip1-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .subnetwork(subnetNetwork2.id())
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -297,13 +297,13 @@ import javax.annotation.Nullable;
  *         var subnetNetwork1 = new Subnetwork("subnetNetwork1", SubnetworkArgs.builder()
  *             .name("subnet-net1")
  *             .ipCidrRange("10.0.0.248/29")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .network(network1.id())
  *             .build());
  * 
  *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
  *             .name("scpolicy")
- *             .location("us-central1")
+ *             .location("us-west1")
  *             .serviceClass("gcp-memorystore-redis")
  *             .description("my basic service connection policy")
  *             .network(network1.id())
@@ -316,7 +316,7 @@ import javax.annotation.Nullable;
  *         var cluster_user_auto_connCluster = new Cluster("cluster-user-auto-connCluster", ClusterArgs.builder()
  *             .name("cluster-user-auto-conn")
  *             .shardCount(3)
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .replicaCount(0)
  *             .deletionProtectionEnabled(false)
  *             .pscConfigs(ClusterPscConfigArgs.builder()
@@ -328,7 +328,7 @@ import javax.annotation.Nullable;
  * 
  *         var forwardingRule1Network2 = new ForwardingRule("forwardingRule1Network2", ForwardingRuleArgs.builder()
  *             .name("fwd1-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .ipAddress(ip1Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
@@ -337,7 +337,7 @@ import javax.annotation.Nullable;
  * 
  *         var ip2Network2 = new Address("ip2Network2", AddressArgs.builder()
  *             .name("ip2-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .subnetwork(subnetNetwork2.id())
  *             .addressType("INTERNAL")
  *             .purpose("GCE_ENDPOINT")
@@ -345,7 +345,7 @@ import javax.annotation.Nullable;
  * 
  *         var forwardingRule2Network2 = new ForwardingRule("forwardingRule2Network2", ForwardingRuleArgs.builder()
  *             .name("fwd2-net2")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .ipAddress(ip2Network2.id())
  *             .loadBalancingScheme("")
  *             .network(network2.id())
@@ -354,7 +354,7 @@ import javax.annotation.Nullable;
  * 
  *         var cluster_user_auto_conn = new ClusterUserCreatedConnections("cluster-user-auto-conn", ClusterUserCreatedConnectionsArgs.builder()
  *             .name("cluster-user-auto-conn")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .clusterEndpoints(ClusterUserCreatedConnectionsClusterEndpointArgs.builder()
  *                 .connections(                
  *                     ClusterUserCreatedConnectionsClusterEndpointConnectionArgs.builder()

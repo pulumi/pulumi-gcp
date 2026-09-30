@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var asp = new Gcp.Dataproc.AutoscalingPolicy("asp", new()
     ///     {
     ///         PolicyId = "dataproc-policy",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         WorkerConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyWorkerConfigArgs
     ///         {
     ///             MaxInstances = 3,
@@ -46,12 +46,32 @@ namespace Pulumi.Gcp.Dataproc
     ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
     ///     {
     ///         Name = "dataproc-policy",
-    ///         Region = "us-central1",
+    ///         Region = "us-east1",
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
     ///             AutoscalingConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigAutoscalingConfigArgs
     ///             {
     ///                 PolicyUri = asp.Name,
+    ///             },
+    ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+    ///             {
+    ///                 NumInstances = 1,
+    ///                 MachineType = "n4-standard-2",
+    ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
+    ///                 {
+    ///                     BootDiskType = "hyperdisk-balanced",
+    ///                     BootDiskSizeGb = 35,
+    ///                 },
+    ///             },
+    ///             WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
+    ///             {
+    ///                 NumInstances = 2,
+    ///                 MachineType = "n4-standard-2",
+    ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
+    ///                 {
+    ///                     BootDiskType = "hyperdisk-balanced",
+    ///                     BootDiskSizeGb = 35,
+    ///                 },
     ///             },
     ///         },
     ///     });

@@ -19,6 +19,19 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         [Input("summarySuggestion")]
         public Input<Inputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionGetArgs>? SummarySuggestion { get; set; }
 
+        [Input("toolCallInfos")]
+        private InputList<Inputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoGetArgs>? _toolCallInfos;
+
+        /// <summary>
+        /// List of request and response for tool calls executed.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoGetArgs> ToolCallInfos
+        {
+            get => _toolCallInfos ?? (_toolCallInfos = new InputList<Inputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoGetArgs>());
+            set => _toolCallInfos = value;
+        }
+
         public GeneratorSummarizationContextFewShotExampleOutputGetArgs()
         {
         }

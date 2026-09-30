@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("catalogPublishingEnabled")]
         public Input<bool>? CatalogPublishingEnabled { get; set; }
 
+        /// <summary>
+        /// The SQL dialect to use in the generated SQL queries.
+        /// If not specified, the default dialect is Google SQL.
+        /// Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+        /// </summary>
+        [Input("sqlDialect")]
+        public Input<string>? SqlDialect { get; set; }
+
         public DatascanDataDocumentationSpecGetArgs()
         {
         }

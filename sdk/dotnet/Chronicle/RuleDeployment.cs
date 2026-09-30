@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         Rule = Output.Tuple(Std.Split.Invoke(new()
+    ///         Rule = Output.Create(Output.Tuple(Std.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
@@ -51,12 +51,12 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result.Length)).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
     ///             return invoke.Result[(int)(length - 1)];
-    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///         })).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = true,
     ///         Alerting = true,
     ///         Archived = false,
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         Rule = Output.Tuple(Std.Split.Invoke(new()
+    ///         Rule = Output.Create(Output.Tuple(Std.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
@@ -96,12 +96,12 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result.Length)).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
     ///             return invoke.Result[(int)(length - 1)];
-    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///         })).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = false,
     ///         RunFrequency = "LIVE",
     ///     });
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         Rule = Output.Tuple(Std.Split.Invoke(new()
+    ///         Rule = Output.Create(Output.Tuple(Std.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
@@ -139,12 +139,12 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result.Length)).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
     ///             return invoke.Result[(int)(length - 1)];
-    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///         })).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = true,
     ///         Alerting = true,
     ///         Archived = false,

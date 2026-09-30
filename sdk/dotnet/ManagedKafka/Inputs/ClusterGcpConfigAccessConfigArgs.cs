@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
             set => _networkConfigs = value;
         }
 
+        /// <summary>
+        /// Public connection configuration for the Kafka cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("publicClusterConfig")]
+        public Input<Inputs.ClusterGcpConfigAccessConfigPublicClusterConfigArgs>? PublicClusterConfig { get; set; }
+
         public ClusterGcpConfigAccessConfigArgs()
         {
         }

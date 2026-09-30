@@ -195,6 +195,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool Reconciling;
         public readonly ImmutableArray<Outputs.GetServiceScalingResult> Scalings;
+        public readonly bool SshEnabled;
         public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<Outputs.GetServiceTemplateResult> Templates;
         public readonly ImmutableArray<Outputs.GetServiceTerminalConditionResult> TerminalConditions;
@@ -279,6 +280,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             ImmutableArray<Outputs.GetServiceScalingResult> scalings,
 
+            bool sshEnabled,
+
             ImmutableDictionary<string, string> tags,
 
             ImmutableArray<Outputs.GetServiceTemplateResult> templates,
@@ -333,6 +336,7 @@ namespace Pulumi.Gcp.CloudRunV2
             PulumiLabels = pulumiLabels;
             Reconciling = reconciling;
             Scalings = scalings;
+            SshEnabled = sshEnabled;
             Tags = tags;
             Templates = templates;
             TerminalConditions = terminalConditions;

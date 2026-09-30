@@ -19,7 +19,7 @@ public final class WorkflowTemplatePlacementManagedCluster {
      */
     private String clusterName;
     /**
-     * @return Required. The cluster configuration.
+     * @return Required. The cluster configuration. Structure is documented below.
      * 
      */
     private WorkflowTemplatePlacementManagedClusterConfig config;
@@ -38,7 +38,7 @@ public final class WorkflowTemplatePlacementManagedCluster {
         return this.clusterName;
     }
     /**
-     * @return Required. The cluster configuration.
+     * @return Required. The cluster configuration. Structure is documented below.
      * 
      */
     public WorkflowTemplatePlacementManagedClusterConfig config() {

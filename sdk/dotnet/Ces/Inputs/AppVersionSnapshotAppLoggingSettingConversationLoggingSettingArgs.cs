@@ -19,6 +19,14 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("disableConversationLogging")]
         public Input<bool>? DisableConversationLogging { get; set; }
 
+        /// <summary>
+        /// (Output)
+        /// Controls the retention window for the conversation.
+        /// If not set, the conversation will be retained for 365 days.
+        /// </summary>
+        [Input("retentionWindow")]
+        public Input<string>? RetentionWindow { get; set; }
+
         public AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs()
         {
         }

@@ -17,7 +17,6 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     public static final ServiceTemplateScalingArgs Empty = new ServiceTemplateScalingArgs();
 
     /**
-     * (Optional, Beta)
      * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
@@ -25,8 +24,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Double> concurrencyUtilization;
 
     /**
-     * @return (Optional, Beta)
-     * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * @return Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
     public Optional<Output<Double>> concurrencyUtilization() {
@@ -34,7 +32,6 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Beta)
      * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
@@ -42,8 +39,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Double> cpuUtilization;
 
     /**
-     * @return (Optional, Beta)
-     * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * @return Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
     public Optional<Output<Double>> cpuUtilization() {
@@ -108,8 +104,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param concurrencyUtilization (Optional, Beta)
-         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * @param concurrencyUtilization Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
          * 
          * @return builder
          * 
@@ -120,8 +115,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param concurrencyUtilization (Optional, Beta)
-         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * @param concurrencyUtilization Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
          * 
          * @return builder
          * 
@@ -131,8 +125,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param cpuUtilization (Optional, Beta)
-         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * @param cpuUtilization Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
          * 
          * @return builder
          * 
@@ -143,8 +136,7 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param cpuUtilization (Optional, Beta)
-         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * @param cpuUtilization Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
          * 
          * @return builder
          * 

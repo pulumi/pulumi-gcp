@@ -33,13 +33,13 @@ import * as utilities from "../utilities";
  * const example = new gcp.chronicle.Retrohunt("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
- *     rule: pulumi.all([std.split({
+ *     rule: output(Promise.all([std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+ *     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1])).apply(x =>String(x)),
  *     processInterval: {
  *         startTime: "2025-01-01T00:00:00Z",
  *         endTime: "2025-01-01T12:00:00Z",

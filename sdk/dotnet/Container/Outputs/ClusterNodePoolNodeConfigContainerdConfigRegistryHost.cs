@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNodeConfigContainerdConfigRegistryHost
     {
         /// <summary>
-        /// Configures a list of host-specific configurations for the server.
+        /// Configures a list of host-specific configurations for the server:
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost> Hosts;
         /// <summary>

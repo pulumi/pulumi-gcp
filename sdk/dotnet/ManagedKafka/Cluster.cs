@@ -169,6 +169,55 @@ namespace Pulumi.Gcp.ManagedKafka
     /// 
     /// });
     /// ```
+    /// ### Managedkafka Cluster Public
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example = new Gcp.ManagedKafka.Cluster("example", new()
+    ///     {
+    ///         ClusterId = "my-cluster",
+    ///         Location = "us-central1",
+    ///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
+    ///         {
+    ///             VcpuCount = "3",
+    ///             MemoryBytes = "3221225472",
+    ///         },
+    ///         GcpConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigArgs
+    ///         {
+    ///             AccessConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigArgs
+    ///             {
+    ///                 NetworkConfigs = new[]
+    ///                 {
+    ///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
+    ///                     {
+    ///                         Subnet = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/regions/us-central1/subnetworks/default",
+    ///                     },
+    ///                 },
+    ///                 PublicClusterConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigPublicClusterConfigArgs
+    ///                 {
+    ///                     AllowedSourceIpRanges = new[]
+    ///                     {
+    ///                         "192.168.1.0/24",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         RebalanceConfig = new Gcp.ManagedKafka.Inputs.ClusterRebalanceConfigArgs
+    ///         {
+    ///             Mode = "AUTO_REBALANCE_ON_SCALE_UP",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -189,6 +238,12 @@ namespace Pulumi.Gcp.ManagedKafka
     [GcpResourceType("gcp:managedkafka/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+        /// </summary>
+        [Output("bootstrapAddress")]
+        public Output<string> BootstrapAddress { get; private set; } = null!;
+
         /// <summary>
         /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
         /// Structure is documented below.
@@ -265,6 +320,13 @@ namespace Pulumi.Gcp.ManagedKafka
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Details of the public cluster feature for the Kafka cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("publicClusterDetails")]
+        public Output<ImmutableArray<Outputs.ClusterPublicClusterDetail>> PublicClusterDetails { get; private set; } = null!;
 
         /// <summary>
         /// The combination of labels configured directly on the resource
@@ -438,6 +500,12 @@ namespace Pulumi.Gcp.ManagedKafka
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+        /// </summary>
+        [Input("bootstrapAddress")]
+        public Input<string>? BootstrapAddress { get; set; }
+
+        /// <summary>
         /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
         /// Structure is documented below.
         /// </summary>
@@ -529,6 +597,19 @@ namespace Pulumi.Gcp.ManagedKafka
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("publicClusterDetails")]
+        private InputList<Inputs.ClusterPublicClusterDetailGetArgs>? _publicClusterDetails;
+
+        /// <summary>
+        /// Details of the public cluster feature for the Kafka cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterPublicClusterDetailGetArgs> PublicClusterDetails
+        {
+            get => _publicClusterDetails ?? (_publicClusterDetails = new InputList<Inputs.ClusterPublicClusterDetailGetArgs>());
+            set => _publicClusterDetails = value;
+        }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

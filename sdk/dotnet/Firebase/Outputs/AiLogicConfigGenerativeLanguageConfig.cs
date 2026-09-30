@@ -14,22 +14,19 @@ namespace Pulumi.Gcp.Firebase.Outputs
     public sealed class AiLogicConfigGenerativeLanguageConfig
     {
         /// <summary>
-        /// The value of the API key. The API key must have
-        /// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-        /// Note that this API is sometimes called the *Generative Language API* in
-        /// the Google Cloud console.
-        /// Do **not** add this Gemini API key into your app's codebase
+        /// (Optional, Deprecated)
+        /// The value of the API key. Firebase AI Logic no longer requires API key
+        /// material; values provided here may be silently ignored on input.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// 
+        /// &gt; **Warning:** `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         /// </summary>
         public readonly string? ApiKey;
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// (Optional, Write-Only)
-        /// The value of the API key. The API key must have
-        /// `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-        /// Note that this API is sometimes called the *Generative Language API* in
-        /// the Google Cloud console.
-        /// Do **not** add this Gemini API key into your app's codebase
+        /// The value of the API key. Firebase AI Logic no longer requires API key
+        /// material; values provided here may be silently ignored on input.
         /// **Note**: This property is write-only and will not be read from the API.
         /// 
         /// &gt; **Note:** One of `ApiKey` or `ApiKeyWo` can only be set.

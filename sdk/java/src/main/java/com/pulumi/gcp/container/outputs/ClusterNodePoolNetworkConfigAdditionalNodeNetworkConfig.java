@@ -19,6 +19,11 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
      */
     private @Nullable String network;
     /**
+     * @return The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    private @Nullable String stackType;
+    /**
      * @return The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
@@ -34,6 +39,13 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    public Optional<String> stackType() {
+        return Optional.ofNullable(this.stackType);
     }
     /**
      * @return The name or selfLink of the Google Compute Engine
@@ -54,11 +66,13 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String network;
+        private @Nullable String stackType;
         private @Nullable String subnetwork;
         public Builder() {}
         public Builder(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.network = defaults.network;
+    	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
         }
 
@@ -66,6 +80,12 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
         public Builder network(@Nullable String network) {
 
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stackType(@Nullable String stackType) {
+
+            this.stackType = stackType;
             return this;
         }
         @CustomType.Setter
@@ -77,6 +97,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
         public ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig build() {
             final var _resultValue = new ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig();
             _resultValue.network = network;
+            _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }

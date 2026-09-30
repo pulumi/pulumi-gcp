@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterAddonsConfigRayOperatorConfig
     {
+        /// <summary>
+        /// Whether the Ray Operator addon is enabled.
+        /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig? RayClusterLoggingConfig;
         /// <summary>
-        /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig? RayClusterMonitoringConfig;
 

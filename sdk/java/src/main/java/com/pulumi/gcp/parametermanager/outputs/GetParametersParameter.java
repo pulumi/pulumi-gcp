@@ -75,6 +75,13 @@ public final class GetParametersParameter {
      */
     private Map<String,String> pulumiLabels;
     /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    private Map<String,String> tags;
+    /**
      * @return The time at which the parameter was updated.
      * 
      */
@@ -165,6 +172,15 @@ public final class GetParametersParameter {
         return this.pulumiLabels;
     }
     /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
      * @return The time at which the parameter was updated.
      * 
      */
@@ -192,6 +208,7 @@ public final class GetParametersParameter {
         private List<GetParametersParameterPolicyMember> policyMembers;
         private String project;
         private Map<String,String> pulumiLabels;
+        private Map<String,String> tags;
         private String updateTime;
         public Builder() {}
         public Builder(GetParametersParameter defaults) {
@@ -207,6 +224,7 @@ public final class GetParametersParameter {
     	      this.policyMembers = defaults.policyMembers;
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.tags = defaults.tags;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -302,6 +320,14 @@ public final class GetParametersParameter {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetParametersParameter", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetParametersParameter", "updateTime");
@@ -322,6 +348,7 @@ public final class GetParametersParameter {
             _resultValue.policyMembers = policyMembers;
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.tags = tags;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

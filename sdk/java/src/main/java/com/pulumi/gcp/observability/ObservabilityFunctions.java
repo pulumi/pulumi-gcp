@@ -30,9 +30,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Folder Settings Basic
@@ -81,9 +78,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -134,9 +128,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Folder Settings Basic
@@ -185,9 +176,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -238,9 +226,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Folder Settings Basic
@@ -289,9 +274,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -342,9 +324,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Organization Settings Basic
@@ -393,9 +372,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -446,9 +422,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Organization Settings Basic
@@ -497,9 +470,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -550,9 +520,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Project Settings Basic
@@ -601,9 +568,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 
@@ -654,9 +618,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Project Settings Basic
@@ -706,9 +667,6 @@ public final class ObservabilityFunctions {
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
      * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
-     * 
      * ## Example Usage
      * 
      * ### Observability Project Settings Basic
@@ -757,9 +715,6 @@ public final class ObservabilityFunctions {
      * * [API documentation](https://docs.cloud.google.com/stackdriver/docs/reference/observability/api/rest)
      * * How-to Guides
      *     * [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
-     * 
-     * &gt; **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-     * See Provider Versions for more details on beta resources.
      * 
      * ## Example Usage
      * 

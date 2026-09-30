@@ -5,8 +5,10 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,51 @@ import javax.annotation.Nullable;
 public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs();
+
+    /**
+     * Optional. Attached disk configuration. Structure is documented below.
+     * 
+     */
+    @Import(name="attachedDiskConfigs")
+    private @Nullable Output<List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs;
+
+    /**
+     * @return Optional. Attached disk configuration. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs>>> attachedDiskConfigs() {
+        return Optional.ofNullable(this.attachedDiskConfigs);
+    }
+
+    /**
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+     * 
+     */
+    @Import(name="bootDiskProvisionedIops")
+    private @Nullable Output<Integer> bootDiskProvisionedIops;
+
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+     * 
+     */
+    public Optional<Output<Integer>> bootDiskProvisionedIops() {
+        return Optional.ofNullable(this.bootDiskProvisionedIops);
+    }
+
+    /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+     * 
+     */
+    @Import(name="bootDiskProvisionedThroughput")
+    private @Nullable Output<Integer> bootDiskProvisionedThroughput;
+
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+     * 
+     */
+    public Optional<Output<Integer>> bootDiskProvisionedThroughput() {
+        return Optional.ofNullable(this.bootDiskProvisionedThroughput);
+    }
 
     /**
      * Size in GB of the boot disk (default is 500GB).
@@ -32,14 +79,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     }
 
     /**
-     * Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+     * Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive), &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive), or &#34;hyperdisk-balanced&#34;.
      * 
      */
     @Import(name="bootDiskType")
     private @Nullable Output<String> bootDiskType;
 
     /**
-     * @return Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+     * @return Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive), &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive), or &#34;hyperdisk-balanced&#34;.
      * 
      */
     public Optional<Output<String>> bootDiskType() {
@@ -47,14 +94,29 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     }
 
     /**
-     * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+     * Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+     * 
+     */
+    @Import(name="localSsdInterface")
+    private @Nullable Output<String> localSsdInterface;
+
+    /**
+     * @return Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+     * 
+     */
+    public Optional<Output<String>> localSsdInterface() {
+        return Optional.ofNullable(this.localSsdInterface);
+    }
+
+    /**
+     * Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
     @Import(name="numLocalSsds")
     private @Nullable Output<Integer> numLocalSsds;
 
     /**
-     * @return Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+     * @return Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
     public Optional<Output<Integer>> numLocalSsds() {
@@ -64,8 +126,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     private WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs() {}
 
     private WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs $) {
+        this.attachedDiskConfigs = $.attachedDiskConfigs;
+        this.bootDiskProvisionedIops = $.bootDiskProvisionedIops;
+        this.bootDiskProvisionedThroughput = $.bootDiskProvisionedThroughput;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.bootDiskType = $.bootDiskType;
+        this.localSsdInterface = $.localSsdInterface;
         this.numLocalSsds = $.numLocalSsds;
     }
 
@@ -85,6 +151,79 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
 
         public Builder(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs defaults) {
             $ = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachedDiskConfigs Optional. Attached disk configuration. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(@Nullable Output<List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs) {
+            $.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+
+        /**
+         * @param attachedDiskConfigs Optional. Attached disk configuration. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(List<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs> attachedDiskConfigs) {
+            return attachedDiskConfigs(Output.of(attachedDiskConfigs));
+        }
+
+        /**
+         * @param attachedDiskConfigs Optional. Attached disk configuration. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
+        }
+
+        /**
+         * @param bootDiskProvisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedIops(@Nullable Output<Integer> bootDiskProvisionedIops) {
+            $.bootDiskProvisionedIops = bootDiskProvisionedIops;
+            return this;
+        }
+
+        /**
+         * @param bootDiskProvisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedIops(Integer bootDiskProvisionedIops) {
+            return bootDiskProvisionedIops(Output.of(bootDiskProvisionedIops));
+        }
+
+        /**
+         * @param bootDiskProvisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedThroughput(@Nullable Output<Integer> bootDiskProvisionedThroughput) {
+            $.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param bootDiskProvisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootDiskProvisionedThroughput(Integer bootDiskProvisionedThroughput) {
+            return bootDiskProvisionedThroughput(Output.of(bootDiskProvisionedThroughput));
         }
 
         /**
@@ -109,7 +248,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param bootDiskType Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+         * @param bootDiskType Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive), &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive), or &#34;hyperdisk-balanced&#34;.
          * 
          * @return builder
          * 
@@ -120,7 +259,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param bootDiskType Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+         * @param bootDiskType Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive), &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive), or &#34;hyperdisk-balanced&#34;.
          * 
          * @return builder
          * 
@@ -130,7 +269,28 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * @param localSsdInterface Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdInterface(@Nullable Output<String> localSsdInterface) {
+            $.localSsdInterface = localSsdInterface;
+            return this;
+        }
+
+        /**
+         * @param localSsdInterface Interface type of local SSDs (default is &#34;scsi&#34;). Valid values: &#34;scsi&#34; (Small Computer System Interface), &#34;nvme&#34; (Non-Volatile Memory Express).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdInterface(String localSsdInterface) {
+            return localSsdInterface(Output.of(localSsdInterface));
+        }
+
+        /**
+         * @param numLocalSsds Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          * 
          * @return builder
          * 
@@ -141,7 +301,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * @param numLocalSsds Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          * 
          * @return builder
          * 

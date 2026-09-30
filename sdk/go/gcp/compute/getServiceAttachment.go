@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,6 +78,7 @@ type LookupServiceAttachmentResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                                  string                                       `pulumi:"id"`
 	Name                                string                                       `pulumi:"name"`
+	NatIpsPerEndpoint                   int                                          `pulumi:"natIpsPerEndpoint"`
 	NatSubnets                          []string                                     `pulumi:"natSubnets"`
 	Project                             *string                                      `pulumi:"project"`
 	PropagatedConnectionLimit           int                                          `pulumi:"propagatedConnectionLimit"`
@@ -174,6 +175,10 @@ func (o LookupServiceAttachmentResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupServiceAttachmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAttachmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceAttachmentResultOutput) NatIpsPerEndpoint() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceAttachmentResult) int { return v.NatIpsPerEndpoint }).(pulumi.IntOutput)
 }
 
 func (o LookupServiceAttachmentResultOutput) NatSubnets() pulumi.StringArrayOutput {

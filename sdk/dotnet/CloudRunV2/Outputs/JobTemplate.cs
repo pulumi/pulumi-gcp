@@ -21,6 +21,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
+        /// If true, the system will start the execution within the next 12 hours depending on available capacity.
+        /// </summary>
+        public readonly bool? DelayExecution;
+        /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
         /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
         /// https://cloud.google.com/run/docs/configuring/labels.
@@ -46,6 +50,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private JobTemplate(
             ImmutableDictionary<string, string>? annotations,
 
+            bool? delayExecution,
+
             ImmutableDictionary<string, string>? labels,
 
             int? parallelism,
@@ -55,6 +61,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Outputs.JobTemplateTemplate template)
         {
             Annotations = annotations;
+            DelayExecution = delayExecution;
             Labels = labels;
             Parallelism = parallelism;
             TaskCount = taskCount;

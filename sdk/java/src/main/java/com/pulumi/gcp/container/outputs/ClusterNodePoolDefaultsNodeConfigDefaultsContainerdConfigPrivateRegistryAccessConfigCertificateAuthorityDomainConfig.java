@@ -18,7 +18,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
      */
     private List<String> fqdns;
     /**
-     * @return Parameters for configuring a certificate hosted in GCP SecretManager.
+     * @return Parameters for configuring a certificate hosted in GCP SecretManager:
      * 
      */
     private ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig gcpSecretManagerCertificateConfig;
@@ -32,7 +32,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
         return this.fqdns;
     }
     /**
-     * @return Parameters for configuring a certificate hosted in GCP SecretManager.
+     * @return Parameters for configuring a certificate hosted in GCP SecretManager:
      * 
      */
     public ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig gcpSecretManagerCertificateConfig() {

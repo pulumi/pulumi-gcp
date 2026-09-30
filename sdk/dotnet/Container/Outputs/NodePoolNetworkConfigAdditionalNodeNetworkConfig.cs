@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
+        /// ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+        /// </summary>
+        public readonly string? StackType;
+        /// <summary>
         /// Name of the subnetwork where the additional interface belongs.
         /// </summary>
         public readonly string? Subnetwork;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private NodePoolNetworkConfigAdditionalNodeNetworkConfig(
             string? network,
 
+            string? stackType,
+
             string? subnetwork)
         {
             Network = network;
+            StackType = stackType;
             Subnetwork = subnetwork;
         }
     }

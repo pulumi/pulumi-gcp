@@ -210,7 +210,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const net = new gcp.compute.Network("net", {
- *     name: "test-net",
+ *     name: "fw-policy-net",
  *     autoCreateSubnetworks: false,
  * });
  * const fwPolicy = new gcp.compute.RegionNetworkFirewallPolicy("fw_policy", {

@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerResources;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerVolumeMount;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -62,6 +63,11 @@ public final class JobTemplateTemplateContainer {
      * 
      */
     private @Nullable JobTemplateTemplateContainerResources resources;
+    /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    private @Nullable Boolean sandboxLauncher;
     /**
      * @return Startup probe of application within the container.
      * All other probes are disabled if a startup probe is provided, until it
@@ -144,6 +150,13 @@ public final class JobTemplateTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    public Optional<Boolean> sandboxLauncher() {
+        return Optional.ofNullable(this.sandboxLauncher);
+    }
+    /**
      * @return Startup probe of application within the container.
      * All other probes are disabled if a startup probe is provided, until it
      * succeeds. Container will not be added to service endpoints if the probe fails.
@@ -186,6 +199,7 @@ public final class JobTemplateTemplateContainer {
         private @Nullable String name;
         private @Nullable List<JobTemplateTemplateContainerPort> ports;
         private @Nullable JobTemplateTemplateContainerResources resources;
+        private @Nullable Boolean sandboxLauncher;
         private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
         private @Nullable List<JobTemplateTemplateContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
@@ -200,6 +214,7 @@ public final class JobTemplateTemplateContainer {
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
+    	      this.sandboxLauncher = defaults.sandboxLauncher;
     	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
@@ -271,6 +286,12 @@ public final class JobTemplateTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxLauncher(@Nullable Boolean sandboxLauncher) {
+
+            this.sandboxLauncher = sandboxLauncher;
+            return this;
+        }
+        @CustomType.Setter
         public Builder startupProbe(@Nullable JobTemplateTemplateContainerStartupProbe startupProbe) {
 
             this.startupProbe = startupProbe;
@@ -301,6 +322,7 @@ public final class JobTemplateTemplateContainer {
             _resultValue.name = name;
             _resultValue.ports = ports;
             _resultValue.resources = resources;
+            _resultValue.sandboxLauncher = sandboxLauncher;
             _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;

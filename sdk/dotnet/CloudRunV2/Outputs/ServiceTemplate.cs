@@ -102,6 +102,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateVpcAccess? VpcAccess;
+        /// <summary>
+        /// Workload identity settings for this Revision.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateWorkloadIdentityConfig? WorkloadIdentityConfig;
 
         [OutputConstructor]
         private ServiceTemplate(
@@ -139,7 +144,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.ServiceTemplateVolume> volumes,
 
-            Outputs.ServiceTemplateVpcAccess? vpcAccess)
+            Outputs.ServiceTemplateVpcAccess? vpcAccess,
+
+            Outputs.ServiceTemplateWorkloadIdentityConfig? workloadIdentityConfig)
         {
             Annotations = annotations;
             Containers = containers;
@@ -159,6 +166,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Timeout = timeout;
             Volumes = volumes;
             VpcAccess = vpcAccess;
+            WorkloadIdentityConfig = workloadIdentityConfig;
         }
     }
 }

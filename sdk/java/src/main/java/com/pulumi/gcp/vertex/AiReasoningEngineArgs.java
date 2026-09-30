@@ -22,7 +22,6 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
     public static final AiReasoningEngineArgs Empty = new AiReasoningEngineArgs();
 
     /**
-     * (Optional, Beta)
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      * 
@@ -31,8 +30,7 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<AiReasoningEngineContextSpecArgs> contextSpec;
 
     /**
-     * @return (Optional, Beta)
-     * Optional. Configuration for how Agent Engine sub-resources should manage context.
+     * @return Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      * 
      */
@@ -247,8 +245,7 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contextSpec (Optional, Beta)
-         * Optional. Configuration for how Agent Engine sub-resources should manage context.
+         * @param contextSpec Optional. Configuration for how Agent Engine sub-resources should manage context.
          * Structure is documented below.
          * 
          * @return builder
@@ -260,8 +257,7 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contextSpec (Optional, Beta)
-         * Optional. Configuration for how Agent Engine sub-resources should manage context.
+         * @param contextSpec Optional. Configuration for how Agent Engine sub-resources should manage context.
          * Structure is documented below.
          * 
          * @return builder

@@ -65,6 +65,14 @@ namespace Pulumi.Gcp.AgenticApplications
     /// Analyze financial data.",
     ///             },
     ///         },
+    ///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
+    ///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
+    ///         {
+    ///             ExcludedDomains = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -370,6 +378,45 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 },
     ///             },
     ///         },
+    ///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
+    ///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
+    ///         {
+    ///             ExcludedDomains = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Analyst Agent Persona Methodology Export Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.AgenticApplications.AnalystAgentPersona("example", new()
+    ///     {
+    ///         Location = "us",
+    ///         AnalystAgentPersonaId = "methodology",
+    ///         DisplayName = "Test Analyst Persona Methodology Export",
+    ///         DisplayDescription = "Sample analyst agent persona description",
+    ///         ModelDescription = "Sample model description",
+    ///         Role = "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+    ///         ArtifactsConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigArgs
+    ///         {
+    ///             MethodologyExportOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs
+    ///             {
+    ///                 AppendMethodology = true,
+    ///                 ExportFormat = "MARKDOWN",
+    ///                 ExportMethodologyArtifact = true,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -428,6 +475,11 @@ namespace Pulumi.Gcp.AgenticApplications
     /// * `DocumentGenerationOptions` -
     /// (Optional)
     /// Options for document generation.
+    /// Structure is documented below.
+    /// 
+    /// * `MethodologyExportOptions` -
+    /// (Optional)
+    /// Options for methodology export.
     /// Structure is documented below.
     /// 
     /// * `SlideGenerationOptions` -
@@ -573,6 +625,24 @@ namespace Pulumi.Gcp.AgenticApplications
     /// * `MimeType` -
     /// (Required)
     /// The mime type of the file.
+    /// 
+    /// &lt;a name="NestedArtifactsConfigMethodologyExportOptions"&gt;&lt;/a&gt;The `MethodologyExportOptions` block supports:
+    /// 
+    /// * `AppendMethodology` -
+    /// (Optional)
+    /// If true, append the detailed methodology to the final response.
+    /// 
+    /// * `ExportFormat` -
+    /// (Optional)
+    /// Format for methodology export.
+    /// Possible values:
+    /// MARKDOWN
+    /// HTML
+    /// PDF
+    /// 
+    /// * `ExportMethodologyArtifact` -
+    /// (Optional)
+    /// If true, export the detailed methodology as a separate artifact.
     /// 
     /// &lt;a name="NestedArtifactsConfigSlideGenerationOptions"&gt;&lt;/a&gt;The `SlideGenerationOptions` block supports:
     /// 
@@ -1102,6 +1172,13 @@ namespace Pulumi.Gcp.AgenticApplications
     /// (Required)
     /// The name of the column.
     /// 
+    /// &lt;a name="NestedWebSearchConfig"&gt;&lt;/a&gt;The `WebSearchConfig` block supports:
+    /// 
+    /// * `ExcludedDomains` -
+    ///   (Optional)
+    ///   List of domains to be excluded from Google Search / Enterprise Web Search
+    ///   grounding.
+    /// 
     /// ## Import
     /// 
     /// AnalystAgentPersona can be imported using any of these accepted formats:
@@ -1202,6 +1279,15 @@ namespace Pulumi.Gcp.AgenticApplications
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The math rendering mode selected for this persona.
+        /// Possible values:
+        /// MATH_RENDERING_MODE_LATEX
+        /// MATH_RENDERING_MODE_PLAIN_TEXT
+        /// </summary>
+        [Output("mathRenderingMode")]
+        public Output<string?> MathRenderingMode { get; private set; } = null!;
+
+        /// <summary>
         /// The MCP data source selections to be used by the agent.
         /// Structure is documented below.
         /// </summary>
@@ -1290,6 +1376,13 @@ namespace Pulumi.Gcp.AgenticApplications
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for web search grounding for the analyst agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("webSearchConfig")]
+        public Output<Outputs.AnalystAgentPersonaWebSearchConfig?> WebSearchConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -1429,6 +1522,15 @@ namespace Pulumi.Gcp.AgenticApplications
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The math rendering mode selected for this persona.
+        /// Possible values:
+        /// MATH_RENDERING_MODE_LATEX
+        /// MATH_RENDERING_MODE_PLAIN_TEXT
+        /// </summary>
+        [Input("mathRenderingMode")]
+        public Input<string>? MathRenderingMode { get; set; }
+
         [Input("mcpDataSources")]
         private InputList<Inputs.AnalystAgentPersonaMcpDataSourceArgs>? _mcpDataSources;
 
@@ -1528,6 +1630,13 @@ namespace Pulumi.Gcp.AgenticApplications
             get => _tables ?? (_tables = new InputList<Inputs.AnalystAgentPersonaTableArgs>());
             set => _tables = value;
         }
+
+        /// <summary>
+        /// Configuration for web search grounding for the analyst agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("webSearchConfig")]
+        public Input<Inputs.AnalystAgentPersonaWebSearchConfigArgs>? WebSearchConfig { get; set; }
 
         public AnalystAgentPersonaArgs()
         {
@@ -1634,6 +1743,15 @@ namespace Pulumi.Gcp.AgenticApplications
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The math rendering mode selected for this persona.
+        /// Possible values:
+        /// MATH_RENDERING_MODE_LATEX
+        /// MATH_RENDERING_MODE_PLAIN_TEXT
+        /// </summary>
+        [Input("mathRenderingMode")]
+        public Input<string>? MathRenderingMode { get; set; }
 
         [Input("mcpDataSources")]
         private InputList<Inputs.AnalystAgentPersonaMcpDataSourceGetArgs>? _mcpDataSources;
@@ -1748,6 +1866,13 @@ namespace Pulumi.Gcp.AgenticApplications
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Configuration for web search grounding for the analyst agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("webSearchConfig")]
+        public Input<Inputs.AnalystAgentPersonaWebSearchConfigGetArgs>? WebSearchConfig { get; set; }
 
         public AnalystAgentPersonaState()
         {

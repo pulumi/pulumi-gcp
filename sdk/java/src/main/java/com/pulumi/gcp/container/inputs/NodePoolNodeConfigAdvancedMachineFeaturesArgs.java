@@ -34,14 +34,14 @@ public final class NodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pul
     }
 
     /**
-     * Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+     * Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
      * 
      */
     @Import(name="performanceMonitoringUnit")
     private @Nullable Output<String> performanceMonitoringUnit;
 
     /**
-     * @return Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+     * @return Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
      * 
      */
     public Optional<Output<String>> performanceMonitoringUnit() {
@@ -111,7 +111,7 @@ public final class NodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pul
         }
 
         /**
-         * @param performanceMonitoringUnit Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+         * @param performanceMonitoringUnit Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class NodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pul
         }
 
         /**
-         * @param performanceMonitoringUnit Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+         * @param performanceMonitoringUnit Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
          * 
          * @return builder
          * 

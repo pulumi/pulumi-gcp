@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:resourcemanager/capability:Capability":
 		r = &Capability{}
+	case "gcp:resourcemanager/capabilityConfig:CapabilityConfig":
+		r = &CapabilityConfig{}
 	case "gcp:resourcemanager/lien:Lien":
 		r = &Lien{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"resourcemanager/capability",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"resourcemanager/capabilityConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

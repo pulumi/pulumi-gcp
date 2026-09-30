@@ -26,6 +26,20 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _agentCards = value;
         }
 
+        [Input("apiAuthentications")]
+        private InputList<Inputs.ToolRemoteAgentToolApiAuthenticationGetArgs>? _apiAuthentications;
+
+        /// <summary>
+        /// (Output)
+        /// Authentication information required for calling the remote agent.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ToolRemoteAgentToolApiAuthenticationGetArgs> ApiAuthentications
+        {
+            get => _apiAuthentications ?? (_apiAuthentications = new InputList<Inputs.ToolRemoteAgentToolApiAuthenticationGetArgs>());
+            set => _apiAuthentications = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The description of the system tool.

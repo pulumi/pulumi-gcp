@@ -7,11 +7,612 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type AgentConnectivityTemplateEgressNetworkConfig struct {
+	// DNS peering configuration for the AgentConnectivityTemplate.
+	// When set, the gateway will resolve queries for the configured
+	// `domains` via Cloud DNS in the specified `targetNetwork`.
+	// Structure is documented below.
+	DnsPeeringConfig *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig `pulumi:"dnsPeeringConfig"`
+	// The network attachment resource name.
+	// Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+	// The TLS configuration for the egress traffic.
+	// Structure is documented below.
+	TlsConfig *AgentConnectivityTemplateEgressNetworkConfigTlsConfig `pulumi:"tlsConfig"`
+	// The VPC egress setting.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+	VpcEgress *string `pulumi:"vpcEgress"`
+}
+
+// AgentConnectivityTemplateEgressNetworkConfigInput is an input type that accepts AgentConnectivityTemplateEgressNetworkConfigArgs and AgentConnectivityTemplateEgressNetworkConfigOutput values.
+// You can construct a concrete instance of `AgentConnectivityTemplateEgressNetworkConfigInput` via:
+//
+//	AgentConnectivityTemplateEgressNetworkConfigArgs{...}
+type AgentConnectivityTemplateEgressNetworkConfigInput interface {
+	pulumi.Input
+
+	ToAgentConnectivityTemplateEgressNetworkConfigOutput() AgentConnectivityTemplateEgressNetworkConfigOutput
+	ToAgentConnectivityTemplateEgressNetworkConfigOutputWithContext(context.Context) AgentConnectivityTemplateEgressNetworkConfigOutput
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigArgs struct {
+	// DNS peering configuration for the AgentConnectivityTemplate.
+	// When set, the gateway will resolve queries for the configured
+	// `domains` via Cloud DNS in the specified `targetNetwork`.
+	// Structure is documented below.
+	DnsPeeringConfig AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrInput `pulumi:"dnsPeeringConfig"`
+	// The network attachment resource name.
+	// Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+	// The TLS configuration for the egress traffic.
+	// Structure is documented below.
+	TlsConfig AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrInput `pulumi:"tlsConfig"`
+	// The VPC egress setting.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+	VpcEgress pulumi.StringPtrInput `pulumi:"vpcEgress"`
+}
+
+func (AgentConnectivityTemplateEgressNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfig)(nil)).Elem()
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigOutput() AgentConnectivityTemplateEgressNetworkConfigOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigOutput)
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigOutput).ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// AgentConnectivityTemplateEgressNetworkConfigPtrInput is an input type that accepts AgentConnectivityTemplateEgressNetworkConfigArgs, AgentConnectivityTemplateEgressNetworkConfigPtr and AgentConnectivityTemplateEgressNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `AgentConnectivityTemplateEgressNetworkConfigPtrInput` via:
+//
+//	        AgentConnectivityTemplateEgressNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentConnectivityTemplateEgressNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentConnectivityTemplateEgressNetworkConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigPtrOutput
+	ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(context.Context) AgentConnectivityTemplateEgressNetworkConfigPtrOutput
+}
+
+type agentConnectivityTemplateEgressNetworkConfigPtrType AgentConnectivityTemplateEgressNetworkConfigArgs
+
+func AgentConnectivityTemplateEgressNetworkConfigPtr(v *AgentConnectivityTemplateEgressNetworkConfigArgs) AgentConnectivityTemplateEgressNetworkConfigPtrInput {
+	return (*agentConnectivityTemplateEgressNetworkConfigPtrType)(v)
+}
+
+func (*agentConnectivityTemplateEgressNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentConnectivityTemplateEgressNetworkConfig)(nil)).Elem()
+}
+
+func (i *agentConnectivityTemplateEgressNetworkConfigPtrType) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentConnectivityTemplateEgressNetworkConfigPtrType) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentConnectivityTemplateEgressNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfig)(nil)).Elem()
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigOutput() AgentConnectivityTemplateEgressNetworkConfigOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return o.ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentConnectivityTemplateEgressNetworkConfig) *AgentConnectivityTemplateEgressNetworkConfig {
+		return &v
+	}).(AgentConnectivityTemplateEgressNetworkConfigPtrOutput)
+}
+
+// DNS peering configuration for the AgentConnectivityTemplate.
+// When set, the gateway will resolve queries for the configured
+// `domains` via Cloud DNS in the specified `targetNetwork`.
+// Structure is documented below.
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) DnsPeeringConfig() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfig) *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig {
+		return v.DnsPeeringConfig
+	}).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
+// The network attachment resource name.
+// Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+// The TLS configuration for the egress traffic.
+// Structure is documented below.
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) TlsConfig() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfig) *AgentConnectivityTemplateEgressNetworkConfigTlsConfig {
+		return v.TlsConfig
+	}).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput)
+}
+
+// The VPC egress setting.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+func (o AgentConnectivityTemplateEgressNetworkConfigOutput) VpcEgress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfig) *string { return v.VpcEgress }).(pulumi.StringPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentConnectivityTemplateEgressNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentConnectivityTemplateEgressNetworkConfig)(nil)).Elem()
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) ToAgentConnectivityTemplateEgressNetworkConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigPtrOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) Elem() AgentConnectivityTemplateEgressNetworkConfigOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfig) AgentConnectivityTemplateEgressNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentConnectivityTemplateEgressNetworkConfig
+		return ret
+	}).(AgentConnectivityTemplateEgressNetworkConfigOutput)
+}
+
+// DNS peering configuration for the AgentConnectivityTemplate.
+// When set, the gateway will resolve queries for the configured
+// `domains` via Cloud DNS in the specified `targetNetwork`.
+// Structure is documented below.
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) DnsPeeringConfig() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfig) *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfig
+	}).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
+// The network attachment resource name.
+// Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TLS configuration for the egress traffic.
+// Structure is documented below.
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) TlsConfig() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfig) *AgentConnectivityTemplateEgressNetworkConfigTlsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TlsConfig
+	}).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput)
+}
+
+// The VPC egress setting.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+func (o AgentConnectivityTemplateEgressNetworkConfigPtrOutput) VpcEgress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcEgress
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig struct {
+	// (Optional, Deprecated)
+	// The domain name to peer for DNS resolution. Must be a fully
+	// qualified domain name ending with a dot (for example, `example.com.`).
+	//
+	// > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+	//
+	// Deprecated: `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+	Domain *string `pulumi:"domain"`
+	// The list of domain names to peer for DNS resolution. Each entry
+	// must be a fully qualified domain name ending with a dot
+	// (for example, `example.com.`). At least one domain must be
+	// specified between `domain` and `domains`.
+	Domains []string `pulumi:"domains"`
+	// The URI of the target VPC network for DNS peering. Must be of the
+	// form `projects/{project}/global/networks/{network}`.
+	TargetNetwork string `pulumi:"targetNetwork"`
+}
+
+// AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigInput is an input type that accepts AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs and AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigInput` via:
+//
+//	AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{...}
+type AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput
+	ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutputWithContext(context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs struct {
+	// (Optional, Deprecated)
+	// The domain name to peer for DNS resolution. Must be a fully
+	// qualified domain name ending with a dot (for example, `example.com.`).
+	//
+	// > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+	//
+	// Deprecated: `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The list of domain names to peer for DNS resolution. Each entry
+	// must be a fully qualified domain name ending with a dot
+	// (for example, `example.com.`). At least one domain must be
+	// specified between `domain` and `domains`.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// The URI of the target VPC network for DNS peering. Must be of the
+	// form `projects/{project}/global/networks/{network}`.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+}
+
+func (AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput)
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput).ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx)
+}
+
+// AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrInput is an input type that accepts AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs, AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtr and AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput values.
+// You can construct a concrete instance of `AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrInput` via:
+//
+//	        AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput
+	ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput
+}
+
+type agentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrType AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs
+
+func AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtr(v *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrInput {
+	return (*agentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrType)(v)
+}
+
+func (*agentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i *agentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrType) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrType) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig {
+		return &v
+	}).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput)
+}
+
+// (Optional, Deprecated)
+// The domain name to peer for DNS resolution. Must be a fully
+// qualified domain name ending with a dot (for example, `example.com.`).
+//
+// > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+//
+// Deprecated: `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The list of domain names to peer for DNS resolution. Each entry
+// must be a fully qualified domain name ending with a dot
+// (for example, `example.com.`). At least one domain must be
+// specified between `domain` and `domains`.
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The URI of the target VPC network for DNS peering. Must be of the
+// form `projects/{project}/global/networks/{network}`.
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) string { return v.TargetNetwork }).(pulumi.StringOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) ToAgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) Elem() AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig
+		return ret
+	}).(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput)
+}
+
+// (Optional, Deprecated)
+// The domain name to peer for DNS resolution. Must be a fully
+// qualified domain name ending with a dot (for example, `example.com.`).
+//
+// > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+//
+// Deprecated: `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of domain names to peer for DNS resolution. Each entry
+// must be a fully qualified domain name ending with a dot
+// (for example, `example.com.`). At least one domain must be
+// specified between `domain` and `domains`.
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+// The URI of the target VPC network for DNS peering. Must be of the
+// form `projects/{project}/global/networks/{network}`.
+func (o AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput) TargetNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigTlsConfig struct {
+	// Defines whether additional roots should be trusted.
+	// Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+	AdditionalRoots string `pulumi:"additionalRoots"`
+	// The trust config resource name.
+	// Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+	TrustConfig *string `pulumi:"trustConfig"`
+}
+
+// AgentConnectivityTemplateEgressNetworkConfigTlsConfigInput is an input type that accepts AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs and AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput values.
+// You can construct a concrete instance of `AgentConnectivityTemplateEgressNetworkConfigTlsConfigInput` via:
+//
+//	AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs{...}
+type AgentConnectivityTemplateEgressNetworkConfigTlsConfigInput interface {
+	pulumi.Input
+
+	ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput
+	ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutputWithContext(context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs struct {
+	// Defines whether additional roots should be trusted.
+	// Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+	AdditionalRoots pulumi.StringInput `pulumi:"additionalRoots"`
+	// The trust config resource name.
+	// Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+	TrustConfig pulumi.StringPtrInput `pulumi:"trustConfig"`
+}
+
+func (AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigTlsConfig)(nil)).Elem()
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutputWithContext(context.Background())
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput)
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput).ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(ctx)
+}
+
+// AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrInput is an input type that accepts AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs, AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtr and AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput values.
+// You can construct a concrete instance of `AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrInput` via:
+//
+//	        AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput
+	ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput
+}
+
+type agentConnectivityTemplateEgressNetworkConfigTlsConfigPtrType AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs
+
+func AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtr(v *AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs) AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrInput {
+	return (*agentConnectivityTemplateEgressNetworkConfigTlsConfigPtrType)(v)
+}
+
+func (*agentConnectivityTemplateEgressNetworkConfigTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentConnectivityTemplateEgressNetworkConfigTlsConfig)(nil)).Elem()
+}
+
+func (i *agentConnectivityTemplateEgressNetworkConfigTlsConfigPtrType) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return i.ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *agentConnectivityTemplateEgressNetworkConfigTlsConfigPtrType) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigTlsConfig)(nil)).Elem()
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return o.ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentConnectivityTemplateEgressNetworkConfigTlsConfig) *AgentConnectivityTemplateEgressNetworkConfigTlsConfig {
+		return &v
+	}).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput)
+}
+
+// Defines whether additional roots should be trusted.
+// Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) AdditionalRoots() pulumi.StringOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfigTlsConfig) string { return v.AdditionalRoots }).(pulumi.StringOutput)
+}
+
+// The trust config resource name.
+// Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput) TrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentConnectivityTemplateEgressNetworkConfigTlsConfig) *string { return v.TrustConfig }).(pulumi.StringPtrOutput)
+}
+
+type AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AgentConnectivityTemplateEgressNetworkConfigTlsConfig)(nil)).Elem()
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput() AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput) ToAgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutputWithContext(ctx context.Context) AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput {
+	return o
+}
+
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput) Elem() AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigTlsConfig) AgentConnectivityTemplateEgressNetworkConfigTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AgentConnectivityTemplateEgressNetworkConfigTlsConfig
+		return ret
+	}).(AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput)
+}
+
+// Defines whether additional roots should be trusted.
+// Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput) AdditionalRoots() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdditionalRoots
+	}).(pulumi.StringPtrOutput)
+}
+
+// The trust config resource name.
+// Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+func (o AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput) TrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplateEgressNetworkConfigTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustConfig
+	}).(pulumi.StringPtrOutput)
+}
 
 type AgentGatewayAgentGatewayCard struct {
 	// (Output)
@@ -17173,6 +17774,12 @@ func (o WasmPluginVersionArrayOutput) Index(i pulumi.IntInput) WasmPluginVersion
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigInput)(nil)).Elem(), AgentConnectivityTemplateEgressNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigPtrInput)(nil)).Elem(), AgentConnectivityTemplateEgressNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigInput)(nil)).Elem(), AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrInput)(nil)).Elem(), AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigTlsConfigInput)(nil)).Elem(), AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrInput)(nil)).Elem(), AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayAgentGatewayCardInput)(nil)).Elem(), AgentGatewayAgentGatewayCardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayAgentGatewayCardArrayInput)(nil)).Elem(), AgentGatewayAgentGatewayCardArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentGatewayGoogleManagedInput)(nil)).Elem(), AgentGatewayGoogleManagedArgs{})
@@ -17384,6 +17991,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginUsedByArrayInput)(nil)).Elem(), WasmPluginUsedByArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginVersionInput)(nil)).Elem(), WasmPluginVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WasmPluginVersionArrayInput)(nil)).Elem(), WasmPluginVersionArray{})
+	pulumi.RegisterOutputType(AgentConnectivityTemplateEgressNetworkConfigOutput{})
+	pulumi.RegisterOutputType(AgentConnectivityTemplateEgressNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigPtrOutput{})
+	pulumi.RegisterOutputType(AgentConnectivityTemplateEgressNetworkConfigTlsConfigOutput{})
+	pulumi.RegisterOutputType(AgentConnectivityTemplateEgressNetworkConfigTlsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AgentGatewayAgentGatewayCardOutput{})
 	pulumi.RegisterOutputType(AgentGatewayAgentGatewayCardArrayOutput{})
 	pulumi.RegisterOutputType(AgentGatewayGoogleManagedOutput{})

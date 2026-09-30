@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigBinaryAuthorizationConfigArgs;
+import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigCompliancePostureConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigSecurityPostureConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,6 +35,23 @@ public final class FleetDefaultClusterConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Enable/Disable Compliance Posture features for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="compliancePostureConfig")
+    private @Nullable Output<FleetDefaultClusterConfigCompliancePostureConfigArgs> compliancePostureConfig;
+
+    /**
+     * @return Enable/Disable Compliance Posture features for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FleetDefaultClusterConfigCompliancePostureConfigArgs>> compliancePostureConfig() {
+        return Optional.ofNullable(this.compliancePostureConfig);
+    }
+
+    /**
      * Enable/Disable Security Posture features for the cluster.
      * Structure is documented below.
      * 
@@ -54,6 +72,7 @@ public final class FleetDefaultClusterConfigArgs extends com.pulumi.resources.Re
 
     private FleetDefaultClusterConfigArgs(FleetDefaultClusterConfigArgs $) {
         this.binaryAuthorizationConfig = $.binaryAuthorizationConfig;
+        this.compliancePostureConfig = $.compliancePostureConfig;
         this.securityPostureConfig = $.securityPostureConfig;
     }
 
@@ -96,6 +115,29 @@ public final class FleetDefaultClusterConfigArgs extends com.pulumi.resources.Re
          */
         public Builder binaryAuthorizationConfig(FleetDefaultClusterConfigBinaryAuthorizationConfigArgs binaryAuthorizationConfig) {
             return binaryAuthorizationConfig(Output.of(binaryAuthorizationConfig));
+        }
+
+        /**
+         * @param compliancePostureConfig Enable/Disable Compliance Posture features for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compliancePostureConfig(@Nullable Output<FleetDefaultClusterConfigCompliancePostureConfigArgs> compliancePostureConfig) {
+            $.compliancePostureConfig = compliancePostureConfig;
+            return this;
+        }
+
+        /**
+         * @param compliancePostureConfig Enable/Disable Compliance Posture features for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compliancePostureConfig(FleetDefaultClusterConfigCompliancePostureConfigArgs compliancePostureConfig) {
+            return compliancePostureConfig(Output.of(compliancePostureConfig));
         }
 
         /**

@@ -87,6 +87,62 @@ import * as utilities from "../utilities";
  *     ipAddress: pscIlbConsumerAddress.id,
  * });
  * ```
+ * ### Service Attachment Nat Ips
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerServiceHealthCheck = new gcp.compute.HealthCheck("producer_service_health_check", {
+ *     name: "producer-service-health-check",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const producerServiceBackend = new gcp.compute.RegionBackendService("producer_service_backend", {
+ *     name: "producer-service",
+ *     region: "us-central1",
+ *     healthChecks: producerServiceHealthCheck.id,
+ * });
+ * const pscIlbNetwork = new gcp.compute.Network("psc_ilb_network", {
+ *     name: "psc-ilb-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const pscIlbProducerSubnetwork = new gcp.compute.Subnetwork("psc_ilb_producer_subnetwork", {
+ *     name: "psc-ilb-producer-subnetwork",
+ *     region: "us-central1",
+ *     network: pscIlbNetwork.id,
+ *     ipCidrRange: "10.0.0.0/16",
+ * });
+ * const pscIlbTargetService = new gcp.compute.ForwardingRule("psc_ilb_target_service", {
+ *     name: "producer-forwarding-rule",
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: producerServiceBackend.id,
+ *     allPorts: true,
+ *     network: pscIlbNetwork.name,
+ *     subnetwork: pscIlbProducerSubnetwork.name,
+ * });
+ * const pscIlbNat = new gcp.compute.Subnetwork("psc_ilb_nat", {
+ *     name: "psc-ilb-nat",
+ *     region: "us-central1",
+ *     network: pscIlbNetwork.id,
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     ipCidrRange: "10.1.0.0/16",
+ * });
+ * const pscIlbServiceAttachment = new gcp.compute.ServiceAttachment("psc_ilb_service_attachment", {
+ *     name: "my-psc-ilb",
+ *     region: "us-central1",
+ *     description: "A service attachment configured with Terraform",
+ *     enableProxyProtocol: true,
+ *     natIpsPerEndpoint: 2,
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
+ *     natSubnets: [pscIlbNat.id],
+ *     targetService: pscIlbTargetService.id,
+ * });
+ * ```
  * ### Service Attachment Explicit Projects
  *
  * ```typescript
@@ -557,6 +613,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The number of NAT IPs allocated per connected endpoint.
+     */
+    declare public readonly natIpsPerEndpoint: pulumi.Output<number | undefined>;
+    /**
      * An array of subnets that is provided for NAT in this service attachment.
      */
     declare public readonly natSubnets: pulumi.Output<string[]>;
@@ -639,6 +699,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["enableProxyProtocol"] = state?.enableProxyProtocol;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["name"] = state?.name;
+            resourceInputs["natIpsPerEndpoint"] = state?.natIpsPerEndpoint;
             resourceInputs["natSubnets"] = state?.natSubnets;
             resourceInputs["project"] = state?.project;
             resourceInputs["propagatedConnectionLimit"] = state?.propagatedConnectionLimit;
@@ -672,6 +733,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["domainNames"] = args?.domainNames;
             resourceInputs["enableProxyProtocol"] = args?.enableProxyProtocol;
             resourceInputs["name"] = args?.name;
+            resourceInputs["natIpsPerEndpoint"] = args?.natIpsPerEndpoint;
             resourceInputs["natSubnets"] = args?.natSubnets;
             resourceInputs["project"] = args?.project;
             resourceInputs["propagatedConnectionLimit"] = args?.propagatedConnectionLimit;
@@ -757,6 +819,10 @@ export interface ServiceAttachmentState {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The number of NAT IPs allocated per connected endpoint.
+     */
+    natIpsPerEndpoint?: pulumi.Input<number | undefined>;
     /**
      * An array of subnets that is provided for NAT in this service attachment.
      */
@@ -873,6 +939,10 @@ export interface ServiceAttachmentArgs {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The number of NAT IPs allocated per connected endpoint.
+     */
+    natIpsPerEndpoint?: pulumi.Input<number | undefined>;
     /**
      * An array of subnets that is provided for NAT in this service attachment.
      */

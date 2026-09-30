@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,9 +29,9 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -198,6 +198,9 @@ import (
 //					ConversationLoggingSettings: &ces.AppLoggingSettingsConversationLoggingSettingsArgs{
 //						DisableConversationLogging: pulumi.Bool(true),
 //					},
+//					MetricAnalysisSettings: &ces.AppLoggingSettingsMetricAnalysisSettingsArgs{
+//						LlmMetricsOptedOut: pulumi.Bool(false),
+//					},
 //				},
 //				ModelSettings: &ces.AppModelSettingsArgs{
 //					Model:       pulumi.String("gemini-3.0-flash-001"),
@@ -208,11 +211,17 @@ import (
 //						TurnLevelMetricsThresholds: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs{
 //							SemanticSimilaritySuccessThreshold:        pulumi.Int(3),
 //							OverallToolInvocationCorrectnessThreshold: pulumi.Float64(1),
+//							SemanticSimilarityChannel:                 pulumi.String("TEXT"),
 //						},
 //						ExpectationLevelMetricsThresholds: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs{
 //							ToolInvocationParameterCorrectnessThreshold: pulumi.Float64(1),
 //						},
+//						ToolMatchingSettings: &ces.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs{
+//							ExtraToolCallBehavior: pulumi.String("ALLOW"),
+//						},
 //					},
+//					GoldenHallucinationMetricBehavior:   pulumi.String("ENABLED"),
+//					ScenarioHallucinationMetricBehavior: pulumi.String("ENABLED"),
 //				},
 //				VariableDeclarations: ces.AppVariableDeclarationArray{
 //					&ces.AppVariableDeclarationArgs{
@@ -256,6 +265,14 @@ import (
 //						Modality:       pulumi.String("CHAT_ONLY"),
 //						Theme:          pulumi.String("LIGHT"),
 //						WebWidgetTitle: pulumi.String("Help Assistant"),
+//						SecuritySettings: &ces.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs{
+//							EnablePublicAccess: pulumi.Bool(true),
+//							EnableOriginCheck:  pulumi.Bool(false),
+//							EnableRecaptcha:    pulumi.Bool(false),
+//							AllowedOrigins: pulumi.StringArray{
+//								pulumi.String("https://example.com"),
+//							},
+//						},
 //					},
 //				},
 //				Metadata: pulumi.StringMap{
@@ -267,6 +284,23 @@ import (
 //				ClientCertificateSettings: &ces.AppClientCertificateSettingsArgs{
 //					TlsCertificate: pulumi.String(invokeFile1.Result),
 //					PrivateKey:     fakeSecretVersion.Name,
+//				},
+//				VpcScSettings: &ces.AppVpcScSettingsArgs{
+//					AllowedOrigins: pulumi.StringArray{
+//						pulumi.String("https://example.com"),
+//					},
+//				},
+//				ErrorHandlingSettings: &ces.AppErrorHandlingSettingsArgs{
+//					ErrorHandlingStrategy: pulumi.String("FALLBACK_RESPONSE"),
+//					FallbackResponseConfig: &ces.AppErrorHandlingSettingsFallbackResponseConfigArgs{
+//						CustomFallbackMessages: pulumi.StringMap{
+//							"en-US": pulumi.String("An error occurred, please try again."),
+//						},
+//						MaxFallbackAttempts: pulumi.Int(3),
+//					},
+//					EndSessionConfig: &ces.AppErrorHandlingSettingsEndSessionConfigArgs{
+//						EscalateSession: pulumi.Bool(true),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -286,7 +320,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -536,6 +570,9 @@ type App struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the app.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppErrorHandlingSettingsPtrOutput `pulumi:"errorHandlingSettings"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -556,6 +593,9 @@ type App struct {
 	LanguageSettings AppLanguageSettingsPtrOutput `pulumi:"languageSettings"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Indicates whether the app is locked for changes. If the app is locked,
+	// modifications to the app resources will be rejected.
+	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
 	// Settings to describe the logging behaviors for the app.
 	// Structure is documented below.
 	LoggingSettings AppLoggingSettingsOutput `pulumi:"loggingSettings"`
@@ -587,6 +627,9 @@ type App struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayOutput `pulumi:"variableDeclarations"`
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVpcScSettingsPtrOutput `pulumi:"vpcScSettings"`
 }
 
 // NewApp registers a new resource with the given unique name, arguments, and options.
@@ -661,6 +704,9 @@ type appState struct {
 	Description *string `pulumi:"description"`
 	// Display name of the app.
 	DisplayName *string `pulumi:"displayName"`
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings *AppErrorHandlingSettings `pulumi:"errorHandlingSettings"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -681,6 +727,9 @@ type appState struct {
 	LanguageSettings *AppLanguageSettings `pulumi:"languageSettings"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// Indicates whether the app is locked for changes. If the app is locked,
+	// modifications to the app resources will be rejected.
+	Locked *bool `pulumi:"locked"`
 	// Settings to describe the logging behaviors for the app.
 	// Structure is documented below.
 	LoggingSettings *AppLoggingSettings `pulumi:"loggingSettings"`
@@ -712,6 +761,9 @@ type appState struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations []AppVariableDeclaration `pulumi:"variableDeclarations"`
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings *AppVpcScSettings `pulumi:"vpcScSettings"`
 }
 
 type AppState struct {
@@ -748,6 +800,9 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// Display name of the app.
 	DisplayName pulumi.StringPtrInput
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppErrorHandlingSettingsPtrInput
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -768,6 +823,9 @@ type AppState struct {
 	LanguageSettings AppLanguageSettingsPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// Indicates whether the app is locked for changes. If the app is locked,
+	// modifications to the app resources will be rejected.
+	Locked pulumi.BoolPtrInput
 	// Settings to describe the logging behaviors for the app.
 	// Structure is documented below.
 	LoggingSettings AppLoggingSettingsPtrInput
@@ -799,6 +857,9 @@ type AppState struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayInput
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVpcScSettingsPtrInput
 }
 
 func (AppState) ElementType() reflect.Type {
@@ -835,6 +896,9 @@ type appArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name of the app.
 	DisplayName string `pulumi:"displayName"`
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings *AppErrorHandlingSettings `pulumi:"errorHandlingSettings"`
 	// Threshold settings for metrics in an Evaluation.
 	// Structure is documented below.
 	EvaluationMetricsThresholds *AppEvaluationMetricsThresholds `pulumi:"evaluationMetricsThresholds"`
@@ -851,6 +915,9 @@ type appArgs struct {
 	LanguageSettings *AppLanguageSettings `pulumi:"languageSettings"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// Indicates whether the app is locked for changes. If the app is locked,
+	// modifications to the app resources will be rejected.
+	Locked *bool `pulumi:"locked"`
 	// Settings to describe the logging behaviors for the app.
 	// Structure is documented below.
 	LoggingSettings *AppLoggingSettings `pulumi:"loggingSettings"`
@@ -877,6 +944,9 @@ type appArgs struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations []AppVariableDeclaration `pulumi:"variableDeclarations"`
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings *AppVpcScSettings `pulumi:"vpcScSettings"`
 }
 
 // The set of arguments for constructing a App resource.
@@ -910,6 +980,9 @@ type AppArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name of the app.
 	DisplayName pulumi.StringInput
+	// Settings to describe how errors should be handled in the app.
+	// Structure is documented below.
+	ErrorHandlingSettings AppErrorHandlingSettingsPtrInput
 	// Threshold settings for metrics in an Evaluation.
 	// Structure is documented below.
 	EvaluationMetricsThresholds AppEvaluationMetricsThresholdsPtrInput
@@ -926,6 +999,9 @@ type AppArgs struct {
 	LanguageSettings AppLanguageSettingsPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// Indicates whether the app is locked for changes. If the app is locked,
+	// modifications to the app resources will be rejected.
+	Locked pulumi.BoolPtrInput
 	// Settings to describe the logging behaviors for the app.
 	// Structure is documented below.
 	LoggingSettings AppLoggingSettingsPtrInput
@@ -952,6 +1028,9 @@ type AppArgs struct {
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayInput
+	// VPC-SC settings for the app.
+	// Structure is documented below.
+	VpcScSettings AppVpcScSettingsPtrInput
 }
 
 func (AppArgs) ElementType() reflect.Type {
@@ -1104,6 +1183,12 @@ func (o AppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Settings to describe how errors should be handled in the app.
+// Structure is documented below.
+func (o AppOutput) ErrorHandlingSettings() AppErrorHandlingSettingsPtrOutput {
+	return o.ApplyT(func(v *App) AppErrorHandlingSettingsPtrOutput { return v.ErrorHandlingSettings }).(AppErrorHandlingSettingsPtrOutput)
+}
+
 // Etag used to ensure the object hasn't changed during a read-modify-write
 // operation. If the etag is empty, the update will overwrite any concurrent
 // changes.
@@ -1140,6 +1225,12 @@ func (o AppOutput) LanguageSettings() AppLanguageSettingsPtrOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o AppOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Indicates whether the app is locked for changes. If the app is locked,
+// modifications to the app resources will be rejected.
+func (o AppOutput) Locked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
 // Settings to describe the logging behaviors for the app.
@@ -1204,6 +1295,12 @@ func (o AppOutput) UpdateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o AppOutput) VariableDeclarations() AppVariableDeclarationArrayOutput {
 	return o.ApplyT(func(v *App) AppVariableDeclarationArrayOutput { return v.VariableDeclarations }).(AppVariableDeclarationArrayOutput)
+}
+
+// VPC-SC settings for the app.
+// Structure is documented below.
+func (o AppOutput) VpcScSettings() AppVpcScSettingsPtrOutput {
+	return o.ApplyT(func(v *App) AppVpcScSettingsPtrOutput { return v.VpcScSettings }).(AppVpcScSettingsPtrOutput)
 }
 
 type AppArrayOutput struct{ *pulumi.OutputState }

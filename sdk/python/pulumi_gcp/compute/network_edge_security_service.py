@@ -348,9 +348,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
         """
         Google Cloud Armor network edge security service resource.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about NetworkEdgeSecurityService, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkEdgeSecurityServices)
@@ -413,9 +410,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Google Cloud Armor network edge security service resource.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         To get more information about NetworkEdgeSecurityService, see:
 

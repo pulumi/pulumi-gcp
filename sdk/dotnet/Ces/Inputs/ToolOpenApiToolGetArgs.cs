@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Ces.Inputs
 
         /// <summary>
         /// (Output)
-        /// Authentication information required for API calls.
+        /// Authentication information required for calling the remote agent.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ToolOpenApiToolApiAuthenticationGetArgs> ApiAuthentications

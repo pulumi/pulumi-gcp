@@ -243,17 +243,6 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly replicaZone: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     *
-     * > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     *
-     * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     */
-    declare public readonly scaleTier: pulumi.Output<string>;
-    /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
      */
@@ -330,7 +319,6 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["qosType"] = state?.qosType;
             resourceInputs["replicaZone"] = state?.replicaZone;
-            resourceInputs["scaleTier"] = state?.scaleTier;
             resourceInputs["scaleType"] = state?.scaleType;
             resourceInputs["serviceLevel"] = state?.serviceLevel;
             resourceInputs["totalIops"] = state?.totalIops;
@@ -371,7 +359,6 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["qosType"] = args?.qosType;
             resourceInputs["replicaZone"] = args?.replicaZone;
-            resourceInputs["scaleTier"] = args?.scaleTier;
             resourceInputs["scaleType"] = args?.scaleType;
             resourceInputs["serviceLevel"] = args?.serviceLevel;
             resourceInputs["totalIops"] = args?.totalIops;
@@ -518,17 +505,6 @@ export interface StoragePoolState {
      */
     replicaZone?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     *
-     * > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     *
-     * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     */
-    scaleTier?: pulumi.Input<string | undefined>;
-    /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
      */
@@ -667,17 +643,6 @@ export interface StoragePoolArgs {
      * [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
      */
     replicaZone?: pulumi.Input<string | undefined>;
-    /**
-     * (Optional, Beta, Deprecated)
-     * The effective scale tier of the storage pool. If `scaleTier` is not
-     * specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-     * Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-     *
-     * > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     *
-     * @deprecated `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-     */
-    scaleTier?: pulumi.Input<string | undefined>;
     /**
      * The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
      * Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.

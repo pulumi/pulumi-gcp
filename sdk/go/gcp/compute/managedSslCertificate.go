@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,7 +46,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,11 +74,12 @@ import (
 //				return err
 //			}
 //			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-//				Name:         pulumi.String("backend-service"),
-//				PortName:     pulumi.String("http"),
-//				Protocol:     pulumi.String("HTTP"),
-//				TimeoutSec:   pulumi.Int(10),
-//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				Name:                pulumi.String("backend-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
+//				HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -124,9 +125,10 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
-//				Name:      pulumi.String("forwarding-rule"),
-//				Target:    defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
-//				PortRange: pulumi.String("443"),
+//				Name:                pulumi.String("forwarding-rule"),
+//				Target:              defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
+//				PortRange:           pulumi.String("443"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
 //			})
 //			if err != nil {
 //				return err

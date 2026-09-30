@@ -8,11 +8,28 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ExampleMessageChunkImageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ExampleMessageChunkImageArgs Empty = new ExampleMessageChunkImageArgs();
+
+    /**
+     * The alternative text for the image.
+     * 
+     */
+    @Import(name="altText")
+    private @Nullable Output<String> altText;
+
+    /**
+     * @return The alternative text for the image.
+     * 
+     */
+    public Optional<Output<String>> altText() {
+        return Optional.ofNullable(this.altText);
+    }
 
     /**
      * Raw bytes of the image.
@@ -55,6 +72,7 @@ public final class ExampleMessageChunkImageArgs extends com.pulumi.resources.Res
     private ExampleMessageChunkImageArgs() {}
 
     private ExampleMessageChunkImageArgs(ExampleMessageChunkImageArgs $) {
+        this.altText = $.altText;
         this.data = $.data;
         this.mimeType = $.mimeType;
     }
@@ -75,6 +93,27 @@ public final class ExampleMessageChunkImageArgs extends com.pulumi.resources.Res
 
         public Builder(ExampleMessageChunkImageArgs defaults) {
             $ = new ExampleMessageChunkImageArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param altText The alternative text for the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder altText(@Nullable Output<String> altText) {
+            $.altText = altText;
+            return this;
+        }
+
+        /**
+         * @param altText The alternative text for the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder altText(String altText) {
+            return altText(Output.of(altText));
         }
 
         /**

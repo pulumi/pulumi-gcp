@@ -12,17 +12,20 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterAddonsConfigRayOperatorConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the Ray Operator addon is enabled.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        /// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
         /// </summary>
         [Input("rayClusterLoggingConfig")]
         public Input<Inputs.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigGetArgs>? RayClusterLoggingConfig { get; set; }
 
         /// <summary>
-        /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        /// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
         /// </summary>
         [Input("rayClusterMonitoringConfig")]
         public Input<Inputs.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigGetArgs>? RayClusterMonitoringConfig { get; set; }

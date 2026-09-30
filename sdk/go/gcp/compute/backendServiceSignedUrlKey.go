@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -77,11 +77,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("test"),
-//				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err

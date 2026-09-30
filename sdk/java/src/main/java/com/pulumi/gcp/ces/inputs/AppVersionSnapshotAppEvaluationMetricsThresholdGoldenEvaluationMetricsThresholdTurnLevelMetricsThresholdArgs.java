@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -37,6 +38,31 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
 
     /**
      * (Output)
+     * The semantic similarity channel to use for evaluation.
+     * Possible values:
+     * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+     * TEXT
+     * AUDIO
+     * 
+     */
+    @Import(name="semanticSimilarityChannel")
+    private @Nullable Output<String> semanticSimilarityChannel;
+
+    /**
+     * @return (Output)
+     * The semantic similarity channel to use for evaluation.
+     * Possible values:
+     * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+     * TEXT
+     * AUDIO
+     * 
+     */
+    public Optional<Output<String>> semanticSimilarityChannel() {
+        return Optional.ofNullable(this.semanticSimilarityChannel);
+    }
+
+    /**
+     * (Output)
      * The success threshold for semantic similarity. Must be an integer
      * between 0 and 4. Default is &gt;= 3.
      * 
@@ -58,6 +84,7 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
 
     private AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs $) {
         this.overallToolInvocationCorrectnessThreshold = $.overallToolInvocationCorrectnessThreshold;
+        this.semanticSimilarityChannel = $.semanticSimilarityChannel;
         this.semanticSimilaritySuccessThreshold = $.semanticSimilaritySuccessThreshold;
     }
 
@@ -102,6 +129,37 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
          */
         public Builder overallToolInvocationCorrectnessThreshold(Double overallToolInvocationCorrectnessThreshold) {
             return overallToolInvocationCorrectnessThreshold(Output.of(overallToolInvocationCorrectnessThreshold));
+        }
+
+        /**
+         * @param semanticSimilarityChannel (Output)
+         * The semantic similarity channel to use for evaluation.
+         * Possible values:
+         * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+         * TEXT
+         * AUDIO
+         * 
+         * @return builder
+         * 
+         */
+        public Builder semanticSimilarityChannel(@Nullable Output<String> semanticSimilarityChannel) {
+            $.semanticSimilarityChannel = semanticSimilarityChannel;
+            return this;
+        }
+
+        /**
+         * @param semanticSimilarityChannel (Output)
+         * The semantic similarity channel to use for evaluation.
+         * Possible values:
+         * SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+         * TEXT
+         * AUDIO
+         * 
+         * @return builder
+         * 
+         */
+        public Builder semanticSimilarityChannel(String semanticSimilarityChannel) {
+            return semanticSimilarityChannel(Output.of(semanticSimilarityChannel));
         }
 
         /**

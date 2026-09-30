@@ -91,6 +91,9 @@ __all__ = [
     'GetTriggerSourceToBuildResult',
     'GetTriggerTriggerTemplateResult',
     'GetTriggerWebhookConfigResult',
+    'GetWorkerPoolNetworkConfigResult',
+    'GetWorkerPoolPrivateServiceConnectResult',
+    'GetWorkerPoolWorkerConfigResult',
 ]
 
 @pulumi.output_type
@@ -5599,5 +5602,114 @@ class GetTriggerWebhookConfigResult(dict):
         Only populated on get requests.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetWorkerPoolNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 peered_network: _builtins.str,
+                 peered_network_ip_range: _builtins.str):
+        """
+        :param _builtins.str peered_network: Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        :param _builtins.str peered_network_ip_range: Optional. Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+        """
+        pulumi.set(__self__, "peered_network", peered_network)
+        pulumi.set(__self__, "peered_network_ip_range", peered_network_ip_range)
+
+    @_builtins.property
+    @pulumi.getter(name="peeredNetwork")
+    def peered_network(self) -> _builtins.str:
+        """
+        Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        """
+        return pulumi.get(self, "peered_network")
+
+    @_builtins.property
+    @pulumi.getter(name="peeredNetworkIpRange")
+    def peered_network_ip_range(self) -> _builtins.str:
+        """
+        Optional. Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+        """
+        return pulumi.get(self, "peered_network_ip_range")
+
+
+@pulumi.output_type
+class GetWorkerPoolPrivateServiceConnectResult(dict):
+    def __init__(__self__, *,
+                 network_attachment: _builtins.str,
+                 route_all_traffic: _builtins.bool):
+        """
+        :param _builtins.str network_attachment: Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        :param _builtins.bool route_all_traffic: Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+        pulumi.set(__self__, "route_all_traffic", route_all_traffic)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> _builtins.str:
+        """
+        Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @_builtins.property
+    @pulumi.getter(name="routeAllTraffic")
+    def route_all_traffic(self) -> _builtins.bool:
+        """
+        Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+        return pulumi.get(self, "route_all_traffic")
+
+
+@pulumi.output_type
+class GetWorkerPoolWorkerConfigResult(dict):
+    def __init__(__self__, *,
+                 disk_size_gb: _builtins.int,
+                 enable_nested_virtualization: _builtins.bool,
+                 machine_type: _builtins.str,
+                 no_external_ip: _builtins.bool):
+        """
+        :param _builtins.int disk_size_gb: Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param _builtins.bool enable_nested_virtualization: Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+        :param _builtins.str machine_type: Machine type of a worker, such as `n1-standard-1`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+        :param _builtins.bool no_external_ip: If true, workers are created without any public address, which prevents network egress to public IPs.
+        """
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "no_external_ip", no_external_ip)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> _builtins.int:
+        """
+        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> _builtins.bool:
+        """
+        Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> _builtins.str:
+        """
+        Machine type of a worker, such as `n1-standard-1`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="noExternalIp")
+    def no_external_ip(self) -> _builtins.bool:
+        """
+        If true, workers are created without any public address, which prevents network egress to public IPs.
+        """
+        return pulumi.get(self, "no_external_ip")
 
 

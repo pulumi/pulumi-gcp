@@ -85,6 +85,11 @@ export type Slo = import("./slo").Slo;
 export const Slo: typeof import("./slo").Slo = null as any;
 utilities.lazyLoad(exports, ["Slo"], () => require("./slo"));
 
+export { SnoozeArgs, SnoozeState } from "./snooze";
+export type Snooze = import("./snooze").Snooze;
+export const Snooze: typeof import("./snooze").Snooze = null as any;
+utilities.lazyLoad(exports, ["Snooze"], () => require("./snooze"));
+
 export { UptimeCheckConfigArgs, UptimeCheckConfigState } from "./uptimeCheckConfig";
 export type UptimeCheckConfig = import("./uptimeCheckConfig").UptimeCheckConfig;
 export const UptimeCheckConfig: typeof import("./uptimeCheckConfig").UptimeCheckConfig = null as any;
@@ -113,6 +118,8 @@ const _module = {
                 return new NotificationChannel(name, <any>undefined, { urn })
             case "gcp:monitoring/slo:Slo":
                 return new Slo(name, <any>undefined, { urn })
+            case "gcp:monitoring/snooze:Snooze":
+                return new Snooze(name, <any>undefined, { urn })
             case "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig":
                 return new UptimeCheckConfig(name, <any>undefined, { urn })
             default:
@@ -129,4 +136,5 @@ pulumi.runtime.registerResourceModule("gcp", "monitoring/metricDescriptor", _mod
 pulumi.runtime.registerResourceModule("gcp", "monitoring/monitoredProject", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/notificationChannel", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/slo", _module)
+pulumi.runtime.registerResourceModule("gcp", "monitoring/snooze", _module)
 pulumi.runtime.registerResourceModule("gcp", "monitoring/uptimeCheckConfig", _module)

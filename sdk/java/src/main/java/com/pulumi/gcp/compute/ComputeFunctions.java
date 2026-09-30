@@ -151,6 +151,8 @@ import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSecurityPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
 import com.pulumi.gcp.compute.inputs.GetServiceAttachmentPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyPlainArgs;
@@ -249,6 +251,7 @@ import com.pulumi.gcp.compute.outputs.GetRoutersResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetServiceAttachmentResult;
+import com.pulumi.gcp.compute.outputs.GetServiceAttachmentsResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
 import com.pulumi.gcp.compute.outputs.GetStoragePoolIamPolicyResult;
@@ -19564,6 +19567,559 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetServiceAttachmentResult> getServiceAttachmentPlain(GetServiceAttachmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getServiceAttachment:getServiceAttachment", TypeShape.of(GetServiceAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentsResult> getServiceAttachments() {
+        return getServiceAttachments(GetServiceAttachmentsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServiceAttachmentsResult> getServiceAttachmentsPlain() {
+        return getServiceAttachmentsPlain(GetServiceAttachmentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentsResult> getServiceAttachments(GetServiceAttachmentsArgs args) {
+        return getServiceAttachments(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServiceAttachmentsResult> getServiceAttachmentsPlain(GetServiceAttachmentsPlainArgs args) {
+        return getServiceAttachmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentsResult> getServiceAttachments(GetServiceAttachmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getServiceAttachments:getServiceAttachments", TypeShape.of(GetServiceAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentsResult> getServiceAttachments(GetServiceAttachmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getServiceAttachments:getServiceAttachments", TypeShape.of(GetServiceAttachmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all service attachments in a given project and region. For more information see
+     * [the official documentation](https://cloud.google.com/vpc/docs/about-service-attachments)
+     * and
+     * [API reference](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### With Filter
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = ComputeFunctions.getServiceAttachments(GetServiceAttachmentsArgs.builder()
+     *             .project("my-project")
+     *             .region("us-central1")
+     *             .filter("name = my-service-attachment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServiceAttachmentsResult> getServiceAttachmentsPlain(GetServiceAttachmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getServiceAttachments:getServiceAttachments", TypeShape.of(GetServiceAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * To get more information about Snapshot, see:

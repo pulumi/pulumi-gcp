@@ -161,6 +161,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("vpcAccess")]
         public Input<Inputs.ServiceTemplateVpcAccessArgs>? VpcAccess { get; set; }
 
+        /// <summary>
+        /// Workload identity settings for this Revision.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workloadIdentityConfig")]
+        public Input<Inputs.ServiceTemplateWorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
+
         public ServiceTemplateArgs()
         {
         }

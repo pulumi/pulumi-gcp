@@ -1375,6 +1375,7 @@ class Instance(pulumi.CustomResource):
         cache = gcp.redis.Instance("cache",
             name="memory-cache",
             memory_size_gb=1,
+            region="us-west1",
             deletion_protection=False)
         ```
         ### Redis Instance Full
@@ -1396,8 +1397,9 @@ class Instance(pulumi.CustomResource):
             name="ha-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
             display_name="Test Instance",
@@ -1428,8 +1430,9 @@ class Instance(pulumi.CustomResource):
             name="ha-memory-cache-persis",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             persistence_config={
                 "persistence_mode": "RDB",
                 "rdb_snapshot_period": "TWELVE_HOURS",
@@ -1464,8 +1467,9 @@ class Instance(pulumi.CustomResource):
             name="private-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_7_2",
@@ -1491,8 +1495,9 @@ class Instance(pulumi.CustomResource):
             name="mrr-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=5,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
             display_name="Test Instance",
@@ -1511,7 +1516,7 @@ class Instance(pulumi.CustomResource):
 
         redis_keyring = gcp.kms.KeyRing("redis_keyring",
             name="redis-keyring",
-            location="us-central1")
+            location="us-west1")
         redis_key = gcp.kms.CryptoKey("redis_key",
             name="redis-key",
             key_ring=redis_keyring.id)
@@ -1528,8 +1533,9 @@ class Instance(pulumi.CustomResource):
             name="cmek-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
             display_name="Test Instance",
@@ -1669,6 +1675,7 @@ class Instance(pulumi.CustomResource):
         cache = gcp.redis.Instance("cache",
             name="memory-cache",
             memory_size_gb=1,
+            region="us-west1",
             deletion_protection=False)
         ```
         ### Redis Instance Full
@@ -1690,8 +1697,9 @@ class Instance(pulumi.CustomResource):
             name="ha-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
             display_name="Test Instance",
@@ -1722,8 +1730,9 @@ class Instance(pulumi.CustomResource):
             name="ha-memory-cache-persis",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             persistence_config={
                 "persistence_mode": "RDB",
                 "rdb_snapshot_period": "TWELVE_HOURS",
@@ -1758,8 +1767,9 @@ class Instance(pulumi.CustomResource):
             name="private-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             connect_mode="PRIVATE_SERVICE_ACCESS",
             redis_version="REDIS_7_2",
@@ -1785,8 +1795,9 @@ class Instance(pulumi.CustomResource):
             name="mrr-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=5,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
             display_name="Test Instance",
@@ -1805,7 +1816,7 @@ class Instance(pulumi.CustomResource):
 
         redis_keyring = gcp.kms.KeyRing("redis_keyring",
             name="redis-keyring",
-            location="us-central1")
+            location="us-west1")
         redis_key = gcp.kms.CryptoKey("redis_key",
             name="redis-key",
             key_ring=redis_keyring.id)
@@ -1822,8 +1833,9 @@ class Instance(pulumi.CustomResource):
             name="cmek-memory-cache",
             tier="STANDARD_HA",
             memory_size_gb=1,
-            location_id="us-central1-a",
-            alternative_location_id="us-central1-f",
+            region="us-west1",
+            location_id="us-west1-a",
+            alternative_location_id="us-west1-b",
             authorized_network=redis_network.id,
             redis_version="REDIS_7_2",
             display_name="Test Instance",

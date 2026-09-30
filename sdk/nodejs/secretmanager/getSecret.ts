@@ -64,6 +64,7 @@ export interface GetSecretResult {
     readonly replications: outputs.secretmanager.GetSecretReplication[];
     readonly rotations: outputs.secretmanager.GetSecretRotation[];
     readonly secretId: string;
+    readonly secretType: string;
     readonly tags: {[key: string]: string};
     readonly topics: outputs.secretmanager.GetSecretTopic[];
     readonly ttl: string;

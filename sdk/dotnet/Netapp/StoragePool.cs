@@ -291,17 +291,6 @@ namespace Pulumi.Gcp.Netapp
         public Output<string?> ReplicaZone { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta, Deprecated)
-        /// The effective scale tier of the storage pool. If `ScaleTier` is not
-        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-        /// 
-        /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-        /// </summary>
-        [Output("scaleTier")]
-        public Output<string> ScaleTier { get; private set; } = null!;
-
-        /// <summary>
         /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
         /// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
         /// </summary>
@@ -542,17 +531,6 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("replicaZone")]
         public Input<string>? ReplicaZone { get; set; }
-
-        /// <summary>
-        /// (Optional, Beta, Deprecated)
-        /// The effective scale tier of the storage pool. If `ScaleTier` is not
-        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-        /// 
-        /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-        /// </summary>
-        [Input("scaleTier")]
-        public Input<string>? ScaleTier { get; set; }
 
         /// <summary>
         /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
@@ -797,17 +775,6 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("replicaZone")]
         public Input<string>? ReplicaZone { get; set; }
-
-        /// <summary>
-        /// (Optional, Beta, Deprecated)
-        /// The effective scale tier of the storage pool. If `ScaleTier` is not
-        /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-        /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-        /// 
-        /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-        /// </summary>
-        [Input("scaleTier")]
-        public Input<string>? ScaleTier { get; set; }
 
         /// <summary>
         /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.

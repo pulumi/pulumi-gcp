@@ -26,7 +26,8 @@ class ParameterArgs:
                  format: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Parameter resource.
 
@@ -55,6 +56,9 @@ class ParameterArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         """
         pulumi.set(__self__, "parameter_id", parameter_id)
         if deletion_policy is not None:
@@ -67,6 +71,8 @@ class ParameterArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="parameterId")
@@ -159,6 +165,20 @@ class ParameterArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _ParameterState:
@@ -174,6 +194,7 @@ class _ParameterState:
                  policy_members: pulumi.Input[Optional[Sequence[pulumi.Input['ParameterPolicyMemberArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Parameter resources.
@@ -211,6 +232,9 @@ class _ParameterState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] update_time: The time at which the Parameter was updated.
         """
         if create_time is not None:
@@ -235,6 +259,8 @@ class _ParameterState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -393,6 +419,20 @@ class _ParameterState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -417,13 +457,19 @@ class Parameter(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        A Parameter resource is a logical parameter.
+        A Parameter is a configuration value that can be stored and managed
+        centrally through Parameter Manager. Parameters support labels, encryption
+        via Cloud KMS, and resource manager tags for fine-grained access control
+        and organization.
 
         To get more information about Parameter, see:
 
         * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+        * How-to Guides
+            * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 
         ## Example Usage
 
@@ -471,6 +517,19 @@ class Parameter(pulumi.CustomResource):
         parameter_with_kms_key = gcp.parametermanager.Parameter("parameter-with-kms-key",
             parameter_id="parameter",
             kms_key="kms-key")
+        ```
+        ### Parameter With Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        parameter_with_tags = gcp.parametermanager.Parameter("parameter-with-tags",
+            parameter_id="parameter",
+            tags={
+                "tagKeys/123456": "tagValues/789012",
+                "tagKeys/345678": "tagValues/901234",
+            })
         ```
 
         ## Import
@@ -517,6 +576,9 @@ class Parameter(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parameter_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         """
         ...
     @overload
@@ -525,11 +587,16 @@ class Parameter(pulumi.CustomResource):
                  args: ParameterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Parameter resource is a logical parameter.
+        A Parameter is a configuration value that can be stored and managed
+        centrally through Parameter Manager. Parameters support labels, encryption
+        via Cloud KMS, and resource manager tags for fine-grained access control
+        and organization.
 
         To get more information about Parameter, see:
 
         * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+        * How-to Guides
+            * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
 
         ## Example Usage
 
@@ -578,6 +645,19 @@ class Parameter(pulumi.CustomResource):
             parameter_id="parameter",
             kms_key="kms-key")
         ```
+        ### Parameter With Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        parameter_with_tags = gcp.parametermanager.Parameter("parameter-with-tags",
+            parameter_id="parameter",
+            tags={
+                "tagKeys/123456": "tagValues/789012",
+                "tagKeys/345678": "tagValues/901234",
+            })
+        ```
 
         ## Import
 
@@ -617,6 +697,7 @@ class Parameter(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -634,6 +715,7 @@ class Parameter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parameter_id'")
             __props__.__dict__["parameter_id"] = parameter_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -663,6 +745,7 @@ class Parameter(pulumi.CustomResource):
             policy_members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ParameterPolicyMemberArgs', 'ParameterPolicyMemberArgsDict', 'outputs.ParameterPolicyMember']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Parameter':
         """
         Get an existing Parameter resource's state with the given name, id, and optional extra
@@ -704,6 +787,9 @@ class Parameter(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[_builtins.str] update_time: The time at which the Parameter was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -721,6 +807,7 @@ class Parameter(pulumi.CustomResource):
         __props__.__dict__["policy_members"] = policy_members
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["update_time"] = update_time
         return Parameter(resource_name, opts=opts, __props__=__props__)
 
@@ -833,6 +920,16 @@ class Parameter(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

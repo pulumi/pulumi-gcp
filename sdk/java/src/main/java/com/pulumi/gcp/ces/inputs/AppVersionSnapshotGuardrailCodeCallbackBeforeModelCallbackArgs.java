@@ -50,6 +50,33 @@ public final class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArg
 
     /**
      * (Output)
+     * If enabled, the callback will also be executed on intermediate model
+     * outputs. This setting only affects after model callback.
+     * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+     * executed after receiving all model responses. Enabling proactive execution
+     * may have negative implication on the execution cost and latency, and
+     * should only be enabled in rare situations.
+     * 
+     */
+    @Import(name="proactiveExecutionEnabled")
+    private @Nullable Output<Boolean> proactiveExecutionEnabled;
+
+    /**
+     * @return (Output)
+     * If enabled, the callback will also be executed on intermediate model
+     * outputs. This setting only affects after model callback.
+     * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+     * executed after receiving all model responses. Enabling proactive execution
+     * may have negative implication on the execution cost and latency, and
+     * should only be enabled in rare situations.
+     * 
+     */
+    public Optional<Output<Boolean>> proactiveExecutionEnabled() {
+        return Optional.ofNullable(this.proactiveExecutionEnabled);
+    }
+
+    /**
+     * (Output)
      * The Python code to execute for the tool.
      * 
      */
@@ -70,6 +97,7 @@ public final class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArg
     private AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs(AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs $) {
         this.description = $.description;
         this.disabled = $.disabled;
+        this.proactiveExecutionEnabled = $.proactiveExecutionEnabled;
         this.pythonCode = $.pythonCode;
     }
 
@@ -133,6 +161,39 @@ public final class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArg
          */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
+        }
+
+        /**
+         * @param proactiveExecutionEnabled (Output)
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proactiveExecutionEnabled(@Nullable Output<Boolean> proactiveExecutionEnabled) {
+            $.proactiveExecutionEnabled = proactiveExecutionEnabled;
+            return this;
+        }
+
+        /**
+         * @param proactiveExecutionEnabled (Output)
+         * If enabled, the callback will also be executed on intermediate model
+         * outputs. This setting only affects after model callback.
+         * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+         * executed after receiving all model responses. Enabling proactive execution
+         * may have negative implication on the execution cost and latency, and
+         * should only be enabled in rare situations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proactiveExecutionEnabled(Boolean proactiveExecutionEnabled) {
+            return proactiveExecutionEnabled(Output.of(proactiveExecutionEnabled));
         }
 
         /**

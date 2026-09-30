@@ -22,6 +22,8 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeatures {
     /**
      * @return Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
      * 
+     * &gt; **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
+     * 
      */
     private @Nullable String performanceMonitoringUnit;
     /**
@@ -40,6 +42,8 @@ public final class ClusterNodePoolNodeConfigAdvancedMachineFeatures {
     }
     /**
      * @return Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+     * 
+     * &gt; **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
      * 
      */
     public Optional<String> performanceMonitoringUnit() {

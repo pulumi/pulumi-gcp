@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         Name = "terraform",
+    ///         Name = "terraform_feature",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
     ///     {
-    ///         Name = "terraform",
+    ///         Name = "terraform_feature",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var feature = new Gcp.Vertex.AiFeatureStoreEntityTypeFeature("feature", new()
     ///     {
-    ///         Name = "terraform",
+    ///         Name = "terraform_feature",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         Name = "terraform2",
+    ///         Name = "terraform_feature_2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var entity = new Gcp.Vertex.AiFeatureStoreEntityType("entity", new()
     ///     {
-    ///         Name = "terraform2",
+    ///         Name = "terraform_feature_2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var feature = new Gcp.Vertex.AiFeatureStoreEntityTypeFeature("feature", new()
     ///     {
-    ///         Name = "terraform2",
+    ///         Name = "terraform_feature_2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },

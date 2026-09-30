@@ -18,6 +18,21 @@ public final class RegionalParameterVersionArgs extends com.pulumi.resources.Res
     public static final RegionalParameterVersionArgs Empty = new RegionalParameterVersionArgs();
 
     /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     * 
+     */
+    @Import(name="dataCrc32c")
+    private @Nullable Output<String> dataCrc32c;
+
+    /**
+     * @return The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     * 
+     */
+    public Optional<Output<String>> dataCrc32c() {
+        return Optional.ofNullable(this.dataCrc32c);
+    }
+
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
@@ -107,6 +122,7 @@ public final class RegionalParameterVersionArgs extends com.pulumi.resources.Res
     private RegionalParameterVersionArgs() {}
 
     private RegionalParameterVersionArgs(RegionalParameterVersionArgs $) {
+        this.dataCrc32c = $.dataCrc32c;
         this.deletionPolicy = $.deletionPolicy;
         this.disabled = $.disabled;
         this.parameter = $.parameter;
@@ -130,6 +146,27 @@ public final class RegionalParameterVersionArgs extends com.pulumi.resources.Res
 
         public Builder(RegionalParameterVersionArgs defaults) {
             $ = new RegionalParameterVersionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dataCrc32c The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataCrc32c(@Nullable Output<String> dataCrc32c) {
+            $.dataCrc32c = dataCrc32c;
+            return this;
+        }
+
+        /**
+         * @param dataCrc32c The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataCrc32c(String dataCrc32c) {
+            return dataCrc32c(Output.of(dataCrc32c));
         }
 
         /**

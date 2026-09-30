@@ -995,7 +995,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         net = gcp.compute.Network("net",
-            name="test-net",
+            name="fw-policy-net",
             auto_create_subnetworks=False)
         fw_policy = gcp.compute.RegionNetworkFirewallPolicy("fw_policy",
             name="simple-fw-policy",
@@ -1288,7 +1288,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         net = gcp.compute.Network("net",
-            name="test-net",
+            name="fw-policy-net",
             auto_create_subnetworks=False)
         fw_policy = gcp.compute.RegionNetworkFirewallPolicy("fw_policy",
             name="simple-fw-policy",

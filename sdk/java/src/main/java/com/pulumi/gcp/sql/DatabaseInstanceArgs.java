@@ -143,6 +143,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     * 
+     */
+    @Import(name="encryptionConfidentialMode")
+    private @Nullable Output<Boolean> encryptionConfidentialMode;
+
+    /**
+     * @return Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     * 
+     */
+    public Optional<Output<Boolean>> encryptionConfidentialMode() {
+        return Optional.ofNullable(this.encryptionConfidentialMode);
+    }
+
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -525,6 +540,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.databaseVersion = $.databaseVersion;
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
+        this.encryptionConfidentialMode = $.encryptionConfidentialMode;
         this.encryptionKeyName = $.encryptionKeyName;
         this.enforceNewSqlNetworkArchitecture = $.enforceNewSqlNetworkArchitecture;
         this.finalBackupDescription = $.finalBackupDescription;
@@ -711,6 +727,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param encryptionConfidentialMode Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfidentialMode(@Nullable Output<Boolean> encryptionConfidentialMode) {
+            $.encryptionConfidentialMode = encryptionConfidentialMode;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfidentialMode Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfidentialMode(Boolean encryptionConfidentialMode) {
+            return encryptionConfidentialMode(Output.of(encryptionConfidentialMode));
         }
 
         /**

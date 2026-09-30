@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/configdeployment"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/configdeployment"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -88,7 +88,7 @@ type Deployment struct {
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Location for Cloud Build logs and artifacts.
-	ArtifactsGcsBucket pulumi.StringPtrOutput `pulumi:"artifactsGcsBucket"`
+	ArtifactsGcsBucket pulumi.StringOutput `pulumi:"artifactsGcsBucket"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -473,8 +473,8 @@ func (o DeploymentOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Location for Cloud Build logs and artifacts.
-func (o DeploymentOutput) ArtifactsGcsBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.ArtifactsGcsBucket }).(pulumi.StringPtrOutput)
+func (o DeploymentOutput) ArtifactsGcsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ArtifactsGcsBucket }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -34,14 +34,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigArgs extends com.pul
     }
 
     /**
-     * Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
      * 
      */
     @Import(name="registryHosts")
     private @Nullable Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs>> registryHosts;
 
     /**
-     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs>>> registryHosts() {
@@ -111,7 +111,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigArgs extends com.pul
         }
 
         /**
-         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigArgs extends com.pul
         }
 
         /**
-         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigArgs extends com.pul
         }
 
         /**
-         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
          * 
          * @return builder
          * 

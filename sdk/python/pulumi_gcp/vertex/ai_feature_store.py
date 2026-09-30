@@ -488,7 +488,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform",
+            name="terraform_featurestore",
             labels={
                 "foo": "bar",
             },
@@ -508,7 +508,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform2",
+            name="terraform_featurestore_2",
             labels={
                 "foo": "bar",
             },
@@ -529,7 +529,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform3",
+            name="terraform_featurestore_3",
             labels={
                 "foo": "bar",
             },
@@ -613,7 +613,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform",
+            name="terraform_featurestore",
             labels={
                 "foo": "bar",
             },
@@ -633,7 +633,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform2",
+            name="terraform_featurestore_2",
             labels={
                 "foo": "bar",
             },
@@ -654,7 +654,7 @@ class AiFeatureStore(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform3",
+            name="terraform_featurestore_3",
             labels={
                 "foo": "bar",
             },

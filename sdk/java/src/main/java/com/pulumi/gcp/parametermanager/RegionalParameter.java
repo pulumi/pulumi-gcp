@@ -18,11 +18,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Regional Parameter is a logical regional parameter.
+ * A Regional Parameter is a configuration value stored in a specific region
+ * through Parameter Manager. Regional parameters support labels, encryption
+ * via Cloud KMS, and resource manager tags for fine-grained access control,
+ * organization, and regional compliance.
  * 
  * To get more information about RegionalParameter, see:
  * 
  * * [API documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters)
+ * * How-to Guides
+ *     * [Work with parameter tags](https://docs.cloud.google.com/secret-manager/parameter-manager/docs/create-and-manage-tags)
  * 
  * ## Example Usage
  * 
@@ -166,6 +171,40 @@ import javax.annotation.Nullable;
  *             .parameterId("regional_parameter")
  *             .location("us-central1")
  *             .kmsKey("kms-key")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Regional Parameter With Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.parametermanager.RegionalParameter;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var regional_parameter_with_tags = new RegionalParameter("regional-parameter-with-tags", RegionalParameterArgs.builder()
+ *             .location("us-central1")
+ *             .parameterId("regional_parameter")
+ *             .tags(Map.of("tagKeys/123456", "tagValues/789012"))
  *             .build());
  * 
  *     }
@@ -403,6 +442,24 @@ public class RegionalParameter extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The time at which the regional Parameter was updated.

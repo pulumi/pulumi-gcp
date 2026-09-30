@@ -43,8 +43,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.InstanceGroupManager;
  * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
  * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
- * import com.pulumi.gcp.compute.HttpHealthCheck;
- * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
  * import com.pulumi.gcp.compute.BackendService;
  * import com.pulumi.gcp.compute.BackendServiceArgs;
  * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
@@ -91,11 +92,14 @@ import javax.annotation.Nullable;
  *             .targetSize(1)
  *             .build());
  * 
- *         var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
  *             .name("test")
- *             .requestPath("/")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .requestPath("/")
+ *                 .build())
  *             .build());
  * 
  *         var exampleBackend = new BackendService("exampleBackend", BackendServiceArgs.builder()

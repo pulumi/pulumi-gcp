@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionDeidentify;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPubSub;
-import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver;
@@ -35,18 +34,6 @@ public final class PreventionJobTriggerInspectJobAction {
      * 
      */
     private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
-    /**
-     * @return (Optional, Deprecated)
-     * Publish findings of a DlpJob to Data Catalog.
-     * 
-     * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     * @deprecated
-     * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     */
-    @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
-    private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
     /**
      * @return Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
      * 
@@ -94,20 +81,6 @@ public final class PreventionJobTriggerInspectJobAction {
         return Optional.ofNullable(this.pubSub);
     }
     /**
-     * @return (Optional, Deprecated)
-     * Publish findings of a DlpJob to Data Catalog.
-     * 
-     * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     * @deprecated
-     * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-     * 
-     */
-    @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
-    public Optional<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog> publishFindingsToCloudDataCatalog() {
-        return Optional.ofNullable(this.publishFindingsToCloudDataCatalog);
-    }
-    /**
      * @return Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
      * 
      */
@@ -149,7 +122,6 @@ public final class PreventionJobTriggerInspectJobAction {
         private @Nullable PreventionJobTriggerInspectJobActionDeidentify deidentify;
         private @Nullable PreventionJobTriggerInspectJobActionJobNotificationEmails jobNotificationEmails;
         private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
-        private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
         private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalog publishFindingsToDataplexCatalog;
         private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
         private @Nullable PreventionJobTriggerInspectJobActionPublishToStackdriver publishToStackdriver;
@@ -160,7 +132,6 @@ public final class PreventionJobTriggerInspectJobAction {
     	      this.deidentify = defaults.deidentify;
     	      this.jobNotificationEmails = defaults.jobNotificationEmails;
     	      this.pubSub = defaults.pubSub;
-    	      this.publishFindingsToCloudDataCatalog = defaults.publishFindingsToCloudDataCatalog;
     	      this.publishFindingsToDataplexCatalog = defaults.publishFindingsToDataplexCatalog;
     	      this.publishSummaryToCscc = defaults.publishSummaryToCscc;
     	      this.publishToStackdriver = defaults.publishToStackdriver;
@@ -183,12 +154,6 @@ public final class PreventionJobTriggerInspectJobAction {
         public Builder pubSub(@Nullable PreventionJobTriggerInspectJobActionPubSub pubSub) {
 
             this.pubSub = pubSub;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder publishFindingsToCloudDataCatalog(@Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog) {
-
-            this.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             return this;
         }
         @CustomType.Setter
@@ -220,7 +185,6 @@ public final class PreventionJobTriggerInspectJobAction {
             _resultValue.deidentify = deidentify;
             _resultValue.jobNotificationEmails = jobNotificationEmails;
             _resultValue.pubSub = pubSub;
-            _resultValue.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             _resultValue.publishFindingsToDataplexCatalog = publishFindingsToDataplexCatalog;
             _resultValue.publishSummaryToCscc = publishSummaryToCscc;
             _resultValue.publishToStackdriver = publishToStackdriver;

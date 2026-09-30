@@ -38,10 +38,12 @@ class DataConnectorArgs:
                  incremental_sync_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  json_params: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional['DataConnectorMetadataArgs']] = None,
                  params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 sync_mode: pulumi.Input[Optional[_builtins.str]] = None):
+                 sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataConnector resource.
 
@@ -103,12 +105,15 @@ class DataConnectorArgs:
                protections.
                If this field is set and processed successfully, the DataStores created by
                this connector will be protected by the KMS key.
+        :param pulumi.Input['DataConnectorMetadataArgs'] metadata: User-facing metadata for the connector.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Params needed to access the source in the format of String-to-String (Key, Value) pairs.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] static_ip_enabled: Whether customer has enabled static IP addresses for this connector.
         :param pulumi.Input[_builtins.str] sync_mode: The data synchronization mode supported by the data connector. The possible value can be:
                'PERIODIC', 'STREAMING'.
+        :param pulumi.Input[_builtins.str] tag: User-facing, version-independent label for this connector.
         """
         pulumi.set(__self__, "collection_display_name", collection_display_name)
         pulumi.set(__self__, "collection_id", collection_id)
@@ -139,6 +144,8 @@ class DataConnectorArgs:
             pulumi.set(__self__, "json_params", json_params)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if params is not None:
             pulumi.set(__self__, "params", params)
         if project is not None:
@@ -147,6 +154,8 @@ class DataConnectorArgs:
             pulumi.set(__self__, "static_ip_enabled", static_ip_enabled)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
 
     @_builtins.property
     @pulumi.getter(name="collectionDisplayName")
@@ -395,6 +404,19 @@ class DataConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
+    def metadata(self) -> pulumi.Input[Optional['DataConnectorMetadataArgs']]:
+        """
+        User-facing metadata for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input[Optional['DataConnectorMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
     def params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Params needed to access the source in the format of String-to-String (Key, Value) pairs.
@@ -443,6 +465,18 @@ class DataConnectorArgs:
     def sync_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_mode", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-facing, version-independent label for this connector.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag", value)
+
 
 @pulumi.input_type
 class _DataConnectorState:
@@ -470,6 +504,7 @@ class _DataConnectorState:
                  last_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
                  latest_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional['DataConnectorMetadataArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  private_connectivity_project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -480,6 +515,7 @@ class _DataConnectorState:
                  static_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataConnector resources.
@@ -560,6 +596,8 @@ class _DataConnectorState:
                  triggered.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
+        :param pulumi.Input['DataConnectorMetadataArgs'] metadata: User-facing metadata for the connector.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The full resource name of the Data Connector.
                Format: `projects/*/locations/*/collections/*/dataConnector`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Params needed to access the source in the format of String-to-String (Key, Value) pairs.
@@ -582,6 +620,7 @@ class _DataConnectorState:
         :param pulumi.Input[_builtins.bool] static_ip_enabled: Whether customer has enabled static IP addresses for this connector.
         :param pulumi.Input[_builtins.str] sync_mode: The data synchronization mode supported by the data connector. The possible value can be:
                'PERIODIC', 'STREAMING'.
+        :param pulumi.Input[_builtins.str] tag: User-facing, version-independent label for this connector.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the DataConnector was updated.
         """
         if action_config is not None:
@@ -630,6 +669,8 @@ class _DataConnectorState:
             pulumi.set(__self__, "latest_pause_time", latest_pause_time)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if params is not None:
@@ -650,6 +691,8 @@ class _DataConnectorState:
             pulumi.set(__self__, "static_ip_enabled", static_ip_enabled)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -984,6 +1027,19 @@ class _DataConnectorState:
 
     @_builtins.property
     @pulumi.getter
+    def metadata(self) -> pulumi.Input[Optional['DataConnectorMetadataArgs']]:
+        """
+        User-facing metadata for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: pulumi.Input[Optional['DataConnectorMetadataArgs']]):
+        pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource name of the Data Connector.
@@ -1115,6 +1171,18 @@ class _DataConnectorState:
         pulumi.set(self, "sync_mode", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User-facing, version-independent label for this connector.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tag", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1149,11 +1217,13 @@ class DataConnector(pulumi.CustomResource):
                  json_params: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Union['DataConnectorMetadataArgs', 'DataConnectorMetadataArgsDict', 'outputs.DataConnectorMetadata']]] = None,
                  params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         DataConnector manages the connection to external data sources for all data stores grouped
@@ -1233,10 +1303,9 @@ class DataConnector(pulumi.CustomResource):
             collection_id="collection-id",
             collection_display_name="Jira Federated",
             data_source="jira",
-            data_source_version=3,
             params={
                 "instance_uri": "https://example.atlassian.net",
-                "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                "instance_id": "12345678-1234-1234-1234-123456789abc",
                 "client_id": "SECRET_MANAGER_RESOURCE_NAME",
                 "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
                 "refresh_token": "SECRET_MANAGER_RESOURCE_NAME",
@@ -1278,7 +1347,7 @@ class DataConnector(pulumi.CustomResource):
             action_config={
                 "action_params": {
                     "instance_uri": "https://example.atlassian.net",
-                    "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                    "instance_id": "12345678-1234-1234-1234-123456789abc",
                     "client_id": "SECRET_MANAGER_RESOURCE_NAME",
                     "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
                     "auth_type": "OAUTH",
@@ -1295,6 +1364,14 @@ class DataConnector(pulumi.CustomResource):
                     "update_comment",
                     "upload_attachment",
                 ],
+            },
+            tag="sample-tag",
+            metadata={
+                "title": "Jira Connector",
+                "description": "Jira Connector Description",
+                "short_description": "Jira Connector Short Description",
+                "author": "Google",
+                "note": "Sample Note",
             })
         ```
 
@@ -1370,6 +1447,8 @@ class DataConnector(pulumi.CustomResource):
                this connector will be protected by the KMS key.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
+        :param pulumi.Input[Union['DataConnectorMetadataArgs', 'DataConnectorMetadataArgsDict', 'outputs.DataConnectorMetadata']] metadata: User-facing metadata for the connector.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Params needed to access the source in the format of String-to-String (Key, Value) pairs.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1381,6 +1460,7 @@ class DataConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] static_ip_enabled: Whether customer has enabled static IP addresses for this connector.
         :param pulumi.Input[_builtins.str] sync_mode: The data synchronization mode supported by the data connector. The possible value can be:
                'PERIODIC', 'STREAMING'.
+        :param pulumi.Input[_builtins.str] tag: User-facing, version-independent label for this connector.
         """
         ...
     @overload
@@ -1466,10 +1546,9 @@ class DataConnector(pulumi.CustomResource):
             collection_id="collection-id",
             collection_display_name="Jira Federated",
             data_source="jira",
-            data_source_version=3,
             params={
                 "instance_uri": "https://example.atlassian.net",
-                "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                "instance_id": "12345678-1234-1234-1234-123456789abc",
                 "client_id": "SECRET_MANAGER_RESOURCE_NAME",
                 "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
                 "refresh_token": "SECRET_MANAGER_RESOURCE_NAME",
@@ -1511,7 +1590,7 @@ class DataConnector(pulumi.CustomResource):
             action_config={
                 "action_params": {
                     "instance_uri": "https://example.atlassian.net",
-                    "instance_id": "SECRET_MANAGER_RESOURCE_NAME",
+                    "instance_id": "12345678-1234-1234-1234-123456789abc",
                     "client_id": "SECRET_MANAGER_RESOURCE_NAME",
                     "client_secret": "SECRET_MANAGER_RESOURCE_NAME",
                     "auth_type": "OAUTH",
@@ -1528,6 +1607,14 @@ class DataConnector(pulumi.CustomResource):
                     "update_comment",
                     "upload_attachment",
                 ],
+            },
+            tag="sample-tag",
+            metadata={
+                "title": "Jira Connector",
+                "description": "Jira Connector Description",
+                "short_description": "Jira Connector Short Description",
+                "author": "Google",
+                "note": "Sample Note",
             })
         ```
 
@@ -1579,11 +1666,13 @@ class DataConnector(pulumi.CustomResource):
                  json_params: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Union['DataConnectorMetadataArgs', 'DataConnectorMetadataArgsDict', 'outputs.DataConnectorMetadata']]] = None,
                  params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1617,6 +1706,7 @@ class DataConnector(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["metadata"] = metadata
             __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             if refresh_interval is None and not opts.urn:
@@ -1624,6 +1714,7 @@ class DataConnector(pulumi.CustomResource):
             __props__.__dict__["refresh_interval"] = refresh_interval
             __props__.__dict__["static_ip_enabled"] = static_ip_enabled
             __props__.__dict__["sync_mode"] = sync_mode
+            __props__.__dict__["tag"] = tag
             __props__.__dict__["action_state"] = None
             __props__.__dict__["blocking_reasons"] = None
             __props__.__dict__["connector_type"] = None
@@ -1670,6 +1761,7 @@ class DataConnector(pulumi.CustomResource):
             last_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
             latest_pause_time: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['DataConnectorMetadataArgs', 'DataConnectorMetadataArgsDict', 'outputs.DataConnectorMetadata']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             private_connectivity_project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1680,6 +1772,7 @@ class DataConnector(pulumi.CustomResource):
             static_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             static_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             sync_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataConnector':
         """
         Get an existing DataConnector resource's state with the given name, id, and optional extra
@@ -1764,6 +1857,8 @@ class DataConnector(pulumi.CustomResource):
                  triggered.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
+        :param pulumi.Input[Union['DataConnectorMetadataArgs', 'DataConnectorMetadataArgsDict', 'outputs.DataConnectorMetadata']] metadata: User-facing metadata for the connector.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The full resource name of the Data Connector.
                Format: `projects/*/locations/*/collections/*/dataConnector`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Params needed to access the source in the format of String-to-String (Key, Value) pairs.
@@ -1786,6 +1881,7 @@ class DataConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] static_ip_enabled: Whether customer has enabled static IP addresses for this connector.
         :param pulumi.Input[_builtins.str] sync_mode: The data synchronization mode supported by the data connector. The possible value can be:
                'PERIODIC', 'STREAMING'.
+        :param pulumi.Input[_builtins.str] tag: User-facing, version-independent label for this connector.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the DataConnector was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1815,6 +1911,7 @@ class DataConnector(pulumi.CustomResource):
         __props__.__dict__["last_sync_time"] = last_sync_time
         __props__.__dict__["latest_pause_time"] = latest_pause_time
         __props__.__dict__["location"] = location
+        __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["params"] = params
         __props__.__dict__["private_connectivity_project_id"] = private_connectivity_project_id
@@ -1825,6 +1922,7 @@ class DataConnector(pulumi.CustomResource):
         __props__.__dict__["static_ip_addresses"] = static_ip_addresses
         __props__.__dict__["static_ip_enabled"] = static_ip_enabled
         __props__.__dict__["sync_mode"] = sync_mode
+        __props__.__dict__["tag"] = tag
         __props__.__dict__["update_time"] = update_time
         return DataConnector(resource_name, opts=opts, __props__=__props__)
 
@@ -2067,6 +2165,15 @@ class DataConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def metadata(self) -> pulumi.Output['outputs.DataConnectorMetadata']:
+        """
+        User-facing metadata for the connector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The full resource name of the Data Connector.
@@ -2156,6 +2263,14 @@ class DataConnector(pulumi.CustomResource):
         'PERIODIC', 'STREAMING'.
         """
         return pulumi.get(self, "sync_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        User-facing, version-independent label for this connector.
+        """
+        return pulumi.get(self, "tag")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

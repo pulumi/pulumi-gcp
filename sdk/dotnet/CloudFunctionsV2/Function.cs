@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -599,7 +599,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -674,7 +674,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -769,7 +769,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -863,7 +863,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -932,7 +932,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -1063,7 +1063,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -1150,7 +1150,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -1226,7 +1226,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-gcf-source",
+    ///         Name = $"gcf-source-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });

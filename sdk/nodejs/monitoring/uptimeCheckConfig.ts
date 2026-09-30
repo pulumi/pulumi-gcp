@@ -217,7 +217,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: "my-project-name-gcf-source",
+ *     name: "gcf-source-my-project-name",
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });

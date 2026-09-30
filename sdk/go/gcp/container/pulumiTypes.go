@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -10843,18 +10843,10 @@ type ClusterAddonsConfig struct {
 	ParallelstoreCsiDriverConfig *ClusterAddonsConfigParallelstoreCsiDriverConfig `pulumi:"parallelstoreCsiDriverConfig"`
 	// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 	PodSnapshotConfig *ClusterAddonsConfigPodSnapshotConfig `pulumi:"podSnapshotConfig"`
-	// . The status of the [Ray Operator
+	// The status of the [Ray Operator
 	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 	// It is disabled by default. Set `enabled = true` to enable. The minimum
-	// cluster version to enable Ray is 1.30.0-gke.1747000.
-	//
-	// Ray Operator config has optional subfields
-	// `ray_cluster_logging_config.enabled` and
-	// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-	// and monitoring respectively. See [Collect and view logs and metrics for Ray
-	// clusters on
-	// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-	// for more information.
+	// cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
 	RayOperatorConfigs []ClusterAddonsConfigRayOperatorConfig `pulumi:"rayOperatorConfigs"`
 	// .
 	// The status of the slice controller addon.
@@ -10960,18 +10952,10 @@ type ClusterAddonsConfigArgs struct {
 	ParallelstoreCsiDriverConfig ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput `pulumi:"parallelstoreCsiDriverConfig"`
 	// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 	PodSnapshotConfig ClusterAddonsConfigPodSnapshotConfigPtrInput `pulumi:"podSnapshotConfig"`
-	// . The status of the [Ray Operator
+	// The status of the [Ray Operator
 	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 	// It is disabled by default. Set `enabled = true` to enable. The minimum
-	// cluster version to enable Ray is 1.30.0-gke.1747000.
-	//
-	// Ray Operator config has optional subfields
-	// `ray_cluster_logging_config.enabled` and
-	// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-	// and monitoring respectively. See [Collect and view logs and metrics for Ray
-	// clusters on
-	// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-	// for more information.
+	// cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
 	RayOperatorConfigs ClusterAddonsConfigRayOperatorConfigArrayInput `pulumi:"rayOperatorConfigs"`
 	// .
 	// The status of the slice controller addon.
@@ -11208,18 +11192,10 @@ func (o ClusterAddonsConfigOutput) PodSnapshotConfig() ClusterAddonsConfigPodSna
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigPodSnapshotConfig { return v.PodSnapshotConfig }).(ClusterAddonsConfigPodSnapshotConfigPtrOutput)
 }
 
-// . The status of the [Ray Operator
+// The status of the [Ray Operator
 // addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 // It is disabled by default. Set `enabled = true` to enable. The minimum
-// cluster version to enable Ray is 1.30.0-gke.1747000.
-//
-// Ray Operator config has optional subfields
-// `ray_cluster_logging_config.enabled` and
-// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-// and monitoring respectively. See [Collect and view logs and metrics for Ray
-// clusters on
-// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-// for more information.
+// cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
 func (o ClusterAddonsConfigOutput) RayOperatorConfigs() ClusterAddonsConfigRayOperatorConfigArrayOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) []ClusterAddonsConfigRayOperatorConfig { return v.RayOperatorConfigs }).(ClusterAddonsConfigRayOperatorConfigArrayOutput)
 }
@@ -11491,18 +11467,10 @@ func (o ClusterAddonsConfigPtrOutput) PodSnapshotConfig() ClusterAddonsConfigPod
 	}).(ClusterAddonsConfigPodSnapshotConfigPtrOutput)
 }
 
-// . The status of the [Ray Operator
+// The status of the [Ray Operator
 // addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 // It is disabled by default. Set `enabled = true` to enable. The minimum
-// cluster version to enable Ray is 1.30.0-gke.1747000.
-//
-// Ray Operator config has optional subfields
-// `ray_cluster_logging_config.enabled` and
-// `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-// and monitoring respectively. See [Collect and view logs and metrics for Ray
-// clusters on
-// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-// for more information.
+// cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
 func (o ClusterAddonsConfigPtrOutput) RayOperatorConfigs() ClusterAddonsConfigRayOperatorConfigArrayOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) []ClusterAddonsConfigRayOperatorConfig {
 		if v == nil {
@@ -14092,10 +14060,11 @@ func (o ClusterAddonsConfigPodSnapshotConfigPtrOutput) Enabled() pulumi.BoolPtrO
 }
 
 type ClusterAddonsConfigRayOperatorConfig struct {
+	// Whether the Ray Operator addon is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
 	RayClusterLoggingConfig *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig `pulumi:"rayClusterLoggingConfig"`
-	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
 	RayClusterMonitoringConfig *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig `pulumi:"rayClusterMonitoringConfig"`
 }
 
@@ -14111,10 +14080,11 @@ type ClusterAddonsConfigRayOperatorConfigInput interface {
 }
 
 type ClusterAddonsConfigRayOperatorConfigArgs struct {
+	// Whether the Ray Operator addon is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+	// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
 	RayClusterLoggingConfig ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrInput `pulumi:"rayClusterLoggingConfig"`
-	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+	// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
 	RayClusterMonitoringConfig ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrInput `pulumi:"rayClusterMonitoringConfig"`
 }
 
@@ -14169,18 +14139,19 @@ func (o ClusterAddonsConfigRayOperatorConfigOutput) ToClusterAddonsConfigRayOper
 	return o
 }
 
+// Whether the Ray Operator addon is enabled.
 func (o ClusterAddonsConfigRayOperatorConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+// The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
 func (o ClusterAddonsConfigRayOperatorConfigOutput) RayClusterLoggingConfig() ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfig) *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
 		return v.RayClusterLoggingConfig
 	}).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput)
 }
 
-// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+// The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
 func (o ClusterAddonsConfigRayOperatorConfigOutput) RayClusterMonitoringConfig() ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfig) *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
 		return v.RayClusterMonitoringConfig
@@ -14208,6 +14179,7 @@ func (o ClusterAddonsConfigRayOperatorConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig struct {
+	// Whether Ray Cluster logging is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -14223,6 +14195,7 @@ type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput interface 
 }
 
 type ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs struct {
+	// Whether Ray Cluster logging is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -14303,6 +14276,7 @@ func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) ToClu
 	}).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput)
 }
 
+// Whether Ray Cluster logging is enabled.
 func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -14331,6 +14305,7 @@ func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) El
 	}).(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput)
 }
 
+// Whether Ray Cluster logging is enabled.
 func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig) *bool {
 		if v == nil {
@@ -14341,6 +14316,7 @@ func (o ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigPtrOutput) En
 }
 
 type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig struct {
+	// Whether Ray Cluster monitoring is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -14356,6 +14332,7 @@ type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigInput interfa
 }
 
 type ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs struct {
+	// Whether Ray Cluster monitoring is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -14436,6 +14413,7 @@ func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) To
 	}).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput)
 }
 
+// Whether Ray Cluster monitoring is enabled.
 func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -14464,6 +14442,7 @@ func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput)
 	}).(ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigOutput)
 }
 
+// Whether Ray Cluster monitoring is enabled.
 func (o ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig) *bool {
 		if v == nil {
@@ -15797,7 +15776,6 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	ImageType *string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool. Structure is documented below.
 	Management *ClusterClusterAutoscalingAutoProvisioningDefaultsManagement `pulumi:"management"`
-	// )
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 	// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 	// as "Intel Haswell" or "Intel Sandy Bridge".
@@ -15836,7 +15814,6 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool. Structure is documented below.
 	Management ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrInput `pulumi:"management"`
-	// )
 	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 	// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 	// as "Intel Haswell" or "Intel Sandy Bridge".
@@ -15957,7 +15934,6 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) Management() Cl
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrOutput)
 }
 
-// )
 // Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 // specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 // as "Intel Haswell" or "Intel Sandy Bridge".
@@ -16065,7 +16041,6 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) Management()
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrOutput)
 }
 
-// )
 // Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
 // specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
 // as "Intel Haswell" or "Intel Sandy Bridge".
@@ -19666,10 +19641,8 @@ type ClusterIpAllocationPolicy struct {
 	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
 	// Contains network tier information. Structure is documented below
-	//
-	// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 	NetworkTierConfig *ClusterIpAllocationPolicyNetworkTierConfig `pulumi:"networkTierConfig"`
-	// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+	// Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
 	PodCidrOverprovisionConfig *ClusterIpAllocationPolicyPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range of the services IPs in this cluster.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -19720,10 +19693,8 @@ type ClusterIpAllocationPolicyArgs struct {
 	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
 	// Contains network tier information. Structure is documented below
-	//
-	// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 	NetworkTierConfig ClusterIpAllocationPolicyNetworkTierConfigPtrInput `pulumi:"networkTierConfig"`
-	// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+	// Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
 	PodCidrOverprovisionConfig ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range of the services IPs in this cluster.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -19858,15 +19829,13 @@ func (o ClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.Stri
 }
 
 // Contains network tier information. Structure is documented below
-//
-// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 func (o ClusterIpAllocationPolicyOutput) NetworkTierConfig() ClusterIpAllocationPolicyNetworkTierConfigPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyNetworkTierConfig {
 		return v.NetworkTierConfig
 	}).(ClusterIpAllocationPolicyNetworkTierConfigPtrOutput)
 }
 
-// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+// Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
 func (o ClusterIpAllocationPolicyOutput) PodCidrOverprovisionConfig() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
 		return v.PodCidrOverprovisionConfig
@@ -19981,8 +19950,6 @@ func (o ClusterIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.S
 }
 
 // Contains network tier information. Structure is documented below
-//
-// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 func (o ClusterIpAllocationPolicyPtrOutput) NetworkTierConfig() ClusterIpAllocationPolicyNetworkTierConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyNetworkTierConfig {
 		if v == nil {
@@ -19992,7 +19959,7 @@ func (o ClusterIpAllocationPolicyPtrOutput) NetworkTierConfig() ClusterIpAllocat
 	}).(ClusterIpAllocationPolicyNetworkTierConfigPtrOutput)
 }
 
-// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+// Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
 func (o ClusterIpAllocationPolicyPtrOutput) PodCidrOverprovisionConfig() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
 		if v == nil {
@@ -20593,9 +20560,9 @@ func (o ClusterIpAllocationPolicyNetworkTierConfigPtrOutput) NetworkTier() pulum
 }
 
 type ClusterIpAllocationPolicyPodCidrOverprovisionConfig struct {
-	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	// Whether Pod CIDR overprovisioning is disabled.
 	//
-	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+	// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -20611,9 +20578,9 @@ type ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput interface {
 }
 
 type ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs struct {
-	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	// Whether Pod CIDR overprovisioning is disabled.
 	//
-	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+	// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -20694,9 +20661,9 @@ func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToClusterIpAl
 	}).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput)
 }
 
-// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+// Whether Pod CIDR overprovisioning is disabled.
 //
-// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicyPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -20725,9 +20692,9 @@ func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Elem() Clu
 	}).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput)
 }
 
-// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+// Whether Pod CIDR overprovisioning is disabled.
 //
-// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterIpAllocationPolicyPodCidrOverprovisionConfig) *bool {
 		if v == nil {
@@ -21153,8 +21120,9 @@ type ClusterMaintenancePolicyDailyMaintenanceWindow struct {
 	// Duration of the time window, automatically chosen to be
 	// smallest possible in the given scenario.
 	// Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-	Duration  *string `pulumi:"duration"`
-	StartTime string  `pulumi:"startTime"`
+	Duration *string `pulumi:"duration"`
+	// The start time of the exclusion window, in RFC3339 format.
+	StartTime string `pulumi:"startTime"`
 }
 
 // ClusterMaintenancePolicyDailyMaintenanceWindowInput is an input type that accepts ClusterMaintenancePolicyDailyMaintenanceWindowArgs and ClusterMaintenancePolicyDailyMaintenanceWindowOutput values.
@@ -21172,8 +21140,9 @@ type ClusterMaintenancePolicyDailyMaintenanceWindowArgs struct {
 	// Duration of the time window, automatically chosen to be
 	// smallest possible in the given scenario.
 	// Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-	Duration  pulumi.StringPtrInput `pulumi:"duration"`
-	StartTime pulumi.StringInput    `pulumi:"startTime"`
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// The start time of the exclusion window, in RFC3339 format.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (ClusterMaintenancePolicyDailyMaintenanceWindowArgs) ElementType() reflect.Type {
@@ -21260,6 +21229,7 @@ func (o ClusterMaintenancePolicyDailyMaintenanceWindowOutput) Duration() pulumi.
 	return o.ApplyT(func(v ClusterMaintenancePolicyDailyMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
+// The start time of the exclusion window, in RFC3339 format.
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyDailyMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -21300,6 +21270,7 @@ func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) Duration() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The start time of the exclusion window, in RFC3339 format.
 func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicyDailyMaintenanceWindow) *string {
 		if v == nil {
@@ -21512,11 +21483,14 @@ func (o ClusterMaintenancePolicyDisruptionBudgetPtrOutput) PatchVersionDisruptio
 }
 
 type ClusterMaintenancePolicyMaintenanceExclusion struct {
-	EndTime       *string `pulumi:"endTime"`
-	ExclusionName string  `pulumi:"exclusionName"`
-	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+	EndTime *string `pulumi:"endTime"`
+	// The name of the maintenance exclusion.
+	ExclusionName string `pulumi:"exclusionName"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
 	ExclusionOptions *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions `pulumi:"exclusionOptions"`
-	StartTime        string                                                        `pulumi:"startTime"`
+	// The start time of the exclusion window, in RFC3339 format.
+	StartTime string `pulumi:"startTime"`
 }
 
 // ClusterMaintenancePolicyMaintenanceExclusionInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionArgs and ClusterMaintenancePolicyMaintenanceExclusionOutput values.
@@ -21531,11 +21505,14 @@ type ClusterMaintenancePolicyMaintenanceExclusionInput interface {
 }
 
 type ClusterMaintenancePolicyMaintenanceExclusionArgs struct {
-	EndTime       pulumi.StringPtrInput `pulumi:"endTime"`
-	ExclusionName pulumi.StringInput    `pulumi:"exclusionName"`
-	// MaintenanceExclusionOptions provides maintenance exclusion related options.
+	// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The name of the maintenance exclusion.
+	ExclusionName pulumi.StringInput `pulumi:"exclusionName"`
+	// MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
 	ExclusionOptions ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrInput `pulumi:"exclusionOptions"`
-	StartTime        pulumi.StringInput                                                   `pulumi:"startTime"`
+	// The start time of the exclusion window, in RFC3339 format.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (ClusterMaintenancePolicyMaintenanceExclusionArgs) ElementType() reflect.Type {
@@ -21589,21 +21566,24 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ToClusterMaintenance
 	return o
 }
 
+// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
 func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// The name of the maintenance exclusion.
 func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.ExclusionName }).(pulumi.StringOutput)
 }
 
-// MaintenanceExclusionOptions provides maintenance exclusion related options.
+// MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
 func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionOptions() ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
 		return v.ExclusionOptions
 	}).(ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput)
 }
 
+// The start time of the exclusion window, in RFC3339 format.
 func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -22369,12 +22349,14 @@ func (o ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTimePtrOutp
 }
 
 type ClusterMaintenancePolicyRecurringWindow struct {
+	// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
 	EndTime string `pulumi:"endTime"`
 	// Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
 	//
 	// Examples:
 	Recurrence string `pulumi:"recurrence"`
-	StartTime  string `pulumi:"startTime"`
+	// The start time of the exclusion window, in RFC3339 format.
+	StartTime string `pulumi:"startTime"`
 }
 
 // ClusterMaintenancePolicyRecurringWindowInput is an input type that accepts ClusterMaintenancePolicyRecurringWindowArgs and ClusterMaintenancePolicyRecurringWindowOutput values.
@@ -22389,12 +22371,14 @@ type ClusterMaintenancePolicyRecurringWindowInput interface {
 }
 
 type ClusterMaintenancePolicyRecurringWindowArgs struct {
+	// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
 	//
 	// Examples:
 	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	StartTime  pulumi.StringInput `pulumi:"startTime"`
+	// The start time of the exclusion window, in RFC3339 format.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (ClusterMaintenancePolicyRecurringWindowArgs) ElementType() reflect.Type {
@@ -22474,6 +22458,7 @@ func (o ClusterMaintenancePolicyRecurringWindowOutput) ToClusterMaintenancePolic
 	}).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
 
+// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
 func (o ClusterMaintenancePolicyRecurringWindowOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
@@ -22485,6 +22470,7 @@ func (o ClusterMaintenancePolicyRecurringWindowOutput) Recurrence() pulumi.Strin
 	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
+// The start time of the exclusion window, in RFC3339 format.
 func (o ClusterMaintenancePolicyRecurringWindowOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyRecurringWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -22513,6 +22499,7 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) Elem() ClusterMaintena
 	}).(ClusterMaintenancePolicyRecurringWindowOutput)
 }
 
+// The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
 func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicyRecurringWindow) *string {
 		if v == nil {
@@ -22534,6 +22521,7 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) Recurrence() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The start time of the exclusion window, in RFC3339 format.
 func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicyRecurringWindow) *string {
 		if v == nil {
@@ -24564,7 +24552,7 @@ type ClusterNodeConfig struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic *ClusterNodeConfigGvnic `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+	// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy *ClusterNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -24658,7 +24646,7 @@ type ClusterNodeConfig struct {
 	// will not record any taints as being Pulumi-managed, and will cause drift with
 	// any configured taints. Structure is documented below.
 	Taints []ClusterNodeConfigTaint `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+	// Windows node configuration. Structure is documented below.
 	WindowsNodeConfig *ClusterNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -24728,7 +24716,7 @@ type ClusterNodeConfigArgs struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic ClusterNodeConfigGvnicPtrInput `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+	// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy ClusterNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -24822,7 +24810,7 @@ type ClusterNodeConfigArgs struct {
 	// will not record any taints as being Pulumi-managed, and will cause drift with
 	// any configured taints. Structure is documented below.
 	Taints ClusterNodeConfigTaintArrayInput `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+	// Windows node configuration. Structure is documented below.
 	WindowsNodeConfig ClusterNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -25010,7 +24998,7 @@ func (o ClusterNodeConfigOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGvnic { return v.Gvnic }).(ClusterNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodeConfigOutput) HostMaintenancePolicy() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigHostMaintenancePolicy { return v.HostMaintenancePolicy }).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
 }
@@ -25194,7 +25182,7 @@ func (o ClusterNodeConfigOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigTaint { return v.Taints }).(ClusterNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+// Windows node configuration. Structure is documented below.
 func (o ClusterNodeConfigOutput) WindowsNodeConfig() ClusterNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigWindowsNodeConfig { return v.WindowsNodeConfig }).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
 }
@@ -25416,7 +25404,7 @@ func (o ClusterNodeConfigPtrOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	}).(ClusterNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) HostMaintenancePolicy() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigHostMaintenancePolicy {
 		if v == nil {
@@ -25750,7 +25738,7 @@ func (o ClusterNodeConfigPtrOutput) Taints() ClusterNodeConfigTaintArrayOutput {
 	}).(ClusterNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+// Windows node configuration. Structure is documented below.
 func (o ClusterNodeConfigPtrOutput) WindowsNodeConfig() ClusterNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigWindowsNodeConfig {
 		if v == nil {
@@ -25775,6 +25763,8 @@ type ClusterNodeConfigAdvancedMachineFeatures struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	//
+	// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
@@ -25795,6 +25785,8 @@ type ClusterNodeConfigAdvancedMachineFeaturesArgs struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	//
+	// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
@@ -25883,6 +25875,8 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualizati
 }
 
 // Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+//
+// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -25927,6 +25921,8 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualiz
 }
 
 // Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+//
+// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -26315,7 +26311,7 @@ func (o ClusterNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOut
 type ClusterNodeConfigContainerdConfig struct {
 	// Configuration for private container registries. There are two fields in this config:
 	PrivateRegistryAccessConfig *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
-	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 	RegistryHosts []ClusterNodeConfigContainerdConfigRegistryHost `pulumi:"registryHosts"`
 	// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
 	WritableCgroups *ClusterNodeConfigContainerdConfigWritableCgroups `pulumi:"writableCgroups"`
@@ -26335,7 +26331,7 @@ type ClusterNodeConfigContainerdConfigInput interface {
 type ClusterNodeConfigContainerdConfigArgs struct {
 	// Configuration for private container registries. There are two fields in this config:
 	PrivateRegistryAccessConfig ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
-	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 	RegistryHosts ClusterNodeConfigContainerdConfigRegistryHostArrayInput `pulumi:"registryHosts"`
 	// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
 	WritableCgroups ClusterNodeConfigContainerdConfigWritableCgroupsPtrInput `pulumi:"writableCgroups"`
@@ -26425,7 +26421,7 @@ func (o ClusterNodeConfigContainerdConfigOutput) PrivateRegistryAccessConfig() C
 	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 func (o ClusterNodeConfigContainerdConfigOutput) RegistryHosts() ClusterNodeConfigContainerdConfigRegistryHostArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfig) []ClusterNodeConfigContainerdConfigRegistryHost {
 		return v.RegistryHosts
@@ -26473,7 +26469,7 @@ func (o ClusterNodeConfigContainerdConfigPtrOutput) PrivateRegistryAccessConfig(
 	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 func (o ClusterNodeConfigContainerdConfigPtrOutput) RegistryHosts() ClusterNodeConfigContainerdConfigRegistryHostArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfig) []ClusterNodeConfigContainerdConfigRegistryHost {
 		if v == nil {
@@ -26494,7 +26490,7 @@ func (o ClusterNodeConfigContainerdConfigPtrOutput) WritableCgroups() ClusterNod
 }
 
 type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
-	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 	CertificateAuthorityDomainConfigs []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
 	// Enables private registry config. If set to false, all other fields in this object must not be set.
 	Enabled bool `pulumi:"enabled"`
@@ -26512,7 +26508,7 @@ type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigInput interface
 }
 
 type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
-	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 	CertificateAuthorityDomainConfigs ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
 	// Enables private registry config. If set to false, all other fields in this object must not be set.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -26595,7 +26591,7 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) ToCl
 	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
 		return v.CertificateAuthorityDomainConfigs
@@ -26631,7 +26627,7 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) E
 	}).(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
 }
 
-// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
 		if v == nil {
@@ -26654,7 +26650,7 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) E
 type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
 	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
 	Fqdns []string `pulumi:"fqdns"`
-	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	// Parameters for configuring a certificate hosted in GCP SecretManager:
 	GcpSecretManagerCertificateConfig ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
 }
 
@@ -26672,7 +26668,7 @@ type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuth
 type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
 	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
 	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
-	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	// Parameters for configuring a certificate hosted in GCP SecretManager:
 	GcpSecretManagerCertificateConfig ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
 }
 
@@ -26734,7 +26730,7 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateA
 	}).(pulumi.StringArrayOutput)
 }
 
-// Parameters for configuring a certificate hosted in GCP SecretManager.
+// Parameters for configuring a certificate hosted in GCP SecretManager:
 func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
 		return v.GcpSecretManagerCertificateConfig
@@ -26762,7 +26758,9 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateA
 }
 
 type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
-	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+	//
+	// Example:
 	SecretUri string `pulumi:"secretUri"`
 }
 
@@ -26778,7 +26776,9 @@ type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuth
 }
 
 type ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
-	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+	//
+	// Example:
 	SecretUri pulumi.StringInput `pulumi:"secretUri"`
 }
 
@@ -26808,7 +26808,9 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateA
 	return o
 }
 
-// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+//
+// Example:
 func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
 		return v.SecretUri
@@ -26816,7 +26818,7 @@ func (o ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateA
 }
 
 type ClusterNodeConfigContainerdConfigRegistryHost struct {
-	// Configures a list of host-specific configurations for the server.
+	// Configures a list of host-specific configurations for the server:
 	Hosts []ClusterNodeConfigContainerdConfigRegistryHostHost `pulumi:"hosts"`
 	// Defines the host name of the registry server.
 	Server string `pulumi:"server"`
@@ -26834,7 +26836,7 @@ type ClusterNodeConfigContainerdConfigRegistryHostInput interface {
 }
 
 type ClusterNodeConfigContainerdConfigRegistryHostArgs struct {
-	// Configures a list of host-specific configurations for the server.
+	// Configures a list of host-specific configurations for the server:
 	Hosts ClusterNodeConfigContainerdConfigRegistryHostHostArrayInput `pulumi:"hosts"`
 	// Defines the host name of the registry server.
 	Server pulumi.StringInput `pulumi:"server"`
@@ -26891,7 +26893,7 @@ func (o ClusterNodeConfigContainerdConfigRegistryHostOutput) ToClusterNodeConfig
 	return o
 }
 
-// Configures a list of host-specific configurations for the server.
+// Configures a list of host-specific configurations for the server:
 func (o ClusterNodeConfigContainerdConfigRegistryHostOutput) Hosts() ClusterNodeConfigContainerdConfigRegistryHostHostArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHost) []ClusterNodeConfigContainerdConfigRegistryHostHost {
 		return v.Hosts
@@ -26924,19 +26926,21 @@ func (o ClusterNodeConfigContainerdConfigRegistryHostArrayOutput) Index(i pulumi
 }
 
 type ClusterNodeConfigContainerdConfigRegistryHostHost struct {
-	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 	Capabilities []string `pulumi:"capabilities"`
-	// Configures the registry host certificate.
+	// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 	Cas []ClusterNodeConfigContainerdConfigRegistryHostHostCa `pulumi:"cas"`
-	// Configures the registry host client certificate and key.
+	// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+	//
+	// Example:
 	Clients []ClusterNodeConfigContainerdConfigRegistryHostHostClient `pulumi:"clients"`
 	// Specifies the maximum duration allowed for a connection attempt to complete.
 	DialTimeout *string `pulumi:"dialTimeout"`
-	// Configures the registry host headers.
+	// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 	Headers []ClusterNodeConfigContainerdConfigRegistryHostHostHeader `pulumi:"headers"`
 	// Configures the registry host/mirror.
 	Host string `pulumi:"host"`
-	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 	OverridePath *bool `pulumi:"overridePath"`
 }
 
@@ -26952,19 +26956,21 @@ type ClusterNodeConfigContainerdConfigRegistryHostHostInput interface {
 }
 
 type ClusterNodeConfigContainerdConfigRegistryHostHostArgs struct {
-	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
-	// Configures the registry host certificate.
+	// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 	Cas ClusterNodeConfigContainerdConfigRegistryHostHostCaArrayInput `pulumi:"cas"`
-	// Configures the registry host client certificate and key.
+	// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+	//
+	// Example:
 	Clients ClusterNodeConfigContainerdConfigRegistryHostHostClientArrayInput `pulumi:"clients"`
 	// Specifies the maximum duration allowed for a connection attempt to complete.
 	DialTimeout pulumi.StringPtrInput `pulumi:"dialTimeout"`
-	// Configures the registry host headers.
+	// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 	Headers ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput `pulumi:"headers"`
 	// Configures the registry host/mirror.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 	OverridePath pulumi.BoolPtrInput `pulumi:"overridePath"`
 }
 
@@ -27019,19 +27025,21 @@ func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) ToClusterNodeCo
 	return o
 }
 
-// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
 
-// Configures the registry host certificate.
+// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) Cas() ClusterNodeConfigContainerdConfigRegistryHostHostCaArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) []ClusterNodeConfigContainerdConfigRegistryHostHostCa {
 		return v.Cas
 	}).(ClusterNodeConfigContainerdConfigRegistryHostHostCaArrayOutput)
 }
 
-// Configures the registry host client certificate and key.
+// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+//
+// Example:
 func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) Clients() ClusterNodeConfigContainerdConfigRegistryHostHostClientArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) []ClusterNodeConfigContainerdConfigRegistryHostHostClient {
 		return v.Clients
@@ -27043,7 +27051,7 @@ func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) DialTimeout() p
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) *string { return v.DialTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Configures the registry host headers.
+// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) Headers() ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) []ClusterNodeConfigContainerdConfigRegistryHostHostHeader {
 		return v.Headers
@@ -27055,7 +27063,7 @@ func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) Host() pulumi.S
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 func (o ClusterNodeConfigContainerdConfigRegistryHostHostOutput) OverridePath() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigContainerdConfigRegistryHostHost) *bool { return v.OverridePath }).(pulumi.BoolPtrOutput)
 }
@@ -34466,7 +34474,7 @@ func (o ClusterNodeConfigTaintConfigPtrOutput) ArchitectureTaintBehavior() pulum
 }
 
 type ClusterNodeConfigWindowsNodeConfig struct {
-	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 	Osversion *string `pulumi:"osversion"`
 }
 
@@ -34482,7 +34490,7 @@ type ClusterNodeConfigWindowsNodeConfigInput interface {
 }
 
 type ClusterNodeConfigWindowsNodeConfigArgs struct {
-	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 	Osversion pulumi.StringPtrInput `pulumi:"osversion"`
 }
 
@@ -34563,7 +34571,7 @@ func (o ClusterNodeConfigWindowsNodeConfigOutput) ToClusterNodeConfigWindowsNode
 	}).(ClusterNodeConfigWindowsNodeConfigPtrOutput)
 }
 
-// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 func (o ClusterNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigWindowsNodeConfig) *string { return v.Osversion }).(pulumi.StringPtrOutput)
 }
@@ -34592,7 +34600,7 @@ func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) Elem() ClusterNodeConfigWin
 	}).(ClusterNodeConfigWindowsNodeConfigOutput)
 }
 
-// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 func (o ClusterNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigWindowsNodeConfig) *string {
 		if v == nil {
@@ -34920,7 +34928,7 @@ type ClusterNodePool struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Configuration for
 	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -34992,7 +35000,7 @@ type ClusterNodePoolArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Configuration for
 	// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -35130,7 +35138,7 @@ func (o ClusterNodePoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 func (o ClusterNodePoolOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }
@@ -36567,7 +36575,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) LoggingVariant() pul
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig struct {
 	// Configuration for private container registries. There are two fields in this config:
 	PrivateRegistryAccessConfig *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
-	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 	RegistryHosts []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost `pulumi:"registryHosts"`
 	// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
 	WritableCgroups *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups `pulumi:"writableCgroups"`
@@ -36587,7 +36595,7 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigInput interface {
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs struct {
 	// Configuration for private container registries. There are two fields in this config:
 	PrivateRegistryAccessConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
-	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 	RegistryHosts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArrayInput `pulumi:"registryHosts"`
 	// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
 	WritableCgroups ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsPtrInput `pulumi:"writableCgroups"`
@@ -36677,7 +36685,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) Private
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigOutput) RegistryHosts() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost {
 		return v.RegistryHosts
@@ -36725,7 +36733,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) Priv
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) RegistryHosts() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost {
 		if v == nil {
@@ -36746,7 +36754,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPtrOutput) Writ
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig struct {
-	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 	CertificateAuthorityDomainConfigs []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
 	// Enables private registry config. If set to false, all other fields in this object must not be set.
 	Enabled bool `pulumi:"enabled"`
@@ -36764,7 +36772,7 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAcc
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs struct {
-	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 	CertificateAuthorityDomainConfigs ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
 	// Enables private registry config. If set to false, all other fields in this object must not be set.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -36847,7 +36855,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
 		return v.CertificateAuthorityDomainConfigs
@@ -36885,7 +36893,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigOutput)
 }
 
-// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
 		if v == nil {
@@ -36908,7 +36916,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
 	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
 	Fqdns []string `pulumi:"fqdns"`
-	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	// Parameters for configuring a certificate hosted in GCP SecretManager:
 	GcpSecretManagerCertificateConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
 }
 
@@ -36926,7 +36934,7 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAcc
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
 	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
 	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
-	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	// Parameters for configuring a certificate hosted in GCP SecretManager:
 	GcpSecretManagerCertificateConfig ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
 }
 
@@ -36988,7 +36996,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 	}).(pulumi.StringArrayOutput)
 }
 
-// Parameters for configuring a certificate hosted in GCP SecretManager.
+// Parameters for configuring a certificate hosted in GCP SecretManager:
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
 		return v.GcpSecretManagerCertificateConfig
@@ -37016,7 +37024,9 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
-	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+	//
+	// Example:
 	SecretUri string `pulumi:"secretUri"`
 }
 
@@ -37032,7 +37042,9 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAcc
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
-	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+	//
+	// Example:
 	SecretUri pulumi.StringInput `pulumi:"secretUri"`
 }
 
@@ -37062,7 +37074,9 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 	return o
 }
 
-// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+//
+// Example:
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
 		return v.SecretUri
@@ -37070,7 +37084,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistry
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost struct {
-	// Configures a list of host-specific configurations for the server.
+	// Configures a list of host-specific configurations for the server:
 	Hosts []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost `pulumi:"hosts"`
 	// Defines the host name of the registry server.
 	Server string `pulumi:"server"`
@@ -37088,7 +37102,7 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostInput 
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs struct {
-	// Configures a list of host-specific configurations for the server.
+	// Configures a list of host-specific configurations for the server:
 	Hosts ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArrayInput `pulumi:"hosts"`
 	// Defines the host name of the registry server.
 	Server pulumi.StringInput `pulumi:"server"`
@@ -37145,7 +37159,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostOut
 	return o
 }
 
-// Configures a list of host-specific configurations for the server.
+// Configures a list of host-specific configurations for the server:
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostOutput) Hosts() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost {
 		return v.Hosts
@@ -37178,19 +37192,21 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArr
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost struct {
-	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 	Capabilities []string `pulumi:"capabilities"`
-	// Configures the registry host certificate.
+	// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 	Cas []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa `pulumi:"cas"`
-	// Configures the registry host client certificate and key.
+	// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+	//
+	// Example:
 	Clients []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient `pulumi:"clients"`
 	// Specifies the maximum duration allowed for a connection attempt to complete.
 	DialTimeout *string `pulumi:"dialTimeout"`
-	// Configures the registry host headers.
+	// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 	Headers []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader `pulumi:"headers"`
 	// Configures the registry host/mirror.
 	Host string `pulumi:"host"`
-	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 	OverridePath *bool `pulumi:"overridePath"`
 }
 
@@ -37206,19 +37222,21 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostIn
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArgs struct {
-	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
-	// Configures the registry host certificate.
+	// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 	Cas ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArrayInput `pulumi:"cas"`
-	// Configures the registry host client certificate and key.
+	// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+	//
+	// Example:
 	Clients ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArrayInput `pulumi:"clients"`
 	// Specifies the maximum duration allowed for a connection attempt to complete.
 	DialTimeout pulumi.StringPtrInput `pulumi:"dialTimeout"`
-	// Configures the registry host headers.
+	// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 	Headers ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArrayInput `pulumi:"headers"`
 	// Configures the registry host/mirror.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 	OverridePath pulumi.BoolPtrInput `pulumi:"overridePath"`
 }
 
@@ -37273,21 +37291,23 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHos
 	return o
 }
 
-// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost) []string {
 		return v.Capabilities
 	}).(pulumi.StringArrayOutput)
 }
 
-// Configures the registry host certificate.
+// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostOutput) Cas() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa {
 		return v.Cas
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArrayOutput)
 }
 
-// Configures the registry host client certificate and key.
+// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+//
+// Example:
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostOutput) Clients() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient {
 		return v.Clients
@@ -37301,7 +37321,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHos
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configures the registry host headers.
+// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostOutput) Headers() ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost) []ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader {
 		return v.Headers
@@ -37315,7 +37335,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHos
 	}).(pulumi.StringOutput)
 }
 
-// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostOutput) OverridePath() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost) *bool {
 		return v.OverridePath
@@ -38833,6 +38853,8 @@ type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network *string `pulumi:"network"`
+	// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+	StackType *string `pulumi:"stackType"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -38854,6 +38876,8 @@ type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
 	// shared network.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
@@ -38915,6 +38939,11 @@ func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToCluster
 // shared network.
 func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.StackType }).(pulumi.StringPtrOutput)
 }
 
 // The name or selfLink of the Google Compute Engine
@@ -39199,9 +39228,9 @@ func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) TotalEgre
 }
 
 type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
-	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	// Whether Pod CIDR overprovisioning is disabled.
 	//
-	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+	// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -39217,9 +39246,9 @@ type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
 }
 
 type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
-	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	// Whether Pod CIDR overprovisioning is disabled.
 	//
-	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+	// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -39300,9 +39329,9 @@ func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToClusterN
 	}).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
 }
 
-// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+// Whether Pod CIDR overprovisioning is disabled.
 //
-// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -39331,9 +39360,9 @@ func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Elem() 
 	}).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
 }
 
-// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+// Whether Pod CIDR overprovisioning is disabled.
 //
-// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
+// <a name="nestedAutoIpamConfig"></a>The auto ipam config supports:
 func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) *bool {
 		if v == nil {
@@ -39395,7 +39424,7 @@ type ClusterNodePoolNodeConfig struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic *ClusterNodePoolNodeConfigGvnic `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+	// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy *ClusterNodePoolNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -39489,7 +39518,7 @@ type ClusterNodePoolNodeConfig struct {
 	// will not record any taints as being Pulumi-managed, and will cause drift with
 	// any configured taints. Structure is documented below.
 	Taints []ClusterNodePoolNodeConfigTaint `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+	// Windows node configuration. Structure is documented below.
 	WindowsNodeConfig *ClusterNodePoolNodeConfigWindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -39559,7 +39588,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
 	Gvnic ClusterNodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+	// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
@@ -39653,7 +39682,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// will not record any taints as being Pulumi-managed, and will cause drift with
 	// any configured taints. Structure is documented below.
 	Taints ClusterNodePoolNodeConfigTaintArrayInput `pulumi:"taints"`
-	// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+	// Windows node configuration. Structure is documented below.
 	WindowsNodeConfig ClusterNodePoolNodeConfigWindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// Metadata configuration to expose to workloads on the node pool.
 	// Structure is documented below.
@@ -39851,7 +39880,7 @@ func (o ClusterNodePoolNodeConfigOutput) Gvnic() ClusterNodePoolNodeConfigGvnicP
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic { return v.Gvnic }).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) HostMaintenancePolicy() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
 		return v.HostMaintenancePolicy
@@ -40049,7 +40078,7 @@ func (o ClusterNodePoolNodeConfigOutput) Taints() ClusterNodePoolNodeConfigTaint
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigTaint { return v.Taints }).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+// Windows node configuration. Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) WindowsNodeConfig() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
 		return v.WindowsNodeConfig
@@ -40275,7 +40304,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Gvnic() ClusterNodePoolNodeConfigGvn
 	}).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) HostMaintenancePolicy() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
 		if v == nil {
@@ -40609,7 +40638,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Taints() ClusterNodePoolNodeConfigTa
 	}).(ClusterNodePoolNodeConfigTaintArrayOutput)
 }
 
-// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+// Windows node configuration. Structure is documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) WindowsNodeConfig() ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigWindowsNodeConfig {
 		if v == nil {
@@ -40634,6 +40663,8 @@ type ClusterNodePoolNodeConfigAdvancedMachineFeatures struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	//
+	// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
@@ -40654,6 +40685,8 @@ type ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
 	// Defines whether the instance should have nested virtualization enabled. Defaults to false.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+	//
+	// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
@@ -40742,6 +40775,8 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirt
 }
 
 // Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+//
+// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -40786,6 +40821,8 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedV
 }
 
 // Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+//
+// > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
 func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -41174,7 +41211,7 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.Bo
 type ClusterNodePoolNodeConfigContainerdConfig struct {
 	// Configuration for private container registries. There are two fields in this config:
 	PrivateRegistryAccessConfig *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig `pulumi:"privateRegistryAccessConfig"`
-	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 	RegistryHosts []ClusterNodePoolNodeConfigContainerdConfigRegistryHost `pulumi:"registryHosts"`
 	// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
 	WritableCgroups *ClusterNodePoolNodeConfigContainerdConfigWritableCgroups `pulumi:"writableCgroups"`
@@ -41194,7 +41231,7 @@ type ClusterNodePoolNodeConfigContainerdConfigInput interface {
 type ClusterNodePoolNodeConfigContainerdConfigArgs struct {
 	// Configuration for private container registries. There are two fields in this config:
 	PrivateRegistryAccessConfig ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrInput `pulumi:"privateRegistryAccessConfig"`
-	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+	// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 	RegistryHosts ClusterNodePoolNodeConfigContainerdConfigRegistryHostArrayInput `pulumi:"registryHosts"`
 	// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
 	WritableCgroups ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsPtrInput `pulumi:"writableCgroups"`
@@ -41284,7 +41321,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigOutput) PrivateRegistryAccessCo
 	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 func (o ClusterNodePoolNodeConfigContainerdConfigOutput) RegistryHosts() ClusterNodePoolNodeConfigContainerdConfigRegistryHostArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfig) []ClusterNodePoolNodeConfigContainerdConfigRegistryHost {
 		return v.RegistryHosts
@@ -41332,7 +41369,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) PrivateRegistryAcces
 	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
 func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) RegistryHosts() ClusterNodePoolNodeConfigContainerdConfigRegistryHostArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfig) []ClusterNodePoolNodeConfigContainerdConfigRegistryHost {
 		if v == nil {
@@ -41353,7 +41390,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPtrOutput) WritableCgroups() Cl
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig struct {
-	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 	CertificateAuthorityDomainConfigs []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig `pulumi:"certificateAuthorityDomainConfigs"`
 	// Enables private registry config. If set to false, all other fields in this object must not be set.
 	Enabled bool `pulumi:"enabled"`
@@ -41371,7 +41408,7 @@ type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigInput i
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs struct {
-	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+	// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 	CertificateAuthorityDomainConfigs ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayInput `pulumi:"certificateAuthorityDomainConfigs"`
 	// Enables private registry config. If set to false, all other fields in this object must not be set.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -41454,7 +41491,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutp
 	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput)
 }
 
-// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
 		return v.CertificateAuthorityDomainConfigs
@@ -41490,7 +41527,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrO
 	}).(ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigOutput)
 }
 
-// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
 func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrOutput) CertificateAuthorityDomainConfigs() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig) []ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig {
 		if v == nil {
@@ -41513,7 +41550,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigPtrO
 type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig struct {
 	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
 	Fqdns []string `pulumi:"fqdns"`
-	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	// Parameters for configuring a certificate hosted in GCP SecretManager:
 	GcpSecretManagerCertificateConfig ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig `pulumi:"gcpSecretManagerCertificateConfig"`
 }
 
@@ -41531,7 +41568,7 @@ type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertifi
 type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs struct {
 	// List of fully-qualified-domain-names. IPv4s and port specification are supported.
 	Fqdns pulumi.StringArrayInput `pulumi:"fqdns"`
-	// Parameters for configuring a certificate hosted in GCP SecretManager.
+	// Parameters for configuring a certificate hosted in GCP SecretManager:
 	GcpSecretManagerCertificateConfig ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigInput `pulumi:"gcpSecretManagerCertificateConfig"`
 }
 
@@ -41593,7 +41630,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCert
 	}).(pulumi.StringArrayOutput)
 }
 
-// Parameters for configuring a certificate hosted in GCP SecretManager.
+// Parameters for configuring a certificate hosted in GCP SecretManager:
 func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigOutput) GcpSecretManagerCertificateConfig() ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig) ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
 		return v.GcpSecretManagerCertificateConfig
@@ -41621,7 +41658,9 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCert
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig struct {
-	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+	//
+	// Example:
 	SecretUri string `pulumi:"secretUri"`
 }
 
@@ -41637,7 +41676,9 @@ type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertifi
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs struct {
-	// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+	// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+	//
+	// Example:
 	SecretUri pulumi.StringInput `pulumi:"secretUri"`
 }
 
@@ -41667,7 +41708,9 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCert
 	return o
 }
 
-// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+//
+// Example:
 func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigOutput) SecretUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig) string {
 		return v.SecretUri
@@ -41675,7 +41718,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCert
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigRegistryHost struct {
-	// Configures a list of host-specific configurations for the server.
+	// Configures a list of host-specific configurations for the server:
 	Hosts []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost `pulumi:"hosts"`
 	// Defines the host name of the registry server.
 	Server string `pulumi:"server"`
@@ -41693,7 +41736,7 @@ type ClusterNodePoolNodeConfigContainerdConfigRegistryHostInput interface {
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs struct {
-	// Configures a list of host-specific configurations for the server.
+	// Configures a list of host-specific configurations for the server:
 	Hosts ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArrayInput `pulumi:"hosts"`
 	// Defines the host name of the registry server.
 	Server pulumi.StringInput `pulumi:"server"`
@@ -41750,7 +41793,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostOutput) ToClusterNo
 	return o
 }
 
-// Configures a list of host-specific configurations for the server.
+// Configures a list of host-specific configurations for the server:
 func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostOutput) Hosts() ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHost) []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost {
 		return v.Hosts
@@ -41783,19 +41826,21 @@ func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostArrayOutput) Index(
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost struct {
-	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 	Capabilities []string `pulumi:"capabilities"`
-	// Configures the registry host certificate.
+	// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 	Cas []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa `pulumi:"cas"`
-	// Configures the registry host client certificate and key.
+	// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+	//
+	// Example:
 	Clients []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient `pulumi:"clients"`
 	// Specifies the maximum duration allowed for a connection attempt to complete.
 	DialTimeout *string `pulumi:"dialTimeout"`
-	// Configures the registry host headers.
+	// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 	Headers []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader `pulumi:"headers"`
 	// Configures the registry host/mirror.
 	Host string `pulumi:"host"`
-	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 	OverridePath *bool `pulumi:"overridePath"`
 }
 
@@ -41811,19 +41856,21 @@ type ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostInput interface {
 }
 
 type ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs struct {
-	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+	// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
-	// Configures the registry host certificate.
+	// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 	Cas ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArrayInput `pulumi:"cas"`
-	// Configures the registry host client certificate and key.
+	// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+	//
+	// Example:
 	Clients ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArrayInput `pulumi:"clients"`
 	// Specifies the maximum duration allowed for a connection attempt to complete.
 	DialTimeout pulumi.StringPtrInput `pulumi:"dialTimeout"`
-	// Configures the registry host headers.
+	// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 	Headers ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput `pulumi:"headers"`
 	// Configures the registry host/mirror.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+	// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 	OverridePath pulumi.BoolPtrInput `pulumi:"overridePath"`
 }
 
@@ -41878,19 +41925,21 @@ func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) ToClust
 	return o
 }
 
-// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
 func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
 
-// Configures the registry host certificate.
+// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
 func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) Cas() ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa {
 		return v.Cas
 	}).(ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArrayOutput)
 }
 
-// Configures the registry host client certificate and key.
+// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+//
+// Example:
 func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) Clients() ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient {
 		return v.Clients
@@ -41902,7 +41951,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) DialTim
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) *string { return v.DialTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Configures the registry host headers.
+// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
 func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) Headers() ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) []ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader {
 		return v.Headers
@@ -41914,7 +41963,7 @@ func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) Host() 
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
 func (o ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostOutput) OverridePath() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost) *bool { return v.OverridePath }).(pulumi.BoolPtrOutput)
 }
@@ -49353,7 +49402,7 @@ func (o ClusterNodePoolNodeConfigTaintConfigPtrOutput) ArchitectureTaintBehavior
 }
 
 type ClusterNodePoolNodeConfigWindowsNodeConfig struct {
-	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 	Osversion *string `pulumi:"osversion"`
 }
 
@@ -49369,7 +49418,7 @@ type ClusterNodePoolNodeConfigWindowsNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigWindowsNodeConfigArgs struct {
-	// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+	// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 	Osversion pulumi.StringPtrInput `pulumi:"osversion"`
 }
 
@@ -49450,7 +49499,7 @@ func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) ToClusterNodePoolNodeC
 	}).(ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput)
 }
 
-// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 func (o ClusterNodePoolNodeConfigWindowsNodeConfigOutput) Osversion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigWindowsNodeConfig) *string { return v.Osversion }).(pulumi.StringPtrOutput)
 }
@@ -49479,7 +49528,7 @@ func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) Elem() ClusterNodeP
 	}).(ClusterNodePoolNodeConfigWindowsNodeConfigOutput)
 }
 
-// The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+// OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
 func (o ClusterNodePoolNodeConfigWindowsNodeConfigPtrOutput) Osversion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigWindowsNodeConfig) *string {
 		if v == nil {
@@ -54003,11 +54052,11 @@ func (o ClusterServiceExternalIpsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput
 }
 
 type ClusterTpuConfig struct {
-	// Whether Cloud TPU integration is enabled or not
+	// Whether Cloud TPU integration is enabled or not.
 	Enabled bool `pulumi:"enabled"`
-	// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+	// The IPv4 CIDR block reserved for Cloud TPU in the VPC.
 	Ipv4CidrBlock *string `pulumi:"ipv4CidrBlock"`
-	// Whether to use service networking for Cloud TPU or not
+	// Whether to use service networking for Cloud TPU or not.
 	UseServiceNetworking *bool `pulumi:"useServiceNetworking"`
 }
 
@@ -54023,11 +54072,11 @@ type ClusterTpuConfigInput interface {
 }
 
 type ClusterTpuConfigArgs struct {
-	// Whether Cloud TPU integration is enabled or not
+	// Whether Cloud TPU integration is enabled or not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+	// The IPv4 CIDR block reserved for Cloud TPU in the VPC.
 	Ipv4CidrBlock pulumi.StringPtrInput `pulumi:"ipv4CidrBlock"`
-	// Whether to use service networking for Cloud TPU or not
+	// Whether to use service networking for Cloud TPU or not.
 	UseServiceNetworking pulumi.BoolPtrInput `pulumi:"useServiceNetworking"`
 }
 
@@ -54108,17 +54157,17 @@ func (o ClusterTpuConfigOutput) ToClusterTpuConfigPtrOutputWithContext(ctx conte
 	}).(ClusterTpuConfigPtrOutput)
 }
 
-// Whether Cloud TPU integration is enabled or not
+// Whether Cloud TPU integration is enabled or not.
 func (o ClusterTpuConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterTpuConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+// The IPv4 CIDR block reserved for Cloud TPU in the VPC.
 func (o ClusterTpuConfigOutput) Ipv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterTpuConfig) *string { return v.Ipv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Whether to use service networking for Cloud TPU or not
+// Whether to use service networking for Cloud TPU or not.
 func (o ClusterTpuConfigOutput) UseServiceNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterTpuConfig) *bool { return v.UseServiceNetworking }).(pulumi.BoolPtrOutput)
 }
@@ -54147,7 +54196,7 @@ func (o ClusterTpuConfigPtrOutput) Elem() ClusterTpuConfigOutput {
 	}).(ClusterTpuConfigOutput)
 }
 
-// Whether Cloud TPU integration is enabled or not
+// Whether Cloud TPU integration is enabled or not.
 func (o ClusterTpuConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterTpuConfig) *bool {
 		if v == nil {
@@ -54157,7 +54206,7 @@ func (o ClusterTpuConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+// The IPv4 CIDR block reserved for Cloud TPU in the VPC.
 func (o ClusterTpuConfigPtrOutput) Ipv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterTpuConfig) *string {
 		if v == nil {
@@ -54167,7 +54216,7 @@ func (o ClusterTpuConfigPtrOutput) Ipv4CidrBlock() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to use service networking for Cloud TPU or not
+// Whether to use service networking for Cloud TPU or not.
 func (o ClusterTpuConfigPtrOutput) UseServiceNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterTpuConfig) *bool {
 		if v == nil {
@@ -55501,7 +55550,7 @@ func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNetworkConfig struct {
-	// ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+	// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
 	AcceleratorNetworkProfile *string `pulumi:"acceleratorNetworkProfile"`
 	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
 	// Structure is documented below
@@ -55537,7 +55586,7 @@ type NodePoolNetworkConfigInput interface {
 }
 
 type NodePoolNetworkConfigArgs struct {
-	// ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+	// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
 	AcceleratorNetworkProfile pulumi.StringPtrInput `pulumi:"acceleratorNetworkProfile"`
 	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
 	// Structure is documented below
@@ -55638,7 +55687,7 @@ func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigPtrOutputWithContext
 	}).(NodePoolNetworkConfigPtrOutput)
 }
 
-// ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
 func (o NodePoolNetworkConfigOutput) AcceleratorNetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.AcceleratorNetworkProfile }).(pulumi.StringPtrOutput)
 }
@@ -55722,7 +55771,7 @@ func (o NodePoolNetworkConfigPtrOutput) Elem() NodePoolNetworkConfigOutput {
 	}).(NodePoolNetworkConfigOutput)
 }
 
-// ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
 func (o NodePoolNetworkConfigPtrOutput) AcceleratorNetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
 		if v == nil {
@@ -55827,6 +55876,8 @@ func (o NodePoolNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 type NodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
 	// Name of the VPC where the additional interface belongs.
 	Network *string `pulumi:"network"`
+	// ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+	StackType *string `pulumi:"stackType"`
 	// Name of the subnetwork where the additional interface belongs.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
@@ -55845,6 +55896,8 @@ type NodePoolNetworkConfigAdditionalNodeNetworkConfigInput interface {
 type NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
 	// Name of the VPC where the additional interface belongs.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 	// Name of the subnetwork where the additional interface belongs.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
@@ -55903,6 +55956,11 @@ func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToNodePoolNetwor
 // Name of the VPC where the additional interface belongs.
 func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.StackType }).(pulumi.StringPtrOutput)
 }
 
 // Name of the subnetwork where the additional interface belongs.
@@ -56354,7 +56412,7 @@ type NodePoolNodeConfig struct {
 	GuestAccelerators []NodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
 	// Enable or disable gvnic in the node pool.
 	Gvnic *NodePoolNodeConfigGvnic `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on.
+	// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy *NodePoolNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType *string `pulumi:"imageType"`
@@ -56466,7 +56524,7 @@ type NodePoolNodeConfigArgs struct {
 	GuestAccelerators NodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
 	// Enable or disable gvnic in the node pool.
 	Gvnic NodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
-	// The maintenance policy for the hosts on which the GKE VMs run on.
+	// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 	HostMaintenancePolicy NodePoolNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -56698,7 +56756,7 @@ func (o NodePoolNodeConfigOutput) Gvnic() NodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigGvnic { return v.Gvnic }).(NodePoolNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on.
+// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o NodePoolNodeConfigOutput) HostMaintenancePolicy() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigHostMaintenancePolicy { return v.HostMaintenancePolicy }).(NodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
@@ -57054,7 +57112,7 @@ func (o NodePoolNodeConfigPtrOutput) Gvnic() NodePoolNodeConfigGvnicPtrOutput {
 	}).(NodePoolNodeConfigGvnicPtrOutput)
 }
 
-// The maintenance policy for the hosts on which the GKE VMs run on.
+// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
 func (o NodePoolNodeConfigPtrOutput) HostMaintenancePolicy() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigHostMaintenancePolicy {
 		if v == nil {
@@ -57377,7 +57435,7 @@ func (o NodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() NodePoolNodeConfig
 type NodePoolNodeConfigAdvancedMachineFeatures struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
-	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
@@ -57397,7 +57455,7 @@ type NodePoolNodeConfigAdvancedMachineFeaturesInput interface {
 type NodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
-	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
@@ -57485,7 +57543,7 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) EnableNestedVirtualizat
 	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
-// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -57529,7 +57587,7 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) EnableNestedVirtuali
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -60564,9 +60622,9 @@ func (o NodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNodeConfigHostMaintenancePolicy struct {
-	// .
+	// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
-	// Strategy that will trigger maintenance on behalf of the customer.
+	// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
 	OpportunisticMaintenanceStrategy *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
@@ -60582,9 +60640,9 @@ type NodePoolNodeConfigHostMaintenancePolicyInput interface {
 }
 
 type NodePoolNodeConfigHostMaintenancePolicyArgs struct {
-	// .
+	// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
-	// Strategy that will trigger maintenance on behalf of the customer.
+	// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
 	OpportunisticMaintenanceStrategy NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrInput `pulumi:"opportunisticMaintenanceStrategy"`
 }
 
@@ -60665,12 +60723,12 @@ func (o NodePoolNodeConfigHostMaintenancePolicyOutput) ToNodePoolNodeConfigHostM
 	}).(NodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
-// .
+// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 func (o NodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
-// Strategy that will trigger maintenance on behalf of the customer.
+// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
 func (o NodePoolNodeConfigHostMaintenancePolicyOutput) OpportunisticMaintenanceStrategy() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicy) *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
 		return v.OpportunisticMaintenanceStrategy
@@ -60701,7 +60759,7 @@ func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) Elem() NodePoolNodeCon
 	}).(NodePoolNodeConfigHostMaintenancePolicyOutput)
 }
 
-// .
+// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
 func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicy) *string {
 		if v == nil {
@@ -60711,7 +60769,7 @@ func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Strategy that will trigger maintenance on behalf of the customer.
+// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
 func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) OpportunisticMaintenanceStrategy() NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicy) *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
 		if v == nil {
@@ -60722,11 +60780,11 @@ func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) OpportunisticMaintenan
 }
 
 type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy struct {
-	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
 	MaintenanceAvailabilityWindow string `pulumi:"maintenanceAvailabilityWindow"`
 	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
 	MinNodesPerPool int `pulumi:"minNodesPerPool"`
-	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
 	NodeIdleTimeWindow string `pulumi:"nodeIdleTimeWindow"`
 }
 
@@ -60742,11 +60800,11 @@ type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyInpu
 }
 
 type NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs struct {
-	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+	// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
 	MaintenanceAvailabilityWindow pulumi.StringInput `pulumi:"maintenanceAvailabilityWindow"`
 	// The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
 	MinNodesPerPool pulumi.IntInput `pulumi:"minNodesPerPool"`
-	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+	// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
 	NodeIdleTimeWindow pulumi.StringInput `pulumi:"nodeIdleTimeWindow"`
 }
 
@@ -60827,7 +60885,7 @@ func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyO
 	}).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput)
 }
 
-// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
 func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) MaintenanceAvailabilityWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
 		return v.MaintenanceAvailabilityWindow
@@ -60841,7 +60899,7 @@ func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyO
 	}).(pulumi.IntOutput)
 }
 
-// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
 func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput) NodeIdleTimeWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) string {
 		return v.NodeIdleTimeWindow
@@ -60872,7 +60930,7 @@ func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyP
 	}).(NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyOutput)
 }
 
-// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
 func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) MaintenanceAvailabilityWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
 		if v == nil {
@@ -60892,7 +60950,7 @@ func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
 func (o NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyPtrOutput) NodeIdleTimeWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy) *string {
 		if v == nil {
@@ -76848,7 +76906,7 @@ func (o GetClusterNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNode
 type GetClusterNodeConfigAdvancedMachineFeature struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
-	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
@@ -76868,7 +76926,7 @@ type GetClusterNodeConfigAdvancedMachineFeatureInput interface {
 type GetClusterNodeConfigAdvancedMachineFeatureArgs struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
-	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
@@ -76930,7 +76988,7 @@ func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) EnableNestedVirtualiza
 	return o.ApplyT(func(v GetClusterNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
-// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }

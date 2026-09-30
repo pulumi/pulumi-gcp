@@ -42,6 +42,7 @@ class ServiceArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling: pulumi.Input[Optional['ServiceScalingArgs']] = None,
+                 ssh_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  traffics: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
         """
@@ -99,6 +100,7 @@ class ServiceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ssh_enabled: Enables SSH access to the Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -145,6 +147,8 @@ class ServiceArgs:
             pulumi.set(__self__, "project", project)
         if scaling is not None:
             pulumi.set(__self__, "scaling", scaling)
+        if ssh_enabled is not None:
+            pulumi.set(__self__, "ssh_enabled", ssh_enabled)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if traffics is not None:
@@ -434,6 +438,18 @@ class ServiceArgs:
         pulumi.set(self, "scaling", value)
 
     @_builtins.property
+    @pulumi.getter(name="sshEnabled")
+    def ssh_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables SSH access to the Service.
+        """
+        return pulumi.get(self, "ssh_enabled")
+
+    @ssh_enabled.setter
+    def ssh_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ssh_enabled", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -499,6 +515,7 @@ class _ServiceState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
                  scaling: pulumi.Input[Optional['ServiceScalingArgs']] = None,
+                 ssh_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional['ServiceTemplateArgs']] = None,
                  terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
@@ -581,6 +598,7 @@ class _ServiceState:
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ssh_enabled: Enables SSH access to the Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -668,6 +686,8 @@ class _ServiceState:
             pulumi.set(__self__, "reconciling", reconciling)
         if scaling is not None:
             pulumi.set(__self__, "scaling", scaling)
+        if ssh_enabled is not None:
+            pulumi.set(__self__, "ssh_enabled", ssh_enabled)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if template is not None:
@@ -1143,6 +1163,18 @@ class _ServiceState:
         pulumi.set(self, "scaling", value)
 
     @_builtins.property
+    @pulumi.getter(name="sshEnabled")
+    def ssh_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables SSH access to the Service.
+        """
+        return pulumi.get(self, "ssh_enabled")
+
+    @ssh_enabled.setter
+    def ssh_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ssh_enabled", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1284,6 +1316,7 @@ class Service(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']]] = None,
+                 ssh_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
                  traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
@@ -1330,7 +1363,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             template={
                 "scaling": {
                     "min_instance_count": 1,
@@ -1835,7 +1867,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         sourcebucket = gcp.storage.Bucket("sourcebucket",
-            name=f"{project.project_id}-tf-test-gcf-source_75125",
+            name=f"tf-test-gcf-source_39249-{project.project_id}",
             location="US",
             uniform_bucket_level_access=True)
         source_tar = gcp.storage.BucketObject("source_tar",
@@ -2048,6 +2080,7 @@ class Service(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ssh_enabled: Enables SSH access to the Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -2104,7 +2137,6 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             deletion_protection=False,
             ingress="INGRESS_TRAFFIC_ALL",
-            launch_stage="BETA",
             template={
                 "scaling": {
                     "min_instance_count": 1,
@@ -2609,7 +2641,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         sourcebucket = gcp.storage.Bucket("sourcebucket",
-            name=f"{project.project_id}-tf-test-gcf-source_75125",
+            name=f"tf-test-gcf-source_39249-{project.project_id}",
             location="US",
             uniform_bucket_level_access=True)
         source_tar = gcp.storage.BucketObject("source_tar",
@@ -2805,6 +2837,7 @@ class Service(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']]] = None,
+                 ssh_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
                  traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict', 'outputs.ServiceTraffic']]]]] = None,
@@ -2839,6 +2872,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["scaling"] = scaling
+            __props__.__dict__["ssh_enabled"] = ssh_enabled
             __props__.__dict__["tags"] = tags
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
@@ -2912,6 +2946,7 @@ class Service(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']]] = None,
+            ssh_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict', 'outputs.ServiceTemplate']]] = None,
             terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict', 'outputs.ServiceTerminalCondition']]]]] = None,
@@ -2998,6 +3033,7 @@ class Service(pulumi.CustomResource):
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict', 'outputs.ServiceScaling']] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] ssh_enabled: Enables SSH access to the Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -3054,6 +3090,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["scaling"] = scaling
+        __props__.__dict__["ssh_enabled"] = ssh_enabled
         __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
@@ -3379,6 +3416,14 @@ class Service(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "scaling")
+
+    @_builtins.property
+    @pulumi.getter(name="sshEnabled")
+    def ssh_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enables SSH access to the Service.
+        """
+        return pulumi.get(self, "ssh_enabled")
 
     @_builtins.property
     @pulumi.getter

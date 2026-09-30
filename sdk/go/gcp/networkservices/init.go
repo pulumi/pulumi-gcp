@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:networkservices/agentConnectivityTemplate:AgentConnectivityTemplate":
+		r = &AgentConnectivityTemplate{}
 	case "gcp:networkservices/agentGateway:AgentGateway":
 		r = &AgentGateway{}
 	case "gcp:networkservices/authzExtension:AuthzExtension":
@@ -88,6 +90,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/agentConnectivityTemplate",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkservices/agentGateway",

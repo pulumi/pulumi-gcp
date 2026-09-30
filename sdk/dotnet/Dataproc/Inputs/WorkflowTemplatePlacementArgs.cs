@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        /// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
         /// </summary>
         [Input("clusterSelector")]
         public Input<Inputs.WorkflowTemplatePlacementClusterSelectorArgs>? ClusterSelector { get; set; }
 
         /// <summary>
-        /// A cluster that is managed by the workflow.
+        /// A cluster that is managed by the workflow. Structure is documented below.
         /// </summary>
         [Input("managedCluster")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterArgs>? ManagedCluster { get; set; }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,11 +27,13 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,7 +70,7 @@ import (
 //			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
 //				Name:                 pulumi.String("my-gateway-attachment"),
 //				Region:               pulumi.String("us-central1"),
-//				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 //				Subnetworks: pulumi.StringArray{
 //					defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				},
@@ -92,6 +94,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultAgentConnectivityTemplate, err := networkservices.NewAgentConnectivityTemplate(ctx, "default", &networkservices.AgentConnectivityTemplateArgs{
+//				AgentConnectivityTemplateId: pulumi.String("my-full-agent-gateway-template"),
+//				Location:                    pulumi.String("us-central1"),
+//				Description:                 pulumi.String("A basic configuration for Agent Connectivity Template"),
+//				Labels: pulumi.StringMap{
+//					"env":  pulumi.String("test"),
+//					"tier": pulumi.String("gold"),
+//				},
+//				AccessPath: pulumi.String("AGENT_TO_ANYWHERE"),
+//				EgressNetworkConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigArgs{
+//					NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
+//					DnsPeeringConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{
+//						Domain:        defaultManagedZone.DnsName,
+//						TargetNetwork: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = networkservices.NewAgentGateway(ctx, "default", &networkservices.AgentGatewayArgs{
 //				Name:        pulumi.String("my-full-agent-gateway"),
 //				Location:    pulumi.String("us-central1"),
@@ -106,20 +128,11 @@ import (
 //				GoogleManaged: &networkservices.AgentGatewayGoogleManagedArgs{
 //					GovernedAccessPath: pulumi.String("AGENT_TO_ANYWHERE"),
 //				},
+//				AgentConnectivityTemplate: defaultAgentConnectivityTemplate.AgentConnectivityTemplateId.ApplyT(func(agentConnectivityTemplateId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/locations/us-central1/agentConnectivityTemplates/%v", project.Number, agentConnectivityTemplateId), nil
+//				}).(pulumi.StringOutput),
 //				Registries: pulumi.StringArray{
 //					pulumi.String("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"),
-//				},
-//				NetworkConfig: &networkservices.AgentGatewayNetworkConfigArgs{
-//					Egress: &networkservices.AgentGatewayNetworkConfigEgressArgs{
-//						NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
-//					},
-//					DnsPeeringConfig: &networkservices.AgentGatewayNetworkConfigDnsPeeringConfigArgs{
-//						Domains: pulumi.StringArray{
-//							defaultManagedZone.DnsName,
-//						},
-//						TargetProject: pulumi.String(project.ProjectId),
-//						TargetNetwork: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				agentRegistry,
@@ -139,8 +152,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -181,7 +194,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -225,6 +238,10 @@ import (
 type AgentGateway struct {
 	pulumi.CustomResourceState
 
+	// The resource name of the AgentConnectivityTemplate.
+	// Must be of format
+	// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+	AgentConnectivityTemplate pulumi.StringPtrOutput `pulumi:"agentConnectivityTemplate"`
 	// AgentGatewayOutputCard contains informational output-only fields.
 	// Structure is documented below.
 	AgentGatewayCards AgentGatewayAgentGatewayCardArrayOutput `pulumi:"agentGatewayCards"`
@@ -326,6 +343,10 @@ func GetAgentGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AgentGateway resources.
 type agentGatewayState struct {
+	// The resource name of the AgentConnectivityTemplate.
+	// Must be of format
+	// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+	AgentConnectivityTemplate *string `pulumi:"agentConnectivityTemplate"`
 	// AgentGatewayOutputCard contains informational output-only fields.
 	// Structure is documented below.
 	AgentGatewayCards []AgentGatewayAgentGatewayCard `pulumi:"agentGatewayCards"`
@@ -390,6 +411,10 @@ type agentGatewayState struct {
 }
 
 type AgentGatewayState struct {
+	// The resource name of the AgentConnectivityTemplate.
+	// Must be of format
+	// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+	AgentConnectivityTemplate pulumi.StringPtrInput
 	// AgentGatewayOutputCard contains informational output-only fields.
 	// Structure is documented below.
 	AgentGatewayCards AgentGatewayAgentGatewayCardArrayInput
@@ -458,6 +483,10 @@ func (AgentGatewayState) ElementType() reflect.Type {
 }
 
 type agentGatewayArgs struct {
+	// The resource name of the AgentConnectivityTemplate.
+	// Must be of format
+	// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+	AgentConnectivityTemplate *string `pulumi:"agentConnectivityTemplate"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -506,6 +535,10 @@ type agentGatewayArgs struct {
 
 // The set of arguments for constructing a AgentGateway resource.
 type AgentGatewayArgs struct {
+	// The resource name of the AgentConnectivityTemplate.
+	// Must be of format
+	// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+	AgentConnectivityTemplate pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -637,6 +670,13 @@ func (o AgentGatewayOutput) ToAgentGatewayOutput() AgentGatewayOutput {
 
 func (o AgentGatewayOutput) ToAgentGatewayOutputWithContext(ctx context.Context) AgentGatewayOutput {
 	return o
+}
+
+// The resource name of the AgentConnectivityTemplate.
+// Must be of format
+// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+func (o AgentGatewayOutput) AgentConnectivityTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentGateway) pulumi.StringPtrOutput { return v.AgentConnectivityTemplate }).(pulumi.StringPtrOutput)
 }
 
 // AgentGatewayOutputCard contains informational output-only fields.

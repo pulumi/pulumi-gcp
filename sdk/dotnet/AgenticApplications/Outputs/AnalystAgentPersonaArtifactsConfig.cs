@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         /// </summary>
         public readonly Outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions? DocumentGenerationOptions;
         /// <summary>
+        /// Options for methodology export.
+        /// </summary>
+        public readonly Outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions? MethodologyExportOptions;
+        /// <summary>
         /// Options for slide generation.
         /// </summary>
         public readonly Outputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions? SlideGenerationOptions;
@@ -30,11 +34,14 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         private AnalystAgentPersonaArtifactsConfig(
             Outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions? documentGenerationOptions,
 
+            Outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions? methodologyExportOptions,
+
             Outputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions? slideGenerationOptions,
 
             Outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptions? visualizationOptions)
         {
             DocumentGenerationOptions = documentGenerationOptions;
+            MethodologyExportOptions = methodologyExportOptions;
             SlideGenerationOptions = slideGenerationOptions;
             VisualizationOptions = visualizationOptions;
         }

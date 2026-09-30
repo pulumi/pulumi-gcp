@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         FindingsRefinement = Output.Tuple(Std.Split.Invoke(new()
+    ///         FindingsRefinement = Output.Create(Output.Tuple(Std.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleFindingsRefinement.My_findings_refinement.Name,
@@ -61,12 +61,12 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleFindingsRefinement.My_findings_refinement.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result.Length)).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
     ///             return invoke.Result[(int)(length - 1)];
-    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///         })).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = true,
     ///         Archived = false,
     ///     });

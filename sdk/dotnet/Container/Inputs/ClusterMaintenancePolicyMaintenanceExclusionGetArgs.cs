@@ -12,18 +12,27 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMaintenancePolicyMaintenanceExclusionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The end time of the exclusion window, in RFC3339 format. Exactly one of `EndTime` and `exclusion_options.end_time_behavior` should be specified.
+        /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
+        /// <summary>
+        /// The name of the maintenance exclusion.
+        /// </summary>
         [Input("exclusionName", required: true)]
         public Input<string> ExclusionName { get; set; } = null!;
 
         /// <summary>
-        /// MaintenanceExclusionOptions provides maintenance exclusion related options.
+        /// MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
         /// </summary>
         [Input("exclusionOptions")]
         public Input<Inputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsGetArgs>? ExclusionOptions { get; set; }
 
+        /// <summary>
+        /// The start time of the exclusion window, in RFC3339 format.
+        /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
 

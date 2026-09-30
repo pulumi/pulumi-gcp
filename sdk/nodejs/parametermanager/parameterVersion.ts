@@ -100,6 +100,20 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ * ### Parameter Version With Data Crc32c
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const parameter_basic = new gcp.parametermanager.Parameter("parameter-basic", {parameterId: "parameter"});
+ * const parameter_version_with_data_crc32c = new gcp.parametermanager.ParameterVersion("parameter-version-with-data-crc32c", {
+ *     parameter: parameter_basic.id,
+ *     parameterVersionId: "parameter_version",
+ *     parameterData: "app-parameter-version-data",
+ *     dataCrc32c: "3931523681",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -145,6 +159,10 @@ export class ParameterVersion extends pulumi.CustomResource {
      * The time at which the Parameter Version was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     */
+    declare public readonly dataCrc32c: pulumi.Output<string>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -200,6 +218,7 @@ export class ParameterVersion extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ParameterVersionState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataCrc32c"] = state?.dataCrc32c;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
@@ -219,6 +238,7 @@ export class ParameterVersion extends pulumi.CustomResource {
             if (args?.parameterVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterVersionId'");
             }
+            resourceInputs["dataCrc32c"] = args?.dataCrc32c;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["parameter"] = args?.parameter;
@@ -244,6 +264,10 @@ export interface ParameterVersionState {
      * The time at which the Parameter Version was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     */
+    dataCrc32c?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -290,6 +314,10 @@ export interface ParameterVersionState {
  * The set of arguments for constructing a ParameterVersion resource.
  */
 export interface ParameterVersionArgs {
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     */
+    dataCrc32c?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

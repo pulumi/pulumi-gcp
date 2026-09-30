@@ -737,7 +737,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly subnetwork: pulumi.Output<string>;
     /**
-     * TPU configuration for the cluster.
+     * ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      */
     declare public readonly tpuConfig: pulumi.Output<outputs.container.ClusterTpuConfig>;
     /**
@@ -747,7 +748,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly tpuIpv4CidrBlock: pulumi.Output<string>;
     /**
-     * The custom keys configuration of the cluster Structure is documented below.
+     * The custom keys configuration of the cluster. Structure is documented below.
      */
     declare public readonly userManagedKeysConfig: pulumi.Output<outputs.container.ClusterUserManagedKeysConfig | undefined>;
     /**
@@ -1540,7 +1541,8 @@ export interface ClusterState {
      */
     subnetwork?: pulumi.Input<string | undefined>;
     /**
-     * TPU configuration for the cluster.
+     * ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      */
     tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig | undefined>;
     /**
@@ -1550,7 +1552,7 @@ export interface ClusterState {
      */
     tpuIpv4CidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The custom keys configuration of the cluster Structure is documented below.
+     * The custom keys configuration of the cluster. Structure is documented below.
      */
     userManagedKeysConfig?: pulumi.Input<inputs.container.ClusterUserManagedKeysConfig | undefined>;
     /**
@@ -2079,11 +2081,12 @@ export interface ClusterArgs {
      */
     subnetwork?: pulumi.Input<string | undefined>;
     /**
-     * TPU configuration for the cluster.
+     * ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      */
     tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig | undefined>;
     /**
-     * The custom keys configuration of the cluster Structure is documented below.
+     * The custom keys configuration of the cluster. Structure is documented below.
      */
     userManagedKeysConfig?: pulumi.Input<inputs.container.ClusterUserManagedKeysConfig | undefined>;
     /**

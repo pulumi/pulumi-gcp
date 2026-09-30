@@ -9,6 +9,7 @@ import com.pulumi.gcp.ces.inputs.AppLoggingSettingsAudioRecordingConfigArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsBigqueryExportSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsCloudLoggingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsConversationLoggingSettingsArgs;
+import com.pulumi.gcp.ces.inputs.AppLoggingSettingsMetricAnalysisSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppLoggingSettingsRedactionConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -88,6 +89,25 @@ public final class AppLoggingSettingsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="metricAnalysisSettings")
+    private @Nullable Output<AppLoggingSettingsMetricAnalysisSettingsArgs> metricAnalysisSettings;
+
+    /**
+     * @return Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppLoggingSettingsMetricAnalysisSettingsArgs>> metricAnalysisSettings() {
+        return Optional.ofNullable(this.metricAnalysisSettings);
+    }
+
+    /**
      * Configuration to instruct how sensitive data should be handled.
      * Structure is documented below.
      * 
@@ -111,6 +131,7 @@ public final class AppLoggingSettingsArgs extends com.pulumi.resources.ResourceA
         this.bigqueryExportSettings = $.bigqueryExportSettings;
         this.cloudLoggingSettings = $.cloudLoggingSettings;
         this.conversationLoggingSettings = $.conversationLoggingSettings;
+        this.metricAnalysisSettings = $.metricAnalysisSettings;
         this.redactionConfig = $.redactionConfig;
     }
 
@@ -222,6 +243,31 @@ public final class AppLoggingSettingsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder conversationLoggingSettings(AppLoggingSettingsConversationLoggingSettingsArgs conversationLoggingSettings) {
             return conversationLoggingSettings(Output.of(conversationLoggingSettings));
+        }
+
+        /**
+         * @param metricAnalysisSettings Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricAnalysisSettings(@Nullable Output<AppLoggingSettingsMetricAnalysisSettingsArgs> metricAnalysisSettings) {
+            $.metricAnalysisSettings = metricAnalysisSettings;
+            return this;
+        }
+
+        /**
+         * @param metricAnalysisSettings Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricAnalysisSettings(AppLoggingSettingsMetricAnalysisSettingsArgs metricAnalysisSettings) {
+            return metricAnalysisSettings(Output.of(metricAnalysisSettings));
         }
 
         /**

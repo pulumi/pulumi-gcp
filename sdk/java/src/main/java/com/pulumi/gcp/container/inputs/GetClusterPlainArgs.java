@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,12 +67,44 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Whether to skip refreshing the GKE
+     * cluster&#39;s node pool list during the data source read. Setting this to `true`
+     * prevents the provider from querying the GKE API for node pools, which resolves
+     * long read times on clusters with a large number of node pools. When enabled,
+     * the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+     * the resource documentation
+     * for details.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="skipNodePoolRefresh")
+    private @Nullable Boolean skipNodePoolRefresh;
+
+    /**
+     * @return Whether to skip refreshing the GKE
+     * cluster&#39;s node pool list during the data source read. Setting this to `true`
+     * prevents the provider from querying the GKE API for node pools, which resolves
+     * long read times on clusters with a large number of node pools. When enabled,
+     * the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+     * the resource documentation
+     * for details.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Boolean> skipNodePoolRefresh() {
+        return Optional.ofNullable(this.skipNodePoolRefresh);
+    }
+
     private GetClusterPlainArgs() {}
 
     private GetClusterPlainArgs(GetClusterPlainArgs $) {
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.skipNodePoolRefresh = $.skipNodePoolRefresh;
     }
 
     public static Builder builder() {
@@ -125,6 +158,25 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder project(@Nullable String project) {
             $.project = project;
+            return this;
+        }
+
+        /**
+         * @param skipNodePoolRefresh Whether to skip refreshing the GKE
+         * cluster&#39;s node pool list during the data source read. Setting this to `true`
+         * prevents the provider from querying the GKE API for node pools, which resolves
+         * long read times on clusters with a large number of node pools. When enabled,
+         * the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+         * the resource documentation
+         * for details.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipNodePoolRefresh(@Nullable Boolean skipNodePoolRefresh) {
+            $.skipNodePoolRefresh = skipNodePoolRefresh;
             return this;
         }
 

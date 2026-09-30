@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/backupdisasterrecovery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,11 +55,6 @@ type GetBackupPlanAssociationsArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-	// ***
-	//
-	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType *string `pulumi:"resourceType"`
 }
 
 // A collection of values returned by getBackupPlanAssociations.
@@ -71,8 +66,6 @@ type GetBackupPlanAssociationsResult struct {
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	Project string `pulumi:"project"`
-	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType *string `pulumi:"resourceType"`
 }
 
 func GetBackupPlanAssociationsOutput(ctx *pulumi.Context, args GetBackupPlanAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetBackupPlanAssociationsResultOutput {
@@ -87,11 +80,6 @@ type GetBackupPlanAssociationsOutputArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-	// ***
-	//
-	// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
 func (GetBackupPlanAssociationsOutputArgs) ElementType() reflect.Type {
@@ -130,11 +118,6 @@ func (o GetBackupPlanAssociationsResultOutput) Location() pulumi.StringOutput {
 // The ID of the project in which the resource belongs.
 func (o GetBackupPlanAssociationsResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationsResult) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// Deprecated: `resourceType` is deprecated and will be removed in a future major release.
-func (o GetBackupPlanAssociationsResultOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetBackupPlanAssociationsResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
 func init() {

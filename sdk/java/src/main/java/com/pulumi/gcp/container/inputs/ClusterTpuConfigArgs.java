@@ -18,14 +18,14 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterTpuConfigArgs Empty = new ClusterTpuConfigArgs();
 
     /**
-     * Whether Cloud TPU integration is enabled or not
+     * Whether Cloud TPU integration is enabled or not.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether Cloud TPU integration is enabled or not
+     * @return Whether Cloud TPU integration is enabled or not.
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * IPv4 CIDR block reserved for Cloud TPU in the VPC.
+     * The IPv4 CIDR block reserved for Cloud TPU in the VPC.
      * 
      */
     @Import(name="ipv4CidrBlock")
     private @Nullable Output<String> ipv4CidrBlock;
 
     /**
-     * @return IPv4 CIDR block reserved for Cloud TPU in the VPC.
+     * @return The IPv4 CIDR block reserved for Cloud TPU in the VPC.
      * 
      */
     public Optional<Output<String>> ipv4CidrBlock() {
@@ -48,14 +48,14 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether to use service networking for Cloud TPU or not
+     * Whether to use service networking for Cloud TPU or not.
      * 
      */
     @Import(name="useServiceNetworking")
     private @Nullable Output<Boolean> useServiceNetworking;
 
     /**
-     * @return Whether to use service networking for Cloud TPU or not
+     * @return Whether to use service networking for Cloud TPU or not.
      * 
      */
     public Optional<Output<Boolean>> useServiceNetworking() {
@@ -89,7 +89,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether Cloud TPU integration is enabled or not
+         * @param enabled Whether Cloud TPU integration is enabled or not.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether Cloud TPU integration is enabled or not
+         * @param enabled Whether Cloud TPU integration is enabled or not.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv4CidrBlock IPv4 CIDR block reserved for Cloud TPU in the VPC.
+         * @param ipv4CidrBlock The IPv4 CIDR block reserved for Cloud TPU in the VPC.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ipv4CidrBlock IPv4 CIDR block reserved for Cloud TPU in the VPC.
+         * @param ipv4CidrBlock The IPv4 CIDR block reserved for Cloud TPU in the VPC.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param useServiceNetworking Whether to use service networking for Cloud TPU or not
+         * @param useServiceNetworking Whether to use service networking for Cloud TPU or not.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param useServiceNetworking Whether to use service networking for Cloud TPU or not
+         * @param useServiceNetworking Whether to use service networking for Cloud TPU or not.
          * 
          * @return builder
          * 

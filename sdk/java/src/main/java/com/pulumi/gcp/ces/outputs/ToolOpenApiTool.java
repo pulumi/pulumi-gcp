@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 public final class ToolOpenApiTool {
     /**
      * @return (Output)
-     * Authentication information required for API calls.
+     * Authentication information required for calling the remote agent.
      * Structure is documented below.
      * 
      */
@@ -72,7 +72,7 @@ public final class ToolOpenApiTool {
     private ToolOpenApiTool() {}
     /**
      * @return (Output)
-     * Authentication information required for API calls.
+     * Authentication information required for calling the remote agent.
      * Structure is documented below.
      * 
      */

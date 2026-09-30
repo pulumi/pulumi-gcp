@@ -143,7 +143,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
     /**
-     * @return The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+     * @return ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
@@ -327,7 +327,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
     /**
-     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+     * @return Windows node configuration. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigWindowsNodeConfig windowsNodeConfig;
@@ -476,7 +476,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.gvnic);
     }
     /**
-     * @return The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+     * @return ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigHostMaintenancePolicy> hostMaintenancePolicy() {
@@ -720,7 +720,7 @@ public final class ClusterNodePoolNodeConfig {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
-     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+     * @return Windows node configuration. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigWindowsNodeConfig> windowsNodeConfig() {

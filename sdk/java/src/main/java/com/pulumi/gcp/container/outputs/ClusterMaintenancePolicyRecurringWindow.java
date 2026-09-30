@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterMaintenancePolicyRecurringWindow {
+    /**
+     * @return The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     private String endTime;
     /**
      * @return Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
@@ -18,9 +22,17 @@ public final class ClusterMaintenancePolicyRecurringWindow {
      * 
      */
     private String recurrence;
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     private String startTime;
 
     private ClusterMaintenancePolicyRecurringWindow() {}
+    /**
+     * @return The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     public String endTime() {
         return this.endTime;
     }
@@ -33,6 +45,10 @@ public final class ClusterMaintenancePolicyRecurringWindow {
     public String recurrence() {
         return this.recurrence;
     }
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

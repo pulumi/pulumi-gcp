@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,23 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs exte
      */
     public Optional<Output<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs>> inspectTemplateModifiedCadence() {
         return Optional.ofNullable(this.inspectTemplateModifiedCadence);
+    }
+
+    /**
+     * Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+     * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+     * 
+     */
+    @Import(name="refreshFrequency")
+    private @Nullable Output<String> refreshFrequency;
+
+    /**
+     * @return Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+     * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+     * 
+     */
+    public Optional<Output<String>> refreshFrequency() {
+        return Optional.ofNullable(this.refreshFrequency);
     }
 
     /**
@@ -72,6 +90,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs exte
 
     private PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs(PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs $) {
         this.inspectTemplateModifiedCadence = $.inspectTemplateModifiedCadence;
+        this.refreshFrequency = $.refreshFrequency;
         this.schemaModifiedCadence = $.schemaModifiedCadence;
         this.tableModifiedCadence = $.tableModifiedCadence;
     }
@@ -115,6 +134,29 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs exte
          */
         public Builder inspectTemplateModifiedCadence(PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs inspectTemplateModifiedCadence) {
             return inspectTemplateModifiedCadence(Output.of(inspectTemplateModifiedCadence));
+        }
+
+        /**
+         * @param refreshFrequency Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshFrequency(@Nullable Output<String> refreshFrequency) {
+            $.refreshFrequency = refreshFrequency;
+            return this;
+        }
+
+        /**
+         * @param refreshFrequency Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshFrequency(String refreshFrequency) {
+            return refreshFrequency(Output.of(refreshFrequency));
         }
 
         /**

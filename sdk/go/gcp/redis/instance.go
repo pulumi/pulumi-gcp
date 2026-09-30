@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -39,6 +39,7 @@ import (
 //			_, err := redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
 //				Name:               pulumi.String("memory-cache"),
 //				MemorySizeGb:       pulumi.Int(1),
+//				Region:             pulumi.String("us-west1"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -56,8 +57,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,8 +83,9 @@ import (
 //				Name:                  pulumi.String("ha-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				LocationId:            pulumi.String("us-central1-a"),
-//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				Region:                pulumi.String("us-west1"),
+//				LocationId:            pulumi.String("us-west1-a"),
+//				AlternativeLocationId: pulumi.String("us-west1-b"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -121,7 +123,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -132,8 +134,9 @@ import (
 //				Name:                  pulumi.String("ha-memory-cache-persis"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				LocationId:            pulumi.String("us-central1-a"),
-//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				Region:                pulumi.String("us-west1"),
+//				LocationId:            pulumi.String("us-west1-a"),
+//				AlternativeLocationId: pulumi.String("us-west1-b"),
 //				PersistenceConfig: &redis.InstancePersistenceConfigArgs{
 //					PersistenceMode:   pulumi.String("RDB"),
 //					RdbSnapshotPeriod: pulumi.String("TWELVE_HOURS"),
@@ -154,9 +157,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -201,8 +204,9 @@ import (
 //				Name:                  pulumi.String("private-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				LocationId:            pulumi.String("us-central1-a"),
-//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				Region:                pulumi.String("us-west1"),
+//				LocationId:            pulumi.String("us-west1-a"),
+//				AlternativeLocationId: pulumi.String("us-west1-b"),
 //				AuthorizedNetwork:     redis_network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
@@ -225,8 +229,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -251,8 +255,9 @@ import (
 //				Name:                  pulumi.String("mrr-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(5),
-//				LocationId:            pulumi.String("us-central1-a"),
-//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				Region:                pulumi.String("us-west1"),
+//				LocationId:            pulumi.String("us-west1-a"),
+//				AlternativeLocationId: pulumi.String("us-west1-b"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -278,9 +283,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -289,7 +294,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			redisKeyring, err := kms.NewKeyRing(ctx, "redis_keyring", &kms.KeyRingArgs{
 //				Name:     pulumi.String("redis-keyring"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-west1"),
 //			})
 //			if err != nil {
 //				return err
@@ -319,8 +324,9 @@ import (
 //				Name:                  pulumi.String("cmek-memory-cache"),
 //				Tier:                  pulumi.String("STANDARD_HA"),
 //				MemorySizeGb:          pulumi.Int(1),
-//				LocationId:            pulumi.String("us-central1-a"),
-//				AlternativeLocationId: pulumi.String("us-central1-f"),
+//				Region:                pulumi.String("us-west1"),
+//				LocationId:            pulumi.String("us-west1-a"),
+//				AlternativeLocationId: pulumi.String("us-west1-b"),
 //				AuthorizedNetwork:     pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),

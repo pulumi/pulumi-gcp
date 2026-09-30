@@ -12,7 +12,6 @@ import com.pulumi.gcp.compute.outputs.GetReservationResourceStatus;
 import com.pulumi.gcp.compute.outputs.GetReservationShareSetting;
 import com.pulumi.gcp.compute.outputs.GetReservationSpecificReservation;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +34,6 @@ public final class GetReservationResult {
     private String name;
     private List<GetReservationParam> params;
     private @Nullable String project;
-    private Integer reservationBlockCount;
     private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
     private List<GetReservationResourceStatus> resourceStatuses;
     private Boolean satisfiesPzs;
@@ -89,9 +87,6 @@ public final class GetReservationResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
-    public Integer reservationBlockCount() {
-        return this.reservationBlockCount;
-    }
     public List<GetReservationReservationSharingPolicy> reservationSharingPolicies() {
         return this.reservationSharingPolicies;
     }
@@ -143,7 +138,6 @@ public final class GetReservationResult {
         private String name;
         private List<GetReservationParam> params;
         private @Nullable String project;
-        private Integer reservationBlockCount;
         private List<GetReservationReservationSharingPolicy> reservationSharingPolicies;
         private List<GetReservationResourceStatus> resourceStatuses;
         private Boolean satisfiesPzs;
@@ -170,7 +164,6 @@ public final class GetReservationResult {
     	      this.name = defaults.name;
     	      this.params = defaults.params;
     	      this.project = defaults.project;
-    	      this.reservationBlockCount = defaults.reservationBlockCount;
     	      this.reservationSharingPolicies = defaults.reservationSharingPolicies;
     	      this.resourceStatuses = defaults.resourceStatuses;
     	      this.satisfiesPzs = defaults.satisfiesPzs;
@@ -305,14 +298,6 @@ public final class GetReservationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder reservationBlockCount(Integer reservationBlockCount) {
-            if (reservationBlockCount == null) {
-              throw new MissingRequiredPropertyException("GetReservationResult", "reservationBlockCount");
-            }
-            this.reservationBlockCount = reservationBlockCount;
-            return this;
-        }
-        @CustomType.Setter
         public Builder reservationSharingPolicies(List<GetReservationReservationSharingPolicy> reservationSharingPolicies) {
             if (reservationSharingPolicies == null) {
               throw new MissingRequiredPropertyException("GetReservationResult", "reservationSharingPolicies");
@@ -412,7 +397,6 @@ public final class GetReservationResult {
             _resultValue.name = name;
             _resultValue.params = params;
             _resultValue.project = project;
-            _resultValue.reservationBlockCount = reservationBlockCount;
             _resultValue.reservationSharingPolicies = reservationSharingPolicies;
             _resultValue.resourceStatuses = resourceStatuses;
             _resultValue.satisfiesPzs = satisfiesPzs;

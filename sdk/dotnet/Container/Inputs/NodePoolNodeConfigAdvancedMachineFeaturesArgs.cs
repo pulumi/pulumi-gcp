@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool>? EnableNestedVirtualization { get; set; }
 
         /// <summary>
-        /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        /// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         /// </summary>
         [Input("performanceMonitoringUnit")]
         public Input<string>? PerformanceMonitoringUnit { get; set; }

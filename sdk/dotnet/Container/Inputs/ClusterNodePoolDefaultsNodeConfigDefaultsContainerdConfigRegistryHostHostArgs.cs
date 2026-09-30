@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _capabilities;
 
         /// <summary>
-        /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
         /// </summary>
         public InputList<string> Capabilities
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgs>? _cas;
 
         /// <summary>
-        /// Configures the registry host certificate.
+        /// Configures the registry host certificate. Contains `GcpSecretManagerSecretUri` (Optional).
         /// </summary>
         public InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgs> Cas
         {
@@ -40,7 +40,9 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgs>? _clients;
 
         /// <summary>
-        /// Configures the registry host client certificate and key.
+        /// Configures the registry host client certificate and key. Contains `Cert` (Required) with `GcpSecretManagerSecretUri` (Optional) and `Key` (Optional) with `GcpSecretManagerSecretUri` (Optional).
+        /// 
+        /// Example:
         /// </summary>
         public InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgs> Clients
         {
@@ -58,7 +60,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgs>? _headers;
 
         /// <summary>
-        /// Configures the registry host headers.
+        /// Configures the registry host headers. Each header contains `Key` (Required, string) and `Value` (Required, list of strings).
         /// </summary>
         public InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgs> Headers
         {
@@ -73,7 +75,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        /// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         /// </summary>
         [Input("overridePath")]
         public Input<bool>? OverridePath { get; set; }

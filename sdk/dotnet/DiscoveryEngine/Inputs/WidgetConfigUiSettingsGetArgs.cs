@@ -103,6 +103,23 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
         [Input("resultDescriptionType")]
         public Input<string>? ResultDescriptionType { get; set; }
 
+        /// <summary>
+        /// SearchAddonSpec is used to disable add-ons for search. By default, if this
+        /// field is not specified, add-ons are enabled wherever applicable.
+        /// This field is only supported for search requests.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("searchAddonSpec")]
+        public Input<Inputs.WidgetConfigUiSettingsSearchAddonSpecGetArgs>? SearchAddonSpec { get; set; }
+
+        /// <summary>
+        /// Whether to show the admin-configured display name for data connectors in
+        /// the widget sources UI (instead of the connector kind). Opt-in; defaults
+        /// to false.
+        /// </summary>
+        [Input("sourceAdminDisplayNameEnabled")]
+        public Input<bool>? SourceAdminDisplayNameEnabled { get; set; }
+
         public WidgetConfigUiSettingsGetArgs()
         {
         }

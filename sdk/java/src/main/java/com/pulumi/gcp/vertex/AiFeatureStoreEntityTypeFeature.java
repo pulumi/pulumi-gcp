@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
- *             .name("terraform")
+ *             .name("terraform_feature")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -66,13 +66,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()
- *             .name("terraform")
+ *             .name("terraform_feature")
  *             .labels(Map.of("foo", "bar"))
  *             .featurestore(featurestore.id())
  *             .build());
  * 
  *         var feature = new AiFeatureStoreEntityTypeFeature("feature", AiFeatureStoreEntityTypeFeatureArgs.builder()
- *             .name("terraform")
+ *             .name("terraform_feature")
  *             .labels(Map.of("foo", "bar"))
  *             .entitytype(entity.id())
  *             .valueType("INT64_ARRAY")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
- *             .name("terraform2")
+ *             .name("terraform_feature_2")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var entity = new AiFeatureStoreEntityType("entity", AiFeatureStoreEntityTypeArgs.builder()
- *             .name("terraform2")
+ *             .name("terraform_feature_2")
  *             .labels(Map.of("foo", "bar"))
  *             .featurestore(featurestore.id())
  *             .monitoringConfig(AiFeatureStoreEntityTypeMonitoringConfigArgs.builder()
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var feature = new AiFeatureStoreEntityTypeFeature("feature", AiFeatureStoreEntityTypeFeatureArgs.builder()
- *             .name("terraform2")
+ *             .name("terraform_feature_2")
  *             .labels(Map.of("foo", "bar"))
  *             .entitytype(entity.id())
  *             .valueType("INT64_ARRAY")

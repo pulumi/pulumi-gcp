@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = $"{project}-bq-geojson",
+    ///         Name = $"bq-geojson-{project}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });

@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.BigQuery
     /// * How-to Guides
     ///     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `cloud_sql.credential.password_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Bigquery Connection Cloud Resource
@@ -378,6 +381,63 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Connection Sql With Cmek Password Wo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "my-database-instance",
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "POSTGRES_11",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Name = "db",
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Password = "tf-test-my-password_60302",
+    ///     });
+    /// 
+    ///     var bq_connection_cmek = new Gcp.BigQuery.Connection("bq-connection-cmek", new()
+    ///     {
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         Location = "US",
+    ///         KmsKeyName = "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+    ///         CloudSql = new Gcp.BigQuery.Inputs.ConnectionCloudSqlArgs
+    ///         {
+    ///             InstanceId = instance.ConnectionName,
+    ///             Database = db.Name,
+    ///             Type = "POSTGRES",
+    ///             Credential = new Gcp.BigQuery.Inputs.ConnectionCloudSqlCredentialArgs
+    ///             {
+    ///                 Username = user.Name,
+    ///                 PasswordWo = user.Password,
+    ///                 PasswordWoVersion = "1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Bigquery Connection Connector Configuration
     /// 
     /// ```csharp
@@ -388,16 +448,16 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nameSuffix = "my-connection";
+    ///     var namePrefix = "my-connection";
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
     ///     {
-    ///         Name = $"alloydb-network-{nameSuffix}",
+    ///         Name = $"{namePrefix}-alloydb-network",
     ///     });
     /// 
     ///     var @default = new Gcp.Alloydb.Cluster("default", new()
     ///     {
-    ///         ClusterId = $"alloydb-cluster-{nameSuffix}",
+    ///         ClusterId = $"{namePrefix}-alloydb-cluster",
     ///         Location = "us-central1",
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
@@ -412,7 +472,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
     ///     {
-    ///         Name = $"alloydb-ip-{nameSuffix}",
+    ///         Name = $"{namePrefix}-alloydb-ip",
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
@@ -432,7 +492,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var defaultInstance = new Gcp.Alloydb.Instance("default", new()
     ///     {
     ///         Cluster = @default.Name,
-    ///         InstanceId = $"alloydb-instance-{nameSuffix}",
+    ///         InstanceId = $"{namePrefix}-alloydb-instance",
     ///         InstanceType = "PRIMARY",
     ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
     ///         {

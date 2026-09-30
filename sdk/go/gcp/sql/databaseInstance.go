@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,9 +67,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -140,7 +140,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -173,7 +173,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -216,7 +216,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -262,7 +262,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -314,7 +314,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -362,7 +362,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -398,7 +398,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -438,7 +438,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -572,6 +572,8 @@ type DatabaseInstance struct {
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames DatabaseInstanceDnsNameArrayOutput `pulumi:"dnsNames"`
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+	EncryptionConfidentialMode pulumi.BoolOutput `pulumi:"encryptionConfidentialMode"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -750,6 +752,8 @@ type databaseInstanceState struct {
 	DnsName *string `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames []DatabaseInstanceDnsName `pulumi:"dnsNames"`
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+	EncryptionConfidentialMode *bool `pulumi:"encryptionConfidentialMode"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -880,6 +884,8 @@ type DatabaseInstanceState struct {
 	DnsName pulumi.StringPtrInput
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 	DnsNames DatabaseInstanceDnsNameArrayInput
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+	EncryptionConfidentialMode pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -1005,6 +1011,8 @@ type databaseInstanceArgs struct {
 	//
 	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+	EncryptionConfidentialMode *bool `pulumi:"encryptionConfidentialMode"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -1112,6 +1120,8 @@ type DatabaseInstanceArgs struct {
 	//
 	// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
 	DeletionProtection pulumi.BoolPtrInput
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+	EncryptionConfidentialMode pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -1338,6 +1348,11 @@ func (o DatabaseInstanceOutput) DnsName() pulumi.StringOutput {
 // The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 func (o DatabaseInstanceOutput) DnsNames() DatabaseInstanceDnsNameArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceDnsNameArrayOutput { return v.DnsNames }).(DatabaseInstanceDnsNameArrayOutput)
+}
+
+// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+func (o DatabaseInstanceOutput) EncryptionConfidentialMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EncryptionConfidentialMode }).(pulumi.BoolOutput)
 }
 
 // The full path to the encryption key used for the CMEK disk encryption.  Setting

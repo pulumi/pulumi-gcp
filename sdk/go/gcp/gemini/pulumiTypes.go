@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -256,6 +256,394 @@ func (o CodeToolsSettingEnabledToolConfigArrayOutput) Index(i pulumi.IntInput) C
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CodeToolsSettingEnabledToolConfig {
 		return vs[0].([]CodeToolsSettingEnabledToolConfig)[vs[1].(int)]
 	}).(CodeToolsSettingEnabledToolConfigOutput)
+}
+
+type GdaObservabilitySettingConversationalAnalyticsSetting struct {
+	// Whether to enable feedback.
+	FeedbackEnabled *bool `pulumi:"feedbackEnabled"`
+	// Whether to enable logging.
+	LoggingEnabled *bool `pulumi:"loggingEnabled"`
+	// Whether to enable metrics.
+	MetricsEnabled *bool `pulumi:"metricsEnabled"`
+	// Whether to enable traces.
+	TracesEnabled *bool `pulumi:"tracesEnabled"`
+}
+
+// GdaObservabilitySettingConversationalAnalyticsSettingInput is an input type that accepts GdaObservabilitySettingConversationalAnalyticsSettingArgs and GdaObservabilitySettingConversationalAnalyticsSettingOutput values.
+// You can construct a concrete instance of `GdaObservabilitySettingConversationalAnalyticsSettingInput` via:
+//
+//	GdaObservabilitySettingConversationalAnalyticsSettingArgs{...}
+type GdaObservabilitySettingConversationalAnalyticsSettingInput interface {
+	pulumi.Input
+
+	ToGdaObservabilitySettingConversationalAnalyticsSettingOutput() GdaObservabilitySettingConversationalAnalyticsSettingOutput
+	ToGdaObservabilitySettingConversationalAnalyticsSettingOutputWithContext(context.Context) GdaObservabilitySettingConversationalAnalyticsSettingOutput
+}
+
+type GdaObservabilitySettingConversationalAnalyticsSettingArgs struct {
+	// Whether to enable feedback.
+	FeedbackEnabled pulumi.BoolPtrInput `pulumi:"feedbackEnabled"`
+	// Whether to enable logging.
+	LoggingEnabled pulumi.BoolPtrInput `pulumi:"loggingEnabled"`
+	// Whether to enable metrics.
+	MetricsEnabled pulumi.BoolPtrInput `pulumi:"metricsEnabled"`
+	// Whether to enable traces.
+	TracesEnabled pulumi.BoolPtrInput `pulumi:"tracesEnabled"`
+}
+
+func (GdaObservabilitySettingConversationalAnalyticsSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdaObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (i GdaObservabilitySettingConversationalAnalyticsSettingArgs) ToGdaObservabilitySettingConversationalAnalyticsSettingOutput() GdaObservabilitySettingConversationalAnalyticsSettingOutput {
+	return i.ToGdaObservabilitySettingConversationalAnalyticsSettingOutputWithContext(context.Background())
+}
+
+func (i GdaObservabilitySettingConversationalAnalyticsSettingArgs) ToGdaObservabilitySettingConversationalAnalyticsSettingOutputWithContext(ctx context.Context) GdaObservabilitySettingConversationalAnalyticsSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdaObservabilitySettingConversationalAnalyticsSettingOutput)
+}
+
+func (i GdaObservabilitySettingConversationalAnalyticsSettingArgs) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutput() GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return i.ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Background())
+}
+
+func (i GdaObservabilitySettingConversationalAnalyticsSettingArgs) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdaObservabilitySettingConversationalAnalyticsSettingOutput).ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx)
+}
+
+// GdaObservabilitySettingConversationalAnalyticsSettingPtrInput is an input type that accepts GdaObservabilitySettingConversationalAnalyticsSettingArgs, GdaObservabilitySettingConversationalAnalyticsSettingPtr and GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput values.
+// You can construct a concrete instance of `GdaObservabilitySettingConversationalAnalyticsSettingPtrInput` via:
+//
+//	        GdaObservabilitySettingConversationalAnalyticsSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdaObservabilitySettingConversationalAnalyticsSettingPtrInput interface {
+	pulumi.Input
+
+	ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutput() GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput
+	ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Context) GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput
+}
+
+type gdaObservabilitySettingConversationalAnalyticsSettingPtrType GdaObservabilitySettingConversationalAnalyticsSettingArgs
+
+func GdaObservabilitySettingConversationalAnalyticsSettingPtr(v *GdaObservabilitySettingConversationalAnalyticsSettingArgs) GdaObservabilitySettingConversationalAnalyticsSettingPtrInput {
+	return (*gdaObservabilitySettingConversationalAnalyticsSettingPtrType)(v)
+}
+
+func (*gdaObservabilitySettingConversationalAnalyticsSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdaObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (i *gdaObservabilitySettingConversationalAnalyticsSettingPtrType) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutput() GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return i.ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *gdaObservabilitySettingConversationalAnalyticsSettingPtrType) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput)
+}
+
+type GdaObservabilitySettingConversationalAnalyticsSettingOutput struct{ *pulumi.OutputState }
+
+func (GdaObservabilitySettingConversationalAnalyticsSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdaObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) ToGdaObservabilitySettingConversationalAnalyticsSettingOutput() GdaObservabilitySettingConversationalAnalyticsSettingOutput {
+	return o
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) ToGdaObservabilitySettingConversationalAnalyticsSettingOutputWithContext(ctx context.Context) GdaObservabilitySettingConversationalAnalyticsSettingOutput {
+	return o
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutput() GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o.ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Background())
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdaObservabilitySettingConversationalAnalyticsSetting) *GdaObservabilitySettingConversationalAnalyticsSetting {
+		return &v
+	}).(GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput)
+}
+
+// Whether to enable feedback.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) FeedbackEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GdaObservabilitySettingConversationalAnalyticsSetting) *bool { return v.FeedbackEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable logging.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) LoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GdaObservabilitySettingConversationalAnalyticsSetting) *bool { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable metrics.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GdaObservabilitySettingConversationalAnalyticsSetting) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable traces.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingOutput) TracesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GdaObservabilitySettingConversationalAnalyticsSetting) *bool { return v.TracesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdaObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutput() GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) ToGdaObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o
+}
+
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) Elem() GdaObservabilitySettingConversationalAnalyticsSettingOutput {
+	return o.ApplyT(func(v *GdaObservabilitySettingConversationalAnalyticsSetting) GdaObservabilitySettingConversationalAnalyticsSetting {
+		if v != nil {
+			return *v
+		}
+		var ret GdaObservabilitySettingConversationalAnalyticsSetting
+		return ret
+	}).(GdaObservabilitySettingConversationalAnalyticsSettingOutput)
+}
+
+// Whether to enable feedback.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) FeedbackEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GdaObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FeedbackEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable logging.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) LoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GdaObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable metrics.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GdaObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable traces.
+func (o GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput) TracesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GdaObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TracesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GibqObservabilitySettingConversationalAnalyticsSetting struct {
+	// Whether to enable feedback.
+	FeedbackEnabled *bool `pulumi:"feedbackEnabled"`
+	// Whether to enable logging.
+	LoggingEnabled *bool `pulumi:"loggingEnabled"`
+	// Whether to enable metrics.
+	MetricsEnabled *bool `pulumi:"metricsEnabled"`
+	// Whether to enable traces.
+	TracesEnabled *bool `pulumi:"tracesEnabled"`
+}
+
+// GibqObservabilitySettingConversationalAnalyticsSettingInput is an input type that accepts GibqObservabilitySettingConversationalAnalyticsSettingArgs and GibqObservabilitySettingConversationalAnalyticsSettingOutput values.
+// You can construct a concrete instance of `GibqObservabilitySettingConversationalAnalyticsSettingInput` via:
+//
+//	GibqObservabilitySettingConversationalAnalyticsSettingArgs{...}
+type GibqObservabilitySettingConversationalAnalyticsSettingInput interface {
+	pulumi.Input
+
+	ToGibqObservabilitySettingConversationalAnalyticsSettingOutput() GibqObservabilitySettingConversationalAnalyticsSettingOutput
+	ToGibqObservabilitySettingConversationalAnalyticsSettingOutputWithContext(context.Context) GibqObservabilitySettingConversationalAnalyticsSettingOutput
+}
+
+type GibqObservabilitySettingConversationalAnalyticsSettingArgs struct {
+	// Whether to enable feedback.
+	FeedbackEnabled pulumi.BoolPtrInput `pulumi:"feedbackEnabled"`
+	// Whether to enable logging.
+	LoggingEnabled pulumi.BoolPtrInput `pulumi:"loggingEnabled"`
+	// Whether to enable metrics.
+	MetricsEnabled pulumi.BoolPtrInput `pulumi:"metricsEnabled"`
+	// Whether to enable traces.
+	TracesEnabled pulumi.BoolPtrInput `pulumi:"tracesEnabled"`
+}
+
+func (GibqObservabilitySettingConversationalAnalyticsSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GibqObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (i GibqObservabilitySettingConversationalAnalyticsSettingArgs) ToGibqObservabilitySettingConversationalAnalyticsSettingOutput() GibqObservabilitySettingConversationalAnalyticsSettingOutput {
+	return i.ToGibqObservabilitySettingConversationalAnalyticsSettingOutputWithContext(context.Background())
+}
+
+func (i GibqObservabilitySettingConversationalAnalyticsSettingArgs) ToGibqObservabilitySettingConversationalAnalyticsSettingOutputWithContext(ctx context.Context) GibqObservabilitySettingConversationalAnalyticsSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GibqObservabilitySettingConversationalAnalyticsSettingOutput)
+}
+
+func (i GibqObservabilitySettingConversationalAnalyticsSettingArgs) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutput() GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return i.ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Background())
+}
+
+func (i GibqObservabilitySettingConversationalAnalyticsSettingArgs) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GibqObservabilitySettingConversationalAnalyticsSettingOutput).ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx)
+}
+
+// GibqObservabilitySettingConversationalAnalyticsSettingPtrInput is an input type that accepts GibqObservabilitySettingConversationalAnalyticsSettingArgs, GibqObservabilitySettingConversationalAnalyticsSettingPtr and GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput values.
+// You can construct a concrete instance of `GibqObservabilitySettingConversationalAnalyticsSettingPtrInput` via:
+//
+//	        GibqObservabilitySettingConversationalAnalyticsSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GibqObservabilitySettingConversationalAnalyticsSettingPtrInput interface {
+	pulumi.Input
+
+	ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutput() GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput
+	ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Context) GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput
+}
+
+type gibqObservabilitySettingConversationalAnalyticsSettingPtrType GibqObservabilitySettingConversationalAnalyticsSettingArgs
+
+func GibqObservabilitySettingConversationalAnalyticsSettingPtr(v *GibqObservabilitySettingConversationalAnalyticsSettingArgs) GibqObservabilitySettingConversationalAnalyticsSettingPtrInput {
+	return (*gibqObservabilitySettingConversationalAnalyticsSettingPtrType)(v)
+}
+
+func (*gibqObservabilitySettingConversationalAnalyticsSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GibqObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (i *gibqObservabilitySettingConversationalAnalyticsSettingPtrType) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutput() GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return i.ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *gibqObservabilitySettingConversationalAnalyticsSettingPtrType) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput)
+}
+
+type GibqObservabilitySettingConversationalAnalyticsSettingOutput struct{ *pulumi.OutputState }
+
+func (GibqObservabilitySettingConversationalAnalyticsSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GibqObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) ToGibqObservabilitySettingConversationalAnalyticsSettingOutput() GibqObservabilitySettingConversationalAnalyticsSettingOutput {
+	return o
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) ToGibqObservabilitySettingConversationalAnalyticsSettingOutputWithContext(ctx context.Context) GibqObservabilitySettingConversationalAnalyticsSettingOutput {
+	return o
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutput() GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o.ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(context.Background())
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GibqObservabilitySettingConversationalAnalyticsSetting) *GibqObservabilitySettingConversationalAnalyticsSetting {
+		return &v
+	}).(GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput)
+}
+
+// Whether to enable feedback.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) FeedbackEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GibqObservabilitySettingConversationalAnalyticsSetting) *bool { return v.FeedbackEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable logging.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) LoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GibqObservabilitySettingConversationalAnalyticsSetting) *bool { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable metrics.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GibqObservabilitySettingConversationalAnalyticsSetting) *bool { return v.MetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable traces.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingOutput) TracesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GibqObservabilitySettingConversationalAnalyticsSetting) *bool { return v.TracesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GibqObservabilitySettingConversationalAnalyticsSetting)(nil)).Elem()
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutput() GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) ToGibqObservabilitySettingConversationalAnalyticsSettingPtrOutputWithContext(ctx context.Context) GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput {
+	return o
+}
+
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) Elem() GibqObservabilitySettingConversationalAnalyticsSettingOutput {
+	return o.ApplyT(func(v *GibqObservabilitySettingConversationalAnalyticsSetting) GibqObservabilitySettingConversationalAnalyticsSetting {
+		if v != nil {
+			return *v
+		}
+		var ret GibqObservabilitySettingConversationalAnalyticsSetting
+		return ret
+	}).(GibqObservabilitySettingConversationalAnalyticsSettingOutput)
+}
+
+// Whether to enable feedback.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) FeedbackEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GibqObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FeedbackEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable logging.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) LoggingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GibqObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable metrics.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) MetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GibqObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable traces.
+func (o GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput) TracesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GibqObservabilitySettingConversationalAnalyticsSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TracesEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type RepositoryGroupIamBindingCondition struct {
@@ -701,6 +1089,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolArrayInput)(nil)).Elem(), CodeToolsSettingEnabledToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolConfigInput)(nil)).Elem(), CodeToolsSettingEnabledToolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolConfigArrayInput)(nil)).Elem(), CodeToolsSettingEnabledToolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdaObservabilitySettingConversationalAnalyticsSettingInput)(nil)).Elem(), GdaObservabilitySettingConversationalAnalyticsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdaObservabilitySettingConversationalAnalyticsSettingPtrInput)(nil)).Elem(), GdaObservabilitySettingConversationalAnalyticsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GibqObservabilitySettingConversationalAnalyticsSettingInput)(nil)).Elem(), GibqObservabilitySettingConversationalAnalyticsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GibqObservabilitySettingConversationalAnalyticsSettingPtrInput)(nil)).Elem(), GibqObservabilitySettingConversationalAnalyticsSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamBindingConditionInput)(nil)).Elem(), RepositoryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamBindingConditionPtrInput)(nil)).Elem(), RepositoryGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGroupIamMemberConditionInput)(nil)).Elem(), RepositoryGroupIamMemberConditionArgs{})
@@ -711,6 +1103,10 @@ func init() {
 	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolArrayOutput{})
 	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolConfigOutput{})
 	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolConfigArrayOutput{})
+	pulumi.RegisterOutputType(GdaObservabilitySettingConversationalAnalyticsSettingOutput{})
+	pulumi.RegisterOutputType(GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput{})
+	pulumi.RegisterOutputType(GibqObservabilitySettingConversationalAnalyticsSettingOutput{})
+	pulumi.RegisterOutputType(GibqObservabilitySettingConversationalAnalyticsSettingPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryGroupIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryGroupIamMemberConditionOutput{})

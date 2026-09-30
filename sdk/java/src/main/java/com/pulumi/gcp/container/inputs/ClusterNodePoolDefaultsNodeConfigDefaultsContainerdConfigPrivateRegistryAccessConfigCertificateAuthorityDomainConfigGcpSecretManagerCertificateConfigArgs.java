@@ -15,14 +15,18 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
     public static final ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs Empty = new ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs();
 
     /**
-     * URI for the secret that hosts a certificate. Must be in the format &#39;projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST&#39;.
+     * URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+     * 
+     * Example:
      * 
      */
     @Import(name="secretUri", required=true)
     private Output<String> secretUri;
 
     /**
-     * @return URI for the secret that hosts a certificate. Must be in the format &#39;projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST&#39;.
+     * @return URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+     * 
+     * Example:
      * 
      */
     public Output<String> secretUri() {
@@ -54,7 +58,9 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
         }
 
         /**
-         * @param secretUri URI for the secret that hosts a certificate. Must be in the format &#39;projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST&#39;.
+         * @param secretUri URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+         * 
+         * Example:
          * 
          * @return builder
          * 
@@ -65,7 +71,9 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
         }
 
         /**
-         * @param secretUri URI for the secret that hosts a certificate. Must be in the format &#39;projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST&#39;.
+         * @param secretUri URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+         * 
+         * Example:
          * 
          * @return builder
          * 

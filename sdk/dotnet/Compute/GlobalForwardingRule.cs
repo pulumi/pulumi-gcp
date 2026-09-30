@@ -29,12 +29,16 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("default", new()
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
-    ///         Name = "check-backend",
-    ///         RequestPath = "/",
+    ///         Name = "backend-check",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///             RequestPath = "/",
+    ///         },
     ///     });
     /// 
     ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
@@ -43,12 +47,12 @@ namespace Pulumi.Gcp.Compute
     ///         PortName = "http",
     ///         Protocol = "HTTP",
     ///         TimeoutSec = 10,
-    ///         HealthChecks = defaultHttpHealthCheck.Id,
+    ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
     ///     {
-    ///         Name = "url-map-target-proxy",
+    ///         Name = "target-proxy-url-map",
     ///         Description = "a description",
     ///         DefaultService = defaultBackendService.Id,
     ///         HostRules = new[]
@@ -117,7 +121,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
     ///     {
-    ///         Name = "template-backend",
+    ///         Name = "backend-template",
     ///         MachineType = "e2-medium",
     ///         NetworkInterfaces = new[]
     ///         {
@@ -155,7 +159,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
     ///     {
-    ///         Name = "check-backend",
+    ///         Name = "backend-check",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -186,7 +190,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
     ///     {
-    ///         Name = "url-map-target-proxy",
+    ///         Name = "target-proxy-url-map",
     ///         Description = "a description",
     ///         DefaultService = defaultBackendService.Id,
     ///         HostRules = new[]
@@ -275,7 +279,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
     ///     {
-    ///         Name = "url-map-target-proxy",
+    ///         Name = "target-proxy-url-map",
     ///         Description = "a description",
     ///         DefaultService = defaultBackendService.Id,
     ///         HostRules = new[]
@@ -448,7 +452,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var defaultURLMap = new Gcp.Compute.URLMap("default", new()
     ///     {
-    ///         Name = "url-map-target-proxy",
+    ///         Name = "target-proxy-url-map",
     ///         Description = "a description",
     ///         DefaultService = defaultBackendService.Id,
     ///         HostRules = new[]
@@ -778,7 +782,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the forwarding rule type.
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-        /// Default value is `EXTERNAL`.
+        /// Default value is `EXTERNAL_MANAGED`.
         /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
@@ -1127,7 +1131,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the forwarding rule type.
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-        /// Default value is `EXTERNAL`.
+        /// Default value is `EXTERNAL_MANAGED`.
         /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
@@ -1455,7 +1459,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the forwarding rule type.
         /// For more information about forwarding rules, refer to
         /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-        /// Default value is `EXTERNAL`.
+        /// Default value is `EXTERNAL_MANAGED`.
         /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]

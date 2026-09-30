@@ -247,6 +247,47 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Parameter Version With Data Crc32c
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.parametermanager.Parameter;
+ * import com.pulumi.gcp.parametermanager.ParameterArgs;
+ * import com.pulumi.gcp.parametermanager.ParameterVersion;
+ * import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var parameter_basic = new Parameter("parameter-basic", ParameterArgs.builder()
+ *             .parameterId("parameter")
+ *             .build());
+ * 
+ *         var parameter_version_with_data_crc32c = new ParameterVersion("parameter-version-with-data-crc32c", ParameterVersionArgs.builder()
+ *             .parameter(parameter_basic.id())
+ *             .parameterVersionId("parameter_version")
+ *             .parameterData("app-parameter-version-data")
+ *             .dataCrc32c("3931523681")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -276,6 +317,20 @@ public class ParameterVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     * 
+     */
+    @Export(name="dataCrc32c", refs={String.class}, tree="[0]")
+    private Output<String> dataCrc32c;
+
+    /**
+     * @return The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     * 
+     */
+    public Output<String> dataCrc32c() {
+        return this.dataCrc32c;
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

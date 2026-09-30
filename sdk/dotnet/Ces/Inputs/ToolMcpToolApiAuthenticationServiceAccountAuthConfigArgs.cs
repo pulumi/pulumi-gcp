@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.Ces.Inputs
 
     public sealed class ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+
+        /// <summary>
+        /// (Output)
+        /// The OAuth scopes to grant. If not specified, the default scope
+        /// `https://www.googleapis.com/auth/cloud-platform` is used.
+        /// </summary>
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The email address of the service account used for authenticatation. CES

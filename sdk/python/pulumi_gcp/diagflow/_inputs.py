@@ -597,6 +597,14 @@ __all__ = [
     'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict',
     'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs',
     'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgsDict',
     'GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs',
     'GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict',
     'GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs',
@@ -22000,17 +22008,27 @@ class GeneratorSummarizationContextFewShotExampleOutputArgsDict(TypedDict):
     Optional. Suggested summary.
     Structure is documented below.
     """
+    tool_call_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgsDict']]]]]
+    """
+    List of request and response for tool calls executed.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class GeneratorSummarizationContextFewShotExampleOutputArgs:
     def __init__(__self__, *,
-                 summary_suggestion: pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs']] = None):
+                 summary_suggestion: pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs']] = None,
+                 tool_call_infos: pulumi.Input[Optional[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs']]]] = None):
         """
         :param pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs'] summary_suggestion: Optional. Suggested summary.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs']]] tool_call_infos: List of request and response for tool calls executed.
                Structure is documented below.
         """
         if summary_suggestion is not None:
             pulumi.set(__self__, "summary_suggestion", summary_suggestion)
+        if tool_call_infos is not None:
+            pulumi.set(__self__, "tool_call_infos", tool_call_infos)
 
     @_builtins.property
     @pulumi.getter(name="summarySuggestion")
@@ -22024,6 +22042,19 @@ class GeneratorSummarizationContextFewShotExampleOutputArgs:
     @summary_suggestion.setter
     def summary_suggestion(self, value: pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs']]):
         pulumi.set(self, "summary_suggestion", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolCallInfos")
+    def tool_call_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs']]]]:
+        """
+        List of request and response for tool calls executed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call_infos")
+
+    @tool_call_infos.setter
+    def tool_call_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs']]]]):
+        pulumi.set(self, "tool_call_infos", value)
 
 
 class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict(TypedDict):
@@ -22102,6 +22133,209 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummaryS
     @summary.setter
     def summary(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "summary", value)
+
+
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgsDict(TypedDict):
+    tool_call: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgsDict']
+    """
+    Request for a tool call.
+    Structure is documented below.
+    """
+    tool_call_result: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgsDict']
+    """
+    Response for a tool call.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs:
+    def __init__(__self__, *,
+                 tool_call: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs'],
+                 tool_call_result: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs']):
+        """
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs'] tool_call: Request for a tool call.
+               Structure is documented below.
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs'] tool_call_result: Response for a tool call.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "tool_call", tool_call)
+        pulumi.set(__self__, "tool_call_result", tool_call_result)
+
+    @_builtins.property
+    @pulumi.getter(name="toolCall")
+    def tool_call(self) -> pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs']:
+        """
+        Request for a tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call")
+
+    @tool_call.setter
+    def tool_call(self, value: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs']):
+        pulumi.set(self, "tool_call", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolCallResult")
+    def tool_call_result(self) -> pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs']:
+        """
+        Response for a tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call_result")
+
+    @tool_call_result.setter
+    def tool_call_result(self, value: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs']):
+        pulumi.set(self, "tool_call_result", value)
+
+
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the tool's action associated with this call.
+    """
+    tool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The tool associated with this call.
+    """
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: The name of the tool's action associated with this call.
+        :param pulumi.Input[_builtins.str] tool: The tool associated with this call.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if tool is not None:
+            pulumi.set(__self__, "tool", tool)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the tool's action associated with this call.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tool associated with this call.
+        """
+        return pulumi.get(self, "tool")
+
+    @tool.setter
+    def tool(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tool", value)
+
+
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgsDict(TypedDict):
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the tool's action associated with this call.
+    """
+    error: NotRequired[pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgsDict']]]
+    """
+    An error produced by the tool call.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 error: pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: The name of the tool's action associated with this call.
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs'] error: An error produced by the tool call.
+               Structure is documented below.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if error is not None:
+            pulumi.set(__self__, "error", error)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the tool's action associated with this call.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def error(self) -> pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs']]:
+        """
+        An error produced by the tool call.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error")
+
+    @error.setter
+    def error(self, value: pulumi.Input[Optional['GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs']]):
+        pulumi.set(self, "error", value)
+
+
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgsDict(TypedDict):
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The error message of the function.
+    """
+    retryable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether the tool call is retryable.
+    """
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs:
+    def __init__(__self__, *,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 retryable: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message: The error message of the function.
+        :param pulumi.Input[_builtins.bool] retryable: Specifies whether the tool call is retryable.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if retryable is not None:
+            pulumi.set(__self__, "retryable", retryable)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The error message of the function.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def retryable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether the tool call is retryable.
+        """
+        return pulumi.get(self, "retryable")
+
+    @retryable.setter
+    def retryable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "retryable", value)
 
 
 class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict(TypedDict):

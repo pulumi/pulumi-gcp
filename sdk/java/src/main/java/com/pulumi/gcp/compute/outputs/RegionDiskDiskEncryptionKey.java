@@ -24,6 +24,22 @@ public final class RegionDiskDiskEncryptionKey {
      */
     private @Nullable String rawKey;
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+     * 
+     */
+    private @Nullable String rawKeyWo;
+    /**
+     * @return Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String rawKeyWoVersion;
+    /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
      * customer-supplied encryption key to either encrypt or decrypt
      * this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -31,6 +47,23 @@ public final class RegionDiskDiskEncryptionKey {
      * 
      */
     private @Nullable String rsaEncryptedKey;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+     * 
+     */
+    private @Nullable String rsaEncryptedKeyWo;
+    /**
+     * @return Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String rsaEncryptedKeyWoVersion;
     /**
      * @return (Output)
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -57,6 +90,26 @@ public final class RegionDiskDiskEncryptionKey {
         return Optional.ofNullable(this.rawKey);
     }
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+     * 
+     */
+    public Optional<String> rawKeyWo() {
+        return Optional.ofNullable(this.rawKeyWo);
+    }
+    /**
+     * @return Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> rawKeyWoVersion() {
+        return Optional.ofNullable(this.rawKeyWoVersion);
+    }
+    /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
      * customer-supplied encryption key to either encrypt or decrypt
      * this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -65,6 +118,27 @@ public final class RegionDiskDiskEncryptionKey {
      */
     public Optional<String> rsaEncryptedKey() {
         return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+     * 
+     */
+    public Optional<String> rsaEncryptedKeyWo() {
+        return Optional.ofNullable(this.rsaEncryptedKeyWo);
+    }
+    /**
+     * @return Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> rsaEncryptedKeyWoVersion() {
+        return Optional.ofNullable(this.rsaEncryptedKeyWoVersion);
     }
     /**
      * @return (Output)
@@ -87,14 +161,22 @@ public final class RegionDiskDiskEncryptionKey {
     public static final class Builder {
         private @Nullable String kmsKeyName;
         private @Nullable String rawKey;
+        private @Nullable String rawKeyWo;
+        private @Nullable String rawKeyWoVersion;
         private @Nullable String rsaEncryptedKey;
+        private @Nullable String rsaEncryptedKeyWo;
+        private @Nullable String rsaEncryptedKeyWoVersion;
         private @Nullable String sha256;
         public Builder() {}
         public Builder(RegionDiskDiskEncryptionKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.rawKey = defaults.rawKey;
+    	      this.rawKeyWo = defaults.rawKeyWo;
+    	      this.rawKeyWoVersion = defaults.rawKeyWoVersion;
     	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
+    	      this.rsaEncryptedKeyWo = defaults.rsaEncryptedKeyWo;
+    	      this.rsaEncryptedKeyWoVersion = defaults.rsaEncryptedKeyWoVersion;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -111,9 +193,33 @@ public final class RegionDiskDiskEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rawKeyWo(@Nullable String rawKeyWo) {
+
+            this.rawKeyWo = rawKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rawKeyWoVersion(@Nullable String rawKeyWoVersion) {
+
+            this.rawKeyWoVersion = rawKeyWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rsaEncryptedKey(@Nullable String rsaEncryptedKey) {
 
             this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKeyWo(@Nullable String rsaEncryptedKeyWo) {
+
+            this.rsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKeyWoVersion(@Nullable String rsaEncryptedKeyWoVersion) {
+
+            this.rsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -126,7 +232,11 @@ public final class RegionDiskDiskEncryptionKey {
             final var _resultValue = new RegionDiskDiskEncryptionKey();
             _resultValue.kmsKeyName = kmsKeyName;
             _resultValue.rawKey = rawKey;
+            _resultValue.rawKeyWo = rawKeyWo;
+            _resultValue.rawKeyWoVersion = rawKeyWoVersion;
             _resultValue.rsaEncryptedKey = rsaEncryptedKey;
+            _resultValue.rsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            _resultValue.rsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
             _resultValue.sha256 = sha256;
             return _resultValue;
         }

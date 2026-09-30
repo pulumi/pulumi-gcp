@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,6 +74,7 @@ type LookupSecretResult struct {
 	Replications      []GetSecretReplication `pulumi:"replications"`
 	Rotations         []GetSecretRotation    `pulumi:"rotations"`
 	SecretId          string                 `pulumi:"secretId"`
+	SecretType        string                 `pulumi:"secretType"`
 	Tags              map[string]string      `pulumi:"tags"`
 	Topics            []GetSecretTopic       `pulumi:"topics"`
 	Ttl               string                 `pulumi:"ttl"`
@@ -172,6 +173,10 @@ func (o LookupSecretResultOutput) Rotations() GetSecretRotationArrayOutput {
 
 func (o LookupSecretResultOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretResultOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretResult) string { return v.SecretType }).(pulumi.StringOutput)
 }
 
 func (o LookupSecretResultOutput) Tags() pulumi.StringMapOutput {

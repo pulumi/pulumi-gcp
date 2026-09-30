@@ -128,23 +128,6 @@ namespace Pulumi.Gcp.Firebase
     ///         ServiceName = "firebasevertexai.googleapis.com",
     ///     });
     /// 
-    ///     var gemini = new Gcp.Projects.ApiKey("gemini", new()
-    ///     {
-    ///         Project = project.ProjectId,
-    ///         Name = "gemini-api-key",
-    ///         DisplayName = "Gemini Developer API key",
-    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
-    ///         {
-    ///             ApiTargets = new[]
-    ///             {
-    ///                 new Gcp.Projects.Inputs.ApiKeyRestrictionsApiTargetArgs
-    ///                 {
-    ///                     Service = "generativelanguage.googleapis.com",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
     ///     // It takes a while for permissions to propagate
     ///     // If your Terraform setup has a retry mechanism, this wait is unnecessary
     ///     var wait30s = new Time.Sleep("wait_30s", new()
@@ -163,10 +146,6 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = @default.ProjectID,
     ///         Location = "global",
-    ///         GenerativeLanguageConfig = new Gcp.Firebase.Inputs.AiLogicConfigGenerativeLanguageConfigArgs
-    ///         {
-    ///             ApiKey = gemini.KeyString,
-    ///         },
     ///         TelemetryConfig = new Gcp.Firebase.Inputs.AiLogicConfigTelemetryConfigArgs
     ///         {
     ///             Mode = "ALL",
@@ -218,11 +197,15 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Configuration for using the Gemini Developer API via Firebase AI Logic.
-        /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-        /// API key is stored in this configuration *on the server* so that you do
-        /// **not** add your Gemini API key directly into your app's codebase.
+        /// Firebase AI Logic now uses a Google-managed service account to authenticate
+        /// requests to the Gemini Developer API and no longer requires an API key.
+        /// Values provided here may be silently ignored on input, and may be omitted in
+        /// responses.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `GenerativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         /// </summary>
         [Output("generativeLanguageConfig")]
         public Output<Outputs.AiLogicConfigGenerativeLanguageConfig?> GenerativeLanguageConfig { get; private set; } = null!;
@@ -321,11 +304,15 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Configuration for using the Gemini Developer API via Firebase AI Logic.
-        /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-        /// API key is stored in this configuration *on the server* so that you do
-        /// **not** add your Gemini API key directly into your app's codebase.
+        /// Firebase AI Logic now uses a Google-managed service account to authenticate
+        /// requests to the Gemini Developer API and no longer requires an API key.
+        /// Values provided here may be silently ignored on input, and may be omitted in
+        /// responses.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `GenerativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         /// </summary>
         [Input("generativeLanguageConfig")]
         public Input<Inputs.AiLogicConfigGenerativeLanguageConfigArgs>? GenerativeLanguageConfig { get; set; }
@@ -379,11 +366,15 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Configuration for using the Gemini Developer API via Firebase AI Logic.
-        /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-        /// API key is stored in this configuration *on the server* so that you do
-        /// **not** add your Gemini API key directly into your app's codebase.
+        /// Firebase AI Logic now uses a Google-managed service account to authenticate
+        /// requests to the Gemini Developer API and no longer requires an API key.
+        /// Values provided here may be silently ignored on input, and may be omitted in
+        /// responses.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `GenerativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         /// </summary>
         [Input("generativeLanguageConfig")]
         public Input<Inputs.AiLogicConfigGenerativeLanguageConfigGetArgs>? GenerativeLanguageConfig { get; set; }

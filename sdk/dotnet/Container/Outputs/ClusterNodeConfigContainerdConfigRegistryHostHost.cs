@@ -14,15 +14,17 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodeConfigContainerdConfigRegistryHostHost
     {
         /// <summary>
-        /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
         /// </summary>
         public readonly ImmutableArray<string> Capabilities;
         /// <summary>
-        /// Configures the registry host certificate.
+        /// Configures the registry host certificate. Contains `GcpSecretManagerSecretUri` (Optional).
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigContainerdConfigRegistryHostHostCa> Cas;
         /// <summary>
-        /// Configures the registry host client certificate and key.
+        /// Configures the registry host client certificate and key. Contains `Cert` (Required) with `GcpSecretManagerSecretUri` (Optional) and `Key` (Optional) with `GcpSecretManagerSecretUri` (Optional).
+        /// 
+        /// Example:
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClient> Clients;
         /// <summary>
@@ -30,7 +32,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? DialTimeout;
         /// <summary>
-        /// Configures the registry host headers.
+        /// Configures the registry host headers. Each header contains `Key` (Required, string) and `Value` (Required, list of strings).
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigContainerdConfigRegistryHostHostHeader> Headers;
         /// <summary>
@@ -38,7 +40,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        /// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         /// </summary>
         public readonly bool? OverridePath;
 

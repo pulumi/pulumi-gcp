@@ -14,13 +14,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone
     {
         /// <summary>
-        /// (Output, Deprecated)
-        /// URLs of Attachments in the given zone, to the given
-        /// region, on Interconnects in the given facility and metro. Every
-        /// Attachment in the AG has such an entry.
-        /// </summary>
-        public readonly ImmutableArray<string> Attachment;
-        /// <summary>
         /// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
         /// strings. Users are encouraged, but not required, to use their preferred
         /// format for resource links as keys.
@@ -39,13 +32,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(
-            ImmutableArray<string> attachment,
-
             ImmutableArray<string> attachments,
 
             string? zone)
         {
-            Attachment = attachment;
             Attachments = attachments;
             Zone = zone;
         }

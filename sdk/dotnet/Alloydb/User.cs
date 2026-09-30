@@ -271,8 +271,11 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of this user.
-        /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        /// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+        /// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+        /// AlloyDB clusters support IAM group authentication. See
+        /// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+        /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         /// </summary>
         [Output("userType")]
         public Output<string> UserType { get; private set; } = null!;
@@ -409,8 +412,11 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string> UserId { get; set; } = null!;
 
         /// <summary>
-        /// The type of this user.
-        /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        /// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+        /// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+        /// AlloyDB clusters support IAM group authentication. See
+        /// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+        /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         /// </summary>
         [Input("userType", required: true)]
         public Input<string> UserType { get; set; } = null!;
@@ -510,8 +516,11 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// The type of this user.
-        /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        /// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+        /// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+        /// AlloyDB clusters support IAM group authentication. See
+        /// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+        /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }

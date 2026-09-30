@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new RestoreChannel("basic", RestoreChannelArgs.builder()
  *             .name("basic-channel")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .description("Description")
  *             .destinationProject("projects/24240755850")
  *             .labels(Map.of("key", "some-value"))

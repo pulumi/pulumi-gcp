@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -48,22 +48,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]string{
-//				{
+//			tmpJSON0, err := json.Marshal([]interface{}{
+//				map[string]string{
 //					"text": "step 1 1",
 //				},
-//				{
+//				map[string]interface{}{
 //					"text": "step 1 2",
-//					"steps": []map[string]string{
-//						{
+//					"steps": []interface{}{
+//						map[string]string{
 //							"text": "step 1 2 1",
 //						},
-//						{
+//						map[string]string{
 //							"text": "step 1 2 2",
 //						},
 //					},
 //				},
-//				{
+//				map[string]string{
 //					"text": "step 1 3",
 //				},
 //			})
@@ -108,8 +108,8 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -169,22 +169,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]string{
-//				{
+//			tmpJSON0, err := json.Marshal([]interface{}{
+//				map[string]string{
 //					"text": "step 1 1",
 //				},
-//				{
+//				map[string]interface{}{
 //					"text": "step 1 2",
-//					"steps": []map[string]string{
-//						{
+//					"steps": []interface{}{
+//						map[string]string{
 //							"text": "step 1 2 1",
 //						},
-//						{
+//						map[string]string{
 //							"text": "step 1 2 2",
 //						},
 //					},
 //				},
-//				{
+//				map[string]string{
 //					"text": "step 1 3",
 //				},
 //			})

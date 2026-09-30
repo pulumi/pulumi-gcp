@@ -396,7 +396,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name("my-project-name-gcf-source")
+ *             .name("gcf-source-my-project-name")
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());

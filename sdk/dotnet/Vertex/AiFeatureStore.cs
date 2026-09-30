@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         Name = "terraform",
+    ///         Name = "terraform_featurestore",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         Name = "terraform2",
+    ///         Name = "terraform_featurestore_2",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var featurestore = new Gcp.Vertex.AiFeatureStore("featurestore", new()
     ///     {
-    ///         Name = "terraform3",
+    ///         Name = "terraform_featurestore_3",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },

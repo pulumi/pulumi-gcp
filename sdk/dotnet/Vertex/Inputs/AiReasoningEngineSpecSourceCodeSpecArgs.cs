@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecSourceCodeSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Optional. Specification for the deploying from agent config.
         /// Structure is documented below.
         /// </summary>

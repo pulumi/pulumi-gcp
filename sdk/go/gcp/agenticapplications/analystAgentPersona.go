@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agenticapplications"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,6 +62,12 @@ import (
 //						Content:     pulumi.String("# Finance Analysis\nAnalyze financial data."),
 //					},
 //				},
+//				MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
+//				WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+//					ExcludedDomains: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -80,9 +86,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agenticapplications"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -326,6 +332,49 @@ import (
 //						},
 //					},
 //				},
+//				MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
+//				WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+//					ExcludedDomains: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Analyst Agent Persona Methodology Export Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agenticapplications"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := agenticapplications.NewAnalystAgentPersona(ctx, "example", &agenticapplications.AnalystAgentPersonaArgs{
+//				Location:              pulumi.String("us"),
+//				AnalystAgentPersonaId: pulumi.String("methodology"),
+//				DisplayName:           pulumi.String("Test Analyst Persona Methodology Export"),
+//				DisplayDescription:    pulumi.String("Sample analyst agent persona description"),
+//				ModelDescription:      pulumi.String("Sample model description"),
+//				Role:                  pulumi.String("ANALYST_ROLE_GENERIC_FINANCE_ANALYST"),
+//				ArtifactsConfig: &agenticapplications.AnalystAgentPersonaArtifactsConfigArgs{
+//					MethodologyExportOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{
+//						AppendMethodology:         pulumi.Bool(true),
+//						ExportFormat:              pulumi.String("MARKDOWN"),
+//						ExportMethodologyArtifact: pulumi.Bool(true),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -389,6 +438,11 @@ import (
 // * `documentGenerationOptions` -
 // (Optional)
 // Options for document generation.
+// Structure is documented below.
+//
+// * `methodologyExportOptions` -
+// (Optional)
+// Options for methodology export.
 // Structure is documented below.
 //
 // * `slideGenerationOptions` -
@@ -535,6 +589,24 @@ import (
 // * `mimeType` -
 // (Required)
 // The mime type of the file.
+//
+// <a name="nestedArtifactsConfigMethodologyExportOptions"></a>The `methodologyExportOptions` block supports:
+//
+// * `appendMethodology` -
+// (Optional)
+// If true, append the detailed methodology to the final response.
+//
+// * `exportFormat` -
+// (Optional)
+// Format for methodology export.
+// Possible values:
+// MARKDOWN
+// HTML
+// PDF
+//
+// * `exportMethodologyArtifact` -
+// (Optional)
+// If true, export the detailed methodology as a separate artifact.
 //
 // <a name="nestedArtifactsConfigSlideGenerationOptions"></a>The `slideGenerationOptions` block supports:
 //
@@ -1067,6 +1139,13 @@ import (
 // (Required)
 // The name of the column.
 //
+// <a name="nestedWebSearchConfig"></a>The `webSearchConfig` block supports:
+//
+//   - `excludedDomains` -
+//     (Optional)
+//     List of domains to be excluded from Google Search / Enterprise Web Search
+//     grounding.
+//
 // ## Import
 //
 // AnalystAgentPersona can be imported using any of these accepted formats:
@@ -1121,6 +1200,11 @@ type AnalystAgentPersona struct {
 	GeminiEnterpriseEngine pulumi.StringPtrOutput `pulumi:"geminiEnterpriseEngine"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The math rendering mode selected for this persona.
+	// Possible values:
+	// MATH_RENDERING_MODE_LATEX
+	// MATH_RENDERING_MODE_PLAIN_TEXT
+	MathRenderingMode pulumi.StringPtrOutput `pulumi:"mathRenderingMode"`
 	// The MCP data source selections to be used by the agent.
 	// Structure is documented below.
 	McpDataSources AnalystAgentPersonaMcpDataSourceArrayOutput `pulumi:"mcpDataSources"`
@@ -1175,6 +1259,9 @@ type AnalystAgentPersona struct {
 	Tables AnalystAgentPersonaTableArrayOutput `pulumi:"tables"`
 	// Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Configuration for web search grounding for the analyst agent.
+	// Structure is documented below.
+	WebSearchConfig AnalystAgentPersonaWebSearchConfigPtrOutput `pulumi:"webSearchConfig"`
 }
 
 // NewAnalystAgentPersona registers a new resource with the given unique name, arguments, and options.
@@ -1252,6 +1339,11 @@ type analystAgentPersonaState struct {
 	GeminiEnterpriseEngine *string `pulumi:"geminiEnterpriseEngine"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
+	// The math rendering mode selected for this persona.
+	// Possible values:
+	// MATH_RENDERING_MODE_LATEX
+	// MATH_RENDERING_MODE_PLAIN_TEXT
+	MathRenderingMode *string `pulumi:"mathRenderingMode"`
 	// The MCP data source selections to be used by the agent.
 	// Structure is documented below.
 	McpDataSources []AnalystAgentPersonaMcpDataSource `pulumi:"mcpDataSources"`
@@ -1306,6 +1398,9 @@ type analystAgentPersonaState struct {
 	Tables []AnalystAgentPersonaTable `pulumi:"tables"`
 	// Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Configuration for web search grounding for the analyst agent.
+	// Structure is documented below.
+	WebSearchConfig *AnalystAgentPersonaWebSearchConfig `pulumi:"webSearchConfig"`
 }
 
 type AnalystAgentPersonaState struct {
@@ -1345,6 +1440,11 @@ type AnalystAgentPersonaState struct {
 	GeminiEnterpriseEngine pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
+	// The math rendering mode selected for this persona.
+	// Possible values:
+	// MATH_RENDERING_MODE_LATEX
+	// MATH_RENDERING_MODE_PLAIN_TEXT
+	MathRenderingMode pulumi.StringPtrInput
 	// The MCP data source selections to be used by the agent.
 	// Structure is documented below.
 	McpDataSources AnalystAgentPersonaMcpDataSourceArrayInput
@@ -1399,6 +1499,9 @@ type AnalystAgentPersonaState struct {
 	Tables AnalystAgentPersonaTableArrayInput
 	// Update time stamp.
 	UpdateTime pulumi.StringPtrInput
+	// Configuration for web search grounding for the analyst agent.
+	// Structure is documented below.
+	WebSearchConfig AnalystAgentPersonaWebSearchConfigPtrInput
 }
 
 func (AnalystAgentPersonaState) ElementType() reflect.Type {
@@ -1440,6 +1543,11 @@ type analystAgentPersonaArgs struct {
 	GeminiEnterpriseEngine *string `pulumi:"geminiEnterpriseEngine"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
+	// The math rendering mode selected for this persona.
+	// Possible values:
+	// MATH_RENDERING_MODE_LATEX
+	// MATH_RENDERING_MODE_PLAIN_TEXT
+	MathRenderingMode *string `pulumi:"mathRenderingMode"`
 	// The MCP data source selections to be used by the agent.
 	// Structure is documented below.
 	McpDataSources []AnalystAgentPersonaMcpDataSource `pulumi:"mcpDataSources"`
@@ -1488,6 +1596,9 @@ type analystAgentPersonaArgs struct {
 	// agent.
 	// Structure is documented below.
 	Tables []AnalystAgentPersonaTable `pulumi:"tables"`
+	// Configuration for web search grounding for the analyst agent.
+	// Structure is documented below.
+	WebSearchConfig *AnalystAgentPersonaWebSearchConfig `pulumi:"webSearchConfig"`
 }
 
 // The set of arguments for constructing a AnalystAgentPersona resource.
@@ -1526,6 +1637,11 @@ type AnalystAgentPersonaArgs struct {
 	GeminiEnterpriseEngine pulumi.StringPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
+	// The math rendering mode selected for this persona.
+	// Possible values:
+	// MATH_RENDERING_MODE_LATEX
+	// MATH_RENDERING_MODE_PLAIN_TEXT
+	MathRenderingMode pulumi.StringPtrInput
 	// The MCP data source selections to be used by the agent.
 	// Structure is documented below.
 	McpDataSources AnalystAgentPersonaMcpDataSourceArrayInput
@@ -1574,6 +1690,9 @@ type AnalystAgentPersonaArgs struct {
 	// agent.
 	// Structure is documented below.
 	Tables AnalystAgentPersonaTableArrayInput
+	// Configuration for web search grounding for the analyst agent.
+	// Structure is documented below.
+	WebSearchConfig AnalystAgentPersonaWebSearchConfigPtrInput
 }
 
 func (AnalystAgentPersonaArgs) ElementType() reflect.Type {
@@ -1734,6 +1853,14 @@ func (o AnalystAgentPersonaOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnalystAgentPersona) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The math rendering mode selected for this persona.
+// Possible values:
+// MATH_RENDERING_MODE_LATEX
+// MATH_RENDERING_MODE_PLAIN_TEXT
+func (o AnalystAgentPersonaOutput) MathRenderingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersona) pulumi.StringPtrOutput { return v.MathRenderingMode }).(pulumi.StringPtrOutput)
+}
+
 // The MCP data source selections to be used by the agent.
 // Structure is documented below.
 func (o AnalystAgentPersonaOutput) McpDataSources() AnalystAgentPersonaMcpDataSourceArrayOutput {
@@ -1813,6 +1940,12 @@ func (o AnalystAgentPersonaOutput) Tables() AnalystAgentPersonaTableArrayOutput 
 // Update time stamp.
 func (o AnalystAgentPersonaOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnalystAgentPersona) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration for web search grounding for the analyst agent.
+// Structure is documented below.
+func (o AnalystAgentPersonaOutput) WebSearchConfig() AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersona) AnalystAgentPersonaWebSearchConfigPtrOutput { return v.WebSearchConfig }).(AnalystAgentPersonaWebSearchConfigPtrOutput)
 }
 
 type AnalystAgentPersonaArrayOutput struct{ *pulumi.OutputState }

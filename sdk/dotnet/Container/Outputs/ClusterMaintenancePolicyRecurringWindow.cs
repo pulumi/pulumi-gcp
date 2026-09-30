@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterMaintenancePolicyRecurringWindow
     {
+        /// <summary>
+        /// The end time of the exclusion window, in RFC3339 format. Exactly one of `EndTime` and `exclusion_options.end_time_behavior` should be specified.
+        /// </summary>
         public readonly string EndTime;
         /// <summary>
         /// Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
@@ -57,6 +60,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// ```
         /// </summary>
         public readonly string Recurrence;
+        /// <summary>
+        /// The start time of the exclusion window, in RFC3339 format.
+        /// </summary>
         public readonly string StartTime;
 
         [OutputConstructor]

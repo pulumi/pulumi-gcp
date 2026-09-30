@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
- *             .name("terraform")
+ *             .name("terraform_featurestore")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
- *             .name("terraform2")
+ *             .name("terraform_featurestore_2")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var featurestore = new AiFeatureStore("featurestore", AiFeatureStoreArgs.builder()
- *             .name("terraform3")
+ *             .name("terraform_featurestore_3")
  *             .labels(Map.of("foo", "bar"))
  *             .region("us-central1")
  *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()

@@ -9,6 +9,7 @@ import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingAudioRecordi
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs;
+import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppLoggingSettingRedactionConfigArgs;
 import java.util.List;
 import java.util.Objects;
@@ -98,6 +99,27 @@ public final class AppVersionSnapshotAppLoggingSettingArgs extends com.pulumi.re
 
     /**
      * (Output)
+     * Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="metricAnalysisSettings")
+    private @Nullable Output<List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs>> metricAnalysisSettings;
+
+    /**
+     * @return (Output)
+     * Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs>>> metricAnalysisSettings() {
+        return Optional.ofNullable(this.metricAnalysisSettings);
+    }
+
+    /**
+     * (Output)
      * Configuration to instruct how sensitive data should be handled.
      * Structure is documented below.
      * 
@@ -122,6 +144,7 @@ public final class AppVersionSnapshotAppLoggingSettingArgs extends com.pulumi.re
         this.bigqueryExportSettings = $.bigqueryExportSettings;
         this.cloudLoggingSettings = $.cloudLoggingSettings;
         this.conversationLoggingSettings = $.conversationLoggingSettings;
+        this.metricAnalysisSettings = $.metricAnalysisSettings;
         this.redactionConfigs = $.redactionConfigs;
     }
 
@@ -289,6 +312,46 @@ public final class AppVersionSnapshotAppLoggingSettingArgs extends com.pulumi.re
          */
         public Builder conversationLoggingSettings(AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs... conversationLoggingSettings) {
             return conversationLoggingSettings(List.of(conversationLoggingSettings));
+        }
+
+        /**
+         * @param metricAnalysisSettings (Output)
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricAnalysisSettings(@Nullable Output<List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs>> metricAnalysisSettings) {
+            $.metricAnalysisSettings = metricAnalysisSettings;
+            return this;
+        }
+
+        /**
+         * @param metricAnalysisSettings (Output)
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricAnalysisSettings(List<AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs> metricAnalysisSettings) {
+            return metricAnalysisSettings(Output.of(metricAnalysisSettings));
+        }
+
+        /**
+         * @param metricAnalysisSettings (Output)
+         * Settings to describe the conversation data collection behaviors for the LLM
+         * analysis pipeline for the app.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricAnalysisSettings(AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs... metricAnalysisSettings) {
+            return metricAnalysisSettings(List.of(metricAnalysisSettings));
         }
 
         /**

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,7 +66,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -107,7 +107,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -148,7 +148,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -174,7 +174,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -214,9 +214,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -272,12 +272,15 @@ import (
 type ApiKey struct {
 	pulumi.CustomResourceState
 
+	// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+	CheckExistingUsage pulumi.StringPtrOutput `pulumi:"checkExistingUsage"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+	// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -331,12 +334,15 @@ func GetApiKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiKey resources.
 type apiKeyState struct {
+	// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+	CheckExistingUsage *string `pulumi:"checkExistingUsage"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+	// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName *string `pulumi:"displayName"`
@@ -357,12 +363,15 @@ type apiKeyState struct {
 }
 
 type ApiKeyState struct {
+	// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+	CheckExistingUsage pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+	// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName pulumi.StringPtrInput
@@ -387,12 +396,15 @@ func (ApiKeyState) ElementType() reflect.Type {
 }
 
 type apiKeyArgs struct {
+	// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+	CheckExistingUsage *string `pulumi:"checkExistingUsage"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+	// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName *string `pulumi:"displayName"`
@@ -410,12 +422,15 @@ type apiKeyArgs struct {
 
 // The set of arguments for constructing a ApiKey resource.
 type ApiKeyArgs struct {
+	// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+	CheckExistingUsage pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
-	// When set to "DELETE", deleting the resource is allowed.
+	// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+	// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName pulumi.StringPtrInput
@@ -518,12 +533,18 @@ func (o ApiKeyOutput) ToApiKeyOutputWithContext(ctx context.Context) ApiKeyOutpu
 	return o
 }
 
+// Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+func (o ApiKeyOutput) CheckExistingUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.CheckExistingUsage }).(pulumi.StringPtrOutput)
+}
+
 // Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
 // When a 'terraform destroy' or 'pulumi up' would delete the resource,
 // the command will fail if this field is set to "PREVENT" in Terraform state.
 // When set to "ABANDON", the command will remove the resource from Terraform
 // management without updating or deleting the resource in the API.
-// When set to "DELETE", deleting the resource is allowed.
+// When set to "DELETE", deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+// When set to "FORCE", deleting the resource will bypass the active traffic usage check.
 func (o ApiKeyOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }

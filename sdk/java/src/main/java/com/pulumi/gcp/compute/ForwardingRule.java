@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new RegionHealthCheck("hc", RegionHealthCheckArgs.builder()
- *             .name("check-website-backend")
+ *             .name("website-backend-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .region("us-central1")
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
- *             .name("check-website-backend")
+ *             .name("website-backend-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -296,7 +296,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
- *             .name("check-website-backend")
+ *             .name("website-backend-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
@@ -408,7 +408,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
- *             .name("template-website-backend")
+ *             .name("website-backend-template")
  *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(defaultNetwork.id())
@@ -640,7 +640,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
- *             .name("template-website-backend")
+ *             .name("website-backend-template")
  *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(defaultNetwork.id())
@@ -1159,7 +1159,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hc = new HealthCheck("hc", HealthCheckArgs.builder()
- *             .name("check-ilb-ipv6-backend")
+ *             .name("ilb-ipv6-backend-check")
  *             .checkIntervalSec(1)
  *             .timeoutSec(1)
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()

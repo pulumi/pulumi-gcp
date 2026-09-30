@@ -1251,7 +1251,7 @@ class Stream(pulumi.CustomResource):
         import pulumi_random as random
 
         postgres = gcp.bigquery.Dataset("postgres",
-            dataset_id="postgres",
+            dataset_id="postgres_dataset",
             friendly_name="postgres",
             description="Database of postgres",
             location="us-central1")
@@ -1431,8 +1431,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_21912",
-            name="tf-test_46731",
+            project_id="tf-test_2234",
+            name="tf-test_29225",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -2528,7 +2528,7 @@ class Stream(pulumi.CustomResource):
         import pulumi_random as random
 
         postgres = gcp.bigquery.Dataset("postgres",
-            dataset_id="postgres",
+            dataset_id="postgres_dataset",
             friendly_name="postgres",
             description="Database of postgres",
             location="us-central1")
@@ -2708,8 +2708,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_21912",
-            name="tf-test_46731",
+            project_id="tf-test_2234",
+            name="tf-test_29225",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")

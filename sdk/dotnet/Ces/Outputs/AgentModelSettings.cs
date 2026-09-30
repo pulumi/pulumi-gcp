@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// controls the randomness of the model's responses. Lower temperatures
         /// produce responses that are more predictable. Higher temperatures produce
         /// responses that are more creative.
+        /// 
+        /// &lt;a name="NestedRemoteA2aAgent"&gt;&lt;/a&gt;The `RemoteA2aAgent` block supports:
         /// </summary>
         public readonly double? Temperature;
 

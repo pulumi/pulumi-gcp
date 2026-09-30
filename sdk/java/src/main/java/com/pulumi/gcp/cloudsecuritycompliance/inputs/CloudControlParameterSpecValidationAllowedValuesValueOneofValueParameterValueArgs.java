@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudsecuritycompliance.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs;
 import com.pulumi.gcp.cloudsecuritycompliance.inputs.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -49,6 +50,23 @@ public final class CloudControlParameterSpecValidationAllowedValuesValueOneofVal
     }
 
     /**
+     * Sub-parameter values.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="oneofValue")
+    private @Nullable Output<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs> oneofValue;
+
+    /**
+     * @return Sub-parameter values.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs>> oneofValue() {
+        return Optional.ofNullable(this.oneofValue);
+    }
+
+    /**
      * A list of strings.
      * Structure is documented below.
      * 
@@ -85,6 +103,7 @@ public final class CloudControlParameterSpecValidationAllowedValuesValueOneofVal
     private CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs $) {
         this.boolValue = $.boolValue;
         this.numberValue = $.numberValue;
+        this.oneofValue = $.oneofValue;
         this.stringListValue = $.stringListValue;
         this.stringValue = $.stringValue;
     }
@@ -147,6 +166,29 @@ public final class CloudControlParameterSpecValidationAllowedValuesValueOneofVal
          */
         public Builder numberValue(Double numberValue) {
             return numberValue(Output.of(numberValue));
+        }
+
+        /**
+         * @param oneofValue Sub-parameter values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneofValue(@Nullable Output<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs> oneofValue) {
+            $.oneofValue = oneofValue;
+            return this;
+        }
+
+        /**
+         * @param oneofValue Sub-parameter values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneofValue(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs oneofValue) {
+            return oneofValue(Output.of(oneofValue));
         }
 
         /**

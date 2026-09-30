@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplate;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -24,6 +25,11 @@ public final class GetJobTemplate {
      * 
      */
     private Map<String,String> annotations;
+    /**
+     * @return If true, the system will start the execution within the next 12 hours depending on available capacity.
+     * 
+     */
+    private Boolean delayExecution;
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter,
      * or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -62,6 +68,13 @@ public final class GetJobTemplate {
      */
     public Map<String,String> annotations() {
         return this.annotations;
+    }
+    /**
+     * @return If true, the system will start the execution within the next 12 hours depending on available capacity.
+     * 
+     */
+    public Boolean delayExecution() {
+        return this.delayExecution;
     }
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter,
@@ -107,6 +120,7 @@ public final class GetJobTemplate {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotations;
+        private Boolean delayExecution;
         private Map<String,String> labels;
         private Integer parallelism;
         private Integer taskCount;
@@ -115,6 +129,7 @@ public final class GetJobTemplate {
         public Builder(GetJobTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.delayExecution = defaults.delayExecution;
     	      this.labels = defaults.labels;
     	      this.parallelism = defaults.parallelism;
     	      this.taskCount = defaults.taskCount;
@@ -127,6 +142,14 @@ public final class GetJobTemplate {
               throw new MissingRequiredPropertyException("GetJobTemplate", "annotations");
             }
             this.annotations = annotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder delayExecution(Boolean delayExecution) {
+            if (delayExecution == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplate", "delayExecution");
+            }
+            this.delayExecution = delayExecution;
             return this;
         }
         @CustomType.Setter
@@ -167,6 +190,7 @@ public final class GetJobTemplate {
         public GetJobTemplate build() {
             final var _resultValue = new GetJobTemplate();
             _resultValue.annotations = annotations;
+            _resultValue.delayExecution = delayExecution;
             _resultValue.labels = labels;
             _resultValue.parallelism = parallelism;
             _resultValue.taskCount = taskCount;

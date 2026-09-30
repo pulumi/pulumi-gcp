@@ -32,12 +32,35 @@ public final class GetDiskDiskEncryptionKey {
      */
     private String rawKey;
     /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
+    private String rawKeyWo;
+    /**
+     * @return Triggers update of &#39;raw_key_wo&#39; write-only. Increment this value when an update to &#39;raw_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String rawKeyWoVersion;
+    /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
      * customer-supplied encryption key to either encrypt or decrypt
      * this resource. You can provide either the rawKey or the rsaEncryptedKey.
      * 
      */
     private String rsaEncryptedKey;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * 
+     */
+    private String rsaEncryptedKeyWo;
+    /**
+     * @return Triggers update of &#39;rsa_encrypted_key_wo&#39; write-only. Increment this value when an update to &#39;rsa_encrypted_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String rsaEncryptedKeyWoVersion;
     /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
@@ -74,6 +97,21 @@ public final class GetDiskDiskEncryptionKey {
         return this.rawKey;
     }
     /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
+    public String rawKeyWo() {
+        return this.rawKeyWo;
+    }
+    /**
+     * @return Triggers update of &#39;raw_key_wo&#39; write-only. Increment this value when an update to &#39;raw_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String rawKeyWoVersion() {
+        return this.rawKeyWoVersion;
+    }
+    /**
      * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
      * customer-supplied encryption key to either encrypt or decrypt
      * this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -81,6 +119,22 @@ public final class GetDiskDiskEncryptionKey {
      */
     public String rsaEncryptedKey() {
         return this.rsaEncryptedKey;
+    }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * 
+     */
+    public String rsaEncryptedKeyWo() {
+        return this.rsaEncryptedKeyWo;
+    }
+    /**
+     * @return Triggers update of &#39;rsa_encrypted_key_wo&#39; write-only. Increment this value when an update to &#39;rsa_encrypted_key_wo&#39; is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String rsaEncryptedKeyWoVersion() {
+        return this.rsaEncryptedKeyWoVersion;
     }
     /**
      * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -103,7 +157,11 @@ public final class GetDiskDiskEncryptionKey {
         private String kmsKeySelfLink;
         private String kmsKeyServiceAccount;
         private String rawKey;
+        private String rawKeyWo;
+        private String rawKeyWoVersion;
         private String rsaEncryptedKey;
+        private String rsaEncryptedKeyWo;
+        private String rsaEncryptedKeyWoVersion;
         private String sha256;
         public Builder() {}
         public Builder(GetDiskDiskEncryptionKey defaults) {
@@ -111,7 +169,11 @@ public final class GetDiskDiskEncryptionKey {
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.kmsKeyServiceAccount = defaults.kmsKeyServiceAccount;
     	      this.rawKey = defaults.rawKey;
+    	      this.rawKeyWo = defaults.rawKeyWo;
+    	      this.rawKeyWoVersion = defaults.rawKeyWoVersion;
     	      this.rsaEncryptedKey = defaults.rsaEncryptedKey;
+    	      this.rsaEncryptedKeyWo = defaults.rsaEncryptedKeyWo;
+    	      this.rsaEncryptedKeyWoVersion = defaults.rsaEncryptedKeyWoVersion;
     	      this.sha256 = defaults.sha256;
         }
 
@@ -140,11 +202,43 @@ public final class GetDiskDiskEncryptionKey {
             return this;
         }
         @CustomType.Setter
+        public Builder rawKeyWo(String rawKeyWo) {
+            if (rawKeyWo == null) {
+              throw new MissingRequiredPropertyException("GetDiskDiskEncryptionKey", "rawKeyWo");
+            }
+            this.rawKeyWo = rawKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rawKeyWoVersion(String rawKeyWoVersion) {
+            if (rawKeyWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetDiskDiskEncryptionKey", "rawKeyWoVersion");
+            }
+            this.rawKeyWoVersion = rawKeyWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rsaEncryptedKey(String rsaEncryptedKey) {
             if (rsaEncryptedKey == null) {
               throw new MissingRequiredPropertyException("GetDiskDiskEncryptionKey", "rsaEncryptedKey");
             }
             this.rsaEncryptedKey = rsaEncryptedKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKeyWo(String rsaEncryptedKeyWo) {
+            if (rsaEncryptedKeyWo == null) {
+              throw new MissingRequiredPropertyException("GetDiskDiskEncryptionKey", "rsaEncryptedKeyWo");
+            }
+            this.rsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rsaEncryptedKeyWoVersion(String rsaEncryptedKeyWoVersion) {
+            if (rsaEncryptedKeyWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetDiskDiskEncryptionKey", "rsaEncryptedKeyWoVersion");
+            }
+            this.rsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -160,7 +254,11 @@ public final class GetDiskDiskEncryptionKey {
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
             _resultValue.rawKey = rawKey;
+            _resultValue.rawKeyWo = rawKeyWo;
+            _resultValue.rawKeyWoVersion = rawKeyWoVersion;
             _resultValue.rsaEncryptedKey = rsaEncryptedKey;
+            _resultValue.rsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            _resultValue.rsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
             _resultValue.sha256 = sha256;
             return _resultValue;
         }

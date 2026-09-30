@@ -389,6 +389,18 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs',
@@ -399,6 +411,20 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs',
@@ -413,6 +439,18 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict',
 ]
@@ -14560,11 +14598,11 @@ class WorkflowTemplateParameterValidationValuesArgs:
 class WorkflowTemplatePlacementArgsDict(TypedDict):
     cluster_selector: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementClusterSelectorArgsDict']]]
     """
-    A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+    A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
     """
     managed_cluster: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterArgsDict']]]
     """
-    A cluster that is managed by the workflow.
+    A cluster that is managed by the workflow. Structure is documented below.
     """
 
 @pulumi.input_type
@@ -14573,8 +14611,8 @@ class WorkflowTemplatePlacementArgs:
                  cluster_selector: pulumi.Input[Optional['WorkflowTemplatePlacementClusterSelectorArgs']] = None,
                  managed_cluster: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterArgs']] = None):
         """
-        :param pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgs'] cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterArgs'] managed_cluster: A cluster that is managed by the workflow.
+        :param pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgs'] cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterArgs'] managed_cluster: A cluster that is managed by the workflow. Structure is documented below.
         """
         if cluster_selector is not None:
             pulumi.set(__self__, "cluster_selector", cluster_selector)
@@ -14585,7 +14623,7 @@ class WorkflowTemplatePlacementArgs:
     @pulumi.getter(name="clusterSelector")
     def cluster_selector(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementClusterSelectorArgs']]:
         """
-        A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
         """
         return pulumi.get(self, "cluster_selector")
 
@@ -14597,7 +14635,7 @@ class WorkflowTemplatePlacementArgs:
     @pulumi.getter(name="managedCluster")
     def managed_cluster(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterArgs']]:
         """
-        A cluster that is managed by the workflow.
+        A cluster that is managed by the workflow. Structure is documented below.
         """
         return pulumi.get(self, "managed_cluster")
 
@@ -14661,7 +14699,7 @@ class WorkflowTemplatePlacementManagedClusterArgsDict(TypedDict):
     """
     config: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgsDict']
     """
-    Required. The cluster configuration.
+    Required. The cluster configuration. Structure is documented below.
     """
     labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
@@ -14676,7 +14714,7 @@ class WorkflowTemplatePlacementManagedClusterArgs:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs'] config: Required. The cluster configuration.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs'] config: Required. The cluster configuration. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -14700,7 +14738,7 @@ class WorkflowTemplatePlacementManagedClusterArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs']:
         """
-        Required. The cluster configuration.
+        Required. The cluster configuration. Structure is documented below.
         """
         return pulumi.get(self, "config")
 
@@ -14752,7 +14790,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     """
     master_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict']]]
     """
-    The Compute Engine config settings for additional worker instances in a cluster.
+    The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
     """
     metastore_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict']]]
     """
@@ -14760,7 +14798,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     """
     secondary_worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict']]]
     """
-    The Compute Engine config settings for additional worker instances in a cluster.
+    The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
     """
     security_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict']]]
     """
@@ -14780,7 +14818,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     """
     worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict']]]
     """
-    The Compute Engine config settings for additional worker instances in a cluster.
+    The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 
     ***
     """
@@ -14811,14 +14849,14 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs'] gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs'] lifecycle_config: Lifecycle setting for the cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs'] master_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs'] master_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs'] metastore_config: Metastore configuration.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs'] secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs'] secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs'] security_config: Security settings for the cluster.
         :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs'] software_config: The config settings for software inside the cluster.
         :param pulumi.Input[_builtins.str] staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         :param pulumi.Input[_builtins.str] temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs'] worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs'] worker_config: The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
                
                ***
         """
@@ -14941,7 +14979,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
     @pulumi.getter(name="masterConfig")
     def master_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs']]:
         """
-        The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         """
         return pulumi.get(self, "master_config")
 
@@ -14965,7 +15003,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
     @pulumi.getter(name="secondaryWorkerConfig")
     def secondary_worker_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']]:
         """
-        The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         """
         return pulumi.get(self, "secondary_worker_config")
 
@@ -15025,7 +15063,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']]:
         """
-        The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 
         ***
         """
@@ -15777,15 +15815,19 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs:
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict(TypedDict):
     accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict']]]]]
     """
-    The Compute Engine accelerator configuration for these instances.
+    The Compute Engine accelerator configuration for these instances. Structure is documented below.
     """
     disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict']]]
     """
-    Disk option config settings.
+    Disk option config settings. Structure is documented below.
     """
     image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+    """
+    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict']]]
+    """
+    Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `master_config`, `worker_config`, and `secondary_worker_config` (provisioning models are supported exclusively on `secondary_worker_config`). Structure is documented below.
     """
     instance_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -15822,6 +15864,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]]] = None,
                  disk_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs']] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs']] = None,
                  instance_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -15830,9 +15873,10 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
                  num_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  preemptibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs'] disk_config: Disk option config settings.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs'] disk_config: Disk option config settings. Structure is documented below.
         :param pulumi.Input[_builtins.str] image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `master_config`, `worker_config`, and `secondary_worker_config` (provisioning models are supported exclusively on `secondary_worker_config`). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param pulumi.Input[_builtins.bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param pulumi.Input[_builtins.str] machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
@@ -15847,6 +15891,8 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
             pulumi.set(__self__, "disk_config", disk_config)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if is_preemptible is not None:
@@ -15866,7 +15912,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
     @pulumi.getter
     def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]]]:
         """
-        The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
 
@@ -15878,7 +15924,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs']]:
         """
-        Disk option config settings.
+        Disk option config settings. Structure is documented below.
         """
         return pulumi.get(self, "disk_config")
 
@@ -15897,6 +15943,18 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
     @image.setter
     def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs']]:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `master_config`, `worker_config`, and `secondary_worker_config` (provisioning models are supported exclusively on `secondary_worker_config`). Structure is documented below.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNames")
@@ -16033,36 +16091,104 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs:
 
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict(TypedDict):
+    attached_disk_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgsDict']]]]]
+    """
+    Optional. Attached disk configuration. Structure is documented below.
+    """
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
     boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size in GB of the boot disk (default is 500GB).
     """
     boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
     """
     num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
     """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
     def __init__(__self__, *,
+                 attached_disk_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs']]]] = None,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
                  boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
                  num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs']]] attached_disk_configs: Optional. Attached disk configuration. Structure is documented below.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
         :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
-        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs']]]]:
+        """
+        Optional. Attached disk configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disk_configs")
+
+    @attached_disk_configs.setter
+    def attached_disk_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs']]]]):
+        pulumi.set(self, "attached_disk_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
@@ -16080,7 +16206,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -16089,16 +16215,542 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
         pulumi.set(self, "boot_disk_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
     @num_local_ssds.setter
     def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_local_ssds", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the attached disk, specified in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
+    instance_machine_types: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Output only. A map of instance names to their machine types.
+    """
+    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]]
+    """
+    List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+    """
+    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]]
+    """
+    Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs:
+    def __init__(__self__, *,
+                 instance_machine_types: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 instance_selection_lists: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]] = None,
+                 instance_selection_results: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] instance_machine_types: Output only. A map of instance names to their machine types.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]] instance_selection_lists: List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]] instance_selection_results: Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        if instance_machine_types is not None:
+            pulumi.set(__self__, "instance_machine_types", instance_machine_types)
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMachineTypes")
+    def instance_machine_types(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Output only. A map of instance names to their machine types.
+        """
+        return pulumi.get(self, "instance_machine_types")
+
+    @instance_machine_types.setter
+    def instance_machine_types(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_machine_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]:
+        """
+        List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @instance_selection_lists.setter
+    def instance_selection_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]):
+        pulumi.set(self, "instance_selection_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]:
+        """
+        Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+    @instance_selection_results.setter
+    def instance_selection_results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]):
+        pulumi.set(self, "instance_selection_results", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict']]]
+    """
+    Disk option for the instance group. Structure is documented above.
+    """
+    machine_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Full machine-type names, e.g. `n1-standard-16`.
+    """
+    rank: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
+    def __init__(__self__, *,
+                 disk_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']] = None,
+                 machine_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rank: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs'] disk_config: Disk option for the instance group. Structure is documented above.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_types: Full machine-type names, e.g. `n1-standard-16`.
+        :param pulumi.Input[_builtins.int] rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]:
+        """
+        Disk option for the instance group. Structure is documented above.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @disk_config.setter
+    def disk_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]):
+        pulumi.set(self, "disk_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "rank", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict(TypedDict):
+    attached_disk_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict']]]]]
+    """
+    Optional. Attached disk configuration. Structure is documented below.
+    """
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size in GB of the boot disk (default is 500GB).
+    """
+    boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs:
+    def __init__(__self__, *,
+                 attached_disk_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]] = None,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]] attached_disk_configs: Optional. Attached disk configuration. Structure is documented below.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]]:
+        """
+        Optional. Attached disk configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disk_configs")
+
+    @attached_disk_configs.setter
+    def attached_disk_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]]):
+        pulumi.set(self, "attached_disk_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size in GB of the boot disk (default is 500GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @boot_disk_type.setter
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "boot_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+    @num_local_ssds.setter
+    def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_local_ssds", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the attached disk, specified in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Output only. Full machine-type names, e.g. `n1-standard-16`.
+    """
+    vm_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Output only. Number of VM provisioned with the corresponding machine_type.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs:
+    def __init__(__self__, *,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] machine_type: Output only. Full machine-type names, e.g. `n1-standard-16`.
+        :param pulumi.Input[_builtins.int] vm_count: Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        return pulumi.get(self, "vm_count")
+
+    @vm_count.setter
+    def vm_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "vm_count", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict(TypedDict):
@@ -16181,19 +16833,23 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs:
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict(TypedDict):
     accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict']]]]]
     """
-    Optional. The Compute Engine accelerator configuration for these instances.
+    The Compute Engine accelerator configuration for these instances. Structure is documented below.
     """
     disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict']]]
     """
-    Optional. Disk option config settings.
+    Disk option config settings. Structure is documented below.
     """
     image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+    The Compute Engine image resource used for cluster instances.
+    """
+    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgsDict']]]
+    """
+    Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
     """
     instance_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+    Output only. The list of instance names.
     """
     is_preemptible: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -16201,23 +16857,23 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict
     """
     machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+    The Compute Engine machine type used for cluster instances.
     """
     managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict']]]]]
     """
-    Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+    Output only. The config for Compute Engine Instance Group Manager that manages this group.
     """
     min_cpu_platform: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+    The minimum CPU platform and architecture for the cluster.
     """
     num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+    The number of worker instances in the cluster.
     """
     preemptibility: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+    Specifies the preemptibility of the secondary worker group.
     """
 
 @pulumi.input_type
@@ -16226,6 +16882,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]]] = None,
                  disk_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs']] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs']] = None,
                  instance_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -16234,16 +16891,17 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
                  num_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  preemptibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs'] disk_config: Optional. Disk option config settings.
-        :param pulumi.Input[_builtins.str] image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs'] disk_config: Disk option config settings. Structure is documented below.
+        :param pulumi.Input[_builtins.str] image: The Compute Engine image resource used for cluster instances.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_names: Output only. The list of instance names.
         :param pulumi.Input[_builtins.bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param pulumi.Input[_builtins.str] machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param pulumi.Input[_builtins.str] min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param pulumi.Input[_builtins.int] num_instances: Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
-        :param pulumi.Input[_builtins.str] preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        :param pulumi.Input[_builtins.str] machine_type: The Compute Engine machine type used for cluster instances.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group.
+        :param pulumi.Input[_builtins.str] min_cpu_platform: The minimum CPU platform and architecture for the cluster.
+        :param pulumi.Input[_builtins.int] num_instances: The number of worker instances in the cluster.
+        :param pulumi.Input[_builtins.str] preemptibility: Specifies the preemptibility of the secondary worker group.
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -16251,6 +16909,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
             pulumi.set(__self__, "disk_config", disk_config)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if is_preemptible is not None:
@@ -16270,7 +16930,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter
     def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]]]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
 
@@ -16282,7 +16942,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs']]:
         """
-        Optional. Disk option config settings.
+        Disk option config settings. Structure is documented below.
         """
         return pulumi.get(self, "disk_config")
 
@@ -16294,7 +16954,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances.
         """
         return pulumi.get(self, "image")
 
@@ -16303,10 +16963,22 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
         pulumi.set(self, "image", value)
 
     @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs']]:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        Output only. The list of instance names.
         """
         return pulumi.get(self, "instance_names")
 
@@ -16330,7 +17002,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances.
         """
         return pulumi.get(self, "machine_type")
 
@@ -16342,7 +17014,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter(name="managedGroupConfigs")
     def managed_group_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]]]:
         """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        Output only. The config for Compute Engine Instance Group Manager that manages this group.
         """
         return pulumi.get(self, "managed_group_configs")
 
@@ -16354,7 +17026,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        The minimum CPU platform and architecture for the cluster.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -16366,7 +17038,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+        The number of worker instances in the cluster.
         """
         return pulumi.get(self, "num_instances")
 
@@ -16378,7 +17050,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
     @pulumi.getter
     def preemptibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        Specifies the preemptibility of the secondary worker group.
         """
         return pulumi.get(self, "preemptibility")
 
@@ -16437,36 +17109,104 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict(TypedDict):
+    attached_disk_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgsDict']]]]]
+    """
+    Optional. Attached disk configuration. Structure is documented below.
+    """
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
     boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size in GB of the boot disk (default is 500GB).
     """
     boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
     """
     num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
     """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs:
     def __init__(__self__, *,
+                 attached_disk_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs']]]] = None,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
                  boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
                  num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs']]] attached_disk_configs: Optional. Attached disk configuration. Structure is documented below.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
         :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
-        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs']]]]:
+        """
+        Optional. Attached disk configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disk_configs")
+
+    @attached_disk_configs.setter
+    def attached_disk_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs']]]]):
+        pulumi.set(self, "attached_disk_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
@@ -16484,7 +17224,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -16493,16 +17233,611 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
         pulumi.set(self, "boot_disk_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
     @num_local_ssds.setter
     def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_local_ssds", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the attached disk, specified in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
+    instance_machine_types: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Output only. A map of instance names to their machine types.
+    """
+    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]]
+    """
+    List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+    """
+    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]]
+    """
+    Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+    """
+    provisioning_model_mix: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict']]]
+    """
+    Strategy for provisioning model mix for secondary worker instances. Supported only for `secondary_worker_config`. Structure is documented below.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs:
+    def __init__(__self__, *,
+                 instance_machine_types: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 instance_selection_lists: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]] = None,
+                 instance_selection_results: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]] = None,
+                 provisioning_model_mix: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] instance_machine_types: Output only. A map of instance names to their machine types.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]] instance_selection_lists: List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]] instance_selection_results: Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs'] provisioning_model_mix: Strategy for provisioning model mix for secondary worker instances. Supported only for `secondary_worker_config`. Structure is documented below.
+        """
+        if instance_machine_types is not None:
+            pulumi.set(__self__, "instance_machine_types", instance_machine_types)
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+        if provisioning_model_mix is not None:
+            pulumi.set(__self__, "provisioning_model_mix", provisioning_model_mix)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMachineTypes")
+    def instance_machine_types(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Output only. A map of instance names to their machine types.
+        """
+        return pulumi.get(self, "instance_machine_types")
+
+    @instance_machine_types.setter
+    def instance_machine_types(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_machine_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]:
+        """
+        List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @instance_selection_lists.setter
+    def instance_selection_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]):
+        pulumi.set(self, "instance_selection_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]:
+        """
+        Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+    @instance_selection_results.setter
+    def instance_selection_results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]):
+        pulumi.set(self, "instance_selection_results", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningModelMix")
+    def provisioning_model_mix(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']]:
+        """
+        Strategy for provisioning model mix for secondary worker instances. Supported only for `secondary_worker_config`. Structure is documented below.
+        """
+        return pulumi.get(self, "provisioning_model_mix")
+
+    @provisioning_model_mix.setter
+    def provisioning_model_mix(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']]):
+        pulumi.set(self, "provisioning_model_mix", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict']]]
+    """
+    Disk option for the instance group. Structure is documented above.
+    """
+    machine_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Full machine-type names, e.g. `n1-standard-16`.
+    """
+    rank: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
+    def __init__(__self__, *,
+                 disk_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']] = None,
+                 machine_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rank: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs'] disk_config: Disk option for the instance group. Structure is documented above.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_types: Full machine-type names, e.g. `n1-standard-16`.
+        :param pulumi.Input[_builtins.int] rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]:
+        """
+        Disk option for the instance group. Structure is documented above.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @disk_config.setter
+    def disk_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]):
+        pulumi.set(self, "disk_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "rank", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict(TypedDict):
+    attached_disk_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict']]]]]
+    """
+    Optional. Attached disk configuration. Structure is documented below.
+    """
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size in GB of the boot disk (default is 500GB).
+    """
+    boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs:
+    def __init__(__self__, *,
+                 attached_disk_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]] = None,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]] attached_disk_configs: Optional. Attached disk configuration. Structure is documented below.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]]:
+        """
+        Optional. Attached disk configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disk_configs")
+
+    @attached_disk_configs.setter
+    def attached_disk_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]]):
+        pulumi.set(self, "attached_disk_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size in GB of the boot disk (default is 500GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @boot_disk_type.setter
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "boot_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+    @num_local_ssds.setter
+    def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_local_ssds", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the attached disk, specified in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Output only. Full machine-type names, e.g. `n1-standard-16`.
+    """
+    vm_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Output only. Number of VM provisioned with the corresponding machine_type.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs:
+    def __init__(__self__, *,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] machine_type: Output only. Full machine-type names, e.g. `n1-standard-16`.
+        :param pulumi.Input[_builtins.int] vm_count: Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        return pulumi.get(self, "vm_count")
+
+    @vm_count.setter
+    def vm_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "vm_count", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict(TypedDict):
+    standard_capacity_base: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+    """
+    standard_capacity_percent_above_base: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs:
+    def __init__(__self__, *,
+                 standard_capacity_base: pulumi.Input[Optional[_builtins.int]] = None,
+                 standard_capacity_percent_above_base: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+        :param pulumi.Input[_builtins.int] standard_capacity_percent_above_base: The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+        """
+        if standard_capacity_base is not None:
+            pulumi.set(__self__, "standard_capacity_base", standard_capacity_base)
+        if standard_capacity_percent_above_base is not None:
+            pulumi.set(__self__, "standard_capacity_percent_above_base", standard_capacity_percent_above_base)
+
+    @_builtins.property
+    @pulumi.getter(name="standardCapacityBase")
+    def standard_capacity_base(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+        """
+        return pulumi.get(self, "standard_capacity_base")
+
+    @standard_capacity_base.setter
+    def standard_capacity_base(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "standard_capacity_base", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardCapacityPercentAboveBase")
+    def standard_capacity_percent_above_base(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+        """
+        return pulumi.get(self, "standard_capacity_percent_above_base")
+
+    @standard_capacity_percent_above_base.setter
+    def standard_capacity_percent_above_base(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "standard_capacity_percent_above_base", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict(TypedDict):
@@ -17006,19 +18341,23 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict(TypedDict):
     accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict']]]]]
     """
-    Optional. The Compute Engine accelerator configuration for these instances.
+    The Compute Engine accelerator configuration for these instances. Structure is documented below.
     """
     disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict']]]
     """
-    Optional. Disk option config settings.
+    Disk option config settings. Structure is documented below.
     """
     image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+    The Compute Engine image resource used for cluster instances.
+    """
+    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict']]]
+    """
+    Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
     """
     instance_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+    Output only. The list of instance names.
     """
     is_preemptible: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -17026,19 +18365,19 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict(TypedDic
     """
     machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+    The Compute Engine machine type used for cluster instances.
     """
     managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict']]]]]
     """
-    Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+    Output only. The config for Compute Engine Instance Group Manager that manages this group.
     """
     min_cpu_platform: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+    The minimum CPU platform and architecture for the cluster.
     """
     num_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+    The number of worker instances in the cluster.
     """
     preemptibility: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -17051,6 +18390,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
                  accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]]] = None,
                  disk_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs']] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs']] = None,
                  instance_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -17059,15 +18399,16 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
                  num_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  preemptibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs'] disk_config: Optional. Disk option config settings.
-        :param pulumi.Input[_builtins.str] image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances. Structure is documented below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs'] disk_config: Disk option config settings. Structure is documented below.
+        :param pulumi.Input[_builtins.str] image: The Compute Engine image resource used for cluster instances.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_names: Output only. The list of instance names.
         :param pulumi.Input[_builtins.bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param pulumi.Input[_builtins.str] machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param pulumi.Input[_builtins.str] min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param pulumi.Input[_builtins.int] num_instances: Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+        :param pulumi.Input[_builtins.str] machine_type: The Compute Engine machine type used for cluster instances.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group.
+        :param pulumi.Input[_builtins.str] min_cpu_platform: The minimum CPU platform and architecture for the cluster.
+        :param pulumi.Input[_builtins.int] num_instances: The number of worker instances in the cluster.
         :param pulumi.Input[_builtins.str] preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         if accelerators is not None:
@@ -17076,6 +18417,8 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
             pulumi.set(__self__, "disk_config", disk_config)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_names is not None:
             pulumi.set(__self__, "instance_names", instance_names)
         if is_preemptible is not None:
@@ -17095,7 +18438,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter
     def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]]]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances. Structure is documented below.
         """
         return pulumi.get(self, "accelerators")
 
@@ -17107,7 +18450,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs']]:
         """
-        Optional. Disk option config settings.
+        Disk option config settings. Structure is documented below.
         """
         return pulumi.get(self, "disk_config")
 
@@ -17119,7 +18462,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances.
         """
         return pulumi.get(self, "image")
 
@@ -17128,10 +18471,22 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
         pulumi.set(self, "image", value)
 
     @_builtins.property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs']]:
+        """
+        Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+        Output only. The list of instance names.
         """
         return pulumi.get(self, "instance_names")
 
@@ -17155,7 +18510,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances.
         """
         return pulumi.get(self, "machine_type")
 
@@ -17167,7 +18522,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter(name="managedGroupConfigs")
     def managed_group_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]]]:
         """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        Output only. The config for Compute Engine Instance Group Manager that manages this group.
         """
         return pulumi.get(self, "managed_group_configs")
 
@@ -17179,7 +18534,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        The minimum CPU platform and architecture for the cluster.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -17191,7 +18546,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) master_config groups, **must be set to 3**. For standard cluster master_config groups, **must be set to 1**.
+        The number of worker instances in the cluster.
         """
         return pulumi.get(self, "num_instances")
 
@@ -17262,36 +18617,104 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs:
 
 
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict(TypedDict):
+    attached_disk_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgsDict']]]]]
+    """
+    Optional. Attached disk configuration. Structure is documented below.
+    """
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
     boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size in GB of the boot disk (default is 500GB).
     """
     boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
     """
     num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
     """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
     def __init__(__self__, *,
+                 attached_disk_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs']]]] = None,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
                  boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
                  num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs']]] attached_disk_configs: Optional. Attached disk configuration. Structure is documented below.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
         :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
-        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs']]]]:
+        """
+        Optional. Attached disk configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disk_configs")
+
+    @attached_disk_configs.setter
+    def attached_disk_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs']]]]):
+        pulumi.set(self, "attached_disk_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
@@ -17309,7 +18732,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -17318,16 +18741,542 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
         pulumi.set(self, "boot_disk_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
     @num_local_ssds.setter
     def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_local_ssds", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the attached disk, specified in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
+    instance_machine_types: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Output only. A map of instance names to their machine types.
+    """
+    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]]
+    """
+    List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+    """
+    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]]
+    """
+    Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs:
+    def __init__(__self__, *,
+                 instance_machine_types: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 instance_selection_lists: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]] = None,
+                 instance_selection_results: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] instance_machine_types: Output only. A map of instance names to their machine types.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]] instance_selection_lists: List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]] instance_selection_results: Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        if instance_machine_types is not None:
+            pulumi.set(__self__, "instance_machine_types", instance_machine_types)
+        if instance_selection_lists is not None:
+            pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
+        if instance_selection_results is not None:
+            pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMachineTypes")
+    def instance_machine_types(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Output only. A map of instance names to their machine types.
+        """
+        return pulumi.get(self, "instance_machine_types")
+
+    @instance_machine_types.setter
+    def instance_machine_types(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_machine_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionLists")
+    def instance_selection_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]:
+        """
+        List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_lists")
+
+    @instance_selection_lists.setter
+    def instance_selection_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]):
+        pulumi.set(self, "instance_selection_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSelectionResults")
+    def instance_selection_results(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]:
+        """
+        Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+        """
+        return pulumi.get(self, "instance_selection_results")
+
+    @instance_selection_results.setter
+    def instance_selection_results(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]):
+        pulumi.set(self, "instance_selection_results", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict']]]
+    """
+    Disk option for the instance group. Structure is documented above.
+    """
+    machine_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Full machine-type names, e.g. `n1-standard-16`.
+    """
+    rank: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
+    def __init__(__self__, *,
+                 disk_config: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']] = None,
+                 machine_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rank: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs'] disk_config: Disk option for the instance group. Structure is documented above.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_types: Full machine-type names, e.g. `n1-standard-16`.
+        :param pulumi.Input[_builtins.int] rank: Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
+        if machine_types is not None:
+            pulumi.set(__self__, "machine_types", machine_types)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]:
+        """
+        Disk option for the instance group. Structure is documented above.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @disk_config.setter
+    def disk_config(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]):
+        pulumi.set(self, "disk_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rank(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "rank", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict(TypedDict):
+    attached_disk_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict']]]]]
+    """
+    Optional. Attached disk configuration. Structure is documented below.
+    """
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size in GB of the boot disk (default is 500GB).
+    """
+    boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs:
+    def __init__(__self__, *,
+                 attached_disk_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]] = None,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]] attached_disk_configs: Optional. Attached disk configuration. Structure is documented below.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param pulumi.Input[_builtins.str] boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]]:
+        """
+        Optional. Attached disk configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "attached_disk_configs")
+
+    @attached_disk_configs.setter
+    def attached_disk_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs']]]]):
+        pulumi.set(self, "attached_disk_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `boot_disk_type` is `hyperdisk-balanced`.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size in GB of the boot disk (default is 500GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @boot_disk_type.setter
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "boot_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+    @num_local_ssds.setter
+    def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_local_ssds", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgsDict(TypedDict):
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the attached disk, specified in GB.
+    """
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "provisioned_throughput", value)
+
+
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Output only. Full machine-type names, e.g. `n1-standard-16`.
+    """
+    vm_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Output only. Number of VM provisioned with the corresponding machine_type.
+    """
+
+@pulumi.input_type
+class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs:
+    def __init__(__self__, *,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] machine_type: Output only. Full machine-type names, e.g. `n1-standard-16`.
+        :param pulumi.Input[_builtins.int] vm_count: Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if vm_count is not None:
+            pulumi.set(__self__, "vm_count", vm_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. Full machine-type names, e.g. `n1-standard-16`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Output only. Number of VM provisioned with the corresponding machine_type.
+        """
+        return pulumi.get(self, "vm_count")
+
+    @vm_count.setter
+    def vm_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "vm_count", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict(TypedDict):

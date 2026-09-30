@@ -350,7 +350,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         asp = gcp.dataproc.AutoscalingPolicy("asp",
             policy_id="dataproc-policy",
-            location="us-central1",
+            location="us-east1",
             worker_config={
                 "max_instances": 3,
             },
@@ -363,10 +363,26 @@ class AutoscalingPolicy(pulumi.CustomResource):
             })
         basic = gcp.dataproc.Cluster("basic",
             name="dataproc-policy",
-            region="us-central1",
+            region="us-east1",
             cluster_config={
                 "autoscaling_config": {
                     "policy_uri": asp.name,
+                },
+                "master_config": {
+                    "num_instances": 1,
+                    "machine_type": "n4-standard-2",
+                    "disk_config": {
+                        "boot_disk_type": "hyperdisk-balanced",
+                        "boot_disk_size_gb": 35,
+                    },
+                },
+                "worker_config": {
+                    "num_instances": 2,
+                    "machine_type": "n4-standard-2",
+                    "disk_config": {
+                        "boot_disk_type": "hyperdisk-balanced",
+                        "boot_disk_size_gb": 35,
+                    },
                 },
             })
         ```
@@ -429,7 +445,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         asp = gcp.dataproc.AutoscalingPolicy("asp",
             policy_id="dataproc-policy",
-            location="us-central1",
+            location="us-east1",
             worker_config={
                 "max_instances": 3,
             },
@@ -442,10 +458,26 @@ class AutoscalingPolicy(pulumi.CustomResource):
             })
         basic = gcp.dataproc.Cluster("basic",
             name="dataproc-policy",
-            region="us-central1",
+            region="us-east1",
             cluster_config={
                 "autoscaling_config": {
                     "policy_uri": asp.name,
+                },
+                "master_config": {
+                    "num_instances": 1,
+                    "machine_type": "n4-standard-2",
+                    "disk_config": {
+                        "boot_disk_type": "hyperdisk-balanced",
+                        "boot_disk_size_gb": 35,
+                    },
+                },
+                "worker_config": {
+                    "num_instances": 2,
+                    "machine_type": "n4-standard-2",
+                    "disk_config": {
+                        "boot_disk_type": "hyperdisk-balanced",
+                        "boot_disk_size_gb": 35,
+                    },
                 },
             })
         ```

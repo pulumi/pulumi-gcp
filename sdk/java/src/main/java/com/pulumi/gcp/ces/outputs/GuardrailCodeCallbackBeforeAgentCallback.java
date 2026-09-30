@@ -25,6 +25,16 @@ public final class GuardrailCodeCallbackBeforeAgentCallback {
      */
     private @Nullable Boolean disabled;
     /**
+     * @return If enabled, the callback will also be executed on intermediate model
+     * outputs. This setting only affects after model callback.
+     * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+     * executed after receiving all model responses. Enabling proactive execution
+     * may have negative implication on the execution cost and latency, and
+     * should only be enabled in rare situations.
+     * 
+     */
+    private @Nullable Boolean proactiveExecutionEnabled;
+    /**
      * @return The python code to execute for the callback.
      * 
      */
@@ -47,6 +57,18 @@ public final class GuardrailCodeCallbackBeforeAgentCallback {
         return Optional.ofNullable(this.disabled);
     }
     /**
+     * @return If enabled, the callback will also be executed on intermediate model
+     * outputs. This setting only affects after model callback.
+     * **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+     * executed after receiving all model responses. Enabling proactive execution
+     * may have negative implication on the execution cost and latency, and
+     * should only be enabled in rare situations.
+     * 
+     */
+    public Optional<Boolean> proactiveExecutionEnabled() {
+        return Optional.ofNullable(this.proactiveExecutionEnabled);
+    }
+    /**
      * @return The python code to execute for the callback.
      * 
      */
@@ -65,12 +87,14 @@ public final class GuardrailCodeCallbackBeforeAgentCallback {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Boolean disabled;
+        private @Nullable Boolean proactiveExecutionEnabled;
         private String pythonCode;
         public Builder() {}
         public Builder(GuardrailCodeCallbackBeforeAgentCallback defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.disabled = defaults.disabled;
+    	      this.proactiveExecutionEnabled = defaults.proactiveExecutionEnabled;
     	      this.pythonCode = defaults.pythonCode;
         }
 
@@ -87,6 +111,12 @@ public final class GuardrailCodeCallbackBeforeAgentCallback {
             return this;
         }
         @CustomType.Setter
+        public Builder proactiveExecutionEnabled(@Nullable Boolean proactiveExecutionEnabled) {
+
+            this.proactiveExecutionEnabled = proactiveExecutionEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pythonCode(String pythonCode) {
             if (pythonCode == null) {
               throw new MissingRequiredPropertyException("GuardrailCodeCallbackBeforeAgentCallback", "pythonCode");
@@ -98,6 +128,7 @@ public final class GuardrailCodeCallbackBeforeAgentCallback {
             final var _resultValue = new GuardrailCodeCallbackBeforeAgentCallback();
             _resultValue.description = description;
             _resultValue.disabled = disabled;
+            _resultValue.proactiveExecutionEnabled = proactiveExecutionEnabled;
             _resultValue.pythonCode = pythonCode;
             return _resultValue;
         }

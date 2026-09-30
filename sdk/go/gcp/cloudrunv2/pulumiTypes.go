@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -834,6 +834,8 @@ type JobTemplate struct {
 	// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
+	// If true, the system will start the execution within the next 12 hours depending on available capacity.
+	DelayExecution *bool `pulumi:"delayExecution"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
 	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
@@ -866,6 +868,8 @@ type JobTemplateArgs struct {
 	// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// If true, the system will start the execution within the next 12 hours depending on available capacity.
+	DelayExecution pulumi.BoolPtrInput `pulumi:"delayExecution"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
 	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
@@ -966,6 +970,11 @@ func (o JobTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// If true, the system will start the execution within the next 12 hours depending on available capacity.
+func (o JobTemplateOutput) DelayExecution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTemplate) *bool { return v.DelayExecution }).(pulumi.BoolPtrOutput)
+}
+
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
 // or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 // https://cloud.google.com/run/docs/configuring/labels.
@@ -1026,6 +1035,16 @@ func (o JobTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
 		}
 		return v.Annotations
 	}).(pulumi.StringMapOutput)
+}
+
+// If true, the system will start the execution within the next 12 hours depending on available capacity.
+func (o JobTemplatePtrOutput) DelayExecution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DelayExecution
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
@@ -1426,6 +1445,8 @@ type JobTemplateTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *JobTemplateTemplateContainerResources `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher *bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -1470,6 +1491,8 @@ type JobTemplateTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources JobTemplateTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolPtrInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -1575,6 +1598,11 @@ func (o JobTemplateTemplateContainerOutput) Ports() JobTemplateTemplateContainer
 // Structure is documented below.
 func (o JobTemplateTemplateContainerOutput) Resources() JobTemplateTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerResources { return v.Resources }).(JobTemplateTemplateContainerResourcesPtrOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o JobTemplateTemplateContainerOutput) SandboxLauncher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateContainer) *bool { return v.SandboxLauncher }).(pulumi.BoolPtrOutput)
 }
 
 // Startup probe of application within the container.
@@ -6423,6 +6451,9 @@ type ServiceTemplate struct {
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	// Structure is documented below.
 	VpcAccess *ServiceTemplateVpcAccess `pulumi:"vpcAccess"`
+	// Workload identity settings for this Revision.
+	// Structure is documented below.
+	WorkloadIdentityConfig *ServiceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
 
 // ServiceTemplateInput is an input type that accepts ServiceTemplateArgs and ServiceTemplateOutput values.
@@ -6490,6 +6521,9 @@ type ServiceTemplateArgs struct {
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	// Structure is documented below.
 	VpcAccess ServiceTemplateVpcAccessPtrInput `pulumi:"vpcAccess"`
+	// Workload identity settings for this Revision.
+	// Structure is documented below.
+	WorkloadIdentityConfig ServiceTemplateWorkloadIdentityConfigPtrInput `pulumi:"workloadIdentityConfig"`
 }
 
 func (ServiceTemplateArgs) ElementType() reflect.Type {
@@ -6674,6 +6708,12 @@ func (o ServiceTemplateOutput) Volumes() ServiceTemplateVolumeArrayOutput {
 // Structure is documented below.
 func (o ServiceTemplateOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateVpcAccess { return v.VpcAccess }).(ServiceTemplateVpcAccessPtrOutput)
+}
+
+// Workload identity settings for this Revision.
+// Structure is documented below.
+func (o ServiceTemplateOutput) WorkloadIdentityConfig() ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateWorkloadIdentityConfig { return v.WorkloadIdentityConfig }).(ServiceTemplateWorkloadIdentityConfigPtrOutput)
 }
 
 type ServiceTemplatePtrOutput struct{ *pulumi.OutputState }
@@ -6895,6 +6935,17 @@ func (o ServiceTemplatePtrOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput 
 		}
 		return v.VpcAccess
 	}).(ServiceTemplateVpcAccessPtrOutput)
+}
+
+// Workload identity settings for this Revision.
+// Structure is documented below.
+func (o ServiceTemplatePtrOutput) WorkloadIdentityConfig() ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateWorkloadIdentityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityConfig
+	}).(ServiceTemplateWorkloadIdentityConfigPtrOutput)
 }
 
 type ServiceTemplateContainer struct {
@@ -11472,10 +11523,8 @@ func (o ServiceTemplateSandboxesTemplateVolumeMountArrayOutput) Index(i pulumi.I
 }
 
 type ServiceTemplateScaling struct {
-	// (Optional, Beta)
 	// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 	ConcurrencyUtilization *float64 `pulumi:"concurrencyUtilization"`
-	// (Optional, Beta)
 	// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 	CpuUtilization *float64 `pulumi:"cpuUtilization"`
 	// Combined maximum number of instances for all revisions receiving traffic.
@@ -11496,10 +11545,8 @@ type ServiceTemplateScalingInput interface {
 }
 
 type ServiceTemplateScalingArgs struct {
-	// (Optional, Beta)
 	// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 	ConcurrencyUtilization pulumi.Float64PtrInput `pulumi:"concurrencyUtilization"`
-	// (Optional, Beta)
 	// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 	CpuUtilization pulumi.Float64PtrInput `pulumi:"cpuUtilization"`
 	// Combined maximum number of instances for all revisions receiving traffic.
@@ -11585,13 +11632,11 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
-// (Optional, Beta)
 // Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 func (o ServiceTemplateScalingOutput) ConcurrencyUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *float64 { return v.ConcurrencyUtilization }).(pulumi.Float64PtrOutput)
 }
 
-// (Optional, Beta)
 // Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 func (o ServiceTemplateScalingOutput) CpuUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *float64 { return v.CpuUtilization }).(pulumi.Float64PtrOutput)
@@ -11631,7 +11676,6 @@ func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
 	}).(ServiceTemplateScalingOutput)
 }
 
-// (Optional, Beta)
 // Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 func (o ServiceTemplateScalingPtrOutput) ConcurrencyUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateScaling) *float64 {
@@ -11642,7 +11686,6 @@ func (o ServiceTemplateScalingPtrOutput) ConcurrencyUtilization() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
-// (Optional, Beta)
 // Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
 func (o ServiceTemplateScalingPtrOutput) CpuUtilization() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateScaling) *float64 {
@@ -13226,6 +13269,185 @@ func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateVpcAccessNetworkInterface {
 		return vs[0].([]ServiceTemplateVpcAccessNetworkInterface)[vs[1].(int)]
 	}).(ServiceTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+type ServiceTemplateWorkloadIdentityConfig struct {
+	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity *string `pulumi:"identity"`
+	// Controls whether an instance receives a MWLID certificate.
+	IdentityCertificateEnabled *bool `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use.
+	// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// ServiceTemplateWorkloadIdentityConfigInput is an input type that accepts ServiceTemplateWorkloadIdentityConfigArgs and ServiceTemplateWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `ServiceTemplateWorkloadIdentityConfigInput` via:
+//
+//	ServiceTemplateWorkloadIdentityConfigArgs{...}
+type ServiceTemplateWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToServiceTemplateWorkloadIdentityConfigOutput() ServiceTemplateWorkloadIdentityConfigOutput
+	ToServiceTemplateWorkloadIdentityConfigOutputWithContext(context.Context) ServiceTemplateWorkloadIdentityConfigOutput
+}
+
+type ServiceTemplateWorkloadIdentityConfigArgs struct {
+	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// Controls whether an instance receives a MWLID certificate.
+	IdentityCertificateEnabled pulumi.BoolPtrInput `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use.
+	// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (ServiceTemplateWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i ServiceTemplateWorkloadIdentityConfigArgs) ToServiceTemplateWorkloadIdentityConfigOutput() ServiceTemplateWorkloadIdentityConfigOutput {
+	return i.ToServiceTemplateWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateWorkloadIdentityConfigArgs) ToServiceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) ServiceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateWorkloadIdentityConfigOutput)
+}
+
+func (i ServiceTemplateWorkloadIdentityConfigArgs) ToServiceTemplateWorkloadIdentityConfigPtrOutput() ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return i.ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateWorkloadIdentityConfigArgs) ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateWorkloadIdentityConfigOutput).ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateWorkloadIdentityConfigPtrInput is an input type that accepts ServiceTemplateWorkloadIdentityConfigArgs, ServiceTemplateWorkloadIdentityConfigPtr and ServiceTemplateWorkloadIdentityConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateWorkloadIdentityConfigPtrInput` via:
+//
+//	        ServiceTemplateWorkloadIdentityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateWorkloadIdentityConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateWorkloadIdentityConfigPtrOutput() ServiceTemplateWorkloadIdentityConfigPtrOutput
+	ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Context) ServiceTemplateWorkloadIdentityConfigPtrOutput
+}
+
+type serviceTemplateWorkloadIdentityConfigPtrType ServiceTemplateWorkloadIdentityConfigArgs
+
+func ServiceTemplateWorkloadIdentityConfigPtr(v *ServiceTemplateWorkloadIdentityConfigArgs) ServiceTemplateWorkloadIdentityConfigPtrInput {
+	return (*serviceTemplateWorkloadIdentityConfigPtrType)(v)
+}
+
+func (*serviceTemplateWorkloadIdentityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i *serviceTemplateWorkloadIdentityConfigPtrType) ToServiceTemplateWorkloadIdentityConfigPtrOutput() ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return i.ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateWorkloadIdentityConfigPtrType) ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateWorkloadIdentityConfigPtrOutput)
+}
+
+type ServiceTemplateWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigOutput) ToServiceTemplateWorkloadIdentityConfigOutput() ServiceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigOutput) ToServiceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) ServiceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigOutput) ToServiceTemplateWorkloadIdentityConfigPtrOutput() ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigOutput) ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateWorkloadIdentityConfig) *ServiceTemplateWorkloadIdentityConfig {
+		return &v
+	}).(ServiceTemplateWorkloadIdentityConfigPtrOutput)
+}
+
+// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+func (o ServiceTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateWorkloadIdentityConfig) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// Controls whether an instance receives a MWLID certificate.
+func (o ServiceTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateWorkloadIdentityConfig) *bool { return v.IdentityCertificateEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of identity to use.
+// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+func (o ServiceTemplateWorkloadIdentityConfigOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateWorkloadIdentityConfig) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateWorkloadIdentityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateWorkloadIdentityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) ToServiceTemplateWorkloadIdentityConfigPtrOutput() ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) ToServiceTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) ServiceTemplateWorkloadIdentityConfigPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) Elem() ServiceTemplateWorkloadIdentityConfigOutput {
+	return o.ApplyT(func(v *ServiceTemplateWorkloadIdentityConfig) ServiceTemplateWorkloadIdentityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateWorkloadIdentityConfig
+		return ret
+	}).(ServiceTemplateWorkloadIdentityConfigOutput)
+}
+
+// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateWorkloadIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether an instance receives a MWLID certificate.
+func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) IdentityCertificateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateWorkloadIdentityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityCertificateEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The type of identity to use.
+// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateWorkloadIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTerminalCondition struct {
@@ -15270,6 +15492,8 @@ type WorkerPoolTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *WorkerPoolTemplateContainerResources `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher *bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	// Structure is documented below.
 	StartupProbe *WorkerPoolTemplateContainerStartupProbe `pulumi:"startupProbe"`
@@ -15311,6 +15535,8 @@ type WorkerPoolTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources WorkerPoolTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolPtrInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	// Structure is documented below.
 	StartupProbe WorkerPoolTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
@@ -15413,6 +15639,11 @@ func (o WorkerPoolTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o WorkerPoolTemplateContainerOutput) Resources() WorkerPoolTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v WorkerPoolTemplateContainer) *WorkerPoolTemplateContainerResources { return v.Resources }).(WorkerPoolTemplateContainerResourcesPtrOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o WorkerPoolTemplateContainerOutput) SandboxLauncher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainer) *bool { return v.SandboxLauncher }).(pulumi.BoolPtrOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
@@ -16299,7 +16530,7 @@ func (o WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.
 type WorkerPoolTemplateContainerLivenessProbeHttpGet struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders `pulumi:"httpHeaders"`
+	HttpHeaders []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -16320,7 +16551,7 @@ type WorkerPoolTemplateContainerLivenessProbeHttpGetInput interface {
 type WorkerPoolTemplateContainerLivenessProbeHttpGetArgs struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput `pulumi:"httpHeaders"`
+	HttpHeaders WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -16406,10 +16637,10 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) ToWorkerPoolTempl
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGet) []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -16448,13 +16679,13 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Elem() WorkerP
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGet) []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
 		if v == nil {
 			return nil
 		}
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -16477,199 +16708,110 @@ func (o WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders struct {
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader struct {
 	// Required. The header field name
-	Name *string `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port *int `pulumi:"port"`
+	Name string `pulumi:"name"`
 	// Optional. The header field value
 	Value *string `pulumi:"value"`
 }
 
-// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput` via:
+// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput` via:
 //
-//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{...}
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput interface {
+//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...}
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs struct {
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
 	// Required. The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
-	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(context.Background())
 }
 
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput)
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput).ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx)
-}
-
-// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs, WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtr and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput` via:
+// WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray and WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
 //
-//	        WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput interface {
+//	WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{ WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{...} }
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput
-	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
+	ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput
 }
 
-type workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray []WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput
 
-func WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtr(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput {
-	return (*workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType)(v)
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (*workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
 }
 
-func (i *workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-func (i *workerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput struct{ *pulumi.OutputState }
-
-func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
-}
-
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
-		return &v
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput)
-}
-
 // Required. The header field name
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Optional. The header field value
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput struct{ *pulumi.OutputState }
+type WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
 
-func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Elem() WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders
-		return ret
-	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput)
-}
-
-// Required. The header field name
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. The header field value
-func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader {
+		return vs[0].([]WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
 type WorkerPoolTemplateContainerLivenessProbeTcpSocket struct {
@@ -17374,7 +17516,7 @@ func (o WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.S
 type WorkerPoolTemplateContainerStartupProbeHttpGet struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders `pulumi:"httpHeaders"`
+	HttpHeaders []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -17395,7 +17537,7 @@ type WorkerPoolTemplateContainerStartupProbeHttpGetInput interface {
 type WorkerPoolTemplateContainerStartupProbeHttpGetArgs struct {
 	// Optional. Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
-	HttpHeaders WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput `pulumi:"httpHeaders"`
+	HttpHeaders WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Optional. Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -17481,10 +17623,10 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) ToWorkerPoolTempla
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGet) []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -17523,13 +17665,13 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Elem() WorkerPo
 
 // Optional. Custom headers to set in the request. HTTP allows repeated headers.
 // Structure is documented below.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGet) []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
 		if v == nil {
 			return nil
 		}
 		return v.HttpHeaders
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
 // Optional. Path to access on the HTTP server. Defaults to '/'.
@@ -17552,199 +17694,110 @@ func (o WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput) Port() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders struct {
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader struct {
 	// Required. The header field name
-	Name *string `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port *int `pulumi:"port"`
+	Name string `pulumi:"name"`
 	// Optional. The header field value
 	Value *string `pulumi:"value"`
 }
 
-// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput` via:
+// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput` via:
 //
-//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{...}
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput interface {
+//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...}
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs struct {
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
 	// Required. The header field name
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Deprecated)
-	// Required. The header field name
-	//
-	// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	//
-	// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
-	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(context.Background())
 }
 
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput)
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput).ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx)
-}
-
-// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs, WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtr and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput values.
-// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput` via:
+// WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray and WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
+// You can construct a concrete instance of `WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
 //
-//	        WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput interface {
+//	WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray{ WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{...} }
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput interface {
 	pulumi.Input
 
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput
-	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
+	ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput
 }
 
-type workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray []WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput
 
-func WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtr(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput {
-	return (*workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType)(v)
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (*workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(context.Background())
 }
 
-func (i *workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return i.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
+func (i WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-func (i *workerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrType) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput struct{ *pulumi.OutputState }
-
-func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
-}
-
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
-		return &v
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput)
-}
-
 // Required. The header field name
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Optional. The header field value
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput struct{ *pulumi.OutputState }
+type WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput struct{ *pulumi.OutputState }
 
-func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders)(nil)).Elem()
+func (WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)(nil)).Elem()
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput {
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
 }
 
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Elem() WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders
-		return ret
-	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput)
-}
-
-// Required. The header field name
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Deprecated)
-// Required. The header field name
-//
-// > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-//
-// Deprecated: `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Port
-	}).(pulumi.IntPtrOutput)
-}
-
-// Optional. The header field value
-func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader {
+		return vs[0].([]WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader)[vs[1].(int)]
+	}).(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
 type WorkerPoolTemplateContainerStartupProbeTcpSocket struct {
@@ -20157,6 +20210,8 @@ type GetJobTemplate struct {
 	//
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
+	// If true, the system will start the execution within the next 12 hours depending on available capacity.
+	DelayExecution bool `pulumi:"delayExecution"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
 	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
@@ -20191,6 +20246,8 @@ type GetJobTemplateArgs struct {
 	//
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// If true, the system will start the execution within the next 12 hours depending on available capacity.
+	DelayExecution pulumi.BoolInput `pulumi:"delayExecution"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
 	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
@@ -20265,6 +20322,11 @@ func (o GetJobTemplateOutput) ToGetJobTemplateOutputWithContext(ctx context.Cont
 // This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GetJobTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// If true, the system will start the execution within the next 12 hours depending on available capacity.
+func (o GetJobTemplateOutput) DelayExecution() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobTemplate) bool { return v.DelayExecution }).(pulumi.BoolOutput)
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
@@ -20515,6 +20577,8 @@ type GetJobTemplateTemplateContainer struct {
 	Ports []GetJobTemplateTemplateContainerPort `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetJobTemplateTemplateContainerResource `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -20555,6 +20619,8 @@ type GetJobTemplateTemplateContainerArgs struct {
 	Ports GetJobTemplateTemplateContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetJobTemplateTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -20656,6 +20722,11 @@ func (o GetJobTemplateTemplateContainerOutput) Ports() GetJobTemplateTemplateCon
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetJobTemplateTemplateContainerOutput) Resources() GetJobTemplateTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerResource { return v.Resources }).(GetJobTemplateTemplateContainerResourceArrayOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o GetJobTemplateTemplateContainerOutput) SandboxLauncher() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateContainer) bool { return v.SandboxLauncher }).(pulumi.BoolOutput)
 }
 
 // Startup probe of application within the container.
@@ -24001,6 +24072,8 @@ type GetServiceTemplate struct {
 	Volumes []GetServiceTemplateVolume `pulumi:"volumes"`
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	VpcAccesses []GetServiceTemplateVpcAccess `pulumi:"vpcAccesses"`
+	// Workload identity settings for this Revision.
+	WorkloadIdentityConfigs []GetServiceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
 }
 
 // GetServiceTemplateInput is an input type that accepts GetServiceTemplateArgs and GetServiceTemplateOutput values.
@@ -24063,6 +24136,8 @@ type GetServiceTemplateArgs struct {
 	Volumes GetServiceTemplateVolumeArrayInput `pulumi:"volumes"`
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	VpcAccesses GetServiceTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
+	// Workload identity settings for this Revision.
+	WorkloadIdentityConfigs GetServiceTemplateWorkloadIdentityConfigArrayInput `pulumi:"workloadIdentityConfigs"`
 }
 
 func (GetServiceTemplateArgs) ElementType() reflect.Type {
@@ -24216,6 +24291,13 @@ func (o GetServiceTemplateOutput) Volumes() GetServiceTemplateVolumeArrayOutput 
 // VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 func (o GetServiceTemplateOutput) VpcAccesses() GetServiceTemplateVpcAccessArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateVpcAccess { return v.VpcAccesses }).(GetServiceTemplateVpcAccessArrayOutput)
+}
+
+// Workload identity settings for this Revision.
+func (o GetServiceTemplateOutput) WorkloadIdentityConfigs() GetServiceTemplateWorkloadIdentityConfigArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateWorkloadIdentityConfig {
+		return v.WorkloadIdentityConfigs
+	}).(GetServiceTemplateWorkloadIdentityConfigArrayOutput)
 }
 
 type GetServiceTemplateArrayOutput struct{ *pulumi.OutputState }
@@ -28897,6 +28979,121 @@ func (o GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.I
 	}).(GetServiceTemplateVpcAccessNetworkInterfaceOutput)
 }
 
+type GetServiceTemplateWorkloadIdentityConfig struct {
+	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity string `pulumi:"identity"`
+	// Controls whether an instance receives a MWLID certificate.
+	IdentityCertificateEnabled bool `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+	IdentityType string `pulumi:"identityType"`
+}
+
+// GetServiceTemplateWorkloadIdentityConfigInput is an input type that accepts GetServiceTemplateWorkloadIdentityConfigArgs and GetServiceTemplateWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `GetServiceTemplateWorkloadIdentityConfigInput` via:
+//
+//	GetServiceTemplateWorkloadIdentityConfigArgs{...}
+type GetServiceTemplateWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateWorkloadIdentityConfigOutput() GetServiceTemplateWorkloadIdentityConfigOutput
+	ToGetServiceTemplateWorkloadIdentityConfigOutputWithContext(context.Context) GetServiceTemplateWorkloadIdentityConfigOutput
+}
+
+type GetServiceTemplateWorkloadIdentityConfigArgs struct {
+	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Controls whether an instance receives a MWLID certificate.
+	IdentityCertificateEnabled pulumi.BoolInput `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+	IdentityType pulumi.StringInput `pulumi:"identityType"`
+}
+
+func (GetServiceTemplateWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetServiceTemplateWorkloadIdentityConfigArgs) ToGetServiceTemplateWorkloadIdentityConfigOutput() GetServiceTemplateWorkloadIdentityConfigOutput {
+	return i.ToGetServiceTemplateWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateWorkloadIdentityConfigArgs) ToGetServiceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetServiceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateWorkloadIdentityConfigOutput)
+}
+
+// GetServiceTemplateWorkloadIdentityConfigArrayInput is an input type that accepts GetServiceTemplateWorkloadIdentityConfigArray and GetServiceTemplateWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateWorkloadIdentityConfigArrayInput` via:
+//
+//	GetServiceTemplateWorkloadIdentityConfigArray{ GetServiceTemplateWorkloadIdentityConfigArgs{...} }
+type GetServiceTemplateWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateWorkloadIdentityConfigArrayOutput() GetServiceTemplateWorkloadIdentityConfigArrayOutput
+	ToGetServiceTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Context) GetServiceTemplateWorkloadIdentityConfigArrayOutput
+}
+
+type GetServiceTemplateWorkloadIdentityConfigArray []GetServiceTemplateWorkloadIdentityConfigInput
+
+func (GetServiceTemplateWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetServiceTemplateWorkloadIdentityConfigArray) ToGetServiceTemplateWorkloadIdentityConfigArrayOutput() GetServiceTemplateWorkloadIdentityConfigArrayOutput {
+	return i.ToGetServiceTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateWorkloadIdentityConfigArray) ToGetServiceTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetServiceTemplateWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateWorkloadIdentityConfigArrayOutput)
+}
+
+type GetServiceTemplateWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetServiceTemplateWorkloadIdentityConfigOutput) ToGetServiceTemplateWorkloadIdentityConfigOutput() GetServiceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o GetServiceTemplateWorkloadIdentityConfigOutput) ToGetServiceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetServiceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+func (o GetServiceTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateWorkloadIdentityConfig) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Controls whether an instance receives a MWLID certificate.
+func (o GetServiceTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateWorkloadIdentityConfig) bool { return v.IdentityCertificateEnabled }).(pulumi.BoolOutput)
+}
+
+// The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+func (o GetServiceTemplateWorkloadIdentityConfigOutput) IdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateWorkloadIdentityConfig) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetServiceTemplateWorkloadIdentityConfigArrayOutput) ToGetServiceTemplateWorkloadIdentityConfigArrayOutput() GetServiceTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateWorkloadIdentityConfigArrayOutput) ToGetServiceTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetServiceTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateWorkloadIdentityConfig {
+		return vs[0].([]GetServiceTemplateWorkloadIdentityConfig)[vs[1].(int)]
+	}).(GetServiceTemplateWorkloadIdentityConfigOutput)
+}
+
 type GetServiceTerminalCondition struct {
 	// A reason for the execution condition.
 	ExecutionReason string `pulumi:"executionReason"`
@@ -30213,6 +30410,8 @@ type GetWorkerPoolTemplateContainer struct {
 	Name string `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetWorkerPoolTemplateContainerResource `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbes []GetWorkerPoolTemplateContainerStartupProbe `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
@@ -30249,6 +30448,8 @@ type GetWorkerPoolTemplateContainerArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetWorkerPoolTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 	StartupProbes GetWorkerPoolTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
@@ -30348,6 +30549,11 @@ func (o GetWorkerPoolTemplateContainerOutput) Name() pulumi.StringOutput {
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetWorkerPoolTemplateContainerOutput) Resources() GetWorkerPoolTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) []GetWorkerPoolTemplateContainerResource { return v.Resources }).(GetWorkerPoolTemplateContainerResourceArrayOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o GetWorkerPoolTemplateContainerOutput) SandboxLauncher() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkerPoolTemplateContainer) bool { return v.SandboxLauncher }).(pulumi.BoolOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
@@ -31094,8 +31300,6 @@ func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetArrayOutput) Index(i p
 type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name string `pulumi:"name"`
-	// Required. The header field name
-	Port int `pulumi:"port"`
 	// Optional. The header field value
 	Value string `pulumi:"value"`
 }
@@ -31114,8 +31318,6 @@ type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface
 type GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The header field name
-	Port pulumi.IntInput `pulumi:"port"`
 	// Optional. The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -31174,11 +31376,6 @@ func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToGe
 // The name of the Cloud Run v2 Worker Pool.
 func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Required. The header field name
-func (o GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Optional. The header field value
@@ -31783,8 +31980,6 @@ func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pu
 type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name string `pulumi:"name"`
-	// Required. The header field name
-	Port int `pulumi:"port"`
 	// Optional. The header field value
 	Value string `pulumi:"value"`
 }
@@ -31803,8 +31998,6 @@ type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput interface 
 type GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
 	// The name of the Cloud Run v2 Worker Pool.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The header field name
-	Port pulumi.IntInput `pulumi:"port"`
 	// Optional. The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -31863,11 +32056,6 @@ func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToGet
 // The name of the Cloud Run v2 Worker Pool.
 func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Required. The header field name
-func (o GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Optional. The header field value
@@ -33573,6 +33761,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessPtrInput)(nil)).Elem(), ServiceTemplateVpcAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), ServiceTemplateVpcAccessNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), ServiceTemplateVpcAccessNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateWorkloadIdentityConfigInput)(nil)).Elem(), ServiceTemplateWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateWorkloadIdentityConfigPtrInput)(nil)).Elem(), ServiceTemplateWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTerminalConditionInput)(nil)).Elem(), ServiceTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTerminalConditionArrayInput)(nil)).Elem(), ServiceTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTrafficInput)(nil)).Elem(), ServiceTrafficArgs{})
@@ -33609,8 +33799,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeGrpcPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerResourcesInput)(nil)).Elem(), WorkerPoolTemplateContainerResourcesArgs{})
@@ -33621,8 +33811,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeGrpcPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeGrpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocketInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), WorkerPoolTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolTemplateContainerVolumeMountInput)(nil)).Elem(), WorkerPoolTemplateContainerVolumeMountArgs{})
@@ -33795,6 +33985,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessArrayInput)(nil)).Elem(), GetServiceTemplateVpcAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), GetServiceTemplateVpcAccessNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), GetServiceTemplateVpcAccessNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateWorkloadIdentityConfigInput)(nil)).Elem(), GetServiceTemplateWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetServiceTemplateWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTerminalConditionInput)(nil)).Elem(), GetServiceTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTerminalConditionArrayInput)(nil)).Elem(), GetServiceTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTrafficInput)(nil)).Elem(), GetServiceTrafficArgs{})
@@ -34021,6 +34213,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateVpcAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVpcAccessNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVpcAccessNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateWorkloadIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTerminalConditionOutput{})
 	pulumi.RegisterOutputType(ServiceTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTrafficOutput{})
@@ -34057,8 +34251,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeGrpcPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerLivenessProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerResourcesOutput{})
@@ -34069,8 +34263,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeGrpcPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetPtrOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersOutput{})
-	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderOutput{})
+	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolTemplateContainerVolumeMountOutput{})
@@ -34243,6 +34437,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTerminalConditionOutput{})
 	pulumi.RegisterOutputType(GetServiceTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTrafficOutput{})

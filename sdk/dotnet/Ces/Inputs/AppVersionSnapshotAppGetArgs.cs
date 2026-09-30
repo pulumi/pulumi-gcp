@@ -96,6 +96,20 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("errorHandlingSettings")]
+        private InputList<Inputs.AppVersionSnapshotAppErrorHandlingSettingGetArgs>? _errorHandlingSettings;
+
+        /// <summary>
+        /// (Output)
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppVersionSnapshotAppErrorHandlingSettingGetArgs> ErrorHandlingSettings
+        {
+            get => _errorHandlingSettings ?? (_errorHandlingSettings = new InputList<Inputs.AppVersionSnapshotAppErrorHandlingSettingGetArgs>());
+            set => _errorHandlingSettings = value;
+        }
+
         /// <summary>
         /// (Output)
         /// ETag used to ensure the object hasn't changed during a read-modify-write
@@ -249,6 +263,20 @@ namespace Pulumi.Gcp.Ces.Inputs
         {
             get => _variableDeclarations ?? (_variableDeclarations = new InputList<Inputs.AppVersionSnapshotAppVariableDeclarationGetArgs>());
             set => _variableDeclarations = value;
+        }
+
+        [Input("vpcScSettings")]
+        private InputList<Inputs.AppVersionSnapshotAppVpcScSettingGetArgs>? _vpcScSettings;
+
+        /// <summary>
+        /// (Output)
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppVersionSnapshotAppVpcScSettingGetArgs> VpcScSettings
+        {
+            get => _vpcScSettings ?? (_vpcScSettings = new InputList<Inputs.AppVersionSnapshotAppVpcScSettingGetArgs>());
+            set => _vpcScSettings = value;
         }
 
         public AppVersionSnapshotAppGetArgs()

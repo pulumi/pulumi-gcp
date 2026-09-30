@@ -932,6 +932,7 @@ class Guardrail(pulumi.CustomResource):
                     "disabled": True,
                     "python_code": \"\"\"def callback(context):
             return {'override': False}\"\"\",
+                    "proactive_execution_enabled": True,
                 },
             })
         ```
@@ -1325,6 +1326,7 @@ class Guardrail(pulumi.CustomResource):
                     "disabled": True,
                     "python_code": \"\"\"def callback(context):
             return {'override': False}\"\"\",
+                    "proactive_execution_enabled": True,
                 },
             })
         ```

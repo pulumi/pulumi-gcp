@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodeConfigHostMaintenancePolicyResult
     {
         /// <summary>
-        /// .
+        /// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
         /// </summary>
         public readonly string MaintenanceInterval;
         /// <summary>

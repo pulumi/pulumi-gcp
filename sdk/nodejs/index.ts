@@ -133,7 +133,6 @@ import * as managedkafka from "./managedkafka";
 import * as memcache from "./memcache";
 import * as memorystore from "./memorystore";
 import * as migrationcenter from "./migrationcenter";
-import * as ml from "./ml";
 import * as modelarmor from "./modelarmor";
 import * as monitoring from "./monitoring";
 import * as netapp from "./netapp";
@@ -141,7 +140,6 @@ import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
 import * as networksecurity from "./networksecurity";
 import * as networkservices from "./networkservices";
-import * as notebooks from "./notebooks";
 import * as observability from "./observability";
 import * as oracledatabase from "./oracledatabase";
 import * as organizations from "./organizations";
@@ -282,7 +280,6 @@ export {
     memcache,
     memorystore,
     migrationcenter,
-    ml,
     modelarmor,
     monitoring,
     netapp,
@@ -290,7 +287,6 @@ export {
     networkmanagement,
     networksecurity,
     networkservices,
-    notebooks,
     observability,
     oracledatabase,
     organizations,

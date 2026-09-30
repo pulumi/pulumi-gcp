@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .agent_connectivity_template import *
 from .agent_gateway import *
 from .authz_extension import *
 from .edge_cache_keyset import *
@@ -13,6 +14,7 @@ from .edge_cache_origin import *
 from .edge_cache_service import *
 from .endpoint_policy import *
 from .gateway import *
+from .get_gateway import *
 from .grpc_route import *
 from .http_route import *
 from .lb_edge_extension import *
