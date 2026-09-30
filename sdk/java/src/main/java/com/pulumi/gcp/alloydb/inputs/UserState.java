@@ -161,16 +161,22 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of this user.
-     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+     * The type of this user. Note that &#39;ALLOYDB_IAM_GROUP&#39; is currently only supported by
+     * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+     * AlloyDB clusters support IAM group authentication. See
+     * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
      * 
      */
     @Import(name="userType")
     private @Nullable Output<String> userType;
 
     /**
-     * @return The type of this user.
-     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+     * @return The type of this user. Note that &#39;ALLOYDB_IAM_GROUP&#39; is currently only supported by
+     * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+     * AlloyDB clusters support IAM group authentication. See
+     * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
      * 
      */
     public Optional<Output<String>> userType() {
@@ -412,8 +418,11 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userType The type of this user.
-         * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+         * @param userType The type of this user. Note that &#39;ALLOYDB_IAM_GROUP&#39; is currently only supported by
+         * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+         * AlloyDB clusters support IAM group authentication. See
+         * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+         * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
          * 
          * @return builder
          * 
@@ -424,8 +433,11 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userType The type of this user.
-         * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+         * @param userType The type of this user. Note that &#39;ALLOYDB_IAM_GROUP&#39; is currently only supported by
+         * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+         * AlloyDB clusters support IAM group authentication. See
+         * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+         * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
          * 
          * @return builder
          * 

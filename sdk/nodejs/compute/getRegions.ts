@@ -12,18 +12,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = gcp.compute.getRegions({});
- * const cluster: gcp.compute.Subnetwork[] = [];
- * available.then(available => available.names).length.apply(rangeBody => {
- *     for (let range = 0; range < rangeBody; range++) {
- *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
- *             name: "my-network",
- *             ipCidrRange: `10.36.${range}.0/24`,
- *             network: "my-network",
- *             region: available.then(available => available.names[range]),
- *         }));
- *     }
- * });
+ * export = async () => {
+ *     const available = await gcp.compute.getRegions({});
+ *     const cluster: gcp.compute.Subnetwork[] = [];
+ * available.names.length.apply(rangeBody => {
+ *         for (let range = 0; range < rangeBody; range++) {
+ *             cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
+ *                 name: "my-network",
+ *                 ipCidrRange: `10.36.${range}.0/24`,
+ *                 network: "my-network",
+ *                 region: available.names[range],
+ *             }));
+ *         }
+ *     });
+ * }
  * ```
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
@@ -73,18 +75,20 @@ export interface GetRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = gcp.compute.getRegions({});
- * const cluster: gcp.compute.Subnetwork[] = [];
- * available.then(available => available.names).length.apply(rangeBody => {
- *     for (let range = 0; range < rangeBody; range++) {
- *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
- *             name: "my-network",
- *             ipCidrRange: `10.36.${range}.0/24`,
- *             network: "my-network",
- *             region: available.then(available => available.names[range]),
- *         }));
- *     }
- * });
+ * export = async () => {
+ *     const available = await gcp.compute.getRegions({});
+ *     const cluster: gcp.compute.Subnetwork[] = [];
+ * available.names.length.apply(rangeBody => {
+ *         for (let range = 0; range < rangeBody; range++) {
+ *             cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
+ *                 name: "my-network",
+ *                 ipCidrRange: `10.36.${range}.0/24`,
+ *                 network: "my-network",
+ *                 region: available.names[range],
+ *             }));
+ *         }
+ *     });
+ * }
  * ```
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionsResult> {

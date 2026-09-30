@@ -1015,6 +1015,26 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Sandbox
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                        "sandbox_launcher": True,
+                    }],
+                },
+            })
+        ```
         ### Cloudrunv2 Job Sql
 
         ```python
@@ -1468,6 +1488,26 @@ class Job(pulumi.CustomResource):
                                 "memory": "1024Mi",
                             },
                         },
+                    }],
+                },
+            })
+        ```
+        ### Cloudrunv2 Job Sandbox
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                        "sandbox_launcher": True,
                     }],
                 },
             })

@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .bitbucket_server_config import *
 from .get_trigger import *
+from .get_worker_pool import *
 from .trigger import *
 from .worker_pool import *
 from ._inputs import *

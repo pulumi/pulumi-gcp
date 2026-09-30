@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMaintenancePolicyRecurringWindowArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The end time of the exclusion window, in RFC3339 format. Exactly one of `EndTime` and `exclusion_options.end_time_behavior` should be specified.
+        /// </summary>
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;
 
@@ -60,6 +63,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("recurrence", required: true)]
         public Input<string> Recurrence { get; set; } = null!;
 
+        /// <summary>
+        /// The start time of the exclusion window, in RFC3339 format.
+        /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
 

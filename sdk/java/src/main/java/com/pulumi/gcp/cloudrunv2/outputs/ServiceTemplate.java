@@ -11,6 +11,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVpcAccess;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -129,6 +130,12 @@ public final class ServiceTemplate {
      * 
      */
     private @Nullable ServiceTemplateVpcAccess vpcAccess;
+    /**
+     * @return Workload identity settings for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateWorkloadIdentityConfig workloadIdentityConfig;
 
     private ServiceTemplate() {}
     /**
@@ -274,6 +281,14 @@ public final class ServiceTemplate {
     public Optional<ServiceTemplateVpcAccess> vpcAccess() {
         return Optional.ofNullable(this.vpcAccess);
     }
+    /**
+     * @return Workload identity settings for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateWorkloadIdentityConfig> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -302,6 +317,7 @@ public final class ServiceTemplate {
         private @Nullable String timeout;
         private @Nullable List<ServiceTemplateVolume> volumes;
         private @Nullable ServiceTemplateVpcAccess vpcAccess;
+        private @Nullable ServiceTemplateWorkloadIdentityConfig workloadIdentityConfig;
         public Builder() {}
         public Builder(ServiceTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -323,6 +339,7 @@ public final class ServiceTemplate {
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccess = defaults.vpcAccess;
+    	      this.workloadIdentityConfig = defaults.workloadIdentityConfig;
         }
 
         @CustomType.Setter
@@ -439,6 +456,12 @@ public final class ServiceTemplate {
             this.vpcAccess = vpcAccess;
             return this;
         }
+        @CustomType.Setter
+        public Builder workloadIdentityConfig(@Nullable ServiceTemplateWorkloadIdentityConfig workloadIdentityConfig) {
+
+            this.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
         public ServiceTemplate build() {
             final var _resultValue = new ServiceTemplate();
             _resultValue.annotations = annotations;
@@ -459,6 +482,7 @@ public final class ServiceTemplate {
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;
             _resultValue.vpcAccess = vpcAccess;
+            _resultValue.workloadIdentityConfig = workloadIdentityConfig;
             return _resultValue;
         }
     }

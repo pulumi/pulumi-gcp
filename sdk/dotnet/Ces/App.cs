@@ -131,6 +131,10 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 DisableConversationLogging = true,
     ///             },
+    ///             MetricAnalysisSettings = new Gcp.Ces.Inputs.AppLoggingSettingsMetricAnalysisSettingsArgs
+    ///             {
+    ///                 LlmMetricsOptedOut = false,
+    ///             },
     ///         },
     ///         ModelSettings = new Gcp.Ces.Inputs.AppModelSettingsArgs
     ///         {
@@ -145,12 +149,19 @@ namespace Pulumi.Gcp.Ces
     ///                 {
     ///                     SemanticSimilaritySuccessThreshold = 3,
     ///                     OverallToolInvocationCorrectnessThreshold = 1.0,
+    ///                     SemanticSimilarityChannel = "TEXT",
     ///                 },
     ///                 ExpectationLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs
     ///                 {
     ///                     ToolInvocationParameterCorrectnessThreshold = 1.0,
     ///                 },
+    ///                 ToolMatchingSettings = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs
+    ///                 {
+    ///                     ExtraToolCallBehavior = "ALLOW",
+    ///                 },
     ///             },
+    ///             GoldenHallucinationMetricBehavior = "ENABLED",
+    ///             ScenarioHallucinationMetricBehavior = "ENABLED",
     ///         },
     ///         VariableDeclarations = new[]
     ///         {
@@ -237,6 +248,16 @@ namespace Pulumi.Gcp.Ces
     ///                 Modality = "CHAT_ONLY",
     ///                 Theme = "LIGHT",
     ///                 WebWidgetTitle = "Help Assistant",
+    ///                 SecuritySettings = new Gcp.Ces.Inputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs
+    ///                 {
+    ///                     EnablePublicAccess = true,
+    ///                     EnableOriginCheck = false,
+    ///                     EnableRecaptcha = false,
+    ///                     AllowedOrigins = new[]
+    ///                     {
+    ///                         "https://example.com",
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///         Metadata = 
@@ -254,6 +275,29 @@ namespace Pulumi.Gcp.Ces
     ///                 Input = "test-fixtures/cert.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),
     ///             PrivateKey = fakeSecretVersion.Name,
+    ///         },
+    ///         VpcScSettings = new Gcp.Ces.Inputs.AppVpcScSettingsArgs
+    ///         {
+    ///             AllowedOrigins = new[]
+    ///             {
+    ///                 "https://example.com",
+    ///             },
+    ///         },
+    ///         ErrorHandlingSettings = new Gcp.Ces.Inputs.AppErrorHandlingSettingsArgs
+    ///         {
+    ///             ErrorHandlingStrategy = "FALLBACK_RESPONSE",
+    ///             FallbackResponseConfig = new Gcp.Ces.Inputs.AppErrorHandlingSettingsFallbackResponseConfigArgs
+    ///             {
+    ///                 CustomFallbackMessages = 
+    ///                 {
+    ///                     { "en-US", "An error occurred, please try again." },
+    ///                 },
+    ///                 MaxFallbackAttempts = 3,
+    ///             },
+    ///             EndSessionConfig = new Gcp.Ces.Inputs.AppErrorHandlingSettingsEndSessionConfigArgs
+    ///             {
+    ///                 EscalateSession = true,
+    ///             },
     ///         },
     ///     });
     /// 
@@ -555,6 +599,13 @@ namespace Pulumi.Gcp.Ces
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("errorHandlingSettings")]
+        public Output<Outputs.AppErrorHandlingSettings?> ErrorHandlingSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Etag used to ensure the object hasn't changed during a read-modify-write
         /// operation. If the etag is empty, the update will overwrite any concurrent
         /// changes.
@@ -597,6 +648,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the app is locked for changes. If the app is locked,
+        /// modifications to the app resources will be rejected.
+        /// </summary>
+        [Output("locked")]
+        public Output<bool?> Locked { get; private set; } = null!;
 
         /// <summary>
         /// Settings to describe the logging behaviors for the app.
@@ -672,6 +730,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("variableDeclarations")]
         public Output<ImmutableArray<Outputs.AppVariableDeclaration>> VariableDeclarations { get; private set; } = null!;
+
+        /// <summary>
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vpcScSettings")]
+        public Output<Outputs.AppVpcScSettings?> VpcScSettings { get; private set; } = null!;
 
 
         /// <summary>
@@ -781,6 +846,13 @@ namespace Pulumi.Gcp.Ces
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("errorHandlingSettings")]
+        public Input<Inputs.AppErrorHandlingSettingsArgs>? ErrorHandlingSettings { get; set; }
+
+        /// <summary>
         /// Threshold settings for metrics in an Evaluation.
         /// Structure is documented below.
         /// </summary>
@@ -821,6 +893,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the app is locked for changes. If the app is locked,
+        /// modifications to the app resources will be rejected.
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
 
         /// <summary>
         /// Settings to describe the logging behaviors for the app.
@@ -895,6 +974,13 @@ namespace Pulumi.Gcp.Ces
             get => _variableDeclarations ?? (_variableDeclarations = new InputList<Inputs.AppVariableDeclarationArgs>());
             set => _variableDeclarations = value;
         }
+
+        /// <summary>
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcScSettings")]
+        public Input<Inputs.AppVpcScSettingsArgs>? VpcScSettings { get; set; }
 
         public AppArgs()
         {
@@ -978,6 +1064,13 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Settings to describe how errors should be handled in the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("errorHandlingSettings")]
+        public Input<Inputs.AppErrorHandlingSettingsGetArgs>? ErrorHandlingSettings { get; set; }
+
+        /// <summary>
         /// Etag used to ensure the object hasn't changed during a read-modify-write
         /// operation. If the etag is empty, the update will overwrite any concurrent
         /// changes.
@@ -1026,6 +1119,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Indicates whether the app is locked for changes. If the app is locked,
+        /// modifications to the app resources will be rejected.
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
 
         /// <summary>
         /// Settings to describe the logging behaviors for the app.
@@ -1113,6 +1213,13 @@ namespace Pulumi.Gcp.Ces
             get => _variableDeclarations ?? (_variableDeclarations = new InputList<Inputs.AppVariableDeclarationGetArgs>());
             set => _variableDeclarations = value;
         }
+
+        /// <summary>
+        /// VPC-SC settings for the app.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vpcScSettings")]
+        public Input<Inputs.AppVpcScSettingsGetArgs>? VpcScSettings { get; set; }
 
         public AppState()
         {

@@ -22,16 +22,16 @@ __all__ = ['RegionalSecretVersionArgs', 'RegionalSecretVersion']
 class RegionalSecretVersionArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 secret_data: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None):
+                 is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionalSecretVersion resource.
 
         :param pulumi.Input[_builtins.str] secret: Secret Manager regional secret resource.
-        :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
-               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
                disabled rather than deleted.
@@ -46,15 +46,29 @@ class RegionalSecretVersionArgs:
                * PREVENT
         :param pulumi.Input[_builtins.bool] enabled: The current state of the regional secret version.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.str] secret_data_wo_version: Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         pulumi.set(__self__, "secret", secret)
-        pulumi.set(__self__, "secret_data", secret_data)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if is_secret_data_base64 is not None:
             pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
+        if secret_data is not None:
+            pulumi.set(__self__, "secret_data", secret_data)
+        if secret_data_wo is not None:
+            pulumi.set(__self__, "secret_data_wo", secret_data_wo)
+        if secret_data_wo_version is not None:
+            pulumi.set(__self__, "secret_data_wo_version", secret_data_wo_version)
 
     @_builtins.property
     @pulumi.getter
@@ -67,19 +81,6 @@ class RegionalSecretVersionArgs:
     @secret.setter
     def secret(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret", value)
-
-    @_builtins.property
-    @pulumi.getter(name="secretData")
-    def secret_data(self) -> pulumi.Input[_builtins.str]:
-        """
-        The secret data. Must be no larger than 64KiB.
-        **Note**: This property is sensitive and will not be displayed in the plan.
-        """
-        return pulumi.get(self, "secret_data")
-
-    @secret_data.setter
-    def secret_data(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret_data", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -128,6 +129,48 @@ class RegionalSecretVersionArgs:
     def is_secret_data_base64(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_secret_data_base64", value)
 
+    @_builtins.property
+    @pulumi.getter(name="secretData")
+    def secret_data(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The secret data. Must be no larger than 64KiB.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "secret_data")
+
+    @secret_data.setter
+    def secret_data(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretDataWo")
+    def secret_data_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The secret data. Must be no larger than 64KiB.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        """
+        return pulumi.get(self, "secret_data_wo")
+
+    @secret_data_wo.setter
+    def secret_data_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_data_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretDataWoVersion")
+    def secret_data_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "secret_data_wo_version")
+
+    @secret_data_wo_version.setter
+    def secret_data_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_data_wo_version", value)
+
 
 @pulumi.input_type
 class _RegionalSecretVersionState:
@@ -142,6 +185,8 @@ class _RegionalSecretVersionState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionalSecretVersion resources.
@@ -170,6 +215,13 @@ class _RegionalSecretVersionState:
         :param pulumi.Input[_builtins.str] secret: Secret Manager regional secret resource.
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.str] secret_data_wo_version: Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] version: The version of the Regional Secret.
         """
         if create_time is not None:
@@ -192,6 +244,10 @@ class _RegionalSecretVersionState:
             pulumi.set(__self__, "secret", secret)
         if secret_data is not None:
             pulumi.set(__self__, "secret_data", secret_data)
+        if secret_data_wo is not None:
+            pulumi.set(__self__, "secret_data_wo", secret_data_wo)
+        if secret_data_wo_version is not None:
+            pulumi.set(__self__, "secret_data_wo_version", secret_data_wo_version)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -330,6 +386,35 @@ class _RegionalSecretVersionState:
         pulumi.set(self, "secret_data", value)
 
     @_builtins.property
+    @pulumi.getter(name="secretDataWo")
+    def secret_data_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The secret data. Must be no larger than 64KiB.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        """
+        return pulumi.get(self, "secret_data_wo")
+
+    @secret_data_wo.setter
+    def secret_data_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_data_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretDataWoVersion")
+    def secret_data_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "secret_data_wo_version")
+
+    @secret_data_wo_version.setter
+    def secret_data_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_data_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -353,6 +438,8 @@ class RegionalSecretVersion(pulumi.CustomResource):
                  is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A regional secret version resource.
@@ -369,6 +456,9 @@ class RegionalSecretVersion(pulumi.CustomResource):
 
         For more details, refer to the Terraform lifecycle documentation.
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Regional Secret Version Basic
@@ -383,6 +473,39 @@ class RegionalSecretVersion(pulumi.CustomResource):
         regional_secret_version_basic = gcp.secretmanager.RegionalSecretVersion("regional_secret_version_basic",
             secret=secret_basic.id,
             secret_data="secret-data")
+        ```
+        ### Regional Secret Version Basic Write Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic_write_only = gcp.secretmanager.RegionalSecret("secret-basic-write-only",
+            secret_id="regional-secret-version-write-only",
+            location="us-central1",
+            labels={
+                "label": "my-label",
+            })
+        regional_secret_version_basic_write_only = gcp.secretmanager.RegionalSecretVersion("regional-secret-version-basic-write-only",
+            secret=secret_basic_write_only.id,
+            secret_data_wo_version="1",
+            secret_data_wo="regional-secret-data-write-only")
+        ```
+        ### Regional Secret Version With Base64 String Secret Data Write Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        secret_basic = gcp.secretmanager.RegionalSecret("secret-basic",
+            secret_id="regional-secret-version-base64-write-only",
+            location="us-central1")
+        regional_secret_version_base64_write_only = gcp.secretmanager.RegionalSecretVersion("regional-secret-version-base64-write-only",
+            secret=secret_basic.id,
+            is_secret_data_base64=True,
+            secret_data_wo_version="1",
+            secret_data_wo=std.filebase64(input="regional-secret-data-base64-write-only.pfx").result)
         ```
         ### Regional Secret Version With Base64 Data
 
@@ -474,6 +597,13 @@ class RegionalSecretVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret: Secret Manager regional secret resource.
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.str] secret_data_wo_version: Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         ...
     @overload
@@ -496,6 +626,9 @@ class RegionalSecretVersion(pulumi.CustomResource):
 
         For more details, refer to the Terraform lifecycle documentation.
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Regional Secret Version Basic
@@ -510,6 +643,39 @@ class RegionalSecretVersion(pulumi.CustomResource):
         regional_secret_version_basic = gcp.secretmanager.RegionalSecretVersion("regional_secret_version_basic",
             secret=secret_basic.id,
             secret_data="secret-data")
+        ```
+        ### Regional Secret Version Basic Write Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic_write_only = gcp.secretmanager.RegionalSecret("secret-basic-write-only",
+            secret_id="regional-secret-version-write-only",
+            location="us-central1",
+            labels={
+                "label": "my-label",
+            })
+        regional_secret_version_basic_write_only = gcp.secretmanager.RegionalSecretVersion("regional-secret-version-basic-write-only",
+            secret=secret_basic_write_only.id,
+            secret_data_wo_version="1",
+            secret_data_wo="regional-secret-data-write-only")
+        ```
+        ### Regional Secret Version With Base64 String Secret Data Write Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        secret_basic = gcp.secretmanager.RegionalSecret("secret-basic",
+            secret_id="regional-secret-version-base64-write-only",
+            location="us-central1")
+        regional_secret_version_base64_write_only = gcp.secretmanager.RegionalSecretVersion("regional-secret-version-base64-write-only",
+            secret=secret_basic.id,
+            is_secret_data_base64=True,
+            secret_data_wo_version="1",
+            secret_data_wo=std.filebase64(input="regional-secret-data-base64-write-only.pfx").result)
         ```
         ### Regional Secret Version With Base64 Data
 
@@ -602,6 +768,8 @@ class RegionalSecretVersion(pulumi.CustomResource):
                  is_secret_data_base64: pulumi.Input[Optional[_builtins.bool]] = None,
                  secret: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -617,16 +785,16 @@ class RegionalSecretVersion(pulumi.CustomResource):
             if secret is None and not opts.urn:
                 raise TypeError("Missing required property 'secret'")
             __props__.__dict__["secret"] = secret
-            if secret_data is None and not opts.urn:
-                raise TypeError("Missing required property 'secret_data'")
             __props__.__dict__["secret_data"] = None if secret_data is None else pulumi.Output.secret(secret_data)
+            __props__.__dict__["secret_data_wo"] = None if secret_data_wo is None else pulumi.Output.secret(secret_data_wo)
+            __props__.__dict__["secret_data_wo_version"] = secret_data_wo_version
             __props__.__dict__["create_time"] = None
             __props__.__dict__["customer_managed_encryptions"] = None
             __props__.__dict__["destroy_time"] = None
             __props__.__dict__["location"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["version"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretData"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretData", "secretDataWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RegionalSecretVersion, __self__).__init__(
             'gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion',
@@ -648,6 +816,8 @@ class RegionalSecretVersion(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             secret: pulumi.Input[Optional[_builtins.str]] = None,
             secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionalSecretVersion':
         """
         Get an existing RegionalSecretVersion resource's state with the given name, id, and optional extra
@@ -680,6 +850,13 @@ class RegionalSecretVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret: Secret Manager regional secret resource.
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.str] secret_data_wo_version: Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] version: The version of the Regional Secret.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -696,6 +873,8 @@ class RegionalSecretVersion(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_data"] = secret_data
+        __props__.__dict__["secret_data_wo"] = secret_data_wo
+        __props__.__dict__["secret_data_wo_version"] = secret_data_wo_version
         __props__.__dict__["version"] = version
         return RegionalSecretVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -786,12 +965,33 @@ class RegionalSecretVersion(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="secretData")
-    def secret_data(self) -> pulumi.Output[_builtins.str]:
+    def secret_data(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The secret data. Must be no larger than 64KiB.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret_data")
+
+    @_builtins.property
+    @pulumi.getter(name="secretDataWo")
+    def secret_data_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The secret data. Must be no larger than 64KiB.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        """
+        return pulumi.get(self, "secret_data_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="secretDataWoVersion")
+    def secret_data_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Triggers update of `secret_data_wo` write-only. Increment this value when an update to `secret_data_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "secret_data_wo_version")
 
     @_builtins.property
     @pulumi.getter

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BucketArgs, BucketState } from "./bucket";
+export type Bucket = import("./bucket").Bucket;
+export const Bucket: typeof import("./bucket").Bucket = null as any;
+utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
+
 export { FolderSettingsArgs, FolderSettingsState } from "./folderSettings";
 export type FolderSettings = import("./folderSettings").FolderSettings;
 export const FolderSettings: typeof import("./folderSettings").FolderSettings = null as any;
@@ -24,6 +29,11 @@ export { GetProjectSettingsArgs, GetProjectSettingsResult, GetProjectSettingsOut
 export const getProjectSettings: typeof import("./getProjectSettings").getProjectSettings = null as any;
 export const getProjectSettingsOutput: typeof import("./getProjectSettings").getProjectSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectSettings","getProjectSettingsOutput"], () => require("./getProjectSettings"));
+
+export { LinkArgs, LinkState } from "./link";
+export type Link = import("./link").Link;
+export const Link: typeof import("./link").Link = null as any;
+utilities.lazyLoad(exports, ["Link"], () => require("./link"));
 
 export { OrganizationSettingsArgs, OrganizationSettingsState } from "./organizationSettings";
 export type OrganizationSettings = import("./organizationSettings").OrganizationSettings;
@@ -45,8 +55,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:observability/bucket:Bucket":
+                return new Bucket(name, <any>undefined, { urn })
             case "gcp:observability/folderSettings:FolderSettings":
                 return new FolderSettings(name, <any>undefined, { urn })
+            case "gcp:observability/link:Link":
+                return new Link(name, <any>undefined, { urn })
             case "gcp:observability/organizationSettings:OrganizationSettings":
                 return new OrganizationSettings(name, <any>undefined, { urn })
             case "gcp:observability/projectSettings:ProjectSettings":
@@ -58,7 +72,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "observability/bucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "observability/folderSettings", _module)
+pulumi.runtime.registerResourceModule("gcp", "observability/link", _module)
 pulumi.runtime.registerResourceModule("gcp", "observability/organizationSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "observability/projectSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "observability/traceScope", _module)

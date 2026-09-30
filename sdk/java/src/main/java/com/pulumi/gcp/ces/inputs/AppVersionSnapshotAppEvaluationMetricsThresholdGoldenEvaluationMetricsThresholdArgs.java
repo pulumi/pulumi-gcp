@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs;
+import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs;
 import java.util.List;
 import java.util.Objects;
@@ -38,6 +39,29 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
 
     /**
      * (Output)
+     * The tool matching settings. An extra tool call is a tool call that is
+     * present in the execution but does not match any tool call in the golden
+     * expectation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolMatchingSettings")
+    private @Nullable Output<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs>> toolMatchingSettings;
+
+    /**
+     * @return (Output)
+     * The tool matching settings. An extra tool call is a tool call that is
+     * present in the execution but does not match any tool call in the golden
+     * expectation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs>>> toolMatchingSettings() {
+        return Optional.ofNullable(this.toolMatchingSettings);
+    }
+
+    /**
+     * (Output)
      * Turn level metrics thresholds.
      * Structure is documented below.
      * 
@@ -59,6 +83,7 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
 
     private AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs $) {
         this.expectationLevelMetricsThresholds = $.expectationLevelMetricsThresholds;
+        this.toolMatchingSettings = $.toolMatchingSettings;
         this.turnLevelMetricsThresholds = $.turnLevelMetricsThresholds;
     }
 
@@ -115,6 +140,49 @@ public final class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluati
          */
         public Builder expectationLevelMetricsThresholds(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs... expectationLevelMetricsThresholds) {
             return expectationLevelMetricsThresholds(List.of(expectationLevelMetricsThresholds));
+        }
+
+        /**
+         * @param toolMatchingSettings (Output)
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolMatchingSettings(@Nullable Output<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs>> toolMatchingSettings) {
+            $.toolMatchingSettings = toolMatchingSettings;
+            return this;
+        }
+
+        /**
+         * @param toolMatchingSettings (Output)
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolMatchingSettings(List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs> toolMatchingSettings) {
+            return toolMatchingSettings(Output.of(toolMatchingSettings));
+        }
+
+        /**
+         * @param toolMatchingSettings (Output)
+         * The tool matching settings. An extra tool call is a tool call that is
+         * present in the execution but does not match any tool call in the golden
+         * expectation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolMatchingSettings(AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs... toolMatchingSettings) {
+            return toolMatchingSettings(List.of(toolMatchingSettings));
         }
 
         /**

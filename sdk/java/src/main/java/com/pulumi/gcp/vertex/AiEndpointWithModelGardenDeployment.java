@@ -485,15 +485,15 @@ public class AiEndpointWithModelGardenDeployment extends com.pulumi.resources.Cu
      * 
      */
     @Export(name="deployConfig", refs={AiEndpointWithModelGardenDeploymentDeployConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AiEndpointWithModelGardenDeploymentDeployConfig> deployConfig;
+    private Output<AiEndpointWithModelGardenDeploymentDeployConfig> deployConfig;
 
     /**
      * @return The deploy config to use for the deployment.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<AiEndpointWithModelGardenDeploymentDeployConfig>> deployConfig() {
-        return Codegen.optional(this.deployConfig);
+    public Output<AiEndpointWithModelGardenDeploymentDeployConfig> deployConfig() {
+        return this.deployConfig;
     }
     /**
      * Output only. The display name assigned to the model deployed to the endpoint.

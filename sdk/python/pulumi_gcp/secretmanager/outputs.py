@@ -832,6 +832,7 @@ class GetRegionalSecretsSecretResult(dict):
                  pulumi_labels: Mapping[str, _builtins.str],
                  rotations: Sequence['outputs.GetRegionalSecretsSecretRotationResult'],
                  secret_id: _builtins.str,
+                 secret_type: _builtins.str,
                  tags: Mapping[str, _builtins.str],
                  topics: Sequence['outputs.GetRegionalSecretsSecretTopicResult'],
                  ttl: _builtins.str,
@@ -863,6 +864,8 @@ class GetRegionalSecretsSecretResult(dict):
         :param Sequence['GetRegionalSecretsSecretRotationArgs'] rotations: The rotation time and period for a regional secret.
                Structure is documented below.
         :param _builtins.str secret_id: The unique name of the resource.
+        :param _builtins.str secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+               For secret of type UNSPECIFIED, the SecretVersions can be of any type.
         :param Mapping[str, _builtins.str] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -888,6 +891,7 @@ class GetRegionalSecretsSecretResult(dict):
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         pulumi.set(__self__, "rotations", rotations)
         pulumi.set(__self__, "secret_id", secret_id)
+        pulumi.set(__self__, "secret_type", secret_type)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "topics", topics)
         pulumi.set(__self__, "ttl", ttl)
@@ -1023,6 +1027,15 @@ class GetRegionalSecretsSecretResult(dict):
         The unique name of the resource.
         """
         return pulumi.get(self, "secret_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> _builtins.str:
+        """
+        This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+        For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        """
+        return pulumi.get(self, "secret_type")
 
     @_builtins.property
     @pulumi.getter
@@ -1338,6 +1351,7 @@ class GetSecretsSecretResult(dict):
                  replications: Sequence['outputs.GetSecretsSecretReplicationResult'],
                  rotations: Sequence['outputs.GetSecretsSecretRotationResult'],
                  secret_id: _builtins.str,
+                 secret_type: _builtins.str,
                  tags: Mapping[str, _builtins.str],
                  topics: Sequence['outputs.GetSecretsSecretTopicResult'],
                  ttl: _builtins.str,
@@ -1368,6 +1382,8 @@ class GetSecretsSecretResult(dict):
         :param Sequence['GetSecretsSecretRotationArgs'] rotations: The rotation time and period for a Secret.
                Structure is documented below.
         :param _builtins.str secret_id: This must be unique within the project.
+        :param _builtins.str secret_type: This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+               For secret of type UNSPECIFIED, the SecretVersions can be of any type.
         :param Mapping[str, _builtins.str] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
                Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1393,6 +1409,7 @@ class GetSecretsSecretResult(dict):
         pulumi.set(__self__, "replications", replications)
         pulumi.set(__self__, "rotations", rotations)
         pulumi.set(__self__, "secret_id", secret_id)
+        pulumi.set(__self__, "secret_type", secret_type)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "topics", topics)
         pulumi.set(__self__, "ttl", ttl)
@@ -1520,6 +1537,15 @@ class GetSecretsSecretResult(dict):
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> _builtins.str:
+        """
+        This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+        For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        """
+        return pulumi.get(self, "secret_type")
 
     @_builtins.property
     @pulumi.getter

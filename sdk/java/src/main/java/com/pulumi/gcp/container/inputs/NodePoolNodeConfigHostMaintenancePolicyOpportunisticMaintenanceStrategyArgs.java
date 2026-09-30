@@ -16,14 +16,14 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
     public static final NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs Empty = new NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs();
 
     /**
-     * The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+     * The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`&#34;1209600s&#34;`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`&#34;2419200s&#34;`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
      * 
      */
     @Import(name="maintenanceAvailabilityWindow", required=true)
     private Output<String> maintenanceAvailabilityWindow;
 
     /**
-     * @return The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+     * @return The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`&#34;1209600s&#34;`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`&#34;2419200s&#34;`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
      * 
      */
     public Output<String> maintenanceAvailabilityWindow() {
@@ -46,14 +46,14 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
     }
 
     /**
-     * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+     * The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `&#34;600s&#34;`.
      * 
      */
     @Import(name="nodeIdleTimeWindow", required=true)
     private Output<String> nodeIdleTimeWindow;
 
     /**
-     * @return The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+     * @return The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `&#34;600s&#34;`.
      * 
      */
     public Output<String> nodeIdleTimeWindow() {
@@ -87,7 +87,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
         }
 
         /**
-         * @param maintenanceAvailabilityWindow The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+         * @param maintenanceAvailabilityWindow The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`&#34;1209600s&#34;`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`&#34;2419200s&#34;`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
         }
 
         /**
-         * @param maintenanceAvailabilityWindow The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+         * @param maintenanceAvailabilityWindow The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`&#34;1209600s&#34;`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`&#34;2419200s&#34;`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
         }
 
         /**
-         * @param nodeIdleTimeWindow The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+         * @param nodeIdleTimeWindow The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `&#34;600s&#34;`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
         }
 
         /**
-         * @param nodeIdleTimeWindow The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+         * @param nodeIdleTimeWindow The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `&#34;600s&#34;`.
          * 
          * @return builder
          * 

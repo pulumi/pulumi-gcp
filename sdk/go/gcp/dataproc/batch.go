@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,8 +37,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_spark", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_29225"),
-//				Location: pulumi.String("us-central1"),
+//				BatchId:  pulumi.String("tf-test-batch_94690"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
 //				},
@@ -84,10 +84,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -121,7 +121,7 @@ import (
 //			}
 //			ms, err := dataproc.NewMetastoreService(ctx, "ms", &dataproc.MetastoreServiceArgs{
 //				ServiceId: pulumi.String("dataproc-batch"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				Port:      pulumi.Int(9080),
 //				Tier:      pulumi.String("DEVELOPER"),
 //				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
@@ -137,7 +137,7 @@ import (
 //			}
 //			basic, err := dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
 //				Name:   pulumi.String("dataproc-batch"),
-//				Region: pulumi.String("us-central1"),
+//				Region: pulumi.String("us-east1"),
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
 //						OverrideProperties: pulumi.StringMap{
@@ -152,8 +152,9 @@ import (
 //					},
 //					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
 //						NumInstances: pulumi.Int(1),
-//						MachineType:  pulumi.String("e2-standard-2"),
+//						MachineType:  pulumi.String("n4-standard-2"),
 //						DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+//							BootDiskType:   pulumi.String("hyperdisk-balanced"),
 //							BootDiskSizeGb: pulumi.Int(35),
 //						},
 //					},
@@ -167,7 +168,7 @@ import (
 //			}
 //			_, err = dataproc.NewBatch(ctx, "example_batch_spark", &dataproc.BatchArgs{
 //				BatchId:  pulumi.String("dataproc-batch"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
 //				},
@@ -226,7 +227,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -234,8 +235,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_sparsql", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_40798"),
-//				Location: pulumi.String("us-central1"),
+//				BatchId:  pulumi.String("tf-test-batch_29947"),
+//				Location: pulumi.String("us-east1"),
 //				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 //					Properties: pulumi.StringMap{
 //						"spark.dynamicAllocation.enabled": pulumi.String("false"),
@@ -272,7 +273,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -280,8 +281,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_pyspark", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_82591"),
-//				Location: pulumi.String("us-central1"),
+//				BatchId:  pulumi.String("tf-test-batch_28257"),
+//				Location: pulumi.String("us-east1"),
 //				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 //					Properties: pulumi.StringMap{
 //						"spark.dynamicAllocation.enabled": pulumi.String("false"),
@@ -294,7 +295,7 @@ import (
 //					},
 //				},
 //				PysparkBatch: &dataproc.BatchPysparkBatchArgs{
-//					MainPythonFileUri: pulumi.String("https://storage.googleapis.com/terraform-batches/test_util.py"),
+//					MainPythonFileUri: pulumi.String("https://storage.googleapis.com/terraform-serverless/test_util.py"),
 //					Args: pulumi.StringArray{
 //						pulumi.String("10"),
 //					},
@@ -305,12 +306,12 @@ import (
 //						pulumi.String("gs://dataproc-examples/pyspark/hello-world/hello-world.py"),
 //					},
 //					ArchiveUris: pulumi.StringArray{
-//						pulumi.String("https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked"),
-//						pulumi.String("https://storage.googleapis.com/terraform-batches/animals.txt.jar"),
-//						pulumi.String("https://storage.googleapis.com/terraform-batches/animals.txt"),
+//						pulumi.String("https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked"),
+//						pulumi.String("https://storage.googleapis.com/terraform-serverless/animals.txt.jar"),
+//						pulumi.String("https://storage.googleapis.com/terraform-serverless/animals.txt"),
 //					},
 //					FileUris: pulumi.StringArray{
-//						pulumi.String("https://storage.googleapis.com/terraform-batches/people.txt"),
+//						pulumi.String("https://storage.googleapis.com/terraform-serverless/people.txt"),
 //					},
 //				},
 //			})
@@ -329,7 +330,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -337,8 +338,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_sparkr", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_24243"),
-//				Location: pulumi.String("us-central1"),
+//				BatchId:  pulumi.String("tf-test-batch_49175"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
 //				},
@@ -358,9 +359,9 @@ import (
 //					},
 //				},
 //				SparkRBatch: &dataproc.BatchSparkRBatchArgs{
-//					MainRFileUri: pulumi.String("https://storage.googleapis.com/terraform-batches/spark-r-flights.r"),
+//					MainRFileUri: pulumi.String("https://storage.googleapis.com/terraform-serverless/spark-r-flights.r"),
 //					Args: pulumi.StringArray{
-//						pulumi.String("https://storage.googleapis.com/terraform-batches/flights.csv"),
+//						pulumi.String("https://storage.googleapis.com/terraform-serverless/flights.csv"),
 //					},
 //				},
 //			})
@@ -379,7 +380,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -387,8 +388,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewBatch(ctx, "example_batch_autotuning", &dataproc.BatchArgs{
-//				BatchId:  pulumi.String("tf-test-batch_7495"),
-//				Location: pulumi.String("us-central1"),
+//				BatchId:  pulumi.String("tf-test-batch_79411"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"batch_test": pulumi.String("terraform"),
 //				},

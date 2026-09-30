@@ -586,10 +586,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('migrationCenterCustomEndpoint')
 
     @_builtins.property
-    def ml_engine_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('mlEngineCustomEndpoint')
-
-    @_builtins.property
     def model_armor_custom_endpoint(self) -> Optional[str]:
         return __config__.get('modelArmorCustomEndpoint')
 
@@ -618,16 +614,16 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('networkManagementCustomEndpoint')
 
     @_builtins.property
+    def network_managementv1_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('networkManagementv1CustomEndpoint')
+
+    @_builtins.property
     def network_security_custom_endpoint(self) -> Optional[str]:
         return __config__.get('networkSecurityCustomEndpoint')
 
     @_builtins.property
     def network_services_custom_endpoint(self) -> Optional[str]:
         return __config__.get('networkServicesCustomEndpoint')
-
-    @_builtins.property
-    def notebooks_custom_endpoint(self) -> Optional[str]:
-        return __config__.get('notebooksCustomEndpoint')
 
     @_builtins.property
     def observability_custom_endpoint(self) -> Optional[str]:
@@ -802,6 +798,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('serviceUsageCustomEndpoint')
 
     @_builtins.property
+    def service_usage_v2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('serviceUsageV2CustomEndpoint')
+
+    @_builtins.property
     def site_verification_custom_endpoint(self) -> Optional[str]:
         return __config__.get('siteVerificationCustomEndpoint')
 
@@ -832,6 +832,10 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def storage_custom_endpoint(self) -> Optional[str]:
         return __config__.get('storageCustomEndpoint')
+
+    @_builtins.property
+    def storage_ftp_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('storageFtpCustomEndpoint')
 
     @_builtins.property
     def storage_insights_custom_endpoint(self) -> Optional[str]:

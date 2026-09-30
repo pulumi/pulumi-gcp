@@ -1840,7 +1840,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.RegionHealthCheck("hc",
-            name="check-website-backend",
+            name="website-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             region="us-central1",
@@ -1866,7 +1866,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.HealthCheck("hc",
-            name="check-website-backend",
+            name="website-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check={
@@ -1938,7 +1938,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.HealthCheck("hc",
-            name="check-website-backend",
+            name="website-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check={
@@ -1985,7 +1985,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name="template-website-backend",
+            name="website-backend-template",
             machine_type="e2-medium",
             network_interfaces=[{
                 "network": default_network.id,
@@ -2135,7 +2135,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name="template-website-backend",
+            name="website-backend-template",
             machine_type="e2-medium",
             network_interfaces=[{
                 "network": default_network.id,
@@ -2451,7 +2451,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.HealthCheck("hc",
-            name="check-ilb-ipv6-backend",
+            name="ilb-ipv6-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check={
@@ -2739,7 +2739,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.RegionHealthCheck("hc",
-            name="check-website-backend",
+            name="website-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             region="us-central1",
@@ -2765,7 +2765,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.HealthCheck("hc",
-            name="check-website-backend",
+            name="website-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check={
@@ -2837,7 +2837,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.HealthCheck("hc",
-            name="check-website-backend",
+            name="website-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check={
@@ -2884,7 +2884,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name="template-website-backend",
+            name="website-backend-template",
             machine_type="e2-medium",
             network_interfaces=[{
                 "network": default_network.id,
@@ -3034,7 +3034,7 @@ class ForwardingRule(pulumi.CustomResource):
             region="us-central1",
             network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name="template-website-backend",
+            name="website-backend-template",
             machine_type="e2-medium",
             network_interfaces=[{
                 "network": default_network.id,
@@ -3350,7 +3350,7 @@ class ForwardingRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         hc = gcp.compute.HealthCheck("hc",
-            name="check-ilb-ipv6-backend",
+            name="ilb-ipv6-backend-check",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check={

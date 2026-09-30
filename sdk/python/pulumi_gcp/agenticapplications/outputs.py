@@ -32,6 +32,7 @@ __all__ = [
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleCloudStorageResource',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResource',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource',
+    'AnalystAgentPersonaArtifactsConfigMethodologyExportOptions',
     'AnalystAgentPersonaArtifactsConfigSlideGenerationOptions',
     'AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample',
     'AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource',
@@ -68,6 +69,7 @@ __all__ = [
     'AnalystAgentPersonaSkillReference',
     'AnalystAgentPersonaTable',
     'AnalystAgentPersonaTableColumn',
+    'AnalystAgentPersonaWebSearchConfig',
 ]
 
 @pulumi.output_type
@@ -549,6 +551,8 @@ class AnalystAgentPersonaArtifactsConfig(dict):
         suggest = None
         if key == "documentGenerationOptions":
             suggest = "document_generation_options"
+        elif key == "methodologyExportOptions":
+            suggest = "methodology_export_options"
         elif key == "slideGenerationOptions":
             suggest = "slide_generation_options"
         elif key == "visualizationOptions":
@@ -567,15 +571,19 @@ class AnalystAgentPersonaArtifactsConfig(dict):
 
     def __init__(__self__, *,
                  document_generation_options: Optional['outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions'] = None,
+                 methodology_export_options: Optional['outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions'] = None,
                  slide_generation_options: Optional['outputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions'] = None,
                  visualization_options: Optional['outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptions'] = None):
         """
         :param 'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs' document_generation_options: Options for document generation.
+        :param 'AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs' methodology_export_options: Options for methodology export.
         :param 'AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs' slide_generation_options: Options for slide generation.
         :param 'AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs' visualization_options: Options for visualizations.
         """
         if document_generation_options is not None:
             pulumi.set(__self__, "document_generation_options", document_generation_options)
+        if methodology_export_options is not None:
+            pulumi.set(__self__, "methodology_export_options", methodology_export_options)
         if slide_generation_options is not None:
             pulumi.set(__self__, "slide_generation_options", slide_generation_options)
         if visualization_options is not None:
@@ -588,6 +596,14 @@ class AnalystAgentPersonaArtifactsConfig(dict):
         Options for document generation.
         """
         return pulumi.get(self, "document_generation_options")
+
+    @_builtins.property
+    @pulumi.getter(name="methodologyExportOptions")
+    def methodology_export_options(self) -> Optional['outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions']:
+        """
+        Options for methodology export.
+        """
+        return pulumi.get(self, "methodology_export_options")
 
     @_builtins.property
     @pulumi.getter(name="slideGenerationOptions")
@@ -1132,6 +1148,78 @@ class AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample
         The mime type of the file.
         """
         return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class AnalystAgentPersonaArtifactsConfigMethodologyExportOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendMethodology":
+            suggest = "append_methodology"
+        elif key == "exportFormat":
+            suggest = "export_format"
+        elif key == "exportMethodologyArtifact":
+            suggest = "export_methodology_artifact"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnalystAgentPersonaArtifactsConfigMethodologyExportOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnalystAgentPersonaArtifactsConfigMethodologyExportOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnalystAgentPersonaArtifactsConfigMethodologyExportOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_methodology: Optional[_builtins.bool] = None,
+                 export_format: Optional[_builtins.str] = None,
+                 export_methodology_artifact: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool append_methodology: If true, append the detailed methodology to the final response.
+        :param _builtins.str export_format: Format for methodology export.
+               Possible values:
+               MARKDOWN
+               HTML
+               PDF
+        :param _builtins.bool export_methodology_artifact: If true, export the detailed methodology as a separate artifact.
+        """
+        if append_methodology is not None:
+            pulumi.set(__self__, "append_methodology", append_methodology)
+        if export_format is not None:
+            pulumi.set(__self__, "export_format", export_format)
+        if export_methodology_artifact is not None:
+            pulumi.set(__self__, "export_methodology_artifact", export_methodology_artifact)
+
+    @_builtins.property
+    @pulumi.getter(name="appendMethodology")
+    def append_methodology(self) -> Optional[_builtins.bool]:
+        """
+        If true, append the detailed methodology to the final response.
+        """
+        return pulumi.get(self, "append_methodology")
+
+    @_builtins.property
+    @pulumi.getter(name="exportFormat")
+    def export_format(self) -> Optional[_builtins.str]:
+        """
+        Format for methodology export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
+        """
+        return pulumi.get(self, "export_format")
+
+    @_builtins.property
+    @pulumi.getter(name="exportMethodologyArtifact")
+    def export_methodology_artifact(self) -> Optional[_builtins.bool]:
+        """
+        If true, export the detailed methodology as a separate artifact.
+        """
+        return pulumi.get(self, "export_methodology_artifact")
 
 
 @pulumi.output_type
@@ -3225,5 +3313,43 @@ class AnalystAgentPersonaTableColumn(dict):
         The description of the column.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AnalystAgentPersonaWebSearchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedDomains":
+            suggest = "excluded_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnalystAgentPersonaWebSearchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnalystAgentPersonaWebSearchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnalystAgentPersonaWebSearchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 excluded_domains: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] excluded_domains: List of domains to be excluded from Google Search / Enterprise Web Search
+               grounding.
+        """
+        if excluded_domains is not None:
+            pulumi.set(__self__, "excluded_domains", excluded_domains)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedDomains")
+    def excluded_domains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of domains to be excluded from Google Search / Enterprise Web Search
+        grounding.
+        """
+        return pulumi.get(self, "excluded_domains")
 
 

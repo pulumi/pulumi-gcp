@@ -22,6 +22,8 @@ __all__ = [
     'ClusterGcpConfig',
     'ClusterGcpConfigAccessConfig',
     'ClusterGcpConfigAccessConfigNetworkConfig',
+    'ClusterGcpConfigAccessConfigPublicClusterConfig',
+    'ClusterPublicClusterDetail',
     'ClusterRebalanceConfig',
     'ClusterTlsConfig',
     'ClusterTlsConfigTrustConfig',
@@ -251,6 +253,8 @@ class ClusterGcpConfigAccessConfig(dict):
         suggest = None
         if key == "networkConfigs":
             suggest = "network_configs"
+        elif key == "publicClusterConfig":
+            suggest = "public_cluster_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterGcpConfigAccessConfig. Access the value via the '{suggest}' property getter instead.")
@@ -264,12 +268,17 @@ class ClusterGcpConfigAccessConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 network_configs: Sequence['outputs.ClusterGcpConfigAccessConfigNetworkConfig']):
+                 network_configs: Sequence['outputs.ClusterGcpConfigAccessConfigNetworkConfig'],
+                 public_cluster_config: Optional['outputs.ClusterGcpConfigAccessConfigPublicClusterConfig'] = None):
         """
         :param Sequence['ClusterGcpConfigAccessConfigNetworkConfigArgs'] network_configs: Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
                Structure is documented below.
+        :param 'ClusterGcpConfigAccessConfigPublicClusterConfigArgs' public_cluster_config: Public connection configuration for the Kafka cluster.
+               Structure is documented below.
         """
         pulumi.set(__self__, "network_configs", network_configs)
+        if public_cluster_config is not None:
+            pulumi.set(__self__, "public_cluster_config", public_cluster_config)
 
     @_builtins.property
     @pulumi.getter(name="networkConfigs")
@@ -279,6 +288,15 @@ class ClusterGcpConfigAccessConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "network_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="publicClusterConfig")
+    def public_cluster_config(self) -> Optional['outputs.ClusterGcpConfigAccessConfigPublicClusterConfig']:
+        """
+        Public connection configuration for the Kafka cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_cluster_config")
 
 
 @pulumi.output_type
@@ -297,6 +315,95 @@ class ClusterGcpConfigAccessConfigNetworkConfig(dict):
         Name of the VPC subnet from which the cluster is accessible. Both broker and bootstrap server IP addresses and DNS entries are automatically created in the subnet. There can only be one subnet per network, and the subnet must be located in the same region as the cluster. The project may differ. The name of the subnet must be in the format `projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET`.
         """
         return pulumi.get(self, "subnet")
+
+
+@pulumi.output_type
+class ClusterGcpConfigAccessConfigPublicClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedSourceIpRanges":
+            suggest = "allowed_source_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterGcpConfigAccessConfigPublicClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterGcpConfigAccessConfigPublicClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterGcpConfigAccessConfigPublicClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_source_ip_ranges: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] allowed_source_ip_ranges: A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+        """
+        pulumi.set(__self__, "allowed_source_ip_ranges", allowed_source_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedSourceIpRanges")
+    def allowed_source_ip_ranges(self) -> Sequence[_builtins.str]:
+        """
+        A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+        """
+        return pulumi.get(self, "allowed_source_ip_ranges")
+
+
+@pulumi.output_type
+class ClusterPublicClusterDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "discoveryDnsRecords":
+            suggest = "discovery_dns_records"
+        elif key == "externalIpAddresses":
+            suggest = "external_ip_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPublicClusterDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPublicClusterDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPublicClusterDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 discovery_dns_records: Optional[Sequence[_builtins.str]] = None,
+                 external_ip_addresses: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] discovery_dns_records: (Output)
+               DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+        :param Sequence[_builtins.str] external_ip_addresses: (Output)
+               All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+        """
+        if discovery_dns_records is not None:
+            pulumi.set(__self__, "discovery_dns_records", discovery_dns_records)
+        if external_ip_addresses is not None:
+            pulumi.set(__self__, "external_ip_addresses", external_ip_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryDnsRecords")
+    def discovery_dns_records(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+        """
+        return pulumi.get(self, "discovery_dns_records")
+
+    @_builtins.property
+    @pulumi.getter(name="externalIpAddresses")
+    def external_ip_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+        """
+        return pulumi.get(self, "external_ip_addresses")
 
 
 @pulumi.output_type

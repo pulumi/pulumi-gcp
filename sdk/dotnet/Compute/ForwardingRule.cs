@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var hc = new Gcp.Compute.RegionHealthCheck("hc", new()
     ///     {
-    ///         Name = "check-website-backend",
+    ///         Name = "website-backend-check",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
     ///         Region = "us-central1",
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
     ///     {
-    ///         Name = "check-website-backend",
+    ///         Name = "website-backend-check",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -195,7 +195,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
     ///     {
-    ///         Name = "check-website-backend",
+    ///         Name = "website-backend-check",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
@@ -273,7 +273,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
     ///     {
-    ///         Name = "template-website-backend",
+    ///         Name = "website-backend-template",
     ///         MachineType = "e2-medium",
     ///         NetworkInterfaces = new[]
     ///         {
@@ -564,7 +564,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
     ///     {
-    ///         Name = "template-website-backend",
+    ///         Name = "website-backend-template",
     ///         MachineType = "e2-medium",
     ///         NetworkInterfaces = new[]
     ///         {
@@ -1121,7 +1121,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var hc = new Gcp.Compute.HealthCheck("hc", new()
     ///     {
-    ///         Name = "check-ilb-ipv6-backend",
+    ///         Name = "ilb-ipv6-backend-check",
     ///         CheckIntervalSec = 1,
     ///         TimeoutSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs

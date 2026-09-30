@@ -26,6 +26,8 @@ public final class InstanceTemplateAdvancedMachineFeatures {
     /**
      * @return [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
      * 
+     * &gt; **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
+     * 
      */
     private @Nullable String performanceMonitoringUnit;
     /**
@@ -61,6 +63,8 @@ public final class InstanceTemplateAdvancedMachineFeatures {
     }
     /**
      * @return [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+     * 
+     * &gt; **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
      * 
      */
     public Optional<String> performanceMonitoringUnit() {

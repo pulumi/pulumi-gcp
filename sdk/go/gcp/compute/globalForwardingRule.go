@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,18 +28,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-//				Name:             pulumi.String("check-backend"),
-//				RequestPath:      pulumi.String("/"),
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("backend-check"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:        pulumi.Int(80),
+//					RequestPath: pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -49,13 +52,13 @@ import (
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
 //				TimeoutSec:   pulumi.Int(10),
-//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-//				Name:           pulumi.String("url-map-target-proxy"),
+//				Name:           pulumi.String("target-proxy-url-map"),
 //				Description:    pulumi.String("a description"),
 //				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
@@ -112,7 +115,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -127,7 +130,7 @@ import (
 //				return err
 //			}
 //			instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instance_template", &compute.InstanceTemplateArgs{
-//				Name:        pulumi.String("template-backend"),
+//				Name:        pulumi.String("backend-template"),
 //				MachineType: pulumi.String("e2-medium"),
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 //					&compute.InstanceTemplateNetworkInterfaceArgs{
@@ -161,7 +164,7 @@ import (
 //				return err
 //			}
 //			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
-//				Name:             pulumi.String("check-backend"),
+//				Name:             pulumi.String("backend-check"),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TimeoutSec:       pulumi.Int(1),
 //				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
@@ -191,7 +194,7 @@ import (
 //				return err
 //			}
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-//				Name:           pulumi.String("url-map-target-proxy"),
+//				Name:           pulumi.String("target-proxy-url-map"),
 //				Description:    pulumi.String("a description"),
 //				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
@@ -261,7 +264,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -279,7 +282,7 @@ import (
 //				return err
 //			}
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-//				Name:           pulumi.String("url-map-target-proxy"),
+//				Name:           pulumi.String("target-proxy-url-map"),
 //				Description:    pulumi.String("a description"),
 //				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
@@ -338,7 +341,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -463,7 +466,7 @@ import (
 //				return err
 //			}
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
-//				Name:           pulumi.String("url-map-target-proxy"),
+//				Name:           pulumi.String("target-proxy-url-map"),
 //				Description:    pulumi.String("a description"),
 //				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
@@ -526,7 +529,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -590,7 +593,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -757,7 +760,7 @@ type GlobalForwardingRule struct {
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
@@ -998,7 +1001,7 @@ type globalForwardingRuleState struct {
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
@@ -1202,7 +1205,7 @@ type GlobalForwardingRuleState struct {
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
@@ -1401,7 +1404,7 @@ type globalForwardingRuleArgs struct {
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
@@ -1588,7 +1591,7 @@ type GlobalForwardingRuleArgs struct {
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-	// Default value is `EXTERNAL`.
+	// Default value is `EXTERNAL_MANAGED`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
@@ -1912,7 +1915,7 @@ func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 // Specifies the forwarding rule type.
 // For more information about forwarding rules, refer to
 // [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
-// Default value is `EXTERNAL`.
+// Default value is `EXTERNAL_MANAGED`.
 // Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 func (o GlobalForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)

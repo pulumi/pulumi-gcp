@@ -43,6 +43,13 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgent {
     private @Nullable Map<String,String> inputVariableMapping;
     /**
      * @return (Output)
+     * The name of the variable that contains the language code to be used for
+     * the Dialogflow session.
+     * 
+     */
+    private @Nullable String languageCodeVariable;
+    /**
+     * @return (Output)
      * The mapping of the Dialogflow session parameters names to the app
      * variables names to be sent back to the CES agent after the Dialogflow
      * agent execution ends.
@@ -90,6 +97,15 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgent {
     }
     /**
      * @return (Output)
+     * The name of the variable that contains the language code to be used for
+     * the Dialogflow session.
+     * 
+     */
+    public Optional<String> languageCodeVariable() {
+        return Optional.ofNullable(this.languageCodeVariable);
+    }
+    /**
+     * @return (Output)
      * The mapping of the Dialogflow session parameters names to the app
      * variables names to be sent back to the CES agent after the Dialogflow
      * agent execution ends.
@@ -112,6 +128,7 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgent {
         private @Nullable String environmentId;
         private @Nullable String flowId;
         private @Nullable Map<String,String> inputVariableMapping;
+        private @Nullable String languageCodeVariable;
         private @Nullable Map<String,String> outputVariableMapping;
         public Builder() {}
         public Builder(AppVersionSnapshotAgentRemoteDialogflowAgent defaults) {
@@ -120,6 +137,7 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgent {
     	      this.environmentId = defaults.environmentId;
     	      this.flowId = defaults.flowId;
     	      this.inputVariableMapping = defaults.inputVariableMapping;
+    	      this.languageCodeVariable = defaults.languageCodeVariable;
     	      this.outputVariableMapping = defaults.outputVariableMapping;
         }
 
@@ -148,6 +166,12 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgent {
             return this;
         }
         @CustomType.Setter
+        public Builder languageCodeVariable(@Nullable String languageCodeVariable) {
+
+            this.languageCodeVariable = languageCodeVariable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder outputVariableMapping(@Nullable Map<String,String> outputVariableMapping) {
 
             this.outputVariableMapping = outputVariableMapping;
@@ -159,6 +183,7 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgent {
             _resultValue.environmentId = environmentId;
             _resultValue.flowId = flowId;
             _resultValue.inputVariableMapping = inputVariableMapping;
+            _resultValue.languageCodeVariable = languageCodeVariable;
             _resultValue.outputVariableMapping = outputVariableMapping;
             return _resultValue;
         }

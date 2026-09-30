@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
- *     batchId: "tf-test-batch_29225",
- *     location: "us-central1",
+ *     batchId: "tf-test-batch_94690",
+ *     location: "us-east1",
  *     labels: {
  *         batch_test: "terraform",
  *     },
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * });
  * const ms = new gcp.dataproc.MetastoreService("ms", {
  *     serviceId: "dataproc-batch",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     port: 9080,
  *     tier: "DEVELOPER",
  *     maintenanceWindow: {
@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * });
  * const basic = new gcp.dataproc.Cluster("basic", {
  *     name: "dataproc-batch",
- *     region: "us-central1",
+ *     region: "us-east1",
  *     clusterConfig: {
  *         softwareConfig: {
  *             overrideProperties: {
@@ -97,8 +97,9 @@ import * as utilities from "../utilities";
  *         },
  *         masterConfig: {
  *             numInstances: 1,
- *             machineType: "e2-standard-2",
+ *             machineType: "n4-standard-2",
  *             diskConfig: {
+ *                 bootDiskType: "hyperdisk-balanced",
  *                 bootDiskSizeGb: 35,
  *             },
  *         },
@@ -109,7 +110,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
  *     batchId: "dataproc-batch",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     labels: {
  *         batch_test: "terraform",
  *     },
@@ -155,8 +156,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparsql = new gcp.dataproc.Batch("example_batch_sparsql", {
- *     batchId: "tf-test-batch_40798",
- *     location: "us-central1",
+ *     batchId: "tf-test-batch_29947",
+ *     location: "us-east1",
  *     runtimeConfig: {
  *         properties: {
  *             "spark.dynamicAllocation.enabled": "false",
@@ -184,8 +185,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchPyspark = new gcp.dataproc.Batch("example_batch_pyspark", {
- *     batchId: "tf-test-batch_82591",
- *     location: "us-central1",
+ *     batchId: "tf-test-batch_28257",
+ *     location: "us-east1",
  *     runtimeConfig: {
  *         properties: {
  *             "spark.dynamicAllocation.enabled": "false",
@@ -198,16 +199,16 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     pysparkBatch: {
- *         mainPythonFileUri: "https://storage.googleapis.com/terraform-batches/test_util.py",
+ *         mainPythonFileUri: "https://storage.googleapis.com/terraform-serverless/test_util.py",
  *         args: ["10"],
  *         jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
  *         pythonFileUris: ["gs://dataproc-examples/pyspark/hello-world/hello-world.py"],
  *         archiveUris: [
- *             "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
- *             "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
- *             "https://storage.googleapis.com/terraform-batches/animals.txt",
+ *             "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+ *             "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+ *             "https://storage.googleapis.com/terraform-serverless/animals.txt",
  *         ],
- *         fileUris: ["https://storage.googleapis.com/terraform-batches/people.txt"],
+ *         fileUris: ["https://storage.googleapis.com/terraform-serverless/people.txt"],
  *     },
  * });
  * ```
@@ -218,8 +219,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparkr = new gcp.dataproc.Batch("example_batch_sparkr", {
- *     batchId: "tf-test-batch_24243",
- *     location: "us-central1",
+ *     batchId: "tf-test-batch_49175",
+ *     location: "us-east1",
  *     labels: {
  *         batch_test: "terraform",
  *     },
@@ -237,8 +238,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     sparkRBatch: {
- *         mainRFileUri: "https://storage.googleapis.com/terraform-batches/spark-r-flights.r",
- *         args: ["https://storage.googleapis.com/terraform-batches/flights.csv"],
+ *         mainRFileUri: "https://storage.googleapis.com/terraform-serverless/spark-r-flights.r",
+ *         args: ["https://storage.googleapis.com/terraform-serverless/flights.csv"],
  *     },
  * });
  * ```
@@ -249,8 +250,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchAutotuning = new gcp.dataproc.Batch("example_batch_autotuning", {
- *     batchId: "tf-test-batch_7495",
- *     location: "us-central1",
+ *     batchId: "tf-test-batch_79411",
+ *     location: "us-east1",
  *     labels: {
  *         batch_test: "terraform",
  *     },

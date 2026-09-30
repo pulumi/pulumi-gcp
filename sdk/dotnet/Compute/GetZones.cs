@@ -18,15 +18,16 @@ namespace Pulumi.Gcp.Compute
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
+        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var available = Gcp.Compute.GetZones.Invoke();
+        ///     var available = await Gcp.Compute.GetZones.InvokeAsync();
         /// 
         ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
-        ///     available.Apply(getZonesResult =&gt; getZonesResult.Names).Length().Apply(rangeBody =&gt;
+        ///     available.Names.Length.Apply(rangeBody =&gt;
         ///     {
         ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
@@ -36,7 +37,7 @@ namespace Pulumi.Gcp.Compute
         ///                 Name = $"test-{range.Value}",
         ///                 InstanceTemplate = foobar.SelfLink,
         ///                 BaseInstanceName = $"foobar-{range.Value}",
-        ///                 Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///                 Zone = available.Names[range.Value],
         ///                 TargetSize = 1,
         ///             }));
         ///         }
@@ -55,15 +56,16 @@ namespace Pulumi.Gcp.Compute
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
+        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var available = Gcp.Compute.GetZones.Invoke();
+        ///     var available = await Gcp.Compute.GetZones.InvokeAsync();
         /// 
         ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
-        ///     available.Apply(getZonesResult =&gt; getZonesResult.Names).Length().Apply(rangeBody =&gt;
+        ///     available.Names.Length.Apply(rangeBody =&gt;
         ///     {
         ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
@@ -73,7 +75,7 @@ namespace Pulumi.Gcp.Compute
         ///                 Name = $"test-{range.Value}",
         ///                 InstanceTemplate = foobar.SelfLink,
         ///                 BaseInstanceName = $"foobar-{range.Value}",
-        ///                 Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///                 Zone = available.Names[range.Value],
         ///                 TargetSize = 1,
         ///             }));
         ///         }
@@ -92,15 +94,16 @@ namespace Pulumi.Gcp.Compute
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
+        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var available = Gcp.Compute.GetZones.Invoke();
+        ///     var available = await Gcp.Compute.GetZones.InvokeAsync();
         /// 
         ///     var foo = new List&lt;Gcp.Compute.InstanceGroupManager&gt;();
-        ///     available.Apply(getZonesResult =&gt; getZonesResult.Names).Length().Apply(rangeBody =&gt;
+        ///     available.Names.Length.Apply(rangeBody =&gt;
         ///     {
         ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
@@ -110,7 +113,7 @@ namespace Pulumi.Gcp.Compute
         ///                 Name = $"test-{range.Value}",
         ///                 InstanceTemplate = foobar.SelfLink,
         ///                 BaseInstanceName = $"foobar-{range.Value}",
-        ///                 Zone = available.Apply(getZonesResult =&gt; getZonesResult.Names)[range.Value],
+        ///                 Zone = available.Names[range.Value],
         ///                 TargetSize = 1,
         ///             }));
         ///         }

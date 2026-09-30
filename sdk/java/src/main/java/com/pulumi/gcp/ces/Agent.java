@@ -18,8 +18,10 @@ import com.pulumi.gcp.ces.outputs.AgentBeforeModelCallback;
 import com.pulumi.gcp.ces.outputs.AgentBeforeToolCallback;
 import com.pulumi.gcp.ces.outputs.AgentLlmAgent;
 import com.pulumi.gcp.ces.outputs.AgentModelSettings;
+import com.pulumi.gcp.ces.outputs.AgentRemoteA2aAgent;
 import com.pulumi.gcp.ces.outputs.AgentRemoteDialogflowAgent;
 import com.pulumi.gcp.ces.outputs.AgentToolset;
+import com.pulumi.gcp.ces.outputs.AgentTransferRule;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -72,6 +74,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.AgentBeforeToolCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentAfterToolCallbackArgs;
  * import com.pulumi.gcp.ces.inputs.AgentToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentTransferRuleArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentTransferRuleDeterministicTransferArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentTransferRuleDeterministicTransferExpressionConditionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -237,7 +242,119 @@ import javax.annotation.Nullable;
  *                 var agentId = values.t3;
  *                 return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
  *             }))
+ *             .transferRules(AgentTransferRuleArgs.builder()
+ *                 .childAgent(Output.tuple(cesAppForAgent.project(), cesAppForAgent.appId(), cesChildAgent.agentId()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var appId = values.t2;
+ *                     var agentId = values.t3;
+ *                     return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+ *                 }))
+ *                 .direction("PARENT_TO_CHILD")
+ *                 .deterministicTransfer(AgentTransferRuleDeterministicTransferArgs.builder()
+ *                     .expressionCondition(AgentTransferRuleDeterministicTransferExpressionConditionArgs.builder()
+ *                         .expression("true")
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .llmAgent(AgentLlmAgentArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Ces Agent Remote A2a Agent
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppLanguageSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Agent;
+ * import com.pulumi.gcp.ces.AgentArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigAgentCardArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cesAppForAgent = new App("cesAppForAgent", AppArgs.builder()
+ *             .appId("app-id")
+ *             .location("us")
+ *             .description("App used as parent for CES Agent example")
+ *             .displayName("my-app")
+ *             .languageSettings(AppLanguageSettingsArgs.builder()
+ *                 .defaultLanguageCode("en-US")
+ *                 .supportedLanguageCodes(                
+ *                     "es-ES",
+ *                     "fr-FR")
+ *                 .enableMultilingualSupport(true)
+ *                 .fallbackAction("escalate")
+ *                 .build())
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesAgentRemoteA2aAgent = new Agent("cesAgentRemoteA2aAgent", AgentArgs.builder()
+ *             .agentId("agent-id")
+ *             .location("us")
+ *             .app(cesAppForAgent.appId())
+ *             .displayName("my-agent")
+ *             .remoteA2aAgent(AgentRemoteA2aAgentArgs.builder()
+ *                 .a2aConfig(AgentRemoteA2aAgentA2aConfigArgs.builder()
+ *                     .agentCard(AgentRemoteA2aAgentA2aConfigAgentCardArgs.builder()
+ *                         .name("test-card")
+ *                         .description("Test A2A Agent Card")
+ *                         .version("1.0.0")
+ *                         .supportedInterfaces(AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs.builder()
+ *                             .url("https://example.com/a2a")
+ *                             .protocolBinding("HTTP+JSON")
+ *                             .protocolVersion("1.0")
+ *                             .build())
+ *                         .skills(AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs.builder()
+ *                             .id("test-skill")
+ *                             .name("test-skill-name")
+ *                             .description("test-skill-desc")
+ *                             .tags(                            
+ *                                 "test",
+ *                                 "skill")
+ *                             .examples("example 1")
+ *                             .inputModes("text/plain")
+ *                             .outputModes("text/plain")
+ *                             .build())
+ *                         .build())
+ *                     .apiAuthentication(AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs.builder()
+ *                         .bearerTokenConfig(AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs.builder()
+ *                             .token("$context.variables.token")
+ *                             .build())
+ *                         .build())
+ *                     .contextId("$context.variables.session_id")
+ *                     .inputVariableMapping(Map.of("remote_in", "local_in"))
+ *                     .outputVariableMapping(Map.of("remote_out", "local_out"))
+ *                     .streamingEnabled(false)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -306,6 +423,7 @@ import javax.annotation.Nullable;
  *                 .agent("projects/example/locations/us/agents/fake-agent")
  *                 .flowId("fake-flow")
  *                 .environmentId("fake-env")
+ *                 .languageCodeVariable("language_code")
  *                 .inputVariableMapping(Map.of("example", "1"))
  *                 .outputVariableMapping(Map.of("example", "1"))
  *                 .build())
@@ -805,6 +923,24 @@ public class Agent extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="remoteA2aAgent", refs={AgentRemoteA2aAgent.class}, tree="[0]")
+    private Output</* @Nullable */ AgentRemoteA2aAgent> remoteA2aAgent;
+
+    /**
+     * @return The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AgentRemoteA2aAgent>> remoteA2aAgent() {
+        return Codegen.optional(this.remoteA2aAgent);
+    }
+    /**
      * The agent which will transfer execution to an existing remote
      * [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
      * agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -859,6 +995,24 @@ public class Agent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AgentToolset>>> toolsets() {
         return Codegen.optional(this.toolsets);
+    }
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="transferRules", refs={List.class,AgentTransferRule.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AgentTransferRule>> transferRules;
+
+    /**
+     * @return List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<AgentTransferRule>>> transferRules() {
+        return Codegen.optional(this.transferRules);
     }
     /**
      * Timestamp when the agent was last updated.

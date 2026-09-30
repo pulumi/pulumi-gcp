@@ -11,14 +11,18 @@ import java.util.Objects;
 @CustomType
 public final class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig {
     /**
-     * @return URI for the secret that hosts a certificate. Must be in the format &#39;projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST&#39;.
+     * @return URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+     * 
+     * Example:
      * 
      */
     private String secretUri;
 
     private ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig() {}
     /**
-     * @return URI for the secret that hosts a certificate. Must be in the format &#39;projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST&#39;.
+     * @return URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+     * 
+     * Example:
      * 
      */
     public String secretUri() {

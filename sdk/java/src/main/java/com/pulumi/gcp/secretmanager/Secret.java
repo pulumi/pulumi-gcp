@@ -119,6 +119,7 @@ import javax.annotation.Nullable;
  *                 .auto(SecretReplicationAutoArgs.builder()
  *                     .build())
  *                 .build())
+ *             .secretType("ACCESS_KEY")
  *             .build());
  * 
  *     }
@@ -511,6 +512,22 @@ public class Secret extends com.pulumi.resources.CustomResource {
      */
     public Output<String> secretId() {
         return this.secretId;
+    }
+    /**
+     * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    @Export(name="secretType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretType;
+
+    /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    public Output<Optional<String>> secretType() {
+        return Codegen.optional(this.secretType);
     }
     /**
      * A map of resource manager tags.

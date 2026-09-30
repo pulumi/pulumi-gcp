@@ -5,7 +5,6 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -59,17 +58,17 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
     }
 
     /**
-     * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Import(name="secretAccessKeyWoVersion")
-    private @Nullable Output<Integer> secretAccessKeyWoVersion;
+    private @Nullable Output<String> secretAccessKeyWoVersion;
 
     /**
-     * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * @return Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
-    public Optional<Output<Integer>> secretAccessKeyWoVersion() {
+    public Optional<Output<String>> secretAccessKeyWoVersion() {
         return Optional.ofNullable(this.secretAccessKeyWoVersion);
     }
 
@@ -154,23 +153,23 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * @param secretAccessKeyWoVersion Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
          */
-        public Builder secretAccessKeyWoVersion(@Nullable Output<Integer> secretAccessKeyWoVersion) {
+        public Builder secretAccessKeyWoVersion(@Nullable Output<String> secretAccessKeyWoVersion) {
             $.secretAccessKeyWoVersion = secretAccessKeyWoVersion;
             return this;
         }
 
         /**
-         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * @param secretAccessKeyWoVersion Triggers update of `secretAccessKeyWo` write-only. Increment this value when an update to `secretAccessKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
          */
-        public Builder secretAccessKeyWoVersion(Integer secretAccessKeyWoVersion) {
+        public Builder secretAccessKeyWoVersion(String secretAccessKeyWoVersion) {
             return secretAccessKeyWoVersion(Output.of(secretAccessKeyWoVersion));
         }
 

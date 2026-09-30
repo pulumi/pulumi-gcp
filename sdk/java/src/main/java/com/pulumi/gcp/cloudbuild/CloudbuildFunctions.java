@@ -11,7 +11,10 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuild.inputs.GetTriggerArgs;
 import com.pulumi.gcp.cloudbuild.inputs.GetTriggerPlainArgs;
+import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolPlainArgs;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerResult;
+import com.pulumi.gcp.cloudbuild.outputs.GetWorkerPoolResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudbuildFunctions {
@@ -244,5 +247,235 @@ public final class CloudbuildFunctions {
      */
     public static CompletableFuture<GetTriggerResult> getTriggerPlain(GetTriggerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudbuild/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Cloudbuild worker pool, see:
+     * 
+     * * [API documentation](https://docs.cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.workerPools)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+     * import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var name = CloudbuildFunctions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .project("your-project-id")
+     *             .name("your-pool")
+     *             .location("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkerPoolResult> getWorkerPool(GetWorkerPoolArgs args) {
+        return getWorkerPool(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Cloudbuild worker pool, see:
+     * 
+     * * [API documentation](https://docs.cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.workerPools)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+     * import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var name = CloudbuildFunctions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .project("your-project-id")
+     *             .name("your-pool")
+     *             .location("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkerPoolResult> getWorkerPoolPlain(GetWorkerPoolPlainArgs args) {
+        return getWorkerPoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * To get more information about Cloudbuild worker pool, see:
+     * 
+     * * [API documentation](https://docs.cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.workerPools)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+     * import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var name = CloudbuildFunctions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .project("your-project-id")
+     *             .name("your-pool")
+     *             .location("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkerPoolResult> getWorkerPool(GetWorkerPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudbuild/getWorkerPool:getWorkerPool", TypeShape.of(GetWorkerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Cloudbuild worker pool, see:
+     * 
+     * * [API documentation](https://docs.cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.workerPools)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+     * import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var name = CloudbuildFunctions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .project("your-project-id")
+     *             .name("your-pool")
+     *             .location("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkerPoolResult> getWorkerPool(GetWorkerPoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudbuild/getWorkerPool:getWorkerPool", TypeShape.of(GetWorkerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Cloudbuild worker pool, see:
+     * 
+     * * [API documentation](https://docs.cloud.google.com/build/docs/api/reference/rest/v1/projects.locations.workerPools)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+     * import com.pulumi.gcp.cloudbuild.inputs.GetWorkerPoolArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var name = CloudbuildFunctions.getWorkerPool(GetWorkerPoolArgs.builder()
+     *             .project("your-project-id")
+     *             .name("your-pool")
+     *             .location("europe-west1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkerPoolResult> getWorkerPoolPlain(GetWorkerPoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudbuild/getWorkerPool:getWorkerPool", TypeShape.of(GetWorkerPoolResult.class), args, Utilities.withVersion(options));
     }
 }

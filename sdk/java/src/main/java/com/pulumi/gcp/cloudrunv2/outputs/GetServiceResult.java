@@ -64,6 +64,7 @@ public final class GetServiceResult {
     private Map<String,String> pulumiLabels;
     private Boolean reconciling;
     private List<GetServiceScaling> scalings;
+    private Boolean sshEnabled;
     private Map<String,String> tags;
     private List<GetServiceTemplate> templates;
     private List<GetServiceTerminalCondition> terminalConditions;
@@ -187,6 +188,9 @@ public final class GetServiceResult {
     public List<GetServiceScaling> scalings() {
         return this.scalings;
     }
+    public Boolean sshEnabled() {
+        return this.sshEnabled;
+    }
     public Map<String,String> tags() {
         return this.tags;
     }
@@ -260,6 +264,7 @@ public final class GetServiceResult {
         private Map<String,String> pulumiLabels;
         private Boolean reconciling;
         private List<GetServiceScaling> scalings;
+        private Boolean sshEnabled;
         private Map<String,String> tags;
         private List<GetServiceTemplate> templates;
         private List<GetServiceTerminalCondition> terminalConditions;
@@ -308,6 +313,7 @@ public final class GetServiceResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reconciling = defaults.reconciling;
     	      this.scalings = defaults.scalings;
+    	      this.sshEnabled = defaults.sshEnabled;
     	      this.tags = defaults.tags;
     	      this.templates = defaults.templates;
     	      this.terminalConditions = defaults.terminalConditions;
@@ -622,6 +628,14 @@ public final class GetServiceResult {
             return scalings(List.of(scalings));
         }
         @CustomType.Setter
+        public Builder sshEnabled(Boolean sshEnabled) {
+            if (sshEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "sshEnabled");
+            }
+            this.sshEnabled = sshEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetServiceResult", "tags");
@@ -746,6 +760,7 @@ public final class GetServiceResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.reconciling = reconciling;
             _resultValue.scalings = scalings;
+            _resultValue.sshEnabled = sshEnabled;
             _resultValue.tags = tags;
             _resultValue.templates = templates;
             _resultValue.terminalConditions = terminalConditions;

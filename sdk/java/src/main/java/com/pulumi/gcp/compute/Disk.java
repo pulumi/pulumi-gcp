@@ -47,6 +47,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Disk Basic
@@ -80,6 +83,88 @@ import javax.annotation.Nullable;
  *             .image("debian-13-trixie-v20260827")
  *             .labels(Map.of("environment", "dev"))
  *             .physicalBlockSizeBytes(4096)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Disk Basic Wo
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Disk("default", DiskArgs.builder()
+ *             .name("test-disk")
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .image("debian-13-trixie-v20260827")
+ *             .labels(Map.of("environment", "dev"))
+ *             .physicalBlockSizeBytes(4096)
+ *             .diskEncryptionKey(DiskDiskEncryptionKeyArgs.builder()
+ *                 .rawKeyWo("SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=")
+ *                 .rawKeyWoVersion("1")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Disk Rsa Encrypted Key Wo
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Disk("default", DiskArgs.builder()
+ *             .name("test-disk")
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .image("debian-13-trixie-v20260827")
+ *             .diskEncryptionKey(DiskDiskEncryptionKeyArgs.builder()
+ *                 .rsaEncryptedKeyWo("fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==")
+ *                 .rsaEncryptedKeyWoVersion("1")
+ *                 .build())
  *             .build());
  * 
  *     }

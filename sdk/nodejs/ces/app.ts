@@ -99,6 +99,9 @@ import * as utilities from "../utilities";
  *         conversationLoggingSettings: {
  *             disableConversationLogging: true,
  *         },
+ *         metricAnalysisSettings: {
+ *             llmMetricsOptedOut: false,
+ *         },
  *     },
  *     modelSettings: {
  *         model: "gemini-3.0-flash-001",
@@ -109,11 +112,17 @@ import * as utilities from "../utilities";
  *             turnLevelMetricsThresholds: {
  *                 semanticSimilaritySuccessThreshold: 3,
  *                 overallToolInvocationCorrectnessThreshold: 1,
+ *                 semanticSimilarityChannel: "TEXT",
  *             },
  *             expectationLevelMetricsThresholds: {
  *                 toolInvocationParameterCorrectnessThreshold: 1,
  *             },
+ *             toolMatchingSettings: {
+ *                 extraToolCallBehavior: "ALLOW",
+ *             },
  *         },
+ *         goldenHallucinationMetricBehavior: "ENABLED",
+ *         scenarioHallucinationMetricBehavior: "ENABLED",
  *     },
  *     variableDeclarations: [{
  *         name: "test",
@@ -174,6 +183,12 @@ import * as utilities from "../utilities";
  *             modality: "CHAT_ONLY",
  *             theme: "LIGHT",
  *             webWidgetTitle: "Help Assistant",
+ *             securitySettings: {
+ *                 enablePublicAccess: true,
+ *                 enableOriginCheck: false,
+ *                 enableRecaptcha: false,
+ *                 allowedOrigins: ["https://example.com"],
+ *             },
  *         },
  *     },
  *     metadata: {
@@ -187,6 +202,21 @@ import * as utilities from "../utilities";
  *             input: "test-fixtures/cert.pem",
  *         }).then(invoke => invoke.result),
  *         privateKey: fakeSecretVersion.name,
+ *     },
+ *     vpcScSettings: {
+ *         allowedOrigins: ["https://example.com"],
+ *     },
+ *     errorHandlingSettings: {
+ *         errorHandlingStrategy: "FALLBACK_RESPONSE",
+ *         fallbackResponseConfig: {
+ *             customFallbackMessages: {
+ *                 "en-US": "An error occurred, please try again.",
+ *             },
+ *             maxFallbackAttempts: 3,
+ *         },
+ *         endSessionConfig: {
+ *             escalateSession: true,
+ *         },
  *     },
  * });
  * ```
@@ -436,6 +466,11 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     */
+    declare public readonly errorHandlingSettings: pulumi.Output<outputs.ces.AppErrorHandlingSettings | undefined>;
+    /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -467,6 +502,11 @@ export class App extends pulumi.CustomResource {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     declare public readonly location: pulumi.Output<string>;
+    /**
+     * Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     */
+    declare public readonly locked: pulumi.Output<boolean | undefined>;
     /**
      * Settings to describe the logging behaviors for the app.
      * Structure is documented below.
@@ -520,6 +560,11 @@ export class App extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly variableDeclarations: pulumi.Output<outputs.ces.AppVariableDeclaration[] | undefined>;
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     */
+    declare public readonly vpcScSettings: pulumi.Output<outputs.ces.AppVpcScSettings | undefined>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -544,12 +589,14 @@ export class App extends pulumi.CustomResource {
             resourceInputs["deploymentCount"] = state?.deploymentCount;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["errorHandlingSettings"] = state?.errorHandlingSettings;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["evaluationMetricsThresholds"] = state?.evaluationMetricsThresholds;
             resourceInputs["globalInstruction"] = state?.globalInstruction;
             resourceInputs["guardrails"] = state?.guardrails;
             resourceInputs["languageSettings"] = state?.languageSettings;
             resourceInputs["location"] = state?.location;
+            resourceInputs["locked"] = state?.locked;
             resourceInputs["loggingSettings"] = state?.loggingSettings;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["modelSettings"] = state?.modelSettings;
@@ -561,6 +608,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["toolExecutionMode"] = state?.toolExecutionMode;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["variableDeclarations"] = state?.variableDeclarations;
+            resourceInputs["vpcScSettings"] = state?.vpcScSettings;
         } else {
             const args = argsOrState as AppArgs | undefined;
             if (args?.appId === undefined && !opts.urn) {
@@ -580,11 +628,13 @@ export class App extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["errorHandlingSettings"] = args?.errorHandlingSettings;
             resourceInputs["evaluationMetricsThresholds"] = args?.evaluationMetricsThresholds;
             resourceInputs["globalInstruction"] = args?.globalInstruction;
             resourceInputs["guardrails"] = args?.guardrails;
             resourceInputs["languageSettings"] = args?.languageSettings;
             resourceInputs["location"] = args?.location;
+            resourceInputs["locked"] = args?.locked;
             resourceInputs["loggingSettings"] = args?.loggingSettings;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["modelSettings"] = args?.modelSettings;
@@ -594,6 +644,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["timeZoneSettings"] = args?.timeZoneSettings;
             resourceInputs["toolExecutionMode"] = args?.toolExecutionMode;
             resourceInputs["variableDeclarations"] = args?.variableDeclarations;
+            resourceInputs["vpcScSettings"] = args?.vpcScSettings;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deploymentCount"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -663,6 +714,11 @@ export interface AppState {
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     */
+    errorHandlingSettings?: pulumi.Input<inputs.ces.AppErrorHandlingSettings | undefined>;
+    /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -694,6 +750,11 @@ export interface AppState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     */
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Settings to describe the logging behaviors for the app.
      * Structure is documented below.
@@ -747,6 +808,11 @@ export interface AppState {
      * Structure is documented below.
      */
     variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVariableDeclaration>[] | undefined>;
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     */
+    vpcScSettings?: pulumi.Input<inputs.ces.AppVpcScSettings | undefined>;
 }
 
 /**
@@ -799,6 +865,11 @@ export interface AppArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * Settings to describe how errors should be handled in the app.
+     * Structure is documented below.
+     */
+    errorHandlingSettings?: pulumi.Input<inputs.ces.AppErrorHandlingSettings | undefined>;
+    /**
      * Threshold settings for metrics in an Evaluation.
      * Structure is documented below.
      */
@@ -824,6 +895,11 @@ export interface AppArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
+    /**
+     * Indicates whether the app is locked for changes. If the app is locked,
+     * modifications to the app resources will be rejected.
+     */
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Settings to describe the logging behaviors for the app.
      * Structure is documented below.
@@ -868,4 +944,9 @@ export interface AppArgs {
      * Structure is documented below.
      */
     variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVariableDeclaration>[] | undefined>;
+    /**
+     * VPC-SC settings for the app.
+     * Structure is documented below.
+     */
+    vpcScSettings?: pulumi.Input<inputs.ces.AppVpcScSettings | undefined>;
 }

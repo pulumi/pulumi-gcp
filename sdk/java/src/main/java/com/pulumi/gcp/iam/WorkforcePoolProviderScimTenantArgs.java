@@ -22,15 +22,15 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      * 
      */
-    @Import(name="claimMapping")
-    private @Nullable Output<Map<String,String>> claimMapping;
+    @Import(name="claimMapping", required=true)
+    private Output<Map<String,String>> claimMapping;
 
     /**
      * @return Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      * 
      */
-    public Optional<Output<Map<String,String>>> claimMapping() {
-        return Optional.ofNullable(this.claimMapping);
+    public Output<Map<String,String>> claimMapping() {
+        return this.claimMapping;
     }
 
     /**
@@ -201,7 +201,7 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder claimMapping(@Nullable Output<Map<String,String>> claimMapping) {
+        public Builder claimMapping(Output<Map<String,String>> claimMapping) {
             $.claimMapping = claimMapping;
             return this;
         }
@@ -395,6 +395,9 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
         }
 
         public WorkforcePoolProviderScimTenantArgs build() {
+            if ($.claimMapping == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderScimTenantArgs", "claimMapping");
+            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("WorkforcePoolProviderScimTenantArgs", "location");
             }

@@ -39,13 +39,13 @@ import * as utilities from "../utilities";
  * const example = new gcp.chronicle.FindingsRefinementDeployment("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
- *     findingsRefinement: pulumi.all([std.split({
+ *     findingsRefinement: Promise.all([std.split({
  *         separator: "/",
  *         text: googleChronicleFindingsRefinement["my-findings-refinement"].name,
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleFindingsRefinement["my-findings-refinement"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+ *     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
  *     enabled: true,
  *     archived: false,
  * });

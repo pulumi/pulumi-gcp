@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1158,6 +1158,8 @@ func (o AnalystAgentPersonaArtifactExampleResourceRawFileResourcePtrOutput) Mime
 type AnalystAgentPersonaArtifactsConfig struct {
 	// Options for document generation.
 	DocumentGenerationOptions *AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions `pulumi:"documentGenerationOptions"`
+	// Options for methodology export.
+	MethodologyExportOptions *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions `pulumi:"methodologyExportOptions"`
 	// Options for slide generation.
 	SlideGenerationOptions *AnalystAgentPersonaArtifactsConfigSlideGenerationOptions `pulumi:"slideGenerationOptions"`
 	// Options for visualizations.
@@ -1178,6 +1180,8 @@ type AnalystAgentPersonaArtifactsConfigInput interface {
 type AnalystAgentPersonaArtifactsConfigArgs struct {
 	// Options for document generation.
 	DocumentGenerationOptions AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrInput `pulumi:"documentGenerationOptions"`
+	// Options for methodology export.
+	MethodologyExportOptions AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrInput `pulumi:"methodologyExportOptions"`
 	// Options for slide generation.
 	SlideGenerationOptions AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsPtrInput `pulumi:"slideGenerationOptions"`
 	// Options for visualizations.
@@ -1268,6 +1272,13 @@ func (o AnalystAgentPersonaArtifactsConfigOutput) DocumentGenerationOptions() An
 	}).(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrOutput)
 }
 
+// Options for methodology export.
+func (o AnalystAgentPersonaArtifactsConfigOutput) MethodologyExportOptions() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions {
+		return v.MethodologyExportOptions
+	}).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput)
+}
+
 // Options for slide generation.
 func (o AnalystAgentPersonaArtifactsConfigOutput) SlideGenerationOptions() AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsPtrOutput {
 	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigSlideGenerationOptions {
@@ -1314,6 +1325,16 @@ func (o AnalystAgentPersonaArtifactsConfigPtrOutput) DocumentGenerationOptions()
 		}
 		return v.DocumentGenerationOptions
 	}).(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsPtrOutput)
+}
+
+// Options for methodology export.
+func (o AnalystAgentPersonaArtifactsConfigPtrOutput) MethodologyExportOptions() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfig) *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions {
+		if v == nil {
+			return nil
+		}
+		return v.MethodologyExportOptions
+	}).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput)
 }
 
 // Options for slide generation.
@@ -2667,6 +2688,199 @@ func (o AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExamp
 		}
 		return &v.MimeType
 	}).(pulumi.StringPtrOutput)
+}
+
+type AnalystAgentPersonaArtifactsConfigMethodologyExportOptions struct {
+	// If true, append the detailed methodology to the final response.
+	AppendMethodology *bool `pulumi:"appendMethodology"`
+	// Format for methodology export.
+	// Possible values:
+	// MARKDOWN
+	// HTML
+	// PDF
+	ExportFormat *string `pulumi:"exportFormat"`
+	// If true, export the detailed methodology as a separate artifact.
+	ExportMethodologyArtifact *bool `pulumi:"exportMethodologyArtifact"`
+}
+
+// AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsInput is an input type that accepts AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs and AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsInput` via:
+//
+//	AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{...}
+type AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput
+	ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutputWithContext(context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput
+}
+
+type AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs struct {
+	// If true, append the detailed methodology to the final response.
+	AppendMethodology pulumi.BoolPtrInput `pulumi:"appendMethodology"`
+	// Format for methodology export.
+	// Possible values:
+	// MARKDOWN
+	// HTML
+	// PDF
+	ExportFormat pulumi.StringPtrInput `pulumi:"exportFormat"`
+	// If true, export the detailed methodology as a separate artifact.
+	ExportMethodologyArtifact pulumi.BoolPtrInput `pulumi:"exportMethodologyArtifact"`
+}
+
+func (AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigMethodologyExportOptions)(nil)).Elem()
+}
+
+func (i AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput {
+	return i.ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput)
+}
+
+func (i AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return i.ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput).ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(ctx)
+}
+
+// AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrInput is an input type that accepts AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs, AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtr and AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrInput` via:
+//
+//	        AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput
+	ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput
+}
+
+type analystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrType AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs
+
+func AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtr(v *AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrInput {
+	return (*analystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrType)(v)
+}
+
+func (*analystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalystAgentPersonaArtifactsConfigMethodologyExportOptions)(nil)).Elem()
+}
+
+func (i *analystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrType) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return i.ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *analystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrType) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput)
+}
+
+type AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigMethodologyExportOptions)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return o.ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions {
+		return &v
+	}).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput)
+}
+
+// If true, append the detailed methodology to the final response.
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) AppendMethodology() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *bool { return v.AppendMethodology }).(pulumi.BoolPtrOutput)
+}
+
+// Format for methodology export.
+// Possible values:
+// MARKDOWN
+// HTML
+// PDF
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ExportFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *string { return v.ExportFormat }).(pulumi.StringPtrOutput)
+}
+
+// If true, export the detailed methodology as a separate artifact.
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput) ExportMethodologyArtifact() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *bool {
+		return v.ExportMethodologyArtifact
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalystAgentPersonaArtifactsConfigMethodologyExportOptions)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) ToAnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) Elem() AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) AnalystAgentPersonaArtifactsConfigMethodologyExportOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AnalystAgentPersonaArtifactsConfigMethodologyExportOptions
+		return ret
+	}).(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput)
+}
+
+// If true, append the detailed methodology to the final response.
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) AppendMethodology() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppendMethodology
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Format for methodology export.
+// Possible values:
+// MARKDOWN
+// HTML
+// PDF
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) ExportFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExportFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, export the detailed methodology as a separate artifact.
+func (o AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput) ExportMethodologyArtifact() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigMethodologyExportOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExportMethodologyArtifact
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AnalystAgentPersonaArtifactsConfigSlideGenerationOptions struct {
@@ -8185,6 +8399,147 @@ func (o AnalystAgentPersonaTableColumnArrayOutput) Index(i pulumi.IntInput) Anal
 	}).(AnalystAgentPersonaTableColumnOutput)
 }
 
+type AnalystAgentPersonaWebSearchConfig struct {
+	// List of domains to be excluded from Google Search / Enterprise Web Search
+	// grounding.
+	ExcludedDomains []string `pulumi:"excludedDomains"`
+}
+
+// AnalystAgentPersonaWebSearchConfigInput is an input type that accepts AnalystAgentPersonaWebSearchConfigArgs and AnalystAgentPersonaWebSearchConfigOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaWebSearchConfigInput` via:
+//
+//	AnalystAgentPersonaWebSearchConfigArgs{...}
+type AnalystAgentPersonaWebSearchConfigInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaWebSearchConfigOutput() AnalystAgentPersonaWebSearchConfigOutput
+	ToAnalystAgentPersonaWebSearchConfigOutputWithContext(context.Context) AnalystAgentPersonaWebSearchConfigOutput
+}
+
+type AnalystAgentPersonaWebSearchConfigArgs struct {
+	// List of domains to be excluded from Google Search / Enterprise Web Search
+	// grounding.
+	ExcludedDomains pulumi.StringArrayInput `pulumi:"excludedDomains"`
+}
+
+func (AnalystAgentPersonaWebSearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaWebSearchConfig)(nil)).Elem()
+}
+
+func (i AnalystAgentPersonaWebSearchConfigArgs) ToAnalystAgentPersonaWebSearchConfigOutput() AnalystAgentPersonaWebSearchConfigOutput {
+	return i.ToAnalystAgentPersonaWebSearchConfigOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaWebSearchConfigArgs) ToAnalystAgentPersonaWebSearchConfigOutputWithContext(ctx context.Context) AnalystAgentPersonaWebSearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaWebSearchConfigOutput)
+}
+
+func (i AnalystAgentPersonaWebSearchConfigArgs) ToAnalystAgentPersonaWebSearchConfigPtrOutput() AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return i.ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AnalystAgentPersonaWebSearchConfigArgs) ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaWebSearchConfigOutput).ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(ctx)
+}
+
+// AnalystAgentPersonaWebSearchConfigPtrInput is an input type that accepts AnalystAgentPersonaWebSearchConfigArgs, AnalystAgentPersonaWebSearchConfigPtr and AnalystAgentPersonaWebSearchConfigPtrOutput values.
+// You can construct a concrete instance of `AnalystAgentPersonaWebSearchConfigPtrInput` via:
+//
+//	        AnalystAgentPersonaWebSearchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AnalystAgentPersonaWebSearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToAnalystAgentPersonaWebSearchConfigPtrOutput() AnalystAgentPersonaWebSearchConfigPtrOutput
+	ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(context.Context) AnalystAgentPersonaWebSearchConfigPtrOutput
+}
+
+type analystAgentPersonaWebSearchConfigPtrType AnalystAgentPersonaWebSearchConfigArgs
+
+func AnalystAgentPersonaWebSearchConfigPtr(v *AnalystAgentPersonaWebSearchConfigArgs) AnalystAgentPersonaWebSearchConfigPtrInput {
+	return (*analystAgentPersonaWebSearchConfigPtrType)(v)
+}
+
+func (*analystAgentPersonaWebSearchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalystAgentPersonaWebSearchConfig)(nil)).Elem()
+}
+
+func (i *analystAgentPersonaWebSearchConfigPtrType) ToAnalystAgentPersonaWebSearchConfigPtrOutput() AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return i.ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *analystAgentPersonaWebSearchConfigPtrType) ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalystAgentPersonaWebSearchConfigPtrOutput)
+}
+
+type AnalystAgentPersonaWebSearchConfigOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaWebSearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalystAgentPersonaWebSearchConfig)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaWebSearchConfigOutput) ToAnalystAgentPersonaWebSearchConfigOutput() AnalystAgentPersonaWebSearchConfigOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaWebSearchConfigOutput) ToAnalystAgentPersonaWebSearchConfigOutputWithContext(ctx context.Context) AnalystAgentPersonaWebSearchConfigOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaWebSearchConfigOutput) ToAnalystAgentPersonaWebSearchConfigPtrOutput() AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return o.ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AnalystAgentPersonaWebSearchConfigOutput) ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnalystAgentPersonaWebSearchConfig) *AnalystAgentPersonaWebSearchConfig {
+		return &v
+	}).(AnalystAgentPersonaWebSearchConfigPtrOutput)
+}
+
+// List of domains to be excluded from Google Search / Enterprise Web Search
+// grounding.
+func (o AnalystAgentPersonaWebSearchConfigOutput) ExcludedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaWebSearchConfig) []string { return v.ExcludedDomains }).(pulumi.StringArrayOutput)
+}
+
+type AnalystAgentPersonaWebSearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AnalystAgentPersonaWebSearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalystAgentPersonaWebSearchConfig)(nil)).Elem()
+}
+
+func (o AnalystAgentPersonaWebSearchConfigPtrOutput) ToAnalystAgentPersonaWebSearchConfigPtrOutput() AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaWebSearchConfigPtrOutput) ToAnalystAgentPersonaWebSearchConfigPtrOutputWithContext(ctx context.Context) AnalystAgentPersonaWebSearchConfigPtrOutput {
+	return o
+}
+
+func (o AnalystAgentPersonaWebSearchConfigPtrOutput) Elem() AnalystAgentPersonaWebSearchConfigOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaWebSearchConfig) AnalystAgentPersonaWebSearchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AnalystAgentPersonaWebSearchConfig
+		return ret
+	}).(AnalystAgentPersonaWebSearchConfigOutput)
+}
+
+// List of domains to be excluded from Google Search / Enterprise Web Search
+// grounding.
+func (o AnalystAgentPersonaWebSearchConfigPtrOutput) ExcludedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaWebSearchConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedDomains
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactExampleInput)(nil)).Elem(), AnalystAgentPersonaArtifactExampleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactExampleArrayInput)(nil)).Elem(), AnalystAgentPersonaArtifactExampleArray{})
@@ -8216,6 +8571,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResourcePtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourcePtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsPtrInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleInput)(nil)).Elem(), AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleArgs{})
@@ -8286,6 +8643,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaTableArrayInput)(nil)).Elem(), AnalystAgentPersonaTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaTableColumnInput)(nil)).Elem(), AnalystAgentPersonaTableColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaTableColumnArrayInput)(nil)).Elem(), AnalystAgentPersonaTableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaWebSearchConfigInput)(nil)).Elem(), AnalystAgentPersonaWebSearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalystAgentPersonaWebSearchConfigPtrInput)(nil)).Elem(), AnalystAgentPersonaWebSearchConfigArgs{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactExampleOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactExampleArrayOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactExampleResourceOutput{})
@@ -8316,6 +8675,8 @@ func init() {
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResourcePtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourcePtrOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleOutput{})
@@ -8386,4 +8747,6 @@ func init() {
 	pulumi.RegisterOutputType(AnalystAgentPersonaTableArrayOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaTableColumnOutput{})
 	pulumi.RegisterOutputType(AnalystAgentPersonaTableColumnArrayOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaWebSearchConfigOutput{})
+	pulumi.RegisterOutputType(AnalystAgentPersonaWebSearchConfigPtrOutput{})
 }

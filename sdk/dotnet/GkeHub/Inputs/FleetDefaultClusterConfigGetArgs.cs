@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FleetDefaultClusterConfigBinaryAuthorizationConfigGetArgs>? BinaryAuthorizationConfig { get; set; }
 
         /// <summary>
+        /// Enable/Disable Compliance Posture features for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("compliancePostureConfig")]
+        public Input<Inputs.FleetDefaultClusterConfigCompliancePostureConfigGetArgs>? CompliancePostureConfig { get; set; }
+
+        /// <summary>
         /// Enable/Disable Security Posture features for the cluster.
         /// Structure is documented below.
         /// </summary>

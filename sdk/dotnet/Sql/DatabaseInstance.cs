@@ -644,6 +644,12 @@ namespace Pulumi.Gcp.Sql
         public Output<ImmutableArray<Outputs.DatabaseInstanceDnsName>> DnsNames { get; private set; } = null!;
 
         /// <summary>
+        /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+        /// </summary>
+        [Output("encryptionConfidentialMode")]
+        public Output<bool> EncryptionConfidentialMode { get; private set; } = null!;
+
+        /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -947,6 +953,12 @@ namespace Pulumi.Gcp.Sql
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+        /// </summary>
+        [Input("encryptionConfidentialMode")]
+        public Input<bool>? EncryptionConfidentialMode { get; set; }
+
+        /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -1233,6 +1245,12 @@ namespace Pulumi.Gcp.Sql
             get => _dnsNames ?? (_dnsNames = new InputList<Inputs.DatabaseInstanceDnsNameGetArgs>());
             set => _dnsNames = value;
         }
+
+        /// <summary>
+        /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+        /// </summary>
+        [Input("encryptionConfidentialMode")]
+        public Input<bool>? EncryptionConfidentialMode { get; set; }
 
         /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting

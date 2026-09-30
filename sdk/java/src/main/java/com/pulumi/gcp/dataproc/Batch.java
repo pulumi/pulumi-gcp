@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
- *             .batchId("tf-test-batch_29225")
- *             .location("us-central1")
+ *             .batchId("tf-test-batch_94690")
+ *             .location("us-east1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  * 
  *         var ms = new MetastoreService("ms", MetastoreServiceArgs.builder()
  *             .serviceId("dataproc-batch")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .port(9080)
  *             .tier("DEVELOPER")
  *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  * 
  *         var basic = new Cluster("basic", ClusterArgs.builder()
  *             .name("dataproc-batch")
- *             .region("us-central1")
+ *             .region("us-east1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
  *                     .overrideProperties(Map.ofEntries(
@@ -192,8 +192,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .numInstances(1)
- *                     .machineType("e2-standard-2")
+ *                     .machineType("n4-standard-2")
  *                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
+ *                         .bootDiskType("hyperdisk-balanced")
  *                         .bootDiskSizeGb(35)
  *                         .build())
  *                     .build())
@@ -205,7 +206,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
  *             .batchId("dataproc-batch")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -275,8 +276,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparsql = new Batch("exampleBatchSparsql", BatchArgs.builder()
- *             .batchId("tf-test-batch_40798")
- *             .location("us-central1")
+ *             .batchId("tf-test-batch_29947")
+ *             .location("us-east1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
  *                     Map.entry("spark.dynamicAllocation.enabled", "false"),
@@ -328,8 +329,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchPyspark = new Batch("exampleBatchPyspark", BatchArgs.builder()
- *             .batchId("tf-test-batch_82591")
- *             .location("us-central1")
+ *             .batchId("tf-test-batch_28257")
+ *             .location("us-east1")
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
  *                     Map.entry("spark.dynamicAllocation.enabled", "false"),
@@ -342,15 +343,15 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .pysparkBatch(BatchPysparkBatchArgs.builder()
- *                 .mainPythonFileUri("https://storage.googleapis.com/terraform-batches/test_util.py")
+ *                 .mainPythonFileUri("https://storage.googleapis.com/terraform-serverless/test_util.py")
  *                 .args("10")
  *                 .jarFileUris("file:///usr/lib/spark/examples/jars/spark-examples.jar")
  *                 .pythonFileUris("gs://dataproc-examples/pyspark/hello-world/hello-world.py")
  *                 .archiveUris(                
- *                     "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
- *                     "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
- *                     "https://storage.googleapis.com/terraform-batches/animals.txt")
- *                 .fileUris("https://storage.googleapis.com/terraform-batches/people.txt")
+ *                     "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+ *                     "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+ *                     "https://storage.googleapis.com/terraform-serverless/animals.txt")
+ *                 .fileUris("https://storage.googleapis.com/terraform-serverless/people.txt")
  *                 .build())
  *             .build());
  * 
@@ -387,8 +388,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchSparkr = new Batch("exampleBatchSparkr", BatchArgs.builder()
- *             .batchId("tf-test-batch_24243")
- *             .location("us-central1")
+ *             .batchId("tf-test-batch_49175")
+ *             .location("us-east1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -404,8 +405,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .sparkRBatch(BatchSparkRBatchArgs.builder()
- *                 .mainRFileUri("https://storage.googleapis.com/terraform-batches/spark-r-flights.r")
- *                 .args("https://storage.googleapis.com/terraform-batches/flights.csv")
+ *                 .mainRFileUri("https://storage.googleapis.com/terraform-serverless/spark-r-flights.r")
+ *                 .args("https://storage.googleapis.com/terraform-serverless/flights.csv")
  *                 .build())
  *             .build());
  * 
@@ -443,8 +444,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleBatchAutotuning = new Batch("exampleBatchAutotuning", BatchArgs.builder()
- *             .batchId("tf-test-batch_7495")
- *             .location("us-central1")
+ *             .batchId("tf-test-batch_79411")
+ *             .location("us-east1")
  *             .labels(Map.of("batch_test", "terraform"))
  *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
  *                 .version("2.2")

@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.Monitoring
     /// {
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
     ///     {
-    ///         Name = "my-project-name-gcf-source",
+    ///         Name = "gcf-source-my-project-name",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });

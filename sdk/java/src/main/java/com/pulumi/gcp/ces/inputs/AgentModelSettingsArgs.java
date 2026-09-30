@@ -39,6 +39,8 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
      * produce responses that are more predictable. Higher temperatures produce
      * responses that are more creative.
      * 
+     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+     * 
      */
     @Import(name="temperature")
     private @Nullable Output<Double> temperature;
@@ -48,6 +50,8 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
      * controls the randomness of the model&#39;s responses. Lower temperatures
      * produce responses that are more predictable. Higher temperatures produce
      * responses that are more creative.
+     * 
+     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
      * 
      */
     public Optional<Output<Double>> temperature() {
@@ -108,6 +112,8 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
          * produce responses that are more predictable. Higher temperatures produce
          * responses that are more creative.
          * 
+         * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+         * 
          * @return builder
          * 
          */
@@ -121,6 +127,8 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
          * controls the randomness of the model&#39;s responses. Lower temperatures
          * produce responses that are more predictable. Higher temperatures produce
          * responses that are more creative.
+         * 
+         * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
          * 
          * @return builder
          * 

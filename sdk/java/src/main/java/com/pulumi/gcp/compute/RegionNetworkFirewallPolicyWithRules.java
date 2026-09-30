@@ -80,12 +80,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var targetForwardingRule = new Network("targetForwardingRule", NetworkArgs.builder()
- *             .name("tf-test-network-_87786")
+ *             .name("tf-test-network-_75092")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var targetForwardingRuleProxySubnetwork = new Subnetwork("targetForwardingRuleProxySubnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-proxy-subnetwork-_2067")
+ *             .name("tf-test-proxy-subnetwork-_2605")
  *             .region("us-west2")
  *             .network(targetForwardingRule.id())
  *             .ipCidrRange("10.20.0.0/24")
@@ -94,14 +94,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var targetForwardingRuleDefaultSubnetwork = new Subnetwork("targetForwardingRuleDefaultSubnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-default-subnetwork-_40785")
+ *             .name("tf-test-default-subnetwork-_34535")
  *             .region("us-west2")
  *             .network(targetForwardingRule.id())
  *             .ipCidrRange("10.10.0.0/24")
  *             .build());
  * 
  *         var targetForwardingRuleRegionHealthCheck = new RegionHealthCheck("targetForwardingRuleRegionHealthCheck", RegionHealthCheckArgs.builder()
- *             .name("tf-test-health-check-_79169")
+ *             .name("tf-test-health-check-_22375")
  *             .region("us-west2")
  *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
  *                 .port(80)
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var targetForwardingRuleRegionBackendService = new RegionBackendService("targetForwardingRuleRegionBackendService", RegionBackendServiceArgs.builder()
- *             .name("tf-test-backend-service-_56529")
+ *             .name("tf-test-backend-service-_29439")
  *             .region("us-west2")
  *             .protocol("HTTP")
  *             .loadBalancingScheme("INTERNAL_MANAGED")
@@ -117,19 +117,19 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var targetForwardingRuleRegionUrlMap = new RegionUrlMap("targetForwardingRuleRegionUrlMap", RegionUrlMapArgs.builder()
- *             .name("tf-test-url-map-_75413")
+ *             .name("tf-test-url-map-_87786")
  *             .region("us-west2")
  *             .defaultService(targetForwardingRuleRegionBackendService.id())
  *             .build());
  * 
  *         var targetForwardingRuleRegionTargetHttpProxy = new RegionTargetHttpProxy("targetForwardingRuleRegionTargetHttpProxy", RegionTargetHttpProxyArgs.builder()
- *             .name("tf-test-target-http-proxy-_55138")
+ *             .name("tf-test-target-http-proxy-_2067")
  *             .region("us-west2")
  *             .urlMap(targetForwardingRuleRegionUrlMap.id())
  *             .build());
  * 
  *         var targetForwardingRuleForwardingRule = new ForwardingRule("targetForwardingRuleForwardingRule", ForwardingRuleArgs.builder()
- *             .name("tf-test-forwarding-rule-_37559")
+ *             .name("tf-test-forwarding-rule-_40785")
  *             .region("us-west2")
  *             .network(targetForwardingRule.id())
  *             .subnetwork(targetForwardingRuleDefaultSubnetwork.id())

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -225,7 +225,121 @@ import (
 //						return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
 //					}).(pulumi.StringOutput),
 //				},
+//				TransferRules: ces.AgentTransferRuleArray{
+//					&ces.AgentTransferRuleArgs{
+//						ChildAgent: pulumi.All(cesAppForAgent.Project, cesAppForAgent.AppId, cesChildAgent.AgentId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							appId := _args[1].(string)
+//							agentId := _args[2].(*string)
+//							return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
+//						}).(pulumi.StringOutput),
+//						Direction: pulumi.String("PARENT_TO_CHILD"),
+//						DeterministicTransfer: &ces.AgentTransferRuleDeterministicTransferArgs{
+//							ExpressionCondition: &ces.AgentTransferRuleDeterministicTransferExpressionConditionArgs{
+//								Expression: pulumi.String("true"),
+//							},
+//						},
+//					},
+//				},
 //				LlmAgent: &ces.AgentLlmAgentArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Ces Agent Remote A2a Agent
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cesAppForAgent, err := ces.NewApp(ctx, "ces_app_for_agent", &ces.AppArgs{
+//				AppId:       pulumi.String("app-id"),
+//				Location:    pulumi.String("us"),
+//				Description: pulumi.String("App used as parent for CES Agent example"),
+//				DisplayName: pulumi.String("my-app"),
+//				LanguageSettings: &ces.AppLanguageSettingsArgs{
+//					DefaultLanguageCode: pulumi.String("en-US"),
+//					SupportedLanguageCodes: pulumi.StringArray{
+//						pulumi.String("es-ES"),
+//						pulumi.String("fr-FR"),
+//					},
+//					EnableMultilingualSupport: pulumi.Bool(true),
+//					FallbackAction:            pulumi.String("escalate"),
+//				},
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewAgent(ctx, "ces_agent_remote_a2a_agent", &ces.AgentArgs{
+//				AgentId:     pulumi.String("agent-id"),
+//				Location:    pulumi.String("us"),
+//				App:         cesAppForAgent.AppId,
+//				DisplayName: pulumi.String("my-agent"),
+//				RemoteA2aAgent: &ces.AgentRemoteA2aAgentArgs{
+//					A2aConfig: &ces.AgentRemoteA2aAgentA2aConfigArgs{
+//						AgentCard: &ces.AgentRemoteA2aAgentA2aConfigAgentCardArgs{
+//							Name:        pulumi.String("test-card"),
+//							Description: pulumi.String("Test A2A Agent Card"),
+//							Version:     pulumi.String("1.0.0"),
+//							SupportedInterfaces: ces.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArray{
+//								&ces.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs{
+//									Url:             pulumi.String("https://example.com/a2a"),
+//									ProtocolBinding: pulumi.String("HTTP+JSON"),
+//									ProtocolVersion: pulumi.String("1.0"),
+//								},
+//							},
+//							Skills: ces.AgentRemoteA2aAgentA2aConfigAgentCardSkillArray{
+//								&ces.AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs{
+//									Id:          pulumi.String("test-skill"),
+//									Name:        pulumi.String("test-skill-name"),
+//									Description: pulumi.String("test-skill-desc"),
+//									Tags: pulumi.StringArray{
+//										pulumi.String("test"),
+//										pulumi.String("skill"),
+//									},
+//									Examples: pulumi.StringArray{
+//										pulumi.String("example 1"),
+//									},
+//									InputModes: pulumi.StringArray{
+//										pulumi.String("text/plain"),
+//									},
+//									OutputModes: pulumi.StringArray{
+//										pulumi.String("text/plain"),
+//									},
+//								},
+//							},
+//						},
+//						ApiAuthentication: &ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs{
+//							BearerTokenConfig: &ces.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs{
+//								Token: pulumi.String("$context.variables.token"),
+//							},
+//						},
+//						ContextId: pulumi.String("$context.variables.session_id"),
+//						InputVariableMapping: pulumi.StringMap{
+//							"remote_in": pulumi.String("local_in"),
+//						},
+//						OutputVariableMapping: pulumi.StringMap{
+//							"remote_out": pulumi.String("local_out"),
+//						},
+//						StreamingEnabled: pulumi.Bool(false),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -242,7 +356,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -280,9 +394,10 @@ import (
 //					Temperature: pulumi.Float64(0.5),
 //				},
 //				RemoteDialogflowAgent: &ces.AgentRemoteDialogflowAgentArgs{
-//					Agent:         pulumi.String("projects/example/locations/us/agents/fake-agent"),
-//					FlowId:        pulumi.String("fake-flow"),
-//					EnvironmentId: pulumi.String("fake-env"),
+//					Agent:                pulumi.String("projects/example/locations/us/agents/fake-agent"),
+//					FlowId:               pulumi.String("fake-flow"),
+//					EnvironmentId:        pulumi.String("fake-env"),
+//					LanguageCodeVariable: pulumi.String("language_code"),
 //					InputVariableMapping: pulumi.StringMap{
 //						"example": pulumi.String("1"),
 //					},
@@ -306,7 +421,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -472,6 +587,10 @@ type Agent struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The agent which will transfer execution to a remote
+	// [A2A](https://github.com/a2aproject/A2A) agent.
+	// Structure is documented below.
+	RemoteA2aAgent AgentRemoteA2aAgentPtrOutput `pulumi:"remoteA2aAgent"`
 	// The agent which will transfer execution to an existing remote
 	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
 	// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -485,6 +604,10 @@ type Agent struct {
 	// List of toolsets for the agent.
 	// Structure is documented below.
 	Toolsets AgentToolsetArrayOutput `pulumi:"toolsets"`
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules AgentTransferRuleArrayOutput `pulumi:"transferRules"`
 	// Timestamp when the agent was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -617,6 +740,10 @@ type agentState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The agent which will transfer execution to a remote
+	// [A2A](https://github.com/a2aproject/A2A) agent.
+	// Structure is documented below.
+	RemoteA2aAgent *AgentRemoteA2aAgent `pulumi:"remoteA2aAgent"`
 	// The agent which will transfer execution to an existing remote
 	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
 	// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -630,6 +757,10 @@ type agentState struct {
 	// List of toolsets for the agent.
 	// Structure is documented below.
 	Toolsets []AgentToolset `pulumi:"toolsets"`
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules []AgentTransferRule `pulumi:"transferRules"`
 	// Timestamp when the agent was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -724,6 +855,10 @@ type AgentState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The agent which will transfer execution to a remote
+	// [A2A](https://github.com/a2aproject/A2A) agent.
+	// Structure is documented below.
+	RemoteA2aAgent AgentRemoteA2aAgentPtrInput
 	// The agent which will transfer execution to an existing remote
 	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
 	// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -737,6 +872,10 @@ type AgentState struct {
 	// List of toolsets for the agent.
 	// Structure is documented below.
 	Toolsets AgentToolsetArrayInput
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules AgentTransferRuleArrayInput
 	// Timestamp when the agent was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -823,6 +962,10 @@ type agentArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The agent which will transfer execution to a remote
+	// [A2A](https://github.com/a2aproject/A2A) agent.
+	// Structure is documented below.
+	RemoteA2aAgent *AgentRemoteA2aAgent `pulumi:"remoteA2aAgent"`
 	// The agent which will transfer execution to an existing remote
 	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
 	// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -836,6 +979,10 @@ type agentArgs struct {
 	// List of toolsets for the agent.
 	// Structure is documented below.
 	Toolsets []AgentToolset `pulumi:"toolsets"`
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules []AgentTransferRule `pulumi:"transferRules"`
 }
 
 // The set of arguments for constructing a Agent resource.
@@ -917,6 +1064,10 @@ type AgentArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The agent which will transfer execution to a remote
+	// [A2A](https://github.com/a2aproject/A2A) agent.
+	// Structure is documented below.
+	RemoteA2aAgent AgentRemoteA2aAgentPtrInput
 	// The agent which will transfer execution to an existing remote
 	// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
 	// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -930,6 +1081,10 @@ type AgentArgs struct {
 	// List of toolsets for the agent.
 	// Structure is documented below.
 	Toolsets AgentToolsetArrayInput
+	// List of transfer rules for the agent.
+	// If multiple rules match, the first one in the list will be used.
+	// Structure is documented below.
+	TransferRules AgentTransferRuleArrayInput
 }
 
 func (AgentArgs) ElementType() reflect.Type {
@@ -1174,6 +1329,13 @@ func (o AgentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The agent which will transfer execution to a remote
+// [A2A](https://github.com/a2aproject/A2A) agent.
+// Structure is documented below.
+func (o AgentOutput) RemoteA2aAgent() AgentRemoteA2aAgentPtrOutput {
+	return o.ApplyT(func(v *Agent) AgentRemoteA2aAgentPtrOutput { return v.RemoteA2aAgent }).(AgentRemoteA2aAgentPtrOutput)
+}
+
 // The agent which will transfer execution to an existing remote
 // [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
 // agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -1194,6 +1356,13 @@ func (o AgentOutput) Tools() pulumi.StringArrayOutput {
 // Structure is documented below.
 func (o AgentOutput) Toolsets() AgentToolsetArrayOutput {
 	return o.ApplyT(func(v *Agent) AgentToolsetArrayOutput { return v.Toolsets }).(AgentToolsetArrayOutput)
+}
+
+// List of transfer rules for the agent.
+// If multiple rules match, the first one in the list will be used.
+// Structure is documented below.
+func (o AgentOutput) TransferRules() AgentTransferRuleArrayOutput {
+	return o.ApplyT(func(v *Agent) AgentTransferRuleArrayOutput { return v.TransferRules }).(AgentTransferRuleArrayOutput)
 }
 
 // Timestamp when the agent was last updated.

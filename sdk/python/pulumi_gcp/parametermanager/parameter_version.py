@@ -22,6 +22,7 @@ class ParameterVersionArgs:
                  parameter: pulumi.Input[_builtins.str],
                  parameter_data: pulumi.Input[_builtins.str],
                  parameter_version_id: pulumi.Input[_builtins.str],
+                 data_crc32c: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -31,6 +32,7 @@ class ParameterVersionArgs:
         :param pulumi.Input[_builtins.str] parameter_data: The Parameter data.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] parameter_version_id: Version ID of the Parameter Version Resource. This must be unique within the Parameter.
+        :param pulumi.Input[_builtins.str] data_crc32c: The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -42,6 +44,8 @@ class ParameterVersionArgs:
         pulumi.set(__self__, "parameter", parameter)
         pulumi.set(__self__, "parameter_data", parameter_data)
         pulumi.set(__self__, "parameter_version_id", parameter_version_id)
+        if data_crc32c is not None:
+            pulumi.set(__self__, "data_crc32c", data_crc32c)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
@@ -85,6 +89,18 @@ class ParameterVersionArgs:
         pulumi.set(self, "parameter_version_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataCrc32c")
+    def data_crc32c(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+        """
+        return pulumi.get(self, "data_crc32c")
+
+    @data_crc32c.setter
+    def data_crc32c(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_crc32c", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -118,6 +134,7 @@ class ParameterVersionArgs:
 class _ParameterVersionState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_crc32c: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -130,6 +147,7 @@ class _ParameterVersionState:
         Input properties used for looking up and filtering ParameterVersion resources.
 
         :param pulumi.Input[_builtins.str] create_time: The time at which the Parameter Version was created.
+        :param pulumi.Input[_builtins.str] data_crc32c: The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -149,6 +167,8 @@ class _ParameterVersionState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if data_crc32c is not None:
+            pulumi.set(__self__, "data_crc32c", data_crc32c)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
@@ -177,6 +197,18 @@ class _ParameterVersionState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataCrc32c")
+    def data_crc32c(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+        """
+        return pulumi.get(self, "data_crc32c")
+
+    @data_crc32c.setter
+    def data_crc32c(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_crc32c", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -289,6 +321,7 @@ class ParameterVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_crc32c: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  parameter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,6 +412,19 @@ class ParameterVersion(pulumi.CustomResource):
             parameter_version_id="parameter_version",
             parameter_data=std.file(input="parameter-yaml-data.yaml").result)
         ```
+        ### Parameter Version With Data Crc32c
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic", parameter_id="parameter")
+        parameter_version_with_data_crc32c = gcp.parametermanager.ParameterVersion("parameter-version-with-data-crc32c",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data="app-parameter-version-data",
+            data_crc32c="3931523681")
+        ```
 
         ## Import
 
@@ -395,6 +441,7 @@ class ParameterVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] data_crc32c: The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -497,6 +544,19 @@ class ParameterVersion(pulumi.CustomResource):
             parameter_version_id="parameter_version",
             parameter_data=std.file(input="parameter-yaml-data.yaml").result)
         ```
+        ### Parameter Version With Data Crc32c
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        parameter_basic = gcp.parametermanager.Parameter("parameter-basic", parameter_id="parameter")
+        parameter_version_with_data_crc32c = gcp.parametermanager.ParameterVersion("parameter-version-with-data-crc32c",
+            parameter=parameter_basic.id,
+            parameter_version_id="parameter_version",
+            parameter_data="app-parameter-version-data",
+            data_crc32c="3931523681")
+        ```
 
         ## Import
 
@@ -526,6 +586,7 @@ class ParameterVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_crc32c: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  parameter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -540,6 +601,7 @@ class ParameterVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ParameterVersionArgs.__new__(ParameterVersionArgs)
 
+            __props__.__dict__["data_crc32c"] = data_crc32c
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             if parameter is None and not opts.urn:
@@ -568,6 +630,7 @@ class ParameterVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_crc32c: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kms_key_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -584,6 +647,7 @@ class ParameterVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time at which the Parameter Version was created.
+        :param pulumi.Input[_builtins.str] data_crc32c: The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -606,6 +670,7 @@ class ParameterVersion(pulumi.CustomResource):
         __props__ = _ParameterVersionState.__new__(_ParameterVersionState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_crc32c"] = data_crc32c
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["kms_key_version"] = kms_key_version
@@ -623,6 +688,14 @@ class ParameterVersion(pulumi.CustomResource):
         The time at which the Parameter Version was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataCrc32c")
+    def data_crc32c(self) -> pulumi.Output[_builtins.str]:
+        """
+        The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+        """
+        return pulumi.get(self, "data_crc32c")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")

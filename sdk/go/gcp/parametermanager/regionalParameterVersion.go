@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -106,8 +106,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -146,7 +146,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -188,7 +188,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -223,6 +223,41 @@ import (
 //	}
 //
 // ```
+// ### Regional Parameter Version With Data Crc32c
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			regional_parameter_basic, err := parametermanager.NewRegionalParameter(ctx, "regional-parameter-basic", &parametermanager.RegionalParameterArgs{
+//				ParameterId: pulumi.String("regional_parameter"),
+//				Location:    pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-data-crc32c", &parametermanager.RegionalParameterVersionArgs{
+//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				ParameterVersionId: pulumi.String("regional_parameter_version"),
+//				ParameterData:      pulumi.String("regional-parameter-version-data"),
+//				DataCrc32c:         pulumi.String("4019737965"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -240,6 +275,8 @@ type RegionalParameterVersion struct {
 
 	// The time at which the Regional Parameter Version was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c pulumi.StringOutput `pulumi:"dataCrc32c"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -316,6 +353,8 @@ func GetRegionalParameterVersion(ctx *pulumi.Context,
 type regionalParameterVersionState struct {
 	// The time at which the Regional Parameter Version was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c *string `pulumi:"dataCrc32c"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -347,6 +386,8 @@ type regionalParameterVersionState struct {
 type RegionalParameterVersionState struct {
 	// The time at which the Regional Parameter Version was created.
 	CreateTime pulumi.StringPtrInput
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -380,6 +421,8 @@ func (RegionalParameterVersionState) ElementType() reflect.Type {
 }
 
 type regionalParameterVersionArgs struct {
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c *string `pulumi:"dataCrc32c"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -400,6 +443,8 @@ type regionalParameterVersionArgs struct {
 
 // The set of arguments for constructing a RegionalParameterVersion resource.
 type RegionalParameterVersionArgs struct {
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -508,6 +553,11 @@ func (o RegionalParameterVersionOutput) ToRegionalParameterVersionOutputWithCont
 // The time at which the Regional Parameter Version was created.
 func (o RegionalParameterVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+func (o RegionalParameterVersionOutput) DataCrc32c() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.StringOutput { return v.DataCrc32c }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

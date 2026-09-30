@@ -37,6 +37,7 @@ public final class GetSecretResult {
     private List<GetSecretReplication> replications;
     private List<GetSecretRotation> rotations;
     private String secretId;
+    private String secretType;
     private Map<String,String> tags;
     private List<GetSecretTopic> topics;
     private String ttl;
@@ -93,6 +94,9 @@ public final class GetSecretResult {
     public String secretId() {
         return this.secretId;
     }
+    public String secretType() {
+        return this.secretType;
+    }
     public Map<String,String> tags() {
         return this.tags;
     }
@@ -133,6 +137,7 @@ public final class GetSecretResult {
         private List<GetSecretReplication> replications;
         private List<GetSecretRotation> rotations;
         private String secretId;
+        private String secretType;
         private Map<String,String> tags;
         private List<GetSecretTopic> topics;
         private String ttl;
@@ -156,6 +161,7 @@ public final class GetSecretResult {
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.secretType = defaults.secretType;
     	      this.tags = defaults.tags;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
@@ -288,6 +294,14 @@ public final class GetSecretResult {
             return this;
         }
         @CustomType.Setter
+        public Builder secretType(String secretType) {
+            if (secretType == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "secretType");
+            }
+            this.secretType = secretType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSecretResult", "tags");
@@ -347,6 +361,7 @@ public final class GetSecretResult {
             _resultValue.replications = replications;
             _resultValue.rotations = rotations;
             _resultValue.secretId = secretId;
+            _resultValue.secretType = secretType;
             _resultValue.tags = tags;
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;

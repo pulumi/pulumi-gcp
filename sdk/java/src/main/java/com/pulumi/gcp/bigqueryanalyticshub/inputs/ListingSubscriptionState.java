@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionCommercialInfoArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetArgs;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationPubsubSubscriptionArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionLinkedDatasetMapArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionLinkedResourceArgs;
 import java.lang.Boolean;
@@ -108,6 +109,23 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<ListingSubscriptionDestinationDatasetArgs>> destinationDataset() {
         return Optional.ofNullable(this.destinationDataset);
+    }
+
+    /**
+     * Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="destinationPubsubSubscription")
+    private @Nullable Output<ListingSubscriptionDestinationPubsubSubscriptionArgs> destinationPubsubSubscription;
+
+    /**
+     * @return Destination Pub/Sub subscription to create for the subscriber.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ListingSubscriptionDestinationPubsubSubscriptionArgs>> destinationPubsubSubscription() {
+        return Optional.ofNullable(this.destinationPubsubSubscription);
     }
 
     /**
@@ -336,6 +354,7 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
         this.dataExchangeId = $.dataExchangeId;
         this.deletionPolicy = $.deletionPolicy;
         this.destinationDataset = $.destinationDataset;
+        this.destinationPubsubSubscription = $.destinationPubsubSubscription;
         this.lastModifyTime = $.lastModifyTime;
         this.linkedDatasetMaps = $.linkedDatasetMaps;
         this.linkedResources = $.linkedResources;
@@ -498,6 +517,29 @@ public final class ListingSubscriptionState extends com.pulumi.resources.Resourc
          */
         public Builder destinationDataset(ListingSubscriptionDestinationDatasetArgs destinationDataset) {
             return destinationDataset(Output.of(destinationDataset));
+        }
+
+        /**
+         * @param destinationPubsubSubscription Destination Pub/Sub subscription to create for the subscriber.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationPubsubSubscription(@Nullable Output<ListingSubscriptionDestinationPubsubSubscriptionArgs> destinationPubsubSubscription) {
+            $.destinationPubsubSubscription = destinationPubsubSubscription;
+            return this;
+        }
+
+        /**
+         * @param destinationPubsubSubscription Destination Pub/Sub subscription to create for the subscriber.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationPubsubSubscription(ListingSubscriptionDestinationPubsubSubscriptionArgs destinationPubsubSubscription) {
+            return destinationPubsubSubscription(Output.of(destinationPubsubSubscription));
         }
 
         /**

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2857,6 +2857,9 @@ type GetRegionalSecretsSecret struct {
 	Rotations []GetRegionalSecretsSecretRotation `pulumi:"rotations"`
 	// The unique name of the resource.
 	SecretId string `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -2925,6 +2928,9 @@ type GetRegionalSecretsSecretArgs struct {
 	Rotations GetRegionalSecretsSecretRotationArrayInput `pulumi:"rotations"`
 	// The unique name of the resource.
 	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType pulumi.StringInput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -3078,6 +3084,12 @@ func (o GetRegionalSecretsSecretOutput) Rotations() GetRegionalSecretsSecretRota
 // The unique name of the resource.
 func (o GetRegionalSecretsSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+func (o GetRegionalSecretsSecretOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.SecretType }).(pulumi.StringOutput)
 }
 
 // A map of resource manager tags.
@@ -4290,6 +4302,9 @@ type GetSecretsSecret struct {
 	Rotations []GetSecretsSecretRotation `pulumi:"rotations"`
 	// This must be unique within the project.
 	SecretId string `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -4357,6 +4372,9 @@ type GetSecretsSecretArgs struct {
 	Rotations GetSecretsSecretRotationArrayInput `pulumi:"rotations"`
 	// This must be unique within the project.
 	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType pulumi.StringInput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -4504,6 +4522,12 @@ func (o GetSecretsSecretOutput) Rotations() GetSecretsSecretRotationArrayOutput 
 // This must be unique within the project.
 func (o GetSecretsSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+func (o GetSecretsSecretOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretType }).(pulumi.StringOutput)
 }
 
 // A map of resource manager tags.

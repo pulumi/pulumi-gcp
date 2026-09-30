@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int DiskAutoresizeLimit;
         /// <summary>
-        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+        /// The size of data disk, in GB. The size of a running instance can be increased, or reduced when DiskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         /// </summary>
         public readonly int DiskSize;
         /// <summary>

@@ -630,6 +630,15 @@ namespace Pulumi.Gcp.Ces
     ///             {
     ///                 ServiceAgentIdTokenAuthConfig = null,
     ///             },
+    ///             ToolOverrides = new[]
+    ///             {
+    ///                 new Gcp.Ces.Inputs.ToolsetMcpToolsetToolOverrideArgs
+    ///                 {
+    ///                     Tool = "my-tool",
+    ///                     NameOverride = "my_tool_override",
+    ///                     DescriptionOverride = "A tool description override",
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 

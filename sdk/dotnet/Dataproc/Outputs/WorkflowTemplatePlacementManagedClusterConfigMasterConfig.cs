@@ -14,17 +14,21 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigMasterConfig
     {
         /// <summary>
-        /// The Compute Engine accelerator configuration for these instances.
+        /// The Compute Engine accelerator configuration for these instances. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator> Accelerators;
         /// <summary>
-        /// Disk option config settings.
+        /// Disk option config settings. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig? DiskConfig;
         /// <summary>
         /// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         /// </summary>
         public readonly string? Image;
+        /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `MasterConfig`, `WorkerConfig`, and `SecondaryWorkerConfig` (provisioning models are supported exclusively on `SecondaryWorkerConfig`). Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
         /// <summary>
         /// Output only. The list of instance names. Dataproc derives the names from `ClusterName`, `NumInstances`, and the instance group.
         /// </summary>
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? image,
 
+            Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy? instanceFlexibilityPolicy,
+
             ImmutableArray<string> instanceNames,
 
             bool? isPreemptible,
@@ -79,6 +85,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Accelerators = accelerators;
             DiskConfig = diskConfig;
             Image = image;
+            InstanceFlexibilityPolicy = instanceFlexibilityPolicy;
             InstanceNames = instanceNames;
             IsPreemptible = isPreemptible;
             MachineType = machineType;

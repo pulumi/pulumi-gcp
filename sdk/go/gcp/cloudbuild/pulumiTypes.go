@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -12858,6 +12858,342 @@ func (o GetTriggerWebhookConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerW
 	}).(GetTriggerWebhookConfigOutput)
 }
 
+type GetWorkerPoolNetworkConfig struct {
+	// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	PeeredNetwork string `pulumi:"peeredNetwork"`
+	// Optional. Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange string `pulumi:"peeredNetworkIpRange"`
+}
+
+// GetWorkerPoolNetworkConfigInput is an input type that accepts GetWorkerPoolNetworkConfigArgs and GetWorkerPoolNetworkConfigOutput values.
+// You can construct a concrete instance of `GetWorkerPoolNetworkConfigInput` via:
+//
+//	GetWorkerPoolNetworkConfigArgs{...}
+type GetWorkerPoolNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolNetworkConfigOutput() GetWorkerPoolNetworkConfigOutput
+	ToGetWorkerPoolNetworkConfigOutputWithContext(context.Context) GetWorkerPoolNetworkConfigOutput
+}
+
+type GetWorkerPoolNetworkConfigArgs struct {
+	// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
+	// Optional. Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange pulumi.StringInput `pulumi:"peeredNetworkIpRange"`
+}
+
+func (GetWorkerPoolNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (i GetWorkerPoolNetworkConfigArgs) ToGetWorkerPoolNetworkConfigOutput() GetWorkerPoolNetworkConfigOutput {
+	return i.ToGetWorkerPoolNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolNetworkConfigArgs) ToGetWorkerPoolNetworkConfigOutputWithContext(ctx context.Context) GetWorkerPoolNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolNetworkConfigOutput)
+}
+
+// GetWorkerPoolNetworkConfigArrayInput is an input type that accepts GetWorkerPoolNetworkConfigArray and GetWorkerPoolNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolNetworkConfigArrayInput` via:
+//
+//	GetWorkerPoolNetworkConfigArray{ GetWorkerPoolNetworkConfigArgs{...} }
+type GetWorkerPoolNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolNetworkConfigArrayOutput() GetWorkerPoolNetworkConfigArrayOutput
+	ToGetWorkerPoolNetworkConfigArrayOutputWithContext(context.Context) GetWorkerPoolNetworkConfigArrayOutput
+}
+
+type GetWorkerPoolNetworkConfigArray []GetWorkerPoolNetworkConfigInput
+
+func (GetWorkerPoolNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (i GetWorkerPoolNetworkConfigArray) ToGetWorkerPoolNetworkConfigArrayOutput() GetWorkerPoolNetworkConfigArrayOutput {
+	return i.ToGetWorkerPoolNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolNetworkConfigArray) ToGetWorkerPoolNetworkConfigArrayOutputWithContext(ctx context.Context) GetWorkerPoolNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolNetworkConfigArrayOutput)
+}
+
+type GetWorkerPoolNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (o GetWorkerPoolNetworkConfigOutput) ToGetWorkerPoolNetworkConfigOutput() GetWorkerPoolNetworkConfigOutput {
+	return o
+}
+
+func (o GetWorkerPoolNetworkConfigOutput) ToGetWorkerPoolNetworkConfigOutputWithContext(ctx context.Context) GetWorkerPoolNetworkConfigOutput {
+	return o
+}
+
+// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+func (o GetWorkerPoolNetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolNetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+// Optional. Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+func (o GetWorkerPoolNetworkConfigOutput) PeeredNetworkIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolNetworkConfig) string { return v.PeeredNetworkIpRange }).(pulumi.StringOutput)
+}
+
+type GetWorkerPoolNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolNetworkConfig)(nil)).Elem()
+}
+
+func (o GetWorkerPoolNetworkConfigArrayOutput) ToGetWorkerPoolNetworkConfigArrayOutput() GetWorkerPoolNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolNetworkConfigArrayOutput) ToGetWorkerPoolNetworkConfigArrayOutputWithContext(ctx context.Context) GetWorkerPoolNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolNetworkConfig {
+		return vs[0].([]GetWorkerPoolNetworkConfig)[vs[1].(int)]
+	}).(GetWorkerPoolNetworkConfigOutput)
+}
+
+type GetWorkerPoolPrivateServiceConnect struct {
+	// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+	NetworkAttachment string `pulumi:"networkAttachment"`
+	// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+	RouteAllTraffic bool `pulumi:"routeAllTraffic"`
+}
+
+// GetWorkerPoolPrivateServiceConnectInput is an input type that accepts GetWorkerPoolPrivateServiceConnectArgs and GetWorkerPoolPrivateServiceConnectOutput values.
+// You can construct a concrete instance of `GetWorkerPoolPrivateServiceConnectInput` via:
+//
+//	GetWorkerPoolPrivateServiceConnectArgs{...}
+type GetWorkerPoolPrivateServiceConnectInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolPrivateServiceConnectOutput() GetWorkerPoolPrivateServiceConnectOutput
+	ToGetWorkerPoolPrivateServiceConnectOutputWithContext(context.Context) GetWorkerPoolPrivateServiceConnectOutput
+}
+
+type GetWorkerPoolPrivateServiceConnectArgs struct {
+	// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+	// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+	RouteAllTraffic pulumi.BoolInput `pulumi:"routeAllTraffic"`
+}
+
+func (GetWorkerPoolPrivateServiceConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (i GetWorkerPoolPrivateServiceConnectArgs) ToGetWorkerPoolPrivateServiceConnectOutput() GetWorkerPoolPrivateServiceConnectOutput {
+	return i.ToGetWorkerPoolPrivateServiceConnectOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolPrivateServiceConnectArgs) ToGetWorkerPoolPrivateServiceConnectOutputWithContext(ctx context.Context) GetWorkerPoolPrivateServiceConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolPrivateServiceConnectOutput)
+}
+
+// GetWorkerPoolPrivateServiceConnectArrayInput is an input type that accepts GetWorkerPoolPrivateServiceConnectArray and GetWorkerPoolPrivateServiceConnectArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolPrivateServiceConnectArrayInput` via:
+//
+//	GetWorkerPoolPrivateServiceConnectArray{ GetWorkerPoolPrivateServiceConnectArgs{...} }
+type GetWorkerPoolPrivateServiceConnectArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolPrivateServiceConnectArrayOutput() GetWorkerPoolPrivateServiceConnectArrayOutput
+	ToGetWorkerPoolPrivateServiceConnectArrayOutputWithContext(context.Context) GetWorkerPoolPrivateServiceConnectArrayOutput
+}
+
+type GetWorkerPoolPrivateServiceConnectArray []GetWorkerPoolPrivateServiceConnectInput
+
+func (GetWorkerPoolPrivateServiceConnectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (i GetWorkerPoolPrivateServiceConnectArray) ToGetWorkerPoolPrivateServiceConnectArrayOutput() GetWorkerPoolPrivateServiceConnectArrayOutput {
+	return i.ToGetWorkerPoolPrivateServiceConnectArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolPrivateServiceConnectArray) ToGetWorkerPoolPrivateServiceConnectArrayOutputWithContext(ctx context.Context) GetWorkerPoolPrivateServiceConnectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolPrivateServiceConnectArrayOutput)
+}
+
+type GetWorkerPoolPrivateServiceConnectOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolPrivateServiceConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (o GetWorkerPoolPrivateServiceConnectOutput) ToGetWorkerPoolPrivateServiceConnectOutput() GetWorkerPoolPrivateServiceConnectOutput {
+	return o
+}
+
+func (o GetWorkerPoolPrivateServiceConnectOutput) ToGetWorkerPoolPrivateServiceConnectOutputWithContext(ctx context.Context) GetWorkerPoolPrivateServiceConnectOutput {
+	return o
+}
+
+// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+func (o GetWorkerPoolPrivateServiceConnectOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolPrivateServiceConnect) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+func (o GetWorkerPoolPrivateServiceConnectOutput) RouteAllTraffic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkerPoolPrivateServiceConnect) bool { return v.RouteAllTraffic }).(pulumi.BoolOutput)
+}
+
+type GetWorkerPoolPrivateServiceConnectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolPrivateServiceConnectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (o GetWorkerPoolPrivateServiceConnectArrayOutput) ToGetWorkerPoolPrivateServiceConnectArrayOutput() GetWorkerPoolPrivateServiceConnectArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolPrivateServiceConnectArrayOutput) ToGetWorkerPoolPrivateServiceConnectArrayOutputWithContext(ctx context.Context) GetWorkerPoolPrivateServiceConnectArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolPrivateServiceConnectArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolPrivateServiceConnectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolPrivateServiceConnect {
+		return vs[0].([]GetWorkerPoolPrivateServiceConnect)[vs[1].(int)]
+	}).(GetWorkerPoolPrivateServiceConnectOutput)
+}
+
+type GetWorkerPoolWorkerConfig struct {
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Machine type of a worker, such as `n1-standard-1`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+	MachineType string `pulumi:"machineType"`
+	// If true, workers are created without any public address, which prevents network egress to public IPs.
+	NoExternalIp bool `pulumi:"noExternalIp"`
+}
+
+// GetWorkerPoolWorkerConfigInput is an input type that accepts GetWorkerPoolWorkerConfigArgs and GetWorkerPoolWorkerConfigOutput values.
+// You can construct a concrete instance of `GetWorkerPoolWorkerConfigInput` via:
+//
+//	GetWorkerPoolWorkerConfigArgs{...}
+type GetWorkerPoolWorkerConfigInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolWorkerConfigOutput() GetWorkerPoolWorkerConfigOutput
+	ToGetWorkerPoolWorkerConfigOutputWithContext(context.Context) GetWorkerPoolWorkerConfigOutput
+}
+
+type GetWorkerPoolWorkerConfigArgs struct {
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Machine type of a worker, such as `n1-standard-1`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// If true, workers are created without any public address, which prevents network egress to public IPs.
+	NoExternalIp pulumi.BoolInput `pulumi:"noExternalIp"`
+}
+
+func (GetWorkerPoolWorkerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (i GetWorkerPoolWorkerConfigArgs) ToGetWorkerPoolWorkerConfigOutput() GetWorkerPoolWorkerConfigOutput {
+	return i.ToGetWorkerPoolWorkerConfigOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolWorkerConfigArgs) ToGetWorkerPoolWorkerConfigOutputWithContext(ctx context.Context) GetWorkerPoolWorkerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolWorkerConfigOutput)
+}
+
+// GetWorkerPoolWorkerConfigArrayInput is an input type that accepts GetWorkerPoolWorkerConfigArray and GetWorkerPoolWorkerConfigArrayOutput values.
+// You can construct a concrete instance of `GetWorkerPoolWorkerConfigArrayInput` via:
+//
+//	GetWorkerPoolWorkerConfigArray{ GetWorkerPoolWorkerConfigArgs{...} }
+type GetWorkerPoolWorkerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkerPoolWorkerConfigArrayOutput() GetWorkerPoolWorkerConfigArrayOutput
+	ToGetWorkerPoolWorkerConfigArrayOutputWithContext(context.Context) GetWorkerPoolWorkerConfigArrayOutput
+}
+
+type GetWorkerPoolWorkerConfigArray []GetWorkerPoolWorkerConfigInput
+
+func (GetWorkerPoolWorkerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (i GetWorkerPoolWorkerConfigArray) ToGetWorkerPoolWorkerConfigArrayOutput() GetWorkerPoolWorkerConfigArrayOutput {
+	return i.ToGetWorkerPoolWorkerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkerPoolWorkerConfigArray) ToGetWorkerPoolWorkerConfigArrayOutputWithContext(ctx context.Context) GetWorkerPoolWorkerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkerPoolWorkerConfigArrayOutput)
+}
+
+type GetWorkerPoolWorkerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolWorkerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (o GetWorkerPoolWorkerConfigOutput) ToGetWorkerPoolWorkerConfigOutput() GetWorkerPoolWorkerConfigOutput {
+	return o
+}
+
+func (o GetWorkerPoolWorkerConfigOutput) ToGetWorkerPoolWorkerConfigOutputWithContext(ctx context.Context) GetWorkerPoolWorkerConfigOutput {
+	return o
+}
+
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+func (o GetWorkerPoolWorkerConfigOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWorkerPoolWorkerConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
+func (o GetWorkerPoolWorkerConfigOutput) EnableNestedVirtualization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkerPoolWorkerConfig) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Machine type of a worker, such as `n1-standard-1`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+func (o GetWorkerPoolWorkerConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerPoolWorkerConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// If true, workers are created without any public address, which prevents network egress to public IPs.
+func (o GetWorkerPoolWorkerConfigOutput) NoExternalIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkerPoolWorkerConfig) bool { return v.NoExternalIp }).(pulumi.BoolOutput)
+}
+
+type GetWorkerPoolWorkerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkerPoolWorkerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkerPoolWorkerConfig)(nil)).Elem()
+}
+
+func (o GetWorkerPoolWorkerConfigArrayOutput) ToGetWorkerPoolWorkerConfigArrayOutput() GetWorkerPoolWorkerConfigArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolWorkerConfigArrayOutput) ToGetWorkerPoolWorkerConfigArrayOutputWithContext(ctx context.Context) GetWorkerPoolWorkerConfigArrayOutput {
+	return o
+}
+
+func (o GetWorkerPoolWorkerConfigArrayOutput) Index(i pulumi.IntInput) GetWorkerPoolWorkerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkerPoolWorkerConfig {
+		return vs[0].([]GetWorkerPoolWorkerConfig)[vs[1].(int)]
+	}).(GetWorkerPoolWorkerConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigConnectedRepositoryInput)(nil)).Elem(), BitbucketServerConfigConnectedRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigConnectedRepositoryArrayInput)(nil)).Elem(), BitbucketServerConfigConnectedRepositoryArray{})
@@ -13009,6 +13345,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerTriggerTemplateArrayInput)(nil)).Elem(), GetTriggerTriggerTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerWebhookConfigInput)(nil)).Elem(), GetTriggerWebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerWebhookConfigArrayInput)(nil)).Elem(), GetTriggerWebhookConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolNetworkConfigInput)(nil)).Elem(), GetWorkerPoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolNetworkConfigArrayInput)(nil)).Elem(), GetWorkerPoolNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolPrivateServiceConnectInput)(nil)).Elem(), GetWorkerPoolPrivateServiceConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolPrivateServiceConnectArrayInput)(nil)).Elem(), GetWorkerPoolPrivateServiceConnectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolWorkerConfigInput)(nil)).Elem(), GetWorkerPoolWorkerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkerPoolWorkerConfigArrayInput)(nil)).Elem(), GetWorkerPoolWorkerConfigArray{})
 	pulumi.RegisterOutputType(BitbucketServerConfigConnectedRepositoryOutput{})
 	pulumi.RegisterOutputType(BitbucketServerConfigConnectedRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(BitbucketServerConfigSecretsOutput{})
@@ -13159,4 +13501,10 @@ func init() {
 	pulumi.RegisterOutputType(GetTriggerTriggerTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerWebhookConfigOutput{})
 	pulumi.RegisterOutputType(GetTriggerWebhookConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolPrivateServiceConnectOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolPrivateServiceConnectArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolWorkerConfigOutput{})
+	pulumi.RegisterOutputType(GetWorkerPoolWorkerConfigArrayOutput{})
 }

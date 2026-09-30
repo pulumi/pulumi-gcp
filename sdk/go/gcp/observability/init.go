@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:observability/bucket:Bucket":
+		r = &Bucket{}
 	case "gcp:observability/folderSettings:FolderSettings":
 		r = &FolderSettings{}
+	case "gcp:observability/link:Link":
+		r = &Link{}
 	case "gcp:observability/organizationSettings:OrganizationSettings":
 		r = &OrganizationSettings{}
 	case "gcp:observability/projectSettings:ProjectSettings":
@@ -44,7 +48,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"observability/bucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"observability/folderSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"observability/link",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

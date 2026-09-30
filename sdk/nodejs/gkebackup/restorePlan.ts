@@ -25,8 +25,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "restore-all-ns-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -42,7 +45,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "restore-all-ns",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -51,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * const allNs = new gcp.gkebackup.RestorePlan("all_ns", {
  *     name: "restore-all-ns",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -73,8 +76,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "rollback-ns-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -90,7 +96,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "rollback-ns",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -99,7 +105,7 @@ import * as utilities from "../utilities";
  * });
  * const rollbackNs = new gcp.gkebackup.RestorePlan("rollback_ns", {
  *     name: "rollback-ns-rp",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -132,8 +138,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "rollback-app-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -149,7 +158,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "rollback-app",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -158,7 +167,7 @@ import * as utilities from "../utilities";
  * });
  * const rollbackApp = new gcp.gkebackup.RestorePlan("rollback_app", {
  *     name: "rollback-app-rp",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -184,8 +193,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "all-groupkinds-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -201,7 +213,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "all-groupkinds",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -210,7 +222,7 @@ import * as utilities from "../utilities";
  * });
  * const allClusterResources = new gcp.gkebackup.RestorePlan("all_cluster_resources", {
  *     name: "all-groupkinds-rp",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -231,8 +243,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "rename-ns-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -248,7 +263,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "rename-ns",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -257,7 +272,7 @@ import * as utilities from "../utilities";
  * });
  * const renameNs = new gcp.gkebackup.RestorePlan("rename_ns", {
  *     name: "rename-ns-rp",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -307,8 +322,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "transform-rule-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -324,7 +342,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "transform-rule",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -337,7 +355,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         app: "nginx",
  *     },
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -379,8 +397,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "gitops-mode-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -396,7 +417,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "gitops-mode",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -405,7 +426,7 @@ import * as utilities from "../utilities";
  * });
  * const gitopsMode = new gcp.gkebackup.RestorePlan("gitops_mode", {
  *     name: "gitops-mode",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -427,8 +448,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "restore-order-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -444,7 +468,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "restore-order",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -453,7 +477,7 @@ import * as utilities from "../utilities";
  * });
  * const restoreOrder = new gcp.gkebackup.RestorePlan("restore_order", {
  *     name: "restore-order",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {
@@ -499,8 +523,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "volume-res-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -516,7 +543,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "volume-res",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -525,7 +552,7 @@ import * as utilities from "../utilities";
  * });
  * const volumeRes = new gcp.gkebackup.RestorePlan("volume_res", {
  *     name: "volume-res",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupPlan: basic.id,
  *     cluster: primary.id,
  *     restoreConfig: {

@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig? LifecycleConfig;
         /// <summary>
-        /// The Compute Engine config settings for additional worker instances in a cluster.
+        /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig? MasterConfig;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig? MetastoreConfig;
         /// <summary>
-        /// The Compute Engine config settings for additional worker instances in a cluster.
+        /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig? SecondaryWorkerConfig;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? TempBucket;
         /// <summary>
-        /// The Compute Engine config settings for additional worker instances in a cluster.
+        /// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
         /// 
         /// - - -
         /// </summary>

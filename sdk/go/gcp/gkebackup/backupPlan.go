@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -39,8 +39,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("basic-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -59,7 +62,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("basic-plan"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
 //					IncludeSecrets:    pulumi.Bool(true),
@@ -81,8 +84,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,7 +94,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:               pulumi.String("autopilot-cluster"),
-//				Location:           pulumi.String("us-central1"),
+//				Location:           pulumi.String("us-east1"),
 //				EnableAutopilot:    pulumi.Bool(true),
 //				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{},
 //				ReleaseChannel: &container.ClusterReleaseChannelArgs{
@@ -112,7 +115,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "autopilot", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("autopilot-plan"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
 //					IncludeSecrets:    pulumi.Bool(true),
@@ -134,9 +137,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -145,8 +148,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("cmek-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -164,7 +170,7 @@ import (
 //			}
 //			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
 //				Name:     pulumi.String("backup-key"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +185,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "cmek", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("cmek-plan"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
 //					IncludeSecrets:    pulumi.Bool(true),
@@ -209,8 +215,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -219,8 +225,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("nslabels-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -239,7 +248,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "nslabels", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("nslabels-plan"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
 //					IncludeSecrets:    pulumi.Bool(true),
@@ -268,8 +277,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -278,8 +287,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("full-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -298,7 +310,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "full", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("full-plan"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
 //					BackupRetainDays:     pulumi.Int(180),
@@ -338,8 +350,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -348,8 +360,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("permissive-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -368,7 +383,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "permissive", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("permissive-plan"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
 //					BackupRetainDays:     pulumi.Int(180),
@@ -409,8 +424,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -419,8 +434,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("rpo-daily-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -439,7 +457,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "rpo_daily_window", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rpo-daily-window"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
 //					BackupRetainDays:     pulumi.Int(180),
@@ -494,8 +512,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -504,8 +522,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 //				Name:             pulumi.String("rpo-weekly-cluster"),
-//				Location:         pulumi.String("us-central1"),
+//				Location:         pulumi.String("us-east1"),
 //				InitialNodeCount: pulumi.Int(1),
+//				NodeConfig: &container.ClusterNodeConfigArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//				},
 //				WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
@@ -524,7 +545,7 @@ import (
 //			_, err = gkebackup.NewBackupPlan(ctx, "rpo_weekly_window", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rpo-weekly-window"),
 //				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
 //					BackupRetainDays:     pulumi.Int(180),

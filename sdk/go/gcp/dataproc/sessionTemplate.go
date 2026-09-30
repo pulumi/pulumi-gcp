@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,8 +37,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewSessionTemplate(ctx, "example_session_templates_jupyter", &dataproc.SessionTemplateArgs{
-//				Name:     pulumi.String("projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template"),
-//				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"session_template_test": pulumi.String("terraform"),
 //				},
@@ -82,10 +82,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -119,7 +119,7 @@ import (
 //			}
 //			ms, err := dataproc.NewMetastoreService(ctx, "ms", &dataproc.MetastoreServiceArgs{
 //				ServiceId: pulumi.String("jupyter-session-template"),
-//				Location:  pulumi.String("us-central1"),
+//				Location:  pulumi.String("us-east1"),
 //				Port:      pulumi.Int(9080),
 //				Tier:      pulumi.String("DEVELOPER"),
 //				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
@@ -132,7 +132,7 @@ import (
 //				NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 //					Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 //						&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-//							Subnetwork: pulumi.String("projects/my-project-name/regions/us-central1/subnetworks/default"),
+//							Subnetwork: pulumi.String("projects/my-project-name/regions/us-east1/subnetworks/default"),
 //						},
 //					},
 //				},
@@ -142,7 +142,7 @@ import (
 //			}
 //			basic, err := dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
 //				Name:   pulumi.String("jupyter-session-template"),
-//				Region: pulumi.String("us-central1"),
+//				Region: pulumi.String("us-east1"),
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
 //						OverrideProperties: pulumi.StringMap{
@@ -160,8 +160,9 @@ import (
 //					},
 //					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
 //						NumInstances: pulumi.Int(1),
-//						MachineType:  pulumi.String("e2-standard-2"),
+//						MachineType:  pulumi.String("n4-standard-2"),
 //						DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+//							BootDiskType:   pulumi.String("hyperdisk-balanced"),
 //							BootDiskSizeGb: pulumi.Int(35),
 //						},
 //					},
@@ -174,8 +175,8 @@ import (
 //				return err
 //			}
 //			_, err = dataproc.NewSessionTemplate(ctx, "dataproc_session_templates_jupyter_full", &dataproc.SessionTemplateArgs{
-//				Name:     pulumi.String("projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template"),
-//				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"session_template_test": pulumi.String("terraform"),
 //				},
@@ -230,7 +231,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -238,8 +239,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataproc.NewSessionTemplate(ctx, "example_session_templates_spark_connect", &dataproc.SessionTemplateArgs{
-//				Name:     pulumi.String("projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template"),
-//				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("projects/my-project-name/locations/us-east1/sessionTemplates/sc-session-template"),
+//				Location: pulumi.String("us-east1"),
 //				Labels: pulumi.StringMap{
 //					"session_template_test": pulumi.String("terraform"),
 //				},

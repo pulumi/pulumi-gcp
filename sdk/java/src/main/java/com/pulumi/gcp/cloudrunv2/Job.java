@@ -129,6 +129,52 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Job Sandbox
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job("default", JobArgs.builder()
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .launchStage("BETA")
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
+ *                         .sandboxLauncher(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Cloudrunv2 Job Sql
  * 
  * <pre>

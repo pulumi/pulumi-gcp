@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_75303",
+ *         filenameSuffix: "-_45598",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_72437",
+ *         filenameSuffix: "-_64623",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -318,7 +318,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_7864",
+ *         filenameSuffix: "-_42057",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -362,7 +362,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_70324",
+ *         filenameSuffix: "-_84735",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",

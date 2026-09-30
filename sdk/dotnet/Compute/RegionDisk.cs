@@ -32,6 +32,9 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Region Disk Basic
@@ -67,6 +70,100 @@ namespace Pulumi.Gcp.Compute
     ///         Type = "pd-ssd",
     ///         Region = "us-central1",
     ///         PhysicalBlockSizeBytes = 4096,
+    ///         ReplicaZones = new[]
+    ///         {
+    ///             "us-central1-a",
+    ///             "us-central1-f",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Disk Disk Encryption Key Wo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var disk = new Gcp.Compute.Disk("disk", new()
+    ///     {
+    ///         Name = "my-disk",
+    ///         Image = "debian-cloud/debian-13",
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
+    ///     {
+    ///         Name = "my-snapshot",
+    ///         SourceDisk = disk.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
+    ///     {
+    ///         Name = "my-region-disk",
+    ///         Snapshot = snapdisk.Id,
+    ///         Type = "pd-ssd",
+    ///         Region = "us-central1",
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///         DiskEncryptionKey = new Gcp.Compute.Inputs.RegionDiskDiskEncryptionKeyArgs
+    ///         {
+    ///             RawKeyWo = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+    ///             RawKeyWoVersion = "1",
+    ///         },
+    ///         ReplicaZones = new[]
+    ///         {
+    ///             "us-central1-a",
+    ///             "us-central1-f",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Disk Rsa Encrypted Key Wo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var disk = new Gcp.Compute.Disk("disk", new()
+    ///     {
+    ///         Name = "my-disk",
+    ///         Image = "debian-cloud/debian-13",
+    ///         Size = 50,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new()
+    ///     {
+    ///         Name = "my-snapshot",
+    ///         SourceDisk = disk.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
+    ///     {
+    ///         Name = "my-region-disk",
+    ///         Snapshot = snapdisk.Id,
+    ///         Type = "pd-ssd",
+    ///         Region = "us-central1",
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///         DiskEncryptionKey = new Gcp.Compute.Inputs.RegionDiskDiskEncryptionKeyArgs
+    ///         {
+    ///             RsaEncryptedKeyWo = "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+    ///             RsaEncryptedKeyWoVersion = "1",
+    ///         },
     ///         ReplicaZones = new[]
     ///         {
     ///             "us-central1-a",

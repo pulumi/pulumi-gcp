@@ -2002,7 +2002,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name="template-region-service",
+            name="region-service-template",
             machine_type="e2-medium",
             network_interfaces=[{
                 "network": default_network.id,
@@ -2753,7 +2753,7 @@ class RegionBackendService(pulumi.CustomResource):
             region="us-central1",
             network=default_network.id)
         instance_template = gcp.compute.InstanceTemplate("instance_template",
-            name="template-region-service",
+            name="region-service-template",
             machine_type="e2-medium",
             network_interfaces=[{
                 "network": default_network.id,

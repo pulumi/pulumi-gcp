@@ -48,6 +48,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
         "location": args.location,
         "name": args.name,
         "project": args.project,
+        "skipNodePoolRefresh": args.skipNodePoolRefresh,
     }, opts);
 }
 
@@ -70,6 +71,18 @@ export interface GetClusterArgs {
      * is not provided, the provider project is used.
      */
     project?: string;
+    /**
+     * Whether to skip refreshing the GKE
+     * cluster's node pool list during the data source read. Setting this to `true`
+     * prevents the provider from querying the GKE API for node pools, which resolves
+     * long read times on clusters with a large number of node pools. When enabled,
+     * the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+     * the resource documentation
+     * for details.
+     *
+     * ***
+     */
+    skipNodePoolRefresh?: boolean;
 }
 
 /**
@@ -174,7 +187,7 @@ export interface GetClusterResult {
     readonly selfLink: string;
     readonly serviceExternalIpsConfigs: outputs.container.GetClusterServiceExternalIpsConfig[];
     readonly servicesIpv4Cidr: string;
-    readonly skipNodePoolRefresh: boolean;
+    readonly skipNodePoolRefresh?: boolean;
     readonly subnetwork: string;
     readonly tpuConfigs: outputs.container.GetClusterTpuConfig[];
     readonly tpuIpv4CidrBlock: string;
@@ -225,6 +238,7 @@ export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.Invok
         "location": args.location,
         "name": args.name,
         "project": args.project,
+        "skipNodePoolRefresh": args.skipNodePoolRefresh,
     }, opts);
 }
 
@@ -247,4 +261,16 @@ export interface GetClusterOutputArgs {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip refreshing the GKE
+     * cluster's node pool list during the data source read. Setting this to `true`
+     * prevents the provider from querying the GKE API for node pools, which resolves
+     * long read times on clusters with a large number of node pools. When enabled,
+     * the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+     * the resource documentation
+     * for details.
+     *
+     * ***
+     */
+    skipNodePoolRefresh?: pulumi.Input<boolean | undefined>;
 }

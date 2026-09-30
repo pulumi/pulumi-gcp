@@ -71,6 +71,7 @@ export interface GetRegionalSecretResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly rotations: outputs.secretmanager.GetRegionalSecretRotation[];
     readonly secretId: string;
+    readonly secretType: string;
     readonly tags: {[key: string]: string};
     readonly topics: outputs.secretmanager.GetRegionalSecretTopic[];
     readonly ttl: string;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.workflows;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -258,16 +259,16 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
      * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
-    @Import(name="sourceContents")
-    private @Nullable Output<String> sourceContents;
+    @Import(name="sourceContents", required=true)
+    private Output<String> sourceContents;
 
     /**
      * @return Workflow code to be executed. The size limit is 128KB.
      * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
-    public Optional<Output<String>> sourceContents() {
-        return Optional.ofNullable(this.sourceContents);
+    public Output<String> sourceContents() {
+        return this.sourceContents;
     }
 
     /**
@@ -657,7 +658,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder sourceContents(@Nullable Output<String> sourceContents) {
+        public Builder sourceContents(Output<String> sourceContents) {
             $.sourceContents = sourceContents;
             return this;
         }
@@ -720,6 +721,9 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkflowArgs build() {
+            if ($.sourceContents == null) {
+                throw new MissingRequiredPropertyException("WorkflowArgs", "sourceContents");
+            }
             return $;
         }
     }

@@ -27,7 +27,7 @@ class GetParameterResult:
     """
     A collection of values returned by getParameter.
     """
-    def __init__(__self__, create_time=None, deletion_policy=None, effective_labels=None, format=None, id=None, kms_key=None, labels=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, update_time=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, effective_labels=None, format=None, id=None, kms_key=None, labels=None, name=None, parameter_id=None, policy_members=None, project=None, pulumi_labels=None, tags=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -64,6 +64,9 @@ class GetParameterResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -132,6 +135,11 @@ class GetParameterResult:
         return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         return pulumi.get(self, "update_time")
@@ -155,6 +163,7 @@ class AwaitableGetParameterResult(GetParameterResult):
             policy_members=self.policy_members,
             project=self.project,
             pulumi_labels=self.pulumi_labels,
+            tags=self.tags,
             update_time=self.update_time)
 
 
@@ -196,6 +205,7 @@ def get_parameter(parameter_id: Optional[_builtins.str] = None,
         policy_members=pulumi.get(__ret__, 'policy_members'),
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        tags=pulumi.get(__ret__, 'tags'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_parameter_output(parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -234,4 +244,5 @@ def get_parameter_output(parameter_id: pulumi.Input[Optional[_builtins.str]] = N
         policy_members=pulumi.get(__response__, 'policy_members'),
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        tags=pulumi.get(__response__, 'tags'),
         update_time=pulumi.get(__response__, 'update_time')))

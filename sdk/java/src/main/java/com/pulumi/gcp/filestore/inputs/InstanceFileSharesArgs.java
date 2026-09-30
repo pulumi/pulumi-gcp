@@ -20,16 +20,26 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
     public static final InstanceFileSharesArgs Empty = new InstanceFileSharesArgs();
 
     /**
-     * File share capacity in GiB. This must be at least 1024 GiB
-     * for the standard tier, or 2560 GiB for the premium tier.
+     * File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+     * * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+     * * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+     * * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+     * * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+     * * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+     * * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
      * 
      */
     @Import(name="capacityGb", required=true)
     private Output<Integer> capacityGb;
 
     /**
-     * @return File share capacity in GiB. This must be at least 1024 GiB
-     * for the standard tier, or 2560 GiB for the premium tier.
+     * @return File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+     * * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+     * * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+     * * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+     * * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+     * * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+     * * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
      * 
      */
     public Output<Integer> capacityGb() {
@@ -135,8 +145,13 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param capacityGb File share capacity in GiB. This must be at least 1024 GiB
-         * for the standard tier, or 2560 GiB for the premium tier.
+         * @param capacityGb File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+         * * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+         * * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+         * * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+         * * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+         * * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+         * * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
          * 
          * @return builder
          * 
@@ -147,8 +162,13 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param capacityGb File share capacity in GiB. This must be at least 1024 GiB
-         * for the standard tier, or 2560 GiB for the premium tier.
+         * @param capacityGb File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+         * * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+         * * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+         * * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+         * * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+         * * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+         * * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
          * 
          * @return builder
          * 

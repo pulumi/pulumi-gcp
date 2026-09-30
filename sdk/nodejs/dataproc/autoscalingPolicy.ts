@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const asp = new gcp.dataproc.AutoscalingPolicy("asp", {
  *     policyId: "dataproc-policy",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     workerConfig: {
  *         maxInstances: 3,
  *     },
@@ -33,10 +33,26 @@ import * as utilities from "../utilities";
  * });
  * const basic = new gcp.dataproc.Cluster("basic", {
  *     name: "dataproc-policy",
- *     region: "us-central1",
+ *     region: "us-east1",
  *     clusterConfig: {
  *         autoscalingConfig: {
  *             policyUri: asp.name,
+ *         },
+ *         masterConfig: {
+ *             numInstances: 1,
+ *             machineType: "n4-standard-2",
+ *             diskConfig: {
+ *                 bootDiskType: "hyperdisk-balanced",
+ *                 bootDiskSizeGb: 35,
+ *             },
+ *         },
+ *         workerConfig: {
+ *             numInstances: 2,
+ *             machineType: "n4-standard-2",
+ *             diskConfig: {
+ *                 bootDiskType: "hyperdisk-balanced",
+ *                 bootDiskSizeGb: 35,
+ *             },
  *         },
  *     },
  * });

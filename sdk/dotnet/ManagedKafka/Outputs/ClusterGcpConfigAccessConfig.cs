@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.ManagedKafka.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterGcpConfigAccessConfigNetworkConfig> NetworkConfigs;
+        /// <summary>
+        /// Public connection configuration for the Kafka cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterGcpConfigAccessConfigPublicClusterConfig? PublicClusterConfig;
 
         [OutputConstructor]
-        private ClusterGcpConfigAccessConfig(ImmutableArray<Outputs.ClusterGcpConfigAccessConfigNetworkConfig> networkConfigs)
+        private ClusterGcpConfigAccessConfig(
+            ImmutableArray<Outputs.ClusterGcpConfigAccessConfigNetworkConfig> networkConfigs,
+
+            Outputs.ClusterGcpConfigAccessConfigPublicClusterConfig? publicClusterConfig)
         {
             NetworkConfigs = networkConfigs;
+            PublicClusterConfig = publicClusterConfig;
         }
     }
 }

@@ -164,6 +164,15 @@ export class AuthzExtension extends pulumi.CustomResource {
      */
     declare public readonly failOpen: pulumi.Output<boolean>;
     /**
+     * List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     */
+    declare public readonly forwardAttributes: pulumi.Output<string[] | undefined>;
+    /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      */
     declare public readonly forwardHeaders: pulumi.Output<string[] | undefined>;
@@ -261,6 +270,7 @@ export class AuthzExtension extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["failOpen"] = state?.failOpen;
+            resourceInputs["forwardAttributes"] = state?.forwardAttributes;
             resourceInputs["forwardHeaders"] = state?.forwardHeaders;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
@@ -288,6 +298,7 @@ export class AuthzExtension extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["failOpen"] = args?.failOpen;
+            resourceInputs["forwardAttributes"] = args?.forwardAttributes;
             resourceInputs["forwardHeaders"] = args?.forwardHeaders;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
@@ -346,6 +357,15 @@ export interface AuthzExtensionState {
      * * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
      */
     failOpen?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     */
+    forwardAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      */
@@ -454,6 +474,15 @@ export interface AuthzExtensionArgs {
      * * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
      */
     failOpen?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of the Envoy attributes to forward to the extension server. The attributes
+     * provided here are included as part of the `ProcessingRequest.attributes` field
+     * (of type `map`), where the keys are the attribute names. Refer to the
+     * [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+     * for the names of attributes that can be forwarded. If omitted, no attributes
+     * are sent. Each element is a string indicating the attribute name.
+     */
+    forwardAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
      */

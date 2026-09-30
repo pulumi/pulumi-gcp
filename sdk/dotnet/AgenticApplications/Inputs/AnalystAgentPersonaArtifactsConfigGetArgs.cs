@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
         public Input<Inputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsGetArgs>? DocumentGenerationOptions { get; set; }
 
         /// <summary>
+        /// Options for methodology export.
+        /// </summary>
+        [Input("methodologyExportOptions")]
+        public Input<Inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsGetArgs>? MethodologyExportOptions { get; set; }
+
+        /// <summary>
         /// Options for slide generation.
         /// </summary>
         [Input("slideGenerationOptions")]

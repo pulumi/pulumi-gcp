@@ -368,7 +368,7 @@ class NetworkEndpoint(pulumi.CustomResource):
         default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
             network_endpoint_group=neg["name"],
             instance=endpoint_instance.name,
-            port=int(neg["defaultPort"]),
+            port=neg["defaultPort"],
             ip_address=endpoint_instance.network_interfaces[0].network_ip)
         group = gcp.compute.NetworkEndpointGroup("group",
             name="my-lb-neg",
@@ -475,7 +475,7 @@ class NetworkEndpoint(pulumi.CustomResource):
         default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
             network_endpoint_group=neg["name"],
             instance=endpoint_instance.name,
-            port=int(neg["defaultPort"]),
+            port=neg["defaultPort"],
             ip_address=endpoint_instance.network_interfaces[0].network_ip)
         group = gcp.compute.NetworkEndpointGroup("group",
             name="my-lb-neg",

@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
  *     networkEndpointGroup: neg.name,
  *     instance: endpoint_instance.name,
- *     port: Number(neg.defaultPort),
+ *     port: neg.defaultPort,
  *     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {

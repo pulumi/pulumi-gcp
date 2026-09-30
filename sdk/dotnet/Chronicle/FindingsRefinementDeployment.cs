@@ -61,12 +61,12 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleFindingsRefinement.My_findings_refinement.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result.Length)).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
     ///             return invoke.Result[(int)(length - 1)];
-    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///         }),
     ///         Enabled = true,
     ///         Archived = false,
     ///     });

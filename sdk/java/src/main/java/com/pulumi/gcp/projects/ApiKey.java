@@ -309,12 +309,27 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:projects/apiKey:ApiKey")
 public class ApiKey extends com.pulumi.resources.CustomResource {
     /**
+     * Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     * 
+     */
+    @Export(name="checkExistingUsage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> checkExistingUsage;
+
+    /**
+     * @return Defines the behavior for checking existing usage when updating a key. Possible values: `SKIP`, `CHECK`.
+     * 
+     */
+    public Output<Optional<String>> checkExistingUsage() {
+        return Codegen.optional(this.checkExistingUsage);
+    }
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to &#34;FORCE&#34;, deleting the resource will bypass the active traffic usage check.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
@@ -326,7 +341,8 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
-     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed, and existing traffic usage will be checked. If active usage was detected in the last 7 days, the request fails.
+     * When set to &#34;FORCE&#34;, deleting the resource will bypass the active traffic usage check.
      * 
      */
     public Output<String> deletionPolicy() {

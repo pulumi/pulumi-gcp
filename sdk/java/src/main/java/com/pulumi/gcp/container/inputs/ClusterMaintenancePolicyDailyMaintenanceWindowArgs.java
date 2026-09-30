@@ -35,9 +35,17 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindowArgs extends co
         return Optional.ofNullable(this.duration);
     }
 
+    /**
+     * The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     @Import(name="startTime", required=true)
     private Output<String> startTime;
 
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     public Output<String> startTime() {
         return this.startTime;
     }
@@ -92,11 +100,23 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindowArgs extends co
             return duration(Output.of(duration));
         }
 
+        /**
+         * @param startTime The start time of the exclusion window, in RFC3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
 
+        /**
+         * @param startTime The start time of the exclusion window, in RFC3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
         }

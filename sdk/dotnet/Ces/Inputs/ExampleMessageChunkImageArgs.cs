@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Ces.Inputs
     public sealed class ExampleMessageChunkImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The alternative text for the image.
+        /// </summary>
+        [Input("altText")]
+        public Input<string>? AltText { get; set; }
+
+        /// <summary>
         /// Raw bytes of the image.
         /// </summary>
         [Input("data", required: true)]

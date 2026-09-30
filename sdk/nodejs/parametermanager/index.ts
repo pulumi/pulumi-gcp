@@ -65,6 +65,11 @@ export type RegionalParameterVersion = import("./regionalParameterVersion").Regi
 export const RegionalParameterVersion: typeof import("./regionalParameterVersion").RegionalParameterVersion = null as any;
 utilities.lazyLoad(exports, ["RegionalParameterVersion"], () => require("./regionalParameterVersion"));
 
+export { TemplateArgs, TemplateState } from "./template";
+export type Template = import("./template").Template;
+export const Template: typeof import("./template").Template = null as any;
+utilities.lazyLoad(exports, ["Template"], () => require("./template"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -78,6 +83,8 @@ const _module = {
                 return new RegionalParameter(name, <any>undefined, { urn })
             case "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion":
                 return new RegionalParameterVersion(name, <any>undefined, { urn })
+            case "gcp:parametermanager/template:Template":
+                return new Template(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -87,3 +94,4 @@ pulumi.runtime.registerResourceModule("gcp", "parametermanager/parameter", _modu
 pulumi.runtime.registerResourceModule("gcp", "parametermanager/parameterVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "parametermanager/regionalParameter", _module)
 pulumi.runtime.registerResourceModule("gcp", "parametermanager/regionalParameterVersion", _module)
+pulumi.runtime.registerResourceModule("gcp", "parametermanager/template", _module)

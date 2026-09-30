@@ -39,6 +39,13 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly ImmutableArray<Outputs.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting> ConversationLoggingSettings;
         /// <summary>
         /// (Output)
+        /// Settings to describe the conversation data collection behaviors for the LLM
+        /// analysis pipeline for the app.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting> MetricAnalysisSettings;
+        /// <summary>
+        /// (Output)
         /// Configuration to instruct how sensitive data should be handled.
         /// Structure is documented below.
         /// </summary>
@@ -54,12 +61,15 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             ImmutableArray<Outputs.AppVersionSnapshotAppLoggingSettingConversationLoggingSetting> conversationLoggingSettings,
 
+            ImmutableArray<Outputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSetting> metricAnalysisSettings,
+
             ImmutableArray<Outputs.AppVersionSnapshotAppLoggingSettingRedactionConfig> redactionConfigs)
         {
             AudioRecordingConfigs = audioRecordingConfigs;
             BigqueryExportSettings = bigqueryExportSettings;
             CloudLoggingSettings = cloudLoggingSettings;
             ConversationLoggingSettings = conversationLoggingSettings;
+            MetricAnalysisSettings = metricAnalysisSettings;
             RedactionConfigs = redactionConfigs;
         }
     }

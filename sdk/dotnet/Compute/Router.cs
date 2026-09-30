@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_37118",
+    ///         Name = "tf-test-subnet_56529",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,

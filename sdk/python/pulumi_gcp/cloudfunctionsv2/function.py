@@ -551,7 +551,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -590,7 +590,7 @@ class Function(pulumi.CustomResource):
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -647,7 +647,7 @@ class Function(pulumi.CustomResource):
             account_id="gcf-sa",
             display_name="Test Service Account")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -910,7 +910,7 @@ class Function(pulumi.CustomResource):
             role="roles/storage.objectAdmin",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -954,7 +954,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1009,7 +1009,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1063,7 +1063,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1108,7 +1108,7 @@ class Function(pulumi.CustomResource):
         project = "my-project-name"
         project_get_project = gcp.organizations.get_project()
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1179,7 +1179,7 @@ class Function(pulumi.CustomResource):
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1237,7 +1237,7 @@ class Function(pulumi.CustomResource):
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1291,7 +1291,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1397,7 +1397,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1436,7 +1436,7 @@ class Function(pulumi.CustomResource):
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1493,7 +1493,7 @@ class Function(pulumi.CustomResource):
             account_id="gcf-sa",
             display_name="Test Service Account")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1756,7 +1756,7 @@ class Function(pulumi.CustomResource):
             role="roles/storage.objectAdmin",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"))
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1800,7 +1800,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1855,7 +1855,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1909,7 +1909,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1954,7 +1954,7 @@ class Function(pulumi.CustomResource):
         project = "my-project-name"
         project_get_project = gcp.organizations.get_project()
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -2025,7 +2025,7 @@ class Function(pulumi.CustomResource):
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -2083,7 +2083,7 @@ class Function(pulumi.CustomResource):
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -2137,7 +2137,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-gcf-source",
+            name=f"gcf-source-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",

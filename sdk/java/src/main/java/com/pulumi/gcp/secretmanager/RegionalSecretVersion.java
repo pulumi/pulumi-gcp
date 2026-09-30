@@ -32,6 +32,9 @@ import javax.annotation.Nullable;
  * 
  * For more details, refer to the Terraform lifecycle documentation.
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Regional Secret Version Basic
@@ -68,6 +71,94 @@ import javax.annotation.Nullable;
  *         var regionalSecretVersionBasic = new RegionalSecretVersion("regionalSecretVersionBasic", RegionalSecretVersionArgs.builder()
  *             .secret(secret_basic.id())
  *             .secretData("secret-data")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Regional Secret Version Basic Write Only
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.RegionalSecret;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic_write_only = new RegionalSecret("secret-basic-write-only", RegionalSecretArgs.builder()
+ *             .secretId("regional-secret-version-write-only")
+ *             .location("us-central1")
+ *             .labels(Map.of("label", "my-label"))
+ *             .build());
+ * 
+ *         var regional_secret_version_basic_write_only = new RegionalSecretVersion("regional-secret-version-basic-write-only", RegionalSecretVersionArgs.builder()
+ *             .secret(secret_basic_write_only.id())
+ *             .secretDataWoVersion("1")
+ *             .secretDataWo("regional-secret-data-write-only")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Regional Secret Version With Base64 String Secret Data Write Only
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.RegionalSecret;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretArgs;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretVersion;
+ * import com.pulumi.gcp.secretmanager.RegionalSecretVersionArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new RegionalSecret("secret-basic", RegionalSecretArgs.builder()
+ *             .secretId("regional-secret-version-base64-write-only")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var regional_secret_version_base64_write_only = new RegionalSecretVersion("regional-secret-version-base64-write-only", RegionalSecretVersionArgs.builder()
+ *             .secret(secret_basic.id())
+ *             .isSecretDataBase64(true)
+ *             .secretDataWoVersion("1")
+ *             .secretDataWo(StdFunctions.filebase64(Filebase64Args.builder()
+ *                 .input("regional-secret-data-base64-write-only.pfx")
+ *                 .build()).result())
  *             .build());
  * 
  *     }
@@ -416,15 +507,53 @@ public class RegionalSecretVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
-    private Output<String> secretData;
+    private Output</* @Nullable */ String> secretData;
 
     /**
      * @return The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> secretData() {
-        return this.secretData;
+    public Output<Optional<String>> secretData() {
+        return Codegen.optional(this.secretData);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+     * 
+     */
+    @Export(name="secretDataWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretDataWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+     * 
+     */
+    public Output<Optional<String>> secretDataWo() {
+        return Codegen.optional(this.secretDataWo);
+    }
+    /**
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Export(name="secretDataWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Output<Optional<String>> secretDataWoVersion() {
+        return Codegen.optional(this.secretDataWoVersion);
     }
     /**
      * The version of the Regional Secret.
@@ -481,7 +610,8 @@ public class RegionalSecretVersion extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "secretData"
+                "secretData",
+                "secretDataWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

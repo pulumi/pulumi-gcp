@@ -63,6 +63,19 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("tlsConfig")]
         public Input<Inputs.ToolsetMcpToolsetTlsConfigArgs>? TlsConfig { get; set; }
 
+        [Input("toolOverrides")]
+        private InputList<Inputs.ToolsetMcpToolsetToolOverrideArgs>? _toolOverrides;
+
+        /// <summary>
+        /// A list of tool overrides for the toolset.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ToolsetMcpToolsetToolOverrideArgs> ToolOverrides
+        {
+            get => _toolOverrides ?? (_toolOverrides = new InputList<Inputs.ToolsetMcpToolsetToolOverrideArgs>());
+            set => _toolOverrides = value;
+        }
+
         public ToolsetMcpToolsetArgs()
         {
         }

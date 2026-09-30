@@ -13,7 +13,9 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        /// URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+        /// 
+        /// Example:
         /// </summary>
         [Input("secretUri", required: true)]
         public Input<string> SecretUri { get; set; } = null!;

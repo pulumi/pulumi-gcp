@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, include_replicas_for_major_version_upgrade=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None, switch_transaction_logs_to_cloud_storage_enabled=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_confidential_mode=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, include_replicas_for_major_version_upgrade=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None, switch_transaction_logs_to_cloud_storage_enabled=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -55,6 +55,9 @@ class GetDatabaseInstanceResult:
         if dns_names and not isinstance(dns_names, list):
             raise TypeError("Expected argument 'dns_names' to be a list")
         pulumi.set(__self__, "dns_names", dns_names)
+        if encryption_confidential_mode and not isinstance(encryption_confidential_mode, bool):
+            raise TypeError("Expected argument 'encryption_confidential_mode' to be a bool")
+        pulumi.set(__self__, "encryption_confidential_mode", encryption_confidential_mode)
         if encryption_key_name and not isinstance(encryption_key_name, str):
             raise TypeError("Expected argument 'encryption_key_name' to be a str")
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
@@ -190,6 +193,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="dnsNames")
     def dns_names(self) -> Sequence['outputs.GetDatabaseInstanceDnsNameResult']:
         return pulumi.get(self, "dns_names")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfidentialMode")
+    def encryption_confidential_mode(self) -> _builtins.bool:
+        return pulumi.get(self, "encryption_confidential_mode")
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyName")
@@ -360,6 +368,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             deletion_protection=self.deletion_protection,
             dns_name=self.dns_name,
             dns_names=self.dns_names,
+            encryption_confidential_mode=self.encryption_confidential_mode,
             encryption_key_name=self.encryption_key_name,
             enforce_new_sql_network_architecture=self.enforce_new_sql_network_architecture,
             final_backup_description=self.final_backup_description,
@@ -427,6 +436,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         dns_name=pulumi.get(__ret__, 'dns_name'),
         dns_names=pulumi.get(__ret__, 'dns_names'),
+        encryption_confidential_mode=pulumi.get(__ret__, 'encryption_confidential_mode'),
         encryption_key_name=pulumi.get(__ret__, 'encryption_key_name'),
         enforce_new_sql_network_architecture=pulumi.get(__ret__, 'enforce_new_sql_network_architecture'),
         final_backup_description=pulumi.get(__ret__, 'final_backup_description'),
@@ -491,6 +501,7 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         dns_name=pulumi.get(__response__, 'dns_name'),
         dns_names=pulumi.get(__response__, 'dns_names'),
+        encryption_confidential_mode=pulumi.get(__response__, 'encryption_confidential_mode'),
         encryption_key_name=pulumi.get(__response__, 'encryption_key_name'),
         enforce_new_sql_network_architecture=pulumi.get(__response__, 'enforce_new_sql_network_architecture'),
         final_backup_description=pulumi.get(__response__, 'final_backup_description'),

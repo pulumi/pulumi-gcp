@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -94,7 +94,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -167,7 +167,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -236,7 +236,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -295,7 +295,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -354,7 +354,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -411,9 +411,10 @@ import (
 //						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
 //					},
 //					AfterModelCallback: &ces.GuardrailCodeCallbackAfterModelCallbackArgs{
-//						Description: pulumi.String("Example callback"),
-//						Disabled:    pulumi.Bool(true),
-//						PythonCode:  pulumi.String("def callback(context):\n    return {'override': False}"),
+//						Description:               pulumi.String("Example callback"),
+//						Disabled:                  pulumi.Bool(true),
+//						PythonCode:                pulumi.String("def callback(context):\n    return {'override': False}"),
+//						ProactiveExecutionEnabled: pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -432,7 +433,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

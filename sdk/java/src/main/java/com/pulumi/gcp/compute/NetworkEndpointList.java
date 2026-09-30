@@ -129,12 +129,12 @@ import javax.annotation.Nullable;
  *             .networkEndpoints(            
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance1.name())
- *                     .port(((Number) neg.get("defaultPort")).intValue())
+ *                     .port(neg.get("defaultPort"))
  *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *                     .build(),
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance2.name())
- *                     .port(((Number) neg.get("defaultPort")).intValue())
+ *                     .port(neg.get("defaultPort"))
  *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *                     .build())
  *             .build());

@@ -385,7 +385,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform",
+            name="terraform_feature",
             labels={
                 "foo": "bar",
             },
@@ -394,13 +394,13 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            name="terraform",
+            name="terraform_feature",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id)
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
-            name="terraform",
+            name="terraform_feature",
             labels={
                 "foo": "bar",
             },
@@ -414,7 +414,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform2",
+            name="terraform_feature_2",
             labels={
                 "foo": "bar",
             },
@@ -423,7 +423,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            name="terraform2",
+            name="terraform_feature_2",
             labels={
                 "foo": "bar",
             },
@@ -441,7 +441,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 },
             })
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
-            name="terraform2",
+            name="terraform_feature_2",
             labels={
                 "foo": "bar",
             },
@@ -503,7 +503,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform",
+            name="terraform_feature",
             labels={
                 "foo": "bar",
             },
@@ -512,13 +512,13 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            name="terraform",
+            name="terraform_feature",
             labels={
                 "foo": "bar",
             },
             featurestore=featurestore.id)
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
-            name="terraform",
+            name="terraform_feature",
             labels={
                 "foo": "bar",
             },
@@ -532,7 +532,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         featurestore = gcp.vertex.AiFeatureStore("featurestore",
-            name="terraform2",
+            name="terraform_feature_2",
             labels={
                 "foo": "bar",
             },
@@ -541,7 +541,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 "fixed_node_count": 2,
             })
         entity = gcp.vertex.AiFeatureStoreEntityType("entity",
-            name="terraform2",
+            name="terraform_feature_2",
             labels={
                 "foo": "bar",
             },
@@ -559,7 +559,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
                 },
             })
         feature = gcp.vertex.AiFeatureStoreEntityTypeFeature("feature",
-            name="terraform2",
+            name="terraform_feature_2",
             labels={
                 "foo": "bar",
             },

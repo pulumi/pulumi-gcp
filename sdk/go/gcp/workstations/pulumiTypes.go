@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -17,8 +17,10 @@ type WorkstationClusterCondition struct {
 	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
-	// (Output)
+	// (Output, Deprecated)
 	// A list of messages that carry the error details.
+	//
+	// Deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
 	Details []map[string]string `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
@@ -40,8 +42,10 @@ type WorkstationClusterConditionArgs struct {
 	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
-	// (Output)
+	// (Output, Deprecated)
 	// A list of messages that carry the error details.
+	//
+	// Deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
 	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
@@ -105,8 +109,10 @@ func (o WorkstationClusterConditionOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationClusterCondition) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
+// (Output, Deprecated)
 // A list of messages that carry the error details.
+//
+// Deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
 func (o WorkstationClusterConditionOutput) Details() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v WorkstationClusterCondition) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
@@ -606,8 +612,10 @@ type WorkstationConfigCondition struct {
 	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code *int `pulumi:"code"`
-	// (Output)
+	// (Output, Deprecated)
 	// A list of messages that carry the error details.
+	//
+	// Deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
 	Details []map[string]string `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
@@ -629,8 +637,10 @@ type WorkstationConfigConditionArgs struct {
 	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
 	Code pulumi.IntPtrInput `pulumi:"code"`
-	// (Output)
+	// (Output, Deprecated)
 	// A list of messages that carry the error details.
+	//
+	// Deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
 	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// (Output)
 	// Human readable message indicating details about the current status.
@@ -694,8 +704,10 @@ func (o WorkstationConfigConditionOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigCondition) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
-// (Output)
+// (Output, Deprecated)
 // A list of messages that carry the error details.
+//
+// Deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
 func (o WorkstationConfigConditionOutput) Details() pulumi.StringMapArrayOutput {
 	return o.ApplyT(func(v WorkstationConfigCondition) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }

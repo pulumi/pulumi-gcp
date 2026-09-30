@@ -42,6 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,7 +59,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-west1-a")
+ *             .location("us-east1-b")
+ *             .gceSetup(InstanceGceSetupArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+ *                     .diskType("HYPERDISK_BALANCED")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -76,6 +84,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupContainerImageArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -92,8 +101,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-west1-a")
+ *             .location("us-east1-b")
  *             .gceSetup(InstanceGceSetupArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+ *                     .diskType("HYPERDISK_BALANCED")
+ *                     .build())
  *                 .containerImage(InstanceGceSetupContainerImageArgs.builder()
  *                     .repository("us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310")
  *                     .tag("latest")
@@ -123,6 +136,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupAcceleratorConfigArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupDataDisksArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupVmImageArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupReservationAffinityArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -141,13 +156,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
  *             .name("wbi-reservation")
- *             .zone("us-central1-a")
+ *             .zone("us-east1-b")
  *             .specificReservation(ReservationSpecificReservationArgs.builder()
  *                 .count(1)
  *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
- *                     .machineType("n1-standard-1")
+ *                     .machineType("g2-standard-4")
  *                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
- *                         .acceleratorType("nvidia-tesla-t4")
+ *                         .acceleratorType("nvidia-l4")
  *                         .acceleratorCount(1)
  *                         .build())
  *                     .build())
@@ -157,12 +172,18 @@ import javax.annotation.Nullable;
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-central1-a")
+ *             .location("us-east1-b")
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType("n1-standard-1")
+ *                 .machineType("g2-standard-4")
  *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
- *                     .type("NVIDIA_TESLA_T4")
+ *                     .type("NVIDIA_L4")
  *                     .coreCount("1")
+ *                     .build())
+ *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+ *                     .diskType("PD_SSD")
+ *                     .build())
+ *                 .dataDisks(InstanceGceSetupDataDisksArgs.builder()
+ *                     .diskType("PD_SSD")
  *                     .build())
  *                 .vmImage(InstanceGceSetupVmImageArgs.builder()
  *                     .project("cloud-notebooks-managed")
@@ -192,6 +213,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupShieldedInstanceConfigArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupServiceAccountArgs;
  * import java.util.ArrayList;
@@ -209,9 +231,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-central1-a")
+ *             .location("us-east1-b")
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType("e2-standard-4")
+ *                 .machineType("n4-standard-4")
+ *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+ *                     .diskType("HYPERDISK_BALANCED")
+ *                     .build())
  *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
  *                     .enableSecureBoot(false)
  *                     .enableVtpm(false)
@@ -290,12 +315,13 @@ import javax.annotation.Nullable;
  *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()
  *             .name("wbi-test-default")
  *             .network(myNetwork.id())
- *             .region("us-central1")
+ *             .region("us-east1")
  *             .ipCidrRange("10.0.1.0/24")
  *             .build());
  * 
  *         var static_ = new Address("static", AddressArgs.builder()
  *             .name("wbi-test-default")
+ *             .region("us-east1")
  *             .build());
  * 
  *         var actAsPermission = new IAMMember("actAsPermission", IAMMemberArgs.builder()
@@ -306,14 +332,14 @@ import javax.annotation.Nullable;
  * 
  *         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
  *             .name("wbi-reservation")
- *             .zone("us-central1-a")
+ *             .zone("us-east1-b")
  *             .specificReservation(ReservationSpecificReservationArgs.builder()
  *                 .count(1)
  *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
- *                     .machineType("n1-standard-4")
- *                     .minCpuPlatform("Intel Broadwell")
+ *                     .machineType("g2-standard-4")
+ *                     .minCpuPlatform("Intel Cascade Lake")
  *                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
- *                         .acceleratorType("nvidia-tesla-t4")
+ *                         .acceleratorType("nvidia-l4")
  *                         .acceleratorCount(1)
  *                         .build())
  *                     .build())
@@ -323,7 +349,7 @@ import javax.annotation.Nullable;
  * 
  *         var myPolicy = new ResourcePolicy("myPolicy", ResourcePolicyArgs.builder()
  *             .name("wbi-policy")
- *             .region("us-central1")
+ *             .region("us-east1")
  *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
  *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
  *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
@@ -336,13 +362,13 @@ import javax.annotation.Nullable;
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-central1-a")
+ *             .location("us-east1-b")
  *             .enableDeletionProtection(false)
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType("n1-standard-4")
- *                 .minCpuPlatform("Intel Broadwell")
+ *                 .machineType("g2-standard-4")
+ *                 .minCpuPlatform("Intel Cascade Lake")
  *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
- *                     .type("NVIDIA_TESLA_T4")
+ *                     .type("NVIDIA_L4")
  *                     .coreCount("1")
  *                     .build())
  *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
@@ -438,7 +464,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-central1-a")
+ *             .location("us-east1-b")
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .machineType("n2d-standard-2")
  *                 .shieldedInstanceConfig(InstanceGceSetupShieldedInstanceConfigArgs.builder()
@@ -471,6 +497,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
+ * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupBootDiskArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -493,9 +520,12 @@ import javax.annotation.Nullable;
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
- *             .location("us-central1-a")
+ *             .location("us-east1-b")
  *             .gceSetup(InstanceGceSetupArgs.builder()
- *                 .machineType("e2-standard-4")
+ *                 .machineType("n4-standard-4")
+ *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
+ *                     .diskType("HYPERDISK_BALANCED")
+ *                     .build())
  *                 .metadata(Map.of("terraform", "true"))
  *                 .build())
  *             .instanceOwners("example}{@literal @}{@code example.com")

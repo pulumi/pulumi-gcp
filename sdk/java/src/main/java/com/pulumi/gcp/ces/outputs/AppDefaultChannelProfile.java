@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfilePersonaProperty;
 import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfileWebWidgetConfig;
+import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfileWhatsappConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -55,6 +56,12 @@ public final class AppDefaultChannelProfile {
      * 
      */
     private @Nullable AppDefaultChannelProfileWebWidgetConfig webWidgetConfig;
+    /**
+     * @return Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AppDefaultChannelProfileWhatsappConfig whatsappConfig;
 
     private AppDefaultChannelProfile() {}
     /**
@@ -110,6 +117,14 @@ public final class AppDefaultChannelProfile {
     public Optional<AppDefaultChannelProfileWebWidgetConfig> webWidgetConfig() {
         return Optional.ofNullable(this.webWidgetConfig);
     }
+    /**
+     * @return Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AppDefaultChannelProfileWhatsappConfig> whatsappConfig() {
+        return Optional.ofNullable(this.whatsappConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -126,6 +141,7 @@ public final class AppDefaultChannelProfile {
         private @Nullable AppDefaultChannelProfilePersonaProperty personaProperty;
         private @Nullable String profileId;
         private @Nullable AppDefaultChannelProfileWebWidgetConfig webWidgetConfig;
+        private @Nullable AppDefaultChannelProfileWhatsappConfig whatsappConfig;
         public Builder() {}
         public Builder(AppDefaultChannelProfile defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,6 +151,7 @@ public final class AppDefaultChannelProfile {
     	      this.personaProperty = defaults.personaProperty;
     	      this.profileId = defaults.profileId;
     	      this.webWidgetConfig = defaults.webWidgetConfig;
+    	      this.whatsappConfig = defaults.whatsappConfig;
         }
 
         @CustomType.Setter
@@ -173,6 +190,12 @@ public final class AppDefaultChannelProfile {
             this.webWidgetConfig = webWidgetConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder whatsappConfig(@Nullable AppDefaultChannelProfileWhatsappConfig whatsappConfig) {
+
+            this.whatsappConfig = whatsappConfig;
+            return this;
+        }
         public AppDefaultChannelProfile build() {
             final var _resultValue = new AppDefaultChannelProfile();
             _resultValue.channelType = channelType;
@@ -181,6 +204,7 @@ public final class AppDefaultChannelProfile {
             _resultValue.personaProperty = personaProperty;
             _resultValue.profileId = profileId;
             _resultValue.webWidgetConfig = webWidgetConfig;
+            _resultValue.whatsappConfig = whatsappConfig;
             return _resultValue;
         }
     }

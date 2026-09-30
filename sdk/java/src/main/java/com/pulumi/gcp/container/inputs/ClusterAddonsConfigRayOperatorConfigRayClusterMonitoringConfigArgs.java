@@ -14,9 +14,17 @@ public final class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfi
 
     public static final ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs Empty = new ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs();
 
+    /**
+     * Whether Ray Cluster monitoring is enabled.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether Ray Cluster monitoring is enabled.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -45,11 +53,23 @@ public final class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfi
             $ = new ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether Ray Cluster monitoring is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether Ray Cluster monitoring is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

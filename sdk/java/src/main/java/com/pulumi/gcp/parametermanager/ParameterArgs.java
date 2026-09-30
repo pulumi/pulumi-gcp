@@ -145,6 +145,25 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private ParameterArgs() {}
 
     private ParameterArgs(ParameterArgs $) {
@@ -154,6 +173,7 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.parameterId = $.parameterId;
         this.project = $.project;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -336,6 +356,31 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param tags A map of resource manager tags.
+         * Resource manager tag keys and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A map of resource manager tags.
+         * Resource manager tag keys and values have the same definition as resource manager tags.
+         * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public ParameterArgs build() {

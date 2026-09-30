@@ -30,9 +30,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * ## gcp.biglake.HiveCatalogIamPolicy
  * 
  * <pre>
@@ -169,9 +166,6 @@ import javax.annotation.Nullable;
  * &gt; **Note:** `gcp.biglake.HiveCatalogIamPolicy` **cannot** be used in conjunction with `gcp.biglake.HiveCatalogIamBinding` and `gcp.biglake.HiveCatalogIamMember` or they will fight over what your policy should be.
  * 
  * &gt; **Note:** `gcp.biglake.HiveCatalogIamBinding` resources **can be** used in conjunction with `gcp.biglake.HiveCatalogIamMember` resources **only if** they do not grant privilege to the same role.
- * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
  * 
  * ## gcp.biglake.HiveCatalogIamPolicy
  * 

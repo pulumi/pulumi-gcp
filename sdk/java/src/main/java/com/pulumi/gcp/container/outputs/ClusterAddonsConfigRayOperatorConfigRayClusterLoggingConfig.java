@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig {
+    /**
+     * @return Whether Ray Cluster logging is enabled.
+     * 
+     */
     private Boolean enabled;
 
     private ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig() {}
+    /**
+     * @return Whether Ray Cluster logging is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

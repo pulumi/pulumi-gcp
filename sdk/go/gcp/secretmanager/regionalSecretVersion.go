@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,6 +26,9 @@ import (
 //
 // For more details, refer to the Terraform lifecycle documentation.
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Regional Secret Version Basic
@@ -35,7 +38,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,6 +64,85 @@ import (
 //	}
 //
 // ```
+// ### Regional Secret Version Basic Write Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			secret_basic_write_only, err := secretmanager.NewRegionalSecret(ctx, "secret-basic-write-only", &secretmanager.RegionalSecretArgs{
+//				SecretId: pulumi.String("regional-secret-version-write-only"),
+//				Location: pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional-secret-version-basic-write-only", &secretmanager.RegionalSecretVersionArgs{
+//				Secret:              secret_basic_write_only.ID().ToIDOutput().ToStringOutput(),
+//				SecretDataWoVersion: pulumi.String("1"),
+//				SecretDataWo:        pulumi.String("regional-secret-data-write-only"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Regional Secret Version With Base64 String Secret Data Write Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			secret_basic, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
+//				SecretId: pulumi.String("regional-secret-version-base64-write-only"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "regional-secret-data-base64-write-only.pfx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional-secret-version-base64-write-only", &secretmanager.RegionalSecretVersionArgs{
+//				Secret:              secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				IsSecretDataBase64:  pulumi.Bool(true),
+//				SecretDataWoVersion: pulumi.String("1"),
+//				SecretDataWo:        pulumi.String(invokeFilebase64.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Regional Secret Version With Base64 Data
 //
 // ```go
@@ -68,7 +150,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -109,7 +191,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -143,7 +225,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -177,7 +259,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -252,7 +334,16 @@ type RegionalSecretVersion struct {
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData pulumi.StringOutput `pulumi:"secretData"`
+	SecretData pulumi.StringPtrOutput `pulumi:"secretData"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretData` or `secretDataWo` can only be set.
+	SecretDataWo pulumi.StringPtrOutput `pulumi:"secretDataWo"`
+	// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretDataWoVersion pulumi.StringPtrOutput `pulumi:"secretDataWoVersion"`
 	// The version of the Regional Secret.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -267,14 +358,15 @@ func NewRegionalSecretVersion(ctx *pulumi.Context,
 	if args.Secret == nil {
 		return nil, errors.New("invalid value for required argument 'Secret'")
 	}
-	if args.SecretData == nil {
-		return nil, errors.New("invalid value for required argument 'SecretData'")
-	}
 	if args.SecretData != nil {
-		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringInput)
+		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringPtrInput)
+	}
+	if args.SecretDataWo != nil {
+		args.SecretDataWo = pulumi.ToSecret(args.SecretDataWo).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secretData",
+		"secretDataWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -334,6 +426,15 @@ type regionalSecretVersionState struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData *string `pulumi:"secretData"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretData` or `secretDataWo` can only be set.
+	SecretDataWo *string `pulumi:"secretDataWo"`
+	// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretDataWoVersion *string `pulumi:"secretDataWoVersion"`
 	// The version of the Regional Secret.
 	Version *string `pulumi:"version"`
 }
@@ -373,6 +474,15 @@ type RegionalSecretVersionState struct {
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SecretData pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretData` or `secretDataWo` can only be set.
+	SecretDataWo pulumi.StringPtrInput
+	// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretDataWoVersion pulumi.StringPtrInput
 	// The version of the Regional Secret.
 	Version pulumi.StringPtrInput
 }
@@ -403,7 +513,16 @@ type regionalSecretVersionArgs struct {
 	Secret string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData string `pulumi:"secretData"`
+	SecretData *string `pulumi:"secretData"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretData` or `secretDataWo` can only be set.
+	SecretDataWo *string `pulumi:"secretDataWo"`
+	// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretDataWoVersion *string `pulumi:"secretDataWoVersion"`
 }
 
 // The set of arguments for constructing a RegionalSecretVersion resource.
@@ -429,7 +548,16 @@ type RegionalSecretVersionArgs struct {
 	Secret pulumi.StringInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData pulumi.StringInput
+	SecretData pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The secret data. Must be no larger than 64KiB.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `secretData` or `secretDataWo` can only be set.
+	SecretDataWo pulumi.StringPtrInput
+	// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	SecretDataWoVersion pulumi.StringPtrInput
 }
 
 func (RegionalSecretVersionArgs) ElementType() reflect.Type {
@@ -581,8 +709,23 @@ func (o RegionalSecretVersionOutput) Secret() pulumi.StringOutput {
 
 // The secret data. Must be no larger than 64KiB.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o RegionalSecretVersionOutput) SecretData() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringOutput { return v.SecretData }).(pulumi.StringOutput)
+func (o RegionalSecretVersionOutput) SecretData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringPtrOutput { return v.SecretData }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The secret data. Must be no larger than 64KiB.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `secretData` or `secretDataWo` can only be set.
+func (o RegionalSecretVersionOutput) SecretDataWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringPtrOutput { return v.SecretDataWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionalSecretVersionOutput) SecretDataWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretVersion) pulumi.StringPtrOutput { return v.SecretDataWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The version of the Regional Secret.

@@ -574,6 +574,7 @@ class Example(pulumi.CustomResource):
                         "image": {
                             "mime_type": "image/png",
                             "data": std.base64encode(input="This is some fake image binary data.").result,
+                            "alt_text": "alt text",
                         },
                     },
                     {
@@ -807,6 +808,7 @@ class Example(pulumi.CustomResource):
                         "image": {
                             "mime_type": "image/png",
                             "data": std.base64encode(input="This is some fake image binary data.").result,
+                            "alt_text": "alt text",
                         },
                     },
                     {

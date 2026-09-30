@@ -47,6 +47,18 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///         }),
     ///         RetentionDuration = 3,
+    ///         Base64Image = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+    ///         DynamicParameters = new[]
+    ///         {
+    ///             new Gcp.Chronicle.Inputs.EnvironmentDynamicParameterArgs
+    ///             {
+    ///                 DynamicParameterId = 123,
+    ///                 Value = "value1",
+    ///             },
+    ///         },
+    ///         InstanceUri = "https://test.backstory.chronicle.security?foo=bar",
+    ///         ParallelInstance = "projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001",
+    ///         Weight = 1,
     ///         DeletionProtection = false,
     ///     });
     /// 
@@ -77,6 +89,12 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Output("aliasesJson")]
         public Output<string?> AliasesJson { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment icon.
+        /// </summary>
+        [Output("base64Image")]
+        public Output<string?> Base64Image { get; private set; } = null!;
 
         /// <summary>
         /// MAX_NAME_LENGTH = 256
@@ -137,6 +155,13 @@ namespace Pulumi.Gcp.Chronicle
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Additional custom properties for enriching the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dynamicParameters")]
+        public Output<ImmutableArray<Outputs.EnvironmentDynamicParameter>> DynamicParameters { get; private set; } = null!;
+
+        /// <summary>
         /// Id of the environment record.
         /// </summary>
         [Output("environmentId")]
@@ -147,6 +172,13 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the environment. Used to route UI links to the correct SIEM instance
+        /// when making cross-SecOps requests from SOAR.
+        /// </summary>
+        [Output("instanceUri")]
+        public Output<string?> InstanceUri { get; private set; } = null!;
 
         /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -163,6 +195,17 @@ namespace Pulumi.Gcp.Chronicle
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The optional parallel SIEM instance used as a data source. Used to route
+        /// API requests to the correct SIEM instance when making cross-SecOps requests
+        /// from SOAR. For most customers, this is not required, since the parent
+        /// instance is used as the data source by default.
+        /// Format:
+        /// projects/{project}/locations/{location}/instances/{instance}
+        /// </summary>
+        [Output("parallelInstance")]
+        public Output<string?> ParallelInstance { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -174,6 +217,14 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Output("retentionDuration")]
         public Output<int> RetentionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// The weight of the environment, enabling customers to control distribution
+        /// of resources between the separate environments in a single instance of
+        /// Chronicle SOAR.
+        /// </summary>
+        [Output("weight")]
+        public Output<int?> Weight { get; private set; } = null!;
 
 
         /// <summary>
@@ -226,6 +277,12 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("aliasesJson")]
         public Input<string>? AliasesJson { get; set; }
+
+        /// <summary>
+        /// Environment icon.
+        /// </summary>
+        [Input("base64Image")]
+        public Input<string>? Base64Image { get; set; }
 
         /// <summary>
         /// MAX_NAME_LENGTH = 256
@@ -285,6 +342,19 @@ namespace Pulumi.Gcp.Chronicle
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        [Input("dynamicParameters")]
+        private InputList<Inputs.EnvironmentDynamicParameterArgs>? _dynamicParameters;
+
+        /// <summary>
+        /// Additional custom properties for enriching the environment.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.EnvironmentDynamicParameterArgs> DynamicParameters
+        {
+            get => _dynamicParameters ?? (_dynamicParameters = new InputList<Inputs.EnvironmentDynamicParameterArgs>());
+            set => _dynamicParameters = value;
+        }
+
         /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
@@ -292,10 +362,28 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
+        /// URL of the environment. Used to route UI links to the correct SIEM instance
+        /// when making cross-SecOps requests from SOAR.
+        /// </summary>
+        [Input("instanceUri")]
+        public Input<string>? InstanceUri { get; set; }
+
+        /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// The optional parallel SIEM instance used as a data source. Used to route
+        /// API requests to the correct SIEM instance when making cross-SecOps requests
+        /// from SOAR. For most customers, this is not required, since the parent
+        /// instance is used as the data source by default.
+        /// Format:
+        /// projects/{project}/locations/{location}/instances/{instance}
+        /// </summary>
+        [Input("parallelInstance")]
+        public Input<string>? ParallelInstance { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -310,6 +398,14 @@ namespace Pulumi.Gcp.Chronicle
         [Input("retentionDuration", required: true)]
         public Input<int> RetentionDuration { get; set; } = null!;
 
+        /// <summary>
+        /// The weight of the environment, enabling customers to control distribution
+        /// of resources between the separate environments in a single instance of
+        /// Chronicle SOAR.
+        /// </summary>
+        [Input("weight")]
+        public Input<int>? Weight { get; set; }
+
         public EnvironmentArgs()
         {
         }
@@ -323,6 +419,12 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("aliasesJson")]
         public Input<string>? AliasesJson { get; set; }
+
+        /// <summary>
+        /// Environment icon.
+        /// </summary>
+        [Input("base64Image")]
+        public Input<string>? Base64Image { get; set; }
 
         /// <summary>
         /// MAX_NAME_LENGTH = 256
@@ -382,6 +484,19 @@ namespace Pulumi.Gcp.Chronicle
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("dynamicParameters")]
+        private InputList<Inputs.EnvironmentDynamicParameterGetArgs>? _dynamicParameters;
+
+        /// <summary>
+        /// Additional custom properties for enriching the environment.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.EnvironmentDynamicParameterGetArgs> DynamicParameters
+        {
+            get => _dynamicParameters ?? (_dynamicParameters = new InputList<Inputs.EnvironmentDynamicParameterGetArgs>());
+            set => _dynamicParameters = value;
+        }
+
         /// <summary>
         /// Id of the environment record.
         /// </summary>
@@ -393,6 +508,13 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
+
+        /// <summary>
+        /// URL of the environment. Used to route UI links to the correct SIEM instance
+        /// when making cross-SecOps requests from SOAR.
+        /// </summary>
+        [Input("instanceUri")]
+        public Input<string>? InstanceUri { get; set; }
 
         /// <summary>
         /// Resource ID segment making up resource `Name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -409,6 +531,17 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The optional parallel SIEM instance used as a data source. Used to route
+        /// API requests to the correct SIEM instance when making cross-SecOps requests
+        /// from SOAR. For most customers, this is not required, since the parent
+        /// instance is used as the data source by default.
+        /// Format:
+        /// projects/{project}/locations/{location}/instances/{instance}
+        /// </summary>
+        [Input("parallelInstance")]
+        public Input<string>? ParallelInstance { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -420,6 +553,14 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("retentionDuration")]
         public Input<int>? RetentionDuration { get; set; }
+
+        /// <summary>
+        /// The weight of the environment, enabling customers to control distribution
+        /// of resources between the separate environments in a single instance of
+        /// Chronicle SOAR.
+        /// </summary>
+        [Input("weight")]
+        public Input<int>? Weight { get; set; }
 
         public EnvironmentState()
         {

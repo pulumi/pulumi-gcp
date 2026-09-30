@@ -265,6 +265,10 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The etag for the version of the ServicePerimeter that this request is based on.
+     */
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -346,6 +350,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["perimeterType"] = state?.perimeterType;
@@ -372,6 +377,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["title"] = args?.title;
             resourceInputs["useExplicitDryRunSpec"] = args?.useExplicitDryRunSpec;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -401,6 +407,10 @@ export interface ServicePerimeterState {
      * behavior.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The etag for the version of the ServicePerimeter that this request is based on.
+     */
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.

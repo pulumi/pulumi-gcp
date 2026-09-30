@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
  *     name: "my-gateway-attachment",
  *     region: "us-central1",
- *     connectionPreference: "ACCEPT_MANUAL",
+ *     connectionPreference: "ACCEPT_AUTOMATIC",
  *     subnetworks: [defaultSubnetwork.id],
  * });
  * const defaultManagedZone = new gcp.dns.ManagedZone("default", {
@@ -51,6 +51,23 @@ import * as utilities from "../utilities";
  *         networks: [{
  *             networkUrl: defaultNetwork.id,
  *         }],
+ *     },
+ * });
+ * const defaultAgentConnectivityTemplate = new gcp.networkservices.AgentConnectivityTemplate("default", {
+ *     agentConnectivityTemplateId: "my-full-agent-gateway-template",
+ *     location: "us-central1",
+ *     description: "A basic configuration for Agent Connectivity Template",
+ *     labels: {
+ *         env: "test",
+ *         tier: "gold",
+ *     },
+ *     accessPath: "AGENT_TO_ANYWHERE",
+ *     egressNetworkConfig: {
+ *         networkAttachment: defaultNetworkAttachment.id,
+ *         dnsPeeringConfig: {
+ *             domain: defaultManagedZone.dnsName,
+ *             targetNetwork: defaultNetwork.id,
+ *         },
  *     },
  * });
  * const _default = new gcp.networkservices.AgentGateway("default", {
@@ -65,17 +82,8 @@ import * as utilities from "../utilities";
  *     googleManaged: {
  *         governedAccessPath: "AGENT_TO_ANYWHERE",
  *     },
+ *     agentConnectivityTemplate: pulumi.all([project, defaultAgentConnectivityTemplate.agentConnectivityTemplateId]).apply(([project, agentConnectivityTemplateId]) => `projects/${project.number}/locations/us-central1/agentConnectivityTemplates/${agentConnectivityTemplateId}`),
  *     registries: ["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
- *     networkConfig: {
- *         egress: {
- *             networkAttachment: defaultNetworkAttachment.id,
- *         },
- *         dnsPeeringConfig: {
- *             domains: [defaultManagedZone.dnsName],
- *             targetProject: project.then(project => project.projectId),
- *             targetNetwork: defaultNetwork.id,
- *         },
- *     },
  * }, {
  *     dependsOn: [agentRegistry],
  * });
@@ -161,6 +169,12 @@ export class AgentGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentGateway.__pulumiType;
     }
 
+    /**
+     * The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     */
+    declare public readonly agentConnectivityTemplate: pulumi.Output<string | undefined>;
     /**
      * AgentGatewayOutputCard contains informational output-only fields.
      * Structure is documented below.
@@ -270,6 +284,7 @@ export class AgentGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AgentGatewayState | undefined;
+            resourceInputs["agentConnectivityTemplate"] = state?.agentConnectivityTemplate;
             resourceInputs["agentGatewayCards"] = state?.agentGatewayCards;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -292,6 +307,7 @@ export class AgentGateway extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["agentConnectivityTemplate"] = args?.agentConnectivityTemplate;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["googleManaged"] = args?.googleManaged;
@@ -321,6 +337,12 @@ export class AgentGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AgentGateway resources.
  */
 export interface AgentGatewayState {
+    /**
+     * The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     */
+    agentConnectivityTemplate?: pulumi.Input<string | undefined>;
     /**
      * AgentGatewayOutputCard contains informational output-only fields.
      * Structure is documented below.
@@ -422,6 +444,12 @@ export interface AgentGatewayState {
  * The set of arguments for constructing a AgentGateway resource.
  */
 export interface AgentGatewayArgs {
+    /**
+     * The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     */
+    agentConnectivityTemplate?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

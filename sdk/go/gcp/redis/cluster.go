@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -109,9 +109,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -128,7 +128,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -136,7 +136,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -161,7 +161,7 @@ import (
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				Region:                pulumi.String("us-central1"),
+//				Region:                pulumi.String("us-west1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -204,9 +204,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -223,7 +223,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -231,7 +231,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -252,7 +252,7 @@ import (
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				Region:                pulumi.String("us-central1"),
+//				Region:                pulumi.String("us-west1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -295,9 +295,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -314,7 +314,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -322,7 +322,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -343,10 +343,10 @@ import (
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				Region: pulumi.String("us-central1"),
+//				Region: pulumi.String("us-west1"),
 //				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
-//					Zone: pulumi.String("us-central1-f"),
+//					Zone: pulumi.String("us-west1-a"),
 //				},
 //				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -380,9 +380,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -399,7 +399,7 @@ import (
 //			primaryClusterConsumerSubnet, err := compute.NewSubnetwork(ctx, "primary_cluster_consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("mysubnet-primary-cluster"),
 //				IpCidrRange: pulumi.String("10.0.1.0/29"),
-//				Region:      pulumi.String("us-east1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -407,7 +407,7 @@ import (
 //			}
 //			primaryClusterRegionScp, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "primary_cluster_region_scp", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("mypolicy-primary-cluster"),
-//				Location:     pulumi.String("us-east1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("Primary cluster service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -423,7 +423,7 @@ import (
 //			// Primary cluster
 //			primaryCluster, err := redis.NewCluster(ctx, "primary_cluster", &redis.ClusterArgs{
 //				Name:   pulumi.String("my-primary-cluster"),
-//				Region: pulumi.String("us-east1"),
+//				Region: pulumi.String("us-west1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -556,9 +556,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -575,7 +575,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -583,7 +583,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -604,7 +604,7 @@ import (
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				Region:                pulumi.String("us-central1"),
+//				Region:                pulumi.String("us-west1"),
 //				ReplicaCount:          pulumi.Int(0),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -654,9 +654,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -673,7 +673,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -681,7 +681,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -702,7 +702,7 @@ import (
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				Region:                pulumi.String("us-central1"),
+//				Region:                pulumi.String("us-west1"),
 //				ReplicaCount:          pulumi.Int(0),
 //				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
@@ -751,10 +751,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -771,7 +771,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -779,7 +779,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
@@ -801,7 +801,7 @@ import (
 //					},
 //				},
 //				KmsKey:                    pulumi.String("my-key"),
-//				Region:                    pulumi.String("us-central1"),
+//				Region:                    pulumi.String("us-west1"),
 //				DeletionProtectionEnabled: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
@@ -825,10 +825,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -837,7 +837,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-west1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
@@ -846,7 +846,7 @@ import (
 //			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("ca-auth"),
-//				Location:               pulumi.String("us-central1"),
+//				Location:               pulumi.String("us-west1"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -889,7 +889,7 @@ import (
 //			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("ca-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -897,7 +897,7 @@ import (
 //			}
 //			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("ca-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
@@ -912,7 +912,7 @@ import (
 //			_, err = redis.NewCluster(ctx, "test-cluster", &redis.ClusterArgs{
 //				Name:       pulumi.String("ca-cluster"),
 //				ShardCount: pulumi.Int(3),
-//				Region:     pulumi.String("us-central1"),
+//				Region:     pulumi.String("us-west1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
 //						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),

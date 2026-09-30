@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.ExampleMessageChunkAgentTransfer? AgentTransfer;
         /// <summary>
+        /// Represents a blob input or output in the conversation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ExampleMessageChunkBlob? Blob;
+        /// <summary>
         /// Represents an image input or output in the conversation.
         /// Structure is documented below.
         /// </summary>
@@ -48,6 +53,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         private ExampleMessageChunk(
             Outputs.ExampleMessageChunkAgentTransfer? agentTransfer,
 
+            Outputs.ExampleMessageChunkBlob? blob,
+
             Outputs.ExampleMessageChunkImage? image,
 
             string? text,
@@ -59,6 +66,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             string? updatedVariables)
         {
             AgentTransfer = agentTransfer;
+            Blob = blob;
             Image = image;
             Text = text;
             ToolCall = toolCall;

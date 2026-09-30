@@ -203,8 +203,11 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly userId: pulumi.Output<string>;
     /**
-     * The type of this user.
-     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+     * The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+     * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+     * AlloyDB clusters support IAM group authentication. See
+     * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
      */
     declare public readonly userType: pulumi.Output<string>;
 
@@ -307,8 +310,11 @@ export interface UserState {
      */
     userId?: pulumi.Input<string | undefined>;
     /**
-     * The type of this user.
-     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+     * The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+     * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+     * AlloyDB clusters support IAM group authentication. See
+     * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
      */
     userType?: pulumi.Input<string | undefined>;
 }
@@ -358,8 +364,11 @@ export interface UserArgs {
      */
     userId: pulumi.Input<string>;
     /**
-     * The type of this user.
-     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+     * The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+     * the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+     * AlloyDB clusters support IAM group authentication. See
+     * https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+     * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
      */
     userType: pulumi.Input<string>;
 }

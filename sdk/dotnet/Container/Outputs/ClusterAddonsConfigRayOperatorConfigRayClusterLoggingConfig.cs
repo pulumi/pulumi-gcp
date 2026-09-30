@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig
     {
+        /// <summary>
+        /// Whether Ray Cluster logging is enabled.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

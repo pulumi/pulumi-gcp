@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48494,6 +48494,9 @@ type GeneratorSummarizationContextFewShotExampleOutputType struct {
 	// Optional. Suggested summary.
 	// Structure is documented below.
 	SummarySuggestion *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion `pulumi:"summarySuggestion"`
+	// List of request and response for tool calls executed.
+	// Structure is documented below.
+	ToolCallInfos []GeneratorSummarizationContextFewShotExampleOutputToolCallInfo `pulumi:"toolCallInfos"`
 }
 
 // GeneratorSummarizationContextFewShotExampleOutputTypeInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputTypeArgs and GeneratorSummarizationContextFewShotExampleOutputTypeOutput values.
@@ -48511,6 +48514,9 @@ type GeneratorSummarizationContextFewShotExampleOutputTypeArgs struct {
 	// Optional. Suggested summary.
 	// Structure is documented below.
 	SummarySuggestion GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput `pulumi:"summarySuggestion"`
+	// List of request and response for tool calls executed.
+	// Structure is documented below.
+	ToolCallInfos GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayInput `pulumi:"toolCallInfos"`
 }
 
 func (GeneratorSummarizationContextFewShotExampleOutputTypeArgs) ElementType() reflect.Type {
@@ -48545,6 +48551,14 @@ func (o GeneratorSummarizationContextFewShotExampleOutputTypeOutput) SummarySugg
 	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputType) *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
 		return v.SummarySuggestion
 	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput)
+}
+
+// List of request and response for tool calls executed.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputTypeOutput) ToolCallInfos() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputType) []GeneratorSummarizationContextFewShotExampleOutputToolCallInfo {
+		return v.ToolCallInfos
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput)
 }
 
 type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion struct {
@@ -48798,6 +48812,411 @@ func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummar
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
 		return vs[0].([]GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection)[vs[1].(int)]
 	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfo struct {
+	// Request for a tool call.
+	// Structure is documented below.
+	ToolCall GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall `pulumi:"toolCall"`
+	// Response for a tool call.
+	// Structure is documented below.
+	ToolCallResult GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult `pulumi:"toolCallResult"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputToolCallInfoInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs and GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputToolCallInfoInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs struct {
+	// Request for a tool call.
+	// Structure is documented below.
+	ToolCall GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallInput `pulumi:"toolCall"`
+	// Response for a tool call.
+	// Structure is documented below.
+	ToolCallResult GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultInput `pulumi:"toolCallResult"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfo)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput)
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray and GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray{ GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs{...} }
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray []GeneratorSummarizationContextFewShotExampleOutputToolCallInfoInput
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleOutputToolCallInfo)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfo)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput {
+	return o
+}
+
+// Request for a tool call.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput) ToolCall() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfo) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall {
+		return v.ToolCall
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput)
+}
+
+// Response for a tool call.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput) ToolCallResult() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfo) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult {
+		return v.ToolCallResult
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleOutputToolCallInfo)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput) Index(i pulumi.IntInput) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextFewShotExampleOutputToolCallInfo {
+		return vs[0].([]GeneratorSummarizationContextFewShotExampleOutputToolCallInfo)[vs[1].(int)]
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall struct {
+	// The name of the tool's action associated with this call.
+	Action *string `pulumi:"action"`
+	// The tool associated with this call.
+	Tool *string `pulumi:"tool"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs and GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs struct {
+	// The name of the tool's action associated with this call.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The tool associated with this call.
+	Tool pulumi.StringPtrInput `pulumi:"tool"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput {
+	return o
+}
+
+// The name of the tool's action associated with this call.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The tool associated with this call.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput) Tool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCall) *string { return v.Tool }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult struct {
+	// The name of the tool's action associated with this call.
+	Action *string `pulumi:"action"`
+	// An error produced by the tool call.
+	// Structure is documented below.
+	Error *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError `pulumi:"error"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs and GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs struct {
+	// The name of the tool's action associated with this call.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// An error produced by the tool call.
+	// Structure is documented below.
+	Error GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrInput `pulumi:"error"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput {
+	return o
+}
+
+// The name of the tool's action associated with this call.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult) *string {
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// An error produced by the tool call.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput) Error() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResult) *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError {
+		return v.Error
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError struct {
+	// The error message of the function.
+	Message *string `pulumi:"message"`
+	// Specifies whether the tool call is retryable.
+	Retryable *bool `pulumi:"retryable"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs and GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs struct {
+	// The error message of the function.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Specifies whether the tool call is retryable.
+	Retryable pulumi.BoolPtrInput `pulumi:"retryable"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput)
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput).ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(ctx)
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs, GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtr and GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrInput` via:
+//
+//	        GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput
+}
+
+type generatorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrType GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs
+
+func GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtr(v *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrInput {
+	return (*generatorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrType)(v)
+}
+
+func (*generatorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError)(nil)).Elem()
+}
+
+func (i *generatorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrType) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrType) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return o.ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError) *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError {
+		return &v
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput)
+}
+
+// The error message of the function.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError) *string {
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the tool call is retryable.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput) Retryable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError) *bool {
+		return v.Retryable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput) ToGeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput) Elem() GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError) GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError
+		return ret
+	}).(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput)
+}
+
+// The error message of the function.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the tool call is retryable.
+func (o GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput) Retryable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultError) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Retryable
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GeneratorSummarizationContextFewShotExampleSummarizationSectionList struct {
@@ -50130,6 +50549,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs{})
@@ -50723,6 +51148,12 @@ func init() {
 	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput{})
 	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput{})
 	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoToolCallResultErrorPtrOutput{})
 	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput{})
 	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput{})
 	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput{})

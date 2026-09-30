@@ -1692,14 +1692,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * TPU configuration for the cluster.
+     * ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      * 
      */
     @Import(name="tpuConfig")
     private @Nullable Output<ClusterTpuConfigArgs> tpuConfig;
 
     /**
-     * @return TPU configuration for the cluster.
+     * @return ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterTpuConfigArgs>> tpuConfig() {
@@ -1707,14 +1709,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom keys configuration of the cluster Structure is documented below.
+     * The custom keys configuration of the cluster. Structure is documented below.
      * 
      */
     @Import(name="userManagedKeysConfig")
     private @Nullable Output<ClusterUserManagedKeysConfigArgs> userManagedKeysConfig;
 
     /**
-     * @return The custom keys configuration of the cluster Structure is documented below.
+     * @return The custom keys configuration of the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterUserManagedKeysConfigArgs>> userManagedKeysConfig() {
@@ -4080,7 +4082,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tpuConfig TPU configuration for the cluster.
+         * @param tpuConfig ) Configuration for Cloud TPU in this cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -4091,7 +4094,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tpuConfig TPU configuration for the cluster.
+         * @param tpuConfig ) Configuration for Cloud TPU in this cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -4101,7 +4105,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userManagedKeysConfig The custom keys configuration of the cluster Structure is documented below.
+         * @param userManagedKeysConfig The custom keys configuration of the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -4112,7 +4116,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userManagedKeysConfig The custom keys configuration of the cluster Structure is documented below.
+         * @param userManagedKeysConfig The custom keys configuration of the cluster. Structure is documented below.
          * 
          * @return builder
          * 

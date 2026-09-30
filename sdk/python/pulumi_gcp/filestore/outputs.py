@@ -308,8 +308,13 @@ class InstanceFileShares(dict):
                  source_backup: Optional[_builtins.str] = None,
                  source_backupdr_backup: Optional[_builtins.str] = None):
         """
-        :param _builtins.int capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
-               for the standard tier, or 2560 GiB for the premium tier.
+        :param _builtins.int capacity_gb: File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+               * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+               * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+               * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+               * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+               * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+               * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
         :param _builtins.str name: The name of the fileshare (16 characters or less)
         :param Sequence['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
@@ -333,8 +338,13 @@ class InstanceFileShares(dict):
     @pulumi.getter(name="capacityGb")
     def capacity_gb(self) -> _builtins.int:
         """
-        File share capacity in GiB. This must be at least 1024 GiB
-        for the standard tier, or 2560 GiB for the premium tier.
+        File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+        * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+        * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+        * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+        * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+        * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+        * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
         """
         return pulumi.get(self, "capacity_gb")
 
@@ -1064,8 +1074,13 @@ class GetInstanceFileShareResult(dict):
                  source_backup: _builtins.str,
                  source_backupdr_backup: _builtins.str):
         """
-        :param _builtins.int capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
-               for the standard tier, or 2560 GiB for the premium tier.
+        :param _builtins.int capacity_gb: File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+               * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+               * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+               * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+               * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+               * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+               * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
         :param _builtins.str name: The name of a Filestore instance.
                
                ***
@@ -1087,8 +1102,13 @@ class GetInstanceFileShareResult(dict):
     @pulumi.getter(name="capacityGb")
     def capacity_gb(self) -> _builtins.int:
         """
-        File share capacity in GiB. This must be at least 1024 GiB
-        for the standard tier, or 2560 GiB for the premium tier.
+        File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+        * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+        * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+        * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+        * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+        * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+        * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
         """
         return pulumi.get(self, "capacity_gb")
 

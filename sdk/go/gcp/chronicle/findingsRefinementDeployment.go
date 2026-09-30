@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,58 +29,59 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := chronicle.NewFindingsRefinement(ctx, "my-findings-refinement", &chronicle.FindingsRefinementArgs{
-// Location: pulumi.String("us"),
-// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-// DisplayName: pulumi.String("findings_refinement_display_name"),
-// Type: pulumi.String("DETECTION_EXCLUSION"),
-// Query: pulumi.String("network.dns.response = true"),
-// OutcomeFilters: chronicle.FindingsRefinementOutcomeFilterArray{
-// &chronicle.FindingsRefinementOutcomeFilterArgs{
-// OutcomeVariable: pulumi.String("risk_score"),
-// OutcomeFilterOperator: pulumi.String("EQUAL"),
-// OutcomeValue: pulumi.String("value"),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
-// Separator: "/",
-// Text: googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
-// Separator: "/",
-// Text: googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// _, err = chronicle.NewFindingsRefinementDeployment(ctx, "example", &chronicle.FindingsRefinementDeploymentArgs{
-// Location: pulumi.String("us"),
-// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-// FindingsRefinement: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
-// Enabled: pulumi.Bool(true),
-// Archived: pulumi.Bool(false),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := chronicle.NewFindingsRefinement(ctx, "my-findings-refinement", &chronicle.FindingsRefinementArgs{
+//				Location:    pulumi.String("us"),
+//				Instance:    pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				DisplayName: pulumi.String("findings_refinement_display_name"),
+//				Type:        pulumi.String("DETECTION_EXCLUSION"),
+//				Query:       pulumi.String("network.dns.response = true"),
+//				OutcomeFilters: chronicle.FindingsRefinementOutcomeFilterArray{
+//					&chronicle.FindingsRefinementOutcomeFilterArgs{
+//						OutcomeVariable:       pulumi.String("risk_score"),
+//						OutcomeFilterOperator: pulumi.String("EQUAL"),
+//						OutcomeValue:          pulumi.String("value"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+//				Separator: "/",
+//				Text:      googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+//				Separator: "/",
+//				Text:      googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = chronicle.NewFindingsRefinementDeployment(ctx, "example", &chronicle.FindingsRefinementDeploymentArgs{
+//				Location:           pulumi.String("us"),
+//				Instance:           pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				FindingsRefinement: pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				Enabled:            pulumi.Bool(true),
+//				Archived:           pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import

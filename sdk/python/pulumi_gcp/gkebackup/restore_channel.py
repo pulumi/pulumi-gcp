@@ -438,7 +438,7 @@ class RestoreChannel(pulumi.CustomResource):
 
         basic = gcp.gkebackup.RestoreChannel("basic",
             name="basic-channel",
-            location="us-central1",
+            location="us-east1",
             description="Description",
             destination_project="projects/24240755850",
             labels={
@@ -514,7 +514,7 @@ class RestoreChannel(pulumi.CustomResource):
 
         basic = gcp.gkebackup.RestoreChannel("basic",
             name="basic-channel",
-            location="us-central1",
+            location="us-east1",
             description="Description",
             destination_project="projects/24240755850",
             labels={

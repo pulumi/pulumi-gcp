@@ -20,7 +20,7 @@ public final class NodePoolNodeConfigAdvancedMachineFeatures {
      */
     private @Nullable Boolean enableNestedVirtualization;
     /**
-     * @return Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+     * @return Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
      * 
      */
     private @Nullable String performanceMonitoringUnit;
@@ -39,7 +39,7 @@ public final class NodePoolNodeConfigAdvancedMachineFeatures {
         return Optional.ofNullable(this.enableNestedVirtualization);
     }
     /**
-     * @return Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+     * @return Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
      * 
      */
     public Optional<String> performanceMonitoringUnit() {

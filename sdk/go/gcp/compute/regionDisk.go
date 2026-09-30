@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,6 +34,9 @@ import (
 // * How-to Guides
 //   - [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Region Disk Basic
@@ -43,7 +46,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,6 +90,116 @@ import (
 //	}
 //
 // ```
+// ### Region Disk Disk Encryption Key Wo
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Name:  pulumi.String("my-disk"),
+//				Image: pulumi.String("debian-cloud/debian-13"),
+//				Size:  pulumi.Int(50),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
+//				SourceDisk: disk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("my-region-disk"),
+//				Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				DiskEncryptionKey: &compute.RegionDiskDiskEncryptionKeyArgs{
+//					RawKeyWo:        pulumi.String("SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="),
+//					RawKeyWoVersion: pulumi.String("1"),
+//				},
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Disk Rsa Encrypted Key Wo
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+//				Name:  pulumi.String("my-disk"),
+//				Image: pulumi.String("debian-cloud/debian-13"),
+//				Size:  pulumi.Int(50),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
+//				SourceDisk: disk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				Name:                   pulumi.String("my-region-disk"),
+//				Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Region:                 pulumi.String("us-central1"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				DiskEncryptionKey: &compute.RegionDiskDiskEncryptionKeyArgs{
+//					RsaEncryptedKeyWo:        pulumi.String("fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg=="),
+//					RsaEncryptedKeyWoVersion: pulumi.String("1"),
+//				},
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Disk Async
 //
 // ```go
@@ -94,7 +207,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -142,7 +255,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -188,7 +301,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

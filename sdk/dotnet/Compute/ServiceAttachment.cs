@@ -120,6 +120,85 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Service Attachment Nat Ips
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerServiceHealthCheck = new Gcp.Compute.HealthCheck("producer_service_health_check", new()
+    ///     {
+    ///         Name = "producer-service-health-check",
+    ///         CheckIntervalSec = 1,
+    ///         TimeoutSec = 1,
+    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var producerServiceBackend = new Gcp.Compute.RegionBackendService("producer_service_backend", new()
+    ///     {
+    ///         Name = "producer-service",
+    ///         Region = "us-central1",
+    ///         HealthChecks = producerServiceHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var pscIlbNetwork = new Gcp.Compute.Network("psc_ilb_network", new()
+    ///     {
+    ///         Name = "psc-ilb-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var pscIlbProducerSubnetwork = new Gcp.Compute.Subnetwork("psc_ilb_producer_subnetwork", new()
+    ///     {
+    ///         Name = "psc-ilb-producer-subnetwork",
+    ///         Region = "us-central1",
+    ///         Network = pscIlbNetwork.Id,
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbTargetService = new Gcp.Compute.ForwardingRule("psc_ilb_target_service", new()
+    ///     {
+    ///         Name = "producer-forwarding-rule",
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "INTERNAL",
+    ///         BackendService = producerServiceBackend.Id,
+    ///         AllPorts = true,
+    ///         Network = pscIlbNetwork.Name,
+    ///         Subnetwork = pscIlbProducerSubnetwork.Name,
+    ///     });
+    /// 
+    ///     var pscIlbNat = new Gcp.Compute.Subnetwork("psc_ilb_nat", new()
+    ///     {
+    ///         Name = "psc-ilb-nat",
+    ///         Region = "us-central1",
+    ///         Network = pscIlbNetwork.Id,
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///     });
+    /// 
+    ///     var pscIlbServiceAttachment = new Gcp.Compute.ServiceAttachment("psc_ilb_service_attachment", new()
+    ///     {
+    ///         Name = "my-psc-ilb",
+    ///         Region = "us-central1",
+    ///         Description = "A service attachment configured with Terraform",
+    ///         EnableProxyProtocol = true,
+    ///         NatIpsPerEndpoint = 2,
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         NatSubnets = new[]
+    ///         {
+    ///             pscIlbNat.Id,
+    ///         },
+    ///         TargetService = pscIlbTargetService.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Service Attachment Explicit Projects
     /// 
     /// ```csharp
@@ -743,6 +822,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The number of NAT IPs allocated per connected endpoint.
+        /// </summary>
+        [Output("natIpsPerEndpoint")]
+        public Output<int?> NatIpsPerEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// An array of subnets that is provided for NAT in this service attachment.
         /// </summary>
         [Output("natSubnets")]
@@ -954,6 +1039,12 @@ namespace Pulumi.Gcp.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The number of NAT IPs allocated per connected endpoint.
+        /// </summary>
+        [Input("natIpsPerEndpoint")]
+        public Input<int>? NatIpsPerEndpoint { get; set; }
+
         [Input("natSubnets", required: true)]
         private InputList<string>? _natSubnets;
 
@@ -1141,6 +1232,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The number of NAT IPs allocated per connected endpoint.
+        /// </summary>
+        [Input("natIpsPerEndpoint")]
+        public Input<int>? NatIpsPerEndpoint { get; set; }
 
         [Input("natSubnets")]
         private InputList<string>? _natSubnets;

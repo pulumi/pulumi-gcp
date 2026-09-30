@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
         /// </summary>
         public readonly string? Duration;
+        /// <summary>
+        /// The start time of the exclusion window, in RFC3339 format.
+        /// </summary>
         public readonly string StartTime;
 
         [OutputConstructor]

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.ces.outputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettings;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,12 @@ public final class AppDefaultChannelProfileWebWidgetConfig {
      * 
      */
     private @Nullable String modality;
+    /**
+     * @return The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AppDefaultChannelProfileWebWidgetConfigSecuritySettings securitySettings;
     /**
      * @return The theme of the web widget.
      * Possible values:
@@ -48,6 +55,14 @@ public final class AppDefaultChannelProfileWebWidgetConfig {
      */
     public Optional<String> modality() {
         return Optional.ofNullable(this.modality);
+    }
+    /**
+     * @return The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AppDefaultChannelProfileWebWidgetConfigSecuritySettings> securitySettings() {
+        return Optional.ofNullable(this.securitySettings);
     }
     /**
      * @return The theme of the web widget.
@@ -78,12 +93,14 @@ public final class AppDefaultChannelProfileWebWidgetConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String modality;
+        private @Nullable AppDefaultChannelProfileWebWidgetConfigSecuritySettings securitySettings;
         private @Nullable String theme;
         private @Nullable String webWidgetTitle;
         public Builder() {}
         public Builder(AppDefaultChannelProfileWebWidgetConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.modality = defaults.modality;
+    	      this.securitySettings = defaults.securitySettings;
     	      this.theme = defaults.theme;
     	      this.webWidgetTitle = defaults.webWidgetTitle;
         }
@@ -92,6 +109,12 @@ public final class AppDefaultChannelProfileWebWidgetConfig {
         public Builder modality(@Nullable String modality) {
 
             this.modality = modality;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securitySettings(@Nullable AppDefaultChannelProfileWebWidgetConfigSecuritySettings securitySettings) {
+
+            this.securitySettings = securitySettings;
             return this;
         }
         @CustomType.Setter
@@ -109,6 +132,7 @@ public final class AppDefaultChannelProfileWebWidgetConfig {
         public AppDefaultChannelProfileWebWidgetConfig build() {
             final var _resultValue = new AppDefaultChannelProfileWebWidgetConfig();
             _resultValue.modality = modality;
+            _resultValue.securitySettings = securitySettings;
             _resultValue.theme = theme;
             _resultValue.webWidgetTitle = webWidgetTitle;
             return _resultValue;

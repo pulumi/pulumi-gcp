@@ -19,14 +19,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAcces
     public static final ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs Empty = new ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs();
 
     /**
-     * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+     * List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
      * 
      */
     @Import(name="certificateAuthorityDomainConfigs")
     private @Nullable Output<List<ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs>> certificateAuthorityDomainConfigs;
 
     /**
-     * @return List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+     * @return List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs>>> certificateAuthorityDomainConfigs() {
@@ -74,7 +74,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAcces
         }
 
         /**
-         * @param certificateAuthorityDomainConfigs List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+         * @param certificateAuthorityDomainConfigs List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAcces
         }
 
         /**
-         * @param certificateAuthorityDomainConfigs List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+         * @param certificateAuthorityDomainConfigs List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAcces
         }
 
         /**
-         * @param certificateAuthorityDomainConfigs List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+         * @param certificateAuthorityDomainConfigs List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
          * 
          * @return builder
          * 

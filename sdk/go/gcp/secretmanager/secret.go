@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,7 +70,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,6 +92,7 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
+//				SecretType: pulumi.String("ACCESS_KEY"),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +109,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -137,9 +138,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -262,6 +263,9 @@ type Secret struct {
 	Rotation SecretRotationPtrOutput `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId pulumi.StringOutput `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType pulumi.StringPtrOutput `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -392,6 +396,9 @@ type secretState struct {
 	Rotation *SecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType *string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -485,6 +492,9 @@ type SecretState struct {
 	Rotation SecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType pulumi.StringPtrInput
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -570,6 +580,9 @@ type secretArgs struct {
 	Rotation *SecretRotation `pulumi:"rotation"`
 	// This must be unique within the project.
 	SecretId *string `pulumi:"secretId"`
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType *string `pulumi:"secretType"`
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -652,6 +665,9 @@ type SecretArgs struct {
 	Rotation SecretRotationPtrInput
 	// This must be unique within the project.
 	SecretId pulumi.StringPtrInput
+	// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+	// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+	SecretType pulumi.StringPtrInput
 	// A map of resource manager tags.
 	// Resource manager tag keys and values have the same definition as resource manager tags.
 	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -872,6 +888,12 @@ func (o SecretOutput) Rotation() SecretRotationPtrOutput {
 // This must be unique within the project.
 func (o SecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+func (o SecretOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.SecretType }).(pulumi.StringPtrOutput)
 }
 
 // A map of resource manager tags.

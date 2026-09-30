@@ -32,11 +32,30 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string RawKey;
         /// <summary>
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// </summary>
+        public readonly string RawKeyWo;
+        /// <summary>
+        /// Triggers update of 'raw_key_wo' write-only. Increment this value when an update to 'raw_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string RawKeyWoVersion;
+        /// <summary>
         /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
         /// customer-supplied encryption key to either encrypt or decrypt
         /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
         /// </summary>
         public readonly string RsaEncryptedKey;
+        /// <summary>
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        /// customer-supplied encryption key to either encrypt or decrypt
+        /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        /// </summary>
+        public readonly string RsaEncryptedKeyWo;
+        /// <summary>
+        /// Triggers update of 'rsa_encrypted_key_wo' write-only. Increment this value when an update to 'rsa_encrypted_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string RsaEncryptedKeyWoVersion;
         /// <summary>
         /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
         /// encryption key that protects this resource.
@@ -51,14 +70,26 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string rawKey,
 
+            string rawKeyWo,
+
+            string rawKeyWoVersion,
+
             string rsaEncryptedKey,
+
+            string rsaEncryptedKeyWo,
+
+            string rsaEncryptedKeyWoVersion,
 
             string sha256)
         {
             KmsKeySelfLink = kmsKeySelfLink;
             KmsKeyServiceAccount = kmsKeyServiceAccount;
             RawKey = rawKey;
+            RawKeyWo = rawKeyWo;
+            RawKeyWoVersion = rawKeyWoVersion;
             RsaEncryptedKey = rsaEncryptedKey;
+            RsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            RsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
             Sha256 = sha256;
         }
     }

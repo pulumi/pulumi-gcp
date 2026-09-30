@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -850,7 +850,7 @@ func (o GetClusterNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) GetCluste
 }
 
 type GetClusterNodeConfigHostMaintenancePolicy struct {
-	// .
+	// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
 	// Strategy that will trigger maintenance on behalf of the customer.
 	OpportunisticMaintenanceStrategies []GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy `pulumi:"opportunisticMaintenanceStrategies"`
@@ -868,7 +868,7 @@ type GetClusterNodeConfigHostMaintenancePolicyInput interface {
 }
 
 type GetClusterNodeConfigHostMaintenancePolicyArgs struct {
-	// .
+	// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
 	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
 	// Strategy that will trigger maintenance on behalf of the customer.
 	OpportunisticMaintenanceStrategies GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArrayInput `pulumi:"opportunisticMaintenanceStrategies"`
@@ -925,7 +925,7 @@ func (o GetClusterNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodeConfigH
 	return o
 }
 
-// .
+// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
 func (o GetClusterNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
@@ -4749,7 +4749,7 @@ type GetClusterNodePool struct {
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
 	Name string `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix string `pulumi:"namePrefix"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfigs []GetClusterNodePoolNetworkConfig `pulumi:"networkConfigs"`
@@ -4801,7 +4801,7 @@ type GetClusterNodePoolArgs struct {
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+	// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 	NamePrefix pulumi.StringInput `pulumi:"namePrefix"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfigs GetClusterNodePoolNetworkConfigArrayInput `pulumi:"networkConfigs"`
@@ -4919,7 +4919,7 @@ func (o GetClusterNodePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePool) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
 func (o GetClusterNodePoolOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePool) string { return v.NamePrefix }).(pulumi.StringOutput)
 }
@@ -7813,6 +7813,8 @@ func (o GetClusterNodePoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) Get
 type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
 	// Name of the VPC where the additional interface belongs.
 	Network string `pulumi:"network"`
+	// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+	StackType string `pulumi:"stackType"`
 	// Name of the subnetwork where the additional interface belongs.
 	Subnetwork string `pulumi:"subnetwork"`
 }
@@ -7831,6 +7833,8 @@ type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput interface {
 type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
 	// Name of the VPC where the additional interface belongs.
 	Network pulumi.StringInput `pulumi:"network"`
+	// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+	StackType pulumi.StringInput `pulumi:"stackType"`
 	// Name of the subnetwork where the additional interface belongs.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 }
@@ -7889,6 +7893,11 @@ func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToGetC
 // Name of the VPC where the additional interface belongs.
 func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // Name of the subnetwork where the additional interface belongs.
@@ -8794,7 +8803,7 @@ func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 type GetClusterNodePoolNodeConfigAdvancedMachineFeature struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
-	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
@@ -8814,7 +8823,7 @@ type GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput interface {
 type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs struct {
 	// Whether the node should have nested virtualization enabled.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
-	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+	// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
@@ -8876,7 +8885,7 @@ func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) EnableNestedVi
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
-// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+// Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
 func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }
@@ -11405,7 +11414,7 @@ func (o GetClusterNodePoolNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetClusterNodePoolNodeConfigHostMaintenancePolicy struct {
-	// .
+	// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
 	// Strategy that will trigger maintenance on behalf of the customer.
 	OpportunisticMaintenanceStrategies []GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy `pulumi:"opportunisticMaintenanceStrategies"`
@@ -11423,7 +11432,7 @@ type GetClusterNodePoolNodeConfigHostMaintenancePolicyInput interface {
 }
 
 type GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs struct {
-	// .
+	// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
 	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
 	// Strategy that will trigger maintenance on behalf of the customer.
 	OpportunisticMaintenanceStrategies GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArrayInput `pulumi:"opportunisticMaintenanceStrategies"`
@@ -11480,7 +11489,7 @@ func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToGetClusterNod
 	return o
 }
 
-// .
+// Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
 func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }

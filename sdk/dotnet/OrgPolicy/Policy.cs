@@ -184,7 +184,7 @@ namespace Pulumi.Gcp.OrgPolicy
     /// {
     ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
     ///     {
-    ///         Name = "custom.disableGkeAutoUpgrade_74065",
+    ///         Name = "custom.disableGkeAutoUpgrade_44263",
     ///         Parent = "organizations/123456789",
     ///         DisplayName = "Disable GKE auto upgrade",
     ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///                     Parameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
     ///                         ["isSizeLimitCheck"] = true,
-    ///                         ["allowedDiskTypes"] = new[]
+    ///                         ["allowedDiskTypes"] = new object?[]
     ///                         {
     ///                             "pd-ssd",
     ///                             "pd-standard",

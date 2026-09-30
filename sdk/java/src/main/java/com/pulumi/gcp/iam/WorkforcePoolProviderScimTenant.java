@@ -156,14 +156,14 @@ public class WorkforcePoolProviderScimTenant extends com.pulumi.resources.Custom
      * 
      */
     @Export(name="claimMapping", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> claimMapping;
+    private Output<Map<String,String>> claimMapping;
 
     /**
      * @return Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      * 
      */
-    public Output<Optional<Map<String,String>>> claimMapping() {
-        return Codegen.optional(this.claimMapping);
+    public Output<Map<String,String>> claimMapping() {
+        return this.claimMapping;
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

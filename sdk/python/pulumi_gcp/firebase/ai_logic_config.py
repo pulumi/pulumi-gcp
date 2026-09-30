@@ -36,11 +36,15 @@ class AiLogicConfigArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
-               When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-               API key is stored in this configuration *on the server* so that you do
-               **not** add your Gemini API key directly into your app's codebase.
+        :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: (Optional, Deprecated)
+               Configuration for using the Gemini Developer API via Firebase AI Logic.
+               Firebase AI Logic now uses a Google-managed service account to authenticate
+               requests to the Gemini Developer API and no longer requires an API key.
+               Values provided here may be silently ignored on input, and may be omitted in
+               responses.
                Structure is documented below.
+               
+               > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -53,6 +57,9 @@ class AiLogicConfigArgs:
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if generative_language_config is not None:
+            warnings.warn("""`generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""", DeprecationWarning)
+            pulumi.log.warn("""generative_language_config is deprecated: `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
         if generative_language_config is not None:
             pulumi.set(__self__, "generative_language_config", generative_language_config)
         if location is not None:
@@ -83,13 +90,18 @@ class AiLogicConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
+    @_utilities.deprecated("""`generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
     def generative_language_config(self) -> pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']]:
         """
+        (Optional, Deprecated)
         Configuration for using the Gemini Developer API via Firebase AI Logic.
-        When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-        API key is stored in this configuration *on the server* so that you do
-        **not** add your Gemini API key directly into your app's codebase.
+        Firebase AI Logic now uses a Google-managed service account to authenticate
+        requests to the Gemini Developer API and no longer requires an API key.
+        Values provided here may be silently ignored on input, and may be omitted in
+        responses.
         Structure is documented below.
+
+        > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         """
         return pulumi.get(self, "generative_language_config")
 
@@ -170,11 +182,15 @@ class _AiLogicConfigState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
-               When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-               API key is stored in this configuration *on the server* so that you do
-               **not** add your Gemini API key directly into your app's codebase.
+        :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: (Optional, Deprecated)
+               Configuration for using the Gemini Developer API via Firebase AI Logic.
+               Firebase AI Logic now uses a Google-managed service account to authenticate
+               requests to the Gemini Developer API and no longer requires an API key.
+               Values provided here may be silently ignored on input, and may be omitted in
+               responses.
                Structure is documented below.
+               
+               > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the config.
                Format: projects/{project}/locations/{location}/config
@@ -189,6 +205,9 @@ class _AiLogicConfigState:
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if generative_language_config is not None:
+            warnings.warn("""`generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""", DeprecationWarning)
+            pulumi.log.warn("""generative_language_config is deprecated: `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
         if generative_language_config is not None:
             pulumi.set(__self__, "generative_language_config", generative_language_config)
         if location is not None:
@@ -221,13 +240,18 @@ class _AiLogicConfigState:
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
+    @_utilities.deprecated("""`generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
     def generative_language_config(self) -> pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']]:
         """
+        (Optional, Deprecated)
         Configuration for using the Gemini Developer API via Firebase AI Logic.
-        When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-        API key is stored in this configuration *on the server* so that you do
-        **not** add your Gemini API key directly into your app's codebase.
+        Firebase AI Logic now uses a Google-managed service account to authenticate
+        requests to the Gemini Developer API and no longer requires an API key.
+        Values provided here may be silently ignored on input, and may be omitted in
+        responses.
         Structure is documented below.
+
+        > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         """
         return pulumi.get(self, "generative_language_config")
 
@@ -384,15 +408,6 @@ class AiLogicConfig(pulumi.CustomResource):
         ailogic = gcp.projects.Service("ailogic",
             project=project.project_id,
             service="firebasevertexai.googleapis.com")
-        gemini = gcp.projects.ApiKey("gemini",
-            project=project.project_id,
-            name="gemini-api-key",
-            display_name="Gemini Developer API key",
-            restrictions={
-                "api_targets": [{
-                    "service": "generativelanguage.googleapis.com",
-                }],
-            })
         # It takes a while for permissions to propagate
         # If your Terraform setup has a retry mechanism, this wait is unnecessary
         wait30s = time.Sleep("wait_30s", create_duration="30s",
@@ -403,9 +418,6 @@ class AiLogicConfig(pulumi.CustomResource):
         default_ai_logic_config = gcp.firebase.AiLogicConfig("default",
             project=default.project,
             location="global",
-            generative_language_config={
-                "api_key": gemini.key_string,
-            },
             telemetry_config={
                 "mode": "ALL",
                 "sampling_rate": float(1),
@@ -441,11 +453,15 @@ class AiLogicConfig(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict', 'outputs.AiLogicConfigGenerativeLanguageConfig']] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
-               When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-               API key is stored in this configuration *on the server* so that you do
-               **not** add your Gemini API key directly into your app's codebase.
+        :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict', 'outputs.AiLogicConfigGenerativeLanguageConfig']] generative_language_config: (Optional, Deprecated)
+               Configuration for using the Gemini Developer API via Firebase AI Logic.
+               Firebase AI Logic now uses a Google-managed service account to authenticate
+               requests to the Gemini Developer API and no longer requires an API key.
+               Values provided here may be silently ignored on input, and may be omitted in
+               responses.
                Structure is documented below.
+               
+               > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -531,15 +547,6 @@ class AiLogicConfig(pulumi.CustomResource):
         ailogic = gcp.projects.Service("ailogic",
             project=project.project_id,
             service="firebasevertexai.googleapis.com")
-        gemini = gcp.projects.ApiKey("gemini",
-            project=project.project_id,
-            name="gemini-api-key",
-            display_name="Gemini Developer API key",
-            restrictions={
-                "api_targets": [{
-                    "service": "generativelanguage.googleapis.com",
-                }],
-            })
         # It takes a while for permissions to propagate
         # If your Terraform setup has a retry mechanism, this wait is unnecessary
         wait30s = time.Sleep("wait_30s", create_duration="30s",
@@ -550,9 +557,6 @@ class AiLogicConfig(pulumi.CustomResource):
         default_ai_logic_config = gcp.firebase.AiLogicConfig("default",
             project=default.project,
             location="global",
-            generative_language_config={
-                "api_key": gemini.key_string,
-            },
             telemetry_config={
                 "mode": "ALL",
                 "sampling_rate": float(1),
@@ -647,11 +651,15 @@ class AiLogicConfig(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict', 'outputs.AiLogicConfigGenerativeLanguageConfig']] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
-               When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-               API key is stored in this configuration *on the server* so that you do
-               **not** add your Gemini API key directly into your app's codebase.
+        :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict', 'outputs.AiLogicConfigGenerativeLanguageConfig']] generative_language_config: (Optional, Deprecated)
+               Configuration for using the Gemini Developer API via Firebase AI Logic.
+               Firebase AI Logic now uses a Google-managed service account to authenticate
+               requests to the Gemini Developer API and no longer requires an API key.
+               Values provided here may be silently ignored on input, and may be omitted in
+               responses.
                Structure is documented below.
+               
+               > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the config.
                Format: projects/{project}/locations/{location}/config
@@ -692,13 +700,18 @@ class AiLogicConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
+    @_utilities.deprecated("""`generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
     def generative_language_config(self) -> pulumi.Output[Optional['outputs.AiLogicConfigGenerativeLanguageConfig']]:
         """
+        (Optional, Deprecated)
         Configuration for using the Gemini Developer API via Firebase AI Logic.
-        When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-        API key is stored in this configuration *on the server* so that you do
-        **not** add your Gemini API key directly into your app's codebase.
+        Firebase AI Logic now uses a Google-managed service account to authenticate
+        requests to the Gemini Developer API and no longer requires an API key.
+        Values provided here may be silently ignored on input, and may be omitted in
+        responses.
         Structure is documented below.
+
+        > **Warning:** `generative_language_config` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         """
         return pulumi.get(self, "generative_language_config")
 

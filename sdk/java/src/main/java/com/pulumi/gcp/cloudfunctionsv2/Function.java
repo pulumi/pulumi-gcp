@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -682,7 +682,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -776,7 +776,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -882,7 +882,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -981,7 +981,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1078,7 +1078,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1209,7 +1209,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1312,7 +1312,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1401,7 +1401,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project))
+ *             .name(String.format("gcf-source-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());

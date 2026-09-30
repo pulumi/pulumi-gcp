@@ -488,7 +488,7 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
-            display_name="dbms_pc",
+            display_name="dbms-pc",
             location="us-west1",
             private_connection_id="my-connection",
             labels={
@@ -510,7 +510,7 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
-            display_name="dbms_pc",
+            display_name="dbms-pc",
             location="us-west1",
             private_connection_id="my-connection",
             labels={
@@ -600,7 +600,7 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
-            display_name="dbms_pc",
+            display_name="dbms-pc",
             location="us-west1",
             private_connection_id="my-connection",
             labels={
@@ -622,7 +622,7 @@ class PrivateConnection(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
-            display_name="dbms_pc",
+            display_name="dbms-pc",
             location="us-west1",
             private_connection_id="my-connection",
             labels={

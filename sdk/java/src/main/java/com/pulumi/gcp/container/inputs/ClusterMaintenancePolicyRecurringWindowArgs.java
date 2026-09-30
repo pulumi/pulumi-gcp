@@ -14,9 +14,17 @@ public final class ClusterMaintenancePolicyRecurringWindowArgs extends com.pulum
 
     public static final ClusterMaintenancePolicyRecurringWindowArgs Empty = new ClusterMaintenancePolicyRecurringWindowArgs();
 
+    /**
+     * The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     @Import(name="endTime", required=true)
     private Output<String> endTime;
 
+    /**
+     * @return The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     public Output<String> endTime() {
         return this.endTime;
     }
@@ -40,9 +48,17 @@ public final class ClusterMaintenancePolicyRecurringWindowArgs extends com.pulum
         return this.recurrence;
     }
 
+    /**
+     * The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     @Import(name="startTime", required=true)
     private Output<String> startTime;
 
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     public Output<String> startTime() {
         return this.startTime;
     }
@@ -73,11 +89,23 @@ public final class ClusterMaintenancePolicyRecurringWindowArgs extends com.pulum
             $ = new ClusterMaintenancePolicyRecurringWindowArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endTime The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endTime(Output<String> endTime) {
             $.endTime = endTime;
             return this;
         }
 
+        /**
+         * @param endTime The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endTime(String endTime) {
             return endTime(Output.of(endTime));
         }
@@ -107,11 +135,23 @@ public final class ClusterMaintenancePolicyRecurringWindowArgs extends com.pulum
             return recurrence(Output.of(recurrence));
         }
 
+        /**
+         * @param startTime The start time of the exclusion window, in RFC3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
 
+        /**
+         * @param startTime The start time of the exclusion window, in RFC3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
         }

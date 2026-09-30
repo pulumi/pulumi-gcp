@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { PreventionContentPolicyArgs, PreventionContentPolicyState } from "./preventionContentPolicy";
+export type PreventionContentPolicy = import("./preventionContentPolicy").PreventionContentPolicy;
+export const PreventionContentPolicy: typeof import("./preventionContentPolicy").PreventionContentPolicy = null as any;
+utilities.lazyLoad(exports, ["PreventionContentPolicy"], () => require("./preventionContentPolicy"));
+
 export { PreventionDeidentifyTemplateArgs, PreventionDeidentifyTemplateState } from "./preventionDeidentifyTemplate";
 export type PreventionDeidentifyTemplate = import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate;
 export const PreventionDeidentifyTemplate: typeof import("./preventionDeidentifyTemplate").PreventionDeidentifyTemplate = null as any;
@@ -35,6 +40,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:dataloss/preventionContentPolicy:PreventionContentPolicy":
+                return new PreventionContentPolicy(name, <any>undefined, { urn })
             case "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate":
                 return new PreventionDeidentifyTemplate(name, <any>undefined, { urn })
             case "gcp:dataloss/preventionDiscoveryConfig:PreventionDiscoveryConfig":
@@ -50,6 +57,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionContentPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionDeidentifyTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionDiscoveryConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataloss/preventionInspectTemplate", _module)

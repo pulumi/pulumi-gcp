@@ -1042,6 +1042,11 @@ class Toolset(pulumi.CustomResource):
                 "api_authentication": {
                     "service_agent_id_token_auth_config": {},
                 },
+                "tool_overrides": [{
+                    "tool": "my-tool",
+                    "name_override": "my_tool_override",
+                    "description_override": "A tool description override",
+                }],
             })
         ```
         ### Ces Toolset Mcp Api Key Config
@@ -1627,6 +1632,11 @@ class Toolset(pulumi.CustomResource):
                 "api_authentication": {
                     "service_agent_id_token_auth_config": {},
                 },
+                "tool_overrides": [{
+                    "tool": "my-tool",
+                    "name_override": "my_tool_override",
+                    "description_override": "A tool description override",
+                }],
             })
         ```
         ### Ces Toolset Mcp Api Key Config

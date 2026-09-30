@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var termTestId = new Gcp.DataPlex.Glossary("term_test_id", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_49547",
+    ///         GlossaryId = "tf-test-glossary_40472",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestId.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-basic_48675",
+    ///         TermId = "tf-test-term-basic_44339",
     ///     });
     /// 
     /// });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_42702",
+    ///         GlossaryId = "tf-test-glossary_34599",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestIdFull.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-full_37426",
+    ///         TermId = "tf-test-term-full_79513",
     ///         Labels = 
     ///         {
     ///             { "tag", "test-tf" },

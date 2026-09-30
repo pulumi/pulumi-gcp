@@ -12,6 +12,7 @@ import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaMcpDataSourc
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaResourceArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableArgs;
+import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -214,6 +215,27 @@ public final class AnalystAgentPersonaState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     * 
+     */
+    @Import(name="mathRenderingMode")
+    private @Nullable Output<String> mathRenderingMode;
+
+    /**
+     * @return The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     * 
+     */
+    public Optional<Output<String>> mathRenderingMode() {
+        return Optional.ofNullable(this.mathRenderingMode);
     }
 
     /**
@@ -423,6 +445,23 @@ public final class AnalystAgentPersonaState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="webSearchConfig")
+    private @Nullable Output<AnalystAgentPersonaWebSearchConfigArgs> webSearchConfig;
+
+    /**
+     * @return Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AnalystAgentPersonaWebSearchConfigArgs>> webSearchConfig() {
+        return Optional.ofNullable(this.webSearchConfig);
+    }
+
     private AnalystAgentPersonaState() {}
 
     private AnalystAgentPersonaState(AnalystAgentPersonaState $) {
@@ -437,6 +476,7 @@ public final class AnalystAgentPersonaState extends com.pulumi.resources.Resourc
         this.externalDataSources = $.externalDataSources;
         this.geminiEnterpriseEngine = $.geminiEnterpriseEngine;
         this.location = $.location;
+        this.mathRenderingMode = $.mathRenderingMode;
         this.mcpDataSources = $.mcpDataSources;
         this.modelDescription = $.modelDescription;
         this.name = $.name;
@@ -446,6 +486,7 @@ public final class AnalystAgentPersonaState extends com.pulumi.resources.Resourc
         this.skills = $.skills;
         this.tables = $.tables;
         this.updateTime = $.updateTime;
+        this.webSearchConfig = $.webSearchConfig;
     }
 
     public static Builder builder() {
@@ -758,6 +799,33 @@ public final class AnalystAgentPersonaState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param mathRenderingMode The math rendering mode selected for this persona.
+         * Possible values:
+         * MATH_RENDERING_MODE_LATEX
+         * MATH_RENDERING_MODE_PLAIN_TEXT
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mathRenderingMode(@Nullable Output<String> mathRenderingMode) {
+            $.mathRenderingMode = mathRenderingMode;
+            return this;
+        }
+
+        /**
+         * @param mathRenderingMode The math rendering mode selected for this persona.
+         * Possible values:
+         * MATH_RENDERING_MODE_LATEX
+         * MATH_RENDERING_MODE_PLAIN_TEXT
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mathRenderingMode(String mathRenderingMode) {
+            return mathRenderingMode(Output.of(mathRenderingMode));
+        }
+
+        /**
          * @param mcpDataSources The MCP data source selections to be used by the agent.
          * Structure is documented below.
          * 
@@ -1062,6 +1130,29 @@ public final class AnalystAgentPersonaState extends com.pulumi.resources.Resourc
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param webSearchConfig Configuration for web search grounding for the analyst agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webSearchConfig(@Nullable Output<AnalystAgentPersonaWebSearchConfigArgs> webSearchConfig) {
+            $.webSearchConfig = webSearchConfig;
+            return this;
+        }
+
+        /**
+         * @param webSearchConfig Configuration for web search grounding for the analyst agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs webSearchConfig) {
+            return webSearchConfig(Output.of(webSearchConfig));
         }
 
         public AnalystAgentPersonaState build() {

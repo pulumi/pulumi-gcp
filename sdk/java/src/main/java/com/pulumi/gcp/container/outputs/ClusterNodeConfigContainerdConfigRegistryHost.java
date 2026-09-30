@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeConfigContainerdConfigRegistryHost {
     /**
-     * @return Configures a list of host-specific configurations for the server.
+     * @return Configures a list of host-specific configurations for the server:
      * 
      */
     private @Nullable List<ClusterNodeConfigContainerdConfigRegistryHostHost> hosts;
@@ -26,7 +26,7 @@ public final class ClusterNodeConfigContainerdConfigRegistryHost {
 
     private ClusterNodeConfigContainerdConfigRegistryHost() {}
     /**
-     * @return Configures a list of host-specific configurations for the server.
+     * @return Configures a list of host-specific configurations for the server:
      * 
      */
     public List<ClusterNodeConfigContainerdConfigRegistryHostHost> hosts() {

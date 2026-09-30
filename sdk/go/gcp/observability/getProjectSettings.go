@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,9 +19,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://docs.cloud.google.com/stackdriver/docs/observability/set-defaults-for-observability-buckets)
 //
-// > **Warning:** This data source is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // ## Example Usage
 //
 // ### Observability Project Settings Basic
@@ -31,7 +28,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

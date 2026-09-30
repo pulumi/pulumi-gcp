@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,12 +61,10 @@ import (
 //					},
 //				},
 //				SyntaxType: pulumi.String("REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING"),
-//				ScopeInfos: chronicle.ReferenceListScopeInfoArray{
-//					&chronicle.ReferenceListScopeInfoArgs{
-//						ReferenceListScope: &chronicle.ReferenceListScopeInfoReferenceListScopeArgs{
-//							ScopeNames: pulumi.StringArray{
-//								testScope.Name,
-//							},
+//				ScopeInfo: &chronicle.ReferenceListScopeInfoArgs{
+//					ReferenceListScope: &chronicle.ReferenceListScopeInfoReferenceListScopeArgs{
+//						ScopeNames: pulumi.StringArray{
+//							testScope.Name,
 //						},
 //					},
 //				},
@@ -137,7 +135,7 @@ type ReferenceList struct {
 	Rules pulumi.StringArrayOutput `pulumi:"rules"`
 	// ScopeInfo specifies the scope info of the reference list.
 	// Structure is documented below.
-	ScopeInfos ReferenceListScopeInfoArrayOutput `pulumi:"scopeInfos"`
+	ScopeInfo ReferenceListScopeInfoPtrOutput `pulumi:"scopeInfo"`
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -232,7 +230,7 @@ type referenceListState struct {
 	Rules []string `pulumi:"rules"`
 	// ScopeInfo specifies the scope info of the reference list.
 	// Structure is documented below.
-	ScopeInfos []ReferenceListScopeInfo `pulumi:"scopeInfos"`
+	ScopeInfo *ReferenceListScopeInfo `pulumi:"scopeInfo"`
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -280,7 +278,7 @@ type ReferenceListState struct {
 	Rules pulumi.StringArrayInput
 	// ScopeInfo specifies the scope info of the reference list.
 	// Structure is documented below.
-	ScopeInfos ReferenceListScopeInfoArrayInput
+	ScopeInfo ReferenceListScopeInfoPtrInput
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -318,7 +316,7 @@ type referenceListArgs struct {
 	ReferenceListId string `pulumi:"referenceListId"`
 	// ScopeInfo specifies the scope info of the reference list.
 	// Structure is documented below.
-	ScopeInfos []ReferenceListScopeInfo `pulumi:"scopeInfos"`
+	ScopeInfo *ReferenceListScopeInfo `pulumi:"scopeInfo"`
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -353,7 +351,7 @@ type ReferenceListArgs struct {
 	ReferenceListId pulumi.StringInput
 	// ScopeInfo specifies the scope info of the reference list.
 	// Structure is documented below.
-	ScopeInfos ReferenceListScopeInfoArrayInput
+	ScopeInfo ReferenceListScopeInfoPtrInput
 	// Possible values:
 	// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
 	// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -520,8 +518,8 @@ func (o ReferenceListOutput) Rules() pulumi.StringArrayOutput {
 
 // ScopeInfo specifies the scope info of the reference list.
 // Structure is documented below.
-func (o ReferenceListOutput) ScopeInfos() ReferenceListScopeInfoArrayOutput {
-	return o.ApplyT(func(v *ReferenceList) ReferenceListScopeInfoArrayOutput { return v.ScopeInfos }).(ReferenceListScopeInfoArrayOutput)
+func (o ReferenceListOutput) ScopeInfo() ReferenceListScopeInfoPtrOutput {
+	return o.ApplyT(func(v *ReferenceList) ReferenceListScopeInfoPtrOutput { return v.ScopeInfo }).(ReferenceListScopeInfoPtrOutput)
 }
 
 // Possible values:

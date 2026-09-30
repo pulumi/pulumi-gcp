@@ -27,6 +27,10 @@ __all__ = [
     'ClusterGcpConfigAccessConfigArgsDict',
     'ClusterGcpConfigAccessConfigNetworkConfigArgs',
     'ClusterGcpConfigAccessConfigNetworkConfigArgsDict',
+    'ClusterGcpConfigAccessConfigPublicClusterConfigArgs',
+    'ClusterGcpConfigAccessConfigPublicClusterConfigArgsDict',
+    'ClusterPublicClusterDetailArgs',
+    'ClusterPublicClusterDetailArgsDict',
     'ClusterRebalanceConfigArgs',
     'ClusterRebalanceConfigArgsDict',
     'ClusterTlsConfigArgs',
@@ -276,16 +280,26 @@ class ClusterGcpConfigAccessConfigArgsDict(TypedDict):
     Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
     Structure is documented below.
     """
+    public_cluster_config: NotRequired[pulumi.Input[Optional['ClusterGcpConfigAccessConfigPublicClusterConfigArgsDict']]]
+    """
+    Public connection configuration for the Kafka cluster.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ClusterGcpConfigAccessConfigArgs:
     def __init__(__self__, *,
-                 network_configs: pulumi.Input[Sequence[pulumi.Input['ClusterGcpConfigAccessConfigNetworkConfigArgs']]]):
+                 network_configs: pulumi.Input[Sequence[pulumi.Input['ClusterGcpConfigAccessConfigNetworkConfigArgs']]],
+                 public_cluster_config: pulumi.Input[Optional['ClusterGcpConfigAccessConfigPublicClusterConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterGcpConfigAccessConfigNetworkConfigArgs']]] network_configs: Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka cluster are allocated. To make the cluster available in a VPC, you must specify at least one `network_configs` block. Max of 10 subnets per cluster. Additional subnets may be specified with additional `network_configs` blocks.
                Structure is documented below.
+        :param pulumi.Input['ClusterGcpConfigAccessConfigPublicClusterConfigArgs'] public_cluster_config: Public connection configuration for the Kafka cluster.
+               Structure is documented below.
         """
         pulumi.set(__self__, "network_configs", network_configs)
+        if public_cluster_config is not None:
+            pulumi.set(__self__, "public_cluster_config", public_cluster_config)
 
     @_builtins.property
     @pulumi.getter(name="networkConfigs")
@@ -299,6 +313,19 @@ class ClusterGcpConfigAccessConfigArgs:
     @network_configs.setter
     def network_configs(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterGcpConfigAccessConfigNetworkConfigArgs']]]):
         pulumi.set(self, "network_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicClusterConfig")
+    def public_cluster_config(self) -> pulumi.Input[Optional['ClusterGcpConfigAccessConfigPublicClusterConfigArgs']]:
+        """
+        Public connection configuration for the Kafka cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_cluster_config")
+
+    @public_cluster_config.setter
+    def public_cluster_config(self, value: pulumi.Input[Optional['ClusterGcpConfigAccessConfigPublicClusterConfigArgs']]):
+        pulumi.set(self, "public_cluster_config", value)
 
 
 class ClusterGcpConfigAccessConfigNetworkConfigArgsDict(TypedDict):
@@ -327,6 +354,89 @@ class ClusterGcpConfigAccessConfigNetworkConfigArgs:
     @subnet.setter
     def subnet(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "subnet", value)
+
+
+class ClusterGcpConfigAccessConfigPublicClusterConfigArgsDict(TypedDict):
+    allowed_source_ip_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+    """
+
+@pulumi.input_type
+class ClusterGcpConfigAccessConfigPublicClusterConfigArgs:
+    def __init__(__self__, *,
+                 allowed_source_ip_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_source_ip_ranges: A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+        """
+        pulumi.set(__self__, "allowed_source_ip_ranges", allowed_source_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedSourceIpRanges")
+    def allowed_source_ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A list of IPv4 addresses or CIDR ranges that are allowed to connect to the cluster. To protect your cluster, allow access from only trusted external IP ranges. Don't expose your cluster to untrusted ranges.
+        """
+        return pulumi.get(self, "allowed_source_ip_ranges")
+
+    @allowed_source_ip_ranges.setter
+    def allowed_source_ip_ranges(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "allowed_source_ip_ranges", value)
+
+
+class ClusterPublicClusterDetailArgsDict(TypedDict):
+    discovery_dns_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+    """
+    external_ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+    """
+
+@pulumi.input_type
+class ClusterPublicClusterDetailArgs:
+    def __init__(__self__, *,
+                 discovery_dns_records: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 external_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] discovery_dns_records: (Output)
+               DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_ip_addresses: (Output)
+               All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+        """
+        if discovery_dns_records is not None:
+            pulumi.set(__self__, "discovery_dns_records", discovery_dns_records)
+        if external_ip_addresses is not None:
+            pulumi.set(__self__, "external_ip_addresses", external_ip_addresses)
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryDnsRecords")
+    def discovery_dns_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        DNS discovery records that resolve to all of the external IP addresses associated with the public cluster.
+        """
+        return pulumi.get(self, "discovery_dns_records")
+
+    @discovery_dns_records.setter
+    def discovery_dns_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "discovery_dns_records", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalIpAddresses")
+    def external_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster.
+        """
+        return pulumi.get(self, "external_ip_addresses")
+
+    @external_ip_addresses.setter
+    def external_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "external_ip_addresses", value)
 
 
 class ClusterRebalanceConfigArgsDict(TypedDict):

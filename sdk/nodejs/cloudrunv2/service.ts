@@ -49,7 +49,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     deletionProtection: false,
  *     ingress: "INGRESS_TRAFFIC_ALL",
- *     launchStage: "BETA",
  *     template: {
  *         scaling: {
  *             minInstanceCount: 1,
@@ -587,7 +586,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
- *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_75125`),
+ *     name: project.then(project => `tf-test-gcf-source_39249-${project.projectId}`),
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -958,6 +957,10 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly scaling: pulumi.Output<outputs.cloudrunv2.ServiceScaling>;
     /**
+     * Enables SSH access to the Service.
+     */
+    declare public readonly sshEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1049,6 +1052,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["scaling"] = state?.scaling;
+            resourceInputs["sshEnabled"] = state?.sshEnabled;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["template"] = state?.template;
             resourceInputs["terminalConditions"] = state?.terminalConditions;
@@ -1086,6 +1090,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["scaling"] = args?.scaling;
+            resourceInputs["sshEnabled"] = args?.sshEnabled;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["template"] = args?.template;
             resourceInputs["traffics"] = args?.traffics;
@@ -1298,6 +1303,10 @@ export interface ServiceState {
      */
     scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling | undefined>;
     /**
+     * Enables SSH access to the Service.
+     */
+    sshEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1456,6 +1465,10 @@ export interface ServiceArgs {
      * Structure is documented below.
      */
     scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling | undefined>;
+    /**
+     * Enables SSH access to the Service.
+     */
+    sshEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.

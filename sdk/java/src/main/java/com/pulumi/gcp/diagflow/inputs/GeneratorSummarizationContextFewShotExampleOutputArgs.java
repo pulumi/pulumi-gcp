@@ -6,6 +6,8 @@ package com.pulumi.gcp.diagflow.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.diagflow.inputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs;
+import com.pulumi.gcp.diagflow.inputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +34,28 @@ public final class GeneratorSummarizationContextFewShotExampleOutputArgs extends
         return Optional.ofNullable(this.summarySuggestion);
     }
 
+    /**
+     * List of request and response for tool calls executed.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolCallInfos")
+    private @Nullable Output<List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs>> toolCallInfos;
+
+    /**
+     * @return List of request and response for tool calls executed.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs>>> toolCallInfos() {
+        return Optional.ofNullable(this.toolCallInfos);
+    }
+
     private GeneratorSummarizationContextFewShotExampleOutputArgs() {}
 
     private GeneratorSummarizationContextFewShotExampleOutputArgs(GeneratorSummarizationContextFewShotExampleOutputArgs $) {
         this.summarySuggestion = $.summarySuggestion;
+        this.toolCallInfos = $.toolCallInfos;
     }
 
     public static Builder builder() {
@@ -77,6 +97,40 @@ public final class GeneratorSummarizationContextFewShotExampleOutputArgs extends
          */
         public Builder summarySuggestion(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs summarySuggestion) {
             return summarySuggestion(Output.of(summarySuggestion));
+        }
+
+        /**
+         * @param toolCallInfos List of request and response for tool calls executed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolCallInfos(@Nullable Output<List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs>> toolCallInfos) {
+            $.toolCallInfos = toolCallInfos;
+            return this;
+        }
+
+        /**
+         * @param toolCallInfos List of request and response for tool calls executed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolCallInfos(List<GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs> toolCallInfos) {
+            return toolCallInfos(Output.of(toolCallInfos));
+        }
+
+        /**
+         * @param toolCallInfos List of request and response for tool calls executed.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolCallInfos(GeneratorSummarizationContextFewShotExampleOutputToolCallInfoArgs... toolCallInfos) {
+            return toolCallInfos(List.of(toolCallInfos));
         }
 
         public GeneratorSummarizationContextFewShotExampleOutputArgs build() {

@@ -24,12 +24,41 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? RawKey;
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RawKey` or `RawKeyWo` can only be set.
+        /// </summary>
+        public readonly string? RawKeyWo;
+        /// <summary>
+        /// Triggers update of `RawKeyWo` write-only. Increment this value when an update to `RawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? RawKeyWoVersion;
+        /// <summary>
         /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
         /// customer-supplied encryption key to either encrypt or decrypt
         /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? RsaEncryptedKey;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        /// customer-supplied encryption key to either encrypt or decrypt
+        /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RsaEncryptedKey` or `RsaEncryptedKeyWo` can only be set.
+        /// </summary>
+        public readonly string? RsaEncryptedKeyWo;
+        /// <summary>
+        /// Triggers update of `RsaEncryptedKeyWo` write-only. Increment this value when an update to `RsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? RsaEncryptedKeyWoVersion;
         /// <summary>
         /// (Output)
         /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
@@ -43,13 +72,25 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? rawKey,
 
+            string? rawKeyWo,
+
+            string? rawKeyWoVersion,
+
             string? rsaEncryptedKey,
+
+            string? rsaEncryptedKeyWo,
+
+            string? rsaEncryptedKeyWoVersion,
 
             string? sha256)
         {
             KmsKeyName = kmsKeyName;
             RawKey = rawKey;
+            RawKeyWo = rawKeyWo;
+            RawKeyWoVersion = rawKeyWoVersion;
             RsaEncryptedKey = rsaEncryptedKey;
+            RsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            RsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
             Sha256 = sha256;
         }
     }

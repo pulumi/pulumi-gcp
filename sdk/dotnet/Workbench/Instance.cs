@@ -33,7 +33,15 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-west1-a",
+    ///         Location = "us-east1-b",
+    ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+    ///             {
+    ///                 DiskType = "HYPERDISK_BALANCED",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -51,9 +59,14 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-west1-a",
+    ///         Location = "us-east1-b",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
+    ///             MachineType = "n4-standard-2",
+    ///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+    ///             {
+    ///                 DiskType = "HYPERDISK_BALANCED",
+    ///             },
     ///             ContainerImage = new Gcp.Workbench.Inputs.InstanceGceSetupContainerImageArgs
     ///             {
     ///                 Repository = "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
@@ -77,18 +90,18 @@ namespace Pulumi.Gcp.Workbench
     ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
     ///     {
     ///         Name = "wbi-reservation",
-    ///         Zone = "us-central1-a",
+    ///         Zone = "us-east1-b",
     ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
     ///             Count = 1,
     ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
-    ///                 MachineType = "n1-standard-1",
+    ///                 MachineType = "g2-standard-4",
     ///                 GuestAccelerators = new[]
     ///                 {
     ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
     ///                     {
-    ///                         AcceleratorType = "nvidia-tesla-t4",
+    ///                         AcceleratorType = "nvidia-l4",
     ///                         AcceleratorCount = 1,
     ///                     },
     ///                 },
@@ -100,17 +113,25 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-central1-a",
+    ///         Location = "us-east1-b",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
-    ///             MachineType = "n1-standard-1",
+    ///             MachineType = "g2-standard-4",
     ///             AcceleratorConfigs = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
     ///                 {
-    ///                     Type = "NVIDIA_TESLA_T4",
+    ///                     Type = "NVIDIA_L4",
     ///                     CoreCount = "1",
     ///                 },
+    ///             },
+    ///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+    ///             {
+    ///                 DiskType = "PD_SSD",
+    ///             },
+    ///             DataDisks = new Gcp.Workbench.Inputs.InstanceGceSetupDataDisksArgs
+    ///             {
+    ///                 DiskType = "PD_SSD",
     ///             },
     ///             VmImage = new Gcp.Workbench.Inputs.InstanceGceSetupVmImageArgs
     ///             {
@@ -145,10 +166,14 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-central1-a",
+    ///         Location = "us-east1-b",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
-    ///             MachineType = "e2-standard-4",
+    ///             MachineType = "n4-standard-4",
+    ///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+    ///             {
+    ///                 DiskType = "HYPERDISK_BALANCED",
+    ///             },
     ///             ShieldedInstanceConfig = new Gcp.Workbench.Inputs.InstanceGceSetupShieldedInstanceConfigArgs
     ///             {
     ///                 EnableSecureBoot = false,
@@ -196,13 +221,14 @@ namespace Pulumi.Gcp.Workbench
     ///     {
     ///         Name = "wbi-test-default",
     ///         Network = myNetwork.Id,
-    ///         Region = "us-central1",
+    ///         Region = "us-east1",
     ///         IpCidrRange = "10.0.1.0/24",
     ///     });
     /// 
     ///     var @static = new Gcp.Compute.Address("static", new()
     ///     {
     ///         Name = "wbi-test-default",
+    ///         Region = "us-east1",
     ///     });
     /// 
     ///     var actAsPermission = new Gcp.ServiceAccount.IAMMember("act_as_permission", new()
@@ -215,19 +241,19 @@ namespace Pulumi.Gcp.Workbench
     ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
     ///     {
     ///         Name = "wbi-reservation",
-    ///         Zone = "us-central1-a",
+    ///         Zone = "us-east1-b",
     ///         SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
     ///         {
     ///             Count = 1,
     ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
-    ///                 MachineType = "n1-standard-4",
-    ///                 MinCpuPlatform = "Intel Broadwell",
+    ///                 MachineType = "g2-standard-4",
+    ///                 MinCpuPlatform = "Intel Cascade Lake",
     ///                 GuestAccelerators = new[]
     ///                 {
     ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
     ///                     {
-    ///                         AcceleratorType = "nvidia-tesla-t4",
+    ///                         AcceleratorType = "nvidia-l4",
     ///                         AcceleratorCount = 1,
     ///                     },
     ///                 },
@@ -239,7 +265,7 @@ namespace Pulumi.Gcp.Workbench
     ///     var myPolicy = new Gcp.Compute.ResourcePolicy("my_policy", new()
     ///     {
     ///         Name = "wbi-policy",
-    ///         Region = "us-central1",
+    ///         Region = "us-east1",
     ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
     ///         {
     ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
@@ -256,17 +282,17 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-central1-a",
+    ///         Location = "us-east1-b",
     ///         EnableDeletionProtection = false,
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
-    ///             MachineType = "n1-standard-4",
-    ///             MinCpuPlatform = "Intel Broadwell",
+    ///             MachineType = "g2-standard-4",
+    ///             MinCpuPlatform = "Intel Cascade Lake",
     ///             AcceleratorConfigs = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
     ///                 {
-    ///                     Type = "NVIDIA_TESLA_T4",
+    ///                     Type = "NVIDIA_L4",
     ///                     CoreCount = "1",
     ///                 },
     ///             },
@@ -379,7 +405,7 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-central1-a",
+    ///         Location = "us-east1-b",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
     ///             MachineType = "n2d-standard-2",
@@ -425,10 +451,14 @@ namespace Pulumi.Gcp.Workbench
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
-    ///         Location = "us-central1-a",
+    ///         Location = "us-east1-b",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
-    ///             MachineType = "e2-standard-4",
+    ///             MachineType = "n4-standard-4",
+    ///             BootDisk = new Gcp.Workbench.Inputs.InstanceGceSetupBootDiskArgs
+    ///             {
+    ///                 DiskType = "HYPERDISK_BALANCED",
+    ///             },
     ///             Metadata = 
     ///             {
     ///                 { "terraform", "true" },

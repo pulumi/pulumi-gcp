@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			asp, err := dataproc.NewAutoscalingPolicy(ctx, "asp", &dataproc.AutoscalingPolicyArgs{
 //				PolicyId: pulumi.String("dataproc-policy"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				WorkerConfig: &dataproc.AutoscalingPolicyWorkerConfigArgs{
 //					MaxInstances: pulumi.Int(3),
 //				},
@@ -49,10 +49,26 @@ import (
 //			}
 //			_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
 //				Name:   pulumi.String("dataproc-policy"),
-//				Region: pulumi.String("us-central1"),
+//				Region: pulumi.String("us-east1"),
 //				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 //					AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{
 //						PolicyUri: asp.Name,
+//					},
+//					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
+//						NumInstances: pulumi.Int(1),
+//						MachineType:  pulumi.String("n4-standard-2"),
+//						DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+//							BootDiskType:   pulumi.String("hyperdisk-balanced"),
+//							BootDiskSizeGb: pulumi.Int(35),
+//						},
+//					},
+//					WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
+//						NumInstances: pulumi.Int(2),
+//						MachineType:  pulumi.String("n4-standard-2"),
+//						DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
+//							BootDiskType:   pulumi.String("hyperdisk-balanced"),
+//							BootDiskSizeGb: pulumi.Int(35),
+//						},
 //					},
 //				},
 //			})
