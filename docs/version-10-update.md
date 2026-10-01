@@ -2,7 +2,7 @@
 
 Version 10.0.0 of the GCP provider for Pulumi is a major release and includes changes that you need to consider when upgrading. This guide will help with that process and focuses only on changes from version 9.x to version 10.0.0. See the [Version 9 Upgrade Guide](https://www.pulumi.com/registry/packages/gcp/how-to-guides/9-0-migration) for information on upgrading from 8.x to version 9.0.0. Version 10.0.0 tracks the upstream Terraform provider's v8 release, so the [google-beta v8 upgrade guide](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade) is the companion document; each breaking change below links to the upstream section it comes from, where there is one.
 
-Version 10.0.0 tracks the upstream `terraform-provider-google-beta` v8.x release.
+Version 10.0.0 tracks the upstream `terraform-provider-google-beta` v8.5.0 release.
 
 ## How to upgrade
 
