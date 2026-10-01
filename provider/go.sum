@@ -3941,10 +3941,10 @@ github.com/pulumi/pulumi-terraform-bridge/v3 v3.140.0 h1:vZBeHpFPSuXrlqL7BkQFKP/
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.140.0/go.mod h1:IKAJ8S21ybYvUkKHtcaoawYzdwmUv1V3zbc+oiLEHEk=
 github.com/pulumi/pulumi-yaml v1.38.8 h1:QbreIAR3vtarFay6ruk7DEjNMHtxdsK8v5xrjmZFNEE=
 github.com/pulumi/pulumi-yaml v1.38.8/go.mod h1:oAof7ubOJ6MOQZ/XTR+TsQaS//+Ft4/XniRlO5Qyqnc=
-github.com/pulumi/pulumi/pkg/v3 v3.266.0 h1:QacwmwRo4qigsRcqV/bmEfjCcKOF555vTBBzlH98lGQ=
-github.com/pulumi/pulumi/pkg/v3 v3.266.0/go.mod h1:7+TltU1SOa2UdLlnVh/cwqDq5GxdYmkzIsq2K4gWGZc=
-github.com/pulumi/pulumi/sdk/v3 v3.266.0 h1:ht9Nr2eCj/FzyXmo5ZcI4kETIlokHNVSEVfw23KvBeE=
-github.com/pulumi/pulumi/sdk/v3 v3.266.0/go.mod h1:zRkd7bKRwqeIpHxGeACXBJXNGe/kz+RINyMtmY4GtE8=
+github.com/pulumi/pulumi/pkg/v3 v3.267.0 h1:lFbVPP44E/GP64PJh/HpJgWIbg9wUGKvo2ytZXwXJUE=
+github.com/pulumi/pulumi/pkg/v3 v3.267.0/go.mod h1:ESsKsvW4Hu98Wyb4cwvs2ydqnnFa23Vx+o7y8ov18H4=
+github.com/pulumi/pulumi/sdk/v3 v3.267.0 h1:fannfwJKxGwybpCgflADIVE3ZqYtdNFpXdRU9tfAWgw=
+github.com/pulumi/pulumi/sdk/v3 v3.267.0/go.mod h1:zRkd7bKRwqeIpHxGeACXBJXNGe/kz+RINyMtmY4GtE8=
 github.com/pulumi/terraform-diff-reader v0.0.2 h1:kTE4nEXU3/SYXESvAIem+wyHMI3abqkI3OhJ0G04LLI=
 github.com/pulumi/terraform-diff-reader v0.0.2/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b h1:efoz3DmFhw7EPJ3JxVfWYwpg5Dl6QTLvzMV0a7Y7mlo=
@@ -4324,8 +4324,8 @@ go.opentelemetry.io/proto/otlp v0.15.0/go.mod h1:H7XAot3MsfNsj7EXtrA2q5xSNQ10UqI
 go.opentelemetry.io/proto/otlp v0.19.0/go.mod h1:H7XAot3MsfNsj7EXtrA2q5xSNQ10UqI405h3+duxN4U=
 go.opentelemetry.io/proto/otlp v1.0.0/go.mod h1:Sy6pihPLfYHkr3NkUbEhGHFhINUSI/v80hjKIs5JXpM=
 go.opentelemetry.io/proto/otlp v1.7.1/go.mod h1:b2rVh6rfI/s2pHWNlB7ILJcRALpcNDzKhACevjI+ZnE=
-go.opentelemetry.io/proto/otlp v1.11.0 h1:5rrYs0Ykyj50sdU/JU0x8etU+LubXWb+gED6TbEdMIk=
-go.opentelemetry.io/proto/otlp v1.11.0/go.mod h1:SmVizdCOAm3XBtG1g1NnOdhW6jtddT72hLMhv8VwA8E=
+go.opentelemetry.io/proto/otlp v1.11.1 h1:SCrPqH9NE5CmBrOqpjNCiT0X5mGwMyGERXdogfR7Yjw=
+go.opentelemetry.io/proto/otlp v1.11.1/go.mod h1:wq8W4aSf6bOy8RZyESOeQFr9Pu7wydWX/TY4sgvrTPg=
 go.opentelemetry.io/proto/slim/otlp v1.11.0 h1:zB37f+f99+y6UIZR4h7UpwbXd5kFNyip35U7GaJ/Jik=
 go.opentelemetry.io/proto/slim/otlp v1.11.0/go.mod h1:mI3DeND+VXZuA4keqFPKDJ3BklwveYm1JqBcEWKDEOM=
 go.opentelemetry.io/proto/slim/otlp/collector/profiles/v1development v0.4.0 h1:mt+DWtks0biKnz0jXMpDbxWN0CHJi6OJDKe4GcREkcs=
