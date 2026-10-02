@@ -99,13 +99,13 @@ GCP provider v10.0 includes several breaking changes. These are the ones we cons
 
 An empty `guestAccelerators` list and omitting the block are unchanged from v9.
 
-The block is still ignored in one case: nothing attached, and exactly one block declared. Attach an accelerator, or declare a second zero-count block, and the instance is replaced.
+This only affects instances that have an accelerator card attached.
 
 *Upstream: [`google_compute_instance`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_instance) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
-**If a `gcp.compute.Instance` declares a `guestAccelerator` block with `count: 0`**, `pulumi preview` shows a replacement of the instance and `pulumi up` carries it out, whenever accelerators are attached or the configuration holds more than one block. Replacement, not an update. No type or signature changed, so the program still compiles and `pulumi preview` still exits cleanly; the replacement shows up only in what `pulumi preview` prints.
+**If you declare a `count: 0` block and the instance has an accelerator card attached**, `pulumi preview` shows a replacement of the instance and `pulumi up` carries it out. Replacement, not an update. No type or signature changed, so the program still compiles and `pulumi preview` still exits cleanly; the replacement shows up only in what `pulumi preview` prints.
 
 A replacement destroys the boot disk and any local SSDs, and changes the external IP, the internal IP and the instance id. Local SSDs cannot be snapshotted, so what was on them is unrecoverable. Disks and addresses declared as their own resources survive and are reattached.
 
