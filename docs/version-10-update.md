@@ -98,9 +98,9 @@ GCP provider v10.0 includes several breaking changes. These are the ones we cons
 
 `gcp.compute.Instance` now acts on a `guestAccelerator` block whose `count` is `0`, where v9 ignored it. Detaching an accelerator cannot be done in place, so the instance is **replaced**.
 
-An empty `guestAccelerators` list and omitting the block are unchanged from v9.
+This affects instances that have an accelerator card attached, and instances that declare two or more zero-count blocks with nothing attached.
 
-This only affects instances that have an accelerator card attached.
+Omitting the block is the safe form: it leaves an attached accelerator in place. An empty `guestAccelerators` list is not the same as omitting it. With an accelerator attached it replaces the instance, just as a `count: 0` block does, and it did so on v9 too.
 
 *Upstream: [`google_compute_instance`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_instance) in the google-beta v8 upgrade guide.*
 
@@ -335,8 +335,7 @@ var args = new Gcp.Compute.InstanceArgs
 // v9 (will cause replacement)
 // GuestAccelerators = new[] { new Gcp.Compute.Inputs.InstanceGuestAcceleratorArgs
 //     { Count = enableGpu ? 1 : 0, Type = "nvidia-tesla-t4" } },
-// v10 (fixed): set the property only when an accelerator is wanted, rather than
-// assigning null, because the list conversion does not treat null as "omitted".
+// v10 (fixed): set the property only when an accelerator is wanted.
 if (enableGpu)
 {
     args.GuestAccelerators = new[]
@@ -388,8 +387,8 @@ var builder = InstanceArgs.builder()
 // v9 (will cause replacement)
 // .guestAccelerators(InstanceGuestAcceleratorArgs.builder()
 //     .count(enableGpu ? 1 : 0).type("nvidia-tesla-t4").build())
-// v10 (fixed): call the setter only when an accelerator is wanted, because
-// passing null to the varargs overload adds a null element.
+// v10 (fixed): call the setter only when an accelerator is wanted. The varargs
+// overload has no null you can pass to mean "omitted"; List.of throws on it.
 if (enableGpu) {
     builder.guestAccelerators(InstanceGuestAcceleratorArgs.builder()
         .count(1)
@@ -579,14 +578,14 @@ curl -X POST -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 2. Drop the legacy entries from Pulumi's state. This edits state only and leaves the machine running. Delete the IAM resources before the instance they point at.
 
 ```bash
-pulumi state delete 'urn:pulumi:dev::my-stack::gcp:notebooks/instanceIamMember:InstanceIamMember::viewer'
-pulumi state delete 'urn:pulumi:dev::my-stack::gcp:notebooks/instance:Instance::my-notebook'
+pulumi state delete 'urn:pulumi:dev::my-stack::gcp:notebooks/instanceIamMember:InstanceIamMember::legacy-notebook-viewer'
+pulumi state delete 'urn:pulumi:dev::my-stack::gcp:notebooks/instance:Instance::legacy-notebook'
 ```
 
 3. Rewrite the code against `gcp.workbench` (below), then adopt the migrated machine rather than creating a second one.
 
 ```bash
-pulumi import gcp:workbench/instance:Instance my-notebook \
+pulumi import gcp:workbench/instance:Instance legacy-notebook \
   projects/PROJECT/locations/ZONE/instances/NAME
 ```
 
@@ -966,13 +965,20 @@ Only these two resources changed. The regional `gcp.compute.ForwardingRule` and 
 
 #### Am I affected?
 
-Run the following command against each stack to find the resources whose scheme would change if they were recreated. It is a preview and changes nothing.
+Run the following command against each stack to find the resources whose scheme would change if they were recreated. It is a preview and changes nothing. `--replace` is what surfaces them: a plain preview shows no scheme change at all, because the provider replays the default it recorded when the resource was created.
 
 ```bash
 pulumi preview --replace '**' --json \
 | jq -r '.steps[]
     | select(.oldState.inputs.loadBalancingScheme != .newState.inputs.loadBalancingScheme)
     | "\(.op)\t\(.oldState.inputs.loadBalancingScheme // "-") => \(.newState.inputs.loadBalancingScheme // "-")\t\(.urn)"'
+```
+
+Output from a stack holding one classic Application Load Balancer whose `gcp.compute.BackendService` and `gcp.compute.GlobalForwardingRule` do not name a scheme:
+
+```text
+replace	EXTERNAL => EXTERNAL_MANAGED	urn:pulumi:dev::my-stack::gcp:compute/backendService:BackendService::backend
+replace	EXTERNAL => EXTERNAL_MANAGED	urn:pulumi:dev::my-stack::gcp:compute/globalForwardingRule:GlobalForwardingRule::frontend
 ```
 
 Anything it prints is a classic load balancer that would come back as a global external one. No output means every `gcp.compute.BackendService` and `gcp.compute.GlobalForwardingRule` in the stack already names its scheme, or the stack has none.
