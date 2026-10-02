@@ -80,6 +80,11 @@ export type NotificationConfig = import("./notificationConfig").NotificationConf
 export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
 utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
 
+export { NotificationServiceAccountArgs, NotificationServiceAccountState } from "./notificationServiceAccount";
+export type NotificationServiceAccount = import("./notificationServiceAccount").NotificationServiceAccount;
+export const NotificationServiceAccount: typeof import("./notificationServiceAccount").NotificationServiceAccount = null as any;
+utilities.lazyLoad(exports, ["NotificationServiceAccount"], () => require("./notificationServiceAccount"));
+
 export { OrganizationCustomModuleArgs, OrganizationCustomModuleState } from "./organizationCustomModule";
 export type OrganizationCustomModule = import("./organizationCustomModule").OrganizationCustomModule;
 export const OrganizationCustomModule: typeof import("./organizationCustomModule").OrganizationCustomModule = null as any;
@@ -226,6 +231,8 @@ const _module = {
                 return new MuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/notificationConfig:NotificationConfig":
                 return new NotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/notificationServiceAccount:NotificationServiceAccount":
+                return new NotificationServiceAccount(name, <any>undefined, { urn })
             case "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule":
                 return new OrganizationCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport":
@@ -290,6 +297,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementOrganizat
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementProjectSecurityHealthAnalyticsCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationServiceAccount", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectCustomModule", _module)

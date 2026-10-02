@@ -109,7 +109,7 @@ public final class GetDatabaseInstanceSetting {
      */
     private Integer diskAutoresizeLimit;
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+     * @return The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
      * 
      */
     private Integer diskSize;
@@ -325,7 +325,7 @@ public final class GetDatabaseInstanceSetting {
         return this.diskAutoresizeLimit;
     }
     /**
-     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+     * @return The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
      * 
      */
     public Integer diskSize() {

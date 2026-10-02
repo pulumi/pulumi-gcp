@@ -72,6 +72,11 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private List<GetDatabaseInstancesInstanceDnsName> dnsNames;
+    /**
+     * @return Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+     * 
+     */
+    private Boolean encryptionConfidentialMode;
     private String encryptionKeyName;
     /**
      * @return Whether to enforce the new SQL network architecture.
@@ -271,6 +276,13 @@ public final class GetDatabaseInstancesInstance {
      */
     public List<GetDatabaseInstancesInstanceDnsName> dnsNames() {
         return this.dnsNames;
+    }
+    /**
+     * @return Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+     * 
+     */
+    public Boolean encryptionConfidentialMode() {
+        return this.encryptionConfidentialMode;
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
@@ -479,6 +491,7 @@ public final class GetDatabaseInstancesInstance {
         private Boolean deletionProtection;
         private String dnsName;
         private List<GetDatabaseInstancesInstanceDnsName> dnsNames;
+        private Boolean encryptionConfidentialMode;
         private String encryptionKeyName;
         private Boolean enforceNewSqlNetworkArchitecture;
         private String finalBackupDescription;
@@ -520,6 +533,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
+    	      this.encryptionConfidentialMode = defaults.encryptionConfidentialMode;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
     	      this.enforceNewSqlNetworkArchitecture = defaults.enforceNewSqlNetworkArchitecture;
     	      this.finalBackupDescription = defaults.finalBackupDescription;
@@ -631,6 +645,14 @@ public final class GetDatabaseInstancesInstance {
         }
         public Builder dnsNames(GetDatabaseInstancesInstanceDnsName... dnsNames) {
             return dnsNames(List.of(dnsNames));
+        }
+        @CustomType.Setter
+        public Builder encryptionConfidentialMode(Boolean encryptionConfidentialMode) {
+            if (encryptionConfidentialMode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "encryptionConfidentialMode");
+            }
+            this.encryptionConfidentialMode = encryptionConfidentialMode;
+            return this;
         }
         @CustomType.Setter
         public Builder encryptionKeyName(String encryptionKeyName) {
@@ -899,6 +921,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;
+            _resultValue.encryptionConfidentialMode = encryptionConfidentialMode;
             _resultValue.encryptionKeyName = encryptionKeyName;
             _resultValue.enforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             _resultValue.finalBackupDescription = finalBackupDescription;

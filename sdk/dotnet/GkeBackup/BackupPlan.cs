@@ -33,8 +33,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "basic-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -55,7 +59,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "basic-plan",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
     ///         {
     ///             IncludeVolumeData = true,
@@ -79,7 +83,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "autopilot-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         EnableAutopilot = true,
     ///         IpAllocationPolicy = new() { },
     ///         ReleaseChannel = new Gcp.Container.Inputs.ClusterReleaseChannelArgs
@@ -102,7 +106,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "autopilot-plan",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
     ///         {
     ///             IncludeVolumeData = true,
@@ -126,8 +130,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "cmek-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -147,7 +155,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
     ///     {
     ///         Name = "backup-key",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///     });
     /// 
     ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
@@ -160,7 +168,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "cmek-plan",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
     ///         {
     ///             IncludeVolumeData = true,
@@ -195,8 +203,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "nslabels-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -217,7 +229,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "nslabels-plan",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
     ///         {
     ///             IncludeVolumeData = true,
@@ -251,8 +263,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "full-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -273,7 +289,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "full-plan",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
     ///         {
     ///             BackupDeleteLockDays = 30,
@@ -321,8 +337,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "permissive-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -343,7 +363,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "permissive-plan",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
     ///         {
     ///             BackupDeleteLockDays = 30,
@@ -392,8 +412,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "rpo-daily-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -414,7 +438,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "rpo-daily-window",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
     ///         {
     ///             BackupDeleteLockDays = 30,
@@ -480,8 +504,12 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var primary = new Gcp.Container.Cluster("primary", new()
     ///     {
     ///         Name = "rpo-weekly-cluster",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         InitialNodeCount = 1,
+    ///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///         {
+    ///             MachineType = "n4-standard-2",
+    ///         },
     ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
     ///         {
     ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -502,7 +530,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     {
     ///         Name = "rpo-weekly-window",
     ///         Cluster = primary.Id,
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
     ///         {
     ///             BackupDeleteLockDays = 30,

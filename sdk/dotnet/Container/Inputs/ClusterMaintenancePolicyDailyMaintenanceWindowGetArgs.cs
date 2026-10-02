@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
+        /// <summary>
+        /// The start time of the exclusion window, in RFC3339 format.
+        /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
 

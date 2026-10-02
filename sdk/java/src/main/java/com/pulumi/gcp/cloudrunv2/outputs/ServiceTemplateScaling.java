@@ -13,14 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateScaling {
     /**
-     * @return (Optional, Beta)
-     * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * @return Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
     private @Nullable Double concurrencyUtilization;
     /**
-     * @return (Optional, Beta)
-     * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * @return Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
     private @Nullable Double cpuUtilization;
@@ -37,16 +35,14 @@ public final class ServiceTemplateScaling {
 
     private ServiceTemplateScaling() {}
     /**
-     * @return (Optional, Beta)
-     * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * @return Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
     public Optional<Double> concurrencyUtilization() {
         return Optional.ofNullable(this.concurrencyUtilization);
     }
     /**
-     * @return (Optional, Beta)
-     * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * @return Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
      * 
      */
     public Optional<Double> cpuUtilization() {

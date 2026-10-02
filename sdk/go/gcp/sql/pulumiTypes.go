@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -8619,7 +8619,7 @@ type GetDatabaseInstanceSetting struct {
 	DiskAutoresize bool `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+	// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
 	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType string `pulumi:"diskType"`
@@ -8715,7 +8715,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskAutoresize pulumi.BoolInput `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+	// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
 	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
@@ -8916,7 +8916,7 @@ func (o GetDatabaseInstanceSettingOutput) DiskAutoresizeLimit() pulumi.IntOutput
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }
@@ -12082,8 +12082,10 @@ type GetDatabaseInstancesInstance struct {
 	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 	DnsName string `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
-	DnsNames          []GetDatabaseInstancesInstanceDnsName `pulumi:"dnsNames"`
-	EncryptionKeyName string                                `pulumi:"encryptionKeyName"`
+	DnsNames []GetDatabaseInstancesInstanceDnsName `pulumi:"dnsNames"`
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+	EncryptionConfidentialMode bool   `pulumi:"encryptionConfidentialMode"`
+	EncryptionKeyName          string `pulumi:"encryptionKeyName"`
 	// Whether to enforce the new SQL network architecture.
 	EnforceNewSqlNetworkArchitecture bool `pulumi:"enforceNewSqlNetworkArchitecture"`
 	// The description of final backup if instance enable create final backup during instance deletion.
@@ -12174,8 +12176,10 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// The instance-level dns name of the instance for PSC instances or public IP CAS instances.
 	DnsName pulumi.StringInput `pulumi:"dnsName"`
 	// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
-	DnsNames          GetDatabaseInstancesInstanceDnsNameArrayInput `pulumi:"dnsNames"`
-	EncryptionKeyName pulumi.StringInput                            `pulumi:"encryptionKeyName"`
+	DnsNames GetDatabaseInstancesInstanceDnsNameArrayInput `pulumi:"dnsNames"`
+	// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+	EncryptionConfidentialMode pulumi.BoolInput   `pulumi:"encryptionConfidentialMode"`
+	EncryptionKeyName          pulumi.StringInput `pulumi:"encryptionKeyName"`
 	// Whether to enforce the new SQL network architecture.
 	EnforceNewSqlNetworkArchitecture pulumi.BoolInput `pulumi:"enforceNewSqlNetworkArchitecture"`
 	// The description of final backup if instance enable create final backup during instance deletion.
@@ -12331,6 +12335,11 @@ func (o GetDatabaseInstancesInstanceOutput) DnsName() pulumi.StringOutput {
 // The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
 func (o GetDatabaseInstancesInstanceOutput) DnsNames() GetDatabaseInstancesInstanceDnsNameArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceDnsName { return v.DnsNames }).(GetDatabaseInstancesInstanceDnsNameArrayOutput)
+}
+
+// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+func (o GetDatabaseInstancesInstanceOutput) EncryptionConfidentialMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.EncryptionConfidentialMode }).(pulumi.BoolOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
@@ -13609,7 +13618,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskAutoresize bool `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit int `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+	// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize int `pulumi:"diskSize"`
 	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType string `pulumi:"diskType"`
@@ -13705,7 +13714,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskAutoresize pulumi.BoolInput `pulumi:"diskAutoresize"`
 	// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
 	DiskAutoresizeLimit pulumi.IntInput `pulumi:"diskAutoresizeLimit"`
-	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+	// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
 	// The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
@@ -13908,7 +13917,7 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskAutoresizeLimit() pulumi.
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskAutoresizeLimit }).(pulumi.IntOutput)
 }
 
-// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+// The size of data disk, in GB. The size of a running instance can be increased, or reduced when diskAutoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
 func (o GetDatabaseInstancesInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) int { return v.DiskSize }).(pulumi.IntOutput)
 }

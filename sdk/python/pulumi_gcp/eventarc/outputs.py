@@ -28,6 +28,8 @@ __all__ = [
     'PipelineDestinationOutputPayloadFormatAvro',
     'PipelineDestinationOutputPayloadFormatJson',
     'PipelineDestinationOutputPayloadFormatProtobuf',
+    'PipelineIamBindingCondition',
+    'PipelineIamMemberCondition',
     'PipelineInputPayloadFormat',
     'PipelineInputPayloadFormatAvro',
     'PipelineInputPayloadFormatJson',
@@ -997,6 +999,60 @@ class PipelineDestinationOutputPayloadFormatProtobuf(dict):
         The entire schema definition is stored in this field.
         """
         return pulumi.get(self, "schema_definition")
+
+
+@pulumi.output_type
+class PipelineIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class PipelineIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

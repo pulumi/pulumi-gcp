@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.discoveryengine.inputs.WidgetConfigUiSettingsDataStoreUiConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.WidgetConfigUiSettingsGenerativeAnswerConfigArgs;
+import com.pulumi.gcp.discoveryengine.inputs.WidgetConfigUiSettingsSearchAddonSpecArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -228,6 +229,46 @@ public final class WidgetConfigUiSettingsArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.resultDescriptionType);
     }
 
+    /**
+     * SearchAddonSpec is used to disable add-ons for search. By default, if this
+     * field is not specified, add-ons are enabled wherever applicable.
+     * This field is only supported for search requests.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="searchAddonSpec")
+    private @Nullable Output<WidgetConfigUiSettingsSearchAddonSpecArgs> searchAddonSpec;
+
+    /**
+     * @return SearchAddonSpec is used to disable add-ons for search. By default, if this
+     * field is not specified, add-ons are enabled wherever applicable.
+     * This field is only supported for search requests.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WidgetConfigUiSettingsSearchAddonSpecArgs>> searchAddonSpec() {
+        return Optional.ofNullable(this.searchAddonSpec);
+    }
+
+    /**
+     * Whether to show the admin-configured display name for data connectors in
+     * the widget sources UI (instead of the connector kind). Opt-in; defaults
+     * to false.
+     * 
+     */
+    @Import(name="sourceAdminDisplayNameEnabled")
+    private @Nullable Output<Boolean> sourceAdminDisplayNameEnabled;
+
+    /**
+     * @return Whether to show the admin-configured display name for data connectors in
+     * the widget sources UI (instead of the connector kind). Opt-in; defaults
+     * to false.
+     * 
+     */
+    public Optional<Output<Boolean>> sourceAdminDisplayNameEnabled() {
+        return Optional.ofNullable(this.sourceAdminDisplayNameEnabled);
+    }
+
     private WidgetConfigUiSettingsArgs() {}
 
     private WidgetConfigUiSettingsArgs(WidgetConfigUiSettingsArgs $) {
@@ -244,6 +285,8 @@ public final class WidgetConfigUiSettingsArgs extends com.pulumi.resources.Resou
         this.generativeAnswerConfig = $.generativeAnswerConfig;
         this.interactionType = $.interactionType;
         this.resultDescriptionType = $.resultDescriptionType;
+        this.searchAddonSpec = $.searchAddonSpec;
+        this.sourceAdminDisplayNameEnabled = $.sourceAdminDisplayNameEnabled;
     }
 
     public static Builder builder() {
@@ -560,6 +603,58 @@ public final class WidgetConfigUiSettingsArgs extends com.pulumi.resources.Resou
          */
         public Builder resultDescriptionType(String resultDescriptionType) {
             return resultDescriptionType(Output.of(resultDescriptionType));
+        }
+
+        /**
+         * @param searchAddonSpec SearchAddonSpec is used to disable add-ons for search. By default, if this
+         * field is not specified, add-ons are enabled wherever applicable.
+         * This field is only supported for search requests.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder searchAddonSpec(@Nullable Output<WidgetConfigUiSettingsSearchAddonSpecArgs> searchAddonSpec) {
+            $.searchAddonSpec = searchAddonSpec;
+            return this;
+        }
+
+        /**
+         * @param searchAddonSpec SearchAddonSpec is used to disable add-ons for search. By default, if this
+         * field is not specified, add-ons are enabled wherever applicable.
+         * This field is only supported for search requests.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder searchAddonSpec(WidgetConfigUiSettingsSearchAddonSpecArgs searchAddonSpec) {
+            return searchAddonSpec(Output.of(searchAddonSpec));
+        }
+
+        /**
+         * @param sourceAdminDisplayNameEnabled Whether to show the admin-configured display name for data connectors in
+         * the widget sources UI (instead of the connector kind). Opt-in; defaults
+         * to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAdminDisplayNameEnabled(@Nullable Output<Boolean> sourceAdminDisplayNameEnabled) {
+            $.sourceAdminDisplayNameEnabled = sourceAdminDisplayNameEnabled;
+            return this;
+        }
+
+        /**
+         * @param sourceAdminDisplayNameEnabled Whether to show the admin-configured display name for data connectors in
+         * the widget sources UI (instead of the connector kind). Opt-in; defaults
+         * to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAdminDisplayNameEnabled(Boolean sourceAdminDisplayNameEnabled) {
+            return sourceAdminDisplayNameEnabled(Output.of(sourceAdminDisplayNameEnabled));
         }
 
         public WidgetConfigUiSettingsArgs build() {

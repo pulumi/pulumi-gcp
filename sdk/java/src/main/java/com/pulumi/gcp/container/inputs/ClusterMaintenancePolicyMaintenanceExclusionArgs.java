@@ -17,38 +17,62 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
 
     public static final ClusterMaintenancePolicyMaintenanceExclusionArgs Empty = new ClusterMaintenancePolicyMaintenanceExclusionArgs();
 
+    /**
+     * The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
+    /**
+     * @return The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     public Optional<Output<String>> endTime() {
         return Optional.ofNullable(this.endTime);
     }
 
+    /**
+     * The name of the maintenance exclusion.
+     * 
+     */
     @Import(name="exclusionName", required=true)
     private Output<String> exclusionName;
 
+    /**
+     * @return The name of the maintenance exclusion.
+     * 
+     */
     public Output<String> exclusionName() {
         return this.exclusionName;
     }
 
     /**
-     * MaintenanceExclusionOptions provides maintenance exclusion related options.
+     * MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
      * 
      */
     @Import(name="exclusionOptions")
     private @Nullable Output<ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs> exclusionOptions;
 
     /**
-     * @return MaintenanceExclusionOptions provides maintenance exclusion related options.
+     * @return MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs>> exclusionOptions() {
         return Optional.ofNullable(this.exclusionOptions);
     }
 
+    /**
+     * The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     @Import(name="startTime", required=true)
     private Output<String> startTime;
 
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     public Output<String> startTime() {
         return this.startTime;
     }
@@ -80,26 +104,50 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
             $ = new ClusterMaintenancePolicyMaintenanceExclusionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endTime The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endTime(@Nullable Output<String> endTime) {
             $.endTime = endTime;
             return this;
         }
 
+        /**
+         * @param endTime The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endTime(String endTime) {
             return endTime(Output.of(endTime));
         }
 
+        /**
+         * @param exclusionName The name of the maintenance exclusion.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exclusionName(Output<String> exclusionName) {
             $.exclusionName = exclusionName;
             return this;
         }
 
+        /**
+         * @param exclusionName The name of the maintenance exclusion.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exclusionName(String exclusionName) {
             return exclusionName(Output.of(exclusionName));
         }
 
         /**
-         * @param exclusionOptions MaintenanceExclusionOptions provides maintenance exclusion related options.
+         * @param exclusionOptions MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
          * 
          * @return builder
          * 
@@ -110,7 +158,7 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
         }
 
         /**
-         * @param exclusionOptions MaintenanceExclusionOptions provides maintenance exclusion related options.
+         * @param exclusionOptions MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
          * 
          * @return builder
          * 
@@ -119,11 +167,23 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
             return exclusionOptions(Output.of(exclusionOptions));
         }
 
+        /**
+         * @param startTime The start time of the exclusion window, in RFC3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
 
+        /**
+         * @param startTime The start time of the exclusion window, in RFC3339 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
         }

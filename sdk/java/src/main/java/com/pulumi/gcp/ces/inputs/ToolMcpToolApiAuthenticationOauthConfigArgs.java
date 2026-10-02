@@ -83,7 +83,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfigArgs extends com.pulum
 
     /**
      * (Output)
-     * The OAuth scopes to grant.
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
      * 
      */
     @Import(name="scopes")
@@ -91,7 +92,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfigArgs extends com.pulum
 
     /**
      * @return (Output)
-     * The OAuth scopes to grant.
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -228,7 +230,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfigArgs extends com.pulum
 
         /**
          * @param scopes (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          * 
          * @return builder
          * 
@@ -240,7 +243,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfigArgs extends com.pulum
 
         /**
          * @param scopes (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          * 
          * @return builder
          * 
@@ -251,7 +255,8 @@ public final class ToolMcpToolApiAuthenticationOauthConfigArgs extends com.pulum
 
         /**
          * @param scopes (Output)
-         * The OAuth scopes to grant.
+         * The OAuth scopes to grant. If not specified, the default scope
+         * `https://www.googleapis.com/auth/cloud-platform` is used.
          * 
          * @return builder
          * 

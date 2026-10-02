@@ -46,6 +46,10 @@ import * as utilities from "../utilities";
  *         content: `# Finance Analysis
  * Analyze financial data.`,
  *     }],
+ *     mathRenderingMode: "MATH_RENDERING_MODE_LATEX",
+ *     webSearchConfig: {
+ *         excludedDomains: ["example.com"],
+ *     },
  * });
  * ```
  * ### Analyst Agent Persona Full
@@ -237,6 +241,32 @@ import * as utilities from "../utilities";
  *             dataType: "STRING",
  *         }],
  *     }],
+ *     mathRenderingMode: "MATH_RENDERING_MODE_LATEX",
+ *     webSearchConfig: {
+ *         excludedDomains: ["example.com"],
+ *     },
+ * });
+ * ```
+ * ### Analyst Agent Persona Methodology Export Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.agenticapplications.AnalystAgentPersona("example", {
+ *     location: "us",
+ *     analystAgentPersonaId: "methodology",
+ *     displayName: "Test Analyst Persona Methodology Export",
+ *     displayDescription: "Sample analyst agent persona description",
+ *     modelDescription: "Sample model description",
+ *     role: "ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+ *     artifactsConfig: {
+ *         methodologyExportOptions: {
+ *             appendMethodology: true,
+ *             exportFormat: "MARKDOWN",
+ *             exportMethodologyArtifact: true,
+ *         },
+ *     },
  * });
  * ```
  *
@@ -293,6 +323,11 @@ import * as utilities from "../utilities";
  * * `documentGenerationOptions` -
  * (Optional)
  * Options for document generation.
+ * Structure is documented below.
+ *
+ * * `methodologyExportOptions` -
+ * (Optional)
+ * Options for methodology export.
  * Structure is documented below.
  *
  * * `slideGenerationOptions` -
@@ -438,6 +473,24 @@ import * as utilities from "../utilities";
  * * `mimeType` -
  * (Required)
  * The mime type of the file.
+ *
+ * <a name="nestedArtifactsConfigMethodologyExportOptions"></a>The `methodologyExportOptions` block supports:
+ *
+ * * `appendMethodology` -
+ * (Optional)
+ * If true, append the detailed methodology to the final response.
+ *
+ * * `exportFormat` -
+ * (Optional)
+ * Format for methodology export.
+ * Possible values:
+ * MARKDOWN
+ * HTML
+ * PDF
+ *
+ * * `exportMethodologyArtifact` -
+ * (Optional)
+ * If true, export the detailed methodology as a separate artifact.
  *
  * <a name="nestedArtifactsConfigSlideGenerationOptions"></a>The `slideGenerationOptions` block supports:
  *
@@ -967,6 +1020,13 @@ import * as utilities from "../utilities";
  * (Required)
  * The name of the column.
  *
+ * <a name="nestedWebSearchConfig"></a>The `webSearchConfig` block supports:
+ *
+ * * `excludedDomains` -
+ *   (Optional)
+ *   List of domains to be excluded from Google Search / Enterprise Web Search
+ *   grounding.
+ *
  * ## Import
  *
  * AnalystAgentPersona can be imported using any of these accepted formats:
@@ -1070,6 +1130,13 @@ export class AnalystAgentPersona extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     */
+    declare public readonly mathRenderingMode: pulumi.Output<string | undefined>;
+    /**
      * The MCP data source selections to be used by the agent.
      * Structure is documented below.
      */
@@ -1141,6 +1208,11 @@ export class AnalystAgentPersona extends pulumi.CustomResource {
      * Update time stamp.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     */
+    declare public readonly webSearchConfig: pulumi.Output<outputs.agenticapplications.AnalystAgentPersonaWebSearchConfig | undefined>;
 
     /**
      * Create a AnalystAgentPersona resource with the given unique name, arguments, and options.
@@ -1166,6 +1238,7 @@ export class AnalystAgentPersona extends pulumi.CustomResource {
             resourceInputs["externalDataSources"] = state?.externalDataSources;
             resourceInputs["geminiEnterpriseEngine"] = state?.geminiEnterpriseEngine;
             resourceInputs["location"] = state?.location;
+            resourceInputs["mathRenderingMode"] = state?.mathRenderingMode;
             resourceInputs["mcpDataSources"] = state?.mcpDataSources;
             resourceInputs["modelDescription"] = state?.modelDescription;
             resourceInputs["name"] = state?.name;
@@ -1175,6 +1248,7 @@ export class AnalystAgentPersona extends pulumi.CustomResource {
             resourceInputs["skills"] = state?.skills;
             resourceInputs["tables"] = state?.tables;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["webSearchConfig"] = state?.webSearchConfig;
         } else {
             const args = argsOrState as AnalystAgentPersonaArgs | undefined;
             if (args?.analystAgentPersonaId === undefined && !opts.urn) {
@@ -1196,6 +1270,7 @@ export class AnalystAgentPersona extends pulumi.CustomResource {
             resourceInputs["externalDataSources"] = args?.externalDataSources;
             resourceInputs["geminiEnterpriseEngine"] = args?.geminiEnterpriseEngine;
             resourceInputs["location"] = args?.location;
+            resourceInputs["mathRenderingMode"] = args?.mathRenderingMode;
             resourceInputs["mcpDataSources"] = args?.mcpDataSources;
             resourceInputs["modelDescription"] = args?.modelDescription;
             resourceInputs["project"] = args?.project;
@@ -1203,6 +1278,7 @@ export class AnalystAgentPersona extends pulumi.CustomResource {
             resourceInputs["role"] = args?.role;
             resourceInputs["skills"] = args?.skills;
             resourceInputs["tables"] = args?.tables;
+            resourceInputs["webSearchConfig"] = args?.webSearchConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -1275,6 +1351,13 @@ export interface AnalystAgentPersonaState {
      */
     location?: pulumi.Input<string | undefined>;
     /**
+     * The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     */
+    mathRenderingMode?: pulumi.Input<string | undefined>;
+    /**
      * The MCP data source selections to be used by the agent.
      * Structure is documented below.
      */
@@ -1346,6 +1429,11 @@ export interface AnalystAgentPersonaState {
      * Update time stamp.
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     */
+    webSearchConfig?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaWebSearchConfig | undefined>;
 }
 
 /**
@@ -1406,6 +1494,13 @@ export interface AnalystAgentPersonaArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
     location: pulumi.Input<string>;
+    /**
+     * The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     */
+    mathRenderingMode?: pulumi.Input<string | undefined>;
     /**
      * The MCP data source selections to be used by the agent.
      * Structure is documented below.
@@ -1468,4 +1563,9 @@ export interface AnalystAgentPersonaArgs {
      * Structure is documented below.
      */
     tables?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaTable>[] | undefined>;
+    /**
+     * Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     */
+    webSearchConfig?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaWebSearchConfig | undefined>;
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -38,7 +38,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-west1-a"),
+//				Location: pulumi.String("us-east1-b"),
+//				GceSetup: &workbench.InstanceGceSetupArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//					BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+//						DiskType: pulumi.String("HYPERDISK_BALANCED"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +61,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,8 +70,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-west1-a"),
+//				Location: pulumi.String("us-east1-b"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
+//					MachineType: pulumi.String("n4-standard-2"),
+//					BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+//						DiskType: pulumi.String("HYPERDISK_BALANCED"),
+//					},
 //					ContainerImage: &workbench.InstanceGceSetupContainerImageArgs{
 //						Repository: pulumi.String("us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310"),
 //						Tag:        pulumi.String("latest"),
@@ -87,8 +97,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,14 +107,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
 //				Name: pulumi.String("wbi-reservation"),
-//				Zone: pulumi.String("us-central1-a"),
+//				Zone: pulumi.String("us-east1-b"),
 //				SpecificReservation: &compute.ReservationSpecificReservationArgs{
 //					Count: pulumi.Int(1),
 //					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-//						MachineType: pulumi.String("n1-standard-1"),
+//						MachineType: pulumi.String("g2-standard-4"),
 //						GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 //							&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
-//								AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+//								AcceleratorType:  pulumi.String("nvidia-l4"),
 //								AcceleratorCount: pulumi.Int(1),
 //							},
 //						},
@@ -117,14 +127,20 @@ import (
 //			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-central1-a"),
+//				Location: pulumi.String("us-east1-b"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
-//					MachineType: pulumi.String("n1-standard-1"),
+//					MachineType: pulumi.String("g2-standard-4"),
 //					AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 //						&workbench.InstanceGceSetupAcceleratorConfigArgs{
-//							Type:      pulumi.String("NVIDIA_TESLA_T4"),
+//							Type:      pulumi.String("NVIDIA_L4"),
 //							CoreCount: pulumi.String("1"),
 //						},
+//					},
+//					BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+//						DiskType: pulumi.String("PD_SSD"),
+//					},
+//					DataDisks: &workbench.InstanceGceSetupDataDisksArgs{
+//						DiskType: pulumi.String("PD_SSD"),
 //					},
 //					VmImage: &workbench.InstanceGceSetupVmImageArgs{
 //						Project: pulumi.String("cloud-notebooks-managed"),
@@ -152,7 +168,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -161,9 +177,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-central1-a"),
+//				Location: pulumi.String("us-east1-b"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
-//					MachineType: pulumi.String("e2-standard-4"),
+//					MachineType: pulumi.String("n4-standard-4"),
+//					BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+//						DiskType: pulumi.String("HYPERDISK_BALANCED"),
+//					},
 //					ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
 //						EnableSecureBoot:          pulumi.Bool(false),
 //						EnableVtpm:                pulumi.Bool(false),
@@ -198,9 +217,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -217,14 +236,15 @@ import (
 //			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("wbi-test-default"),
 //				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-east1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			static, err := compute.NewAddress(ctx, "static", &compute.AddressArgs{
-//				Name: pulumi.String("wbi-test-default"),
+//				Name:   pulumi.String("wbi-test-default"),
+//				Region: pulumi.String("us-east1"),
 //			})
 //			if err != nil {
 //				return err
@@ -239,15 +259,15 @@ import (
 //			}
 //			gpuReservation, err := compute.NewReservation(ctx, "gpu_reservation", &compute.ReservationArgs{
 //				Name: pulumi.String("wbi-reservation"),
-//				Zone: pulumi.String("us-central1-a"),
+//				Zone: pulumi.String("us-east1-b"),
 //				SpecificReservation: &compute.ReservationSpecificReservationArgs{
 //					Count: pulumi.Int(1),
 //					InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
-//						MachineType:    pulumi.String("n1-standard-4"),
-//						MinCpuPlatform: pulumi.String("Intel Broadwell"),
+//						MachineType:    pulumi.String("g2-standard-4"),
+//						MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
 //						GuestAccelerators: compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArray{
 //							&compute.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs{
-//								AcceleratorType:  pulumi.String("nvidia-tesla-t4"),
+//								AcceleratorType:  pulumi.String("nvidia-l4"),
 //								AcceleratorCount: pulumi.Int(1),
 //							},
 //						},
@@ -260,7 +280,7 @@ import (
 //			}
 //			myPolicy, err := compute.NewResourcePolicy(ctx, "my_policy", &compute.ResourcePolicyArgs{
 //				Name:   pulumi.String("wbi-policy"),
-//				Region: pulumi.String("us-central1"),
+//				Region: pulumi.String("us-east1"),
 //				SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
 //					Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
 //						DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
@@ -275,14 +295,14 @@ import (
 //			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:                     pulumi.String("workbench-instance"),
-//				Location:                 pulumi.String("us-central1-a"),
+//				Location:                 pulumi.String("us-east1-b"),
 //				EnableDeletionProtection: pulumi.Bool(false),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
-//					MachineType:    pulumi.String("n1-standard-4"),
-//					MinCpuPlatform: pulumi.String("Intel Broadwell"),
+//					MachineType:    pulumi.String("g2-standard-4"),
+//					MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
 //					AcceleratorConfigs: workbench.InstanceGceSetupAcceleratorConfigArray{
 //						&workbench.InstanceGceSetupAcceleratorConfigArgs{
-//							Type:      pulumi.String("NVIDIA_TESLA_T4"),
+//							Type:      pulumi.String("NVIDIA_L4"),
 //							CoreCount: pulumi.String("1"),
 //						},
 //					},
@@ -374,7 +394,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -383,7 +403,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-central1-a"),
+//				Location: pulumi.String("us-east1-b"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
 //					MachineType: pulumi.String("n2d-standard-2"),
 //					ShieldedInstanceConfig: &workbench.InstanceGceSetupShieldedInstanceConfigArgs{
@@ -414,8 +434,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -434,9 +454,12 @@ import (
 //			}
 //			_, err = workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
 //				Name:     pulumi.String("workbench-instance"),
-//				Location: pulumi.String("us-central1-a"),
+//				Location: pulumi.String("us-east1-b"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
-//					MachineType: pulumi.String("e2-standard-4"),
+//					MachineType: pulumi.String("n4-standard-4"),
+//					BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
+//						DiskType: pulumi.String("HYPERDISK_BALANCED"),
+//					},
 //					Metadata: pulumi.StringMap{
 //						"terraform": pulumi.String("true"),
 //					},

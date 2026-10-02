@@ -6,6 +6,7 @@ package com.pulumi.gcp.agenticapplications.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs;
+import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs;
 import java.util.Objects;
@@ -30,6 +31,21 @@ public final class AnalystAgentPersonaArtifactsConfigArgs extends com.pulumi.res
      */
     public Optional<Output<AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs>> documentGenerationOptions() {
         return Optional.ofNullable(this.documentGenerationOptions);
+    }
+
+    /**
+     * Options for methodology export.
+     * 
+     */
+    @Import(name="methodologyExportOptions")
+    private @Nullable Output<AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs> methodologyExportOptions;
+
+    /**
+     * @return Options for methodology export.
+     * 
+     */
+    public Optional<Output<AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs>> methodologyExportOptions() {
+        return Optional.ofNullable(this.methodologyExportOptions);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class AnalystAgentPersonaArtifactsConfigArgs extends com.pulumi.res
 
     private AnalystAgentPersonaArtifactsConfigArgs(AnalystAgentPersonaArtifactsConfigArgs $) {
         this.documentGenerationOptions = $.documentGenerationOptions;
+        this.methodologyExportOptions = $.methodologyExportOptions;
         this.slideGenerationOptions = $.slideGenerationOptions;
         this.visualizationOptions = $.visualizationOptions;
     }
@@ -107,6 +124,27 @@ public final class AnalystAgentPersonaArtifactsConfigArgs extends com.pulumi.res
          */
         public Builder documentGenerationOptions(AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs documentGenerationOptions) {
             return documentGenerationOptions(Output.of(documentGenerationOptions));
+        }
+
+        /**
+         * @param methodologyExportOptions Options for methodology export.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder methodologyExportOptions(@Nullable Output<AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs> methodologyExportOptions) {
+            $.methodologyExportOptions = methodologyExportOptions;
+            return this;
+        }
+
+        /**
+         * @param methodologyExportOptions Options for methodology export.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder methodologyExportOptions(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs methodologyExportOptions) {
+            return methodologyExportOptions(Output.of(methodologyExportOptions));
         }
 
         /**

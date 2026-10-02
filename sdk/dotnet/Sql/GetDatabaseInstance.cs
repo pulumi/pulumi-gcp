@@ -138,6 +138,7 @@ namespace Pulumi.Gcp.Sql
         public readonly bool DeletionProtection;
         public readonly string DnsName;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> DnsNames;
+        public readonly bool EncryptionConfidentialMode;
         public readonly string EncryptionKeyName;
         public readonly bool EnforceNewSqlNetworkArchitecture;
         public readonly string FinalBackupDescription;
@@ -191,6 +192,8 @@ namespace Pulumi.Gcp.Sql
             string dnsName,
 
             ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> dnsNames,
+
+            bool encryptionConfidentialMode,
 
             string encryptionKeyName,
 
@@ -261,6 +264,7 @@ namespace Pulumi.Gcp.Sql
             DeletionProtection = deletionProtection;
             DnsName = dnsName;
             DnsNames = dnsNames;
+            EncryptionConfidentialMode = encryptionConfidentialMode;
             EncryptionKeyName = encryptionKeyName;
             EnforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             FinalBackupDescription = finalBackupDescription;

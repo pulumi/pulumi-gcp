@@ -1539,11 +1539,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -1558,7 +1558,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-central1",
+            location="us-west1",
             deletion_protection_enabled=False,
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -1585,11 +1585,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -1604,7 +1604,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-central1",
+            location="us-west1",
             replica_count=1,
             node_type="SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
@@ -1615,7 +1615,7 @@ class Instance(pulumi.CustomResource):
             },
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-central1-b",
+                "zone": "us-west1-b",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -1655,11 +1655,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -1674,7 +1674,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-central1",
+            location="us-west1",
             persistence_config={
                 "mode": "AOF",
                 "aof_config": {
@@ -1805,7 +1805,7 @@ class Instance(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-central1",
+            location="us-west1",
             tier="ENTERPRISE")
         memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
             ca_pool=default.id,
@@ -1814,7 +1814,7 @@ class Instance(pulumi.CustomResource):
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-central1",
+            location="us-west1",
             config={
                 "subject_config": {
                     "subject": {
@@ -1849,11 +1849,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             network=producer_net.id,
             psc_config={
@@ -1862,7 +1862,7 @@ class Instance(pulumi.CustomResource):
         test_instance = gcp.memorystore.Instance("test-instance",
             instance_id="ca-instance",
             shard_count=3,
-            location="us-central1",
+            location="us-west1",
             desired_auto_created_endpoints=[{
                 "network": producer_net.id,
                 "project_id": project.project_id,
@@ -2004,11 +2004,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -2023,7 +2023,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-central1",
+            location="us-west1",
             deletion_protection_enabled=False,
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -2050,11 +2050,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -2069,7 +2069,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-central1",
+            location="us-west1",
             replica_count=1,
             node_type="SHARED_CORE_NANO",
             transit_encryption_mode="TRANSIT_ENCRYPTION_DISABLED",
@@ -2080,7 +2080,7 @@ class Instance(pulumi.CustomResource):
             },
             zone_distribution_config={
                 "mode": "SINGLE_ZONE",
-                "zone": "us-central1-b",
+                "zone": "us-west1-b",
             },
             maintenance_policy={
                 "weekly_maintenance_windows": [{
@@ -2120,11 +2120,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="my-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="my-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             description="my basic service connection policy",
             network=producer_net.id,
@@ -2139,7 +2139,7 @@ class Instance(pulumi.CustomResource):
                 "network": producer_net.id,
                 "project_id": project.project_id,
             }],
-            location="us-central1",
+            location="us-west1",
             persistence_config={
                 "mode": "AOF",
                 "aof_config": {
@@ -2270,7 +2270,7 @@ class Instance(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         default = gcp.certificateauthority.CaPool("default",
             name="ca-pool",
-            location="us-central1",
+            location="us-west1",
             tier="ENTERPRISE")
         memorystore_p4sa_requester = gcp.certificateauthority.CaPoolIamMember("memorystore_p4sa_requester",
             ca_pool=default.id,
@@ -2279,7 +2279,7 @@ class Instance(pulumi.CustomResource):
         default_authority = gcp.certificateauthority.Authority("default",
             pool=default.name,
             certificate_authority_id="ca-auth",
-            location="us-central1",
+            location="us-west1",
             config={
                 "subject_config": {
                     "subject": {
@@ -2314,11 +2314,11 @@ class Instance(pulumi.CustomResource):
         producer_subnet = gcp.compute.Subnetwork("producer_subnet",
             name="ca-subnet",
             ip_cidr_range="10.0.0.248/29",
-            region="us-central1",
+            region="us-west1",
             network=producer_net.id)
         default_service_connection_policy = gcp.networkconnectivity.ServiceConnectionPolicy("default",
             name="ca-policy",
-            location="us-central1",
+            location="us-west1",
             service_class="gcp-memorystore",
             network=producer_net.id,
             psc_config={
@@ -2327,7 +2327,7 @@ class Instance(pulumi.CustomResource):
         test_instance = gcp.memorystore.Instance("test-instance",
             instance_id="ca-instance",
             shard_count=3,
-            location="us-central1",
+            location="us-west1",
             desired_auto_created_endpoints=[{
                 "network": producer_net.id,
                 "project_id": project.project_id,

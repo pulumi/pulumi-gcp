@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Ces.Outputs
     public sealed class ExampleMessageChunkImage
     {
         /// <summary>
+        /// The alternative text for the image.
+        /// </summary>
+        public readonly string? AltText;
+        /// <summary>
         /// Raw bytes of the image.
         /// </summary>
         public readonly string Data;
@@ -28,10 +32,13 @@ namespace Pulumi.Gcp.Ces.Outputs
 
         [OutputConstructor]
         private ExampleMessageChunkImage(
+            string? altText,
+
             string data,
 
             string mimeType)
         {
+            AltText = altText;
             Data = data;
             MimeType = mimeType;
         }

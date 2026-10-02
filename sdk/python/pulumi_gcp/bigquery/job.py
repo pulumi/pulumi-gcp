@@ -625,7 +625,7 @@ class Job(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-bq-geojson",
+            name=f"bq-geojson-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1047,7 +1047,7 @@ class Job(pulumi.CustomResource):
 
         project = "my-project-name"
         bucket = gcp.storage.Bucket("bucket",
-            name=f"{project}-bq-geojson",
+            name=f"bq-geojson-{project}",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",

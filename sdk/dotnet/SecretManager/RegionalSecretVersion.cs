@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// For more details, refer to the Terraform lifecycle documentation.
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `SecretDataWo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Regional Secret Version Basic
@@ -46,6 +49,65 @@ namespace Pulumi.Gcp.SecretManager
     ///     {
     ///         Secret = secret_basic.Id,
     ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Regional Secret Version Basic Write Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic_write_only = new Gcp.SecretManager.RegionalSecret("secret-basic-write-only", new()
+    ///     {
+    ///         SecretId = "regional-secret-version-write-only",
+    ///         Location = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label", "my-label" },
+    ///         },
+    ///     });
+    /// 
+    ///     var regional_secret_version_basic_write_only = new Gcp.SecretManager.RegionalSecretVersion("regional-secret-version-basic-write-only", new()
+    ///     {
+    ///         Secret = secret_basic_write_only.Id,
+    ///         SecretDataWoVersion = "1",
+    ///         SecretDataWo = "regional-secret-data-write-only",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Regional Secret Version With Base64 String Secret Data Write Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.RegionalSecret("secret-basic", new()
+    ///     {
+    ///         SecretId = "regional-secret-version-base64-write-only",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var regional_secret_version_base64_write_only = new Gcp.SecretManager.RegionalSecretVersion("regional-secret-version-base64-write-only", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         IsSecretDataBase64 = true,
+    ///         SecretDataWoVersion = "1",
+    ///         SecretDataWo = Std.Filebase64.Invoke(new()
+    ///         {
+    ///             Input = "regional-secret-data-base64-write-only.pfx",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });
@@ -242,7 +304,24 @@ namespace Pulumi.Gcp.SecretManager
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("secretData")]
-        public Output<string> SecretData { get; private set; } = null!;
+        public Output<string?> SecretData { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The secret data. Must be no larger than 64KiB.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `SecretData` or `SecretDataWo` can only be set.
+        /// </summary>
+        [Output("secretDataWo")]
+        public Output<string?> SecretDataWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers update of `SecretDataWo` write-only. Increment this value when an update to `SecretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Output("secretDataWoVersion")]
+        public Output<string?> SecretDataWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The version of the Regional Secret.
@@ -276,6 +355,7 @@ namespace Pulumi.Gcp.SecretManager
                 AdditionalSecretOutputs =
                 {
                     "secretData",
+                    "secretDataWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -335,7 +415,7 @@ namespace Pulumi.Gcp.SecretManager
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
 
-        [Input("secretData", required: true)]
+        [Input("secretData")]
         private Input<string>? _secretData;
 
         /// <summary>
@@ -351,6 +431,33 @@ namespace Pulumi.Gcp.SecretManager
                 _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("secretDataWo")]
+        private Input<string>? _secretDataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The secret data. Must be no larger than 64KiB.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `SecretData` or `SecretDataWo` can only be set.
+        /// </summary>
+        public Input<string>? SecretDataWo
+        {
+            get => _secretDataWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretDataWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `SecretDataWo` write-only. Increment this value when an update to `SecretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("secretDataWoVersion")]
+        public Input<string>? SecretDataWoVersion { get; set; }
 
         public RegionalSecretVersionArgs()
         {
@@ -449,6 +556,33 @@ namespace Pulumi.Gcp.SecretManager
                 _secretData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("secretDataWo")]
+        private Input<string>? _secretDataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The secret data. Must be no larger than 64KiB.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `SecretData` or `SecretDataWo` can only be set.
+        /// </summary>
+        public Input<string>? SecretDataWo
+        {
+            get => _secretDataWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretDataWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `SecretDataWo` write-only. Increment this value when an update to `SecretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("secretDataWoVersion")]
+        public Input<string>? SecretDataWoVersion { get; set; }
 
         /// <summary>
         /// The version of the Regional Secret.

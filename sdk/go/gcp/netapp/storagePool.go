@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,9 +50,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -208,15 +208,6 @@ type StoragePool struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrOutput `pulumi:"replicaZone"`
-	// (Optional, Beta, Deprecated)
-	// The effective scale tier of the storage pool. If `scaleTier` is not
-	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-	//
-	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	//
-	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	ScaleTier pulumi.StringOutput `pulumi:"scaleTier"`
 	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
 	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
 	ScaleType pulumi.StringOutput `pulumi:"scaleType"`
@@ -360,15 +351,6 @@ type storagePoolState struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone *string `pulumi:"replicaZone"`
-	// (Optional, Beta, Deprecated)
-	// The effective scale tier of the storage pool. If `scaleTier` is not
-	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-	//
-	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	//
-	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	ScaleTier *string `pulumi:"scaleTier"`
 	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
 	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
 	ScaleType *string `pulumi:"scaleType"`
@@ -466,15 +448,6 @@ type StoragePoolState struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrInput
-	// (Optional, Beta, Deprecated)
-	// The effective scale tier of the storage pool. If `scaleTier` is not
-	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-	//
-	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	//
-	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	ScaleTier pulumi.StringPtrInput
 	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
 	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
 	ScaleType pulumi.StringPtrInput
@@ -563,15 +536,6 @@ type storagePoolArgs struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone *string `pulumi:"replicaZone"`
-	// (Optional, Beta, Deprecated)
-	// The effective scale tier of the storage pool. If `scaleTier` is not
-	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-	//
-	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	//
-	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	ScaleTier *string `pulumi:"scaleTier"`
 	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
 	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
 	ScaleType *string `pulumi:"scaleType"`
@@ -653,15 +617,6 @@ type StoragePoolArgs struct {
 	// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
 	// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 	ReplicaZone pulumi.StringPtrInput
-	// (Optional, Beta, Deprecated)
-	// The effective scale tier of the storage pool. If `scaleTier` is not
-	// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-	// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-	//
-	// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	//
-	// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-	ScaleTier pulumi.StringPtrInput
 	// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
 	// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
 	ScaleType pulumi.StringPtrInput
@@ -912,18 +867,6 @@ func (o StoragePoolOutput) QosType() pulumi.StringOutput {
 // [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
 func (o StoragePoolOutput) ReplicaZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.ReplicaZone }).(pulumi.StringPtrOutput)
-}
-
-// (Optional, Beta, Deprecated)
-// The effective scale tier of the storage pool. If `scaleTier` is not
-// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-//
-// > **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-//
-// Deprecated: `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-func (o StoragePoolOutput) ScaleTier() pulumi.StringOutput {
-	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.ScaleTier }).(pulumi.StringOutput)
 }
 
 // The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.

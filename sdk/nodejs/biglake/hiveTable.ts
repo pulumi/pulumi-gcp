@@ -9,9 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Hive Tables in BigLake Metastore that exist within a Hive Catalog and Database.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * ## Example Usage
  *
  * ### Biglake Hive Table
@@ -97,14 +94,14 @@ import * as utilities from "../utilities";
  *
  * HiveTable can be imported using any of these accepted formats:
  *
- * * `hive/v1beta/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}`
+ * * `hive/v1/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}`
  * * `{{project}}/{{catalog}}/{{database}}/{{name}}`
  * * `{{catalog}}/{{database}}/{{name}}`
  *
  * When using the `pulumi import` command, HiveTable can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:biglake/hiveTable:HiveTable default hive/v1beta/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}
+ * $ pulumi import gcp:biglake/hiveTable:HiveTable default hive/v1/projects/{{project}}/catalogs/{{catalog}}/databases/{{database}}/tables/{{name}}
  * $ pulumi import gcp:biglake/hiveTable:HiveTable default {{project}}/{{catalog}}/{{database}}/{{name}}
  * $ pulumi import gcp:biglake/hiveTable:HiveTable default {{catalog}}/{{database}}/{{name}}
  * ```

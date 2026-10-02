@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -64,8 +65,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("restore-all-ns-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -82,7 +86,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("restore-all-ns")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -92,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  *         var allNs = new RestorePlan("allNs", RestorePlanArgs.builder()
  *             .name("restore-all-ns")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -121,6 +125,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -148,8 +153,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rollback-ns-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -166,7 +174,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("rollback-ns")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -176,7 +184,7 @@ import javax.annotation.Nullable;
  * 
  *         var rollbackNs = new RestorePlan("rollbackNs", RestorePlanArgs.builder()
  *             .name("rollback-ns-rp")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -215,6 +223,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -242,8 +251,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rollback-app-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -260,7 +272,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("rollback-app")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -270,7 +282,7 @@ import javax.annotation.Nullable;
  * 
  *         var rollbackApp = new RestorePlan("rollbackApp", RestorePlanArgs.builder()
  *             .name("rollback-app-rp")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -303,6 +315,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -328,8 +341,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("all-groupkinds-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -346,7 +362,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("all-groupkinds")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -356,7 +372,7 @@ import javax.annotation.Nullable;
  * 
  *         var allClusterResources = new RestorePlan("allClusterResources", RestorePlanArgs.builder()
  *             .name("all-groupkinds-rp")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -384,6 +400,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -414,8 +431,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rename-ns-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -432,7 +452,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("rename-ns")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -442,7 +462,7 @@ import javax.annotation.Nullable;
  * 
  *         var renameNs = new RestorePlan("renameNs", RestorePlanArgs.builder()
  *             .name("rename-ns-rp")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -498,6 +518,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -529,8 +550,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("transform-rule-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -547,7 +571,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("transform-rule")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -559,7 +583,7 @@ import javax.annotation.Nullable;
  *             .name("transform-rule-rp")
  *             .description("copy nginx env variables")
  *             .labels(Map.of("app", "nginx"))
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -608,6 +632,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -633,8 +658,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("gitops-mode-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -651,7 +679,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("gitops-mode")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -661,7 +689,7 @@ import javax.annotation.Nullable;
  * 
  *         var gitopsMode = new RestorePlan("gitopsMode", RestorePlanArgs.builder()
  *             .name("gitops-mode")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -690,6 +718,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -719,8 +748,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("restore-order-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -737,7 +769,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("restore-order")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -747,7 +779,7 @@ import javax.annotation.Nullable;
  * 
  *         var restoreOrder = new RestorePlan("restoreOrder", RestorePlanArgs.builder()
  *             .name("restore-order")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()
@@ -799,6 +831,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -825,8 +858,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("volume-res-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -843,7 +879,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("volume-res")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -853,7 +889,7 @@ import javax.annotation.Nullable;
  * 
  *         var volumeRes = new RestorePlan("volumeRes", RestorePlanArgs.builder()
  *             .name("volume-res")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupPlan(basic.id())
  *             .cluster(primary.id())
  *             .restoreConfig(RestorePlanRestoreConfigArgs.builder()

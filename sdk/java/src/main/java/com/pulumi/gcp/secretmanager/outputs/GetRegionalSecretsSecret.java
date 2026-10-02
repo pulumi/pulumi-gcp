@@ -102,6 +102,12 @@ public final class GetRegionalSecretsSecret {
      */
     private String secretId;
     /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    private String secretType;
+    /**
      * @return A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -248,6 +254,14 @@ public final class GetRegionalSecretsSecret {
         return this.secretId;
     }
     /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    public String secretType() {
+        return this.secretType;
+    }
+    /**
      * @return A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -311,6 +325,7 @@ public final class GetRegionalSecretsSecret {
         private Map<String,String> pulumiLabels;
         private List<GetRegionalSecretsSecretRotation> rotations;
         private String secretId;
+        private String secretType;
         private Map<String,String> tags;
         private List<GetRegionalSecretsSecretTopic> topics;
         private String ttl;
@@ -334,6 +349,7 @@ public final class GetRegionalSecretsSecret {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.secretType = defaults.secretType;
     	      this.tags = defaults.tags;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
@@ -468,6 +484,14 @@ public final class GetRegionalSecretsSecret {
             return this;
         }
         @CustomType.Setter
+        public Builder secretType(String secretType) {
+            if (secretType == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretsSecret", "secretType");
+            }
+            this.secretType = secretType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetRegionalSecretsSecret", "tags");
@@ -527,6 +551,7 @@ public final class GetRegionalSecretsSecret {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.rotations = rotations;
             _resultValue.secretId = secretId;
+            _resultValue.secretType = secretType;
             _resultValue.tags = tags;
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;

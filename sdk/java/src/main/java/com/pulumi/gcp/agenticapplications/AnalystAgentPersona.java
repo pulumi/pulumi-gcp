@@ -17,6 +17,7 @@ import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaMcpDataSour
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaResource;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaSkill;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaTable;
+import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaWebSearchConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactExampleResourceArgs;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactExampleResourceRawFileResourceArgs;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -83,6 +85,10 @@ import javax.annotation.Nullable;
  *                 .content("""
  * # Finance Analysis
  * Analyze financial data.                """)
+ *                 .build())
+ *             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
+ *             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+ *                 .excludedDomains("example.com")
  *                 .build())
  *             .build());
  * 
@@ -138,6 +144,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaSkillReferenceArgs;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableArgs;
  * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaTableColumnArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaWebSearchConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -357,6 +364,56 @@ import javax.annotation.Nullable;
  *                     .dataType("STRING")
  *                     .build())
  *                 .build())
+ *             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
+ *             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+ *                 .excludedDomains("example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Analyst Agent Persona Methodology Export Options
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.agenticapplications.AnalystAgentPersona;
+ * import com.pulumi.gcp.agenticapplications.AnalystAgentPersonaArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigArgs;
+ * import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AnalystAgentPersona("example", AnalystAgentPersonaArgs.builder()
+ *             .location("us")
+ *             .analystAgentPersonaId("methodology")
+ *             .displayName("Test Analyst Persona Methodology Export")
+ *             .displayDescription("Sample analyst agent persona description")
+ *             .modelDescription("Sample model description")
+ *             .role("ANALYST_ROLE_GENERIC_FINANCE_ANALYST")
+ *             .artifactsConfig(AnalystAgentPersonaArtifactsConfigArgs.builder()
+ *                 .methodologyExportOptions(AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs.builder()
+ *                     .appendMethodology(true)
+ *                     .exportFormat("MARKDOWN")
+ *                     .exportMethodologyArtifact(true)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -417,6 +474,11 @@ import javax.annotation.Nullable;
  * * `documentGenerationOptions` -
  * (Optional)
  * Options for document generation.
+ * Structure is documented below.
+ * 
+ * * `methodologyExportOptions` -
+ * (Optional)
+ * Options for methodology export.
  * Structure is documented below.
  * 
  * * `slideGenerationOptions` -
@@ -562,6 +624,24 @@ import javax.annotation.Nullable;
  * * `mimeType` -
  * (Required)
  * The mime type of the file.
+ * 
+ * &lt;a name=&#34;nestedArtifactsConfigMethodologyExportOptions&#34;&gt;&lt;/a&gt;The `methodologyExportOptions` block supports:
+ * 
+ * * `appendMethodology` -
+ * (Optional)
+ * If true, append the detailed methodology to the final response.
+ * 
+ * * `exportFormat` -
+ * (Optional)
+ * Format for methodology export.
+ * Possible values:
+ * MARKDOWN
+ * HTML
+ * PDF
+ * 
+ * * `exportMethodologyArtifact` -
+ * (Optional)
+ * If true, export the detailed methodology as a separate artifact.
  * 
  * &lt;a name=&#34;nestedArtifactsConfigSlideGenerationOptions&#34;&gt;&lt;/a&gt;The `slideGenerationOptions` block supports:
  * 
@@ -1091,6 +1171,13 @@ import javax.annotation.Nullable;
  * (Required)
  * The name of the column.
  * 
+ * &lt;a name=&#34;nestedWebSearchConfig&#34;&gt;&lt;/a&gt;The `webSearchConfig` block supports:
+ * 
+ * * `excludedDomains` -
+ *   (Optional)
+ *   List of domains to be excluded from Google Search / Enterprise Web Search
+ *   grounding.
+ * 
  * ## Import
  * 
  * AnalystAgentPersona can be imported using any of these accepted formats:
@@ -1293,6 +1380,26 @@ public class AnalystAgentPersona extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     * 
+     */
+    @Export(name="mathRenderingMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mathRenderingMode;
+
+    /**
+     * @return The math rendering mode selected for this persona.
+     * Possible values:
+     * MATH_RENDERING_MODE_LATEX
+     * MATH_RENDERING_MODE_PLAIN_TEXT
+     * 
+     */
+    public Output<Optional<String>> mathRenderingMode() {
+        return Codegen.optional(this.mathRenderingMode);
+    }
+    /**
      * The MCP data source selections to be used by the agent.
      * Structure is documented below.
      * 
@@ -1489,6 +1596,22 @@ public class AnalystAgentPersona extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="webSearchConfig", refs={AnalystAgentPersonaWebSearchConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AnalystAgentPersonaWebSearchConfig> webSearchConfig;
+
+    /**
+     * @return Configuration for web search grounding for the analyst agent.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AnalystAgentPersonaWebSearchConfig>> webSearchConfig() {
+        return Codegen.optional(this.webSearchConfig);
     }
 
     /**

@@ -21,6 +21,8 @@ from .control_project_intelligence_config import *
 from .default_object_access_control import *
 from .default_object_acl import *
 from .folder import *
+from .ftp_server import *
+from .ftp_user import *
 from .get_bucket import *
 from .get_bucket_iam_policy import *
 from .get_bucket_object import *

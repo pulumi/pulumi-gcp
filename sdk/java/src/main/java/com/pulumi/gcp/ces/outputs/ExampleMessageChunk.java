@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.ExampleMessageChunkAgentTransfer;
+import com.pulumi.gcp.ces.outputs.ExampleMessageChunkBlob;
 import com.pulumi.gcp.ces.outputs.ExampleMessageChunkImage;
 import com.pulumi.gcp.ces.outputs.ExampleMessageChunkToolCall;
 import com.pulumi.gcp.ces.outputs.ExampleMessageChunkToolResponse;
@@ -22,6 +23,12 @@ public final class ExampleMessageChunk {
      * 
      */
     private @Nullable ExampleMessageChunkAgentTransfer agentTransfer;
+    /**
+     * @return Represents a blob input or output in the conversation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ExampleMessageChunkBlob blob;
     /**
      * @return Represents an image input or output in the conversation.
      * Structure is documented below.
@@ -61,6 +68,14 @@ public final class ExampleMessageChunk {
      */
     public Optional<ExampleMessageChunkAgentTransfer> agentTransfer() {
         return Optional.ofNullable(this.agentTransfer);
+    }
+    /**
+     * @return Represents a blob input or output in the conversation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ExampleMessageChunkBlob> blob() {
+        return Optional.ofNullable(this.blob);
     }
     /**
      * @return Represents an image input or output in the conversation.
@@ -112,6 +127,7 @@ public final class ExampleMessageChunk {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ExampleMessageChunkAgentTransfer agentTransfer;
+        private @Nullable ExampleMessageChunkBlob blob;
         private @Nullable ExampleMessageChunkImage image;
         private @Nullable String text;
         private @Nullable ExampleMessageChunkToolCall toolCall;
@@ -121,6 +137,7 @@ public final class ExampleMessageChunk {
         public Builder(ExampleMessageChunk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentTransfer = defaults.agentTransfer;
+    	      this.blob = defaults.blob;
     	      this.image = defaults.image;
     	      this.text = defaults.text;
     	      this.toolCall = defaults.toolCall;
@@ -132,6 +149,12 @@ public final class ExampleMessageChunk {
         public Builder agentTransfer(@Nullable ExampleMessageChunkAgentTransfer agentTransfer) {
 
             this.agentTransfer = agentTransfer;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder blob(@Nullable ExampleMessageChunkBlob blob) {
+
+            this.blob = blob;
             return this;
         }
         @CustomType.Setter
@@ -167,6 +190,7 @@ public final class ExampleMessageChunk {
         public ExampleMessageChunk build() {
             final var _resultValue = new ExampleMessageChunk();
             _resultValue.agentTransfer = agentTransfer;
+            _resultValue.blob = blob;
             _resultValue.image = image;
             _resultValue.text = text;
             _resultValue.toolCall = toolCall;

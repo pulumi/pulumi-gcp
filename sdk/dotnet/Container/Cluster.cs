@@ -960,7 +960,8 @@ namespace Pulumi.Gcp.Container
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// TPU configuration for the cluster.
+        /// ) Configuration for Cloud TPU in this cluster.
+        /// Structure is documented below.
         /// </summary>
         [Output("tpuConfig")]
         public Output<Outputs.ClusterTpuConfig> TpuConfig { get; private set; } = null!;
@@ -974,7 +975,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> TpuIpv4CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The custom keys configuration of the cluster Structure is documented below.
+        /// The custom keys configuration of the cluster. Structure is documented below.
         /// </summary>
         [Output("userManagedKeysConfig")]
         public Output<Outputs.ClusterUserManagedKeysConfig?> UserManagedKeysConfig { get; private set; } = null!;
@@ -1752,13 +1753,14 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// TPU configuration for the cluster.
+        /// ) Configuration for Cloud TPU in this cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("tpuConfig")]
         public Input<Inputs.ClusterTpuConfigArgs>? TpuConfig { get; set; }
 
         /// <summary>
-        /// The custom keys configuration of the cluster Structure is documented below.
+        /// The custom keys configuration of the cluster. Structure is documented below.
         /// </summary>
         [Input("userManagedKeysConfig")]
         public Input<Inputs.ClusterUserManagedKeysConfigArgs>? UserManagedKeysConfig { get; set; }
@@ -2569,7 +2571,8 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// TPU configuration for the cluster.
+        /// ) Configuration for Cloud TPU in this cluster.
+        /// Structure is documented below.
         /// </summary>
         [Input("tpuConfig")]
         public Input<Inputs.ClusterTpuConfigGetArgs>? TpuConfig { get; set; }
@@ -2583,7 +2586,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? TpuIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// The custom keys configuration of the cluster Structure is documented below.
+        /// The custom keys configuration of the cluster. Structure is documented below.
         /// </summary>
         [Input("userManagedKeysConfig")]
         public Input<Inputs.ClusterUserManagedKeysConfigGetArgs>? UserManagedKeysConfig { get; set; }

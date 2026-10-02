@@ -40,6 +40,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataproc.ClusterArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
  * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigAutoscalingConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigDiskConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -55,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var asp = new AutoscalingPolicy("asp", AutoscalingPolicyArgs.builder()
  *             .policyId("dataproc-policy")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .workerConfig(AutoscalingPolicyWorkerConfigArgs.builder()
  *                 .maxInstances(3)
  *                 .build())
@@ -70,10 +74,26 @@ import javax.annotation.Nullable;
  * 
  *         var basic = new Cluster("basic", ClusterArgs.builder()
  *             .name("dataproc-policy")
- *             .region("us-central1")
+ *             .region("us-east1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .autoscalingConfig(ClusterClusterConfigAutoscalingConfigArgs.builder()
  *                     .policyUri(asp.name())
+ *                     .build())
+ *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
+ *                     .numInstances(1)
+ *                     .machineType("n4-standard-2")
+ *                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
+ *                         .bootDiskType("hyperdisk-balanced")
+ *                         .bootDiskSizeGb(35)
+ *                         .build())
+ *                     .build())
+ *                 .workerConfig(ClusterClusterConfigWorkerConfigArgs.builder()
+ *                     .numInstances(2)
+ *                     .machineType("n4-standard-2")
+ *                     .diskConfig(ClusterClusterConfigWorkerConfigDiskConfigArgs.builder()
+ *                         .bootDiskType("hyperdisk-balanced")
+ *                         .bootDiskSizeGb(35)
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());

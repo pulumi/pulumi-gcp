@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableArray<Outputs.GetSecretReplicationResult> Replications;
         public readonly ImmutableArray<Outputs.GetSecretRotationResult> Rotations;
         public readonly string SecretId;
+        public readonly string SecretType;
         public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<Outputs.GetSecretTopicResult> Topics;
         public readonly string Ttl;
@@ -185,6 +186,8 @@ namespace Pulumi.Gcp.SecretManager
 
             string secretId,
 
+            string secretType,
+
             ImmutableDictionary<string, string> tags,
 
             ImmutableArray<Outputs.GetSecretTopicResult> topics,
@@ -210,6 +213,7 @@ namespace Pulumi.Gcp.SecretManager
             Replications = replications;
             Rotations = rotations;
             SecretId = secretId;
+            SecretType = secretType;
             Tags = tags;
             Topics = topics;
             Ttl = ttl;

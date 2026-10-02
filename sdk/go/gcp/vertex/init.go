@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiModelGardenEnableModel{}
 	case "gcp:vertex/aiPersistentResource:AiPersistentResource":
 		r = &AiPersistentResource{}
+	case "gcp:vertex/aiRagCorpus:AiRagCorpus":
+		r = &AiRagCorpus{}
 	case "gcp:vertex/aiRagEngineConfig:AiRagEngineConfig":
 		r = &AiRagEngineConfig{}
 	case "gcp:vertex/aiReasoningEngine:AiReasoningEngine":
@@ -107,8 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiReasoningEngineIamMember{}
 	case "gcp:vertex/aiReasoningEngineIamPolicy:AiReasoningEngineIamPolicy":
 		r = &AiReasoningEngineIamPolicy{}
-	case "gcp:vertex/aiSchedule:AiSchedule":
-		r = &AiSchedule{}
+	case "gcp:vertex/aiSemanticGovernancePolicy:AiSemanticGovernancePolicy":
+		r = &AiSemanticGovernancePolicy{}
 	case "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine":
 		r = &AiSemanticGovernancePolicyEngine{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -322,6 +324,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vertex/aiRagCorpus",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vertex/aiRagEngineConfig",
 		&module{version},
 	)
@@ -347,7 +354,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"vertex/aiSchedule",
+		"vertex/aiSemanticGovernancePolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

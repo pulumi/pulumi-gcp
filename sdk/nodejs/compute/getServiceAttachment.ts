@@ -71,6 +71,7 @@ export interface GetServiceAttachmentResult {
      */
     readonly id: string;
     readonly name: string;
+    readonly natIpsPerEndpoint: number;
     readonly natSubnets: string[];
     readonly project?: string;
     readonly propagatedConnectionLimit: number;

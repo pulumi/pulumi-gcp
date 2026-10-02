@@ -257,7 +257,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     * 
+     * Resulting name for a `namePrefix` &lt;= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     @Import(name="namePrefix")
@@ -265,7 +272,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Creates a unique name for the node pool beginning
-     * with the specified prefix. Conflicts with `name`.
+     * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+     * Prefixes with lengths longer than 14 characters will use a shortened
+     * UUID that will be more prone to collisions.
+     * 
+     * Resulting name for a `namePrefix` &lt;= 14 characters:
+     * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+     * Resulting name for a `namePrefix` 15 - 31 characters:
+     * `namePrefix` + YYmmdd + 3 digit incremental counter
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -846,7 +860,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param namePrefix Creates a unique name for the node pool beginning
-         * with the specified prefix. Conflicts with `name`.
+         * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+         * Prefixes with lengths longer than 14 characters will use a shortened
+         * UUID that will be more prone to collisions.
+         * 
+         * Resulting name for a `namePrefix` &lt;= 14 characters:
+         * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+         * Resulting name for a `namePrefix` 15 - 31 characters:
+         * `namePrefix` + YYmmdd + 3 digit incremental counter
          * 
          * @return builder
          * 
@@ -858,7 +879,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param namePrefix Creates a unique name for the node pool beginning
-         * with the specified prefix. Conflicts with `name`.
+         * with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+         * Prefixes with lengths longer than 14 characters will use a shortened
+         * UUID that will be more prone to collisions.
+         * 
+         * Resulting name for a `namePrefix` &lt;= 14 characters:
+         * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+         * Resulting name for a `namePrefix` 15 - 31 characters:
+         * `namePrefix` + YYmmdd + 3 digit incremental counter
          * 
          * @return builder
          * 

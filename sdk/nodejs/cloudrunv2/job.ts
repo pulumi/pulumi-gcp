@@ -61,6 +61,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Job Sandbox
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     launchStage: "BETA",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
+ *                 sandboxLauncher: true,
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Job Sql
  *
  * ```typescript

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -10722,11 +10722,32 @@ type DiskDiskEncryptionKey struct {
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+	RawKeyWo *string `pulumi:"rawKeyWo"`
+	// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RawKeyWoVersion *string `pulumi:"rawKeyWoVersion"`
 	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 	// customer-supplied encryption key to either encrypt or decrypt
 	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+	RsaEncryptedKeyWo *string `pulumi:"rsaEncryptedKeyWo"`
+	// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RsaEncryptedKeyWoVersion *string `pulumi:"rsaEncryptedKeyWoVersion"`
 	// (Output)
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 	// encryption key that protects this resource.
@@ -10758,11 +10779,32 @@ type DiskDiskEncryptionKeyArgs struct {
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+	RawKeyWo pulumi.StringPtrInput `pulumi:"rawKeyWo"`
+	// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RawKeyWoVersion pulumi.StringPtrInput `pulumi:"rawKeyWoVersion"`
 	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 	// customer-supplied encryption key to either encrypt or decrypt
 	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+	RsaEncryptedKeyWo pulumi.StringPtrInput `pulumi:"rsaEncryptedKeyWo"`
+	// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RsaEncryptedKeyWoVersion pulumi.StringPtrInput `pulumi:"rsaEncryptedKeyWoVersion"`
 	// (Output)
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 	// encryption key that protects this resource.
@@ -10868,12 +10910,45 @@ func (o DiskDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+func (o DiskDiskEncryptionKeyOutput) RawKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.RawKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DiskDiskEncryptionKeyOutput) RawKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.RawKeyWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 // customer-supplied encryption key to either encrypt or decrypt
 // this resource. You can provide either the rawKey or the rsaEncryptedKey.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o DiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+func (o DiskDiskEncryptionKeyOutput) RsaEncryptedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.RsaEncryptedKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DiskDiskEncryptionKeyOutput) RsaEncryptedKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskDiskEncryptionKey) *string { return v.RsaEncryptedKeyWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -10944,6 +11019,32 @@ func (o DiskDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+func (o DiskDiskEncryptionKeyPtrOutput) RawKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DiskDiskEncryptionKeyPtrOutput) RawKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKeyWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 // customer-supplied encryption key to either encrypt or decrypt
 // this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -10954,6 +11055,33 @@ func (o DiskDiskEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+func (o DiskDiskEncryptionKeyPtrOutput) RsaEncryptedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DiskDiskEncryptionKeyPtrOutput) RsaEncryptedKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKeyWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27268,6 +27396,8 @@ type InstanceAdvancedMachineFeatures struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
@@ -27294,6 +27424,8 @@ type InstanceAdvancedMachineFeaturesArgs struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
@@ -27391,6 +27523,8 @@ func (o InstanceAdvancedMachineFeaturesOutput) EnableUefiNetworking() pulumi.Boo
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -27455,6 +27589,8 @@ func (o InstanceAdvancedMachineFeaturesPtrOutput) EnableUefiNetworking() pulumi.
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -47706,6 +47842,8 @@ type InstanceTemplateAdvancedMachineFeatures struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
@@ -47732,6 +47870,8 @@ type InstanceTemplateAdvancedMachineFeaturesArgs struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
@@ -47829,6 +47969,8 @@ func (o InstanceTemplateAdvancedMachineFeaturesOutput) EnableUefiNetworking() pu
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceTemplateAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -47893,6 +48035,8 @@ func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) EnableUefiNetworking()
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o InstanceTemplateAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateAdvancedMachineFeatures) *string {
 		if v == nil {
@@ -55599,13 +55743,6 @@ func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArrayOutpu
 }
 
 type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone struct {
-	// (Output, Deprecated)
-	// URLs of Attachments in the given zone, to the given
-	// region, on Interconnects in the given facility and metro. Every
-	// Attachment in the AG has such an entry.
-	//
-	// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-	Attachment []string `pulumi:"attachment"`
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred
 	// format for resource links as keys.
@@ -55632,13 +55769,6 @@ type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneInput int
 }
 
 type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs struct {
-	// (Output, Deprecated)
-	// URLs of Attachments in the given zone, to the given
-	// region, on Interconnects in the given facility and metro. Every
-	// Attachment in the AG has such an entry.
-	//
-	// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-	Attachment pulumi.StringArrayInput `pulumi:"attachment"`
 	// Attachments in the AttachmentGroup. Keys are arbitrary user-specified
 	// strings. Users are encouraged, but not required, to use their preferred
 	// format for resource links as keys.
@@ -55702,18 +55832,6 @@ func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput
 
 func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput) ToInterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutputWithContext(ctx context.Context) InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput {
 	return o
-}
-
-// (Output, Deprecated)
-// URLs of Attachments in the given zone, to the given
-// region, on Interconnects in the given facility and metro. Every
-// Attachment in the AG has such an entry.
-//
-// Deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
-func (o InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneOutput) Attachment() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone) []string {
-		return v.Attachment
-	}).(pulumi.StringArrayOutput)
 }
 
 // Attachments in the AttachmentGroup. Keys are arbitrary user-specified
@@ -79333,11 +79451,32 @@ type RegionDiskDiskEncryptionKey struct {
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey *string `pulumi:"rawKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+	RawKeyWo *string `pulumi:"rawKeyWo"`
+	// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RawKeyWoVersion *string `pulumi:"rawKeyWoVersion"`
 	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 	// customer-supplied encryption key to either encrypt or decrypt
 	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+	RsaEncryptedKeyWo *string `pulumi:"rsaEncryptedKeyWo"`
+	// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RsaEncryptedKeyWoVersion *string `pulumi:"rsaEncryptedKeyWoVersion"`
 	// (Output)
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 	// encryption key that protects this resource.
@@ -79362,11 +79501,32 @@ type RegionDiskDiskEncryptionKeyArgs struct {
 	// RFC 4648 base64 to either encrypt or decrypt this resource.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+	RawKeyWo pulumi.StringPtrInput `pulumi:"rawKeyWo"`
+	// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RawKeyWoVersion pulumi.StringPtrInput `pulumi:"rawKeyWoVersion"`
 	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 	// customer-supplied encryption key to either encrypt or decrypt
 	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+	RsaEncryptedKeyWo pulumi.StringPtrInput `pulumi:"rsaEncryptedKeyWo"`
+	// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RsaEncryptedKeyWoVersion pulumi.StringPtrInput `pulumi:"rsaEncryptedKeyWoVersion"`
 	// (Output)
 	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
 	// encryption key that protects this resource.
@@ -79462,12 +79622,45 @@ func (o RegionDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+func (o RegionDiskDiskEncryptionKeyOutput) RawKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.RawKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionDiskDiskEncryptionKeyOutput) RawKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.RawKeyWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 // customer-supplied encryption key to either encrypt or decrypt
 // this resource. You can provide either the rawKey or the rsaEncryptedKey.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o RegionDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+func (o RegionDiskDiskEncryptionKeyOutput) RsaEncryptedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.RsaEncryptedKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionDiskDiskEncryptionKeyOutput) RsaEncryptedKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionDiskDiskEncryptionKey) *string { return v.RsaEncryptedKeyWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -79523,6 +79716,32 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+func (o RegionDiskDiskEncryptionKeyPtrOutput) RawKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionDiskDiskEncryptionKeyPtrOutput) RawKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKeyWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
 // customer-supplied encryption key to either encrypt or decrypt
 // this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -79533,6 +79752,33 @@ func (o RegionDiskDiskEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtr
 			return nil
 		}
 		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+func (o RegionDiskDiskEncryptionKeyPtrOutput) RsaEncryptedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o RegionDiskDiskEncryptionKeyPtrOutput) RsaEncryptedKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKeyWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -86922,6 +87168,8 @@ type RegionInstanceTemplateAdvancedMachineFeatures struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit *string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
@@ -86948,6 +87196,8 @@ type RegionInstanceTemplateAdvancedMachineFeaturesArgs struct {
 	// Whether to enable UEFI networking for instance creation.
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+	//
+	// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 	PerformanceMonitoringUnit pulumi.StringPtrInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
@@ -87045,6 +87295,8 @@ func (o RegionInstanceTemplateAdvancedMachineFeaturesOutput) EnableUefiNetworkin
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o RegionInstanceTemplateAdvancedMachineFeaturesOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateAdvancedMachineFeatures) *string { return v.PerformanceMonitoringUnit }).(pulumi.StringPtrOutput)
 }
@@ -87109,6 +87361,8 @@ func (o RegionInstanceTemplateAdvancedMachineFeaturesPtrOutput) EnableUefiNetwor
 }
 
 // [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+//
+// > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
 func (o RegionInstanceTemplateAdvancedMachineFeaturesPtrOutput) PerformanceMonitoringUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateAdvancedMachineFeatures) *string {
 		if v == nil {

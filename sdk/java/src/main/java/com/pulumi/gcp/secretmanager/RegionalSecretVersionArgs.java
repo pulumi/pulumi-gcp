@@ -104,16 +104,56 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="secretData", required=true)
-    private Output<String> secretData;
+    @Import(name="secretData")
+    private @Nullable Output<String> secretData;
 
     /**
      * @return The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> secretData() {
-        return this.secretData;
+    public Optional<Output<String>> secretData() {
+        return Optional.ofNullable(this.secretData);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+     * 
+     */
+    @Import(name="secretDataWo")
+    private @Nullable Output<String> secretDataWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> secretDataWo() {
+        return Optional.ofNullable(this.secretDataWo);
+    }
+
+    /**
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="secretDataWoVersion")
+    private @Nullable Output<String> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> secretDataWoVersion() {
+        return Optional.ofNullable(this.secretDataWoVersion);
     }
 
     private RegionalSecretVersionArgs() {}
@@ -124,6 +164,8 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
         this.isSecretDataBase64 = $.isSecretDataBase64;
         this.secret = $.secret;
         this.secretData = $.secretData;
+        this.secretDataWo = $.secretDataWo;
+        this.secretDataWoVersion = $.secretDataWoVersion;
     }
 
     public static Builder builder() {
@@ -257,7 +299,7 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder secretData(Output<String> secretData) {
+        public Builder secretData(@Nullable Output<String> secretData) {
             $.secretData = secretData;
             return this;
         }
@@ -273,12 +315,61 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
             return secretData(Output.of(secretData));
         }
 
+        /**
+         * @param secretDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The secret data. Must be no larger than 64KiB.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWo(@Nullable Output<String> secretDataWo) {
+            $.secretDataWo = secretDataWo;
+            return this;
+        }
+
+        /**
+         * @param secretDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The secret data. Must be no larger than 64KiB.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWo(String secretDataWo) {
+            return secretDataWo(Output.of(secretDataWo));
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(@Nullable Output<String> secretDataWoVersion) {
+            $.secretDataWoVersion = secretDataWoVersion;
+            return this;
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(String secretDataWoVersion) {
+            return secretDataWoVersion(Output.of(secretDataWoVersion));
+        }
+
         public RegionalSecretVersionArgs build() {
             if ($.secret == null) {
                 throw new MissingRequiredPropertyException("RegionalSecretVersionArgs", "secret");
-            }
-            if ($.secretData == null) {
-                throw new MissingRequiredPropertyException("RegionalSecretVersionArgs", "secretData");
             }
             return $;
         }

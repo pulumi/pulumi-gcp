@@ -795,6 +795,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.dnsNames;
     }
     /**
+     * Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     * 
+     */
+    @Export(name="encryptionConfidentialMode", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> encryptionConfidentialMode;
+
+    /**
+     * @return Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     * 
+     */
+    public Output<Boolean> encryptionConfidentialMode() {
+        return this.encryptionConfidentialMode;
+    }
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order

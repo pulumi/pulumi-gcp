@@ -104,6 +104,7 @@ import * as utilities from "../utilities";
  *         key3: "value3",
  *     },
  *     ttl: "36000s",
+ *     secretType: "ACCESS_KEY",
  * });
  * ```
  * ### Regional Secret With Expire Time
@@ -291,6 +292,11 @@ export class RegionalSecret extends pulumi.CustomResource {
      */
     declare public readonly secretId: pulumi.Output<string>;
     /**
+     * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     */
+    declare public readonly secretType: pulumi.Output<string | undefined>;
+    /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -354,6 +360,7 @@ export class RegionalSecret extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["rotation"] = state?.rotation;
             resourceInputs["secretId"] = state?.secretId;
+            resourceInputs["secretType"] = state?.secretType;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["topics"] = state?.topics;
             resourceInputs["ttl"] = state?.ttl;
@@ -377,6 +384,7 @@ export class RegionalSecret extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["rotation"] = args?.rotation;
             resourceInputs["secretId"] = args?.secretId;
+            resourceInputs["secretType"] = args?.secretType;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["topics"] = args?.topics;
             resourceInputs["ttl"] = args?.ttl;
@@ -499,6 +507,11 @@ export interface RegionalSecretState {
      */
     secretId?: pulumi.Input<string | undefined>;
     /**
+     * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     */
+    secretType?: pulumi.Input<string | undefined>;
+    /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -616,6 +629,11 @@ export interface RegionalSecretArgs {
      * This must be unique within the project.
      */
     secretId: pulumi.Input<string>;
+    /**
+     * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     */
+    secretType?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.

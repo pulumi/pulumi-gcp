@@ -25,7 +25,13 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-west1-a",
+ *     location: "us-east1-b",
+ *     gceSetup: {
+ *         machineType: "n4-standard-2",
+ *         bootDisk: {
+ *             diskType: "HYPERDISK_BALANCED",
+ *         },
+ *     },
  * });
  * ```
  * ### Workbench Instance Basic Container
@@ -36,8 +42,12 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-west1-a",
+ *     location: "us-east1-b",
  *     gceSetup: {
+ *         machineType: "n4-standard-2",
+ *         bootDisk: {
+ *             diskType: "HYPERDISK_BALANCED",
+ *         },
  *         containerImage: {
  *             repository: "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
  *             tag: "latest",
@@ -53,13 +63,13 @@ import * as utilities from "../utilities";
  *
  * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
  *     name: "wbi-reservation",
- *     zone: "us-central1-a",
+ *     zone: "us-east1-b",
  *     specificReservation: {
  *         count: 1,
  *         instanceProperties: {
- *             machineType: "n1-standard-1",
+ *             machineType: "g2-standard-4",
  *             guestAccelerators: [{
- *                 acceleratorType: "nvidia-tesla-t4",
+ *                 acceleratorType: "nvidia-l4",
  *                 acceleratorCount: 1,
  *             }],
  *         },
@@ -68,13 +78,19 @@ import * as utilities from "../utilities";
  * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-central1-a",
+ *     location: "us-east1-b",
  *     gceSetup: {
- *         machineType: "n1-standard-1",
+ *         machineType: "g2-standard-4",
  *         acceleratorConfigs: [{
- *             type: "NVIDIA_TESLA_T4",
+ *             type: "NVIDIA_L4",
  *             coreCount: "1",
  *         }],
+ *         bootDisk: {
+ *             diskType: "PD_SSD",
+ *         },
+ *         dataDisks: {
+ *             diskType: "PD_SSD",
+ *         },
  *         vmImage: {
  *             project: "cloud-notebooks-managed",
  *             family: "workbench-instances",
@@ -95,9 +111,12 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-central1-a",
+ *     location: "us-east1-b",
  *     gceSetup: {
- *         machineType: "e2-standard-4",
+ *         machineType: "n4-standard-4",
+ *         bootDisk: {
+ *             diskType: "HYPERDISK_BALANCED",
+ *         },
  *         shieldedInstanceConfig: {
  *             enableSecureBoot: false,
  *             enableVtpm: false,
@@ -129,10 +148,13 @@ import * as utilities from "../utilities";
  * const mySubnetwork = new gcp.compute.Subnetwork("my_subnetwork", {
  *     name: "wbi-test-default",
  *     network: myNetwork.id,
- *     region: "us-central1",
+ *     region: "us-east1",
  *     ipCidrRange: "10.0.1.0/24",
  * });
- * const static = new gcp.compute.Address("static", {name: "wbi-test-default"});
+ * const static = new gcp.compute.Address("static", {
+ *     name: "wbi-test-default",
+ *     region: "us-east1",
+ * });
  * const actAsPermission = new gcp.serviceaccount.IAMMember("act_as_permission", {
  *     serviceAccountId: "projects/my-project-name/serviceAccounts/my@service-account.com",
  *     role: "roles/iam.serviceAccountUser",
@@ -140,14 +162,14 @@ import * as utilities from "../utilities";
  * });
  * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
  *     name: "wbi-reservation",
- *     zone: "us-central1-a",
+ *     zone: "us-east1-b",
  *     specificReservation: {
  *         count: 1,
  *         instanceProperties: {
- *             machineType: "n1-standard-4",
- *             minCpuPlatform: "Intel Broadwell",
+ *             machineType: "g2-standard-4",
+ *             minCpuPlatform: "Intel Cascade Lake",
  *             guestAccelerators: [{
- *                 acceleratorType: "nvidia-tesla-t4",
+ *                 acceleratorType: "nvidia-l4",
  *                 acceleratorCount: 1,
  *             }],
  *         },
@@ -156,7 +178,7 @@ import * as utilities from "../utilities";
  * });
  * const myPolicy = new gcp.compute.ResourcePolicy("my_policy", {
  *     name: "wbi-policy",
- *     region: "us-central1",
+ *     region: "us-east1",
  *     snapshotSchedulePolicy: {
  *         schedule: {
  *             dailySchedule: {
@@ -168,13 +190,13 @@ import * as utilities from "../utilities";
  * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-central1-a",
+ *     location: "us-east1-b",
  *     enableDeletionProtection: false,
  *     gceSetup: {
- *         machineType: "n1-standard-4",
- *         minCpuPlatform: "Intel Broadwell",
+ *         machineType: "g2-standard-4",
+ *         minCpuPlatform: "Intel Cascade Lake",
  *         acceleratorConfigs: [{
- *             type: "NVIDIA_TESLA_T4",
+ *             type: "NVIDIA_L4",
  *             coreCount: "1",
  *         }],
  *         shieldedInstanceConfig: {
@@ -249,7 +271,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-central1-a",
+ *     location: "us-east1-b",
  *     gceSetup: {
  *         machineType: "n2d-standard-2",
  *         shieldedInstanceConfig: {
@@ -279,9 +301,12 @@ import * as utilities from "../utilities";
  * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
- *     location: "us-central1-a",
+ *     location: "us-east1-b",
  *     gceSetup: {
- *         machineType: "e2-standard-4",
+ *         machineType: "n4-standard-4",
+ *         bootDisk: {
+ *             diskType: "HYPERDISK_BALANCED",
+ *         },
  *         metadata: {
  *             terraform: "true",
  *         },

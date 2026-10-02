@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,7 +77,7 @@ import (
 //			sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-cp"),
-//				DisplayName:         pulumi.String("source-cp_display"),
+//				DisplayName:         pulumi.String("source-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -117,7 +117,7 @@ import (
 //			destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -139,7 +139,7 @@ import (
 //			_, err = databasemigrationservice.NewMigrationJob(ctx, "mysqltomysql", &databasemigrationservice.MigrationJobArgs{
 //				Location:       pulumi.String("us-central1"),
 //				MigrationJobId: pulumi.String("my-migrationid"),
-//				DisplayName:    pulumi.String("my-migrationid_display"),
+//				DisplayName:    pulumi.String("my-migrationid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -177,9 +177,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -224,7 +224,7 @@ import (
 //			sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-cp"),
-//				DisplayName:         pulumi.String("source-cp_display"),
+//				DisplayName:         pulumi.String("source-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -264,7 +264,7 @@ import (
 //			destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -280,7 +280,7 @@ import (
 //			_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltopsql", &databasemigrationservice.MigrationJobArgs{
 //				Location:       pulumi.String("us-central1"),
 //				MigrationJobId: pulumi.String("my-migrationid"),
-//				DisplayName:    pulumi.String("my-migrationid_display"),
+//				DisplayName:    pulumi.String("my-migrationid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -304,9 +304,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -351,7 +351,7 @@ import (
 //			sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-cp"),
-//				DisplayName:         pulumi.String("source-cp_display"),
+//				DisplayName:         pulumi.String("source-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -391,7 +391,7 @@ import (
 //			destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -407,7 +407,7 @@ import (
 //			_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltopsqlobjects", &databasemigrationservice.MigrationJobArgs{
 //				Location:       pulumi.String("us-central1"),
 //				MigrationJobId: pulumi.String("my-migrationid"),
-//				DisplayName:    pulumi.String("my-migrationid_display"),
+//				DisplayName:    pulumi.String("my-migrationid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -427,10 +427,8 @@ import (
 //							},
 //							&databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs{
 //								ObjectIdentifier: &databasemigrationservice.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs{
-//									Type:     pulumi.String("TABLE"),
+//									Type:     pulumi.String("DATABASE"),
 //									Database: pulumi.String("my_other_database"),
-//									Schema:   pulumi.String("public"),
-//									Table:    pulumi.String("users"),
 //								},
 //							},
 //						},
@@ -452,12 +450,12 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -502,7 +500,7 @@ import (
 //			sourceCp, err := databasemigrationservice.NewConnectionProfile(ctx, "source_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("source-cp"),
-//				DisplayName:         pulumi.String("source-cp_display"),
+//				DisplayName:         pulumi.String("source-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -582,7 +580,7 @@ import (
 //			destinationCp, err := databasemigrationservice.NewConnectionProfile(ctx, "destination_cp", &databasemigrationservice.ConnectionProfileArgs{
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-cp"),
-//				DisplayName:         pulumi.String("destination-cp_display"),
+//				DisplayName:         pulumi.String("destination-cp-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -599,7 +597,7 @@ import (
 //			_, err = databasemigrationservice.NewMigrationJob(ctx, "psqltoalloydb", &databasemigrationservice.MigrationJobArgs{
 //				Location:       pulumi.String("us-central1"),
 //				MigrationJobId: pulumi.String("my-migrationid"),
-//				DisplayName:    pulumi.String("my-migrationid_display"),
+//				DisplayName:    pulumi.String("my-migrationid-display"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

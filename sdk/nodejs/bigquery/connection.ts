@@ -15,6 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `cloud_sql.credential.password_wo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ### Bigquery Connection Cloud Resource
@@ -267,16 +270,57 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Connection Sql With Cmek Password Wo
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-database-instance",
+ *     region: "us-central1",
+ *     databaseVersion: "POSTGRES_11",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     password: "tf-test-my-password_60302",
+ * });
+ * const bq_connection_cmek = new gcp.bigquery.Connection("bq-connection-cmek", {
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     location: "US",
+ *     kmsKeyName: "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+ *     cloudSql: {
+ *         instanceId: instance.connectionName,
+ *         database: db.name,
+ *         type: "POSTGRES",
+ *         credential: {
+ *             username: user.name,
+ *             passwordWo: user.password,
+ *             passwordWoVersion: "1",
+ *         },
+ *     },
+ * });
+ * ```
  * ### Bigquery Connection Connector Configuration
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const nameSuffix = "my-connection";
- * const defaultNetwork = new gcp.compute.Network("default", {name: `alloydb-network-${nameSuffix}`});
+ * const namePrefix = "my-connection";
+ * const defaultNetwork = new gcp.compute.Network("default", {name: `${namePrefix}-alloydb-network`});
  * const _default = new gcp.alloydb.Cluster("default", {
- *     clusterId: `alloydb-cluster-${nameSuffix}`,
+ *     clusterId: `${namePrefix}-alloydb-cluster`,
  *     location: "us-central1",
  *     networkConfig: {
  *         network: defaultNetwork.id,
@@ -287,7 +331,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
- *     name: `alloydb-ip-${nameSuffix}`,
+ *     name: `${namePrefix}-alloydb-ip`,
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
@@ -300,7 +344,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultInstance = new gcp.alloydb.Instance("default", {
  *     cluster: _default.name,
- *     instanceId: `alloydb-instance-${nameSuffix}`,
+ *     instanceId: `${namePrefix}-alloydb-instance`,
  *     instanceType: "PRIMARY",
  *     machineConfig: {
  *         cpuCount: 2,

@@ -13,29 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicyMaintenanceExclusion {
+    /**
+     * @return The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     private @Nullable String endTime;
+    /**
+     * @return The name of the maintenance exclusion.
+     * 
+     */
     private String exclusionName;
     /**
-     * @return MaintenanceExclusionOptions provides maintenance exclusion related options.
+     * @return MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
      * 
      */
     private @Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions;
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     private String startTime;
 
     private ClusterMaintenancePolicyMaintenanceExclusion() {}
+    /**
+     * @return The end time of the exclusion window, in RFC3339 format. Exactly one of `endTime` and `exclusion_options.end_time_behavior` should be specified.
+     * 
+     */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
+    /**
+     * @return The name of the maintenance exclusion.
+     * 
+     */
     public String exclusionName() {
         return this.exclusionName;
     }
     /**
-     * @return MaintenanceExclusionOptions provides maintenance exclusion related options.
+     * @return MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
      * 
      */
     public Optional<ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions> exclusionOptions() {
         return Optional.ofNullable(this.exclusionOptions);
     }
+    /**
+     * @return The start time of the exclusion window, in RFC3339 format.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

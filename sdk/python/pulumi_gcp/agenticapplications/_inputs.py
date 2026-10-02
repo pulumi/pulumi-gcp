@@ -47,6 +47,8 @@ __all__ = [
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResourceArgsDict',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceArgs',
     'AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResourceArgsDict',
+    'AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs',
+    'AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgsDict',
     'AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs',
     'AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgsDict',
     'AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleArgs',
@@ -119,6 +121,8 @@ __all__ = [
     'AnalystAgentPersonaTableArgsDict',
     'AnalystAgentPersonaTableColumnArgs',
     'AnalystAgentPersonaTableColumnArgsDict',
+    'AnalystAgentPersonaWebSearchConfigArgs',
+    'AnalystAgentPersonaWebSearchConfigArgsDict',
 ]
 
 class AnalystAgentPersonaArtifactExampleArgsDict(TypedDict):
@@ -674,6 +678,10 @@ class AnalystAgentPersonaArtifactsConfigArgsDict(TypedDict):
     """
     Options for document generation.
     """
+    methodology_export_options: NotRequired[pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgsDict']]]
+    """
+    Options for methodology export.
+    """
     slide_generation_options: NotRequired[pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgsDict']]]
     """
     Options for slide generation.
@@ -687,15 +695,19 @@ class AnalystAgentPersonaArtifactsConfigArgsDict(TypedDict):
 class AnalystAgentPersonaArtifactsConfigArgs:
     def __init__(__self__, *,
                  document_generation_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs']] = None,
+                 methodology_export_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs']] = None,
                  slide_generation_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs']] = None,
                  visualization_options: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs']] = None):
         """
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs'] document_generation_options: Options for document generation.
+        :param pulumi.Input['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs'] methodology_export_options: Options for methodology export.
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgs'] slide_generation_options: Options for slide generation.
         :param pulumi.Input['AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs'] visualization_options: Options for visualizations.
         """
         if document_generation_options is not None:
             pulumi.set(__self__, "document_generation_options", document_generation_options)
+        if methodology_export_options is not None:
+            pulumi.set(__self__, "methodology_export_options", methodology_export_options)
         if slide_generation_options is not None:
             pulumi.set(__self__, "slide_generation_options", slide_generation_options)
         if visualization_options is not None:
@@ -712,6 +724,18 @@ class AnalystAgentPersonaArtifactsConfigArgs:
     @document_generation_options.setter
     def document_generation_options(self, value: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsArgs']]):
         pulumi.set(self, "document_generation_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="methodologyExportOptions")
+    def methodology_export_options(self) -> pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs']]:
+        """
+        Options for methodology export.
+        """
+        return pulumi.get(self, "methodology_export_options")
+
+    @methodology_export_options.setter
+    def methodology_export_options(self, value: pulumi.Input[Optional['AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs']]):
+        pulumi.set(self, "methodology_export_options", value)
 
     @_builtins.property
     @pulumi.getter(name="slideGenerationOptions")
@@ -1342,6 +1366,87 @@ class AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample
     @mime_type.setter
     def mime_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "mime_type", value)
+
+
+class AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgsDict(TypedDict):
+    append_methodology: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, append the detailed methodology to the final response.
+    """
+    export_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Format for methodology export.
+    Possible values:
+    MARKDOWN
+    HTML
+    PDF
+    """
+    export_methodology_artifact: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, export the detailed methodology as a separate artifact.
+    """
+
+@pulumi.input_type
+class AnalystAgentPersonaArtifactsConfigMethodologyExportOptionsArgs:
+    def __init__(__self__, *,
+                 append_methodology: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_methodology_artifact: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] append_methodology: If true, append the detailed methodology to the final response.
+        :param pulumi.Input[_builtins.str] export_format: Format for methodology export.
+               Possible values:
+               MARKDOWN
+               HTML
+               PDF
+        :param pulumi.Input[_builtins.bool] export_methodology_artifact: If true, export the detailed methodology as a separate artifact.
+        """
+        if append_methodology is not None:
+            pulumi.set(__self__, "append_methodology", append_methodology)
+        if export_format is not None:
+            pulumi.set(__self__, "export_format", export_format)
+        if export_methodology_artifact is not None:
+            pulumi.set(__self__, "export_methodology_artifact", export_methodology_artifact)
+
+    @_builtins.property
+    @pulumi.getter(name="appendMethodology")
+    def append_methodology(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, append the detailed methodology to the final response.
+        """
+        return pulumi.get(self, "append_methodology")
+
+    @append_methodology.setter
+    def append_methodology(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "append_methodology", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportFormat")
+    def export_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Format for methodology export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
+        """
+        return pulumi.get(self, "export_format")
+
+    @export_format.setter
+    def export_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "export_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportMethodologyArtifact")
+    def export_methodology_artifact(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, export the detailed methodology as a separate artifact.
+        """
+        return pulumi.get(self, "export_methodology_artifact")
+
+    @export_methodology_artifact.setter
+    def export_methodology_artifact(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "export_methodology_artifact", value)
 
 
 class AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsArgsDict(TypedDict):
@@ -3830,5 +3935,37 @@ class AnalystAgentPersonaTableColumnArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class AnalystAgentPersonaWebSearchConfigArgsDict(TypedDict):
+    excluded_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of domains to be excluded from Google Search / Enterprise Web Search
+    grounding.
+    """
+
+@pulumi.input_type
+class AnalystAgentPersonaWebSearchConfigArgs:
+    def __init__(__self__, *,
+                 excluded_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_domains: List of domains to be excluded from Google Search / Enterprise Web Search
+               grounding.
+        """
+        if excluded_domains is not None:
+            pulumi.set(__self__, "excluded_domains", excluded_domains)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedDomains")
+    def excluded_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of domains to be excluded from Google Search / Enterprise Web Search
+        grounding.
+        """
+        return pulumi.get(self, "excluded_domains")
+
+    @excluded_domains.setter
+    def excluded_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_domains", value)
 
 

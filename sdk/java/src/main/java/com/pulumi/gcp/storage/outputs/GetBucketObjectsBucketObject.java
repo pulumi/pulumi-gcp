@@ -35,6 +35,11 @@ public final class GetBucketObjectsBucketObject {
      * 
      */
     private String storageClass;
+    /**
+     * @return The modification time of the object metadata in RFC 3339 format.
+     * 
+     */
+    private String updated;
 
     private GetBucketObjectsBucketObject() {}
     /**
@@ -72,6 +77,13 @@ public final class GetBucketObjectsBucketObject {
     public String storageClass() {
         return this.storageClass;
     }
+    /**
+     * @return The modification time of the object metadata in RFC 3339 format.
+     * 
+     */
+    public String updated() {
+        return this.updated;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -87,6 +99,7 @@ public final class GetBucketObjectsBucketObject {
         private String name;
         private String selfLink;
         private String storageClass;
+        private String updated;
         public Builder() {}
         public Builder(GetBucketObjectsBucketObject defaults) {
     	      Objects.requireNonNull(defaults);
@@ -95,6 +108,7 @@ public final class GetBucketObjectsBucketObject {
     	      this.name = defaults.name;
     	      this.selfLink = defaults.selfLink;
     	      this.storageClass = defaults.storageClass;
+    	      this.updated = defaults.updated;
         }
 
         @CustomType.Setter
@@ -137,6 +151,14 @@ public final class GetBucketObjectsBucketObject {
             this.storageClass = storageClass;
             return this;
         }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectsBucketObject", "updated");
+            }
+            this.updated = updated;
+            return this;
+        }
         public GetBucketObjectsBucketObject build() {
             final var _resultValue = new GetBucketObjectsBucketObject();
             _resultValue.contentType = contentType;
@@ -144,6 +166,7 @@ public final class GetBucketObjectsBucketObject {
             _resultValue.name = name;
             _resultValue.selfLink = selfLink;
             _resultValue.storageClass = storageClass;
+            _resultValue.updated = updated;
             return _resultValue;
         }
     }

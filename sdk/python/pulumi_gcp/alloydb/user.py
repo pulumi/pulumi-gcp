@@ -33,8 +33,11 @@ class UserArgs:
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
-        :param pulumi.Input[_builtins.str] user_type: The type of this user.
-               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        :param pulumi.Input[_builtins.str] user_type: The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+               the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+               AlloyDB clusters support IAM group authentication. See
+               https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -95,8 +98,11 @@ class UserArgs:
     @pulumi.getter(name="userType")
     def user_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of this user.
-        Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+        the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+        AlloyDB clusters support IAM group authentication. See
+        https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+        Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         """
         return pulumi.get(self, "user_type")
 
@@ -211,8 +217,11 @@ class _UserState:
                > **Note:** One of `password` or `password_wo` can only be set.
         :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
-        :param pulumi.Input[_builtins.str] user_type: The type of this user.
-               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        :param pulumi.Input[_builtins.str] user_type: The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+               the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+               AlloyDB clusters support IAM group authentication. See
+               https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -345,8 +354,11 @@ class _UserState:
     @pulumi.getter(name="userType")
     def user_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of this user.
-        Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+        the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+        AlloyDB clusters support IAM group authentication. See
+        https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+        Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         """
         return pulumi.get(self, "user_type")
 
@@ -504,8 +516,11 @@ class User(pulumi.CustomResource):
                > **Note:** One of `password` or `password_wo` can only be set.
         :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
-        :param pulumi.Input[_builtins.str] user_type: The type of this user.
-               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        :param pulumi.Input[_builtins.str] user_type: The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+               the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+               AlloyDB clusters support IAM group authentication. See
+               https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         """
         ...
     @overload
@@ -721,8 +736,11 @@ class User(pulumi.CustomResource):
                > **Note:** One of `password` or `password_wo` can only be set.
         :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
-        :param pulumi.Input[_builtins.str] user_type: The type of this user.
-               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        :param pulumi.Input[_builtins.str] user_type: The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+               the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+               AlloyDB clusters support IAM group authentication. See
+               https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+               Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -819,8 +837,11 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="userType")
     def user_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of this user.
-        Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+        The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+        the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+        AlloyDB clusters support IAM group authentication. See
+        https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+        Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
         """
         return pulumi.get(self, "user_type")
 

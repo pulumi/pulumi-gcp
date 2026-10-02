@@ -117,8 +117,6 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * Contains network tier information. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     @Import(name="networkTierConfig")
     private @Nullable Output<ClusterIpAllocationPolicyNetworkTierConfigArgs> networkTierConfig;
@@ -126,22 +124,20 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * @return Contains network tier information. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     public Optional<Output<ClusterIpAllocationPolicyNetworkTierConfigArgs>> networkTierConfig() {
         return Optional.ofNullable(this.networkTierConfig);
     }
 
     /**
-     * Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
      * 
      */
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
     /**
-     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * @return Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
@@ -381,8 +377,6 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param networkTierConfig Contains network tier information. Structure is documented below
          * 
-         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-         * 
          * @return builder
          * 
          */
@@ -394,8 +388,6 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param networkTierConfig Contains network tier information. Structure is documented below
          * 
-         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-         * 
          * @return builder
          * 
          */
@@ -404,7 +396,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param podCidrOverprovisionConfig Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         * @param podCidrOverprovisionConfig Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -415,7 +407,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param podCidrOverprovisionConfig Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         * @param podCidrOverprovisionConfig Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
          * 
          * @return builder
          * 

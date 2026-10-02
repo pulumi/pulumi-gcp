@@ -110,6 +110,7 @@ from .get_router_status import *
 from .get_routers import *
 from .get_security_policy import *
 from .get_service_attachment import *
+from .get_service_attachments import *
 from .get_snapshot import *
 from .get_snapshot_iam_policy import *
 from .get_ssl_policy import *

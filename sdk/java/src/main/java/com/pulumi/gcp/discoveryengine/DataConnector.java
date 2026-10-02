@@ -15,6 +15,7 @@ import com.pulumi.gcp.discoveryengine.outputs.DataConnectorBapConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataConnectorDestinationConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataConnectorEntity;
 import com.pulumi.gcp.discoveryengine.outputs.DataConnectorError;
+import com.pulumi.gcp.discoveryengine.outputs.DataConnectorMetadata;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigDestinationArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
  * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataConnectorMetadataArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -150,10 +152,9 @@ import javax.annotation.Nullable;
  *             .collectionId("collection-id")
  *             .collectionDisplayName("Jira Federated")
  *             .dataSource("jira")
- *             .dataSourceVersion(3)
  *             .params(Map.ofEntries(
  *                 Map.entry("instance_uri", "https://example.atlassian.net"),
- *                 Map.entry("instance_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                 Map.entry("instance_id", "12345678-1234-1234-1234-123456789abc"),
  *                 Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
  *                 Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
  *                 Map.entry("refresh_token", "SECRET_MANAGER_RESOURCE_NAME"),
@@ -194,7 +195,7 @@ import javax.annotation.Nullable;
  *             .actionConfig(DataConnectorActionConfigArgs.builder()
  *                 .actionParams(Map.ofEntries(
  *                     Map.entry("instance_uri", "https://example.atlassian.net"),
- *                     Map.entry("instance_id", "SECRET_MANAGER_RESOURCE_NAME"),
+ *                     Map.entry("instance_id", "12345678-1234-1234-1234-123456789abc"),
  *                     Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
  *                     Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
  *                     Map.entry("auth_type", "OAUTH")
@@ -210,6 +211,14 @@ import javax.annotation.Nullable;
  *                     "create_comment",
  *                     "update_comment",
  *                     "upload_attachment")
+ *                 .build())
+ *             .tag("sample-tag")
+ *             .metadata(DataConnectorMetadataArgs.builder()
+ *                 .title("Jira Connector")
+ *                 .description("Jira Connector Description")
+ *                 .shortDescription("Jira Connector Short Description")
+ *                 .author("Google")
+ *                 .note("Sample Note")
  *                 .build())
  *             .build());
  * 
@@ -666,6 +675,22 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * User-facing metadata for the connector.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="metadata", refs={DataConnectorMetadata.class}, tree="[0]")
+    private Output<DataConnectorMetadata> metadata;
+
+    /**
+     * @return User-facing metadata for the connector.
+     * Structure is documented below.
+     * 
+     */
+    public Output<DataConnectorMetadata> metadata() {
+        return this.metadata;
+    }
+    /**
      * The full resource name of the Data Connector.
      * Format: `projects/*&#47;locations/*&#47;collections/*&#47;dataConnector`.
      * 
@@ -828,6 +853,20 @@ public class DataConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> syncMode() {
         return Codegen.optional(this.syncMode);
+    }
+    /**
+     * User-facing, version-independent label for this connector.
+     * 
+     */
+    @Export(name="tag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tag;
+
+    /**
+     * @return User-facing, version-independent label for this connector.
+     * 
+     */
+    public Output<Optional<String>> tag() {
+        return Codegen.optional(this.tag);
     }
     /**
      * Timestamp when the DataConnector was updated.

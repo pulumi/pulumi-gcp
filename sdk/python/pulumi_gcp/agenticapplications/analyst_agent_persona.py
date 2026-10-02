@@ -31,13 +31,15 @@ class AnalystAgentPersonaArgs:
                  display_description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaExternalDataSourceArgs']]]] = None,
                  gemini_enterprise_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 math_rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  mcp_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaMcpDataSourceArgs']]]] = None,
                  model_description: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resources: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaResourceArgs']]]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  skills: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaSkillArgs']]]] = None,
-                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaTableArgs']]]] = None):
+                 tables: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaTableArgs']]]] = None,
+                 web_search_config: pulumi.Input[Optional['AnalystAgentPersonaWebSearchConfigArgs']] = None):
         """
         The set of arguments for constructing a AnalystAgentPersona resource.
 
@@ -65,6 +67,10 @@ class AnalystAgentPersonaArgs:
                persona.
                If not set, requests from GE will only be routed to this persona if its
                name ends in "/default".
+        :param pulumi.Input[_builtins.str] math_rendering_mode: The math rendering mode selected for this persona.
+               Possible values:
+               MATH_RENDERING_MODE_LATEX
+               MATH_RENDERING_MODE_PLAIN_TEXT
         :param pulumi.Input[Sequence[pulumi.Input['AnalystAgentPersonaMcpDataSourceArgs']]] mcp_data_sources: The MCP data source selections to be used by the agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] model_description: The description of the persona review, used by the model.
@@ -106,6 +112,8 @@ class AnalystAgentPersonaArgs:
                table in the customer's database, e.g. to provide additional context to the
                agent.
                Structure is documented below.
+        :param pulumi.Input['AnalystAgentPersonaWebSearchConfigArgs'] web_search_config: Configuration for web search grounding for the analyst agent.
+               Structure is documented below.
         """
         pulumi.set(__self__, "analyst_agent_persona_id", analyst_agent_persona_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -124,6 +132,8 @@ class AnalystAgentPersonaArgs:
             pulumi.set(__self__, "external_data_sources", external_data_sources)
         if gemini_enterprise_engine is not None:
             pulumi.set(__self__, "gemini_enterprise_engine", gemini_enterprise_engine)
+        if math_rendering_mode is not None:
+            pulumi.set(__self__, "math_rendering_mode", math_rendering_mode)
         if mcp_data_sources is not None:
             pulumi.set(__self__, "mcp_data_sources", mcp_data_sources)
         if model_description is not None:
@@ -138,6 +148,8 @@ class AnalystAgentPersonaArgs:
             pulumi.set(__self__, "skills", skills)
         if tables is not None:
             pulumi.set(__self__, "tables", tables)
+        if web_search_config is not None:
+            pulumi.set(__self__, "web_search_config", web_search_config)
 
     @_builtins.property
     @pulumi.getter(name="analystAgentPersonaId")
@@ -274,6 +286,21 @@ class AnalystAgentPersonaArgs:
         pulumi.set(self, "gemini_enterprise_engine", value)
 
     @_builtins.property
+    @pulumi.getter(name="mathRenderingMode")
+    def math_rendering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The math rendering mode selected for this persona.
+        Possible values:
+        MATH_RENDERING_MODE_LATEX
+        MATH_RENDERING_MODE_PLAIN_TEXT
+        """
+        return pulumi.get(self, "math_rendering_mode")
+
+    @math_rendering_mode.setter
+    def math_rendering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "math_rendering_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="mcpDataSources")
     def mcp_data_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaMcpDataSourceArgs']]]]:
         """
@@ -391,6 +418,19 @@ class AnalystAgentPersonaArgs:
     def tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
+    @_builtins.property
+    @pulumi.getter(name="webSearchConfig")
+    def web_search_config(self) -> pulumi.Input[Optional['AnalystAgentPersonaWebSearchConfigArgs']]:
+        """
+        Configuration for web search grounding for the analyst agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "web_search_config")
+
+    @web_search_config.setter
+    def web_search_config(self, value: pulumi.Input[Optional['AnalystAgentPersonaWebSearchConfigArgs']]):
+        pulumi.set(self, "web_search_config", value)
+
 
 @pulumi.input_type
 class _AnalystAgentPersonaState:
@@ -406,6 +446,7 @@ class _AnalystAgentPersonaState:
                  external_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaExternalDataSourceArgs']]]] = None,
                  gemini_enterprise_engine: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 math_rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  mcp_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaMcpDataSourceArgs']]]] = None,
                  model_description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -414,7 +455,8 @@ class _AnalystAgentPersonaState:
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  skills: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaSkillArgs']]]] = None,
                  tables: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaTableArgs']]]] = None,
-                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_search_config: pulumi.Input[Optional['AnalystAgentPersonaWebSearchConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AnalystAgentPersona resources.
 
@@ -443,6 +485,10 @@ class _AnalystAgentPersonaState:
                If not set, requests from GE will only be routed to this persona if its
                name ends in "/default".
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] math_rendering_mode: The math rendering mode selected for this persona.
+               Possible values:
+               MATH_RENDERING_MODE_LATEX
+               MATH_RENDERING_MODE_PLAIN_TEXT
         :param pulumi.Input[Sequence[pulumi.Input['AnalystAgentPersonaMcpDataSourceArgs']]] mcp_data_sources: The MCP data source selections to be used by the agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] model_description: The description of the persona review, used by the model.
@@ -488,6 +534,8 @@ class _AnalystAgentPersonaState:
                agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
+        :param pulumi.Input['AnalystAgentPersonaWebSearchConfigArgs'] web_search_config: Configuration for web search grounding for the analyst agent.
+               Structure is documented below.
         """
         if analyst_agent_persona_id is not None:
             pulumi.set(__self__, "analyst_agent_persona_id", analyst_agent_persona_id)
@@ -511,6 +559,8 @@ class _AnalystAgentPersonaState:
             pulumi.set(__self__, "gemini_enterprise_engine", gemini_enterprise_engine)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if math_rendering_mode is not None:
+            pulumi.set(__self__, "math_rendering_mode", math_rendering_mode)
         if mcp_data_sources is not None:
             pulumi.set(__self__, "mcp_data_sources", mcp_data_sources)
         if model_description is not None:
@@ -529,6 +579,8 @@ class _AnalystAgentPersonaState:
             pulumi.set(__self__, "tables", tables)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if web_search_config is not None:
+            pulumi.set(__self__, "web_search_config", web_search_config)
 
     @_builtins.property
     @pulumi.getter(name="analystAgentPersonaId")
@@ -677,6 +729,21 @@ class _AnalystAgentPersonaState:
         pulumi.set(self, "location", value)
 
     @_builtins.property
+    @pulumi.getter(name="mathRenderingMode")
+    def math_rendering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The math rendering mode selected for this persona.
+        Possible values:
+        MATH_RENDERING_MODE_LATEX
+        MATH_RENDERING_MODE_PLAIN_TEXT
+        """
+        return pulumi.get(self, "math_rendering_mode")
+
+    @math_rendering_mode.setter
+    def math_rendering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "math_rendering_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="mcpDataSources")
     def mcp_data_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaMcpDataSourceArgs']]]]:
         """
@@ -820,6 +887,19 @@ class _AnalystAgentPersonaState:
     def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="webSearchConfig")
+    def web_search_config(self) -> pulumi.Input[Optional['AnalystAgentPersonaWebSearchConfigArgs']]:
+        """
+        Configuration for web search grounding for the analyst agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "web_search_config")
+
+    @web_search_config.setter
+    def web_search_config(self, value: pulumi.Input[Optional['AnalystAgentPersonaWebSearchConfigArgs']]):
+        pulumi.set(self, "web_search_config", value)
+
 
 @pulumi.type_token("gcp:agenticapplications/analystAgentPersona:AnalystAgentPersona")
 class AnalystAgentPersona(pulumi.CustomResource):
@@ -837,6 +917,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                  external_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaExternalDataSourceArgs', 'AnalystAgentPersonaExternalDataSourceArgsDict', 'outputs.AnalystAgentPersonaExternalDataSource']]]]] = None,
                  gemini_enterprise_engine: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 math_rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  mcp_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaMcpDataSourceArgs', 'AnalystAgentPersonaMcpDataSourceArgsDict', 'outputs.AnalystAgentPersonaMcpDataSource']]]]] = None,
                  model_description: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -844,6 +925,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  skills: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaSkillArgs', 'AnalystAgentPersonaSkillArgsDict', 'outputs.AnalystAgentPersonaSkill']]]]] = None,
                  tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaTableArgs', 'AnalystAgentPersonaTableArgsDict', 'outputs.AnalystAgentPersonaTable']]]]] = None,
+                 web_search_config: pulumi.Input[Optional[Union['AnalystAgentPersonaWebSearchConfigArgs', 'AnalystAgentPersonaWebSearchConfigArgsDict', 'outputs.AnalystAgentPersonaWebSearchConfig']]] = None,
                  __props__=None):
         """
         Represents a persona configuration for an analyst agent in Agentic Applications.
@@ -884,7 +966,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "description": "Skill for finance analysis",
                 "content": \"\"\"# Finance Analysis
         Analyze financial data.\"\"\",
-            }])
+            }],
+            math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+            web_search_config={
+                "excluded_domains": ["example.com"],
+            })
         ```
         ### Analyst Agent Persona Full
 
@@ -1091,7 +1177,32 @@ class AnalystAgentPersona(pulumi.CustomResource):
                     "description": "First column description",
                     "data_type": "STRING",
                 }],
-            }])
+            }],
+            math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+            web_search_config={
+                "excluded_domains": ["example.com"],
+            })
+        ```
+        ### Analyst Agent Persona Methodology Export Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.agenticapplications.AnalystAgentPersona("example",
+            location="us",
+            analyst_agent_persona_id="methodology",
+            display_name="Test Analyst Persona Methodology Export",
+            display_description="Sample analyst agent persona description",
+            model_description="Sample model description",
+            role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+            artifacts_config={
+                "methodology_export_options": {
+                    "append_methodology": True,
+                    "export_format": "MARKDOWN",
+                    "export_methodology_artifact": True,
+                },
+            })
         ```
 
         ## ## - Points to an f1 table to use.
@@ -1147,6 +1258,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
         * `document_generation_options` -
         (Optional)
         Options for document generation.
+        Structure is documented below.
+
+        * `methodology_export_options` -
+        (Optional)
+        Options for methodology export.
         Structure is documented below.
 
         * `slide_generation_options` -
@@ -1292,6 +1408,24 @@ class AnalystAgentPersona(pulumi.CustomResource):
         * `mime_type` -
         (Required)
         The mime type of the file.
+
+        <a name="nested_artifacts_config_methodology_export_options"></a>The `methodology_export_options` block supports:
+
+        * `append_methodology` -
+        (Optional)
+        If true, append the detailed methodology to the final response.
+
+        * `export_format` -
+        (Optional)
+        Format for methodology export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
+
+        * `export_methodology_artifact` -
+        (Optional)
+        If true, export the detailed methodology as a separate artifact.
 
         <a name="nested_artifacts_config_slide_generation_options"></a>The `slide_generation_options` block supports:
 
@@ -1821,6 +1955,13 @@ class AnalystAgentPersona(pulumi.CustomResource):
         (Required)
         The name of the column.
 
+        <a name="nested_web_search_config"></a>The `web_search_config` block supports:
+
+        * `excluded_domains` -
+          (Optional)
+          List of domains to be excluded from Google Search / Enterprise Web Search
+          grounding.
+
         ## Import
 
         AnalystAgentPersona can be imported using any of these accepted formats:
@@ -1864,6 +2005,10 @@ class AnalystAgentPersona(pulumi.CustomResource):
                If not set, requests from GE will only be routed to this persona if its
                name ends in "/default".
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] math_rendering_mode: The math rendering mode selected for this persona.
+               Possible values:
+               MATH_RENDERING_MODE_LATEX
+               MATH_RENDERING_MODE_PLAIN_TEXT
         :param pulumi.Input[Sequence[pulumi.Input[Union['AnalystAgentPersonaMcpDataSourceArgs', 'AnalystAgentPersonaMcpDataSourceArgsDict', 'outputs.AnalystAgentPersonaMcpDataSource']]]] mcp_data_sources: The MCP data source selections to be used by the agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] model_description: The description of the persona review, used by the model.
@@ -1904,6 +2049,8 @@ class AnalystAgentPersona(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AnalystAgentPersonaTableArgs', 'AnalystAgentPersonaTableArgsDict', 'outputs.AnalystAgentPersonaTable']]]] tables: Schema overrides for bigquery tables. Used to override the schema of a
                table in the customer's database, e.g. to provide additional context to the
                agent.
+               Structure is documented below.
+        :param pulumi.Input[Union['AnalystAgentPersonaWebSearchConfigArgs', 'AnalystAgentPersonaWebSearchConfigArgsDict', 'outputs.AnalystAgentPersonaWebSearchConfig']] web_search_config: Configuration for web search grounding for the analyst agent.
                Structure is documented below.
         """
         ...
@@ -1951,7 +2098,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "description": "Skill for finance analysis",
                 "content": \"\"\"# Finance Analysis
         Analyze financial data.\"\"\",
-            }])
+            }],
+            math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+            web_search_config={
+                "excluded_domains": ["example.com"],
+            })
         ```
         ### Analyst Agent Persona Full
 
@@ -2158,7 +2309,32 @@ class AnalystAgentPersona(pulumi.CustomResource):
                     "description": "First column description",
                     "data_type": "STRING",
                 }],
-            }])
+            }],
+            math_rendering_mode="MATH_RENDERING_MODE_LATEX",
+            web_search_config={
+                "excluded_domains": ["example.com"],
+            })
+        ```
+        ### Analyst Agent Persona Methodology Export Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.agenticapplications.AnalystAgentPersona("example",
+            location="us",
+            analyst_agent_persona_id="methodology",
+            display_name="Test Analyst Persona Methodology Export",
+            display_description="Sample analyst agent persona description",
+            model_description="Sample model description",
+            role="ANALYST_ROLE_GENERIC_FINANCE_ANALYST",
+            artifacts_config={
+                "methodology_export_options": {
+                    "append_methodology": True,
+                    "export_format": "MARKDOWN",
+                    "export_methodology_artifact": True,
+                },
+            })
         ```
 
         ## ## - Points to an f1 table to use.
@@ -2214,6 +2390,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
         * `document_generation_options` -
         (Optional)
         Options for document generation.
+        Structure is documented below.
+
+        * `methodology_export_options` -
+        (Optional)
+        Options for methodology export.
         Structure is documented below.
 
         * `slide_generation_options` -
@@ -2359,6 +2540,24 @@ class AnalystAgentPersona(pulumi.CustomResource):
         * `mime_type` -
         (Required)
         The mime type of the file.
+
+        <a name="nested_artifacts_config_methodology_export_options"></a>The `methodology_export_options` block supports:
+
+        * `append_methodology` -
+        (Optional)
+        If true, append the detailed methodology to the final response.
+
+        * `export_format` -
+        (Optional)
+        Format for methodology export.
+        Possible values:
+        MARKDOWN
+        HTML
+        PDF
+
+        * `export_methodology_artifact` -
+        (Optional)
+        If true, export the detailed methodology as a separate artifact.
 
         <a name="nested_artifacts_config_slide_generation_options"></a>The `slide_generation_options` block supports:
 
@@ -2888,6 +3087,13 @@ class AnalystAgentPersona(pulumi.CustomResource):
         (Required)
         The name of the column.
 
+        <a name="nested_web_search_config"></a>The `web_search_config` block supports:
+
+        * `excluded_domains` -
+          (Optional)
+          List of domains to be excluded from Google Search / Enterprise Web Search
+          grounding.
+
         ## Import
 
         AnalystAgentPersona can be imported using any of these accepted formats:
@@ -2930,6 +3136,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                  external_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaExternalDataSourceArgs', 'AnalystAgentPersonaExternalDataSourceArgsDict', 'outputs.AnalystAgentPersonaExternalDataSource']]]]] = None,
                  gemini_enterprise_engine: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 math_rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  mcp_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaMcpDataSourceArgs', 'AnalystAgentPersonaMcpDataSourceArgsDict', 'outputs.AnalystAgentPersonaMcpDataSource']]]]] = None,
                  model_description: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2937,6 +3144,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  skills: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaSkillArgs', 'AnalystAgentPersonaSkillArgsDict', 'outputs.AnalystAgentPersonaSkill']]]]] = None,
                  tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaTableArgs', 'AnalystAgentPersonaTableArgsDict', 'outputs.AnalystAgentPersonaTable']]]]] = None,
+                 web_search_config: pulumi.Input[Optional[Union['AnalystAgentPersonaWebSearchConfigArgs', 'AnalystAgentPersonaWebSearchConfigArgsDict', 'outputs.AnalystAgentPersonaWebSearchConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2962,6 +3170,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["math_rendering_mode"] = math_rendering_mode
             __props__.__dict__["mcp_data_sources"] = mcp_data_sources
             __props__.__dict__["model_description"] = model_description
             __props__.__dict__["project"] = project
@@ -2969,6 +3178,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             __props__.__dict__["role"] = role
             __props__.__dict__["skills"] = skills
             __props__.__dict__["tables"] = tables
+            __props__.__dict__["web_search_config"] = web_search_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -2993,6 +3203,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             external_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaExternalDataSourceArgs', 'AnalystAgentPersonaExternalDataSourceArgsDict', 'outputs.AnalystAgentPersonaExternalDataSource']]]]] = None,
             gemini_enterprise_engine: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            math_rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
             mcp_data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaMcpDataSourceArgs', 'AnalystAgentPersonaMcpDataSourceArgsDict', 'outputs.AnalystAgentPersonaMcpDataSource']]]]] = None,
             model_description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3001,7 +3212,8 @@ class AnalystAgentPersona(pulumi.CustomResource):
             role: pulumi.Input[Optional[_builtins.str]] = None,
             skills: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaSkillArgs', 'AnalystAgentPersonaSkillArgsDict', 'outputs.AnalystAgentPersonaSkill']]]]] = None,
             tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AnalystAgentPersonaTableArgs', 'AnalystAgentPersonaTableArgsDict', 'outputs.AnalystAgentPersonaTable']]]]] = None,
-            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AnalystAgentPersona':
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            web_search_config: pulumi.Input[Optional[Union['AnalystAgentPersonaWebSearchConfigArgs', 'AnalystAgentPersonaWebSearchConfigArgsDict', 'outputs.AnalystAgentPersonaWebSearchConfig']]] = None) -> 'AnalystAgentPersona':
         """
         Get an existing AnalystAgentPersona resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -3034,6 +3246,10 @@ class AnalystAgentPersona(pulumi.CustomResource):
                If not set, requests from GE will only be routed to this persona if its
                name ends in "/default".
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] math_rendering_mode: The math rendering mode selected for this persona.
+               Possible values:
+               MATH_RENDERING_MODE_LATEX
+               MATH_RENDERING_MODE_PLAIN_TEXT
         :param pulumi.Input[Sequence[pulumi.Input[Union['AnalystAgentPersonaMcpDataSourceArgs', 'AnalystAgentPersonaMcpDataSourceArgsDict', 'outputs.AnalystAgentPersonaMcpDataSource']]]] mcp_data_sources: The MCP data source selections to be used by the agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] model_description: The description of the persona review, used by the model.
@@ -3079,6 +3295,8 @@ class AnalystAgentPersona(pulumi.CustomResource):
                agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: Update time stamp.
+        :param pulumi.Input[Union['AnalystAgentPersonaWebSearchConfigArgs', 'AnalystAgentPersonaWebSearchConfigArgsDict', 'outputs.AnalystAgentPersonaWebSearchConfig']] web_search_config: Configuration for web search grounding for the analyst agent.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3095,6 +3313,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
         __props__.__dict__["external_data_sources"] = external_data_sources
         __props__.__dict__["gemini_enterprise_engine"] = gemini_enterprise_engine
         __props__.__dict__["location"] = location
+        __props__.__dict__["math_rendering_mode"] = math_rendering_mode
         __props__.__dict__["mcp_data_sources"] = mcp_data_sources
         __props__.__dict__["model_description"] = model_description
         __props__.__dict__["name"] = name
@@ -3104,6 +3323,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
         __props__.__dict__["skills"] = skills
         __props__.__dict__["tables"] = tables
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["web_search_config"] = web_search_config
         return AnalystAgentPersona(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -3207,6 +3427,17 @@ class AnalystAgentPersona(pulumi.CustomResource):
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="mathRenderingMode")
+    def math_rendering_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The math rendering mode selected for this persona.
+        Possible values:
+        MATH_RENDERING_MODE_LATEX
+        MATH_RENDERING_MODE_PLAIN_TEXT
+        """
+        return pulumi.get(self, "math_rendering_mode")
 
     @_builtins.property
     @pulumi.getter(name="mcpDataSources")
@@ -3315,4 +3546,13 @@ class AnalystAgentPersona(pulumi.CustomResource):
         Update time stamp.
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="webSearchConfig")
+    def web_search_config(self) -> pulumi.Output[Optional['outputs.AnalystAgentPersonaWebSearchConfig']]:
+        """
+        Configuration for web search grounding for the analyst agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "web_search_config")
 

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///     var basic = new Gcp.GkeBackup.RestoreChannel("basic", new()
     ///     {
     ///         Name = "basic-channel",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         Description = "Description",
     ///         DestinationProject = "projects/24240755850",
     ///         Labels = 

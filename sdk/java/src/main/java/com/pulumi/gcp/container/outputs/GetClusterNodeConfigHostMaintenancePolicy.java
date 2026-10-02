@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodeConfigHostMaintenancePolicy {
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. One of: &#34;MAINTENANCE_INTERVAL_UNSPECIFIED&#34;, &#34;AS_NEEDED&#34;, &#34;PERIODIC&#34;.
      * 
      */
     private String maintenanceInterval;
@@ -25,7 +25,7 @@ public final class GetClusterNodeConfigHostMaintenancePolicy {
 
     private GetClusterNodeConfigHostMaintenancePolicy() {}
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. One of: &#34;MAINTENANCE_INTERVAL_UNSPECIFIED&#34;, &#34;AS_NEEDED&#34;, &#34;PERIODIC&#34;.
      * 
      */
     public String maintenanceInterval() {

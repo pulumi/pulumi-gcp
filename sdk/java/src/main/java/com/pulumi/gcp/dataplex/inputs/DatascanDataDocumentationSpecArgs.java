@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,30 @@ public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resource
         return Optional.ofNullable(this.catalogPublishingEnabled);
     }
 
+    /**
+     * The SQL dialect to use in the generated SQL queries.
+     * If not specified, the default dialect is Google SQL.
+     * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+     * 
+     */
+    @Import(name="sqlDialect")
+    private @Nullable Output<String> sqlDialect;
+
+    /**
+     * @return The SQL dialect to use in the generated SQL queries.
+     * If not specified, the default dialect is Google SQL.
+     * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+     * 
+     */
+    public Optional<Output<String>> sqlDialect() {
+        return Optional.ofNullable(this.sqlDialect);
+    }
+
     private DatascanDataDocumentationSpecArgs() {}
 
     private DatascanDataDocumentationSpecArgs(DatascanDataDocumentationSpecArgs $) {
         this.catalogPublishingEnabled = $.catalogPublishingEnabled;
+        this.sqlDialect = $.sqlDialect;
     }
 
     public static Builder builder() {
@@ -73,6 +94,31 @@ public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resource
          */
         public Builder catalogPublishingEnabled(Boolean catalogPublishingEnabled) {
             return catalogPublishingEnabled(Output.of(catalogPublishingEnabled));
+        }
+
+        /**
+         * @param sqlDialect The SQL dialect to use in the generated SQL queries.
+         * If not specified, the default dialect is Google SQL.
+         * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlDialect(@Nullable Output<String> sqlDialect) {
+            $.sqlDialect = sqlDialect;
+            return this;
+        }
+
+        /**
+         * @param sqlDialect The SQL dialect to use in the generated SQL queries.
+         * If not specified, the default dialect is Google SQL.
+         * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sqlDialect(String sqlDialect) {
+            return sqlDialect(Output.of(sqlDialect));
         }
 
         public DatascanDataDocumentationSpecArgs build() {

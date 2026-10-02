@@ -15,6 +15,7 @@ import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAgentLlmAgentArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAgentModelSettingArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAgentRemoteDialogflowAgentArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAgentToolsetArgs;
+import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAgentTransferRuleArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -454,6 +455,27 @@ public final class AppVersionSnapshotAgentArgs extends com.pulumi.resources.Reso
 
     /**
      * (Output)
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="transferRules")
+    private @Nullable Output<List<AppVersionSnapshotAgentTransferRuleArgs>> transferRules;
+
+    /**
+     * @return (Output)
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppVersionSnapshotAgentTransferRuleArgs>>> transferRules() {
+        return Optional.ofNullable(this.transferRules);
+    }
+
+    /**
+     * (Output)
      * Timestamp when the toolset was last updated.
      * 
      */
@@ -492,6 +514,7 @@ public final class AppVersionSnapshotAgentArgs extends com.pulumi.resources.Reso
         this.remoteDialogflowAgents = $.remoteDialogflowAgents;
         this.tools = $.tools;
         this.toolsets = $.toolsets;
+        this.transferRules = $.transferRules;
         this.updateTime = $.updateTime;
     }
 
@@ -1240,6 +1263,46 @@ public final class AppVersionSnapshotAgentArgs extends com.pulumi.resources.Reso
          */
         public Builder toolsets(AppVersionSnapshotAgentToolsetArgs... toolsets) {
             return toolsets(List.of(toolsets));
+        }
+
+        /**
+         * @param transferRules (Output)
+         * List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferRules(@Nullable Output<List<AppVersionSnapshotAgentTransferRuleArgs>> transferRules) {
+            $.transferRules = transferRules;
+            return this;
+        }
+
+        /**
+         * @param transferRules (Output)
+         * List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferRules(List<AppVersionSnapshotAgentTransferRuleArgs> transferRules) {
+            return transferRules(Output.of(transferRules));
+        }
+
+        /**
+         * @param transferRules (Output)
+         * List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferRules(AppVersionSnapshotAgentTransferRuleArgs... transferRules) {
+            return transferRules(List.of(transferRules));
         }
 
         /**

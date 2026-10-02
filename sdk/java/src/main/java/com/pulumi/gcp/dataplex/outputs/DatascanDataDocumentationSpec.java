@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,13 @@ public final class DatascanDataDocumentationSpec {
      * 
      */
     private @Nullable Boolean catalogPublishingEnabled;
+    /**
+     * @return The SQL dialect to use in the generated SQL queries.
+     * If not specified, the default dialect is Google SQL.
+     * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+     * 
+     */
+    private @Nullable String sqlDialect;
 
     private DatascanDataDocumentationSpec() {}
     /**
@@ -24,6 +32,15 @@ public final class DatascanDataDocumentationSpec {
      */
     public Optional<Boolean> catalogPublishingEnabled() {
         return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
+    /**
+     * @return The SQL dialect to use in the generated SQL queries.
+     * If not specified, the default dialect is Google SQL.
+     * Possible values are: `GOOGLE_SQL`, `SPARK_SQL`.
+     * 
+     */
+    public Optional<String> sqlDialect() {
+        return Optional.ofNullable(this.sqlDialect);
     }
 
     public static Builder builder() {
@@ -36,10 +53,12 @@ public final class DatascanDataDocumentationSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean catalogPublishingEnabled;
+        private @Nullable String sqlDialect;
         public Builder() {}
         public Builder(DatascanDataDocumentationSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogPublishingEnabled = defaults.catalogPublishingEnabled;
+    	      this.sqlDialect = defaults.sqlDialect;
         }
 
         @CustomType.Setter
@@ -48,9 +67,16 @@ public final class DatascanDataDocumentationSpec {
             this.catalogPublishingEnabled = catalogPublishingEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder sqlDialect(@Nullable String sqlDialect) {
+
+            this.sqlDialect = sqlDialect;
+            return this;
+        }
         public DatascanDataDocumentationSpec build() {
             final var _resultValue = new DatascanDataDocumentationSpec();
             _resultValue.catalogPublishingEnabled = catalogPublishingEnabled;
+            _resultValue.sqlDialect = sqlDialect;
             return _resultValue;
         }
     }

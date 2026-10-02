@@ -180,6 +180,21 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The number of NAT IPs allocated per connected endpoint.
+     * 
+     */
+    @Import(name="natIpsPerEndpoint")
+    private @Nullable Output<Integer> natIpsPerEndpoint;
+
+    /**
+     * @return The number of NAT IPs allocated per connected endpoint.
+     * 
+     */
+    public Optional<Output<Integer>> natIpsPerEndpoint() {
+        return Optional.ofNullable(this.natIpsPerEndpoint);
+    }
+
+    /**
      * An array of subnets that is provided for NAT in this service attachment.
      * 
      */
@@ -353,6 +368,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         this.domainNames = $.domainNames;
         this.enableProxyProtocol = $.enableProxyProtocol;
         this.name = $.name;
+        this.natIpsPerEndpoint = $.natIpsPerEndpoint;
         this.natSubnets = $.natSubnets;
         this.project = $.project;
         this.propagatedConnectionLimit = $.propagatedConnectionLimit;
@@ -622,6 +638,27 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param natIpsPerEndpoint The number of NAT IPs allocated per connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder natIpsPerEndpoint(@Nullable Output<Integer> natIpsPerEndpoint) {
+            $.natIpsPerEndpoint = natIpsPerEndpoint;
+            return this;
+        }
+
+        /**
+         * @param natIpsPerEndpoint The number of NAT IPs allocated per connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder natIpsPerEndpoint(Integer natIpsPerEndpoint) {
+            return natIpsPerEndpoint(Output.of(natIpsPerEndpoint));
         }
 
         /**

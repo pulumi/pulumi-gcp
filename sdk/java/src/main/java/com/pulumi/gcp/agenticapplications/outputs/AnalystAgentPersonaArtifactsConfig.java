@@ -5,6 +5,7 @@ package com.pulumi.gcp.agenticapplications.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions;
+import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigMethodologyExportOptions;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptions;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class AnalystAgentPersonaArtifactsConfig {
      * 
      */
     private @Nullable AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions documentGenerationOptions;
+    /**
+     * @return Options for methodology export.
+     * 
+     */
+    private @Nullable AnalystAgentPersonaArtifactsConfigMethodologyExportOptions methodologyExportOptions;
     /**
      * @return Options for slide generation.
      * 
@@ -36,6 +42,13 @@ public final class AnalystAgentPersonaArtifactsConfig {
      */
     public Optional<AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions> documentGenerationOptions() {
         return Optional.ofNullable(this.documentGenerationOptions);
+    }
+    /**
+     * @return Options for methodology export.
+     * 
+     */
+    public Optional<AnalystAgentPersonaArtifactsConfigMethodologyExportOptions> methodologyExportOptions() {
+        return Optional.ofNullable(this.methodologyExportOptions);
     }
     /**
      * @return Options for slide generation.
@@ -62,12 +75,14 @@ public final class AnalystAgentPersonaArtifactsConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions documentGenerationOptions;
+        private @Nullable AnalystAgentPersonaArtifactsConfigMethodologyExportOptions methodologyExportOptions;
         private @Nullable AnalystAgentPersonaArtifactsConfigSlideGenerationOptions slideGenerationOptions;
         private @Nullable AnalystAgentPersonaArtifactsConfigVisualizationOptions visualizationOptions;
         public Builder() {}
         public Builder(AnalystAgentPersonaArtifactsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.documentGenerationOptions = defaults.documentGenerationOptions;
+    	      this.methodologyExportOptions = defaults.methodologyExportOptions;
     	      this.slideGenerationOptions = defaults.slideGenerationOptions;
     	      this.visualizationOptions = defaults.visualizationOptions;
         }
@@ -76,6 +91,12 @@ public final class AnalystAgentPersonaArtifactsConfig {
         public Builder documentGenerationOptions(@Nullable AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions documentGenerationOptions) {
 
             this.documentGenerationOptions = documentGenerationOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder methodologyExportOptions(@Nullable AnalystAgentPersonaArtifactsConfigMethodologyExportOptions methodologyExportOptions) {
+
+            this.methodologyExportOptions = methodologyExportOptions;
             return this;
         }
         @CustomType.Setter
@@ -93,6 +114,7 @@ public final class AnalystAgentPersonaArtifactsConfig {
         public AnalystAgentPersonaArtifactsConfig build() {
             final var _resultValue = new AnalystAgentPersonaArtifactsConfig();
             _resultValue.documentGenerationOptions = documentGenerationOptions;
+            _resultValue.methodologyExportOptions = methodologyExportOptions;
             _resultValue.slideGenerationOptions = slideGenerationOptions;
             _resultValue.visualizationOptions = visualizationOptions;
             return _resultValue;

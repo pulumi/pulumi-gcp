@@ -829,7 +829,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="my-project-name-gcf-source",
+            name="gcf-source-my-project-name",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",
@@ -1124,7 +1124,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         bucket = gcp.storage.Bucket("bucket",
-            name="my-project-name-gcf-source",
+            name="gcf-source-my-project-name",
             location="US",
             uniform_bucket_level_access=True)
         object = gcp.storage.BucketObject("object",

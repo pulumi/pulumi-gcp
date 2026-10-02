@@ -334,14 +334,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+     * ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     @Import(name="hostMaintenancePolicy")
     private @Nullable Output<ClusterNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy;
 
     /**
-     * @return The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+     * @return ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodeConfigHostMaintenancePolicyArgs>> hostMaintenancePolicy() {
@@ -852,14 +852,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+     * Windows node configuration. Structure is documented below.
      * 
      */
     @Import(name="windowsNodeConfig")
     private @Nullable Output<ClusterNodeConfigWindowsNodeConfigArgs> windowsNodeConfig;
 
     /**
-     * @return Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+     * @return Windows node configuration. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodeConfigWindowsNodeConfigArgs>> windowsNodeConfig() {
@@ -1368,7 +1368,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+         * @param hostMaintenancePolicy ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          * 
          * @return builder
          * 
@@ -1379,7 +1379,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+         * @param hostMaintenancePolicy ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
          * 
          * @return builder
          * 
@@ -2137,7 +2137,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param windowsNodeConfig Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+         * @param windowsNodeConfig Windows node configuration. Structure is documented below.
          * 
          * @return builder
          * 
@@ -2148,7 +2148,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param windowsNodeConfig Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+         * @param windowsNodeConfig Windows node configuration. Structure is documented below.
          * 
          * @return builder
          * 

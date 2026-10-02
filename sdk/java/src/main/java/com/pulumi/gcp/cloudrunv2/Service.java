@@ -115,7 +115,6 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .deletionProtection(false)
  *             .ingress("INGRESS_TRAFFIC_ALL")
- *             .launchStage("BETA")
  *             .template(ServiceTemplateArgs.builder()
  *                 .scaling(ServiceTemplateScalingArgs.builder()
  *                     .minInstanceCount(1)
@@ -1128,7 +1127,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sourcebucket = new Bucket("sourcebucket", BucketArgs.builder()
- *             .name(String.format("%s-tf-test-gcf-source_75125", project.projectId()))
+ *             .name(String.format("tf-test-gcf-source_39249-%s", project.projectId()))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1966,6 +1965,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<ServiceScaling> scaling() {
         return this.scaling;
+    }
+    /**
+     * Enables SSH access to the Service.
+     * 
+     */
+    @Export(name="sshEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> sshEnabled;
+
+    /**
+     * @return Enables SSH access to the Service.
+     * 
+     */
+    public Output<Optional<Boolean>> sshEnabled() {
+        return Codegen.optional(this.sshEnabled);
     }
     /**
      * A map of resource manager tags.

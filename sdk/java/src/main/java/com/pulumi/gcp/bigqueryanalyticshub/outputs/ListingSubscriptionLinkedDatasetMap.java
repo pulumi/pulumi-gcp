@@ -20,6 +20,12 @@ public final class ListingSubscriptionLinkedDatasetMap {
     private @Nullable String linkedDataset;
     /**
      * @return (Output)
+     * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+     * 
+     */
+    private @Nullable String linkedPubsubSubscription;
+    /**
+     * @return (Output)
      * Output only. Listing for which linked resource is created.
      * 
      */
@@ -38,6 +44,14 @@ public final class ListingSubscriptionLinkedDatasetMap {
      */
     public Optional<String> linkedDataset() {
         return Optional.ofNullable(this.linkedDataset);
+    }
+    /**
+     * @return (Output)
+     * Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/sub_id
+     * 
+     */
+    public Optional<String> linkedPubsubSubscription() {
+        return Optional.ofNullable(this.linkedPubsubSubscription);
     }
     /**
      * @return (Output)
@@ -65,12 +79,14 @@ public final class ListingSubscriptionLinkedDatasetMap {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String linkedDataset;
+        private @Nullable String linkedPubsubSubscription;
         private @Nullable String listing;
         private String resourceName;
         public Builder() {}
         public Builder(ListingSubscriptionLinkedDatasetMap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.linkedDataset = defaults.linkedDataset;
+    	      this.linkedPubsubSubscription = defaults.linkedPubsubSubscription;
     	      this.listing = defaults.listing;
     	      this.resourceName = defaults.resourceName;
         }
@@ -79,6 +95,12 @@ public final class ListingSubscriptionLinkedDatasetMap {
         public Builder linkedDataset(@Nullable String linkedDataset) {
 
             this.linkedDataset = linkedDataset;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder linkedPubsubSubscription(@Nullable String linkedPubsubSubscription) {
+
+            this.linkedPubsubSubscription = linkedPubsubSubscription;
             return this;
         }
         @CustomType.Setter
@@ -98,6 +120,7 @@ public final class ListingSubscriptionLinkedDatasetMap {
         public ListingSubscriptionLinkedDatasetMap build() {
             final var _resultValue = new ListingSubscriptionLinkedDatasetMap();
             _resultValue.linkedDataset = linkedDataset;
+            _resultValue.linkedPubsubSubscription = linkedPubsubSubscription;
             _resultValue.listing = listing;
             _resultValue.resourceName = resourceName;
             return _resultValue;

@@ -32,14 +32,14 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
     }
 
     /**
-     * Parameters for configuring a certificate hosted in GCP SecretManager.
+     * Parameters for configuring a certificate hosted in GCP SecretManager:
      * 
      */
     @Import(name="gcpSecretManagerCertificateConfig", required=true)
     private Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs> gcpSecretManagerCertificateConfig;
 
     /**
-     * @return Parameters for configuring a certificate hosted in GCP SecretManager.
+     * @return Parameters for configuring a certificate hosted in GCP SecretManager:
      * 
      */
     public Output<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs> gcpSecretManagerCertificateConfig() {
@@ -103,7 +103,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
         }
 
         /**
-         * @param gcpSecretManagerCertificateConfig Parameters for configuring a certificate hosted in GCP SecretManager.
+         * @param gcpSecretManagerCertificateConfig Parameters for configuring a certificate hosted in GCP SecretManager:
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPriv
         }
 
         /**
-         * @param gcpSecretManagerCertificateConfig Parameters for configuring a certificate hosted in GCP SecretManager.
+         * @param gcpSecretManagerCertificateConfig Parameters for configuring a certificate hosted in GCP SecretManager:
          * 
          * @return builder
          * 

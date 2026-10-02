@@ -61,6 +61,7 @@ export interface GetParameterResult {
     readonly policyMembers: outputs.parametermanager.GetParameterPolicyMember[];
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly tags: {[key: string]: string};
     readonly updateTime: string;
 }
 /**

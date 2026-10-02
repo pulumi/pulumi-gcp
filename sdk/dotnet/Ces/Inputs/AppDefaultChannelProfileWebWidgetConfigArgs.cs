@@ -24,6 +24,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<string>? Modality { get; set; }
 
         /// <summary>
+        /// The security settings of the web widget.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("securitySettings")]
+        public Input<Inputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs>? SecuritySettings { get; set; }
+
+        /// <summary>
         /// The theme of the web widget.
         /// Possible values:
         /// UNKNOWN_THEME

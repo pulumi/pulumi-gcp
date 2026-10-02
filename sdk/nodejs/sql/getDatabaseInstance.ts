@@ -55,6 +55,7 @@ export interface GetDatabaseInstanceResult {
     readonly deletionProtection: boolean;
     readonly dnsName: string;
     readonly dnsNames: outputs.sql.GetDatabaseInstanceDnsName[];
+    readonly encryptionConfidentialMode: boolean;
     readonly encryptionKeyName: string;
     readonly enforceNewSqlNetworkArchitecture: boolean;
     readonly finalBackupDescription: string;

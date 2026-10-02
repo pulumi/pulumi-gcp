@@ -295,6 +295,87 @@ class EndpointAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Apigee Endpoint Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigee_network",
+            name="apigee-network",
+            project=current.project)
+        apigee_range = gcp.compute.GlobalAddress("apigee_range",
+            name="apigee-range",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id,
+            project=current.project)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            },
+            project=current.project)
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-central1",
+            health_checks=producer_service_health_check.id,
+            project=current.project)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False,
+            project=current.project)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.99.0/24",
+            project=current.project)
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name,
+            project=project["projectId"])
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.0.199.0/24",
+            project=current.project)
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            project=current.project)
+        apigee_org = gcp.apigee.Organization("apigee_org",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigee_endpoint_attachment",
+            org_id=apigee_org.id,
+            endpoint_attachment_id="tf-test_77884",
+            location="us-central1",
+            service_attachment=psc_ilb_service_attachment.id)
+        ```
+
         ## Import
 
         EndpointAttachment can be imported using any of these accepted formats:
@@ -343,6 +424,87 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
+
+        ### Apigee Endpoint Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigee_network",
+            name="apigee-network",
+            project=current.project)
+        apigee_range = gcp.compute.GlobalAddress("apigee_range",
+            name="apigee-range",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id,
+            project=current.project)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            },
+            project=current.project)
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-central1",
+            health_checks=producer_service_health_check.id,
+            project=current.project)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False,
+            project=current.project)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.99.0/24",
+            project=current.project)
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name,
+            project=project["projectId"])
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.0.199.0/24",
+            project=current.project)
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id,
+            project=current.project)
+        apigee_org = gcp.apigee.Organization("apigee_org",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigee_endpoint_attachment",
+            org_id=apigee_org.id,
+            endpoint_attachment_id="tf-test_77884",
+            location="us-central1",
+            service_attachment=psc_ilb_service_attachment.id)
+        ```
 
         ## Import
 

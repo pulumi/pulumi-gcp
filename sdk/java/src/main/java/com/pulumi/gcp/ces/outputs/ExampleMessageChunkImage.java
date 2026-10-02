@@ -7,9 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ExampleMessageChunkImage {
+    /**
+     * @return The alternative text for the image.
+     * 
+     */
+    private @Nullable String altText;
     /**
      * @return Raw bytes of the image.
      * 
@@ -26,6 +33,13 @@ public final class ExampleMessageChunkImage {
     private String mimeType;
 
     private ExampleMessageChunkImage() {}
+    /**
+     * @return The alternative text for the image.
+     * 
+     */
+    public Optional<String> altText() {
+        return Optional.ofNullable(this.altText);
+    }
     /**
      * @return Raw bytes of the image.
      * 
@@ -54,15 +68,23 @@ public final class ExampleMessageChunkImage {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String altText;
         private String data;
         private String mimeType;
         public Builder() {}
         public Builder(ExampleMessageChunkImage defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.altText = defaults.altText;
     	      this.data = defaults.data;
     	      this.mimeType = defaults.mimeType;
         }
 
+        @CustomType.Setter
+        public Builder altText(@Nullable String altText) {
+
+            this.altText = altText;
+            return this;
+        }
         @CustomType.Setter
         public Builder data(String data) {
             if (data == null) {
@@ -81,6 +103,7 @@ public final class ExampleMessageChunkImage {
         }
         public ExampleMessageChunkImage build() {
             final var _resultValue = new ExampleMessageChunkImage();
+            _resultValue.altText = altText;
             _resultValue.data = data;
             _resultValue.mimeType = mimeType;
             return _resultValue;

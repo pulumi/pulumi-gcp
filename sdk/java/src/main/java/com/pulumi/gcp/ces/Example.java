@@ -186,6 +186,7 @@ import javax.annotation.Nullable;
  *                             .data(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                                 .input("This is some fake image binary data.")
  *                                 .build()).result())
+ *                             .altText("alt text")
  *                             .build())
  *                         .build(),
  *                     ExampleMessageChunkArgs.builder()

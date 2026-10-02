@@ -1463,6 +1463,9 @@ class RegionDisk(pulumi.CustomResource):
         * How-to Guides
             * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Region Disk Basic
@@ -1487,6 +1490,68 @@ class RegionDisk(pulumi.CustomResource):
             type="pd-ssd",
             region="us-central1",
             physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+        ### Region Disk Disk Encryption Key Wo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            name="my-disk",
+            image="debian-cloud/debian-13",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-disk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            disk_encryption_key={
+                "raw_key_wo": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+                "raw_key_wo_version": "1",
+            },
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+        ### Region Disk Rsa Encrypted Key Wo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            name="my-disk",
+            image="debian-cloud/debian-13",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-disk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            disk_encryption_key={
+                "rsa_encrypted_key_wo": "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+                "rsa_encrypted_key_wo_version": "1",
+            },
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
@@ -1720,6 +1785,9 @@ class RegionDisk(pulumi.CustomResource):
         * How-to Guides
             * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Region Disk Basic
@@ -1744,6 +1812,68 @@ class RegionDisk(pulumi.CustomResource):
             type="pd-ssd",
             region="us-central1",
             physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+        ### Region Disk Disk Encryption Key Wo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            name="my-disk",
+            image="debian-cloud/debian-13",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-disk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            disk_encryption_key={
+                "raw_key_wo": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+                "raw_key_wo_version": "1",
+            },
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+        ### Region Disk Rsa Encrypted Key Wo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            name="my-disk",
+            image="debian-cloud/debian-13",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            name="my-snapshot",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            name="my-region-disk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            disk_encryption_key={
+                "rsa_encrypted_key_wo": "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+                "rsa_encrypted_key_wo_version": "1",
+            },
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",

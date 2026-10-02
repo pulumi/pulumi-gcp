@@ -31,6 +31,7 @@ class ServiceAttachmentArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips_per_endpoint: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  reconcile_connections: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -70,6 +71,7 @@ class ServiceAttachmentArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.int] nat_ips_per_endpoint: The number of NAT IPs allocated per connected endpoint.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] propagated_connection_limit: The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
@@ -108,6 +110,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "domain_names", domain_names)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nat_ips_per_endpoint is not None:
+            pulumi.set(__self__, "nat_ips_per_endpoint", nat_ips_per_endpoint)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if propagated_connection_limit is not None:
@@ -263,6 +267,18 @@ class ServiceAttachmentArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="natIpsPerEndpoint")
+    def nat_ips_per_endpoint(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of NAT IPs allocated per connected endpoint.
+        """
+        return pulumi.get(self, "nat_ips_per_endpoint")
+
+    @nat_ips_per_endpoint.setter
+    def nat_ips_per_endpoint(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nat_ips_per_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -374,6 +390,7 @@ class _ServiceAttachmentState:
                  enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips_per_endpoint: pulumi.Input[Optional[_builtins.int]] = None,
                  nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -420,6 +437,7 @@ class _ServiceAttachmentState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.int] nat_ips_per_endpoint: The number of NAT IPs allocated per connected endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -467,6 +485,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nat_ips_per_endpoint is not None:
+            pulumi.set(__self__, "nat_ips_per_endpoint", nat_ips_per_endpoint)
         if nat_subnets is not None:
             pulumi.set(__self__, "nat_subnets", nat_subnets)
         if project is not None:
@@ -633,6 +653,18 @@ class _ServiceAttachmentState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="natIpsPerEndpoint")
+    def nat_ips_per_endpoint(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of NAT IPs allocated per connected endpoint.
+        """
+        return pulumi.get(self, "nat_ips_per_endpoint")
+
+    @nat_ips_per_endpoint.setter
+    def nat_ips_per_endpoint(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nat_ips_per_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="natSubnets")
     def nat_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -794,6 +826,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips_per_endpoint: pulumi.Input[Optional[_builtins.int]] = None,
                  nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -875,6 +908,55 @@ class ServiceAttachment(pulumi.CustomResource):
             load_balancing_scheme="",
             network="default",
             ip_address=psc_ilb_consumer_address.id)
+        ```
+        ### Service Attachment Nat Ips
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-central1",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            nat_ips_per_endpoint=2,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id)
         ```
         ### Service Attachment Explicit Projects
 
@@ -1240,6 +1322,7 @@ class ServiceAttachment(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.int] nat_ips_per_endpoint: The number of NAT IPs allocated per connected endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1341,6 +1424,55 @@ class ServiceAttachment(pulumi.CustomResource):
             load_balancing_scheme="",
             network="default",
             ip_address=psc_ilb_consumer_address.id)
+        ```
+        ### Service Attachment Nat Ips
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_service_health_check = gcp.compute.HealthCheck("producer_service_health_check",
+            name="producer-service-health-check",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check={
+                "port": 80,
+            })
+        producer_service_backend = gcp.compute.RegionBackendService("producer_service_backend",
+            name="producer-service",
+            region="us-central1",
+            health_checks=producer_service_health_check.id)
+        psc_ilb_network = gcp.compute.Network("psc_ilb_network",
+            name="psc-ilb-network",
+            auto_create_subnetworks=False)
+        psc_ilb_producer_subnetwork = gcp.compute.Subnetwork("psc_ilb_producer_subnetwork",
+            name="psc-ilb-producer-subnetwork",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            ip_cidr_range="10.0.0.0/16")
+        psc_ilb_target_service = gcp.compute.ForwardingRule("psc_ilb_target_service",
+            name="producer-forwarding-rule",
+            region="us-central1",
+            load_balancing_scheme="INTERNAL",
+            backend_service=producer_service_backend.id,
+            all_ports=True,
+            network=psc_ilb_network.name,
+            subnetwork=psc_ilb_producer_subnetwork.name)
+        psc_ilb_nat = gcp.compute.Subnetwork("psc_ilb_nat",
+            name="psc-ilb-nat",
+            region="us-central1",
+            network=psc_ilb_network.id,
+            purpose="PRIVATE_SERVICE_CONNECT",
+            ip_cidr_range="10.1.0.0/16")
+        psc_ilb_service_attachment = gcp.compute.ServiceAttachment("psc_ilb_service_attachment",
+            name="my-psc-ilb",
+            region="us-central1",
+            description="A service attachment configured with Terraform",
+            enable_proxy_protocol=True,
+            nat_ips_per_endpoint=2,
+            connection_preference="ACCEPT_AUTOMATIC",
+            nat_subnets=[psc_ilb_nat.id],
+            target_service=psc_ilb_target_service.id)
         ```
         ### Service Attachment Explicit Projects
 
@@ -1700,6 +1832,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  domain_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ips_per_endpoint: pulumi.Input[Optional[_builtins.int]] = None,
                  nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1730,6 +1863,7 @@ class ServiceAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'enable_proxy_protocol'")
             __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
             __props__.__dict__["name"] = name
+            __props__.__dict__["nat_ips_per_endpoint"] = nat_ips_per_endpoint
             if nat_subnets is None and not opts.urn:
                 raise TypeError("Missing required property 'nat_subnets'")
             __props__.__dict__["nat_subnets"] = nat_subnets
@@ -1767,6 +1901,7 @@ class ServiceAttachment(pulumi.CustomResource):
             enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ips_per_endpoint: pulumi.Input[Optional[_builtins.int]] = None,
             nat_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             propagated_connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1817,6 +1952,7 @@ class ServiceAttachment(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[_builtins.int] nat_ips_per_endpoint: The number of NAT IPs allocated per connected endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1858,6 +1994,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["enable_proxy_protocol"] = enable_proxy_protocol
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
+        __props__.__dict__["nat_ips_per_endpoint"] = nat_ips_per_endpoint
         __props__.__dict__["nat_subnets"] = nat_subnets
         __props__.__dict__["project"] = project
         __props__.__dict__["propagated_connection_limit"] = propagated_connection_limit
@@ -1972,6 +2109,14 @@ class ServiceAttachment(pulumi.CustomResource):
         except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="natIpsPerEndpoint")
+    def nat_ips_per_endpoint(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of NAT IPs allocated per connected endpoint.
+        """
+        return pulumi.get(self, "nat_ips_per_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="natSubnets")

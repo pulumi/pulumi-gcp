@@ -61,12 +61,13 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "backend-service",
     ///         Protocol = "SSL",
+    ///         LoadBalancingScheme = "EXTERNAL",
     ///         HealthChecks = defaultHealthCheck.Id,
     ///     });
     /// 
     ///     var defaultCertificateMap = new Gcp.CertificateManager.CertificateMap("default", new()
     ///     {
-    ///         Name = "certificate-map-test",
+    ///         Name = "certificate-map",
     ///         Description = "My acceptance test certificate map",
     ///     });
     /// 

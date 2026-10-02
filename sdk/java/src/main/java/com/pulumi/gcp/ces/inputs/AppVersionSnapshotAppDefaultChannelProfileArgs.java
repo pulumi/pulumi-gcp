@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs;
+import com.pulumi.gcp.ces.inputs.AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -143,6 +144,25 @@ public final class AppVersionSnapshotAppDefaultChannelProfileArgs extends com.pu
         return Optional.ofNullable(this.webWidgetConfigs);
     }
 
+    /**
+     * (Output)
+     * Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="whatsappConfigs")
+    private @Nullable Output<List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs>> whatsappConfigs;
+
+    /**
+     * @return (Output)
+     * Configuration specific to WhatsApp deployments.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs>>> whatsappConfigs() {
+        return Optional.ofNullable(this.whatsappConfigs);
+    }
+
     private AppVersionSnapshotAppDefaultChannelProfileArgs() {}
 
     private AppVersionSnapshotAppDefaultChannelProfileArgs(AppVersionSnapshotAppDefaultChannelProfileArgs $) {
@@ -152,6 +172,7 @@ public final class AppVersionSnapshotAppDefaultChannelProfileArgs extends com.pu
         this.personaProperties = $.personaProperties;
         this.profileId = $.profileId;
         this.webWidgetConfigs = $.webWidgetConfigs;
+        this.whatsappConfigs = $.whatsappConfigs;
     }
 
     public static Builder builder() {
@@ -354,6 +375,43 @@ public final class AppVersionSnapshotAppDefaultChannelProfileArgs extends com.pu
          */
         public Builder webWidgetConfigs(AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs... webWidgetConfigs) {
             return webWidgetConfigs(List.of(webWidgetConfigs));
+        }
+
+        /**
+         * @param whatsappConfigs (Output)
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappConfigs(@Nullable Output<List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs>> whatsappConfigs) {
+            $.whatsappConfigs = whatsappConfigs;
+            return this;
+        }
+
+        /**
+         * @param whatsappConfigs (Output)
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappConfigs(List<AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs> whatsappConfigs) {
+            return whatsappConfigs(Output.of(whatsappConfigs));
+        }
+
+        /**
+         * @param whatsappConfigs (Output)
+         * Configuration specific to WhatsApp deployments.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whatsappConfigs(AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs... whatsappConfigs) {
+            return whatsappConfigs(List.of(whatsappConfigs));
         }
 
         public AppVersionSnapshotAppDefaultChannelProfileArgs build() {

@@ -89,6 +89,25 @@ public final class AgentRemoteDialogflowAgentArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The name of the variable that contains the language code to be used for
+     * the Dialogflow session. If unspecified, the default language code of the
+     * Dialogflow agent will be used.
+     * 
+     */
+    @Import(name="languageCodeVariable")
+    private @Nullable Output<String> languageCodeVariable;
+
+    /**
+     * @return The name of the variable that contains the language code to be used for
+     * the Dialogflow session. If unspecified, the default language code of the
+     * Dialogflow agent will be used.
+     * 
+     */
+    public Optional<Output<String>> languageCodeVariable() {
+        return Optional.ofNullable(this.languageCodeVariable);
+    }
+
+    /**
      * The mapping of the Dialogflow session parameters names to the app
      * variables names to be sent back to the CES agent after the Dialogflow
      * agent execution ends.
@@ -129,6 +148,7 @@ public final class AgentRemoteDialogflowAgentArgs extends com.pulumi.resources.R
         this.environmentId = $.environmentId;
         this.flowId = $.flowId;
         this.inputVariableMapping = $.inputVariableMapping;
+        this.languageCodeVariable = $.languageCodeVariable;
         this.outputVariableMapping = $.outputVariableMapping;
         this.respectResponseInterruptionSettings = $.respectResponseInterruptionSettings;
     }
@@ -243,6 +263,31 @@ public final class AgentRemoteDialogflowAgentArgs extends com.pulumi.resources.R
          */
         public Builder inputVariableMapping(Map<String,String> inputVariableMapping) {
             return inputVariableMapping(Output.of(inputVariableMapping));
+        }
+
+        /**
+         * @param languageCodeVariable The name of the variable that contains the language code to be used for
+         * the Dialogflow session. If unspecified, the default language code of the
+         * Dialogflow agent will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder languageCodeVariable(@Nullable Output<String> languageCodeVariable) {
+            $.languageCodeVariable = languageCodeVariable;
+            return this;
+        }
+
+        /**
+         * @param languageCodeVariable The name of the variable that contains the language code to be used for
+         * the Dialogflow session. If unspecified, the default language code of the
+         * Dialogflow agent will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder languageCodeVariable(String languageCodeVariable) {
+            return languageCodeVariable(Output.of(languageCodeVariable));
         }
 
         /**

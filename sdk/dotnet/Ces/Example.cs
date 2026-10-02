@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Ces
     ///                             {
     ///                                 Input = "This is some fake image binary data.",
     ///                             }).Apply(invoke =&gt; invoke.Result),
+    ///                             AltText = "alt text",
     ///                         },
     ///                     },
     ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs

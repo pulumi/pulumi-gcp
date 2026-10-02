@@ -465,7 +465,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instanceTemplate = new InstanceTemplate("instanceTemplate", InstanceTemplateArgs.builder()
- *             .name("template-region-service")
+ *             .name("region-service-template")
  *             .machineType("e2-medium")
  *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
  *                 .network(defaultNetwork.id())

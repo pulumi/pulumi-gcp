@@ -273,6 +273,21 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _toolsets = value;
         }
 
+        [Input("transferRules")]
+        private InputList<Inputs.AppVersionSnapshotAgentTransferRuleArgs>? _transferRules;
+
+        /// <summary>
+        /// (Output)
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppVersionSnapshotAgentTransferRuleArgs> TransferRules
+        {
+            get => _transferRules ?? (_transferRules = new InputList<Inputs.AppVersionSnapshotAgentTransferRuleArgs>());
+            set => _transferRules = value;
+        }
+
         /// <summary>
         /// (Output)
         /// Timestamp when the toolset was last updated.

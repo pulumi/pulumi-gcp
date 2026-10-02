@@ -54,12 +54,10 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return Contains network tier information. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     private @Nullable ClusterIpAllocationPolicyNetworkTierConfig networkTierConfig;
     /**
-     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * @return Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
      * 
      */
     private @Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig;
@@ -136,14 +134,12 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return Contains network tier information. Structure is documented below
      * 
-     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
-     * 
      */
     public Optional<ClusterIpAllocationPolicyNetworkTierConfig> networkTierConfig() {
         return Optional.ofNullable(this.networkTierConfig);
     }
     /**
-     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * @return Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
      * 
      */
     public Optional<ClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {

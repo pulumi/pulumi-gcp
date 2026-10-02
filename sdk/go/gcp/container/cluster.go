@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +34,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,8 +92,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -143,7 +143,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -175,7 +175,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -210,8 +210,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -618,13 +618,14 @@ type Cluster struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
-	// TPU configuration for the cluster.
+	// ) Configuration for Cloud TPU in this cluster.
+	// Structure is documented below.
 	TpuConfig ClusterTpuConfigOutput `pulumi:"tpuConfig"`
 	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
-	// The custom keys configuration of the cluster Structure is documented below.
+	// The custom keys configuration of the cluster. Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrOutput `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -1024,13 +1025,14 @@ type clusterState struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// TPU configuration for the cluster.
+	// ) Configuration for Cloud TPU in this cluster.
+	// Structure is documented below.
 	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
 	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
-	// The custom keys configuration of the cluster Structure is documented below.
+	// The custom keys configuration of the cluster. Structure is documented below.
 	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -1396,13 +1398,14 @@ type ClusterState struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
-	// TPU configuration for the cluster.
+	// ) Configuration for Cloud TPU in this cluster.
+	// Structure is documented below.
 	TpuConfig ClusterTpuConfigPtrInput
 	// The IP address range of the Cloud TPUs in this cluster, in
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringPtrInput
-	// The custom keys configuration of the cluster Structure is documented below.
+	// The custom keys configuration of the cluster. Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -1750,9 +1753,10 @@ type clusterArgs struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// TPU configuration for the cluster.
+	// ) Configuration for Cloud TPU in this cluster.
+	// Structure is documented below.
 	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
-	// The custom keys configuration of the cluster Structure is documented below.
+	// The custom keys configuration of the cluster. Structure is documented below.
 	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -2097,9 +2101,10 @@ type ClusterArgs struct {
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
-	// TPU configuration for the cluster.
+	// ) Configuration for Cloud TPU in this cluster.
+	// Structure is documented below.
 	TpuConfig ClusterTpuConfigPtrInput
-	// The custom keys configuration of the cluster Structure is documented below.
+	// The custom keys configuration of the cluster. Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
@@ -2841,7 +2846,8 @@ func (o ClusterOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// TPU configuration for the cluster.
+// ) Configuration for Cloud TPU in this cluster.
+// Structure is documented below.
 func (o ClusterOutput) TpuConfig() ClusterTpuConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterTpuConfigOutput { return v.TpuConfig }).(ClusterTpuConfigOutput)
 }
@@ -2853,7 +2859,7 @@ func (o ClusterOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// The custom keys configuration of the cluster Structure is documented below.
+// The custom keys configuration of the cluster. Structure is documented below.
 func (o ClusterOutput) UserManagedKeysConfig() ClusterUserManagedKeysConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterUserManagedKeysConfigPtrOutput { return v.UserManagedKeysConfig }).(ClusterUserManagedKeysConfigPtrOutput)
 }

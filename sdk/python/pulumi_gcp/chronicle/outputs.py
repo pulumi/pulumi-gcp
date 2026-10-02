@@ -85,6 +85,7 @@ __all__ = [
     'DataExportIngestionLabel',
     'DataTableColumnInfo',
     'DataTableScopeInfo',
+    'EnvironmentDynamicParameter',
     'FeedDetails',
     'FeedDetailsAmazonKinesisFirehoseSettings',
     'FeedDetailsAmazonS3Settings',
@@ -4856,6 +4857,68 @@ class DataTableScopeInfo(dict):
         "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}"
         """
         return pulumi.get(self, "data_access_scopes")
+
+
+@pulumi.output_type
+class EnvironmentDynamicParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dynamicParameterId":
+            suggest = "dynamic_parameter_id"
+        elif key == "environmentId":
+            suggest = "environment_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentDynamicParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentDynamicParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentDynamicParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dynamic_parameter_id: _builtins.int,
+                 value: _builtins.str,
+                 environment_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int dynamic_parameter_id: The ID of the dynamic parameter.
+        :param _builtins.str value: The value of the dynamic parameter.
+        :param _builtins.int environment_id: (Output)
+               The ID of the environment.
+        """
+        pulumi.set(__self__, "dynamic_parameter_id", dynamic_parameter_id)
+        pulumi.set(__self__, "value", value)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicParameterId")
+    def dynamic_parameter_id(self) -> _builtins.int:
+        """
+        The ID of the dynamic parameter.
+        """
+        return pulumi.get(self, "dynamic_parameter_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the dynamic parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The ID of the environment.
+        """
+        return pulumi.get(self, "environment_id")
 
 
 @pulumi.output_type

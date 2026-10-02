@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,30 @@ public final class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting
         return Optional.ofNullable(this.disableConversationLogging);
     }
 
+    /**
+     * (Output)
+     * Controls the retention window for the conversation.
+     * If not set, the conversation will be retained for 365 days.
+     * 
+     */
+    @Import(name="retentionWindow")
+    private @Nullable Output<String> retentionWindow;
+
+    /**
+     * @return (Output)
+     * Controls the retention window for the conversation.
+     * If not set, the conversation will be retained for 365 days.
+     * 
+     */
+    public Optional<Output<String>> retentionWindow() {
+        return Optional.ofNullable(this.retentionWindow);
+    }
+
     private AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs() {}
 
     private AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs(AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs $) {
         this.disableConversationLogging = $.disableConversationLogging;
+        this.retentionWindow = $.retentionWindow;
     }
 
     public static Builder builder() {
@@ -77,6 +98,31 @@ public final class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting
          */
         public Builder disableConversationLogging(Boolean disableConversationLogging) {
             return disableConversationLogging(Output.of(disableConversationLogging));
+        }
+
+        /**
+         * @param retentionWindow (Output)
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindow(@Nullable Output<String> retentionWindow) {
+            $.retentionWindow = retentionWindow;
+            return this;
+        }
+
+        /**
+         * @param retentionWindow (Output)
+         * Controls the retention window for the conversation.
+         * If not set, the conversation will be retained for 365 days.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retentionWindow(String retentionWindow) {
+            return retentionWindow(Output.of(retentionWindow));
         }
 
         public AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs build() {

@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.SecretManager
     ///             { "key3", "value3" },
     ///         },
     ///         Ttl = "36000s",
+    ///         SecretType = "ACCESS_KEY",
     ///     });
     /// 
     /// });
@@ -373,6 +374,13 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> SecretId { get; private set; } = null!;
 
         /// <summary>
+        /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+        /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// </summary>
+        [Output("secretType")]
+        public Output<string?> SecretType { get; private set; } = null!;
+
+        /// <summary>
         /// A map of resource manager tags.
         /// Resource manager tag keys and values have the same definition as resource manager tags.
         /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -576,6 +584,13 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
+
+        /// <summary>
+        /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+        /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// </summary>
+        [Input("secretType")]
+        public Input<string>? SecretType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -814,6 +829,13 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("secretId")]
         public Input<string>? SecretId { get; set; }
+
+        /// <summary>
+        /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+        /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// </summary>
+        [Input("secretType")]
+        public Input<string>? SecretType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

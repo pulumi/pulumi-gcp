@@ -17,11 +17,20 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Whether to disable conversation logging for the sessions.
         /// </summary>
         public readonly bool? DisableConversationLogging;
+        /// <summary>
+        /// Controls the retention window for the conversation.
+        /// If not set, the conversation will be retained for 365 days.
+        /// </summary>
+        public readonly string? RetentionWindow;
 
         [OutputConstructor]
-        private AppLoggingSettingsConversationLoggingSettings(bool? disableConversationLogging)
+        private AppLoggingSettingsConversationLoggingSettings(
+            bool? disableConversationLogging,
+
+            string? retentionWindow)
         {
             DisableConversationLogging = disableConversationLogging;
+            RetentionWindow = retentionWindow;
         }
     }
 }

@@ -26,6 +26,7 @@ class DatabaseInstanceArgs:
                  clone: pulumi.Input[Optional['DatabaseInstanceCloneArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -76,6 +77,7 @@ class DatabaseInstanceArgs:
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
                
                > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+        :param pulumi.Input[_builtins.bool] encryption_confidential_mode: Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -137,6 +139,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if encryption_confidential_mode is not None:
+            pulumi.set(__self__, "encryption_confidential_mode", encryption_confidential_mode)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         if enforce_new_sql_network_architecture is not None:
@@ -260,6 +264,18 @@ class DatabaseInstanceArgs:
     @deletion_protection.setter
     def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfidentialMode")
+    def encryption_confidential_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+        """
+        return pulumi.get(self, "encryption_confidential_mode")
+
+    @encryption_confidential_mode.setter
+    def encryption_confidential_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encryption_confidential_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyName")
@@ -556,6 +572,7 @@ class _DatabaseInstanceState:
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_names: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]] = None,
+                 encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -619,6 +636,7 @@ class _DatabaseInstanceState:
                > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        :param pulumi.Input[_builtins.bool] encryption_confidential_mode: Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -696,6 +714,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "dns_name", dns_name)
         if dns_names is not None:
             pulumi.set(__self__, "dns_names", dns_names)
+        if encryption_confidential_mode is not None:
+            pulumi.set(__self__, "encryption_confidential_mode", encryption_confidential_mode)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         if enforce_new_sql_network_architecture is not None:
@@ -884,6 +904,18 @@ class _DatabaseInstanceState:
     @dns_names.setter
     def dns_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]]):
         pulumi.set(self, "dns_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfidentialMode")
+    def encryption_confidential_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+        """
+        return pulumi.get(self, "encryption_confidential_mode")
+
+    @encryption_confidential_mode.setter
+    def encryption_confidential_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encryption_confidential_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyName")
@@ -1270,6 +1302,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1638,6 +1671,7 @@ class DatabaseInstance(pulumi.CustomResource):
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
                
                > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
+        :param pulumi.Input[_builtins.bool] encryption_confidential_mode: Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -2034,6 +2068,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  database_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2071,6 +2106,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["database_version"] = database_version
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["encryption_confidential_mode"] = encryption_confidential_mode
             __props__.__dict__["encryption_key_name"] = encryption_key_name
             __props__.__dict__["enforce_new_sql_network_architecture"] = enforce_new_sql_network_architecture
             __props__.__dict__["final_backup_description"] = final_backup_description
@@ -2125,6 +2161,7 @@ class DatabaseInstance(pulumi.CustomResource):
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
             dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict', 'outputs.DatabaseInstanceDnsName']]]]] = None,
+            encryption_confidential_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
             enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
             final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2192,6 +2229,7 @@ class DatabaseInstance(pulumi.CustomResource):
                > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict', 'outputs.DatabaseInstanceDnsName']]]] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        :param pulumi.Input[_builtins.bool] encryption_confidential_mode: Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
         :param pulumi.Input[_builtins.str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -2264,6 +2302,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dns_names"] = dns_names
+        __props__.__dict__["encryption_confidential_mode"] = encryption_confidential_mode
         __props__.__dict__["encryption_key_name"] = encryption_key_name
         __props__.__dict__["enforce_new_sql_network_architecture"] = enforce_new_sql_network_architecture
         __props__.__dict__["final_backup_description"] = final_backup_description
@@ -2388,6 +2427,14 @@ class DatabaseInstance(pulumi.CustomResource):
         The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         """
         return pulumi.get(self, "dns_names")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfidentialMode")
+    def encryption_confidential_mode(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+        """
+        return pulumi.get(self, "encryption_confidential_mode")
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyName")

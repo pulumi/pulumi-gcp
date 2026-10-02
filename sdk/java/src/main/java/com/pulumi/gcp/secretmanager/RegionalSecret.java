@@ -222,6 +222,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("key3", "value3")
  *             ))
  *             .ttl("36000s")
+ *             .secretType("ACCESS_KEY")
  *             .build());
  * 
  *     }
@@ -615,6 +616,22 @@ public class RegionalSecret extends com.pulumi.resources.CustomResource {
      */
     public Output<String> secretId() {
         return this.secretId;
+    }
+    /**
+     * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    @Export(name="secretType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secretType;
+
+    /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    public Output<Optional<String>> secretType() {
+        return Codegen.optional(this.secretType);
     }
     /**
      * A map of resource manager tags.

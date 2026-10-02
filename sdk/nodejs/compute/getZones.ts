@@ -12,19 +12,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = gcp.compute.getZones({});
- * const foo: gcp.compute.InstanceGroupManager[] = [];
- * available.then(available => available.names).length.apply(rangeBody => {
- *     for (let range = 0; range < rangeBody; range++) {
- *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
- *             name: `test-${range}`,
- *             instanceTemplate: foobar.selfLink,
- *             baseInstanceName: `foobar-${range}`,
- *             zone: available.then(available => available.names[range]),
- *             targetSize: 1,
- *         }));
- *     }
- * });
+ * export = async () => {
+ *     const available = await gcp.compute.getZones({});
+ *     const foo: gcp.compute.InstanceGroupManager[] = [];
+ * available.names.length.apply(rangeBody => {
+ *         for (let range = 0; range < rangeBody; range++) {
+ *             foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+ *                 name: `test-${range}`,
+ *                 instanceTemplate: foobar.selfLink,
+ *                 baseInstanceName: `foobar-${range}`,
+ *                 zone: available.names[range],
+ *                 targetSize: 1,
+ *             }));
+ *         }
+ *     });
+ * }
  * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -80,19 +82,21 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = gcp.compute.getZones({});
- * const foo: gcp.compute.InstanceGroupManager[] = [];
- * available.then(available => available.names).length.apply(rangeBody => {
- *     for (let range = 0; range < rangeBody; range++) {
- *         foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
- *             name: `test-${range}`,
- *             instanceTemplate: foobar.selfLink,
- *             baseInstanceName: `foobar-${range}`,
- *             zone: available.then(available => available.names[range]),
- *             targetSize: 1,
- *         }));
- *     }
- * });
+ * export = async () => {
+ *     const available = await gcp.compute.getZones({});
+ *     const foo: gcp.compute.InstanceGroupManager[] = [];
+ * available.names.length.apply(rangeBody => {
+ *         for (let range = 0; range < rangeBody; range++) {
+ *             foo.push(new gcp.compute.InstanceGroupManager(`foo-${range}`, {
+ *                 name: `test-${range}`,
+ *                 instanceTemplate: foobar.selfLink,
+ *                 baseInstanceName: `foobar-${range}`,
+ *                 zone: available.names[range],
+ *                 targetSize: 1,
+ *             }));
+ *         }
+ *     });
+ * }
  * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {

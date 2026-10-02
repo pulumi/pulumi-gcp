@@ -17,14 +17,14 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
     public static final WorkflowTemplatePlacementArgs Empty = new WorkflowTemplatePlacementArgs();
 
     /**
-     * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+     * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
      * 
      */
     @Import(name="clusterSelector")
     private @Nullable Output<WorkflowTemplatePlacementClusterSelectorArgs> clusterSelector;
 
     /**
-     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementClusterSelectorArgs>> clusterSelector() {
@@ -32,14 +32,14 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A cluster that is managed by the workflow.
+     * A cluster that is managed by the workflow. Structure is documented below.
      * 
      */
     @Import(name="managedCluster")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterArgs> managedCluster;
 
     /**
-     * @return A cluster that is managed by the workflow.
+     * @return A cluster that is managed by the workflow. Structure is documented below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterArgs>> managedCluster() {
@@ -72,7 +72,7 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterSelector A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+         * @param clusterSelector A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterSelector A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+         * @param clusterSelector A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param managedCluster A cluster that is managed by the workflow.
+         * @param managedCluster A cluster that is managed by the workflow. Structure is documented below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param managedCluster A cluster that is managed by the workflow.
+         * @param managedCluster A cluster that is managed by the workflow. Structure is documented below.
          * 
          * @return builder
          * 

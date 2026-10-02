@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride":
 		r = &ConsumerQuotaOverride{}
+	case "gcp:serviceusage/v2ConsumerPolicy:V2ConsumerPolicy":
+		r = &V2ConsumerPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"serviceusage/consumerQuotaOverride",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"serviceusage/v2ConsumerPolicy",
 		&module{version},
 	)
 }

@@ -636,6 +636,9 @@ class Connection(pulumi.CustomResource):
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `cloud_sql.credential.password_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Bigquery Connection Cloud Resource
@@ -867,16 +870,53 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Connection Sql With Cmek Password Wo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
+            region="us-central1",
+            database_version="POSTGRES_11",
+            settings={
+                "tier": "db-f1-micro",
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="tf-test-my-password_60302")
+        bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
+            friendly_name="👋",
+            description="a riveting description",
+            location="US",
+            kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+            cloud_sql={
+                "instance_id": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password_wo": user.password,
+                    "password_wo_version": "1",
+                },
+            })
+        ```
         ### Bigquery Connection Connector Configuration
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        name_suffix = "my-connection"
-        default_network = gcp.compute.Network("default", name=f"alloydb-network-{name_suffix}")
+        name_prefix = "my-connection"
+        default_network = gcp.compute.Network("default", name=f"{name_prefix}-alloydb-network")
         default = gcp.alloydb.Cluster("default",
-            cluster_id=f"alloydb-cluster-{name_suffix}",
+            cluster_id=f"{name_prefix}-alloydb-cluster",
             location="us-central1",
             network_config={
                 "network": default_network.id,
@@ -886,7 +926,7 @@ class Connection(pulumi.CustomResource):
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name=f"alloydb-ip-{name_suffix}",
+            name=f"{name_prefix}-alloydb-ip",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
@@ -897,7 +937,7 @@ class Connection(pulumi.CustomResource):
             reserved_peering_ranges=[private_ip_alloc.name])
         default_instance = gcp.alloydb.Instance("default",
             cluster=default.name,
-            instance_id=f"alloydb-instance-{name_suffix}",
+            instance_id=f"{name_prefix}-alloydb-instance",
             instance_type="PRIMARY",
             machine_config={
                 "cpu_count": 2,
@@ -996,6 +1036,9 @@ class Connection(pulumi.CustomResource):
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `cloud_sql.credential.password_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Bigquery Connection Cloud Resource
@@ -1227,16 +1270,53 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Connection Sql With Cmek Password Wo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-database-instance",
+            region="us-central1",
+            database_version="POSTGRES_11",
+            settings={
+                "tier": "db-f1-micro",
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password="tf-test-my-password_60302")
+        bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
+            friendly_name="👋",
+            description="a riveting description",
+            location="US",
+            kms_key_name="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
+            cloud_sql={
+                "instance_id": instance.connection_name,
+                "database": db.name,
+                "type": "POSTGRES",
+                "credential": {
+                    "username": user.name,
+                    "password_wo": user.password,
+                    "password_wo_version": "1",
+                },
+            })
+        ```
         ### Bigquery Connection Connector Configuration
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        name_suffix = "my-connection"
-        default_network = gcp.compute.Network("default", name=f"alloydb-network-{name_suffix}")
+        name_prefix = "my-connection"
+        default_network = gcp.compute.Network("default", name=f"{name_prefix}-alloydb-network")
         default = gcp.alloydb.Cluster("default",
-            cluster_id=f"alloydb-cluster-{name_suffix}",
+            cluster_id=f"{name_prefix}-alloydb-cluster",
             location="us-central1",
             network_config={
                 "network": default_network.id,
@@ -1246,7 +1326,7 @@ class Connection(pulumi.CustomResource):
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name=f"alloydb-ip-{name_suffix}",
+            name=f"{name_prefix}-alloydb-ip",
             address_type="INTERNAL",
             purpose="VPC_PEERING",
             prefix_length=16,
@@ -1257,7 +1337,7 @@ class Connection(pulumi.CustomResource):
             reserved_peering_ranges=[private_ip_alloc.name])
         default_instance = gcp.alloydb.Instance("default",
             cluster=default.name,
-            instance_id=f"alloydb-instance-{name_suffix}",
+            instance_id=f"{name_prefix}-alloydb-instance",
             instance_type="PRIMARY",
             machine_config={
                 "cpu_count": 2,

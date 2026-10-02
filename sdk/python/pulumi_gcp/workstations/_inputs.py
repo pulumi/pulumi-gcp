@@ -73,7 +73,7 @@ class WorkstationClusterConditionArgsDict(TypedDict):
     """
     details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
-    (Output)
+    (Output, Deprecated)
     A list of messages that carry the error details.
     """
     message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -91,13 +91,16 @@ class WorkstationClusterConditionArgs:
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: (Output, Deprecated)
                A list of messages that carry the error details.
         :param pulumi.Input[_builtins.str] message: (Output)
                Human readable message indicating details about the current status.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if details is not None:
+            warnings.warn("""`details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""", DeprecationWarning)
+            pulumi.log.warn("""details is deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""")
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -118,9 +121,10 @@ class WorkstationClusterConditionArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""")
     def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
-        (Output)
+        (Output, Deprecated)
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
@@ -337,7 +341,7 @@ class WorkstationConfigConditionArgsDict(TypedDict):
     """
     details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
-    (Output)
+    (Output, Deprecated)
     A list of messages that carry the error details.
     """
     message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -355,13 +359,16 @@ class WorkstationConfigConditionArgs:
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: (Output, Deprecated)
                A list of messages that carry the error details.
         :param pulumi.Input[_builtins.str] message: (Output)
                Human readable message indicating details about the current status.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if details is not None:
+            warnings.warn("""`details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""", DeprecationWarning)
+            pulumi.log.warn("""details is deprecated: `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""")
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -382,9 +389,10 @@ class WorkstationConfigConditionArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""`details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.""")
     def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
-        (Output)
+        (Output, Deprecated)
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")

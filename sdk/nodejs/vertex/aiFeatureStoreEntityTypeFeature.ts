@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     name: "terraform",
+ *     name: "terraform_feature",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -32,14 +32,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
- *     name: "terraform",
+ *     name: "terraform_feature",
  *     labels: {
  *         foo: "bar",
  *     },
  *     featurestore: featurestore.id,
  * });
  * const feature = new gcp.vertex.AiFeatureStoreEntityTypeFeature("feature", {
- *     name: "terraform",
+ *     name: "terraform_feature",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     name: "terraform2",
+ *     name: "terraform_feature_2",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
- *     name: "terraform2",
+ *     name: "terraform_feature_2",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const feature = new gcp.vertex.AiFeatureStoreEntityTypeFeature("feature", {
- *     name: "terraform2",
+ *     name: "terraform_feature_2",
  *     labels: {
  *         foo: "bar",
  *     },

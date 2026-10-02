@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const cache = new gcp.redis.Instance("cache", {
  *     name: "memory-cache",
  *     memorySizeGb: 1,
+ *     region: "us-west1",
  *     deletionProtection: false,
  * });
  * ```
@@ -50,8 +51,9 @@ import * as utilities from "../utilities";
  *     name: "ha-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     locationId: "us-central1-a",
- *     alternativeLocationId: "us-central1-f",
+ *     region: "us-west1",
+ *     locationId: "us-west1-a",
+ *     alternativeLocationId: "us-west1-b",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
  *     displayName: "Test Instance",
@@ -83,8 +85,9 @@ import * as utilities from "../utilities";
  *     name: "ha-memory-cache-persis",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     locationId: "us-central1-a",
- *     alternativeLocationId: "us-central1-f",
+ *     region: "us-west1",
+ *     locationId: "us-west1-a",
+ *     alternativeLocationId: "us-west1-b",
  *     persistenceConfig: {
  *         persistenceMode: "RDB",
  *         rdbSnapshotPeriod: "TWELVE_HOURS",
@@ -122,8 +125,9 @@ import * as utilities from "../utilities";
  *     name: "private-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     locationId: "us-central1-a",
- *     alternativeLocationId: "us-central1-f",
+ *     region: "us-west1",
+ *     locationId: "us-west1-a",
+ *     alternativeLocationId: "us-west1-b",
  *     authorizedNetwork: redis_network.id,
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
  *     redisVersion: "REDIS_7_2",
@@ -153,8 +157,9 @@ import * as utilities from "../utilities";
  *     name: "mrr-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 5,
- *     locationId: "us-central1-a",
- *     alternativeLocationId: "us-central1-f",
+ *     region: "us-west1",
+ *     locationId: "us-west1-a",
+ *     alternativeLocationId: "us-west1-b",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
  *     displayName: "Test Instance",
@@ -174,7 +179,7 @@ import * as utilities from "../utilities";
  *
  * const redisKeyring = new gcp.kms.KeyRing("redis_keyring", {
  *     name: "redis-keyring",
- *     location: "us-central1",
+ *     location: "us-west1",
  * });
  * const redisKey = new gcp.kms.CryptoKey("redis_key", {
  *     name: "redis-key",
@@ -195,8 +200,9 @@ import * as utilities from "../utilities";
  *     name: "cmek-memory-cache",
  *     tier: "STANDARD_HA",
  *     memorySizeGb: 1,
- *     locationId: "us-central1-a",
- *     alternativeLocationId: "us-central1-f",
+ *     region: "us-west1",
+ *     locationId: "us-west1-a",
+ *     alternativeLocationId: "us-west1-b",
  *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
  *     redisVersion: "REDIS_7_2",
  *     displayName: "Test Instance",

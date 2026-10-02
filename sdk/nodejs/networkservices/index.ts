@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AgentConnectivityTemplateArgs, AgentConnectivityTemplateState } from "./agentConnectivityTemplate";
+export type AgentConnectivityTemplate = import("./agentConnectivityTemplate").AgentConnectivityTemplate;
+export const AgentConnectivityTemplate: typeof import("./agentConnectivityTemplate").AgentConnectivityTemplate = null as any;
+utilities.lazyLoad(exports, ["AgentConnectivityTemplate"], () => require("./agentConnectivityTemplate"));
+
 export { AgentGatewayArgs, AgentGatewayState } from "./agentGateway";
 export type AgentGateway = import("./agentGateway").AgentGateway;
 export const AgentGateway: typeof import("./agentGateway").AgentGateway = null as any;
@@ -39,6 +44,11 @@ export { GatewayArgs, GatewayState } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
+export { GetGatewayArgs, GetGatewayResult, GetGatewayOutputArgs } from "./getGateway";
+export const getGateway: typeof import("./getGateway").getGateway = null as any;
+export const getGatewayOutput: typeof import("./getGateway").getGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getGateway","getGatewayOutput"], () => require("./getGateway"));
 
 export { GrpcRouteArgs, GrpcRouteState } from "./grpcRoute";
 export type GrpcRoute = import("./grpcRoute").GrpcRoute;
@@ -145,6 +155,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:networkservices/agentConnectivityTemplate:AgentConnectivityTemplate":
+                return new AgentConnectivityTemplate(name, <any>undefined, { urn })
             case "gcp:networkservices/agentGateway:AgentGateway":
                 return new AgentGateway(name, <any>undefined, { urn })
             case "gcp:networkservices/authzExtension:AuthzExtension":
@@ -204,6 +216,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "networkservices/agentConnectivityTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/agentGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/authzExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheKeyset", _module)

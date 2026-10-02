@@ -34,12 +34,12 @@ import * as utilities from "../utilities";
  * const subnetNetwork1 = new gcp.compute.Subnetwork("subnet_network1", {
  *     name: "subnet-net1",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     network: network1.id,
  * });
  * const ip1Network1 = new gcp.compute.Address("ip1_network1", {
  *     name: "ip1-net1",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     subnetwork: subnetNetwork1.id,
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
@@ -48,13 +48,13 @@ import * as utilities from "../utilities";
  * const cluster_user_connCluster = new gcp.redis.Cluster("cluster-user-conn", {
  *     name: "cluster-user-conn",
  *     shardCount: 3,
- *     region: "us-central1",
+ *     region: "us-west1",
  *     replicaCount: 0,
  *     deletionProtectionEnabled: false,
  * });
  * const forwardingRule1Network1 = new gcp.compute.ForwardingRule("forwarding_rule1_network1", {
  *     name: "fwd1-net1",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     ipAddress: ip1Network1.id,
  *     loadBalancingScheme: "",
  *     network: network1.id,
@@ -62,14 +62,14 @@ import * as utilities from "../utilities";
  * });
  * const ip2Network1 = new gcp.compute.Address("ip2_network1", {
  *     name: "ip2-net1",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     subnetwork: subnetNetwork1.id,
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });
  * const forwardingRule2Network1 = new gcp.compute.ForwardingRule("forwarding_rule2_network1", {
  *     name: "fwd2-net1",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     ipAddress: ip2Network1.id,
  *     loadBalancingScheme: "",
  *     network: network1.id,
@@ -82,19 +82,19 @@ import * as utilities from "../utilities";
  * const subnetNetwork2 = new gcp.compute.Subnetwork("subnet_network2", {
  *     name: "subnet-net2",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     network: network2.id,
  * });
  * const ip1Network2 = new gcp.compute.Address("ip1_network2", {
  *     name: "ip1-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     subnetwork: subnetNetwork2.id,
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });
  * const forwardingRule1Network2 = new gcp.compute.ForwardingRule("forwarding_rule1_network2", {
  *     name: "fwd1-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     ipAddress: ip1Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
@@ -102,14 +102,14 @@ import * as utilities from "../utilities";
  * });
  * const ip2Network2 = new gcp.compute.Address("ip2_network2", {
  *     name: "ip2-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     subnetwork: subnetNetwork2.id,
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });
  * const forwardingRule2Network2 = new gcp.compute.ForwardingRule("forwarding_rule2_network2", {
  *     name: "fwd2-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     ipAddress: ip2Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
@@ -118,7 +118,7 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const cluster_user_conn = new gcp.redis.ClusterUserCreatedConnections("cluster-user-conn", {
  *     name: "cluster-user-conn",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     clusterEndpoints: [
  *         {
  *             connections: [
@@ -181,12 +181,12 @@ import * as utilities from "../utilities";
  * const subnetNetwork2 = new gcp.compute.Subnetwork("subnet_network2", {
  *     name: "subnet-net2",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     network: network2.id,
  * });
  * const ip1Network2 = new gcp.compute.Address("ip1_network2", {
  *     name: "ip1-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     subnetwork: subnetNetwork2.id,
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
@@ -198,12 +198,12 @@ import * as utilities from "../utilities";
  * const subnetNetwork1 = new gcp.compute.Subnetwork("subnet_network1", {
  *     name: "subnet-net1",
  *     ipCidrRange: "10.0.0.248/29",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     network: network1.id,
  * });
  * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
  *     name: "scpolicy",
- *     location: "us-central1",
+ *     location: "us-west1",
  *     serviceClass: "gcp-memorystore-redis",
  *     description: "my basic service connection policy",
  *     network: network1.id,
@@ -215,7 +215,7 @@ import * as utilities from "../utilities";
  * const cluster_user_auto_connCluster = new gcp.redis.Cluster("cluster-user-auto-conn", {
  *     name: "cluster-user-auto-conn",
  *     shardCount: 3,
- *     region: "us-central1",
+ *     region: "us-west1",
  *     replicaCount: 0,
  *     deletionProtectionEnabled: false,
  *     pscConfigs: [{
@@ -226,7 +226,7 @@ import * as utilities from "../utilities";
  * });
  * const forwardingRule1Network2 = new gcp.compute.ForwardingRule("forwarding_rule1_network2", {
  *     name: "fwd1-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     ipAddress: ip1Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
@@ -234,14 +234,14 @@ import * as utilities from "../utilities";
  * });
  * const ip2Network2 = new gcp.compute.Address("ip2_network2", {
  *     name: "ip2-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     subnetwork: subnetNetwork2.id,
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });
  * const forwardingRule2Network2 = new gcp.compute.ForwardingRule("forwarding_rule2_network2", {
  *     name: "fwd2-net2",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     ipAddress: ip2Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  * });
  * const cluster_user_auto_conn = new gcp.redis.ClusterUserCreatedConnections("cluster-user-auto-conn", {
  *     name: "cluster-user-auto-conn",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     clusterEndpoints: [{
  *         connections: [
  *             {

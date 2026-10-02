@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.ces.inputs.AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,6 +39,23 @@ public final class AppDefaultChannelProfileWebWidgetConfigArgs extends com.pulum
      */
     public Optional<Output<String>> modality() {
         return Optional.ofNullable(this.modality);
+    }
+
+    /**
+     * The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="securitySettings")
+    private @Nullable Output<AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs> securitySettings;
+
+    /**
+     * @return The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs>> securitySettings() {
+        return Optional.ofNullable(this.securitySettings);
     }
 
     /**
@@ -82,6 +100,7 @@ public final class AppDefaultChannelProfileWebWidgetConfigArgs extends com.pulum
 
     private AppDefaultChannelProfileWebWidgetConfigArgs(AppDefaultChannelProfileWebWidgetConfigArgs $) {
         this.modality = $.modality;
+        this.securitySettings = $.securitySettings;
         this.theme = $.theme;
         this.webWidgetTitle = $.webWidgetTitle;
     }
@@ -133,6 +152,29 @@ public final class AppDefaultChannelProfileWebWidgetConfigArgs extends com.pulum
          */
         public Builder modality(String modality) {
             return modality(Output.of(modality));
+        }
+
+        /**
+         * @param securitySettings The security settings of the web widget.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securitySettings(@Nullable Output<AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs> securitySettings) {
+            $.securitySettings = securitySettings;
+            return this;
+        }
+
+        /**
+         * @param securitySettings The security settings of the web widget.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securitySettings(AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs securitySettings) {
+            return securitySettings(Output.of(securitySettings));
         }
 
         /**

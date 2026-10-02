@@ -123,11 +123,10 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         CollectionId = "collection-id",
     ///         CollectionDisplayName = "Jira Federated",
     ///         DataSource = "jira",
-    ///         DataSourceVersion = 3,
     ///         Params = 
     ///         {
     ///             { "instance_uri", "https://example.atlassian.net" },
-    ///             { "instance_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///             { "instance_id", "12345678-1234-1234-1234-123456789abc" },
     ///             { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
     ///             { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
     ///             { "refresh_token", "SECRET_MANAGER_RESOURCE_NAME" },
@@ -186,7 +185,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///             ActionParams = 
     ///             {
     ///                 { "instance_uri", "https://example.atlassian.net" },
-    ///                 { "instance_id", "SECRET_MANAGER_RESOURCE_NAME" },
+    ///                 { "instance_id", "12345678-1234-1234-1234-123456789abc" },
     ///                 { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
     ///                 { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
     ///                 { "auth_type", "OAUTH" },
@@ -208,6 +207,15 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///                 "update_comment",
     ///                 "upload_attachment",
     ///             },
+    ///         },
+    ///         Tag = "sample-tag",
+    ///         Metadata = new Gcp.DiscoveryEngine.Inputs.DataConnectorMetadataArgs
+    ///         {
+    ///             Title = "Jira Connector",
+    ///             Description = "Jira Connector Description",
+    ///             ShortDescription = "Jira Connector Short Description",
+    ///             Author = "Google",
+    ///             Note = "Sample Note",
     ///         },
     ///     });
     /// 
@@ -425,6 +433,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// User-facing metadata for the connector.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.DataConnectorMetadata> Metadata { get; private set; } = null!;
+
+        /// <summary>
         /// The full resource name of the Data Connector.
         /// Format: `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
@@ -495,6 +510,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("syncMode")]
         public Output<string?> SyncMode { get; private set; } = null!;
+
+        /// <summary>
+        /// User-facing, version-independent label for this connector.
+        /// </summary>
+        [Output("tag")]
+        public Output<string?> Tag { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the DataConnector was updated.
@@ -699,6 +720,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// User-facing metadata for the connector.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("metadata")]
+        public Input<Inputs.DataConnectorMetadataArgs>? Metadata { get; set; }
+
         [Input("params")]
         private InputMap<string>? _params;
 
@@ -740,6 +768,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("syncMode")]
         public Input<string>? SyncMode { get; set; }
+
+        /// <summary>
+        /// User-facing, version-independent label for this connector.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
 
         public DataConnectorArgs()
         {
@@ -971,6 +1005,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// User-facing metadata for the connector.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("metadata")]
+        public Input<Inputs.DataConnectorMetadataGetArgs>? Metadata { get; set; }
+
+        /// <summary>
         /// The full resource name of the Data Connector.
         /// Format: `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
@@ -1053,6 +1094,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("syncMode")]
         public Input<string>? SyncMode { get; set; }
+
+        /// <summary>
+        /// User-facing, version-independent label for this connector.
+        /// </summary>
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
 
         /// <summary>
         /// Timestamp when the DataConnector was updated.

@@ -22,14 +22,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
     public static final ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs Empty = new ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs();
 
     /**
-     * Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+     * Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
      * 
      */
     @Import(name="capabilities")
     private @Nullable Output<List<String>> capabilities;
 
     /**
-     * @return Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+     * @return Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
      * 
      */
     public Optional<Output<List<String>>> capabilities() {
@@ -37,14 +37,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
     }
 
     /**
-     * Configures the registry host certificate.
+     * Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
      * 
      */
     @Import(name="cas")
     private @Nullable Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs>> cas;
 
     /**
-     * @return Configures the registry host certificate.
+     * @return Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs>>> cas() {
@@ -52,14 +52,18 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
     }
 
     /**
-     * Configures the registry host client certificate and key.
+     * Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+     * 
+     * Example:
      * 
      */
     @Import(name="clients")
     private @Nullable Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs>> clients;
 
     /**
-     * @return Configures the registry host client certificate and key.
+     * @return Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+     * 
+     * Example:
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs>>> clients() {
@@ -82,14 +86,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
     }
 
     /**
-     * Configures the registry host headers.
+     * Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs>> headers;
 
     /**
-     * @return Configures the registry host headers.
+     * @return Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs>>> headers() {
@@ -112,14 +116,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
     }
 
     /**
-     * Indicate the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
+     * Indicates the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
      * 
      */
     @Import(name="overridePath")
     private @Nullable Output<Boolean> overridePath;
 
     /**
-     * @return Indicate the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
+     * @return Indicates the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
      * 
      */
     public Optional<Output<Boolean>> overridePath() {
@@ -157,7 +161,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param capabilities Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+         * @param capabilities Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
          * 
          * @return builder
          * 
@@ -168,7 +172,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param capabilities Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+         * @param capabilities Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
          * 
          * @return builder
          * 
@@ -178,7 +182,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param capabilities Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+         * @param capabilities Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
          * 
          * @return builder
          * 
@@ -188,7 +192,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param cas Configures the registry host certificate.
+         * @param cas Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
          * 
          * @return builder
          * 
@@ -199,7 +203,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param cas Configures the registry host certificate.
+         * @param cas Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
          * 
          * @return builder
          * 
@@ -209,7 +213,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param cas Configures the registry host certificate.
+         * @param cas Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
          * 
          * @return builder
          * 
@@ -219,7 +223,9 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param clients Configures the registry host client certificate and key.
+         * @param clients Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+         * 
+         * Example:
          * 
          * @return builder
          * 
@@ -230,7 +236,9 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param clients Configures the registry host client certificate and key.
+         * @param clients Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+         * 
+         * Example:
          * 
          * @return builder
          * 
@@ -240,7 +248,9 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param clients Configures the registry host client certificate and key.
+         * @param clients Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+         * 
+         * Example:
          * 
          * @return builder
          * 
@@ -271,7 +281,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param headers Configures the registry host headers.
+         * @param headers Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
          * 
          * @return builder
          * 
@@ -282,7 +292,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param headers Configures the registry host headers.
+         * @param headers Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
          * 
          * @return builder
          * 
@@ -292,7 +302,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param headers Configures the registry host headers.
+         * @param headers Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
          * 
          * @return builder
          * 
@@ -323,7 +333,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param overridePath Indicate the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
+         * @param overridePath Indicates the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
          * 
          * @return builder
          * 
@@ -334,7 +344,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs
         }
 
         /**
-         * @param overridePath Indicate the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
+         * @param overridePath Indicates the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
          * 
          * @return builder
          * 

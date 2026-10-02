@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
  *             .portName("http")
  *             .protocol("HTTP")
  *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 
@@ -267,6 +268,7 @@ import javax.annotation.Nullable;
  *             .portName("http")
  *             .protocol("HTTP")
  *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL")
  *             .healthChecks(defaultHttpHealthCheck.id())
  *             .build());
  * 

@@ -415,6 +415,7 @@ namespace Pulumi.Gcp.Ces
     ///                 Disabled = true,
     ///                 PythonCode = @"def callback(context):
     ///     return {'override': False}",
+    ///                 ProactiveExecutionEnabled = true,
     ///             },
     ///         },
     ///     });

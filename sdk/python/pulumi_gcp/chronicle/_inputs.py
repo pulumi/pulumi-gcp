@@ -153,6 +153,8 @@ __all__ = [
     'DataTableColumnInfoArgsDict',
     'DataTableScopeInfoArgs',
     'DataTableScopeInfoArgsDict',
+    'EnvironmentDynamicParameterArgs',
+    'EnvironmentDynamicParameterArgsDict',
     'FeedDetailsArgs',
     'FeedDetailsArgsDict',
     'FeedDetailsAmazonKinesisFirehoseSettingsArgs',
@@ -6226,6 +6228,76 @@ class DataTableScopeInfoArgs:
     @data_access_scopes.setter
     def data_access_scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "data_access_scopes", value)
+
+
+class EnvironmentDynamicParameterArgsDict(TypedDict):
+    dynamic_parameter_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the dynamic parameter.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the dynamic parameter.
+    """
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The ID of the environment.
+    """
+
+@pulumi.input_type
+class EnvironmentDynamicParameterArgs:
+    def __init__(__self__, *,
+                 dynamic_parameter_id: pulumi.Input[_builtins.int],
+                 value: pulumi.Input[_builtins.str],
+                 environment_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] dynamic_parameter_id: The ID of the dynamic parameter.
+        :param pulumi.Input[_builtins.str] value: The value of the dynamic parameter.
+        :param pulumi.Input[_builtins.int] environment_id: (Output)
+               The ID of the environment.
+        """
+        pulumi.set(__self__, "dynamic_parameter_id", dynamic_parameter_id)
+        pulumi.set(__self__, "value", value)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicParameterId")
+    def dynamic_parameter_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the dynamic parameter.
+        """
+        return pulumi.get(self, "dynamic_parameter_id")
+
+    @dynamic_parameter_id.setter
+    def dynamic_parameter_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "dynamic_parameter_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the dynamic parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The ID of the environment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "environment_id", value)
 
 
 class FeedDetailsArgsDict(TypedDict):

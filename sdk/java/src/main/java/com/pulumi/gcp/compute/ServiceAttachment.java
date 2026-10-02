@@ -145,6 +145,101 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Service Attachment Nat Ips
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerServiceHealthCheck = new HealthCheck("producerServiceHealthCheck", HealthCheckArgs.builder()
+ *             .name("producer-service-health-check")
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var producerServiceBackend = new RegionBackendService("producerServiceBackend", RegionBackendServiceArgs.builder()
+ *             .name("producer-service")
+ *             .region("us-central1")
+ *             .healthChecks(producerServiceHealthCheck.id())
+ *             .build());
+ * 
+ *         var pscIlbNetwork = new Network("pscIlbNetwork", NetworkArgs.builder()
+ *             .name("psc-ilb-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var pscIlbProducerSubnetwork = new Subnetwork("pscIlbProducerSubnetwork", SubnetworkArgs.builder()
+ *             .name("psc-ilb-producer-subnetwork")
+ *             .region("us-central1")
+ *             .network(pscIlbNetwork.id())
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .build());
+ * 
+ *         var pscIlbTargetService = new ForwardingRule("pscIlbTargetService", ForwardingRuleArgs.builder()
+ *             .name("producer-forwarding-rule")
+ *             .region("us-central1")
+ *             .loadBalancingScheme("INTERNAL")
+ *             .backendService(producerServiceBackend.id())
+ *             .allPorts(true)
+ *             .network(pscIlbNetwork.name())
+ *             .subnetwork(pscIlbProducerSubnetwork.name())
+ *             .build());
+ * 
+ *         var pscIlbNat = new Subnetwork("pscIlbNat", SubnetworkArgs.builder()
+ *             .name("psc-ilb-nat")
+ *             .region("us-central1")
+ *             .network(pscIlbNetwork.id())
+ *             .purpose("PRIVATE_SERVICE_CONNECT")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .build());
+ * 
+ *         var pscIlbServiceAttachment = new ServiceAttachment("pscIlbServiceAttachment", ServiceAttachmentArgs.builder()
+ *             .name("my-psc-ilb")
+ *             .region("us-central1")
+ *             .description("A service attachment configured with Terraform")
+ *             .enableProxyProtocol(true)
+ *             .natIpsPerEndpoint(2)
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
+ *             .natSubnets(pscIlbNat.id())
+ *             .targetService(pscIlbTargetService.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Service Attachment Explicit Projects
  * 
  * <pre>
@@ -925,6 +1020,20 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The number of NAT IPs allocated per connected endpoint.
+     * 
+     */
+    @Export(name="natIpsPerEndpoint", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> natIpsPerEndpoint;
+
+    /**
+     * @return The number of NAT IPs allocated per connected endpoint.
+     * 
+     */
+    public Output<Optional<Integer>> natIpsPerEndpoint() {
+        return Codegen.optional(this.natIpsPerEndpoint);
     }
     /**
      * An array of subnets that is provided for NAT in this service attachment.

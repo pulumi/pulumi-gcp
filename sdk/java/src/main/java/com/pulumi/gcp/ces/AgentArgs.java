@@ -14,8 +14,10 @@ import com.pulumi.gcp.ces.inputs.AgentBeforeModelCallbackArgs;
 import com.pulumi.gcp.ces.inputs.AgentBeforeToolCallbackArgs;
 import com.pulumi.gcp.ces.inputs.AgentLlmAgentArgs;
 import com.pulumi.gcp.ces.inputs.AgentModelSettingsArgs;
+import com.pulumi.gcp.ces.inputs.AgentRemoteA2aAgentArgs;
 import com.pulumi.gcp.ces.inputs.AgentRemoteDialogflowAgentArgs;
 import com.pulumi.gcp.ces.inputs.AgentToolsetArgs;
+import com.pulumi.gcp.ces.inputs.AgentTransferRuleArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -380,6 +382,25 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="remoteA2aAgent")
+    private @Nullable Output<AgentRemoteA2aAgentArgs> remoteA2aAgent;
+
+    /**
+     * @return The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AgentRemoteA2aAgentArgs>> remoteA2aAgent() {
+        return Optional.ofNullable(this.remoteA2aAgent);
+    }
+
+    /**
      * The agent which will transfer execution to an existing remote
      * [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
      * agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -438,6 +459,25 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.toolsets);
     }
 
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="transferRules")
+    private @Nullable Output<List<AgentTransferRuleArgs>> transferRules;
+
+    /**
+     * @return List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AgentTransferRuleArgs>>> transferRules() {
+        return Optional.ofNullable(this.transferRules);
+    }
+
     private AgentArgs() {}
 
     private AgentArgs(AgentArgs $) {
@@ -459,9 +499,11 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.modelSettings = $.modelSettings;
         this.project = $.project;
+        this.remoteA2aAgent = $.remoteA2aAgent;
         this.remoteDialogflowAgent = $.remoteDialogflowAgent;
         this.tools = $.tools;
         this.toolsets = $.toolsets;
+        this.transferRules = $.transferRules;
     }
 
     public static Builder builder() {
@@ -1054,6 +1096,31 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param remoteA2aAgent The agent which will transfer execution to a remote
+         * [A2A](https://github.com/a2aproject/A2A) agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteA2aAgent(@Nullable Output<AgentRemoteA2aAgentArgs> remoteA2aAgent) {
+            $.remoteA2aAgent = remoteA2aAgent;
+            return this;
+        }
+
+        /**
+         * @param remoteA2aAgent The agent which will transfer execution to a remote
+         * [A2A](https://github.com/a2aproject/A2A) agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteA2aAgent(AgentRemoteA2aAgentArgs remoteA2aAgent) {
+            return remoteA2aAgent(Output.of(remoteA2aAgent));
+        }
+
+        /**
          * @param remoteDialogflowAgent The agent which will transfer execution to an existing remote
          * [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
          * agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -1150,6 +1217,43 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder toolsets(AgentToolsetArgs... toolsets) {
             return toolsets(List.of(toolsets));
+        }
+
+        /**
+         * @param transferRules List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferRules(@Nullable Output<List<AgentTransferRuleArgs>> transferRules) {
+            $.transferRules = transferRules;
+            return this;
+        }
+
+        /**
+         * @param transferRules List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferRules(List<AgentTransferRuleArgs> transferRules) {
+            return transferRules(Output.of(transferRules));
+        }
+
+        /**
+         * @param transferRules List of transfer rules for the agent.
+         * If multiple rules match, the first one in the list will be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transferRules(AgentTransferRuleArgs... transferRules) {
+            return transferRules(List.of(transferRules));
         }
 
         public AgentArgs build() {

@@ -34,6 +34,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.AppLoggingSettingsConversationLoggingSettings? ConversationLoggingSettings;
         /// <summary>
+        /// Settings to describe the conversation data collection behaviors for the LLM
+        /// analysis pipeline for the app.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AppLoggingSettingsMetricAnalysisSettings? MetricAnalysisSettings;
+        /// <summary>
         /// Configuration to instruct how sensitive data should be handled.
         /// Structure is documented below.
         /// </summary>
@@ -49,12 +55,15 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             Outputs.AppLoggingSettingsConversationLoggingSettings? conversationLoggingSettings,
 
+            Outputs.AppLoggingSettingsMetricAnalysisSettings? metricAnalysisSettings,
+
             Outputs.AppLoggingSettingsRedactionConfig? redactionConfig)
         {
             AudioRecordingConfig = audioRecordingConfig;
             BigqueryExportSettings = bigqueryExportSettings;
             CloudLoggingSettings = cloudLoggingSettings;
             ConversationLoggingSettings = conversationLoggingSettings;
+            MetricAnalysisSettings = metricAnalysisSettings;
             RedactionConfig = redactionConfig;
         }
     }

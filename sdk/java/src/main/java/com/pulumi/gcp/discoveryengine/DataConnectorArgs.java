@@ -10,6 +10,7 @@ import com.pulumi.gcp.discoveryengine.inputs.DataConnectorActionConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorEntityArgs;
+import com.pulumi.gcp.discoveryengine.inputs.DataConnectorMetadataArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -339,6 +340,23 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * User-facing metadata for the connector.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<DataConnectorMetadataArgs> metadata;
+
+    /**
+     * @return User-facing metadata for the connector.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataConnectorMetadataArgs>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * Params needed to access the source in the format of String-to-String (Key, Value) pairs.
      * 
      */
@@ -425,6 +443,21 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.syncMode);
     }
 
+    /**
+     * User-facing, version-independent label for this connector.
+     * 
+     */
+    @Import(name="tag")
+    private @Nullable Output<String> tag;
+
+    /**
+     * @return User-facing, version-independent label for this connector.
+     * 
+     */
+    public Optional<Output<String>> tag() {
+        return Optional.ofNullable(this.tag);
+    }
+
     private DataConnectorArgs() {}
 
     private DataConnectorArgs(DataConnectorArgs $) {
@@ -444,11 +477,13 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
         this.jsonParams = $.jsonParams;
         this.kmsKeyName = $.kmsKeyName;
         this.location = $.location;
+        this.metadata = $.metadata;
         this.params = $.params;
         this.project = $.project;
         this.refreshInterval = $.refreshInterval;
         this.staticIpEnabled = $.staticIpEnabled;
         this.syncMode = $.syncMode;
+        this.tag = $.tag;
     }
 
     public static Builder builder() {
@@ -915,6 +950,29 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param metadata User-facing metadata for the connector.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<DataConnectorMetadataArgs> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata User-facing metadata for the connector.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(DataConnectorMetadataArgs metadata) {
+            return metadata(Output.of(metadata));
+        }
+
+        /**
          * @param params Params needed to access the source in the format of String-to-String (Key, Value) pairs.
          * 
          * @return builder
@@ -1029,6 +1087,27 @@ public final class DataConnectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder syncMode(String syncMode) {
             return syncMode(Output.of(syncMode));
+        }
+
+        /**
+         * @param tag User-facing, version-independent label for this connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tag(@Nullable Output<String> tag) {
+            $.tag = tag;
+            return this;
+        }
+
+        /**
+         * @param tag User-facing, version-independent label for this connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tag(String tag) {
+            return tag(Output.of(tag));
         }
 
         public DataConnectorArgs build() {

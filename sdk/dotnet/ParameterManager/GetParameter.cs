@@ -144,6 +144,7 @@ namespace Pulumi.Gcp.ParameterManager
         public readonly ImmutableArray<Outputs.GetParameterPolicyMemberResult> PolicyMembers;
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -172,6 +173,8 @@ namespace Pulumi.Gcp.ParameterManager
 
             ImmutableDictionary<string, string> pulumiLabels,
 
+            ImmutableDictionary<string, string> tags,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -186,6 +189,7 @@ namespace Pulumi.Gcp.ParameterManager
             PolicyMembers = policyMembers;
             Project = project;
             PulumiLabels = pulumiLabels;
+            Tags = tags;
             UpdateTime = updateTime;
         }
     }

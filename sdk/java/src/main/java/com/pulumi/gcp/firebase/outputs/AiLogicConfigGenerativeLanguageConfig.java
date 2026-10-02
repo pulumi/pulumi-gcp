@@ -12,23 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiLogicConfigGenerativeLanguageConfig {
     /**
-     * @return The value of the API key. The API key must have
-     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
-     * Note that this API is sometimes called the *Generative Language API* in
-     * the Google Cloud console.
-     * Do **not** add this Gemini API key into your app&#39;s codebase
+     * @return (Optional, Deprecated)
+     * The value of the API key. Firebase AI Logic no longer requires API key
+     * material; values provided here may be silently ignored on input.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
+     * @deprecated
+     * `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
      */
+    @Deprecated /* `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
     private @Nullable String apiKey;
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
-     * The value of the API key. The API key must have
-     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
-     * Note that this API is sometimes called the *Generative Language API* in
-     * the Google Cloud console.
-     * Do **not** add this Gemini API key into your app&#39;s codebase
+     * The value of the API key. Firebase AI Logic no longer requires API key
+     * material; values provided here may be silently ignored on input.
      * **Note**: This property is write-only and will not be read from the API.
      * 
      * &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.
@@ -43,25 +44,26 @@ public final class AiLogicConfigGenerativeLanguageConfig {
 
     private AiLogicConfigGenerativeLanguageConfig() {}
     /**
-     * @return The value of the API key. The API key must have
-     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
-     * Note that this API is sometimes called the *Generative Language API* in
-     * the Google Cloud console.
-     * Do **not** add this Gemini API key into your app&#39;s codebase
+     * @return (Optional, Deprecated)
+     * The value of the API key. Firebase AI Logic no longer requires API key
+     * material; values provided here may be silently ignored on input.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
+     * @deprecated
+     * `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
      */
+    @Deprecated /* `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
     public Optional<String> apiKey() {
         return Optional.ofNullable(this.apiKey);
     }
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only)
-     * The value of the API key. The API key must have
-     * `generativelanguage.googleapis.com` in its &#34;API restrictions&#34; allowlist.
-     * Note that this API is sometimes called the *Generative Language API* in
-     * the Google Cloud console.
-     * Do **not** add this Gemini API key into your app&#39;s codebase
+     * The value of the API key. Firebase AI Logic no longer requires API key
+     * material; values provided here may be silently ignored on input.
      * **Note**: This property is write-only and will not be read from the API.
      * 
      * &gt; **Note:** One of `apiKey` or `apiKeyWo` can only be set.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,7 +62,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -104,8 +104,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -143,7 +143,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -184,7 +184,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -218,6 +218,40 @@ import (
 //	}
 //
 // ```
+// ### Parameter Version With Data Crc32c
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+//				ParameterId: pulumi.String("parameter"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-data-crc32c", &parametermanager.ParameterVersionArgs{
+//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				ParameterVersionId: pulumi.String("parameter_version"),
+//				ParameterData:      pulumi.String("app-parameter-version-data"),
+//				DataCrc32c:         pulumi.String("3931523681"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -235,6 +269,8 @@ type ParameterVersion struct {
 
 	// The time at which the Parameter Version was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c pulumi.StringOutput `pulumi:"dataCrc32c"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -309,6 +345,8 @@ func GetParameterVersion(ctx *pulumi.Context,
 type parameterVersionState struct {
 	// The time at which the Parameter Version was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c *string `pulumi:"dataCrc32c"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -338,6 +376,8 @@ type parameterVersionState struct {
 type ParameterVersionState struct {
 	// The time at which the Parameter Version was created.
 	CreateTime pulumi.StringPtrInput
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -369,6 +409,8 @@ func (ParameterVersionState) ElementType() reflect.Type {
 }
 
 type parameterVersionArgs struct {
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c *string `pulumi:"dataCrc32c"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -389,6 +431,8 @@ type parameterVersionArgs struct {
 
 // The set of arguments for constructing a ParameterVersion resource.
 type ParameterVersionArgs struct {
+	// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+	DataCrc32c pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -497,6 +541,11 @@ func (o ParameterVersionOutput) ToParameterVersionOutputWithContext(ctx context.
 // The time at which the Parameter Version was created.
 func (o ParameterVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ParameterVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+func (o ParameterVersionOutput) DataCrc32c() pulumi.StringOutput {
+	return o.ApplyT(func(v *ParameterVersion) pulumi.StringOutput { return v.DataCrc32c }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

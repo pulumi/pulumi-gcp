@@ -96,6 +96,25 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgentArgs extends com.
 
     /**
      * (Output)
+     * The name of the variable that contains the language code to be used for
+     * the Dialogflow session.
+     * 
+     */
+    @Import(name="languageCodeVariable")
+    private @Nullable Output<String> languageCodeVariable;
+
+    /**
+     * @return (Output)
+     * The name of the variable that contains the language code to be used for
+     * the Dialogflow session.
+     * 
+     */
+    public Optional<Output<String>> languageCodeVariable() {
+        return Optional.ofNullable(this.languageCodeVariable);
+    }
+
+    /**
+     * (Output)
      * The mapping of the Dialogflow session parameters names to the app
      * variables names to be sent back to the CES agent after the Dialogflow
      * agent execution ends.
@@ -122,6 +141,7 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgentArgs extends com.
         this.environmentId = $.environmentId;
         this.flowId = $.flowId;
         this.inputVariableMapping = $.inputVariableMapping;
+        this.languageCodeVariable = $.languageCodeVariable;
         this.outputVariableMapping = $.outputVariableMapping;
     }
 
@@ -243,6 +263,31 @@ public final class AppVersionSnapshotAgentRemoteDialogflowAgentArgs extends com.
          */
         public Builder inputVariableMapping(Map<String,String> inputVariableMapping) {
             return inputVariableMapping(Output.of(inputVariableMapping));
+        }
+
+        /**
+         * @param languageCodeVariable (Output)
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder languageCodeVariable(@Nullable Output<String> languageCodeVariable) {
+            $.languageCodeVariable = languageCodeVariable;
+            return this;
+        }
+
+        /**
+         * @param languageCodeVariable (Output)
+         * The name of the variable that contains the language code to be used for
+         * the Dialogflow session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder languageCodeVariable(String languageCodeVariable) {
+            return languageCodeVariable(Output.of(languageCodeVariable));
         }
 
         /**

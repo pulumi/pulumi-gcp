@@ -17,9 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Manages Cloud Observability settings for a folder.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * ## Example Usage
  * 
  * ### Observability Folder Settings Basic
@@ -56,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testFolder = new Folder("testFolder", FolderArgs.builder()
- *             .displayName("tf-test-_80411")
+ *             .displayName("tf-test-_29506")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -132,7 +129,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testFolder = new Folder("testFolder", FolderArgs.builder()
- *             .displayName("tf-test-_44263")
+ *             .displayName("tf-test-_86474")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

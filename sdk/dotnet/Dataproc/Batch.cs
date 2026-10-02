@@ -33,8 +33,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSpark = new Gcp.Dataproc.Batch("example_batch_spark", new()
     ///     {
-    ///         BatchId = "tf-test-batch_29225",
-    ///         Location = "us-central1",
+    ///         BatchId = "tf-test-batch_94690",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "batch_test", "terraform" },
@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var ms = new Gcp.Dataproc.MetastoreService("ms", new()
     ///     {
     ///         ServiceId = "dataproc-batch",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         Port = 9080,
     ///         Tier = "DEVELOPER",
     ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
     ///     {
     ///         Name = "dataproc-batch",
-    ///         Region = "us-central1",
+    ///         Region = "us-east1",
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
     ///             SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
@@ -142,9 +142,10 @@ namespace Pulumi.Gcp.Dataproc
     ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
     ///             {
     ///                 NumInstances = 1,
-    ///                 MachineType = "e2-standard-2",
+    ///                 MachineType = "n4-standard-2",
     ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
     ///                 {
+    ///                     BootDiskType = "hyperdisk-balanced",
     ///                     BootDiskSizeGb = 35,
     ///                 },
     ///             },
@@ -158,7 +159,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var exampleBatchSpark = new Gcp.Dataproc.Batch("example_batch_spark", new()
     ///     {
     ///         BatchId = "dataproc-batch",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "batch_test", "terraform" },
@@ -233,8 +234,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSparsql = new Gcp.Dataproc.Batch("example_batch_sparsql", new()
     ///     {
-    ///         BatchId = "tf-test-batch_40798",
-    ///         Location = "us-central1",
+    ///         BatchId = "tf-test-batch_29947",
+    ///         Location = "us-east1",
     ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
     ///         {
     ///             Properties = 
@@ -278,8 +279,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchPyspark = new Gcp.Dataproc.Batch("example_batch_pyspark", new()
     ///     {
-    ///         BatchId = "tf-test-batch_82591",
-    ///         Location = "us-central1",
+    ///         BatchId = "tf-test-batch_28257",
+    ///         Location = "us-east1",
     ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
     ///         {
     ///             Properties = 
@@ -297,7 +298,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         },
     ///         PysparkBatch = new Gcp.Dataproc.Inputs.BatchPysparkBatchArgs
     ///         {
-    ///             MainPythonFileUri = "https://storage.googleapis.com/terraform-batches/test_util.py",
+    ///             MainPythonFileUri = "https://storage.googleapis.com/terraform-serverless/test_util.py",
     ///             Args = new[]
     ///             {
     ///                 "10",
@@ -312,13 +313,13 @@ namespace Pulumi.Gcp.Dataproc
     ///             },
     ///             ArchiveUris = new[]
     ///             {
-    ///                 "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
-    ///                 "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
-    ///                 "https://storage.googleapis.com/terraform-batches/animals.txt",
+    ///                 "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+    ///                 "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+    ///                 "https://storage.googleapis.com/terraform-serverless/animals.txt",
     ///             },
     ///             FileUris = new[]
     ///             {
-    ///                 "https://storage.googleapis.com/terraform-batches/people.txt",
+    ///                 "https://storage.googleapis.com/terraform-serverless/people.txt",
     ///             },
     ///         },
     ///     });
@@ -337,8 +338,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSparkr = new Gcp.Dataproc.Batch("example_batch_sparkr", new()
     ///     {
-    ///         BatchId = "tf-test-batch_24243",
-    ///         Location = "us-central1",
+    ///         BatchId = "tf-test-batch_49175",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "batch_test", "terraform" },
@@ -365,10 +366,10 @@ namespace Pulumi.Gcp.Dataproc
     ///         },
     ///         SparkRBatch = new Gcp.Dataproc.Inputs.BatchSparkRBatchArgs
     ///         {
-    ///             MainRFileUri = "https://storage.googleapis.com/terraform-batches/spark-r-flights.r",
+    ///             MainRFileUri = "https://storage.googleapis.com/terraform-serverless/spark-r-flights.r",
     ///             Args = new[]
     ///             {
-    ///                 "https://storage.googleapis.com/terraform-batches/flights.csv",
+    ///                 "https://storage.googleapis.com/terraform-serverless/flights.csv",
     ///             },
     ///         },
     ///     });
@@ -387,8 +388,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchAutotuning = new Gcp.Dataproc.Batch("example_batch_autotuning", new()
     ///     {
-    ///         BatchId = "tf-test-batch_7495",
-    ///         Location = "us-central1",
+    ///         BatchId = "tf-test-batch_79411",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "batch_test", "terraform" },

@@ -161,7 +161,6 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly memcacheCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly memorystoreCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly migrationCenterCustomEndpoint: pulumi.Output<string | undefined>;
-    declare public readonly mlEngineCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly modelArmorCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly modelArmorGlobalCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly monitoringCustomEndpoint: pulumi.Output<string | undefined>;
@@ -169,9 +168,9 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly networkConnectivityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkConnectivityv1CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkManagementCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly networkManagementv1CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkSecurityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly networkServicesCustomEndpoint: pulumi.Output<string | undefined>;
-    declare public readonly notebooksCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly observabilityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly oracleDatabaseCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly orgPolicyCustomEndpoint: pulumi.Output<string | undefined>;
@@ -212,6 +211,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly serviceManagementCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly serviceNetworkingCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly serviceUsageCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly serviceUsageV2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly siteVerificationCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly sourceRepoCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly spannerCustomEndpoint: pulumi.Output<string | undefined>;
@@ -219,6 +219,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly storageBatchOperationsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly storageControlCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly storageCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly storageFtpCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly storageInsightsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly storageTransferCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly tagsCustomEndpoint: pulumi.Output<string | undefined>;
@@ -388,7 +389,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["memcacheCustomEndpoint"] = args?.memcacheCustomEndpoint;
             resourceInputs["memorystoreCustomEndpoint"] = args?.memorystoreCustomEndpoint;
             resourceInputs["migrationCenterCustomEndpoint"] = args?.migrationCenterCustomEndpoint;
-            resourceInputs["mlEngineCustomEndpoint"] = args?.mlEngineCustomEndpoint;
             resourceInputs["modelArmorCustomEndpoint"] = args?.modelArmorCustomEndpoint;
             resourceInputs["modelArmorGlobalCustomEndpoint"] = args?.modelArmorGlobalCustomEndpoint;
             resourceInputs["monitoringCustomEndpoint"] = args?.monitoringCustomEndpoint;
@@ -396,9 +396,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["networkConnectivityCustomEndpoint"] = args?.networkConnectivityCustomEndpoint;
             resourceInputs["networkConnectivityv1CustomEndpoint"] = args?.networkConnectivityv1CustomEndpoint;
             resourceInputs["networkManagementCustomEndpoint"] = args?.networkManagementCustomEndpoint;
+            resourceInputs["networkManagementv1CustomEndpoint"] = args?.networkManagementv1CustomEndpoint;
             resourceInputs["networkSecurityCustomEndpoint"] = args?.networkSecurityCustomEndpoint;
             resourceInputs["networkServicesCustomEndpoint"] = args?.networkServicesCustomEndpoint;
-            resourceInputs["notebooksCustomEndpoint"] = args?.notebooksCustomEndpoint;
             resourceInputs["observabilityCustomEndpoint"] = args?.observabilityCustomEndpoint;
             resourceInputs["oracleDatabaseCustomEndpoint"] = args?.oracleDatabaseCustomEndpoint;
             resourceInputs["orgPolicyCustomEndpoint"] = args?.orgPolicyCustomEndpoint;
@@ -442,6 +442,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["serviceManagementCustomEndpoint"] = args?.serviceManagementCustomEndpoint;
             resourceInputs["serviceNetworkingCustomEndpoint"] = args?.serviceNetworkingCustomEndpoint;
             resourceInputs["serviceUsageCustomEndpoint"] = args?.serviceUsageCustomEndpoint;
+            resourceInputs["serviceUsageV2CustomEndpoint"] = args?.serviceUsageV2CustomEndpoint;
             resourceInputs["siteVerificationCustomEndpoint"] = args?.siteVerificationCustomEndpoint;
             resourceInputs["sourceRepoCustomEndpoint"] = args?.sourceRepoCustomEndpoint;
             resourceInputs["spannerCustomEndpoint"] = args?.spannerCustomEndpoint;
@@ -449,6 +450,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["storageBatchOperationsCustomEndpoint"] = args?.storageBatchOperationsCustomEndpoint;
             resourceInputs["storageControlCustomEndpoint"] = args?.storageControlCustomEndpoint;
             resourceInputs["storageCustomEndpoint"] = args?.storageCustomEndpoint;
+            resourceInputs["storageFtpCustomEndpoint"] = args?.storageFtpCustomEndpoint;
             resourceInputs["storageInsightsCustomEndpoint"] = args?.storageInsightsCustomEndpoint;
             resourceInputs["storageTransferCustomEndpoint"] = args?.storageTransferCustomEndpoint;
             resourceInputs["tagsCustomEndpoint"] = args?.tagsCustomEndpoint;
@@ -628,7 +630,6 @@ export interface ProviderArgs {
     memcacheCustomEndpoint?: pulumi.Input<string | undefined>;
     memorystoreCustomEndpoint?: pulumi.Input<string | undefined>;
     migrationCenterCustomEndpoint?: pulumi.Input<string | undefined>;
-    mlEngineCustomEndpoint?: pulumi.Input<string | undefined>;
     modelArmorCustomEndpoint?: pulumi.Input<string | undefined>;
     modelArmorGlobalCustomEndpoint?: pulumi.Input<string | undefined>;
     monitoringCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -636,9 +637,9 @@ export interface ProviderArgs {
     networkConnectivityCustomEndpoint?: pulumi.Input<string | undefined>;
     networkConnectivityv1CustomEndpoint?: pulumi.Input<string | undefined>;
     networkManagementCustomEndpoint?: pulumi.Input<string | undefined>;
+    networkManagementv1CustomEndpoint?: pulumi.Input<string | undefined>;
     networkSecurityCustomEndpoint?: pulumi.Input<string | undefined>;
     networkServicesCustomEndpoint?: pulumi.Input<string | undefined>;
-    notebooksCustomEndpoint?: pulumi.Input<string | undefined>;
     observabilityCustomEndpoint?: pulumi.Input<string | undefined>;
     oracleDatabaseCustomEndpoint?: pulumi.Input<string | undefined>;
     orgPolicyCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -682,6 +683,7 @@ export interface ProviderArgs {
     serviceManagementCustomEndpoint?: pulumi.Input<string | undefined>;
     serviceNetworkingCustomEndpoint?: pulumi.Input<string | undefined>;
     serviceUsageCustomEndpoint?: pulumi.Input<string | undefined>;
+    serviceUsageV2CustomEndpoint?: pulumi.Input<string | undefined>;
     siteVerificationCustomEndpoint?: pulumi.Input<string | undefined>;
     sourceRepoCustomEndpoint?: pulumi.Input<string | undefined>;
     spannerCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -689,6 +691,7 @@ export interface ProviderArgs {
     storageBatchOperationsCustomEndpoint?: pulumi.Input<string | undefined>;
     storageControlCustomEndpoint?: pulumi.Input<string | undefined>;
     storageCustomEndpoint?: pulumi.Input<string | undefined>;
+    storageFtpCustomEndpoint?: pulumi.Input<string | undefined>;
     storageInsightsCustomEndpoint?: pulumi.Input<string | undefined>;
     storageTransferCustomEndpoint?: pulumi.Input<string | undefined>;
     tagsCustomEndpoint?: pulumi.Input<string | undefined>;

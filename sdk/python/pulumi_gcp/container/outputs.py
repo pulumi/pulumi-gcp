@@ -4245,18 +4245,10 @@ class ClusterAddonsConfig(dict):
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
         :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-        :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
+        :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
                It is disabled by default. Set `enabled = true` to enable. The minimum
-               cluster version to enable Ray is 1.30.0-gke.1747000.
-               
-               Ray Operator config has optional subfields
-               `ray_cluster_logging_config.enabled` and
-               `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-               and monitoring respectively. See [Collect and view logs and metrics for Ray
-               clusters on
-               GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-               for more information.
+               cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
         :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: .
                The status of the slice controller addon.
                It is disabled by default. Set `enabled = true` to enable.
@@ -4502,18 +4494,10 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="rayOperatorConfigs")
     def ray_operator_configs(self) -> Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']]:
         """
-        . The status of the [Ray Operator
+        The status of the [Ray Operator
         addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
         It is disabled by default. Set `enabled = true` to enable. The minimum
-        cluster version to enable Ray is 1.30.0-gke.1747000.
-
-        Ray Operator config has optional subfields
-        `ray_cluster_logging_config.enabled` and
-        `ray_cluster_monitoring_config.enabled` which control Ray Cluster logging
-        and monitoring respectively. See [Collect and view logs and metrics for Ray
-        clusters on
-        GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
-        for more information.
+        cluster version to enable Ray is 1.30.0-gke.1747000. Structure is documented below.
         """
         return pulumi.get(self, "ray_operator_configs")
 
@@ -4947,8 +4931,9 @@ class ClusterAddonsConfigRayOperatorConfig(dict):
                  ray_cluster_logging_config: Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig'] = None,
                  ray_cluster_monitoring_config: Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig'] = None):
         """
-        :param 'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs' ray_cluster_logging_config: The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
-        :param 'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs' ray_cluster_monitoring_config: The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        :param _builtins.bool enabled: Whether the Ray Operator addon is enabled.
+        :param 'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs' ray_cluster_logging_config: The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
+        :param 'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs' ray_cluster_monitoring_config: The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
         """
         pulumi.set(__self__, "enabled", enabled)
         if ray_cluster_logging_config is not None:
@@ -4959,13 +4944,16 @@ class ClusterAddonsConfigRayOperatorConfig(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        """
+        Whether the Ray Operator addon is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="rayClusterLoggingConfig")
     def ray_cluster_logging_config(self) -> Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig']:
         """
-        The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+        The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
         """
         return pulumi.get(self, "ray_cluster_logging_config")
 
@@ -4973,7 +4961,7 @@ class ClusterAddonsConfigRayOperatorConfig(dict):
     @pulumi.getter(name="rayClusterMonitoringConfig")
     def ray_cluster_monitoring_config(self) -> Optional['outputs.ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig']:
         """
-        The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+        The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
         """
         return pulumi.get(self, "ray_cluster_monitoring_config")
 
@@ -4982,11 +4970,17 @@ class ClusterAddonsConfigRayOperatorConfig(dict):
 class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether Ray Cluster logging is enabled.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        """
+        Whether Ray Cluster logging is enabled.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -4994,11 +4988,17 @@ class ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig(dict):
 class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether Ray Cluster monitoring is enabled.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        """
+        Whether Ray Cluster monitoring is enabled.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -5398,8 +5398,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         :param _builtins.str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
         :param _builtins.str image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
-        :param _builtins.str min_cpu_platform: )
-               Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        :param _builtins.str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
                specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
                as "Intel Haswell" or "Intel Sandy Bridge".
         :param Sequence[_builtins.str] oauth_scopes: Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -5474,7 +5473,6 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[_builtins.str]:
         """
-        )
         Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
         specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
         as "Intel Haswell" or "Intel Sandy Bridge".
@@ -6656,9 +6654,7 @@ class ClusterIpAllocationPolicy(dict):
                range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
                `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
         :param 'ClusterIpAllocationPolicyNetworkTierConfigArgs' network_tier_config: Contains network tier information. Structure is documented below
-               
-               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
-        :param 'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+        :param 'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs' pod_cidr_overprovision_config: Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
         :param _builtins.str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
                to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -6747,8 +6743,6 @@ class ClusterIpAllocationPolicy(dict):
     def network_tier_config(self) -> Optional['outputs.ClusterIpAllocationPolicyNetworkTierConfig']:
         """
         Contains network tier information. Structure is documented below
-
-        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         return pulumi.get(self, "network_tier_config")
 
@@ -6756,7 +6750,7 @@ class ClusterIpAllocationPolicy(dict):
     @pulumi.getter(name="podCidrOverprovisionConfig")
     def pod_cidr_overprovision_config(self) -> Optional['outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig']:
         """
-        Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+        Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
         """
         return pulumi.get(self, "pod_cidr_overprovision_config")
 
@@ -6960,9 +6954,9 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfig(dict):
     def __init__(__self__, *,
                  disabled: _builtins.bool):
         """
-        :param _builtins.bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        :param _builtins.bool disabled: Whether Pod CIDR overprovisioning is disabled.
                
-               <a name="nested_cluster_telemetry"></a>The `cluster_telemetry` block supports
+               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         pulumi.set(__self__, "disabled", disabled)
 
@@ -6970,9 +6964,9 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfig(dict):
     @pulumi.getter
     def disabled(self) -> _builtins.bool:
         """
-        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        Whether Pod CIDR overprovisioning is disabled.
 
-        <a name="nested_cluster_telemetry"></a>The `cluster_telemetry` block supports
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         return pulumi.get(self, "disabled")
 
@@ -7193,6 +7187,7 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
                  start_time: _builtins.str,
                  duration: Optional[_builtins.str] = None):
         """
+        :param _builtins.str start_time: The start time of the exclusion window, in RFC3339 format.
         :param _builtins.str duration: Duration of the time window, automatically chosen to be
                smallest possible in the given scenario.
                Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
@@ -7204,6 +7199,9 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
+        """
+        The start time of the exclusion window, in RFC3339 format.
+        """
         return pulumi.get(self, "start_time")
 
     @_builtins.property
@@ -7330,7 +7328,10 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
                  end_time: Optional[_builtins.str] = None,
                  exclusion_options: Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions'] = None):
         """
-        :param 'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs' exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
+        :param _builtins.str exclusion_name: The name of the maintenance exclusion.
+        :param _builtins.str start_time: The start time of the exclusion window, in RFC3339 format.
+        :param _builtins.str end_time: The end time of the exclusion window, in RFC3339 format. Exactly one of `end_time` and `exclusion_options.end_time_behavior` should be specified.
+        :param 'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs' exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
         """
         pulumi.set(__self__, "exclusion_name", exclusion_name)
         pulumi.set(__self__, "start_time", start_time)
@@ -7342,23 +7343,32 @@ class ClusterMaintenancePolicyMaintenanceExclusion(dict):
     @_builtins.property
     @pulumi.getter(name="exclusionName")
     def exclusion_name(self) -> _builtins.str:
+        """
+        The name of the maintenance exclusion.
+        """
         return pulumi.get(self, "exclusion_name")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
+        """
+        The start time of the exclusion window, in RFC3339 format.
+        """
         return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[_builtins.str]:
+        """
+        The end time of the exclusion window, in RFC3339 format. Exactly one of `end_time` and `exclusion_options.end_time_behavior` should be specified.
+        """
         return pulumi.get(self, "end_time")
 
     @_builtins.property
     @pulumi.getter(name="exclusionOptions")
     def exclusion_options(self) -> Optional['outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions']:
         """
-        MaintenanceExclusionOptions provides maintenance exclusion related options.
+        MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
         """
         return pulumi.get(self, "exclusion_options")
 
@@ -7733,6 +7743,7 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
                  recurrence: _builtins.str,
                  start_time: _builtins.str):
         """
+        :param _builtins.str end_time: The end time of the exclusion window, in RFC3339 format. Exactly one of `end_time` and `exclusion_options.end_time_behavior` should be specified.
         :param _builtins.str recurrence: Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
                
                Examples:
@@ -7773,6 +7784,7 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
                }
                }
                ```
+        :param _builtins.str start_time: The start time of the exclusion window, in RFC3339 format.
         """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "recurrence", recurrence)
@@ -7781,6 +7793,9 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> _builtins.str:
+        """
+        The end time of the exclusion window, in RFC3339 format. Exactly one of `end_time` and `exclusion_options.end_time_behavior` should be specified.
+        """
         return pulumi.get(self, "end_time")
 
     @_builtins.property
@@ -7833,6 +7848,9 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
+        """
+        The start time of the exclusion window, in RFC3339 format.
+        """
         return pulumi.get(self, "start_time")
 
 
@@ -8574,7 +8592,7 @@ class ClusterNodeConfig(dict):
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
                Structure is documented below.
-        :param 'ClusterNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+        :param 'ClusterNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         :param _builtins.str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param 'ClusterNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs. Structure is documented below.
@@ -8638,7 +8656,7 @@ class ClusterNodeConfig(dict):
                GKE-managed taints on the node pool from all sources. Importing this resource
                will not record any taints as being Pulumi-managed, and will cause drift with
                any configured taints. Structure is documented below.
-        :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+        :param 'ClusterNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration. Structure is documented below.
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -8898,7 +8916,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="hostMaintenancePolicy")
     def host_maintenance_policy(self) -> Optional['outputs.ClusterNodeConfigHostMaintenancePolicy']:
         """
-        The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+        ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         """
         return pulumi.get(self, "host_maintenance_policy")
 
@@ -9172,7 +9190,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="windowsNodeConfig")
     def windows_node_config(self) -> Optional['outputs.ClusterNodeConfigWindowsNodeConfig']:
         """
-        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+        Windows node configuration. Structure is documented below.
         """
         return pulumi.get(self, "windows_node_config")
 
@@ -9217,6 +9235,8 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param _builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param _builtins.str performance_monitoring_unit: Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+               
+               > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
@@ -9245,6 +9265,8 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
     def performance_monitoring_unit(self) -> Optional[_builtins.str]:
         """
         Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+
+        > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -9411,7 +9433,7 @@ class ClusterNodeConfigContainerdConfig(dict):
                  writable_cgroups: Optional['outputs.ClusterNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
-        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         :param 'ClusterNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
@@ -9433,7 +9455,7 @@ class ClusterNodeConfigContainerdConfig(dict):
     @pulumi.getter(name="registryHosts")
     def registry_hosts(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHost']]:
         """
-        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         """
         return pulumi.get(self, "registry_hosts")
 
@@ -9470,7 +9492,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
                  certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
         """
         :param _builtins.bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param Sequence['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+        :param Sequence['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -9488,7 +9510,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict):
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -9517,7 +9539,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
                  gcp_secret_manager_certificate_config: 'outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
         """
         :param Sequence[_builtins.str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
-        :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager:
         """
         pulumi.set(__self__, "fqdns", fqdns)
         pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
@@ -9534,7 +9556,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
     @pulumi.getter(name="gcpSecretManagerCertificateConfig")
     def gcp_secret_manager_certificate_config(self) -> 'outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
         """
-        Parameters for configuring a certificate hosted in GCP SecretManager.
+        Parameters for configuring a certificate hosted in GCP SecretManager:
         """
         return pulumi.get(self, "gcp_secret_manager_certificate_config")
 
@@ -9561,7 +9583,9 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
     def __init__(__self__, *,
                  secret_uri: _builtins.str):
         """
-        :param _builtins.str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        :param _builtins.str secret_uri: URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+               
+               Example:
         """
         pulumi.set(__self__, "secret_uri", secret_uri)
 
@@ -9569,7 +9593,9 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
     @pulumi.getter(name="secretUri")
     def secret_uri(self) -> _builtins.str:
         """
-        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+
+        Example:
         """
         return pulumi.get(self, "secret_uri")
 
@@ -9581,7 +9607,7 @@ class ClusterNodeConfigContainerdConfigRegistryHost(dict):
                  hosts: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHost']] = None):
         """
         :param _builtins.str server: Defines the host name of the registry server.
-        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server:
         """
         pulumi.set(__self__, "server", server)
         if hosts is not None:
@@ -9599,7 +9625,7 @@ class ClusterNodeConfigContainerdConfigRegistryHost(dict):
     @pulumi.getter
     def hosts(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHost']]:
         """
-        Configures a list of host-specific configurations for the server.
+        Configures a list of host-specific configurations for the server:
         """
         return pulumi.get(self, "hosts")
 
@@ -9635,12 +9661,14 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
                  override_path: Optional[_builtins.bool] = None):
         """
         :param _builtins.str host: Configures the registry host/mirror.
-        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
-        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
-        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate. Contains `gcp_secret_manager_secret_uri` (Optional).
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key. Contains `cert` (Required) with `gcp_secret_manager_secret_uri` (Optional) and `key` (Optional) with `gcp_secret_manager_secret_uri` (Optional).
+               
+               Example:
         :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
-        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
-        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
+        :param _builtins.bool override_path: Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         """
         pulumi.set(__self__, "host", host)
         if capabilities is not None:
@@ -9668,7 +9696,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def capabilities(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
         """
         return pulumi.get(self, "capabilities")
 
@@ -9676,7 +9704,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def cas(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostCa']]:
         """
-        Configures the registry host certificate.
+        Configures the registry host certificate. Contains `gcp_secret_manager_secret_uri` (Optional).
         """
         return pulumi.get(self, "cas")
 
@@ -9684,7 +9712,9 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def clients(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClient']]:
         """
-        Configures the registry host client certificate and key.
+        Configures the registry host client certificate and key. Contains `cert` (Required) with `gcp_secret_manager_secret_uri` (Optional) and `key` (Optional) with `gcp_secret_manager_secret_uri` (Optional).
+
+        Example:
         """
         return pulumi.get(self, "clients")
 
@@ -9700,7 +9730,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def headers(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostHeader']]:
         """
-        Configures the registry host headers.
+        Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
         """
         return pulumi.get(self, "headers")
 
@@ -9708,7 +9738,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter(name="overridePath")
     def override_path(self) -> Optional[_builtins.bool]:
         """
-        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         """
         return pulumi.get(self, "override_path")
 
@@ -12277,7 +12307,7 @@ class ClusterNodeConfigWindowsNodeConfig(dict):
     def __init__(__self__, *,
                  osversion: Optional[_builtins.str] = None):
         """
-        :param _builtins.str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        :param _builtins.str osversion: OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
         """
         if osversion is not None:
             pulumi.set(__self__, "osversion", osversion)
@@ -12286,7 +12316,7 @@ class ClusterNodeConfigWindowsNodeConfig(dict):
     @pulumi.getter
     def osversion(self) -> Optional[_builtins.str]:
         """
-        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
         """
         return pulumi.get(self, "osversion")
 
@@ -12438,7 +12468,7 @@ class ClusterNodePool(dict):
                location.
                
                ***
-        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
         :param 'ClusterNodePoolNodeConfigArgs' node_config: The node configuration of the pool. Structure is documented below.
@@ -12584,7 +12614,7 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[_builtins.str]:
         """
-        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         """
         return pulumi.get(self, "name_prefix")
 
@@ -13127,7 +13157,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
                  writable_cgroups: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
@@ -13149,7 +13179,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
     @pulumi.getter(name="registryHosts")
     def registry_hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost']]:
         """
-        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         """
         return pulumi.get(self, "registry_hosts")
 
@@ -13186,7 +13216,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
                  certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
         """
         :param _builtins.bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -13204,7 +13234,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -13233,7 +13263,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
                  gcp_secret_manager_certificate_config: 'outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
         """
         :param Sequence[_builtins.str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
-        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager:
         """
         pulumi.set(__self__, "fqdns", fqdns)
         pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
@@ -13250,7 +13280,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     @pulumi.getter(name="gcpSecretManagerCertificateConfig")
     def gcp_secret_manager_certificate_config(self) -> 'outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
         """
-        Parameters for configuring a certificate hosted in GCP SecretManager.
+        Parameters for configuring a certificate hosted in GCP SecretManager:
         """
         return pulumi.get(self, "gcp_secret_manager_certificate_config")
 
@@ -13277,7 +13307,9 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     def __init__(__self__, *,
                  secret_uri: _builtins.str):
         """
-        :param _builtins.str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        :param _builtins.str secret_uri: URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+               
+               Example:
         """
         pulumi.set(__self__, "secret_uri", secret_uri)
 
@@ -13285,7 +13317,9 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     @pulumi.getter(name="secretUri")
     def secret_uri(self) -> _builtins.str:
         """
-        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+
+        Example:
         """
         return pulumi.get(self, "secret_uri")
 
@@ -13297,7 +13331,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost(dict
                  hosts: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost']] = None):
         """
         :param _builtins.str server: Defines the host name of the registry server.
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server:
         """
         pulumi.set(__self__, "server", server)
         if hosts is not None:
@@ -13315,7 +13349,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost(dict
     @pulumi.getter
     def hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost']]:
         """
-        Configures a list of host-specific configurations for the server.
+        Configures a list of host-specific configurations for the server:
         """
         return pulumi.get(self, "hosts")
 
@@ -13351,12 +13385,14 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(
                  override_path: Optional[_builtins.bool] = None):
         """
         :param _builtins.str host: Configures the registry host/mirror.
-        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate. Contains `gcp_secret_manager_secret_uri` (Optional).
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key. Contains `cert` (Required) with `gcp_secret_manager_secret_uri` (Optional) and `key` (Optional) with `gcp_secret_manager_secret_uri` (Optional).
+               
+               Example:
         :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
-        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
-        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
+        :param _builtins.bool override_path: Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         """
         pulumi.set(__self__, "host", host)
         if capabilities is not None:
@@ -13384,7 +13420,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(
     @pulumi.getter
     def capabilities(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
         """
         return pulumi.get(self, "capabilities")
 
@@ -13392,7 +13428,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(
     @pulumi.getter
     def cas(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa']]:
         """
-        Configures the registry host certificate.
+        Configures the registry host certificate. Contains `gcp_secret_manager_secret_uri` (Optional).
         """
         return pulumi.get(self, "cas")
 
@@ -13400,7 +13436,9 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(
     @pulumi.getter
     def clients(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient']]:
         """
-        Configures the registry host client certificate and key.
+        Configures the registry host client certificate and key. Contains `cert` (Required) with `gcp_secret_manager_secret_uri` (Optional) and `key` (Optional) with `gcp_secret_manager_secret_uri` (Optional).
+
+        Example:
         """
         return pulumi.get(self, "clients")
 
@@ -13416,7 +13454,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(
     @pulumi.getter
     def headers(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader']]:
         """
-        Configures the registry host headers.
+        Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
         """
         return pulumi.get(self, "headers")
 
@@ -13424,7 +13462,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(
     @pulumi.getter(name="overridePath")
     def override_path(self) -> Optional[_builtins.bool]:
         """
-        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         """
         return pulumi.get(self, "override_path")
 
@@ -13948,18 +13986,39 @@ class ClusterNodePoolNetworkConfig(dict):
 
 @pulumi.output_type
 class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stackType":
+            suggest = "stack_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network: Optional[_builtins.str] = None,
+                 stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None):
         """
         :param _builtins.str network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
+        :param _builtins.str stack_type: The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
         :param _builtins.str subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -13972,6 +14031,14 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
         shared network.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[_builtins.str]:
+        """
+        The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+        """
+        return pulumi.get(self, "stack_type")
 
     @_builtins.property
     @pulumi.getter
@@ -14087,9 +14154,9 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
     def __init__(__self__, *,
                  disabled: _builtins.bool):
         """
-        :param _builtins.bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        :param _builtins.bool disabled: Whether Pod CIDR overprovisioning is disabled.
                
-               <a name="nested_cluster_telemetry"></a>The `cluster_telemetry` block supports
+               <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         pulumi.set(__self__, "disabled", disabled)
 
@@ -14097,9 +14164,9 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
     @pulumi.getter
     def disabled(self) -> _builtins.bool:
         """
-        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        Whether Pod CIDR overprovisioning is disabled.
 
-        <a name="nested_cluster_telemetry"></a>The `cluster_telemetry` block supports
+        <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
         """
         return pulumi.get(self, "disabled")
 
@@ -14290,7 +14357,7 @@ class ClusterNodePoolNodeConfig(dict):
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
                Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         :param _builtins.str image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
         :param 'ClusterNodePoolNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs. Structure is documented below.
@@ -14354,7 +14421,7 @@ class ClusterNodePoolNodeConfig(dict):
                GKE-managed taints on the node pool from all sources. Importing this resource
                will not record any taints as being Pulumi-managed, and will cause drift with
                any configured taints. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+        :param 'ClusterNodePoolNodeConfigWindowsNodeConfigArgs' windows_node_config: Windows node configuration. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
@@ -14614,7 +14681,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="hostMaintenancePolicy")
     def host_maintenance_policy(self) -> Optional['outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy']:
         """
-        The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+        ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         """
         return pulumi.get(self, "host_maintenance_policy")
 
@@ -14888,7 +14955,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="windowsNodeConfig")
     def windows_node_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigWindowsNodeConfig']:
         """
-        Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+        Windows node configuration. Structure is documented below.
         """
         return pulumi.get(self, "windows_node_config")
 
@@ -14933,6 +15000,8 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param _builtins.bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param _builtins.str performance_monitoring_unit: Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+               
+               > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
@@ -14961,6 +15030,8 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
     def performance_monitoring_unit(self) -> Optional[_builtins.str]:
         """
         Defines the performance monitoring unit [PMU](https://cloud.google.com/compute/docs/pmu-overview) level. Valid values are `ARCHITECTURAL`, `STANDARD`, or `ENHANCED`. Defaults to off.
+
+        > **Note:** Early 8.x provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected node pools the diff stays suppressed and this field cannot be updated in place, so enabling `STANDARD` requires recreating the node pool.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -15127,7 +15198,7 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
                  writable_cgroups: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         :param 'ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
@@ -15149,7 +15220,7 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
     @pulumi.getter(name="registryHosts")
     def registry_hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHost']]:
         """
-        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         """
         return pulumi.get(self, "registry_hosts")
 
@@ -15186,7 +15257,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict)
                  certificate_authority_domain_configs: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']] = None):
         """
         :param _builtins.bool enabled: Enables private registry config. If set to false, all other fields in this object must not be set.
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs'] certificate_authority_domain_configs: List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
         """
         pulumi.set(__self__, "enabled", enabled)
         if certificate_authority_domain_configs is not None:
@@ -15204,7 +15275,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig(dict)
     @pulumi.getter(name="certificateAuthorityDomainConfigs")
     def certificate_authority_domain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig']]:
         """
-        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
+        List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail.
         """
         return pulumi.get(self, "certificate_authority_domain_configs")
 
@@ -15233,7 +15304,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
                  gcp_secret_manager_certificate_config: 'outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig'):
         """
         :param Sequence[_builtins.str] fqdns: List of fully-qualified-domain-names. IPv4s and port specification are supported.
-        :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager.
+        :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigArgs' gcp_secret_manager_certificate_config: Parameters for configuring a certificate hosted in GCP SecretManager:
         """
         pulumi.set(__self__, "fqdns", fqdns)
         pulumi.set(__self__, "gcp_secret_manager_certificate_config", gcp_secret_manager_certificate_config)
@@ -15250,7 +15321,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
     @pulumi.getter(name="gcpSecretManagerCertificateConfig")
     def gcp_secret_manager_certificate_config(self) -> 'outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig':
         """
-        Parameters for configuring a certificate hosted in GCP SecretManager.
+        Parameters for configuring a certificate hosted in GCP SecretManager:
         """
         return pulumi.get(self, "gcp_secret_manager_certificate_config")
 
@@ -15277,7 +15348,9 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
     def __init__(__self__, *,
                  secret_uri: _builtins.str):
         """
-        :param _builtins.str secret_uri: URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        :param _builtins.str secret_uri: URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+               
+               Example:
         """
         pulumi.set(__self__, "secret_uri", secret_uri)
 
@@ -15285,7 +15358,9 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
     @pulumi.getter(name="secretUri")
     def secret_uri(self) -> _builtins.str:
         """
-        URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
+        URI for the secret that hosts a certificate. Must be in the format `projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST`.
+
+        Example:
         """
         return pulumi.get(self, "secret_uri")
 
@@ -15297,7 +15372,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHost(dict):
                  hosts: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost']] = None):
         """
         :param _builtins.str server: Defines the host name of the registry server.
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server:
         """
         pulumi.set(__self__, "server", server)
         if hosts is not None:
@@ -15315,7 +15390,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHost(dict):
     @pulumi.getter
     def hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost']]:
         """
-        Configures a list of host-specific configurations for the server.
+        Configures a list of host-specific configurations for the server:
         """
         return pulumi.get(self, "hosts")
 
@@ -15351,12 +15426,14 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
                  override_path: Optional[_builtins.bool] = None):
         """
         :param _builtins.str host: Configures the registry host/mirror.
-        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate. Contains `gcp_secret_manager_secret_uri` (Optional).
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key. Contains `cert` (Required) with `gcp_secret_manager_secret_uri` (Optional) and `key` (Optional) with `gcp_secret_manager_secret_uri` (Optional).
+               
+               Example:
         :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
-        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
-        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
+        :param _builtins.bool override_path: Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         """
         pulumi.set(__self__, "host", host)
         if capabilities is not None:
@@ -15384,7 +15461,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def capabilities(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
         """
         return pulumi.get(self, "capabilities")
 
@@ -15392,7 +15469,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def cas(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa']]:
         """
-        Configures the registry host certificate.
+        Configures the registry host certificate. Contains `gcp_secret_manager_secret_uri` (Optional).
         """
         return pulumi.get(self, "cas")
 
@@ -15400,7 +15477,9 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def clients(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient']]:
         """
-        Configures the registry host client certificate and key.
+        Configures the registry host client certificate and key. Contains `cert` (Required) with `gcp_secret_manager_secret_uri` (Optional) and `key` (Optional) with `gcp_secret_manager_secret_uri` (Optional).
+
+        Example:
         """
         return pulumi.get(self, "clients")
 
@@ -15416,7 +15495,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter
     def headers(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader']]:
         """
-        Configures the registry host headers.
+        Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
         """
         return pulumi.get(self, "headers")
 
@@ -15424,7 +15503,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
     @pulumi.getter(name="overridePath")
     def override_path(self) -> Optional[_builtins.bool]:
         """
-        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
         """
         return pulumi.get(self, "override_path")
 
@@ -17993,7 +18072,7 @@ class ClusterNodePoolNodeConfigWindowsNodeConfig(dict):
     def __init__(__self__, *,
                  osversion: Optional[_builtins.str] = None):
         """
-        :param _builtins.str osversion: The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        :param _builtins.str osversion: OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
         """
         if osversion is not None:
             pulumi.set(__self__, "osversion", osversion)
@@ -18002,7 +18081,7 @@ class ClusterNodePoolNodeConfigWindowsNodeConfig(dict):
     @pulumi.getter
     def osversion(self) -> Optional[_builtins.str]:
         """
-        The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+        OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
         """
         return pulumi.get(self, "osversion")
 
@@ -19359,9 +19438,9 @@ class ClusterTpuConfig(dict):
                  ipv4_cidr_block: Optional[_builtins.str] = None,
                  use_service_networking: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enabled: Whether Cloud TPU integration is enabled or not
-        :param _builtins.str ipv4_cidr_block: IPv4 CIDR block reserved for Cloud TPU in the VPC.
-        :param _builtins.bool use_service_networking: Whether to use service networking for Cloud TPU or not
+        :param _builtins.bool enabled: Whether Cloud TPU integration is enabled or not.
+        :param _builtins.str ipv4_cidr_block: The IPv4 CIDR block reserved for Cloud TPU in the VPC.
+        :param _builtins.bool use_service_networking: Whether to use service networking for Cloud TPU or not.
         """
         pulumi.set(__self__, "enabled", enabled)
         if ipv4_cidr_block is not None:
@@ -19373,7 +19452,7 @@ class ClusterTpuConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Whether Cloud TPU integration is enabled or not
+        Whether Cloud TPU integration is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -19381,7 +19460,7 @@ class ClusterTpuConfig(dict):
     @pulumi.getter(name="ipv4CidrBlock")
     def ipv4_cidr_block(self) -> Optional[_builtins.str]:
         """
-        IPv4 CIDR block reserved for Cloud TPU in the VPC.
+        The IPv4 CIDR block reserved for Cloud TPU in the VPC.
         """
         return pulumi.get(self, "ipv4_cidr_block")
 
@@ -19389,7 +19468,7 @@ class ClusterTpuConfig(dict):
     @pulumi.getter(name="useServiceNetworking")
     def use_service_networking(self) -> Optional[_builtins.bool]:
         """
-        Whether to use service networking for Cloud TPU or not
+        Whether to use service networking for Cloud TPU or not.
         """
         return pulumi.get(self, "use_service_networking")
 
@@ -19938,7 +20017,7 @@ class NodePoolNetworkConfig(dict):
                  pod_range: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None):
         """
-        :param _builtins.str accelerator_network_profile: ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        :param _builtins.str accelerator_network_profile: Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
         :param Sequence['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
                Structure is documented below
         :param Sequence['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
@@ -19976,7 +20055,7 @@ class NodePoolNetworkConfig(dict):
     @pulumi.getter(name="acceleratorNetworkProfile")
     def accelerator_network_profile(self) -> Optional[_builtins.str]:
         """
-        ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
         """
         return pulumi.get(self, "accelerator_network_profile")
 
@@ -20057,15 +20136,36 @@ class NodePoolNetworkConfig(dict):
 
 @pulumi.output_type
 class NodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stackType":
+            suggest = "stack_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNetworkConfigAdditionalNodeNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNetworkConfigAdditionalNodeNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNetworkConfigAdditionalNodeNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network: Optional[_builtins.str] = None,
+                 stack_type: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None):
         """
         :param _builtins.str network: Name of the VPC where the additional interface belongs.
+        :param _builtins.str stack_type: ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
         :param _builtins.str subnetwork: Name of the subnetwork where the additional interface belongs.
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -20076,6 +20176,14 @@ class NodePoolNetworkConfigAdditionalNodeNetworkConfig(dict):
         Name of the VPC where the additional interface belongs.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[_builtins.str]:
+        """
+        ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+        """
+        return pulumi.get(self, "stack_type")
 
     @_builtins.property
     @pulumi.getter
@@ -20370,7 +20478,7 @@ class NodePoolNodeConfig(dict):
         :param _builtins.str gpudirect_strategy: The type of GPUDirect strategy to enable on the node.
         :param Sequence['NodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param 'NodePoolNodeConfigGvnicArgs' gvnic: Enable or disable gvnic in the node pool.
-        :param 'NodePoolNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: The maintenance policy for the hosts on which the GKE VMs run on.
+        :param 'NodePoolNodeConfigHostMaintenancePolicyArgs' host_maintenance_policy: ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         :param _builtins.str image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
         :param 'NodePoolNodeConfigKubeletConfigArgs' kubelet_config: Node kubelet configs. Structure is documented below.
         :param Mapping[str, _builtins.str] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
@@ -20642,7 +20750,7 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="hostMaintenancePolicy")
     def host_maintenance_policy(self) -> Optional['outputs.NodePoolNodeConfigHostMaintenancePolicy']:
         """
-        The maintenance policy for the hosts on which the GKE VMs run on.
+        ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         """
         return pulumi.get(self, "host_maintenance_policy")
 
@@ -20925,7 +21033,7 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
         """
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param _builtins.bool enable_nested_virtualization: Whether the node should have nested virtualization enabled.
-        :param _builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        :param _builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
         if enable_nested_virtualization is not None:
@@ -20953,7 +21061,7 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
     @pulumi.getter(name="performanceMonitoringUnit")
     def performance_monitoring_unit(self) -> Optional[_builtins.str]:
         """
-        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -21974,8 +22082,8 @@ class NodePoolNodeConfigHostMaintenancePolicy(dict):
                  maintenance_interval: _builtins.str,
                  opportunistic_maintenance_strategy: Optional['outputs.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy'] = None):
         """
-        :param _builtins.str maintenance_interval: .
-        :param 'NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs' opportunistic_maintenance_strategy: Strategy that will trigger maintenance on behalf of the customer.
+        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
+        :param 'NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs' opportunistic_maintenance_strategy: Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
         """
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if opportunistic_maintenance_strategy is not None:
@@ -21985,7 +22093,7 @@ class NodePoolNodeConfigHostMaintenancePolicy(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> _builtins.str:
         """
-        .
+        Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -21993,7 +22101,7 @@ class NodePoolNodeConfigHostMaintenancePolicy(dict):
     @pulumi.getter(name="opportunisticMaintenanceStrategy")
     def opportunistic_maintenance_strategy(self) -> Optional['outputs.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy']:
         """
-        Strategy that will trigger maintenance on behalf of the customer.
+        Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
         """
         return pulumi.get(self, "opportunistic_maintenance_strategy")
 
@@ -22026,9 +22134,9 @@ class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy(di
                  min_nodes_per_pool: _builtins.int,
                  node_idle_time_window: _builtins.str):
         """
-        :param _builtins.str maintenance_availability_window: The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+        :param _builtins.str maintenance_availability_window: The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
         :param _builtins.int min_nodes_per_pool: The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value.
-        :param _builtins.str node_idle_time_window: The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+        :param _builtins.str node_idle_time_window: The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
         """
         pulumi.set(__self__, "maintenance_availability_window", maintenance_availability_window)
         pulumi.set(__self__, "min_nodes_per_pool", min_nodes_per_pool)
@@ -22038,7 +22146,7 @@ class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy(di
     @pulumi.getter(name="maintenanceAvailabilityWindow")
     def maintenance_availability_window(self) -> _builtins.str:
         """
-        The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+        The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
         """
         return pulumi.get(self, "maintenance_availability_window")
 
@@ -22054,7 +22162,7 @@ class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy(di
     @pulumi.getter(name="nodeIdleTimeWindow")
     def node_idle_time_window(self) -> _builtins.str:
         """
-        The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+        The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `"600s"`.
         """
         return pulumi.get(self, "node_idle_time_window")
 
@@ -27410,7 +27518,7 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
                  threads_per_core: _builtins.int):
         """
         :param _builtins.bool enable_nested_virtualization: Whether the node should have nested virtualization enabled.
-        :param _builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        :param _builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
@@ -27429,7 +27537,7 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
     @pulumi.getter(name="performanceMonitoringUnit")
     def performance_monitoring_unit(self) -> _builtins.str:
         """
-        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -28137,7 +28245,7 @@ class GetClusterNodeConfigHostMaintenancePolicyResult(dict):
                  maintenance_interval: _builtins.str,
                  opportunistic_maintenance_strategies: Sequence['outputs.GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyResult']):
         """
-        :param _builtins.str maintenance_interval: .
+        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
         :param Sequence['GetClusterNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs'] opportunistic_maintenance_strategies: Strategy that will trigger maintenance on behalf of the customer.
         """
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -28147,7 +28255,7 @@ class GetClusterNodeConfigHostMaintenancePolicyResult(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> _builtins.str:
         """
-        .
+        Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -29522,7 +29630,7 @@ class GetClusterNodePoolResult(dict):
         :param Sequence['GetClusterNodePoolManagementArgs'] managements: Node management configuration, wherein auto-repair and auto-upgrade is configured.
         :param _builtins.int max_pods_per_node: The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
         :param _builtins.str name: The name of the cluster.
-        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         :param Sequence['GetClusterNodePoolNetworkConfigArgs'] network_configs: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param Sequence['GetClusterNodePoolNodeConfigArgs'] node_configs: The configuration of the nodepool
         :param _builtins.int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
@@ -29629,7 +29737,7 @@ class GetClusterNodePoolResult(dict):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> _builtins.str:
         """
-        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
         """
         return pulumi.get(self, "name_prefix")
 
@@ -30556,12 +30664,15 @@ class GetClusterNodePoolNetworkConfigResult(dict):
 class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult(dict):
     def __init__(__self__, *,
                  network: _builtins.str,
+                 stack_type: _builtins.str,
                  subnetwork: _builtins.str):
         """
         :param _builtins.str network: Name of the VPC where the additional interface belongs.
+        :param _builtins.str stack_type: The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
         :param _builtins.str subnetwork: Name of the subnetwork where the additional interface belongs.
         """
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
 
     @_builtins.property
@@ -30571,6 +30682,14 @@ class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult(dict):
         Name of the VPC where the additional interface belongs.
         """
         return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> _builtins.str:
+        """
+        The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+        """
+        return pulumi.get(self, "stack_type")
 
     @_builtins.property
     @pulumi.getter
@@ -31205,7 +31324,7 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
                  threads_per_core: _builtins.int):
         """
         :param _builtins.bool enable_nested_virtualization: Whether the node should have nested virtualization enabled.
-        :param _builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        :param _builtins.str performance_monitoring_unit: Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         :param _builtins.int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
@@ -31224,7 +31343,7 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
     @pulumi.getter(name="performanceMonitoringUnit")
     def performance_monitoring_unit(self) -> _builtins.str:
         """
-        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
+        Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed. For existing node pools with no PMU, setting STANDARD may not produce a diff; recreate the node pool to apply it.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -31932,7 +32051,7 @@ class GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(dict):
                  maintenance_interval: _builtins.str,
                  opportunistic_maintenance_strategies: Sequence['outputs.GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyResult']):
         """
-        :param _builtins.str maintenance_interval: .
+        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
         :param Sequence['GetClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs'] opportunistic_maintenance_strategies: Strategy that will trigger maintenance on behalf of the customer.
         """
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -31942,7 +32061,7 @@ class GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> _builtins.str:
         """
-        .
+        Specifies the frequency of planned maintenance events. One of: "MAINTENANCE_INTERVAL_UNSPECIFIED", "AS_NEEDED", "PERIODIC".
         """
         return pulumi.get(self, "maintenance_interval")
 

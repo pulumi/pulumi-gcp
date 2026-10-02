@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "gcp:beyondcorp/appConnection:AppConnection":
-		r = &AppConnection{}
-	case "gcp:beyondcorp/appConnector:AppConnector":
-		r = &AppConnector{}
-	case "gcp:beyondcorp/appGateway:AppGateway":
-		r = &AppGateway{}
 	case "gcp:beyondcorp/securityGateway:SecurityGateway":
 		r = &SecurityGateway{}
 	case "gcp:beyondcorp/securityGatewayApplication:SecurityGatewayApplication":
@@ -56,21 +50,6 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/appConnection",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/appConnector",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"beyondcorp/appGateway",
-		&module{version},
-	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"beyondcorp/securityGateway",

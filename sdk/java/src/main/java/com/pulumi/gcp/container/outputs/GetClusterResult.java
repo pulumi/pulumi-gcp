@@ -168,7 +168,7 @@ public final class GetClusterResult {
     private String selfLink;
     private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
     private String servicesIpv4Cidr;
-    private Boolean skipNodePoolRefresh;
+    private @Nullable Boolean skipNodePoolRefresh;
     private String subnetwork;
     private List<GetClusterTpuConfig> tpuConfigs;
     private String tpuIpv4CidrBlock;
@@ -467,8 +467,8 @@ public final class GetClusterResult {
     public String servicesIpv4Cidr() {
         return this.servicesIpv4Cidr;
     }
-    public Boolean skipNodePoolRefresh() {
-        return this.skipNodePoolRefresh;
+    public Optional<Boolean> skipNodePoolRefresh() {
+        return Optional.ofNullable(this.skipNodePoolRefresh);
     }
     public String subnetwork() {
         return this.subnetwork;
@@ -596,7 +596,7 @@ public final class GetClusterResult {
         private String selfLink;
         private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
         private String servicesIpv4Cidr;
-        private Boolean skipNodePoolRefresh;
+        private @Nullable Boolean skipNodePoolRefresh;
         private String subnetwork;
         private List<GetClusterTpuConfig> tpuConfigs;
         private String tpuIpv4CidrBlock;
@@ -1619,10 +1619,8 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder skipNodePoolRefresh(Boolean skipNodePoolRefresh) {
-            if (skipNodePoolRefresh == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "skipNodePoolRefresh");
-            }
+        public Builder skipNodePoolRefresh(@Nullable Boolean skipNodePoolRefresh) {
+
             this.skipNodePoolRefresh = skipNodePoolRefresh;
             return this;
         }

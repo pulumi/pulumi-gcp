@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "source-cp",
-    ///         DisplayName = "source-cp_display",
+    ///         DisplayName = "source-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         MigrationJobId = "my-migrationid",
-    ///         DisplayName = "my-migrationid_display",
+    ///         DisplayName = "my-migrationid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "source-cp",
-    ///         DisplayName = "source-cp_display",
+    ///         DisplayName = "source-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -272,7 +272,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -293,7 +293,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         MigrationJobId = "my-migrationid",
-    ///         DisplayName = "my-migrationid_display",
+    ///         DisplayName = "my-migrationid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "source-cp",
-    ///         DisplayName = "source-cp_display",
+    ///         DisplayName = "source-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -403,7 +403,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         MigrationJobId = "my-migrationid",
-    ///         DisplayName = "my-migrationid_display",
+    ///         DisplayName = "my-migrationid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -452,10 +452,8 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///                     {
     ///                         ObjectIdentifier = new Gcp.DatabaseMigrationService.Inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs
     ///                         {
-    ///                             Type = "TABLE",
+    ///                             Type = "DATABASE",
     ///                             Database = "my_other_database",
-    ///                             Schema = "public",
-    ///                             Table = "users",
     ///                         },
     ///                     },
     ///                 },
@@ -518,7 +516,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "source-cp",
-    ///         DisplayName = "source-cp_display",
+    ///         DisplayName = "source-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -604,7 +602,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "destination-cp",
-    ///         DisplayName = "destination-cp_display",
+    ///         DisplayName = "destination-cp-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -626,7 +624,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Location = "us-central1",
     ///         MigrationJobId = "my-migrationid",
-    ///         DisplayName = "my-migrationid_display",
+    ///         DisplayName = "my-migrationid-display",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },

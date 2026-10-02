@@ -157,7 +157,86 @@ import * as utilities from "../utilities";
  *         toolIds: ["testtoolid"],
  *     }],
  *     childAgents: [pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`],
+ *     transferRules: [{
+ *         childAgent: pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`,
+ *         direction: "PARENT_TO_CHILD",
+ *         deterministicTransfer: {
+ *             expressionCondition: {
+ *                 expression: "true",
+ *             },
+ *         },
+ *     }],
  *     llmAgent: {},
+ * });
+ * ```
+ * ### Ces Agent Remote A2a Agent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cesAppForAgent = new gcp.ces.App("ces_app_for_agent", {
+ *     appId: "app-id",
+ *     location: "us",
+ *     description: "App used as parent for CES Agent example",
+ *     displayName: "my-app",
+ *     languageSettings: {
+ *         defaultLanguageCode: "en-US",
+ *         supportedLanguageCodes: [
+ *             "es-ES",
+ *             "fr-FR",
+ *         ],
+ *         enableMultilingualSupport: true,
+ *         fallbackAction: "escalate",
+ *     },
+ *     timeZoneSettings: {
+ *         timeZone: "America/Los_Angeles",
+ *     },
+ * });
+ * const cesAgentRemoteA2aAgent = new gcp.ces.Agent("ces_agent_remote_a2a_agent", {
+ *     agentId: "agent-id",
+ *     location: "us",
+ *     app: cesAppForAgent.appId,
+ *     displayName: "my-agent",
+ *     remoteA2aAgent: {
+ *         a2aConfig: {
+ *             agentCard: {
+ *                 name: "test-card",
+ *                 description: "Test A2A Agent Card",
+ *                 version: "1.0.0",
+ *                 supportedInterfaces: [{
+ *                     url: "https://example.com/a2a",
+ *                     protocolBinding: "HTTP+JSON",
+ *                     protocolVersion: "1.0",
+ *                 }],
+ *                 skills: [{
+ *                     id: "test-skill",
+ *                     name: "test-skill-name",
+ *                     description: "test-skill-desc",
+ *                     tags: [
+ *                         "test",
+ *                         "skill",
+ *                     ],
+ *                     examples: ["example 1"],
+ *                     inputModes: ["text/plain"],
+ *                     outputModes: ["text/plain"],
+ *                 }],
+ *             },
+ *             apiAuthentication: {
+ *                 bearerTokenConfig: {
+ *                     token: "$context.variables.token",
+ *                 },
+ *             },
+ *             contextId: "$context.variables.session_id",
+ *             inputVariableMapping: {
+ *                 remote_in: "local_in",
+ *             },
+ *             outputVariableMapping: {
+ *                 remote_out: "local_out",
+ *             },
+ *             streamingEnabled: false,
+ *         },
+ *     },
  * });
  * ```
  * ### Ces Agent Remote Dialogflow Agent
@@ -197,6 +276,7 @@ import * as utilities from "../utilities";
  *         agent: "projects/example/locations/us/agents/fake-agent",
  *         flowId: "fake-flow",
  *         environmentId: "fake-env",
+ *         languageCodeVariable: "language_code",
  *         inputVariableMapping: {
  *             example: "1",
  *         },
@@ -432,6 +512,12 @@ export class Agent extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     */
+    declare public readonly remoteA2aAgent: pulumi.Output<outputs.ces.AgentRemoteA2aAgent | undefined>;
+    /**
      * The agent which will transfer execution to an existing remote
      * [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
      * agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -450,6 +536,12 @@ export class Agent extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly toolsets: pulumi.Output<outputs.ces.AgentToolset[] | undefined>;
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     */
+    declare public readonly transferRules: pulumi.Output<outputs.ces.AgentTransferRule[] | undefined>;
     /**
      * Timestamp when the agent was last updated.
      */
@@ -490,9 +582,11 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["modelSettings"] = state?.modelSettings;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["remoteA2aAgent"] = state?.remoteA2aAgent;
             resourceInputs["remoteDialogflowAgent"] = state?.remoteDialogflowAgent;
             resourceInputs["tools"] = state?.tools;
             resourceInputs["toolsets"] = state?.toolsets;
+            resourceInputs["transferRules"] = state?.transferRules;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AgentArgs | undefined;
@@ -523,9 +617,11 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["modelSettings"] = args?.modelSettings;
             resourceInputs["project"] = args?.project;
+            resourceInputs["remoteA2aAgent"] = args?.remoteA2aAgent;
             resourceInputs["remoteDialogflowAgent"] = args?.remoteDialogflowAgent;
             resourceInputs["tools"] = args?.tools;
             resourceInputs["toolsets"] = args?.toolsets;
+            resourceInputs["transferRules"] = args?.transferRules;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["generatedSummary"] = undefined /*out*/;
@@ -675,6 +771,12 @@ export interface AgentState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     */
+    remoteA2aAgent?: pulumi.Input<inputs.ces.AgentRemoteA2aAgent | undefined>;
+    /**
      * The agent which will transfer execution to an existing remote
      * [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
      * agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -693,6 +795,12 @@ export interface AgentState {
      * Structure is documented below.
      */
     toolsets?: pulumi.Input<pulumi.Input<inputs.ces.AgentToolset>[] | undefined>;
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     */
+    transferRules?: pulumi.Input<pulumi.Input<inputs.ces.AgentTransferRule>[] | undefined>;
     /**
      * Timestamp when the agent was last updated.
      */
@@ -817,6 +925,12 @@ export interface AgentArgs {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * The agent which will transfer execution to a remote
+     * [A2A](https://github.com/a2aproject/A2A) agent.
+     * Structure is documented below.
+     */
+    remoteA2aAgent?: pulumi.Input<inputs.ces.AgentRemoteA2aAgent | undefined>;
+    /**
      * The agent which will transfer execution to an existing remote
      * [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
      * agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -835,4 +949,10 @@ export interface AgentArgs {
      * Structure is documented below.
      */
     toolsets?: pulumi.Input<pulumi.Input<inputs.ces.AgentToolset>[] | undefined>;
+    /**
+     * List of transfer rules for the agent.
+     * If multiple rules match, the first one in the list will be used.
+     * Structure is documented below.
+     */
+    transferRules?: pulumi.Input<pulumi.Input<inputs.ces.AgentTransferRule>[] | undefined>;
 }

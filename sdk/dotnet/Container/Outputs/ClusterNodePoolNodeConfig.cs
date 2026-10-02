@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigGvnic? Gvnic;
         /// <summary>
-        /// The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
+        /// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy? HostMaintenancePolicy;
         /// <summary>
@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigTaint> Taints;
         /// <summary>
-        /// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
+        /// Windows node configuration. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigWindowsNodeConfig? WindowsNodeConfig;
         /// <summary>

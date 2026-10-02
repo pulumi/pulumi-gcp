@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleSessionTemplatesJupyter = new SessionTemplate("exampleSessionTemplatesJupyter", SessionTemplateArgs.builder()
- *             .name("projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template")
- *             .location("us-central1")
+ *             .name("projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template")
+ *             .location("us-east1")
  *             .labels(Map.of("session_template_test", "terraform"))
  *             .runtimeConfig(SessionTemplateRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * 
  *         var ms = new MetastoreService("ms", MetastoreServiceArgs.builder()
  *             .serviceId("jupyter-session-template")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .port(9080)
  *             .tier("DEVELOPER")
  *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
@@ -179,14 +179,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .networkConfig(MetastoreServiceNetworkConfigArgs.builder()
  *                 .consumers(MetastoreServiceNetworkConfigConsumerArgs.builder()
- *                     .subnetwork("projects/my-project-name/regions/us-central1/subnetworks/default")
+ *                     .subnetwork("projects/my-project-name/regions/us-east1/subnetworks/default")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var basic = new Cluster("basic", ClusterArgs.builder()
  *             .name("jupyter-session-template")
- *             .region("us-central1")
+ *             .region("us-east1")
  *             .clusterConfig(ClusterClusterConfigArgs.builder()
  *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
  *                     .overrideProperties(Map.ofEntries(
@@ -202,8 +202,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
  *                     .numInstances(1)
- *                     .machineType("e2-standard-2")
+ *                     .machineType("n4-standard-2")
  *                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
+ *                         .bootDiskType("hyperdisk-balanced")
  *                         .bootDiskSizeGb(35)
  *                         .build())
  *                     .build())
@@ -214,8 +215,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dataprocSessionTemplatesJupyterFull = new SessionTemplate("dataprocSessionTemplatesJupyterFull", SessionTemplateArgs.builder()
- *             .name("projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template")
- *             .location("us-central1")
+ *             .name("projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template")
+ *             .location("us-east1")
  *             .labels(Map.of("session_template_test", "terraform"))
  *             .runtimeConfig(SessionTemplateRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(
@@ -284,8 +285,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleSessionTemplatesSparkConnect = new SessionTemplate("exampleSessionTemplatesSparkConnect", SessionTemplateArgs.builder()
- *             .name("projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template")
- *             .location("us-central1")
+ *             .name("projects/my-project-name/locations/us-east1/sessionTemplates/sc-session-template")
+ *             .location("us-east1")
  *             .labels(Map.of("session_template_test", "terraform"))
  *             .runtimeConfig(SessionTemplateRuntimeConfigArgs.builder()
  *                 .properties(Map.ofEntries(

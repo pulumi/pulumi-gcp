@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerLivenessProb
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerResources;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.WorkerPoolTemplateContainerVolumeMount;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -61,6 +62,11 @@ public final class WorkerPoolTemplateContainer {
      * 
      */
     private @Nullable WorkerPoolTemplateContainerResources resources;
+    /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    private @Nullable Boolean sandboxLauncher;
     /**
      * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
      * Structure is documented below.
@@ -140,6 +146,13 @@ public final class WorkerPoolTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    public Optional<Boolean> sandboxLauncher() {
+        return Optional.ofNullable(this.sandboxLauncher);
+    }
+    /**
      * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
      * Structure is documented below.
      * 
@@ -180,6 +193,7 @@ public final class WorkerPoolTemplateContainer {
         private @Nullable WorkerPoolTemplateContainerLivenessProbe livenessProbe;
         private @Nullable String name;
         private @Nullable WorkerPoolTemplateContainerResources resources;
+        private @Nullable Boolean sandboxLauncher;
         private @Nullable WorkerPoolTemplateContainerStartupProbe startupProbe;
         private @Nullable List<WorkerPoolTemplateContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
@@ -194,6 +208,7 @@ public final class WorkerPoolTemplateContainer {
     	      this.livenessProbe = defaults.livenessProbe;
     	      this.name = defaults.name;
     	      this.resources = defaults.resources;
+    	      this.sandboxLauncher = defaults.sandboxLauncher;
     	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
@@ -262,6 +277,12 @@ public final class WorkerPoolTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxLauncher(@Nullable Boolean sandboxLauncher) {
+
+            this.sandboxLauncher = sandboxLauncher;
+            return this;
+        }
+        @CustomType.Setter
         public Builder startupProbe(@Nullable WorkerPoolTemplateContainerStartupProbe startupProbe) {
 
             this.startupProbe = startupProbe;
@@ -292,6 +313,7 @@ public final class WorkerPoolTemplateContainer {
             _resultValue.livenessProbe = livenessProbe;
             _resultValue.name = name;
             _resultValue.resources = resources;
+            _resultValue.sandboxLauncher = sandboxLauncher;
             _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;

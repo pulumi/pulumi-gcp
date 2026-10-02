@@ -31,10 +31,42 @@ __all__ = [
     'AgentLlmAgentArgsDict',
     'AgentModelSettingsArgs',
     'AgentModelSettingsArgsDict',
+    'AgentRemoteA2aAgentArgs',
+    'AgentRemoteA2aAgentArgsDict',
+    'AgentRemoteA2aAgentA2aConfigArgs',
+    'AgentRemoteA2aAgentA2aConfigArgsDict',
+    'AgentRemoteA2aAgentA2aConfigAgentCardArgs',
+    'AgentRemoteA2aAgentA2aConfigAgentCardArgsDict',
+    'AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs',
+    'AgentRemoteA2aAgentA2aConfigAgentCardSkillArgsDict',
+    'AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs',
+    'AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgsDict',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationArgsDict',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgsDict',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgsDict',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgsDict',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs',
+    'AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgsDict',
     'AgentRemoteDialogflowAgentArgs',
     'AgentRemoteDialogflowAgentArgsDict',
     'AgentToolsetArgs',
     'AgentToolsetArgsDict',
+    'AgentTransferRuleArgs',
+    'AgentTransferRuleArgsDict',
+    'AgentTransferRuleDeterministicTransferArgs',
+    'AgentTransferRuleDeterministicTransferArgsDict',
+    'AgentTransferRuleDeterministicTransferExpressionConditionArgs',
+    'AgentTransferRuleDeterministicTransferExpressionConditionArgsDict',
+    'AgentTransferRuleDeterministicTransferPythonCodeConditionArgs',
+    'AgentTransferRuleDeterministicTransferPythonCodeConditionArgsDict',
+    'AgentTransferRuleDisablePlannerTransferArgs',
+    'AgentTransferRuleDisablePlannerTransferArgsDict',
+    'AgentTransferRuleDisablePlannerTransferExpressionConditionArgs',
+    'AgentTransferRuleDisablePlannerTransferExpressionConditionArgsDict',
     'AppAudioProcessingConfigArgs',
     'AppAudioProcessingConfigArgsDict',
     'AppAudioProcessingConfigAmbientSoundConfigArgs',
@@ -55,12 +87,24 @@ __all__ = [
     'AppDefaultChannelProfilePersonaPropertyArgsDict',
     'AppDefaultChannelProfileWebWidgetConfigArgs',
     'AppDefaultChannelProfileWebWidgetConfigArgsDict',
+    'AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs',
+    'AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgsDict',
+    'AppDefaultChannelProfileWhatsappConfigArgs',
+    'AppDefaultChannelProfileWhatsappConfigArgsDict',
+    'AppErrorHandlingSettingsArgs',
+    'AppErrorHandlingSettingsArgsDict',
+    'AppErrorHandlingSettingsEndSessionConfigArgs',
+    'AppErrorHandlingSettingsEndSessionConfigArgsDict',
+    'AppErrorHandlingSettingsFallbackResponseConfigArgs',
+    'AppErrorHandlingSettingsFallbackResponseConfigArgsDict',
     'AppEvaluationMetricsThresholdsArgs',
     'AppEvaluationMetricsThresholdsArgsDict',
     'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs',
     'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict',
     'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs',
     'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict',
+    'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs',
+    'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgsDict',
     'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs',
     'AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict',
     'AppLanguageSettingsArgs',
@@ -75,6 +119,8 @@ __all__ = [
     'AppLoggingSettingsCloudLoggingSettingsArgsDict',
     'AppLoggingSettingsConversationLoggingSettingsArgs',
     'AppLoggingSettingsConversationLoggingSettingsArgsDict',
+    'AppLoggingSettingsMetricAnalysisSettingsArgs',
+    'AppLoggingSettingsMetricAnalysisSettingsArgsDict',
     'AppLoggingSettingsRedactionConfigArgs',
     'AppLoggingSettingsRedactionConfigArgsDict',
     'AppModelSettingsArgs',
@@ -109,6 +155,18 @@ __all__ = [
     'AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict',
     'AppVersionSnapshotAgentToolsetArgs',
     'AppVersionSnapshotAgentToolsetArgsDict',
+    'AppVersionSnapshotAgentTransferRuleArgs',
+    'AppVersionSnapshotAgentTransferRuleArgsDict',
+    'AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs',
+    'AppVersionSnapshotAgentTransferRuleDeterministicTransferArgsDict',
+    'AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs',
+    'AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgsDict',
+    'AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs',
+    'AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgsDict',
+    'AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs',
+    'AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgsDict',
+    'AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs',
+    'AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgsDict',
     'AppVersionSnapshotAppArgs',
     'AppVersionSnapshotAppArgsDict',
     'AppVersionSnapshotAppAudioProcessingConfigArgs',
@@ -131,12 +189,22 @@ __all__ = [
     'AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict',
     'AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs',
     'AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict',
+    'AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs',
+    'AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgsDict',
+    'AppVersionSnapshotAppErrorHandlingSettingArgs',
+    'AppVersionSnapshotAppErrorHandlingSettingArgsDict',
+    'AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs',
+    'AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgsDict',
+    'AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs',
+    'AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgsDict',
     'AppVersionSnapshotAppEvaluationMetricsThresholdArgs',
     'AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict',
     'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs',
     'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict',
     'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs',
     'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict',
+    'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs',
+    'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgsDict',
     'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs',
     'AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict',
     'AppVersionSnapshotAppLanguageSettingArgs',
@@ -151,6 +219,8 @@ __all__ = [
     'AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict',
     'AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs',
     'AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict',
+    'AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs',
+    'AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgsDict',
     'AppVersionSnapshotAppLoggingSettingRedactionConfigArgs',
     'AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict',
     'AppVersionSnapshotAppModelSettingArgs',
@@ -161,6 +231,8 @@ __all__ = [
     'AppVersionSnapshotAppVariableDeclarationArgsDict',
     'AppVersionSnapshotAppVariableDeclarationSchemaArgs',
     'AppVersionSnapshotAppVariableDeclarationSchemaArgsDict',
+    'AppVersionSnapshotAppVpcScSettingArgs',
+    'AppVersionSnapshotAppVpcScSettingArgsDict',
     'AppVersionSnapshotExampleArgs',
     'AppVersionSnapshotExampleArgsDict',
     'AppVersionSnapshotExampleMessageArgs',
@@ -305,6 +377,8 @@ __all__ = [
     'AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict',
     'AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs',
     'AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict',
+    'AppVpcScSettingsArgs',
+    'AppVpcScSettingsArgsDict',
     'DeploymentChannelProfileArgs',
     'DeploymentChannelProfileArgsDict',
     'DeploymentChannelProfilePersonaPropertyArgs',
@@ -313,6 +387,12 @@ __all__ = [
     'DeploymentChannelProfileWebWidgetConfigArgsDict',
     'DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs',
     'DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgsDict',
+    'DeploymentChannelProfileWhatsappConfigArgs',
+    'DeploymentChannelProfileWhatsappConfigArgsDict',
+    'DeploymentInstagramCredentialsArgs',
+    'DeploymentInstagramCredentialsArgsDict',
+    'DeploymentWhatsappCredentialsArgs',
+    'DeploymentWhatsappCredentialsArgsDict',
     'EvaluationGoldenArgs',
     'EvaluationGoldenArgsDict',
     'EvaluationGoldenTurnArgs',
@@ -413,6 +493,8 @@ __all__ = [
     'ExampleMessageChunkArgsDict',
     'ExampleMessageChunkAgentTransferArgs',
     'ExampleMessageChunkAgentTransferArgsDict',
+    'ExampleMessageChunkBlobArgs',
+    'ExampleMessageChunkBlobArgsDict',
     'ExampleMessageChunkImageArgs',
     'ExampleMessageChunkImageArgsDict',
     'ExampleMessageChunkToolCallArgs',
@@ -575,6 +657,18 @@ __all__ = [
     'ToolRemoteAgentToolAgentCardSkillArgsDict',
     'ToolRemoteAgentToolAgentCardSupportedInterfaceArgs',
     'ToolRemoteAgentToolAgentCardSupportedInterfaceArgsDict',
+    'ToolRemoteAgentToolApiAuthenticationArgs',
+    'ToolRemoteAgentToolApiAuthenticationArgsDict',
+    'ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs',
+    'ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgsDict',
+    'ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs',
+    'ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgsDict',
+    'ToolRemoteAgentToolApiAuthenticationOauthConfigArgs',
+    'ToolRemoteAgentToolApiAuthenticationOauthConfigArgsDict',
+    'ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs',
+    'ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgsDict',
+    'ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs',
+    'ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict',
     'ToolSystemToolArgs',
     'ToolSystemToolArgsDict',
     'ToolToolFakeConfigArgs',
@@ -623,6 +717,8 @@ __all__ = [
     'ToolsetMcpToolsetTlsConfigArgsDict',
     'ToolsetMcpToolsetTlsConfigCaCertArgs',
     'ToolsetMcpToolsetTlsConfigCaCertArgsDict',
+    'ToolsetMcpToolsetToolOverrideArgs',
+    'ToolsetMcpToolsetToolOverrideArgsDict',
     'ToolsetOpenApiToolsetArgs',
     'ToolsetOpenApiToolsetArgsDict',
     'ToolsetOpenApiToolsetApiAuthenticationArgs',
@@ -663,24 +759,42 @@ class AgentAfterAgentCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class AgentAfterAgentCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -718,6 +832,23 @@ class AgentAfterAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class AgentAfterModelCallbackArgsDict(TypedDict):
@@ -734,24 +865,42 @@ class AgentAfterModelCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class AgentAfterModelCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -789,6 +938,23 @@ class AgentAfterModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class AgentAfterToolCallbackArgsDict(TypedDict):
@@ -805,24 +971,42 @@ class AgentAfterToolCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class AgentAfterToolCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -860,6 +1044,23 @@ class AgentAfterToolCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class AgentBeforeAgentCallbackArgsDict(TypedDict):
@@ -876,24 +1077,42 @@ class AgentBeforeAgentCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class AgentBeforeAgentCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -931,6 +1150,23 @@ class AgentBeforeAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class AgentBeforeModelCallbackArgsDict(TypedDict):
@@ -947,24 +1183,42 @@ class AgentBeforeModelCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class AgentBeforeModelCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -1002,6 +1256,23 @@ class AgentBeforeModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class AgentBeforeToolCallbackArgsDict(TypedDict):
@@ -1018,24 +1289,42 @@ class AgentBeforeToolCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class AgentBeforeToolCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -1073,6 +1362,23 @@ class AgentBeforeToolCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class AgentLlmAgentArgsDict(TypedDict):
@@ -1096,6 +1402,8 @@ class AgentModelSettingsArgsDict(TypedDict):
     controls the randomness of the model's responses. Lower temperatures
     produce responses that are more predictable. Higher temperatures produce
     responses that are more creative.
+
+    <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
     """
 
 @pulumi.input_type
@@ -1110,6 +1418,8 @@ class AgentModelSettingsArgs:
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+               
+               <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
         """
         if model is not None:
             pulumi.set(__self__, "model", model)
@@ -1137,12 +1447,982 @@ class AgentModelSettingsArgs:
         controls the randomness of the model's responses. Lower temperatures
         produce responses that are more predictable. Higher temperatures produce
         responses that are more creative.
+
+        <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
         """
         return pulumi.get(self, "temperature")
 
     @temperature.setter
     def temperature(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "temperature", value)
+
+
+class AgentRemoteA2aAgentArgsDict(TypedDict):
+    a2a_config: pulumi.Input['AgentRemoteA2aAgentA2aConfigArgsDict']
+    """
+    The A2A connection configuration.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentArgs:
+    def __init__(__self__, *,
+                 a2a_config: pulumi.Input['AgentRemoteA2aAgentA2aConfigArgs']):
+        """
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigArgs'] a2a_config: The A2A connection configuration.
+        """
+        pulumi.set(__self__, "a2a_config", a2a_config)
+
+    @_builtins.property
+    @pulumi.getter(name="a2aConfig")
+    def a2a_config(self) -> pulumi.Input['AgentRemoteA2aAgentA2aConfigArgs']:
+        """
+        The A2A connection configuration.
+        """
+        return pulumi.get(self, "a2a_config")
+
+    @a2a_config.setter
+    def a2a_config(self, value: pulumi.Input['AgentRemoteA2aAgentA2aConfigArgs']):
+        pulumi.set(self, "a2a_config", value)
+
+
+class AgentRemoteA2aAgentA2aConfigArgsDict(TypedDict):
+    agent_card: NotRequired[pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigAgentCardArgsDict']]]
+    """
+    The full agent card defined inline.
+    """
+    agent_registry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Reference to the agent in the Agent Registry.
+    Format: 'projects/{project}/locations/{location}/agents/{agent}'
+    """
+    api_authentication: NotRequired[pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationArgsDict']]]
+    """
+    Authentication configuration for calling the remote agent.
+    Optional if the registry reference already handles authentication.
+    """
+    context_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If not empty, interactions with the remote A2A agent will use this context
+    ID. This context_id field can refer to a session variable like
+    '$context.variables.order_agent_session_id'.
+    """
+    input_variable_mapping: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Mapping of input variable names of remote agent to GECX variable names.
+    """
+    output_variable_mapping: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Mapping of output variable names of remote agent to GECX variable names.
+    """
+    streaming_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether streaming is enabled for the remote agent.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigArgs:
+    def __init__(__self__, *,
+                 agent_card: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigAgentCardArgs']] = None,
+                 agent_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_authentication: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs']] = None,
+                 context_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_variable_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 output_variable_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 streaming_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardArgs'] agent_card: The full agent card defined inline.
+        :param pulumi.Input[_builtins.str] agent_registry: Reference to the agent in the Agent Registry.
+               Format: 'projects/{project}/locations/{location}/agents/{agent}'
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs'] api_authentication: Authentication configuration for calling the remote agent.
+               Optional if the registry reference already handles authentication.
+        :param pulumi.Input[_builtins.str] context_id: If not empty, interactions with the remote A2A agent will use this context
+               ID. This context_id field can refer to a session variable like
+               '$context.variables.order_agent_session_id'.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_variable_mapping: Mapping of input variable names of remote agent to GECX variable names.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] output_variable_mapping: Mapping of output variable names of remote agent to GECX variable names.
+        :param pulumi.Input[_builtins.bool] streaming_enabled: Whether streaming is enabled for the remote agent.
+        """
+        if agent_card is not None:
+            pulumi.set(__self__, "agent_card", agent_card)
+        if agent_registry is not None:
+            pulumi.set(__self__, "agent_registry", agent_registry)
+        if api_authentication is not None:
+            pulumi.set(__self__, "api_authentication", api_authentication)
+        if context_id is not None:
+            pulumi.set(__self__, "context_id", context_id)
+        if input_variable_mapping is not None:
+            pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
+        if output_variable_mapping is not None:
+            pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
+        if streaming_enabled is not None:
+            pulumi.set(__self__, "streaming_enabled", streaming_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="agentCard")
+    def agent_card(self) -> pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigAgentCardArgs']]:
+        """
+        The full agent card defined inline.
+        """
+        return pulumi.get(self, "agent_card")
+
+    @agent_card.setter
+    def agent_card(self, value: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigAgentCardArgs']]):
+        pulumi.set(self, "agent_card", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentRegistry")
+    def agent_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Reference to the agent in the Agent Registry.
+        Format: 'projects/{project}/locations/{location}/agents/{agent}'
+        """
+        return pulumi.get(self, "agent_registry")
+
+    @agent_registry.setter
+    def agent_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_registry", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiAuthentication")
+    def api_authentication(self) -> pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs']]:
+        """
+        Authentication configuration for calling the remote agent.
+        Optional if the registry reference already handles authentication.
+        """
+        return pulumi.get(self, "api_authentication")
+
+    @api_authentication.setter
+    def api_authentication(self, value: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs']]):
+        pulumi.set(self, "api_authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contextId")
+    def context_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If not empty, interactions with the remote A2A agent will use this context
+        ID. This context_id field can refer to a session variable like
+        '$context.variables.order_agent_session_id'.
+        """
+        return pulumi.get(self, "context_id")
+
+    @context_id.setter
+    def context_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "context_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputVariableMapping")
+    def input_variable_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Mapping of input variable names of remote agent to GECX variable names.
+        """
+        return pulumi.get(self, "input_variable_mapping")
+
+    @input_variable_mapping.setter
+    def input_variable_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_variable_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputVariableMapping")
+    def output_variable_mapping(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Mapping of output variable names of remote agent to GECX variable names.
+        """
+        return pulumi.get(self, "output_variable_mapping")
+
+    @output_variable_mapping.setter
+    def output_variable_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "output_variable_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="streamingEnabled")
+    def streaming_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether streaming is enabled for the remote agent.
+        """
+        return pulumi.get(self, "streaming_enabled")
+
+    @streaming_enabled.setter
+    def streaming_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "streaming_enabled", value)
+
+
+class AgentRemoteA2aAgentA2aConfigAgentCardArgsDict(TypedDict):
+    description: pulumi.Input[_builtins.str]
+    """
+    A description of the agent's domain of action/solution space.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    A human-readable name for the agent.
+    """
+    skills: pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSkillArgsDict']]]
+    """
+    Skills represent a unit of ability an agent can perform. This may
+    somewhat abstract but represents a more focused set of actions that the
+    agent is highly likely to succeed at.
+    Structure is documented below.
+    """
+    supported_interfaces: pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgsDict']]]
+    """
+    Ordered list of supported interfaces. The first entry is preferred.
+    Structure is documented below.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    The version of the agent.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigAgentCardArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 skills: pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs']]],
+                 supported_interfaces: pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs']]],
+                 version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] description: A description of the agent's domain of action/solution space.
+        :param pulumi.Input[_builtins.str] name: A human-readable name for the agent.
+        :param pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs']]] skills: Skills represent a unit of ability an agent can perform. This may
+               somewhat abstract but represents a more focused set of actions that the
+               agent is highly likely to succeed at.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs']]] supported_interfaces: Ordered list of supported interfaces. The first entry is preferred.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: The version of the agent.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "skills", skills)
+        pulumi.set(__self__, "supported_interfaces", supported_interfaces)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[_builtins.str]:
+        """
+        A description of the agent's domain of action/solution space.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        A human-readable name for the agent.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def skills(self) -> pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs']]]:
+        """
+        Skills represent a unit of ability an agent can perform. This may
+        somewhat abstract but represents a more focused set of actions that the
+        agent is highly likely to succeed at.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "skills")
+
+    @skills.setter
+    def skills(self, value: pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs']]]):
+        pulumi.set(self, "skills", value)
+
+    @_builtins.property
+    @pulumi.getter(name="supportedInterfaces")
+    def supported_interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs']]]:
+        """
+        Ordered list of supported interfaces. The first entry is preferred.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "supported_interfaces")
+
+    @supported_interfaces.setter
+    def supported_interfaces(self, value: pulumi.Input[Sequence[pulumi.Input['AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs']]]):
+        pulumi.set(self, "supported_interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The version of the agent.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "version", value)
+
+
+class AgentRemoteA2aAgentA2aConfigAgentCardSkillArgsDict(TypedDict):
+    description: pulumi.Input[_builtins.str]
+    """
+    A detailed description of the skill.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    A unique identifier for the agent's skill.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    A human-readable name for the skill.
+    """
+    tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A set of keywords describing the skill's capabilities.
+    """
+    examples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Example prompts or scenarios that this skill can handle.
+    """
+    input_modes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The set of supported input media types for this skill, overriding the
+    agent's defaults.
+    """
+    output_modes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The set of supported output media types for this skill, overriding the
+    agent's defaults.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[_builtins.str],
+                 id: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 examples: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 input_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: A detailed description of the skill.
+        :param pulumi.Input[_builtins.str] id: A unique identifier for the agent's skill.
+        :param pulumi.Input[_builtins.str] name: A human-readable name for the skill.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of keywords describing the skill's capabilities.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] examples: Example prompts or scenarios that this skill can handle.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modes: The set of supported input media types for this skill, overriding the
+               agent's defaults.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modes: The set of supported output media types for this skill, overriding the
+               agent's defaults.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tags", tags)
+        if examples is not None:
+            pulumi.set(__self__, "examples", examples)
+        if input_modes is not None:
+            pulumi.set(__self__, "input_modes", input_modes)
+        if output_modes is not None:
+            pulumi.set(__self__, "output_modes", output_modes)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[_builtins.str]:
+        """
+        A detailed description of the skill.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        A unique identifier for the agent's skill.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        A human-readable name for the skill.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A set of keywords describing the skill's capabilities.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def examples(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Example prompts or scenarios that this skill can handle.
+        """
+        return pulumi.get(self, "examples")
+
+    @examples.setter
+    def examples(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "examples", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputModes")
+    def input_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The set of supported input media types for this skill, overriding the
+        agent's defaults.
+        """
+        return pulumi.get(self, "input_modes")
+
+    @input_modes.setter
+    def input_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_modes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputModes")
+    def output_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The set of supported output media types for this skill, overriding the
+        agent's defaults.
+        """
+        return pulumi.get(self, "output_modes")
+
+    @output_modes.setter
+    def output_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "output_modes", value)
+
+
+class AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgsDict(TypedDict):
+    protocol_binding: pulumi.Input[_builtins.str]
+    """
+    The protocol binding supported at this URL. The core ones officially
+    supported are JSONRPC, GRPC and HTTP+JSON.
+    """
+    protocol_version: pulumi.Input[_builtins.str]
+    """
+    The version of the A2A protocol this interface exposes.
+    Examples: "0.3", "1.0"
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The URL where this interface is available. Must be a valid absolute HTTPS
+    URL in production.
+    """
+    tenant: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Tenant ID to be used in the request when calling the agent.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs:
+    def __init__(__self__, *,
+                 protocol_binding: pulumi.Input[_builtins.str],
+                 protocol_version: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str],
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] protocol_binding: The protocol binding supported at this URL. The core ones officially
+               supported are JSONRPC, GRPC and HTTP+JSON.
+        :param pulumi.Input[_builtins.str] protocol_version: The version of the A2A protocol this interface exposes.
+               Examples: "0.3", "1.0"
+        :param pulumi.Input[_builtins.str] url: The URL where this interface is available. Must be a valid absolute HTTPS
+               URL in production.
+        :param pulumi.Input[_builtins.str] tenant: Tenant ID to be used in the request when calling the agent.
+        """
+        pulumi.set(__self__, "protocol_binding", protocol_binding)
+        pulumi.set(__self__, "protocol_version", protocol_version)
+        pulumi.set(__self__, "url", url)
+        if tenant is not None:
+            pulumi.set(__self__, "tenant", tenant)
+
+    @_builtins.property
+    @pulumi.getter(name="protocolBinding")
+    def protocol_binding(self) -> pulumi.Input[_builtins.str]:
+        """
+        The protocol binding supported at this URL. The core ones officially
+        supported are JSONRPC, GRPC and HTTP+JSON.
+        """
+        return pulumi.get(self, "protocol_binding")
+
+    @protocol_binding.setter
+    def protocol_binding(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "protocol_binding", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protocolVersion")
+    def protocol_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The version of the A2A protocol this interface exposes.
+        Examples: "0.3", "1.0"
+        """
+        return pulumi.get(self, "protocol_version")
+
+    @protocol_version.setter
+    def protocol_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "protocol_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL where this interface is available. Must be a valid absolute HTTPS
+        URL in production.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Tenant ID to be used in the request when calling the agent.
+        """
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tenant", value)
+
+
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationArgsDict(TypedDict):
+    api_key_config: NotRequired[pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgsDict']]]
+    """
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    bearer_token_config: NotRequired[pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgsDict']]]
+    """
+    Configurations for authentication with a bearer token.
+    Structure is documented below.
+    """
+    oauth_config: NotRequired[pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgsDict']]]
+    """
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_config: NotRequired[pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgsDict']]]
+    """
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs:
+    def __init__(__self__, *,
+                 api_key_config: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs']] = None,
+                 bearer_token_config: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs']] = None,
+                 oauth_config: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs']] = None,
+                 service_account_auth_config: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs']] = None):
+        """
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs'] api_key_config: Configurations for authentication with API key.
+               Structure is documented below.
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs'] bearer_token_config: Configurations for authentication with a bearer token.
+               Structure is documented below.
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs'] oauth_config: Configurations for authentication with OAuth.
+               Structure is documented below.
+        :param pulumi.Input['AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs'] service_account_auth_config: Configurations for authentication using a custom service account.
+               Structure is documented below.
+        """
+        if api_key_config is not None:
+            pulumi.set(__self__, "api_key_config", api_key_config)
+        if bearer_token_config is not None:
+            pulumi.set(__self__, "bearer_token_config", bearer_token_config)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if service_account_auth_config is not None:
+            pulumi.set(__self__, "service_account_auth_config", service_account_auth_config)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfig")
+    def api_key_config(self) -> pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs']]:
+        """
+        Configurations for authentication with API key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_config")
+
+    @api_key_config.setter
+    def api_key_config(self, value: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs']]):
+        pulumi.set(self, "api_key_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfig")
+    def bearer_token_config(self) -> pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs']]:
+        """
+        Configurations for authentication with a bearer token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_config")
+
+    @bearer_token_config.setter
+    def bearer_token_config(self, value: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs']]):
+        pulumi.set(self, "bearer_token_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs']]:
+        """
+        Configurations for authentication with OAuth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @oauth_config.setter
+    def oauth_config(self, value: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs']]):
+        pulumi.set(self, "oauth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfig")
+    def service_account_auth_config(self) -> pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs']]:
+        """
+        Configurations for authentication using a custom service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_config")
+
+    @service_account_auth_config.setter
+    def service_account_auth_config(self, value: pulumi.Input[Optional['AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs']]):
+        pulumi.set(self, "service_account_auth_config", value)
+
+
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: pulumi.Input[_builtins.str]
+    """
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: pulumi.Input[_builtins.str]
+    """
+    Key location in the request.
+    Possible values:
+    HEADER
+    QUERY_STRING
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationApiKeyConfigArgs:
+    def __init__(__self__, *,
+                 api_key_secret_version: pulumi.Input[_builtins.str],
+                 key_name: pulumi.Input[_builtins.str],
+                 request_location: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] api_key_secret_version: The name of the SecretManager secret version resource storing the API key.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[_builtins.str] key_name: The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param pulumi.Input[_builtins.str] request_location: Key location in the request.
+               Possible values:
+               HEADER
+               QUERY_STRING
+        """
+        pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "request_location", request_location)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeySecretVersion")
+    def api_key_secret_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the SecretManager secret version resource storing the API key.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "api_key_secret_version")
+
+    @api_key_secret_version.setter
+    def api_key_secret_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "api_key_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> pulumi.Input[_builtins.str]:
+        """
+        Key location in the request.
+        Possible values:
+        HEADER
+        QUERY_STRING
+        """
+        return pulumi.get(self, "request_location")
+
+    @request_location.setter
+    def request_location(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "request_location", value)
+
+
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    token: pulumi.Input[_builtins.str]
+    """
+    The bearer token.
+    Must be in the format `$context.variables.<name_of_variable>`.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs:
+    def __init__(__self__, *,
+                 token: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] token: The bearer token.
+               Must be in the format `$context.variables.<name_of_variable>`.
+        """
+        pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[_builtins.str]:
+        """
+        The bearer token.
+        Must be in the format `$context.variables.<name_of_variable>`.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token", value)
+
+
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: pulumi.Input[_builtins.str]
+    """
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: pulumi.Input[_builtins.str]
+    """
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The OAuth scopes to grant.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationOauthConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 client_secret_version: pulumi.Input[_builtins.str],
+                 oauth_grant_type: pulumi.Input[_builtins.str],
+                 token_endpoint: pulumi.Input[_builtins.str],
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The client ID from the OAuth provider.
+        :param pulumi.Input[_builtins.str] client_secret_version: The name of the SecretManager secret version resource storing the
+               client secret.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[_builtins.str] oauth_grant_type: OAuth grant types.
+               Possible values:
+               CLIENT_CREDENTIAL
+        :param pulumi.Input[_builtins.str] token_endpoint: The token endpoint in the OAuth provider to exchange for an access token.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret_version", client_secret_version)
+        pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the SecretManager secret version resource storing the
+        client secret.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @client_secret_version.setter
+    def client_secret_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        OAuth grant types.
+        Possible values:
+        CLIENT_CREDENTIAL
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @oauth_grant_type.setter
+    def oauth_grant_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "oauth_grant_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    service_account: pulumi.Input[_builtins.str]
+    """
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
+
+@pulumi.input_type
+class AgentRemoteA2aAgentA2aConfigApiAuthenticationServiceAccountAuthConfigArgs:
+    def __init__(__self__, *,
+                 service_account: pulumi.Input[_builtins.str],
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] service_account: The email address of the service account used for authenticatation. CES
+               uses this service account to exchange an access token and the access token
+               is then sent in the `Authorization` header of the request.
+               The service account must have the
+               `roles/iam.serviceAccountTokenCreator` role granted to the
+               CES service agent
+               `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[_builtins.str]:
+        """
+        The email address of the service account used for authenticatation. CES
+        uses this service account to exchange an access token and the access token
+        is then sent in the `Authorization` header of the request.
+        The service account must have the
+        `roles/iam.serviceAccountTokenCreator` role granted to the
+        CES service agent
+        `service-@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
 
 
 class AgentRemoteDialogflowAgentArgsDict(TypedDict):
@@ -1167,6 +2447,12 @@ class AgentRemoteDialogflowAgentArgsDict(TypedDict):
     The mapping of the app variables names to the Dialogflow session
     parameters names to be sent to the Dialogflow agent as input.
     """
+    language_code_variable: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the variable that contains the language code to be used for
+    the Dialogflow session. If unspecified, the default language code of the
+    Dialogflow agent will be used.
+    """
     output_variable_mapping: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The mapping of the Dialogflow session parameters names to the app
@@ -1185,6 +2471,7 @@ class AgentRemoteDialogflowAgentArgs:
                  flow_id: pulumi.Input[_builtins.str],
                  environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  input_variable_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 language_code_variable: pulumi.Input[Optional[_builtins.str]] = None,
                  output_variable_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  respect_response_interruption_settings: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -1197,6 +2484,9 @@ class AgentRemoteDialogflowAgentArgs:
                execution. If not specified, the draft environment will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_variable_mapping: The mapping of the app variables names to the Dialogflow session
                parameters names to be sent to the Dialogflow agent as input.
+        :param pulumi.Input[_builtins.str] language_code_variable: The name of the variable that contains the language code to be used for
+               the Dialogflow session. If unspecified, the default language code of the
+               Dialogflow agent will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] output_variable_mapping: The mapping of the Dialogflow session parameters names to the app
                variables names to be sent back to the CES agent after the Dialogflow
                agent execution ends.
@@ -1208,6 +2498,8 @@ class AgentRemoteDialogflowAgentArgs:
             pulumi.set(__self__, "environment_id", environment_id)
         if input_variable_mapping is not None:
             pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
+        if language_code_variable is not None:
+            pulumi.set(__self__, "language_code_variable", language_code_variable)
         if output_variable_mapping is not None:
             pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
         if respect_response_interruption_settings is not None:
@@ -1265,6 +2557,20 @@ class AgentRemoteDialogflowAgentArgs:
     @input_variable_mapping.setter
     def input_variable_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "input_variable_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="languageCodeVariable")
+    def language_code_variable(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the variable that contains the language code to be used for
+        the Dialogflow session. If unspecified, the default language code of the
+        Dialogflow agent will be used.
+        """
+        return pulumi.get(self, "language_code_variable")
+
+    @language_code_variable.setter
+    def language_code_variable(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "language_code_variable", value)
 
     @_builtins.property
     @pulumi.getter(name="outputVariableMapping")
@@ -1345,6 +2651,290 @@ class AgentToolsetArgs:
     @tool_ids.setter
     def tool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tool_ids", value)
+
+
+class AgentTransferRuleArgsDict(TypedDict):
+    child_agent: pulumi.Input[_builtins.str]
+    """
+    The resource name of the child agent the rule applies to.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    direction: pulumi.Input[_builtins.str]
+    """
+    The direction of the transfer.
+    Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+    """
+    deterministic_transfer: NotRequired[pulumi.Input[Optional['AgentTransferRuleDeterministicTransferArgsDict']]]
+    """
+    Deterministic transfer rule. When the condition evaluates to true, the
+    transfer occurs.
+    Structure is documented below.
+    """
+    disable_planner_transfer: NotRequired[pulumi.Input[Optional['AgentTransferRuleDisablePlannerTransferArgsDict']]]
+    """
+    A rule that prevents the planner from transferring to the target agent.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AgentTransferRuleArgs:
+    def __init__(__self__, *,
+                 child_agent: pulumi.Input[_builtins.str],
+                 direction: pulumi.Input[_builtins.str],
+                 deterministic_transfer: pulumi.Input[Optional['AgentTransferRuleDeterministicTransferArgs']] = None,
+                 disable_planner_transfer: pulumi.Input[Optional['AgentTransferRuleDisablePlannerTransferArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] child_agent: The resource name of the child agent the rule applies to.
+               Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        :param pulumi.Input[_builtins.str] direction: The direction of the transfer.
+               Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+        :param pulumi.Input['AgentTransferRuleDeterministicTransferArgs'] deterministic_transfer: Deterministic transfer rule. When the condition evaluates to true, the
+               transfer occurs.
+               Structure is documented below.
+        :param pulumi.Input['AgentTransferRuleDisablePlannerTransferArgs'] disable_planner_transfer: A rule that prevents the planner from transferring to the target agent.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "child_agent", child_agent)
+        pulumi.set(__self__, "direction", direction)
+        if deterministic_transfer is not None:
+            pulumi.set(__self__, "deterministic_transfer", deterministic_transfer)
+        if disable_planner_transfer is not None:
+            pulumi.set(__self__, "disable_planner_transfer", disable_planner_transfer)
+
+    @_builtins.property
+    @pulumi.getter(name="childAgent")
+    def child_agent(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the child agent the rule applies to.
+        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        return pulumi.get(self, "child_agent")
+
+    @child_agent.setter
+    def child_agent(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "child_agent", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[_builtins.str]:
+        """
+        The direction of the transfer.
+        Possible values are: `PARENT_TO_CHILD`, `CHILD_TO_PARENT`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deterministicTransfer")
+    def deterministic_transfer(self) -> pulumi.Input[Optional['AgentTransferRuleDeterministicTransferArgs']]:
+        """
+        Deterministic transfer rule. When the condition evaluates to true, the
+        transfer occurs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deterministic_transfer")
+
+    @deterministic_transfer.setter
+    def deterministic_transfer(self, value: pulumi.Input[Optional['AgentTransferRuleDeterministicTransferArgs']]):
+        pulumi.set(self, "deterministic_transfer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePlannerTransfer")
+    def disable_planner_transfer(self) -> pulumi.Input[Optional['AgentTransferRuleDisablePlannerTransferArgs']]:
+        """
+        A rule that prevents the planner from transferring to the target agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disable_planner_transfer")
+
+    @disable_planner_transfer.setter
+    def disable_planner_transfer(self, value: pulumi.Input[Optional['AgentTransferRuleDisablePlannerTransferArgs']]):
+        pulumi.set(self, "disable_planner_transfer", value)
+
+
+class AgentTransferRuleDeterministicTransferArgsDict(TypedDict):
+    expression_condition: NotRequired[pulumi.Input[Optional['AgentTransferRuleDeterministicTransferExpressionConditionArgsDict']]]
+    """
+    A rule that evaluates a session state condition. If the condition
+    evaluates to true, the transfer occurs.
+    Structure is documented below.
+    """
+    python_code_condition: NotRequired[pulumi.Input[Optional['AgentTransferRuleDeterministicTransferPythonCodeConditionArgsDict']]]
+    """
+    A rule that uses Python code block to evaluate the conditions. If the
+    condition evaluates to true, the transfer occurs.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AgentTransferRuleDeterministicTransferArgs:
+    def __init__(__self__, *,
+                 expression_condition: pulumi.Input[Optional['AgentTransferRuleDeterministicTransferExpressionConditionArgs']] = None,
+                 python_code_condition: pulumi.Input[Optional['AgentTransferRuleDeterministicTransferPythonCodeConditionArgs']] = None):
+        """
+        :param pulumi.Input['AgentTransferRuleDeterministicTransferExpressionConditionArgs'] expression_condition: A rule that evaluates a session state condition. If the condition
+               evaluates to true, the transfer occurs.
+               Structure is documented below.
+        :param pulumi.Input['AgentTransferRuleDeterministicTransferPythonCodeConditionArgs'] python_code_condition: A rule that uses Python code block to evaluate the conditions. If the
+               condition evaluates to true, the transfer occurs.
+               Structure is documented below.
+        """
+        if expression_condition is not None:
+            pulumi.set(__self__, "expression_condition", expression_condition)
+        if python_code_condition is not None:
+            pulumi.set(__self__, "python_code_condition", python_code_condition)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionCondition")
+    def expression_condition(self) -> pulumi.Input[Optional['AgentTransferRuleDeterministicTransferExpressionConditionArgs']]:
+        """
+        A rule that evaluates a session state condition. If the condition
+        evaluates to true, the transfer occurs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expression_condition")
+
+    @expression_condition.setter
+    def expression_condition(self, value: pulumi.Input[Optional['AgentTransferRuleDeterministicTransferExpressionConditionArgs']]):
+        pulumi.set(self, "expression_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCodeCondition")
+    def python_code_condition(self) -> pulumi.Input[Optional['AgentTransferRuleDeterministicTransferPythonCodeConditionArgs']]:
+        """
+        A rule that uses Python code block to evaluate the conditions. If the
+        condition evaluates to true, the transfer occurs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_code_condition")
+
+    @python_code_condition.setter
+    def python_code_condition(self, value: pulumi.Input[Optional['AgentTransferRuleDeterministicTransferPythonCodeConditionArgs']]):
+        pulumi.set(self, "python_code_condition", value)
+
+
+class AgentTransferRuleDeterministicTransferExpressionConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    The string representation of cloud.api.Expression condition.
+    """
+
+@pulumi.input_type
+class AgentTransferRuleDeterministicTransferExpressionConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] expression: The string representation of cloud.api.Expression condition.
+        """
+        pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        The string representation of cloud.api.Expression condition.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+
+class AgentTransferRuleDeterministicTransferPythonCodeConditionArgsDict(TypedDict):
+    python_code: pulumi.Input[_builtins.str]
+    """
+    The python code to execute. The function must be named
+    `should_trigger_transfer_callback`.
+    """
+
+@pulumi.input_type
+class AgentTransferRuleDeterministicTransferPythonCodeConditionArgs:
+    def __init__(__self__, *,
+                 python_code: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] python_code: The python code to execute. The function must be named
+               `should_trigger_transfer_callback`.
+        """
+        pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> pulumi.Input[_builtins.str]:
+        """
+        The python code to execute. The function must be named
+        `should_trigger_transfer_callback`.
+        """
+        return pulumi.get(self, "python_code")
+
+    @python_code.setter
+    def python_code(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "python_code", value)
+
+
+class AgentTransferRuleDisablePlannerTransferArgsDict(TypedDict):
+    expression_condition: pulumi.Input['AgentTransferRuleDisablePlannerTransferExpressionConditionArgsDict']
+    """
+    If the condition evaluates to true, planner will not be allowed to
+    transfer to the target agent.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AgentTransferRuleDisablePlannerTransferArgs:
+    def __init__(__self__, *,
+                 expression_condition: pulumi.Input['AgentTransferRuleDisablePlannerTransferExpressionConditionArgs']):
+        """
+        :param pulumi.Input['AgentTransferRuleDisablePlannerTransferExpressionConditionArgs'] expression_condition: If the condition evaluates to true, planner will not be allowed to
+               transfer to the target agent.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "expression_condition", expression_condition)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionCondition")
+    def expression_condition(self) -> pulumi.Input['AgentTransferRuleDisablePlannerTransferExpressionConditionArgs']:
+        """
+        If the condition evaluates to true, planner will not be allowed to
+        transfer to the target agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expression_condition")
+
+    @expression_condition.setter
+    def expression_condition(self, value: pulumi.Input['AgentTransferRuleDisablePlannerTransferExpressionConditionArgs']):
+        pulumi.set(self, "expression_condition", value)
+
+
+class AgentTransferRuleDisablePlannerTransferExpressionConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    The string representation of cloud.api.Expression condition.
+    """
+
+@pulumi.input_type
+class AgentTransferRuleDisablePlannerTransferExpressionConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] expression: The string representation of cloud.api.Expression condition.
+        """
+        pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        The string representation of cloud.api.Expression condition.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
 
 
 class AppAudioProcessingConfigArgsDict(TypedDict):
@@ -1924,6 +3514,11 @@ class AppDefaultChannelProfileArgsDict(TypedDict):
     Message for configuration for the web widget.
     Structure is documented below.
     """
+    whatsapp_config: NotRequired[pulumi.Input[Optional['AppDefaultChannelProfileWhatsappConfigArgsDict']]]
+    """
+    Configuration specific to WhatsApp deployments.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppDefaultChannelProfileArgs:
@@ -1933,7 +3528,8 @@ class AppDefaultChannelProfileArgs:
                  disable_dtmf: pulumi.Input[Optional[_builtins.bool]] = None,
                  persona_property: pulumi.Input[Optional['AppDefaultChannelProfilePersonaPropertyArgs']] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 web_widget_config: pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigArgs']] = None):
+                 web_widget_config: pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigArgs']] = None,
+                 whatsapp_config: pulumi.Input[Optional['AppDefaultChannelProfileWhatsappConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] channel_type: The type of the channel profile.
                Possible values:
@@ -1952,6 +3548,8 @@ class AppDefaultChannelProfileArgs:
         :param pulumi.Input[_builtins.str] profile_id: The unique identifier of the channel profile.
         :param pulumi.Input['AppDefaultChannelProfileWebWidgetConfigArgs'] web_widget_config: Message for configuration for the web widget.
                Structure is documented below.
+        :param pulumi.Input['AppDefaultChannelProfileWhatsappConfigArgs'] whatsapp_config: Configuration specific to WhatsApp deployments.
+               Structure is documented below.
         """
         if channel_type is not None:
             pulumi.set(__self__, "channel_type", channel_type)
@@ -1965,6 +3563,8 @@ class AppDefaultChannelProfileArgs:
             pulumi.set(__self__, "profile_id", profile_id)
         if web_widget_config is not None:
             pulumi.set(__self__, "web_widget_config", web_widget_config)
+        if whatsapp_config is not None:
+            pulumi.set(__self__, "whatsapp_config", whatsapp_config)
 
     @_builtins.property
     @pulumi.getter(name="channelType")
@@ -2049,6 +3649,19 @@ class AppDefaultChannelProfileArgs:
     def web_widget_config(self, value: pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigArgs']]):
         pulumi.set(self, "web_widget_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="whatsappConfig")
+    def whatsapp_config(self) -> pulumi.Input[Optional['AppDefaultChannelProfileWhatsappConfigArgs']]:
+        """
+        Configuration specific to WhatsApp deployments.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whatsapp_config")
+
+    @whatsapp_config.setter
+    def whatsapp_config(self, value: pulumi.Input[Optional['AppDefaultChannelProfileWhatsappConfigArgs']]):
+        pulumi.set(self, "whatsapp_config", value)
+
 
 class AppDefaultChannelProfilePersonaPropertyArgsDict(TypedDict):
     persona: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -2101,6 +3714,11 @@ class AppDefaultChannelProfileWebWidgetConfigArgsDict(TypedDict):
     VOICE_ONLY
     CHAT_ONLY
     """
+    security_settings: NotRequired[pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgsDict']]]
+    """
+    The security settings of the web widget.
+    Structure is documented below.
+    """
     theme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The theme of the web widget.
@@ -2118,6 +3736,7 @@ class AppDefaultChannelProfileWebWidgetConfigArgsDict(TypedDict):
 class AppDefaultChannelProfileWebWidgetConfigArgs:
     def __init__(__self__, *,
                  modality: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_settings: pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs']] = None,
                  theme: pulumi.Input[Optional[_builtins.str]] = None,
                  web_widget_title: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -2127,6 +3746,8 @@ class AppDefaultChannelProfileWebWidgetConfigArgs:
                CHAT_AND_VOICE
                VOICE_ONLY
                CHAT_ONLY
+        :param pulumi.Input['AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs'] security_settings: The security settings of the web widget.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] theme: The theme of the web widget.
                Possible values:
                UNKNOWN_THEME
@@ -2136,6 +3757,8 @@ class AppDefaultChannelProfileWebWidgetConfigArgs:
         """
         if modality is not None:
             pulumi.set(__self__, "modality", modality)
+        if security_settings is not None:
+            pulumi.set(__self__, "security_settings", security_settings)
         if theme is not None:
             pulumi.set(__self__, "theme", theme)
         if web_widget_title is not None:
@@ -2157,6 +3780,19 @@ class AppDefaultChannelProfileWebWidgetConfigArgs:
     @modality.setter
     def modality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modality", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs']]:
+        """
+        The security settings of the web widget.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @security_settings.setter
+    def security_settings(self, value: pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs']]):
+        pulumi.set(self, "security_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2187,23 +3823,478 @@ class AppDefaultChannelProfileWebWidgetConfigArgs:
         pulumi.set(self, "web_widget_title", value)
 
 
+class AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgsDict(TypedDict):
+    allowed_origins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The origins that are allowed to host the web widget. An origin is
+    defined by RFC 6454. If empty, all origins are allowed.
+    A maximum of 100 origins is allowed.
+    Example: "https://example.com"
+    """
+    enable_origin_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether origin check for the web widget is enabled.
+    If `true`, the web widget will check the origin of the website that
+    loads the web widget and only allow it to be loaded in the same origin
+    or any of the allowed origins.
+    """
+    enable_public_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether public access to the web widget is enabled.
+    If `true`, the web widget will be publicly accessible.
+    If `false`, the web widget must be integrated with your own
+    authentication and authorization system to return valid credentials for
+    accessing the CES agent.
+    """
+    enable_recaptcha: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether reCAPTCHA verification for the web widget is enabled.
+    """
+
+@pulumi.input_type
+class AppDefaultChannelProfileWebWidgetConfigSecuritySettingsArgs:
+    def __init__(__self__, *,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_origin_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_public_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_recaptcha: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: The origins that are allowed to host the web widget. An origin is
+               defined by RFC 6454. If empty, all origins are allowed.
+               A maximum of 100 origins is allowed.
+               Example: "https://example.com"
+        :param pulumi.Input[_builtins.bool] enable_origin_check: Indicates whether origin check for the web widget is enabled.
+               If `true`, the web widget will check the origin of the website that
+               loads the web widget and only allow it to be loaded in the same origin
+               or any of the allowed origins.
+        :param pulumi.Input[_builtins.bool] enable_public_access: Indicates whether public access to the web widget is enabled.
+               If `true`, the web widget will be publicly accessible.
+               If `false`, the web widget must be integrated with your own
+               authentication and authorization system to return valid credentials for
+               accessing the CES agent.
+        :param pulumi.Input[_builtins.bool] enable_recaptcha: Indicates whether reCAPTCHA verification for the web widget is enabled.
+        """
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if enable_origin_check is not None:
+            pulumi.set(__self__, "enable_origin_check", enable_origin_check)
+        if enable_public_access is not None:
+            pulumi.set(__self__, "enable_public_access", enable_public_access)
+        if enable_recaptcha is not None:
+            pulumi.set(__self__, "enable_recaptcha", enable_recaptcha)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The origins that are allowed to host the web widget. An origin is
+        defined by RFC 6454. If empty, all origins are allowed.
+        A maximum of 100 origins is allowed.
+        Example: "https://example.com"
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_origins", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableOriginCheck")
+    def enable_origin_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether origin check for the web widget is enabled.
+        If `true`, the web widget will check the origin of the website that
+        loads the web widget and only allow it to be loaded in the same origin
+        or any of the allowed origins.
+        """
+        return pulumi.get(self, "enable_origin_check")
+
+    @enable_origin_check.setter
+    def enable_origin_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_origin_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePublicAccess")
+    def enable_public_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether public access to the web widget is enabled.
+        If `true`, the web widget will be publicly accessible.
+        If `false`, the web widget must be integrated with your own
+        authentication and authorization system to return valid credentials for
+        accessing the CES agent.
+        """
+        return pulumi.get(self, "enable_public_access")
+
+    @enable_public_access.setter
+    def enable_public_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_public_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableRecaptcha")
+    def enable_recaptcha(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether reCAPTCHA verification for the web widget is enabled.
+        """
+        return pulumi.get(self, "enable_recaptcha")
+
+    @enable_recaptcha.setter
+    def enable_recaptcha(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_recaptcha", value)
+
+
+class AppDefaultChannelProfileWhatsappConfigArgsDict(TypedDict):
+    phone_number_id: pulumi.Input[_builtins.str]
+    """
+    The Meta phone number ID.
+    """
+    waba_id: pulumi.Input[_builtins.str]
+    """
+    The WhatsApp Business Account ID.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The description of the Meta business page or profile.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The fetched Meta business page name.
+    """
+    phone_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The phone number in E.164 format.
+    """
+    thumbnail_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The fetched Meta business profile thumbnail URL.
+    """
+
+@pulumi.input_type
+class AppDefaultChannelProfileWhatsappConfigArgs:
+    def __init__(__self__, *,
+                 phone_number_id: pulumi.Input[_builtins.str],
+                 waba_id: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] phone_number_id: The Meta phone number ID.
+        :param pulumi.Input[_builtins.str] waba_id: The WhatsApp Business Account ID.
+        :param pulumi.Input[_builtins.str] description: (Output)
+               The description of the Meta business page or profile.
+        :param pulumi.Input[_builtins.str] display_name: (Output)
+               The fetched Meta business page name.
+        :param pulumi.Input[_builtins.str] phone_number: The phone number in E.164 format.
+        :param pulumi.Input[_builtins.str] thumbnail_url: (Output)
+               The fetched Meta business profile thumbnail URL.
+        """
+        pulumi.set(__self__, "phone_number_id", phone_number_id)
+        pulumi.set(__self__, "waba_id", waba_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+        if thumbnail_url is not None:
+            pulumi.set(__self__, "thumbnail_url", thumbnail_url)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumberId")
+    def phone_number_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Meta phone number ID.
+        """
+        return pulumi.get(self, "phone_number_id")
+
+    @phone_number_id.setter
+    def phone_number_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "phone_number_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wabaId")
+    def waba_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The WhatsApp Business Account ID.
+        """
+        return pulumi.get(self, "waba_id")
+
+    @waba_id.setter
+    def waba_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "waba_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The description of the Meta business page or profile.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The fetched Meta business page name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "phone_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailUrl")
+    def thumbnail_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The fetched Meta business profile thumbnail URL.
+        """
+        return pulumi.get(self, "thumbnail_url")
+
+    @thumbnail_url.setter
+    def thumbnail_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_url", value)
+
+
+class AppErrorHandlingSettingsArgsDict(TypedDict):
+    end_session_config: NotRequired[pulumi.Input[Optional['AppErrorHandlingSettingsEndSessionConfigArgsDict']]]
+    """
+    Configuration for ending the session in case of system errors (e.g. LLM
+    errors).
+    Structure is documented below.
+    """
+    error_handling_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The strategy to use for error handling.
+    Possible values:
+    NONE
+    FALLBACK_RESPONSE
+    END_SESSION
+    """
+    fallback_response_config: NotRequired[pulumi.Input[Optional['AppErrorHandlingSettingsFallbackResponseConfigArgsDict']]]
+    """
+    Configuration for handling fallback responses.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AppErrorHandlingSettingsArgs:
+    def __init__(__self__, *,
+                 end_session_config: pulumi.Input[Optional['AppErrorHandlingSettingsEndSessionConfigArgs']] = None,
+                 error_handling_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 fallback_response_config: pulumi.Input[Optional['AppErrorHandlingSettingsFallbackResponseConfigArgs']] = None):
+        """
+        :param pulumi.Input['AppErrorHandlingSettingsEndSessionConfigArgs'] end_session_config: Configuration for ending the session in case of system errors (e.g. LLM
+               errors).
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] error_handling_strategy: The strategy to use for error handling.
+               Possible values:
+               NONE
+               FALLBACK_RESPONSE
+               END_SESSION
+        :param pulumi.Input['AppErrorHandlingSettingsFallbackResponseConfigArgs'] fallback_response_config: Configuration for handling fallback responses.
+               Structure is documented below.
+        """
+        if end_session_config is not None:
+            pulumi.set(__self__, "end_session_config", end_session_config)
+        if error_handling_strategy is not None:
+            pulumi.set(__self__, "error_handling_strategy", error_handling_strategy)
+        if fallback_response_config is not None:
+            pulumi.set(__self__, "fallback_response_config", fallback_response_config)
+
+    @_builtins.property
+    @pulumi.getter(name="endSessionConfig")
+    def end_session_config(self) -> pulumi.Input[Optional['AppErrorHandlingSettingsEndSessionConfigArgs']]:
+        """
+        Configuration for ending the session in case of system errors (e.g. LLM
+        errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_session_config")
+
+    @end_session_config.setter
+    def end_session_config(self, value: pulumi.Input[Optional['AppErrorHandlingSettingsEndSessionConfigArgs']]):
+        pulumi.set(self, "end_session_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorHandlingStrategy")
+    def error_handling_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The strategy to use for error handling.
+        Possible values:
+        NONE
+        FALLBACK_RESPONSE
+        END_SESSION
+        """
+        return pulumi.get(self, "error_handling_strategy")
+
+    @error_handling_strategy.setter
+    def error_handling_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_handling_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fallbackResponseConfig")
+    def fallback_response_config(self) -> pulumi.Input[Optional['AppErrorHandlingSettingsFallbackResponseConfigArgs']]:
+        """
+        Configuration for handling fallback responses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fallback_response_config")
+
+    @fallback_response_config.setter
+    def fallback_response_config(self, value: pulumi.Input[Optional['AppErrorHandlingSettingsFallbackResponseConfigArgs']]):
+        pulumi.set(self, "fallback_response_config", value)
+
+
+class AppErrorHandlingSettingsEndSessionConfigArgsDict(TypedDict):
+    escalate_session: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to escalate the session in EndSession. If session is escalated,
+    metadata in EndSession will contain session_escalated = true.
+    """
+
+@pulumi.input_type
+class AppErrorHandlingSettingsEndSessionConfigArgs:
+    def __init__(__self__, *,
+                 escalate_session: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] escalate_session: Whether to escalate the session in EndSession. If session is escalated,
+               metadata in EndSession will contain session_escalated = true.
+        """
+        if escalate_session is not None:
+            pulumi.set(__self__, "escalate_session", escalate_session)
+
+    @_builtins.property
+    @pulumi.getter(name="escalateSession")
+    def escalate_session(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to escalate the session in EndSession. If session is escalated,
+        metadata in EndSession will contain session_escalated = true.
+        """
+        return pulumi.get(self, "escalate_session")
+
+    @escalate_session.setter
+    def escalate_session(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "escalate_session", value)
+
+
+class AppErrorHandlingSettingsFallbackResponseConfigArgsDict(TypedDict):
+    custom_fallback_messages: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    The fallback messages in case of system errors (e.g. LLM errors),
+    mapped by supported language code
+    (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+    """
+    max_fallback_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum number of fallback attempts to make before the agent
+    emitting EndSession Signal.
+    """
+
+@pulumi.input_type
+class AppErrorHandlingSettingsFallbackResponseConfigArgs:
+    def __init__(__self__, *,
+                 custom_fallback_messages: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_fallback_attempts: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_fallback_messages: The fallback messages in case of system errors (e.g. LLM errors),
+               mapped by supported language code
+               (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+        :param pulumi.Input[_builtins.int] max_fallback_attempts: The maximum number of fallback attempts to make before the agent
+               emitting EndSession Signal.
+        """
+        if custom_fallback_messages is not None:
+            pulumi.set(__self__, "custom_fallback_messages", custom_fallback_messages)
+        if max_fallback_attempts is not None:
+            pulumi.set(__self__, "max_fallback_attempts", max_fallback_attempts)
+
+    @_builtins.property
+    @pulumi.getter(name="customFallbackMessages")
+    def custom_fallback_messages(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The fallback messages in case of system errors (e.g. LLM errors),
+        mapped by supported language code
+        (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+        """
+        return pulumi.get(self, "custom_fallback_messages")
+
+    @custom_fallback_messages.setter
+    def custom_fallback_messages(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_fallback_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxFallbackAttempts")
+    def max_fallback_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of fallback attempts to make before the agent
+        emitting EndSession Signal.
+        """
+        return pulumi.get(self, "max_fallback_attempts")
+
+    @max_fallback_attempts.setter
+    def max_fallback_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_fallback_attempts", value)
+
+
 class AppEvaluationMetricsThresholdsArgsDict(TypedDict):
     golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict']]]
     """
     Settings for golden evaluations.
     Structure is documented below.
     """
+    golden_hallucination_metric_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hallucination metric behavior for golden evaluations.
+    Possible values are: `DISABLED`, `ENABLED`.
+    """
+    scenario_hallucination_metric_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hallucination metric behavior for scenario evaluations.
+    Possible values are: `DISABLED`, `ENABLED`.
+    """
 
 @pulumi.input_type
 class AppEvaluationMetricsThresholdsArgs:
     def __init__(__self__, *,
-                 golden_evaluation_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs']] = None):
+                 golden_evaluation_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs']] = None,
+                 golden_hallucination_metric_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario_hallucination_metric_behavior: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs'] golden_evaluation_metrics_thresholds: Settings for golden evaluations.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] golden_hallucination_metric_behavior: The hallucination metric behavior for golden evaluations.
+               Possible values are: `DISABLED`, `ENABLED`.
+        :param pulumi.Input[_builtins.str] scenario_hallucination_metric_behavior: The hallucination metric behavior for scenario evaluations.
+               Possible values are: `DISABLED`, `ENABLED`.
         """
         if golden_evaluation_metrics_thresholds is not None:
             pulumi.set(__self__, "golden_evaluation_metrics_thresholds", golden_evaluation_metrics_thresholds)
+        if golden_hallucination_metric_behavior is not None:
+            pulumi.set(__self__, "golden_hallucination_metric_behavior", golden_hallucination_metric_behavior)
+        if scenario_hallucination_metric_behavior is not None:
+            pulumi.set(__self__, "scenario_hallucination_metric_behavior", scenario_hallucination_metric_behavior)
 
     @_builtins.property
     @pulumi.getter(name="goldenEvaluationMetricsThresholds")
@@ -2218,11 +4309,44 @@ class AppEvaluationMetricsThresholdsArgs:
     def golden_evaluation_metrics_thresholds(self, value: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs']]):
         pulumi.set(self, "golden_evaluation_metrics_thresholds", value)
 
+    @_builtins.property
+    @pulumi.getter(name="goldenHallucinationMetricBehavior")
+    def golden_hallucination_metric_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hallucination metric behavior for golden evaluations.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "golden_hallucination_metric_behavior")
+
+    @golden_hallucination_metric_behavior.setter
+    def golden_hallucination_metric_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "golden_hallucination_metric_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scenarioHallucinationMetricBehavior")
+    def scenario_hallucination_metric_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hallucination metric behavior for scenario evaluations.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "scenario_hallucination_metric_behavior")
+
+    @scenario_hallucination_metric_behavior.setter
+    def scenario_hallucination_metric_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scenario_hallucination_metric_behavior", value)
+
 
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict(TypedDict):
     expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict']]]
     """
     Expectation level metrics thresholds.
+    Structure is documented below.
+    """
+    tool_matching_settings: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgsDict']]]
+    """
+    The tool matching settings. An extra tool call is a tool call that is
+    present in the execution but does not match any tool call in the golden
+    expectation.
     Structure is documented below.
     """
     turn_level_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict']]]
@@ -2235,15 +4359,22 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict(Ty
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs:
     def __init__(__self__, *,
                  expectation_level_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs']] = None,
+                 tool_matching_settings: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs']] = None,
                  turn_level_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs']] = None):
         """
         :param pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs'] expectation_level_metrics_thresholds: Expectation level metrics thresholds.
+               Structure is documented below.
+        :param pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs'] tool_matching_settings: The tool matching settings. An extra tool call is a tool call that is
+               present in the execution but does not match any tool call in the golden
+               expectation.
                Structure is documented below.
         :param pulumi.Input['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs'] turn_level_metrics_thresholds: Turn level metrics thresholds.
                Structure is documented below.
         """
         if expectation_level_metrics_thresholds is not None:
             pulumi.set(__self__, "expectation_level_metrics_thresholds", expectation_level_metrics_thresholds)
+        if tool_matching_settings is not None:
+            pulumi.set(__self__, "tool_matching_settings", tool_matching_settings)
         if turn_level_metrics_thresholds is not None:
             pulumi.set(__self__, "turn_level_metrics_thresholds", turn_level_metrics_thresholds)
 
@@ -2259,6 +4390,21 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs:
     @expectation_level_metrics_thresholds.setter
     def expectation_level_metrics_thresholds(self, value: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs']]):
         pulumi.set(self, "expectation_level_metrics_thresholds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolMatchingSettings")
+    def tool_matching_settings(self) -> pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs']]:
+        """
+        The tool matching settings. An extra tool call is a tool call that is
+        present in the execution but does not match any tool call in the golden
+        expectation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_matching_settings")
+
+    @tool_matching_settings.setter
+    def tool_matching_settings(self, value: pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs']]):
+        pulumi.set(self, "tool_matching_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="turnLevelMetricsThresholds")
@@ -2306,11 +4452,57 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectation
         pulumi.set(self, "tool_invocation_parameter_correctness_threshold", value)
 
 
+class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgsDict(TypedDict):
+    extra_tool_call_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Defines the behavior when an extra tool call is encountered. An extra
+    tool call is a tool call that is present in the execution but does
+    not match any tool call in the golden expectation.
+    Possible values are: `FAIL`, `ALLOW`.
+    """
+
+@pulumi.input_type
+class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsToolMatchingSettingsArgs:
+    def __init__(__self__, *,
+                 extra_tool_call_behavior: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] extra_tool_call_behavior: Defines the behavior when an extra tool call is encountered. An extra
+               tool call is a tool call that is present in the execution but does
+               not match any tool call in the golden expectation.
+               Possible values are: `FAIL`, `ALLOW`.
+        """
+        if extra_tool_call_behavior is not None:
+            pulumi.set(__self__, "extra_tool_call_behavior", extra_tool_call_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="extraToolCallBehavior")
+    def extra_tool_call_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the behavior when an extra tool call is encountered. An extra
+        tool call is a tool call that is present in the execution but does
+        not match any tool call in the golden expectation.
+        Possible values are: `FAIL`, `ALLOW`.
+        """
+        return pulumi.get(self, "extra_tool_call_behavior")
+
+    @extra_tool_call_behavior.setter
+    def extra_tool_call_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "extra_tool_call_behavior", value)
+
+
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict(TypedDict):
     overall_tool_invocation_correctness_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The success threshold for overall tool invocation correctness. Must be
     a float between 0 and 1. Default is 1.0.
+    """
+    semantic_similarity_channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The semantic similarity channel to use for evaluation.
+    Possible values:
+    SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+    TEXT
+    AUDIO
     """
     semantic_similarity_success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -2322,15 +4514,23 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs:
     def __init__(__self__, *,
                  overall_tool_invocation_correctness_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 semantic_similarity_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  semantic_similarity_success_threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.float] overall_tool_invocation_correctness_threshold: The success threshold for overall tool invocation correctness. Must be
                a float between 0 and 1. Default is 1.0.
+        :param pulumi.Input[_builtins.str] semantic_similarity_channel: The semantic similarity channel to use for evaluation.
+               Possible values:
+               SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+               TEXT
+               AUDIO
         :param pulumi.Input[_builtins.int] semantic_similarity_success_threshold: The success threshold for semantic similarity. Must be an integer
                between 0 and 4. Default is >= 3.
         """
         if overall_tool_invocation_correctness_threshold is not None:
             pulumi.set(__self__, "overall_tool_invocation_correctness_threshold", overall_tool_invocation_correctness_threshold)
+        if semantic_similarity_channel is not None:
+            pulumi.set(__self__, "semantic_similarity_channel", semantic_similarity_channel)
         if semantic_similarity_success_threshold is not None:
             pulumi.set(__self__, "semantic_similarity_success_threshold", semantic_similarity_success_threshold)
 
@@ -2346,6 +4546,22 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
     @overall_tool_invocation_correctness_threshold.setter
     def overall_tool_invocation_correctness_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "overall_tool_invocation_correctness_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="semanticSimilarityChannel")
+    def semantic_similarity_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The semantic similarity channel to use for evaluation.
+        Possible values:
+        SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+        TEXT
+        AUDIO
+        """
+        return pulumi.get(self, "semantic_similarity_channel")
+
+    @semantic_similarity_channel.setter
+    def semantic_similarity_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "semantic_similarity_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="semanticSimilaritySuccessThreshold")
@@ -2498,6 +4714,12 @@ class AppLoggingSettingsArgsDict(TypedDict):
     Settings to describe the conversation logging behaviors for the app.
     Structure is documented below.
     """
+    metric_analysis_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsMetricAnalysisSettingsArgsDict']]]
+    """
+    Settings to describe the conversation data collection behaviors for the LLM
+    analysis pipeline for the app.
+    Structure is documented below.
+    """
     redaction_config: NotRequired[pulumi.Input[Optional['AppLoggingSettingsRedactionConfigArgsDict']]]
     """
     Configuration to instruct how sensitive data should be handled.
@@ -2511,6 +4733,7 @@ class AppLoggingSettingsArgs:
                  bigquery_export_settings: pulumi.Input[Optional['AppLoggingSettingsBigqueryExportSettingsArgs']] = None,
                  cloud_logging_settings: pulumi.Input[Optional['AppLoggingSettingsCloudLoggingSettingsArgs']] = None,
                  conversation_logging_settings: pulumi.Input[Optional['AppLoggingSettingsConversationLoggingSettingsArgs']] = None,
+                 metric_analysis_settings: pulumi.Input[Optional['AppLoggingSettingsMetricAnalysisSettingsArgs']] = None,
                  redaction_config: pulumi.Input[Optional['AppLoggingSettingsRedactionConfigArgs']] = None):
         """
         :param pulumi.Input['AppLoggingSettingsAudioRecordingConfigArgs'] audio_recording_config: Configuration for how the audio interactions should be recorded.
@@ -2520,6 +4743,9 @@ class AppLoggingSettingsArgs:
         :param pulumi.Input['AppLoggingSettingsCloudLoggingSettingsArgs'] cloud_logging_settings: Settings to describe the Cloud Logging behaviors for the app.
                Structure is documented below.
         :param pulumi.Input['AppLoggingSettingsConversationLoggingSettingsArgs'] conversation_logging_settings: Settings to describe the conversation logging behaviors for the app.
+               Structure is documented below.
+        :param pulumi.Input['AppLoggingSettingsMetricAnalysisSettingsArgs'] metric_analysis_settings: Settings to describe the conversation data collection behaviors for the LLM
+               analysis pipeline for the app.
                Structure is documented below.
         :param pulumi.Input['AppLoggingSettingsRedactionConfigArgs'] redaction_config: Configuration to instruct how sensitive data should be handled.
                Structure is documented below.
@@ -2532,6 +4758,8 @@ class AppLoggingSettingsArgs:
             pulumi.set(__self__, "cloud_logging_settings", cloud_logging_settings)
         if conversation_logging_settings is not None:
             pulumi.set(__self__, "conversation_logging_settings", conversation_logging_settings)
+        if metric_analysis_settings is not None:
+            pulumi.set(__self__, "metric_analysis_settings", metric_analysis_settings)
         if redaction_config is not None:
             pulumi.set(__self__, "redaction_config", redaction_config)
 
@@ -2586,6 +4814,20 @@ class AppLoggingSettingsArgs:
     @conversation_logging_settings.setter
     def conversation_logging_settings(self, value: pulumi.Input[Optional['AppLoggingSettingsConversationLoggingSettingsArgs']]):
         pulumi.set(self, "conversation_logging_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricAnalysisSettings")
+    def metric_analysis_settings(self) -> pulumi.Input[Optional['AppLoggingSettingsMetricAnalysisSettingsArgs']]:
+        """
+        Settings to describe the conversation data collection behaviors for the LLM
+        analysis pipeline for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metric_analysis_settings")
+
+    @metric_analysis_settings.setter
+    def metric_analysis_settings(self, value: pulumi.Input[Optional['AppLoggingSettingsMetricAnalysisSettingsArgs']]):
+        pulumi.set(self, "metric_analysis_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="redactionConfig")
@@ -2801,16 +5043,26 @@ class AppLoggingSettingsConversationLoggingSettingsArgsDict(TypedDict):
     """
     Whether to disable conversation logging for the sessions.
     """
+    retention_window: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls the retention window for the conversation.
+    If not set, the conversation will be retained for 365 days.
+    """
 
 @pulumi.input_type
 class AppLoggingSettingsConversationLoggingSettingsArgs:
     def __init__(__self__, *,
-                 disable_conversation_logging: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disable_conversation_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_window: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_conversation_logging: Whether to disable conversation logging for the sessions.
+        :param pulumi.Input[_builtins.str] retention_window: Controls the retention window for the conversation.
+               If not set, the conversation will be retained for 365 days.
         """
         if disable_conversation_logging is not None:
             pulumi.set(__self__, "disable_conversation_logging", disable_conversation_logging)
+        if retention_window is not None:
+            pulumi.set(__self__, "retention_window", retention_window)
 
     @_builtins.property
     @pulumi.getter(name="disableConversationLogging")
@@ -2823,6 +5075,54 @@ class AppLoggingSettingsConversationLoggingSettingsArgs:
     @disable_conversation_logging.setter
     def disable_conversation_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_conversation_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionWindow")
+    def retention_window(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls the retention window for the conversation.
+        If not set, the conversation will be retained for 365 days.
+        """
+        return pulumi.get(self, "retention_window")
+
+    @retention_window.setter
+    def retention_window(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "retention_window", value)
+
+
+class AppLoggingSettingsMetricAnalysisSettingsArgsDict(TypedDict):
+    llm_metrics_opted_out: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to collect conversation data for llm analysis metrics. If true,
+    conversation data will not be collected for llm analysis metrics;
+    otherwise, conversation data will be collected.
+    """
+
+@pulumi.input_type
+class AppLoggingSettingsMetricAnalysisSettingsArgs:
+    def __init__(__self__, *,
+                 llm_metrics_opted_out: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] llm_metrics_opted_out: Whether to collect conversation data for llm analysis metrics. If true,
+               conversation data will not be collected for llm analysis metrics;
+               otherwise, conversation data will be collected.
+        """
+        if llm_metrics_opted_out is not None:
+            pulumi.set(__self__, "llm_metrics_opted_out", llm_metrics_opted_out)
+
+    @_builtins.property
+    @pulumi.getter(name="llmMetricsOptedOut")
+    def llm_metrics_opted_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to collect conversation data for llm analysis metrics. If true,
+        conversation data will not be collected for llm analysis metrics;
+        otherwise, conversation data will be collected.
+        """
+        return pulumi.get(self, "llm_metrics_opted_out")
+
+    @llm_metrics_opted_out.setter
+    def llm_metrics_opted_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "llm_metrics_opted_out", value)
 
 
 class AppLoggingSettingsRedactionConfigArgsDict(TypedDict):
@@ -3793,6 +6093,13 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     List of toolsets for the agent.
     Structure is documented below.
     """
+    transfer_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleArgsDict']]]]]
+    """
+    (Output)
+    List of transfer rules for the agent.
+    If multiple rules match, the first one in the list will be used.
+    Structure is documented below.
+    """
     update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -3822,6 +6129,7 @@ class AppVersionSnapshotAgentArgs:
                  remote_dialogflow_agents: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentRemoteDialogflowAgentArgs']]]] = None,
                  tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  toolsets: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentToolsetArgs']]]] = None,
+                 transfer_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleArgs']]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterAgentCallbackArgs']]] after_agent_callbacks: (Output)
@@ -3907,6 +6215,10 @@ class AppVersionSnapshotAgentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentToolsetArgs']]] toolsets: (Output)
                List of toolsets for the agent.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleArgs']]] transfer_rules: (Output)
+               List of transfer rules for the agent.
+               If multiple rules match, the first one in the list will be used.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: (Output)
                Timestamp when the toolset was last updated.
         """
@@ -3950,6 +6262,8 @@ class AppVersionSnapshotAgentArgs:
             pulumi.set(__self__, "tools", tools)
         if toolsets is not None:
             pulumi.set(__self__, "toolsets", toolsets)
+        if transfer_rules is not None:
+            pulumi.set(__self__, "transfer_rules", transfer_rules)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -4257,6 +6571,21 @@ class AppVersionSnapshotAgentArgs:
         pulumi.set(self, "toolsets", value)
 
     @_builtins.property
+    @pulumi.getter(name="transferRules")
+    def transfer_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleArgs']]]]:
+        """
+        (Output)
+        List of transfer rules for the agent.
+        If multiple rules match, the first one in the list will be used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transfer_rules")
+
+    @transfer_rules.setter
+    def transfer_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleArgs']]]]):
+        pulumi.set(self, "transfer_rules", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -4280,6 +6609,16 @@ class AppVersionSnapshotAgentAfterAgentCallbackArgsDict(TypedDict):
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -4291,11 +6630,19 @@ class AppVersionSnapshotAgentAfterAgentCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -4303,6 +6650,8 @@ class AppVersionSnapshotAgentAfterAgentCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -4330,6 +6679,24 @@ class AppVersionSnapshotAgentAfterAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -4355,6 +6722,16 @@ class AppVersionSnapshotAgentAfterModelCallbackArgsDict(TypedDict):
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -4366,11 +6743,19 @@ class AppVersionSnapshotAgentAfterModelCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -4378,6 +6763,8 @@ class AppVersionSnapshotAgentAfterModelCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -4405,6 +6792,24 @@ class AppVersionSnapshotAgentAfterModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -4430,6 +6835,16 @@ class AppVersionSnapshotAgentAfterToolCallbackArgsDict(TypedDict):
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -4441,11 +6856,19 @@ class AppVersionSnapshotAgentAfterToolCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -4453,6 +6876,8 @@ class AppVersionSnapshotAgentAfterToolCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -4480,6 +6905,24 @@ class AppVersionSnapshotAgentAfterToolCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -4505,6 +6948,16 @@ class AppVersionSnapshotAgentBeforeAgentCallbackArgsDict(TypedDict):
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -4516,11 +6969,19 @@ class AppVersionSnapshotAgentBeforeAgentCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -4528,6 +6989,8 @@ class AppVersionSnapshotAgentBeforeAgentCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -4555,6 +7018,24 @@ class AppVersionSnapshotAgentBeforeAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -4580,6 +7061,16 @@ class AppVersionSnapshotAgentBeforeModelCallbackArgsDict(TypedDict):
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -4591,11 +7082,19 @@ class AppVersionSnapshotAgentBeforeModelCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -4603,6 +7102,8 @@ class AppVersionSnapshotAgentBeforeModelCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -4630,6 +7131,24 @@ class AppVersionSnapshotAgentBeforeModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -4655,6 +7174,16 @@ class AppVersionSnapshotAgentBeforeToolCallbackArgsDict(TypedDict):
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -4666,11 +7195,19 @@ class AppVersionSnapshotAgentBeforeToolCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -4678,6 +7215,8 @@ class AppVersionSnapshotAgentBeforeToolCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -4705,6 +7244,24 @@ class AppVersionSnapshotAgentBeforeToolCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -4822,6 +7379,12 @@ class AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict(TypedDict):
     The mapping of the app variables names to the Dialogflow session
     parameters names to be sent to the Dialogflow agent as input.
     """
+    language_code_variable: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the variable that contains the language code to be used for
+    the Dialogflow session.
+    """
     output_variable_mapping: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     (Output)
@@ -4837,6 +7400,7 @@ class AppVersionSnapshotAgentRemoteDialogflowAgentArgs:
                  environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_id: pulumi.Input[Optional[_builtins.str]] = None,
                  input_variable_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 language_code_variable: pulumi.Input[Optional[_builtins.str]] = None,
                  output_variable_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] agent: (Output)
@@ -4852,6 +7416,9 @@ class AppVersionSnapshotAgentRemoteDialogflowAgentArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_variable_mapping: (Output)
                The mapping of the app variables names to the Dialogflow session
                parameters names to be sent to the Dialogflow agent as input.
+        :param pulumi.Input[_builtins.str] language_code_variable: (Output)
+               The name of the variable that contains the language code to be used for
+               the Dialogflow session.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] output_variable_mapping: (Output)
                The mapping of the Dialogflow session parameters names to the app
                variables names to be sent back to the CES agent after the Dialogflow
@@ -4865,6 +7432,8 @@ class AppVersionSnapshotAgentRemoteDialogflowAgentArgs:
             pulumi.set(__self__, "flow_id", flow_id)
         if input_variable_mapping is not None:
             pulumi.set(__self__, "input_variable_mapping", input_variable_mapping)
+        if language_code_variable is not None:
+            pulumi.set(__self__, "language_code_variable", language_code_variable)
         if output_variable_mapping is not None:
             pulumi.set(__self__, "output_variable_mapping", output_variable_mapping)
 
@@ -4924,6 +7493,20 @@ class AppVersionSnapshotAgentRemoteDialogflowAgentArgs:
     @input_variable_mapping.setter
     def input_variable_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "input_variable_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="languageCodeVariable")
+    def language_code_variable(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the variable that contains the language code to be used for
+        the Dialogflow session.
+        """
+        return pulumi.get(self, "language_code_variable")
+
+    @language_code_variable.setter
+    def language_code_variable(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "language_code_variable", value)
 
     @_builtins.property
     @pulumi.getter(name="outputVariableMapping")
@@ -5002,6 +7585,329 @@ class AppVersionSnapshotAgentToolsetArgs:
         pulumi.set(self, "toolset", value)
 
 
+class AppVersionSnapshotAgentTransferRuleArgsDict(TypedDict):
+    child_agent: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The resource name of the child agent the rule applies to.
+    Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+    """
+    deterministic_transfers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferArgsDict']]]]]
+    """
+    (Output)
+    Deterministic transfer rule. When the condition evaluates to true, the
+    transfer occurs.
+    Structure is documented below.
+    """
+    direction: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The direction of the transfer.
+    Possible values:
+    * PARENT_TO_CHILD
+    * CHILD_TO_PARENT
+    """
+    disable_planner_transfers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgsDict']]]]]
+    """
+    (Output)
+    A rule that prevents the planner from transferring to the target agent.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAgentTransferRuleArgs:
+    def __init__(__self__, *,
+                 child_agent: pulumi.Input[Optional[_builtins.str]] = None,
+                 deterministic_transfers: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs']]]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_planner_transfers: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] child_agent: (Output)
+               The resource name of the child agent the rule applies to.
+               Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs']]] deterministic_transfers: (Output)
+               Deterministic transfer rule. When the condition evaluates to true, the
+               transfer occurs.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] direction: (Output)
+               The direction of the transfer.
+               Possible values:
+               * PARENT_TO_CHILD
+               * CHILD_TO_PARENT
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs']]] disable_planner_transfers: (Output)
+               A rule that prevents the planner from transferring to the target agent.
+               Structure is documented below.
+        """
+        if child_agent is not None:
+            pulumi.set(__self__, "child_agent", child_agent)
+        if deterministic_transfers is not None:
+            pulumi.set(__self__, "deterministic_transfers", deterministic_transfers)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disable_planner_transfers is not None:
+            pulumi.set(__self__, "disable_planner_transfers", disable_planner_transfers)
+
+    @_builtins.property
+    @pulumi.getter(name="childAgent")
+    def child_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The resource name of the child agent the rule applies to.
+        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        return pulumi.get(self, "child_agent")
+
+    @child_agent.setter
+    def child_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "child_agent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deterministicTransfers")
+    def deterministic_transfers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs']]]]:
+        """
+        (Output)
+        Deterministic transfer rule. When the condition evaluates to true, the
+        transfer occurs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deterministic_transfers")
+
+    @deterministic_transfers.setter
+    def deterministic_transfers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs']]]]):
+        pulumi.set(self, "deterministic_transfers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The direction of the transfer.
+        Possible values:
+        * PARENT_TO_CHILD
+        * CHILD_TO_PARENT
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePlannerTransfers")
+    def disable_planner_transfers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs']]]]:
+        """
+        (Output)
+        A rule that prevents the planner from transferring to the target agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disable_planner_transfers")
+
+    @disable_planner_transfers.setter
+    def disable_planner_transfers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs']]]]):
+        pulumi.set(self, "disable_planner_transfers", value)
+
+
+class AppVersionSnapshotAgentTransferRuleDeterministicTransferArgsDict(TypedDict):
+    expression_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgsDict']]]]]
+    """
+    (Output)
+    If the condition evaluates to true, planner will not be allowed to
+    transfer to the target agent.
+    Structure is documented below.
+    """
+    python_code_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgsDict']]]]]
+    """
+    (Output)
+    A rule that uses Python code block to evaluate the conditions. If the
+    condition evaluates to true, the transfer occurs.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAgentTransferRuleDeterministicTransferArgs:
+    def __init__(__self__, *,
+                 expression_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs']]]] = None,
+                 python_code_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs']]] expression_conditions: (Output)
+               If the condition evaluates to true, planner will not be allowed to
+               transfer to the target agent.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs']]] python_code_conditions: (Output)
+               A rule that uses Python code block to evaluate the conditions. If the
+               condition evaluates to true, the transfer occurs.
+               Structure is documented below.
+        """
+        if expression_conditions is not None:
+            pulumi.set(__self__, "expression_conditions", expression_conditions)
+        if python_code_conditions is not None:
+            pulumi.set(__self__, "python_code_conditions", python_code_conditions)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionConditions")
+    def expression_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs']]]]:
+        """
+        (Output)
+        If the condition evaluates to true, planner will not be allowed to
+        transfer to the target agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expression_conditions")
+
+    @expression_conditions.setter
+    def expression_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs']]]]):
+        pulumi.set(self, "expression_conditions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCodeConditions")
+    def python_code_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs']]]]:
+        """
+        (Output)
+        A rule that uses Python code block to evaluate the conditions. If the
+        condition evaluates to true, the transfer occurs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_code_conditions")
+
+    @python_code_conditions.setter
+    def python_code_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs']]]]):
+        pulumi.set(self, "python_code_conditions", value)
+
+
+class AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgsDict(TypedDict):
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The string representation of cloud.api.Expression condition.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAgentTransferRuleDeterministicTransferExpressionConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: (Output)
+               The string representation of cloud.api.Expression condition.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The string representation of cloud.api.Expression condition.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+
+class AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgsDict(TypedDict):
+    python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The Python code to execute for the tool.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAgentTransferRuleDeterministicTransferPythonCodeConditionArgs:
+    def __init__(__self__, *,
+                 python_code: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] python_code: (Output)
+               The Python code to execute for the tool.
+        """
+        if python_code is not None:
+            pulumi.set(__self__, "python_code", python_code)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonCode")
+    def python_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The Python code to execute for the tool.
+        """
+        return pulumi.get(self, "python_code")
+
+    @python_code.setter
+    def python_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "python_code", value)
+
+
+class AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgsDict(TypedDict):
+    expression_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgsDict']]]]]
+    """
+    (Output)
+    If the condition evaluates to true, planner will not be allowed to
+    transfer to the target agent.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAgentTransferRuleDisablePlannerTransferArgs:
+    def __init__(__self__, *,
+                 expression_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs']]] expression_conditions: (Output)
+               If the condition evaluates to true, planner will not be allowed to
+               transfer to the target agent.
+               Structure is documented below.
+        """
+        if expression_conditions is not None:
+            pulumi.set(__self__, "expression_conditions", expression_conditions)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionConditions")
+    def expression_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs']]]]:
+        """
+        (Output)
+        If the condition evaluates to true, planner will not be allowed to
+        transfer to the target agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expression_conditions")
+
+    @expression_conditions.setter
+    def expression_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs']]]]):
+        pulumi.set(self, "expression_conditions", value)
+
+
+class AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgsDict(TypedDict):
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The string representation of cloud.api.Expression condition.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAgentTransferRuleDisablePlannerTransferExpressionConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: (Output)
+               The string representation of cloud.api.Expression condition.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The string representation of cloud.api.Expression condition.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+
 class AppVersionSnapshotAppArgsDict(TypedDict):
     audio_processing_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigArgsDict']]]]]
     """
@@ -5046,6 +7952,12 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the app version.
+    """
+    error_handling_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingArgsDict']]]]]
+    """
+    (Output)
+    Settings to describe how errors should be handled in the app.
+    Structure is documented below.
     """
     etag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5128,6 +8040,12 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     The declarations of the variables.
     Structure is documented below.
     """
+    vpc_sc_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVpcScSettingArgsDict']]]]]
+    """
+    (Output)
+    VPC-SC settings for the app.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppArgs:
@@ -5140,6 +8058,7 @@ class AppVersionSnapshotAppArgs:
                  deployment_count: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_handling_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingArgs']]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdArgs']]]] = None,
                  global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5152,7 +8071,8 @@ class AppVersionSnapshotAppArgs:
                  root_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppTimeZoneSettingArgs']]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgs']]]] = None):
+                 variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgs']]]] = None,
+                 vpc_sc_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVpcScSettingArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigArgs']]] audio_processing_configs: (Output)
                Configuration for how the input and output audio should be processed and
@@ -5174,6 +8094,9 @@ class AppVersionSnapshotAppArgs:
                Number of deployments in the app.
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.str] display_name: The display name of the app version.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingArgs']]] error_handling_settings: (Output)
+               Settings to describe how errors should be handled in the app.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: (Output)
                ETag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
@@ -5216,6 +8139,9 @@ class AppVersionSnapshotAppArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgs']]] variable_declarations: (Output)
                The declarations of the variables.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppVpcScSettingArgs']]] vpc_sc_settings: (Output)
+               VPC-SC settings for the app.
+               Structure is documented below.
         """
         if audio_processing_configs is not None:
             pulumi.set(__self__, "audio_processing_configs", audio_processing_configs)
@@ -5233,6 +8159,8 @@ class AppVersionSnapshotAppArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if error_handling_settings is not None:
+            pulumi.set(__self__, "error_handling_settings", error_handling_settings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if evaluation_metrics_thresholds is not None:
@@ -5259,6 +8187,8 @@ class AppVersionSnapshotAppArgs:
             pulumi.set(__self__, "update_time", update_time)
         if variable_declarations is not None:
             pulumi.set(__self__, "variable_declarations", variable_declarations)
+        if vpc_sc_settings is not None:
+            pulumi.set(__self__, "vpc_sc_settings", vpc_sc_settings)
 
     @_builtins.property
     @pulumi.getter(name="audioProcessingConfigs")
@@ -5367,6 +8297,20 @@ class AppVersionSnapshotAppArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorHandlingSettings")
+    def error_handling_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingArgs']]]]:
+        """
+        (Output)
+        Settings to describe how errors should be handled in the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_handling_settings")
+
+    @error_handling_settings.setter
+    def error_handling_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingArgs']]]]):
+        pulumi.set(self, "error_handling_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5552,6 +8496,20 @@ class AppVersionSnapshotAppArgs:
     @variable_declarations.setter
     def variable_declarations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgs']]]]):
         pulumi.set(self, "variable_declarations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcScSettings")
+    def vpc_sc_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVpcScSettingArgs']]]]:
+        """
+        (Output)
+        VPC-SC settings for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_sc_settings")
+
+    @vpc_sc_settings.setter
+    def vpc_sc_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVpcScSettingArgs']]]]):
+        pulumi.set(self, "vpc_sc_settings", value)
 
 
 class AppVersionSnapshotAppAudioProcessingConfigArgsDict(TypedDict):
@@ -6190,6 +9148,12 @@ class AppVersionSnapshotAppDefaultChannelProfileArgsDict(TypedDict):
     Message for configuration for the web widget.
     Structure is documented below.
     """
+    whatsapp_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgsDict']]]]]
+    """
+    (Output)
+    Configuration specific to WhatsApp deployments.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppDefaultChannelProfileArgs:
@@ -6199,7 +9163,8 @@ class AppVersionSnapshotAppDefaultChannelProfileArgs:
                  disable_dtmf: pulumi.Input[Optional[_builtins.bool]] = None,
                  persona_properties: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgs']]]] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 web_widget_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs']]]] = None):
+                 web_widget_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs']]]] = None,
+                 whatsapp_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] channel_type: (Output)
                The type of the channel profile.
@@ -6224,6 +9189,9 @@ class AppVersionSnapshotAppDefaultChannelProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs']]] web_widget_configs: (Output)
                Message for configuration for the web widget.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs']]] whatsapp_configs: (Output)
+               Configuration specific to WhatsApp deployments.
+               Structure is documented below.
         """
         if channel_type is not None:
             pulumi.set(__self__, "channel_type", channel_type)
@@ -6237,6 +9205,8 @@ class AppVersionSnapshotAppDefaultChannelProfileArgs:
             pulumi.set(__self__, "profile_id", profile_id)
         if web_widget_configs is not None:
             pulumi.set(__self__, "web_widget_configs", web_widget_configs)
+        if whatsapp_configs is not None:
+            pulumi.set(__self__, "whatsapp_configs", whatsapp_configs)
 
     @_builtins.property
     @pulumi.getter(name="channelType")
@@ -6326,6 +9296,20 @@ class AppVersionSnapshotAppDefaultChannelProfileArgs:
     @web_widget_configs.setter
     def web_widget_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs']]]]):
         pulumi.set(self, "web_widget_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="whatsappConfigs")
+    def whatsapp_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs']]]]:
+        """
+        (Output)
+        Configuration specific to WhatsApp deployments.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whatsapp_configs")
+
+    @whatsapp_configs.setter
+    def whatsapp_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs']]]]):
+        pulumi.set(self, "whatsapp_configs", value)
 
 
 class AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict(TypedDict):
@@ -6477,6 +9461,345 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs:
         pulumi.set(self, "web_widget_title", value)
 
 
+class AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description of the app version.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The display name of the app version.
+    """
+    phone_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The phone number in E.164 format.
+    """
+    phone_number_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The Meta phone number ID.
+    """
+    thumbnail_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The fetched Meta business profile thumbnail URL.
+    """
+    waba_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The WhatsApp Business Account ID.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppDefaultChannelProfileWhatsappConfigArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 waba_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: The description of the app version.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the app version.
+        :param pulumi.Input[_builtins.str] phone_number: (Output)
+               The phone number in E.164 format.
+        :param pulumi.Input[_builtins.str] phone_number_id: (Output)
+               The Meta phone number ID.
+        :param pulumi.Input[_builtins.str] thumbnail_url: (Output)
+               The fetched Meta business profile thumbnail URL.
+        :param pulumi.Input[_builtins.str] waba_id: (Output)
+               The WhatsApp Business Account ID.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+        if phone_number_id is not None:
+            pulumi.set(__self__, "phone_number_id", phone_number_id)
+        if thumbnail_url is not None:
+            pulumi.set(__self__, "thumbnail_url", thumbnail_url)
+        if waba_id is not None:
+            pulumi.set(__self__, "waba_id", waba_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the app version.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The display name of the app version.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "phone_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumberId")
+    def phone_number_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The Meta phone number ID.
+        """
+        return pulumi.get(self, "phone_number_id")
+
+    @phone_number_id.setter
+    def phone_number_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "phone_number_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailUrl")
+    def thumbnail_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The fetched Meta business profile thumbnail URL.
+        """
+        return pulumi.get(self, "thumbnail_url")
+
+    @thumbnail_url.setter
+    def thumbnail_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wabaId")
+    def waba_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The WhatsApp Business Account ID.
+        """
+        return pulumi.get(self, "waba_id")
+
+    @waba_id.setter
+    def waba_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "waba_id", value)
+
+
+class AppVersionSnapshotAppErrorHandlingSettingArgsDict(TypedDict):
+    end_session_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgsDict']]]]]
+    """
+    (Output)
+    Configuration for ending the session in case of system errors (e.g. LLM
+    errors).
+    Structure is documented below.
+    """
+    error_handling_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The strategy to use for error handling.
+    Possible values:
+    NONE
+    FALLBACK_RESPONSE
+    END_SESSION
+    """
+    fallback_response_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgsDict']]]]]
+    """
+    (Output)
+    Configuration for handling fallback responses.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppErrorHandlingSettingArgs:
+    def __init__(__self__, *,
+                 end_session_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs']]]] = None,
+                 error_handling_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 fallback_response_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs']]] end_session_configs: (Output)
+               Configuration for ending the session in case of system errors (e.g. LLM
+               errors).
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] error_handling_strategy: (Output)
+               The strategy to use for error handling.
+               Possible values:
+               NONE
+               FALLBACK_RESPONSE
+               END_SESSION
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs']]] fallback_response_configs: (Output)
+               Configuration for handling fallback responses.
+               Structure is documented below.
+        """
+        if end_session_configs is not None:
+            pulumi.set(__self__, "end_session_configs", end_session_configs)
+        if error_handling_strategy is not None:
+            pulumi.set(__self__, "error_handling_strategy", error_handling_strategy)
+        if fallback_response_configs is not None:
+            pulumi.set(__self__, "fallback_response_configs", fallback_response_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="endSessionConfigs")
+    def end_session_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs']]]]:
+        """
+        (Output)
+        Configuration for ending the session in case of system errors (e.g. LLM
+        errors).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_session_configs")
+
+    @end_session_configs.setter
+    def end_session_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs']]]]):
+        pulumi.set(self, "end_session_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorHandlingStrategy")
+    def error_handling_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The strategy to use for error handling.
+        Possible values:
+        NONE
+        FALLBACK_RESPONSE
+        END_SESSION
+        """
+        return pulumi.get(self, "error_handling_strategy")
+
+    @error_handling_strategy.setter
+    def error_handling_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_handling_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fallbackResponseConfigs")
+    def fallback_response_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs']]]]:
+        """
+        (Output)
+        Configuration for handling fallback responses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fallback_response_configs")
+
+    @fallback_response_configs.setter
+    def fallback_response_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs']]]]):
+        pulumi.set(self, "fallback_response_configs", value)
+
+
+class AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgsDict(TypedDict):
+    escalate_session: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Whether to escalate the session in EndSession. If session is escalated,
+    metadata in EndSession will contain session_escalated = true.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppErrorHandlingSettingEndSessionConfigArgs:
+    def __init__(__self__, *,
+                 escalate_session: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] escalate_session: (Output)
+               Whether to escalate the session in EndSession. If session is escalated,
+               metadata in EndSession will contain session_escalated = true.
+        """
+        if escalate_session is not None:
+            pulumi.set(__self__, "escalate_session", escalate_session)
+
+    @_builtins.property
+    @pulumi.getter(name="escalateSession")
+    def escalate_session(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Whether to escalate the session in EndSession. If session is escalated,
+        metadata in EndSession will contain session_escalated = true.
+        """
+        return pulumi.get(self, "escalate_session")
+
+    @escalate_session.setter
+    def escalate_session(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "escalate_session", value)
+
+
+class AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgsDict(TypedDict):
+    custom_fallback_messages: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The fallback messages in case of system errors (e.g. LLM errors),
+    mapped by supported language code
+    (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+    """
+    max_fallback_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The maximum number of fallback attempts to make before the agent
+    emitting EndSession Signal.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppErrorHandlingSettingFallbackResponseConfigArgs:
+    def __init__(__self__, *,
+                 custom_fallback_messages: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_fallback_attempts: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_fallback_messages: (Output)
+               The fallback messages in case of system errors (e.g. LLM errors),
+               mapped by supported language code
+               (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+        :param pulumi.Input[_builtins.int] max_fallback_attempts: (Output)
+               The maximum number of fallback attempts to make before the agent
+               emitting EndSession Signal.
+        """
+        if custom_fallback_messages is not None:
+            pulumi.set(__self__, "custom_fallback_messages", custom_fallback_messages)
+        if max_fallback_attempts is not None:
+            pulumi.set(__self__, "max_fallback_attempts", max_fallback_attempts)
+
+    @_builtins.property
+    @pulumi.getter(name="customFallbackMessages")
+    def custom_fallback_messages(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The fallback messages in case of system errors (e.g. LLM errors),
+        mapped by supported language code
+        (https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language).
+        """
+        return pulumi.get(self, "custom_fallback_messages")
+
+    @custom_fallback_messages.setter
+    def custom_fallback_messages(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_fallback_messages", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxFallbackAttempts")
+    def max_fallback_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The maximum number of fallback attempts to make before the agent
+        emitting EndSession Signal.
+        """
+        return pulumi.get(self, "max_fallback_attempts")
+
+    @max_fallback_attempts.setter
+    def max_fallback_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_fallback_attempts", value)
+
+
 class AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict(TypedDict):
     golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict']]]]]
     """
@@ -6484,18 +9807,50 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict(TypedDict):
     Settings for golden evaluations.
     Structure is documented below.
     """
+    golden_hallucination_metric_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The hallucination metric behavior for golden evaluations.
+    Possible values:
+    DISABLED
+    ENABLED
+    """
+    scenario_hallucination_metric_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The hallucination metric behavior for scenario evaluations.
+    Possible values:
+    DISABLED
+    ENABLED
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppEvaluationMetricsThresholdArgs:
     def __init__(__self__, *,
-                 golden_evaluation_metrics_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs']]]] = None):
+                 golden_evaluation_metrics_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs']]]] = None,
+                 golden_hallucination_metric_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenario_hallucination_metric_behavior: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs']]] golden_evaluation_metrics_thresholds: (Output)
                Settings for golden evaluations.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] golden_hallucination_metric_behavior: (Output)
+               The hallucination metric behavior for golden evaluations.
+               Possible values:
+               DISABLED
+               ENABLED
+        :param pulumi.Input[_builtins.str] scenario_hallucination_metric_behavior: (Output)
+               The hallucination metric behavior for scenario evaluations.
+               Possible values:
+               DISABLED
+               ENABLED
         """
         if golden_evaluation_metrics_thresholds is not None:
             pulumi.set(__self__, "golden_evaluation_metrics_thresholds", golden_evaluation_metrics_thresholds)
+        if golden_hallucination_metric_behavior is not None:
+            pulumi.set(__self__, "golden_hallucination_metric_behavior", golden_hallucination_metric_behavior)
+        if scenario_hallucination_metric_behavior is not None:
+            pulumi.set(__self__, "scenario_hallucination_metric_behavior", scenario_hallucination_metric_behavior)
 
     @_builtins.property
     @pulumi.getter(name="goldenEvaluationMetricsThresholds")
@@ -6511,12 +9866,52 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdArgs:
     def golden_evaluation_metrics_thresholds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs']]]]):
         pulumi.set(self, "golden_evaluation_metrics_thresholds", value)
 
+    @_builtins.property
+    @pulumi.getter(name="goldenHallucinationMetricBehavior")
+    def golden_hallucination_metric_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The hallucination metric behavior for golden evaluations.
+        Possible values:
+        DISABLED
+        ENABLED
+        """
+        return pulumi.get(self, "golden_hallucination_metric_behavior")
+
+    @golden_hallucination_metric_behavior.setter
+    def golden_hallucination_metric_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "golden_hallucination_metric_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scenarioHallucinationMetricBehavior")
+    def scenario_hallucination_metric_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The hallucination metric behavior for scenario evaluations.
+        Possible values:
+        DISABLED
+        ENABLED
+        """
+        return pulumi.get(self, "scenario_hallucination_metric_behavior")
+
+    @scenario_hallucination_metric_behavior.setter
+    def scenario_hallucination_metric_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "scenario_hallucination_metric_behavior", value)
+
 
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict(TypedDict):
     expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict']]]]]
     """
     (Output)
     Expectation level metrics thresholds.
+    Structure is documented below.
+    """
+    tool_matching_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgsDict']]]]]
+    """
+    (Output)
+    The tool matching settings. An extra tool call is a tool call that is
+    present in the execution but does not match any tool call in the golden
+    expectation.
     Structure is documented below.
     """
     turn_level_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict']]]]]
@@ -6530,10 +9925,16 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs:
     def __init__(__self__, *,
                  expectation_level_metrics_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs']]]] = None,
+                 tool_matching_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs']]]] = None,
                  turn_level_metrics_thresholds: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs']]] expectation_level_metrics_thresholds: (Output)
                Expectation level metrics thresholds.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs']]] tool_matching_settings: (Output)
+               The tool matching settings. An extra tool call is a tool call that is
+               present in the execution but does not match any tool call in the golden
+               expectation.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs']]] turn_level_metrics_thresholds: (Output)
                Turn level metrics thresholds.
@@ -6541,6 +9942,8 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
         """
         if expectation_level_metrics_thresholds is not None:
             pulumi.set(__self__, "expectation_level_metrics_thresholds", expectation_level_metrics_thresholds)
+        if tool_matching_settings is not None:
+            pulumi.set(__self__, "tool_matching_settings", tool_matching_settings)
         if turn_level_metrics_thresholds is not None:
             pulumi.set(__self__, "turn_level_metrics_thresholds", turn_level_metrics_thresholds)
 
@@ -6557,6 +9960,22 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
     @expectation_level_metrics_thresholds.setter
     def expectation_level_metrics_thresholds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs']]]]):
         pulumi.set(self, "expectation_level_metrics_thresholds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolMatchingSettings")
+    def tool_matching_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs']]]]:
+        """
+        (Output)
+        The tool matching settings. An extra tool call is a tool call that is
+        present in the execution but does not match any tool call in the golden
+        expectation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_matching_settings")
+
+    @tool_matching_settings.setter
+    def tool_matching_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs']]]]):
+        pulumi.set(self, "tool_matching_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="turnLevelMetricsThresholds")
@@ -6608,12 +10027,68 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
         pulumi.set(self, "tool_invocation_parameter_correctness_threshold", value)
 
 
+class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgsDict(TypedDict):
+    extra_tool_call_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Defines the behavior when an extra tool call is encountered. An extra
+    tool call is a tool call that is present in the execution but does
+    not match any tool call in the golden expectation.
+    Possible values:
+    FAIL
+    ALLOW
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdToolMatchingSettingArgs:
+    def __init__(__self__, *,
+                 extra_tool_call_behavior: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] extra_tool_call_behavior: (Output)
+               Defines the behavior when an extra tool call is encountered. An extra
+               tool call is a tool call that is present in the execution but does
+               not match any tool call in the golden expectation.
+               Possible values:
+               FAIL
+               ALLOW
+        """
+        if extra_tool_call_behavior is not None:
+            pulumi.set(__self__, "extra_tool_call_behavior", extra_tool_call_behavior)
+
+    @_builtins.property
+    @pulumi.getter(name="extraToolCallBehavior")
+    def extra_tool_call_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Defines the behavior when an extra tool call is encountered. An extra
+        tool call is a tool call that is present in the execution but does
+        not match any tool call in the golden expectation.
+        Possible values:
+        FAIL
+        ALLOW
+        """
+        return pulumi.get(self, "extra_tool_call_behavior")
+
+    @extra_tool_call_behavior.setter
+    def extra_tool_call_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "extra_tool_call_behavior", value)
+
+
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict(TypedDict):
     overall_tool_invocation_correctness_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     The success threshold for overall tool invocation correctness. Must be
     a float between 0 and 1. Default is 1.0.
+    """
+    semantic_similarity_channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The semantic similarity channel to use for evaluation.
+    Possible values:
+    SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+    TEXT
+    AUDIO
     """
     semantic_similarity_success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -6626,17 +10101,26 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs:
     def __init__(__self__, *,
                  overall_tool_invocation_correctness_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 semantic_similarity_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  semantic_similarity_success_threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.float] overall_tool_invocation_correctness_threshold: (Output)
                The success threshold for overall tool invocation correctness. Must be
                a float between 0 and 1. Default is 1.0.
+        :param pulumi.Input[_builtins.str] semantic_similarity_channel: (Output)
+               The semantic similarity channel to use for evaluation.
+               Possible values:
+               SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+               TEXT
+               AUDIO
         :param pulumi.Input[_builtins.int] semantic_similarity_success_threshold: (Output)
                The success threshold for semantic similarity. Must be an integer
                between 0 and 4. Default is >= 3.
         """
         if overall_tool_invocation_correctness_threshold is not None:
             pulumi.set(__self__, "overall_tool_invocation_correctness_threshold", overall_tool_invocation_correctness_threshold)
+        if semantic_similarity_channel is not None:
+            pulumi.set(__self__, "semantic_similarity_channel", semantic_similarity_channel)
         if semantic_similarity_success_threshold is not None:
             pulumi.set(__self__, "semantic_similarity_success_threshold", semantic_similarity_success_threshold)
 
@@ -6653,6 +10137,23 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
     @overall_tool_invocation_correctness_threshold.setter
     def overall_tool_invocation_correctness_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "overall_tool_invocation_correctness_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="semanticSimilarityChannel")
+    def semantic_similarity_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The semantic similarity channel to use for evaluation.
+        Possible values:
+        SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED
+        TEXT
+        AUDIO
+        """
+        return pulumi.get(self, "semantic_similarity_channel")
+
+    @semantic_similarity_channel.setter
+    def semantic_similarity_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "semantic_similarity_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="semanticSimilaritySuccessThreshold")
@@ -6822,6 +10323,13 @@ class AppVersionSnapshotAppLoggingSettingArgsDict(TypedDict):
     Settings to describe the conversation logging behaviors for the app.
     Structure is documented below.
     """
+    metric_analysis_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgsDict']]]]]
+    """
+    (Output)
+    Settings to describe the conversation data collection behaviors for the LLM
+    analysis pipeline for the app.
+    Structure is documented below.
+    """
     redaction_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict']]]]]
     """
     (Output)
@@ -6836,6 +10344,7 @@ class AppVersionSnapshotAppLoggingSettingArgs:
                  bigquery_export_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgs']]]] = None,
                  cloud_logging_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgs']]]] = None,
                  conversation_logging_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs']]]] = None,
+                 metric_analysis_settings: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs']]]] = None,
                  redaction_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgs']]] audio_recording_configs: (Output)
@@ -6850,6 +10359,10 @@ class AppVersionSnapshotAppLoggingSettingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs']]] conversation_logging_settings: (Output)
                Settings to describe the conversation logging behaviors for the app.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs']]] metric_analysis_settings: (Output)
+               Settings to describe the conversation data collection behaviors for the LLM
+               analysis pipeline for the app.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgs']]] redaction_configs: (Output)
                Configuration to instruct how sensitive data should be handled.
                Structure is documented below.
@@ -6862,6 +10375,8 @@ class AppVersionSnapshotAppLoggingSettingArgs:
             pulumi.set(__self__, "cloud_logging_settings", cloud_logging_settings)
         if conversation_logging_settings is not None:
             pulumi.set(__self__, "conversation_logging_settings", conversation_logging_settings)
+        if metric_analysis_settings is not None:
+            pulumi.set(__self__, "metric_analysis_settings", metric_analysis_settings)
         if redaction_configs is not None:
             pulumi.set(__self__, "redaction_configs", redaction_configs)
 
@@ -6920,6 +10435,21 @@ class AppVersionSnapshotAppLoggingSettingArgs:
     @conversation_logging_settings.setter
     def conversation_logging_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs']]]]):
         pulumi.set(self, "conversation_logging_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricAnalysisSettings")
+    def metric_analysis_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs']]]]:
+        """
+        (Output)
+        Settings to describe the conversation data collection behaviors for the LLM
+        analysis pipeline for the app.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metric_analysis_settings")
+
+    @metric_analysis_settings.setter
+    def metric_analysis_settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs']]]]):
+        pulumi.set(self, "metric_analysis_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="redactionConfigs")
@@ -7146,17 +10676,29 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict(Type
     (Output)
     Whether to disable conversation logging for the sessions.
     """
+    retention_window: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Controls the retention window for the conversation.
+    If not set, the conversation will be retained for 365 days.
+    """
 
 @pulumi.input_type
 class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs:
     def __init__(__self__, *,
-                 disable_conversation_logging: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disable_conversation_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention_window: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_conversation_logging: (Output)
                Whether to disable conversation logging for the sessions.
+        :param pulumi.Input[_builtins.str] retention_window: (Output)
+               Controls the retention window for the conversation.
+               If not set, the conversation will be retained for 365 days.
         """
         if disable_conversation_logging is not None:
             pulumi.set(__self__, "disable_conversation_logging", disable_conversation_logging)
+        if retention_window is not None:
+            pulumi.set(__self__, "retention_window", retention_window)
 
     @_builtins.property
     @pulumi.getter(name="disableConversationLogging")
@@ -7170,6 +10712,58 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs:
     @disable_conversation_logging.setter
     def disable_conversation_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_conversation_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionWindow")
+    def retention_window(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Controls the retention window for the conversation.
+        If not set, the conversation will be retained for 365 days.
+        """
+        return pulumi.get(self, "retention_window")
+
+    @retention_window.setter
+    def retention_window(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "retention_window", value)
+
+
+class AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgsDict(TypedDict):
+    llm_metrics_opted_out: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    Whether to collect conversation data for llm analysis metrics. If true,
+    conversation data will not be collected for llm analysis metrics;
+    otherwise, conversation data will be collected.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs:
+    def __init__(__self__, *,
+                 llm_metrics_opted_out: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] llm_metrics_opted_out: (Output)
+               Whether to collect conversation data for llm analysis metrics. If true,
+               conversation data will not be collected for llm analysis metrics;
+               otherwise, conversation data will be collected.
+        """
+        if llm_metrics_opted_out is not None:
+            pulumi.set(__self__, "llm_metrics_opted_out", llm_metrics_opted_out)
+
+    @_builtins.property
+    @pulumi.getter(name="llmMetricsOptedOut")
+    def llm_metrics_opted_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        Whether to collect conversation data for llm analysis metrics. If true,
+        conversation data will not be collected for llm analysis metrics;
+        otherwise, conversation data will be collected.
+        """
+        return pulumi.get(self, "llm_metrics_opted_out")
+
+    @llm_metrics_opted_out.setter
+    def llm_metrics_opted_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "llm_metrics_opted_out", value)
 
 
 class AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict(TypedDict):
@@ -7879,6 +11473,50 @@ class AppVersionSnapshotAppVariableDeclarationSchemaArgs:
     @unique_items.setter
     def unique_items(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique_items", value)
+
+
+class AppVersionSnapshotAppVpcScSettingArgsDict(TypedDict):
+    allowed_origins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The allowed HTTP(s) origins that OpenAPI tools in the App are
+    able to directly call when VPC Service Controls are enabled. These strings
+    must match the origin exactly, including the port if specified. For
+    example, "https://example.com" or "https://example.com:443". This list does
+    not yet apply to Python tools that may make direct HTTP calls.
+    """
+
+@pulumi.input_type
+class AppVersionSnapshotAppVpcScSettingArgs:
+    def __init__(__self__, *,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: (Output)
+               The allowed HTTP(s) origins that OpenAPI tools in the App are
+               able to directly call when VPC Service Controls are enabled. These strings
+               must match the origin exactly, including the port if specified. For
+               example, "https://example.com" or "https://example.com:443". This list does
+               not yet apply to Python tools that may make direct HTTP calls.
+        """
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The allowed HTTP(s) origins that OpenAPI tools in the App are
+        able to directly call when VPC Service Controls are enabled. These strings
+        must match the origin exactly, including the port if specified. For
+        example, "https://example.com" or "https://example.com:443". This list does
+        not yet apply to Python tools that may make direct HTTP calls.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_origins", value)
 
 
 class AppVersionSnapshotExampleArgsDict(TypedDict):
@@ -9577,6 +13215,16 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict(TypedDic
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -9588,11 +13236,19 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -9600,6 +13256,8 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -9627,6 +13285,24 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -9652,6 +13328,16 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDic
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -9663,11 +13349,19 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -9675,6 +13369,8 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -9702,6 +13398,24 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -9727,6 +13441,16 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDi
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -9738,11 +13462,19 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -9750,6 +13482,8 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -9777,6 +13511,24 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -9802,6 +13554,16 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDi
     (Output)
     Whether summarization is disabled.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Output)
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
     python_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -9813,11 +13575,19 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  python_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the app version.
         :param pulumi.Input[_builtins.bool] disabled: (Output)
                Whether summarization is disabled.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: (Output)
+               If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         :param pulumi.Input[_builtins.str] python_code: (Output)
                The Python code to execute for the tool.
         """
@@ -9825,6 +13595,8 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
 
@@ -9852,6 +13624,24 @@ class AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Output)
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -15610,6 +19400,47 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs:
         pulumi.set(self, "display_name", value)
 
 
+class AppVpcScSettingsArgsDict(TypedDict):
+    allowed_origins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The allowed HTTP(s) origins that OpenAPI tools in the App are
+    able to directly call when VPC Service Controls are enabled. These strings
+    must match the origin exactly, including the port if specified. For
+    example, "https://example.com" or "https://example.com:443". This list does
+    not yet apply to Python tools that may make direct HTTP calls.
+    """
+
+@pulumi.input_type
+class AppVpcScSettingsArgs:
+    def __init__(__self__, *,
+                 allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: The allowed HTTP(s) origins that OpenAPI tools in the App are
+               able to directly call when VPC Service Controls are enabled. These strings
+               must match the origin exactly, including the port if specified. For
+               example, "https://example.com" or "https://example.com:443". This list does
+               not yet apply to Python tools that may make direct HTTP calls.
+        """
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The allowed HTTP(s) origins that OpenAPI tools in the App are
+        able to directly call when VPC Service Controls are enabled. These strings
+        must match the origin exactly, including the port if specified. For
+        example, "https://example.com" or "https://example.com:443". This list does
+        not yet apply to Python tools that may make direct HTTP calls.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_origins", value)
+
+
 class DeploymentChannelProfileArgsDict(TypedDict):
     channel_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -15623,6 +19454,8 @@ class DeploymentChannelProfileArgsDict(TypedDict):
     CONTACT_CENTER_AS_A_SERVICE
     FIVE9
     CONTACT_CENTER_INTEGRATION
+    WHATSAPP
+    INSTAGRAM
     """
     disable_barge_in_control: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -15649,6 +19482,11 @@ class DeploymentChannelProfileArgsDict(TypedDict):
     Message for configuration for the web widget.
     Structure is documented below.
     """
+    whatsapp_config: NotRequired[pulumi.Input[Optional['DeploymentChannelProfileWhatsappConfigArgsDict']]]
+    """
+    Configuration specific to WhatsApp deployments.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class DeploymentChannelProfileArgs:
@@ -15658,7 +19496,8 @@ class DeploymentChannelProfileArgs:
                  disable_dtmf: pulumi.Input[Optional[_builtins.bool]] = None,
                  persona_property: pulumi.Input[Optional['DeploymentChannelProfilePersonaPropertyArgs']] = None,
                  profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 web_widget_config: pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigArgs']] = None):
+                 web_widget_config: pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigArgs']] = None,
+                 whatsapp_config: pulumi.Input[Optional['DeploymentChannelProfileWhatsappConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] channel_type: The type of the channel profile.
                Possible values:
@@ -15670,6 +19509,8 @@ class DeploymentChannelProfileArgs:
                CONTACT_CENTER_AS_A_SERVICE
                FIVE9
                CONTACT_CENTER_INTEGRATION
+               WHATSAPP
+               INSTAGRAM
         :param pulumi.Input[_builtins.bool] disable_barge_in_control: Whether to disable user barge-in control in the conversation.
                - **true**: User interruptions are disabled while the agent is speaking.
                - **false**: The agent retains automatic control over when the user can
@@ -15679,6 +19520,8 @@ class DeploymentChannelProfileArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] profile_id: The unique identifier of the channel profile.
         :param pulumi.Input['DeploymentChannelProfileWebWidgetConfigArgs'] web_widget_config: Message for configuration for the web widget.
+               Structure is documented below.
+        :param pulumi.Input['DeploymentChannelProfileWhatsappConfigArgs'] whatsapp_config: Configuration specific to WhatsApp deployments.
                Structure is documented below.
         """
         if channel_type is not None:
@@ -15693,6 +19536,8 @@ class DeploymentChannelProfileArgs:
             pulumi.set(__self__, "profile_id", profile_id)
         if web_widget_config is not None:
             pulumi.set(__self__, "web_widget_config", web_widget_config)
+        if whatsapp_config is not None:
+            pulumi.set(__self__, "whatsapp_config", whatsapp_config)
 
     @_builtins.property
     @pulumi.getter(name="channelType")
@@ -15708,6 +19553,8 @@ class DeploymentChannelProfileArgs:
         CONTACT_CENTER_AS_A_SERVICE
         FIVE9
         CONTACT_CENTER_INTEGRATION
+        WHATSAPP
+        INSTAGRAM
         """
         return pulumi.get(self, "channel_type")
 
@@ -15779,6 +19626,19 @@ class DeploymentChannelProfileArgs:
     @web_widget_config.setter
     def web_widget_config(self, value: pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigArgs']]):
         pulumi.set(self, "web_widget_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="whatsappConfig")
+    def whatsapp_config(self) -> pulumi.Input[Optional['DeploymentChannelProfileWhatsappConfigArgs']]:
+        """
+        Configuration specific to WhatsApp deployments.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whatsapp_config")
+
+    @whatsapp_config.setter
+    def whatsapp_config(self, value: pulumi.Input[Optional['DeploymentChannelProfileWhatsappConfigArgs']]):
+        pulumi.set(self, "whatsapp_config", value)
 
 
 class DeploymentChannelProfilePersonaPropertyArgsDict(TypedDict):
@@ -16031,6 +19891,491 @@ class DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs:
     @enable_recaptcha.setter
     def enable_recaptcha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_recaptcha", value)
+
+
+class DeploymentChannelProfileWhatsappConfigArgsDict(TypedDict):
+    phone_number_id: pulumi.Input[_builtins.str]
+    """
+    Required. The Meta phone number ID.
+    """
+    waba_id: pulumi.Input[_builtins.str]
+    """
+    Required. The WhatsApp Business Account ID.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Output only. The description of the Meta business page or profile.
+    """
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Output only. The fetched Meta business page name.
+    """
+    phone_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The phone number in E.164 format.
+    """
+    thumbnail_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Output only. The fetched Meta business profile thumbnail URL.
+    """
+
+@pulumi.input_type
+class DeploymentChannelProfileWhatsappConfigArgs:
+    def __init__(__self__, *,
+                 phone_number_id: pulumi.Input[_builtins.str],
+                 waba_id: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] phone_number_id: Required. The Meta phone number ID.
+        :param pulumi.Input[_builtins.str] waba_id: Required. The WhatsApp Business Account ID.
+        :param pulumi.Input[_builtins.str] description: (Output)
+               Output only. The description of the Meta business page or profile.
+        :param pulumi.Input[_builtins.str] display_name: (Output)
+               Output only. The fetched Meta business page name.
+        :param pulumi.Input[_builtins.str] phone_number: Optional. The phone number in E.164 format.
+        :param pulumi.Input[_builtins.str] thumbnail_url: (Output)
+               Output only. The fetched Meta business profile thumbnail URL.
+        """
+        pulumi.set(__self__, "phone_number_id", phone_number_id)
+        pulumi.set(__self__, "waba_id", waba_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+        if thumbnail_url is not None:
+            pulumi.set(__self__, "thumbnail_url", thumbnail_url)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumberId")
+    def phone_number_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The Meta phone number ID.
+        """
+        return pulumi.get(self, "phone_number_id")
+
+    @phone_number_id.setter
+    def phone_number_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "phone_number_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wabaId")
+    def waba_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The WhatsApp Business Account ID.
+        """
+        return pulumi.get(self, "waba_id")
+
+    @waba_id.setter
+    def waba_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "waba_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Output only. The description of the Meta business page or profile.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Output only. The fetched Meta business page name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "phone_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailUrl")
+    def thumbnail_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Output only. The fetched Meta business profile thumbnail URL.
+        """
+        return pulumi.get(self, "thumbnail_url")
+
+    @thumbnail_url.setter
+    def thumbnail_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_url", value)
+
+
+class DeploymentInstagramCredentialsArgsDict(TypedDict):
+    auth_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Meta auth code provided by the embedded signup flow.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    auth_code_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    The Meta auth code provided by the embedded signup flow.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `auth_code` or `auth_code_wo` can only be set.
+    """
+    auth_code_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `auth_code_wo` write-only. Increment this value when an update to `auth_code_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
+    conversation_profile_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Conversation Profile ID to use for the deployment.
+    """
+
+@pulumi.input_type
+class DeploymentInstagramCredentialsArgs:
+    def __init__(__self__, *,
+                 auth_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_code_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_code_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 conversation_profile_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] auth_code: The Meta auth code provided by the embedded signup flow.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] auth_code_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The Meta auth code provided by the embedded signup flow.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `auth_code` or `auth_code_wo` can only be set.
+        :param pulumi.Input[_builtins.str] auth_code_wo_version: Triggers update of `auth_code_wo` write-only. Increment this value when an update to `auth_code_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        :param pulumi.Input[_builtins.str] conversation_profile_id: The Conversation Profile ID to use for the deployment.
+        """
+        if auth_code is not None:
+            pulumi.set(__self__, "auth_code", auth_code)
+        if auth_code_wo is not None:
+            pulumi.set(__self__, "auth_code_wo", auth_code_wo)
+        if auth_code_wo_version is not None:
+            pulumi.set(__self__, "auth_code_wo_version", auth_code_wo_version)
+        if conversation_profile_id is not None:
+            pulumi.set(__self__, "conversation_profile_id", conversation_profile_id)
+
+    @_builtins.property
+    @pulumi.getter(name="authCode")
+    def auth_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Meta auth code provided by the embedded signup flow.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "auth_code")
+
+    @auth_code.setter
+    def auth_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authCodeWo")
+    def auth_code_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The Meta auth code provided by the embedded signup flow.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `auth_code` or `auth_code_wo` can only be set.
+        """
+        return pulumi.get(self, "auth_code_wo")
+
+    @auth_code_wo.setter
+    def auth_code_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_code_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authCodeWoVersion")
+    def auth_code_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `auth_code_wo` write-only. Increment this value when an update to `auth_code_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "auth_code_wo_version")
+
+    @auth_code_wo_version.setter
+    def auth_code_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_code_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationProfileId")
+    def conversation_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Conversation Profile ID to use for the deployment.
+        """
+        return pulumi.get(self, "conversation_profile_id")
+
+    @conversation_profile_id.setter
+    def conversation_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "conversation_profile_id", value)
+
+
+class DeploymentWhatsappCredentialsArgsDict(TypedDict):
+    business_account_id: pulumi.Input[_builtins.str]
+    """
+    The Business Account ID to use for the phone number.
+    """
+    phone_number: pulumi.Input[_builtins.str]
+    """
+    The phone number to register with WhatsApp.
+    """
+    waba_id: pulumi.Input[_builtins.str]
+    """
+    The WhatsApp Business Account ID.
+    """
+    auth_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Meta auth code provided by the embedded signup flow.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    auth_code_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    The Meta auth code provided by the embedded signup flow.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `auth_code` or `auth_code_wo` can only be set.
+    """
+    auth_code_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `auth_code_wo` write-only. Increment this value when an update to `auth_code_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
+    conversation_profile_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Conversation Profile ID to use for the deployment.
+    """
+    pin: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The 6-digit PIN created by the user for two-step verification.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    pin_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    The 6-digit PIN created by the user for two-step verification.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `pin` or `pin_wo` can only be set.
+    """
+    pin_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `pin_wo` write-only. Increment this value when an update to `pin_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
+
+@pulumi.input_type
+class DeploymentWhatsappCredentialsArgs:
+    def __init__(__self__, *,
+                 business_account_id: pulumi.Input[_builtins.str],
+                 phone_number: pulumi.Input[_builtins.str],
+                 waba_id: pulumi.Input[_builtins.str],
+                 auth_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_code_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_code_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 conversation_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pin: pulumi.Input[Optional[_builtins.str]] = None,
+                 pin_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 pin_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] business_account_id: The Business Account ID to use for the phone number.
+        :param pulumi.Input[_builtins.str] phone_number: The phone number to register with WhatsApp.
+        :param pulumi.Input[_builtins.str] waba_id: The WhatsApp Business Account ID.
+        :param pulumi.Input[_builtins.str] auth_code: The Meta auth code provided by the embedded signup flow.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] auth_code_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The Meta auth code provided by the embedded signup flow.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `auth_code` or `auth_code_wo` can only be set.
+        :param pulumi.Input[_builtins.str] auth_code_wo_version: Triggers update of `auth_code_wo` write-only. Increment this value when an update to `auth_code_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        :param pulumi.Input[_builtins.str] conversation_profile_id: The Conversation Profile ID to use for the deployment.
+        :param pulumi.Input[_builtins.str] pin: The 6-digit PIN created by the user for two-step verification.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] pin_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The 6-digit PIN created by the user for two-step verification.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `pin` or `pin_wo` can only be set.
+        :param pulumi.Input[_builtins.str] pin_wo_version: Triggers update of `pin_wo` write-only. Increment this value when an update to `pin_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        pulumi.set(__self__, "business_account_id", business_account_id)
+        pulumi.set(__self__, "phone_number", phone_number)
+        pulumi.set(__self__, "waba_id", waba_id)
+        if auth_code is not None:
+            pulumi.set(__self__, "auth_code", auth_code)
+        if auth_code_wo is not None:
+            pulumi.set(__self__, "auth_code_wo", auth_code_wo)
+        if auth_code_wo_version is not None:
+            pulumi.set(__self__, "auth_code_wo_version", auth_code_wo_version)
+        if conversation_profile_id is not None:
+            pulumi.set(__self__, "conversation_profile_id", conversation_profile_id)
+        if pin is not None:
+            pulumi.set(__self__, "pin", pin)
+        if pin_wo is not None:
+            pulumi.set(__self__, "pin_wo", pin_wo)
+        if pin_wo_version is not None:
+            pulumi.set(__self__, "pin_wo_version", pin_wo_version)
+
+    @_builtins.property
+    @pulumi.getter(name="businessAccountId")
+    def business_account_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Business Account ID to use for the phone number.
+        """
+        return pulumi.get(self, "business_account_id")
+
+    @business_account_id.setter
+    def business_account_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "business_account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[_builtins.str]:
+        """
+        The phone number to register with WhatsApp.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "phone_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wabaId")
+    def waba_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The WhatsApp Business Account ID.
+        """
+        return pulumi.get(self, "waba_id")
+
+    @waba_id.setter
+    def waba_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "waba_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authCode")
+    def auth_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Meta auth code provided by the embedded signup flow.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "auth_code")
+
+    @auth_code.setter
+    def auth_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authCodeWo")
+    def auth_code_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The Meta auth code provided by the embedded signup flow.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `auth_code` or `auth_code_wo` can only be set.
+        """
+        return pulumi.get(self, "auth_code_wo")
+
+    @auth_code_wo.setter
+    def auth_code_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_code_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authCodeWoVersion")
+    def auth_code_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `auth_code_wo` write-only. Increment this value when an update to `auth_code_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "auth_code_wo_version")
+
+    @auth_code_wo_version.setter
+    def auth_code_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auth_code_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationProfileId")
+    def conversation_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Conversation Profile ID to use for the deployment.
+        """
+        return pulumi.get(self, "conversation_profile_id")
+
+    @conversation_profile_id.setter
+    def conversation_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "conversation_profile_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pin(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The 6-digit PIN created by the user for two-step verification.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "pin")
+
+    @pin.setter
+    def pin(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pinWo")
+    def pin_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The 6-digit PIN created by the user for two-step verification.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `pin` or `pin_wo` can only be set.
+        """
+        return pulumi.get(self, "pin_wo")
+
+    @pin_wo.setter
+    def pin_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pin_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pinWoVersion")
+    def pin_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `pin_wo` write-only. Increment this value when an update to `pin_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "pin_wo_version")
+
+    @pin_wo_version.setter
+    def pin_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pin_wo_version", value)
 
 
 class EvaluationGoldenArgsDict(TypedDict):
@@ -19772,6 +24117,11 @@ class ExampleMessageChunkArgsDict(TypedDict):
     agent.
     Structure is documented below.
     """
+    blob: NotRequired[pulumi.Input[Optional['ExampleMessageChunkBlobArgsDict']]]
+    """
+    Represents a blob input or output in the conversation.
+    Structure is documented below.
+    """
     image: NotRequired[pulumi.Input[Optional['ExampleMessageChunkImageArgsDict']]]
     """
     Represents an image input or output in the conversation.
@@ -19801,6 +24151,7 @@ class ExampleMessageChunkArgsDict(TypedDict):
 class ExampleMessageChunkArgs:
     def __init__(__self__, *,
                  agent_transfer: pulumi.Input[Optional['ExampleMessageChunkAgentTransferArgs']] = None,
+                 blob: pulumi.Input[Optional['ExampleMessageChunkBlobArgs']] = None,
                  image: pulumi.Input[Optional['ExampleMessageChunkImageArgs']] = None,
                  text: pulumi.Input[Optional[_builtins.str]] = None,
                  tool_call: pulumi.Input[Optional['ExampleMessageChunkToolCallArgs']] = None,
@@ -19809,6 +24160,8 @@ class ExampleMessageChunkArgs:
         """
         :param pulumi.Input['ExampleMessageChunkAgentTransferArgs'] agent_transfer: Represents an event indicating the transfer of a conversation to a different
                agent.
+               Structure is documented below.
+        :param pulumi.Input['ExampleMessageChunkBlobArgs'] blob: Represents a blob input or output in the conversation.
                Structure is documented below.
         :param pulumi.Input['ExampleMessageChunkImageArgs'] image: Represents an image input or output in the conversation.
                Structure is documented below.
@@ -19822,6 +24175,8 @@ class ExampleMessageChunkArgs:
         """
         if agent_transfer is not None:
             pulumi.set(__self__, "agent_transfer", agent_transfer)
+        if blob is not None:
+            pulumi.set(__self__, "blob", blob)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if text is not None:
@@ -19846,6 +24201,19 @@ class ExampleMessageChunkArgs:
     @agent_transfer.setter
     def agent_transfer(self, value: pulumi.Input[Optional['ExampleMessageChunkAgentTransferArgs']]):
         pulumi.set(self, "agent_transfer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def blob(self) -> pulumi.Input[Optional['ExampleMessageChunkBlobArgs']]:
+        """
+        Represents a blob input or output in the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blob")
+
+    @blob.setter
+    def blob(self, value: pulumi.Input[Optional['ExampleMessageChunkBlobArgs']]):
+        pulumi.set(self, "blob", value)
 
     @_builtins.property
     @pulumi.getter
@@ -19969,6 +24337,53 @@ class ExampleMessageChunkAgentTransferArgs:
         pulumi.set(self, "display_name", value)
 
 
+class ExampleMessageChunkBlobArgsDict(TypedDict):
+    data: pulumi.Input[_builtins.str]
+    """
+    Raw bytes of the blob.
+    """
+    mime_type: pulumi.Input[_builtins.str]
+    """
+    The IANA standard MIME type of the source data.
+    """
+
+@pulumi.input_type
+class ExampleMessageChunkBlobArgs:
+    def __init__(__self__, *,
+                 data: pulumi.Input[_builtins.str],
+                 mime_type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] data: Raw bytes of the blob.
+        :param pulumi.Input[_builtins.str] mime_type: The IANA standard MIME type of the source data.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "mime_type", mime_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> pulumi.Input[_builtins.str]:
+        """
+        Raw bytes of the blob.
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IANA standard MIME type of the source data.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @mime_type.setter
+    def mime_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mime_type", value)
+
+
 class ExampleMessageChunkImageArgsDict(TypedDict):
     data: pulumi.Input[_builtins.str]
     """
@@ -19982,12 +24397,17 @@ class ExampleMessageChunkImageArgsDict(TypedDict):
     * image/jpeg
     * image/webp
     """
+    alt_text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The alternative text for the image.
+    """
 
 @pulumi.input_type
 class ExampleMessageChunkImageArgs:
     def __init__(__self__, *,
                  data: pulumi.Input[_builtins.str],
-                 mime_type: pulumi.Input[_builtins.str]):
+                 mime_type: pulumi.Input[_builtins.str],
+                 alt_text: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] data: Raw bytes of the image.
         :param pulumi.Input[_builtins.str] mime_type: The IANA standard MIME type of the source data.
@@ -19995,9 +24415,12 @@ class ExampleMessageChunkImageArgs:
                * image/png
                * image/jpeg
                * image/webp
+        :param pulumi.Input[_builtins.str] alt_text: The alternative text for the image.
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "mime_type", mime_type)
+        if alt_text is not None:
+            pulumi.set(__self__, "alt_text", alt_text)
 
     @_builtins.property
     @pulumi.getter
@@ -20026,6 +24449,18 @@ class ExampleMessageChunkImageArgs:
     @mime_type.setter
     def mime_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "mime_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="altText")
+    def alt_text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The alternative text for the image.
+        """
+        return pulumi.get(self, "alt_text")
+
+    @alt_text.setter
+    def alt_text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "alt_text", value)
 
 
 class ExampleMessageChunkToolCallArgsDict(TypedDict):
@@ -20741,24 +25176,42 @@ class GuardrailCodeCallbackAfterAgentCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackAfterAgentCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -20796,6 +25249,23 @@ class GuardrailCodeCallbackAfterAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class GuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDict):
@@ -20812,24 +25282,42 @@ class GuardrailCodeCallbackAfterModelCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackAfterModelCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -20867,6 +25355,23 @@ class GuardrailCodeCallbackAfterModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class GuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDict):
@@ -20883,24 +25388,42 @@ class GuardrailCodeCallbackBeforeAgentCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackBeforeAgentCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -20938,6 +25461,23 @@ class GuardrailCodeCallbackBeforeAgentCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class GuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDict):
@@ -20954,24 +25494,42 @@ class GuardrailCodeCallbackBeforeModelCallbackArgsDict(TypedDict):
     Whether the callback is disabled. Disabled callbacks are ignored by the
     agent.
     """
+    proactive_execution_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If enabled, the callback will also be executed on intermediate model
+    outputs. This setting only affects after model callback.
+    **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+    executed after receiving all model responses. Enabling proactive execution
+    may have negative implication on the execution cost and latency, and
+    should only be enabled in rare situations.
+    """
 
 @pulumi.input_type
 class GuardrailCodeCallbackBeforeModelCallbackArgs:
     def __init__(__self__, *,
                  python_code: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proactive_execution_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] python_code: The python code to execute for the callback.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the callback.
         :param pulumi.Input[_builtins.bool] disabled: Whether the callback is disabled. Disabled callbacks are ignored by the
                agent.
+        :param pulumi.Input[_builtins.bool] proactive_execution_enabled: If enabled, the callback will also be executed on intermediate model
+               outputs. This setting only affects after model callback.
+               **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+               executed after receiving all model responses. Enabling proactive execution
+               may have negative implication on the execution cost and latency, and
+               should only be enabled in rare situations.
         """
         pulumi.set(__self__, "python_code", python_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if proactive_execution_enabled is not None:
+            pulumi.set(__self__, "proactive_execution_enabled", proactive_execution_enabled)
 
     @_builtins.property
     @pulumi.getter(name="pythonCode")
@@ -21009,6 +25567,23 @@ class GuardrailCodeCallbackBeforeModelCallbackArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proactiveExecutionEnabled")
+    def proactive_execution_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If enabled, the callback will also be executed on intermediate model
+        outputs. This setting only affects after model callback.
+        **ENABLE WITH CAUTION**. Typically after model callback only needs to be
+        executed after receiving all model responses. Enabling proactive execution
+        may have negative implication on the execution cost and latency, and
+        should only be enabled in rare situations.
+        """
+        return pulumi.get(self, "proactive_execution_enabled")
+
+    @proactive_execution_enabled.setter
+    def proactive_execution_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proactive_execution_enabled", value)
 
 
 class GuardrailContentFilterArgsDict(TypedDict):
@@ -25490,7 +30065,7 @@ class ToolMcpToolArgsDict(TypedDict):
     api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolMcpToolApiAuthenticationArgsDict']]]]]
     """
     (Output)
-    Authentication information required for API calls.
+    Authentication information required for calling the remote agent.
     Structure is documented below.
     """
     custom_headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
@@ -25567,7 +30142,7 @@ class ToolMcpToolArgs:
                  tls_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ToolMcpToolTlsConfigArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ToolMcpToolApiAuthenticationArgs']]] api_authentications: (Output)
-               Authentication information required for API calls.
+               Authentication information required for calling the remote agent.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_headers: (Output)
                The custom headers to send in the request to the MCP server. The values must be in the format `$context.variables.<name_of_variable>` and can be set in the session variables.
@@ -25625,7 +30200,7 @@ class ToolMcpToolArgs:
     def api_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolMcpToolApiAuthenticationArgs']]]]:
         """
         (Output)
-        Authentication information required for API calls.
+        Authentication information required for calling the remote agent.
         Structure is documented below.
         """
         return pulumi.get(self, "api_authentications")
@@ -26074,7 +30649,8 @@ class ToolMcpToolApiAuthenticationOauthConfigArgsDict(TypedDict):
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
-    The OAuth scopes to grant.
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
     """
     token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -26105,7 +30681,8 @@ class ToolMcpToolApiAuthenticationOauthConfigArgs:
                Possible values:
                CLIENT_CREDENTIAL
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Output)
-               The OAuth scopes to grant.
+               The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
         :param pulumi.Input[_builtins.str] token_endpoint: (Output)
                The token endpoint in the OAuth provider to exchange for an access token.
         """
@@ -26171,7 +30748,8 @@ class ToolMcpToolApiAuthenticationOauthConfigArgs:
     def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
-        The OAuth scopes to grant.
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
         """
         return pulumi.get(self, "scopes")
 
@@ -26194,6 +30772,12 @@ class ToolMcpToolApiAuthenticationOauthConfigArgs:
 
 
 class ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -26209,8 +30793,12 @@ class ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs:
     def __init__(__self__, *,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Output)
+               The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
         :param pulumi.Input[_builtins.str] service_account: (Output)
                The email address of the service account used for authenticatation. CES
                uses this service account to exchange an access token and the access token
@@ -26220,8 +30808,24 @@ class ToolMcpToolApiAuthenticationServiceAccountAuthConfigArgs:
                CES service agent
                `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
         """
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -26414,7 +31018,7 @@ class ToolOpenApiToolArgsDict(TypedDict):
     api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgsDict']]]]]
     """
     (Output)
-    Authentication information required for API calls.
+    Authentication information required for calling the remote agent.
     Structure is documented below.
     """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -26469,7 +31073,7 @@ class ToolOpenApiToolArgs:
                  url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgs']]] api_authentications: (Output)
-               Authentication information required for API calls.
+               Authentication information required for calling the remote agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: (Output)
                The description of the system tool.
@@ -26511,7 +31115,7 @@ class ToolOpenApiToolArgs:
     def api_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgs']]]]:
         """
         (Output)
-        Authentication information required for API calls.
+        Authentication information required for calling the remote agent.
         Structure is documented below.
         """
         return pulumi.get(self, "api_authentications")
@@ -26917,7 +31521,8 @@ class ToolOpenApiToolApiAuthenticationOauthConfigArgsDict(TypedDict):
     scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
-    The OAuth scopes to grant.
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
     """
     token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -26948,7 +31553,8 @@ class ToolOpenApiToolApiAuthenticationOauthConfigArgs:
                Possible values:
                CLIENT_CREDENTIAL
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Output)
-               The OAuth scopes to grant.
+               The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
         :param pulumi.Input[_builtins.str] token_endpoint: (Output)
                The token endpoint in the OAuth provider to exchange for an access token.
         """
@@ -27014,7 +31620,8 @@ class ToolOpenApiToolApiAuthenticationOauthConfigArgs:
     def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
-        The OAuth scopes to grant.
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
         """
         return pulumi.get(self, "scopes")
 
@@ -27037,6 +31644,12 @@ class ToolOpenApiToolApiAuthenticationOauthConfigArgs:
 
 
 class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -27052,8 +31665,12 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict
 @pulumi.input_type
 class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs:
     def __init__(__self__, *,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Output)
+               The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
         :param pulumi.Input[_builtins.str] service_account: (Output)
                The email address of the service account used for authenticatation. CES
                uses this service account to exchange an access token and the access token
@@ -27063,8 +31680,24 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs:
                CES service agent
                `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
         """
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
@@ -27395,6 +32028,12 @@ class ToolRemoteAgentToolArgsDict(TypedDict):
     The agent card of the remote agent that this tool invokes.
     Structure is documented below.
     """
+    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationArgsDict']]]]]
+    """
+    (Output)
+    Authentication information required for calling the remote agent.
+    Structure is documented below.
+    """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -27410,11 +32049,15 @@ class ToolRemoteAgentToolArgsDict(TypedDict):
 class ToolRemoteAgentToolArgs:
     def __init__(__self__, *,
                  agent_cards: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolAgentCardArgs']]]] = None,
+                 api_authentications: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationArgs']]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolAgentCardArgs']]] agent_cards: (Output)
                The agent card of the remote agent that this tool invokes.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationArgs']]] api_authentications: (Output)
+               Authentication information required for calling the remote agent.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: (Output)
                The description of the system tool.
@@ -27423,6 +32066,8 @@ class ToolRemoteAgentToolArgs:
         """
         if agent_cards is not None:
             pulumi.set(__self__, "agent_cards", agent_cards)
+        if api_authentications is not None:
+            pulumi.set(__self__, "api_authentications", api_authentications)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -27441,6 +32086,20 @@ class ToolRemoteAgentToolArgs:
     @agent_cards.setter
     def agent_cards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolAgentCardArgs']]]]):
         pulumi.set(self, "agent_cards", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiAuthentications")
+    def api_authentications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationArgs']]]]:
+        """
+        (Output)
+        Authentication information required for calling the remote agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_authentications")
+
+    @api_authentications.setter
+    def api_authentications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationArgs']]]]):
+        pulumi.set(self, "api_authentications", value)
 
     @_builtins.property
     @pulumi.getter
@@ -27889,6 +32548,515 @@ class ToolRemoteAgentToolAgentCardSupportedInterfaceArgs:
     @url.setter
     def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
+
+
+class ToolRemoteAgentToolApiAuthenticationArgsDict(TypedDict):
+    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgsDict']]]]]
+    """
+    (Output)
+    Configurations for authentication with API key.
+    Structure is documented below.
+    """
+    bearer_token_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgsDict']]]]]
+    """
+    (Output)
+    Configurations for authentication with a bearer token.
+    Structure is documented below.
+    """
+    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationOauthConfigArgsDict']]]]]
+    """
+    (Output)
+    Configurations for authentication with OAuth.
+    Structure is documented below.
+    """
+    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]]
+    """
+    (Output)
+    Configurations for authentication using a custom service account.
+    Structure is documented below.
+    """
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]]
+    """
+    (Output)
+    Configurations for authentication with [ID
+    token](https://cloud.google.com/docs/authentication/token-types#id) generated
+    from service agent.
+    """
+
+@pulumi.input_type
+class ToolRemoteAgentToolApiAuthenticationArgs:
+    def __init__(__self__, *,
+                 api_key_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs']]]] = None,
+                 bearer_token_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs']]]] = None,
+                 oauth_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationOauthConfigArgs']]]] = None,
+                 service_account_auth_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs']]]] = None,
+                 service_agent_id_token_auth_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs']]] api_key_configs: (Output)
+               Configurations for authentication with API key.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs']]] bearer_token_configs: (Output)
+               Configurations for authentication with a bearer token.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationOauthConfigArgs']]] oauth_configs: (Output)
+               Configurations for authentication with OAuth.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs']]] service_account_auth_configs: (Output)
+               Configurations for authentication using a custom service account.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]] service_agent_id_token_auth_configs: (Output)
+               Configurations for authentication with [ID
+               token](https://cloud.google.com/docs/authentication/token-types#id) generated
+               from service agent.
+        """
+        if api_key_configs is not None:
+            pulumi.set(__self__, "api_key_configs", api_key_configs)
+        if bearer_token_configs is not None:
+            pulumi.set(__self__, "bearer_token_configs", bearer_token_configs)
+        if oauth_configs is not None:
+            pulumi.set(__self__, "oauth_configs", oauth_configs)
+        if service_account_auth_configs is not None:
+            pulumi.set(__self__, "service_account_auth_configs", service_account_auth_configs)
+        if service_agent_id_token_auth_configs is not None:
+            pulumi.set(__self__, "service_agent_id_token_auth_configs", service_agent_id_token_auth_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfigs")
+    def api_key_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs']]]]:
+        """
+        (Output)
+        Configurations for authentication with API key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_configs")
+
+    @api_key_configs.setter
+    def api_key_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs']]]]):
+        pulumi.set(self, "api_key_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfigs")
+    def bearer_token_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs']]]]:
+        """
+        (Output)
+        Configurations for authentication with a bearer token.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_configs")
+
+    @bearer_token_configs.setter
+    def bearer_token_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs']]]]):
+        pulumi.set(self, "bearer_token_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfigs")
+    def oauth_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationOauthConfigArgs']]]]:
+        """
+        (Output)
+        Configurations for authentication with OAuth.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_configs")
+
+    @oauth_configs.setter
+    def oauth_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationOauthConfigArgs']]]]):
+        pulumi.set(self, "oauth_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfigs")
+    def service_account_auth_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs']]]]:
+        """
+        (Output)
+        Configurations for authentication using a custom service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_configs")
+
+    @service_account_auth_configs.setter
+    def service_account_auth_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs']]]]):
+        pulumi.set(self, "service_account_auth_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentIdTokenAuthConfigs")
+    def service_agent_id_token_auth_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]]:
+        """
+        (Output)
+        Configurations for authentication with [ID
+        token](https://cloud.google.com/docs/authentication/token-types#id) generated
+        from service agent.
+        """
+        return pulumi.get(self, "service_agent_id_token_auth_configs")
+
+    @service_agent_id_token_auth_configs.setter
+    def service_agent_id_token_auth_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]]):
+        pulumi.set(self, "service_agent_id_token_auth_configs", value)
+
+
+class ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgsDict(TypedDict):
+    api_key_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the API key.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Key location in the request.
+    Possible values:
+    HEADER
+    QUERY_STRING
+    """
+
+@pulumi.input_type
+class ToolRemoteAgentToolApiAuthenticationApiKeyConfigArgs:
+    def __init__(__self__, *,
+                 api_key_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_location: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key_secret_version: (Output)
+               The name of the SecretManager secret version resource storing the API key.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[_builtins.str] key_name: (Output)
+               The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param pulumi.Input[_builtins.str] request_location: (Output)
+               Key location in the request.
+               Possible values:
+               HEADER
+               QUERY_STRING
+        """
+        if api_key_secret_version is not None:
+            pulumi.set(__self__, "api_key_secret_version", api_key_secret_version)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+        if request_location is not None:
+            pulumi.set(__self__, "request_location", request_location)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeySecretVersion")
+    def api_key_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the SecretManager secret version resource storing the API key.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "api_key_secret_version")
+
+    @api_key_secret_version.setter
+    def api_key_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "api_key_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Key location in the request.
+        Possible values:
+        HEADER
+        QUERY_STRING
+        """
+        return pulumi.get(self, "request_location")
+
+    @request_location.setter
+    def request_location(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "request_location", value)
+
+
+class ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The bearer token. Must be in the format $context.variables.<name_of_variable>.
+    """
+
+@pulumi.input_type
+class ToolRemoteAgentToolApiAuthenticationBearerTokenConfigArgs:
+    def __init__(__self__, *,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] token: (Output)
+               The bearer token. Must be in the format $context.variables.<name_of_variable>.
+        """
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The bearer token. Must be in the format $context.variables.<name_of_variable>.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token", value)
+
+
+class ToolRemoteAgentToolApiAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The client ID from the OAuth provider.
+    """
+    client_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The name of the SecretManager secret version resource storing the
+    client secret.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+    service agent
+    `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+    oauth_grant_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    OAuth grant types.
+    Possible values:
+    CLIENT_CREDENTIAL
+    """
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
+    token_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+
+@pulumi.input_type
+class ToolRemoteAgentToolApiAuthenticationOauthConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_grant_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 token_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: (Output)
+               The client ID from the OAuth provider.
+        :param pulumi.Input[_builtins.str] client_secret_version: (Output)
+               The name of the SecretManager secret version resource storing the
+               client secret.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+               Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+               service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        :param pulumi.Input[_builtins.str] oauth_grant_type: (Output)
+               OAuth grant types.
+               Possible values:
+               CLIENT_CREDENTIAL
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Output)
+               The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
+        :param pulumi.Input[_builtins.str] token_endpoint: (Output)
+               The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret_version is not None:
+            pulumi.set(__self__, "client_secret_version", client_secret_version)
+        if oauth_grant_type is not None:
+            pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token_endpoint is not None:
+            pulumi.set(__self__, "token_endpoint", token_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The name of the SecretManager secret version resource storing the
+        client secret.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
+        service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @client_secret_version.setter
+    def client_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        OAuth grant types.
+        Possible values:
+        CLIENT_CREDENTIAL
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @oauth_grant_type.setter
+    def oauth_grant_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oauth_grant_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_endpoint", value)
+
+
+class ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgsDict(TypedDict):
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The OAuth scopes to grant. If not specified, the default scope
+    `https://www.googleapis.com/auth/cloud-platform` is used.
+    """
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The email address of the service account used for authenticatation. CES
+    uses this service account to exchange an access token and the access token
+    is then sent in the `Authorization` header of the request.
+    The service account must have the
+    `roles/iam.serviceAccountTokenCreator` role granted to the
+    CES service agent
+    `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+    """
+
+@pulumi.input_type
+class ToolRemoteAgentToolApiAuthenticationServiceAccountAuthConfigArgs:
+    def __init__(__self__, *,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Output)
+               The OAuth scopes to grant. If not specified, the default scope
+               `https://www.googleapis.com/auth/cloud-platform` is used.
+        :param pulumi.Input[_builtins.str] service_account: (Output)
+               The email address of the service account used for authenticatation. CES
+               uses this service account to exchange an access token and the access token
+               is then sent in the `Authorization` header of the request.
+               The service account must have the
+               `roles/iam.serviceAccountTokenCreator` role granted to the
+               CES service agent
+               `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The OAuth scopes to grant. If not specified, the default scope
+        `https://www.googleapis.com/auth/cloud-platform` is used.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The email address of the service account used for authenticatation. CES
+        uses this service account to exchange an access token and the access token
+        is then sent in the `Authorization` header of the request.
+        The service account must have the
+        `roles/iam.serviceAccountTokenCreator` role granted to the
+        CES service agent
+        `service-<PROJECT-NUMBER>@gcp-sa-ces.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+
+class ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class ToolRemoteAgentToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
+    def __init__(__self__):
+        pass
 
 
 class ToolSystemToolArgsDict(TypedDict):
@@ -29450,6 +34618,11 @@ class ToolsetMcpToolsetArgsDict(TypedDict):
     client should trust.
     Structure is documented below.
     """
+    tool_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolsetMcpToolsetToolOverrideArgsDict']]]]]
+    """
+    A list of tool overrides for the toolset.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolsetMcpToolsetArgs:
@@ -29458,7 +34631,8 @@ class ToolsetMcpToolsetArgs:
                  api_authentication: pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationArgs']] = None,
                  custom_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  service_directory_config: pulumi.Input[Optional['ToolsetMcpToolsetServiceDirectoryConfigArgs']] = None,
-                 tls_config: pulumi.Input[Optional['ToolsetMcpToolsetTlsConfigArgs']] = None):
+                 tls_config: pulumi.Input[Optional['ToolsetMcpToolsetTlsConfigArgs']] = None,
+                 tool_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['ToolsetMcpToolsetToolOverrideArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] server_address: The address of the MCP server, for example, "https://example.com/mcp/". If
                the server is built with the MCP SDK, the url should be suffixed with
@@ -29480,6 +34654,8 @@ class ToolsetMcpToolsetArgs:
         :param pulumi.Input['ToolsetMcpToolsetTlsConfigArgs'] tls_config: The TLS configuration. Includes the custom server certificates that the
                client should trust.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ToolsetMcpToolsetToolOverrideArgs']]] tool_overrides: A list of tool overrides for the toolset.
+               Structure is documented below.
         """
         pulumi.set(__self__, "server_address", server_address)
         if api_authentication is not None:
@@ -29490,6 +34666,8 @@ class ToolsetMcpToolsetArgs:
             pulumi.set(__self__, "service_directory_config", service_directory_config)
         if tls_config is not None:
             pulumi.set(__self__, "tls_config", tls_config)
+        if tool_overrides is not None:
+            pulumi.set(__self__, "tool_overrides", tool_overrides)
 
     @_builtins.property
     @pulumi.getter(name="serverAddress")
@@ -29565,6 +34743,19 @@ class ToolsetMcpToolsetArgs:
     @tls_config.setter
     def tls_config(self, value: pulumi.Input[Optional['ToolsetMcpToolsetTlsConfigArgs']]):
         pulumi.set(self, "tls_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolOverrides")
+    def tool_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolsetMcpToolsetToolOverrideArgs']]]]:
+        """
+        A list of tool overrides for the toolset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_overrides")
+
+    @tool_overrides.setter
+    def tool_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolsetMcpToolsetToolOverrideArgs']]]]):
+        pulumi.set(self, "tool_overrides", value)
 
 
 class ToolsetMcpToolsetApiAuthenticationArgsDict(TypedDict):
@@ -30169,6 +35360,74 @@ class ToolsetMcpToolsetTlsConfigCaCertArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+
+class ToolsetMcpToolsetToolOverrideArgsDict(TypedDict):
+    tool: pulumi.Input[_builtins.str]
+    """
+    The name of the tool to be overridden.
+    """
+    description_override: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description override for the tool.
+    """
+    name_override: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name override for the tool.
+    """
+
+@pulumi.input_type
+class ToolsetMcpToolsetToolOverrideArgs:
+    def __init__(__self__, *,
+                 tool: pulumi.Input[_builtins.str],
+                 description_override: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_override: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] tool: The name of the tool to be overridden.
+        :param pulumi.Input[_builtins.str] description_override: The description override for the tool.
+        :param pulumi.Input[_builtins.str] name_override: The name override for the tool.
+        """
+        pulumi.set(__self__, "tool", tool)
+        if description_override is not None:
+            pulumi.set(__self__, "description_override", description_override)
+        if name_override is not None:
+            pulumi.set(__self__, "name_override", name_override)
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the tool to be overridden.
+        """
+        return pulumi.get(self, "tool")
+
+    @tool.setter
+    def tool(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="descriptionOverride")
+    def description_override(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description override for the tool.
+        """
+        return pulumi.get(self, "description_override")
+
+    @description_override.setter
+    def description_override(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description_override", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameOverride")
+    def name_override(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name override for the tool.
+        """
+        return pulumi.get(self, "name_override")
+
+    @name_override.setter
+    def name_override(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name_override", value)
 
 
 class ToolsetOpenApiToolsetArgsDict(TypedDict):

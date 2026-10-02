@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
         /// </summary>
         public readonly string StorageClass;
+        /// <summary>
+        /// The modification time of the object metadata in RFC 3339 format.
+        /// </summary>
+        public readonly string Updated;
 
         [OutputConstructor]
         private GetBucketObjectsBucketObjectResult(
@@ -44,13 +48,16 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string selfLink,
 
-            string storageClass)
+            string storageClass,
+
+            string updated)
         {
             ContentType = contentType;
             MediaLink = mediaLink;
             Name = name;
             SelfLink = selfLink;
             StorageClass = storageClass;
+            Updated = updated;
         }
     }
 }

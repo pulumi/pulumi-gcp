@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.ExampleMessageChunkAgentTransferArgs;
+import com.pulumi.gcp.ces.inputs.ExampleMessageChunkBlobArgs;
 import com.pulumi.gcp.ces.inputs.ExampleMessageChunkImageArgs;
 import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolCallArgs;
 import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolResponseArgs;
@@ -36,6 +37,23 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<ExampleMessageChunkAgentTransferArgs>> agentTransfer() {
         return Optional.ofNullable(this.agentTransfer);
+    }
+
+    /**
+     * Represents a blob input or output in the conversation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="blob")
+    private @Nullable Output<ExampleMessageChunkBlobArgs> blob;
+
+    /**
+     * @return Represents a blob input or output in the conversation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ExampleMessageChunkBlobArgs>> blob() {
+        return Optional.ofNullable(this.blob);
     }
 
     /**
@@ -125,6 +143,7 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
 
     private ExampleMessageChunkArgs(ExampleMessageChunkArgs $) {
         this.agentTransfer = $.agentTransfer;
+        this.blob = $.blob;
         this.image = $.image;
         this.text = $.text;
         this.toolCall = $.toolCall;
@@ -173,6 +192,29 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
          */
         public Builder agentTransfer(ExampleMessageChunkAgentTransferArgs agentTransfer) {
             return agentTransfer(Output.of(agentTransfer));
+        }
+
+        /**
+         * @param blob Represents a blob input or output in the conversation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blob(@Nullable Output<ExampleMessageChunkBlobArgs> blob) {
+            $.blob = blob;
+            return this;
+        }
+
+        /**
+         * @param blob Represents a blob input or output in the conversation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blob(ExampleMessageChunkBlobArgs blob) {
+            return blob(Output.of(blob));
         }
 
         /**

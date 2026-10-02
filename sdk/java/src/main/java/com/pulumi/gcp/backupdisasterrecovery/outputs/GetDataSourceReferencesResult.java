@@ -9,8 +9,6 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceReferencesData
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataSourceReferencesResult {
@@ -22,13 +20,6 @@ public final class GetDataSourceReferencesResult {
     private String id;
     private String location;
     private String project;
-    /**
-     * @deprecated
-     * `resourceType` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-    private @Nullable String resourceType;
 
     private GetDataSourceReferencesResult() {}
     public List<GetDataSourceReferencesDataSourceReference> dataSourceReferences() {
@@ -47,15 +38,6 @@ public final class GetDataSourceReferencesResult {
     public String project() {
         return this.project;
     }
-    /**
-     * @deprecated
-     * `resourceType` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `resourceType` is deprecated and will be removed in a future major release. */
-    public Optional<String> resourceType() {
-        return Optional.ofNullable(this.resourceType);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,7 +52,6 @@ public final class GetDataSourceReferencesResult {
         private String id;
         private String location;
         private String project;
-        private @Nullable String resourceType;
         public Builder() {}
         public Builder(GetDataSourceReferencesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -78,7 +59,6 @@ public final class GetDataSourceReferencesResult {
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.project = defaults.project;
-    	      this.resourceType = defaults.resourceType;
         }
 
         @CustomType.Setter
@@ -116,19 +96,12 @@ public final class GetDataSourceReferencesResult {
             this.project = project;
             return this;
         }
-        @CustomType.Setter
-        public Builder resourceType(@Nullable String resourceType) {
-
-            this.resourceType = resourceType;
-            return this;
-        }
         public GetDataSourceReferencesResult build() {
             final var _resultValue = new GetDataSourceReferencesResult();
             _resultValue.dataSourceReferences = dataSourceReferences;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.project = project;
-            _resultValue.resourceType = resourceType;
             return _resultValue;
         }
     }

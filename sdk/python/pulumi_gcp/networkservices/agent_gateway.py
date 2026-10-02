@@ -22,6 +22,7 @@ __all__ = ['AgentGatewayArgs', 'AgentGateway']
 class AgentGatewayArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
+                 agent_connectivity_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  google_managed: pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']] = None,
@@ -36,6 +37,9 @@ class AgentGatewayArgs:
         The set of arguments for constructing a AgentGateway resource.
 
         :param pulumi.Input[_builtins.str] location: The location of the agent gateway.
+        :param pulumi.Input[_builtins.str] agent_connectivity_template: The resource name of the AgentConnectivityTemplate.
+               Must be of format
+               `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -68,6 +72,8 @@ class AgentGatewayArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        if agent_connectivity_template is not None:
+            pulumi.set(__self__, "agent_connectivity_template", agent_connectivity_template)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -103,6 +109,20 @@ class AgentGatewayArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentConnectivityTemplate")
+    def agent_connectivity_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the AgentConnectivityTemplate.
+        Must be of format
+        `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+        """
+        return pulumi.get(self, "agent_connectivity_template")
+
+    @agent_connectivity_template.setter
+    def agent_connectivity_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_connectivity_template", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -249,6 +269,7 @@ class AgentGatewayArgs:
 @pulumi.input_type
 class _AgentGatewayState:
     def __init__(__self__, *,
+                 agent_connectivity_template: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_gateway_cards: pulumi.Input[Optional[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -269,6 +290,9 @@ class _AgentGatewayState:
         """
         Input properties used for looking up and filtering AgentGateway resources.
 
+        :param pulumi.Input[_builtins.str] agent_connectivity_template: The resource name of the AgentConnectivityTemplate.
+               Must be of format
+               `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
         :param pulumi.Input[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]] agent_gateway_cards: AgentGatewayOutputCard contains informational output-only fields.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -312,6 +336,8 @@ class _AgentGatewayState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
         """
+        if agent_connectivity_template is not None:
+            pulumi.set(__self__, "agent_connectivity_template", agent_connectivity_template)
         if agent_gateway_cards is not None:
             pulumi.set(__self__, "agent_gateway_cards", agent_gateway_cards)
         if create_time is not None:
@@ -349,6 +375,20 @@ class _AgentGatewayState:
             pulumi.set(__self__, "self_managed", self_managed)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="agentConnectivityTemplate")
+    def agent_connectivity_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the AgentConnectivityTemplate.
+        Must be of format
+        `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+        """
+        return pulumi.get(self, "agent_connectivity_template")
+
+    @agent_connectivity_template.setter
+    def agent_connectivity_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_connectivity_template", value)
 
     @_builtins.property
     @pulumi.getter(name="agentGatewayCards")
@@ -587,6 +627,7 @@ class AgentGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_connectivity_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']]] = None,
@@ -629,7 +670,7 @@ class AgentGateway(pulumi.CustomResource):
         default_network_attachment = gcp.compute.NetworkAttachment("default",
             name="my-gateway-attachment",
             region="us-central1",
-            connection_preference="ACCEPT_MANUAL",
+            connection_preference="ACCEPT_AUTOMATIC",
             subnetworks=[default_subnetwork.id])
         default_managed_zone = gcp.dns.ManagedZone("default",
             name="my-gateway-zone",
@@ -640,6 +681,22 @@ class AgentGateway(pulumi.CustomResource):
                 "networks": [{
                     "network_url": default_network.id,
                 }],
+            })
+        default_agent_connectivity_template = gcp.networkservices.AgentConnectivityTemplate("default",
+            agent_connectivity_template_id="my-full-agent-gateway-template",
+            location="us-central1",
+            description="A basic configuration for Agent Connectivity Template",
+            labels={
+                "env": "test",
+                "tier": "gold",
+            },
+            access_path="AGENT_TO_ANYWHERE",
+            egress_network_config={
+                "network_attachment": default_network_attachment.id,
+                "dns_peering_config": {
+                    "domain": default_managed_zone.dns_name,
+                    "target_network": default_network.id,
+                },
             })
         default = gcp.networkservices.AgentGateway("default",
             name="my-full-agent-gateway",
@@ -653,17 +710,8 @@ class AgentGateway(pulumi.CustomResource):
             google_managed={
                 "governed_access_path": "AGENT_TO_ANYWHERE",
             },
+            agent_connectivity_template=default_agent_connectivity_template.agent_connectivity_template_id.apply(lambda agent_connectivity_template_id: f"projects/{project.number}/locations/us-central1/agentConnectivityTemplates/{agent_connectivity_template_id}"),
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
-            network_config={
-                "egress": {
-                    "network_attachment": default_network_attachment.id,
-                },
-                "dns_peering_config": {
-                    "domains": [default_managed_zone.dns_name],
-                    "target_project": project.project_id,
-                    "target_network": default_network.id,
-                },
-            },
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
         ### Network Services Agent Gateway Client To Agent
@@ -718,6 +766,9 @@ class AgentGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] agent_connectivity_template: The resource name of the AgentConnectivityTemplate.
+               Must be of format
+               `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -786,7 +837,7 @@ class AgentGateway(pulumi.CustomResource):
         default_network_attachment = gcp.compute.NetworkAttachment("default",
             name="my-gateway-attachment",
             region="us-central1",
-            connection_preference="ACCEPT_MANUAL",
+            connection_preference="ACCEPT_AUTOMATIC",
             subnetworks=[default_subnetwork.id])
         default_managed_zone = gcp.dns.ManagedZone("default",
             name="my-gateway-zone",
@@ -797,6 +848,22 @@ class AgentGateway(pulumi.CustomResource):
                 "networks": [{
                     "network_url": default_network.id,
                 }],
+            })
+        default_agent_connectivity_template = gcp.networkservices.AgentConnectivityTemplate("default",
+            agent_connectivity_template_id="my-full-agent-gateway-template",
+            location="us-central1",
+            description="A basic configuration for Agent Connectivity Template",
+            labels={
+                "env": "test",
+                "tier": "gold",
+            },
+            access_path="AGENT_TO_ANYWHERE",
+            egress_network_config={
+                "network_attachment": default_network_attachment.id,
+                "dns_peering_config": {
+                    "domain": default_managed_zone.dns_name,
+                    "target_network": default_network.id,
+                },
             })
         default = gcp.networkservices.AgentGateway("default",
             name="my-full-agent-gateway",
@@ -810,17 +877,8 @@ class AgentGateway(pulumi.CustomResource):
             google_managed={
                 "governed_access_path": "AGENT_TO_ANYWHERE",
             },
+            agent_connectivity_template=default_agent_connectivity_template.agent_connectivity_template_id.apply(lambda agent_connectivity_template_id: f"projects/{project.number}/locations/us-central1/agentConnectivityTemplates/{agent_connectivity_template_id}"),
             registries=["//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1"],
-            network_config={
-                "egress": {
-                    "network_attachment": default_network_attachment.id,
-                },
-                "dns_peering_config": {
-                    "domains": [default_managed_zone.dns_name],
-                    "target_project": project.project_id,
-                    "target_network": default_network.id,
-                },
-            },
             opts = pulumi.ResourceOptions(depends_on=[agent_registry]))
         ```
         ### Network Services Agent Gateway Client To Agent
@@ -888,6 +946,7 @@ class AgentGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_connectivity_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict', 'outputs.AgentGatewayGoogleManaged']]] = None,
@@ -908,6 +967,7 @@ class AgentGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentGatewayArgs.__new__(AgentGatewayArgs)
 
+            __props__.__dict__["agent_connectivity_template"] = agent_connectivity_template
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["google_managed"] = google_managed
@@ -939,6 +999,7 @@ class AgentGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            agent_connectivity_template: pulumi.Input[Optional[_builtins.str]] = None,
             agent_gateway_cards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict', 'outputs.AgentGatewayAgentGatewayCard']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -963,6 +1024,9 @@ class AgentGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] agent_connectivity_template: The resource name of the AgentConnectivityTemplate.
+               Must be of format
+               `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
         :param pulumi.Input[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict', 'outputs.AgentGatewayAgentGatewayCard']]]] agent_gateway_cards: AgentGatewayOutputCard contains informational output-only fields.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
@@ -1010,6 +1074,7 @@ class AgentGateway(pulumi.CustomResource):
 
         __props__ = _AgentGatewayState.__new__(_AgentGatewayState)
 
+        __props__.__dict__["agent_connectivity_template"] = agent_connectivity_template
         __props__.__dict__["agent_gateway_cards"] = agent_gateway_cards
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1028,6 +1093,16 @@ class AgentGateway(pulumi.CustomResource):
         __props__.__dict__["self_managed"] = self_managed
         __props__.__dict__["update_time"] = update_time
         return AgentGateway(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="agentConnectivityTemplate")
+    def agent_connectivity_template(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The resource name of the AgentConnectivityTemplate.
+        Must be of format
+        `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+        """
+        return pulumi.get(self, "agent_connectivity_template")
 
     @_builtins.property
     @pulumi.getter(name="agentGatewayCards")

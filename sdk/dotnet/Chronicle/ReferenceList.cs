@@ -59,16 +59,13 @@ namespace Pulumi.Gcp.Chronicle
     ///             },
     ///         },
     ///         SyntaxType = "REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING",
-    ///         ScopeInfos = new[]
+    ///         ScopeInfo = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoArgs
     ///         {
-    ///             new Gcp.Chronicle.Inputs.ReferenceListScopeInfoArgs
+    ///             ReferenceListScope = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoReferenceListScopeArgs
     ///             {
-    ///                 ReferenceListScope = new Gcp.Chronicle.Inputs.ReferenceListScopeInfoReferenceListScopeArgs
+    ///                 ScopeNames = new[]
     ///                 {
-    ///                     ScopeNames = new[]
-    ///                     {
-    ///                         testScope.Name,
-    ///                     },
+    ///                     testScope.Name,
     ///                 },
     ///             },
     ///         },
@@ -181,8 +178,8 @@ namespace Pulumi.Gcp.Chronicle
         /// ScopeInfo specifies the scope info of the reference list.
         /// Structure is documented below.
         /// </summary>
-        [Output("scopeInfos")]
-        public Output<ImmutableArray<Outputs.ReferenceListScopeInfo>> ScopeInfos { get; private set; } = null!;
+        [Output("scopeInfo")]
+        public Output<Outputs.ReferenceListScopeInfo?> ScopeInfo { get; private set; } = null!;
 
         /// <summary>
         /// Possible values:
@@ -292,18 +289,12 @@ namespace Pulumi.Gcp.Chronicle
         [Input("referenceListId", required: true)]
         public Input<string> ReferenceListId { get; set; } = null!;
 
-        [Input("scopeInfos")]
-        private InputList<Inputs.ReferenceListScopeInfoArgs>? _scopeInfos;
-
         /// <summary>
         /// ScopeInfo specifies the scope info of the reference list.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.ReferenceListScopeInfoArgs> ScopeInfos
-        {
-            get => _scopeInfos ?? (_scopeInfos = new InputList<Inputs.ReferenceListScopeInfoArgs>());
-            set => _scopeInfos = value;
-        }
+        [Input("scopeInfo")]
+        public Input<Inputs.ReferenceListScopeInfoArgs>? ScopeInfo { get; set; }
 
         /// <summary>
         /// Possible values:
@@ -415,18 +406,12 @@ namespace Pulumi.Gcp.Chronicle
             set => _rules = value;
         }
 
-        [Input("scopeInfos")]
-        private InputList<Inputs.ReferenceListScopeInfoGetArgs>? _scopeInfos;
-
         /// <summary>
         /// ScopeInfo specifies the scope info of the reference list.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.ReferenceListScopeInfoGetArgs> ScopeInfos
-        {
-            get => _scopeInfos ?? (_scopeInfos = new InputList<Inputs.ReferenceListScopeInfoGetArgs>());
-            set => _scopeInfos = value;
-        }
+        [Input("scopeInfo")]
+        public Input<Inputs.ReferenceListScopeInfoGetArgs>? ScopeInfo { get; set; }
 
         /// <summary>
         /// Possible values:

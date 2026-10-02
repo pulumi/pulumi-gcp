@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -64,8 +65,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("basic-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -82,7 +86,7 @@ import javax.annotation.Nullable;
  *         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
  *             .name("basic-plan")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -127,7 +131,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("autopilot-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .enableAutopilot(true)
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
  *                 .build())
@@ -147,7 +151,7 @@ import javax.annotation.Nullable;
  *         var autopilot = new BackupPlan("autopilot", BackupPlanArgs.builder()
  *             .name("autopilot-plan")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -170,6 +174,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -197,8 +202,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("cmek-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -214,7 +222,7 @@ import javax.annotation.Nullable;
  * 
  *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
  *             .name("backup-key")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .build());
  * 
  *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
@@ -225,7 +233,7 @@ import javax.annotation.Nullable;
  *         var cmek = new BackupPlan("cmek", BackupPlanArgs.builder()
  *             .name("cmek-plan")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -255,6 +263,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -278,8 +287,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("nslabels-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -296,7 +308,7 @@ import javax.annotation.Nullable;
  *         var nslabels = new BackupPlan("nslabels", BackupPlanArgs.builder()
  *             .name("nslabels-plan")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .backupConfig(BackupPlanBackupConfigArgs.builder()
  *                 .includeVolumeData(true)
  *                 .includeSecrets(true)
@@ -324,6 +336,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -349,8 +362,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("full-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -367,7 +383,7 @@ import javax.annotation.Nullable;
  *         var full = new BackupPlan("full", BackupPlanArgs.builder()
  *             .name("full-plan")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)
@@ -407,6 +423,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -432,8 +449,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("permissive-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -450,7 +470,7 @@ import javax.annotation.Nullable;
  *         var permissive = new BackupPlan("permissive", BackupPlanArgs.builder()
  *             .name("permissive-plan")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)
@@ -491,6 +511,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -518,8 +539,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rpo-daily-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -536,7 +560,7 @@ import javax.annotation.Nullable;
  *         var rpoDailyWindow = new BackupPlan("rpoDailyWindow", BackupPlanArgs.builder()
  *             .name("rpo-daily-window")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)
@@ -591,6 +615,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Cluster;
  * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
  * import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -619,8 +644,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster("primary", ClusterArgs.builder()
  *             .name("rpo-weekly-cluster")
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .initialNodeCount(1)
+ *             .nodeConfig(ClusterNodeConfigArgs.builder()
+ *                 .machineType("n4-standard-2")
+ *                 .build())
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
@@ -637,7 +665,7 @@ import javax.annotation.Nullable;
  *         var rpoWeeklyWindow = new BackupPlan("rpoWeeklyWindow", BackupPlanArgs.builder()
  *             .name("rpo-weekly-window")
  *             .cluster(primary.id())
- *             .location("us-central1")
+ *             .location("us-east1")
  *             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
  *                 .backupDeleteLockDays(30)
  *                 .backupRetainDays(180)

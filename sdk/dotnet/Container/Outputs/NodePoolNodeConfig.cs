@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigGvnic? Gvnic;
         /// <summary>
-        /// The maintenance policy for the hosts on which the GKE VMs run on.
+        /// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigHostMaintenancePolicy? HostMaintenancePolicy;
         /// <summary>

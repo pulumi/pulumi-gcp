@@ -6,6 +6,7 @@ package com.pulumi.gcp.discoveryengine.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.discoveryengine.outputs.WidgetConfigUiSettingsDataStoreUiConfig;
 import com.pulumi.gcp.discoveryengine.outputs.WidgetConfigUiSettingsGenerativeAnswerConfig;
+import com.pulumi.gcp.discoveryengine.outputs.WidgetConfigUiSettingsSearchAddonSpec;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -87,6 +88,21 @@ public final class WidgetConfigUiSettings {
      * 
      */
     private @Nullable String resultDescriptionType;
+    /**
+     * @return SearchAddonSpec is used to disable add-ons for search. By default, if this
+     * field is not specified, add-ons are enabled wherever applicable.
+     * This field is only supported for search requests.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WidgetConfigUiSettingsSearchAddonSpec searchAddonSpec;
+    /**
+     * @return Whether to show the admin-configured display name for data connectors in
+     * the widget sources UI (instead of the connector kind). Opt-in; defaults
+     * to false.
+     * 
+     */
+    private @Nullable Boolean sourceAdminDisplayNameEnabled;
 
     private WidgetConfigUiSettings() {}
     /**
@@ -187,6 +203,25 @@ public final class WidgetConfigUiSettings {
     public Optional<String> resultDescriptionType() {
         return Optional.ofNullable(this.resultDescriptionType);
     }
+    /**
+     * @return SearchAddonSpec is used to disable add-ons for search. By default, if this
+     * field is not specified, add-ons are enabled wherever applicable.
+     * This field is only supported for search requests.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WidgetConfigUiSettingsSearchAddonSpec> searchAddonSpec() {
+        return Optional.ofNullable(this.searchAddonSpec);
+    }
+    /**
+     * @return Whether to show the admin-configured display name for data connectors in
+     * the widget sources UI (instead of the connector kind). Opt-in; defaults
+     * to false.
+     * 
+     */
+    public Optional<Boolean> sourceAdminDisplayNameEnabled() {
+        return Optional.ofNullable(this.sourceAdminDisplayNameEnabled);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -210,6 +245,8 @@ public final class WidgetConfigUiSettings {
         private @Nullable WidgetConfigUiSettingsGenerativeAnswerConfig generativeAnswerConfig;
         private @Nullable String interactionType;
         private @Nullable String resultDescriptionType;
+        private @Nullable WidgetConfigUiSettingsSearchAddonSpec searchAddonSpec;
+        private @Nullable Boolean sourceAdminDisplayNameEnabled;
         public Builder() {}
         public Builder(WidgetConfigUiSettings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -226,6 +263,8 @@ public final class WidgetConfigUiSettings {
     	      this.generativeAnswerConfig = defaults.generativeAnswerConfig;
     	      this.interactionType = defaults.interactionType;
     	      this.resultDescriptionType = defaults.resultDescriptionType;
+    	      this.searchAddonSpec = defaults.searchAddonSpec;
+    	      this.sourceAdminDisplayNameEnabled = defaults.sourceAdminDisplayNameEnabled;
         }
 
         @CustomType.Setter
@@ -309,6 +348,18 @@ public final class WidgetConfigUiSettings {
             this.resultDescriptionType = resultDescriptionType;
             return this;
         }
+        @CustomType.Setter
+        public Builder searchAddonSpec(@Nullable WidgetConfigUiSettingsSearchAddonSpec searchAddonSpec) {
+
+            this.searchAddonSpec = searchAddonSpec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceAdminDisplayNameEnabled(@Nullable Boolean sourceAdminDisplayNameEnabled) {
+
+            this.sourceAdminDisplayNameEnabled = sourceAdminDisplayNameEnabled;
+            return this;
+        }
         public WidgetConfigUiSettings build() {
             final var _resultValue = new WidgetConfigUiSettings();
             _resultValue.dataStoreUiConfigs = dataStoreUiConfigs;
@@ -324,6 +375,8 @@ public final class WidgetConfigUiSettings {
             _resultValue.generativeAnswerConfig = generativeAnswerConfig;
             _resultValue.interactionType = interactionType;
             _resultValue.resultDescriptionType = resultDescriptionType;
+            _resultValue.searchAddonSpec = searchAddonSpec;
+            _resultValue.sourceAdminDisplayNameEnabled = sourceAdminDisplayNameEnabled;
             return _resultValue;
         }
     }

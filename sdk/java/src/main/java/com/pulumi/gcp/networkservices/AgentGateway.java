@@ -52,12 +52,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ManagedZoneArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigArgs;
  * import com.pulumi.gcp.dns.inputs.ManagedZonePrivateVisibilityConfigNetworkArgs;
+ * import com.pulumi.gcp.networkservices.AgentConnectivityTemplate;
+ * import com.pulumi.gcp.networkservices.AgentConnectivityTemplateArgs;
+ * import com.pulumi.gcp.networkservices.inputs.AgentConnectivityTemplateEgressNetworkConfigArgs;
+ * import com.pulumi.gcp.networkservices.inputs.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs;
  * import com.pulumi.gcp.networkservices.AgentGateway;
  * import com.pulumi.gcp.networkservices.AgentGatewayArgs;
  * import com.pulumi.gcp.networkservices.inputs.AgentGatewayGoogleManagedArgs;
- * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigArgs;
- * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigEgressArgs;
- * import com.pulumi.gcp.networkservices.inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -95,7 +96,7 @@ import javax.annotation.Nullable;
  *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
  *             .name("my-gateway-attachment")
  *             .region("us-central1")
- *             .connectionPreference("ACCEPT_MANUAL")
+ *             .connectionPreference("ACCEPT_AUTOMATIC")
  *             .subnetworks(defaultSubnetwork.id())
  *             .build());
  * 
@@ -107,6 +108,24 @@ import javax.annotation.Nullable;
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
  *                     .networkUrl(defaultNetwork.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAgentConnectivityTemplate = new AgentConnectivityTemplate("defaultAgentConnectivityTemplate", AgentConnectivityTemplateArgs.builder()
+ *             .agentConnectivityTemplateId("my-full-agent-gateway-template")
+ *             .location("us-central1")
+ *             .description("A basic configuration for Agent Connectivity Template")
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("env", "test"),
+ *                 Map.entry("tier", "gold")
+ *             ))
+ *             .accessPath("AGENT_TO_ANYWHERE")
+ *             .egressNetworkConfig(AgentConnectivityTemplateEgressNetworkConfigArgs.builder()
+ *                 .networkAttachment(defaultNetworkAttachment.id())
+ *                 .dnsPeeringConfig(AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs.builder()
+ *                     .domain(defaultManagedZone.dnsName())
+ *                     .targetNetwork(defaultNetwork.id())
  *                     .build())
  *                 .build())
  *             .build());
@@ -123,17 +142,8 @@ import javax.annotation.Nullable;
  *             .googleManaged(AgentGatewayGoogleManagedArgs.builder()
  *                 .governedAccessPath("AGENT_TO_ANYWHERE")
  *                 .build())
+ *             .agentConnectivityTemplate(defaultAgentConnectivityTemplate.agentConnectivityTemplateId().applyValue(_agentConnectivityTemplateId -> String.format("projects/%s/locations/us-central1/agentConnectivityTemplates/%s", project.number(),_agentConnectivityTemplateId)))
  *             .registries("//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1")
- *             .networkConfig(AgentGatewayNetworkConfigArgs.builder()
- *                 .egress(AgentGatewayNetworkConfigEgressArgs.builder()
- *                     .networkAttachment(defaultNetworkAttachment.id())
- *                     .build())
- *                 .dnsPeeringConfig(AgentGatewayNetworkConfigDnsPeeringConfigArgs.builder()
- *                     .domains(defaultManagedZone.dnsName())
- *                     .targetProject(project.projectId())
- *                     .targetNetwork(defaultNetwork.id())
- *                     .build())
- *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(agentRegistry)
  *                 .build());
@@ -248,6 +258,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:networkservices/agentGateway:AgentGateway")
 public class AgentGateway extends com.pulumi.resources.CustomResource {
+    /**
+     * The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     * 
+     */
+    @Export(name="agentConnectivityTemplate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> agentConnectivityTemplate;
+
+    /**
+     * @return The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     * 
+     */
+    public Output<Optional<String>> agentConnectivityTemplate() {
+        return Codegen.optional(this.agentConnectivityTemplate);
+    }
     /**
      * AgentGatewayOutputCard contains informational output-only fields.
      * Structure is documented below.

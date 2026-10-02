@@ -40,14 +40,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = producerNet.Id,
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         DeletionProtectionEnabled = false,
     ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
     ///         {
@@ -123,14 +123,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = producerNet.Id,
@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         ReplicaCount = 1,
     ///         NodeType = "SHARED_CORE_NANO",
     ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_DISABLED",
@@ -170,7 +170,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///         ZoneDistributionConfig = new Gcp.MemoryStore.Inputs.InstanceZoneDistributionConfigArgs
     ///         {
     ///             Mode = "SINGLE_ZONE",
-    ///             Zone = "us-central1-b",
+    ///             Zone = "us-west1-b",
     ///         },
     ///         MaintenancePolicy = new Gcp.MemoryStore.Inputs.InstanceMaintenancePolicyArgs
     ///         {
@@ -235,14 +235,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "my-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "my-policy",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         ServiceClass = "gcp-memorystore",
     ///         Description = "my basic service connection policy",
     ///         Network = producerNet.Id,
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///                 ProjectId = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///             },
     ///         },
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         PersistenceConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigArgs
     ///         {
     ///             Mode = "AOF",
@@ -484,7 +484,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     var @default = new Gcp.CertificateAuthority.CaPool("default", new()
     ///     {
     ///         Name = "ca-pool",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         Tier = "ENTERPRISE",
     ///     });
     /// 
@@ -499,7 +499,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Pool = @default.Name,
     ///         CertificateAuthorityId = "ca-auth",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -549,14 +549,14 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         Name = "ca-subnet",
     ///         IpCidrRange = "10.0.0.248/29",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Network = producerNet.Id,
     ///     });
     /// 
     ///     var defaultServiceConnectionPolicy = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
     ///     {
     ///         Name = "ca-policy",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         ServiceClass = "gcp-memorystore",
     ///         Network = producerNet.Id,
     ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
@@ -572,7 +572,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///     {
     ///         InstanceId = "ca-instance",
     ///         ShardCount = 3,
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         DesiredAutoCreatedEndpoints = new[]
     ///         {
     ///             new Gcp.MemoryStore.Inputs.InstanceDesiredAutoCreatedEndpointArgs

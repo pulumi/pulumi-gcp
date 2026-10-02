@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +34,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -126,7 +126,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -145,10 +145,9 @@ import (
 //				CollectionId:          pulumi.String("collection-id"),
 //				CollectionDisplayName: pulumi.String("Jira Federated"),
 //				DataSource:            pulumi.String("jira"),
-//				DataSourceVersion:     pulumi.Int(3),
 //				Params: pulumi.StringMap{
 //					"instance_uri":  pulumi.String("https://example.atlassian.net"),
-//					"instance_id":   pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//					"instance_id":   pulumi.String("12345678-1234-1234-1234-123456789abc"),
 //					"client_id":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 //					"client_secret": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 //					"refresh_token": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
@@ -192,7 +191,7 @@ import (
 //				ActionConfig: &discoveryengine.DataConnectorActionConfigArgs{
 //					ActionParams: pulumi.StringMap{
 //						"instance_uri":  pulumi.String("https://example.atlassian.net"),
-//						"instance_id":   pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
+//						"instance_id":   pulumi.String("12345678-1234-1234-1234-123456789abc"),
 //						"client_id":     pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 //						"client_secret": pulumi.String("SECRET_MANAGER_RESOURCE_NAME"),
 //						"auth_type":     pulumi.String("OAUTH"),
@@ -211,6 +210,14 @@ import (
 //						pulumi.String("update_comment"),
 //						pulumi.String("upload_attachment"),
 //					},
+//				},
+//				Tag: pulumi.String("sample-tag"),
+//				Metadata: &discoveryengine.DataConnectorMetadataArgs{
+//					Title:            pulumi.String("Jira Connector"),
+//					Description:      pulumi.String("Jira Connector Description"),
+//					ShortDescription: pulumi.String("Jira Connector Short Description"),
+//					Author:           pulumi.String("Google"),
+//					Note:             pulumi.String("Sample Note"),
 //				},
 //			})
 //			if err != nil {
@@ -339,6 +346,9 @@ type DataConnector struct {
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location pulumi.StringOutput `pulumi:"location"`
+	// User-facing metadata for the connector.
+	// Structure is documented below.
+	Metadata DataConnectorMetadataOutput `pulumi:"metadata"`
 	// The full resource name of the Data Connector.
 	// Format: `projects/*/locations/*/collections/*/dataConnector`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -371,6 +381,8 @@ type DataConnector struct {
 	// The data synchronization mode supported by the data connector. The possible value can be:
 	// 'PERIODIC', 'STREAMING'.
 	SyncMode pulumi.StringPtrOutput `pulumi:"syncMode"`
+	// User-facing, version-independent label for this connector.
+	Tag pulumi.StringPtrOutput `pulumi:"tag"`
 	// Timestamp when the DataConnector was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -519,6 +531,9 @@ type dataConnectorState struct {
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location *string `pulumi:"location"`
+	// User-facing metadata for the connector.
+	// Structure is documented below.
+	Metadata *DataConnectorMetadata `pulumi:"metadata"`
 	// The full resource name of the Data Connector.
 	// Format: `projects/*/locations/*/collections/*/dataConnector`.
 	Name *string `pulumi:"name"`
@@ -551,6 +566,8 @@ type dataConnectorState struct {
 	// The data synchronization mode supported by the data connector. The possible value can be:
 	// 'PERIODIC', 'STREAMING'.
 	SyncMode *string `pulumi:"syncMode"`
+	// User-facing, version-independent label for this connector.
+	Tag *string `pulumi:"tag"`
 	// Timestamp when the DataConnector was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -655,6 +672,9 @@ type DataConnectorState struct {
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location pulumi.StringPtrInput
+	// User-facing metadata for the connector.
+	// Structure is documented below.
+	Metadata DataConnectorMetadataPtrInput
 	// The full resource name of the Data Connector.
 	// Format: `projects/*/locations/*/collections/*/dataConnector`.
 	Name pulumi.StringPtrInput
@@ -687,6 +707,8 @@ type DataConnectorState struct {
 	// The data synchronization mode supported by the data connector. The possible value can be:
 	// 'PERIODIC', 'STREAMING'.
 	SyncMode pulumi.StringPtrInput
+	// User-facing, version-independent label for this connector.
+	Tag pulumi.StringPtrInput
 	// Timestamp when the DataConnector was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -765,6 +787,9 @@ type dataConnectorArgs struct {
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location string `pulumi:"location"`
+	// User-facing metadata for the connector.
+	// Structure is documented below.
+	Metadata *DataConnectorMetadata `pulumi:"metadata"`
 	// Params needed to access the source in the format of String-to-String (Key, Value) pairs.
 	Params map[string]string `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
@@ -781,6 +806,8 @@ type dataConnectorArgs struct {
 	// The data synchronization mode supported by the data connector. The possible value can be:
 	// 'PERIODIC', 'STREAMING'.
 	SyncMode *string `pulumi:"syncMode"`
+	// User-facing, version-independent label for this connector.
+	Tag *string `pulumi:"tag"`
 }
 
 // The set of arguments for constructing a DataConnector resource.
@@ -854,6 +881,9 @@ type DataConnectorArgs struct {
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location pulumi.StringInput
+	// User-facing metadata for the connector.
+	// Structure is documented below.
+	Metadata DataConnectorMetadataPtrInput
 	// Params needed to access the source in the format of String-to-String (Key, Value) pairs.
 	Params pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
@@ -870,6 +900,8 @@ type DataConnectorArgs struct {
 	// The data synchronization mode supported by the data connector. The possible value can be:
 	// 'PERIODIC', 'STREAMING'.
 	SyncMode pulumi.StringPtrInput
+	// User-facing, version-independent label for this connector.
+	Tag pulumi.StringPtrInput
 }
 
 func (DataConnectorArgs) ElementType() reflect.Type {
@@ -1127,6 +1159,12 @@ func (o DataConnectorOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// User-facing metadata for the connector.
+// Structure is documented below.
+func (o DataConnectorOutput) Metadata() DataConnectorMetadataOutput {
+	return o.ApplyT(func(v *DataConnector) DataConnectorMetadataOutput { return v.Metadata }).(DataConnectorMetadataOutput)
+}
+
 // The full resource name of the Data Connector.
 // Format: `projects/*/locations/*/collections/*/dataConnector`.
 func (o DataConnectorOutput) Name() pulumi.StringOutput {
@@ -1187,6 +1225,11 @@ func (o DataConnectorOutput) StaticIpEnabled() pulumi.BoolPtrOutput {
 // 'PERIODIC', 'STREAMING'.
 func (o DataConnectorOutput) SyncMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringPtrOutput { return v.SyncMode }).(pulumi.StringPtrOutput)
+}
+
+// User-facing, version-independent label for this connector.
+func (o DataConnectorOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp when the DataConnector was updated.

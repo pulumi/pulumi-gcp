@@ -818,7 +818,7 @@ class GetClusterResult:
 
     @_builtins.property
     @pulumi.getter(name="skipNodePoolRefresh")
-    def skip_node_pool_refresh(self) -> _builtins.bool:
+    def skip_node_pool_refresh(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "skip_node_pool_refresh")
 
     @_builtins.property
@@ -971,6 +971,7 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(location: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
                 project: Optional[_builtins.str] = None,
+                skip_node_pool_refresh: Optional[_builtins.bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Get info about a GKE cluster from its name and location.
@@ -1011,11 +1012,21 @@ def get_cluster(location: Optional[_builtins.str] = None,
     :param _builtins.str name: The name of the cluster.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
+    :param _builtins.bool skip_node_pool_refresh: Whether to skip refreshing the GKE
+           cluster's node pool list during the data source read. Setting this to `true`
+           prevents the provider from querying the GKE API for node pools, which resolves
+           long read times on clusters with a large number of node pools. When enabled,
+           the `node_pool` attribute will be empty (`[]`), even if node pools exist. See
+           the resource documentation
+           for details.
+           
+           ***
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
+    __args__['skipNodePoolRefresh'] = skip_node_pool_refresh
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
@@ -1126,6 +1137,7 @@ def get_cluster(location: Optional[_builtins.str] = None,
 def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        name: pulumi.Input[Optional[_builtins.str]] = None,
                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       skip_node_pool_refresh: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Get info about a GKE cluster from its name and location.
@@ -1166,11 +1178,21 @@ def get_cluster_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
     :param _builtins.str name: The name of the cluster.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
+    :param _builtins.bool skip_node_pool_refresh: Whether to skip refreshing the GKE
+           cluster's node pool list during the data source read. Setting this to `true`
+           prevents the provider from querying the GKE API for node pools, which resolves
+           long read times on clusters with a large number of node pools. When enabled,
+           the `node_pool` attribute will be empty (`[]`), even if node pools exist. See
+           the resource documentation
+           for details.
+           
+           ***
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
+    __args__['skipNodePoolRefresh'] = skip_node_pool_refresh
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(

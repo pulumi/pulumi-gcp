@@ -72,6 +72,19 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
         /// </summary>
         public readonly string? ResultDescriptionType;
+        /// <summary>
+        /// SearchAddonSpec is used to disable add-ons for search. By default, if this
+        /// field is not specified, add-ons are enabled wherever applicable.
+        /// This field is only supported for search requests.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WidgetConfigUiSettingsSearchAddonSpec? SearchAddonSpec;
+        /// <summary>
+        /// Whether to show the admin-configured display name for data connectors in
+        /// the widget sources UI (instead of the connector kind). Opt-in; defaults
+        /// to false.
+        /// </summary>
+        public readonly bool? SourceAdminDisplayNameEnabled;
 
         [OutputConstructor]
         private WidgetConfigUiSettings(
@@ -99,7 +112,11 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
 
             string? interactionType,
 
-            string? resultDescriptionType)
+            string? resultDescriptionType,
+
+            Outputs.WidgetConfigUiSettingsSearchAddonSpec? searchAddonSpec,
+
+            bool? sourceAdminDisplayNameEnabled)
         {
             DataStoreUiConfigs = dataStoreUiConfigs;
             DefaultSearchRequestOrderBy = defaultSearchRequestOrderBy;
@@ -114,6 +131,8 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
             GenerativeAnswerConfig = generativeAnswerConfig;
             InteractionType = interactionType;
             ResultDescriptionType = resultDescriptionType;
+            SearchAddonSpec = searchAddonSpec;
+            SourceAdminDisplayNameEnabled = sourceAdminDisplayNameEnabled;
         }
     }
 }

@@ -44,12 +44,10 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? ClusterSecondaryRangeName;
         /// <summary>
         /// Contains network tier information. Structure is documented below
-        /// 
-        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
         /// </summary>
         public readonly Outputs.ClusterIpAllocationPolicyNetworkTierConfig? NetworkTierConfig;
         /// <summary>
-        /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+        /// Configuration for cluster level pod cidr overprovision. Default is `disabled = false`. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig? PodCidrOverprovisionConfig;
         /// <summary>

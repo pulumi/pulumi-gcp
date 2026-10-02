@@ -21,6 +21,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<Inputs.ExampleMessageChunkAgentTransferGetArgs>? AgentTransfer { get; set; }
 
         /// <summary>
+        /// Represents a blob input or output in the conversation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("blob")]
+        public Input<Inputs.ExampleMessageChunkBlobGetArgs>? Blob { get; set; }
+
+        /// <summary>
         /// Represents an image input or output in the conversation.
         /// Structure is documented below.
         /// </summary>

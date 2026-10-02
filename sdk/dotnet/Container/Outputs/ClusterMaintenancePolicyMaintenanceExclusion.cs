@@ -13,12 +13,21 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterMaintenancePolicyMaintenanceExclusion
     {
+        /// <summary>
+        /// The end time of the exclusion window, in RFC3339 format. Exactly one of `EndTime` and `exclusion_options.end_time_behavior` should be specified.
+        /// </summary>
         public readonly string? EndTime;
+        /// <summary>
+        /// The name of the maintenance exclusion.
+        /// </summary>
         public readonly string ExclusionName;
         /// <summary>
-        /// MaintenanceExclusionOptions provides maintenance exclusion related options.
+        /// MaintenanceExclusionOptions provides maintenance exclusion related options. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions? ExclusionOptions;
+        /// <summary>
+        /// The start time of the exclusion window, in RFC3339 format.
+        /// </summary>
         public readonly string StartTime;
 
         [OutputConstructor]

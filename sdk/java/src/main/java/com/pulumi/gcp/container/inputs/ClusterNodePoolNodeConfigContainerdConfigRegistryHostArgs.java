@@ -19,14 +19,14 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs ext
     public static final ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs Empty = new ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs();
 
     /**
-     * Configures a list of host-specific configurations for the server.
+     * Configures a list of host-specific configurations for the server:
      * 
      */
     @Import(name="hosts")
     private @Nullable Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs>> hosts;
 
     /**
-     * @return Configures a list of host-specific configurations for the server.
+     * @return Configures a list of host-specific configurations for the server:
      * 
      */
     public Optional<Output<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs>>> hosts() {
@@ -74,7 +74,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs ext
         }
 
         /**
-         * @param hosts Configures a list of host-specific configurations for the server.
+         * @param hosts Configures a list of host-specific configurations for the server:
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs ext
         }
 
         /**
-         * @param hosts Configures a list of host-specific configurations for the server.
+         * @param hosts Configures a list of host-specific configurations for the server:
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs ext
         }
 
         /**
-         * @param hosts Configures a list of host-specific configurations for the server.
+         * @param hosts Configures a list of host-specific configurations for the server:
          * 
          * @return builder
          * 
