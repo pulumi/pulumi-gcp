@@ -14,6 +14,8 @@ pulumi up --refresh                 # before the bump, with 9.x still installed
 pulumi up --refresh --run-program   # after the bump
 ```
 
+`--refresh` keeps pre-existing drift out of the diff, and `--run-program` is what lets the new provider compute a clean one: a refresh without it does not execute your program and works from the provider configuration and inputs already recorded in state. See [Removing spurious diffs after a provider upgrade](https://www.pulumi.com/docs/iac/operations/stack-management/run-program/#removing-spurious-diffs-after-a-provider-upgrade).
+
 The bump itself, per language:
 
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
@@ -81,7 +83,7 @@ GCP provider v10.0 includes several breaking changes. These are the ones we cons
 - [`gcp.compute.Instance`: a `guestAccelerator` count of `0` now replaces the instance](#gcpcomputeinstance-a-guestaccelerator-count-of-0-now-replaces-the-instance)
 - [`gcp.iap.Brand` and `gcp.iap.Client`: removed](#gcpiapbrand-and-gcpiapclient-removed)
 - [`gcp.notebooks`: the module has been removed](#gcpnotebooks-the-module-has-been-removed)
-- [`gcp.bigquery.Dataset`: `defaultCollation` is no longer computed](#gcpbigquerydataset-defaultcollation-is-no-longer-computed)
+- [`gcp.bigquery.Dataset`: an undeclared `defaultCollation` is now cleared](#gcpbigquerydataset-an-undeclared-defaultcollation-is-now-cleared)
 - [`gcp.secretmanager.SecretVersion`: `secretDataWoVersion` is required alongside `secretDataWo`, and is a string](#gcpsecretmanagersecretversion-secretdatawoversion-is-required-alongside-secretdatawo-and-is-a-string)
 - [`gcp.monitoring.UptimeCheckConfig`: the two password fields are now mutually exclusive](#gcpmonitoringuptimecheckconfig-the-two-password-fields-are-now-mutually-exclusive)
 - [`gcp.container.Cluster` and `gcp.container.NodePool`: `namePrefix` may now be up to 31 characters](#gcpcontainercluster-and-gcpcontainernodepool-nameprefix-may-now-be-up-to-31-characters)
@@ -95,17 +97,15 @@ GCP provider v10.0 includes several breaking changes. These are the ones we cons
 
 `gcp.compute.Instance` now acts on a `guestAccelerator` block whose `count` is `0`, where v9 ignored it. Detaching an accelerator cannot be done in place, so the instance is **replaced**.
 
-The block is still ignored in one case: nothing attached, and exactly one block declared. Attach an accelerator, or declare a second zero-count block, and the instance is replaced.
+An empty `guestAccelerators` list and omitting the block are unchanged from v9.
 
-An empty `guestAccelerators` list and omitting the block are never affected.
+The block is still ignored in one case: nothing attached, and exactly one block declared. Attach an accelerator, or declare a second zero-count block, and the instance is replaced.
 
 *Upstream: [`google_compute_instance`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_instance) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
-**Unaffected:** every `gcp.compute.Instance` that does not declare a `guestAccelerator` block with `count: 0`. No type or signature changed, so an affected program still compiles and `pulumi preview` still exits cleanly. The replacement shows up only in what `pulumi preview` prints.
-
-**If you declare a `count: 0` block**, `pulumi preview` shows a replacement of the instance and `pulumi up` carries it out, whenever accelerators are attached or the configuration holds more than one block. Replacement, not an update.
+**If a `gcp.compute.Instance` declares a `guestAccelerator` block with `count: 0`**, `pulumi preview` shows a replacement of the instance and `pulumi up` carries it out, whenever accelerators are attached or the configuration holds more than one block. Replacement, not an update. No type or signature changed, so the program still compiles and `pulumi preview` still exits cleanly; the replacement shows up only in what `pulumi preview` prints.
 
 A replacement destroys the boot disk and any local SSDs, and changes the external IP, the internal IP and the instance id. Local SSDs cannot be snapshotted, so what was on them is unrecoverable. Disks and addresses declared as their own resources survive and are reattached.
 
@@ -143,7 +143,7 @@ Reading it:
 
 - `attached` is not empty — this instance will be replaced. See the Remediation section below before upgrading.
 - `attached` is empty and `configured` holds two or more blocks — this instance will be replaced. See the Remediation section below before upgrading.
-- `attached` is empty and `configured` holds exactly one block — nothing changes yet, but attaching an accelerator or adding a second zero-count block turns it into a replacement. See the Remediation section below anyway.
+- `attached` is empty and `configured` holds exactly one block — nothing changes on upgrade, but the block stays live: attaching an accelerator or adding a second zero-count block later replaces the instance, on v10 only. See the Remediation section below anyway.
 - no output at all — no instance in the stack declares a zero-count accelerator, so you are not affected.
 
 #### Remediation
@@ -453,11 +453,9 @@ So `gcp.iap.Brand`, `gcp.iap.Client` and the `gcp.iap.getClient` data source are
 
 #### Impact/Risk
 
-**Unaffected:** stacks that declare no `gcp.iap.Brand`, no `gcp.iap.Client` and no `gcp.iap.getClient`. The rest of the IAP module, including `gcp.iap.Settings`, `gcp.iap.TunnelDestGroup` and the IAP IAM resources, is unchanged.
+The rest of the IAP module, including `gcp.iap.Settings`, `gcp.iap.TunnelDestGroup` and the IAP IAM resources, is unchanged.
 
-**If you upgrade and change nothing else**, the program stops building and `pulumi preview` stops before it registers anything.
-
-**If you then delete the declarations while the resources are still in state, the next `pulumi up` on v10 deletes your live OAuth client.** Each state entry records the provider version that created it, so the engine downloads that v9 provider and asks it to do the delete. The run succeeds and prints no warning. The client ID and secret are gone, every application signing in through them stops working, and no v10 resource can recreate them.
+**If your program contains these resources, you have to remove them from both your program *and* your state before running it on v10.** If you only remove them from your program, the next `pulumi up` on v10 deletes them: each state entry records the provider version that created it, so the engine downloads that v9 provider and asks it to do the delete, and the run succeeds and prints no warning. The client ID and secret are gone, every application signing in through them stops working, and no v10 resource can recreate them.
 
 If you deleted the resources by mistake, reissuing one is a manual step in Google Cloud, see [Google's guidance](https://cloud.google.com/iap/docs/custom-oauth-configuration), and it produces a different client ID and secret, so everything referencing the old one has to be updated.
 
@@ -510,9 +508,7 @@ Delete those resources first or pass --target-dependents.
 
 Then delete every `gcp.iap.Brand` and `gcp.iap.Client` from your program. Nothing takes their place; Pulumi just stops managing resources that go on existing in Google Cloud.
 
-Only the client is at stake in all of this. Removing a `gcp.iap.Brand` drops it out of state whatever order you work in, because the IAP API has no delete method for brands.
-
-**If you read an existing client with the `gcp.iap.getClient` data source**, the build fails and nothing is replaced. There is no replacement data source, so read the client from the IAP Console once and keep it in config. Google documents the credentials themselves in [Use custom OAuth clients with IAP](https://cloud.google.com/iap/docs/custom-oauth-configuration):
+**If you read an existing client with the `gcp.iap.getClient` data source**, you will need to read the client from the IAP Console and keep it in config; there is no replacement data source. Google documents the credentials themselves in [Use custom OAuth clients with IAP](https://cloud.google.com/iap/docs/custom-oauth-configuration):
 
 ```typescript
 const cfg = new pulumi.Config();
@@ -531,19 +527,17 @@ export const iapClientSecret = cfg.requireSecret("iapClientSecret");
 
 The whole `gcp.notebooks` namespace has been removed: `Instance`, `Runtime`, `Environment`, their IAM resources (`InstanceIamPolicy`, `InstanceIamBinding`, `InstanceIamMember`, `RuntimeIamPolicy`, `RuntimeIamBinding`, `RuntimeIamMember`) and the `getInstanceIamPolicy` and `getRuntimeIamPolicy` functions. The products behind them, Vertex AI Workbench User-Managed and Google-Managed Notebooks, have reached end of life, and Google already refuses to create new instances of either. Use `gcp.workbench.Instance` and `gcp.workbench.InstanceIamMember` instead.
 
-There is no setting that keeps the old behaviour. `gcp.notebooks` does not exist on v10.
-
 *Upstream: [`google_notebooks_instance`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_notebooks_instance-is-now-removed) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
 
-**Unaffected:** a stack with no `gcp:notebooks/` resource in its state. Workbench resources are untouched by this change.
+Workbench resources are untouched by this change.
 
-If you do have one, the upgrade breaks in two stages.
+**If your program contains these resources, you have to remove them from both your program *and* your state before running it on v10.** Otherwise the upgrade breaks in two stages.
 
 **Your program stops working.** Every reference to `gcp.notebooks` fails: a build error in compiled languages, and in interpreted ones the program throws while loading, so `pulumi preview` exits non-zero before it reaches your resources.
 
-**Then the fix deletes your notebook.** Once you remove those references, `pulumi preview` succeeds and shows a **delete** of the entries left in state. It is a delete rather than a replacement, and the engine does not need v10 to know the type: it routes the delete to the 9.x provider recorded alongside the resource, which calls the legacy API. For a notebook that is still a notebook, that destroys the VM, its boot disk and, unless the instance was created with `noRemoveDataDisk: true`, its data disk and everything in the home directory. Running the documented `pulumi up --refresh --run-program` produces the same plan.
+**Then removing the references deletes your notebook.** If you only remove them from your program, `pulumi preview` succeeds and shows a **delete** of the entries left in state. It is a delete rather than a replacement, and the engine does not need v10 to know the type: it routes the delete to the 9.x provider recorded alongside the resource, which calls the legacy API. For a notebook that is still a notebook, that destroys the VM, its boot disk and, unless the instance was created with `noRemoveDataDisk: true`, its data disk and everything in the home directory. Running the documented `pulumi up --refresh --run-program` produces the same plan.
 
 **The machine may no longer be a notebook.** Google's published schedule converted user-managed notebooks that were never migrated into plain Compute Engine VMs on 2026-03-30, and a converted instance is not visible to Vertex AI Workbench. What a legacy delete does to a converted machine is untested, because Google no longer lets anyone create a legacy notebook to try it on. Both readings lead to the same move: take the resources out of state rather than letting `pulumi up` delete them.
 
@@ -947,9 +941,13 @@ resources:
 
 `gcp.notebooks.Runtime` and `gcp.notebooks.Environment` are removed the same way and have the same replacement: a Runtime becomes a `gcp.workbench.Instance`, and an Environment's settings (VM or container image, post-startup script) are set directly on `gcp.workbench.Instance`.
 
-### `gcp.bigquery.Dataset`: `defaultCollation` is no longer computed
+### `gcp.bigquery.Dataset`: an undeclared `defaultCollation` is now cleared
 
-`defaultCollation` on `gcp.bigquery.Dataset` is no longer computed. On v9 the provider filled the field in from the API when your program did not set one, so a dataset kept whatever collation it already had. On v10 your program is the only source: a dataset whose program does not set `defaultCollation`, or sets it to `""`, has its collation cleared.
+`defaultCollation` is the collation that a new table inherits when it does not specify its own. If your dataset has one in BigQuery and your program does not declare it, the first `pulumi up` on v10 clears the dataset's default, not any table's collation.
+
+v9 read the collation back from the API and kept it, so leaving the field out of your program preserved whatever BigQuery already had. v10 does not: an undeclared `defaultCollation` sends the empty string, which BigQuery treats as case sensitive.
+
+Writing `defaultCollation: ""` explicitly already cleared the collation on v9.21.0 and later. Omitting the field and writing the empty string now produce the same request, so only the omitted case is new.
 
 `defaultCollation` is also now an optional output, so code that reads `dataset.defaultCollation` has to handle an absent value.
 
@@ -957,15 +955,11 @@ resources:
 
 #### Impact/Risk
 
-**Unaffected: a `gcp.bigquery.Dataset` with no collation on it.** That is most datasets. Nothing changes and nothing is deployed.
+**No table is touched and no data changes.** Existing tables keep the collation they were created with. Only tables created after the clear inherit none, so their string fields are case sensitive. The dataset update is in place and nothing is replaced.
 
-**Unaffected: a `gcp.bigquery.Dataset` whose program sets `defaultCollation` to a collation.** Program and dataset already agree.
+The change affects a dataset only if BigQuery has a collation for it and your program declares none. That happens when the collation was set outside Pulumi, or when a `defaultCollation` line was deleted from the program and v9 went on reading the old value back.
 
-**If the dataset has a collation your program does not set, the first `pulumi up` clears it.** Existing tables and their data are untouched; only tables created afterwards lose the collation, so their string columns become case sensitive, which is what a dataset with no collation does.
-
-**Code that reads the `defaultCollation` output** now has to handle an absent value. Where types are checked this is a build failure; elsewhere it surfaces only if you run a type checker.
-
-No `gcp.bigquery.Dataset` is replaced by this change.
+**Code that reads the `defaultCollation` output** now has to handle an absent value: a build failure where types are checked, and otherwise visible only under a type checker.
 
 #### Am I affected?
 
@@ -1012,7 +1006,7 @@ Reading it:
 const ci = new gcp.bigquery.Dataset("ci-dataset", {
     datasetId: "ci_dataset",
     location: "europe-west2",
-    // v9: the field was computed, so the collation survived being unset.
+    // v9: the provider read the collation back from the API, so it survived being unset.
     // v10 (fixed): name it, or it is cleared.
     defaultCollation: "und:ci",
     deleteContentsOnDestroy: true,
@@ -1027,7 +1021,7 @@ const ci = new gcp.bigquery.Dataset("ci-dataset", {
 ci = gcp.bigquery.Dataset("ci-dataset",
     dataset_id="ci_dataset",
     location="europe-west2",
-    # v9: the field was computed, so the collation survived being unset.
+    # v9: the provider read the collation back from the API, so it survived being unset.
     # v10 (fixed): name it, or it is cleared.
     default_collation="und:ci",
     delete_contents_on_destroy=True)
@@ -1041,7 +1035,7 @@ ci = gcp.bigquery.Dataset("ci-dataset",
 _, err := bigquery.NewDataset(ctx, "ci-dataset", &bigquery.DatasetArgs{
 	DatasetId:               pulumi.String("ci_dataset"),
 	Location:                pulumi.String("europe-west2"),
-	// v9: the field was computed, so the collation survived being unset.
+	// v9: the provider read the collation back from the API, so it survived being unset.
 	// v10 (fixed): name it, or it is cleared.
 	DefaultCollation:        pulumi.String("und:ci"),
 	DeleteContentsOnDestroy: pulumi.Bool(true),
@@ -1060,7 +1054,7 @@ var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
 {
     DatasetId = "ci_dataset",
     Location = "europe-west2",
-    // v9: the field was computed, so the collation survived being unset.
+    // v9: the provider read the collation back from the API, so it survived being unset.
     // v10 (fixed): name it, or it is cleared.
     DefaultCollation = "und:ci",
     DeleteContentsOnDestroy = true,
@@ -1075,7 +1069,7 @@ var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
 var ci = new Dataset("ci-dataset", DatasetArgs.builder()
     .datasetId("ci_dataset")
     .location("europe-west2")
-    // v9: the field was computed, so the collation survived being unset.
+    // v9: the provider read the collation back from the API, so it survived being unset.
     // v10 (fixed): name it, or it is cleared.
     .defaultCollation("und:ci")
     .deleteContentsOnDestroy(true)
@@ -1094,7 +1088,7 @@ resources:
     properties:
       datasetId: ci_dataset
       location: europe-west2
-      # v9: the field was computed, so the collation survived being unset.
+      # v9: the provider read the collation back from the API, so it survived being unset.
       # v10 (fixed): name it, or it is cleared.
       defaultCollation: und:ci
       deleteContentsOnDestroy: true
@@ -1104,115 +1098,7 @@ resources:
 
 {{< /chooser >}}
 
-**If your program sets `defaultCollation: ""` and the dataset has a collation**, the same fix applies: on v10 the empty string clears it for real. In-place update, no replacement.
-
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-
-{{% choosable language typescript %}}
-
-```typescript
-const ci = new gcp.bigquery.Dataset("ci-dataset", {
-    datasetId: "ci_dataset",
-    location: "europe-west2",
-    // v9
-    // defaultCollation: "",
-    // v10 (fixed)
-    defaultCollation: "und:ci",
-    deleteContentsOnDestroy: true,
-});
-```
-
-{{% /choosable %}}
-
-{{% choosable language python %}}
-
-```python
-ci = gcp.bigquery.Dataset("ci-dataset",
-    dataset_id="ci_dataset",
-    location="europe-west2",
-    # v9
-    # default_collation="",
-    # v10 (fixed)
-    default_collation="und:ci",
-    delete_contents_on_destroy=True)
-```
-
-{{% /choosable %}}
-
-{{% choosable language go %}}
-
-```go
-_, err := bigquery.NewDataset(ctx, "ci-dataset", &bigquery.DatasetArgs{
-	DatasetId:               pulumi.String("ci_dataset"),
-	Location:                pulumi.String("europe-west2"),
-	// v9
-	// DefaultCollation: pulumi.String(""),
-	// v10 (fixed)
-	DefaultCollation:        pulumi.String("und:ci"),
-	DeleteContentsOnDestroy: pulumi.Bool(true),
-})
-if err != nil {
-	return err
-}
-```
-
-{{% /choosable %}}
-
-{{% choosable language csharp %}}
-
-```csharp
-var ci = new Gcp.BigQuery.Dataset("ci-dataset", new()
-{
-    DatasetId = "ci_dataset",
-    Location = "europe-west2",
-    // v9
-    // DefaultCollation = "",
-    // v10 (fixed)
-    DefaultCollation = "und:ci",
-    DeleteContentsOnDestroy = true,
-});
-```
-
-{{% /choosable %}}
-
-{{% choosable language java %}}
-
-```java
-var ci = new Dataset("ci-dataset", DatasetArgs.builder()
-    .datasetId("ci_dataset")
-    .location("europe-west2")
-    // v9
-    // .defaultCollation("")
-    // v10 (fixed)
-    .defaultCollation("und:ci")
-    .deleteContentsOnDestroy(true)
-    .build());
-```
-
-{{% /choosable %}}
-
-{{% choosable language yaml %}}
-
-```yaml
-resources:
-  ci:
-    type: gcp:bigquery:Dataset
-    name: ci-dataset
-    properties:
-      datasetId: ci_dataset
-      location: europe-west2
-      # v9
-      # defaultCollation: ""
-      # v10 (fixed)
-      defaultCollation: und:ci
-      deleteContentsOnDestroy: true
-```
-
-{{% /choosable %}}
-
-{{< /chooser >}}
-
-**If your code reads the `defaultCollation` output**, give it a fallback. Setting it was always optional; reading it was not. Because the field was computed, the output was typed `string` on v9 and is `string | undefined` on v10, so an unguarded read stops compiling.
+**If your code reads the `defaultCollation` output**, give it a fallback. Setting it was always optional; reading it was not. Because the provider always filled it in, the output was typed `string` on v9 and is `string | undefined` on v10, so an unguarded read stops compiling.
 
 ```typescript
 // v9
@@ -1231,8 +1117,6 @@ export const ciCollationUpper = ci.defaultCollation.apply(c => (c ?? "").toUpper
 *Upstream: [`google_secret_manager_secret_version`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_secret_manager_secret_version) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
-
-**Unaffected:** anyone using `secretData` instead of the write-only pair.
 
 **If you set `secretDataWoVersion` to a number**, quoting it is the whole fix and replaces nothing.
 
@@ -1313,8 +1197,6 @@ const unpinned = new gcp.secretmanager.SecretVersion("unpinned-payload", {
 *Upstream: [`google_monitoring_uptime_check_config`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_monitoring_uptime_check_config) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
-
-**Unaffected:** every `gcp.monitoring.UptimeCheckConfig` without an `httpCheck.authInfo` block, and every `authInfo` that already sets exactly one of `password` or `passwordWo`. Nothing to do.
 
 **Nothing is replaced.** Every fix below is an in-place update, so no uptime check is recreated and no check id changes.
 
@@ -1423,9 +1305,7 @@ Node pool names already recorded in state are not regenerated.
 
 Beware: changing `namePrefix` on a live node pool replaces it, deleting the nodes and everything running on them.
 
-**Unaffected:** every existing stack. Only a prefix of 14 characters or fewer could be deployed on v9, and those generate exactly the same names on v10.
-
-**A `namePrefix` of 15 to 31 characters** is now possible, but use it with caution: the suffix is a date plus a counter that restarts at 1 on every deployment, so two deployments of one prefix into the same cluster on the same UTC day generate the same name. The second fails with `already exists` from GKE, and preview cannot warn about it, because the name is generated while the resource is being created.
+**Every existing stack is unaffected**: only a prefix of 14 characters or fewer could be deployed on v9, and those generate exactly the same names on v10. **A `namePrefix` of 15 to 31 characters** is now possible, but use it with caution: the suffix is a date plus a counter that restarts at 1 on every deployment, so two deployments of one prefix into the same cluster on the same UTC day generate the same name. The second fails with `already exists` from GKE, and preview cannot warn about it, because the name is generated while the resource is being created.
 
 #### Am I affected?
 
@@ -1466,8 +1346,6 @@ N/A
 *Upstream: [`google_cloud_run_v2_worker_pool`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_cloud_run_v2_worker_pool) in the google-beta v8 upgrade guide.*
 
 #### Impact/Risk
-
-**Unaffected:** every `gcp.cloudrunv2.WorkerPool` whose container probes set no `httpGet.httpHeaders`, or that uses `grpc` or `tcpSocket` probes, or that has no probes at all, and that does not set `customAudiences`.
 
 **If a probe sets `httpGet.httpHeaders`**, the value must become a list. Where there is a compile step, the program stops building until you change it; where there is not, the old shape still reaches the provider, which warns that an array was expected and deploys the header correctly anyway. Wrapping the header in a list is the whole fix: **nothing is replaced and nothing is updated**.
 
@@ -1687,7 +1565,7 @@ This removes a recurring diff. On v9 a service attachment with more than one NAT
 
 #### Impact/Risk
 
-**Unaffected:** anyone whose `gcp.compute.ServiceAttachment` has at most one `natSubnets` entry and at most one `consumerRejectLists` entry, and anyone who does not read either collection back. No program change is required in any case, and nothing is replaced.
+No program change is required in any case, and nothing is replaced.
 
 **If you read `natSubnets` or `consumerRejectLists` back by index**, the value at a given index can change. The first `pulumi up --refresh` after the upgrade rewrites both collections in state into the provider's order, which is neither the order you wrote nor the order GCP returns. A stack output built from the first entry changes value silently, with the attachment itself reported as unchanged. If the entry feeds another resource, that resource gets whatever diff its own rules imply.
 
@@ -1929,7 +1807,7 @@ The declared type is unchanged. Both fields are still arrays of strings and no r
 
 #### Impact/Risk
 
-**Unaffected:** anyone who sets `loggingConfig.enableComponents` or `monitoringConfig.enableComponents` and never reads the value back, which is nearly everyone. Nothing is replaced, before or after the upgrade.
+Nothing is replaced, before or after the upgrade.
 
 **If your program reads a position out of either array**, such as `enableComponents[0]`, that value changes once, at your first refresh after the upgrade: a cluster declaring `["APISERVER", "SYSTEM_COMPONENTS"]` used to hand back `SYSTEM_COMPONENTS` at position `0` and now hands back `APISERVER`. A recurring `enableComponents` update that never settled also stops, because the order no longer counts as a difference.
 
@@ -2002,9 +1880,7 @@ The top-level `reservationBlockCount` attribute has been removed from `gcp.compu
 
 #### Impact/Risk
 
-**Unaffected:** anyone who does not read `reservationBlockCount`. The reservation's own configuration is untouched by this change and **no reservation is replaced**, on upgrade or on any later update.
-
-**If your program reads `reservationBlockCount`**, in a stack output, a `StackReference` or any derived value, what happens depends on whether your language checks types before the deployment runs:
+The reservation's own configuration is untouched by this change and **no reservation is replaced**, on upgrade or on any later update. **If your program reads `reservationBlockCount`**, in a stack output, a `StackReference` or any derived value, what happens depends on whether your language checks types before the deployment runs:
 
 - Compiled languages fail at build, before anything is deployed.
 - Interpreted languages have no build step. The read produces no value, the deployment succeeds, and any stack output built from it silently disappears. Anything downstream that consumed that output gets no value back rather than an error.
@@ -2059,6 +1935,32 @@ export const blockCount = reservation.resourceStatuses.apply(
 If you read the attribute on a reservation you looked up rather than created, the same move applies to the `gcp.compute.getReservation` result.
 
 The `?? 0` is the part to keep. `resourceStatuses` is empty for a reservation with no blocks, and without the fallback the value is absent rather than the `0` v9 reported.
+
+## Deprecations
+
+Nothing in this section breaks on v10. These are warnings you may start seeing after you upgrade.
+
+### `gcp.compute.Instance`: `metadata` carrying a container declaration
+
+An instance whose `metadata` carries the container declaration that the VM startup agent consumes:
+
+```python
+instance = compute.Instance(
+    "poc",
+    machine_type="f1-micro",
+    metadata={"gce-container-declaration": container_declaration},
+)
+```
+
+now previews with:
+
+```
+warning: verification warning: property "metadata" is deprecated: The option to deploy a container
+during VM creation using the container startup agent is deprecated. Use alternative services to run
+containers on your VMs.
+```
+
+The instance still deploys and nothing is replaced. There is no property to rename, because Google is retiring the container-on-VM startup agent itself. Its four documented paths off it are startup scripts or cloud-init on the VM, Cloud Run, Batch, and GKE. See [Migrate containers that were deployed on VMs during VM creation](https://docs.cloud.google.com/compute/docs/containers/migrate-containers).
 
 ## Other changes
 
