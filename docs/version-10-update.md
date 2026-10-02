@@ -83,6 +83,7 @@ GCP provider v10.0 includes several breaking changes. These are the ones we cons
 - [`gcp.compute.Instance`: a `guestAccelerator` count of `0` now replaces the instance](#gcpcomputeinstance-a-guestaccelerator-count-of-0-now-replaces-the-instance)
 - [`gcp.iap.Brand` and `gcp.iap.Client`: removed](#gcpiapbrand-and-gcpiapclient-removed)
 - [`gcp.notebooks`: the module has been removed](#gcpnotebooks-the-module-has-been-removed)
+- [`gcp.compute.BackendService` and `gcp.compute.GlobalForwardingRule`: `loadBalancingScheme` now defaults to `EXTERNAL_MANAGED`](#gcpcomputebackendservice-and-gcpcomputeglobalforwardingrule-loadbalancingscheme-now-defaults-to-external_managed)
 - [`gcp.bigquery.Dataset`: an undeclared `defaultCollation` is now cleared](#gcpbigquerydataset-an-undeclared-defaultcollation-is-now-cleared)
 - [`gcp.secretmanager.SecretVersion`: `secretDataWoVersion` is required alongside `secretDataWo`, and is a string](#gcpsecretmanagersecretversion-secretdatawoversion-is-required-alongside-secretdatawo-and-is-a-string)
 - [`gcp.monitoring.UptimeCheckConfig`: the two password fields are now mutually exclusive](#gcpmonitoringuptimecheckconfig-the-two-password-fields-are-now-mutually-exclusive)
@@ -940,6 +941,177 @@ resources:
 {{< /chooser >}}
 
 `gcp.notebooks.Runtime` and `gcp.notebooks.Environment` are removed the same way and have the same replacement: a Runtime becomes a `gcp.workbench.Instance`, and an Environment's settings (VM or container image, post-startup script) are set directly on `gcp.workbench.Instance`.
+
+### `gcp.compute.BackendService` and `gcp.compute.GlobalForwardingRule`: `loadBalancingScheme` now defaults to `EXTERNAL_MANAGED`
+
+`loadBalancingScheme` defaulted to `EXTERNAL`, a Classic Application Load Balancer, and now defaults to `EXTERNAL_MANAGED`, a global external Application Load Balancer. Set `loadBalancingScheme: "EXTERNAL"` explicitly to keep what you have. See the [Application Load Balancer overview](https://docs.cloud.google.com/load-balancing/docs/application-load-balancer) for the difference between the two.
+
+Only these two resources changed. The regional `gcp.compute.ForwardingRule` and `gcp.compute.RegionBackendService` keep their v9 defaults, `EXTERNAL` and `INTERNAL`.
+
+*Upstream: [`google_compute_backend_service`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_backend_service) and [`google_compute_global_forwarding_rule`](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/guides/version_8_upgrade#resource-google_compute_global_forwarding_rule) in the google-beta v8 upgrade guide.*
+
+#### Impact/Risk
+
+**Resources already in state keep `EXTERNAL`.** The field is not replacing on either resource, so upgrading on its own neither recreates nor reconfigures a live load balancer.
+
+**The new default arrives whenever one of these resources is created**, which includes a replacement and includes running the same program against a new stack. Expanding a service into another region builds a global external Application Load Balancer where the original is classic, and nothing in the diff says so.
+
+**A new load balancer that mixes the two schemes fails part way through the deployment.** GCP checks that the schemes match when the forwarding rule is created, so a forwarding rule pinned to `EXTERNAL` against a backend service on the new default fails with `Error 400: ... Load balancing scheme EXTERNAL does not match the backend service load balancing scheme EXTERNAL_MANAGED`, after most of the other resources already exist.
+
+**An existing classic load balancer accepts a mismatched backend service silently.** GCP does not run that check when a classic load balancer's URL map points at an `EXTERNAL_MANAGED` backend service. The configuration is accepted and serves traffic normally, leaving the load balancer mixed with nothing to show it.
+
+**Standard Tier cannot use the new default.** A global external Application Load Balancer requires Premium Tier; see the [Network Service Tiers overview](https://cloud.google.com/network-tiers/docs/overview). Setting `loadBalancingScheme: "EXTERNAL"` explicitly keeps these load balancers working.
+
+**Going back is time limited and is a staged migration, not an edit.** Pinning `EXTERNAL` on a resource that already exists as `EXTERNAL_MANAGED` is rejected with `Downgrading the load balancing scheme to EXTERNAL is only supported for EXTERNAL_MANAGED backend services that were migrated from EXTERNAL in the last 90 days`, and needs `pulumi up --replace`. Migrating forwards deliberately requires `externalManagedMigrationState` to reach `TEST_ALL_TRAFFIC`, via `PREPARE` and optionally `TEST_BY_PERCENTAGE` with `externalManagedMigrationTestingPercentage`, before `loadBalancingScheme` may become `EXTERNAL_MANAGED`, and the reverse order to roll back. The provider does not automate either direction.
+
+#### Am I affected?
+
+Run the following command against each stack to find the resources whose scheme would change if they were recreated. It is a preview and changes nothing.
+
+```bash
+pulumi preview --replace '**' --json \
+| jq -r '.steps[]
+    | select(.oldState.inputs.loadBalancingScheme != .newState.inputs.loadBalancingScheme)
+    | "\(.op)\t\(.oldState.inputs.loadBalancingScheme // "-") => \(.newState.inputs.loadBalancingScheme // "-")\t\(.urn)"'
+```
+
+Anything it prints is a classic load balancer that would come back as a global external one. No output means every `gcp.compute.BackendService` and `gcp.compute.GlobalForwardingRule` in the stack already names its scheme, or the stack has none.
+
+#### Remediation
+
+Name the scheme on every Classic Application Load Balancer resource that does not already. This changes nothing live; it stops the default from moving under you.
+
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+
+{{% choosable language typescript %}}
+
+```typescript
+const backend = new gcp.compute.BackendService("backend", {
+    protocol: "HTTP",
+    healthChecks: healthCheck.id,
+    // v9: the default was EXTERNAL, a Classic Application Load Balancer.
+    // v10 (fixed): name it, or a new or replaced resource becomes EXTERNAL_MANAGED.
+    loadBalancingScheme: "EXTERNAL",
+});
+
+const rule = new gcp.compute.GlobalForwardingRule("rule", {
+    target: proxy.id,
+    portRange: "80",
+    loadBalancingScheme: "EXTERNAL",
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language python %}}
+
+```python
+backend = gcp.compute.BackendService("backend",
+    protocol="HTTP",
+    health_checks=health_check.id,
+    # v9: the default was EXTERNAL, a Classic Application Load Balancer.
+    # v10 (fixed): name it, or a new or replaced resource becomes EXTERNAL_MANAGED.
+    load_balancing_scheme="EXTERNAL")
+
+rule = gcp.compute.GlobalForwardingRule("rule",
+    target=proxy.id,
+    port_range="80",
+    load_balancing_scheme="EXTERNAL")
+```
+
+{{% /choosable %}}
+
+{{% choosable language go %}}
+
+```go
+backend, err := compute.NewBackendService(ctx, "backend", &compute.BackendServiceArgs{
+	Protocol:     pulumi.String("HTTP"),
+	HealthChecks: healthCheck.ID(),
+	// v9: the default was EXTERNAL, a Classic Application Load Balancer.
+	// v10 (fixed): name it, or a new or replaced resource becomes EXTERNAL_MANAGED.
+	LoadBalancingScheme: pulumi.String("EXTERNAL"),
+})
+if err != nil {
+	return err
+}
+
+_, err = compute.NewGlobalForwardingRule(ctx, "rule", &compute.GlobalForwardingRuleArgs{
+	Target:              proxy.ID(),
+	PortRange:           pulumi.String("80"),
+	LoadBalancingScheme: pulumi.String("EXTERNAL"),
+})
+if err != nil {
+	return err
+}
+```
+
+{{% /choosable %}}
+
+{{% choosable language csharp %}}
+
+```csharp
+var backend = new Gcp.Compute.BackendService("backend", new()
+{
+    Protocol = "HTTP",
+    HealthChecks = healthCheck.Id,
+    // v9: the default was EXTERNAL, a Classic Application Load Balancer.
+    // v10 (fixed): name it, or a new or replaced resource becomes EXTERNAL_MANAGED.
+    LoadBalancingScheme = "EXTERNAL",
+});
+
+var rule = new Gcp.Compute.GlobalForwardingRule("rule", new()
+{
+    Target = proxy.Id,
+    PortRange = "80",
+    LoadBalancingScheme = "EXTERNAL",
+});
+```
+
+{{% /choosable %}}
+
+{{% choosable language java %}}
+
+```java
+var backend = new BackendService("backend", BackendServiceArgs.builder()
+    .protocol("HTTP")
+    .healthChecks(healthCheck.id())
+    // v9: the default was EXTERNAL, a Classic Application Load Balancer.
+    // v10 (fixed): name it, or a new or replaced resource becomes EXTERNAL_MANAGED.
+    .loadBalancingScheme("EXTERNAL")
+    .build());
+
+var rule = new GlobalForwardingRule("rule", GlobalForwardingRuleArgs.builder()
+    .target(proxy.id())
+    .portRange("80")
+    .loadBalancingScheme("EXTERNAL")
+    .build());
+```
+
+{{% /choosable %}}
+
+{{% choosable language yaml %}}
+
+```yaml
+resources:
+  backend:
+    type: gcp:compute:BackendService
+    properties:
+      protocol: HTTP
+      healthChecks: ${healthCheck.id}
+      # v9: the default was EXTERNAL, a Classic Application Load Balancer.
+      # v10 (fixed): name it, or a new or replaced resource becomes EXTERNAL_MANAGED.
+      loadBalancingScheme: EXTERNAL
+  rule:
+    type: gcp:compute:GlobalForwardingRule
+    properties:
+      target: ${proxy.id}
+      portRange: "80"
+      loadBalancingScheme: EXTERNAL
+```
+
+{{% /choosable %}}
+
+{{< /chooser >}}
 
 ### `gcp.bigquery.Dataset`: an undeclared `defaultCollation` is now cleared
 
@@ -2001,12 +2173,6 @@ Everything in the release that is not covered above, listed for completeness.
 
 - Resource `gcp.cloudsecuritycompliance.Framework`:
   - Field `cloudControlDetails` is now a set. Ordering is no longer significant and duplicate entries are rejected.
-
-- Resource `gcp.compute.BackendService`:
-  - Field `loadBalancingScheme` default value changed to `EXTERNAL_MANAGED`.
-
-- Resource `gcp.compute.GlobalForwardingRule`:
-  - Field `loadBalancingScheme` default value changed to `EXTERNAL_MANAGED`.
 
 - Resource `gcp.compute.ServiceAttachment`:
   - Fields `consumerAcceptLists[].projectIdOrNum`, `consumerAcceptLists[].networkUrl` and `consumerAcceptLists[].endpointUrl` now default to an empty string rather than to null, so that the API omitting an unpopulated attribute no longer produces a perpetual diff. A program that reads one of those values back gets `""` where v9 gave no value; the change lands on the first refresh after the upgrade. The set conversions on the same resource are covered in detail [above](#gcpcomputeserviceattachment-natsubnets-and-consumerrejectlists-are-now-sets).
