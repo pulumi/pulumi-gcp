@@ -13,4 +13,10 @@
       enabled: false,
     },
   ],
+  // Vulnerability-fix PRs inherit this as a forced override, which re-enables
+  // the packages the v9 rule above disables. Same as Renovate's
+  // security:only-security-updates preset.
+  vulnerabilityAlerts: {
+    enabled: true,
+  },
 }
