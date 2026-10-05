@@ -39,6 +39,6 @@ name: warn-codegen
 on:
   pull_request_target:
     branches:
-    - master
+    - main
     types:
     - opened
