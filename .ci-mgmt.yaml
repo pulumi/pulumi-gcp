@@ -31,3 +31,6 @@ releaseVerification:
 autoMergeProviderUpgrades: false
 runner:
     buildSdk: pulumi-ubuntu-8core
+# v9 is the maintenance branch for the previous major. Skip the registry docs
+# build so pulumi.com keeps showing v10.
+publishRegistry: false
