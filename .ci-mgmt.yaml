@@ -31,3 +31,4 @@ releaseVerification:
 autoMergeProviderUpgrades: false
 runner:
     buildSdk: pulumi-ubuntu-8core
+maintenanceBranch: v9
