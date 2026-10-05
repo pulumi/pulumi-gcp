@@ -1,5 +1,5 @@
 ---
-title: Google Cloud (GCP) Classic
+title: Google Cloud (GCP)
 meta_desc: Learn how to use Pulumi's GCP Provider to reduce the complexity of managing and provisioning GCP resources.
 layout: package
 ---
