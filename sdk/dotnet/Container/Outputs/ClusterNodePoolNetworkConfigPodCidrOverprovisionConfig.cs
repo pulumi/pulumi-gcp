@@ -14,9 +14,9 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig
     {
         /// <summary>
-        /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        /// Whether Pod CIDR overprovisioning is disabled.
         /// 
-        /// &lt;a name="NestedClusterTelemetry"&gt;&lt;/a&gt;The `ClusterTelemetry` block supports
+        /// &lt;a name="NestedAutoIpamConfig"&gt;&lt;/a&gt;The auto ipam config supports:
         /// </summary>
         public readonly bool Disabled;
 

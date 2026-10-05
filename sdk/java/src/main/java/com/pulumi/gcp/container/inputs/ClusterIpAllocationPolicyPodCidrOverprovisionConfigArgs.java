@@ -15,18 +15,18 @@ public final class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs exten
     public static final ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs Empty = new ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs();
 
     /**
-     * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+     * Whether Pod CIDR overprovisioning is disabled.
      * 
-     * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     @Import(name="disabled", required=true)
     private Output<Boolean> disabled;
 
     /**
-     * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+     * @return Whether Pod CIDR overprovisioning is disabled.
      * 
-     * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
+     * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
      * 
      */
     public Output<Boolean> disabled() {
@@ -58,9 +58,9 @@ public final class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs exten
         }
 
         /**
-         * @param disabled Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         * @param disabled Whether Pod CIDR overprovisioning is disabled.
          * 
-         * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
+         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
          * 
          * @return builder
          * 
@@ -71,9 +71,9 @@ public final class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs exten
         }
 
         /**
-         * @param disabled Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         * @param disabled Whether Pod CIDR overprovisioning is disabled.
          * 
-         * &lt;a name=&#34;nestedClusterTelemetry&#34;&gt;&lt;/a&gt;The `clusterTelemetry` block supports
+         * &lt;a name=&#34;nestedAutoIpamConfig&#34;&gt;&lt;/a&gt;The auto ipam config supports:
          * 
          * @return builder
          * 

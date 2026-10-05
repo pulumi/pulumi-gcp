@@ -18,17 +18,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost {
     /**
-     * @return Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+     * @return Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
      * 
      */
     private @Nullable List<String> capabilities;
     /**
-     * @return Configures the registry host certificate.
+     * @return Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
      * 
      */
     private @Nullable List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa> cas;
     /**
-     * @return Configures the registry host client certificate and key.
+     * @return Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+     * 
+     * Example:
      * 
      */
     private @Nullable List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient> clients;
@@ -38,7 +40,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost {
      */
     private @Nullable String dialTimeout;
     /**
-     * @return Configures the registry host headers.
+     * @return Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
      * 
      */
     private @Nullable List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader> headers;
@@ -48,28 +50,30 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost {
      */
     private String host;
     /**
-     * @return Indicate the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
+     * @return Indicates the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
      * 
      */
     private @Nullable Boolean overridePath;
 
     private ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost() {}
     /**
-     * @return Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+     * @return Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
      * 
      */
     public List<String> capabilities() {
         return this.capabilities == null ? List.of() : this.capabilities;
     }
     /**
-     * @return Configures the registry host certificate.
+     * @return Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
      * 
      */
     public List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa> cas() {
         return this.cas == null ? List.of() : this.cas;
     }
     /**
-     * @return Configures the registry host client certificate and key.
+     * @return Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+     * 
+     * Example:
      * 
      */
     public List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient> clients() {
@@ -83,7 +87,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost {
         return Optional.ofNullable(this.dialTimeout);
     }
     /**
-     * @return Configures the registry host headers.
+     * @return Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
      * 
      */
     public List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader> headers() {
@@ -97,7 +101,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost {
         return this.host;
     }
     /**
-     * @return Indicate the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
+     * @return Indicates the host&#39;s API root endpoint is defined in the URL path rather than by the API specification.
      * 
      */
     public Optional<Boolean> overridePath() {

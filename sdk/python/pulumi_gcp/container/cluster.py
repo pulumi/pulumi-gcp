@@ -356,8 +356,9 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
+        :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: ) Configuration for Cloud TPU in this cluster.
+               Structure is documented below.
+        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster. Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: )
@@ -1756,7 +1757,8 @@ class ClusterArgs:
     @pulumi.getter(name="tpuConfig")
     def tpu_config(self) -> pulumi.Input[Optional['ClusterTpuConfigArgs']]:
         """
-        TPU configuration for the cluster.
+        ) Configuration for Cloud TPU in this cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "tpu_config")
 
@@ -1768,7 +1770,7 @@ class ClusterArgs:
     @pulumi.getter(name="userManagedKeysConfig")
     def user_managed_keys_config(self) -> pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']]:
         """
-        The custom keys configuration of the cluster Structure is documented below.
+        The custom keys configuration of the cluster. Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 
@@ -2178,11 +2180,12 @@ class _ClusterState:
         :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
+        :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: ) Configuration for Cloud TPU in this cluster.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
+        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster. Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: )
@@ -3711,7 +3714,8 @@ class _ClusterState:
     @pulumi.getter(name="tpuConfig")
     def tpu_config(self) -> pulumi.Input[Optional['ClusterTpuConfigArgs']]:
         """
-        TPU configuration for the cluster.
+        ) Configuration for Cloud TPU in this cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "tpu_config")
 
@@ -3737,7 +3741,7 @@ class _ClusterState:
     @pulumi.getter(name="userManagedKeysConfig")
     def user_managed_keys_config(self) -> pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']]:
         """
-        The custom keys configuration of the cluster Structure is documented below.
+        The custom keys configuration of the cluster. Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 
@@ -4280,8 +4284,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']] tpu_config: TPU configuration for the cluster.
-        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
+        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']] tpu_config: ) Configuration for Cloud TPU in this cluster.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']] user_managed_keys_config: The custom keys configuration of the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']] workload_alts_config: )
@@ -5041,11 +5046,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_node_pool_refresh: Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `node_pool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `node_pool` blocks in your configuration; doing so will result in a validation error during plan.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
-        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']] tpu_config: TPU configuration for the cluster.
+        :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict', 'outputs.ClusterTpuConfig']] tpu_config: ) Configuration for Cloud TPU in this cluster.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
-        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict', 'outputs.ClusterUserManagedKeysConfig']] user_managed_keys_config: The custom keys configuration of the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict', 'outputs.ClusterVerticalPodAutoscaling']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict', 'outputs.ClusterWorkloadAltsConfig']] workload_alts_config: )
@@ -6090,7 +6096,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="tpuConfig")
     def tpu_config(self) -> pulumi.Output['outputs.ClusterTpuConfig']:
         """
-        TPU configuration for the cluster.
+        ) Configuration for Cloud TPU in this cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "tpu_config")
 
@@ -6108,7 +6115,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="userManagedKeysConfig")
     def user_managed_keys_config(self) -> pulumi.Output[Optional['outputs.ClusterUserManagedKeysConfig']]:
         """
-        The custom keys configuration of the cluster Structure is documented below.
+        The custom keys configuration of the cluster. Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 

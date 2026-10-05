@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolNodeConfigHostMaintenancePolicy {
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     private String maintenanceInterval;
     /**
-     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * @return Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
      * 
      */
     private @Nullable NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy opportunisticMaintenanceStrategy;
 
     private NodePoolNodeConfigHostMaintenancePolicy() {}
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
     }
     /**
-     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * @return Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
      * 
      */
     public Optional<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy> opportunisticMaintenanceStrategy() {

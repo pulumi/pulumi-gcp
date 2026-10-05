@@ -252,6 +252,48 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Regional Parameter Version With Data Crc32c
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.parametermanager.RegionalParameter;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
+ * import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var regional_parameter_basic = new RegionalParameter("regional-parameter-basic", RegionalParameterArgs.builder()
+ *             .parameterId("regional_parameter")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var regional_parameter_version_with_data_crc32c = new RegionalParameterVersion("regional-parameter-version-with-data-crc32c", RegionalParameterVersionArgs.builder()
+ *             .parameter(regional_parameter_basic.id())
+ *             .parameterVersionId("regional_parameter_version")
+ *             .parameterData("regional-parameter-version-data")
+ *             .dataCrc32c("4019737965")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -281,6 +323,20 @@ public class RegionalParameterVersion extends com.pulumi.resources.CustomResourc
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     * 
+     */
+    @Export(name="dataCrc32c", refs={String.class}, tree="[0]")
+    private Output<String> dataCrc32c;
+
+    /**
+     * @return The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     * 
+     */
+    public Output<String> dataCrc32c() {
+        return this.dataCrc32c;
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

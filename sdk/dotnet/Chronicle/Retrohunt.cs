@@ -52,12 +52,12 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result.Length)).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
     ///             return invoke.Result[(int)(length - 1)];
-    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+    ///         }),
     ///         ProcessInterval = new Gcp.Chronicle.Inputs.RetrohuntProcessIntervalArgs
     ///         {
     ///             StartTime = "2025-01-01T00:00:00Z",

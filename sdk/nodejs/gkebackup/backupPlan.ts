@@ -25,8 +25,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "basic-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -42,7 +45,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     name: "basic-plan",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -58,7 +61,7 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "autopilot-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     enableAutopilot: true,
  *     ipAllocationPolicy: {},
  *     releaseChannel: {
@@ -76,7 +79,7 @@ import * as utilities from "../utilities";
  * const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
  *     name: "autopilot-plan",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -92,8 +95,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "cmek-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -108,7 +114,7 @@ import * as utilities from "../utilities";
  * });
  * const keyRing = new gcp.kms.KeyRing("key_ring", {
  *     name: "backup-key",
- *     location: "us-central1",
+ *     location: "us-east1",
  * });
  * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
  *     name: "backup-key",
@@ -117,7 +123,7 @@ import * as utilities from "../utilities";
  * const cmek = new gcp.gkebackup.BackupPlan("cmek", {
  *     name: "cmek-plan",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -141,8 +147,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "nslabels-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -158,7 +167,7 @@ import * as utilities from "../utilities";
  * const nslabels = new gcp.gkebackup.BackupPlan("nslabels", {
  *     name: "nslabels-plan",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     backupConfig: {
  *         includeVolumeData: true,
  *         includeSecrets: true,
@@ -179,8 +188,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "full-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -196,7 +208,7 @@ import * as utilities from "../utilities";
  * const full = new gcp.gkebackup.BackupPlan("full", {
  *     name: "full-plan",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
  *         backupRetainDays: 180,
@@ -230,8 +242,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "permissive-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -247,7 +262,7 @@ import * as utilities from "../utilities";
  * const permissive = new gcp.gkebackup.BackupPlan("permissive", {
  *     name: "permissive-plan",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
  *         backupRetainDays: 180,
@@ -282,8 +297,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "rpo-daily-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -299,7 +317,7 @@ import * as utilities from "../utilities";
  * const rpoDailyWindow = new gcp.gkebackup.BackupPlan("rpo_daily_window", {
  *     name: "rpo-daily-window",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
  *         backupRetainDays: 180,
@@ -348,8 +366,11 @@ import * as utilities from "../utilities";
  *
  * const primary = new gcp.container.Cluster("primary", {
  *     name: "rpo-weekly-cluster",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     initialNodeCount: 1,
+ *     nodeConfig: {
+ *         machineType: "n4-standard-2",
+ *     },
  *     workloadIdentityConfig: {
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
@@ -365,7 +386,7 @@ import * as utilities from "../utilities";
  * const rpoWeeklyWindow = new gcp.gkebackup.BackupPlan("rpo_weekly_window", {
  *     name: "rpo-weekly-window",
  *     cluster: primary.id,
- *     location: "us-central1",
+ *     location: "us-east1",
  *     retentionPolicy: {
  *         backupDeleteLockDays: 30,
  *         backupRetainDays: 180,

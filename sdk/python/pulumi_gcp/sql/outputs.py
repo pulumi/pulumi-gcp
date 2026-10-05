@@ -4234,7 +4234,7 @@ class GetDatabaseInstanceSettingResult(dict):
         :param _builtins.bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param _builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
         :param _builtins.int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param _builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+        :param _builtins.int disk_size: The size of data disk, in GB. The size of a running instance can be increased, or reduced when disk_autoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         :param _builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         :param _builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         :param _builtins.str effective_availability_type: The availability type of the Cloud SQL instance, high availability
@@ -4438,7 +4438,7 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> _builtins.int:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+        The size of data disk, in GB. The size of a running instance can be increased, or reduced when disk_autoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         """
         return pulumi.get(self, "disk_size")
 
@@ -5910,6 +5910,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  deletion_protection: _builtins.bool,
                  dns_name: _builtins.str,
                  dns_names: Sequence['outputs.GetDatabaseInstancesInstanceDnsNameResult'],
+                 encryption_confidential_mode: _builtins.bool,
                  encryption_key_name: _builtins.str,
                  enforce_new_sql_network_architecture: _builtins.bool,
                  final_backup_description: _builtins.str,
@@ -5954,6 +5955,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.bool deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
         :param _builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        :param _builtins.bool encryption_confidential_mode: Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
         :param _builtins.bool enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
         :param _builtins.str final_backup_description: The description of final backup if instance enable create final backup during instance deletion.
         :param _builtins.str first_ip_address: The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
@@ -5990,6 +5992,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "dns_names", dns_names)
+        pulumi.set(__self__, "encryption_confidential_mode", encryption_confidential_mode)
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         pulumi.set(__self__, "final_backup_description", final_backup_description)
@@ -6096,6 +6099,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
         """
         return pulumi.get(self, "dns_names")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfidentialMode")
+    def encryption_confidential_mode(self) -> _builtins.bool:
+        """
+        Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+        """
+        return pulumi.get(self, "encryption_confidential_mode")
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyName")
@@ -6874,7 +6885,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         :param _builtins.bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param _builtins.bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
         :param _builtins.int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
-        :param _builtins.int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+        :param _builtins.int disk_size: The size of data disk, in GB. The size of a running instance can be increased, or reduced when disk_autoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         :param _builtins.str disk_type: The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.
         :param _builtins.str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
         :param _builtins.str effective_availability_type: The availability type of the Cloud SQL instance, high availability
@@ -7078,7 +7089,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> _builtins.int:
         """
-        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
+        The size of data disk, in GB. The size of a running instance can be increased, or reduced when disk_autoresize is disabled (this triggers an in-place storage shrink, which restarts the instance). The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.
         """
         return pulumi.get(self, "disk_size")
 

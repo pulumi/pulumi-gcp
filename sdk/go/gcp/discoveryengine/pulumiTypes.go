@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -4448,6 +4448,219 @@ func (o DataConnectorErrorArrayOutput) Index(i pulumi.IntInput) DataConnectorErr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataConnectorError {
 		return vs[0].([]DataConnectorError)[vs[1].(int)]
 	}).(DataConnectorErrorOutput)
+}
+
+type DataConnectorMetadata struct {
+	// The party that authored the connector, e.g. "Google" or a third-party provider name.
+	Author *string `pulumi:"author"`
+	// Human-readable description of the connector.
+	Description *string `pulumi:"description"`
+	// Free-form, multi-line note about the connector's capabilities.
+	Note *string `pulumi:"note"`
+	// Short, subtitle-length description of the connector.
+	ShortDescription *string `pulumi:"shortDescription"`
+	// Display title of the connector.
+	Title *string `pulumi:"title"`
+}
+
+// DataConnectorMetadataInput is an input type that accepts DataConnectorMetadataArgs and DataConnectorMetadataOutput values.
+// You can construct a concrete instance of `DataConnectorMetadataInput` via:
+//
+//	DataConnectorMetadataArgs{...}
+type DataConnectorMetadataInput interface {
+	pulumi.Input
+
+	ToDataConnectorMetadataOutput() DataConnectorMetadataOutput
+	ToDataConnectorMetadataOutputWithContext(context.Context) DataConnectorMetadataOutput
+}
+
+type DataConnectorMetadataArgs struct {
+	// The party that authored the connector, e.g. "Google" or a third-party provider name.
+	Author pulumi.StringPtrInput `pulumi:"author"`
+	// Human-readable description of the connector.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Free-form, multi-line note about the connector's capabilities.
+	Note pulumi.StringPtrInput `pulumi:"note"`
+	// Short, subtitle-length description of the connector.
+	ShortDescription pulumi.StringPtrInput `pulumi:"shortDescription"`
+	// Display title of the connector.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (DataConnectorMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorMetadata)(nil)).Elem()
+}
+
+func (i DataConnectorMetadataArgs) ToDataConnectorMetadataOutput() DataConnectorMetadataOutput {
+	return i.ToDataConnectorMetadataOutputWithContext(context.Background())
+}
+
+func (i DataConnectorMetadataArgs) ToDataConnectorMetadataOutputWithContext(ctx context.Context) DataConnectorMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorMetadataOutput)
+}
+
+func (i DataConnectorMetadataArgs) ToDataConnectorMetadataPtrOutput() DataConnectorMetadataPtrOutput {
+	return i.ToDataConnectorMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i DataConnectorMetadataArgs) ToDataConnectorMetadataPtrOutputWithContext(ctx context.Context) DataConnectorMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorMetadataOutput).ToDataConnectorMetadataPtrOutputWithContext(ctx)
+}
+
+// DataConnectorMetadataPtrInput is an input type that accepts DataConnectorMetadataArgs, DataConnectorMetadataPtr and DataConnectorMetadataPtrOutput values.
+// You can construct a concrete instance of `DataConnectorMetadataPtrInput` via:
+//
+//	        DataConnectorMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataConnectorMetadataPtrInput interface {
+	pulumi.Input
+
+	ToDataConnectorMetadataPtrOutput() DataConnectorMetadataPtrOutput
+	ToDataConnectorMetadataPtrOutputWithContext(context.Context) DataConnectorMetadataPtrOutput
+}
+
+type dataConnectorMetadataPtrType DataConnectorMetadataArgs
+
+func DataConnectorMetadataPtr(v *DataConnectorMetadataArgs) DataConnectorMetadataPtrInput {
+	return (*dataConnectorMetadataPtrType)(v)
+}
+
+func (*dataConnectorMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataConnectorMetadata)(nil)).Elem()
+}
+
+func (i *dataConnectorMetadataPtrType) ToDataConnectorMetadataPtrOutput() DataConnectorMetadataPtrOutput {
+	return i.ToDataConnectorMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *dataConnectorMetadataPtrType) ToDataConnectorMetadataPtrOutputWithContext(ctx context.Context) DataConnectorMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorMetadataPtrOutput)
+}
+
+type DataConnectorMetadataOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataConnectorMetadata)(nil)).Elem()
+}
+
+func (o DataConnectorMetadataOutput) ToDataConnectorMetadataOutput() DataConnectorMetadataOutput {
+	return o
+}
+
+func (o DataConnectorMetadataOutput) ToDataConnectorMetadataOutputWithContext(ctx context.Context) DataConnectorMetadataOutput {
+	return o
+}
+
+func (o DataConnectorMetadataOutput) ToDataConnectorMetadataPtrOutput() DataConnectorMetadataPtrOutput {
+	return o.ToDataConnectorMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o DataConnectorMetadataOutput) ToDataConnectorMetadataPtrOutputWithContext(ctx context.Context) DataConnectorMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataConnectorMetadata) *DataConnectorMetadata {
+		return &v
+	}).(DataConnectorMetadataPtrOutput)
+}
+
+// The party that authored the connector, e.g. "Google" or a third-party provider name.
+func (o DataConnectorMetadataOutput) Author() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorMetadata) *string { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable description of the connector.
+func (o DataConnectorMetadataOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorMetadata) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Free-form, multi-line note about the connector's capabilities.
+func (o DataConnectorMetadataOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorMetadata) *string { return v.Note }).(pulumi.StringPtrOutput)
+}
+
+// Short, subtitle-length description of the connector.
+func (o DataConnectorMetadataOutput) ShortDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorMetadata) *string { return v.ShortDescription }).(pulumi.StringPtrOutput)
+}
+
+// Display title of the connector.
+func (o DataConnectorMetadataOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataConnectorMetadata) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type DataConnectorMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (DataConnectorMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataConnectorMetadata)(nil)).Elem()
+}
+
+func (o DataConnectorMetadataPtrOutput) ToDataConnectorMetadataPtrOutput() DataConnectorMetadataPtrOutput {
+	return o
+}
+
+func (o DataConnectorMetadataPtrOutput) ToDataConnectorMetadataPtrOutputWithContext(ctx context.Context) DataConnectorMetadataPtrOutput {
+	return o
+}
+
+func (o DataConnectorMetadataPtrOutput) Elem() DataConnectorMetadataOutput {
+	return o.ApplyT(func(v *DataConnectorMetadata) DataConnectorMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret DataConnectorMetadata
+		return ret
+	}).(DataConnectorMetadataOutput)
+}
+
+// The party that authored the connector, e.g. "Google" or a third-party provider name.
+func (o DataConnectorMetadataPtrOutput) Author() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnectorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Author
+	}).(pulumi.StringPtrOutput)
+}
+
+// Human-readable description of the connector.
+func (o DataConnectorMetadataPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnectorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Free-form, multi-line note about the connector's capabilities.
+func (o DataConnectorMetadataPtrOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnectorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Note
+	}).(pulumi.StringPtrOutput)
+}
+
+// Short, subtitle-length description of the connector.
+func (o DataConnectorMetadataPtrOutput) ShortDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnectorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display title of the connector.
+func (o DataConnectorMetadataPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataConnectorMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type DataStoreAdvancedSiteSearchConfig struct {
@@ -10323,6 +10536,15 @@ type WidgetConfigUiSettings struct {
 	// Default to no result if unspecified.
 	// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
 	ResultDescriptionType *string `pulumi:"resultDescriptionType"`
+	// SearchAddonSpec is used to disable add-ons for search. By default, if this
+	// field is not specified, add-ons are enabled wherever applicable.
+	// This field is only supported for search requests.
+	// Structure is documented below.
+	SearchAddonSpec *WidgetConfigUiSettingsSearchAddonSpec `pulumi:"searchAddonSpec"`
+	// Whether to show the admin-configured display name for data connectors in
+	// the widget sources UI (instead of the connector kind). Opt-in; defaults
+	// to false.
+	SourceAdminDisplayNameEnabled *bool `pulumi:"sourceAdminDisplayNameEnabled"`
 }
 
 // WidgetConfigUiSettingsInput is an input type that accepts WidgetConfigUiSettingsArgs and WidgetConfigUiSettingsOutput values.
@@ -10370,6 +10592,15 @@ type WidgetConfigUiSettingsArgs struct {
 	// Default to no result if unspecified.
 	// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
 	ResultDescriptionType pulumi.StringPtrInput `pulumi:"resultDescriptionType"`
+	// SearchAddonSpec is used to disable add-ons for search. By default, if this
+	// field is not specified, add-ons are enabled wherever applicable.
+	// This field is only supported for search requests.
+	// Structure is documented below.
+	SearchAddonSpec WidgetConfigUiSettingsSearchAddonSpecPtrInput `pulumi:"searchAddonSpec"`
+	// Whether to show the admin-configured display name for data connectors in
+	// the widget sources UI (instead of the connector kind). Opt-in; defaults
+	// to false.
+	SourceAdminDisplayNameEnabled pulumi.BoolPtrInput `pulumi:"sourceAdminDisplayNameEnabled"`
 }
 
 func (WidgetConfigUiSettingsArgs) ElementType() reflect.Type {
@@ -10521,6 +10752,21 @@ func (o WidgetConfigUiSettingsOutput) InteractionType() pulumi.StringPtrOutput {
 // Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
 func (o WidgetConfigUiSettingsOutput) ResultDescriptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WidgetConfigUiSettings) *string { return v.ResultDescriptionType }).(pulumi.StringPtrOutput)
+}
+
+// SearchAddonSpec is used to disable add-ons for search. By default, if this
+// field is not specified, add-ons are enabled wherever applicable.
+// This field is only supported for search requests.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsOutput) SearchAddonSpec() WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *WidgetConfigUiSettingsSearchAddonSpec { return v.SearchAddonSpec }).(WidgetConfigUiSettingsSearchAddonSpecPtrOutput)
+}
+
+// Whether to show the admin-configured display name for data connectors in
+// the widget sources UI (instead of the connector kind). Opt-in; defaults
+// to false.
+func (o WidgetConfigUiSettingsOutput) SourceAdminDisplayNameEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.SourceAdminDisplayNameEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type WidgetConfigUiSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -10682,6 +10928,31 @@ func (o WidgetConfigUiSettingsPtrOutput) ResultDescriptionType() pulumi.StringPt
 		}
 		return v.ResultDescriptionType
 	}).(pulumi.StringPtrOutput)
+}
+
+// SearchAddonSpec is used to disable add-ons for search. By default, if this
+// field is not specified, add-ons are enabled wherever applicable.
+// This field is only supported for search requests.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsPtrOutput) SearchAddonSpec() WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *WidgetConfigUiSettingsSearchAddonSpec {
+		if v == nil {
+			return nil
+		}
+		return v.SearchAddonSpec
+	}).(WidgetConfigUiSettingsSearchAddonSpecPtrOutput)
+}
+
+// Whether to show the admin-configured display name for data connectors in
+// the widget sources UI (instead of the connector kind). Opt-in; defaults
+// to false.
+func (o WidgetConfigUiSettingsPtrOutput) SourceAdminDisplayNameEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAdminDisplayNameEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type WidgetConfigUiSettingsDataStoreUiConfig struct {
@@ -11400,6 +11671,193 @@ func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ResultCount() pul
 		}
 		return v.ResultCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type WidgetConfigUiSettingsSearchAddonSpec struct {
+	// If true, generative answer add-on is disabled. Generative answer
+	// add-on includes natural language to filters and simple answers.
+	GenerativeAnswerAddOnDisabled *bool `pulumi:"generativeAnswerAddOnDisabled"`
+	// If true, disables event re-ranking and personalization to optimize KPIs
+	// & personalize results.
+	KpiPersonalizationAddOnDisabled *bool `pulumi:"kpiPersonalizationAddOnDisabled"`
+	// If true, semantic add-on is disabled. Semantic add-on includes
+	// embeddings and jetstream.
+	SemanticAddOnDisabled *bool `pulumi:"semanticAddOnDisabled"`
+}
+
+// WidgetConfigUiSettingsSearchAddonSpecInput is an input type that accepts WidgetConfigUiSettingsSearchAddonSpecArgs and WidgetConfigUiSettingsSearchAddonSpecOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsSearchAddonSpecInput` via:
+//
+//	WidgetConfigUiSettingsSearchAddonSpecArgs{...}
+type WidgetConfigUiSettingsSearchAddonSpecInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsSearchAddonSpecOutput() WidgetConfigUiSettingsSearchAddonSpecOutput
+	ToWidgetConfigUiSettingsSearchAddonSpecOutputWithContext(context.Context) WidgetConfigUiSettingsSearchAddonSpecOutput
+}
+
+type WidgetConfigUiSettingsSearchAddonSpecArgs struct {
+	// If true, generative answer add-on is disabled. Generative answer
+	// add-on includes natural language to filters and simple answers.
+	GenerativeAnswerAddOnDisabled pulumi.BoolPtrInput `pulumi:"generativeAnswerAddOnDisabled"`
+	// If true, disables event re-ranking and personalization to optimize KPIs
+	// & personalize results.
+	KpiPersonalizationAddOnDisabled pulumi.BoolPtrInput `pulumi:"kpiPersonalizationAddOnDisabled"`
+	// If true, semantic add-on is disabled. Semantic add-on includes
+	// embeddings and jetstream.
+	SemanticAddOnDisabled pulumi.BoolPtrInput `pulumi:"semanticAddOnDisabled"`
+}
+
+func (WidgetConfigUiSettingsSearchAddonSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsSearchAddonSpec)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsSearchAddonSpecArgs) ToWidgetConfigUiSettingsSearchAddonSpecOutput() WidgetConfigUiSettingsSearchAddonSpecOutput {
+	return i.ToWidgetConfigUiSettingsSearchAddonSpecOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsSearchAddonSpecArgs) ToWidgetConfigUiSettingsSearchAddonSpecOutputWithContext(ctx context.Context) WidgetConfigUiSettingsSearchAddonSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsSearchAddonSpecOutput)
+}
+
+func (i WidgetConfigUiSettingsSearchAddonSpecArgs) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutput() WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return i.ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsSearchAddonSpecArgs) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsSearchAddonSpecOutput).ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigUiSettingsSearchAddonSpecPtrInput is an input type that accepts WidgetConfigUiSettingsSearchAddonSpecArgs, WidgetConfigUiSettingsSearchAddonSpecPtr and WidgetConfigUiSettingsSearchAddonSpecPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsSearchAddonSpecPtrInput` via:
+//
+//	        WidgetConfigUiSettingsSearchAddonSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigUiSettingsSearchAddonSpecPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsSearchAddonSpecPtrOutput() WidgetConfigUiSettingsSearchAddonSpecPtrOutput
+	ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(context.Context) WidgetConfigUiSettingsSearchAddonSpecPtrOutput
+}
+
+type widgetConfigUiSettingsSearchAddonSpecPtrType WidgetConfigUiSettingsSearchAddonSpecArgs
+
+func WidgetConfigUiSettingsSearchAddonSpecPtr(v *WidgetConfigUiSettingsSearchAddonSpecArgs) WidgetConfigUiSettingsSearchAddonSpecPtrInput {
+	return (*widgetConfigUiSettingsSearchAddonSpecPtrType)(v)
+}
+
+func (*widgetConfigUiSettingsSearchAddonSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiSettingsSearchAddonSpec)(nil)).Elem()
+}
+
+func (i *widgetConfigUiSettingsSearchAddonSpecPtrType) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutput() WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return i.ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigUiSettingsSearchAddonSpecPtrType) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsSearchAddonSpecPtrOutput)
+}
+
+type WidgetConfigUiSettingsSearchAddonSpecOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsSearchAddonSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsSearchAddonSpec)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) ToWidgetConfigUiSettingsSearchAddonSpecOutput() WidgetConfigUiSettingsSearchAddonSpecOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) ToWidgetConfigUiSettingsSearchAddonSpecOutputWithContext(ctx context.Context) WidgetConfigUiSettingsSearchAddonSpecOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutput() WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return o.ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigUiSettingsSearchAddonSpec) *WidgetConfigUiSettingsSearchAddonSpec {
+		return &v
+	}).(WidgetConfigUiSettingsSearchAddonSpecPtrOutput)
+}
+
+// If true, generative answer add-on is disabled. Generative answer
+// add-on includes natural language to filters and simple answers.
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) GenerativeAnswerAddOnDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsSearchAddonSpec) *bool { return v.GenerativeAnswerAddOnDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// If true, disables event re-ranking and personalization to optimize KPIs
+// & personalize results.
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) KpiPersonalizationAddOnDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsSearchAddonSpec) *bool { return v.KpiPersonalizationAddOnDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// If true, semantic add-on is disabled. Semantic add-on includes
+// embeddings and jetstream.
+func (o WidgetConfigUiSettingsSearchAddonSpecOutput) SemanticAddOnDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsSearchAddonSpec) *bool { return v.SemanticAddOnDisabled }).(pulumi.BoolPtrOutput)
+}
+
+type WidgetConfigUiSettingsSearchAddonSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsSearchAddonSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiSettingsSearchAddonSpec)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecPtrOutput) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutput() WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecPtrOutput) ToWidgetConfigUiSettingsSearchAddonSpecPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsSearchAddonSpecPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsSearchAddonSpecPtrOutput) Elem() WidgetConfigUiSettingsSearchAddonSpecOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsSearchAddonSpec) WidgetConfigUiSettingsSearchAddonSpec {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigUiSettingsSearchAddonSpec
+		return ret
+	}).(WidgetConfigUiSettingsSearchAddonSpecOutput)
+}
+
+// If true, generative answer add-on is disabled. Generative answer
+// add-on includes natural language to filters and simple answers.
+func (o WidgetConfigUiSettingsSearchAddonSpecPtrOutput) GenerativeAnswerAddOnDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsSearchAddonSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GenerativeAnswerAddOnDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, disables event re-ranking and personalization to optimize KPIs
+// & personalize results.
+func (o WidgetConfigUiSettingsSearchAddonSpecPtrOutput) KpiPersonalizationAddOnDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsSearchAddonSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KpiPersonalizationAddOnDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, semantic add-on is disabled. Semantic add-on includes
+// embeddings and jetstream.
+func (o WidgetConfigUiSettingsSearchAddonSpecPtrOutput) SemanticAddOnDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsSearchAddonSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SemanticAddOnDisabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetDataStoreAdvancedSiteSearchConfig struct {
@@ -13064,6 +13522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorEntityArrayInput)(nil)).Elem(), DataConnectorEntityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorErrorInput)(nil)).Elem(), DataConnectorErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorErrorArrayInput)(nil)).Elem(), DataConnectorErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorMetadataInput)(nil)).Elem(), DataConnectorMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataConnectorMetadataPtrInput)(nil)).Elem(), DataConnectorMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigPtrInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
@@ -13144,6 +13604,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsGenerativeAnswerConfigInput)(nil)).Elem(), WidgetConfigUiSettingsGenerativeAnswerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput)(nil)).Elem(), WidgetConfigUiSettingsGenerativeAnswerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsSearchAddonSpecInput)(nil)).Elem(), WidgetConfigUiSettingsSearchAddonSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsSearchAddonSpecPtrInput)(nil)).Elem(), WidgetConfigUiSettingsSearchAddonSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataStoreAdvancedSiteSearchConfigInput)(nil)).Elem(), GetDataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataStoreAdvancedSiteSearchConfigArrayInput)(nil)).Elem(), GetDataStoreAdvancedSiteSearchConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataStoreDocumentProcessingConfigInput)(nil)).Elem(), GetDataStoreDocumentProcessingConfigArgs{})
@@ -13228,6 +13690,8 @@ func init() {
 	pulumi.RegisterOutputType(DataConnectorEntityArrayOutput{})
 	pulumi.RegisterOutputType(DataConnectorErrorOutput{})
 	pulumi.RegisterOutputType(DataConnectorErrorArrayOutput{})
+	pulumi.RegisterOutputType(DataConnectorMetadataOutput{})
+	pulumi.RegisterOutputType(DataConnectorMetadataPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigOutput{})
@@ -13308,6 +13772,8 @@ func init() {
 	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput{})
 	pulumi.RegisterOutputType(WidgetConfigUiSettingsGenerativeAnswerConfigOutput{})
 	pulumi.RegisterOutputType(WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsSearchAddonSpecOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsSearchAddonSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetDataStoreAdvancedSiteSearchConfigOutput{})
 	pulumi.RegisterOutputType(GetDataStoreAdvancedSiteSearchConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDataStoreDocumentProcessingConfigOutput{})

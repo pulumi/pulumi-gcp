@@ -16,6 +16,11 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
      */
     private String network;
     /**
+     * @return The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    private String stackType;
+    /**
      * @return Name of the subnetwork where the additional interface belongs.
      * 
      */
@@ -28,6 +33,13 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
      */
     public String network() {
         return this.network;
+    }
+    /**
+     * @return The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    public String stackType() {
+        return this.stackType;
     }
     /**
      * @return Name of the subnetwork where the additional interface belongs.
@@ -47,11 +59,13 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private String network;
+        private String stackType;
         private String subnetwork;
         public Builder() {}
         public Builder(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.network = defaults.network;
+    	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
         }
 
@@ -61,6 +75,14 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig", "network");
             }
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stackType(String stackType) {
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig", "stackType");
+            }
+            this.stackType = stackType;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +96,7 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
         public GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig build() {
             final var _resultValue = new GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig();
             _resultValue.network = network;
+            _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }

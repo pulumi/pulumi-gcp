@@ -325,6 +325,23 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    @Import(name="secretType")
+    private @Nullable Output<String> secretType;
+
+    /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    public Optional<Output<String>> secretType() {
+        return Optional.ofNullable(this.secretType);
+    }
+
+    /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -447,6 +464,7 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
         this.pulumiLabels = $.pulumiLabels;
         this.rotation = $.rotation;
         this.secretId = $.secretId;
+        this.secretType = $.secretType;
         this.tags = $.tags;
         this.topics = $.topics;
         this.ttl = $.ttl;
@@ -863,6 +881,29 @@ public final class RegionalSecretState extends com.pulumi.resources.ResourceArgs
          */
         public Builder secretId(String secretId) {
             return secretId(Output.of(secretId));
+        }
+
+        /**
+         * @param secretType This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+         * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretType(@Nullable Output<String> secretType) {
+            $.secretType = secretType;
+            return this;
+        }
+
+        /**
+         * @param secretType This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+         * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretType(String secretType) {
+            return secretType(Output.of(secretType));
         }
 
         /**

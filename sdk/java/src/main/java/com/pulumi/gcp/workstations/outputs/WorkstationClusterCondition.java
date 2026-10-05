@@ -21,10 +21,14 @@ public final class WorkstationClusterCondition {
      */
     private @Nullable Integer code;
     /**
-     * @return (Output)
+     * @return (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
+     * @deprecated
+     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * 
      */
+    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
     private @Nullable List<Map<String,String>> details;
     /**
      * @return (Output)
@@ -43,10 +47,14 @@ public final class WorkstationClusterCondition {
         return Optional.ofNullable(this.code);
     }
     /**
-     * @return (Output)
+     * @return (Output, Deprecated)
      * A list of messages that carry the error details.
      * 
+     * @deprecated
+     * `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API.
+     * 
      */
+    @Deprecated /* `details` is deprecated and will be removed in a future major release. This field is no longer populated from the API. */
     public List<Map<String,String>> details() {
         return this.details == null ? List.of() : this.details;
     }

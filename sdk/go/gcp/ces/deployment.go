@@ -8,11 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description
+//
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+// Read more about Write-only Arguments.
 //
 // ## Example Usage
 //
@@ -23,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,7 +89,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -151,6 +154,64 @@ import (
 //	}
 //
 // ```
+// ### Ces Deployment Whatsapp
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app"),
+//				AppId:       pulumi.String("app-id"),
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			my_app_version, err := ces.NewAppVersion(ctx, "my-app-version", &ces.AppVersionArgs{
+//				Location:     pulumi.String("us"),
+//				DisplayName:  pulumi.String("my-app-version"),
+//				App:          my_app.Name,
+//				AppVersionId: pulumi.String("app-version-id"),
+//				Description:  pulumi.String("example-app-version"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewDeployment(ctx, "my-deployment", &ces.DeploymentArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-deployment"),
+//				App:         my_app.Name,
+//				AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
+//				ChannelProfile: &ces.DeploymentChannelProfileArgs{
+//					ChannelType: pulumi.String("API"),
+//					ProfileId:   pulumi.String("temp_profile_id"),
+//					WhatsappConfig: &ces.DeploymentChannelProfileWhatsappConfigArgs{
+//						PhoneNumber:   pulumi.String("+15551234567"),
+//						PhoneNumberId: pulumi.String("1234567890"),
+//						WabaId:        pulumi.String("9876543210"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -195,6 +256,9 @@ type Deployment struct {
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+	// Structure is documented below.
+	InstagramCredentials DeploymentInstagramCredentialsPtrOutput `pulumi:"instagramCredentials"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The resource name of the deployment.
@@ -206,6 +270,9 @@ type Deployment struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Timestamp when this deployment was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+	// Structure is documented below.
+	WhatsappCredentials DeploymentWhatsappCredentialsPtrOutput `pulumi:"whatsappCredentials"`
 }
 
 // NewDeployment registers a new resource with the given unique name, arguments, and options.
@@ -278,6 +345,9 @@ type deploymentState struct {
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
 	Etag *string `pulumi:"etag"`
+	// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+	// Structure is documented below.
+	InstagramCredentials *DeploymentInstagramCredentials `pulumi:"instagramCredentials"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location *string `pulumi:"location"`
 	// Identifier. The resource name of the deployment.
@@ -289,6 +359,9 @@ type deploymentState struct {
 	Project *string `pulumi:"project"`
 	// Timestamp when this deployment was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+	// Structure is documented below.
+	WhatsappCredentials *DeploymentWhatsappCredentials `pulumi:"whatsappCredentials"`
 }
 
 type DeploymentState struct {
@@ -317,6 +390,9 @@ type DeploymentState struct {
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
 	Etag pulumi.StringPtrInput
+	// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+	// Structure is documented below.
+	InstagramCredentials DeploymentInstagramCredentialsPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringPtrInput
 	// Identifier. The resource name of the deployment.
@@ -328,6 +404,9 @@ type DeploymentState struct {
 	Project pulumi.StringPtrInput
 	// Timestamp when this deployment was last updated.
 	UpdateTime pulumi.StringPtrInput
+	// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+	// Structure is documented below.
+	WhatsappCredentials DeploymentWhatsappCredentialsPtrInput
 }
 
 func (DeploymentState) ElementType() reflect.Type {
@@ -354,11 +433,17 @@ type deploymentArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name of the deployment.
 	DisplayName string `pulumi:"displayName"`
+	// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+	// Structure is documented below.
+	InstagramCredentials *DeploymentInstagramCredentials `pulumi:"instagramCredentials"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+	// Structure is documented below.
+	WhatsappCredentials *DeploymentWhatsappCredentials `pulumi:"whatsappCredentials"`
 }
 
 // The set of arguments for constructing a Deployment resource.
@@ -382,11 +467,17 @@ type DeploymentArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// Display name of the deployment.
 	DisplayName pulumi.StringInput
+	// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+	// Structure is documented below.
+	InstagramCredentials DeploymentInstagramCredentialsPtrInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+	// Structure is documented below.
+	WhatsappCredentials DeploymentWhatsappCredentialsPtrInput
 }
 
 func (DeploymentArgs) ElementType() reflect.Type {
@@ -522,6 +613,12 @@ func (o DeploymentOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+// Structure is documented below.
+func (o DeploymentOutput) InstagramCredentials() DeploymentInstagramCredentialsPtrOutput {
+	return o.ApplyT(func(v *Deployment) DeploymentInstagramCredentialsPtrOutput { return v.InstagramCredentials }).(DeploymentInstagramCredentialsPtrOutput)
+}
+
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 func (o DeploymentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -543,6 +640,12 @@ func (o DeploymentOutput) Project() pulumi.StringOutput {
 // Timestamp when this deployment was last updated.
 func (o DeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+// Structure is documented below.
+func (o DeploymentOutput) WhatsappCredentials() DeploymentWhatsappCredentialsPtrOutput {
+	return o.ApplyT(func(v *Deployment) DeploymentWhatsappCredentialsPtrOutput { return v.WhatsappCredentials }).(DeploymentWhatsappCredentialsPtrOutput)
 }
 
 type DeploymentArrayOutput struct{ *pulumi.OutputState }

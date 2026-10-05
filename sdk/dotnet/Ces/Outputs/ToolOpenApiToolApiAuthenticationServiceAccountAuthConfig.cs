@@ -15,6 +15,12 @@ namespace Pulumi.Gcp.Ces.Outputs
     {
         /// <summary>
         /// (Output)
+        /// The OAuth scopes to grant. If not specified, the default scope
+        /// `https://www.googleapis.com/auth/cloud-platform` is used.
+        /// </summary>
+        public readonly ImmutableArray<string> Scopes;
+        /// <summary>
+        /// (Output)
         /// The email address of the service account used for authenticatation. CES
         /// uses this service account to exchange an access token and the access token
         /// is then sent in the `Authorization` header of the request.
@@ -26,8 +32,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly string? ServiceAccount;
 
         [OutputConstructor]
-        private ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(string? serviceAccount)
+        private ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
+            ImmutableArray<string> scopes,
+
+            string? serviceAccount)
         {
+            Scopes = scopes;
             ServiceAccount = serviceAccount;
         }
     }

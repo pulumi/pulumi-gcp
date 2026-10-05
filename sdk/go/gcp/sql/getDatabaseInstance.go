@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,6 +67,7 @@ type LookupDatabaseInstanceResult struct {
 	DeletionProtection               bool                         `pulumi:"deletionProtection"`
 	DnsName                          string                       `pulumi:"dnsName"`
 	DnsNames                         []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
+	EncryptionConfidentialMode       bool                         `pulumi:"encryptionConfidentialMode"`
 	EncryptionKeyName                string                       `pulumi:"encryptionKeyName"`
 	EnforceNewSqlNetworkArchitecture bool                         `pulumi:"enforceNewSqlNetworkArchitecture"`
 	FinalBackupDescription           string                       `pulumi:"finalBackupDescription"`
@@ -166,6 +167,10 @@ func (o LookupDatabaseInstanceResultOutput) DnsName() pulumi.StringOutput {
 
 func (o LookupDatabaseInstanceResultOutput) DnsNames() GetDatabaseInstanceDnsNameArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceDnsName { return v.DnsNames }).(GetDatabaseInstanceDnsNameArrayOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) EncryptionConfidentialMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EncryptionConfidentialMode }).(pulumi.BoolOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) EncryptionKeyName() pulumi.StringOutput {

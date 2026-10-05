@@ -402,7 +402,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var net = new Network("net", NetworkArgs.builder()
- *             .name("test-net")
+ *             .name("fw-policy-net")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 

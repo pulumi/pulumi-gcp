@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolNodeConfigHostMaintenancePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// .
+        /// Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
         /// </summary>
         [Input("maintenanceInterval", required: true)]
         public Input<string> MaintenanceInterval { get; set; } = null!;
 
         /// <summary>
-        /// Strategy that will trigger maintenance on behalf of the customer.
+        /// Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
         /// </summary>
         [Input("opportunisticMaintenanceStrategy")]
         public Input<Inputs.NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyGetArgs>? OpportunisticMaintenanceStrategy { get; set; }

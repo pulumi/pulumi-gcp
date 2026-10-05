@@ -18,22 +18,30 @@ public final class ClusterAddonsConfigRayOperatorConfigArgs extends com.pulumi.r
 
     public static final ClusterAddonsConfigRayOperatorConfigArgs Empty = new ClusterAddonsConfigRayOperatorConfigArgs();
 
+    /**
+     * Whether the Ray Operator addon is enabled.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether the Ray Operator addon is enabled.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
     /**
-     * The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+     * The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
      * 
      */
     @Import(name="rayClusterLoggingConfig")
     private @Nullable Output<ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs> rayClusterLoggingConfig;
 
     /**
-     * @return The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+     * @return The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs>> rayClusterLoggingConfig() {
@@ -41,14 +49,14 @@ public final class ClusterAddonsConfigRayOperatorConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+     * The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
      * 
      */
     @Import(name="rayClusterMonitoringConfig")
     private @Nullable Output<ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs> rayClusterMonitoringConfig;
 
     /**
-     * @return The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+     * @return The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs>> rayClusterMonitoringConfig() {
@@ -81,17 +89,29 @@ public final class ClusterAddonsConfigRayOperatorConfigArgs extends com.pulumi.r
             $ = new ClusterAddonsConfigRayOperatorConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether the Ray Operator addon is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the Ray Operator addon is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param rayClusterLoggingConfig The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+         * @param rayClusterLoggingConfig The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
          * 
          * @return builder
          * 
@@ -102,7 +122,7 @@ public final class ClusterAddonsConfigRayOperatorConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param rayClusterLoggingConfig The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
+         * @param rayClusterLoggingConfig The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Structure is documented below.
          * 
          * @return builder
          * 
@@ -112,7 +132,7 @@ public final class ClusterAddonsConfigRayOperatorConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param rayClusterMonitoringConfig The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+         * @param rayClusterMonitoringConfig The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
          * 
          * @return builder
          * 
@@ -123,7 +143,7 @@ public final class ClusterAddonsConfigRayOperatorConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param rayClusterMonitoringConfig The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
+         * @param rayClusterMonitoringConfig The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Structure is documented below.
          * 
          * @return builder
          * 

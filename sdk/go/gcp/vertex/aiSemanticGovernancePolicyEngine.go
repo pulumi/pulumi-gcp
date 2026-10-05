@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,7 +39,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,6 +86,12 @@ type AiSemanticGovernancePolicyEngine struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// Configurations for gateways, keyed by a user-defined gateway name. At most
+	// 5 gateway configurations are allowed. Each gateway name must be 1-63
+	// characters, start with a lowercase letter, contain only lowercase letters,
+	// numbers and hyphens, and not end with a hyphen.
+	// Structure is documented below.
+	GatewayConfigs AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput `pulumi:"gatewayConfigs"`
 	// The IP address allocated for the SGPE's managed PSC endpoint.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// The resource name of the SemanticGovernancePolicyEngine, in the form
@@ -152,6 +158,12 @@ type aiSemanticGovernancePolicyEngineState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Configurations for gateways, keyed by a user-defined gateway name. At most
+	// 5 gateway configurations are allowed. Each gateway name must be 1-63
+	// characters, start with a lowercase letter, contain only lowercase letters,
+	// numbers and hyphens, and not end with a hyphen.
+	// Structure is documented below.
+	GatewayConfigs []AiSemanticGovernancePolicyEngineGatewayConfig `pulumi:"gatewayConfigs"`
 	// The IP address allocated for the SGPE's managed PSC endpoint.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The resource name of the SemanticGovernancePolicyEngine, in the form
@@ -189,6 +201,12 @@ type AiSemanticGovernancePolicyEngineState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// Configurations for gateways, keyed by a user-defined gateway name. At most
+	// 5 gateway configurations are allowed. Each gateway name must be 1-63
+	// characters, start with a lowercase letter, contain only lowercase letters,
+	// numbers and hyphens, and not end with a hyphen.
+	// Structure is documented below.
+	GatewayConfigs AiSemanticGovernancePolicyEngineGatewayConfigArrayInput
 	// The IP address allocated for the SGPE's managed PSC endpoint.
 	IpAddress pulumi.StringPtrInput
 	// The resource name of the SemanticGovernancePolicyEngine, in the form
@@ -227,6 +245,12 @@ type aiSemanticGovernancePolicyEngineArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Configurations for gateways, keyed by a user-defined gateway name. At most
+	// 5 gateway configurations are allowed. Each gateway name must be 1-63
+	// characters, start with a lowercase letter, contain only lowercase letters,
+	// numbers and hyphens, and not end with a hyphen.
+	// Structure is documented below.
+	GatewayConfigs []AiSemanticGovernancePolicyEngineGatewayConfig `pulumi:"gatewayConfigs"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -243,6 +267,12 @@ type AiSemanticGovernancePolicyEngineArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// Configurations for gateways, keyed by a user-defined gateway name. At most
+	// 5 gateway configurations are allowed. Each gateway name must be 1-63
+	// characters, start with a lowercase letter, contain only lowercase letters,
+	// numbers and hyphens, and not end with a hyphen.
+	// Structure is documented below.
+	GatewayConfigs AiSemanticGovernancePolicyEngineGatewayConfigArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -351,6 +381,17 @@ func (o AiSemanticGovernancePolicyEngineOutput) CreateTime() pulumi.StringOutput
 // When set to "DELETE", deleting the resource is allowed.
 func (o AiSemanticGovernancePolicyEngineOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiSemanticGovernancePolicyEngine) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// Configurations for gateways, keyed by a user-defined gateway name. At most
+// 5 gateway configurations are allowed. Each gateway name must be 1-63
+// characters, start with a lowercase letter, contain only lowercase letters,
+// numbers and hyphens, and not end with a hyphen.
+// Structure is documented below.
+func (o AiSemanticGovernancePolicyEngineOutput) GatewayConfigs() AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput {
+	return o.ApplyT(func(v *AiSemanticGovernancePolicyEngine) AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput {
+		return v.GatewayConfigs
+	}).(AiSemanticGovernancePolicyEngineGatewayConfigArrayOutput)
 }
 
 // The IP address allocated for the SGPE's managed PSC endpoint.

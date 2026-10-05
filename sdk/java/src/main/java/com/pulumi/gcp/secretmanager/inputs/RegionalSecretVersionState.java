@@ -197,6 +197,46 @@ public final class RegionalSecretVersionState extends com.pulumi.resources.Resou
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+     * 
+     */
+    @Import(name="secretDataWo")
+    private @Nullable Output<String> secretDataWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> secretDataWo() {
+        return Optional.ofNullable(this.secretDataWo);
+    }
+
+    /**
+     * Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="secretDataWoVersion")
+    private @Nullable Output<String> secretDataWoVersion;
+
+    /**
+     * @return Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> secretDataWoVersion() {
+        return Optional.ofNullable(this.secretDataWoVersion);
+    }
+
+    /**
      * The version of the Regional Secret.
      * 
      */
@@ -224,6 +264,8 @@ public final class RegionalSecretVersionState extends com.pulumi.resources.Resou
         this.name = $.name;
         this.secret = $.secret;
         this.secretData = $.secretData;
+        this.secretDataWo = $.secretDataWo;
+        this.secretDataWoVersion = $.secretDataWoVersion;
         this.version = $.version;
     }
 
@@ -492,6 +534,58 @@ public final class RegionalSecretVersionState extends com.pulumi.resources.Resou
          */
         public Builder secretData(String secretData) {
             return secretData(Output.of(secretData));
+        }
+
+        /**
+         * @param secretDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The secret data. Must be no larger than 64KiB.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWo(@Nullable Output<String> secretDataWo) {
+            $.secretDataWo = secretDataWo;
+            return this;
+        }
+
+        /**
+         * @param secretDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The secret data. Must be no larger than 64KiB.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWo(String secretDataWo) {
+            return secretDataWo(Output.of(secretDataWo));
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(@Nullable Output<String> secretDataWoVersion) {
+            $.secretDataWoVersion = secretDataWoVersion;
+            return this;
+        }
+
+        /**
+         * @param secretDataWoVersion Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretDataWoVersion(String secretDataWoVersion) {
+            return secretDataWoVersion(Output.of(secretDataWoVersion));
         }
 
         /**

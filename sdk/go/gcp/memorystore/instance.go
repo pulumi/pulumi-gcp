@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -49,7 +49,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -57,7 +57,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
@@ -83,7 +83,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:                  pulumi.String("us-central1"),
+//				Location:                  pulumi.String("us-west1"),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -116,10 +116,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -136,7 +136,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -144,7 +144,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
@@ -170,7 +170,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location:              pulumi.String("us-central1"),
+//				Location:              pulumi.String("us-west1"),
 //				ReplicaCount:          pulumi.Int(1),
 //				NodeType:              pulumi.String("SHARED_CORE_NANO"),
 //				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_DISABLED"),
@@ -181,7 +181,7 @@ import (
 //				},
 //				ZoneDistributionConfig: &memorystore.InstanceZoneDistributionConfigArgs{
 //					Mode: pulumi.String("SINGLE_ZONE"),
-//					Zone: pulumi.String("us-central1-b"),
+//					Zone: pulumi.String("us-west1-b"),
 //				},
 //				MaintenancePolicy: &memorystore.InstanceMaintenancePolicyArgs{
 //					WeeklyMaintenanceWindows: memorystore.InstanceMaintenancePolicyWeeklyMaintenanceWindowArray{
@@ -227,10 +227,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -247,7 +247,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -255,7 +255,7 @@ import (
 //			}
 //			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("my-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
 //				Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
@@ -281,7 +281,7 @@ import (
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-west1"),
 //				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
 //					Mode: pulumi.String("AOF"),
 //					AofConfig: &memorystore.InstancePersistenceConfigAofConfigArgs{
@@ -307,10 +307,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -479,11 +479,11 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/memorystore"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/memorystore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -496,7 +496,7 @@ import (
 //			}
 //			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
 //				Name:     pulumi.String("ca-pool"),
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-west1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
@@ -513,7 +513,7 @@ import (
 //			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
 //				Pool:                   _default.Name,
 //				CertificateAuthorityId: pulumi.String("ca-auth"),
-//				Location:               pulumi.String("us-central1"),
+//				Location:               pulumi.String("us-west1"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -556,7 +556,7 @@ import (
 //			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("ca-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
@@ -564,7 +564,7 @@ import (
 //			}
 //			defaultServiceConnectionPolicy, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("ca-policy"),
-//				Location:     pulumi.String("us-central1"),
+//				Location:     pulumi.String("us-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
@@ -579,7 +579,7 @@ import (
 //			_, err = memorystore.NewInstance(ctx, "test-instance", &memorystore.InstanceArgs{
 //				InstanceId: pulumi.String("ca-instance"),
 //				ShardCount: pulumi.Int(3),
-//				Location:   pulumi.String("us-central1"),
+//				Location:   pulumi.String("us-west1"),
 //				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 //					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
 //						Network:   producerNet.ID().ToIDOutput().ToStringOutput(),

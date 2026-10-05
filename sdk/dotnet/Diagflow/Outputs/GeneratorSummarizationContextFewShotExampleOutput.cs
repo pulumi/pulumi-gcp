@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion? SummarySuggestion;
+        /// <summary>
+        /// List of request and response for tool calls executed.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfo> ToolCallInfos;
 
         [OutputConstructor]
-        private GeneratorSummarizationContextFewShotExampleOutput(Outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion? summarySuggestion)
+        private GeneratorSummarizationContextFewShotExampleOutput(
+            Outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion? summarySuggestion,
+
+            ImmutableArray<Outputs.GeneratorSummarizationContextFewShotExampleOutputToolCallInfo> toolCallInfos)
         {
             SummarySuggestion = summarySuggestion;
+            ToolCallInfos = toolCallInfos;
         }
     }
 }

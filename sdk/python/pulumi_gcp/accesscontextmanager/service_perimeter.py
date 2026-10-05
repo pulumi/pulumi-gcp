@@ -253,6 +253,7 @@ class _ServicePerimeterState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -273,6 +274,7 @@ class _ServicePerimeterState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
+        :param pulumi.Input[_builtins.str] etag: The etag for the version of the ServicePerimeter that this request is based on.
         :param pulumi.Input[_builtins.str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -321,6 +323,8 @@ class _ServicePerimeterState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
@@ -379,6 +383,18 @@ class _ServicePerimeterState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The etag for the version of the ServicePerimeter that this request is based on.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1038,6 +1054,7 @@ class ServicePerimeter(pulumi.CustomResource):
             __props__.__dict__["title"] = title
             __props__.__dict__["use_explicit_dry_run_spec"] = use_explicit_dry_run_spec
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["etag"] = None
             __props__.__dict__["update_time"] = None
         super(ServicePerimeter, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
@@ -1052,6 +1069,7 @@ class ServicePerimeter(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1076,6 +1094,7 @@ class ServicePerimeter(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
+        :param pulumi.Input[_builtins.str] etag: The etag for the version of the ServicePerimeter that this request is based on.
         :param pulumi.Input[_builtins.str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -1125,6 +1144,7 @@ class ServicePerimeter(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["perimeter_type"] = perimeter_type
@@ -1164,6 +1184,14 @@ class ServicePerimeter(pulumi.CustomResource):
         behavior.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[_builtins.str]:
+        """
+        The etag for the version of the ServicePerimeter that this request is based on.
+        """
+        return pulumi.get(self, "etag")
 
     @_builtins.property
     @pulumi.getter

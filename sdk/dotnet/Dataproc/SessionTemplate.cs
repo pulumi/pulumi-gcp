@@ -33,8 +33,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleSessionTemplatesJupyter = new Gcp.Dataproc.SessionTemplate("example_session_templates_jupyter", new()
     ///     {
-    ///         Name = "projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
-    ///         Location = "us-central1",
+    ///         Name = "projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "session_template_test", "terraform" },
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var ms = new Gcp.Dataproc.MetastoreService("ms", new()
     ///     {
     ///         ServiceId = "jupyter-session-template",
-    ///         Location = "us-central1",
+    ///         Location = "us-east1",
     ///         Port = 9080,
     ///         Tier = "DEVELOPER",
     ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Dataproc
     ///             {
     ///                 new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigConsumerArgs
     ///                 {
-    ///                     Subnetwork = "projects/my-project-name/regions/us-central1/subnetworks/default",
+    ///                     Subnetwork = "projects/my-project-name/regions/us-east1/subnetworks/default",
     ///                 },
     ///             },
     ///         },
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
     ///     {
     ///         Name = "jupyter-session-template",
-    ///         Region = "us-central1",
+    ///         Region = "us-east1",
     ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///         {
     ///             SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
@@ -153,9 +153,10 @@ namespace Pulumi.Gcp.Dataproc
     ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
     ///             {
     ///                 NumInstances = 1,
-    ///                 MachineType = "e2-standard-2",
+    ///                 MachineType = "n4-standard-2",
     ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
     ///                 {
+    ///                     BootDiskType = "hyperdisk-balanced",
     ///                     BootDiskSizeGb = 35,
     ///                 },
     ///             },
@@ -168,8 +169,8 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     ///     var dataprocSessionTemplatesJupyterFull = new Gcp.Dataproc.SessionTemplate("dataproc_session_templates_jupyter_full", new()
     ///     {
-    ///         Name = "projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
-    ///         Location = "us-central1",
+    ///         Name = "projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "session_template_test", "terraform" },
@@ -238,8 +239,8 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleSessionTemplatesSparkConnect = new Gcp.Dataproc.SessionTemplate("example_session_templates_spark_connect", new()
     ///     {
-    ///         Name = "projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template",
-    ///         Location = "us-central1",
+    ///         Name = "projects/my-project-name/locations/us-east1/sessionTemplates/sc-session-template",
+    ///         Location = "us-east1",
     ///         Labels = 
     ///         {
     ///             { "session_template_test", "terraform" },

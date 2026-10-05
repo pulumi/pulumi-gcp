@@ -33,7 +33,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/provider"
 
-	"github.com/pulumi/pulumi-gcp/provider/v9/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v10/pkg/version"
 )
 
 // all of the Google Cloud Platform token components used below.
@@ -122,7 +122,6 @@ const (
 	gcpKubernetes               = "Container"                // Kubernetes Engine resources
 	gcpLogging                  = "Logging"                  // Logging resources
 	gcpLooker                   = "Looker"                   // Looker resources
-	gcpMachingLearning          = "ML"                       // Machine Learning
 	gcpManagedKafka             = "ManagedKafka"             // Managed Kafka
 	gcpMemcache                 = "Memcache"                 // Memcache resources
 	gcpMemorystore              = "MemoryStore"              // Memory Store
@@ -134,7 +133,6 @@ const (
 	gcpNetworkManagement        = "NetworkManagement"        // Network Management resources
 	gcpNetworkSecurity          = "NetworkSecurity"          // Network Security resources
 	gcpNetworkServices          = "NetworkServices"          // Network Services resources
-	gcpNotebooks                = "Notebooks"                // Notebooks resources
 	gcpObservability            = "Observability"            // Observability resources
 	gcpOracleDatabase           = "OracleDatabase"           // Oracle Database
 	gcpOrgPolicy                = "OrgPolicy"                // Org Policy
@@ -276,7 +274,6 @@ var moduleMapping = map[string]string{
 	"memcache":                   gcpMemcache,
 	"memorystore":                gcpMemorystore,
 	"migration_center":           gcpMigrationCenter,
-	"ml":                         gcpMachingLearning,
 	"model_armor":                gcpModelArmor,
 	"monitoring":                 gcpMonitoring,
 	"netapp":                     gcpNetapp,
@@ -284,7 +281,6 @@ var moduleMapping = map[string]string{
 	"network_management":         gcpNetworkManagement,
 	"network_security":           gcpNetworkSecurity,
 	"network_services":           gcpNetworkServices,
-	"notebooks":                  gcpNotebooks,
 	"observability":              gcpObservability,
 	"org_policy":                 gcpOrgPolicy,
 	"oracle_database":            gcpOracleDatabase,
@@ -1830,8 +1826,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "iap_web_type_app_engine_iam.html.markdown",
 				},
 			},
-			"google_iap_brand":  {Tok: gcpResource(gcpIAP, "Brand")},
-			"google_iap_client": {Tok: gcpResource(gcpIAP, "Client")},
 
 			// Healthcare resources
 			"google_healthcare_dataset": {
@@ -1964,9 +1958,6 @@ func Provider() tfbridge.ProviderInfo {
 					return pValue.ObjectValue(), nil
 				},
 			},
-
-			// Machine Learning
-			"google_ml_engine_model": {Tok: gcpResource(gcpMachingLearning, "EngineModel")},
 
 			// Security Center
 			"google_scc_source":              {Tok: gcpResource(gcpSecurityCenter, "Source")},
@@ -2109,10 +2100,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_network_services_mesh":               {Tok: gcpResource(gcpNetworkServices, "Mesh")},
 			"google_network_services_http_route":         {Tok: gcpResource(gcpNetworkServices, "HttpRoute")},
 			"google_network_services_tcp_route":          {Tok: gcpResource(gcpNetworkServices, "TcpRoute")},
-
-			// Notebook
-			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
-			"google_notebooks_instance":    {Tok: gcpResource(gcpNotebooks, "Instance")},
 
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},

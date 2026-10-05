@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy {
     /**
-     * @return The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+     * @return The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`&#34;1209600s&#34;`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`&#34;2419200s&#34;`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
      * 
      */
     private String maintenanceAvailabilityWindow;
@@ -22,14 +22,14 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
      */
     private Integer minNodesPerPool;
     /**
-     * @return The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+     * @return The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `&#34;600s&#34;`.
      * 
      */
     private String nodeIdleTimeWindow;
 
     private NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy() {}
     /**
-     * @return The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+     * @return The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`&#34;1209600s&#34;`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`&#34;2419200s&#34;`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
      * 
      */
     public String maintenanceAvailabilityWindow() {
@@ -43,7 +43,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenan
         return this.minNodesPerPool;
     }
     /**
-     * @return The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+     * @return The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `s`, e.g. `&#34;600s&#34;`.
      * 
      */
     public String nodeIdleTimeWindow() {

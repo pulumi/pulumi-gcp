@@ -157,6 +157,31 @@ namespace Pulumi.Gcp.ParameterManager
     /// 
     /// });
     /// ```
+    /// ### Parameter Version With Data Crc32c
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var parameter_basic = new Gcp.ParameterManager.Parameter("parameter-basic", new()
+    ///     {
+    ///         ParameterId = "parameter",
+    ///     });
+    /// 
+    ///     var parameter_version_with_data_crc32c = new Gcp.ParameterManager.ParameterVersion("parameter-version-with-data-crc32c", new()
+    ///     {
+    ///         Parameter = parameter_basic.Id,
+    ///         ParameterVersionId = "parameter_version",
+    ///         ParameterData = "app-parameter-version-data",
+    ///         DataCrc32c = "3931523681",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -178,6 +203,12 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+        /// </summary>
+        [Output("dataCrc32c")]
+        public Output<string> DataCrc32c { get; private set; } = null!;
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -286,6 +317,12 @@ namespace Pulumi.Gcp.ParameterManager
     public sealed class ParameterVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+        /// </summary>
+        [Input("dataCrc32c")]
+        public Input<string>? DataCrc32c { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -344,6 +381,12 @@ namespace Pulumi.Gcp.ParameterManager
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+        /// </summary>
+        [Input("dataCrc32c")]
+        public Input<string>? DataCrc32c { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -97,6 +97,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVpcAccessResult> VpcAccesses;
+        /// <summary>
+        /// Workload identity settings for this Revision.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceTemplateWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
 
         [OutputConstructor]
         private GetServiceTemplateResult(
@@ -134,7 +138,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.GetServiceTemplateVolumeResult> volumes,
 
-            ImmutableArray<Outputs.GetServiceTemplateVpcAccessResult> vpcAccesses)
+            ImmutableArray<Outputs.GetServiceTemplateVpcAccessResult> vpcAccesses,
+
+            ImmutableArray<Outputs.GetServiceTemplateWorkloadIdentityConfigResult> workloadIdentityConfigs)
         {
             Annotations = annotations;
             Containers = containers;
@@ -154,6 +160,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Timeout = timeout;
             Volumes = volumes;
             VpcAccesses = vpcAccesses;
+            WorkloadIdentityConfigs = workloadIdentityConfigs;
         }
     }
 }

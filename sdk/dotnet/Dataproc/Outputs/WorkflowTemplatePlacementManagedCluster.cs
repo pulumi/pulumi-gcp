@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
-        /// Required. The cluster configuration.
+        /// Required. The cluster configuration. Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfig Config;
         /// <summary>

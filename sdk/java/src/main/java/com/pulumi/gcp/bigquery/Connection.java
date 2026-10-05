@@ -31,6 +31,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `cloud_sql.credential.password_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Bigquery Connection Cloud Resource
@@ -535,6 +538,81 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Bigquery Connection Sql With Cmek Password Wo
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("my-database-instance")
+ *             .region("us-central1")
+ *             .databaseVersion("POSTGRES_11")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .instance(instance.name())
+ *             .name("db")
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .name("user")
+ *             .instance(instance.name())
+ *             .password("tf-test-my-password_60302")
+ *             .build());
+ * 
+ *         var bq_connection_cmek = new Connection("bq-connection-cmek", ConnectionArgs.builder()
+ *             .friendlyName("👋")
+ *             .description("a riveting description")
+ *             .location("US")
+ *             .kmsKeyName("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key")
+ *             .cloudSql(ConnectionCloudSqlArgs.builder()
+ *                 .instanceId(instance.connectionName())
+ *                 .database(db.name())
+ *                 .type("POSTGRES")
+ *                 .credential(ConnectionCloudSqlCredentialArgs.builder()
+ *                     .username(user.name())
+ *                     .passwordWo(user.password())
+ *                     .passwordWoVersion("1")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Bigquery Connection Connector Configuration
  * 
  * <pre>
@@ -574,14 +652,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var nameSuffix = "my-connection";
+ *         final var namePrefix = "my-connection";
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .name(String.format("alloydb-network-%s", nameSuffix))
+ *             .name(String.format("%s-alloydb-network", namePrefix))
  *             .build());
  * 
  *         var default_ = new Cluster("default", ClusterArgs.builder()
- *             .clusterId(String.format("alloydb-cluster-%s", nameSuffix))
+ *             .clusterId(String.format("%s-alloydb-cluster", namePrefix))
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(defaultNetwork.id())
@@ -593,7 +671,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
- *             .name(String.format("alloydb-ip-%s", nameSuffix))
+ *             .name(String.format("%s-alloydb-ip", namePrefix))
  *             .addressType("INTERNAL")
  *             .purpose("VPC_PEERING")
  *             .prefixLength(16)
@@ -608,7 +686,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cluster(default_.name())
- *             .instanceId(String.format("alloydb-instance-%s", nameSuffix))
+ *             .instanceId(String.format("%s-alloydb-instance", namePrefix))
  *             .instanceType("PRIMARY")
  *             .machineConfig(InstanceMachineConfigArgs.builder()
  *                 .cpuCount(2)

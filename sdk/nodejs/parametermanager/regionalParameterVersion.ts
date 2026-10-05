@@ -107,6 +107,23 @@ import * as utilities from "../utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
+ * ### Regional Parameter Version With Data Crc32c
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const regional_parameter_basic = new gcp.parametermanager.RegionalParameter("regional-parameter-basic", {
+ *     parameterId: "regional_parameter",
+ *     location: "us-central1",
+ * });
+ * const regional_parameter_version_with_data_crc32c = new gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-data-crc32c", {
+ *     parameter: regional_parameter_basic.id,
+ *     parameterVersionId: "regional_parameter_version",
+ *     parameterData: "regional-parameter-version-data",
+ *     dataCrc32c: "4019737965",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -152,6 +169,10 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
      * The time at which the Regional Parameter Version was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     */
+    declare public readonly dataCrc32c: pulumi.Output<string>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -211,6 +232,7 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RegionalParameterVersionState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataCrc32c"] = state?.dataCrc32c;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
@@ -231,6 +253,7 @@ export class RegionalParameterVersion extends pulumi.CustomResource {
             if (args?.parameterVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterVersionId'");
             }
+            resourceInputs["dataCrc32c"] = args?.dataCrc32c;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["parameter"] = args?.parameter;
@@ -257,6 +280,10 @@ export interface RegionalParameterVersionState {
      * The time at which the Regional Parameter Version was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     */
+    dataCrc32c?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -307,6 +334,10 @@ export interface RegionalParameterVersionState {
  * The set of arguments for constructing a RegionalParameterVersion resource.
  */
 export interface RegionalParameterVersionArgs {
+    /**
+     * The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+     */
+    dataCrc32c?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

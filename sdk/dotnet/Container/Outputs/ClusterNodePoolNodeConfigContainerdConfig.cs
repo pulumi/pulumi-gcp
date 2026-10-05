@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig? PrivateRegistryAccessConfig;
         /// <summary>
-        /// Defines containerd registry host configuration. Each `RegistryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        /// Defines containerd registry host configuration. Each `RegistryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHost> RegistryHosts;
         /// <summary>

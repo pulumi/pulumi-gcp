@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy
     {
         /// <summary>
-        /// The window of time that opportunistic maintenance can run. Example: A setting of 14 days implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days allows opportunistic maintenance to run at any time in the scheduled maintenance window (all PERIODIC maintenance is set 28 days in advance).
+        /// The window of time that opportunistic maintenance can run. Example: A setting of 14 days (`"1209600s"`) implies that opportunistic maintenance can only be ran in the 2 weeks leading up to the scheduled maintenance date. Setting 28 days (`"2419200s"`) allows opportunistic maintenance to run at any time in the scheduled maintenance window (all `PERIODIC` maintenance is set 28 days in advance).
         /// </summary>
         public readonly string MaintenanceAvailabilityWindow;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int MinNodesPerPool;
         /// <summary>
-        /// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance.
+        /// The amount of time that a node can remain idle (no customer owned workloads running), before triggering maintenance. Format is a duration terminated by `S`, e.g. `"600s"`.
         /// </summary>
         public readonly string NodeIdleTimeWindow;
 

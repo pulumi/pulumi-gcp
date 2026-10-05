@@ -15,6 +15,170 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'PreventionContentPolicyDefaultActionArgs',
+    'PreventionContentPolicyDefaultActionArgsDict',
+    'PreventionContentPolicyErrorArgs',
+    'PreventionContentPolicyErrorArgsDict',
+    'PreventionContentPolicyErrorDetailArgs',
+    'PreventionContentPolicyErrorDetailArgsDict',
+    'PreventionContentPolicyFailedToScanSupportedFileTypeArgs',
+    'PreventionContentPolicyFailedToScanSupportedFileTypeArgsDict',
+    'PreventionContentPolicyInputTooLargeArgs',
+    'PreventionContentPolicyInputTooLargeArgsDict',
+    'PreventionContentPolicyInspectConfigArgs',
+    'PreventionContentPolicyInspectConfigArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgsDict',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs',
+    'PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgsDict',
+    'PreventionContentPolicyInspectConfigInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigLimitsArgs',
+    'PreventionContentPolicyInspectConfigLimitsArgsDict',
+    'PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetArgs',
+    'PreventionContentPolicyInspectConfigRuleSetArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs',
+    'PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgsDict',
+    'PreventionContentPolicyLoggingConfigArgs',
+    'PreventionContentPolicyLoggingConfigArgsDict',
+    'PreventionContentPolicyLoggingConfigLogToBigQueryArgs',
+    'PreventionContentPolicyLoggingConfigLogToBigQueryArgsDict',
+    'PreventionContentPolicyRuleArgs',
+    'PreventionContentPolicyRuleArgsDict',
+    'PreventionContentPolicyRuleActionArgs',
+    'PreventionContentPolicyRuleActionArgsDict',
+    'PreventionContentPolicyRuleConditionArgs',
+    'PreventionContentPolicyRuleConditionArgsDict',
+    'PreventionContentPolicyRuleConditionInfoTypeConditionArgs',
+    'PreventionContentPolicyRuleConditionInfoTypeConditionArgsDict',
+    'PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs',
+    'PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgsDict',
+    'PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs',
+    'PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgsDict',
+    'PreventionContentPolicyUnsupportedFileTypeArgs',
+    'PreventionContentPolicyUnsupportedFileTypeArgsDict',
     'PreventionDeidentifyTemplateDeidentifyConfigArgs',
     'PreventionDeidentifyTemplateDeidentifyConfigArgsDict',
     'PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs',
@@ -667,8 +831,6 @@ __all__ = [
     'PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict',
     'PreventionJobTriggerInspectJobActionPubSubArgs',
     'PreventionJobTriggerInspectJobActionPubSubArgsDict',
-    'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs',
-    'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict',
     'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs',
     'PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict',
     'PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs',
@@ -816,6 +978,4382 @@ __all__ = [
     'PreventionStoredInfoTypeRegexArgs',
     'PreventionStoredInfoTypeRegexArgsDict',
 ]
+
+class PreventionContentPolicyDefaultActionArgsDict(TypedDict):
+    return_verdict: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If set, the verdict will be returned to the user.
+    Possible values: ["ALLOW", "BLOCK"]
+    Possible values are: `ALLOW`, `BLOCK`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyDefaultActionArgs:
+    def __init__(__self__, *,
+                 return_verdict: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] return_verdict: If set, the verdict will be returned to the user.
+               Possible values: ["ALLOW", "BLOCK"]
+               Possible values are: `ALLOW`, `BLOCK`.
+        """
+        if return_verdict is not None:
+            pulumi.set(__self__, "return_verdict", return_verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="returnVerdict")
+    def return_verdict(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If set, the verdict will be returned to the user.
+        Possible values: ["ALLOW", "BLOCK"]
+        Possible values are: `ALLOW`, `BLOCK`.
+        """
+        return pulumi.get(self, "return_verdict")
+
+    @return_verdict.setter
+    def return_verdict(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "return_verdict", value)
+
+
+class PreventionContentPolicyErrorArgsDict(TypedDict):
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyErrorDetailArgsDict']]]]]
+    """
+    (Output)
+    A list of messages that carry the error details.
+    """
+    extra_info: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Additional information about the error.
+    """
+    timestamps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyErrorArgs:
+    def __init__(__self__, *,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyErrorDetailArgs']]]] = None,
+                 extra_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 timestamps: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyErrorDetailArgs']]] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[_builtins.str] extra_info: (Output)
+               Additional information about the error.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] timestamps: (Output)
+               The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if extra_info is not None:
+            pulumi.set(__self__, "extra_info", extra_info)
+        if timestamps is not None:
+            pulumi.set(__self__, "timestamps", timestamps)
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyErrorDetailArgs']]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyErrorDetailArgs']]]]):
+        pulumi.set(self, "details", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraInfo")
+    def extra_info(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Additional information about the error.
+        """
+        return pulumi.get(self, "extra_info")
+
+    @extra_info.setter
+    def extra_info(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "extra_info", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timestamps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
+        """
+        return pulumi.get(self, "timestamps")
+
+    @timestamps.setter
+    def timestamps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "timestamps", value)
+
+
+class PreventionContentPolicyErrorDetailArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    (Output)
+    The status code, which should be an enum value of google.rpc.Code.
+    """
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
+    """
+    (Output)
+    A list of messages that carry the error details.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A developer-facing error message, which should be in English.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyErrorDetailArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "details", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class PreventionContentPolicyFailedToScanSupportedFileTypeArgsDict(TypedDict):
+    return_verdict: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If set, the verdict will be returned to the user.
+    Possible values: ["ALLOW", "BLOCK"]
+    Possible values are: `ALLOW`, `BLOCK`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyFailedToScanSupportedFileTypeArgs:
+    def __init__(__self__, *,
+                 return_verdict: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] return_verdict: If set, the verdict will be returned to the user.
+               Possible values: ["ALLOW", "BLOCK"]
+               Possible values are: `ALLOW`, `BLOCK`.
+        """
+        if return_verdict is not None:
+            pulumi.set(__self__, "return_verdict", return_verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="returnVerdict")
+    def return_verdict(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If set, the verdict will be returned to the user.
+        Possible values: ["ALLOW", "BLOCK"]
+        Possible values are: `ALLOW`, `BLOCK`.
+        """
+        return pulumi.get(self, "return_verdict")
+
+    @return_verdict.setter
+    def return_verdict(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "return_verdict", value)
+
+
+class PreventionContentPolicyInputTooLargeArgsDict(TypedDict):
+    return_verdict: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If set, the verdict will be returned to the user.
+    Possible values: ["ALLOW", "BLOCK"]
+    Possible values are: `ALLOW`, `BLOCK`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInputTooLargeArgs:
+    def __init__(__self__, *,
+                 return_verdict: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] return_verdict: If set, the verdict will be returned to the user.
+               Possible values: ["ALLOW", "BLOCK"]
+               Possible values are: `ALLOW`, `BLOCK`.
+        """
+        if return_verdict is not None:
+            pulumi.set(__self__, "return_verdict", return_verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="returnVerdict")
+    def return_verdict(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If set, the verdict will be returned to the user.
+        Possible values: ["ALLOW", "BLOCK"]
+        Possible values are: `ALLOW`, `BLOCK`.
+        """
+        return pulumi.get(self, "return_verdict")
+
+    @return_verdict.setter
+    def return_verdict(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "return_verdict", value)
+
+
+class PreventionContentPolicyInspectConfigArgsDict(TypedDict):
+    content_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of options defining data content to scan. If empty, text, images, and other content will be included.
+    Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+    """
+    custom_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeArgsDict']]]]]
+    """
+    Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+    Structure is documented below.
+    """
+    exclude_info_types: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, excludes type information of the findings.
+    """
+    include_quote: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, a contextual quote from the data that triggered a finding is included in the response.
+    """
+    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigInfoTypeArgsDict']]]]]
+    """
+    Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+    or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+    When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+    By default this may be all types, but may change over time as detectors are updated.
+    Structure is documented below.
+    """
+    limits: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsArgsDict']]]
+    """
+    Configuration to control the number of findings returned.
+    Structure is documented below.
+    """
+    min_likelihood: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+    Default value is `POSSIBLE`.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    min_likelihood_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgsDict']]]]]
+    """
+    Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+    The system only returns a finding if its likelihood is above this threshold. If this field
+    is not set, the system uses the InspectConfig min_likelihood.
+    Structure is documented below.
+    """
+    rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetArgsDict']]]]]
+    """
+    Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+    other rules are executed in the order they are specified for each info type.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigArgs:
+    def __init__(__self__, *,
+                 content_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 custom_info_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeArgs']]]] = None,
+                 exclude_info_types: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_quote: pulumi.Input[Optional[_builtins.bool]] = None,
+                 info_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigInfoTypeArgs']]]] = None,
+                 limits: pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsArgs']] = None,
+                 min_likelihood: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_likelihood_per_info_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs']]]] = None,
+                 rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
+               Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeArgs']]] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] exclude_info_types: When true, excludes type information of the findings.
+        :param pulumi.Input[_builtins.bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigInfoTypeArgs']]] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+               or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+               When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+               By default this may be all types, but may change over time as detectors are updated.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigLimitsArgs'] limits: Configuration to control the number of findings returned.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+               Default value is `POSSIBLE`.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs']]] min_likelihood_per_info_types: Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+               The system only returns a finding if its likelihood is above this threshold. If this field
+               is not set, the system uses the InspectConfig min_likelihood.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetArgs']]] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+               other rules are executed in the order they are specified for each info type.
+               Structure is documented below.
+        """
+        if content_options is not None:
+            pulumi.set(__self__, "content_options", content_options)
+        if custom_info_types is not None:
+            pulumi.set(__self__, "custom_info_types", custom_info_types)
+        if exclude_info_types is not None:
+            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+        if include_quote is not None:
+            pulumi.set(__self__, "include_quote", include_quote)
+        if info_types is not None:
+            pulumi.set(__self__, "info_types", info_types)
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if min_likelihood is not None:
+            pulumi.set(__self__, "min_likelihood", min_likelihood)
+        if min_likelihood_per_info_types is not None:
+            pulumi.set(__self__, "min_likelihood_per_info_types", min_likelihood_per_info_types)
+        if rule_sets is not None:
+            pulumi.set(__self__, "rule_sets", rule_sets)
+
+    @_builtins.property
+    @pulumi.getter(name="contentOptions")
+    def content_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of options defining data content to scan. If empty, text, images, and other content will be included.
+        Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
+        """
+        return pulumi.get(self, "content_options")
+
+    @content_options.setter
+    def content_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "content_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customInfoTypes")
+    def custom_info_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeArgs']]]]:
+        """
+        Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_info_types")
+
+    @custom_info_types.setter
+    def custom_info_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeArgs']]]]):
+        pulumi.set(self, "custom_info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, excludes type information of the findings.
+        """
+        return pulumi.get(self, "exclude_info_types")
+
+    @exclude_info_types.setter
+    def exclude_info_types(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "exclude_info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeQuote")
+    def include_quote(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, a contextual quote from the data that triggered a finding is included in the response.
+        """
+        return pulumi.get(self, "include_quote")
+
+    @include_quote.setter
+    def include_quote(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_quote", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigInfoTypeArgs']]]]:
+        """
+        Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+        By default this may be all types, but may change over time as detectors are updated.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigInfoTypeArgs']]]]):
+        pulumi.set(self, "info_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsArgs']]:
+        """
+        Configuration to control the number of findings returned.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsArgs']]):
+        pulumi.set(self, "limits", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihood")
+    def min_likelihood(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+        Default value is `POSSIBLE`.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "min_likelihood")
+
+    @min_likelihood.setter
+    def min_likelihood(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "min_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihoodPerInfoTypes")
+    def min_likelihood_per_info_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs']]]]:
+        """
+        Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+        The system only returns a finding if its likelihood is above this threshold. If this field
+        is not set, the system uses the InspectConfig min_likelihood.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "min_likelihood_per_info_types")
+
+    @min_likelihood_per_info_types.setter
+    def min_likelihood_per_info_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs']]]]):
+        pulumi.set(self, "min_likelihood_per_info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleSets")
+    def rule_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetArgs']]]]:
+        """
+        Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+        other rules are executed in the order they are specified for each info type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rule_sets")
+
+    @rule_sets.setter
+    def rule_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetArgs']]]]):
+        pulumi.set(self, "rule_sets", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeArgsDict(TypedDict):
+    info_type: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgsDict']
+    """
+    CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+    infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+    one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+    treated as a custom info type.
+    Structure is documented below.
+    """
+    detection_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgsDict']]]]]
+    """
+    Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order
+    that they are specified. Only supported for the dictionary, regex, and storedType CustomInfoTypes.
+    Structure is documented below.
+    """
+    dictionary: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgsDict']]]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    exclusion_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+    Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+    """
+    file_label_info_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgsDict']]]
+    """
+    Configuration for a custom infoType that detects file labels.
+    Structure is documented below.
+    """
+    likelihood: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+    specified by the rule.
+    Default value is `VERY_LIKELY`.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    metadata_key_value_expression: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgsDict']]]
+    """
+    Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+    Structure is documented below.
+    """
+    regex: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgsDict']]]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    stored_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgsDict']]]
+    """
+    A reference to a StoredInfoType to use with scanning.
+    Structure is documented below.
+    """
+    surrogate_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]]
+    """
+    Message for detecting output from deidentification transformations that support reversing.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeArgs:
+    def __init__(__self__, *,
+                 info_type: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs'],
+                 detection_rules: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs']]]] = None,
+                 dictionary: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs']] = None,
+                 exclusion_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_label_info_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs']] = None,
+                 likelihood: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata_key_value_expression: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs']] = None,
+                 regex: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs']] = None,
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs']] = None,
+                 stored_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs']] = None,
+                 surrogate_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs'] info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+               infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+               one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+               treated as a custom info type.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs']]] detection_rules: Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order
+               that they are specified. Only supported for the dictionary, regex, and storedType CustomInfoTypes.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+               Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs'] file_label_info_type: Configuration for a custom infoType that detects file labels.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+               specified by the rule.
+               Default value is `VERY_LIKELY`.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs'] metadata_key_value_expression: Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs'] stored_type: A reference to a StoredInfoType to use with scanning.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs'] surrogate_type: Message for detecting output from deidentification transformations that support reversing.
+        """
+        pulumi.set(__self__, "info_type", info_type)
+        if detection_rules is not None:
+            pulumi.set(__self__, "detection_rules", detection_rules)
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if exclusion_type is not None:
+            pulumi.set(__self__, "exclusion_type", exclusion_type)
+        if file_label_info_type is not None:
+            pulumi.set(__self__, "file_label_info_type", file_label_info_type)
+        if likelihood is not None:
+            pulumi.set(__self__, "likelihood", likelihood)
+        if metadata_key_value_expression is not None:
+            pulumi.set(__self__, "metadata_key_value_expression", metadata_key_value_expression)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if stored_type is not None:
+            pulumi.set(__self__, "stored_type", stored_type)
+        if surrogate_type is not None:
+            pulumi.set(__self__, "surrogate_type", surrogate_type)
+
+    @_builtins.property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs']:
+        """
+        CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+        infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+        one detected by the system. If built-in info type is not specified in `info_types` list then the name is
+        treated as a custom info type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs']):
+        pulumi.set(self, "info_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="detectionRules")
+    def detection_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs']]]]:
+        """
+        Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in order
+        that they are specified. Only supported for the dictionary, regex, and storedType CustomInfoTypes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "detection_rules")
+
+    @detection_rules.setter
+    def detection_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs']]]]):
+        pulumi.set(self, "detection_rules", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionary(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs']]:
+        """
+        Dictionary which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @dictionary.setter
+    def dictionary(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs']]):
+        pulumi.set(self, "dictionary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionType")
+    def exclusion_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+        Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+        """
+        return pulumi.get(self, "exclusion_type")
+
+    @exclusion_type.setter
+    def exclusion_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exclusion_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fileLabelInfoType")
+    def file_label_info_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs']]:
+        """
+        Configuration for a custom infoType that detects file labels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_label_info_type")
+
+    @file_label_info_type.setter
+    def file_label_info_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs']]):
+        pulumi.set(self, "file_label_info_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def likelihood(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+        specified by the rule.
+        Default value is `VERY_LIKELY`.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "likelihood")
+
+    @likelihood.setter
+    def likelihood(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metadataKeyValueExpression")
+    def metadata_key_value_expression(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs']]:
+        """
+        Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular expressions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata_key_value_expression")
+
+    @metadata_key_value_expression.setter
+    def metadata_key_value_expression(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs']]):
+        pulumi.set(self, "metadata_key_value_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs']]:
+        """
+        Regular expression which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs']]):
+        pulumi.set(self, "regex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storedType")
+    def stored_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs']]:
+        """
+        A reference to a StoredInfoType to use with scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "stored_type")
+
+    @stored_type.setter
+    def stored_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs']]):
+        pulumi.set(self, "stored_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="surrogateType")
+    def surrogate_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs']]:
+        """
+        Message for detecting output from deidentification transformations that support reversing.
+        """
+        return pulumi.get(self, "surrogate_type")
+
+    @surrogate_type.setter
+    def surrogate_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs']]):
+        pulumi.set(self, "surrogate_type", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgsDict(TypedDict):
+    hotword_rule: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgsDict']]]
+    """
+    Hotword-based detection rule.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleArgs:
+    def __init__(__self__, *,
+                 hotword_rule: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs'] hotword_rule: Hotword-based detection rule.
+               Structure is documented below.
+        """
+        if hotword_rule is not None:
+            pulumi.set(__self__, "hotword_rule", hotword_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="hotwordRule")
+    def hotword_rule(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs']]:
+        """
+        Hotword-based detection rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hotword_rule")
+
+    @hotword_rule.setter
+    def hotword_rule(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs']]):
+        pulumi.set(self, "hotword_rule", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgsDict(TypedDict):
+    hotword_regex: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgsDict']
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    likelihood_adjustment: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgsDict']
+    """
+    Likelihood adjustment to apply to all matching findings.
+    Structure is documented below.
+    """
+    proximity: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgsDict']
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleArgs:
+    def __init__(__self__, *,
+                 hotword_regex: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs'],
+                 likelihood_adjustment: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs'],
+                 proximity: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs']):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs'] hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs'] likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs'] proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+               exceed 1000 characters.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "hotword_regex", hotword_regex)
+        pulumi.set(__self__, "likelihood_adjustment", likelihood_adjustment)
+        pulumi.set(__self__, "proximity", proximity)
+
+    @_builtins.property
+    @pulumi.getter(name="hotwordRegex")
+    def hotword_regex(self) -> pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs']:
+        """
+        Regular expression pattern defining what qualifies as a hotword.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hotword_regex")
+
+    @hotword_regex.setter
+    def hotword_regex(self, value: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs']):
+        pulumi.set(self, "hotword_regex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="likelihoodAdjustment")
+    def likelihood_adjustment(self) -> pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs']:
+        """
+        Likelihood adjustment to apply to all matching findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "likelihood_adjustment")
+
+    @likelihood_adjustment.setter
+    def likelihood_adjustment(self, value: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs']):
+        pulumi.set(self, "likelihood_adjustment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def proximity(self) -> pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs']:
+        """
+        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        exceed 1000 characters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proximity")
+
+    @proximity.setter
+    def proximity(self, value: pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs']):
+        pulumi.set(self, "proximity", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleHotwordRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 group_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pattern: Pattern defining the regular expression. Its syntax
+               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
+               the entire match is returned. No more than 3 may be included.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        if group_indexes is not None:
+            pulumi.set(__self__, "group_indexes", group_indexes)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pattern defining the regular expression. Its syntax
+        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupIndexes")
+    def group_indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The index of the submatch to extract as findings. When not specified,
+        the entire match is returned. No more than 3 may be included.
+        """
+        return pulumi.get(self, "group_indexes")
+
+    @group_indexes.setter
+    def group_indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "group_indexes", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgsDict(TypedDict):
+    fixed_likelihood: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    relative_likelihood: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Increase or decrease the likelihood by the specified number of levels.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleLikelihoodAdjustmentArgs:
+    def __init__(__self__, *,
+                 fixed_likelihood: pulumi.Input[Optional[_builtins.str]] = None,
+                 relative_likelihood: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] fixed_likelihood: Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input[_builtins.int] relative_likelihood: Increase or decrease the likelihood by the specified number of levels.
+        """
+        if fixed_likelihood is not None:
+            pulumi.set(__self__, "fixed_likelihood", fixed_likelihood)
+        if relative_likelihood is not None:
+            pulumi.set(__self__, "relative_likelihood", relative_likelihood)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedLikelihood")
+    def fixed_likelihood(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "fixed_likelihood")
+
+    @fixed_likelihood.setter
+    def fixed_likelihood(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fixed_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="relativeLikelihood")
+    def relative_likelihood(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Increase or decrease the likelihood by the specified number of levels.
+        """
+        return pulumi.get(self, "relative_likelihood")
+
+    @relative_likelihood.setter
+    def relative_likelihood(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "relative_likelihood", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of characters after the finding to consider.
+    """
+    window_before: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of characters before the finding to consider.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDetectionRuleHotwordRuleProximityArgs:
+    def __init__(__self__, *,
+                 window_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 window_before: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] window_after: Number of characters after the finding to consider.
+        :param pulumi.Input[_builtins.int] window_before: Number of characters before the finding to consider.
+        """
+        if window_after is not None:
+            pulumi.set(__self__, "window_after", window_after)
+        if window_before is not None:
+            pulumi.set(__self__, "window_before", window_before)
+
+    @_builtins.property
+    @pulumi.getter(name="windowAfter")
+    def window_after(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of characters after the finding to consider.
+        """
+        return pulumi.get(self, "window_after")
+
+    @window_after.setter
+    def window_after(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_after", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowBefore")
+    def window_before(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of characters before the finding to consider.
+        """
+        return pulumi.get(self, "window_before")
+
+    @window_before.setter
+    def window_before(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_before", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryArgs:
+    def __init__(__self__, *,
+                 cloud_storage_path: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']] = None,
+                 word_list: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs'] cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs'] word_list: List of words or phrases to search for.
+               Structure is documented below.
+        """
+        if cloud_storage_path is not None:
+            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+        if word_list is not None:
+            pulumi.set(__self__, "word_list", word_list)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStoragePath")
+    def cloud_storage_path(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']]:
+        """
+        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_path")
+
+    @cloud_storage_path.setter
+    def cloud_storage_path(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']]):
+        pulumi.set(self, "cloud_storage_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wordList")
+    def word_list(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs']]:
+        """
+        List of words or phrases to search for.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "word_list")
+
+    @word_list.setter
+    def word_list(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs']]):
+        pulumi.set(self, "word_list", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeDictionaryWordListArgs:
+    def __init__(__self__, *,
+                 words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
+               phrase and every phrase must contain at least 2 characters that are letters or digits.
+        """
+        pulumi.set(__self__, "words", words)
+
+    @_builtins.property
+    @pulumi.getter
+    def words(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Words or phrases defining the dictionary. The dictionary must contain at least one
+        phrase and every phrase must contain at least 2 characters that are letters or digits.
+        """
+        return pulumi.get(self, "words")
+
+    @words.setter
+    def words(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "words", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgsDict(TypedDict):
+    google_drive_label: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgsDict']]]
+    """
+    Google Drive labels published by Google.
+    Structure is documented below.
+    """
+    sensitivity_label: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgsDict']]]
+    """
+    Sensitivity labels published by Microsoft.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeArgs:
+    def __init__(__self__, *,
+                 google_drive_label: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs']] = None,
+                 sensitivity_label: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs'] google_drive_label: Google Drive labels published by Google.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs'] sensitivity_label: Sensitivity labels published by Microsoft.
+               Structure is documented below.
+        """
+        if google_drive_label is not None:
+            pulumi.set(__self__, "google_drive_label", google_drive_label)
+        if sensitivity_label is not None:
+            pulumi.set(__self__, "sensitivity_label", sensitivity_label)
+
+    @_builtins.property
+    @pulumi.getter(name="googleDriveLabel")
+    def google_drive_label(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs']]:
+        """
+        Google Drive labels published by Google.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_drive_label")
+
+    @google_drive_label.setter
+    def google_drive_label(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs']]):
+        pulumi.set(self, "google_drive_label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityLabel")
+    def sensitivity_label(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs']]:
+        """
+        Sensitivity labels published by Microsoft.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_label")
+
+    @sensitivity_label.setter
+    def sensitivity_label(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs']]):
+        pulumi.set(self, "sensitivity_label", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgsDict(TypedDict):
+    label_id: pulumi.Input[_builtins.str]
+    """
+    The label ID of the Google Drive label.
+    """
+    label_fields_to_matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgsDict']]]]]
+    """
+    The field values of the Google Drive label to match.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelArgs:
+    def __init__(__self__, *,
+                 label_id: pulumi.Input[_builtins.str],
+                 label_fields_to_matches: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] label_id: The label ID of the Google Drive label.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs']]] label_fields_to_matches: The field values of the Google Drive label to match.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "label_id", label_id)
+        if label_fields_to_matches is not None:
+            pulumi.set(__self__, "label_fields_to_matches", label_fields_to_matches)
+
+    @_builtins.property
+    @pulumi.getter(name="labelId")
+    def label_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label ID of the Google Drive label.
+        """
+        return pulumi.get(self, "label_id")
+
+    @label_id.setter
+    def label_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="labelFieldsToMatches")
+    def label_fields_to_matches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs']]]]:
+        """
+        The field values of the Google Drive label to match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "label_fields_to_matches")
+
+    @label_fields_to_matches.setter
+    def label_fields_to_matches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs']]]]):
+        pulumi.set(self, "label_fields_to_matches", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The identifier of the Label Field.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the Label Field to match.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeGoogleDriveLabelLabelFieldsToMatchArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] id: The identifier of the Label Field.
+        :param pulumi.Input[_builtins.str] value: The value of the Label Field to match.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier of the Label Field.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the Label Field to match.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgsDict(TypedDict):
+    guid: pulumi.Input[_builtins.str]
+    """
+    The GUID of the sensitivity label.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeFileLabelInfoTypeSensitivityLabelArgs:
+    def __init__(__self__, *,
+                 guid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] guid: The GUID of the sensitivity label.
+        """
+        pulumi.set(__self__, "guid", guid)
+
+    @_builtins.property
+    @pulumi.getter
+    def guid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The GUID of the sensitivity label.
+        """
+        return pulumi.get(self, "guid")
+
+    @guid.setter
+    def guid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "guid", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgsDict(TypedDict):
+    key_regex: pulumi.Input[_builtins.str]
+    """
+    The regular expression for the key.
+    """
+    value_regex: pulumi.Input[_builtins.str]
+    """
+    The regular expression for the value.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeMetadataKeyValueExpressionArgs:
+    def __init__(__self__, *,
+                 key_regex: pulumi.Input[_builtins.str],
+                 value_regex: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key_regex: The regular expression for the key.
+        :param pulumi.Input[_builtins.str] value_regex: The regular expression for the value.
+        """
+        pulumi.set(__self__, "key_regex", key_regex)
+        pulumi.set(__self__, "value_regex", value_regex)
+
+    @_builtins.property
+    @pulumi.getter(name="keyRegex")
+    def key_regex(self) -> pulumi.Input[_builtins.str]:
+        """
+        The regular expression for the key.
+        """
+        return pulumi.get(self, "key_regex")
+
+    @key_regex.setter
+    def key_regex(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key_regex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueRegex")
+    def value_regex(self) -> pulumi.Input[_builtins.str]:
+        """
+        The regular expression for the value.
+        """
+        return pulumi.get(self, "value_regex")
+
+    @value_regex.setter
+    def value_regex(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value_regex", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 group_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pattern: Pattern defining the regular expression.
+               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        if group_indexes is not None:
+            pulumi.set(__self__, "group_indexes", group_indexes)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pattern defining the regular expression.
+        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupIndexes")
+    def group_indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        """
+        return pulumi.get(self, "group_indexes")
+
+    @group_indexes.setter
+    def group_indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "group_indexes", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+    or `projects/project-id/storedInfoTypes/432452342`.
+    """
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Output only. Timestamp indicating when the version of the StoredInfoType used for inspection was created.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
+        :param pulumi.Input[_builtins.str] create_time: (Output)
+               Output only. Timestamp indicating when the version of the StoredInfoType used for inspection was created.
+        """
+        pulumi.set(__self__, "name", name)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Output only. Timestamp indicating when the version of the StoredInfoType used for inspection was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+
+class PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigCustomInfoTypeSurrogateTypeArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigLimitsArgsDict(TypedDict):
+    max_findings_per_item: pulumi.Input[_builtins.int]
+    """
+    Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+    """
+    max_findings_per_request: pulumi.Input[_builtins.int]
+    """
+    Max number of findings that will be returned per request/job. The maximum returned is 2000.
+    """
+    max_findings_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]]
+    """
+    Configuration of findings limit given for specified infoTypes.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigLimitsArgs:
+    def __init__(__self__, *,
+                 max_findings_per_item: pulumi.Input[_builtins.int],
+                 max_findings_per_request: pulumi.Input[_builtins.int],
+                 max_findings_per_info_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_findings_per_item: Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+        :param pulumi.Input[_builtins.int] max_findings_per_request: Max number of findings that will be returned per request/job. The maximum returned is 2000.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]] max_findings_per_info_types: Configuration of findings limit given for specified infoTypes.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "max_findings_per_item", max_findings_per_item)
+        pulumi.set(__self__, "max_findings_per_request", max_findings_per_request)
+        if max_findings_per_info_types is not None:
+            pulumi.set(__self__, "max_findings_per_info_types", max_findings_per_info_types)
+
+    @_builtins.property
+    @pulumi.getter(name="maxFindingsPerItem")
+    def max_findings_per_item(self) -> pulumi.Input[_builtins.int]:
+        """
+        Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+        """
+        return pulumi.get(self, "max_findings_per_item")
+
+    @max_findings_per_item.setter
+    def max_findings_per_item(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max_findings_per_item", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxFindingsPerRequest")
+    def max_findings_per_request(self) -> pulumi.Input[_builtins.int]:
+        """
+        Max number of findings that will be returned per request/job. The maximum returned is 2000.
+        """
+        return pulumi.get(self, "max_findings_per_request")
+
+    @max_findings_per_request.setter
+    def max_findings_per_request(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max_findings_per_request", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxFindingsPerInfoTypes")
+    def max_findings_per_info_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]]:
+        """
+        Configuration of findings limit given for specified infoTypes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_findings_per_info_types")
+
+    @max_findings_per_info_types.setter
+    def max_findings_per_info_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]]):
+        pulumi.set(self, "max_findings_per_info_types", value)
+
+
+class PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict(TypedDict):
+    max_findings: pulumi.Input[_builtins.int]
+    """
+    Max findings limit for the given infoType.
+    """
+    info_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]]
+    """
+    Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+    not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+    specified in another InfoTypeLimit.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeArgs:
+    def __init__(__self__, *,
+                 max_findings: pulumi.Input[_builtins.int],
+                 info_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_findings: Max findings limit for the given infoType.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs'] info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+               not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+               specified in another InfoTypeLimit.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "max_findings", max_findings)
+        if info_type is not None:
+            pulumi.set(__self__, "info_type", info_type)
+
+    @_builtins.property
+    @pulumi.getter(name="maxFindings")
+    def max_findings(self) -> pulumi.Input[_builtins.int]:
+        """
+        Max findings limit for the given infoType.
+        """
+        return pulumi.get(self, "max_findings")
+
+    @max_findings.setter
+    def max_findings(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max_findings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']]:
+        """
+        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+        specified in another InfoTypeLimit.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']]):
+        pulumi.set(self, "info_type", value)
+
+
+class PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgsDict(TypedDict):
+    min_likelihood: pulumi.Input[_builtins.str]
+    """
+    Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    info_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgsDict']]]
+    """
+    Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+    If InfoTypeLikelihood does not have an info_type, the configuration fails.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeArgs:
+    def __init__(__self__, *,
+                 min_likelihood: pulumi.Input[_builtins.str],
+                 info_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs'] info_type: Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+               If InfoTypeLikelihood does not have an info_type, the configuration fails.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "min_likelihood", min_likelihood)
+        if info_type is not None:
+            pulumi.set(__self__, "info_type", info_type)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihood")
+    def min_likelihood(self) -> pulumi.Input[_builtins.str]:
+        """
+        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "min_likelihood")
+
+    @min_likelihood.setter
+    def min_likelihood(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "min_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs']]:
+        """
+        Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+        If InfoTypeLikelihood does not have an info_type, the configuration fails.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs']]):
+        pulumi.set(self, "info_type", value)
+
+
+class PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType. This only applies to data profiling.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType. This only applies to data profiling.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigMinLikelihoodPerInfoTypeInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetInfoTypeArgsDict']]]
+    """
+    List of infoTypes this rule set is applied to.
+    Structure is documented below.
+    """
+    rules: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleArgsDict']]]
+    """
+    Set of rules to be applied to infoTypes. The rules are applied in order.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetArgs:
+    def __init__(__self__, *,
+                 info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs']]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs']]] info_types: List of infoTypes this rule set is applied to.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleArgs']]] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs']]]:
+        """
+        List of infoTypes this rule set is applied to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs']]]):
+        pulumi.set(self, "info_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleArgs']]]:
+        """
+        Set of rules to be applied to infoTypes. The rules are applied in order.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleArgsDict(TypedDict):
+    adjustment_rule: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgsDict']]]
+    """
+    Rule that specifies conditions when a certain infoType's finding details should be adjusted.
+    Structure is documented below.
+    """
+    exclusion_rule: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgsDict']]]
+    """
+    The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+    Structure is documented below.
+    """
+    hotword_rule: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgsDict']]]
+    """
+    Hotword-based detection rule.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleArgs:
+    def __init__(__self__, *,
+                 adjustment_rule: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs']] = None,
+                 exclusion_rule: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs']] = None,
+                 hotword_rule: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs'] adjustment_rule: Rule that specifies conditions when a certain infoType's finding details should be adjusted.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs'] exclusion_rule: The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs'] hotword_rule: Hotword-based detection rule.
+               Structure is documented below.
+        """
+        if adjustment_rule is not None:
+            pulumi.set(__self__, "adjustment_rule", adjustment_rule)
+        if exclusion_rule is not None:
+            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
+        if hotword_rule is not None:
+            pulumi.set(__self__, "hotword_rule", hotword_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="adjustmentRule")
+    def adjustment_rule(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs']]:
+        """
+        Rule that specifies conditions when a certain infoType's finding details should be adjusted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "adjustment_rule")
+
+    @adjustment_rule.setter
+    def adjustment_rule(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs']]):
+        pulumi.set(self, "adjustment_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionRule")
+    def exclusion_rule(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs']]:
+        """
+        The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclusion_rule")
+
+    @exclusion_rule.setter
+    def exclusion_rule(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs']]):
+        pulumi.set(self, "exclusion_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hotwordRule")
+    def hotword_rule(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs']]:
+        """
+        Hotword-based detection rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hotword_rule")
+
+    @hotword_rule.setter
+    def hotword_rule(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs']]):
+        pulumi.set(self, "hotword_rule", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgsDict(TypedDict):
+    likelihood_adjustment: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgsDict']
+    """
+    Likelihood adjustment to apply to all matching findings.
+    Structure is documented below.
+    """
+    adjust_by_image_findings: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgsDict']]]
+    """
+    AdjustmentRule condition for image findings.
+    Structure is documented below.
+    """
+    adjust_by_matching_info_types: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgsDict']]]
+    """
+    AdjustmentRule condition for matching infoTypes.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleArgs:
+    def __init__(__self__, *,
+                 likelihood_adjustment: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs'],
+                 adjust_by_image_findings: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs']] = None,
+                 adjust_by_matching_info_types: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs'] likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs'] adjust_by_image_findings: AdjustmentRule condition for image findings.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs'] adjust_by_matching_info_types: AdjustmentRule condition for matching infoTypes.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "likelihood_adjustment", likelihood_adjustment)
+        if adjust_by_image_findings is not None:
+            pulumi.set(__self__, "adjust_by_image_findings", adjust_by_image_findings)
+        if adjust_by_matching_info_types is not None:
+            pulumi.set(__self__, "adjust_by_matching_info_types", adjust_by_matching_info_types)
+
+    @_builtins.property
+    @pulumi.getter(name="likelihoodAdjustment")
+    def likelihood_adjustment(self) -> pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs']:
+        """
+        Likelihood adjustment to apply to all matching findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "likelihood_adjustment")
+
+    @likelihood_adjustment.setter
+    def likelihood_adjustment(self, value: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs']):
+        pulumi.set(self, "likelihood_adjustment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="adjustByImageFindings")
+    def adjust_by_image_findings(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs']]:
+        """
+        AdjustmentRule condition for image findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "adjust_by_image_findings")
+
+    @adjust_by_image_findings.setter
+    def adjust_by_image_findings(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs']]):
+        pulumi.set(self, "adjust_by_image_findings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="adjustByMatchingInfoTypes")
+    def adjust_by_matching_info_types(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs']]:
+        """
+        AdjustmentRule condition for matching infoTypes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "adjust_by_matching_info_types")
+
+    @adjust_by_matching_info_types.setter
+    def adjust_by_matching_info_types(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs']]):
+        pulumi.set(self, "adjust_by_matching_info_types", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgsDict']]]
+    """
+    A list of image-supported infoTypes to be used as context for the adjustment rule.
+    Structure is documented below.
+    """
+    min_likelihood: pulumi.Input[_builtins.str]
+    """
+    Minimum likelihood of the adjustByImageFindings infoTypes finding.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    image_containment_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgsDict']]]
+    """
+    Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsArgs:
+    def __init__(__self__, *,
+                 info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs']]],
+                 min_likelihood: pulumi.Input[_builtins.str],
+                 image_containment_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs']]] info_types: A list of image-supported infoTypes to be used as context for the adjustment rule.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] min_likelihood: Minimum likelihood of the adjustByImageFindings infoTypes finding.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs'] image_containment_type: Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+        pulumi.set(__self__, "min_likelihood", min_likelihood)
+        if image_containment_type is not None:
+            pulumi.set(__self__, "image_containment_type", image_containment_type)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs']]]:
+        """
+        A list of image-supported infoTypes to be used as context for the adjustment rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs']]]):
+        pulumi.set(self, "info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihood")
+    def min_likelihood(self) -> pulumi.Input[_builtins.str]:
+        """
+        Minimum likelihood of the adjustByImageFindings infoTypes finding.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "min_likelihood")
+
+    @min_likelihood.setter
+    def min_likelihood(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "min_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageContainmentType")
+    def image_containment_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs']]:
+        """
+        Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_containment_type")
+
+    @image_containment_type.setter
+    def image_containment_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs']]):
+        pulumi.set(self, "image_containment_type", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgsDict(TypedDict):
+    encloses: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgsDict']]]
+    """
+    Defines a condition where one bounding box encloses another.
+    """
+    fully_inside: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgsDict']]]
+    """
+    Defines a condition where one bounding box is fully inside another.
+    """
+    overlaps: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgsDict']]]
+    """
+    Defines a condition for overlapping bounding boxes.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeArgs:
+    def __init__(__self__, *,
+                 encloses: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgs']] = None,
+                 fully_inside: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgs']] = None,
+                 overlaps: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgs'] encloses: Defines a condition where one bounding box encloses another.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgs'] fully_inside: Defines a condition where one bounding box is fully inside another.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgs'] overlaps: Defines a condition for overlapping bounding boxes.
+        """
+        if encloses is not None:
+            pulumi.set(__self__, "encloses", encloses)
+        if fully_inside is not None:
+            pulumi.set(__self__, "fully_inside", fully_inside)
+        if overlaps is not None:
+            pulumi.set(__self__, "overlaps", overlaps)
+
+    @_builtins.property
+    @pulumi.getter
+    def encloses(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgs']]:
+        """
+        Defines a condition where one bounding box encloses another.
+        """
+        return pulumi.get(self, "encloses")
+
+    @encloses.setter
+    def encloses(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgs']]):
+        pulumi.set(self, "encloses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullyInside")
+    def fully_inside(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgs']]:
+        """
+        Defines a condition where one bounding box is fully inside another.
+        """
+        return pulumi.get(self, "fully_inside")
+
+    @fully_inside.setter
+    def fully_inside(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgs']]):
+        pulumi.set(self, "fully_inside", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def overlaps(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgs']]:
+        """
+        Defines a condition for overlapping bounding boxes.
+        """
+        return pulumi.get(self, "overlaps")
+
+    @overlaps.setter
+    def overlaps(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgs']]):
+        pulumi.set(self, "overlaps", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeEnclosesArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeFullyInsideArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsImageContainmentTypeOverlapsArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByImageFindingsInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgsDict']]]
+    """
+    Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these infoTypes.
+    Structure is documented below.
+    """
+    matching_type: pulumi.Input[_builtins.str]
+    """
+    How the adjustment rule is applied.
+    Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+    """
+    min_likelihood: pulumi.Input[_builtins.str]
+    """
+    Minimum likelihood of the adjustByMatchingInfoTypes infoTypes finding.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesArgs:
+    def __init__(__self__, *,
+                 info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs']]],
+                 matching_type: pulumi.Input[_builtins.str],
+                 min_likelihood: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs']]] info_types: Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these infoTypes.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] matching_type: How the adjustment rule is applied.
+               Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+        :param pulumi.Input[_builtins.str] min_likelihood: Minimum likelihood of the adjustByMatchingInfoTypes infoTypes finding.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+        pulumi.set(__self__, "matching_type", matching_type)
+        pulumi.set(__self__, "min_likelihood", min_likelihood)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs']]]:
+        """
+        Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these infoTypes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs']]]):
+        pulumi.set(self, "info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingType")
+    def matching_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        How the adjustment rule is applied.
+        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+        """
+        return pulumi.get(self, "matching_type")
+
+    @matching_type.setter
+    def matching_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "matching_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihood")
+    def min_likelihood(self) -> pulumi.Input[_builtins.str]:
+        """
+        Minimum likelihood of the adjustByMatchingInfoTypes infoTypes finding.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "min_likelihood")
+
+    @min_likelihood.setter
+    def min_likelihood(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "min_likelihood", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleAdjustByMatchingInfoTypesInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgsDict(TypedDict):
+    fixed_likelihood: pulumi.Input[_builtins.str]
+    """
+    Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleAdjustmentRuleLikelihoodAdjustmentArgs:
+    def __init__(__self__, *,
+                 fixed_likelihood: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] fixed_likelihood: Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        pulumi.set(__self__, "fixed_likelihood", fixed_likelihood)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedLikelihood")
+    def fixed_likelihood(self) -> pulumi.Input[_builtins.str]:
+        """
+        Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "fixed_likelihood")
+
+    @fixed_likelihood.setter
+    def fixed_likelihood(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "fixed_likelihood", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgsDict(TypedDict):
+    matching_type: pulumi.Input[_builtins.str]
+    """
+    How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+    Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
+    """
+    dictionary: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]]
+    """
+    Dictionary which defines the rule.
+    Structure is documented below.
+    """
+    exclude_by_hotword: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]]
+    """
+    Drop if the hotword rule is contained in the proximate context.
+    For tabular data, the context includes the column name.
+    Structure is documented below.
+    """
+    exclude_by_image_findings: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgsDict']]]
+    """
+    The rule to exclude image findings based on spatial relationships with other image findings.
+    Structure is documented below.
+    """
+    exclude_info_types: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]]
+    """
+    Set of infoTypes for which findings would affect this rule.
+    Structure is documented below.
+    """
+    regex: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]]
+    """
+    Regular expression which defines the rule.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleArgs:
+    def __init__(__self__, *,
+                 matching_type: pulumi.Input[_builtins.str],
+                 dictionary: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']] = None,
+                 exclude_by_hotword: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']] = None,
+                 exclude_by_image_findings: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs']] = None,
+                 exclude_info_types: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']] = None,
+                 regex: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+               Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs'] dictionary: Dictionary which defines the rule.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs'] exclude_by_hotword: Drop if the hotword rule is contained in the proximate context.
+               For tabular data, the context includes the column name.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs'] exclude_by_image_findings: The rule to exclude image findings based on spatial relationships with other image findings.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs'] exclude_info_types: Set of infoTypes for which findings would affect this rule.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs'] regex: Regular expression which defines the rule.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "matching_type", matching_type)
+        if dictionary is not None:
+            pulumi.set(__self__, "dictionary", dictionary)
+        if exclude_by_hotword is not None:
+            pulumi.set(__self__, "exclude_by_hotword", exclude_by_hotword)
+        if exclude_by_image_findings is not None:
+            pulumi.set(__self__, "exclude_by_image_findings", exclude_by_image_findings)
+        if exclude_info_types is not None:
+            pulumi.set(__self__, "exclude_info_types", exclude_info_types)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingType")
+    def matching_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`, `MATCHING_TYPE_RULE_SPECIFIC`.
+        """
+        return pulumi.get(self, "matching_type")
+
+    @matching_type.setter
+    def matching_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "matching_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dictionary(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']]:
+        """
+        Dictionary which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dictionary")
+
+    @dictionary.setter
+    def dictionary(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']]):
+        pulumi.set(self, "dictionary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeByHotword")
+    def exclude_by_hotword(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']]:
+        """
+        Drop if the hotword rule is contained in the proximate context.
+        For tabular data, the context includes the column name.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_by_hotword")
+
+    @exclude_by_hotword.setter
+    def exclude_by_hotword(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']]):
+        pulumi.set(self, "exclude_by_hotword", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeByImageFindings")
+    def exclude_by_image_findings(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs']]:
+        """
+        The rule to exclude image findings based on spatial relationships with other image findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_by_image_findings")
+
+    @exclude_by_image_findings.setter
+    def exclude_by_image_findings(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs']]):
+        pulumi.set(self, "exclude_by_image_findings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeInfoTypes")
+    def exclude_info_types(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']]:
+        """
+        Set of infoTypes for which findings would affect this rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_info_types")
+
+    @exclude_info_types.setter
+    def exclude_info_types(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']]):
+        pulumi.set(self, "exclude_info_types", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs']]:
+        """
+        Regular expression which defines the rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs']]):
+        pulumi.set(self, "regex", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]]
+    """
+    Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+    Structure is documented below.
+    """
+    word_list: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]]
+    """
+    List of words or phrases to search for.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryArgs:
+    def __init__(__self__, *,
+                 cloud_storage_path: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']] = None,
+                 word_list: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs'] cloud_storage_path: Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs'] word_list: List of words or phrases to search for.
+               Structure is documented below.
+        """
+        if cloud_storage_path is not None:
+            pulumi.set(__self__, "cloud_storage_path", cloud_storage_path)
+        if word_list is not None:
+            pulumi.set(__self__, "word_list", word_list)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStoragePath")
+    def cloud_storage_path(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']]:
+        """
+        Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_path")
+
+    @cloud_storage_path.setter
+    def cloud_storage_path(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']]):
+        pulumi.set(self, "cloud_storage_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wordList")
+    def word_list(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']]:
+        """
+        List of words or phrases to search for.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "word_list")
+
+    @word_list.setter
+    def word_list(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']]):
+        pulumi.set(self, "word_list", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] path: A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict(TypedDict):
+    words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Words or phrases defining the dictionary. The dictionary must contain at least one
+    phrase and every phrase must contain at least 2 characters that are letters or digits.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs:
+    def __init__(__self__, *,
+                 words: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] words: Words or phrases defining the dictionary. The dictionary must contain at least one
+               phrase and every phrase must contain at least 2 characters that are letters or digits.
+        """
+        pulumi.set(__self__, "words", words)
+
+    @_builtins.property
+    @pulumi.getter
+    def words(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Words or phrases defining the dictionary. The dictionary must contain at least one
+        phrase and every phrase must contain at least 2 characters that are letters or digits.
+        """
+        return pulumi.get(self, "words")
+
+    @words.setter
+    def words(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "words", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict(TypedDict):
+    hotword_regex: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict']
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    proximity: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict']
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+    used to match substrings of the finding itself. For example, the certainty of a phone number regex
+    `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+    office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs:
+    def __init__(__self__, *,
+                 hotword_regex: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs'],
+                 proximity: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs']):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs'] hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs'] proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+               exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+               used to match substrings of the finding itself. For example, the certainty of a phone number regex
+               `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+               office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "hotword_regex", hotword_regex)
+        pulumi.set(__self__, "proximity", proximity)
+
+    @_builtins.property
+    @pulumi.getter(name="hotwordRegex")
+    def hotword_regex(self) -> pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs']:
+        """
+        Regular expression pattern defining what qualifies as a hotword.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hotword_regex")
+
+    @hotword_regex.setter
+    def hotword_regex(self, value: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs']):
+        pulumi.set(self, "hotword_regex", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def proximity(self) -> pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs']:
+        """
+        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+        used to match substrings of the finding itself. For example, the certainty of a phone number regex
+        `(\\d{3}) \\d{3}-\\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+        office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proximity")
+
+    @proximity.setter
+    def proximity(self, value: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs']):
+        pulumi.set(self, "proximity", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 group_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pattern: Pattern defining the regular expression. Its syntax
+               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
+               the entire match is returned. No more than 3 may be included.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        if group_indexes is not None:
+            pulumi.set(__self__, "group_indexes", group_indexes)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pattern defining the regular expression. Its syntax
+        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupIndexes")
+    def group_indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The index of the submatch to extract as findings. When not specified,
+        the entire match is returned. No more than 3 may be included.
+        """
+        return pulumi.get(self, "group_indexes")
+
+    @group_indexes.setter
+    def group_indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "group_indexes", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of characters after the finding to consider.
+    """
+    window_before: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of characters before the finding to consider.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs:
+    def __init__(__self__, *,
+                 window_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 window_before: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] window_after: Number of characters after the finding to consider.
+        :param pulumi.Input[_builtins.int] window_before: Number of characters before the finding to consider.
+        """
+        if window_after is not None:
+            pulumi.set(__self__, "window_after", window_after)
+        if window_before is not None:
+            pulumi.set(__self__, "window_before", window_before)
+
+    @_builtins.property
+    @pulumi.getter(name="windowAfter")
+    def window_after(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of characters after the finding to consider.
+        """
+        return pulumi.get(self, "window_after")
+
+    @window_after.setter
+    def window_after(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_after", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowBefore")
+    def window_before(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of characters before the finding to consider.
+        """
+        return pulumi.get(self, "window_before")
+
+    @window_before.setter
+    def window_before(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_before", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgsDict']]]
+    """
+    A list of image-supported infoTypes to be used as context for the exclusion rule.
+    Structure is documented below.
+    """
+    image_containment_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgsDict']]]
+    """
+    Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsArgs:
+    def __init__(__self__, *,
+                 info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs']]],
+                 image_containment_type: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs']]] info_types: A list of image-supported infoTypes to be used as context for the exclusion rule.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs'] image_containment_type: Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+        if image_containment_type is not None:
+            pulumi.set(__self__, "image_containment_type", image_containment_type)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs']]]:
+        """
+        A list of image-supported infoTypes to be used as context for the exclusion rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs']]]):
+        pulumi.set(self, "info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageContainmentType")
+    def image_containment_type(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs']]:
+        """
+        Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_containment_type")
+
+    @image_containment_type.setter
+    def image_containment_type(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs']]):
+        pulumi.set(self, "image_containment_type", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgsDict(TypedDict):
+    encloses: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgsDict']]]
+    """
+    Defines a condition where one bounding box encloses another.
+    """
+    fully_inside: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgsDict']]]
+    """
+    Defines a condition where one bounding box is fully inside another.
+    """
+    overlaps: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgsDict']]]
+    """
+    Defines a condition for overlapping bounding boxes.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeArgs:
+    def __init__(__self__, *,
+                 encloses: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs']] = None,
+                 fully_inside: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs']] = None,
+                 overlaps: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs'] encloses: Defines a condition where one bounding box encloses another.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs'] fully_inside: Defines a condition where one bounding box is fully inside another.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs'] overlaps: Defines a condition for overlapping bounding boxes.
+        """
+        if encloses is not None:
+            pulumi.set(__self__, "encloses", encloses)
+        if fully_inside is not None:
+            pulumi.set(__self__, "fully_inside", fully_inside)
+        if overlaps is not None:
+            pulumi.set(__self__, "overlaps", overlaps)
+
+    @_builtins.property
+    @pulumi.getter
+    def encloses(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs']]:
+        """
+        Defines a condition where one bounding box encloses another.
+        """
+        return pulumi.get(self, "encloses")
+
+    @encloses.setter
+    def encloses(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs']]):
+        pulumi.set(self, "encloses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fullyInside")
+    def fully_inside(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs']]:
+        """
+        Defines a condition where one bounding box is fully inside another.
+        """
+        return pulumi.get(self, "fully_inside")
+
+    @fully_inside.setter
+    def fully_inside(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs']]):
+        pulumi.set(self, "fully_inside", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def overlaps(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs']]:
+        """
+        Defines a condition for overlapping bounding boxes.
+        """
+        return pulumi.get(self, "overlaps")
+
+    @overlaps.setter
+    def overlaps(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs']]):
+        pulumi.set(self, "overlaps", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeEnclosesArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeFullyInsideArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsImageContainmentTypeOverlapsArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeByImageFindingsInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict(TypedDict):
+    info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict']]]
+    """
+    If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs:
+    def __init__(__self__, *,
+                 info_types: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]]:
+        """
+        If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs']]]):
+        pulumi.set(self, "info_types", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type.
+    """
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]]
+    """
+    Optional custom sensitivity for this InfoType.
+    Structure is documented below.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 sensitivity_score: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs'] sensitivity_score: Optional custom sensitivity for this InfoType.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if sensitivity_score is not None:
+            pulumi.set(__self__, "sensitivity_score", sensitivity_score)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sensitivityScore")
+    def sensitivity_score(self) -> pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']]:
+        """
+        Optional custom sensitivity for this InfoType.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sensitivity_score")
+
+    @sensitivity_score.setter
+    def sensitivity_score(self, value: pulumi.Input[Optional['PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']]):
+        pulumi.set(self, "sensitivity_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict(TypedDict):
+    score: pulumi.Input[_builtins.str]
+    """
+    The sensitivity score applied to the resource.
+    Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs:
+    def __init__(__self__, *,
+                 score: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] score: The sensitivity score applied to the resource.
+               Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        pulumi.set(__self__, "score", score)
+
+    @_builtins.property
+    @pulumi.getter
+    def score(self) -> pulumi.Input[_builtins.str]:
+        """
+        The sensitivity score applied to the resource.
+        Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+        """
+        return pulumi.get(self, "score")
+
+    @score.setter
+    def score(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "score", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression.
+    Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleExclusionRuleRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 group_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pattern: Pattern defining the regular expression.
+               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        if group_indexes is not None:
+            pulumi.set(__self__, "group_indexes", group_indexes)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pattern defining the regular expression.
+        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupIndexes")
+    def group_indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        """
+        return pulumi.get(self, "group_indexes")
+
+    @group_indexes.setter
+    def group_indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "group_indexes", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgsDict(TypedDict):
+    hotword_regex: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict']
+    """
+    Regular expression pattern defining what qualifies as a hotword.
+    Structure is documented below.
+    """
+    likelihood_adjustment: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict']
+    """
+    Likelihood adjustment to apply to all matching findings.
+    Structure is documented below.
+    """
+    proximity: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgsDict']
+    """
+    Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+    exceed 1000 characters.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleArgs:
+    def __init__(__self__, *,
+                 hotword_regex: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs'],
+                 likelihood_adjustment: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs'],
+                 proximity: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs']):
+        """
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs'] hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs'] likelihood_adjustment: Likelihood adjustment to apply to all matching findings.
+               Structure is documented below.
+        :param pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs'] proximity: Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+               exceed 1000 characters.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "hotword_regex", hotword_regex)
+        pulumi.set(__self__, "likelihood_adjustment", likelihood_adjustment)
+        pulumi.set(__self__, "proximity", proximity)
+
+    @_builtins.property
+    @pulumi.getter(name="hotwordRegex")
+    def hotword_regex(self) -> pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs']:
+        """
+        Regular expression pattern defining what qualifies as a hotword.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hotword_regex")
+
+    @hotword_regex.setter
+    def hotword_regex(self, value: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs']):
+        pulumi.set(self, "hotword_regex", value)
+
+    @_builtins.property
+    @pulumi.getter(name="likelihoodAdjustment")
+    def likelihood_adjustment(self) -> pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs']:
+        """
+        Likelihood adjustment to apply to all matching findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "likelihood_adjustment")
+
+    @likelihood_adjustment.setter
+    def likelihood_adjustment(self, value: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs']):
+        pulumi.set(self, "likelihood_adjustment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def proximity(self) -> pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs']:
+        """
+        Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+        exceed 1000 characters.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proximity")
+
+    @proximity.setter
+    def proximity(self, value: pulumi.Input['PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs']):
+        pulumi.set(self, "proximity", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict(TypedDict):
+    pattern: pulumi.Input[_builtins.str]
+    """
+    Pattern defining the regular expression. Its syntax
+    (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+    """
+    group_indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The index of the submatch to extract as findings. When not specified,
+    the entire match is returned. No more than 3 may be included.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs:
+    def __init__(__self__, *,
+                 pattern: pulumi.Input[_builtins.str],
+                 group_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pattern: Pattern defining the regular expression. Its syntax
+               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] group_indexes: The index of the submatch to extract as findings. When not specified,
+               the entire match is returned. No more than 3 may be included.
+        """
+        pulumi.set(__self__, "pattern", pattern)
+        if group_indexes is not None:
+            pulumi.set(__self__, "group_indexes", group_indexes)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        Pattern defining the regular expression. Its syntax
+        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupIndexes")
+    def group_indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The index of the submatch to extract as findings. When not specified,
+        the entire match is returned. No more than 3 may be included.
+        """
+        return pulumi.get(self, "group_indexes")
+
+    @group_indexes.setter
+    def group_indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "group_indexes", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict(TypedDict):
+    fixed_likelihood: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    relative_likelihood: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Increase or decrease the likelihood by the specified number of levels.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs:
+    def __init__(__self__, *,
+                 fixed_likelihood: pulumi.Input[Optional[_builtins.str]] = None,
+                 relative_likelihood: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] fixed_likelihood: Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input[_builtins.int] relative_likelihood: Increase or decrease the likelihood by the specified number of levels.
+        """
+        if fixed_likelihood is not None:
+            pulumi.set(__self__, "fixed_likelihood", fixed_likelihood)
+        if relative_likelihood is not None:
+            pulumi.set(__self__, "relative_likelihood", relative_likelihood)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedLikelihood")
+    def fixed_likelihood(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "fixed_likelihood")
+
+    @fixed_likelihood.setter
+    def fixed_likelihood(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fixed_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="relativeLikelihood")
+    def relative_likelihood(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Increase or decrease the likelihood by the specified number of levels.
+        """
+        return pulumi.get(self, "relative_likelihood")
+
+    @relative_likelihood.setter
+    def relative_likelihood(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "relative_likelihood", value)
+
+
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgsDict(TypedDict):
+    window_after: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of characters after the finding to consider.
+    """
+    window_before: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of characters before the finding to consider.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyInspectConfigRuleSetRuleHotwordRuleProximityArgs:
+    def __init__(__self__, *,
+                 window_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 window_before: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] window_after: Number of characters after the finding to consider.
+        :param pulumi.Input[_builtins.int] window_before: Number of characters before the finding to consider.
+        """
+        if window_after is not None:
+            pulumi.set(__self__, "window_after", window_after)
+        if window_before is not None:
+            pulumi.set(__self__, "window_before", window_before)
+
+    @_builtins.property
+    @pulumi.getter(name="windowAfter")
+    def window_after(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of characters after the finding to consider.
+        """
+        return pulumi.get(self, "window_after")
+
+    @window_after.setter
+    def window_after(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_after", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowBefore")
+    def window_before(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of characters before the finding to consider.
+        """
+        return pulumi.get(self, "window_before")
+
+    @window_before.setter
+    def window_before(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_before", value)
+
+
+class PreventionContentPolicyLoggingConfigArgsDict(TypedDict):
+    log_to_big_query: NotRequired[pulumi.Input[Optional['PreventionContentPolicyLoggingConfigLogToBigQueryArgsDict']]]
+    """
+    Log actions to BigQuery.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyLoggingConfigArgs:
+    def __init__(__self__, *,
+                 log_to_big_query: pulumi.Input[Optional['PreventionContentPolicyLoggingConfigLogToBigQueryArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyLoggingConfigLogToBigQueryArgs'] log_to_big_query: Log actions to BigQuery.
+               Structure is documented below.
+        """
+        if log_to_big_query is not None:
+            pulumi.set(__self__, "log_to_big_query", log_to_big_query)
+
+    @_builtins.property
+    @pulumi.getter(name="logToBigQuery")
+    def log_to_big_query(self) -> pulumi.Input[Optional['PreventionContentPolicyLoggingConfigLogToBigQueryArgs']]:
+        """
+        Log actions to BigQuery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "log_to_big_query")
+
+    @log_to_big_query.setter
+    def log_to_big_query(self, value: pulumi.Input[Optional['PreventionContentPolicyLoggingConfigLogToBigQueryArgs']]):
+        pulumi.set(self, "log_to_big_query", value)
+
+
+class PreventionContentPolicyLoggingConfigLogToBigQueryArgsDict(TypedDict):
+    dataset_id: pulumi.Input[_builtins.str]
+    """
+    The dataset ID of the BigQuery table to log to.
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    The project ID of the BigQuery table to log to.
+    """
+    table_id: pulumi.Input[_builtins.str]
+    """
+    The table ID of the BigQuery table to log to.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyLoggingConfigLogToBigQueryArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 table_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] dataset_id: The dataset ID of the BigQuery table to log to.
+        :param pulumi.Input[_builtins.str] project_id: The project ID of the BigQuery table to log to.
+        :param pulumi.Input[_builtins.str] table_id: The table ID of the BigQuery table to log to.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The dataset ID of the BigQuery table to log to.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The project ID of the BigQuery table to log to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The table ID of the BigQuery table to log to.
+        """
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "table_id", value)
+
+
+class PreventionContentPolicyRuleArgsDict(TypedDict):
+    action: pulumi.Input['PreventionContentPolicyRuleActionArgsDict']
+    """
+    The action to take if the rule matches.
+    Structure is documented below.
+    """
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyRuleConditionArgsDict']]]]]
+    """
+    List of conditions that must be met for this rule to apply.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['PreventionContentPolicyRuleActionArgs'],
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyRuleConditionArgs']]]] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyRuleActionArgs'] action: The action to take if the rule matches.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionContentPolicyRuleConditionArgs']]] conditions: List of conditions that must be met for this rule to apply.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "action", action)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['PreventionContentPolicyRuleActionArgs']:
+        """
+        The action to take if the rule matches.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['PreventionContentPolicyRuleActionArgs']):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyRuleConditionArgs']]]]:
+        """
+        List of conditions that must be met for this rule to apply.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionContentPolicyRuleConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+
+class PreventionContentPolicyRuleActionArgsDict(TypedDict):
+    return_verdict: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If set, the verdict will be returned to the user.
+    Possible values: ["ALLOW", "BLOCK"]
+    Possible values are: `ALLOW`, `BLOCK`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyRuleActionArgs:
+    def __init__(__self__, *,
+                 return_verdict: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] return_verdict: If set, the verdict will be returned to the user.
+               Possible values: ["ALLOW", "BLOCK"]
+               Possible values are: `ALLOW`, `BLOCK`.
+        """
+        if return_verdict is not None:
+            pulumi.set(__self__, "return_verdict", return_verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="returnVerdict")
+    def return_verdict(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If set, the verdict will be returned to the user.
+        Possible values: ["ALLOW", "BLOCK"]
+        Possible values are: `ALLOW`, `BLOCK`.
+        """
+        return pulumi.get(self, "return_verdict")
+
+    @return_verdict.setter
+    def return_verdict(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "return_verdict", value)
+
+
+class PreventionContentPolicyRuleConditionArgsDict(TypedDict):
+    info_type_condition: NotRequired[pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionArgsDict']]]
+    """
+    A condition based on info types.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyRuleConditionArgs:
+    def __init__(__self__, *,
+                 info_type_condition: pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionArgs']] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyRuleConditionInfoTypeConditionArgs'] info_type_condition: A condition based on info types.
+               Structure is documented below.
+        """
+        if info_type_condition is not None:
+            pulumi.set(__self__, "info_type_condition", info_type_condition)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypeCondition")
+    def info_type_condition(self) -> pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionArgs']]:
+        """
+        A condition based on info types.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type_condition")
+
+    @info_type_condition.setter
+    def info_type_condition(self, value: pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionArgs']]):
+        pulumi.set(self, "info_type_condition", value)
+
+
+class PreventionContentPolicyRuleConditionInfoTypeConditionArgsDict(TypedDict):
+    any_info_type: NotRequired[pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgsDict']]]
+    """
+    Match any info type.
+    """
+    info_types: NotRequired[pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgsDict']]]
+    """
+    List of info types to match.
+    Structure is documented below.
+    """
+    min_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum number of findings required for this condition to be met. Defaults to 1.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyRuleConditionInfoTypeConditionArgs:
+    def __init__(__self__, *,
+                 any_info_type: pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs']] = None,
+                 info_types: pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs']] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input['PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs'] any_info_type: Match any info type.
+        :param pulumi.Input['PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs'] info_types: List of info types to match.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] min_count: The minimum number of findings required for this condition to be met. Defaults to 1.
+        """
+        if any_info_type is not None:
+            pulumi.set(__self__, "any_info_type", any_info_type)
+        if info_types is not None:
+            pulumi.set(__self__, "info_types", info_types)
+        if min_count is not None:
+            pulumi.set(__self__, "min_count", min_count)
+
+    @_builtins.property
+    @pulumi.getter(name="anyInfoType")
+    def any_info_type(self) -> pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs']]:
+        """
+        Match any info type.
+        """
+        return pulumi.get(self, "any_info_type")
+
+    @any_info_type.setter
+    def any_info_type(self, value: pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs']]):
+        pulumi.set(self, "any_info_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs']]:
+        """
+        List of info types to match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Optional['PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs']]):
+        pulumi.set(self, "info_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minCount")
+    def min_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum number of findings required for this condition to be met. Defaults to 1.
+        """
+        return pulumi.get(self, "min_count")
+
+    @min_count.setter
+    def min_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "min_count", value)
+
+
+class PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PreventionContentPolicyRuleConditionInfoTypeConditionAnyInfoTypeArgs:
+    def __init__(__self__):
+        pass
+
+
+class PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgsDict(TypedDict):
+    info_type_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of info type names.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyRuleConditionInfoTypeConditionInfoTypesArgs:
+    def __init__(__self__, *,
+                 info_type_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] info_type_names: List of info type names.
+        """
+        pulumi.set(__self__, "info_type_names", info_type_names)
+
+    @_builtins.property
+    @pulumi.getter(name="infoTypeNames")
+    def info_type_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of info type names.
+        """
+        return pulumi.get(self, "info_type_names")
+
+    @info_type_names.setter
+    def info_type_names(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "info_type_names", value)
+
+
+class PreventionContentPolicyUnsupportedFileTypeArgsDict(TypedDict):
+    return_verdict: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    If set, the verdict will be returned to the user.
+    Possible values: ["ALLOW", "BLOCK"]
+    Possible values are: `ALLOW`, `BLOCK`.
+    """
+
+@pulumi.input_type
+class PreventionContentPolicyUnsupportedFileTypeArgs:
+    def __init__(__self__, *,
+                 return_verdict: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] return_verdict: If set, the verdict will be returned to the user.
+               Possible values: ["ALLOW", "BLOCK"]
+               Possible values are: `ALLOW`, `BLOCK`.
+        """
+        if return_verdict is not None:
+            pulumi.set(__self__, "return_verdict", return_verdict)
+
+    @_builtins.property
+    @pulumi.getter(name="returnVerdict")
+    def return_verdict(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        If set, the verdict will be returned to the user.
+        Possible values: ["ALLOW", "BLOCK"]
+        Possible values are: `ALLOW`, `BLOCK`.
+        """
+        return pulumi.get(self, "return_verdict")
+
+    @return_verdict.setter
+    def return_verdict(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "return_verdict", value)
+
 
 class PreventionDeidentifyTemplateDeidentifyConfigArgsDict(TypedDict):
     image_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict']]]
@@ -16051,6 +20589,11 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
     Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
     Structure is documented below.
     """
+    refresh_frequency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+    Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+    """
     schema_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when a schema is modified
@@ -16066,11 +20609,14 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
     def __init__(__self__, *,
                  inspect_template_modified_cadence: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']] = None,
+                 refresh_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  schema_modified_cadence: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs']] = None,
                  table_modified_cadence: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs']] = None):
         """
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs'] inspect_template_modified_cadence: Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] refresh_frequency: Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+               Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs'] schema_modified_cadence: Governs when to update data profiles when a schema is modified
                Structure is documented below.
         :param pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs'] table_modified_cadence: Governs when to update profile when a table is modified.
@@ -16078,6 +20624,8 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
         """
         if inspect_template_modified_cadence is not None:
             pulumi.set(__self__, "inspect_template_modified_cadence", inspect_template_modified_cadence)
+        if refresh_frequency is not None:
+            pulumi.set(__self__, "refresh_frequency", refresh_frequency)
         if schema_modified_cadence is not None:
             pulumi.set(__self__, "schema_modified_cadence", schema_modified_cadence)
         if table_modified_cadence is not None:
@@ -16095,6 +20643,19 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs:
     @inspect_template_modified_cadence.setter
     def inspect_template_modified_cadence(self, value: pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']]):
         pulumi.set(self, "inspect_template_modified_cadence", value)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshFrequency")
+    def refresh_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never.
+        Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+        """
+        return pulumi.get(self, "refresh_frequency")
+
+    @refresh_frequency.setter
+    def refresh_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "refresh_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaModifiedCadence")
@@ -21252,13 +25813,6 @@ class PreventionJobTriggerInspectJobActionArgsDict(TypedDict):
     Publish a message into a given Pub/Sub topic when the job completes.
     Structure is documented below.
     """
-    publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict']]]
-    """
-    (Optional, Deprecated)
-    Publish findings of a DlpJob to Data Catalog.
-
-    > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
-    """
     publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict']]]
     """
     Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
@@ -21283,7 +25837,6 @@ class PreventionJobTriggerInspectJobActionArgs:
                  deidentify: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyArgs']] = None,
                  job_notification_emails: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs']] = None,
                  pub_sub: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPubSubArgs']] = None,
-                 publish_findings_to_cloud_data_catalog: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']] = None,
                  publish_findings_to_dataplex_catalog: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs']] = None,
                  publish_summary_to_cscc: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']] = None,
                  publish_to_stackdriver: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs']] = None,
@@ -21294,10 +25847,6 @@ class PreventionJobTriggerInspectJobActionArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs'] job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs'] pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
-        :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: (Optional, Deprecated)
-               Publish findings of a DlpJob to Data Catalog.
-               
-               > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs'] publish_findings_to_dataplex_catalog: Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs'] publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs'] publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
@@ -21310,11 +25859,6 @@ class PreventionJobTriggerInspectJobActionArgs:
             pulumi.set(__self__, "job_notification_emails", job_notification_emails)
         if pub_sub is not None:
             pulumi.set(__self__, "pub_sub", pub_sub)
-        if publish_findings_to_cloud_data_catalog is not None:
-            warnings.warn("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""", DeprecationWarning)
-            pulumi.log.warn("""publish_findings_to_cloud_data_catalog is deprecated: `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
-        if publish_findings_to_cloud_data_catalog is not None:
-            pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
         if publish_findings_to_dataplex_catalog is not None:
             pulumi.set(__self__, "publish_findings_to_dataplex_catalog", publish_findings_to_dataplex_catalog)
         if publish_summary_to_cscc is not None:
@@ -21361,22 +25905,6 @@ class PreventionJobTriggerInspectJobActionArgs:
     @pub_sub.setter
     def pub_sub(self, value: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPubSubArgs']]):
         pulumi.set(self, "pub_sub", value)
-
-    @_builtins.property
-    @pulumi.getter(name="publishFindingsToCloudDataCatalog")
-    @_utilities.deprecated("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
-    def publish_findings_to_cloud_data_catalog(self) -> pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]:
-        """
-        (Optional, Deprecated)
-        Publish findings of a DlpJob to Data Catalog.
-
-        > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
-        """
-        return pulumi.get(self, "publish_findings_to_cloud_data_catalog")
-
-    @publish_findings_to_cloud_data_catalog.setter
-    def publish_findings_to_cloud_data_catalog(self, value: pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]):
-        pulumi.set(self, "publish_findings_to_cloud_data_catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="publishFindingsToDataplexCatalog")
@@ -21751,15 +26279,6 @@ class PreventionJobTriggerInspectJobActionPubSubArgs:
     @topic.setter
     def topic(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "topic", value)
-
-
-class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict(TypedDict):
-    pass
-
-@pulumi.input_type
-class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs:
-    def __init__(__self__):
-        pass
 
 
 class PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict(TypedDict):

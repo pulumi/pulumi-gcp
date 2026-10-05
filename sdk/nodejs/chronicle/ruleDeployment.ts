@@ -32,13 +32,13 @@ import * as utilities from "../utilities";
  * const example = new gcp.chronicle.RuleDeployment("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
- *     rule: pulumi.all([std.split({
+ *     rule: Promise.all([std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+ *     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
  *     enabled: true,
  *     alerting: true,
  *     archived: false,
@@ -60,13 +60,13 @@ import * as utilities from "../utilities";
  * const example = new gcp.chronicle.RuleDeployment("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
- *     rule: pulumi.all([std.split({
+ *     rule: Promise.all([std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+ *     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
  *     enabled: false,
  *     runFrequency: "LIVE",
  * });
@@ -86,13 +86,13 @@ import * as utilities from "../utilities";
  * const example = new gcp.chronicle.RuleDeployment("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
- *     rule: pulumi.all([std.split({
+ *     rule: Promise.all([std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+ *     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
  *     enabled: true,
  *     alerting: true,
  *     archived: false,

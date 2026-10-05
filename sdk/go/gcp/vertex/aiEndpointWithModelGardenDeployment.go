@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,7 +60,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -89,7 +89,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -128,7 +128,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -207,7 +207,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -290,7 +290,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -327,9 +327,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -399,7 +399,7 @@ type AiEndpointWithModelGardenDeployment struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The deploy config to use for the deployment.
 	// Structure is documented below.
-	DeployConfig AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput `pulumi:"deployConfig"`
+	DeployConfig AiEndpointWithModelGardenDeploymentDeployConfigOutput `pulumi:"deployConfig"`
 	// Output only. The display name assigned to the model deployed to the endpoint.
 	// This is not required to delete the resource but is used for debug logging.
 	DeployedModelDisplayName pulumi.StringOutput `pulumi:"deployedModelDisplayName"`
@@ -712,10 +712,10 @@ func (o AiEndpointWithModelGardenDeploymentOutput) DeletionPolicy() pulumi.Strin
 
 // The deploy config to use for the deployment.
 // Structure is documented below.
-func (o AiEndpointWithModelGardenDeploymentOutput) DeployConfig() AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
-	return o.ApplyT(func(v *AiEndpointWithModelGardenDeployment) AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput {
+func (o AiEndpointWithModelGardenDeploymentOutput) DeployConfig() AiEndpointWithModelGardenDeploymentDeployConfigOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeployment) AiEndpointWithModelGardenDeploymentDeployConfigOutput {
 		return v.DeployConfig
-	}).(AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput)
+	}).(AiEndpointWithModelGardenDeploymentDeployConfigOutput)
 }
 
 // Output only. The display name assigned to the model deployed to the endpoint.

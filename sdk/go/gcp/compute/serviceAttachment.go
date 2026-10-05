@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -135,6 +135,97 @@ import (
 //	}
 //
 // ```
+// ### Service Attachment Nat Ips
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerServiceHealthCheck, err := compute.NewHealthCheck(ctx, "producer_service_health_check", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("producer-service-health-check"),
+//				CheckIntervalSec: pulumi.Int(1),
+//				TimeoutSec:       pulumi.Int(1),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerServiceBackend, err := compute.NewRegionBackendService(ctx, "producer_service_backend", &compute.RegionBackendServiceArgs{
+//				Name:         pulumi.String("producer-service"),
+//				Region:       pulumi.String("us-central1"),
+//				HealthChecks: producerServiceHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNetwork, err := compute.NewNetwork(ctx, "psc_ilb_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("psc-ilb-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbProducerSubnetwork, err := compute.NewSubnetwork(ctx, "psc_ilb_producer_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-producer-subnetwork"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbTargetService, err := compute.NewForwardingRule(ctx, "psc_ilb_target_service", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("producer-forwarding-rule"),
+//				Region:              pulumi.String("us-central1"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL"),
+//				BackendService:      producerServiceBackend.ID().ToIDOutput().ToStringOutput(),
+//				AllPorts:            pulumi.Bool(true),
+//				Network:             pscIlbNetwork.Name,
+//				Subnetwork:          pscIlbProducerSubnetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pscIlbNat, err := compute.NewSubnetwork(ctx, "psc_ilb_nat", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("psc-ilb-nat"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     pscIlbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewServiceAttachment(ctx, "psc_ilb_service_attachment", &compute.ServiceAttachmentArgs{
+//				Name:                 pulumi.String("my-psc-ilb"),
+//				Region:               pulumi.String("us-central1"),
+//				Description:          pulumi.String("A service attachment configured with Terraform"),
+//				EnableProxyProtocol:  pulumi.Bool(true),
+//				NatIpsPerEndpoint:    pulumi.Int(2),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				NatSubnets: pulumi.StringArray{
+//					pscIlbNat.ID().ToIDOutput().ToStringOutput(),
+//				},
+//				TargetService: pscIlbTargetService.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Service Attachment Explicit Projects
 //
 // ```go
@@ -142,7 +233,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -265,7 +356,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -398,7 +489,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -502,7 +593,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -596,7 +687,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -770,6 +861,8 @@ type ServiceAttachment struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The number of NAT IPs allocated per connected endpoint.
+	NatIpsPerEndpoint pulumi.IntPtrOutput `pulumi:"natIpsPerEndpoint"`
 	// An array of subnets that is provided for NAT in this service attachment.
 	NatSubnets pulumi.StringArrayOutput `pulumi:"natSubnets"`
 	// The ID of the project in which the resource belongs.
@@ -893,6 +986,8 @@ type serviceAttachmentState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// The number of NAT IPs allocated per connected endpoint.
+	NatIpsPerEndpoint *int `pulumi:"natIpsPerEndpoint"`
 	// An array of subnets that is provided for NAT in this service attachment.
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The ID of the project in which the resource belongs.
@@ -975,6 +1070,8 @@ type ServiceAttachmentState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// The number of NAT IPs allocated per connected endpoint.
+	NatIpsPerEndpoint pulumi.IntPtrInput
 	// An array of subnets that is provided for NAT in this service attachment.
 	NatSubnets pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
@@ -1054,6 +1151,8 @@ type serviceAttachmentArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// The number of NAT IPs allocated per connected endpoint.
+	NatIpsPerEndpoint *int `pulumi:"natIpsPerEndpoint"`
 	// An array of subnets that is provided for NAT in this service attachment.
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The ID of the project in which the resource belongs.
@@ -1125,6 +1224,8 @@ type ServiceAttachmentArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// The number of NAT IPs allocated per connected endpoint.
+	NatIpsPerEndpoint pulumi.IntPtrInput
 	// An array of subnets that is provided for NAT in this service attachment.
 	NatSubnets pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
@@ -1318,6 +1419,11 @@ func (o ServiceAttachmentOutput) Fingerprint() pulumi.StringOutput {
 // except the last character, which cannot be a dash.
 func (o ServiceAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of NAT IPs allocated per connected endpoint.
+func (o ServiceAttachmentOutput) NatIpsPerEndpoint() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.IntPtrOutput { return v.NatIpsPerEndpoint }).(pulumi.IntPtrOutput)
 }
 
 // An array of subnets that is provided for NAT in this service attachment.

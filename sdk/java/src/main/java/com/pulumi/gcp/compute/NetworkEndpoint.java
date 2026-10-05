@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
  *             .networkEndpointGroup(neg.get("name"))
  *             .instance(endpoint_instance.name())
- *             .port(((Number) neg.get("defaultPort")).intValue())
+ *             .port(neg.get("defaultPort"))
  *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *             .build());
  * 

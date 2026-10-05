@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30964,9 +30964,9 @@ func (o WorkflowTemplateParameterValidationValuesPtrOutput) Values() pulumi.Stri
 }
 
 type WorkflowTemplatePlacement struct {
-	// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+	// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
 	ClusterSelector *WorkflowTemplatePlacementClusterSelector `pulumi:"clusterSelector"`
-	// A cluster that is managed by the workflow.
+	// A cluster that is managed by the workflow. Structure is documented below.
 	ManagedCluster *WorkflowTemplatePlacementManagedCluster `pulumi:"managedCluster"`
 }
 
@@ -30982,9 +30982,9 @@ type WorkflowTemplatePlacementInput interface {
 }
 
 type WorkflowTemplatePlacementArgs struct {
-	// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+	// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
 	ClusterSelector WorkflowTemplatePlacementClusterSelectorPtrInput `pulumi:"clusterSelector"`
-	// A cluster that is managed by the workflow.
+	// A cluster that is managed by the workflow. Structure is documented below.
 	ManagedCluster WorkflowTemplatePlacementManagedClusterPtrInput `pulumi:"managedCluster"`
 }
 
@@ -31065,12 +31065,12 @@ func (o WorkflowTemplatePlacementOutput) ToWorkflowTemplatePlacementPtrOutputWit
 	}).(WorkflowTemplatePlacementPtrOutput)
 }
 
-// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
 func (o WorkflowTemplatePlacementOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector { return v.ClusterSelector }).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
 }
 
-// A cluster that is managed by the workflow.
+// A cluster that is managed by the workflow. Structure is documented below.
 func (o WorkflowTemplatePlacementOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster { return v.ManagedCluster }).(WorkflowTemplatePlacementManagedClusterPtrOutput)
 }
@@ -31099,7 +31099,7 @@ func (o WorkflowTemplatePlacementPtrOutput) Elem() WorkflowTemplatePlacementOutp
 	}).(WorkflowTemplatePlacementOutput)
 }
 
-// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
 func (o WorkflowTemplatePlacementPtrOutput) ClusterSelector() WorkflowTemplatePlacementClusterSelectorPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementClusterSelector {
 		if v == nil {
@@ -31109,7 +31109,7 @@ func (o WorkflowTemplatePlacementPtrOutput) ClusterSelector() WorkflowTemplatePl
 	}).(WorkflowTemplatePlacementClusterSelectorPtrOutput)
 }
 
-// A cluster that is managed by the workflow.
+// A cluster that is managed by the workflow. Structure is documented below.
 func (o WorkflowTemplatePlacementPtrOutput) ManagedCluster() WorkflowTemplatePlacementManagedClusterPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacement) *WorkflowTemplatePlacementManagedCluster {
 		if v == nil {
@@ -31278,7 +31278,7 @@ func (o WorkflowTemplatePlacementClusterSelectorPtrOutput) Zone() pulumi.StringP
 type WorkflowTemplatePlacementManagedCluster struct {
 	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 	ClusterName string `pulumi:"clusterName"`
-	// Required. The cluster configuration.
+	// Required. The cluster configuration. Structure is documented below.
 	Config WorkflowTemplatePlacementManagedClusterConfig `pulumi:"config"`
 	// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels map[string]string `pulumi:"labels"`
@@ -31298,7 +31298,7 @@ type WorkflowTemplatePlacementManagedClusterInput interface {
 type WorkflowTemplatePlacementManagedClusterArgs struct {
 	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// Required. The cluster configuration.
+	// Required. The cluster configuration. Structure is documented below.
 	Config WorkflowTemplatePlacementManagedClusterConfigInput `pulumi:"config"`
 	// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -31386,7 +31386,7 @@ func (o WorkflowTemplatePlacementManagedClusterOutput) ClusterName() pulumi.Stri
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// Required. The cluster configuration.
+// Required. The cluster configuration. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterOutput) Config() WorkflowTemplatePlacementManagedClusterConfigOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedCluster) WorkflowTemplatePlacementManagedClusterConfig {
 		return v.Config
@@ -31432,7 +31432,7 @@ func (o WorkflowTemplatePlacementManagedClusterPtrOutput) ClusterName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The cluster configuration.
+// Required. The cluster configuration. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterPtrOutput) Config() WorkflowTemplatePlacementManagedClusterConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedCluster) *WorkflowTemplatePlacementManagedClusterConfig {
 		if v == nil {
@@ -31467,11 +31467,11 @@ type WorkflowTemplatePlacementManagedClusterConfig struct {
 	InitializationActions []WorkflowTemplatePlacementManagedClusterConfigInitializationAction `pulumi:"initializationActions"`
 	// Lifecycle setting for the cluster.
 	LifecycleConfig *WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig `pulumi:"lifecycleConfig"`
-	// The Compute Engine config settings for additional worker instances in a cluster.
+	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	MasterConfig *WorkflowTemplatePlacementManagedClusterConfigMasterConfig `pulumi:"masterConfig"`
 	// Metastore configuration.
 	MetastoreConfig *WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig `pulumi:"metastoreConfig"`
-	// The Compute Engine config settings for additional worker instances in a cluster.
+	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	SecondaryWorkerConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig `pulumi:"secondaryWorkerConfig"`
 	// Security settings for the cluster.
 	SecurityConfig *WorkflowTemplatePlacementManagedClusterConfigSecurityConfig `pulumi:"securityConfig"`
@@ -31481,7 +31481,7 @@ type WorkflowTemplatePlacementManagedClusterConfig struct {
 	StagingBucket *string `pulumi:"stagingBucket"`
 	// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
 	TempBucket *string `pulumi:"tempBucket"`
-	// The Compute Engine config settings for additional worker instances in a cluster.
+	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	//
 	// ***
 	WorkerConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig `pulumi:"workerConfig"`
@@ -31513,11 +31513,11 @@ type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
 	InitializationActions WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrayInput `pulumi:"initializationActions"`
 	// Lifecycle setting for the cluster.
 	LifecycleConfig WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrInput `pulumi:"lifecycleConfig"`
-	// The Compute Engine config settings for additional worker instances in a cluster.
+	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	MasterConfig WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrInput `pulumi:"masterConfig"`
 	// Metastore configuration.
 	MetastoreConfig WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrInput `pulumi:"metastoreConfig"`
-	// The Compute Engine config settings for additional worker instances in a cluster.
+	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	SecondaryWorkerConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrInput `pulumi:"secondaryWorkerConfig"`
 	// Security settings for the cluster.
 	SecurityConfig WorkflowTemplatePlacementManagedClusterConfigSecurityConfigPtrInput `pulumi:"securityConfig"`
@@ -31527,7 +31527,7 @@ type WorkflowTemplatePlacementManagedClusterConfigArgs struct {
 	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
 	// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
 	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
-	// The Compute Engine config settings for additional worker instances in a cluster.
+	// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 	//
 	// ***
 	WorkerConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
@@ -31659,7 +31659,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) LifecycleConfig() W
 	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
 }
 
-// The Compute Engine config settings for additional worker instances in a cluster.
+// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MasterConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
 		return v.MasterConfig
@@ -31673,7 +31673,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) MetastoreConfig() W
 	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
 }
 
-// The Compute Engine config settings for additional worker instances in a cluster.
+// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) SecondaryWorkerConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
 		return v.SecondaryWorkerConfig
@@ -31704,7 +31704,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigOutput) TempBucket() pulumi
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfig) *string { return v.TempBucket }).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine config settings for additional worker instances in a cluster.
+// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 //
 // ***
 func (o WorkflowTemplatePlacementManagedClusterConfigOutput) WorkerConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
@@ -31807,7 +31807,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) LifecycleConfig(
 	}).(WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput)
 }
 
-// The Compute Engine config settings for additional worker instances in a cluster.
+// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MasterConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
 		if v == nil {
@@ -31827,7 +31827,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) MetastoreConfig(
 	}).(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput)
 }
 
-// The Compute Engine config settings for additional worker instances in a cluster.
+// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) SecondaryWorkerConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
 		if v == nil {
@@ -31877,7 +31877,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) TempBucket() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine config settings for additional worker instances in a cluster.
+// The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
 //
 // ***
 func (o WorkflowTemplatePlacementManagedClusterConfigPtrOutput) WorkerConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput {
@@ -33788,12 +33788,14 @@ func (o WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigPtrOutput) I
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfig struct {
-	// The Compute Engine accelerator configuration for these instances.
+	// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 	Accelerators []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator `pulumi:"accelerators"`
-	// Disk option config settings.
+	// Disk option config settings. Structure is documented below.
 	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig `pulumi:"diskConfig"`
 	// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
 	Image *string `pulumi:"image"`
+	// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+	InstanceFlexibilityPolicy *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
 	InstanceNames []string `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
@@ -33822,12 +33824,14 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInput interface {
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs struct {
-	// The Compute Engine accelerator configuration for these instances.
+	// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 	Accelerators WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput `pulumi:"accelerators"`
-	// Disk option config settings.
+	// Disk option config settings. Structure is documented below.
 	DiskConfig WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput `pulumi:"diskConfig"`
 	// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
 	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+	InstanceFlexibilityPolicy WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
 	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
@@ -33921,14 +33925,14 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) ToWorkf
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput)
 }
 
-// The Compute Engine accelerator configuration for these instances.
+// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator {
 		return v.Accelerators
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput)
 }
 
-// Disk option config settings.
+// Disk option config settings. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
 		return v.DiskConfig
@@ -33938,6 +33942,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) DiskCon
 // The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput) InstanceFlexibilityPolicy() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		return v.InstanceFlexibilityPolicy
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
 }
 
 // Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
@@ -34001,7 +34012,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Elem
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigOutput)
 }
 
-// The Compute Engine accelerator configuration for these instances.
+// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator {
 		if v == nil {
@@ -34011,7 +34022,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Acce
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput)
 }
 
-// Disk option config settings.
+// Disk option config settings. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig {
 		if v == nil {
@@ -34029,6 +34040,16 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) Imag
 		}
 		return v.Image
 	}).(pulumi.StringPtrOutput)
+}
+
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigPtrOutput) InstanceFlexibilityPolicy() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceFlexibilityPolicy
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
 }
 
 // Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
@@ -34212,11 +34233,19 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArra
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs []WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -34232,11 +34261,19 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigInput in
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -34317,6 +34354,27 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutpu
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput)
 }
 
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size in GB of the boot disk (default is 500GB).
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
@@ -34324,14 +34382,21 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *string {
 		return v.BootDiskType
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -34362,6 +34427,36 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput)
 }
 
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size in GB of the boot disk (default is 500GB).
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
@@ -34372,7 +34467,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *string {
 		if v == nil {
@@ -34382,7 +34477,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -34390,6 +34495,947 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray{ WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray []WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy struct {
+	// Output only. A map of instance names to their machine types.
+	InstanceMachineTypes map[string]string `pulumi:"instanceMachineTypes"`
+	// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+	InstanceSelectionLists []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
+	// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+	InstanceSelectionResults []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs struct {
+	// Output only. A map of instance names to their machine types.
+	InstanceMachineTypes pulumi.StringMapInput `pulumi:"instanceMachineTypes"`
+	// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+	InstanceSelectionLists WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
+	// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+	InstanceSelectionResults WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput).ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs, WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtr and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtr(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. A map of instance names to their machine types.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) InstanceMachineTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) map[string]string {
+		return v.InstanceMachineTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) InstanceSelectionLists() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return v.InstanceSelectionLists
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput) InstanceSelectionResults() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return v.InstanceSelectionResults
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput)
+}
+
+// Output only. A map of instance names to their machine types.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) InstanceMachineTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceMachineTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionLists
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionResults() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionResults
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
+	// Disk option for the instance group. Structure is documented above.
+	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig `pulumi:"diskConfig"`
+	// Full machine-type names, e.g. `n1-standard-16`.
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs struct {
+	// Disk option for the instance group. Structure is documented above.
+	DiskConfig WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput `pulumi:"diskConfig"`
+	// Full machine-type names, e.g. `n1-standard-16`.
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray{ WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+// Disk option for the instance group. Structure is documented above.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+// Full machine-type names, e.g. `n1-standard-16`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
+		return v.Rank
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
+	// Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
+	// Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs, WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtr and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
+}
+
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{ WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
+	// Output only. Full machine-type names, e.g. `n1-standard-16`.
+	MachineType *string `pulumi:"machineType"`
+	// Output only. Number of VM provisioned with the corresponding machine_type.
+	VmCount *int `pulumi:"vmCount"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs struct {
+	// Output only. Full machine-type names, e.g. `n1-standard-16`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Output only. Number of VM provisioned with the corresponding machine_type.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{ WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray []WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+// Output only. Full machine-type names, e.g. `n1-standard-16`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. Number of VM provisioned with the corresponding machine_type.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult) *int {
+		return v.VmCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig struct {
@@ -34642,25 +35688,27 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigPtrOutput) D
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig struct {
-	// Optional. The Compute Engine accelerator configuration for these instances.
+	// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 	Accelerators []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator `pulumi:"accelerators"`
-	// Optional. Disk option config settings.
+	// Disk option config settings. Structure is documented below.
 	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig `pulumi:"diskConfig"`
-	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	// The Compute Engine image resource used for cluster instances.
 	Image *string `pulumi:"image"`
-	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+	InstanceFlexibilityPolicy *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
+	// Output only. The list of instance names.
 	InstanceNames []string `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
 	IsPreemptible *bool `pulumi:"isPreemptible"`
-	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+	// The Compute Engine machine type used for cluster instances.
 	MachineType *string `pulumi:"machineType"`
-	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
-	// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// The minimum CPU platform and architecture for the cluster.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+	// The number of worker instances in the cluster.
 	NumInstances *int `pulumi:"numInstances"`
-	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	// Specifies the preemptibility of the secondary worker group.
 	Preemptibility *string `pulumi:"preemptibility"`
 }
 
@@ -34676,25 +35724,27 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInput int
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs struct {
-	// Optional. The Compute Engine accelerator configuration for these instances.
+	// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 	Accelerators WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput `pulumi:"accelerators"`
-	// Optional. Disk option config settings.
+	// Disk option config settings. Structure is documented below.
 	DiskConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput `pulumi:"diskConfig"`
-	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	// The Compute Engine image resource used for cluster instances.
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+	InstanceFlexibilityPolicy WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
+	// Output only. The list of instance names.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
 	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
-	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+	// The Compute Engine machine type used for cluster instances.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
-	// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// The minimum CPU platform and architecture for the cluster.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+	// The number of worker instances in the cluster.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
-	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+	// Specifies the preemptibility of the secondary worker group.
 	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
 }
 
@@ -34775,26 +35825,33 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput)
 }
 
-// Optional. The Compute Engine accelerator configuration for these instances.
+// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator {
 		return v.Accelerators
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput)
 }
 
-// Optional. Disk option config settings.
+// Disk option config settings. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
 		return v.DiskConfig
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
 }
 
-// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+// The Compute Engine image resource used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) InstanceFlexibilityPolicy() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
+		return v.InstanceFlexibilityPolicy
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. The list of instance names.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []string {
 		return v.InstanceNames
@@ -34808,33 +35865,33 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+// The Compute Engine machine type used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		return v.MachineType
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
 		return v.ManagedGroupConfigs
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput)
 }
 
-// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+// The minimum CPU platform and architecture for the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		return v.MinCpuPlatform
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+// The number of worker instances in the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+// Specifies the preemptibility of the secondary worker group.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		return v.Preemptibility
@@ -34865,7 +35922,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigOutput)
 }
 
-// Optional. The Compute Engine accelerator configuration for these instances.
+// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator {
 		if v == nil {
@@ -34875,7 +35932,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput)
 }
 
-// Optional. Disk option config settings.
+// Disk option config settings. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig {
 		if v == nil {
@@ -34885,7 +35942,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
 }
 
-// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+// The Compute Engine image resource used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		if v == nil {
@@ -34895,7 +35952,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) InstanceFlexibilityPolicy() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceFlexibilityPolicy
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. The list of instance names.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []string {
 		if v == nil {
@@ -34915,7 +35982,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+// The Compute Engine machine type used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		if v == nil {
@@ -34925,7 +35992,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
 		if v == nil {
@@ -34935,7 +36002,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput)
 }
 
-// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+// The minimum CPU platform and architecture for the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		if v == nil {
@@ -34945,7 +36012,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+// The number of worker instances in the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *int {
 		if v == nil {
@@ -34955,7 +36022,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+// Specifies the preemptibility of the secondary worker group.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig) *string {
 		if v == nil {
@@ -35076,11 +36143,19 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccele
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -35096,11 +36171,19 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfi
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -35181,6 +36264,27 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput)
 }
 
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size in GB of the boot disk (default is 500GB).
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
@@ -35188,14 +36292,21 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *string {
 		return v.BootDiskType
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -35226,6 +36337,36 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput)
 }
 
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size in GB of the boot disk (default is 500GB).
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
@@ -35236,7 +36377,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *string {
 		if v == nil {
@@ -35246,13 +36387,1145 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig) *int {
 		if v == nil {
 			return nil
 		}
 		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray{ WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy struct {
+	// Output only. A map of instance names to their machine types.
+	InstanceMachineTypes map[string]string `pulumi:"instanceMachineTypes"`
+	// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+	InstanceSelectionLists []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
+	// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+	InstanceSelectionResults []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
+	// Strategy for provisioning model mix for secondary worker instances. Supported only for `secondaryWorkerConfig`. Structure is documented below.
+	ProvisioningModelMix *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix `pulumi:"provisioningModelMix"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs struct {
+	// Output only. A map of instance names to their machine types.
+	InstanceMachineTypes pulumi.StringMapInput `pulumi:"instanceMachineTypes"`
+	// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+	InstanceSelectionLists WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
+	// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+	InstanceSelectionResults WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
+	// Strategy for provisioning model mix for secondary worker instances. Supported only for `secondaryWorkerConfig`. Structure is documented below.
+	ProvisioningModelMix WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput `pulumi:"provisioningModelMix"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs, WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtr and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrType WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. A map of instance names to their machine types.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) InstanceMachineTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) map[string]string {
+		return v.InstanceMachineTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionLists() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return v.InstanceSelectionLists
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionResults() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return v.InstanceSelectionResults
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+// Strategy for provisioning model mix for secondary worker instances. Supported only for `secondaryWorkerConfig`. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput) ProvisioningModelMix() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		return v.ProvisioningModelMix
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput)
+}
+
+// Output only. A map of instance names to their machine types.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceMachineTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceMachineTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionLists
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionResults() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionResults
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+// Strategy for provisioning model mix for secondary worker instances. Supported only for `secondaryWorkerConfig`. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput) ProvisioningModelMix() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningModelMix
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
+	// Disk option for the instance group. Structure is documented above.
+	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig `pulumi:"diskConfig"`
+	// Full machine-type names, e.g. `n1-standard-16`.
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs struct {
+	// Disk option for the instance group. Structure is documented above.
+	DiskConfig WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput `pulumi:"diskConfig"`
+	// Full machine-type names, e.g. `n1-standard-16`.
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{ WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+// Disk option for the instance group. Structure is documented above.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+// Full machine-type names, e.g. `n1-standard-16`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
+		return v.Rank
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
+	// Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
+	// Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs, WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtr and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
+}
+
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{ WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
+	// Output only. Full machine-type names, e.g. `n1-standard-16`.
+	MachineType *string `pulumi:"machineType"`
+	// Output only. Number of VM provisioned with the corresponding machine_type.
+	VmCount *int `pulumi:"vmCount"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs struct {
+	// Output only. Full machine-type names, e.g. `n1-standard-16`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Output only. Number of VM provisioned with the corresponding machine_type.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{ WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray []WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+// Output only. Full machine-type names, e.g. `n1-standard-16`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. Number of VM provisioned with the corresponding machine_type.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *int {
+		return v.VmCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix struct {
+	// The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+	StandardCapacityBase *int `pulumi:"standardCapacityBase"`
+	// The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+	StandardCapacityPercentAboveBase *int `pulumi:"standardCapacityPercentAboveBase"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs struct {
+	// The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+	StandardCapacityBase pulumi.IntPtrInput `pulumi:"standardCapacityBase"`
+	// The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+	StandardCapacityPercentAboveBase pulumi.IntPtrInput `pulumi:"standardCapacityPercentAboveBase"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput).ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs, WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtr and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtr(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
+// The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) StandardCapacityBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		return v.StandardCapacityBase
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) StandardCapacityPercentAboveBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		return v.StandardCapacityPercentAboveBase
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput)
+}
+
+// The base capacity that will always use Standard VMs to avoid risk of premature allocation.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) StandardCapacityBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StandardCapacityBase
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of target capacity that will use Standard VMs above standardCapacityBase.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) StandardCapacityPercentAboveBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StandardCapacityPercentAboveBase
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -36174,23 +38447,25 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigPtrOutput) Pr
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfig struct {
-	// Optional. The Compute Engine accelerator configuration for these instances.
+	// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 	Accelerators []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator `pulumi:"accelerators"`
-	// Optional. Disk option config settings.
+	// Disk option config settings. Structure is documented below.
 	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig `pulumi:"diskConfig"`
-	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	// The Compute Engine image resource used for cluster instances.
 	Image *string `pulumi:"image"`
-	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	// Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+	InstanceFlexibilityPolicy *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
+	// Output only. The list of instance names.
 	InstanceNames []string `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
 	IsPreemptible *bool `pulumi:"isPreemptible"`
-	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+	// The Compute Engine machine type used for cluster instances.
 	MachineType *string `pulumi:"machineType"`
-	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 	ManagedGroupConfigs []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig `pulumi:"managedGroupConfigs"`
-	// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// The minimum CPU platform and architecture for the cluster.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
-	// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+	// The number of worker instances in the cluster.
 	NumInstances *int `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
 	Preemptibility *string `pulumi:"preemptibility"`
@@ -36208,23 +38483,25 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInput interface {
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs struct {
-	// Optional. The Compute Engine accelerator configuration for these instances.
+	// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 	Accelerators WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput `pulumi:"accelerators"`
-	// Optional. Disk option config settings.
+	// Disk option config settings. Structure is documented below.
 	DiskConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput `pulumi:"diskConfig"`
-	// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+	// The Compute Engine image resource used for cluster instances.
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+	// Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+	InstanceFlexibilityPolicy WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
+	// Output only. The list of instance names.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// Output only. Specifies that this instance group contains preemptible instances.
 	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
-	// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+	// The Compute Engine machine type used for cluster instances.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 	ManagedGroupConfigs WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput `pulumi:"managedGroupConfigs"`
-	// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// The minimum CPU platform and architecture for the cluster.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
-	// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+	// The number of worker instances in the cluster.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
 	// Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
 	Preemptibility pulumi.StringPtrInput `pulumi:"preemptibility"`
@@ -36307,26 +38584,33 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ToWorkf
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput)
 }
 
-// Optional. The Compute Engine accelerator configuration for these instances.
+// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator {
 		return v.Accelerators
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput)
 }
 
-// Optional. Disk option config settings.
+// Disk option config settings. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
 		return v.DiskConfig
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
-// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+// The Compute Engine image resource used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+// Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) InstanceFlexibilityPolicy() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		return v.InstanceFlexibilityPolicy
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. The list of instance names.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
 }
@@ -36336,24 +38620,24 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) IsPreem
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *bool { return v.IsPreemptible }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+// The Compute Engine machine type used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
 		return v.ManagedGroupConfigs
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput)
 }
 
-// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+// The minimum CPU platform and architecture for the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+// The number of worker instances in the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
 }
@@ -36387,7 +38671,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Elem
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigOutput)
 }
 
-// Optional. The Compute Engine accelerator configuration for these instances.
+// The Compute Engine accelerator configuration for these instances. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Accelerators() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator {
 		if v == nil {
@@ -36397,7 +38681,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Acce
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput)
 }
 
-// Optional. Disk option config settings.
+// Disk option config settings. Structure is documented below.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig {
 		if v == nil {
@@ -36407,7 +38691,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Disk
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
-// Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/[image-id]` * `projects/[projectId]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[projectId]/global/images/family/[custom-image-family-name]` * `projects/[projectId]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+// The Compute Engine image resource used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
 		if v == nil {
@@ -36417,7 +38701,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Imag
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The list of instance names. Dataproc derives the names from `clusterName`, `numInstances`, and the instance group.
+// Instance flexibility Policy allowing a mixture of VM shapes. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) InstanceFlexibilityPolicy() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceFlexibilityPolicy
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. The list of instance names.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []string {
 		if v == nil {
@@ -36437,7 +38731,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) IsPr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[projectId]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+// The Compute Engine machine type used for cluster instances.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
 		if v == nil {
@@ -36447,7 +38741,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Mach
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+// Output only. The config for Compute Engine Instance Group Manager that manages this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) ManagedGroupConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
 		if v == nil {
@@ -36457,7 +38751,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) Mana
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput)
 }
 
-// Optional. Specifies the minimum cpu platform for the Instance Group. See [Dataproc > Minimum CPU Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+// The minimum CPU platform and architecture for the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *string {
 		if v == nil {
@@ -36467,7 +38761,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) MinC
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The number of VM instances in the instance group. For [HA cluster](https://www.terraform.io/dataproc/docs/concepts/configuring-clusters/high-availability) masterConfig groups, **must be set to 3**. For standard cluster masterConfig groups, **must be set to 1**.
+// The number of worker instances in the cluster.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfig) *int {
 		if v == nil {
@@ -36598,11 +38892,19 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArra
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
 	// Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
-	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -36618,11 +38920,19 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigInput in
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
 	// Size in GB of the boot disk (default is 500GB).
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
-	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -36703,6 +39013,27 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutpu
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size in GB of the boot disk (default is 500GB).
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
@@ -36710,14 +39041,21 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *string {
 		return v.BootDiskType
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
 		return v.NumLocalSsds
@@ -36748,6 +39086,36 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput)
 }
 
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
 // Size in GB of the boot disk (default is 500GB).
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
@@ -36758,7 +39126,7 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *string {
 		if v == nil {
@@ -36768,7 +39136,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -36776,6 +39154,947 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray{ WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy struct {
+	// Output only. A map of instance names to their machine types.
+	InstanceMachineTypes map[string]string `pulumi:"instanceMachineTypes"`
+	// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+	InstanceSelectionLists []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
+	// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+	InstanceSelectionResults []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs struct {
+	// Output only. A map of instance names to their machine types.
+	InstanceMachineTypes pulumi.StringMapInput `pulumi:"instanceMachineTypes"`
+	// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+	InstanceSelectionLists WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
+	// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+	InstanceSelectionResults WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput).ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs, WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtr and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtr(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput)
+}
+
+// Output only. A map of instance names to their machine types.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) InstanceMachineTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) map[string]string {
+		return v.InstanceMachineTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionLists() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return v.InstanceSelectionLists
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionResults() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return v.InstanceSelectionResults
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput)
+}
+
+// Output only. A map of instance names to their machine types.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceMachineTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceMachineTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// List of instance selection options that the group will use when creating new VMs. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionLists() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionLists
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+// Output only. A list of instance selection results that were successfully allocated. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionResults() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSelectionResults
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
+	// Disk option for the instance group. Structure is documented above.
+	DiskConfig *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig `pulumi:"diskConfig"`
+	// Full machine-type names, e.g. `n1-standard-16`.
+	MachineTypes []string `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank *int `pulumi:"rank"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs struct {
+	// Disk option for the instance group. Structure is documented above.
+	DiskConfig WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput `pulumi:"diskConfig"`
+	// Full machine-type names, e.g. `n1-standard-16`.
+	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+	Rank pulumi.IntPtrInput `pulumi:"rank"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{ WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return o
+}
+
+// Disk option for the instance group. Structure is documented above.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) DiskConfig() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		return v.DiskConfig
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+// Full machine-type names, e.g. `n1-standard-16`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) MachineTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) []string {
+		return v.MachineTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput) Rank() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList) *int {
+		return v.Rank
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput *int `pulumi:"bootDiskProvisionedThroughput"`
+	// Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface *string `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs struct {
+	// Optional. Attached disk configuration. Structure is documented below.
+	AttachedDiskConfigs WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+	BootDiskProvisionedThroughput pulumi.IntPtrInput `pulumi:"bootDiskProvisionedThroughput"`
+	// Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+	LocalSsdInterface pulumi.StringPtrInput `pulumi:"localSsdInterface"`
+	// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput).ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs, WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtr and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput` via:
+//
+//	        WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput
+}
+
+type workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs
+
+func WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtr(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput {
+	return (*workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType)(v)
+}
+
+func (*workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrType) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		return &v
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
+}
+
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) Elem() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig
+		return ret
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
+}
+
+// Optional. Attached disk configuration. Structure is documented below.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) AttachedDiskConfigs() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be greater than or equal to 3000. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 140. Supported only if `bootDiskType` is `hyperdisk-balanced`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 500GB).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive), "pd-standard" (Persistent Disk Hard Disk Drive), or "hyperdisk-balanced".
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) LocalSsdInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 8 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{ WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
+	// Output only. Full machine-type names, e.g. `n1-standard-16`.
+	MachineType *string `pulumi:"machineType"`
+	// Output only. Number of VM provisioned with the corresponding machine_type.
+	VmCount *int `pulumi:"vmCount"`
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...}
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs struct {
+	// Output only. Full machine-type names, e.g. `n1-standard-16`.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Output only. Number of VM provisioned with the corresponding machine_type.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
+}
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+// WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput` via:
+//
+//	WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{ WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{...} }
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+	ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray []WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return i.ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return o
+}
+
+// Output only. Full machine-type names, e.g. `n1-standard-16`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *string {
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. Number of VM provisioned with the corresponding machine_type.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) VmCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *int {
+		return v.VmCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput() WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) ToWorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutputWithContext(ctx context.Context) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput) Index(i pulumi.IntInput) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
+		return vs[0].([]WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
+	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig struct {
@@ -38942,6 +42261,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs{})
@@ -38952,6 +42283,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigSecurityConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs{})
@@ -38966,6 +42311,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceEncryptionConfigInput)(nil)).Elem(), GetMetastoreServiceEncryptionConfigArgs{})
@@ -39372,6 +42729,18 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigOutput{})
@@ -39382,6 +42751,20 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigSecurityConfigOutput{})
@@ -39396,6 +42779,18 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetMetastoreServiceEncryptionConfigOutput{})

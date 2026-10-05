@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplate;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -23,6 +24,11 @@ public final class JobTemplate {
      * 
      */
     private @Nullable Map<String,String> annotations;
+    /**
+     * @return If true, the system will start the execution within the next 12 hours depending on available capacity.
+     * 
+     */
+    private @Nullable Boolean delayExecution;
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter,
      * or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -59,6 +65,13 @@ public final class JobTemplate {
      */
     public Map<String,String> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
+    }
+    /**
+     * @return If true, the system will start the execution within the next 12 hours depending on available capacity.
+     * 
+     */
+    public Optional<Boolean> delayExecution() {
+        return Optional.ofNullable(this.delayExecution);
     }
     /**
      * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter,
@@ -104,6 +117,7 @@ public final class JobTemplate {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> annotations;
+        private @Nullable Boolean delayExecution;
         private @Nullable Map<String,String> labels;
         private @Nullable Integer parallelism;
         private @Nullable Integer taskCount;
@@ -112,6 +126,7 @@ public final class JobTemplate {
         public Builder(JobTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
+    	      this.delayExecution = defaults.delayExecution;
     	      this.labels = defaults.labels;
     	      this.parallelism = defaults.parallelism;
     	      this.taskCount = defaults.taskCount;
@@ -122,6 +137,12 @@ public final class JobTemplate {
         public Builder annotations(@Nullable Map<String,String> annotations) {
 
             this.annotations = annotations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder delayExecution(@Nullable Boolean delayExecution) {
+
+            this.delayExecution = delayExecution;
             return this;
         }
         @CustomType.Setter
@@ -153,6 +174,7 @@ public final class JobTemplate {
         public JobTemplate build() {
             final var _resultValue = new JobTemplate();
             _resultValue.annotations = annotations;
+            _resultValue.delayExecution = delayExecution;
             _resultValue.labels = labels;
             _resultValue.parallelism = parallelism;
             _resultValue.taskCount = taskCount;

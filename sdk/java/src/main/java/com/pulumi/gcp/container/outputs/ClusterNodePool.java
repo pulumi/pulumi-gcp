@@ -78,7 +78,7 @@ public final class ClusterNodePool {
      */
     private @Nullable String name;
     /**
-     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
      * 
      */
     private @Nullable String namePrefix;
@@ -213,7 +213,7 @@ public final class ClusterNodePool {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
      * 
      */
     public Optional<String> namePrefix() {

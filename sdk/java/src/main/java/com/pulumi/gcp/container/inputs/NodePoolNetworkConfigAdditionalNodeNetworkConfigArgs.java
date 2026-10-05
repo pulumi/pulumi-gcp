@@ -31,6 +31,21 @@ public final class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs extends 
     }
 
     /**
+     * ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
+    /**
      * Name of the subnetwork where the additional interface belongs.
      * 
      */
@@ -49,6 +64,7 @@ public final class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs extends 
 
     private NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs(NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs $) {
         this.network = $.network;
+        this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
     }
 
@@ -89,6 +105,27 @@ public final class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs extends 
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param stackType ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
         }
 
         /**

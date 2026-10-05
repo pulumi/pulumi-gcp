@@ -7349,12 +7349,41 @@ class DiskDiskEncryptionKeyArgsDict(TypedDict):
     RFC 4648 base64 to either encrypt or decrypt this resource.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
+    raw_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    Specifies a 256-bit customer-supplied encryption key, encoded in
+    RFC 4648 base64 to either encrypt or decrypt this resource.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `raw_key` or `raw_key_wo` can only be set.
+    """
+    raw_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `raw_key_wo` write-only. Increment this value when an update to `raw_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
     rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
     customer-supplied encryption key to either encrypt or decrypt
     this resource. You can provide either the rawKey or the rsaEncryptedKey.
     **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    rsa_encrypted_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+    customer-supplied encryption key to either encrypt or decrypt
+    this resource. You can provide either the rawKey or the rsaEncryptedKey.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `rsa_encrypted_key` or `rsa_encrypted_key_wo` can only be set.
+    """
+    rsa_encrypted_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `rsa_encrypted_key_wo` write-only. Increment this value when an update to `rsa_encrypted_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
     sha256: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -7369,7 +7398,11 @@ class DiskDiskEncryptionKeyArgs:
                  kms_key_self_link: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  raw_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  rsa_encrypted_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  sha256: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_self_link: The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
@@ -7382,10 +7415,27 @@ class DiskDiskEncryptionKeyArgs:
         :param pulumi.Input[_builtins.str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] raw_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `raw_key` or `raw_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] raw_key_wo_version: Triggers update of `raw_key_wo` write-only. Increment this value when an update to `raw_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
                customer-supplied encryption key to either encrypt or decrypt
                this resource. You can provide either the rawKey or the rsaEncryptedKey.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+               customer-supplied encryption key to either encrypt or decrypt
+               this resource. You can provide either the rawKey or the rsaEncryptedKey.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `rsa_encrypted_key` or `rsa_encrypted_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key_wo_version: Triggers update of `rsa_encrypted_key_wo` write-only. Increment this value when an update to `rsa_encrypted_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] sha256: (Output)
                The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
@@ -7396,8 +7446,16 @@ class DiskDiskEncryptionKeyArgs:
             pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
+        if raw_key_wo is not None:
+            pulumi.set(__self__, "raw_key_wo", raw_key_wo)
+        if raw_key_wo_version is not None:
+            pulumi.set(__self__, "raw_key_wo_version", raw_key_wo_version)
         if rsa_encrypted_key is not None:
             pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if rsa_encrypted_key_wo is not None:
+            pulumi.set(__self__, "rsa_encrypted_key_wo", rsa_encrypted_key_wo)
+        if rsa_encrypted_key_wo_version is not None:
+            pulumi.set(__self__, "rsa_encrypted_key_wo_version", rsa_encrypted_key_wo_version)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
 
@@ -7445,6 +7503,36 @@ class DiskDiskEncryptionKeyArgs:
         pulumi.set(self, "raw_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="rawKeyWo")
+    def raw_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `raw_key` or `raw_key_wo` can only be set.
+        """
+        return pulumi.get(self, "raw_key_wo")
+
+    @raw_key_wo.setter
+    def raw_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "raw_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rawKeyWoVersion")
+    def raw_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `raw_key_wo` write-only. Increment this value when an update to `raw_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "raw_key_wo_version")
+
+    @raw_key_wo_version.setter
+    def raw_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "raw_key_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -7458,6 +7546,37 @@ class DiskDiskEncryptionKeyArgs:
     @rsa_encrypted_key.setter
     def rsa_encrypted_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rsa_encrypted_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKeyWo")
+    def rsa_encrypted_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `rsa_encrypted_key` or `rsa_encrypted_key_wo` can only be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key_wo")
+
+    @rsa_encrypted_key_wo.setter
+    def rsa_encrypted_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKeyWoVersion")
+    def rsa_encrypted_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `rsa_encrypted_key_wo` write-only. Increment this value when an update to `rsa_encrypted_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "rsa_encrypted_key_wo_version")
+
+    @rsa_encrypted_key_wo_version.setter
+    def rsa_encrypted_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -15995,6 +16114,8 @@ class InstanceAdvancedMachineFeaturesArgsDict(TypedDict):
     performance_monitoring_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+    > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
     """
     threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -16022,6 +16143,8 @@ class InstanceAdvancedMachineFeaturesArgs:
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[_builtins.str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[_builtins.str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[_builtins.int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -16068,6 +16191,8 @@ class InstanceAdvancedMachineFeaturesArgs:
     def performance_monitoring_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -27186,6 +27311,8 @@ class InstanceTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
     performance_monitoring_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+    > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
     """
     threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -27213,6 +27340,8 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[_builtins.str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[_builtins.str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[_builtins.int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -27259,6 +27388,8 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
     def performance_monitoring_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 
@@ -31451,13 +31582,6 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityArgs:
 
 
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict(TypedDict):
-    attachment: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    """
-    (Output, Deprecated)
-    URLs of Attachments in the given zone, to the given
-    region, on Interconnects in the given facility and metro. Every
-    Attachment in the AG has such an entry.
-    """
     attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Attachments in the AttachmentGroup. Keys are arbitrary user-specified
@@ -31478,14 +31602,9 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgsDict
 @pulumi.input_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
     def __init__(__self__, *,
-                 attachment: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachment: (Output, Deprecated)
-               URLs of Attachments in the given zone, to the given
-               region, on Interconnects in the given facility and metro. Every
-               Attachment in the AG has such an entry.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
                format for resource links as keys.
@@ -31497,31 +31616,10 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs:
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
-        if attachment is not None:
-            warnings.warn("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""", DeprecationWarning)
-            pulumi.log.warn("""attachment is deprecated: `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-        if attachment is not None:
-            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
-    def attachment(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        (Output, Deprecated)
-        URLs of Attachments in the given zone, to the given
-        region, on Interconnects in the given facility and metro. Every
-        Attachment in the AG has such an entry.
-        """
-        return pulumi.get(self, "attachment")
-
-    @attachment.setter
-    def attachment(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "attachment", value)
 
     @_builtins.property
     @pulumi.getter
@@ -43903,12 +44001,41 @@ class RegionDiskDiskEncryptionKeyArgsDict(TypedDict):
     RFC 4648 base64 to either encrypt or decrypt this resource.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
+    raw_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    Specifies a 256-bit customer-supplied encryption key, encoded in
+    RFC 4648 base64 to either encrypt or decrypt this resource.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `raw_key` or `raw_key_wo` can only be set.
+    """
+    raw_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `raw_key_wo` write-only. Increment this value when an update to `raw_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
     rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
     customer-supplied encryption key to either encrypt or decrypt
     this resource. You can provide either the rawKey or the rsaEncryptedKey.
     **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    rsa_encrypted_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+    customer-supplied encryption key to either encrypt or decrypt
+    this resource. You can provide either the rawKey or the rsaEncryptedKey.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `rsa_encrypted_key` or `rsa_encrypted_key_wo` can only be set.
+    """
+    rsa_encrypted_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `rsa_encrypted_key_wo` write-only. Increment this value when an update to `rsa_encrypted_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
     sha256: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -43922,17 +44049,38 @@ class RegionDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  raw_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  rsa_encrypted_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  sha256: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
         :param pulumi.Input[_builtins.str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] raw_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Specifies a 256-bit customer-supplied encryption key, encoded in
+               RFC 4648 base64 to either encrypt or decrypt this resource.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `raw_key` or `raw_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] raw_key_wo_version: Triggers update of `raw_key_wo` write-only. Increment this value when an update to `raw_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
                customer-supplied encryption key to either encrypt or decrypt
                this resource. You can provide either the rawKey or the rsaEncryptedKey.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+               customer-supplied encryption key to either encrypt or decrypt
+               this resource. You can provide either the rawKey or the rsaEncryptedKey.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `rsa_encrypted_key` or `rsa_encrypted_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] rsa_encrypted_key_wo_version: Triggers update of `rsa_encrypted_key_wo` write-only. Increment this value when an update to `rsa_encrypted_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] sha256: (Output)
                The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
                encryption key that protects this resource.
@@ -43941,8 +44089,16 @@ class RegionDiskDiskEncryptionKeyArgs:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
+        if raw_key_wo is not None:
+            pulumi.set(__self__, "raw_key_wo", raw_key_wo)
+        if raw_key_wo_version is not None:
+            pulumi.set(__self__, "raw_key_wo_version", raw_key_wo_version)
         if rsa_encrypted_key is not None:
             pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+        if rsa_encrypted_key_wo is not None:
+            pulumi.set(__self__, "rsa_encrypted_key_wo", rsa_encrypted_key_wo)
+        if rsa_encrypted_key_wo_version is not None:
+            pulumi.set(__self__, "rsa_encrypted_key_wo_version", rsa_encrypted_key_wo_version)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
 
@@ -43973,6 +44129,36 @@ class RegionDiskDiskEncryptionKeyArgs:
         pulumi.set(self, "raw_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="rawKeyWo")
+    def raw_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Specifies a 256-bit customer-supplied encryption key, encoded in
+        RFC 4648 base64 to either encrypt or decrypt this resource.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `raw_key` or `raw_key_wo` can only be set.
+        """
+        return pulumi.get(self, "raw_key_wo")
+
+    @raw_key_wo.setter
+    def raw_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "raw_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rawKeyWoVersion")
+    def raw_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `raw_key_wo` write-only. Increment this value when an update to `raw_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "raw_key_wo_version")
+
+    @raw_key_wo_version.setter
+    def raw_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "raw_key_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="rsaEncryptedKey")
     def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -43986,6 +44172,37 @@ class RegionDiskDiskEncryptionKeyArgs:
     @rsa_encrypted_key.setter
     def rsa_encrypted_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rsa_encrypted_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKeyWo")
+    def rsa_encrypted_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        customer-supplied encryption key to either encrypt or decrypt
+        this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `rsa_encrypted_key` or `rsa_encrypted_key_wo` can only be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key_wo")
+
+    @rsa_encrypted_key_wo.setter
+    def rsa_encrypted_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKeyWoVersion")
+    def rsa_encrypted_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `rsa_encrypted_key_wo` write-only. Increment this value when an update to `rsa_encrypted_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "rsa_encrypted_key_wo_version")
+
+    @rsa_encrypted_key_wo_version.setter
+    def rsa_encrypted_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rsa_encrypted_key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -47782,6 +47999,8 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgsDict(TypedDict):
     performance_monitoring_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+    > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
     """
     threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -47809,6 +48028,8 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[_builtins.str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+               
+               > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[_builtins.str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[_builtins.int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
@@ -47855,6 +48076,8 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
     def performance_monitoring_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+
+        > **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allow_stopping_for_update`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
         """
         return pulumi.get(self, "performance_monitoring_unit")
 

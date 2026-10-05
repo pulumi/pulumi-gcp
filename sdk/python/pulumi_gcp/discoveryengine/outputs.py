@@ -45,6 +45,7 @@ __all__ = [
     'DataConnectorDestinationConfigDestination',
     'DataConnectorEntity',
     'DataConnectorError',
+    'DataConnectorMetadata',
     'DataStoreAdvancedSiteSearchConfig',
     'DataStoreDocumentProcessingConfig',
     'DataStoreDocumentProcessingConfigChunkingConfig',
@@ -85,6 +86,7 @@ __all__ = [
     'WidgetConfigUiSettingsDataStoreUiConfigFacetField',
     'WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap',
     'WidgetConfigUiSettingsGenerativeAnswerConfig',
+    'WidgetConfigUiSettingsSearchAddonSpec',
     'GetDataStoreAdvancedSiteSearchConfigResult',
     'GetDataStoreDocumentProcessingConfigResult',
     'GetDataStoreDocumentProcessingConfigChunkingConfigResult',
@@ -1712,6 +1714,90 @@ class DataConnectorError(dict):
         A developer-facing error message, which should be in English.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class DataConnectorMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shortDescription":
+            suggest = "short_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataConnectorMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataConnectorMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataConnectorMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 note: Optional[_builtins.str] = None,
+                 short_description: Optional[_builtins.str] = None,
+                 title: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str author: The party that authored the connector, e.g. "Google" or a third-party provider name.
+        :param _builtins.str description: Human-readable description of the connector.
+        :param _builtins.str note: Free-form, multi-line note about the connector's capabilities.
+        :param _builtins.str short_description: Short, subtitle-length description of the connector.
+        :param _builtins.str title: Display title of the connector.
+        """
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if note is not None:
+            pulumi.set(__self__, "note", note)
+        if short_description is not None:
+            pulumi.set(__self__, "short_description", short_description)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter
+    def author(self) -> Optional[_builtins.str]:
+        """
+        The party that authored the connector, e.g. "Google" or a third-party provider name.
+        """
+        return pulumi.get(self, "author")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Human-readable description of the connector.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def note(self) -> Optional[_builtins.str]:
+        """
+        Free-form, multi-line note about the connector's capabilities.
+        """
+        return pulumi.get(self, "note")
+
+    @_builtins.property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> Optional[_builtins.str]:
+        """
+        Short, subtitle-length description of the connector.
+        """
+        return pulumi.get(self, "short_description")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> Optional[_builtins.str]:
+        """
+        Display title of the connector.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -3616,6 +3702,10 @@ class WidgetConfigUiSettings(dict):
             suggest = "interaction_type"
         elif key == "resultDescriptionType":
             suggest = "result_description_type"
+        elif key == "searchAddonSpec":
+            suggest = "search_addon_spec"
+        elif key == "sourceAdminDisplayNameEnabled":
+            suggest = "source_admin_display_name_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WidgetConfigUiSettings. Access the value via the '{suggest}' property getter instead.")
@@ -3641,7 +3731,9 @@ class WidgetConfigUiSettings(dict):
                  enable_visual_content_summary: Optional[_builtins.bool] = None,
                  generative_answer_config: Optional['outputs.WidgetConfigUiSettingsGenerativeAnswerConfig'] = None,
                  interaction_type: Optional[_builtins.str] = None,
-                 result_description_type: Optional[_builtins.str] = None):
+                 result_description_type: Optional[_builtins.str] = None,
+                 search_addon_spec: Optional['outputs.WidgetConfigUiSettingsSearchAddonSpec'] = None,
+                 source_admin_display_name_enabled: Optional[_builtins.bool] = None):
         """
         :param Sequence['WidgetConfigUiSettingsDataStoreUiConfigArgs'] data_store_ui_configs: Per data store configuration.
                Structure is documented below.
@@ -3663,6 +3755,13 @@ class WidgetConfigUiSettings(dict):
         :param _builtins.str result_description_type: Controls whether result extract is display and how (snippet or extractive answer).
                Default to no result if unspecified.
                Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+        :param 'WidgetConfigUiSettingsSearchAddonSpecArgs' search_addon_spec: SearchAddonSpec is used to disable add-ons for search. By default, if this
+               field is not specified, add-ons are enabled wherever applicable.
+               This field is only supported for search requests.
+               Structure is documented below.
+        :param _builtins.bool source_admin_display_name_enabled: Whether to show the admin-configured display name for data connectors in
+               the widget sources UI (instead of the connector kind). Opt-in; defaults
+               to false.
         """
         if data_store_ui_configs is not None:
             pulumi.set(__self__, "data_store_ui_configs", data_store_ui_configs)
@@ -3690,6 +3789,10 @@ class WidgetConfigUiSettings(dict):
             pulumi.set(__self__, "interaction_type", interaction_type)
         if result_description_type is not None:
             pulumi.set(__self__, "result_description_type", result_description_type)
+        if search_addon_spec is not None:
+            pulumi.set(__self__, "search_addon_spec", search_addon_spec)
+        if source_admin_display_name_enabled is not None:
+            pulumi.set(__self__, "source_admin_display_name_enabled", source_admin_display_name_enabled)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreUiConfigs")
@@ -3801,6 +3904,27 @@ class WidgetConfigUiSettings(dict):
         Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
         """
         return pulumi.get(self, "result_description_type")
+
+    @_builtins.property
+    @pulumi.getter(name="searchAddonSpec")
+    def search_addon_spec(self) -> Optional['outputs.WidgetConfigUiSettingsSearchAddonSpec']:
+        """
+        SearchAddonSpec is used to disable add-ons for search. By default, if this
+        field is not specified, add-ons are enabled wherever applicable.
+        This field is only supported for search requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "search_addon_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAdminDisplayNameEnabled")
+    def source_admin_display_name_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to show the admin-configured display name for data connectors in
+        the widget sources UI (instead of the connector kind). Opt-in; defaults
+        to false.
+        """
+        return pulumi.get(self, "source_admin_display_name_enabled")
 
 
 @pulumi.output_type
@@ -4180,6 +4304,76 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig(dict):
         The number of top results to generate the answer from. Up to 10.
         """
         return pulumi.get(self, "result_count")
+
+
+@pulumi.output_type
+class WidgetConfigUiSettingsSearchAddonSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generativeAnswerAddOnDisabled":
+            suggest = "generative_answer_add_on_disabled"
+        elif key == "kpiPersonalizationAddOnDisabled":
+            suggest = "kpi_personalization_add_on_disabled"
+        elif key == "semanticAddOnDisabled":
+            suggest = "semantic_add_on_disabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WidgetConfigUiSettingsSearchAddonSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WidgetConfigUiSettingsSearchAddonSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WidgetConfigUiSettingsSearchAddonSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generative_answer_add_on_disabled: Optional[_builtins.bool] = None,
+                 kpi_personalization_add_on_disabled: Optional[_builtins.bool] = None,
+                 semantic_add_on_disabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool generative_answer_add_on_disabled: If true, generative answer add-on is disabled. Generative answer
+               add-on includes natural language to filters and simple answers.
+        :param _builtins.bool kpi_personalization_add_on_disabled: If true, disables event re-ranking and personalization to optimize KPIs
+               & personalize results.
+        :param _builtins.bool semantic_add_on_disabled: If true, semantic add-on is disabled. Semantic add-on includes
+               embeddings and jetstream.
+        """
+        if generative_answer_add_on_disabled is not None:
+            pulumi.set(__self__, "generative_answer_add_on_disabled", generative_answer_add_on_disabled)
+        if kpi_personalization_add_on_disabled is not None:
+            pulumi.set(__self__, "kpi_personalization_add_on_disabled", kpi_personalization_add_on_disabled)
+        if semantic_add_on_disabled is not None:
+            pulumi.set(__self__, "semantic_add_on_disabled", semantic_add_on_disabled)
+
+    @_builtins.property
+    @pulumi.getter(name="generativeAnswerAddOnDisabled")
+    def generative_answer_add_on_disabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, generative answer add-on is disabled. Generative answer
+        add-on includes natural language to filters and simple answers.
+        """
+        return pulumi.get(self, "generative_answer_add_on_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="kpiPersonalizationAddOnDisabled")
+    def kpi_personalization_add_on_disabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, disables event re-ranking and personalization to optimize KPIs
+        & personalize results.
+        """
+        return pulumi.get(self, "kpi_personalization_add_on_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="semanticAddOnDisabled")
+    def semantic_add_on_disabled(self) -> Optional[_builtins.bool]:
+        """
+        If true, semantic add-on is disabled. Semantic add-on includes
+        embeddings and jetstream.
+        """
+        return pulumi.get(self, "semantic_add_on_disabled")
 
 
 @pulumi.output_type

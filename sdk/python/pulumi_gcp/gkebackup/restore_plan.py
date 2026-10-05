@@ -489,8 +489,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="restore-all-ns-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -505,7 +508,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="restore-all-ns",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -513,7 +516,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         all_ns = gcp.gkebackup.RestorePlan("all_ns",
             name="restore-all-ns",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -534,8 +537,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="rollback-ns-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -550,7 +556,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="rollback-ns",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -558,7 +564,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
             name="rollback-ns-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -590,8 +596,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="rollback-app-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -606,7 +615,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="rollback-app",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -614,7 +623,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
             name="rollback-app-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -639,8 +648,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="all-groupkinds-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -655,7 +667,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="all-groupkinds",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -663,7 +675,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
             name="all-groupkinds-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -683,8 +695,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="rename-ns-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -699,7 +714,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="rename-ns",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -707,7 +722,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
             name="rename-ns-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -756,8 +771,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="transform-rule-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -772,7 +790,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="transform-rule",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -784,7 +802,7 @@ class RestorePlan(pulumi.CustomResource):
             labels={
                 "app": "nginx",
             },
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -825,8 +843,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="gitops-mode-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -841,7 +862,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="gitops-mode",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -849,7 +870,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
             name="gitops-mode",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -870,8 +891,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="restore-order-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -886,7 +910,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="restore-order",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -894,7 +918,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         restore_order = gcp.gkebackup.RestorePlan("restore_order",
             name="restore-order",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -939,8 +963,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="volume-res-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -955,7 +982,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="volume-res",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -963,7 +990,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         volume_res = gcp.gkebackup.RestorePlan("volume_res",
             name="volume-res",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1048,8 +1075,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="restore-all-ns-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1064,7 +1094,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="restore-all-ns",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1072,7 +1102,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         all_ns = gcp.gkebackup.RestorePlan("all_ns",
             name="restore-all-ns",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1093,8 +1123,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="rollback-ns-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1109,7 +1142,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="rollback-ns",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1117,7 +1150,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         rollback_ns = gcp.gkebackup.RestorePlan("rollback_ns",
             name="rollback-ns-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1149,8 +1182,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="rollback-app-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1165,7 +1201,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="rollback-app",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1173,7 +1209,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         rollback_app = gcp.gkebackup.RestorePlan("rollback_app",
             name="rollback-app-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1198,8 +1234,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="all-groupkinds-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1214,7 +1253,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="all-groupkinds",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1222,7 +1261,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         all_cluster_resources = gcp.gkebackup.RestorePlan("all_cluster_resources",
             name="all-groupkinds-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1242,8 +1281,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="rename-ns-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1258,7 +1300,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="rename-ns",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1266,7 +1308,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         rename_ns = gcp.gkebackup.RestorePlan("rename_ns",
             name="rename-ns-rp",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1315,8 +1357,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="transform-rule-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1331,7 +1376,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="transform-rule",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1343,7 +1388,7 @@ class RestorePlan(pulumi.CustomResource):
             labels={
                 "app": "nginx",
             },
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1384,8 +1429,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="gitops-mode-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1400,7 +1448,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="gitops-mode",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1408,7 +1456,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         gitops_mode = gcp.gkebackup.RestorePlan("gitops_mode",
             name="gitops-mode",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1429,8 +1477,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="restore-order-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1445,7 +1496,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="restore-order",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1453,7 +1504,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         restore_order = gcp.gkebackup.RestorePlan("restore_order",
             name="restore-order",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={
@@ -1498,8 +1549,11 @@ class RestorePlan(pulumi.CustomResource):
 
         primary = gcp.container.Cluster("primary",
             name="volume-res-cluster",
-            location="us-central1",
+            location="us-east1",
             initial_node_count=1,
+            node_config={
+                "machine_type": "n4-standard-2",
+            },
             workload_identity_config={
                 "workload_pool": "my-project-name.svc.id.goog",
             },
@@ -1514,7 +1568,7 @@ class RestorePlan(pulumi.CustomResource):
         basic = gcp.gkebackup.BackupPlan("basic",
             name="volume-res",
             cluster=primary.id,
-            location="us-central1",
+            location="us-east1",
             backup_config={
                 "include_volume_data": True,
                 "include_secrets": True,
@@ -1522,7 +1576,7 @@ class RestorePlan(pulumi.CustomResource):
             })
         volume_res = gcp.gkebackup.RestorePlan("volume_res",
             name="volume-res",
-            location="us-central1",
+            location="us-east1",
             backup_plan=basic.id,
             cluster=primary.id,
             restore_config={

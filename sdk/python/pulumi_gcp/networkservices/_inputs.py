@@ -15,6 +15,12 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AgentConnectivityTemplateEgressNetworkConfigArgs',
+    'AgentConnectivityTemplateEgressNetworkConfigArgsDict',
+    'AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs',
+    'AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgsDict',
+    'AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs',
+    'AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgsDict',
     'AgentGatewayAgentGatewayCardArgs',
     'AgentGatewayAgentGatewayCardArgsDict',
     'AgentGatewayGoogleManagedArgs',
@@ -232,6 +238,263 @@ __all__ = [
     'WasmPluginVersionArgs',
     'WasmPluginVersionArgsDict',
 ]
+
+class AgentConnectivityTemplateEgressNetworkConfigArgsDict(TypedDict):
+    dns_peering_config: NotRequired[pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgsDict']]]
+    """
+    DNS peering configuration for the AgentConnectivityTemplate.
+    When set, the gateway will resolve queries for the configured
+    `domains` via Cloud DNS in the specified `targetNetwork`.
+    Structure is documented below.
+    """
+    network_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The network attachment resource name.
+    Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+    """
+    tls_config: NotRequired[pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgsDict']]]
+    """
+    The TLS configuration for the egress traffic.
+    Structure is documented below.
+    """
+    vpc_egress: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The VPC egress setting.
+    Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+    """
+
+@pulumi.input_type
+class AgentConnectivityTemplateEgressNetworkConfigArgs:
+    def __init__(__self__, *,
+                 dns_peering_config: pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs']] = None,
+                 network_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_config: pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs']] = None,
+                 vpc_egress: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs'] dns_peering_config: DNS peering configuration for the AgentConnectivityTemplate.
+               When set, the gateway will resolve queries for the configured
+               `domains` via Cloud DNS in the specified `targetNetwork`.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] network_attachment: The network attachment resource name.
+               Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+        :param pulumi.Input['AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs'] tls_config: The TLS configuration for the egress traffic.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] vpc_egress: The VPC egress setting.
+               Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        """
+        if dns_peering_config is not None:
+            pulumi.set(__self__, "dns_peering_config", dns_peering_config)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+        if vpc_egress is not None:
+            pulumi.set(__self__, "vpc_egress", vpc_egress)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfig")
+    def dns_peering_config(self) -> pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs']]:
+        """
+        DNS peering configuration for the AgentConnectivityTemplate.
+        When set, the gateway will resolve queries for the configured
+        `domains` via Cloud DNS in the specified `targetNetwork`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_config")
+
+    @dns_peering_config.setter
+    def dns_peering_config(self, value: pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs']]):
+        pulumi.set(self, "dns_peering_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network attachment resource name.
+        Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network_attachment", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs']]:
+        """
+        The TLS configuration for the egress traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+    @tls_config.setter
+    def tls_config(self, value: pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs']]):
+        pulumi.set(self, "tls_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcEgress")
+    def vpc_egress(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The VPC egress setting.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        """
+        return pulumi.get(self, "vpc_egress")
+
+    @vpc_egress.setter
+    def vpc_egress(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_egress", value)
+
+
+class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgsDict(TypedDict):
+    target_network: pulumi.Input[_builtins.str]
+    """
+    The URI of the target VPC network for DNS peering. Must be of the
+    form `projects/{project}/global/networks/{network}`.
+    """
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Optional, Deprecated)
+    The domain name to peer for DNS resolution. Must be a fully
+    qualified domain name ending with a dot (for example, `example.com.`).
+
+    > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+    """
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of domain names to peer for DNS resolution. Each entry
+    must be a fully qualified domain name ending with a dot
+    (for example, `example.com.`). At least one domain must be
+    specified between `domain` and `domains`.
+    """
+
+@pulumi.input_type
+class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs:
+    def __init__(__self__, *,
+                 target_network: pulumi.Input[_builtins.str],
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] target_network: The URI of the target VPC network for DNS peering. Must be of the
+               form `projects/{project}/global/networks/{network}`.
+        :param pulumi.Input[_builtins.str] domain: (Optional, Deprecated)
+               The domain name to peer for DNS resolution. Must be a fully
+               qualified domain name ending with a dot (for example, `example.com.`).
+               
+               > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: The list of domain names to peer for DNS resolution. Each entry
+               must be a fully qualified domain name ending with a dot
+               (for example, `example.com.`). At least one domain must be
+               specified between `domain` and `domains`.
+        """
+        pulumi.set(__self__, "target_network", target_network)
+        if domain is not None:
+            warnings.warn("""`domain` is deprecated and will be removed in a future major release. Use `domains` instead.""", DeprecationWarning)
+            pulumi.log.warn("""domain is deprecated: `domain` is deprecated and will be removed in a future major release. Use `domains` instead.""")
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URI of the target VPC network for DNS peering. Must be of the
+        form `projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "target_network")
+
+    @target_network.setter
+    def target_network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`domain` is deprecated and will be removed in a future major release. Use `domains` instead.""")
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Deprecated)
+        The domain name to peer for DNS resolution. Must be a fully
+        qualified domain name ending with a dot (for example, `example.com.`).
+
+        > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of domain names to peer for DNS resolution. Each entry
+        must be a fully qualified domain name ending with a dot
+        (for example, `example.com.`). At least one domain must be
+        specified between `domain` and `domains`.
+        """
+        return pulumi.get(self, "domains")
+
+    @domains.setter
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "domains", value)
+
+
+class AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgsDict(TypedDict):
+    additional_roots: pulumi.Input[_builtins.str]
+    """
+    Defines whether additional roots should be trusted.
+    Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+    """
+    trust_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The trust config resource name.
+    Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+    """
+
+@pulumi.input_type
+class AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs:
+    def __init__(__self__, *,
+                 additional_roots: pulumi.Input[_builtins.str],
+                 trust_config: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] additional_roots: Defines whether additional roots should be trusted.
+               Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+        :param pulumi.Input[_builtins.str] trust_config: The trust config resource name.
+               Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+        """
+        pulumi.set(__self__, "additional_roots", additional_roots)
+        if trust_config is not None:
+            pulumi.set(__self__, "trust_config", trust_config)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalRoots")
+    def additional_roots(self) -> pulumi.Input[_builtins.str]:
+        """
+        Defines whether additional roots should be trusted.
+        Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+        """
+        return pulumi.get(self, "additional_roots")
+
+    @additional_roots.setter
+    def additional_roots(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "additional_roots", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trustConfig")
+    def trust_config(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The trust config resource name.
+        Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+        """
+        return pulumi.get(self, "trust_config")
+
+    @trust_config.setter
+    def trust_config(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "trust_config", value)
+
 
 class AgentGatewayAgentGatewayCardArgsDict(TypedDict):
     mtls_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]

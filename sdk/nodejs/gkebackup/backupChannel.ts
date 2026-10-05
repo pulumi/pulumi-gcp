@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * const basic = new gcp.gkebackup.BackupChannel("basic", {
  *     name: "basic-channel",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     description: "Description",
  *     destinationProject: "projects/24240755850",
  *     labels: {

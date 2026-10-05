@@ -210,6 +210,20 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// Whether to skip refreshing the GKE
+        /// cluster's node pool list during the data source read. Setting this to `True`
+        /// prevents the provider from querying the GKE API for node pools, which resolves
+        /// long read times on clusters with a large number of node pools. When enabled,
+        /// the `NodePool` attribute will be empty (`[]`), even if node pools exist. See
+        /// the resource documentation
+        /// for details.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("skipNodePoolRefresh")]
+        public bool? SkipNodePoolRefresh { get; set; }
+
         public GetClusterArgs()
         {
         }
@@ -238,6 +252,20 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Whether to skip refreshing the GKE
+        /// cluster's node pool list during the data source read. Setting this to `True`
+        /// prevents the provider from querying the GKE API for node pools, which resolves
+        /// long read times on clusters with a large number of node pools. When enabled,
+        /// the `NodePool` attribute will be empty (`[]`), even if node pools exist. See
+        /// the resource documentation
+        /// for details.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("skipNodePoolRefresh")]
+        public Input<bool>? SkipNodePoolRefresh { get; set; }
 
         public GetClusterInvokeArgs()
         {
@@ -347,7 +375,7 @@ namespace Pulumi.Gcp.Container
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> ServiceExternalIpsConfigs;
         public readonly string ServicesIpv4Cidr;
-        public readonly bool SkipNodePoolRefresh;
+        public readonly bool? SkipNodePoolRefresh;
         public readonly string Subnetwork;
         public readonly ImmutableArray<Outputs.GetClusterTpuConfigResult> TpuConfigs;
         public readonly string TpuIpv4CidrBlock;
@@ -548,7 +576,7 @@ namespace Pulumi.Gcp.Container
 
             string servicesIpv4Cidr,
 
-            bool skipNodePoolRefresh,
+            bool? skipNodePoolRefresh,
 
             string subnetwork,
 

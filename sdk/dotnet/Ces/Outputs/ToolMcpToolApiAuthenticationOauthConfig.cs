@@ -37,7 +37,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly string? OauthGrantType;
         /// <summary>
         /// (Output)
-        /// The OAuth scopes to grant.
+        /// The OAuth scopes to grant. If not specified, the default scope
+        /// `https://www.googleapis.com/auth/cloud-platform` is used.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>

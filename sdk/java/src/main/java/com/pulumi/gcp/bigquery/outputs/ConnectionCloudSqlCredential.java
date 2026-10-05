@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionCloudSqlCredential {
@@ -15,7 +17,22 @@ public final class ConnectionCloudSqlCredential {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String password;
+    private @Nullable String password;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Password for database.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
+     * 
+     */
+    private @Nullable String passwordWo;
+    /**
+     * @return Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String passwordWoVersion;
     /**
      * @return Username for database.
      * 
@@ -28,8 +45,27 @@ public final class ConnectionCloudSqlCredential {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Password for database.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
+     * 
+     */
+    public Optional<String> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+    /**
+     * @return Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
     /**
      * @return Username for database.
@@ -48,21 +84,35 @@ public final class ConnectionCloudSqlCredential {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String password;
+        private @Nullable String password;
+        private @Nullable String passwordWo;
+        private @Nullable String passwordWoVersion;
         private String username;
         public Builder() {}
         public Builder(ConnectionCloudSqlCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.username = defaults.username;
         }
 
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("ConnectionCloudSqlCredential", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWo(@Nullable String passwordWo) {
+
+            this.passwordWo = passwordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(@Nullable String passwordWoVersion) {
+
+            this.passwordWoVersion = passwordWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +126,8 @@ public final class ConnectionCloudSqlCredential {
         public ConnectionCloudSqlCredential build() {
             final var _resultValue = new ConnectionCloudSqlCredential();
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.username = username;
             return _resultValue;
         }

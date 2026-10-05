@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +29,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,7 +108,7 @@ import (
 //					Allocations: pulumi.StringMap(pulumi.All(liveappV1.VersionId, liveappV2.VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
 //						liveappV1VersionId := _args[0].(*string)
 //						liveappV2VersionId := _args[1].(*string)
-//						return map[string]float64(pulumi.All(pulumi.String(liveappV1VersionId), pulumi.String(liveappV2VersionId)).ApplyT(func(_args []interface{}) (map[string]float64, error) {
+//						return map[string]float64(pulumi.All(liveappV1VersionId, liveappV2VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
 //							__convert := _args[0].(string)
 //							__convert1 := _args[1].(string)
 //							return map[string]float64{

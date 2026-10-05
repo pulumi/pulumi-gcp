@@ -68,7 +68,7 @@ public final class GetClusterNodePool {
      */
     private String name;
     /**
-     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
      * 
      */
     private String namePrefix;
@@ -183,7 +183,7 @@ public final class GetClusterNodePool {
         return this.name;
     }
     /**
-     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
      * 
      */
     public String namePrefix() {

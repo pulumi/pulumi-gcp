@@ -246,7 +246,135 @@ namespace Pulumi.Gcp.Ces
     ///                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
     ///             }),
     ///         },
+    ///         TransferRules = new[]
+    ///         {
+    ///             new Gcp.Ces.Inputs.AgentTransferRuleArgs
+    ///             {
+    ///                 ChildAgent = Output.Tuple(cesAppForAgent.Project, cesAppForAgent.AppId, cesChildAgent.AgentId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var appId = values.Item2;
+    ///                     var agentId = values.Item3;
+    ///                     return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+    ///                 }),
+    ///                 Direction = "PARENT_TO_CHILD",
+    ///                 DeterministicTransfer = new Gcp.Ces.Inputs.AgentTransferRuleDeterministicTransferArgs
+    ///                 {
+    ///                     ExpressionCondition = new Gcp.Ces.Inputs.AgentTransferRuleDeterministicTransferExpressionConditionArgs
+    ///                     {
+    ///                         Expression = "true",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         LlmAgent = new() { },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Ces Agent Remote A2a Agent
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForAgent = new Gcp.Ces.App("ces_app_for_agent", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Agent example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesAgentRemoteA2aAgent = new Gcp.Ces.Agent("ces_agent_remote_a2a_agent", new()
+    ///     {
+    ///         AgentId = "agent-id",
+    ///         Location = "us",
+    ///         App = cesAppForAgent.AppId,
+    ///         DisplayName = "my-agent",
+    ///         RemoteA2aAgent = new Gcp.Ces.Inputs.AgentRemoteA2aAgentArgs
+    ///         {
+    ///             A2aConfig = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigArgs
+    ///             {
+    ///                 AgentCard = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigAgentCardArgs
+    ///                 {
+    ///                     Name = "test-card",
+    ///                     Description = "Test A2A Agent Card",
+    ///                     Version = "1.0.0",
+    ///                     SupportedInterfaces = new[]
+    ///                     {
+    ///                         new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigAgentCardSupportedInterfaceArgs
+    ///                         {
+    ///                             Url = "https://example.com/a2a",
+    ///                             ProtocolBinding = "HTTP+JSON",
+    ///                             ProtocolVersion = "1.0",
+    ///                         },
+    ///                     },
+    ///                     Skills = new[]
+    ///                     {
+    ///                         new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigAgentCardSkillArgs
+    ///                         {
+    ///                             Id = "test-skill",
+    ///                             Name = "test-skill-name",
+    ///                             Description = "test-skill-desc",
+    ///                             Tags = new[]
+    ///                             {
+    ///                                 "test",
+    ///                                 "skill",
+    ///                             },
+    ///                             Examples = new[]
+    ///                             {
+    ///                                 "example 1",
+    ///                             },
+    ///                             InputModes = new[]
+    ///                             {
+    ///                                 "text/plain",
+    ///                             },
+    ///                             OutputModes = new[]
+    ///                             {
+    ///                                 "text/plain",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ApiAuthentication = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationArgs
+    ///                 {
+    ///                     BearerTokenConfig = new Gcp.Ces.Inputs.AgentRemoteA2aAgentA2aConfigApiAuthenticationBearerTokenConfigArgs
+    ///                     {
+    ///                         Token = "$context.variables.token",
+    ///                     },
+    ///                 },
+    ///                 ContextId = "$context.variables.session_id",
+    ///                 InputVariableMapping = 
+    ///                 {
+    ///                     { "remote_in", "local_in" },
+    ///                 },
+    ///                 OutputVariableMapping = 
+    ///                 {
+    ///                     { "remote_out", "local_out" },
+    ///                 },
+    ///                 StreamingEnabled = false,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -300,6 +428,7 @@ namespace Pulumi.Gcp.Ces
     ///             Agent = "projects/example/locations/us/agents/fake-agent",
     ///             FlowId = "fake-flow",
     ///             EnvironmentId = "fake-env",
+    ///             LanguageCodeVariable = "language_code",
     ///             InputVariableMapping = 
     ///             {
     ///                 { "example", "1" },
@@ -574,6 +703,14 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The agent which will transfer execution to a remote
+        /// [A2A](https://github.com/a2aproject/A2A) agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("remoteA2aAgent")]
+        public Output<Outputs.AgentRemoteA2aAgent?> RemoteA2aAgent { get; private set; } = null!;
+
+        /// <summary>
         /// The agent which will transfer execution to an existing remote
         /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
         /// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -597,6 +734,14 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("toolsets")]
         public Output<ImmutableArray<Outputs.AgentToolset>> Toolsets { get; private set; } = null!;
+
+        /// <summary>
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("transferRules")]
+        public Output<ImmutableArray<Outputs.AgentTransferRule>> TransferRules { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the agent was last updated.
@@ -848,6 +993,14 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The agent which will transfer execution to a remote
+        /// [A2A](https://github.com/a2aproject/A2A) agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("remoteA2aAgent")]
+        public Input<Inputs.AgentRemoteA2aAgentArgs>? RemoteA2aAgent { get; set; }
+
+        /// <summary>
         /// The agent which will transfer execution to an existing remote
         /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
         /// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -882,6 +1035,20 @@ namespace Pulumi.Gcp.Ces
         {
             get => _toolsets ?? (_toolsets = new InputList<Inputs.AgentToolsetArgs>());
             set => _toolsets = value;
+        }
+
+        [Input("transferRules")]
+        private InputList<Inputs.AgentTransferRuleArgs>? _transferRules;
+
+        /// <summary>
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AgentTransferRuleArgs> TransferRules
+        {
+            get => _transferRules ?? (_transferRules = new InputList<Inputs.AgentTransferRuleArgs>());
+            set => _transferRules = value;
         }
 
         public AgentArgs()
@@ -1118,6 +1285,14 @@ namespace Pulumi.Gcp.Ces
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The agent which will transfer execution to a remote
+        /// [A2A](https://github.com/a2aproject/A2A) agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("remoteA2aAgent")]
+        public Input<Inputs.AgentRemoteA2aAgentGetArgs>? RemoteA2aAgent { get; set; }
+
+        /// <summary>
         /// The agent which will transfer execution to an existing remote
         /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
         /// agent flow. The corresponding Dialogflow agent will process subsequent user
@@ -1152,6 +1327,20 @@ namespace Pulumi.Gcp.Ces
         {
             get => _toolsets ?? (_toolsets = new InputList<Inputs.AgentToolsetGetArgs>());
             set => _toolsets = value;
+        }
+
+        [Input("transferRules")]
+        private InputList<Inputs.AgentTransferRuleGetArgs>? _transferRules;
+
+        /// <summary>
+        /// List of transfer rules for the agent.
+        /// If multiple rules match, the first one in the list will be used.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AgentTransferRuleGetArgs> TransferRules
+        {
+            get => _transferRules ?? (_transferRules = new InputList<Inputs.AgentTransferRuleGetArgs>());
+            set => _transferRules = value;
         }
 
         /// <summary>

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -38,6 +39,21 @@ public final class JobTemplateArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * If true, the system will start the execution within the next 12 hours depending on available capacity.
+     * 
+     */
+    @Import(name="delayExecution")
+    private @Nullable Output<Boolean> delayExecution;
+
+    /**
+     * @return If true, the system will start the execution within the next 12 hours depending on available capacity.
+     * 
+     */
+    public Optional<Output<Boolean>> delayExecution() {
+        return Optional.ofNullable(this.delayExecution);
     }
 
     /**
@@ -114,6 +130,7 @@ public final class JobTemplateArgs extends com.pulumi.resources.ResourceArgs {
 
     private JobTemplateArgs(JobTemplateArgs $) {
         this.annotations = $.annotations;
+        this.delayExecution = $.delayExecution;
         this.labels = $.labels;
         this.parallelism = $.parallelism;
         this.taskCount = $.taskCount;
@@ -163,6 +180,27 @@ public final class JobTemplateArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param delayExecution If true, the system will start the execution within the next 12 hours depending on available capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delayExecution(@Nullable Output<Boolean> delayExecution) {
+            $.delayExecution = delayExecution;
+            return this;
+        }
+
+        /**
+         * @param delayExecution If true, the system will start the execution within the next 12 hours depending on available capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delayExecution(Boolean delayExecution) {
+            return delayExecution(Output.of(delayExecution));
         }
 
         /**

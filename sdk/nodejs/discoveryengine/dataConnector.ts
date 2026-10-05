@@ -83,10 +83,9 @@ import * as utilities from "../utilities";
  *     collectionId: "collection-id",
  *     collectionDisplayName: "Jira Federated",
  *     dataSource: "jira",
- *     dataSourceVersion: 3,
  *     params: {
  *         instance_uri: "https://example.atlassian.net",
- *         instance_id: "SECRET_MANAGER_RESOURCE_NAME",
+ *         instance_id: "12345678-1234-1234-1234-123456789abc",
  *         client_id: "SECRET_MANAGER_RESOURCE_NAME",
  *         client_secret: "SECRET_MANAGER_RESOURCE_NAME",
  *         refresh_token: "SECRET_MANAGER_RESOURCE_NAME",
@@ -128,7 +127,7 @@ import * as utilities from "../utilities";
  *     actionConfig: {
  *         actionParams: {
  *             instance_uri: "https://example.atlassian.net",
- *             instance_id: "SECRET_MANAGER_RESOURCE_NAME",
+ *             instance_id: "12345678-1234-1234-1234-123456789abc",
  *             client_id: "SECRET_MANAGER_RESOURCE_NAME",
  *             client_secret: "SECRET_MANAGER_RESOURCE_NAME",
  *             auth_type: "OAUTH",
@@ -145,6 +144,14 @@ import * as utilities from "../utilities";
  *             "update_comment",
  *             "upload_attachment",
  *         ],
+ *     },
+ *     tag: "sample-tag",
+ *     metadata: {
+ *         title: "Jira Connector",
+ *         description: "Jira Connector Description",
+ *         shortDescription: "Jira Connector Short Description",
+ *         author: "Google",
+ *         note: "Sample Note",
  *     },
  * });
  * ```
@@ -339,6 +346,11 @@ export class DataConnector extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * User-facing metadata for the connector.
+     * Structure is documented below.
+     */
+    declare public readonly metadata: pulumi.Output<outputs.discoveryengine.DataConnectorMetadata>;
+    /**
      * The full resource name of the Data Connector.
      * Format: `projects/*&#47;locations/*&#47;collections/*&#47;dataConnector`.
      */
@@ -391,6 +403,10 @@ export class DataConnector extends pulumi.CustomResource {
      */
     declare public readonly syncMode: pulumi.Output<string | undefined>;
     /**
+     * User-facing, version-independent label for this connector.
+     */
+    declare public readonly tag: pulumi.Output<string | undefined>;
+    /**
      * Timestamp when the DataConnector was updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -431,6 +447,7 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["lastSyncTime"] = state?.lastSyncTime;
             resourceInputs["latestPauseTime"] = state?.latestPauseTime;
             resourceInputs["location"] = state?.location;
+            resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
             resourceInputs["params"] = state?.params;
             resourceInputs["privateConnectivityProjectId"] = state?.privateConnectivityProjectId;
@@ -441,6 +458,7 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["staticIpAddresses"] = state?.staticIpAddresses;
             resourceInputs["staticIpEnabled"] = state?.staticIpEnabled;
             resourceInputs["syncMode"] = state?.syncMode;
+            resourceInputs["tag"] = state?.tag;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as DataConnectorArgs | undefined;
@@ -475,11 +493,13 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["jsonParams"] = args?.jsonParams;
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
             resourceInputs["location"] = args?.location;
+            resourceInputs["metadata"] = args?.metadata;
             resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["refreshInterval"] = args?.refreshInterval;
             resourceInputs["staticIpEnabled"] = args?.staticIpEnabled;
             resourceInputs["syncMode"] = args?.syncMode;
+            resourceInputs["tag"] = args?.tag;
             resourceInputs["actionState"] = undefined /*out*/;
             resourceInputs["blockingReasons"] = undefined /*out*/;
             resourceInputs["connectorType"] = undefined /*out*/;
@@ -649,6 +669,11 @@ export interface DataConnectorState {
      */
     location?: pulumi.Input<string | undefined>;
     /**
+     * User-facing metadata for the connector.
+     * Structure is documented below.
+     */
+    metadata?: pulumi.Input<inputs.discoveryengine.DataConnectorMetadata | undefined>;
+    /**
      * The full resource name of the Data Connector.
      * Format: `projects/*&#47;locations/*&#47;collections/*&#47;dataConnector`.
      */
@@ -700,6 +725,10 @@ export interface DataConnectorState {
      * 'PERIODIC', 'STREAMING'.
      */
     syncMode?: pulumi.Input<string | undefined>;
+    /**
+     * User-facing, version-independent label for this connector.
+     */
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the DataConnector was updated.
      */
@@ -812,6 +841,11 @@ export interface DataConnectorArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * User-facing metadata for the connector.
+     * Structure is documented below.
+     */
+    metadata?: pulumi.Input<inputs.discoveryengine.DataConnectorMetadata | undefined>;
+    /**
      * Params needed to access the source in the format of String-to-String (Key, Value) pairs.
      */
     params?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -837,4 +871,8 @@ export interface DataConnectorArgs {
      * 'PERIODIC', 'STREAMING'.
      */
     syncMode?: pulumi.Input<string | undefined>;
+    /**
+     * User-facing, version-independent label for this connector.
+     */
+    tag?: pulumi.Input<string | undefined>;
 }

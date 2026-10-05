@@ -47,6 +47,14 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _inputVariableMapping = value;
         }
 
+        /// <summary>
+        /// The name of the variable that contains the language code to be used for
+        /// the Dialogflow session. If unspecified, the default language code of the
+        /// Dialogflow agent will be used.
+        /// </summary>
+        [Input("languageCodeVariable")]
+        public Input<string>? LanguageCodeVariable { get; set; }
+
         [Input("outputVariableMapping")]
         private InputMap<string>? _outputVariableMapping;
 

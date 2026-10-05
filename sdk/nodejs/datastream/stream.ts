@@ -667,7 +667,7 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const postgres = new gcp.bigquery.Dataset("postgres", {
- *     datasetId: "postgres",
+ *     datasetId: "postgres_dataset",
  *     friendlyName: "postgres",
  *     description: "Database of postgres",
  *     location: "us-central1",
@@ -864,8 +864,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_21912",
- *     name: "tf-test_46731",
+ *     projectId: "tf-test_2234",
+ *     name: "tf-test_29225",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",

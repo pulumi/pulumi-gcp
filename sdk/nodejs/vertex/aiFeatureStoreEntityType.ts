@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     name: "terraform",
+ *     name: "terraform_entitytype",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
- *     name: "terraform",
+ *     name: "terraform_entitytype",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const featurestore = new gcp.vertex.AiFeatureStore("featurestore", {
- *     name: "terraform2",
+ *     name: "terraform_entitytype_2",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const entity = new gcp.vertex.AiFeatureStoreEntityType("entity", {
- *     name: "terraform2",
+ *     name: "terraform_entitytype_2",
  *     labels: {
  *         foo: "bar",
  *     },

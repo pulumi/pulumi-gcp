@@ -271,7 +271,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-bq-geojson", project))
+ *             .name(String.format("bq-geojson-%s", project))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());

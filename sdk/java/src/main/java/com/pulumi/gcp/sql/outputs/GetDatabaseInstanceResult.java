@@ -33,6 +33,7 @@ public final class GetDatabaseInstanceResult {
     private Boolean deletionProtection;
     private String dnsName;
     private List<GetDatabaseInstanceDnsName> dnsNames;
+    private Boolean encryptionConfidentialMode;
     private String encryptionKeyName;
     private Boolean enforceNewSqlNetworkArchitecture;
     private String finalBackupDescription;
@@ -95,6 +96,9 @@ public final class GetDatabaseInstanceResult {
     }
     public List<GetDatabaseInstanceDnsName> dnsNames() {
         return this.dnsNames;
+    }
+    public Boolean encryptionConfidentialMode() {
+        return this.encryptionConfidentialMode;
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
@@ -209,6 +213,7 @@ public final class GetDatabaseInstanceResult {
         private Boolean deletionProtection;
         private String dnsName;
         private List<GetDatabaseInstanceDnsName> dnsNames;
+        private Boolean encryptionConfidentialMode;
         private String encryptionKeyName;
         private Boolean enforceNewSqlNetworkArchitecture;
         private String finalBackupDescription;
@@ -251,6 +256,7 @@ public final class GetDatabaseInstanceResult {
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
+    	      this.encryptionConfidentialMode = defaults.encryptionConfidentialMode;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
     	      this.enforceNewSqlNetworkArchitecture = defaults.enforceNewSqlNetworkArchitecture;
     	      this.finalBackupDescription = defaults.finalBackupDescription;
@@ -363,6 +369,14 @@ public final class GetDatabaseInstanceResult {
         }
         public Builder dnsNames(GetDatabaseInstanceDnsName... dnsNames) {
             return dnsNames(List.of(dnsNames));
+        }
+        @CustomType.Setter
+        public Builder encryptionConfidentialMode(Boolean encryptionConfidentialMode) {
+            if (encryptionConfidentialMode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "encryptionConfidentialMode");
+            }
+            this.encryptionConfidentialMode = encryptionConfidentialMode;
+            return this;
         }
         @CustomType.Setter
         public Builder encryptionKeyName(String encryptionKeyName) {
@@ -637,6 +651,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;
+            _resultValue.encryptionConfidentialMode = encryptionConfidentialMode;
             _resultValue.encryptionKeyName = encryptionKeyName;
             _resultValue.enforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             _resultValue.finalBackupDescription = finalBackupDescription;

@@ -21,6 +21,7 @@ from .management_organization_security_health_analytics_custom_module import *
 from .management_project_security_health_analytics_custom_module import *
 from .mute_config import *
 from .notification_config import *
+from .notification_service_account import *
 from .organization_custom_module import *
 from .organization_scc_big_query_export import *
 from .project_custom_module import *

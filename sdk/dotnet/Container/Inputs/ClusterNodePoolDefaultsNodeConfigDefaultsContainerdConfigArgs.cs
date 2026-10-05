@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs>? _registryHosts;
 
         /// <summary>
-        /// Defines containerd registry host configuration. Each `RegistryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        /// Defines containerd registry host configuration. Each `RegistryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
         /// </summary>
         public InputList<Inputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs> RegistryHosts
         {

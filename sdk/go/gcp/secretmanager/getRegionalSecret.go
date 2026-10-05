@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,6 +78,7 @@ type LookupRegionalSecretResult struct {
 	PulumiLabels      map[string]string           `pulumi:"pulumiLabels"`
 	Rotations         []GetRegionalSecretRotation `pulumi:"rotations"`
 	SecretId          string                      `pulumi:"secretId"`
+	SecretType        string                      `pulumi:"secretType"`
 	Tags              map[string]string           `pulumi:"tags"`
 	Topics            []GetRegionalSecretTopic    `pulumi:"topics"`
 	Ttl               string                      `pulumi:"ttl"`
@@ -184,6 +185,10 @@ func (o LookupRegionalSecretResultOutput) Rotations() GetRegionalSecretRotationA
 
 func (o LookupRegionalSecretResultOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalSecretResult) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionalSecretResultOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionalSecretResult) string { return v.SecretType }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionalSecretResultOutput) Tags() pulumi.StringMapOutput {

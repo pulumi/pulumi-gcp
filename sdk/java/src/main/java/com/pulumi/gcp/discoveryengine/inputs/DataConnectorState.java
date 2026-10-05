@@ -10,6 +10,7 @@ import com.pulumi.gcp.discoveryengine.inputs.DataConnectorBapConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorDestinationConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorEntityArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataConnectorErrorArgs;
+import com.pulumi.gcp.discoveryengine.inputs.DataConnectorMetadataArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -476,6 +477,23 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * User-facing metadata for the connector.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<DataConnectorMetadataArgs> metadata;
+
+    /**
+     * @return User-facing metadata for the connector.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataConnectorMetadataArgs>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * The full resource name of the Data Connector.
      * Format: `projects/*&#47;locations/*&#47;collections/*&#47;dataConnector`.
      * 
@@ -650,6 +668,21 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * User-facing, version-independent label for this connector.
+     * 
+     */
+    @Import(name="tag")
+    private @Nullable Output<String> tag;
+
+    /**
+     * @return User-facing, version-independent label for this connector.
+     * 
+     */
+    public Optional<Output<String>> tag() {
+        return Optional.ofNullable(this.tag);
+    }
+
+    /**
      * Timestamp when the DataConnector was updated.
      * 
      */
@@ -690,6 +723,7 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
         this.lastSyncTime = $.lastSyncTime;
         this.latestPauseTime = $.latestPauseTime;
         this.location = $.location;
+        this.metadata = $.metadata;
         this.name = $.name;
         this.params = $.params;
         this.privateConnectivityProjectId = $.privateConnectivityProjectId;
@@ -700,6 +734,7 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
         this.staticIpAddresses = $.staticIpAddresses;
         this.staticIpEnabled = $.staticIpEnabled;
         this.syncMode = $.syncMode;
+        this.tag = $.tag;
         this.updateTime = $.updateTime;
     }
 
@@ -1368,6 +1403,29 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param metadata User-facing metadata for the connector.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<DataConnectorMetadataArgs> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata User-facing metadata for the connector.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(DataConnectorMetadataArgs metadata) {
+            return metadata(Output.of(metadata));
+        }
+
+        /**
          * @param name The full resource name of the Data Connector.
          * Format: `projects/*&#47;locations/*&#47;collections/*&#47;dataConnector`.
          * 
@@ -1609,6 +1667,27 @@ public final class DataConnectorState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder syncMode(String syncMode) {
             return syncMode(Output.of(syncMode));
+        }
+
+        /**
+         * @param tag User-facing, version-independent label for this connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tag(@Nullable Output<String> tag) {
+            $.tag = tag;
+            return this;
+        }
+
+        /**
+         * @param tag User-facing, version-independent label for this connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tag(String tag) {
+            return tag(Output.of(tag));
         }
 
         /**

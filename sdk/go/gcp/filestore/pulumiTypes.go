@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -636,8 +636,13 @@ func (o InstanceEffectiveReplicationReplicaArrayOutput) Index(i pulumi.IntInput)
 }
 
 type InstanceFileShares struct {
-	// File share capacity in GiB. This must be at least 1024 GiB
-	// for the standard tier, or 2560 GiB for the premium tier.
+	// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+	// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+	// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+	// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+	// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+	// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+	// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 	CapacityGb int `pulumi:"capacityGb"`
 	// The name of the fileshare (16 characters or less)
 	Name string `pulumi:"name"`
@@ -666,8 +671,13 @@ type InstanceFileSharesInput interface {
 }
 
 type InstanceFileSharesArgs struct {
-	// File share capacity in GiB. This must be at least 1024 GiB
-	// for the standard tier, or 2560 GiB for the premium tier.
+	// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+	// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+	// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+	// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+	// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+	// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+	// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
 	// The name of the fileshare (16 characters or less)
 	Name pulumi.StringInput `pulumi:"name"`
@@ -761,8 +771,13 @@ func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutputWithContext(ctx c
 	}).(InstanceFileSharesPtrOutput)
 }
 
-// File share capacity in GiB. This must be at least 1024 GiB
-// for the standard tier, or 2560 GiB for the premium tier.
+// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 func (o InstanceFileSharesOutput) CapacityGb() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceFileShares) int { return v.CapacityGb }).(pulumi.IntOutput)
 }
@@ -816,8 +831,13 @@ func (o InstanceFileSharesPtrOutput) Elem() InstanceFileSharesOutput {
 	}).(InstanceFileSharesOutput)
 }
 
-// File share capacity in GiB. This must be at least 1024 GiB
-// for the standard tier, or 2560 GiB for the premium tier.
+// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 func (o InstanceFileSharesPtrOutput) CapacityGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceFileShares) *int {
 		if v == nil {
@@ -2597,8 +2617,13 @@ func (o GetInstanceEffectiveReplicationReplicaArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetInstanceFileShare struct {
-	// File share capacity in GiB. This must be at least 1024 GiB
-	// for the standard tier, or 2560 GiB for the premium tier.
+	// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+	// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+	// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+	// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+	// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+	// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+	// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 	CapacityGb int `pulumi:"capacityGb"`
 	// The name of a Filestore instance.
 	//
@@ -2628,8 +2653,13 @@ type GetInstanceFileShareInput interface {
 }
 
 type GetInstanceFileShareArgs struct {
-	// File share capacity in GiB. This must be at least 1024 GiB
-	// for the standard tier, or 2560 GiB for the premium tier.
+	// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+	// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+	// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+	// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+	// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+	// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+	// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
 	// The name of a Filestore instance.
 	//
@@ -2698,8 +2728,13 @@ func (o GetInstanceFileShareOutput) ToGetInstanceFileShareOutputWithContext(ctx 
 	return o
 }
 
-// File share capacity in GiB. This must be at least 1024 GiB
-// for the standard tier, or 2560 GiB for the premium tier.
+// File share capacity in GiB. Acceptable instance capacities for each tier are as follows:
+// * BASIC_HDD: 1024-65433 GiB in 1 GiB increments or its multiples.
+// * BASIC_SSD: 2560-65433 GiB in 1 GiB increments or its multiples.
+// * HIGH_SCALE_SSD: 10240-102400 GiB in 2560 GiB increments or its multiples.
+// * ZONAL: 100-102400 GiB (100-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
+// * ENTERPRISE: 1024-10240 GiB in 256 GiB increments or its multiples.
+// * REGIONAL: 1024-102400 GiB (100-102400 GiB in supported regions): ((100 or 1024)-10239 GiB in 1 GiB increments or its multiples; 10240-102400 GiB in 2560 GiB increments or its multiples).
 func (o GetInstanceFileShareOutput) CapacityGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) int { return v.CapacityGb }).(pulumi.IntOutput)
 }

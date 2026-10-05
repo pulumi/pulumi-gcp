@@ -468,6 +468,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dnsNames: pulumi.Output<outputs.sql.DatabaseInstanceDnsName[]>;
     /**
+     * Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     */
+    declare public readonly encryptionConfidentialMode: pulumi.Output<boolean>;
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -631,6 +635,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["dnsName"] = state?.dnsName;
             resourceInputs["dnsNames"] = state?.dnsNames;
+            resourceInputs["encryptionConfidentialMode"] = state?.encryptionConfidentialMode;
             resourceInputs["encryptionKeyName"] = state?.encryptionKeyName;
             resourceInputs["enforceNewSqlNetworkArchitecture"] = state?.enforceNewSqlNetworkArchitecture;
             resourceInputs["finalBackupDescription"] = state?.finalBackupDescription;
@@ -670,6 +675,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["databaseVersion"] = args?.databaseVersion;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["encryptionConfidentialMode"] = args?.encryptionConfidentialMode;
             resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
             resourceInputs["enforceNewSqlNetworkArchitecture"] = args?.enforceNewSqlNetworkArchitecture;
             resourceInputs["finalBackupDescription"] = args?.finalBackupDescription;
@@ -773,6 +779,10 @@ export interface DatabaseInstanceState {
      * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
      */
     dnsNames?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceDnsName>[] | undefined>;
+    /**
+     * Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     */
+    encryptionConfidentialMode?: pulumi.Input<boolean | undefined>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
@@ -961,6 +971,10 @@ export interface DatabaseInstanceArgs {
      * > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+     */
+    encryptionConfidentialMode?: pulumi.Input<boolean | undefined>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.

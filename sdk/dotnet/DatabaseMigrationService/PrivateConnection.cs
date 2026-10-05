@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// {
     ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
     ///     {
-    ///         DisplayName = "dbms_pc",
+    ///         DisplayName = "dbms-pc",
     ///         Location = "us-west1",
     ///         PrivateConnectionId = "my-connection",
     ///         Labels = 
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// {
     ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
     ///     {
-    ///         DisplayName = "dbms_pc",
+    ///         DisplayName = "dbms-pc",
     ///         Location = "us-west1",
     ///         PrivateConnectionId = "my-connection",
     ///         Labels = 

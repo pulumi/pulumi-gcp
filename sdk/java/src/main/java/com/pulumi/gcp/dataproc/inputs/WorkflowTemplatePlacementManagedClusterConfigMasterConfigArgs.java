@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -22,14 +23,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
     public static final WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs();
 
     /**
-     * The Compute Engine accelerator configuration for these instances.
+     * The Compute Engine accelerator configuration for these instances. Structure is documented below.
      * 
      */
     @Import(name="accelerators")
     private @Nullable Output<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs>> accelerators;
 
     /**
-     * @return The Compute Engine accelerator configuration for these instances.
+     * @return The Compute Engine accelerator configuration for these instances. Structure is documented below.
      * 
      */
     public Optional<Output<List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs>>> accelerators() {
@@ -37,14 +38,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
     }
 
     /**
-     * Disk option config settings.
+     * Disk option config settings. Structure is documented below.
      * 
      */
     @Import(name="diskConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs> diskConfig;
 
     /**
-     * @return Disk option config settings.
+     * @return Disk option config settings. Structure is documented below.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs>> diskConfig() {
@@ -64,6 +65,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
      */
     public Optional<Output<String>> image() {
         return Optional.ofNullable(this.image);
+    }
+
+    /**
+     * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+     * 
+     */
+    @Import(name="instanceFlexibilityPolicy")
+    private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy;
+
+    /**
+     * @return Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs>> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
 
     /**
@@ -177,6 +193,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         this.accelerators = $.accelerators;
         this.diskConfig = $.diskConfig;
         this.image = $.image;
+        this.instanceFlexibilityPolicy = $.instanceFlexibilityPolicy;
         this.instanceNames = $.instanceNames;
         this.isPreemptible = $.isPreemptible;
         this.machineType = $.machineType;
@@ -205,7 +222,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator configuration for these instances.
+         * @param accelerators The Compute Engine accelerator configuration for these instances. Structure is documented below.
          * 
          * @return builder
          * 
@@ -216,7 +233,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator configuration for these instances.
+         * @param accelerators The Compute Engine accelerator configuration for these instances. Structure is documented below.
          * 
          * @return builder
          * 
@@ -226,7 +243,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator configuration for these instances.
+         * @param accelerators The Compute Engine accelerator configuration for these instances. Structure is documented below.
          * 
          * @return builder
          * 
@@ -236,7 +253,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param diskConfig Disk option config settings.
+         * @param diskConfig Disk option config settings. Structure is documented below.
          * 
          * @return builder
          * 
@@ -247,7 +264,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
         }
 
         /**
-         * @param diskConfig Disk option config settings.
+         * @param diskConfig Disk option config settings. Structure is documented below.
          * 
          * @return builder
          * 
@@ -275,6 +292,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs
          */
         public Builder image(String image) {
             return image(Output.of(image));
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(@Nullable Output<WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy) {
+            $.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
+            return this;
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `masterConfig`, `workerConfig`, and `secondaryWorkerConfig` (provisioning models are supported exclusively on `secondaryWorkerConfig`). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs instanceFlexibilityPolicy) {
+            return instanceFlexibilityPolicy(Output.of(instanceFlexibilityPolicy));
         }
 
         /**

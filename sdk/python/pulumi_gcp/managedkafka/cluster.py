@@ -212,6 +212,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 bootstrap_address: pulumi.Input[Optional[_builtins.str]] = None,
                  broker_capacity_config: pulumi.Input[Optional['ClusterBrokerCapacityConfigArgs']] = None,
                  capacity_config: pulumi.Input[Optional['ClusterCapacityConfigArgs']] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -223,6 +224,7 @@ class _ClusterState:
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_cluster_details: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPublicClusterDetailArgs']]]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  rebalance_config: pulumi.Input[Optional['ClusterRebalanceConfigArgs']] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -231,6 +233,7 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
 
+        :param pulumi.Input[_builtins.str] bootstrap_address: The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
         :param pulumi.Input['ClusterBrokerCapacityConfigArgs'] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
                Structure is documented below.
         :param pulumi.Input['ClusterCapacityConfigArgs'] capacity_config: A capacity configuration of a Kafka cluster.
@@ -253,6 +256,8 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPublicClusterDetailArgs']]] public_cluster_details: Details of the public cluster feature for the Kafka cluster.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input['ClusterRebalanceConfigArgs'] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
@@ -262,6 +267,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the cluster was last updated.
         """
+        if bootstrap_address is not None:
+            pulumi.set(__self__, "bootstrap_address", bootstrap_address)
         if broker_capacity_config is not None:
             pulumi.set(__self__, "broker_capacity_config", broker_capacity_config)
         if capacity_config is not None:
@@ -284,6 +291,8 @@ class _ClusterState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if public_cluster_details is not None:
+            pulumi.set(__self__, "public_cluster_details", public_cluster_details)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if rebalance_config is not None:
@@ -294,6 +303,18 @@ class _ClusterState:
             pulumi.set(__self__, "tls_config", tls_config)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="bootstrapAddress")
+    def bootstrap_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+        """
+        return pulumi.get(self, "bootstrap_address")
+
+    @bootstrap_address.setter
+    def bootstrap_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bootstrap_address", value)
 
     @_builtins.property
     @pulumi.getter(name="brokerCapacityConfig")
@@ -437,6 +458,19 @@ class _ClusterState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicClusterDetails")
+    def public_cluster_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPublicClusterDetailArgs']]]]:
+        """
+        Details of the public cluster feature for the Kafka cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_cluster_details")
+
+    @public_cluster_details.setter
+    def public_cluster_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPublicClusterDetailArgs']]]]):
+        pulumi.set(self, "public_cluster_details", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
@@ -616,6 +650,34 @@ class Cluster(pulumi.CustomResource):
             project=project.project_id,
             service="managedkafka.googleapis.com")
         ```
+        ### Managedkafka Cluster Public
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.managedkafka.Cluster("example",
+            cluster_id="my-cluster",
+            location="us-central1",
+            capacity_config={
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
+            },
+            gcp_config={
+                "access_config": {
+                    "network_configs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                    "public_cluster_config": {
+                        "allowed_source_ip_ranges": ["192.168.1.0/24"],
+                    },
+                },
+            },
+            rebalance_config={
+                "mode": "AUTO_REBALANCE_ON_SCALE_UP",
+            })
+        ```
 
         ## Import
 
@@ -763,6 +825,34 @@ class Cluster(pulumi.CustomResource):
             project=project.project_id,
             service="managedkafka.googleapis.com")
         ```
+        ### Managedkafka Cluster Public
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example = gcp.managedkafka.Cluster("example",
+            cluster_id="my-cluster",
+            location="us-central1",
+            capacity_config={
+                "vcpu_count": "3",
+                "memory_bytes": "3221225472",
+            },
+            gcp_config={
+                "access_config": {
+                    "network_configs": [{
+                        "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+                    }],
+                    "public_cluster_config": {
+                        "allowed_source_ip_ranges": ["192.168.1.0/24"],
+                    },
+                },
+            },
+            rebalance_config={
+                "mode": "AUTO_REBALANCE_ON_SCALE_UP",
+            })
+        ```
 
         ## Import
 
@@ -833,9 +923,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["rebalance_config"] = rebalance_config
             __props__.__dict__["tls_config"] = tls_config
+            __props__.__dict__["bootstrap_address"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["public_cluster_details"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
@@ -851,6 +943,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bootstrap_address: pulumi.Input[Optional[_builtins.str]] = None,
             broker_capacity_config: pulumi.Input[Optional[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']]] = None,
             capacity_config: pulumi.Input[Optional[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -862,6 +955,7 @@ class Cluster(pulumi.CustomResource):
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            public_cluster_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPublicClusterDetailArgs', 'ClusterPublicClusterDetailArgsDict', 'outputs.ClusterPublicClusterDetail']]]]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rebalance_config: pulumi.Input[Optional[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -874,6 +968,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] bootstrap_address: The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
         :param pulumi.Input[Union['ClusterBrokerCapacityConfigArgs', 'ClusterBrokerCapacityConfigArgsDict', 'outputs.ClusterBrokerCapacityConfig']] broker_capacity_config: Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterCapacityConfigArgs', 'ClusterCapacityConfigArgsDict', 'outputs.ClusterCapacityConfig']] capacity_config: A capacity configuration of a Kafka cluster.
@@ -896,6 +991,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPublicClusterDetailArgs', 'ClusterPublicClusterDetailArgsDict', 'outputs.ClusterPublicClusterDetail']]]] public_cluster_details: Details of the public cluster feature for the Kafka cluster.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict', 'outputs.ClusterRebalanceConfig']] rebalance_config: Defines rebalancing behavior of a Kafka cluster.
@@ -909,6 +1006,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["bootstrap_address"] = bootstrap_address
         __props__.__dict__["broker_capacity_config"] = broker_capacity_config
         __props__.__dict__["capacity_config"] = capacity_config
         __props__.__dict__["cluster_id"] = cluster_id
@@ -920,12 +1018,21 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["public_cluster_details"] = public_cluster_details
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rebalance_config"] = rebalance_config
         __props__.__dict__["state"] = state
         __props__.__dict__["tls_config"] = tls_config
         __props__.__dict__["update_time"] = update_time
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="bootstrapAddress")
+    def bootstrap_address(self) -> pulumi.Output[_builtins.str]:
+        """
+        The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+        """
+        return pulumi.get(self, "bootstrap_address")
 
     @_builtins.property
     @pulumi.getter(name="brokerCapacityConfig")
@@ -1025,6 +1132,15 @@ class Cluster(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="publicClusterDetails")
+    def public_cluster_details(self) -> pulumi.Output[Sequence['outputs.ClusterPublicClusterDetail']]:
+        """
+        Details of the public cluster feature for the Kafka cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_cluster_details")
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")

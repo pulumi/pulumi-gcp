@@ -213,7 +213,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     name: "template-region-service",
+ *     name: "region-service-template",
  *     machineType: "e2-medium",
  *     networkInterfaces: [{
  *         network: defaultNetwork.id,

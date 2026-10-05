@@ -8,7 +8,9 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetApiAuthentication;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetServiceDirectoryConfig;
 import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetTlsConfig;
+import com.pulumi.gcp.ces.outputs.ToolsetMcpToolsetToolOverride;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,6 +58,12 @@ public final class ToolsetMcpToolset {
      * 
      */
     private @Nullable ToolsetMcpToolsetTlsConfig tlsConfig;
+    /**
+     * @return A list of tool overrides for the toolset.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ToolsetMcpToolsetToolOverride> toolOverrides;
 
     private ToolsetMcpToolset() {}
     /**
@@ -108,6 +116,14 @@ public final class ToolsetMcpToolset {
     public Optional<ToolsetMcpToolsetTlsConfig> tlsConfig() {
         return Optional.ofNullable(this.tlsConfig);
     }
+    /**
+     * @return A list of tool overrides for the toolset.
+     * Structure is documented below.
+     * 
+     */
+    public List<ToolsetMcpToolsetToolOverride> toolOverrides() {
+        return this.toolOverrides == null ? List.of() : this.toolOverrides;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -123,6 +139,7 @@ public final class ToolsetMcpToolset {
         private String serverAddress;
         private @Nullable ToolsetMcpToolsetServiceDirectoryConfig serviceDirectoryConfig;
         private @Nullable ToolsetMcpToolsetTlsConfig tlsConfig;
+        private @Nullable List<ToolsetMcpToolsetToolOverride> toolOverrides;
         public Builder() {}
         public Builder(ToolsetMcpToolset defaults) {
     	      Objects.requireNonNull(defaults);
@@ -131,6 +148,7 @@ public final class ToolsetMcpToolset {
     	      this.serverAddress = defaults.serverAddress;
     	      this.serviceDirectoryConfig = defaults.serviceDirectoryConfig;
     	      this.tlsConfig = defaults.tlsConfig;
+    	      this.toolOverrides = defaults.toolOverrides;
         }
 
         @CustomType.Setter
@@ -165,6 +183,15 @@ public final class ToolsetMcpToolset {
             this.tlsConfig = tlsConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder toolOverrides(@Nullable List<ToolsetMcpToolsetToolOverride> toolOverrides) {
+
+            this.toolOverrides = toolOverrides;
+            return this;
+        }
+        public Builder toolOverrides(ToolsetMcpToolsetToolOverride... toolOverrides) {
+            return toolOverrides(List.of(toolOverrides));
+        }
         public ToolsetMcpToolset build() {
             final var _resultValue = new ToolsetMcpToolset();
             _resultValue.apiAuthentication = apiAuthentication;
@@ -172,6 +199,7 @@ public final class ToolsetMcpToolset {
             _resultValue.serverAddress = serverAddress;
             _resultValue.serviceDirectoryConfig = serviceDirectoryConfig;
             _resultValue.tlsConfig = tlsConfig;
+            _resultValue.toolOverrides = toolOverrides;
             return _resultValue;
         }
     }

@@ -27,6 +27,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// If true, the system will start the execution within the next 12 hours depending on available capacity.
+        /// </summary>
+        [Input("delayExecution")]
+        public Input<bool>? DelayExecution { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

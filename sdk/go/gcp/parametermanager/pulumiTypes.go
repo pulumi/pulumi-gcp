@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -423,6 +423,10 @@ type GetParametersParameter struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The time at which the parameter was updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -467,6 +471,10 @@ type GetParametersParameterArgs struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The time at which the parameter was updated.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
@@ -582,6 +590,13 @@ func (o GetParametersParameterOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o GetParametersParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetParametersParameter) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o GetParametersParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetParametersParameter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The time at which the parameter was updated.
@@ -882,6 +897,10 @@ type GetRegionalParametersParameter struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The time at which the regional parameter was updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -928,6 +947,10 @@ type GetRegionalParametersParameterArgs struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The time at which the regional parameter was updated.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
@@ -1050,6 +1073,13 @@ func (o GetRegionalParametersParameterOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o GetRegionalParametersParameterOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRegionalParametersParameter) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o GetRegionalParametersParameterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The time at which the regional parameter was updated.

@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleSessionTemplatesJupyter = new gcp.dataproc.SessionTemplate("example_session_templates_jupyter", {
- *     name: "projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
- *     location: "us-central1",
+ *     name: "projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+ *     location: "us-east1",
  *     labels: {
  *         session_template_test: "terraform",
  *     },
@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * });
  * const ms = new gcp.dataproc.MetastoreService("ms", {
  *     serviceId: "jupyter-session-template",
- *     location: "us-central1",
+ *     location: "us-east1",
  *     port: 9080,
  *     tier: "DEVELOPER",
  *     maintenanceWindow: {
@@ -85,13 +85,13 @@ import * as utilities from "../utilities";
  *     },
  *     networkConfig: {
  *         consumers: [{
- *             subnetwork: "projects/my-project-name/regions/us-central1/subnetworks/default",
+ *             subnetwork: "projects/my-project-name/regions/us-east1/subnetworks/default",
  *         }],
  *     },
  * });
  * const basic = new gcp.dataproc.Cluster("basic", {
  *     name: "jupyter-session-template",
- *     region: "us-central1",
+ *     region: "us-east1",
  *     clusterConfig: {
  *         softwareConfig: {
  *             overrideProperties: {
@@ -107,8 +107,9 @@ import * as utilities from "../utilities";
  *         },
  *         masterConfig: {
  *             numInstances: 1,
- *             machineType: "e2-standard-2",
+ *             machineType: "n4-standard-2",
  *             diskConfig: {
+ *                 bootDiskType: "hyperdisk-balanced",
  *                 bootDiskSizeGb: 35,
  *             },
  *         },
@@ -118,8 +119,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const dataprocSessionTemplatesJupyterFull = new gcp.dataproc.SessionTemplate("dataproc_session_templates_jupyter_full", {
- *     name: "projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
- *     location: "us-central1",
+ *     name: "projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+ *     location: "us-east1",
  *     labels: {
  *         session_template_test: "terraform",
  *     },
@@ -165,8 +166,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleSessionTemplatesSparkConnect = new gcp.dataproc.SessionTemplate("example_session_templates_spark_connect", {
- *     name: "projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template",
- *     location: "us-central1",
+ *     name: "projects/my-project-name/locations/us-east1/sessionTemplates/sc-session-template",
+ *     location: "us-east1",
  *     labels: {
  *         session_template_test: "terraform",
  *     },

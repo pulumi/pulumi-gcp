@@ -16,14 +16,14 @@ public final class ClusterNodePoolNodeConfigWindowsNodeConfigArgs extends com.pu
     public static final ClusterNodePoolNodeConfigWindowsNodeConfigArgs Empty = new ClusterNodePoolNodeConfigWindowsNodeConfigArgs();
 
     /**
-     * The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+     * OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
      * 
      */
     @Import(name="osversion")
     private @Nullable Output<String> osversion;
 
     /**
-     * @return The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+     * @return OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
      * 
      */
     public Optional<Output<String>> osversion() {
@@ -55,7 +55,7 @@ public final class ClusterNodePoolNodeConfigWindowsNodeConfigArgs extends com.pu
         }
 
         /**
-         * @param osversion The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+         * @param osversion OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterNodePoolNodeConfigWindowsNodeConfigArgs extends com.pu
         }
 
         /**
-         * @param osversion The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
+         * @param osversion OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of `OS_VERSION_UNSPECIFIED`, `OS_VERSION_LTSC2019`, or `OS_VERSION_LTSC2022`.
          * 
          * @return builder
          * 

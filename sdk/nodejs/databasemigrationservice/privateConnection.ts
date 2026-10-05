@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
- *     displayName: "dbms_pc",
+ *     displayName: "dbms-pc",
  *     location: "us-west1",
  *     privateConnectionId: "my-connection",
  *     labels: {
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
- *     displayName: "dbms_pc",
+ *     displayName: "dbms-pc",
  *     location: "us-west1",
  *     privateConnectionId: "my-connection",
  *     labels: {

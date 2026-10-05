@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs>? _accelerators;
 
         /// <summary>
-        /// The Compute Engine accelerator configuration for these instances.
+        /// The Compute Engine accelerator configuration for these instances. Structure is documented below.
         /// </summary>
         public InputList<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs> Accelerators
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Disk option config settings.
+        /// Disk option config settings. Structure is documented below.
         /// </summary>
         [Input("diskConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs>? DiskConfig { get; set; }
@@ -35,6 +35,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models. Supported on `MasterConfig`, `WorkerConfig`, and `SecondaryWorkerConfig` (provisioning models are supported exclusively on `SecondaryWorkerConfig`). Structure is documented below.
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
 
         [Input("instanceNames")]
         private InputList<string>? _instanceNames;

@@ -728,7 +728,13 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-west1-a")
+            location="us-east1-b",
+            gce_setup={
+                "machine_type": "n4-standard-2",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
+            })
         ```
         ### Workbench Instance Basic Container
 
@@ -738,8 +744,12 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-west1-a",
+            location="us-east1-b",
             gce_setup={
+                "machine_type": "n4-standard-2",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
                 "container_image": {
                     "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
                     "tag": "latest",
@@ -754,13 +764,13 @@ class Instance(pulumi.CustomResource):
 
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
-            zone="us-central1-a",
+            zone="us-east1-b",
             specific_reservation={
                 "count": 1,
                 "instance_properties": {
-                    "machine_type": "n1-standard-1",
+                    "machine_type": "g2-standard-4",
                     "guest_accelerators": [{
-                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_type": "nvidia-l4",
                         "accelerator_count": 1,
                     }],
                 },
@@ -768,13 +778,19 @@ class Instance(pulumi.CustomResource):
             specific_reservation_required=False)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
-                "machine_type": "n1-standard-1",
+                "machine_type": "g2-standard-4",
                 "accelerator_configs": [{
-                    "type": "NVIDIA_TESLA_T4",
+                    "type": "NVIDIA_L4",
                     "core_count": "1",
                 }],
+                "boot_disk": {
+                    "disk_type": "PD_SSD",
+                },
+                "data_disks": {
+                    "disk_type": "PD_SSD",
+                },
                 "vm_image": {
                     "project": "cloud-notebooks-managed",
                     "family": "workbench-instances",
@@ -793,9 +809,12 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
-                "machine_type": "e2-standard-4",
+                "machine_type": "n4-standard-4",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
                 "shielded_instance_config": {
                     "enable_secure_boot": False,
                     "enable_vtpm": False,
@@ -825,23 +844,25 @@ class Instance(pulumi.CustomResource):
         my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
             name="wbi-test-default",
             network=my_network.id,
-            region="us-central1",
+            region="us-east1",
             ip_cidr_range="10.0.1.0/24")
-        static = gcp.compute.Address("static", name="wbi-test-default")
+        static = gcp.compute.Address("static",
+            name="wbi-test-default",
+            region="us-east1")
         act_as_permission = gcp.serviceaccount.IAMMember("act_as_permission",
             service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
             role="roles/iam.serviceAccountUser",
             member="user:example@example.com")
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
-            zone="us-central1-a",
+            zone="us-east1-b",
             specific_reservation={
                 "count": 1,
                 "instance_properties": {
-                    "machine_type": "n1-standard-4",
-                    "min_cpu_platform": "Intel Broadwell",
+                    "machine_type": "g2-standard-4",
+                    "min_cpu_platform": "Intel Cascade Lake",
                     "guest_accelerators": [{
-                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_type": "nvidia-l4",
                         "accelerator_count": 1,
                     }],
                 },
@@ -849,7 +870,7 @@ class Instance(pulumi.CustomResource):
             specific_reservation_required=True)
         my_policy = gcp.compute.ResourcePolicy("my_policy",
             name="wbi-policy",
-            region="us-central1",
+            region="us-east1",
             snapshot_schedule_policy={
                 "schedule": {
                     "daily_schedule": {
@@ -860,13 +881,13 @@ class Instance(pulumi.CustomResource):
             })
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             enable_deletion_protection=False,
             gce_setup={
-                "machine_type": "n1-standard-4",
-                "min_cpu_platform": "Intel Broadwell",
+                "machine_type": "g2-standard-4",
+                "min_cpu_platform": "Intel Cascade Lake",
                 "accelerator_configs": [{
-                    "type": "NVIDIA_TESLA_T4",
+                    "type": "NVIDIA_L4",
                     "core_count": "1",
                 }],
                 "shielded_instance_config": {
@@ -939,7 +960,7 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
                 "machine_type": "n2d-standard-2",
                 "shielded_instance_config": {
@@ -967,9 +988,12 @@ class Instance(pulumi.CustomResource):
             members=["user:example@example.com"])
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
-                "machine_type": "e2-standard-4",
+                "machine_type": "n4-standard-4",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
                 "metadata": {
                     "terraform": "true",
                 },
@@ -1053,7 +1077,13 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-west1-a")
+            location="us-east1-b",
+            gce_setup={
+                "machine_type": "n4-standard-2",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
+            })
         ```
         ### Workbench Instance Basic Container
 
@@ -1063,8 +1093,12 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-west1-a",
+            location="us-east1-b",
             gce_setup={
+                "machine_type": "n4-standard-2",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
                 "container_image": {
                     "repository": "us-docker.pkg.dev/deeplearning-platform-release/gcr.io/base-cu113.py310",
                     "tag": "latest",
@@ -1079,13 +1113,13 @@ class Instance(pulumi.CustomResource):
 
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
-            zone="us-central1-a",
+            zone="us-east1-b",
             specific_reservation={
                 "count": 1,
                 "instance_properties": {
-                    "machine_type": "n1-standard-1",
+                    "machine_type": "g2-standard-4",
                     "guest_accelerators": [{
-                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_type": "nvidia-l4",
                         "accelerator_count": 1,
                     }],
                 },
@@ -1093,13 +1127,19 @@ class Instance(pulumi.CustomResource):
             specific_reservation_required=False)
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
-                "machine_type": "n1-standard-1",
+                "machine_type": "g2-standard-4",
                 "accelerator_configs": [{
-                    "type": "NVIDIA_TESLA_T4",
+                    "type": "NVIDIA_L4",
                     "core_count": "1",
                 }],
+                "boot_disk": {
+                    "disk_type": "PD_SSD",
+                },
+                "data_disks": {
+                    "disk_type": "PD_SSD",
+                },
                 "vm_image": {
                     "project": "cloud-notebooks-managed",
                     "family": "workbench-instances",
@@ -1118,9 +1158,12 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
-                "machine_type": "e2-standard-4",
+                "machine_type": "n4-standard-4",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
                 "shielded_instance_config": {
                     "enable_secure_boot": False,
                     "enable_vtpm": False,
@@ -1150,23 +1193,25 @@ class Instance(pulumi.CustomResource):
         my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
             name="wbi-test-default",
             network=my_network.id,
-            region="us-central1",
+            region="us-east1",
             ip_cidr_range="10.0.1.0/24")
-        static = gcp.compute.Address("static", name="wbi-test-default")
+        static = gcp.compute.Address("static",
+            name="wbi-test-default",
+            region="us-east1")
         act_as_permission = gcp.serviceaccount.IAMMember("act_as_permission",
             service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
             role="roles/iam.serviceAccountUser",
             member="user:example@example.com")
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
-            zone="us-central1-a",
+            zone="us-east1-b",
             specific_reservation={
                 "count": 1,
                 "instance_properties": {
-                    "machine_type": "n1-standard-4",
-                    "min_cpu_platform": "Intel Broadwell",
+                    "machine_type": "g2-standard-4",
+                    "min_cpu_platform": "Intel Cascade Lake",
                     "guest_accelerators": [{
-                        "accelerator_type": "nvidia-tesla-t4",
+                        "accelerator_type": "nvidia-l4",
                         "accelerator_count": 1,
                     }],
                 },
@@ -1174,7 +1219,7 @@ class Instance(pulumi.CustomResource):
             specific_reservation_required=True)
         my_policy = gcp.compute.ResourcePolicy("my_policy",
             name="wbi-policy",
-            region="us-central1",
+            region="us-east1",
             snapshot_schedule_policy={
                 "schedule": {
                     "daily_schedule": {
@@ -1185,13 +1230,13 @@ class Instance(pulumi.CustomResource):
             })
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             enable_deletion_protection=False,
             gce_setup={
-                "machine_type": "n1-standard-4",
-                "min_cpu_platform": "Intel Broadwell",
+                "machine_type": "g2-standard-4",
+                "min_cpu_platform": "Intel Cascade Lake",
                 "accelerator_configs": [{
-                    "type": "NVIDIA_TESLA_T4",
+                    "type": "NVIDIA_L4",
                     "core_count": "1",
                 }],
                 "shielded_instance_config": {
@@ -1264,7 +1309,7 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
                 "machine_type": "n2d-standard-2",
                 "shielded_instance_config": {
@@ -1292,9 +1337,12 @@ class Instance(pulumi.CustomResource):
             members=["user:example@example.com"])
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
-            location="us-central1-a",
+            location="us-east1-b",
             gce_setup={
-                "machine_type": "e2-standard-4",
+                "machine_type": "n4-standard-4",
+                "boot_disk": {
+                    "disk_type": "HYPERDISK_BALANCED",
+                },
                 "metadata": {
                     "terraform": "true",
                 },

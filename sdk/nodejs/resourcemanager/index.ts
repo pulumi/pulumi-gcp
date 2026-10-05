@@ -10,6 +10,11 @@ export type Capability = import("./capability").Capability;
 export const Capability: typeof import("./capability").Capability = null as any;
 utilities.lazyLoad(exports, ["Capability"], () => require("./capability"));
 
+export { CapabilityConfigArgs, CapabilityConfigState } from "./capabilityConfig";
+export type CapabilityConfig = import("./capabilityConfig").CapabilityConfig;
+export const CapabilityConfig: typeof import("./capabilityConfig").CapabilityConfig = null as any;
+utilities.lazyLoad(exports, ["CapabilityConfig"], () => require("./capabilityConfig"));
+
 export { LienArgs, LienState } from "./lien";
 export type Lien = import("./lien").Lien;
 export const Lien: typeof import("./lien").Lien = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "gcp:resourcemanager/capability:Capability":
                 return new Capability(name, <any>undefined, { urn })
+            case "gcp:resourcemanager/capabilityConfig:CapabilityConfig":
+                return new CapabilityConfig(name, <any>undefined, { urn })
             case "gcp:resourcemanager/lien:Lien":
                 return new Lien(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "resourcemanager/capability", _module)
+pulumi.runtime.registerResourceModule("gcp", "resourcemanager/capabilityConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "resourcemanager/lien", _module)

@@ -20,6 +20,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? Network;
         /// <summary>
+        /// The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+        /// </summary>
+        public readonly string? StackType;
+        /// <summary>
         /// The name or SelfLink of the Google Compute Engine
         /// subnetwork in which the cluster's instances are launched.
         /// </summary>
@@ -29,9 +33,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig(
             string? network,
 
+            string? stackType,
+
             string? subnetwork)
         {
             Network = network;
+            StackType = stackType;
             Subnetwork = subnetwork;
         }
     }

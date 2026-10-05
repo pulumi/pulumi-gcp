@@ -36,6 +36,34 @@ namespace Pulumi.Gcp.Compute.Inputs
             }
         }
 
+        [Input("rawKeyWo")]
+        private Input<string>? _rawKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Specifies a 256-bit customer-supplied encryption key, encoded in
+        /// RFC 4648 base64 to either encrypt or decrypt this resource.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RawKey` or `RawKeyWo` can only be set.
+        /// </summary>
+        public Input<string>? RawKeyWo
+        {
+            get => _rawKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rawKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `RawKeyWo` write-only. Increment this value when an update to `RawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("rawKeyWoVersion")]
+        public Input<string>? RawKeyWoVersion { get; set; }
+
         [Input("rsaEncryptedKey")]
         private Input<string>? _rsaEncryptedKey;
 
@@ -54,6 +82,35 @@ namespace Pulumi.Gcp.Compute.Inputs
                 _rsaEncryptedKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("rsaEncryptedKeyWo")]
+        private Input<string>? _rsaEncryptedKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+        /// customer-supplied encryption key to either encrypt or decrypt
+        /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RsaEncryptedKey` or `RsaEncryptedKeyWo` can only be set.
+        /// </summary>
+        public Input<string>? RsaEncryptedKeyWo
+        {
+            get => _rsaEncryptedKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rsaEncryptedKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `RsaEncryptedKeyWo` write-only. Increment this value when an update to `RsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("rsaEncryptedKeyWoVersion")]
+        public Input<string>? RsaEncryptedKeyWoVersion { get; set; }
 
         /// <summary>
         /// (Output)

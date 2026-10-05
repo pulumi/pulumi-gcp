@@ -12,6 +12,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVpcAccess;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -123,6 +124,11 @@ public final class GetServiceTemplate {
      * 
      */
     private List<GetServiceTemplateVpcAccess> vpcAccesses;
+    /**
+     * @return Workload identity settings for this Revision.
+     * 
+     */
+    private List<GetServiceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
 
     private GetServiceTemplate() {}
     /**
@@ -263,6 +269,13 @@ public final class GetServiceTemplate {
     public List<GetServiceTemplateVpcAccess> vpcAccesses() {
         return this.vpcAccesses;
     }
+    /**
+     * @return Workload identity settings for this Revision.
+     * 
+     */
+    public List<GetServiceTemplateWorkloadIdentityConfig> workloadIdentityConfigs() {
+        return this.workloadIdentityConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -291,6 +304,7 @@ public final class GetServiceTemplate {
         private String timeout;
         private List<GetServiceTemplateVolume> volumes;
         private List<GetServiceTemplateVpcAccess> vpcAccesses;
+        private List<GetServiceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
         public Builder() {}
         public Builder(GetServiceTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -312,6 +326,7 @@ public final class GetServiceTemplate {
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccesses = defaults.vpcAccesses;
+    	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
         }
 
         @CustomType.Setter
@@ -479,6 +494,17 @@ public final class GetServiceTemplate {
         public Builder vpcAccesses(GetServiceTemplateVpcAccess... vpcAccesses) {
             return vpcAccesses(List.of(vpcAccesses));
         }
+        @CustomType.Setter
+        public Builder workloadIdentityConfigs(List<GetServiceTemplateWorkloadIdentityConfig> workloadIdentityConfigs) {
+            if (workloadIdentityConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "workloadIdentityConfigs");
+            }
+            this.workloadIdentityConfigs = workloadIdentityConfigs;
+            return this;
+        }
+        public Builder workloadIdentityConfigs(GetServiceTemplateWorkloadIdentityConfig... workloadIdentityConfigs) {
+            return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
+        }
         public GetServiceTemplate build() {
             final var _resultValue = new GetServiceTemplate();
             _resultValue.annotations = annotations;
@@ -499,6 +525,7 @@ public final class GetServiceTemplate {
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;
             _resultValue.vpcAccesses = vpcAccesses;
+            _resultValue.workloadIdentityConfigs = workloadIdentityConfigs;
             return _resultValue;
         }
     }

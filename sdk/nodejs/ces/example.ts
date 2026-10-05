@@ -110,6 +110,7 @@ import * as utilities from "../utilities";
  *                     data: std.base64encode({
  *                         input: "This is some fake image binary data.",
  *                     }).then(invoke => invoke.result),
+ *                     altText: "alt text",
  *                 },
  *             },
  *             {

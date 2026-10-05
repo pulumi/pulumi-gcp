@@ -8,6 +8,7 @@ import com.pulumi.gcp.ces.outputs.AppLoggingSettingsAudioRecordingConfig;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsBigqueryExportSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsCloudLoggingSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsConversationLoggingSettings;
+import com.pulumi.gcp.ces.outputs.AppLoggingSettingsMetricAnalysisSettings;
 import com.pulumi.gcp.ces.outputs.AppLoggingSettingsRedactionConfig;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,6 +40,13 @@ public final class AppLoggingSettings {
      * 
      */
     private @Nullable AppLoggingSettingsConversationLoggingSettings conversationLoggingSettings;
+    /**
+     * @return Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AppLoggingSettingsMetricAnalysisSettings metricAnalysisSettings;
     /**
      * @return Configuration to instruct how sensitive data should be handled.
      * Structure is documented below.
@@ -80,6 +88,15 @@ public final class AppLoggingSettings {
         return Optional.ofNullable(this.conversationLoggingSettings);
     }
     /**
+     * @return Settings to describe the conversation data collection behaviors for the LLM
+     * analysis pipeline for the app.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AppLoggingSettingsMetricAnalysisSettings> metricAnalysisSettings() {
+        return Optional.ofNullable(this.metricAnalysisSettings);
+    }
+    /**
      * @return Configuration to instruct how sensitive data should be handled.
      * Structure is documented below.
      * 
@@ -101,6 +118,7 @@ public final class AppLoggingSettings {
         private @Nullable AppLoggingSettingsBigqueryExportSettings bigqueryExportSettings;
         private @Nullable AppLoggingSettingsCloudLoggingSettings cloudLoggingSettings;
         private @Nullable AppLoggingSettingsConversationLoggingSettings conversationLoggingSettings;
+        private @Nullable AppLoggingSettingsMetricAnalysisSettings metricAnalysisSettings;
         private @Nullable AppLoggingSettingsRedactionConfig redactionConfig;
         public Builder() {}
         public Builder(AppLoggingSettings defaults) {
@@ -109,6 +127,7 @@ public final class AppLoggingSettings {
     	      this.bigqueryExportSettings = defaults.bigqueryExportSettings;
     	      this.cloudLoggingSettings = defaults.cloudLoggingSettings;
     	      this.conversationLoggingSettings = defaults.conversationLoggingSettings;
+    	      this.metricAnalysisSettings = defaults.metricAnalysisSettings;
     	      this.redactionConfig = defaults.redactionConfig;
         }
 
@@ -137,6 +156,12 @@ public final class AppLoggingSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder metricAnalysisSettings(@Nullable AppLoggingSettingsMetricAnalysisSettings metricAnalysisSettings) {
+
+            this.metricAnalysisSettings = metricAnalysisSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redactionConfig(@Nullable AppLoggingSettingsRedactionConfig redactionConfig) {
 
             this.redactionConfig = redactionConfig;
@@ -148,6 +173,7 @@ public final class AppLoggingSettings {
             _resultValue.bigqueryExportSettings = bigqueryExportSettings;
             _resultValue.cloudLoggingSettings = cloudLoggingSettings;
             _resultValue.conversationLoggingSettings = conversationLoggingSettings;
+            _resultValue.metricAnalysisSettings = metricAnalysisSettings;
             _resultValue.redactionConfig = redactionConfig;
             return _resultValue;
         }

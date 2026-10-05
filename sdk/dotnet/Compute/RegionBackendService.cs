@@ -302,7 +302,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var instanceTemplate = new Gcp.Compute.InstanceTemplate("instance_template", new()
     ///     {
-    ///         Name = "template-region-service",
+    ///         Name = "region-service-template",
     ///         MachineType = "e2-medium",
     ///         NetworkInterfaces = new[]
     ///         {

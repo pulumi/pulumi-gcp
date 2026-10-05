@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -51,8 +51,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -100,6 +100,16 @@ type LookupClusterArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Whether to skip refreshing the GKE
+	// cluster's node pool list during the data source read. Setting this to `true`
+	// prevents the provider from querying the GKE API for node pools, which resolves
+	// long read times on clusters with a large number of node pools. When enabled,
+	// the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+	// the resource documentation
+	// for details.
+	//
+	// ***
+	SkipNodePoolRefresh *bool `pulumi:"skipNodePoolRefresh"`
 }
 
 // A collection of values returned by getCluster.
@@ -200,7 +210,7 @@ type LookupClusterResult struct {
 	SelfLink                                 string                                              `pulumi:"selfLink"`
 	ServiceExternalIpsConfigs                []GetClusterServiceExternalIpsConfig                `pulumi:"serviceExternalIpsConfigs"`
 	ServicesIpv4Cidr                         string                                              `pulumi:"servicesIpv4Cidr"`
-	SkipNodePoolRefresh                      bool                                                `pulumi:"skipNodePoolRefresh"`
+	SkipNodePoolRefresh                      *bool                                               `pulumi:"skipNodePoolRefresh"`
 	Subnetwork                               string                                              `pulumi:"subnetwork"`
 	TpuConfigs                               []GetClusterTpuConfig                               `pulumi:"tpuConfigs"`
 	TpuIpv4CidrBlock                         string                                              `pulumi:"tpuIpv4CidrBlock"`
@@ -226,6 +236,16 @@ type LookupClusterOutputArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Whether to skip refreshing the GKE
+	// cluster's node pool list during the data source read. Setting this to `true`
+	// prevents the provider from querying the GKE API for node pools, which resolves
+	// long read times on clusters with a large number of node pools. When enabled,
+	// the `nodePool` attribute will be empty (`[]`), even if node pools exist. See
+	// the resource documentation
+	// for details.
+	//
+	// ***
+	SkipNodePoolRefresh pulumi.BoolPtrInput `pulumi:"skipNodePoolRefresh"`
 }
 
 func (LookupClusterOutputArgs) ElementType() reflect.Type {
@@ -640,8 +660,8 @@ func (o LookupClusterResultOutput) ServicesIpv4Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
 }
 
-func (o LookupClusterResultOutput) SkipNodePoolRefresh() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClusterResult) bool { return v.SkipNodePoolRefresh }).(pulumi.BoolOutput)
+func (o LookupClusterResultOutput) SkipNodePoolRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *bool { return v.SkipNodePoolRefresh }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupClusterResultOutput) Subnetwork() pulumi.StringOutput {

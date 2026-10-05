@@ -50,6 +50,48 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+     * 
+     */
+    @Import(name="rawKeyWo")
+    private @Nullable Output<String> rawKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> rawKeyWo() {
+        return Optional.ofNullable(this.rawKeyWo);
+    }
+
+    /**
+     * Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="rawKeyWoVersion")
+    private @Nullable Output<String> rawKeyWoVersion;
+
+    /**
+     * @return Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> rawKeyWoVersion() {
+        return Optional.ofNullable(this.rawKeyWoVersion);
+    }
+
+    /**
      * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
      * customer-supplied encryption key to either encrypt or decrypt
      * this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -68,6 +110,50 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
      */
     public Optional<Output<String>> rsaEncryptedKey() {
         return Optional.ofNullable(this.rsaEncryptedKey);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+     * 
+     */
+    @Import(name="rsaEncryptedKeyWo")
+    private @Nullable Output<String> rsaEncryptedKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> rsaEncryptedKeyWo() {
+        return Optional.ofNullable(this.rsaEncryptedKeyWo);
+    }
+
+    /**
+     * Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="rsaEncryptedKeyWoVersion")
+    private @Nullable Output<String> rsaEncryptedKeyWoVersion;
+
+    /**
+     * @return Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> rsaEncryptedKeyWoVersion() {
+        return Optional.ofNullable(this.rsaEncryptedKeyWoVersion);
     }
 
     /**
@@ -94,7 +180,11 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
     private RegionDiskDiskEncryptionKeyArgs(RegionDiskDiskEncryptionKeyArgs $) {
         this.kmsKeyName = $.kmsKeyName;
         this.rawKey = $.rawKey;
+        this.rawKeyWo = $.rawKeyWo;
+        this.rawKeyWoVersion = $.rawKeyWoVersion;
         this.rsaEncryptedKey = $.rsaEncryptedKey;
+        this.rsaEncryptedKeyWo = $.rsaEncryptedKeyWo;
+        this.rsaEncryptedKeyWoVersion = $.rsaEncryptedKeyWoVersion;
         this.sha256 = $.sha256;
     }
 
@@ -163,6 +253,60 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param rawKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawKeyWo(@Nullable Output<String> rawKeyWo) {
+            $.rawKeyWo = rawKeyWo;
+            return this;
+        }
+
+        /**
+         * @param rawKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `rawKey` or `rawKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawKeyWo(String rawKeyWo) {
+            return rawKeyWo(Output.of(rawKeyWo));
+        }
+
+        /**
+         * @param rawKeyWoVersion Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawKeyWoVersion(@Nullable Output<String> rawKeyWoVersion) {
+            $.rawKeyWoVersion = rawKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param rawKeyWoVersion Triggers update of `rawKeyWo` write-only. Increment this value when an update to `rawKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rawKeyWoVersion(String rawKeyWoVersion) {
+            return rawKeyWoVersion(Output.of(rawKeyWoVersion));
+        }
+
+        /**
          * @param rsaEncryptedKey Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
          * customer-supplied encryption key to either encrypt or decrypt
          * this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -187,6 +331,62 @@ public final class RegionDiskDiskEncryptionKeyArgs extends com.pulumi.resources.
          */
         public Builder rsaEncryptedKey(String rsaEncryptedKey) {
             return rsaEncryptedKey(Output.of(rsaEncryptedKey));
+        }
+
+        /**
+         * @param rsaEncryptedKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKeyWo(@Nullable Output<String> rsaEncryptedKeyWo) {
+            $.rsaEncryptedKeyWo = rsaEncryptedKeyWo;
+            return this;
+        }
+
+        /**
+         * @param rsaEncryptedKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `rsaEncryptedKey` or `rsaEncryptedKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKeyWo(String rsaEncryptedKeyWo) {
+            return rsaEncryptedKeyWo(Output.of(rsaEncryptedKeyWo));
+        }
+
+        /**
+         * @param rsaEncryptedKeyWoVersion Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKeyWoVersion(@Nullable Output<String> rsaEncryptedKeyWoVersion) {
+            $.rsaEncryptedKeyWoVersion = rsaEncryptedKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param rsaEncryptedKeyWoVersion Triggers update of `rsaEncryptedKeyWo` write-only. Increment this value when an update to `rsaEncryptedKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsaEncryptedKeyWoVersion(String rsaEncryptedKeyWoVersion) {
+            return rsaEncryptedKeyWoVersion(Output.of(rsaEncryptedKeyWoVersion));
         }
 
         /**

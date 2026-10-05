@@ -140,7 +140,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-bq-geojson`,
+ *     name: `bq-geojson-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });

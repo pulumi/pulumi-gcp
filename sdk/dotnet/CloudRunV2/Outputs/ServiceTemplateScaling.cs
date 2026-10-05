@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class ServiceTemplateScaling
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         /// </summary>
         public readonly double? ConcurrencyUtilization;
         /// <summary>
-        /// (Optional, Beta)
         /// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         /// </summary>
         public readonly double? CpuUtilization;

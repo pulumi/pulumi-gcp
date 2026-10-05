@@ -144,22 +144,19 @@ __all__ = [
 class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
     api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The value of the API key. The API key must have
-    `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-    Note that this API is sometimes called the *Generative Language API* in
-    the Google Cloud console.
-    Do **not** add this Gemini API key into your app's codebase
+    (Optional, Deprecated)
+    The value of the API key. Firebase AI Logic no longer requires API key
+    material; values provided here may be silently ignored on input.
     **Note**: This property is sensitive and will not be displayed in the plan.
+
+    > **Warning:** `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
     """
     api_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
-    The value of the API key. The API key must have
-    `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-    Note that this API is sometimes called the *Generative Language API* in
-    the Google Cloud console.
-    Do **not** add this Gemini API key into your app's codebase
+    The value of the API key. Firebase AI Logic no longer requires API key
+    material; values provided here may be silently ignored on input.
     **Note**: This property is write-only and will not be read from the API.
 
     > **Note:** One of `api_key` or `api_key_wo` can only be set.
@@ -176,24 +173,24 @@ class AiLogicConfigGenerativeLanguageConfigArgs:
                  api_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  api_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] api_key: The value of the API key. The API key must have
-               `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-               Note that this API is sometimes called the *Generative Language API* in
-               the Google Cloud console.
-               Do **not** add this Gemini API key into your app's codebase
+        :param pulumi.Input[_builtins.str] api_key: (Optional, Deprecated)
+               The value of the API key. Firebase AI Logic no longer requires API key
+               material; values provided here may be silently ignored on input.
                **Note**: This property is sensitive and will not be displayed in the plan.
+               
+               > **Warning:** `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         :param pulumi.Input[_builtins.str] api_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                (Optional, Write-Only)
-               The value of the API key. The API key must have
-               `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-               Note that this API is sometimes called the *Generative Language API* in
-               the Google Cloud console.
-               Do **not** add this Gemini API key into your app's codebase
+               The value of the API key. Firebase AI Logic no longer requires API key
+               material; values provided here may be silently ignored on input.
                **Note**: This property is write-only and will not be read from the API.
                
                > **Note:** One of `api_key` or `api_key_wo` can only be set.
         :param pulumi.Input[_builtins.str] api_key_wo_version: Triggers update of `api_key_wo` write-only. Increment this value when an update to `api_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
+        if api_key is not None:
+            warnings.warn("""`generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""", DeprecationWarning)
+            pulumi.log.warn("""api_key is deprecated: `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
         if api_key_wo is not None:
@@ -203,14 +200,15 @@ class AiLogicConfigGenerativeLanguageConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
+    @_utilities.deprecated("""`generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.""")
     def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value of the API key. The API key must have
-        `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-        Note that this API is sometimes called the *Generative Language API* in
-        the Google Cloud console.
-        Do **not** add this Gemini API key into your app's codebase
+        (Optional, Deprecated)
+        The value of the API key. Firebase AI Logic no longer requires API key
+        material; values provided here may be silently ignored on input.
         **Note**: This property is sensitive and will not be displayed in the plan.
+
+        > **Warning:** `generative_language_config.api_key` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
         """
         return pulumi.get(self, "api_key")
 
@@ -224,11 +222,8 @@ class AiLogicConfigGenerativeLanguageConfigArgs:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
-        The value of the API key. The API key must have
-        `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
-        Note that this API is sometimes called the *Generative Language API* in
-        the Google Cloud console.
-        Do **not** add this Gemini API key into your app's codebase
+        The value of the API key. Firebase AI Logic no longer requires API key
+        material; values provided here may be silently ignored on input.
         **Note**: This property is write-only and will not be read from the API.
 
         > **Note:** One of `api_key` or `api_key_wo` can only be set.

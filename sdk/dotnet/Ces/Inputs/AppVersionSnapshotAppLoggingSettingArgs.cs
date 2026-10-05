@@ -68,6 +68,21 @@ namespace Pulumi.Gcp.Ces.Inputs
             set => _conversationLoggingSettings = value;
         }
 
+        [Input("metricAnalysisSettings")]
+        private InputList<Inputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs>? _metricAnalysisSettings;
+
+        /// <summary>
+        /// (Output)
+        /// Settings to describe the conversation data collection behaviors for the LLM
+        /// analysis pipeline for the app.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs> MetricAnalysisSettings
+        {
+            get => _metricAnalysisSettings ?? (_metricAnalysisSettings = new InputList<Inputs.AppVersionSnapshotAppLoggingSettingMetricAnalysisSettingArgs>());
+            set => _metricAnalysisSettings = value;
+        }
+
         [Input("redactionConfigs")]
         private InputList<Inputs.AppVersionSnapshotAppLoggingSettingRedactionConfigArgs>? _redactionConfigs;
 

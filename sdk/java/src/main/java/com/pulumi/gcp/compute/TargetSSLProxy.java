@@ -86,11 +86,12 @@ import javax.annotation.Nullable;
  *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
  *             .protocol("SSL")
+ *             .loadBalancingScheme("EXTERNAL")
  *             .healthChecks(defaultHealthCheck.id())
  *             .build());
  * 
  *         var defaultCertificateMap = new CertificateMap("defaultCertificateMap", CertificateMapArgs.builder()
- *             .name("certificate-map-test")
+ *             .name("certificate-map")
  *             .description("My acceptance test certificate map")
  *             .build());
  * 

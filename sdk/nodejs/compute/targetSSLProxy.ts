@@ -44,10 +44,11 @@ import * as utilities from "../utilities";
  * const defaultBackendService = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
  *     protocol: "SSL",
+ *     loadBalancingScheme: "EXTERNAL",
  *     healthChecks: defaultHealthCheck.id,
  * });
  * const defaultCertificateMap = new gcp.certificatemanager.CertificateMap("default", {
- *     name: "certificate-map-test",
+ *     name: "certificate-map",
  *     description: "My acceptance test certificate map",
  * });
  * const _default = new gcp.compute.TargetSSLProxy("default", {

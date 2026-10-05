@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Ray Cluster monitoring is enabled.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

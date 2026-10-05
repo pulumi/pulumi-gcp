@@ -5,12 +5,20 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
+    /**
+     * @return (Output)
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
+     * 
+     */
+    private @Nullable List<String> scopes;
     /**
      * @return (Output)
      * The email address of the service account used for authenticatation. CES
@@ -25,6 +33,15 @@ public final class ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
     private @Nullable String serviceAccount;
 
     private ToolMcpToolApiAuthenticationServiceAccountAuthConfig() {}
+    /**
+     * @return (Output)
+     * The OAuth scopes to grant. If not specified, the default scope
+     * `https://www.googleapis.com/auth/cloud-platform` is used.
+     * 
+     */
+    public List<String> scopes() {
+        return this.scopes == null ? List.of() : this.scopes;
+    }
     /**
      * @return (Output)
      * The email address of the service account used for authenticatation. CES
@@ -49,13 +66,24 @@ public final class ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> scopes;
         private @Nullable String serviceAccount;
         public Builder() {}
         public Builder(ToolMcpToolApiAuthenticationServiceAccountAuthConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.scopes = defaults.scopes;
     	      this.serviceAccount = defaults.serviceAccount;
         }
 
+        @CustomType.Setter
+        public Builder scopes(@Nullable List<String> scopes) {
+
+            this.scopes = scopes;
+            return this;
+        }
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
+        }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
 
@@ -64,6 +92,7 @@ public final class ToolMcpToolApiAuthenticationServiceAccountAuthConfig {
         }
         public ToolMcpToolApiAuthenticationServiceAccountAuthConfig build() {
             final var _resultValue = new ToolMcpToolApiAuthenticationServiceAccountAuthConfig();
+            _resultValue.scopes = scopes;
             _resultValue.serviceAccount = serviceAccount;
             return _resultValue;
         }

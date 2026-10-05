@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const hc = new gcp.compute.RegionHealthCheck("hc", {
- *     name: "check-website-backend",
+ *     name: "website-backend-check",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     region: "us-central1",
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const hc = new gcp.compute.HealthCheck("hc", {
- *     name: "check-website-backend",
+ *     name: "website-backend-check",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
@@ -136,7 +136,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const hc = new gcp.compute.HealthCheck("hc", {
- *     name: "check-website-backend",
+ *     name: "website-backend-check",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {
@@ -192,7 +192,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     name: "template-website-backend",
+ *     name: "website-backend-template",
  *     machineType: "e2-medium",
  *     networkInterfaces: [{
  *         network: defaultNetwork.id,
@@ -363,7 +363,7 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  * });
  * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     name: "template-website-backend",
+ *     name: "website-backend-template",
  *     machineType: "e2-medium",
  *     networkInterfaces: [{
  *         network: defaultNetwork.id,
@@ -724,7 +724,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const hc = new gcp.compute.HealthCheck("hc", {
- *     name: "check-ilb-ipv6-backend",
+ *     name: "ilb-ipv6-backend-check",
  *     checkIntervalSec: 1,
  *     timeoutSec: 1,
  *     tcpHealthCheck: {

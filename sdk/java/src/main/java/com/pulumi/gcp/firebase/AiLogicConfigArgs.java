@@ -44,24 +44,40 @@ public final class AiLogicConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * Configuration for using the Gemini Developer API via Firebase AI Logic.
-     * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-     * API key is stored in this configuration *on the server* so that you do
-     * **not** add your Gemini API key directly into your app&#39;s codebase.
+     * Firebase AI Logic now uses a Google-managed service account to authenticate
+     * requests to the Gemini Developer API and no longer requires an API key.
+     * Values provided here may be silently ignored on input, and may be omitted in
+     * responses.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
+     * @deprecated
+     * `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
      */
+    @Deprecated /* `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
     @Import(name="generativeLanguageConfig")
     private @Nullable Output<AiLogicConfigGenerativeLanguageConfigArgs> generativeLanguageConfig;
 
     /**
-     * @return Configuration for using the Gemini Developer API via Firebase AI Logic.
-     * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-     * API key is stored in this configuration *on the server* so that you do
-     * **not** add your Gemini API key directly into your app&#39;s codebase.
+     * @return (Optional, Deprecated)
+     * Configuration for using the Gemini Developer API via Firebase AI Logic.
+     * Firebase AI Logic now uses a Google-managed service account to authenticate
+     * requests to the Gemini Developer API and no longer requires an API key.
+     * Values provided here may be silently ignored on input, and may be omitted in
+     * responses.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
+     * @deprecated
+     * `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+     * 
      */
+    @Deprecated /* `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
     public Optional<Output<AiLogicConfigGenerativeLanguageConfigArgs>> generativeLanguageConfig() {
         return Optional.ofNullable(this.generativeLanguageConfig);
     }
@@ -197,30 +213,46 @@ public final class AiLogicConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param generativeLanguageConfig Configuration for using the Gemini Developer API via Firebase AI Logic.
-         * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-         * API key is stored in this configuration *on the server* so that you do
-         * **not** add your Gemini API key directly into your app&#39;s codebase.
+         * @param generativeLanguageConfig (Optional, Deprecated)
+         * Configuration for using the Gemini Developer API via Firebase AI Logic.
+         * Firebase AI Logic now uses a Google-managed service account to authenticate
+         * requests to the Gemini Developer API and no longer requires an API key.
+         * Values provided here may be silently ignored on input, and may be omitted in
+         * responses.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+         * 
          */
+        @Deprecated /* `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
         public Builder generativeLanguageConfig(@Nullable Output<AiLogicConfigGenerativeLanguageConfigArgs> generativeLanguageConfig) {
             $.generativeLanguageConfig = generativeLanguageConfig;
             return this;
         }
 
         /**
-         * @param generativeLanguageConfig Configuration for using the Gemini Developer API via Firebase AI Logic.
-         * When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-         * API key is stored in this configuration *on the server* so that you do
-         * **not** add your Gemini API key directly into your app&#39;s codebase.
+         * @param generativeLanguageConfig (Optional, Deprecated)
+         * Configuration for using the Gemini Developer API via Firebase AI Logic.
+         * Firebase AI Logic now uses a Google-managed service account to authenticate
+         * requests to the Gemini Developer API and no longer requires an API key.
+         * Values provided here may be silently ignored on input, and may be omitted in
+         * responses.
          * Structure is documented below.
+         * 
+         * &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
+         * 
          */
+        @Deprecated /* `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key. */
         public Builder generativeLanguageConfig(AiLogicConfigGenerativeLanguageConfigArgs generativeLanguageConfig) {
             return generativeLanguageConfig(Output.of(generativeLanguageConfig));
         }

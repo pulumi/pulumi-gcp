@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,10 +32,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -122,10 +122,10 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -251,8 +251,11 @@ type User struct {
 	PasswordWoVersion pulumi.StringPtrOutput `pulumi:"passwordWoVersion"`
 	// The database role name of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
-	// The type of this user.
-	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+	// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+	// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+	// AlloyDB clusters support IAM group authentication. See
+	// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
 	UserType pulumi.StringOutput `pulumi:"userType"`
 }
 
@@ -334,8 +337,11 @@ type userState struct {
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The database role name of the user.
 	UserId *string `pulumi:"userId"`
-	// The type of this user.
-	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+	// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+	// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+	// AlloyDB clusters support IAM group authentication. See
+	// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
 	UserType *string `pulumi:"userType"`
 }
 
@@ -368,8 +374,11 @@ type UserState struct {
 	PasswordWoVersion pulumi.StringPtrInput
 	// The database role name of the user.
 	UserId pulumi.StringPtrInput
-	// The type of this user.
-	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+	// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+	// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+	// AlloyDB clusters support IAM group authentication. See
+	// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
 	UserType pulumi.StringPtrInput
 }
 
@@ -404,8 +413,11 @@ type userArgs struct {
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The database role name of the user.
 	UserId string `pulumi:"userId"`
-	// The type of this user.
-	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+	// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+	// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+	// AlloyDB clusters support IAM group authentication. See
+	// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
 	UserType string `pulumi:"userType"`
 }
 
@@ -437,8 +449,11 @@ type UserArgs struct {
 	PasswordWoVersion pulumi.StringPtrInput
 	// The database role name of the user.
 	UserId pulumi.StringInput
-	// The type of this user.
-	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+	// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+	// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+	// AlloyDB clusters support IAM group authentication. See
+	// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
 	UserType pulumi.StringInput
 }
 
@@ -581,8 +596,11 @@ func (o UserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
-// The type of this user.
-// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+// AlloyDB clusters support IAM group authentication. See
+// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
 func (o UserOutput) UserType() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
 }

@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// ) The IP stack type of the additional node interface. Possible values are `IPV4`, `IPV4_IPV6` and `IPV6`. If unset, the value is inferred from the additional subnetwork.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
+
+        /// <summary>
         /// Name of the subnetwork where the additional interface belongs.
         /// </summary>
         [Input("subnetwork")]

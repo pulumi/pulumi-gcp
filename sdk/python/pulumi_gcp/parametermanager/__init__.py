@@ -18,5 +18,6 @@ from .parameter import *
 from .parameter_version import *
 from .regional_parameter import *
 from .regional_parameter_version import *
+from .template import *
 from ._inputs import *
 from . import outputs

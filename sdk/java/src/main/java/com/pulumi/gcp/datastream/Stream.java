@@ -1053,7 +1053,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var postgres = new Dataset("postgres", DatasetArgs.builder()
- *             .datasetId("postgres")
+ *             .datasetId("postgres_dataset")
  *             .friendlyName("postgres")
  *             .description("Database of postgres")
  *             .location("us-central1")
@@ -1379,8 +1379,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
- *             .projectId("tf-test_21912")
- *             .name("tf-test_46731")
+ *             .projectId("tf-test_2234")
+ *             .name("tf-test_29225")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

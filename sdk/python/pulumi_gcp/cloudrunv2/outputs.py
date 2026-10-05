@@ -93,6 +93,7 @@ __all__ = [
     'ServiceTemplateVolumeSecretItem',
     'ServiceTemplateVpcAccess',
     'ServiceTemplateVpcAccessNetworkInterface',
+    'ServiceTemplateWorkloadIdentityConfig',
     'ServiceTerminalCondition',
     'ServiceTraffic',
     'ServiceTrafficStatus',
@@ -111,13 +112,13 @@ __all__ = [
     'WorkerPoolTemplateContainerLivenessProbe',
     'WorkerPoolTemplateContainerLivenessProbeGrpc',
     'WorkerPoolTemplateContainerLivenessProbeHttpGet',
-    'WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders',
+    'WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader',
     'WorkerPoolTemplateContainerLivenessProbeTcpSocket',
     'WorkerPoolTemplateContainerResources',
     'WorkerPoolTemplateContainerStartupProbe',
     'WorkerPoolTemplateContainerStartupProbeGrpc',
     'WorkerPoolTemplateContainerStartupProbeHttpGet',
-    'WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders',
+    'WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader',
     'WorkerPoolTemplateContainerStartupProbeTcpSocket',
     'WorkerPoolTemplateContainerVolumeMount',
     'WorkerPoolTemplateNodeSelector',
@@ -204,6 +205,7 @@ __all__ = [
     'GetServiceTemplateVolumeSecretItemResult',
     'GetServiceTemplateVpcAccessResult',
     'GetServiceTemplateVpcAccessNetworkInterfaceResult',
+    'GetServiceTemplateWorkloadIdentityConfigResult',
     'GetServiceTerminalConditionResult',
     'GetServiceTrafficResult',
     'GetServiceTrafficStatusResult',
@@ -575,7 +577,9 @@ class JobTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "taskCount":
+        if key == "delayExecution":
+            suggest = "delay_execution"
+        elif key == "taskCount":
             suggest = "task_count"
 
         if suggest:
@@ -592,6 +596,7 @@ class JobTemplate(dict):
     def __init__(__self__, *,
                  template: 'outputs.JobTemplateTemplate',
                  annotations: Optional[Mapping[str, _builtins.str]] = None,
+                 delay_execution: Optional[_builtins.bool] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  parallelism: Optional[_builtins.int] = None,
                  task_count: Optional[_builtins.int] = None):
@@ -602,6 +607,7 @@ class JobTemplate(dict):
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param _builtins.bool delay_execution: If true, the system will start the execution within the next 12 hours depending on available capacity.
         :param Mapping[str, _builtins.str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
                or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
                https://cloud.google.com/run/docs/configuring/labels.
@@ -613,6 +619,8 @@ class JobTemplate(dict):
         pulumi.set(__self__, "template", template)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if delay_execution is not None:
+            pulumi.set(__self__, "delay_execution", delay_execution)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if parallelism is not None:
@@ -639,6 +647,14 @@ class JobTemplate(dict):
         This field follows Kubernetes annotations' namespacing, limits, and rules.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="delayExecution")
+    def delay_execution(self) -> Optional[_builtins.bool]:
+        """
+        If true, the system will start the execution within the next 12 hours depending on available capacity.
+        """
+        return pulumi.get(self, "delay_execution")
 
     @_builtins.property
     @pulumi.getter
@@ -844,6 +860,8 @@ class JobTemplateTemplateContainer(dict):
         suggest = None
         if key == "dependsOns":
             suggest = "depends_ons"
+        elif key == "sandboxLauncher":
+            suggest = "sandbox_launcher"
         elif key == "startupProbe":
             suggest = "startup_probe"
         elif key == "volumeMounts":
@@ -871,6 +889,7 @@ class JobTemplateTemplateContainer(dict):
                  name: Optional[_builtins.str] = None,
                  ports: Optional[Sequence['outputs.JobTemplateTemplateContainerPort']] = None,
                  resources: Optional['outputs.JobTemplateTemplateContainerResources'] = None,
+                 sandbox_launcher: Optional[_builtins.bool] = None,
                  startup_probe: Optional['outputs.JobTemplateTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.JobTemplateTemplateContainerVolumeMount']] = None,
                  working_dir: Optional[_builtins.str] = None):
@@ -887,6 +906,7 @@ class JobTemplateTemplateContainer(dict):
                Structure is documented below.
         :param 'JobTemplateTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param 'JobTemplateTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container.
                All other probes are disabled if a startup probe is provided, until it
                succeeds. Container will not be added to service endpoints if the probe fails.
@@ -910,6 +930,8 @@ class JobTemplateTemplateContainer(dict):
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -984,6 +1006,14 @@ class JobTemplateTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> Optional[_builtins.bool]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
@@ -2795,6 +2825,8 @@ class ServiceTemplate(dict):
             suggest = "session_affinity"
         elif key == "vpcAccess":
             suggest = "vpc_access"
+        elif key == "workloadIdentityConfig":
+            suggest = "workload_identity_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceTemplate. Access the value via the '{suggest}' property getter instead.")
@@ -2825,7 +2857,8 @@ class ServiceTemplate(dict):
                  session_affinity: Optional[_builtins.bool] = None,
                  timeout: Optional[_builtins.str] = None,
                  volumes: Optional[Sequence['outputs.ServiceTemplateVolume']] = None,
-                 vpc_access: Optional['outputs.ServiceTemplateVpcAccess'] = None):
+                 vpc_access: Optional['outputs.ServiceTemplateVpcAccess'] = None,
+                 workload_identity_config: Optional['outputs.ServiceTemplateWorkloadIdentityConfig'] = None):
         """
         :param Mapping[str, _builtins.str] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -2861,6 +2894,8 @@ class ServiceTemplate(dict):
         :param Sequence['ServiceTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
         :param 'ServiceTemplateVpcAccessArgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+               Structure is documented below.
+        :param 'ServiceTemplateWorkloadIdentityConfigArgs' workload_identity_config: Workload identity settings for this Revision.
                Structure is documented below.
         """
         if annotations is not None:
@@ -2899,6 +2934,8 @@ class ServiceTemplate(dict):
             pulumi.set(__self__, "volumes", volumes)
         if vpc_access is not None:
             pulumi.set(__self__, "vpc_access", vpc_access)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
     @_builtins.property
     @pulumi.getter
@@ -3060,6 +3097,15 @@ class ServiceTemplate(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "vpc_access")
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> Optional['outputs.ServiceTemplateWorkloadIdentityConfig']:
+        """
+        Workload identity settings for this Revision.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workload_identity_config")
 
 
 @pulumi.output_type
@@ -4782,10 +4828,8 @@ class ServiceTemplateScaling(dict):
                  max_instance_count: Optional[_builtins.int] = None,
                  min_instance_count: Optional[_builtins.int] = None):
         """
-        :param _builtins.float concurrency_utilization: (Optional, Beta)
-               Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
-        :param _builtins.float cpu_utilization: (Optional, Beta)
-               Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        :param _builtins.float concurrency_utilization: Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        :param _builtins.float cpu_utilization: Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         :param _builtins.int max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param _builtins.int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
@@ -4802,7 +4846,6 @@ class ServiceTemplateScaling(dict):
     @pulumi.getter(name="concurrencyUtilization")
     def concurrency_utilization(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         """
         return pulumi.get(self, "concurrency_utilization")
@@ -4811,7 +4854,6 @@ class ServiceTemplateScaling(dict):
     @pulumi.getter(name="cpuUtilization")
     def cpu_utilization(self) -> Optional[_builtins.float]:
         """
-        (Optional, Beta)
         Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         """
         return pulumi.get(self, "cpu_utilization")
@@ -5367,6 +5409,70 @@ class ServiceTemplateVpcAccessNetworkInterface(dict):
         Network tags applied to this Cloud Run service.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ServiceTemplateWorkloadIdentityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityCertificateEnabled":
+            suggest = "identity_certificate_enabled"
+        elif key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateWorkloadIdentityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateWorkloadIdentityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateWorkloadIdentityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identity: Optional[_builtins.str] = None,
+                 identity_certificate_enabled: Optional[_builtins.bool] = None,
+                 identity_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str identity: The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        :param _builtins.bool identity_certificate_enabled: Controls whether an instance receives a MWLID certificate.
+        :param _builtins.str identity_type: The type of identity to use.
+               Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+        """
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if identity_certificate_enabled is not None:
+            pulumi.set(__self__, "identity_certificate_enabled", identity_certificate_enabled)
+        if identity_type is not None:
+            pulumi.set(__self__, "identity_type", identity_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> Optional[_builtins.str]:
+        """
+        The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="identityCertificateEnabled")
+    def identity_certificate_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Controls whether an instance receives a MWLID certificate.
+        """
+        return pulumi.get(self, "identity_certificate_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="identityType")
+    def identity_type(self) -> Optional[_builtins.str]:
+        """
+        The type of identity to use.
+        Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+        """
+        return pulumi.get(self, "identity_type")
 
 
 @pulumi.output_type
@@ -6316,6 +6422,8 @@ class WorkerPoolTemplateContainer(dict):
             suggest = "depends_ons"
         elif key == "livenessProbe":
             suggest = "liveness_probe"
+        elif key == "sandboxLauncher":
+            suggest = "sandbox_launcher"
         elif key == "startupProbe":
             suggest = "startup_probe"
         elif key == "volumeMounts":
@@ -6343,6 +6451,7 @@ class WorkerPoolTemplateContainer(dict):
                  liveness_probe: Optional['outputs.WorkerPoolTemplateContainerLivenessProbe'] = None,
                  name: Optional[_builtins.str] = None,
                  resources: Optional['outputs.WorkerPoolTemplateContainerResources'] = None,
+                 sandbox_launcher: Optional[_builtins.bool] = None,
                  startup_probe: Optional['outputs.WorkerPoolTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.WorkerPoolTemplateContainerVolumeMount']] = None,
                  working_dir: Optional[_builtins.str] = None):
@@ -6358,6 +6467,7 @@ class WorkerPoolTemplateContainer(dict):
         :param _builtins.str name: Name of the container specified as a DNS_LABEL.
         :param 'WorkerPoolTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param 'WorkerPoolTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
         :param Sequence['WorkerPoolTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
@@ -6379,6 +6489,8 @@ class WorkerPoolTemplateContainer(dict):
             pulumi.set(__self__, "name", name)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -6452,6 +6564,14 @@ class WorkerPoolTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> Optional[_builtins.bool]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
@@ -6784,11 +6904,11 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 http_headers: Optional['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders'] = None,
+                 http_headers: Optional[Sequence['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
                  path: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None):
         """
-        :param 'WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs' http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param _builtins.str path: Optional. Path to access on the HTTP server. Defaults to '/'.
         :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -6802,7 +6922,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders']:
+    def http_headers(self) -> Optional[Sequence['outputs.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader']]:
         """
         Optional. Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -6827,45 +6947,25 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(dict):
+class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None,
+                 name: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Required. The header field name
-        :param _builtins.int port: (Optional, Deprecated)
-               Required. The header field name
-               
-               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param _builtins.str value: Optional. The header field value
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         Required. The header field name
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
-    def port(self) -> Optional[_builtins.int]:
-        """
-        (Optional, Deprecated)
-        Required. The header field name
-
-        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
@@ -7089,11 +7189,11 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 http_headers: Optional['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders'] = None,
+                 http_headers: Optional[Sequence['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
                  path: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None):
         """
-        :param 'WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs' http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Optional. Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param _builtins.str path: Optional. Path to access on the HTTP server. Defaults to '/'.
         :param _builtins.int port: Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
@@ -7107,7 +7207,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders']:
+    def http_headers(self) -> Optional[Sequence['outputs.WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader']]:
         """
         Optional. Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -7132,45 +7232,25 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders(dict):
+class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
-                 name: Optional[_builtins.str] = None,
-                 port: Optional[_builtins.int] = None,
+                 name: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Required. The header field name
-        :param _builtins.int port: (Optional, Deprecated)
-               Required. The header field name
-               
-               > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
         :param _builtins.str value: Optional. The header field value
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "name", name)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         Required. The header field name
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""`port` field is deprecated and will be removed in a future major release. It was never supported by the API.""")
-    def port(self) -> Optional[_builtins.int]:
-        """
-        (Optional, Deprecated)
-        Required. The header field name
-
-        > **Warning:** `port` field is deprecated and will be removed in a future major release. It was never supported by the API.
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
@@ -8128,6 +8208,7 @@ class GetJobLatestCreatedExecutionResult(dict):
 class GetJobTemplateResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, _builtins.str],
+                 delay_execution: _builtins.bool,
                  labels: Mapping[str, _builtins.str],
                  parallelism: _builtins.int,
                  task_count: _builtins.int,
@@ -8139,6 +8220,7 @@ class GetJobTemplateResult(dict):
                All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
                
                This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param _builtins.bool delay_execution: If true, the system will start the execution within the next 12 hours depending on available capacity.
         :param Mapping[str, _builtins.str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
                or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
                https://cloud.google.com/run/docs/configuring/labels.
@@ -8150,6 +8232,7 @@ class GetJobTemplateResult(dict):
         :param Sequence['GetJobTemplateTemplateArgs'] templates: Describes the task(s) that will be created when executing an execution
         """
         pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "delay_execution", delay_execution)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "parallelism", parallelism)
         pulumi.set(__self__, "task_count", task_count)
@@ -8167,6 +8250,14 @@ class GetJobTemplateResult(dict):
         This field follows Kubernetes annotations' namespacing, limits, and rules.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="delayExecution")
+    def delay_execution(self) -> _builtins.bool:
+        """
+        If true, the system will start the execution within the next 12 hours depending on available capacity.
+        """
+        return pulumi.get(self, "delay_execution")
 
     @_builtins.property
     @pulumi.getter
@@ -8338,6 +8429,7 @@ class GetJobTemplateTemplateContainerResult(dict):
                  name: _builtins.str,
                  ports: Sequence['outputs.GetJobTemplateTemplateContainerPortResult'],
                  resources: Sequence['outputs.GetJobTemplateTemplateContainerResourceResult'],
+                 sandbox_launcher: _builtins.bool,
                  startup_probes: Sequence['outputs.GetJobTemplateTemplateContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetJobTemplateTemplateContainerVolumeMountResult'],
                  working_dir: _builtins.str):
@@ -8352,6 +8444,7 @@ class GetJobTemplateTemplateContainerResult(dict):
                
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
         :param Sequence['GetJobTemplateTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param Sequence['GetJobTemplateTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container.
                All other probes are disabled if a startup probe is provided, until it
                succeeds. Container will not be added to service endpoints if the probe fails.
@@ -8366,6 +8459,7 @@ class GetJobTemplateTemplateContainerResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
@@ -8435,6 +8529,14 @@ class GetJobTemplateTemplateContainerResult(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> _builtins.bool:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbes")
@@ -9691,7 +9793,8 @@ class GetServiceTemplateResult(dict):
                  session_affinity: _builtins.bool,
                  timeout: _builtins.str,
                  volumes: Sequence['outputs.GetServiceTemplateVolumeResult'],
-                 vpc_accesses: Sequence['outputs.GetServiceTemplateVpcAccessResult']):
+                 vpc_accesses: Sequence['outputs.GetServiceTemplateVpcAccessResult'],
+                 workload_identity_configs: Sequence['outputs.GetServiceTemplateWorkloadIdentityConfigResult']):
         """
         :param Mapping[str, _builtins.str] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                
@@ -9723,6 +9826,7 @@ class GetServiceTemplateResult(dict):
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param Sequence['GetServiceTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
         :param Sequence['GetServiceTemplateVpcAccessArgs'] vpc_accesses: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param Sequence['GetServiceTemplateWorkloadIdentityConfigArgs'] workload_identity_configs: Workload identity settings for this Revision.
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "containers", containers)
@@ -9742,6 +9846,7 @@ class GetServiceTemplateResult(dict):
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "volumes", volumes)
         pulumi.set(__self__, "vpc_accesses", vpc_accesses)
+        pulumi.set(__self__, "workload_identity_configs", workload_identity_configs)
 
     @_builtins.property
     @pulumi.getter
@@ -9898,6 +10003,14 @@ class GetServiceTemplateResult(dict):
         VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
         return pulumi.get(self, "vpc_accesses")
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfigs")
+    def workload_identity_configs(self) -> Sequence['outputs.GetServiceTemplateWorkloadIdentityConfigResult']:
+        """
+        Workload identity settings for this Revision.
+        """
+        return pulumi.get(self, "workload_identity_configs")
 
 
 @pulumi.output_type
@@ -11583,6 +11696,46 @@ class GetServiceTemplateVpcAccessNetworkInterfaceResult(dict):
 
 
 @pulumi.output_type
+class GetServiceTemplateWorkloadIdentityConfigResult(dict):
+    def __init__(__self__, *,
+                 identity: _builtins.str,
+                 identity_certificate_enabled: _builtins.bool,
+                 identity_type: _builtins.str):
+        """
+        :param _builtins.str identity: The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        :param _builtins.bool identity_certificate_enabled: Controls whether an instance receives a MWLID certificate.
+        :param _builtins.str identity_type: The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+        """
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "identity_certificate_enabled", identity_certificate_enabled)
+        pulumi.set(__self__, "identity_type", identity_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> _builtins.str:
+        """
+        The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        """
+        return pulumi.get(self, "identity")
+
+    @_builtins.property
+    @pulumi.getter(name="identityCertificateEnabled")
+    def identity_certificate_enabled(self) -> _builtins.bool:
+        """
+        Controls whether an instance receives a MWLID certificate.
+        """
+        return pulumi.get(self, "identity_certificate_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="identityType")
+    def identity_type(self) -> _builtins.str:
+        """
+        The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+        """
+        return pulumi.get(self, "identity_type")
+
+
+@pulumi.output_type
 class GetServiceTerminalConditionResult(dict):
     def __init__(__self__, *,
                  execution_reason: _builtins.str,
@@ -12254,6 +12407,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
                  liveness_probes: Sequence['outputs.GetWorkerPoolTemplateContainerLivenessProbeResult'],
                  name: _builtins.str,
                  resources: Sequence['outputs.GetWorkerPoolTemplateContainerResourceResult'],
+                 sandbox_launcher: _builtins.bool,
                  startup_probes: Sequence['outputs.GetWorkerPoolTemplateContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetWorkerPoolTemplateContainerVolumeMountResult'],
                  working_dir: _builtins.str):
@@ -12266,6 +12420,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
         :param Sequence['GetWorkerPoolTemplateContainerLivenessProbeArgs'] liveness_probes: Periodic probe of container liveness. Container will be restarted if the probe fails.
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
         :param Sequence['GetWorkerPoolTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param Sequence['GetWorkerPoolTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
         :param Sequence['GetWorkerPoolTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
         :param _builtins.str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -12278,6 +12433,7 @@ class GetWorkerPoolTemplateContainerResult(dict):
         pulumi.set(__self__, "liveness_probes", liveness_probes)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
@@ -12345,6 +12501,14 @@ class GetWorkerPoolTemplateContainerResult(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> _builtins.bool:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbes")
@@ -12615,15 +12779,12 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGetResult(dict):
 class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 port: _builtins.int,
                  value: _builtins.str):
         """
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
-        :param _builtins.int port: Required. The header field name
         :param _builtins.str value: Optional. The header field value
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
@@ -12633,14 +12794,6 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
         The name of the Cloud Run v2 Worker Pool.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Required. The header field name
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
@@ -12844,15 +12997,12 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGetResult(dict):
 class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 port: _builtins.int,
                  value: _builtins.str):
         """
         :param _builtins.str name: The name of the Cloud Run v2 Worker Pool.
-        :param _builtins.int port: Required. The header field name
         :param _builtins.str value: Optional. The header field value
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
@@ -12862,14 +13012,6 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
         The name of the Cloud Run v2 Worker Pool.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Required. The header field name
-        """
-        return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter

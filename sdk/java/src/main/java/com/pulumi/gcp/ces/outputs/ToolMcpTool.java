@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 public final class ToolMcpTool {
     /**
      * @return (Output)
-     * Authentication information required for API calls.
+     * Authentication information required for calling the remote agent.
      * Structure is documented below.
      * 
      */
@@ -94,7 +94,7 @@ public final class ToolMcpTool {
     private ToolMcpTool() {}
     /**
      * @return (Output)
-     * Authentication information required for API calls.
+     * Authentication information required for calling the remote agent.
      * Structure is documented below.
      * 
      */

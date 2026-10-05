@@ -17,7 +17,20 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// Password for database.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Password for database.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
+        /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? PasswordWoVersion;
         /// <summary>
         /// Username for database.
         /// </summary>
@@ -25,11 +38,17 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
         [OutputConstructor]
         private ConnectionCloudSqlCredential(
-            string password,
+            string? password,
+
+            string? passwordWo,
+
+            string? passwordWoVersion,
 
             string username)
         {
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             Username = username;
         }
     }

@@ -22,6 +22,25 @@ public final class AgentGatewayState extends com.pulumi.resources.ResourceArgs {
     public static final AgentGatewayState Empty = new AgentGatewayState();
 
     /**
+     * The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     * 
+     */
+    @Import(name="agentConnectivityTemplate")
+    private @Nullable Output<String> agentConnectivityTemplate;
+
+    /**
+     * @return The resource name of the AgentConnectivityTemplate.
+     * Must be of format
+     * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+     * 
+     */
+    public Optional<Output<String>> agentConnectivityTemplate() {
+        return Optional.ofNullable(this.agentConnectivityTemplate);
+    }
+
+    /**
      * AgentGatewayOutputCard contains informational output-only fields.
      * Structure is documented below.
      * 
@@ -337,6 +356,7 @@ public final class AgentGatewayState extends com.pulumi.resources.ResourceArgs {
     private AgentGatewayState() {}
 
     private AgentGatewayState(AgentGatewayState $) {
+        this.agentConnectivityTemplate = $.agentConnectivityTemplate;
         this.agentGatewayCards = $.agentGatewayCards;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
@@ -372,6 +392,31 @@ public final class AgentGatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AgentGatewayState defaults) {
             $ = new AgentGatewayState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param agentConnectivityTemplate The resource name of the AgentConnectivityTemplate.
+         * Must be of format
+         * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentConnectivityTemplate(@Nullable Output<String> agentConnectivityTemplate) {
+            $.agentConnectivityTemplate = agentConnectivityTemplate;
+            return this;
+        }
+
+        /**
+         * @param agentConnectivityTemplate The resource name of the AgentConnectivityTemplate.
+         * Must be of format
+         * `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentConnectivityTemplate(String agentConnectivityTemplate) {
+            return agentConnectivityTemplate(Output.of(agentConnectivityTemplate));
         }
 
         /**

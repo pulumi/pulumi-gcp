@@ -359,9 +359,9 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
         example = gcp.chronicle.FindingsRefinementDeployment("example",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
-            findings_refinement=len(std.split(separator="/",
-                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
+            findings_refinement=std.split(separator="/",
+                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result[len(std.split(separator="/",
+                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result) - 1.apply(lambda x: int(x))],
             enabled=True,
             archived=False)
         ```
@@ -436,9 +436,9 @@ class FindingsRefinementDeployment(pulumi.CustomResource):
         example = gcp.chronicle.FindingsRefinementDeployment("example",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
-            findings_refinement=len(std.split(separator="/",
-                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
+            findings_refinement=std.split(separator="/",
+                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result[len(std.split(separator="/",
+                text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result) - 1.apply(lambda x: int(x))],
             enabled=True,
             archived=False)
         ```

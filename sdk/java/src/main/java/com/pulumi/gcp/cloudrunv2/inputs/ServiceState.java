@@ -623,6 +623,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enables SSH access to the Service.
+     * 
+     */
+    @Import(name="sshEnabled")
+    private @Nullable Output<Boolean> sshEnabled;
+
+    /**
+     * @return Enables SSH access to the Service.
+     * 
+     */
+    public Optional<Output<Boolean>> sshEnabled() {
+        return Optional.ofNullable(this.sshEnabled);
+    }
+
+    /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -809,6 +824,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.reconciling = $.reconciling;
         this.scaling = $.scaling;
+        this.sshEnabled = $.sshEnabled;
         this.tags = $.tags;
         this.template = $.template;
         this.terminalConditions = $.terminalConditions;
@@ -1663,6 +1679,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scaling(ServiceScalingArgs scaling) {
             return scaling(Output.of(scaling));
+        }
+
+        /**
+         * @param sshEnabled Enables SSH access to the Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshEnabled(@Nullable Output<Boolean> sshEnabled) {
+            $.sshEnabled = sshEnabled;
+            return this;
+        }
+
+        /**
+         * @param sshEnabled Enables SSH access to the Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshEnabled(Boolean sshEnabled) {
+            return sshEnabled(Output.of(sshEnabled));
         }
 
         /**

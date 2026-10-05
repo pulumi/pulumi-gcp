@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///     {
     ///         Name = "my-gateway-attachment",
     ///         Region = "us-central1",
-    ///         ConnectionPreference = "ACCEPT_MANUAL",
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
     ///         Subnetworks = new[]
     ///         {
     ///             defaultSubnetwork.Id,
@@ -79,6 +79,28 @@ namespace Pulumi.Gcp.NetworkServices
     ///         },
     ///     });
     /// 
+    ///     var defaultAgentConnectivityTemplate = new Gcp.NetworkServices.AgentConnectivityTemplate("default", new()
+    ///     {
+    ///         AgentConnectivityTemplateId = "my-full-agent-gateway-template",
+    ///         Location = "us-central1",
+    ///         Description = "A basic configuration for Agent Connectivity Template",
+    ///         Labels = 
+    ///         {
+    ///             { "env", "test" },
+    ///             { "tier", "gold" },
+    ///         },
+    ///         AccessPath = "AGENT_TO_ANYWHERE",
+    ///         EgressNetworkConfig = new Gcp.NetworkServices.Inputs.AgentConnectivityTemplateEgressNetworkConfigArgs
+    ///         {
+    ///             NetworkAttachment = defaultNetworkAttachment.Id,
+    ///             DnsPeeringConfig = new Gcp.NetworkServices.Inputs.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs
+    ///             {
+    ///                 Domain = defaultManagedZone.DnsName,
+    ///                 TargetNetwork = defaultNetwork.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     var @default = new Gcp.NetworkServices.AgentGateway("default", new()
     ///     {
     ///         Name = "my-full-agent-gateway",
@@ -97,25 +119,15 @@ namespace Pulumi.Gcp.NetworkServices
     ///         {
     ///             GovernedAccessPath = "AGENT_TO_ANYWHERE",
     ///         },
+    ///         AgentConnectivityTemplate = Output.Tuple(project, defaultAgentConnectivityTemplate.AgentConnectivityTemplateId).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var agentConnectivityTemplateId = values.Item2;
+    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/locations/us-central1/agentConnectivityTemplates/{agentConnectivityTemplateId}";
+    ///         }),
     ///         Registries = new[]
     ///         {
     ///             "//agentregistry.googleapis.com/projects/my-project-name/locations/us-central1",
-    ///         },
-    ///         NetworkConfig = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigArgs
-    ///         {
-    ///             Egress = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigEgressArgs
-    ///             {
-    ///                 NetworkAttachment = defaultNetworkAttachment.Id,
-    ///             },
-    ///             DnsPeeringConfig = new Gcp.NetworkServices.Inputs.AgentGatewayNetworkConfigDnsPeeringConfigArgs
-    ///             {
-    ///                 Domains = new[]
-    ///                 {
-    ///                     defaultManagedZone.DnsName,
-    ///                 },
-    ///                 TargetProject = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///                 TargetNetwork = defaultNetwork.Id,
-    ///             },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -211,6 +223,14 @@ namespace Pulumi.Gcp.NetworkServices
     [GcpResourceType("gcp:networkservices/agentGateway:AgentGateway")]
     public partial class AgentGateway : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The resource name of the AgentConnectivityTemplate.
+        /// Must be of format
+        /// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+        /// </summary>
+        [Output("agentConnectivityTemplate")]
+        public Output<string?> AgentConnectivityTemplate { get; private set; } = null!;
+
         /// <summary>
         /// AgentGatewayOutputCard contains informational output-only fields.
         /// Structure is documented below.
@@ -390,6 +410,14 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class AgentGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the AgentConnectivityTemplate.
+        /// Must be of format
+        /// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+        /// </summary>
+        [Input("agentConnectivityTemplate")]
+        public Input<string>? AgentConnectivityTemplate { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -502,6 +530,14 @@ namespace Pulumi.Gcp.NetworkServices
 
     public sealed class AgentGatewayState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The resource name of the AgentConnectivityTemplate.
+        /// Must be of format
+        /// `projects/{{project}}/locations/{{location}}/agentConnectivityTemplates/{{agent_connectivity_template}}`
+        /// </summary>
+        [Input("agentConnectivityTemplate")]
+        public Input<string>? AgentConnectivityTemplate { get; set; }
+
         [Input("agentGatewayCards")]
         private InputList<Inputs.AgentGatewayAgentGatewayCardGetArgs>? _agentGatewayCards;
 

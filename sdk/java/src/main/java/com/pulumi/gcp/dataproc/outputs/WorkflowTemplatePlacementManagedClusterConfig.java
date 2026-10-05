@@ -61,7 +61,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig;
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig;
@@ -71,7 +71,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig;
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig;
@@ -96,7 +96,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
      */
     private @Nullable String tempBucket;
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      * ***
      * 
@@ -154,7 +154,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.lifecycleConfig);
     }
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigMasterConfig> masterConfig() {
@@ -168,7 +168,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.metastoreConfig);
     }
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig> secondaryWorkerConfig() {
@@ -203,7 +203,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         return Optional.ofNullable(this.tempBucket);
     }
     /**
-     * @return The Compute Engine config settings for additional worker instances in a cluster.
+     * @return The Compute Engine config settings for additional worker instances in a cluster. Structure is documented below.
      * 
      * ***
      * 

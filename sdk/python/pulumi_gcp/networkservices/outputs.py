@@ -16,6 +16,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AgentConnectivityTemplateEgressNetworkConfig',
+    'AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig',
+    'AgentConnectivityTemplateEgressNetworkConfigTlsConfig',
     'AgentGatewayAgentGatewayCard',
     'AgentGatewayGoogleManaged',
     'AgentGatewayNetworkConfig',
@@ -125,6 +128,225 @@ __all__ = [
     'WasmPluginUsedBy',
     'WasmPluginVersion',
 ]
+
+@pulumi.output_type
+class AgentConnectivityTemplateEgressNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsPeeringConfig":
+            suggest = "dns_peering_config"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
+        elif key == "tlsConfig":
+            suggest = "tls_config"
+        elif key == "vpcEgress":
+            suggest = "vpc_egress"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentConnectivityTemplateEgressNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentConnectivityTemplateEgressNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentConnectivityTemplateEgressNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_peering_config: Optional['outputs.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig'] = None,
+                 network_attachment: Optional[_builtins.str] = None,
+                 tls_config: Optional['outputs.AgentConnectivityTemplateEgressNetworkConfigTlsConfig'] = None,
+                 vpc_egress: Optional[_builtins.str] = None):
+        """
+        :param 'AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs' dns_peering_config: DNS peering configuration for the AgentConnectivityTemplate.
+               When set, the gateway will resolve queries for the configured
+               `domains` via Cloud DNS in the specified `targetNetwork`.
+               Structure is documented below.
+        :param _builtins.str network_attachment: The network attachment resource name.
+               Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+        :param 'AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs' tls_config: The TLS configuration for the egress traffic.
+               Structure is documented below.
+        :param _builtins.str vpc_egress: The VPC egress setting.
+               Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        """
+        if dns_peering_config is not None:
+            pulumi.set(__self__, "dns_peering_config", dns_peering_config)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+        if vpc_egress is not None:
+            pulumi.set(__self__, "vpc_egress", vpc_egress)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfig")
+    def dns_peering_config(self) -> Optional['outputs.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig']:
+        """
+        DNS peering configuration for the AgentConnectivityTemplate.
+        When set, the gateway will resolve queries for the configured
+        `domains` via Cloud DNS in the specified `targetNetwork`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_config")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[_builtins.str]:
+        """
+        The network attachment resource name.
+        Format: projects/{project}/regions/{region}/networkAttachments/{network_attachment_id}
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.AgentConnectivityTemplateEgressNetworkConfigTlsConfig']:
+        """
+        The TLS configuration for the egress traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcEgress")
+    def vpc_egress(self) -> Optional[_builtins.str]:
+        """
+        The VPC egress setting.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        """
+        return pulumi.get(self, "vpc_egress")
+
+
+@pulumi.output_type
+class AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNetwork":
+            suggest = "target_network"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_network: _builtins.str,
+                 domain: Optional[_builtins.str] = None,
+                 domains: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str target_network: The URI of the target VPC network for DNS peering. Must be of the
+               form `projects/{project}/global/networks/{network}`.
+        :param _builtins.str domain: (Optional, Deprecated)
+               The domain name to peer for DNS resolution. Must be a fully
+               qualified domain name ending with a dot (for example, `example.com.`).
+               
+               > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+        :param Sequence[_builtins.str] domains: The list of domain names to peer for DNS resolution. Each entry
+               must be a fully qualified domain name ending with a dot
+               (for example, `example.com.`). At least one domain must be
+               specified between `domain` and `domains`.
+        """
+        pulumi.set(__self__, "target_network", target_network)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if domains is not None:
+            pulumi.set(__self__, "domains", domains)
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> _builtins.str:
+        """
+        The URI of the target VPC network for DNS peering. Must be of the
+        form `projects/{project}/global/networks/{network}`.
+        """
+        return pulumi.get(self, "target_network")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""`domain` is deprecated and will be removed in a future major release. Use `domains` instead.""")
+    def domain(self) -> Optional[_builtins.str]:
+        """
+        (Optional, Deprecated)
+        The domain name to peer for DNS resolution. Must be a fully
+        qualified domain name ending with a dot (for example, `example.com.`).
+
+        > **Warning:** `domain` is deprecated and will be removed in a future major release. Use `domains` instead.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of domain names to peer for DNS resolution. Each entry
+        must be a fully qualified domain name ending with a dot
+        (for example, `example.com.`). At least one domain must be
+        specified between `domain` and `domains`.
+        """
+        return pulumi.get(self, "domains")
+
+
+@pulumi.output_type
+class AgentConnectivityTemplateEgressNetworkConfigTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalRoots":
+            suggest = "additional_roots"
+        elif key == "trustConfig":
+            suggest = "trust_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AgentConnectivityTemplateEgressNetworkConfigTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AgentConnectivityTemplateEgressNetworkConfigTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AgentConnectivityTemplateEgressNetworkConfigTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_roots: _builtins.str,
+                 trust_config: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str additional_roots: Defines whether additional roots should be trusted.
+               Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+        :param _builtins.str trust_config: The trust config resource name.
+               Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+        """
+        pulumi.set(__self__, "additional_roots", additional_roots)
+        if trust_config is not None:
+            pulumi.set(__self__, "trust_config", trust_config)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalRoots")
+    def additional_roots(self) -> _builtins.str:
+        """
+        Defines whether additional roots should be trusted.
+        Possible values are: `NO_ADDITIONAL_ROOTS`, `PUBLICLY_TRUSTED_ROOTS`.
+        """
+        return pulumi.get(self, "additional_roots")
+
+    @_builtins.property
+    @pulumi.getter(name="trustConfig")
+    def trust_config(self) -> Optional[_builtins.str]:
+        """
+        The trust config resource name.
+        Format: projects/{project}/locations/{location}/trustConfigs/{trust_config}
+        """
+        return pulumi.get(self, "trust_config")
+
 
 @pulumi.output_type
 class AgentGatewayAgentGatewayCard(dict):

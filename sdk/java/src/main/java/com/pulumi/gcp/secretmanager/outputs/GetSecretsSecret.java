@@ -97,6 +97,12 @@ public final class GetSecretsSecret {
      */
     private String secretId;
     /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    private String secretType;
+    /**
      * @return A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -237,6 +243,14 @@ public final class GetSecretsSecret {
         return this.secretId;
     }
     /**
+     * @return This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+     * For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+     * 
+     */
+    public String secretType() {
+        return this.secretType;
+    }
+    /**
      * @return A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -300,6 +314,7 @@ public final class GetSecretsSecret {
         private List<GetSecretsSecretReplication> replications;
         private List<GetSecretsSecretRotation> rotations;
         private String secretId;
+        private String secretType;
         private Map<String,String> tags;
         private List<GetSecretsSecretTopic> topics;
         private String ttl;
@@ -322,6 +337,7 @@ public final class GetSecretsSecret {
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.secretType = defaults.secretType;
     	      this.tags = defaults.tags;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
@@ -448,6 +464,14 @@ public final class GetSecretsSecret {
             return this;
         }
         @CustomType.Setter
+        public Builder secretType(String secretType) {
+            if (secretType == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "secretType");
+            }
+            this.secretType = secretType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(Map<String,String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetSecretsSecret", "tags");
@@ -506,6 +530,7 @@ public final class GetSecretsSecret {
             _resultValue.replications = replications;
             _resultValue.rotations = rotations;
             _resultValue.secretId = secretId;
+            _resultValue.secretType = secretType;
             _resultValue.tags = tags;
             _resultValue.topics = topics;
             _resultValue.ttl = ttl;

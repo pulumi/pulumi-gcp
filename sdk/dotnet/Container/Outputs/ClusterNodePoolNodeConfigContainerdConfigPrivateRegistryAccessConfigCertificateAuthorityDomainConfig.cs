@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Fqdns;
         /// <summary>
-        /// Parameters for configuring a certificate hosted in GCP SecretManager.
+        /// Parameters for configuring a certificate hosted in GCP SecretManager:
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig GcpSecretManagerCertificateConfig;
 

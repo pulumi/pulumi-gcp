@@ -12,6 +12,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateServiceMeshArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -330,6 +331,23 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.vpcAccess);
     }
 
+    /**
+     * Workload identity settings for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<ServiceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload identity settings for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
     private ServiceTemplateArgs() {}
 
     private ServiceTemplateArgs(ServiceTemplateArgs $) {
@@ -351,6 +369,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.timeout = $.timeout;
         this.volumes = $.volumes;
         this.vpcAccess = $.vpcAccess;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
     }
 
     public static Builder builder() {
@@ -803,6 +822,29 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder vpcAccess(ServiceTemplateVpcAccessArgs vpcAccess) {
             return vpcAccess(Output.of(vpcAccess));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity settings for this Revision.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<ServiceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity settings for this Revision.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(ServiceTemplateWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         public ServiceTemplateArgs build() {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -102,7 +102,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -155,6 +155,71 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Subscription Pubsub
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			subscription, err := bigqueryanalyticshub.NewDataExchange(ctx, "subscription", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example pubsub listing subscription"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subscriptionTopic, err := pubsub.NewTopic(ctx, "subscription", &pubsub.TopicArgs{
+//				Name: pulumi.String("my_pubsub_topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subscriptionListing, err := bigqueryanalyticshub.NewListing(ctx, "subscription", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: subscription.DataExchangeId,
+//				ListingId:      pulumi.String("my_listing"),
+//				DisplayName:    pulumi.String("my_listing"),
+//				Description:    pulumi.String("example pubsub listing subscription"),
+//				PubsubTopic: &bigqueryanalyticshub.ListingPubsubTopicArgs{
+//					Topic: subscriptionTopic.ID().ToIDOutput().ToStringOutput(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListingSubscription(ctx, "subscription", &bigqueryanalyticshub.ListingSubscriptionArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: subscription.DataExchangeId,
+//				ListingId:      subscriptionListing.ListingId,
+//				DestinationPubsubSubscription: &bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionArgs{
+//					PubsubSubscription: &bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs{
+//						Name: subscriptionTopic.Project.ApplyT(func(project string) (string, error) {
+//							return fmt.Sprintf("projects/%v/subscriptions/my_pubsub_subscription", project), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -190,7 +255,10 @@ type ListingSubscription struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The destination dataset for this subscription.
 	// Structure is documented below.
-	DestinationDataset ListingSubscriptionDestinationDatasetOutput `pulumi:"destinationDataset"`
+	DestinationDataset ListingSubscriptionDestinationDatasetPtrOutput `pulumi:"destinationDataset"`
+	// Destination Pub/Sub subscription to create for the subscriber.
+	// Structure is documented below.
+	DestinationPubsubSubscription ListingSubscriptionDestinationPubsubSubscriptionPtrOutput `pulumi:"destinationPubsubSubscription"`
 	// Timestamp when the subscription was last modified.
 	LastModifyTime pulumi.StringOutput `pulumi:"lastModifyTime"`
 	// Output only. Map of listing resource names to associated linked resource,
@@ -234,9 +302,6 @@ func NewListingSubscription(ctx *pulumi.Context,
 
 	if args.DataExchangeId == nil {
 		return nil, errors.New("invalid value for required argument 'DataExchangeId'")
-	}
-	if args.DestinationDataset == nil {
-		return nil, errors.New("invalid value for required argument 'DestinationDataset'")
 	}
 	if args.ListingId == nil {
 		return nil, errors.New("invalid value for required argument 'ListingId'")
@@ -284,6 +349,9 @@ type listingSubscriptionState struct {
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset *ListingSubscriptionDestinationDataset `pulumi:"destinationDataset"`
+	// Destination Pub/Sub subscription to create for the subscriber.
+	// Structure is documented below.
+	DestinationPubsubSubscription *ListingSubscriptionDestinationPubsubSubscription `pulumi:"destinationPubsubSubscription"`
 	// Timestamp when the subscription was last modified.
 	LastModifyTime *string `pulumi:"lastModifyTime"`
 	// Output only. Map of listing resource names to associated linked resource,
@@ -336,6 +404,9 @@ type ListingSubscriptionState struct {
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset ListingSubscriptionDestinationDatasetPtrInput
+	// Destination Pub/Sub subscription to create for the subscriber.
+	// Structure is documented below.
+	DestinationPubsubSubscription ListingSubscriptionDestinationPubsubSubscriptionPtrInput
 	// Timestamp when the subscription was last modified.
 	LastModifyTime pulumi.StringPtrInput
 	// Output only. Map of listing resource names to associated linked resource,
@@ -386,7 +457,10 @@ type listingSubscriptionArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The destination dataset for this subscription.
 	// Structure is documented below.
-	DestinationDataset ListingSubscriptionDestinationDataset `pulumi:"destinationDataset"`
+	DestinationDataset *ListingSubscriptionDestinationDataset `pulumi:"destinationDataset"`
+	// Destination Pub/Sub subscription to create for the subscriber.
+	// Structure is documented below.
+	DestinationPubsubSubscription *ListingSubscriptionDestinationPubsubSubscription `pulumi:"destinationPubsubSubscription"`
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId string `pulumi:"listingId"`
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
@@ -409,7 +483,10 @@ type ListingSubscriptionArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The destination dataset for this subscription.
 	// Structure is documented below.
-	DestinationDataset ListingSubscriptionDestinationDatasetInput
+	DestinationDataset ListingSubscriptionDestinationDatasetPtrInput
+	// Destination Pub/Sub subscription to create for the subscriber.
+	// Structure is documented below.
+	DestinationPubsubSubscription ListingSubscriptionDestinationPubsubSubscriptionPtrInput
 	// The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	ListingId pulumi.StringInput
 	// The name of the location of the data exchange. Distinct from the location of the destination data set.
@@ -534,8 +611,18 @@ func (o ListingSubscriptionOutput) DeletionPolicy() pulumi.StringOutput {
 
 // The destination dataset for this subscription.
 // Structure is documented below.
-func (o ListingSubscriptionOutput) DestinationDataset() ListingSubscriptionDestinationDatasetOutput {
-	return o.ApplyT(func(v *ListingSubscription) ListingSubscriptionDestinationDatasetOutput { return v.DestinationDataset }).(ListingSubscriptionDestinationDatasetOutput)
+func (o ListingSubscriptionOutput) DestinationDataset() ListingSubscriptionDestinationDatasetPtrOutput {
+	return o.ApplyT(func(v *ListingSubscription) ListingSubscriptionDestinationDatasetPtrOutput {
+		return v.DestinationDataset
+	}).(ListingSubscriptionDestinationDatasetPtrOutput)
+}
+
+// Destination Pub/Sub subscription to create for the subscriber.
+// Structure is documented below.
+func (o ListingSubscriptionOutput) DestinationPubsubSubscription() ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+	return o.ApplyT(func(v *ListingSubscription) ListingSubscriptionDestinationPubsubSubscriptionPtrOutput {
+		return v.DestinationPubsubSubscription
+	}).(ListingSubscriptionDestinationPubsubSubscriptionPtrOutput)
 }
 
 // Timestamp when the subscription was last modified.

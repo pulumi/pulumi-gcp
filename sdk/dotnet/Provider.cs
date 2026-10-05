@@ -420,9 +420,6 @@ namespace Pulumi.Gcp
         [Output("migrationCenterCustomEndpoint")]
         public Output<string?> MigrationCenterCustomEndpoint { get; private set; } = null!;
 
-        [Output("mlEngineCustomEndpoint")]
-        public Output<string?> MlEngineCustomEndpoint { get; private set; } = null!;
-
         [Output("modelArmorCustomEndpoint")]
         public Output<string?> ModelArmorCustomEndpoint { get; private set; } = null!;
 
@@ -444,14 +441,14 @@ namespace Pulumi.Gcp
         [Output("networkManagementCustomEndpoint")]
         public Output<string?> NetworkManagementCustomEndpoint { get; private set; } = null!;
 
+        [Output("networkManagementv1CustomEndpoint")]
+        public Output<string?> NetworkManagementv1CustomEndpoint { get; private set; } = null!;
+
         [Output("networkSecurityCustomEndpoint")]
         public Output<string?> NetworkSecurityCustomEndpoint { get; private set; } = null!;
 
         [Output("networkServicesCustomEndpoint")]
         public Output<string?> NetworkServicesCustomEndpoint { get; private set; } = null!;
-
-        [Output("notebooksCustomEndpoint")]
-        public Output<string?> NotebooksCustomEndpoint { get; private set; } = null!;
 
         [Output("observabilityCustomEndpoint")]
         public Output<string?> ObservabilityCustomEndpoint { get; private set; } = null!;
@@ -573,6 +570,9 @@ namespace Pulumi.Gcp
         [Output("serviceUsageCustomEndpoint")]
         public Output<string?> ServiceUsageCustomEndpoint { get; private set; } = null!;
 
+        [Output("serviceUsageV2CustomEndpoint")]
+        public Output<string?> ServiceUsageV2CustomEndpoint { get; private set; } = null!;
+
         [Output("siteVerificationCustomEndpoint")]
         public Output<string?> SiteVerificationCustomEndpoint { get; private set; } = null!;
 
@@ -593,6 +593,9 @@ namespace Pulumi.Gcp
 
         [Output("storageCustomEndpoint")]
         public Output<string?> StorageCustomEndpoint { get; private set; } = null!;
+
+        [Output("storageFtpCustomEndpoint")]
+        public Output<string?> StorageFtpCustomEndpoint { get; private set; } = null!;
 
         [Output("storageInsightsCustomEndpoint")]
         public Output<string?> StorageInsightsCustomEndpoint { get; private set; } = null!;
@@ -1122,9 +1125,6 @@ namespace Pulumi.Gcp
         [Input("migrationCenterCustomEndpoint")]
         public Input<string>? MigrationCenterCustomEndpoint { get; set; }
 
-        [Input("mlEngineCustomEndpoint")]
-        public Input<string>? MlEngineCustomEndpoint { get; set; }
-
         [Input("modelArmorCustomEndpoint")]
         public Input<string>? ModelArmorCustomEndpoint { get; set; }
 
@@ -1146,14 +1146,14 @@ namespace Pulumi.Gcp
         [Input("networkManagementCustomEndpoint")]
         public Input<string>? NetworkManagementCustomEndpoint { get; set; }
 
+        [Input("networkManagementv1CustomEndpoint")]
+        public Input<string>? NetworkManagementv1CustomEndpoint { get; set; }
+
         [Input("networkSecurityCustomEndpoint")]
         public Input<string>? NetworkSecurityCustomEndpoint { get; set; }
 
         [Input("networkServicesCustomEndpoint")]
         public Input<string>? NetworkServicesCustomEndpoint { get; set; }
-
-        [Input("notebooksCustomEndpoint")]
-        public Input<string>? NotebooksCustomEndpoint { get; set; }
 
         [Input("observabilityCustomEndpoint")]
         public Input<string>? ObservabilityCustomEndpoint { get; set; }
@@ -1289,6 +1289,9 @@ namespace Pulumi.Gcp
         [Input("serviceUsageCustomEndpoint")]
         public Input<string>? ServiceUsageCustomEndpoint { get; set; }
 
+        [Input("serviceUsageV2CustomEndpoint")]
+        public Input<string>? ServiceUsageV2CustomEndpoint { get; set; }
+
         [Input("siteVerificationCustomEndpoint")]
         public Input<string>? SiteVerificationCustomEndpoint { get; set; }
 
@@ -1309,6 +1312,9 @@ namespace Pulumi.Gcp
 
         [Input("storageCustomEndpoint")]
         public Input<string>? StorageCustomEndpoint { get; set; }
+
+        [Input("storageFtpCustomEndpoint")]
+        public Input<string>? StorageFtpCustomEndpoint { get; set; }
 
         [Input("storageInsightsCustomEndpoint")]
         public Input<string>? StorageInsightsCustomEndpoint { get; set; }

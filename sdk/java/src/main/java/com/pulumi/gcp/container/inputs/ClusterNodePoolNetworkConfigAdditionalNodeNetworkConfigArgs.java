@@ -35,6 +35,21 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
     }
 
     /**
+     * The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
+    /**
      * The name or selfLink of the Google Compute Engine
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
@@ -55,6 +70,7 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
 
     private ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs $) {
         this.network = $.network;
+        this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
     }
 
@@ -99,6 +115,27 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs e
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param stackType The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The IP stack type of the additional node interface. Possible values are IPV4, IPV4_IPV6 and IPV6. If unset, the value is inferred from the additional subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
         }
 
         /**

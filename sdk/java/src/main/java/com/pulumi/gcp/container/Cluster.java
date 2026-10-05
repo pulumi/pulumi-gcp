@@ -2015,14 +2015,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.subnetwork;
     }
     /**
-     * TPU configuration for the cluster.
+     * ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      * 
      */
     @Export(name="tpuConfig", refs={ClusterTpuConfig.class}, tree="[0]")
     private Output<ClusterTpuConfig> tpuConfig;
 
     /**
-     * @return TPU configuration for the cluster.
+     * @return ) Configuration for Cloud TPU in this cluster.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterTpuConfig> tpuConfig() {
@@ -2047,14 +2049,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.tpuIpv4CidrBlock;
     }
     /**
-     * The custom keys configuration of the cluster Structure is documented below.
+     * The custom keys configuration of the cluster. Structure is documented below.
      * 
      */
     @Export(name="userManagedKeysConfig", refs={ClusterUserManagedKeysConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterUserManagedKeysConfig> userManagedKeysConfig;
 
     /**
-     * @return The custom keys configuration of the cluster Structure is documented below.
+     * @return The custom keys configuration of the cluster. Structure is documented below.
      * 
      */
     public Output<Optional<ClusterUserManagedKeysConfig>> userManagedKeysConfig() {

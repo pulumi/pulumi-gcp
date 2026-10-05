@@ -16,6 +16,21 @@ public final class AiReasoningEngineSpecBuildSpecArgs extends com.pulumi.resourc
     public static final AiReasoningEngineSpecBuildSpecArgs Empty = new AiReasoningEngineSpecBuildSpecArgs();
 
     /**
+     * Optional. The service account that the Cloud Build builder runs as.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return Optional. The service account that the Cloud Build builder runs as.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
      * Optional. The resource name of the Cloud Build WorkerPool to use for the build.
      * 
      */
@@ -33,6 +48,7 @@ public final class AiReasoningEngineSpecBuildSpecArgs extends com.pulumi.resourc
     private AiReasoningEngineSpecBuildSpecArgs() {}
 
     private AiReasoningEngineSpecBuildSpecArgs(AiReasoningEngineSpecBuildSpecArgs $) {
+        this.serviceAccount = $.serviceAccount;
         this.workerPool = $.workerPool;
     }
 
@@ -52,6 +68,27 @@ public final class AiReasoningEngineSpecBuildSpecArgs extends com.pulumi.resourc
 
         public Builder(AiReasoningEngineSpecBuildSpecArgs defaults) {
             $ = new AiReasoningEngineSpecBuildSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param serviceAccount Optional. The service account that the Cloud Build builder runs as.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount Optional. The service account that the Cloud Build builder runs as.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        public readonly int NatIpsPerEndpoint;
         public readonly ImmutableArray<string> NatSubnets;
         public readonly string? Project;
         public readonly int PropagatedConnectionLimit;
@@ -207,6 +208,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            int natIpsPerEndpoint,
+
             ImmutableArray<string> natSubnets,
 
             string? project,
@@ -240,6 +243,7 @@ namespace Pulumi.Gcp.Compute
             Fingerprint = fingerprint;
             Id = id;
             Name = name;
+            NatIpsPerEndpoint = natIpsPerEndpoint;
             NatSubnets = natSubnets;
             Project = project;
             PropagatedConnectionLimit = propagatedConnectionLimit;

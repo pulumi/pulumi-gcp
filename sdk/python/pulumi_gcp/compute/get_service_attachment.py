@@ -27,7 +27,7 @@ class GetServiceAttachmentResult:
     """
     A collection of values returned by getServiceAttachment.
     """
-    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, deletion_policy=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, id=None, name=None, nat_subnets=None, project=None, propagated_connection_limit=None, psc_service_attachment_ids=None, reconcile_connections=None, region=None, self_link=None, send_propagated_connection_limit_if_zero=None, show_nat_ips=None, target_service=None, tunneling_configs=None):
+    def __init__(__self__, connected_endpoints=None, connection_preference=None, consumer_accept_lists=None, consumer_reject_lists=None, deletion_policy=None, description=None, domain_names=None, enable_proxy_protocol=None, fingerprint=None, id=None, name=None, nat_ips_per_endpoint=None, nat_subnets=None, project=None, propagated_connection_limit=None, psc_service_attachment_ids=None, reconcile_connections=None, region=None, self_link=None, send_propagated_connection_limit_if_zero=None, show_nat_ips=None, target_service=None, tunneling_configs=None):
         if connected_endpoints and not isinstance(connected_endpoints, list):
             raise TypeError("Expected argument 'connected_endpoints' to be a list")
         pulumi.set(__self__, "connected_endpoints", connected_endpoints)
@@ -61,6 +61,9 @@ class GetServiceAttachmentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if nat_ips_per_endpoint and not isinstance(nat_ips_per_endpoint, int):
+            raise TypeError("Expected argument 'nat_ips_per_endpoint' to be a int")
+        pulumi.set(__self__, "nat_ips_per_endpoint", nat_ips_per_endpoint)
         if nat_subnets and not isinstance(nat_subnets, list):
             raise TypeError("Expected argument 'nat_subnets' to be a list")
         pulumi.set(__self__, "nat_subnets", nat_subnets)
@@ -154,6 +157,11 @@ class GetServiceAttachmentResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="natIpsPerEndpoint")
+    def nat_ips_per_endpoint(self) -> _builtins.int:
+        return pulumi.get(self, "nat_ips_per_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="natSubnets")
     def nat_subnets(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "nat_subnets")
@@ -226,6 +234,7 @@ class AwaitableGetServiceAttachmentResult(GetServiceAttachmentResult):
             fingerprint=self.fingerprint,
             id=self.id,
             name=self.name,
+            nat_ips_per_endpoint=self.nat_ips_per_endpoint,
             nat_subnets=self.nat_subnets,
             project=self.project,
             propagated_connection_limit=self.propagated_connection_limit,
@@ -285,6 +294,7 @@ def get_service_attachment(name: Optional[_builtins.str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        nat_ips_per_endpoint=pulumi.get(__ret__, 'nat_ips_per_endpoint'),
         nat_subnets=pulumi.get(__ret__, 'nat_subnets'),
         project=pulumi.get(__ret__, 'project'),
         propagated_connection_limit=pulumi.get(__ret__, 'propagated_connection_limit'),
@@ -341,6 +351,7 @@ def get_service_attachment_output(name: pulumi.Input[Optional[_builtins.str]] = 
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        nat_ips_per_endpoint=pulumi.get(__response__, 'nat_ips_per_endpoint'),
         nat_subnets=pulumi.get(__response__, 'nat_subnets'),
         project=pulumi.get(__response__, 'project'),
         propagated_connection_limit=pulumi.get(__response__, 'propagated_connection_limit'),

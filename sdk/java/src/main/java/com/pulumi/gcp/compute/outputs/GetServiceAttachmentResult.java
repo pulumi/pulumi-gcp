@@ -34,6 +34,7 @@ public final class GetServiceAttachmentResult {
      */
     private String id;
     private String name;
+    private Integer natIpsPerEndpoint;
     private List<String> natSubnets;
     private @Nullable String project;
     private Integer propagatedConnectionLimit;
@@ -83,6 +84,9 @@ public final class GetServiceAttachmentResult {
     }
     public String name() {
         return this.name;
+    }
+    public Integer natIpsPerEndpoint() {
+        return this.natIpsPerEndpoint;
     }
     public List<String> natSubnets() {
         return this.natSubnets;
@@ -138,6 +142,7 @@ public final class GetServiceAttachmentResult {
         private String fingerprint;
         private String id;
         private String name;
+        private Integer natIpsPerEndpoint;
         private List<String> natSubnets;
         private @Nullable String project;
         private Integer propagatedConnectionLimit;
@@ -163,6 +168,7 @@ public final class GetServiceAttachmentResult {
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.natIpsPerEndpoint = defaults.natIpsPerEndpoint;
     	      this.natSubnets = defaults.natSubnets;
     	      this.project = defaults.project;
     	      this.propagatedConnectionLimit = defaults.propagatedConnectionLimit;
@@ -277,6 +283,14 @@ public final class GetServiceAttachmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder natIpsPerEndpoint(Integer natIpsPerEndpoint) {
+            if (natIpsPerEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetServiceAttachmentResult", "natIpsPerEndpoint");
+            }
+            this.natIpsPerEndpoint = natIpsPerEndpoint;
+            return this;
+        }
+        @CustomType.Setter
         public Builder natSubnets(List<String> natSubnets) {
             if (natSubnets == null) {
               throw new MissingRequiredPropertyException("GetServiceAttachmentResult", "natSubnets");
@@ -382,6 +396,7 @@ public final class GetServiceAttachmentResult {
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.natIpsPerEndpoint = natIpsPerEndpoint;
             _resultValue.natSubnets = natSubnets;
             _resultValue.project = project;
             _resultValue.propagatedConnectionLimit = propagatedConnectionLimit;

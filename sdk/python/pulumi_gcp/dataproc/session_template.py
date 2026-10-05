@@ -509,8 +509,8 @@ class SessionTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_session_templates_jupyter = gcp.dataproc.SessionTemplate("example_session_templates_jupyter",
-            name="projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
-            location="us-central1",
+            name="projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+            location="us-east1",
             labels={
                 "session_template_test": "terraform",
             },
@@ -554,7 +554,7 @@ class SessionTemplate(pulumi.CustomResource):
             member=f"serviceAccount:service-{project.number}@dataproc-accounts.iam.gserviceaccount.com")
         ms = gcp.dataproc.MetastoreService("ms",
             service_id="jupyter-session-template",
-            location="us-central1",
+            location="us-east1",
             port=9080,
             tier="DEVELOPER",
             maintenance_window={
@@ -566,12 +566,12 @@ class SessionTemplate(pulumi.CustomResource):
             },
             network_config={
                 "consumers": [{
-                    "subnetwork": "projects/my-project-name/regions/us-central1/subnetworks/default",
+                    "subnetwork": "projects/my-project-name/regions/us-east1/subnetworks/default",
                 }],
             })
         basic = gcp.dataproc.Cluster("basic",
             name="jupyter-session-template",
-            region="us-central1",
+            region="us-east1",
             cluster_config={
                 "software_config": {
                     "override_properties": {
@@ -587,8 +587,9 @@ class SessionTemplate(pulumi.CustomResource):
                 },
                 "master_config": {
                     "num_instances": 1,
-                    "machine_type": "e2-standard-2",
+                    "machine_type": "n4-standard-2",
                     "disk_config": {
+                        "boot_disk_type": "hyperdisk-balanced",
                         "boot_disk_size_gb": 35,
                     },
                 },
@@ -597,8 +598,8 @@ class SessionTemplate(pulumi.CustomResource):
                 },
             })
         dataproc_session_templates_jupyter_full = gcp.dataproc.SessionTemplate("dataproc_session_templates_jupyter_full",
-            name="projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
-            location="us-central1",
+            name="projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+            location="us-east1",
             labels={
                 "session_template_test": "terraform",
             },
@@ -642,8 +643,8 @@ class SessionTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_session_templates_spark_connect = gcp.dataproc.SessionTemplate("example_session_templates_spark_connect",
-            name="projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template",
-            location="us-central1",
+            name="projects/my-project-name/locations/us-east1/sessionTemplates/sc-session-template",
+            location="us-east1",
             labels={
                 "session_template_test": "terraform",
             },
@@ -725,8 +726,8 @@ class SessionTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_session_templates_jupyter = gcp.dataproc.SessionTemplate("example_session_templates_jupyter",
-            name="projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
-            location="us-central1",
+            name="projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+            location="us-east1",
             labels={
                 "session_template_test": "terraform",
             },
@@ -770,7 +771,7 @@ class SessionTemplate(pulumi.CustomResource):
             member=f"serviceAccount:service-{project.number}@dataproc-accounts.iam.gserviceaccount.com")
         ms = gcp.dataproc.MetastoreService("ms",
             service_id="jupyter-session-template",
-            location="us-central1",
+            location="us-east1",
             port=9080,
             tier="DEVELOPER",
             maintenance_window={
@@ -782,12 +783,12 @@ class SessionTemplate(pulumi.CustomResource):
             },
             network_config={
                 "consumers": [{
-                    "subnetwork": "projects/my-project-name/regions/us-central1/subnetworks/default",
+                    "subnetwork": "projects/my-project-name/regions/us-east1/subnetworks/default",
                 }],
             })
         basic = gcp.dataproc.Cluster("basic",
             name="jupyter-session-template",
-            region="us-central1",
+            region="us-east1",
             cluster_config={
                 "software_config": {
                     "override_properties": {
@@ -803,8 +804,9 @@ class SessionTemplate(pulumi.CustomResource):
                 },
                 "master_config": {
                     "num_instances": 1,
-                    "machine_type": "e2-standard-2",
+                    "machine_type": "n4-standard-2",
                     "disk_config": {
+                        "boot_disk_type": "hyperdisk-balanced",
                         "boot_disk_size_gb": 35,
                     },
                 },
@@ -813,8 +815,8 @@ class SessionTemplate(pulumi.CustomResource):
                 },
             })
         dataproc_session_templates_jupyter_full = gcp.dataproc.SessionTemplate("dataproc_session_templates_jupyter_full",
-            name="projects/my-project-name/locations/us-central1/sessionTemplates/jupyter-session-template",
-            location="us-central1",
+            name="projects/my-project-name/locations/us-east1/sessionTemplates/jupyter-session-template",
+            location="us-east1",
             labels={
                 "session_template_test": "terraform",
             },
@@ -858,8 +860,8 @@ class SessionTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example_session_templates_spark_connect = gcp.dataproc.SessionTemplate("example_session_templates_spark_connect",
-            name="projects/my-project-name/locations/us-central1/sessionTemplates/sc-session-template",
-            location="us-central1",
+            name="projects/my-project-name/locations/us-east1/sessionTemplates/sc-session-template",
+            location="us-east1",
             labels={
                 "session_template_test": "terraform",
             },

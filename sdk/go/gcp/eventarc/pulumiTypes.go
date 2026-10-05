@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2570,6 +2570,332 @@ func (o PipelineDestinationOutputPayloadFormatProtobufPtrOutput) SchemaDefinitio
 			return nil
 		}
 		return v.SchemaDefinition
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// PipelineIamBindingConditionInput is an input type that accepts PipelineIamBindingConditionArgs and PipelineIamBindingConditionOutput values.
+// You can construct a concrete instance of `PipelineIamBindingConditionInput` via:
+//
+//	PipelineIamBindingConditionArgs{...}
+type PipelineIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToPipelineIamBindingConditionOutput() PipelineIamBindingConditionOutput
+	ToPipelineIamBindingConditionOutputWithContext(context.Context) PipelineIamBindingConditionOutput
+}
+
+type PipelineIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (PipelineIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIamBindingCondition)(nil)).Elem()
+}
+
+func (i PipelineIamBindingConditionArgs) ToPipelineIamBindingConditionOutput() PipelineIamBindingConditionOutput {
+	return i.ToPipelineIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i PipelineIamBindingConditionArgs) ToPipelineIamBindingConditionOutputWithContext(ctx context.Context) PipelineIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIamBindingConditionOutput)
+}
+
+func (i PipelineIamBindingConditionArgs) ToPipelineIamBindingConditionPtrOutput() PipelineIamBindingConditionPtrOutput {
+	return i.ToPipelineIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineIamBindingConditionArgs) ToPipelineIamBindingConditionPtrOutputWithContext(ctx context.Context) PipelineIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIamBindingConditionOutput).ToPipelineIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// PipelineIamBindingConditionPtrInput is an input type that accepts PipelineIamBindingConditionArgs, PipelineIamBindingConditionPtr and PipelineIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `PipelineIamBindingConditionPtrInput` via:
+//
+//	        PipelineIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToPipelineIamBindingConditionPtrOutput() PipelineIamBindingConditionPtrOutput
+	ToPipelineIamBindingConditionPtrOutputWithContext(context.Context) PipelineIamBindingConditionPtrOutput
+}
+
+type pipelineIamBindingConditionPtrType PipelineIamBindingConditionArgs
+
+func PipelineIamBindingConditionPtr(v *PipelineIamBindingConditionArgs) PipelineIamBindingConditionPtrInput {
+	return (*pipelineIamBindingConditionPtrType)(v)
+}
+
+func (*pipelineIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIamBindingCondition)(nil)).Elem()
+}
+
+func (i *pipelineIamBindingConditionPtrType) ToPipelineIamBindingConditionPtrOutput() PipelineIamBindingConditionPtrOutput {
+	return i.ToPipelineIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineIamBindingConditionPtrType) ToPipelineIamBindingConditionPtrOutputWithContext(ctx context.Context) PipelineIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIamBindingConditionPtrOutput)
+}
+
+type PipelineIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (PipelineIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIamBindingCondition)(nil)).Elem()
+}
+
+func (o PipelineIamBindingConditionOutput) ToPipelineIamBindingConditionOutput() PipelineIamBindingConditionOutput {
+	return o
+}
+
+func (o PipelineIamBindingConditionOutput) ToPipelineIamBindingConditionOutputWithContext(ctx context.Context) PipelineIamBindingConditionOutput {
+	return o
+}
+
+func (o PipelineIamBindingConditionOutput) ToPipelineIamBindingConditionPtrOutput() PipelineIamBindingConditionPtrOutput {
+	return o.ToPipelineIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineIamBindingConditionOutput) ToPipelineIamBindingConditionPtrOutputWithContext(ctx context.Context) PipelineIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineIamBindingCondition) *PipelineIamBindingCondition {
+		return &v
+	}).(PipelineIamBindingConditionPtrOutput)
+}
+
+func (o PipelineIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o PipelineIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type PipelineIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIamBindingCondition)(nil)).Elem()
+}
+
+func (o PipelineIamBindingConditionPtrOutput) ToPipelineIamBindingConditionPtrOutput() PipelineIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o PipelineIamBindingConditionPtrOutput) ToPipelineIamBindingConditionPtrOutputWithContext(ctx context.Context) PipelineIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o PipelineIamBindingConditionPtrOutput) Elem() PipelineIamBindingConditionOutput {
+	return o.ApplyT(func(v *PipelineIamBindingCondition) PipelineIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineIamBindingCondition
+		return ret
+	}).(PipelineIamBindingConditionOutput)
+}
+
+func (o PipelineIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// PipelineIamMemberConditionInput is an input type that accepts PipelineIamMemberConditionArgs and PipelineIamMemberConditionOutput values.
+// You can construct a concrete instance of `PipelineIamMemberConditionInput` via:
+//
+//	PipelineIamMemberConditionArgs{...}
+type PipelineIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToPipelineIamMemberConditionOutput() PipelineIamMemberConditionOutput
+	ToPipelineIamMemberConditionOutputWithContext(context.Context) PipelineIamMemberConditionOutput
+}
+
+type PipelineIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (PipelineIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIamMemberCondition)(nil)).Elem()
+}
+
+func (i PipelineIamMemberConditionArgs) ToPipelineIamMemberConditionOutput() PipelineIamMemberConditionOutput {
+	return i.ToPipelineIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i PipelineIamMemberConditionArgs) ToPipelineIamMemberConditionOutputWithContext(ctx context.Context) PipelineIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIamMemberConditionOutput)
+}
+
+func (i PipelineIamMemberConditionArgs) ToPipelineIamMemberConditionPtrOutput() PipelineIamMemberConditionPtrOutput {
+	return i.ToPipelineIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineIamMemberConditionArgs) ToPipelineIamMemberConditionPtrOutputWithContext(ctx context.Context) PipelineIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIamMemberConditionOutput).ToPipelineIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// PipelineIamMemberConditionPtrInput is an input type that accepts PipelineIamMemberConditionArgs, PipelineIamMemberConditionPtr and PipelineIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `PipelineIamMemberConditionPtrInput` via:
+//
+//	        PipelineIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToPipelineIamMemberConditionPtrOutput() PipelineIamMemberConditionPtrOutput
+	ToPipelineIamMemberConditionPtrOutputWithContext(context.Context) PipelineIamMemberConditionPtrOutput
+}
+
+type pipelineIamMemberConditionPtrType PipelineIamMemberConditionArgs
+
+func PipelineIamMemberConditionPtr(v *PipelineIamMemberConditionArgs) PipelineIamMemberConditionPtrInput {
+	return (*pipelineIamMemberConditionPtrType)(v)
+}
+
+func (*pipelineIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIamMemberCondition)(nil)).Elem()
+}
+
+func (i *pipelineIamMemberConditionPtrType) ToPipelineIamMemberConditionPtrOutput() PipelineIamMemberConditionPtrOutput {
+	return i.ToPipelineIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineIamMemberConditionPtrType) ToPipelineIamMemberConditionPtrOutputWithContext(ctx context.Context) PipelineIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineIamMemberConditionPtrOutput)
+}
+
+type PipelineIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (PipelineIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineIamMemberCondition)(nil)).Elem()
+}
+
+func (o PipelineIamMemberConditionOutput) ToPipelineIamMemberConditionOutput() PipelineIamMemberConditionOutput {
+	return o
+}
+
+func (o PipelineIamMemberConditionOutput) ToPipelineIamMemberConditionOutputWithContext(ctx context.Context) PipelineIamMemberConditionOutput {
+	return o
+}
+
+func (o PipelineIamMemberConditionOutput) ToPipelineIamMemberConditionPtrOutput() PipelineIamMemberConditionPtrOutput {
+	return o.ToPipelineIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineIamMemberConditionOutput) ToPipelineIamMemberConditionPtrOutputWithContext(ctx context.Context) PipelineIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineIamMemberCondition) *PipelineIamMemberCondition {
+		return &v
+	}).(PipelineIamMemberConditionPtrOutput)
+}
+
+func (o PipelineIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o PipelineIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type PipelineIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineIamMemberCondition)(nil)).Elem()
+}
+
+func (o PipelineIamMemberConditionPtrOutput) ToPipelineIamMemberConditionPtrOutput() PipelineIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o PipelineIamMemberConditionPtrOutput) ToPipelineIamMemberConditionPtrOutputWithContext(ctx context.Context) PipelineIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o PipelineIamMemberConditionPtrOutput) Elem() PipelineIamMemberConditionOutput {
+	return o.ApplyT(func(v *PipelineIamMemberCondition) PipelineIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineIamMemberCondition
+		return ret
+	}).(PipelineIamMemberConditionOutput)
+}
+
+func (o PipelineIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PipelineIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5527,6 +5853,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatJsonPtrInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatJsonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatProtobufInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatProtobufArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineDestinationOutputPayloadFormatProtobufPtrInput)(nil)).Elem(), PipelineDestinationOutputPayloadFormatProtobufArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIamBindingConditionInput)(nil)).Elem(), PipelineIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIamBindingConditionPtrInput)(nil)).Elem(), PipelineIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIamMemberConditionInput)(nil)).Elem(), PipelineIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineIamMemberConditionPtrInput)(nil)).Elem(), PipelineIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatInput)(nil)).Elem(), PipelineInputPayloadFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatPtrInput)(nil)).Elem(), PipelineInputPayloadFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInputPayloadFormatAvroInput)(nil)).Elem(), PipelineInputPayloadFormatAvroArgs{})
@@ -5585,6 +5915,10 @@ func init() {
 	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatJsonPtrOutput{})
 	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatProtobufOutput{})
 	pulumi.RegisterOutputType(PipelineDestinationOutputPayloadFormatProtobufPtrOutput{})
+	pulumi.RegisterOutputType(PipelineIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(PipelineIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(PipelineIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(PipelineIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(PipelineInputPayloadFormatOutput{})
 	pulumi.RegisterOutputType(PipelineInputPayloadFormatPtrOutput{})
 	pulumi.RegisterOutputType(PipelineInputPayloadFormatAvroOutput{})

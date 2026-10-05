@@ -20,7 +20,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
     /**
-     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
      * 
      */
     private @Nullable List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost> registryHosts;
@@ -39,7 +39,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
         return Optional.ofNullable(this.privateRegistryAccessConfig);
     }
     /**
-     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail.
      * 
      */
     public List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost> registryHosts() {

@@ -18,14 +18,14 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
     public static final NodePoolNodeConfigHostMaintenancePolicyArgs Empty = new NodePoolNodeConfigHostMaintenancePolicyArgs();
 
     /**
-     * .
+     * Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     @Import(name="maintenanceInterval", required=true)
     private Output<String> maintenanceInterval;
 
     /**
-     * @return .
+     * @return Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
      * 
      */
     public Output<String> maintenanceInterval() {
@@ -33,14 +33,14 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
     }
 
     /**
-     * Strategy that will trigger maintenance on behalf of the customer.
+     * Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
      * 
      */
     @Import(name="opportunisticMaintenanceStrategy")
     private @Nullable Output<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs> opportunisticMaintenanceStrategy;
 
     /**
-     * @return Strategy that will trigger maintenance on behalf of the customer.
+     * @return Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
      * 
      */
     public Optional<Output<NodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategyArgs>> opportunisticMaintenanceStrategy() {
@@ -73,7 +73,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
         }
 
         /**
-         * @param maintenanceInterval .
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
         }
 
         /**
-         * @param maintenanceInterval .
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Possible values are `MAINTENANCE_INTERVAL_UNSPECIFIED`, `AS_NEEDED`, and `PERIODIC`.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
         }
 
         /**
-         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer.
+         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
         }
 
         /**
-         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer.
+         * @param opportunisticMaintenanceStrategy Strategy that will trigger maintenance on behalf of the customer. Structure is documented below.
          * 
          * @return builder
          * 

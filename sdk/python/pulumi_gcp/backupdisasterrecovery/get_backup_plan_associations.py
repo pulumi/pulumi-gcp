@@ -27,7 +27,7 @@ class GetBackupPlanAssociationsResult:
     """
     A collection of values returned by getBackupPlanAssociations.
     """
-    def __init__(__self__, associations=None, id=None, location=None, project=None, resource_type=None):
+    def __init__(__self__, associations=None, id=None, location=None, project=None):
         if associations and not isinstance(associations, list):
             raise TypeError("Expected argument 'associations' to be a list")
         pulumi.set(__self__, "associations", associations)
@@ -40,9 +40,6 @@ class GetBackupPlanAssociationsResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if resource_type and not isinstance(resource_type, str):
-            raise TypeError("Expected argument 'resource_type' to be a str")
-        pulumi.set(__self__, "resource_type", resource_type)
 
     @_builtins.property
     @pulumi.getter
@@ -73,12 +70,6 @@ class GetBackupPlanAssociationsResult:
         """
         return pulumi.get(self, "project")
 
-    @_builtins.property
-    @pulumi.getter(name="resourceType")
-    @_utilities.deprecated("""`resource_type` is deprecated and will be removed in a future major release.""")
-    def resource_type(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "resource_type")
-
 
 class AwaitableGetBackupPlanAssociationsResult(GetBackupPlanAssociationsResult):
     # pylint: disable=using-constant-test
@@ -89,13 +80,11 @@ class AwaitableGetBackupPlanAssociationsResult(GetBackupPlanAssociationsResult):
             associations=self.associations,
             id=self.id,
             location=self.location,
-            project=self.project,
-            resource_type=self.resource_type)
+            project=self.project)
 
 
 def get_backup_plan_associations(location: Optional[_builtins.str] = None,
                                  project: Optional[_builtins.str] = None,
-                                 resource_type: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupPlanAssociationsResult:
     """
     Provides a list of Backup and DR BackupPlanAssociations.
@@ -113,13 +102,10 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
     :param _builtins.str location: The location where the Backup Plan Association resources reside.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
-           ***
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    __args__['resourceType'] = resource_type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations', __args__, opts=opts, typ=GetBackupPlanAssociationsResult).value
 
@@ -127,11 +113,9 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
         associations=pulumi.get(__ret__, 'associations'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
-        project=pulumi.get(__ret__, 'project'),
-        resource_type=pulumi.get(__ret__, 'resource_type'))
+        project=pulumi.get(__ret__, 'project'))
 def get_backup_plan_associations_output(location: pulumi.Input[Optional[_builtins.str]] = None,
                                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                        resource_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationsResult]:
     """
     Provides a list of Backup and DR BackupPlanAssociations.
@@ -149,18 +133,14 @@ def get_backup_plan_associations_output(location: pulumi.Input[Optional[_builtin
     :param _builtins.str location: The location where the Backup Plan Association resources reside.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
-           ***
     """
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    __args__['resourceType'] = resource_type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations', __args__, opts=opts, typ=GetBackupPlanAssociationsResult)
     return __ret__.apply(lambda __response__: GetBackupPlanAssociationsResult(
         associations=pulumi.get(__response__, 'associations'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
-        project=pulumi.get(__response__, 'project'),
-        resource_type=pulumi.get(__response__, 'resource_type')))
+        project=pulumi.get(__response__, 'project')))

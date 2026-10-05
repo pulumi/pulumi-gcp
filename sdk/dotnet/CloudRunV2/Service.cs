@@ -70,7 +70,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
@@ -956,7 +955,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var sourcebucket = new Gcp.Storage.Bucket("sourcebucket", new()
     ///     {
-    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-tf-test-gcf-source_75125",
+    ///         Name = $"tf-test-gcf-source_39249-{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -1475,6 +1474,12 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<Outputs.ServiceScaling> Scaling { get; private set; } = null!;
 
         /// <summary>
+        /// Enables SSH access to the Service.
+        /// </summary>
+        [Output("sshEnabled")]
+        public Output<bool?> SshEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// A map of resource manager tags.
         /// Resource manager tag keys and values have the same definition as resource manager tags.
         /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -1753,6 +1758,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("scaling")]
         public Input<Inputs.ServiceScalingArgs>? Scaling { get; set; }
+
+        /// <summary>
+        /// Enables SSH access to the Service.
+        /// </summary>
+        [Input("sshEnabled")]
+        public Input<bool>? SshEnabled { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -2090,6 +2101,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("scaling")]
         public Input<Inputs.ServiceScalingGetArgs>? Scaling { get; set; }
+
+        /// <summary>
+        /// Enables SSH access to the Service.
+        /// </summary>
+        [Input("sshEnabled")]
+        public Input<bool>? SshEnabled { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

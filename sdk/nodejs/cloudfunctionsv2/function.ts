@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -127,7 +127,7 @@ import * as utilities from "../utilities";
  *     displayName: "Test Service Account",
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -424,7 +424,7 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -473,7 +473,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -534,7 +534,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -594,7 +594,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -643,7 +643,7 @@ import * as utilities from "../utilities";
  * const project = "my-project-name";
  * const projectGetProject = gcp.organizations.getProject({});
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -726,7 +726,7 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -788,7 +788,7 @@ import * as utilities from "../utilities";
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -845,7 +845,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const bucket = new gcp.storage.Bucket("bucket", {
- *     name: `${project}-gcf-source`,
+ *     name: `gcf-source-${project}`,
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });

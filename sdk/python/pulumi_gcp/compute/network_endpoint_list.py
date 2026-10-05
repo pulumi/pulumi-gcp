@@ -310,12 +310,12 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_endpoints=[
                 {
                     "instance": endpoint_instance1.name,
-                    "port": int(neg["defaultPort"]),
+                    "port": neg["defaultPort"],
                     "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
                 },
                 {
                     "instance": endpoint_instance2.name,
-                    "port": int(neg["defaultPort"]),
+                    "port": neg["defaultPort"],
                     "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
                 },
             ])
@@ -436,12 +436,12 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_endpoints=[
                 {
                     "instance": endpoint_instance1.name,
-                    "port": int(neg["defaultPort"]),
+                    "port": neg["defaultPort"],
                     "ip_address": endpoint_instance1.network_interfaces[0].network_ip,
                 },
                 {
                     "instance": endpoint_instance2.name,
-                    "port": int(neg["defaultPort"]),
+                    "port": neg["defaultPort"],
                     "ip_address": endpoint_instance2.network_interfaces[0].network_ip,
                 },
             ])
