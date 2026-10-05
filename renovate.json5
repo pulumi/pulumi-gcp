@@ -20,4 +20,19 @@
   // Trade-off: Renovate will no longer bump such a branch to newer versions or
   // rebase it if main moves into conflict; both need doing by hand.
   gitIgnoredAuthors: [],
+
+  // Also run against the v9 maintenance branch, which only takes security
+  // fixes: disable ordinary updates there so only vulnerability alerts
+  // raise PRs.
+  baseBranchPatterns: ["$default", "v9"],
+  packageRules: [
+    {
+      matchBaseBranches: ["v9"],
+      matchPackageNames: ["*"],
+      enabled: false,
+    },
+  ],
+  vulnerabilityAlerts: {
+    enabled: true,
+  },
 }
