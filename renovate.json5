@@ -2,22 +2,21 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["github>pulumi/renovate-config//default.json5"],
 
-  // Don't let Renovate recreate a branch after CI has committed regenerated
-  // SDKs onto it.
-  //
-  // build_sdk.yml regenerates sdk/ on Renovate PRs and pushes the result back
-  // as pulumi-bot. The shared preset lists pulumi-bot in gitIgnoredAuthors, so
-  // Renovate does not count that commit as a third-party modification and
-  // stays free to rebuild the branch from main on its next run, which drops
-  // the codegen commit. build_sdk then regenerates and pushes it again, and
-  // the two ping-pong indefinitely.
-  //
-  // Clearing the list makes Renovate treat the branch as modified and leave it
-  // alone once pulumi-bot has pushed, so the codegen commit survives and the
-  // PR can go green. gitIgnoredAuthors is not a mergeable option, so this
-  // replaces the preset's list rather than extending it.
-  //
-  // Trade-off: Renovate will no longer bump such a branch to newer versions or
-  // rebase it if main moves into conflict; both need doing by hand.
-  gitIgnoredAuthors: [],
+  // Also run against the v9 maintenance branch, which only takes security
+  // fixes: disable ordinary updates there so only vulnerability alerts
+  // raise PRs.
+  baseBranchPatterns: ["$default", "v9"],
+  packageRules: [
+    {
+      matchBaseBranches: ["v9"],
+      matchPackageNames: ["*"],
+      enabled: false,
+    },
+  ],
+  // Vulnerability-fix PRs inherit this as a forced override, which re-enables
+  // the packages the v9 rule above disables. Same as Renovate's
+  // security:only-security-updates preset.
+  vulnerabilityAlerts: {
+    enabled: true,
+  },
 }
