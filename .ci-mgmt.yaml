@@ -34,3 +34,7 @@ runner:
 # v9 is the maintenance branch for the previous major. Skip the registry docs
 # build so pulumi.com keeps showing v10.
 publishRegistry: false
+publish:
+    # Move the latest-v9 npm dist-tag on each stable v9 release, so v9 stays
+    # installable by tag while `latest` tracks v10.
+    npmDistTag: latest-v9
