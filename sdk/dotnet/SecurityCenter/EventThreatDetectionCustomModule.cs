@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.SecurityCenter
     ///                 ["description"] = "Flagged by Forcepoint as malicious",
     ///                 ["recommendation"] = "Contact the owner of the relevant project.",
     ///             },
-    ///             ["ips"] = new object?[]
+    ///             ["ips"] = new[]
     ///             {
     ///                 "192.0.2.1",
     ///                 "192.0.2.0/24",

@@ -742,6 +742,40 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Protocol = "HTTPS",
+    ///         TlsSettings = new Gcp.Compute.Inputs.BackendServiceTlsSettingsArgs
+    ///         {
+    ///             Identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+    ///         },
+    ///         Description = "description",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Backend Service Dynamic Forwarding
     /// 
     /// ```csharp
@@ -1165,7 +1199,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL to networkservices.ServiceLbPolicy resource.
-        /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         /// </summary>
         [Output("serviceLbPolicy")]
         public Output<string?> ServiceLbPolicy { get; private set; } = null!;
@@ -1630,7 +1664,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL to networkservices.ServiceLbPolicy resource.
-        /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         /// </summary>
         [Input("serviceLbPolicy")]
         public Input<string>? ServiceLbPolicy { get; set; }
@@ -2082,7 +2116,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL to networkservices.ServiceLbPolicy resource.
-        /// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        /// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         /// </summary>
         [Input("serviceLbPolicy")]
         public Input<string>? ServiceLbPolicy { get; set; }

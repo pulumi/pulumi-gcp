@@ -38,6 +38,8 @@ class ProjectsPolicyBindingArgs:
         :param pulumi.Input[_builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         :param pulumi.Input[_builtins.str] policy_binding_id: The Policy Binding ID.
         :param pulumi.Input['ProjectsPolicyBindingTargetArgs'] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
                
@@ -66,6 +68,7 @@ class ProjectsPolicyBindingArgs:
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -138,6 +141,8 @@ class ProjectsPolicyBindingArgs:
     def target(self) -> pulumi.Input['ProjectsPolicyBindingTargetArgs']:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        Exactly one of `principal_set` (for principal access boundary policy bindings) or
+        `resource` (for access policy bindings) must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "target")
@@ -188,6 +193,7 @@ class ProjectsPolicyBindingArgs:
         The exact variables and functions that may be referenced within an expression are
         determined by the service that evaluates it. See the service documentation for
         additional information.
+        Conditions are currently only supported when the bound policy is a principal access boundary policy.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -303,6 +309,7 @@ class _ProjectsPolicyBindingState:
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -325,6 +332,8 @@ class _ProjectsPolicyBindingState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ProjectsPolicyBindingTargetArgs'] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the policy binding was most recently updated.
@@ -406,6 +415,7 @@ class _ProjectsPolicyBindingState:
         The exact variables and functions that may be referenced within an expression are
         determined by the service that evaluates it. See the service documentation for
         additional information.
+        Conditions are currently only supported when the bound policy is a principal access boundary policy.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -571,6 +581,8 @@ class _ProjectsPolicyBindingState:
     def target(self) -> pulumi.Input[Optional['ProjectsPolicyBindingTargetArgs']]:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        Exactly one of `principal_set` (for principal access boundary policy bindings) or
+        `resource` (for access policy bindings) must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "target")
@@ -659,6 +671,74 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
+        ### Iam Projects Policy Binding Access Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="ap-proj-",
+            name="ap-proj-",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        iam_api = gcp.projects.Service("iam_api",
+            project=project.project_id,
+            service="iam.googleapis.com",
+            disable_on_destroy=False)
+        # Binding access policies can be blocked by the managed org policy constraint
+        # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+        allow_access_policy_binding = gcp.orgpolicy.Policy("allow_access_policy_binding",
+            name=project.project_id.apply(lambda project_id: f"projects/{project_id}/policies/iam.managed.disableAccessPolicyBinding"),
+            parent=project.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
+        wait_for_project_setup = time.Sleep("wait_for_project_setup", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                iam_api,
+                allow_access_policy_binding,
+            ]))
+        test_sa = gcp.serviceaccount.Account("test_sa",
+            project=project.project_id,
+            account_id="ap-sa-",
+            display_name="Test Service Account for Access Policy",
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_project_setup]))
+        access_policy = gcp.iam.ProjectAccessPolicy("access_policy",
+            project=project.project_id,
+            location="global",
+            access_policy_id="my-project-policy-",
+            details={
+                "rules": [{
+                    "effect": "ALLOW",
+                    "principals": [test_sa.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    "operation": {
+                        "permissions": ["eventarc.googleapis.com/messageBuses.publish"],
+                    },
+                }],
+            })
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        opts = pulumi.ResourceOptions(depends_on=[access_policy]))
+        my_project_access_policy_binding = gcp.iam.ProjectsPolicyBinding("my-project-access-policy-binding",
+            project=project.project_id,
+            location="global",
+            display_name="Binding for a project access policy",
+            policy_kind="ACCESS",
+            policy_binding_id="my-project-access-binding-",
+            policy=pulumi.Output.all(
+                project_id=project.project_id,
+                access_policy_id=access_policy.access_policy_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project_id']}/locations/global/accessPolicies/{resolved_outputs['access_policy_id']}")
+        ,
+            target={
+                "resource": project.project_id.apply(lambda project_id: f"//cloudresourcemanager.googleapis.com/projects/{project_id}"),
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        ```
 
         ## Import
 
@@ -706,6 +786,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -723,6 +804,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ProjectsPolicyBindingTargetArgs', 'ProjectsPolicyBindingTargetArgsDict', 'outputs.ProjectsPolicyBindingTarget']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         """
         ...
@@ -766,6 +849,74 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
             policy=pab_policy.principal_access_boundary_policy_id.apply(lambda principal_access_boundary_policy_id: f"organizations/123456789/locations/global/principalAccessBoundaryPolicies/{principal_access_boundary_policy_id}"),
             target={
                 "principal_set": f"//cloudresourcemanager.googleapis.com/projects/{project.project_id}",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        ```
+        ### Iam Projects Policy Binding Access Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="ap-proj-",
+            name="ap-proj-",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        iam_api = gcp.projects.Service("iam_api",
+            project=project.project_id,
+            service="iam.googleapis.com",
+            disable_on_destroy=False)
+        # Binding access policies can be blocked by the managed org policy constraint
+        # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+        allow_access_policy_binding = gcp.orgpolicy.Policy("allow_access_policy_binding",
+            name=project.project_id.apply(lambda project_id: f"projects/{project_id}/policies/iam.managed.disableAccessPolicyBinding"),
+            parent=project.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
+        wait_for_project_setup = time.Sleep("wait_for_project_setup", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                iam_api,
+                allow_access_policy_binding,
+            ]))
+        test_sa = gcp.serviceaccount.Account("test_sa",
+            project=project.project_id,
+            account_id="ap-sa-",
+            display_name="Test Service Account for Access Policy",
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_project_setup]))
+        access_policy = gcp.iam.ProjectAccessPolicy("access_policy",
+            project=project.project_id,
+            location="global",
+            access_policy_id="my-project-policy-",
+            details={
+                "rules": [{
+                    "effect": "ALLOW",
+                    "principals": [test_sa.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    "operation": {
+                        "permissions": ["eventarc.googleapis.com/messageBuses.publish"],
+                    },
+                }],
+            })
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        opts = pulumi.ResourceOptions(depends_on=[access_policy]))
+        my_project_access_policy_binding = gcp.iam.ProjectsPolicyBinding("my-project-access-policy-binding",
+            project=project.project_id,
+            location="global",
+            display_name="Binding for a project access policy",
+            policy_kind="ACCESS",
+            policy_binding_id="my-project-access-binding-",
+            policy=pulumi.Output.all(
+                project_id=project.project_id,
+                access_policy_id=access_policy.access_policy_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project_id']}/locations/global/accessPolicies/{resolved_outputs['access_policy_id']}")
+        ,
+            target={
+                "resource": project.project_id.apply(lambda project_id: f"//cloudresourcemanager.googleapis.com/projects/{project_id}"),
             },
             opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
@@ -907,6 +1058,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -929,6 +1081,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ProjectsPolicyBindingTargetArgs', 'ProjectsPolicyBindingTargetArgsDict', 'outputs.ProjectsPolicyBindingTarget']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the policy binding was most recently updated.
@@ -994,6 +1148,7 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
         The exact variables and functions that may be referenced within an expression are
         determined by the service that evaluates it. See the service documentation for
         additional information.
+        Conditions are currently only supported when the bound policy is a principal access boundary policy.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -1107,6 +1262,8 @@ class ProjectsPolicyBinding(pulumi.CustomResource):
     def target(self) -> pulumi.Output['outputs.ProjectsPolicyBindingTarget']:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        Exactly one of `principal_set` (for principal access boundary policy bindings) or
+        `resource` (for access policy bindings) must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "target")

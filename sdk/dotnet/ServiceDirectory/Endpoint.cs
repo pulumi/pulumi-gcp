@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         /// </summary>
         [Output("network")]
-        public Output<string?> Network { get; private set; } = null!;
+        public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
         /// Port that the endpoint is running on, must be in the

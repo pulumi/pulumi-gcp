@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.AppEngine
     ///    successfully deleted; this is a limitation of the provider, and will go away in the future.
     ///    This provider is not able to delete App Engine applications.
     /// 
+    /// &gt; **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -115,7 +118,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Settings for enabling Cloud Identity Aware Proxy
         /// </summary>
         [Output("iap")]
-        public Output<Outputs.ApplicationIap> Iap { get; private set; } = null!;
+        public Output<Outputs.ApplicationIap?> Iap { get; private set; } = null!;
 
         /// <summary>
         /// The [location](https://cloud.google.com/appengine/docs/locations)

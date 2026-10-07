@@ -90,6 +90,132 @@ import (
 //	}
 //
 // ```
+// ### Iam Folders Policy Binding Access Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+//				DisplayName:        pulumi.String("ap-folder-"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Binding access policies can be blocked by the managed org policy constraint
+//			// iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this folder.
+//			allowAccessPolicyBinding, err := orgpolicy.NewPolicy(ctx, "allow_access_policy_binding", &orgpolicy.PolicyArgs{
+//				Name: folder.FolderId.ApplyT(func(folderId string) (string, error) {
+//					return fmt.Sprintf("folders/%v/policies/iam.managed.disableAccessPolicyBinding", folderId), nil
+//				}).(pulumi.StringOutput),
+//				Parent: folder.FolderId.ApplyT(func(folderId string) (string, error) {
+//					return fmt.Sprintf("folders/%v", folderId), nil
+//				}).(pulumi.StringOutput),
+//				Spec: &orgpolicy.PolicySpecArgs{
+//					Rules: orgpolicy.PolicySpecRuleArray{
+//						&orgpolicy.PolicySpecRuleArgs{
+//							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait120s, err := time.NewSleep(ctx, "wait_120s", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				folder,
+//				allowAccessPolicyBinding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("ap-sa-"),
+//				DisplayName: pulumi.String("Test Service Account for Access Policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			accessPolicy, err := iam.NewFolderAccessPolicy(ctx, "access_policy", &iam.FolderAccessPolicyArgs{
+//				Folder:         folder.FolderId,
+//				Location:       pulumi.String("global"),
+//				AccessPolicyId: pulumi.String("my-folder-policy-"),
+//				Details: &iam.FolderAccessPolicyDetailsArgs{
+//					Rules: iam.FolderAccessPolicyDetailsRuleArray{
+//						&iam.FolderAccessPolicyDetailsRuleArgs{
+//							Effect: pulumi.String("ALLOW"),
+//							Principals: pulumi.StringArray{
+//								testSa.Email.ApplyT(func(email string) (string, error) {
+//									return fmt.Sprintf("principal://iam.googleapis.com/projects/-/serviceAccounts/%v", email), nil
+//								}).(pulumi.StringOutput),
+//							},
+//							Operation: &iam.FolderAccessPolicyDetailsRuleOperationArgs{
+//								Permissions: pulumi.StringArray{
+//									pulumi.String("eventarc.googleapis.com/messageBuses.publish"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120s,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("60s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				accessPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewFoldersPolicyBinding(ctx, "my-folder-access-policy-binding", &iam.FoldersPolicyBindingArgs{
+//				Folder:          folder.FolderId,
+//				Location:        pulumi.String("global"),
+//				DisplayName:     pulumi.String("Binding for a folder access policy"),
+//				PolicyKind:      pulumi.String("ACCESS"),
+//				PolicyBindingId: pulumi.String("my-folder-access-binding-"),
+//				Policy: pulumi.All(folder.FolderId, accessPolicy.AccessPolicyId).ApplyT(func(_args []interface{}) (string, error) {
+//					folderId := _args[0].(string)
+//					accessPolicyId := _args[1].(string)
+//					return fmt.Sprintf("folders/%v/locations/global/accessPolicies/%v", folderId, accessPolicyId), nil
+//				}).(pulumi.StringOutput),
+//				Target: &iam.FoldersPolicyBindingTargetArgs{
+//					Resource: folder.FolderId.ApplyT(func(folderId string) (string, error) {
+//						return fmt.Sprintf("//cloudresourcemanager.googleapis.com/folders/%v", folderId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -135,6 +261,7 @@ type FoldersPolicyBinding struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrOutput `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
@@ -169,6 +296,8 @@ type FoldersPolicyBinding struct {
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid pulumi.StringOutput `pulumi:"policyUid"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target FoldersPolicyBindingTargetOutput `pulumi:"target"`
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -250,6 +379,7 @@ type foldersPolicyBindingState struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition *FoldersPolicyBindingCondition `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
@@ -284,6 +414,8 @@ type foldersPolicyBindingState struct {
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid *string `pulumi:"policyUid"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target *FoldersPolicyBindingTarget `pulumi:"target"`
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -321,6 +453,7 @@ type FoldersPolicyBindingState struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrInput
 	// Output only. The time when the policy binding was created.
@@ -355,6 +488,8 @@ type FoldersPolicyBindingState struct {
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target FoldersPolicyBindingTargetPtrInput
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -396,6 +531,7 @@ type foldersPolicyBindingArgs struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition *FoldersPolicyBindingCondition `pulumi:"condition"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -420,6 +556,8 @@ type foldersPolicyBindingArgs struct {
 	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind *string `pulumi:"policyKind"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target FoldersPolicyBindingTarget `pulumi:"target"`
 }
@@ -454,6 +592,7 @@ type FoldersPolicyBindingArgs struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -478,6 +617,8 @@ type FoldersPolicyBindingArgs struct {
 	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target FoldersPolicyBindingTargetInput
 }
@@ -600,6 +741,7 @@ func (o FoldersPolicyBindingOutput) Annotations() pulumi.StringMapOutput {
 // The exact variables and functions that may be referenced within an expression are
 // determined by the service that evaluates it. See the service documentation for
 // additional information.
+// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 // Structure is documented below.
 func (o FoldersPolicyBindingOutput) Condition() FoldersPolicyBindingConditionPtrOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) FoldersPolicyBindingConditionPtrOutput { return v.Condition }).(FoldersPolicyBindingConditionPtrOutput)
@@ -673,6 +815,8 @@ func (o FoldersPolicyBindingOutput) PolicyUid() pulumi.StringOutput {
 }
 
 // Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+// `resource` (for access policy bindings) must be set.
 // Structure is documented below.
 func (o FoldersPolicyBindingOutput) Target() FoldersPolicyBindingTargetOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) FoldersPolicyBindingTargetOutput { return v.Target }).(FoldersPolicyBindingTargetOutput)

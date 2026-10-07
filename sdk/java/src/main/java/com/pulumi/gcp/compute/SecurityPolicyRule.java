@@ -432,6 +432,56 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Security Policy Rule Request Body Expression
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.SecurityPolicyRule;
+ * import com.pulumi.gcp.compute.SecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()
+ *             .name("policyruletest")
+ *             .description("basic global security policy")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var policyRule = new SecurityPolicyRule("policyRule", SecurityPolicyRuleArgs.builder()
+ *             .securityPolicy(default_.name())
+ *             .description("Deny requests containing specific body string")
+ *             .action("deny(403)")
+ *             .priority(1000)
+ *             .match(SecurityPolicyRuleMatchArgs.builder()
+ *                 .expr(SecurityPolicyRuleMatchExprArgs.builder()
+ *                     .expression("request.body.contains('my-match-string')")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

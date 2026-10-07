@@ -388,6 +388,40 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Security Policy Rule Request Body Expression
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.SecurityPolicy("default", new()
+    ///     {
+    ///         Name = "policyruletest",
+    ///         Description = "basic global security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///     });
+    /// 
+    ///     var policyRule = new Gcp.Compute.SecurityPolicyRule("policy_rule", new()
+    ///     {
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "Deny requests containing specific body string",
+    ///         Action = "deny(403)",
+    ///         Priority = 1000,
+    ///         Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///         {
+    ///             Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///             {
+    ///                 Expression = "request.body.contains('my-match-string')",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

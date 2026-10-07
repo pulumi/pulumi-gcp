@@ -33,31 +33,6 @@ import * as utilities from "../utilities";
  * });
  * const defaultBackendService = new gcp.compute.BackendService("default", {
  *     name: "backend-service",
- *     protocol: "TCP",
- *     timeoutSec: 10,
- *     healthChecks: defaultHealthCheck.id,
- * });
- * const _default = new gcp.compute.TargetTCPProxy("default", {
- *     name: "test-proxy",
- *     backendService: defaultBackendService.id,
- * });
- * ```
- * ### Target Tcp Proxy Basic Beta
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
- *     name: "health-check",
- *     timeoutSec: 1,
- *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 443,
- *     },
- * });
- * const defaultBackendService = new gcp.compute.BackendService("default", {
- *     name: "backend-service",
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  *     protocol: "TCP",
  *     timeoutSec: 10,
@@ -164,7 +139,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
 
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      */
     declare public readonly backendService: pulumi.Output<string | undefined>;
     /**
@@ -185,7 +160,6 @@ export class TargetTCPProxy extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -277,7 +251,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
 export interface TargetTCPProxyState {
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      */
     backendService?: pulumi.Input<string | undefined>;
     /**
@@ -298,7 +272,6 @@ export interface TargetTCPProxyState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -348,7 +321,7 @@ export interface TargetTCPProxyState {
 export interface TargetTCPProxyArgs {
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      */
     backendService?: pulumi.Input<string | undefined>;
     /**
@@ -365,7 +338,6 @@ export interface TargetTCPProxyArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).

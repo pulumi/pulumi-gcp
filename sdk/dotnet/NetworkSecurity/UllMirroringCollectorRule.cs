@@ -111,6 +111,10 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///             {
     ///                 "192.168.0.0/16",
     ///             },
+    ///             PrimaryIpRanges = new[]
+    ///             {
+    ///                 "10.1.0.0/16",
+    ///             },
     ///         },
     ///     });
     /// 

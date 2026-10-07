@@ -12,6 +12,7 @@ import com.pulumi.gcp.databasemigrationservice.PrivateConnectionArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionState;
 import com.pulumi.gcp.databasemigrationservice.outputs.PrivateConnectionError;
 import com.pulumi.gcp.databasemigrationservice.outputs.PrivateConnectionPscInterfaceConfig;
+import com.pulumi.gcp.databasemigrationservice.outputs.PrivateConnectionReservedPublicIpConfig;
 import com.pulumi.gcp.databasemigrationservice.outputs.PrivateConnectionVpcPeeringConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -138,6 +139,46 @@ import javax.annotation.Nullable;
  *             .ipCidrRange("10.0.0.0/16")
  *             .region("us-west1")
  *             .network(defaultNetwork.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Database Migration Service Private Connection Reserved Public Ip
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.databasemigrationservice.PrivateConnection;
+ * import com.pulumi.gcp.databasemigrationservice.PrivateConnectionArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionReservedPublicIpConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
+ *             .displayName("dbms_pc")
+ *             .location("us-west1")
+ *             .privateConnectionId("my-connection")
+ *             .labels(Map.of("key", "value"))
+ *             .reservedPublicIpConfig(PrivateConnectionReservedPublicIpConfigArgs.builder()
+ *                 .natIpsCount(1)
+ *                 .build())
+ *             .createWithoutValidation(false)
  *             .build());
  * 
  *     }
@@ -355,6 +396,22 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The Reserved Public IP configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="reservedPublicIpConfig", refs={PrivateConnectionReservedPublicIpConfig.class}, tree="[0]")
+    private Output</* @Nullable */ PrivateConnectionReservedPublicIpConfig> reservedPublicIpConfig;
+
+    /**
+     * @return The Reserved Public IP configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<PrivateConnectionReservedPublicIpConfig>> reservedPublicIpConfig() {
+        return Codegen.optional(this.reservedPublicIpConfig);
     }
     /**
      * State of the PrivateConnection.

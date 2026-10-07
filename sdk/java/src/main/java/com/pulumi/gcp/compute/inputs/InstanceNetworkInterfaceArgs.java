@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAliasIpRangeArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAliasIpv6RangeArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -82,6 +83,21 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<List<InstanceNetworkInterfaceAliasIpv6RangeArgs>>> aliasIpv6Ranges() {
         return Optional.ofNullable(this.aliasIpv6Ranges);
+    }
+
+    /**
+     * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+     * 
+     */
+    @Import(name="enableVpcScopedDns")
+    private @Nullable Output<Boolean> enableVpcScopedDns;
+
+    /**
+     * @return If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableVpcScopedDns() {
+        return Optional.ofNullable(this.enableVpcScopedDns);
     }
 
     /**
@@ -392,6 +408,7 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         this.accessConfigs = $.accessConfigs;
         this.aliasIpRanges = $.aliasIpRanges;
         this.aliasIpv6Ranges = $.aliasIpv6Ranges;
+        this.enableVpcScopedDns = $.enableVpcScopedDns;
         this.igmpQuery = $.igmpQuery;
         this.internalIpv6PrefixLength = $.internalIpv6PrefixLength;
         this.ipv6AccessConfigs = $.ipv6AccessConfigs;
@@ -548,6 +565,27 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
          */
         public Builder aliasIpv6Ranges(InstanceNetworkInterfaceAliasIpv6RangeArgs... aliasIpv6Ranges) {
             return aliasIpv6Ranges(List.of(aliasIpv6Ranges));
+        }
+
+        /**
+         * @param enableVpcScopedDns If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableVpcScopedDns(@Nullable Output<Boolean> enableVpcScopedDns) {
+            $.enableVpcScopedDns = enableVpcScopedDns;
+            return this;
+        }
+
+        /**
+         * @param enableVpcScopedDns If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableVpcScopedDns(Boolean enableVpcScopedDns) {
+            return enableVpcScopedDns(Output.of(enableVpcScopedDns));
         }
 
         /**

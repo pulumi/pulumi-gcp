@@ -10,6 +10,7 @@ import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfi
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -187,16 +188,16 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * @return The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
     public Output<String> type() {
@@ -220,6 +221,25 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.urlFilteringProfile);
     }
 
+    /**
+     * (Optional, Beta)
+     * The wildfire analysis configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="wildfireAnalysisProfile")
+    private @Nullable Output<SecurityProfileWildfireAnalysisProfileArgs> wildfireAnalysisProfile;
+
+    /**
+     * @return (Optional, Beta)
+     * The wildfire analysis configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileWildfireAnalysisProfileArgs>> wildfireAnalysisProfile() {
+        return Optional.ofNullable(this.wildfireAnalysisProfile);
+    }
+
     private SecurityProfileArgs() {}
 
     private SecurityProfileArgs(SecurityProfileArgs $) {
@@ -234,6 +254,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         this.threatPreventionProfile = $.threatPreventionProfile;
         this.type = $.type;
         this.urlFilteringProfile = $.urlFilteringProfile;
+        this.wildfireAnalysisProfile = $.wildfireAnalysisProfile;
     }
 
     public static Builder builder() {
@@ -474,8 +495,8 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+         * @param type The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
          * 
          * @return builder
          * 
@@ -486,8 +507,8 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+         * @param type The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+         * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
          * 
          * @return builder
          * 
@@ -517,6 +538,31 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder urlFilteringProfile(SecurityProfileUrlFilteringProfileArgs urlFilteringProfile) {
             return urlFilteringProfile(Output.of(urlFilteringProfile));
+        }
+
+        /**
+         * @param wildfireAnalysisProfile (Optional, Beta)
+         * The wildfire analysis configuration for the security profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildfireAnalysisProfile(@Nullable Output<SecurityProfileWildfireAnalysisProfileArgs> wildfireAnalysisProfile) {
+            $.wildfireAnalysisProfile = wildfireAnalysisProfile;
+            return this;
+        }
+
+        /**
+         * @param wildfireAnalysisProfile (Optional, Beta)
+         * The wildfire analysis configuration for the security profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildfireAnalysisProfile(SecurityProfileWildfireAnalysisProfileArgs wildfireAnalysisProfile) {
+            return wildfireAnalysisProfile(Output.of(wildfireAnalysisProfile));
         }
 
         public SecurityProfileArgs build() {

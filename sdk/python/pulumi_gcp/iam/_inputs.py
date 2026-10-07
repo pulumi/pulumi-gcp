@@ -1194,30 +1194,44 @@ class FoldersPolicyBindingConditionArgs:
 class FoldersPolicyBindingTargetArgsDict(TypedDict):
     principal_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+    Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
     Examples for each one of the following supported principal set types:
     * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
       It must be parent by the policy binding's parent (the folder).
+    """
+    resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Immutable. Full Resource Name of the resource used for access policy bindings.
+    Use this together with `policy_kind = "ACCESS"`. Examples:
+    * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+      It must be the policy binding's parent (the folder).
     """
 
 @pulumi.input_type
 class FoldersPolicyBindingTargetArgs:
     def __init__(__self__, *,
-                 principal_set: pulumi.Input[Optional[_builtins.str]] = None):
+                 principal_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        :param pulumi.Input[_builtins.str] principal_set: Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
                  It must be parent by the policy binding's parent (the folder).
+        :param pulumi.Input[_builtins.str] resource: Immutable. Full Resource Name of the resource used for access policy bindings.
+               Use this together with `policy_kind = "ACCESS"`. Examples:
+               * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+                 It must be the policy binding's parent (the folder).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
           It must be parent by the policy binding's parent (the folder).
@@ -1227,6 +1241,21 @@ class FoldersPolicyBindingTargetArgs:
     @principal_set.setter
     def principal_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_set", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. Full Resource Name of the resource used for access policy bindings.
+        Use this together with `policy_kind = "ACCESS"`. Examples:
+        * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+          It must be the policy binding's parent (the folder).
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource", value)
 
 
 class OrganizationAccessPolicyDetailsArgsDict(TypedDict):
@@ -1790,34 +1819,48 @@ class OrganizationsPolicyBindingConditionArgs:
 class OrganizationsPolicyBindingTargetArgsDict(TypedDict):
     principal_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+    Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
     Examples for each one of the following supported principal set types:
     * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
     * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
     * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
       It must be parent by the policy binding's parent (the organization).
     """
+    resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Immutable. Full Resource Name of the resource used for access policy bindings.
+    Use this together with `policy_kind = "ACCESS"`. Examples:
+    * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+      It must be the policy binding's parent (the organization).
+    """
 
 @pulumi.input_type
 class OrganizationsPolicyBindingTargetArgs:
     def __init__(__self__, *,
-                 principal_set: pulumi.Input[Optional[_builtins.str]] = None):
+                 principal_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        :param pulumi.Input[_builtins.str] principal_set: Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
                * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
                * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
                  It must be parent by the policy binding's parent (the organization).
+        :param pulumi.Input[_builtins.str] resource: Immutable. Full Resource Name of the resource used for access policy bindings.
+               Use this together with `policy_kind = "ACCESS"`. Examples:
+               * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+                 It must be the policy binding's parent (the organization).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
         * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -1829,6 +1872,21 @@ class OrganizationsPolicyBindingTargetArgs:
     @principal_set.setter
     def principal_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_set", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. Full Resource Name of the resource used for access policy bindings.
+        Use this together with `policy_kind = "ACCESS"`. Examples:
+        * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+          It must be the policy binding's parent (the organization).
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource", value)
 
 
 class PrincipalAccessBoundaryPolicyDetailsArgsDict(TypedDict):
@@ -2543,7 +2601,7 @@ class ProjectsPolicyBindingConditionArgs:
 class ProjectsPolicyBindingTargetArgsDict(TypedDict):
     principal_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+    Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
     Examples for each one of the following supported principal set types:
     * Project:
     * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -2551,28 +2609,46 @@ class ProjectsPolicyBindingTargetArgsDict(TypedDict):
     * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
       It must be parent by the policy binding's parent (the project).
     """
+    resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Immutable. Full Resource Name of the resource used for access policy bindings.
+    Use this together with `policy_kind = "ACCESS"`. Examples:
+    * Project:
+    * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+    * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+      It must be the policy binding's parent (the project).
+    """
 
 @pulumi.input_type
 class ProjectsPolicyBindingTargetArgs:
     def __init__(__self__, *,
-                 principal_set: pulumi.Input[Optional[_builtins.str]] = None):
+                 principal_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        :param pulumi.Input[_builtins.str] principal_set: Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Project:
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
                * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
                  It must be parent by the policy binding's parent (the project).
+        :param pulumi.Input[_builtins.str] resource: Immutable. Full Resource Name of the resource used for access policy bindings.
+               Use this together with `policy_kind = "ACCESS"`. Examples:
+               * Project:
+               * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+               * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+                 It must be the policy binding's parent (the project).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Project:
         * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -2585,6 +2661,23 @@ class ProjectsPolicyBindingTargetArgs:
     @principal_set.setter
     def principal_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_set", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. Full Resource Name of the resource used for access policy bindings.
+        Use this together with `policy_kind = "ACCESS"`. Examples:
+        * Project:
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+          It must be the policy binding's parent (the project).
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource", value)
 
 
 class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):

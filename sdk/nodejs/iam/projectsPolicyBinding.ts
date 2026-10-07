@@ -48,6 +48,80 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait60Seconds],
  * });
  * ```
+ * ### Iam Projects Policy Binding Access Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "ap-proj-",
+ *     name: "ap-proj-",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const iamApi = new gcp.projects.Service("iam_api", {
+ *     project: project.projectId,
+ *     service: "iam.googleapis.com",
+ *     disableOnDestroy: false,
+ * });
+ * // Binding access policies can be blocked by the managed org policy constraint
+ * // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+ * const allowAccessPolicyBinding = new gcp.orgpolicy.Policy("allow_access_policy_binding", {
+ *     name: pulumi.interpolate`projects/${project.projectId}/policies/iam.managed.disableAccessPolicyBinding`,
+ *     parent: pulumi.interpolate`projects/${project.projectId}`,
+ *     spec: {
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ * });
+ * const waitForProjectSetup = new time.Sleep("wait_for_project_setup", {createDuration: "120s"}, {
+ *     dependsOn: [
+ *         iamApi,
+ *         allowAccessPolicyBinding,
+ *     ],
+ * });
+ * const testSa = new gcp.serviceaccount.Account("test_sa", {
+ *     project: project.projectId,
+ *     accountId: "ap-sa-",
+ *     displayName: "Test Service Account for Access Policy",
+ * }, {
+ *     dependsOn: [waitForProjectSetup],
+ * });
+ * const accessPolicy = new gcp.iam.ProjectAccessPolicy("access_policy", {
+ *     project: project.projectId,
+ *     location: "global",
+ *     accessPolicyId: "my-project-policy-",
+ *     details: {
+ *         rules: [{
+ *             effect: "ALLOW",
+ *             principals: [pulumi.interpolate`principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}`],
+ *             operation: {
+ *                 permissions: ["eventarc.googleapis.com/messageBuses.publish"],
+ *             },
+ *         }],
+ *     },
+ * });
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [accessPolicy],
+ * });
+ * const my_project_access_policy_binding = new gcp.iam.ProjectsPolicyBinding("my-project-access-policy-binding", {
+ *     project: project.projectId,
+ *     location: "global",
+ *     displayName: "Binding for a project access policy",
+ *     policyKind: "ACCESS",
+ *     policyBindingId: "my-project-access-binding-",
+ *     policy: pulumi.interpolate`projects/${project.projectId}/locations/global/accessPolicies/${accessPolicy.accessPolicyId}`,
+ *     target: {
+ *         resource: pulumi.interpolate`//cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
+ *     },
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -124,6 +198,7 @@ export class ProjectsPolicyBinding extends pulumi.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     declare public readonly condition: pulumi.Output<outputs.iam.ProjectsPolicyBindingCondition | undefined>;
@@ -185,6 +260,8 @@ export class ProjectsPolicyBinding extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     declare public readonly target: pulumi.Output<outputs.iam.ProjectsPolicyBindingTarget>;
@@ -299,6 +376,7 @@ export interface ProjectsPolicyBindingState {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iam.ProjectsPolicyBindingCondition | undefined>;
@@ -360,6 +438,8 @@ export interface ProjectsPolicyBindingState {
     project?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     target?: pulumi.Input<inputs.iam.ProjectsPolicyBindingTarget | undefined>;
@@ -408,6 +488,7 @@ export interface ProjectsPolicyBindingArgs {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iam.ProjectsPolicyBindingCondition | undefined>;
@@ -449,6 +530,8 @@ export interface ProjectsPolicyBindingArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     target: pulumi.Input<inputs.iam.ProjectsPolicyBindingTarget>;

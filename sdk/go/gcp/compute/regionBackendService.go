@@ -428,6 +428,116 @@ import (
 //	}
 //
 // ```
+// ### Region Backend Service In Flight
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			custom, err := compute.NewNetwork(ctx, "custom", &compute.NetworkArgs{
+//				Name:                  pulumi.String("custom-vpc"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("custom-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     custom.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+//				Name:        pulumi.String("instance-template"),
+//				MachineType: pulumi.String("e2-micro"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("debian-cloud/debian-13"),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						Network:    custom.ID().ToIDOutput().ToStringOutput(),
+//						Subnetwork: _default.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//				Metadata: pulumi.StringMap{
+//					"startup-script": pulumi.String(`#!/bin/bash
+//
+// echo \"Hello World from MIG VM\" > /var/www/html/index.html
+// apt-get update -y
+// apt-get install -y apache2
+// systemctl start apache2
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobar, err := compute.NewRegionInstanceGroupManager(ctx, "foobar", &compute.RegionInstanceGroupManagerArgs{
+//				Name:             pulumi.String("instance-group-manager"),
+//				BaseInstanceName: pulumi.String("vm"),
+//				Region:           pulumi.String("us-central1"),
+//				Versions: compute.RegionInstanceGroupManagerVersionArray{
+//					&compute.RegionInstanceGroupManagerVersionArgs{
+//						InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//				TargetSize: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:   pulumi.String("rbs-health-check"),
+//				Region: pulumi.String("us-central1"),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("region-service"),
+//				Region:              pulumi.String("us-central1"),
+//				Description:         pulumi.String("Hello World 1234"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				Backends: compute.RegionBackendServiceBackendArray{
+//					&compute.RegionBackendServiceBackendArgs{
+//						Group:                          foobar.InstanceGroup,
+//						BalancingMode:                  pulumi.String("IN_FLIGHT"),
+//						CapacityScaler:                 pulumi.Float64(1),
+//						MaxInFlightRequestsPerInstance: pulumi.Int(100),
+//						TrafficDuration:                pulumi.String("LONG"),
+//					},
+//				},
+//				HealthChecks: defaultRegionHealthCheck.SelfLink,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Backend Service Connection Tracking
 //
 // ```go
@@ -1014,6 +1124,49 @@ import (
 //	}
 //
 // ```
+// ### Region Backend Service Identity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:   pulumi.String("health-check"),
+//				Region: pulumi.String("europe-north1"),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("europe-north1"),
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("HTTPS"),
+//				TlsSettings: &compute.RegionBackendServiceTlsSettingsArgs{
+//					Identity: pulumi.String("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"),
+//				},
+//				Description: pulumi.String("description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -1232,6 +1385,10 @@ type RegionBackendService struct {
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+	// The service lb policy must be regional and in the same region as the backend service.
+	ServiceLbPolicy pulumi.StringPtrOutput `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -1480,6 +1637,10 @@ type regionBackendServiceState struct {
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+	// The service lb policy must be regional and in the same region as the backend service.
+	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -1699,6 +1860,10 @@ type RegionBackendServiceState struct {
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+	// The service lb policy must be regional and in the same region as the backend service.
+	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -1913,6 +2078,10 @@ type regionBackendServiceArgs struct {
 	Region *string `pulumi:"region"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+	// The service lb policy must be regional and in the same region as the backend service.
+	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -2124,6 +2293,10 @@ type RegionBackendServiceArgs struct {
 	Region pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
+	// URL to networkservices.ServiceLbPolicy resource.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+	// The service lb policy must be regional and in the same region as the backend service.
+	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -2535,6 +2708,13 @@ func (o RegionBackendServiceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 // The URI of the created resource.
 func (o RegionBackendServiceOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// URL to networkservices.ServiceLbPolicy resource.
+// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+// The service lb policy must be regional and in the same region as the backend service.
+func (o RegionBackendServiceOutput) ServiceLbPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.ServiceLbPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Type of session affinity to use. The default is NONE. Session affinity is

@@ -117,6 +117,11 @@ export class Hook extends pulumi.CustomResource {
      */
     declare public readonly sensitiveQueryString: pulumi.Output<string | undefined>;
     /**
+     * Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     */
+    declare public readonly serviceAccountAuth: pulumi.Output<boolean | undefined>;
+    /**
      * The target URI to which the payloads will be delivered.
      */
     declare public readonly targetUri: pulumi.Output<string>;
@@ -153,6 +158,7 @@ export class Hook extends pulumi.CustomResource {
             resourceInputs["pushOption"] = state?.pushOption;
             resourceInputs["repositoryId"] = state?.repositoryId;
             resourceInputs["sensitiveQueryString"] = state?.sensitiveQueryString;
+            resourceInputs["serviceAccountAuth"] = state?.serviceAccountAuth;
             resourceInputs["targetUri"] = state?.targetUri;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -179,6 +185,7 @@ export class Hook extends pulumi.CustomResource {
             resourceInputs["pushOption"] = args?.pushOption;
             resourceInputs["repositoryId"] = args?.repositoryId;
             resourceInputs["sensitiveQueryString"] = args?.sensitiveQueryString ? pulumi.secret(args.sensitiveQueryString) : undefined;
+            resourceInputs["serviceAccountAuth"] = args?.serviceAccountAuth;
             resourceInputs["targetUri"] = args?.targetUri;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -252,6 +259,11 @@ export interface HookState {
      */
     sensitiveQueryString?: pulumi.Input<string | undefined>;
     /**
+     * Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     */
+    serviceAccountAuth?: pulumi.Input<boolean | undefined>;
+    /**
      * The target URI to which the payloads will be delivered.
      */
     targetUri?: pulumi.Input<string | undefined>;
@@ -315,6 +327,11 @@ export interface HookArgs {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     sensitiveQueryString?: pulumi.Input<string | undefined>;
+    /**
+     * Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     */
+    serviceAccountAuth?: pulumi.Input<boolean | undefined>;
     /**
      * The target URI to which the payloads will be delivered.
      */

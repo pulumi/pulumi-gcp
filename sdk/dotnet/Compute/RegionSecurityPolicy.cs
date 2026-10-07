@@ -151,6 +151,220 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Security Policy With Body Exclude
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "test-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "test-network-subnet",
+    ///         Region = "us-west2",
+    ///         Network = @default.Id,
+    ///         IpCidrRange = "10.10.0.0/24",
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "test-health-check",
+    ///         Region = "us-west2",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var policyRuleOne = new Gcp.Compute.RegionSecurityPolicy("policy_rule_one", new()
+    ///     {
+    ///         Name = "policyruletest",
+    ///         Description = "regional security policy with body inspection",
+    ///         Region = "us-west2",
+    ///         Type = "CLOUD_ARMOR",
+    ///         AdvancedOptionsConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyAdvancedOptionsConfigArgs
+    ///         {
+    ///             JsonParsing = "STANDARD",
+    ///             LogLevel = "VERBOSE",
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyRuleArgs
+    ///             {
+    ///                 Description = "waf body rule",
+    ///                 Action = "deny(403)",
+    ///                 Priority = 100,
+    ///                 Preview = true,
+    ///                 Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "evaluatePreconfiguredWaf('sqli-v33-stable')",
+    ///                     },
+    ///                 },
+    ///                 PreconfiguredWafConfig = new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs
+    ///                 {
+    ///                     Exclusions = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs
+    ///                         {
+    ///                             TargetRuleSet = "sqli-v33-stable",
+    ///                             RequestBodies = new[]
+    ///                             {
+    ///                                 new Gcp.Compute.Inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs
+    ///                                 {
+    ///                                     Operator = "EQUALS",
+    ///                                     Value = "safe-field",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Priority = 2147483647,
+    ///                 Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                     Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Description = "default rule",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
+    ///     {
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 AccessConfigs = new[]
+    ///                 {
+    ///                     null,
+    ///                 },
+    ///                 Subnetwork = defaultSubnetwork.Id,
+    ///             },
+    ///         },
+    ///         Name = "backendpolicy",
+    ///         MachineType = "e2-micro",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "projects/debian-cloud/global/images/family/debian-11",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionInstanceGroupManager = new Gcp.Compute.RegionInstanceGroupManager("default", new()
+    ///     {
+    ///         Name = "backendpolicy",
+    ///         Region = "us-west2",
+    ///         BaseInstanceName = "backend",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = defaultInstanceTemplate.Id,
+    ///             },
+    ///         },
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "backendpolicy",
+    ///         Region = "us-west2",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         TimeoutSec = 30,
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = defaultRegionInstanceGroupManager.InstanceGroup,
+    ///                 CapacityScaler = 1.0,
+    ///             },
+    ///         },
+    ///         SecurityPolicy = policyRuleOne.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Security Policy Request Body Expression
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicy("policy_rule", new()
+    ///     {
+    ///         Name = "policyruletest",
+    ///         Description = "Policy with Request Body inspection",
+    ///         Region = "us-west2",
+    ///         Type = "CLOUD_ARMOR",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "deny(403)",
+    ///                 Priority = 1000,
+    ///                 Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "request.body.contains('my-match-string')",
+    ///                     },
+    ///                 },
+    ///                 Description = "Deny requests containing specific body string",
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Priority = 2147483647,
+    ///                 Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                     Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Description = "default rule",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

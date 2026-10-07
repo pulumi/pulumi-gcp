@@ -18,6 +18,21 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfigArgs extends co
     public static final AppAudioProcessingConfigSynthesizeSpeechConfigArgs Empty = new AppAudioProcessingConfigSynthesizeSpeechConfigArgs();
 
     /**
+     * The instruction used to synthesize speech when using a generative model.
+     * 
+     */
+    @Import(name="instruction")
+    private @Nullable Output<String> instruction;
+
+    /**
+     * @return The instruction used to synthesize speech when using a generative model.
+     * 
+     */
+    public Optional<Output<String>> instruction() {
+        return Optional.ofNullable(this.instruction);
+    }
+
+    /**
      * The identifier for this object. Format specified above.
      * 
      */
@@ -30,6 +45,21 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfigArgs extends co
      */
     public Output<String> languageCode() {
         return this.languageCode;
+    }
+
+    /**
+     * The model used to synthesize audio.
+     * 
+     */
+    @Import(name="model")
+    private @Nullable Output<String> model;
+
+    /**
+     * @return The model used to synthesize audio.
+     * 
+     */
+    public Optional<Output<String>> model() {
+        return Optional.ofNullable(this.model);
     }
 
     /**
@@ -75,7 +105,9 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfigArgs extends co
     private AppAudioProcessingConfigSynthesizeSpeechConfigArgs() {}
 
     private AppAudioProcessingConfigSynthesizeSpeechConfigArgs(AppAudioProcessingConfigSynthesizeSpeechConfigArgs $) {
+        this.instruction = $.instruction;
         this.languageCode = $.languageCode;
+        this.model = $.model;
         this.speakingRate = $.speakingRate;
         this.voice = $.voice;
     }
@@ -99,6 +131,27 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfigArgs extends co
         }
 
         /**
+         * @param instruction The instruction used to synthesize speech when using a generative model.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instruction(@Nullable Output<String> instruction) {
+            $.instruction = instruction;
+            return this;
+        }
+
+        /**
+         * @param instruction The instruction used to synthesize speech when using a generative model.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instruction(String instruction) {
+            return instruction(Output.of(instruction));
+        }
+
+        /**
          * @param languageCode The identifier for this object. Format specified above.
          * 
          * @return builder
@@ -117,6 +170,27 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfigArgs extends co
          */
         public Builder languageCode(String languageCode) {
             return languageCode(Output.of(languageCode));
+        }
+
+        /**
+         * @param model The model used to synthesize audio.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder model(@Nullable Output<String> model) {
+            $.model = model;
+            return this;
+        }
+
+        /**
+         * @param model The model used to synthesize audio.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder model(String model) {
+            return model(Output.of(model));
         }
 
         /**

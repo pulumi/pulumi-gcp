@@ -1902,11 +1902,16 @@ func (o FoldersPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type FoldersPolicyBindingTarget struct {
-	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 	// Examples for each one of the following supported principal set types:
 	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 	//   It must be parent by the policy binding's parent (the folder).
 	PrincipalSet *string `pulumi:"principalSet"`
+	// Immutable. Full Resource Name of the resource used for access policy bindings.
+	// Use this together with `policyKind = "ACCESS"`. Examples:
+	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+	//   It must be the policy binding's parent (the folder).
+	Resource *string `pulumi:"resource"`
 }
 
 // FoldersPolicyBindingTargetInput is an input type that accepts FoldersPolicyBindingTargetArgs and FoldersPolicyBindingTargetOutput values.
@@ -1921,11 +1926,16 @@ type FoldersPolicyBindingTargetInput interface {
 }
 
 type FoldersPolicyBindingTargetArgs struct {
-	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 	// Examples for each one of the following supported principal set types:
 	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 	//   It must be parent by the policy binding's parent (the folder).
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
+	// Immutable. Full Resource Name of the resource used for access policy bindings.
+	// Use this together with `policyKind = "ACCESS"`. Examples:
+	// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+	//   It must be the policy binding's parent (the folder).
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (FoldersPolicyBindingTargetArgs) ElementType() reflect.Type {
@@ -2005,12 +2015,20 @@ func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetPtrOutputW
 	}).(FoldersPolicyBindingTargetPtrOutput)
 }
 
-// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 // Examples for each one of the following supported principal set types:
 //   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 //     It must be parent by the policy binding's parent (the folder).
 func (o FoldersPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FoldersPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Full Resource Name of the resource used for access policy bindings.
+// Use this together with `policyKind = "ACCESS"`. Examples:
+//   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+//     It must be the policy binding's parent (the folder).
+func (o FoldersPolicyBindingTargetOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FoldersPolicyBindingTarget) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type FoldersPolicyBindingTargetPtrOutput struct{ *pulumi.OutputState }
@@ -2037,7 +2055,7 @@ func (o FoldersPolicyBindingTargetPtrOutput) Elem() FoldersPolicyBindingTargetOu
 	}).(FoldersPolicyBindingTargetOutput)
 }
 
-// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 // Examples for each one of the following supported principal set types:
 //   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
 //     It must be parent by the policy binding's parent (the folder).
@@ -2047,6 +2065,19 @@ func (o FoldersPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.PrincipalSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Full Resource Name of the resource used for access policy bindings.
+// Use this together with `policyKind = "ACCESS"`. Examples:
+//   - Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+//     It must be the policy binding's parent (the folder).
+func (o FoldersPolicyBindingTargetPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2897,13 +2928,18 @@ func (o OrganizationsPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type OrganizationsPolicyBindingTarget struct {
-	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 	// Examples for each one of the following supported principal set types:
 	// * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
 	// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
 	// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
 	//   It must be parent by the policy binding's parent (the organization).
 	PrincipalSet *string `pulumi:"principalSet"`
+	// Immutable. Full Resource Name of the resource used for access policy bindings.
+	// Use this together with `policyKind = "ACCESS"`. Examples:
+	// * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+	//   It must be the policy binding's parent (the organization).
+	Resource *string `pulumi:"resource"`
 }
 
 // OrganizationsPolicyBindingTargetInput is an input type that accepts OrganizationsPolicyBindingTargetArgs and OrganizationsPolicyBindingTargetOutput values.
@@ -2918,13 +2954,18 @@ type OrganizationsPolicyBindingTargetInput interface {
 }
 
 type OrganizationsPolicyBindingTargetArgs struct {
-	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 	// Examples for each one of the following supported principal set types:
 	// * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
 	// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
 	// * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
 	//   It must be parent by the policy binding's parent (the organization).
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
+	// Immutable. Full Resource Name of the resource used for access policy bindings.
+	// Use this together with `policyKind = "ACCESS"`. Examples:
+	// * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+	//   It must be the policy binding's parent (the organization).
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (OrganizationsPolicyBindingTargetArgs) ElementType() reflect.Type {
@@ -3004,7 +3045,7 @@ func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTarg
 	}).(OrganizationsPolicyBindingTargetPtrOutput)
 }
 
-// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 // Examples for each one of the following supported principal set types:
 //   - Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
 //   - Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -3012,6 +3053,14 @@ func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTarg
 //     It must be parent by the policy binding's parent (the organization).
 func (o OrganizationsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationsPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Full Resource Name of the resource used for access policy bindings.
+// Use this together with `policyKind = "ACCESS"`. Examples:
+//   - Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+//     It must be the policy binding's parent (the organization).
+func (o OrganizationsPolicyBindingTargetOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationsPolicyBindingTarget) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type OrganizationsPolicyBindingTargetPtrOutput struct{ *pulumi.OutputState }
@@ -3038,7 +3087,7 @@ func (o OrganizationsPolicyBindingTargetPtrOutput) Elem() OrganizationsPolicyBin
 	}).(OrganizationsPolicyBindingTargetOutput)
 }
 
-// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 // Examples for each one of the following supported principal set types:
 //   - Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
 //   - Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -3050,6 +3099,19 @@ func (o OrganizationsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringP
 			return nil
 		}
 		return v.PrincipalSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Full Resource Name of the resource used for access policy bindings.
+// Use this together with `policyKind = "ACCESS"`. Examples:
+//   - Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+//     It must be the policy binding's parent (the organization).
+func (o OrganizationsPolicyBindingTargetPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4209,7 +4271,7 @@ func (o ProjectsPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type ProjectsPolicyBindingTarget struct {
-	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 	// Examples for each one of the following supported principal set types:
 	// * Project:
 	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -4217,6 +4279,13 @@ type ProjectsPolicyBindingTarget struct {
 	// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
 	//   It must be parent by the policy binding's parent (the project).
 	PrincipalSet *string `pulumi:"principalSet"`
+	// Immutable. Full Resource Name of the resource used for access policy bindings.
+	// Use this together with `policyKind = "ACCESS"`. Examples:
+	// * Project:
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+	//   It must be the policy binding's parent (the project).
+	Resource *string `pulumi:"resource"`
 }
 
 // ProjectsPolicyBindingTargetInput is an input type that accepts ProjectsPolicyBindingTargetArgs and ProjectsPolicyBindingTargetOutput values.
@@ -4231,7 +4300,7 @@ type ProjectsPolicyBindingTargetInput interface {
 }
 
 type ProjectsPolicyBindingTargetArgs struct {
-	// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+	// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 	// Examples for each one of the following supported principal set types:
 	// * Project:
 	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -4239,6 +4308,13 @@ type ProjectsPolicyBindingTargetArgs struct {
 	// * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
 	//   It must be parent by the policy binding's parent (the project).
 	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
+	// Immutable. Full Resource Name of the resource used for access policy bindings.
+	// Use this together with `policyKind = "ACCESS"`. Examples:
+	// * Project:
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+	// * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+	//   It must be the policy binding's parent (the project).
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (ProjectsPolicyBindingTargetArgs) ElementType() reflect.Type {
@@ -4318,7 +4394,7 @@ func (o ProjectsPolicyBindingTargetOutput) ToProjectsPolicyBindingTargetPtrOutpu
 	}).(ProjectsPolicyBindingTargetPtrOutput)
 }
 
-// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 // Examples for each one of the following supported principal set types:
 //   - Project:
 //   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -4327,6 +4403,16 @@ func (o ProjectsPolicyBindingTargetOutput) ToProjectsPolicyBindingTargetPtrOutpu
 //     It must be parent by the policy binding's parent (the project).
 func (o ProjectsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectsPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Full Resource Name of the resource used for access policy bindings.
+// Use this together with `policyKind = "ACCESS"`. Examples:
+//   - Project:
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+//     It must be the policy binding's parent (the project).
+func (o ProjectsPolicyBindingTargetOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectsPolicyBindingTarget) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
 type ProjectsPolicyBindingTargetPtrOutput struct{ *pulumi.OutputState }
@@ -4353,7 +4439,7 @@ func (o ProjectsPolicyBindingTargetPtrOutput) Elem() ProjectsPolicyBindingTarget
 	}).(ProjectsPolicyBindingTargetOutput)
 }
 
-// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
 // Examples for each one of the following supported principal set types:
 //   - Project:
 //   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -4366,6 +4452,21 @@ func (o ProjectsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOut
 			return nil
 		}
 		return v.PrincipalSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Full Resource Name of the resource used for access policy bindings.
+// Use this together with `policyKind = "ACCESS"`. Examples:
+//   - Project:
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+//   - `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+//     It must be the policy binding's parent (the project).
+func (o ProjectsPolicyBindingTargetPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectsPolicyBindingTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11196,6 +11297,148 @@ func (o GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor
 	}).(GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorOutput)
 }
 
+type GetWorkloadIdentityPoolJwksKey struct {
+	// The algorithm intended for use with the key (e.g. `RS256`).
+	Alg string `pulumi:"alg"`
+	// The exponent for the RSA public key.
+	E string `pulumi:"e"`
+	// The unique identifier for the key.
+	Kid string `pulumi:"kid"`
+	// The key type (e.g. `RSA`).
+	Kty string `pulumi:"kty"`
+	// The modulus for the RSA public key.
+	N string `pulumi:"n"`
+	// The intended use of the public key (e.g. `sig`).
+	Use string `pulumi:"use"`
+}
+
+// GetWorkloadIdentityPoolJwksKeyInput is an input type that accepts GetWorkloadIdentityPoolJwksKeyArgs and GetWorkloadIdentityPoolJwksKeyOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolJwksKeyInput` via:
+//
+//	GetWorkloadIdentityPoolJwksKeyArgs{...}
+type GetWorkloadIdentityPoolJwksKeyInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolJwksKeyOutput() GetWorkloadIdentityPoolJwksKeyOutput
+	ToGetWorkloadIdentityPoolJwksKeyOutputWithContext(context.Context) GetWorkloadIdentityPoolJwksKeyOutput
+}
+
+type GetWorkloadIdentityPoolJwksKeyArgs struct {
+	// The algorithm intended for use with the key (e.g. `RS256`).
+	Alg pulumi.StringInput `pulumi:"alg"`
+	// The exponent for the RSA public key.
+	E pulumi.StringInput `pulumi:"e"`
+	// The unique identifier for the key.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// The key type (e.g. `RSA`).
+	Kty pulumi.StringInput `pulumi:"kty"`
+	// The modulus for the RSA public key.
+	N pulumi.StringInput `pulumi:"n"`
+	// The intended use of the public key (e.g. `sig`).
+	Use pulumi.StringInput `pulumi:"use"`
+}
+
+func (GetWorkloadIdentityPoolJwksKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolJwksKey)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolJwksKeyArgs) ToGetWorkloadIdentityPoolJwksKeyOutput() GetWorkloadIdentityPoolJwksKeyOutput {
+	return i.ToGetWorkloadIdentityPoolJwksKeyOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolJwksKeyArgs) ToGetWorkloadIdentityPoolJwksKeyOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolJwksKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolJwksKeyOutput)
+}
+
+// GetWorkloadIdentityPoolJwksKeyArrayInput is an input type that accepts GetWorkloadIdentityPoolJwksKeyArray and GetWorkloadIdentityPoolJwksKeyArrayOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolJwksKeyArrayInput` via:
+//
+//	GetWorkloadIdentityPoolJwksKeyArray{ GetWorkloadIdentityPoolJwksKeyArgs{...} }
+type GetWorkloadIdentityPoolJwksKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolJwksKeyArrayOutput() GetWorkloadIdentityPoolJwksKeyArrayOutput
+	ToGetWorkloadIdentityPoolJwksKeyArrayOutputWithContext(context.Context) GetWorkloadIdentityPoolJwksKeyArrayOutput
+}
+
+type GetWorkloadIdentityPoolJwksKeyArray []GetWorkloadIdentityPoolJwksKeyInput
+
+func (GetWorkloadIdentityPoolJwksKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolJwksKey)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolJwksKeyArray) ToGetWorkloadIdentityPoolJwksKeyArrayOutput() GetWorkloadIdentityPoolJwksKeyArrayOutput {
+	return i.ToGetWorkloadIdentityPoolJwksKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolJwksKeyArray) ToGetWorkloadIdentityPoolJwksKeyArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolJwksKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolJwksKeyArrayOutput)
+}
+
+type GetWorkloadIdentityPoolJwksKeyOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolJwksKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolJwksKey)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolJwksKeyOutput) ToGetWorkloadIdentityPoolJwksKeyOutput() GetWorkloadIdentityPoolJwksKeyOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolJwksKeyOutput) ToGetWorkloadIdentityPoolJwksKeyOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolJwksKeyOutput {
+	return o
+}
+
+// The algorithm intended for use with the key (e.g. `RS256`).
+func (o GetWorkloadIdentityPoolJwksKeyOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolJwksKey) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+// The exponent for the RSA public key.
+func (o GetWorkloadIdentityPoolJwksKeyOutput) E() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolJwksKey) string { return v.E }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the key.
+func (o GetWorkloadIdentityPoolJwksKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolJwksKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// The key type (e.g. `RSA`).
+func (o GetWorkloadIdentityPoolJwksKeyOutput) Kty() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolJwksKey) string { return v.Kty }).(pulumi.StringOutput)
+}
+
+// The modulus for the RSA public key.
+func (o GetWorkloadIdentityPoolJwksKeyOutput) N() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolJwksKey) string { return v.N }).(pulumi.StringOutput)
+}
+
+// The intended use of the public key (e.g. `sig`).
+func (o GetWorkloadIdentityPoolJwksKeyOutput) Use() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolJwksKey) string { return v.Use }).(pulumi.StringOutput)
+}
+
+type GetWorkloadIdentityPoolJwksKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolJwksKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolJwksKey)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolJwksKeyArrayOutput) ToGetWorkloadIdentityPoolJwksKeyArrayOutput() GetWorkloadIdentityPoolJwksKeyArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolJwksKeyArrayOutput) ToGetWorkloadIdentityPoolJwksKeyArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolJwksKeyArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolJwksKeyArrayOutput) Index(i pulumi.IntInput) GetWorkloadIdentityPoolJwksKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkloadIdentityPoolJwksKey {
+		return vs[0].([]GetWorkloadIdentityPoolJwksKey)[vs[1].(int)]
+	}).(GetWorkloadIdentityPoolJwksKeyOutput)
+}
+
 type GetWorkloadIdentityPoolProviderAw struct {
 	// The AWS account ID.
 	AccountId string `pulumi:"accountId"`
@@ -12171,6 +12414,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorInput)(nil)).Elem(), GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolJwksKeyInput)(nil)).Elem(), GetWorkloadIdentityPoolJwksKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolJwksKeyArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolJwksKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArgs{})
@@ -12316,6 +12561,8 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolJwksKeyOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolJwksKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderAwOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderAwArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderOidcOutput{})

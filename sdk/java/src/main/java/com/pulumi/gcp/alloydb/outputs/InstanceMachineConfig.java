@@ -13,7 +13,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceMachineConfig {
     /**
-     * @return The number of CPU&#39;s in the VM instance.
+     * @return The number of CPUs in the VM instance. For read pool instances, this
+     * value is applied to the instances in the pool and is not replaced by
+     * a fixed default.
      * 
      */
     private @Nullable Integer cpuCount;
@@ -27,7 +29,9 @@ public final class InstanceMachineConfig {
 
     private InstanceMachineConfig() {}
     /**
-     * @return The number of CPU&#39;s in the VM instance.
+     * @return The number of CPUs in the VM instance. For read pool instances, this
+     * value is applied to the instances in the pool and is not replaced by
+     * a fixed default.
      * 
      */
     public Optional<Integer> cpuCount() {

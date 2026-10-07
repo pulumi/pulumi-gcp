@@ -18,6 +18,8 @@ public final class CloudExadataInfrastructurePropertiesCustomerContactArgs exten
      * The email address used by Oracle to send notifications regarding databases
      * and infrastructure.
      * 
+     * &lt;a name=&#34;nestedPropertiesExascaleConfig&#34;&gt;&lt;/a&gt;The `exascaleConfig` block contains:
+     * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
@@ -25,6 +27,8 @@ public final class CloudExadataInfrastructurePropertiesCustomerContactArgs exten
     /**
      * @return The email address used by Oracle to send notifications regarding databases
      * and infrastructure.
+     * 
+     * &lt;a name=&#34;nestedPropertiesExascaleConfig&#34;&gt;&lt;/a&gt;The `exascaleConfig` block contains:
      * 
      */
     public Output<String> email() {
@@ -59,6 +63,8 @@ public final class CloudExadataInfrastructurePropertiesCustomerContactArgs exten
          * @param email The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
          * 
+         * &lt;a name=&#34;nestedPropertiesExascaleConfig&#34;&gt;&lt;/a&gt;The `exascaleConfig` block contains:
+         * 
          * @return builder
          * 
          */
@@ -70,6 +76,8 @@ public final class CloudExadataInfrastructurePropertiesCustomerContactArgs exten
         /**
          * @param email The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
+         * 
+         * &lt;a name=&#34;nestedPropertiesExascaleConfig&#34;&gt;&lt;/a&gt;The `exascaleConfig` block contains:
          * 
          * @return builder
          * 

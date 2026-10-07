@@ -89,6 +89,85 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Iam Organizations Policy Binding Access Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.iam.OrganizationAccessPolicy;
+ * import com.pulumi.gcp.iam.OrganizationAccessPolicyArgs;
+ * import com.pulumi.gcp.iam.inputs.OrganizationAccessPolicyDetailsArgs;
+ * import com.pulumi.gcp.iam.inputs.OrganizationAccessPolicyDetailsRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.OrganizationAccessPolicyDetailsRuleOperationArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.iam.OrganizationsPolicyBinding;
+ * import com.pulumi.gcp.iam.OrganizationsPolicyBindingArgs;
+ * import com.pulumi.gcp.iam.inputs.OrganizationsPolicyBindingTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testSa = new Account("testSa", AccountArgs.builder()
+ *             .accountId("ap-sa-")
+ *             .displayName("Test Service Account for Access Policy")
+ *             .build());
+ * 
+ *         var accessPolicy = new OrganizationAccessPolicy("accessPolicy", OrganizationAccessPolicyArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .accessPolicyId("my-org-policy-")
+ *             .details(OrganizationAccessPolicyDetailsArgs.builder()
+ *                 .rules(OrganizationAccessPolicyDetailsRuleArgs.builder()
+ *                     .effect("ALLOW")
+ *                     .principals(testSa.email().applyValue(_email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", _email)))
+ *                     .operation(OrganizationAccessPolicyDetailsRuleOperationArgs.builder()
+ *                         .permissions("eventarc.googleapis.com/messageBuses.publish")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(accessPolicy)
+ *                 .build());
+ * 
+ *         var my_org_access_policy_binding = new OrganizationsPolicyBinding("my-org-access-policy-binding", OrganizationsPolicyBindingArgs.builder()
+ *             .organization("123456789")
+ *             .location("global")
+ *             .displayName("Binding for an organization access policy")
+ *             .policyKind("ACCESS")
+ *             .policyBindingId("my-org-access-binding-")
+ *             .policy(accessPolicy.accessPolicyId().applyValue(_accessPolicyId -> String.format("organizations/123456789/locations/global/accessPolicies/%s", _accessPolicyId)))
+ *             .target(OrganizationsPolicyBindingTargetArgs.builder()
+ *                 .resource("//cloudresourcemanager.googleapis.com/organizations/123456789")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -151,6 +230,7 @@ public class OrganizationsPolicyBinding extends com.pulumi.resources.CustomResou
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -181,6 +261,7 @@ public class OrganizationsPolicyBinding extends com.pulumi.resources.CustomResou
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -371,6 +452,8 @@ public class OrganizationsPolicyBinding extends com.pulumi.resources.CustomResou
     }
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */
@@ -379,6 +462,8 @@ public class OrganizationsPolicyBinding extends com.pulumi.resources.CustomResou
 
     /**
      * @return Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */

@@ -5,6 +5,7 @@ package com.pulumi.gcp.agenticapplications.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class AnalystAgentPersonaWebSearchConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AnalystAgentPersonaWebSearchConfigArgs Empty = new AnalystAgentPersonaWebSearchConfigArgs();
+
+    /**
+     * Whether web search grounding is disabled for the analyst agent.
+     * Defaults to false if not specified (i.e. web search grounding is enabled).
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return Whether web search grounding is disabled for the analyst agent.
+     * Defaults to false if not specified (i.e. web search grounding is enabled).
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
 
     /**
      * List of domains to be excluded from Google Search / Enterprise Web Search
@@ -36,6 +54,7 @@ public final class AnalystAgentPersonaWebSearchConfigArgs extends com.pulumi.res
     private AnalystAgentPersonaWebSearchConfigArgs() {}
 
     private AnalystAgentPersonaWebSearchConfigArgs(AnalystAgentPersonaWebSearchConfigArgs $) {
+        this.disabled = $.disabled;
         this.excludedDomains = $.excludedDomains;
     }
 
@@ -55,6 +74,29 @@ public final class AnalystAgentPersonaWebSearchConfigArgs extends com.pulumi.res
 
         public Builder(AnalystAgentPersonaWebSearchConfigArgs defaults) {
             $ = new AnalystAgentPersonaWebSearchConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disabled Whether web search grounding is disabled for the analyst agent.
+         * Defaults to false if not specified (i.e. web search grounding is enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled Whether web search grounding is disabled for the analyst agent.
+         * Defaults to false if not specified (i.e. web search grounding is enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

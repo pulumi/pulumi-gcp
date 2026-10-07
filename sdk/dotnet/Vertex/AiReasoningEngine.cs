@@ -815,7 +815,7 @@ namespace Pulumi.Gcp.Vertex
     ///                                         {
     ///                                             ["type"] = "STRING",
     ///                                             ["description"] = "The job status of the individual",
-    ///                                             ["enum"] = new object?[]
+    ///                                             ["enum"] = new[]
     ///                                             {
     ///                                                 "unemployed",
     ///                                                 "part_time",
@@ -854,7 +854,7 @@ namespace Pulumi.Gcp.Vertex
     ///                                         {
     ///                                             ["type"] = "STRING",
     ///                                             ["description"] = "Current resolution state of the discussion.",
-    ///                                             ["enum"] = new object?[]
+    ///                                             ["enum"] = new[]
     ///                                             {
     ///                                                 "open",
     ///                                                 "in_progress",

@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact;
+import com.pulumi.gcp.oracledatabase.outputs.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow;
 import java.lang.Double;
 import java.lang.Integer;
@@ -64,6 +65,11 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructurePrope
      * 
      */
     private String dbServerVersion;
+    /**
+     * @return The Exascale configuration for the Exadata Infrastructure.
+     * 
+     */
+    private List<GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig> exascaleConfigs;
     /**
      * @return Maintenance window as defined by Oracle.
      * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
@@ -240,6 +246,13 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructurePrope
         return this.dbServerVersion;
     }
     /**
+     * @return The Exascale configuration for the Exadata Infrastructure.
+     * 
+     */
+    public List<GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig> exascaleConfigs() {
+        return this.exascaleConfigs;
+    }
+    /**
      * @return Maintenance window as defined by Oracle.
      * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
      * 
@@ -400,6 +413,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructurePrope
         private Double dataStorageSizeTb;
         private Integer dbNodeStorageSizeGb;
         private String dbServerVersion;
+        private List<GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig> exascaleConfigs;
         private List<GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow> maintenanceWindows;
         private Integer maxCpuCount;
         private Double maxDataStorageTb;
@@ -430,6 +444,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructurePrope
     	      this.dataStorageSizeTb = defaults.dataStorageSizeTb;
     	      this.dbNodeStorageSizeGb = defaults.dbNodeStorageSizeGb;
     	      this.dbServerVersion = defaults.dbServerVersion;
+    	      this.exascaleConfigs = defaults.exascaleConfigs;
     	      this.maintenanceWindows = defaults.maintenanceWindows;
     	      this.maxCpuCount = defaults.maxCpuCount;
     	      this.maxDataStorageTb = defaults.maxDataStorageTb;
@@ -524,6 +539,17 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructurePrope
             }
             this.dbServerVersion = dbServerVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder exascaleConfigs(List<GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig> exascaleConfigs) {
+            if (exascaleConfigs == null) {
+              throw new MissingRequiredPropertyException("GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty", "exascaleConfigs");
+            }
+            this.exascaleConfigs = exascaleConfigs;
+            return this;
+        }
+        public Builder exascaleConfigs(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig... exascaleConfigs) {
+            return exascaleConfigs(List.of(exascaleConfigs));
         }
         @CustomType.Setter
         public Builder maintenanceWindows(List<GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow> maintenanceWindows) {
@@ -683,6 +709,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructurePrope
             _resultValue.dataStorageSizeTb = dataStorageSizeTb;
             _resultValue.dbNodeStorageSizeGb = dbNodeStorageSizeGb;
             _resultValue.dbServerVersion = dbServerVersion;
+            _resultValue.exascaleConfigs = exascaleConfigs;
             _resultValue.maintenanceWindows = maintenanceWindows;
             _resultValue.maxCpuCount = maxCpuCount;
             _resultValue.maxDataStorageTb = maxDataStorageTb;

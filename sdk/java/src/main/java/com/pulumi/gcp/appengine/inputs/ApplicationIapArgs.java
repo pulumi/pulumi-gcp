@@ -52,18 +52,20 @@ public final class ApplicationIapArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * OAuth2 client secret to use for the authentication flow.
      * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
      * 
      */
-    @Import(name="oauth2ClientSecret", required=true)
-    private Output<String> oauth2ClientSecret;
+    @Import(name="oauth2ClientSecret")
+    private @Nullable Output<String> oauth2ClientSecret;
 
     /**
      * @return OAuth2 client secret to use for the authentication flow.
      * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
      * 
      */
-    public Output<String> oauth2ClientSecret() {
-        return this.oauth2ClientSecret;
+    public Optional<Output<String>> oauth2ClientSecret() {
+        return Optional.ofNullable(this.oauth2ClientSecret);
     }
 
     /**
@@ -81,6 +83,46 @@ public final class ApplicationIapArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.oauth2ClientSecretSha256);
     }
 
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OAuth2 client secret to use for the authentication flow.
+     * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+     * 
+     */
+    @Import(name="oauth2ClientSecretWo")
+    private @Nullable Output<String> oauth2ClientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OAuth2 client secret to use for the authentication flow.
+     * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+     * 
+     */
+    public Optional<Output<String>> oauth2ClientSecretWo() {
+        return Optional.ofNullable(this.oauth2ClientSecretWo);
+    }
+
+    /**
+     * Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="oauth2ClientSecretWoVersion")
+    private @Nullable Output<String> oauth2ClientSecretWoVersion;
+
+    /**
+     * @return Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> oauth2ClientSecretWoVersion() {
+        return Optional.ofNullable(this.oauth2ClientSecretWoVersion);
+    }
+
     private ApplicationIapArgs() {}
 
     private ApplicationIapArgs(ApplicationIapArgs $) {
@@ -88,6 +130,8 @@ public final class ApplicationIapArgs extends com.pulumi.resources.ResourceArgs 
         this.oauth2ClientId = $.oauth2ClientId;
         this.oauth2ClientSecret = $.oauth2ClientSecret;
         this.oauth2ClientSecretSha256 = $.oauth2ClientSecretSha256;
+        this.oauth2ClientSecretWo = $.oauth2ClientSecretWo;
+        this.oauth2ClientSecretWoVersion = $.oauth2ClientSecretWoVersion;
     }
 
     public static Builder builder() {
@@ -155,11 +199,12 @@ public final class ApplicationIapArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param oauth2ClientSecret OAuth2 client secret to use for the authentication flow.
          * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
          * 
          * @return builder
          * 
          */
-        public Builder oauth2ClientSecret(Output<String> oauth2ClientSecret) {
+        public Builder oauth2ClientSecret(@Nullable Output<String> oauth2ClientSecret) {
             $.oauth2ClientSecret = oauth2ClientSecret;
             return this;
         }
@@ -167,6 +212,7 @@ public final class ApplicationIapArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param oauth2ClientSecret OAuth2 client secret to use for the authentication flow.
          * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
          * 
          * @return builder
          * 
@@ -196,12 +242,61 @@ public final class ApplicationIapArgs extends com.pulumi.resources.ResourceArgs 
             return oauth2ClientSecretSha256(Output.of(oauth2ClientSecretSha256));
         }
 
+        /**
+         * @param oauth2ClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * OAuth2 client secret to use for the authentication flow.
+         * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWo(@Nullable Output<String> oauth2ClientSecretWo) {
+            $.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            return this;
+        }
+
+        /**
+         * @param oauth2ClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * OAuth2 client secret to use for the authentication flow.
+         * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWo(String oauth2ClientSecretWo) {
+            return oauth2ClientSecretWo(Output.of(oauth2ClientSecretWo));
+        }
+
+        /**
+         * @param oauth2ClientSecretWoVersion Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWoVersion(@Nullable Output<String> oauth2ClientSecretWoVersion) {
+            $.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param oauth2ClientSecretWoVersion Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauth2ClientSecretWoVersion(String oauth2ClientSecretWoVersion) {
+            return oauth2ClientSecretWoVersion(Output.of(oauth2ClientSecretWoVersion));
+        }
+
         public ApplicationIapArgs build() {
             if ($.oauth2ClientId == null) {
                 throw new MissingRequiredPropertyException("ApplicationIapArgs", "oauth2ClientId");
-            }
-            if ($.oauth2ClientSecret == null) {
-                throw new MissingRequiredPropertyException("ApplicationIapArgs", "oauth2ClientSecret");
             }
             return $;
         }

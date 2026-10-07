@@ -12677,6 +12677,1565 @@ func (o SecurityProfileUrlFilteringProfileUrlFilterArrayOutput) Index(i pulumi.I
 	}).(SecurityProfileUrlFilteringProfileUrlFilterOutput)
 }
 
+type SecurityProfileWildfireAnalysisProfile struct {
+	// The configuration for inline cloud analysis of files.
+	// Structure is documented below.
+	WildfireInlineCloudAnalysisRules []SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule `pulumi:"wildfireInlineCloudAnalysisRules"`
+	// Defines what action to take for WildFire inline ML threats per protocol.
+	// Structure is documented below.
+	WildfireInlineMlOverrides []SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride `pulumi:"wildfireInlineMlOverrides"`
+	// WildFire inline Machine Learning setting for the Security Profile.
+	// Structure is documented below.
+	WildfireInlineMlSetting *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting `pulumi:"wildfireInlineMlSetting"`
+	// Defines what action to take for WildFire threats per protocol.
+	// Structure is documented below.
+	WildfireOverrides []SecurityProfileWildfireAnalysisProfileWildfireOverride `pulumi:"wildfireOverrides"`
+	// Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+	WildfireRealtimeLookup *bool `pulumi:"wildfireRealtimeLookup"`
+	// The configuration for file submission to WildFire in cloud.
+	// Structure is documented below.
+	WildfireSubmissionRules []SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule `pulumi:"wildfireSubmissionRules"`
+	// The configuration for overriding threats actions by threat id match.
+	// Structure is documented below.
+	WildfireThreatOverrides []SecurityProfileWildfireAnalysisProfileWildfireThreatOverride `pulumi:"wildfireThreatOverrides"`
+}
+
+// SecurityProfileWildfireAnalysisProfileInput is an input type that accepts SecurityProfileWildfireAnalysisProfileArgs and SecurityProfileWildfireAnalysisProfileOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileArgs{...}
+type SecurityProfileWildfireAnalysisProfileInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileOutput() SecurityProfileWildfireAnalysisProfileOutput
+	ToSecurityProfileWildfireAnalysisProfileOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileArgs struct {
+	// The configuration for inline cloud analysis of files.
+	// Structure is documented below.
+	WildfireInlineCloudAnalysisRules SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayInput `pulumi:"wildfireInlineCloudAnalysisRules"`
+	// Defines what action to take for WildFire inline ML threats per protocol.
+	// Structure is documented below.
+	WildfireInlineMlOverrides SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayInput `pulumi:"wildfireInlineMlOverrides"`
+	// WildFire inline Machine Learning setting for the Security Profile.
+	// Structure is documented below.
+	WildfireInlineMlSetting SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrInput `pulumi:"wildfireInlineMlSetting"`
+	// Defines what action to take for WildFire threats per protocol.
+	// Structure is documented below.
+	WildfireOverrides SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayInput `pulumi:"wildfireOverrides"`
+	// Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+	WildfireRealtimeLookup pulumi.BoolPtrInput `pulumi:"wildfireRealtimeLookup"`
+	// The configuration for file submission to WildFire in cloud.
+	// Structure is documented below.
+	WildfireSubmissionRules SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayInput `pulumi:"wildfireSubmissionRules"`
+	// The configuration for overriding threats actions by threat id match.
+	// Structure is documented below.
+	WildfireThreatOverrides SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayInput `pulumi:"wildfireThreatOverrides"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfile)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileArgs) ToSecurityProfileWildfireAnalysisProfileOutput() SecurityProfileWildfireAnalysisProfileOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileArgs) ToSecurityProfileWildfireAnalysisProfileOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileOutput)
+}
+
+func (i SecurityProfileWildfireAnalysisProfileArgs) ToSecurityProfileWildfireAnalysisProfilePtrOutput() SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileArgs) ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileOutput).ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(ctx)
+}
+
+// SecurityProfileWildfireAnalysisProfilePtrInput is an input type that accepts SecurityProfileWildfireAnalysisProfileArgs, SecurityProfileWildfireAnalysisProfilePtr and SecurityProfileWildfireAnalysisProfilePtrOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfilePtrInput` via:
+//
+//	        SecurityProfileWildfireAnalysisProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileWildfireAnalysisProfilePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfilePtrOutput() SecurityProfileWildfireAnalysisProfilePtrOutput
+	ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfilePtrOutput
+}
+
+type securityProfileWildfireAnalysisProfilePtrType SecurityProfileWildfireAnalysisProfileArgs
+
+func SecurityProfileWildfireAnalysisProfilePtr(v *SecurityProfileWildfireAnalysisProfileArgs) SecurityProfileWildfireAnalysisProfilePtrInput {
+	return (*securityProfileWildfireAnalysisProfilePtrType)(v)
+}
+
+func (*securityProfileWildfireAnalysisProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfile)(nil)).Elem()
+}
+
+func (i *securityProfileWildfireAnalysisProfilePtrType) ToSecurityProfileWildfireAnalysisProfilePtrOutput() SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileWildfireAnalysisProfilePtrType) ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfilePtrOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileOutput) ToSecurityProfileWildfireAnalysisProfileOutput() SecurityProfileWildfireAnalysisProfileOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileOutput) ToSecurityProfileWildfireAnalysisProfileOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileOutput) ToSecurityProfileWildfireAnalysisProfilePtrOutput() SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return o.ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileWildfireAnalysisProfileOutput) ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileWildfireAnalysisProfile) *SecurityProfileWildfireAnalysisProfile {
+		return &v
+	}).(SecurityProfileWildfireAnalysisProfilePtrOutput)
+}
+
+// The configuration for inline cloud analysis of files.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireInlineCloudAnalysisRules() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule {
+		return v.WildfireInlineCloudAnalysisRules
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput)
+}
+
+// Defines what action to take for WildFire inline ML threats per protocol.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireInlineMlOverrides() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride {
+		return v.WildfireInlineMlOverrides
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput)
+}
+
+// WildFire inline Machine Learning setting for the Security Profile.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireInlineMlSetting() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting {
+		return v.WildfireInlineMlSetting
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput)
+}
+
+// Defines what action to take for WildFire threats per protocol.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireOverrides() SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireOverride {
+		return v.WildfireOverrides
+	}).(SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput)
+}
+
+// Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireRealtimeLookup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) *bool { return v.WildfireRealtimeLookup }).(pulumi.BoolPtrOutput)
+}
+
+// The configuration for file submission to WildFire in cloud.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireSubmissionRules() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule {
+		return v.WildfireSubmissionRules
+	}).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput)
+}
+
+// The configuration for overriding threats actions by threat id match.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileOutput) WildfireThreatOverrides() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireThreatOverride {
+		return v.WildfireThreatOverrides
+	}).(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) ToSecurityProfileWildfireAnalysisProfilePtrOutput() SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) ToSecurityProfileWildfireAnalysisProfilePtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) Elem() SecurityProfileWildfireAnalysisProfileOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) SecurityProfileWildfireAnalysisProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileWildfireAnalysisProfile
+		return ret
+	}).(SecurityProfileWildfireAnalysisProfileOutput)
+}
+
+// The configuration for inline cloud analysis of files.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireInlineCloudAnalysisRules() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireInlineCloudAnalysisRules
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput)
+}
+
+// Defines what action to take for WildFire inline ML threats per protocol.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireInlineMlOverrides() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireInlineMlOverrides
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput)
+}
+
+// WildFire inline Machine Learning setting for the Security Profile.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireInlineMlSetting() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireInlineMlSetting
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput)
+}
+
+// Defines what action to take for WildFire threats per protocol.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireOverrides() SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireOverride {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireOverrides
+	}).(SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput)
+}
+
+// Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireRealtimeLookup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireRealtimeLookup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The configuration for file submission to WildFire in cloud.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireSubmissionRules() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireSubmissionRules
+	}).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput)
+}
+
+// The configuration for overriding threats actions by threat id match.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfilePtrOutput) WildfireThreatOverrides() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfile) []SecurityProfileWildfireAnalysisProfileWildfireThreatOverride {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireThreatOverrides
+	}).(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule struct {
+	// The action to take when a rule is matched.
+	// Possible values are: `ALLOW`, `DENY`, `ALERT`.
+	Action string `pulumi:"action"`
+	// Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+	// Structure is documented below.
+	CustomFileTypes *SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes `pulumi:"customFileTypes"`
+	// Direction of traffic to match for a rule.
+	// Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+	Direction string `pulumi:"direction"`
+	// Defines the file selection mode for a rule.
+	// Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+	FileSelectionMode string `pulumi:"fileSelectionMode"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs and SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs struct {
+	// The action to take when a rule is matched.
+	// Possible values are: `ALLOW`, `DENY`, `ALERT`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+	// Structure is documented below.
+	CustomFileTypes SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrInput `pulumi:"customFileTypes"`
+	// Direction of traffic to match for a rule.
+	// Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Defines the file selection mode for a rule.
+	// Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+	FileSelectionMode pulumi.StringInput `pulumi:"fileSelectionMode"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray and SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray{ SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray []SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput {
+	return o
+}
+
+// The action to take when a rule is matched.
+// Possible values are: `ALLOW`, `DENY`, `ALERT`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) CustomFileTypes() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule) *SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes {
+		return v.CustomFileTypes
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput)
+}
+
+// Direction of traffic to match for a rule.
+// Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule) string {
+		return v.Direction
+	}).(pulumi.StringOutput)
+}
+
+// Defines the file selection mode for a rule.
+// Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput) FileSelectionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule) string {
+		return v.FileSelectionMode
+	}).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes struct {
+	// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+	FileTypes []string `pulumi:"fileTypes"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs and SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs struct {
+	// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+	FileTypes pulumi.StringArrayInput `pulumi:"fileTypes"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput)
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput).ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(ctx)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs, SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtr and SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrInput` via:
+//
+//	        SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput
+}
+
+type securityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrType SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs
+
+func SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtr(v *SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrInput {
+	return (*securityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrType)(v)
+}
+
+func (*securityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (i *securityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrType) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrType) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return o.ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes) *SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes {
+		return &v
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput)
+}
+
+// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput) FileTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes) []string {
+		return v.FileTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput) Elem() SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes) SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes
+		return ret
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput)
+}
+
+// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput) FileTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride struct {
+	// Threat action override.
+	// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+	Action string `pulumi:"action"`
+	// Required protocol to match.
+	// Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+	Protocol string `pulumi:"protocol"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs and SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs struct {
+	// Threat action override.
+	// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Required protocol to match.
+	// Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray and SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray{ SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray []SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput {
+	return o
+}
+
+// Threat action override.
+// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Required protocol to match.
+// Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting struct {
+	// File exceptions to exclude from WildFire inline ML.
+	// Structure is documented below.
+	FileExceptions []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException `pulumi:"fileExceptions"`
+	// Defines what action to take for a specific file type in WildFire inline ML.
+	// Structure is documented below.
+	InlineMlConfigs []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig `pulumi:"inlineMlConfigs"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs and SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs struct {
+	// File exceptions to exclude from WildFire inline ML.
+	// Structure is documented below.
+	FileExceptions SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayInput `pulumi:"fileExceptions"`
+	// Defines what action to take for a specific file type in WildFire inline ML.
+	// Structure is documented below.
+	InlineMlConfigs SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayInput `pulumi:"inlineMlConfigs"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput)
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput).ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(ctx)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs, SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtr and SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrInput` via:
+//
+//	        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput
+}
+
+type securityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrType SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs
+
+func SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtr(v *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrInput {
+	return (*securityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrType)(v)
+}
+
+func (*securityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting)(nil)).Elem()
+}
+
+func (i *securityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrType) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrType) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return o.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting) *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting {
+		return &v
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput)
+}
+
+// File exceptions to exclude from WildFire inline ML.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) FileExceptions() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting) []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException {
+		return v.FileExceptions
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput)
+}
+
+// Defines what action to take for a specific file type in WildFire inline ML.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput) InlineMlConfigs() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting) []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig {
+		return v.InlineMlConfigs
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput) Elem() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting
+		return ret
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput)
+}
+
+// File exceptions to exclude from WildFire inline ML.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput) FileExceptions() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting) []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException {
+		if v == nil {
+			return nil
+		}
+		return v.FileExceptions
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput)
+}
+
+// Defines what action to take for a specific file type in WildFire inline ML.
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput) InlineMlConfigs() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting) []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig {
+		if v == nil {
+			return nil
+		}
+		return v.InlineMlConfigs
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException struct {
+	// The file name associated with the partial hash.
+	Filename *string `pulumi:"filename"`
+	// Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+	PartialHash string `pulumi:"partialHash"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs and SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs struct {
+	// The file name associated with the partial hash.
+	Filename pulumi.StringPtrInput `pulumi:"filename"`
+	// Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+	PartialHash pulumi.StringInput `pulumi:"partialHash"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray and SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray{ SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput {
+	return o
+}
+
+// The file name associated with the partial hash.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException) *string {
+		return v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput) PartialHash() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException) string {
+		return v.PartialHash
+	}).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig struct {
+	// The action to take for a file type.
+	// Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+	Action string `pulumi:"action"`
+	// The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+	FileType string `pulumi:"fileType"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs and SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs struct {
+	// The action to take for a file type.
+	// Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+	FileType pulumi.StringInput `pulumi:"fileType"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray and SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray{ SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray []SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput {
+	return o
+}
+
+// The action to take for a file type.
+// Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig) string {
+		return v.Action
+	}).(pulumi.StringOutput)
+}
+
+// The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput) FileType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig) string {
+		return v.FileType
+	}).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireOverride struct {
+	// Threat action override.
+	// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+	Action string `pulumi:"action"`
+	// Required protocol to match.
+	// Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+	Protocol string `pulumi:"protocol"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireOverrideInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs and SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireOverrideInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireOverrideInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs struct {
+	// Threat action override.
+	// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Required protocol to match.
+	// Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireOverrideArray and SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireOverrideArray{ SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireOverrideArray []SecurityProfileWildfireAnalysisProfileWildfireOverrideInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireOverrideArray) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireOverrideArray) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput {
+	return o
+}
+
+// Threat action override.
+// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Required protocol to match.
+// Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireOverride) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireOverride {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireOverride)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule struct {
+	// Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+	// Structure is documented below.
+	CustomFileTypes *SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes `pulumi:"customFileTypes"`
+	// Direction of traffic to match for a rule.
+	// Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+	Direction string `pulumi:"direction"`
+	// Defines the file selection mode for a rule.
+	// Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+	FileSelectionMode string `pulumi:"fileSelectionMode"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs and SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs struct {
+	// Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+	// Structure is documented below.
+	CustomFileTypes SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrInput `pulumi:"customFileTypes"`
+	// Direction of traffic to match for a rule.
+	// Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Defines the file selection mode for a rule.
+	// Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+	FileSelectionMode pulumi.StringInput `pulumi:"fileSelectionMode"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray and SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray{ SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray []SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput {
+	return o
+}
+
+// Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+// Structure is documented below.
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput) CustomFileTypes() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule) *SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes {
+		return v.CustomFileTypes
+	}).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput)
+}
+
+// Direction of traffic to match for a rule.
+// Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Defines the file selection mode for a rule.
+// Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput) FileSelectionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule) string {
+		return v.FileSelectionMode
+	}).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes struct {
+	// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+	FileTypes []string `pulumi:"fileTypes"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs and SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs struct {
+	// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+	FileTypes pulumi.StringArrayInput `pulumi:"fileTypes"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput)
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput).ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(ctx)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs, SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtr and SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrInput` via:
+//
+//	        SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput
+}
+
+type securityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrType SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs
+
+func SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtr(v *SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrInput {
+	return (*securityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrType)(v)
+}
+
+func (*securityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (i *securityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrType) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrType) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return o.ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes) *SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes {
+		return &v
+	}).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput)
+}
+
+// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput) FileTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes) []string {
+		return v.FileTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput) ToSecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput) Elem() SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes) SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes
+		return ret
+	}).(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput)
+}
+
+// The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+func (o SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput) FileTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverride struct {
+	// Threat action override.
+	// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+	Action string `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId string `pulumi:"threatId"`
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs and SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs{...}
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs struct {
+	// Threat action override.
+	// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId pulumi.StringInput `pulumi:"threatId"`
+}
+
+func (SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireThreatOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput)
+}
+
+// SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayInput is an input type that accepts SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray and SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayInput` via:
+//
+//	SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray{ SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs{...} }
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput
+	ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutputWithContext(context.Context) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray []SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideInput
+
+func (SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireThreatOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput {
+	return i.ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireThreatOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput {
+	return o
+}
+
+// Threat action override.
+// Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireThreatOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Vendor-specific ID of a threat to override.
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput) ThreatId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileWildfireAnalysisProfileWildfireThreatOverride) string { return v.ThreatId }).(pulumi.StringOutput)
+}
+
+type SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileWildfireAnalysisProfileWildfireThreatOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput() SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput) ToSecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput) Index(i pulumi.IntInput) SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileWildfireAnalysisProfileWildfireThreatOverride {
+		return vs[0].([]SecurityProfileWildfireAnalysisProfileWildfireThreatOverride)[vs[1].(int)]
+	}).(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput)
+}
+
 type ServerTlsPolicyMtlsPolicy struct {
 	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
 	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -13731,6 +15290,9 @@ type UllMirroringCollectorRuleMatch struct {
 	// IP protocols to match. When unset, matches any IP protocol.
 	// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
 	IpProtocols []string `pulumi:"ipProtocols"`
+	// Primary IP ranges to match (for the capture point).
+	// When unset, matches any primary IP.
+	PrimaryIpRanges []string `pulumi:"primaryIpRanges"`
 	// Source IP ranges to match. When unset, matches any source IP range.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
 }
@@ -13758,6 +15320,9 @@ type UllMirroringCollectorRuleMatchArgs struct {
 	// IP protocols to match. When unset, matches any IP protocol.
 	// Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
 	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
+	// Primary IP ranges to match (for the capture point).
+	// When unset, matches any primary IP.
+	PrimaryIpRanges pulumi.StringArrayInput `pulumi:"primaryIpRanges"`
 	// Source IP ranges to match. When unset, matches any source IP range.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
 }
@@ -13859,6 +15424,12 @@ func (o UllMirroringCollectorRuleMatchOutput) IpProtocols() pulumi.StringArrayOu
 	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
 }
 
+// Primary IP ranges to match (for the capture point).
+// When unset, matches any primary IP.
+func (o UllMirroringCollectorRuleMatchOutput) PrimaryIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) []string { return v.PrimaryIpRanges }).(pulumi.StringArrayOutput)
+}
+
 // Source IP ranges to match. When unset, matches any source IP range.
 func (o UllMirroringCollectorRuleMatchOutput) SrcIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v UllMirroringCollectorRuleMatch) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
@@ -13920,6 +15491,17 @@ func (o UllMirroringCollectorRuleMatchPtrOutput) IpProtocols() pulumi.StringArra
 			return nil
 		}
 		return v.IpProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// Primary IP ranges to match (for the capture point).
+// When unset, matches any primary IP.
+func (o UllMirroringCollectorRuleMatchPtrOutput) PrimaryIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UllMirroringCollectorRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryIpRanges
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -14232,6 +15814,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileUrlFilteringProfilePtrInput)(nil)).Elem(), SecurityProfileUrlFilteringProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileUrlFilteringProfileUrlFilterInput)(nil)).Elem(), SecurityProfileUrlFilteringProfileUrlFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileUrlFilteringProfileUrlFilterArrayInput)(nil)).Elem(), SecurityProfileUrlFilteringProfileUrlFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfilePtrInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireOverrideInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayInput)(nil)).Elem(), SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyPtrInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaArgs{})
@@ -14424,6 +16028,28 @@ func init() {
 	pulumi.RegisterOutputType(SecurityProfileUrlFilteringProfilePtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileUrlFilteringProfileUrlFilterOutput{})
 	pulumi.RegisterOutputType(SecurityProfileUrlFilteringProfileUrlFilterArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfilePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesPtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingPtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireOverrideOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireOverrideArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesPtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideOutput{})
+	pulumi.RegisterOutputType(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaOutput{})

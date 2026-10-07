@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceFromMachineImageNetworkInterfaceAliasIpv6Range> AliasIpv6Ranges;
         /// <summary>
+        /// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+        /// </summary>
+        public readonly bool? EnableVpcScopedDns;
+        /// <summary>
         /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         /// </summary>
         public readonly string? IgmpQuery;
@@ -107,6 +111,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.InstanceFromMachineImageNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges,
 
+            bool? enableVpcScopedDns,
+
             string? igmpQuery,
 
             int? internalIpv6PrefixLength,
@@ -146,6 +152,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
             AliasIpv6Ranges = aliasIpv6Ranges;
+            EnableVpcScopedDns = enableVpcScopedDns;
             IgmpQuery = igmpQuery;
             InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;

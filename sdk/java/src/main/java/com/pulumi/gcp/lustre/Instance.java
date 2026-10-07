@@ -124,6 +124,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessRulesOptions);
     }
     /**
+     * The version this instance can be upgraded to, if one is available. Empty
+     * when the instance is already running the newest release.
+     * 
+     */
+    @Export(name="availableVersion", refs={String.class}, tree="[0]")
+    private Output<String> availableVersion;
+
+    /**
+     * @return The version this instance can be upgraded to, if one is available. Empty
+     * when the instance is already running the newest release.
+     * 
+     */
+    public Output<String> availableVersion() {
+        return this.availableVersion;
+    }
+    /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
      * See [Performance tiers and maximum storage
@@ -226,6 +242,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * The version of Managed Lustre software that this instance is currently
+     * running.
+     * 
+     */
+    @Export(name="effectiveVersion", refs={String.class}, tree="[0]")
+    private Output<String> effectiveVersion;
+
+    /**
+     * @return The version of Managed Lustre software that this instance is currently
+     * running.
+     * 
+     */
+    public Output<String> effectiveVersion() {
+        return this.effectiveVersion;
     }
     /**
      * The filesystem name for this instance. This name is used by client-side
@@ -520,6 +552,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stateReason() {
         return this.stateReason;
+    }
+    /**
+     * The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     * 
+     */
+    @Export(name="targetVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> targetVersion;
+
+    /**
+     * @return The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     * 
+     */
+    public Output<Optional<String>> targetVersion() {
+        return Codegen.optional(this.targetVersion);
     }
     /**
      * Unique ID of the resource.

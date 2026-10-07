@@ -47,6 +47,48 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait60Seconds],
  * });
  * ```
+ * ### Iam Organizations Policy Binding Access Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const testSa = new gcp.serviceaccount.Account("test_sa", {
+ *     accountId: "ap-sa-",
+ *     displayName: "Test Service Account for Access Policy",
+ * });
+ * const accessPolicy = new gcp.iam.OrganizationAccessPolicy("access_policy", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     accessPolicyId: "my-org-policy-",
+ *     details: {
+ *         rules: [{
+ *             effect: "ALLOW",
+ *             principals: [pulumi.interpolate`principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}`],
+ *             operation: {
+ *                 permissions: ["eventarc.googleapis.com/messageBuses.publish"],
+ *             },
+ *         }],
+ *     },
+ * });
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [accessPolicy],
+ * });
+ * const my_org_access_policy_binding = new gcp.iam.OrganizationsPolicyBinding("my-org-access-policy-binding", {
+ *     organization: "123456789",
+ *     location: "global",
+ *     displayName: "Binding for an organization access policy",
+ *     policyKind: "ACCESS",
+ *     policyBindingId: "my-org-access-binding-",
+ *     policy: pulumi.interpolate`organizations/123456789/locations/global/accessPolicies/${accessPolicy.accessPolicyId}`,
+ *     target: {
+ *         resource: "//cloudresourcemanager.googleapis.com/organizations/123456789",
+ *     },
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -121,6 +163,7 @@ export class OrganizationsPolicyBinding extends pulumi.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     declare public readonly condition: pulumi.Output<outputs.iam.OrganizationsPolicyBindingCondition | undefined>;
@@ -181,6 +224,8 @@ export class OrganizationsPolicyBinding extends pulumi.CustomResource {
     declare public /*out*/ readonly policyUid: pulumi.Output<string>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     declare public readonly target: pulumi.Output<outputs.iam.OrganizationsPolicyBindingTarget>;
@@ -298,6 +343,7 @@ export interface OrganizationsPolicyBindingState {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iam.OrganizationsPolicyBindingCondition | undefined>;
@@ -358,6 +404,8 @@ export interface OrganizationsPolicyBindingState {
     policyUid?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     target?: pulumi.Input<inputs.iam.OrganizationsPolicyBindingTarget | undefined>;
@@ -406,6 +454,7 @@ export interface OrganizationsPolicyBindingArgs {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iam.OrganizationsPolicyBindingCondition | undefined>;
@@ -446,6 +495,8 @@ export interface OrganizationsPolicyBindingArgs {
     policyKind?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     target: pulumi.Input<inputs.iam.OrganizationsPolicyBindingTarget>;

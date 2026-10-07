@@ -94,6 +94,9 @@ type Instance struct {
 	// define the root user squash configuration.
 	// Structure is documented below.
 	AccessRulesOptions InstanceAccessRulesOptionsPtrOutput `pulumi:"accessRulesOptions"`
+	// The version this instance can be upgraded to, if one is available. Empty
+	// when the instance is already running the newest release.
+	AvailableVersion pulumi.StringOutput `pulumi:"availableVersion"`
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
 	// See [Performance tiers and maximum storage
@@ -116,6 +119,9 @@ type Instance struct {
 	DynamicTierOptions InstanceDynamicTierOptionsPtrOutput `pulumi:"dynamicTierOptions"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The version of Managed Lustre software that this instance is currently
+	// running.
+	EffectiveVersion pulumi.StringOutput `pulumi:"effectiveVersion"`
 	// The filesystem name for this instance. This name is used by client-side
 	// tools, including when mounting the instance. Must be eight characters or
 	// less and can only contain letters and numbers.
@@ -183,6 +189,17 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The reason why the instance is in a certain state (e.g. SUSPENDED).
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
+	// The version to upgrade this instance to. Set this to the value reported in
+	// `availableVersion`, or to `latest` to move to the newest version available
+	// at the time of the upgrade.
+	// This field cannot be set when the instance is created; new instances are
+	// always provisioned from the current release. It also cannot be changed in
+	// the same operation as `capacityGib` or `maintenancePolicy`, and the
+	// instance must be ACTIVE and outside of the hour preceding a scheduled
+	// maintenance window.
+	// The API clears this field once the upgrade finishes, so it always reads
+	// back as empty on an idle instance.
+	TargetVersion pulumi.StringPtrOutput `pulumi:"targetVersion"`
 	// Unique ID of the resource.
 	// This is unrelated to the access rules which allow specifying the root
 	// squash uid.
@@ -248,6 +265,9 @@ type instanceState struct {
 	// define the root user squash configuration.
 	// Structure is documented below.
 	AccessRulesOptions *InstanceAccessRulesOptions `pulumi:"accessRulesOptions"`
+	// The version this instance can be upgraded to, if one is available. Empty
+	// when the instance is already running the newest release.
+	AvailableVersion *string `pulumi:"availableVersion"`
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
 	// See [Performance tiers and maximum storage
@@ -270,6 +290,9 @@ type instanceState struct {
 	DynamicTierOptions *InstanceDynamicTierOptions `pulumi:"dynamicTierOptions"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The version of Managed Lustre software that this instance is currently
+	// running.
+	EffectiveVersion *string `pulumi:"effectiveVersion"`
 	// The filesystem name for this instance. This name is used by client-side
 	// tools, including when mounting the instance. Must be eight characters or
 	// less and can only contain letters and numbers.
@@ -337,6 +360,17 @@ type instanceState struct {
 	State *string `pulumi:"state"`
 	// The reason why the instance is in a certain state (e.g. SUSPENDED).
 	StateReason *string `pulumi:"stateReason"`
+	// The version to upgrade this instance to. Set this to the value reported in
+	// `availableVersion`, or to `latest` to move to the newest version available
+	// at the time of the upgrade.
+	// This field cannot be set when the instance is created; new instances are
+	// always provisioned from the current release. It also cannot be changed in
+	// the same operation as `capacityGib` or `maintenancePolicy`, and the
+	// instance must be ACTIVE and outside of the hour preceding a scheduled
+	// maintenance window.
+	// The API clears this field once the upgrade finishes, so it always reads
+	// back as empty on an idle instance.
+	TargetVersion *string `pulumi:"targetVersion"`
 	// Unique ID of the resource.
 	// This is unrelated to the access rules which allow specifying the root
 	// squash uid.
@@ -353,6 +387,9 @@ type InstanceState struct {
 	// define the root user squash configuration.
 	// Structure is documented below.
 	AccessRulesOptions InstanceAccessRulesOptionsPtrInput
+	// The version this instance can be upgraded to, if one is available. Empty
+	// when the instance is already running the newest release.
+	AvailableVersion pulumi.StringPtrInput
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
 	// See [Performance tiers and maximum storage
@@ -375,6 +412,9 @@ type InstanceState struct {
 	DynamicTierOptions InstanceDynamicTierOptionsPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The version of Managed Lustre software that this instance is currently
+	// running.
+	EffectiveVersion pulumi.StringPtrInput
 	// The filesystem name for this instance. This name is used by client-side
 	// tools, including when mounting the instance. Must be eight characters or
 	// less and can only contain letters and numbers.
@@ -442,6 +482,17 @@ type InstanceState struct {
 	State pulumi.StringPtrInput
 	// The reason why the instance is in a certain state (e.g. SUSPENDED).
 	StateReason pulumi.StringPtrInput
+	// The version to upgrade this instance to. Set this to the value reported in
+	// `availableVersion`, or to `latest` to move to the newest version available
+	// at the time of the upgrade.
+	// This field cannot be set when the instance is created; new instances are
+	// always provisioned from the current release. It also cannot be changed in
+	// the same operation as `capacityGib` or `maintenancePolicy`, and the
+	// instance must be ACTIVE and outside of the hour preceding a scheduled
+	// maintenance window.
+	// The API clears this field once the upgrade finishes, so it always reads
+	// back as empty on an idle instance.
+	TargetVersion pulumi.StringPtrInput
 	// Unique ID of the resource.
 	// This is unrelated to the access rules which allow specifying the root
 	// squash uid.
@@ -527,6 +578,17 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The version to upgrade this instance to. Set this to the value reported in
+	// `availableVersion`, or to `latest` to move to the newest version available
+	// at the time of the upgrade.
+	// This field cannot be set when the instance is created; new instances are
+	// always provisioned from the current release. It also cannot be changed in
+	// the same operation as `capacityGib` or `maintenancePolicy`, and the
+	// instance must be ACTIVE and outside of the hour preceding a scheduled
+	// maintenance window.
+	// The API clears this field once the upgrade finishes, so it always reads
+	// back as empty on an idle instance.
+	TargetVersion *string `pulumi:"targetVersion"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -600,6 +662,17 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The version to upgrade this instance to. Set this to the value reported in
+	// `availableVersion`, or to `latest` to move to the newest version available
+	// at the time of the upgrade.
+	// This field cannot be set when the instance is created; new instances are
+	// always provisioned from the current release. It also cannot be changed in
+	// the same operation as `capacityGib` or `maintenancePolicy`, and the
+	// instance must be ACTIVE and outside of the hour preceding a scheduled
+	// maintenance window.
+	// The API clears this field once the upgrade finishes, so it always reads
+	// back as empty on an idle instance.
+	TargetVersion pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -696,6 +769,12 @@ func (o InstanceOutput) AccessRulesOptions() InstanceAccessRulesOptionsPtrOutput
 	return o.ApplyT(func(v *Instance) InstanceAccessRulesOptionsPtrOutput { return v.AccessRulesOptions }).(InstanceAccessRulesOptionsPtrOutput)
 }
 
+// The version this instance can be upgraded to, if one is available. Empty
+// when the instance is already running the newest release.
+func (o InstanceOutput) AvailableVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailableVersion }).(pulumi.StringOutput)
+}
+
 // The storage capacity of the instance in gibibytes (GiB). Allowed values
 // are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
 // See [Performance tiers and maximum storage
@@ -734,6 +813,12 @@ func (o InstanceOutput) DynamicTierOptions() InstanceDynamicTierOptionsPtrOutput
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The version of Managed Lustre software that this instance is currently
+// running.
+func (o InstanceOutput) EffectiveVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EffectiveVersion }).(pulumi.StringOutput)
 }
 
 // The filesystem name for this instance. This name is used by client-side
@@ -850,6 +935,20 @@ func (o InstanceOutput) State() pulumi.StringOutput {
 // The reason why the instance is in a certain state (e.g. SUSPENDED).
 func (o InstanceOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
+}
+
+// The version to upgrade this instance to. Set this to the value reported in
+// `availableVersion`, or to `latest` to move to the newest version available
+// at the time of the upgrade.
+// This field cannot be set when the instance is created; new instances are
+// always provisioned from the current release. It also cannot be changed in
+// the same operation as `capacityGib` or `maintenancePolicy`, and the
+// instance must be ACTIVE and outside of the hour preceding a scheduled
+// maintenance window.
+// The API clears this field once the upgrade finishes, so it always reads
+// back as empty on an idle instance.
+func (o InstanceOutput) TargetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.TargetVersion }).(pulumi.StringPtrOutput)
 }
 
 // Unique ID of the resource.

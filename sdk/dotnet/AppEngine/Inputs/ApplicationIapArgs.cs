@@ -25,12 +25,13 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         [Input("oauth2ClientId", required: true)]
         public Input<string> Oauth2ClientId { get; set; } = null!;
 
-        [Input("oauth2ClientSecret", required: true)]
+        [Input("oauth2ClientSecret")]
         private Input<string>? _oauth2ClientSecret;
 
         /// <summary>
         /// OAuth2 client secret to use for the authentication flow.
         /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        /// Exactly one of `Oauth2ClientSecret` or `Oauth2ClientSecretWo` can be set.
         /// </summary>
         public Input<string>? Oauth2ClientSecret
         {
@@ -57,6 +58,33 @@ namespace Pulumi.Gcp.AppEngine.Inputs
                 _oauth2ClientSecretSha256 = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("oauth2ClientSecretWo")]
+        private Input<string>? _oauth2ClientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// OAuth2 client secret to use for the authentication flow.
+        /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** Exactly one of `Oauth2ClientSecret` or `Oauth2ClientSecretWo` can be set.
+        /// </summary>
+        public Input<string>? Oauth2ClientSecretWo
+        {
+            get => _oauth2ClientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauth2ClientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `Oauth2ClientSecretWo` write-only. Increment this value when an update to `Oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("oauth2ClientSecretWoVersion")]
+        public Input<string>? Oauth2ClientSecretWoVersion { get; set; }
 
         public ApplicationIapArgs()
         {

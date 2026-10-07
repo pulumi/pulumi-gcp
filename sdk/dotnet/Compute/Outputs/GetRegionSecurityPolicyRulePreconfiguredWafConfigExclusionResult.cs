@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionResult
     {
         /// <summary>
+        /// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyResult> RequestBodies;
+        /// <summary>
         /// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult> RequestCookies;
@@ -43,6 +47,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionResult(
+            ImmutableArray<Outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyResult> requestBodies,
+
             ImmutableArray<Outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult> requestCookies,
 
             ImmutableArray<Outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult> requestHeaders,
@@ -55,6 +61,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string targetRuleSet)
         {
+            RequestBodies = requestBodies;
             RequestCookies = requestCookies;
             RequestHeaders = requestHeaders;
             RequestQueryParams = requestQueryParams;

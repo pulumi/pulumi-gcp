@@ -350,6 +350,8 @@ namespace Pulumi.Gcp.Compute
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
         /// 
+        /// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `NetworkAttachment`.
+        /// 
         /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
         /// as a way to override the properties in the machine image. All exported attributes
         /// from `gcp.compute.Instance` are likewise exported here.
@@ -665,6 +667,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `NetworkAttachment`.
         /// 
         /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
         /// as a way to override the properties in the machine image. All exported attributes
@@ -1056,6 +1060,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `NetworkAttachment`.
         /// 
         /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
         /// as a way to override the properties in the machine image. All exported attributes

@@ -29,6 +29,13 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
         }
 
         /// <summary>
+        /// The HTTP header when the API key is passed in a request header
+        /// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+        /// </summary>
+        [Input("apiKeyHeader")]
+        public Input<string>? ApiKeyHeader { get; set; }
+
+        /// <summary>
         /// The API key parameter name.
         /// </summary>
         [Input("apiKeyName")]

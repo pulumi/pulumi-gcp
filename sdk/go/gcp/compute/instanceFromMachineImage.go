@@ -169,6 +169,8 @@ type InstanceFromMachineImage struct {
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
+	// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	//
 	// In addition to these, most* arguments from `compute.Instance` are supported
 	// as a way to override the properties in the machine image. All exported attributes
 	// from `compute.Instance` are likewise exported here.
@@ -326,6 +328,8 @@ type instanceFromMachineImageState struct {
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
+	// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	//
 	// In addition to these, most* arguments from `compute.Instance` are supported
 	// as a way to override the properties in the machine image. All exported attributes
 	// from `compute.Instance` are likewise exported here.
@@ -446,6 +450,8 @@ type InstanceFromMachineImageState struct {
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
+	// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	//
 	// In addition to these, most* arguments from `compute.Instance` are supported
 	// as a way to override the properties in the machine image. All exported attributes
 	// from `compute.Instance` are likewise exported here.
@@ -542,6 +548,8 @@ type instanceFromMachineImageArgs struct {
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
+	// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	//
 	// In addition to these, most* arguments from `compute.Instance` are supported
 	// as a way to override the properties in the machine image. All exported attributes
 	// from `compute.Instance` are likewise exported here.
@@ -634,6 +642,8 @@ type InstanceFromMachineImageArgs struct {
 	WorkloadIdentityConfig InstanceFromMachineImageWorkloadIdentityConfigPtrInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
 	//
 	// In addition to these, most* arguments from `compute.Instance` are supported
 	// as a way to override the properties in the machine image. All exported attributes
@@ -1008,6 +1018,8 @@ func (o InstanceFromMachineImageOutput) WorkloadIdentityConfig() InstanceFromMac
 
 // The zone that the machine should be created in. If not
 // set, the provider zone is used.
+//
+// * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
 //
 // In addition to these, most* arguments from `compute.Instance` are supported
 // as a way to override the properties in the machine image. All exported attributes

@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// <summary>
         /// The email address used by Oracle to send notifications regarding databases
         /// and infrastructure.
+        /// 
+        /// &lt;a name="NestedPropertiesExascaleConfig"&gt;&lt;/a&gt;The `ExascaleConfig` block contains:
         /// </summary>
         public readonly string Email;
 

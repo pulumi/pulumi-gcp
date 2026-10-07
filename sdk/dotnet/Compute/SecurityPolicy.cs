@@ -281,6 +281,58 @@ namespace Pulumi.Gcp.Compute
     /// });
     /// ```
     /// 
+    /// ### With Request Body Expression
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Name = "my-policy",
+    ///         Description = "Policy with Request Body inspection",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "deny(403)",
+    ///                 Priority = 1000,
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "request.body.contains('my-match-string')",
+    ///                     },
+    ///                 },
+    ///                 Description = "Deny requests containing specific body string",
+    ///             },
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Priority = 2147483647,
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Description = "default rule",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Security policies can be imported using any of these accepted formats:

@@ -76,6 +76,25 @@ import * as utilities from "../utilities";
  *     network: defaultNetwork.id,
  * });
  * ```
+ * ### Database Migration Service Private Connection Reserved Public Ip
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
+ *     displayName: "dbms_pc",
+ *     location: "us-west1",
+ *     privateConnectionId: "my-connection",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     reservedPublicIpConfig: {
+ *         natIpsCount: 1,
+ *     },
+ *     createWithoutValidation: false,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -182,6 +201,11 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * The Reserved Public IP configuration.
+     * Structure is documented below.
+     */
+    declare public readonly reservedPublicIpConfig: pulumi.Output<outputs.databasemigrationservice.PrivateConnectionReservedPublicIpConfig | undefined>;
+    /**
      * State of the PrivateConnection.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
@@ -217,6 +241,7 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["pscInterfaceConfig"] = state?.pscInterfaceConfig;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["reservedPublicIpConfig"] = state?.reservedPublicIpConfig;
             resourceInputs["state"] = state?.state;
             resourceInputs["vpcPeeringConfig"] = state?.vpcPeeringConfig;
         } else {
@@ -235,6 +260,7 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["privateConnectionId"] = args?.privateConnectionId;
             resourceInputs["project"] = args?.project;
             resourceInputs["pscInterfaceConfig"] = args?.pscInterfaceConfig;
+            resourceInputs["reservedPublicIpConfig"] = args?.reservedPublicIpConfig;
             resourceInputs["vpcPeeringConfig"] = args?.vpcPeeringConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
@@ -314,6 +340,11 @@ export interface PrivateConnectionState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * The Reserved Public IP configuration.
+     * Structure is documented below.
+     */
+    reservedPublicIpConfig?: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionReservedPublicIpConfig | undefined>;
+    /**
      * State of the PrivateConnection.
      */
     state?: pulumi.Input<string | undefined>;
@@ -371,6 +402,11 @@ export interface PrivateConnectionArgs {
      * Structure is documented below.
      */
     pscInterfaceConfig?: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionPscInterfaceConfig | undefined>;
+    /**
+     * The Reserved Public IP configuration.
+     * Structure is documented below.
+     */
+    reservedPublicIpConfig?: pulumi.Input<inputs.databasemigrationservice.PrivateConnectionReservedPublicIpConfig | undefined>;
     /**
      * The VPC Peering configuration is used to create VPC peering
      * between databasemigrationservice and the consumer's VPC.

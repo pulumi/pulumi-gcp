@@ -83,6 +83,8 @@ __all__ = [
     'PrivateConnectionErrorArgsDict',
     'PrivateConnectionPscInterfaceConfigArgs',
     'PrivateConnectionPscInterfaceConfigArgsDict',
+    'PrivateConnectionReservedPublicIpConfigArgs',
+    'PrivateConnectionReservedPublicIpConfigArgsDict',
     'PrivateConnectionVpcPeeringConfigArgs',
     'PrivateConnectionVpcPeeringConfigArgsDict',
 ]
@@ -3012,6 +3014,58 @@ class PrivateConnectionPscInterfaceConfigArgs:
     @network_attachment.setter
     def network_attachment(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "network_attachment", value)
+
+
+class PrivateConnectionReservedPublicIpConfigArgsDict(TypedDict):
+    egress_public_ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    (Output)
+    Output only. The reserved public IPs.
+    """
+    nat_ips_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Optional. Number of static public IP addresses to reserve.
+    """
+
+@pulumi.input_type
+class PrivateConnectionReservedPublicIpConfigArgs:
+    def __init__(__self__, *,
+                 egress_public_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 nat_ips_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_public_ips: (Output)
+               Output only. The reserved public IPs.
+        :param pulumi.Input[_builtins.int] nat_ips_count: Optional. Number of static public IP addresses to reserve.
+        """
+        if egress_public_ips is not None:
+            pulumi.set(__self__, "egress_public_ips", egress_public_ips)
+        if nat_ips_count is not None:
+            pulumi.set(__self__, "nat_ips_count", nat_ips_count)
+
+    @_builtins.property
+    @pulumi.getter(name="egressPublicIps")
+    def egress_public_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Output only. The reserved public IPs.
+        """
+        return pulumi.get(self, "egress_public_ips")
+
+    @egress_public_ips.setter
+    def egress_public_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "egress_public_ips", value)
+
+    @_builtins.property
+    @pulumi.getter(name="natIpsCount")
+    def nat_ips_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optional. Number of static public IP addresses to reserve.
+        """
+        return pulumi.get(self, "nat_ips_count")
+
+    @nat_ips_count.setter
+    def nat_ips_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "nat_ips_count", value)
 
 
 class PrivateConnectionVpcPeeringConfigArgsDict(TypedDict):

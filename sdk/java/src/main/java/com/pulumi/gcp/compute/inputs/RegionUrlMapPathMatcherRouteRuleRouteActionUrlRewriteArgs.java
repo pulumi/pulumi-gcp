@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,12 +83,34 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
         return Optional.ofNullable(this.pathTemplateRewrite);
     }
 
+    /**
+     * The regex rewrite to be applied to the URL. Only one of
+     * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+     * specified.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="regexRewrite")
+    private @Nullable Output<RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs> regexRewrite;
+
+    /**
+     * @return The regex rewrite to be applied to the URL. Only one of
+     * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+     * specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs>> regexRewrite() {
+        return Optional.ofNullable(this.regexRewrite);
+    }
+
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs() {}
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs $) {
         this.hostRewrite = $.hostRewrite;
         this.pathPrefixRewrite = $.pathPrefixRewrite;
         this.pathTemplateRewrite = $.pathTemplateRewrite;
+        this.regexRewrite = $.regexRewrite;
     }
 
     public static Builder builder() {
@@ -191,6 +214,33 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs ext
          */
         public Builder pathTemplateRewrite(String pathTemplateRewrite) {
             return pathTemplateRewrite(Output.of(pathTemplateRewrite));
+        }
+
+        /**
+         * @param regexRewrite The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regexRewrite(@Nullable Output<RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs> regexRewrite) {
+            $.regexRewrite = regexRewrite;
+            return this;
+        }
+
+        /**
+         * @param regexRewrite The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regexRewrite(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs regexRewrite) {
+            return regexRewrite(Output.of(regexRewrite));
         }
 
         public RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs build() {

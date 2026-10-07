@@ -771,6 +771,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
+     * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+     * 
      * In addition to these, most* arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the machine image. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
@@ -784,6 +786,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     /**
      * @return The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     * 
+     * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
      * 
      * In addition to these, most* arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the machine image. All exported attributes
@@ -1946,6 +1950,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          * @param zone The zone that the machine should be created in. If not
          * set, the provider zone is used.
          * 
+         * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         * 
          * In addition to these, most* arguments from `gcp.compute.Instance` are supported
          * as a way to override the properties in the machine image. All exported attributes
          * from `gcp.compute.Instance` are likewise exported here.
@@ -1963,6 +1969,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         /**
          * @param zone The zone that the machine should be created in. If not
          * set, the provider zone is used.
+         * 
+         * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
          * 
          * In addition to these, most* arguments from `gcp.compute.Instance` are supported
          * as a way to override the properties in the machine image. All exported attributes

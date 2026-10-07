@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  *     location: "us-east4",
  *     project: "my-project",
  *     totalStorageSizeGb: 10240,
+ *     totalVmStorageSizeGb: 2048,
  * });
  * ```
  *
@@ -108,6 +109,10 @@ export class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResou
      * The total storage to be allocated to Exascale in GBs.
      */
     declare public readonly totalStorageSizeGb: pulumi.Output<number>;
+    /**
+     * Storage size needed for VM storage on Exascale in GBs.
+     */
+    declare public readonly totalVmStorageSizeGb: pulumi.Output<number | undefined>;
 
     /**
      * Create a CloudExadataInfrastructureExascaleConfig resource with the given unique name, arguments, and options.
@@ -127,6 +132,7 @@ export class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResou
             resourceInputs["location"] = state?.location;
             resourceInputs["project"] = state?.project;
             resourceInputs["totalStorageSizeGb"] = state?.totalStorageSizeGb;
+            resourceInputs["totalVmStorageSizeGb"] = state?.totalVmStorageSizeGb;
         } else {
             const args = argsOrState as CloudExadataInfrastructureExascaleConfigArgs | undefined;
             if (args?.cloudExadataInfrastructure === undefined && !opts.urn) {
@@ -143,6 +149,7 @@ export class CloudExadataInfrastructureExascaleConfig extends pulumi.CustomResou
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["totalStorageSizeGb"] = args?.totalStorageSizeGb;
+            resourceInputs["totalVmStorageSizeGb"] = args?.totalVmStorageSizeGb;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudExadataInfrastructureExascaleConfig.__pulumiType, name, resourceInputs, opts);
@@ -179,6 +186,10 @@ export interface CloudExadataInfrastructureExascaleConfigState {
      * The total storage to be allocated to Exascale in GBs.
      */
     totalStorageSizeGb?: pulumi.Input<number | undefined>;
+    /**
+     * Storage size needed for VM storage on Exascale in GBs.
+     */
+    totalVmStorageSizeGb?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -211,4 +222,8 @@ export interface CloudExadataInfrastructureExascaleConfigArgs {
      * The total storage to be allocated to Exascale in GBs.
      */
     totalStorageSizeGb: pulumi.Input<number>;
+    /**
+     * Storage size needed for VM storage on Exascale in GBs.
+     */
+    totalVmStorageSizeGb?: pulumi.Input<number | undefined>;
 }

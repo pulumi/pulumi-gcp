@@ -335,6 +335,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     * 
+     */
+    @Import(name="targetVersion")
+    private @Nullable Output<String> targetVersion;
+
+    /**
+     * @return The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     * 
+     */
+    public Optional<Output<String>> targetVersion() {
+        return Optional.ofNullable(this.targetVersion);
+    }
+
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
@@ -354,6 +387,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.perUnitStorageThroughput = $.perUnitStorageThroughput;
         this.placementPolicy = $.placementPolicy;
         this.project = $.project;
+        this.targetVersion = $.targetVersion;
     }
 
     public static Builder builder() {
@@ -782,6 +816,45 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param targetVersion The version to upgrade this instance to. Set this to the value reported in
+         * `availableVersion`, or to `latest` to move to the newest version available
+         * at the time of the upgrade.
+         * This field cannot be set when the instance is created; new instances are
+         * always provisioned from the current release. It also cannot be changed in
+         * the same operation as `capacityGib` or `maintenancePolicy`, and the
+         * instance must be ACTIVE and outside of the hour preceding a scheduled
+         * maintenance window.
+         * The API clears this field once the upgrade finishes, so it always reads
+         * back as empty on an idle instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetVersion(@Nullable Output<String> targetVersion) {
+            $.targetVersion = targetVersion;
+            return this;
+        }
+
+        /**
+         * @param targetVersion The version to upgrade this instance to. Set this to the value reported in
+         * `availableVersion`, or to `latest` to move to the newest version available
+         * at the time of the upgrade.
+         * This field cannot be set when the instance is created; new instances are
+         * always provisioned from the current release. It also cannot be changed in
+         * the same operation as `capacityGib` or `maintenancePolicy`, and the
+         * instance must be ACTIVE and outside of the hour preceding a scheduled
+         * maintenance window.
+         * The API clears this field once the upgrade finishes, so it always reads
+         * back as empty on an idle instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetVersion(String targetVersion) {
+            return targetVersion(Output.of(targetVersion));
         }
 
         public InstanceArgs build() {

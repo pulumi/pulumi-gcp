@@ -100,6 +100,7 @@ type LookupRegionBackendServiceResult struct {
 	Region                              *string                                                    `pulumi:"region"`
 	SecurityPolicy                      string                                                     `pulumi:"securityPolicy"`
 	SelfLink                            string                                                     `pulumi:"selfLink"`
+	ServiceLbPolicy                     string                                                     `pulumi:"serviceLbPolicy"`
 	SessionAffinity                     string                                                     `pulumi:"sessionAffinity"`
 	StrongSessionAffinityCookies        []GetRegionBackendServiceStrongSessionAffinityCooky        `pulumi:"strongSessionAffinityCookies"`
 	Subsettings                         []GetRegionBackendServiceSubsetting                        `pulumi:"subsettings"`
@@ -295,6 +296,10 @@ func (o LookupRegionBackendServiceResultOutput) SecurityPolicy() pulumi.StringOu
 
 func (o LookupRegionBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) ServiceLbPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.ServiceLbPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) SessionAffinity() pulumi.StringOutput {

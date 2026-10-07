@@ -79,6 +79,132 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Folders Policy Binding Access Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
+    ///     {
+    ///         DisplayName = "ap-folder-",
+    ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     // Binding access policies can be blocked by the managed org policy constraint
+    ///     // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this folder.
+    ///     var allowAccessPolicyBinding = new Gcp.OrgPolicy.Policy("allow_access_policy_binding", new()
+    ///     {
+    ///         Name = folder.FolderId.Apply(folderId =&gt; $"folders/{folderId}/policies/iam.managed.disableAccessPolicyBinding"),
+    ///         Parent = folder.FolderId.Apply(folderId =&gt; $"folders/{folderId}"),
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     Enforce = "FALSE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var wait120s = new Time.Sleep("wait_120s", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             folder,
+    ///             allowAccessPolicyBinding,
+    ///         },
+    ///     });
+    /// 
+    ///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
+    ///     {
+    ///         AccountId = "ap-sa-",
+    ///         DisplayName = "Test Service Account for Access Policy",
+    ///     });
+    /// 
+    ///     var accessPolicy = new Gcp.Iam.FolderAccessPolicy("access_policy", new()
+    ///     {
+    ///         Folder = folder.FolderId,
+    ///         Location = "global",
+    ///         AccessPolicyId = "my-folder-policy-",
+    ///         Details = new Gcp.Iam.Inputs.FolderAccessPolicyDetailsArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.Iam.Inputs.FolderAccessPolicyDetailsRuleArgs
+    ///                 {
+    ///                     Effect = "ALLOW",
+    ///                     Principals = new[]
+    ///                     {
+    ///                         testSa.Email.Apply(email =&gt; $"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}"),
+    ///                     },
+    ///                     Operation = new Gcp.Iam.Inputs.FolderAccessPolicyDetailsRuleOperationArgs
+    ///                     {
+    ///                         Permissions = new[]
+    ///                         {
+    ///                             "eventarc.googleapis.com/messageBuses.publish",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120s,
+    ///         },
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             accessPolicy,
+    ///         },
+    ///     });
+    /// 
+    ///     var my_folder_access_policy_binding = new Gcp.Iam.FoldersPolicyBinding("my-folder-access-policy-binding", new()
+    ///     {
+    ///         Folder = folder.FolderId,
+    ///         Location = "global",
+    ///         DisplayName = "Binding for a folder access policy",
+    ///         PolicyKind = "ACCESS",
+    ///         PolicyBindingId = "my-folder-access-binding-",
+    ///         Policy = Output.Tuple(folder.FolderId, accessPolicy.AccessPolicyId).Apply(values =&gt;
+    ///         {
+    ///             var folderId = values.Item1;
+    ///             var accessPolicyId = values.Item2;
+    ///             return $"folders/{folderId}/locations/global/accessPolicies/{accessPolicyId}";
+    ///         }),
+    ///         Target = new Gcp.Iam.Inputs.FoldersPolicyBindingTargetArgs
+    ///         {
+    ///             Resource = folder.FolderId.Apply(folderId =&gt; $"//cloudresourcemanager.googleapis.com/folders/{folderId}"),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -130,6 +256,7 @@ namespace Pulumi.Gcp.Iam
         /// The exact variables and functions that may be referenced within an expression are
         /// determined by the service that evaluates it. See the service documentation for
         /// additional information.
+        /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -216,6 +343,8 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        /// Exactly one of `PrincipalSet` (for principal access boundary policy bindings) or
+        /// `Resource` (for access policy bindings) must be set.
         /// Structure is documented below.
         /// </summary>
         [Output("target")]
@@ -318,6 +447,7 @@ namespace Pulumi.Gcp.Iam
         /// The exact variables and functions that may be referenced within an expression are
         /// determined by the service that evaluates it. See the service documentation for
         /// additional information.
+        /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -374,6 +504,8 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        /// Exactly one of `PrincipalSet` (for principal access boundary policy bindings) or
+        /// `Resource` (for access policy bindings) must be set.
         /// Structure is documented below.
         /// </summary>
         [Input("target", required: true)]
@@ -426,6 +558,7 @@ namespace Pulumi.Gcp.Iam
         /// The exact variables and functions that may be referenced within an expression are
         /// determined by the service that evaluates it. See the service documentation for
         /// additional information.
+        /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -518,6 +651,8 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        /// Exactly one of `PrincipalSet` (for principal access boundary policy bindings) or
+        /// `Resource` (for access policy bindings) must be set.
         /// Structure is documented below.
         /// </summary>
         [Input("target")]

@@ -3104,6 +3104,15 @@ export namespace agenticapplications {
          * Examples for visualizations.
          */
         visualizationExamples?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample>[] | undefined>;
+        /**
+         * Mode for generating visualizations.
+         * Possible values:
+         * VISUALIZATION_MODE_EXPLICIT_ONLY
+         * VISUALIZATION_MODE_WHEN_NECESSARY
+         * VISUALIZATION_MODE_WHEN_HELPFUL
+         * VISUALIZATION_MODE_ALWAYS
+         */
+        visualizationMode?: pulumi.Input<string | undefined>;
     }
 
     export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample {
@@ -3314,6 +3323,11 @@ export namespace agenticapplications {
          * Input only. The API key of the MCP server.
          */
         apiKey?: pulumi.Input<string | undefined>;
+        /**
+         * The HTTP header when the API key is passed in a request header
+         * (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+         */
+        apiKeyHeader?: pulumi.Input<string | undefined>;
         /**
          * The API key parameter name.
          */
@@ -3539,6 +3553,11 @@ export namespace agenticapplications {
     }
 
     export interface AnalystAgentPersonaWebSearchConfig {
+        /**
+         * Whether web search grounding is disabled for the analyst agent.
+         * Defaults to false if not specified (i.e. web search grounding is enabled).
+         */
+        disabled?: pulumi.Input<boolean | undefined>;
         /**
          * List of domains to be excluded from Google Search / Enterprise Web Search
          * grounding.
@@ -4189,7 +4208,9 @@ export namespace alloydb {
 
     export interface InstanceMachineConfig {
         /**
-         * The number of CPU's in the VM instance.
+         * The number of CPUs in the VM instance. For read pool instances, this
+         * value is applied to the instances in the pool and is not replaced by
+         * a fixed default.
          */
         cpuCount?: pulumi.Input<number | undefined>;
         /**
@@ -5954,12 +5975,26 @@ export namespace appengine {
         /**
          * OAuth2 client secret to use for the authentication flow.
          * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
          */
-        oauth2ClientSecret: pulumi.Input<string>;
+        oauth2ClientSecret?: pulumi.Input<string | undefined>;
         /**
          * Hex-encoded SHA-256 hash of the client secret.
          */
         oauth2ClientSecretSha256?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * OAuth2 client secret to use for the authentication flow.
+         * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+         */
+        oauth2ClientSecretWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientSecretWoVersion?: pulumi.Input<string | undefined>;
     }
 
     export interface ApplicationUrlDispatchRule {
@@ -16380,9 +16415,17 @@ export namespace ces {
 
     export interface AppAudioProcessingConfigSynthesizeSpeechConfig {
         /**
+         * The instruction used to synthesize speech when using a generative model.
+         */
+        instruction?: pulumi.Input<string | undefined>;
+        /**
          * The identifier for this object. Format specified above.
          */
         languageCode: pulumi.Input<string>;
+        /**
+         * The model used to synthesize audio.
+         */
+        model?: pulumi.Input<string | undefined>;
         /**
          * The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
          * speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
@@ -40952,6 +40995,13 @@ export namespace compute {
          */
         authenticationConfig?: pulumi.Input<string | undefined>;
         /**
+         * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         */
+        identity?: pulumi.Input<string | undefined>;
+        /**
          * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
          * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
          * server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -43663,6 +43713,10 @@ export namespace compute {
          */
         aliasIpv6Ranges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpv6Range>[] | undefined>;
         /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+         */
+        enableVpcScopedDns?: pulumi.Input<boolean | undefined>;
+        /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
         igmpQuery?: pulumi.Input<string | undefined>;
@@ -44340,6 +44394,10 @@ export namespace compute {
          * An array of IPv6 alias IP ranges for this network interface.
          */
         aliasIpv6Ranges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpv6Range>[] | undefined>;
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+         */
+        enableVpcScopedDns?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -45087,6 +45145,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpv6Ranges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterfaceAliasIpv6Range>[] | undefined>;
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -45849,6 +45911,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpv6Ranges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAliasIpv6Range>[] | undefined>;
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -48609,7 +48675,7 @@ export namespace compute {
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
          */
         balancingMode?: pulumi.Input<string | undefined>;
         /**
@@ -49462,6 +49528,13 @@ export namespace compute {
          * Can only be specified if authenticationMode is not NONE.
          */
         authenticationConfig?: pulumi.Input<string | undefined>;
+        /**
+         * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         */
+        identity?: pulumi.Input<string | undefined>;
         /**
          * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
          * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
@@ -50742,6 +50815,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpv6Ranges?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateNetworkInterfaceAliasIpv6Range>[] | undefined>;
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -52585,6 +52662,12 @@ export namespace compute {
 
     export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
+         * (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         */
+        requestBodies?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody>[] | undefined>;
+        /**
          * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
@@ -52615,6 +52698,24 @@ export namespace compute {
          * Target WAF rule set to apply the preconfigured WAF exclusion.
          */
         targetRuleSet: pulumi.Input<string>;
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
@@ -54693,6 +54794,35 @@ export namespace compute {
          *   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
          */
         pathTemplateRewrite?: pulumi.Input<string | undefined>;
+        /**
+         * The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         */
+        regexRewrite?: pulumi.Input<inputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite | undefined>;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+        /**
+         * The regular expression used to match against the URL path.
+         * It uses RE2 syntax with the following constraints:
+         * * Any single character operators are allowed.
+         * * Groups may only contain a submatch operator, and may not
+         *   contain character repetition (for example, `.*`).
+         * * Character repetition (for example, `.*`) may only be used in
+         *   a regex together with empty string operators, other
+         *   repetitions, ranges, and repetitions of ranges.
+         * * Ranges may only contain character ranges, digit ranges, and
+         *   symbols allowed for ranges.
+         */
+        pathPattern: pulumi.Input<string>;
+        /**
+         * The substitution used to rewrite the parts of the URL path
+         * matched by pathPattern. May reference capture groups from
+         * pathPattern.
+         */
+        pathSubstitution: pulumi.Input<string>;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
@@ -56490,7 +56620,7 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
          * (Optional, Beta)
-         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
         requestBodies?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody>[] | undefined>;
@@ -60526,10 +60656,39 @@ export namespace compute {
          * captured by the route's pathTemplate matchers.
          * pathTemplateRewrite may only be used when all of a route's
          * MatchRules specify pathTemplate.
-         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
          * specified.
          */
         pathTemplateRewrite?: pulumi.Input<string | undefined>;
+        /**
+         * The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         */
+        regexRewrite?: pulumi.Input<inputs.compute.URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite | undefined>;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+        /**
+         * The regular expression used to match against the URL path.
+         * It uses RE2 syntax with the following constraints:
+         * * Any single character operators are allowed.
+         * * Groups may only contain a submatch operator, and may not
+         *   contain character repetition (for example, `.*`).
+         * * Character repetition (for example, `.*`) may only be used in
+         *   a regex together with empty string operators, other
+         *   repetitions, ranges, and repetitions of ranges.
+         * * Ranges may only contain character ranges, digit ranges, and
+         *   symbols allowed for ranges.
+         */
+        pathPattern: pulumi.Input<string>;
+        /**
+         * The substitution used to rewrite the parts of the URL path
+         * matched by pathPattern. May reference capture groups from
+         * pathPattern.
+         */
+        pathSubstitution: pulumi.Input<string>;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
@@ -68521,6 +68680,18 @@ export namespace databasemigrationservice {
          * Format: projects/{project}/regions/{region}/networkAttachments/{name}
          */
         networkAttachment: pulumi.Input<string>;
+    }
+
+    export interface PrivateConnectionReservedPublicIpConfig {
+        /**
+         * (Output)
+         * Output only. The reserved public IPs.
+         */
+        egressPublicIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Optional. Number of static public IP addresses to reserve.
+         */
+        natIpsCount?: pulumi.Input<number | undefined>;
     }
 
     export interface PrivateConnectionVpcPeeringConfig {
@@ -90365,6 +90536,230 @@ export namespace diagflow {
          */
         message?: pulumi.Input<string | undefined>;
     }
+
+    export interface ToolConnectorSpec {
+        /**
+         * Actions for the tool to use.
+         * Structure is documented below.
+         */
+        actions: pulumi.Input<pulumi.Input<inputs.diagflow.ToolConnectorSpecAction>[]>;
+        /**
+         * The full resource name of the referenced Integration Connectors Connection.
+         * Format: `projects/*&#47;locations/*&#47;connections/*`
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ToolConnectorSpecAction {
+        /**
+         * ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+         */
+        connectionActionId?: pulumi.Input<string | undefined>;
+        /**
+         * Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+         * Structure is documented below.
+         */
+        entityOperation?: pulumi.Input<inputs.diagflow.ToolConnectorSpecActionEntityOperation | undefined>;
+        /**
+         * Entity fields to use as inputs for the operation.
+         * If no fields are specified, all fields of the Entity will be used.
+         */
+        inputFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entity fields to return from the operation.
+         * If no fields are specified, all fields of the Entity will be returned.
+         */
+        outputFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface ToolConnectorSpecActionEntityOperation {
+        /**
+         * ID of the entity.
+         */
+        entityId: pulumi.Input<string>;
+        /**
+         * The operation to perform on the entity.
+         * Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+         */
+        operation: pulumi.Input<string>;
+    }
+
+    export interface ToolFunctionSpec {
+        /**
+         * Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+         * This input is a JSON object that contains the function's parameters as properties of the object.
+         */
+        inputSchema?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. The method type of the function. If not specified, the default value is GET.
+         * Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+         */
+        methodType?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+         * This output is a JSON object that contains the function's parameters as properties of the object.
+         */
+        outputSchema?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolOpenApiSpec {
+        /**
+         * Optional. Authentication information required by the API.
+         * Structure is documented below.
+         */
+        authentication?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecAuthentication | undefined>;
+        /**
+         * Optional. Service Directory configuration.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecServiceDirectoryConfig | undefined>;
+        /**
+         * Required. The OpenAPI schema specified as a text.
+         * Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+         */
+        textSchema: pulumi.Input<string>;
+        /**
+         * Optional. TLS configuration for the HTTPS verification.
+         * Structure is documented below.
+         */
+        tlsConfig?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecTlsConfig | undefined>;
+    }
+
+    export interface ToolOpenApiSpecAuthentication {
+        /**
+         * Config for API key auth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        apiKeyConfig?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecAuthenticationApiKeyConfig | undefined>;
+        /**
+         * Config for bearer token auth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        bearerTokenConfig?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecAuthenticationBearerTokenConfig | undefined>;
+        /**
+         * Config for OAuth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        oauthConfig?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecAuthenticationOauthConfig | undefined>;
+        /**
+         * Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        serviceAgentAuthConfig?: pulumi.Input<inputs.diagflow.ToolOpenApiSpecAuthenticationServiceAgentAuthConfig | undefined>;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationApiKeyConfig {
+        /**
+         * Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        apiKey?: pulumi.Input<string | undefined>;
+        /**
+         * The parameter name or the header name of the API key.
+         * E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+         */
+        keyName: pulumi.Input<string>;
+        /**
+         * Key location in the request.
+         * Possible values are: `HEADER`, `QUERY_STRING`.
+         */
+        requestLocation: pulumi.Input<string>;
+        /**
+         * Optional. The name of the SecretManager secret version resource storing the API key.
+         * If this field is set, the `apiKey` field will be ignored.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         */
+        secretVersionForApiKey?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationBearerTokenConfig {
+        /**
+         * Optional. The name of the SecretManager secret version resource storing the Bearer token.
+         * If this field is set, the `token` field will be ignored.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         */
+        secretVersionForToken?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. The text token appended to the text `Bearer` to the request Authorization header.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        token?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationOauthConfig {
+        /**
+         * The client ID from the OAuth provider.
+         */
+        clientId: pulumi.Input<string>;
+        /**
+         * Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: pulumi.Input<string | undefined>;
+        /**
+         * OAuth grant types.
+         * Possible values are: `CLIENT_CREDENTIAL`.
+         */
+        oauthGrantType: pulumi.Input<string>;
+        /**
+         * Optional. The OAuth scopes to grant.
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Optional. The name of the SecretManager secret version resource storing the client secret.
+         * If this field is set, the `clientSecret` field will be ignored.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         */
+        secretVersionForClientSecret?: pulumi.Input<string | undefined>;
+        /**
+         * The token endpoint in the OAuth provider to exchange for an access token.
+         */
+        tokenEndpoint: pulumi.Input<string>;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+        /**
+         * Optional. Indicate the auth token type generated from the Dialogflow service agent.
+         * The generated token is sent in the Authorization header.
+         * Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+         */
+        serviceAgentAuth?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ToolOpenApiSpecServiceDirectoryConfig {
+        /**
+         * The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+         * Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+         * `LocationID` of the service directory must be the same as the location of the tool.
+         */
+        service: pulumi.Input<string>;
+    }
+
+    export interface ToolOpenApiSpecTlsConfig {
+        /**
+         * Specifies a list of allowed custom CA certificates for HTTPS verification.
+         * Structure is documented below.
+         */
+        caCerts: pulumi.Input<pulumi.Input<inputs.diagflow.ToolOpenApiSpecTlsConfigCaCert>[]>;
+    }
+
+    export interface ToolOpenApiSpecTlsConfigCaCert {
+        /**
+         * The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+         * If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+         * N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+         * A base64-encoded string.
+         */
+        cert: pulumi.Input<string>;
+        /**
+         * The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+         */
+        displayName: pulumi.Input<string>;
+    }
 }
 
 export namespace discoveryengine {
@@ -101176,12 +101571,19 @@ export namespace iam {
 
     export interface FoldersPolicyBindingTarget {
         /**
-         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
          *   It must be parent by the policy binding's parent (the folder).
          */
         principalSet?: pulumi.Input<string | undefined>;
+        /**
+         * Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = "ACCESS"`. Examples:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         *   It must be the policy binding's parent (the folder).
+         */
+        resource?: pulumi.Input<string | undefined>;
     }
 
     export interface OrganizationAccessPolicyDetails {
@@ -101334,7 +101736,7 @@ export namespace iam {
 
     export interface OrganizationsPolicyBindingTarget {
         /**
-         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
          * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -101342,6 +101744,13 @@ export namespace iam {
          *   It must be parent by the policy binding's parent (the organization).
          */
         principalSet?: pulumi.Input<string | undefined>;
+        /**
+         * Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = "ACCESS"`. Examples:
+         * * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+         *   It must be the policy binding's parent (the organization).
+         */
+        resource?: pulumi.Input<string | undefined>;
     }
 
     export interface PrincipalAccessBoundaryPolicyDetails {
@@ -101532,7 +101941,7 @@ export namespace iam {
 
     export interface ProjectsPolicyBindingTarget {
         /**
-         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Project:
          * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -101541,6 +101950,15 @@ export namespace iam {
          *   It must be parent by the policy binding's parent (the project).
          */
         principalSet?: pulumi.Input<string | undefined>;
+        /**
+         * Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = "ACCESS"`. Examples:
+         * * Project:
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+         *   It must be the policy binding's parent (the project).
+         */
+        resource?: pulumi.Input<string | undefined>;
     }
 
     export interface WorkforcePoolAccessRestrictions {
@@ -113167,6 +113585,172 @@ export namespace networksecurity {
         urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
+    export interface SecurityProfileWildfireAnalysisProfile {
+        /**
+         * The configuration for inline cloud analysis of files.
+         * Structure is documented below.
+         */
+        wildfireInlineCloudAnalysisRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule>[] | undefined>;
+        /**
+         * Defines what action to take for WildFire inline ML threats per protocol.
+         * Structure is documented below.
+         */
+        wildfireInlineMlOverrides?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride>[] | undefined>;
+        /**
+         * WildFire inline Machine Learning setting for the Security Profile.
+         * Structure is documented below.
+         */
+        wildfireInlineMlSetting?: pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting | undefined>;
+        /**
+         * Defines what action to take for WildFire threats per protocol.
+         * Structure is documented below.
+         */
+        wildfireOverrides?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverride>[] | undefined>;
+        /**
+         * Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+         */
+        wildfireRealtimeLookup?: pulumi.Input<boolean | undefined>;
+        /**
+         * The configuration for file submission to WildFire in cloud.
+         * Structure is documented below.
+         */
+        wildfireSubmissionRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule>[] | undefined>;
+        /**
+         * The configuration for overriding threats actions by threat id match.
+         * Structure is documented below.
+         */
+        wildfireThreatOverrides?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverride>[] | undefined>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule {
+        /**
+         * The action to take when a rule is matched.
+         * Possible values are: `ALLOW`, `DENY`, `ALERT`.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+         * Structure is documented below.
+         */
+        customFileTypes?: pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes | undefined>;
+        /**
+         * Direction of traffic to match for a rule.
+         * Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+         */
+        direction: pulumi.Input<string>;
+        /**
+         * Defines the file selection mode for a rule.
+         * Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+         */
+        fileSelectionMode: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes {
+        /**
+         * The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+         */
+        fileTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * Required protocol to match.
+         * Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+         */
+        protocol: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting {
+        /**
+         * File exceptions to exclude from WildFire inline ML.
+         * Structure is documented below.
+         */
+        fileExceptions?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException>[] | undefined>;
+        /**
+         * Defines what action to take for a specific file type in WildFire inline ML.
+         * Structure is documented below.
+         */
+        inlineMlConfigs?: pulumi.Input<pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig>[] | undefined>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException {
+        /**
+         * The file name associated with the partial hash.
+         */
+        filename?: pulumi.Input<string | undefined>;
+        /**
+         * Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+         */
+        partialHash: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig {
+        /**
+         * The action to take for a file type.
+         * Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+         */
+        fileType: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * Required protocol to match.
+         * Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+         */
+        protocol: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule {
+        /**
+         * Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+         * Structure is documented below.
+         */
+        customFileTypes?: pulumi.Input<inputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes | undefined>;
+        /**
+         * Direction of traffic to match for a rule.
+         * Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+         */
+        direction: pulumi.Input<string>;
+        /**
+         * Defines the file selection mode for a rule.
+         * Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+         */
+        fileSelectionMode: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes {
+        /**
+         * The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+         */
+        fileTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireThreatOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * Vendor-specific ID of a threat to override.
+         */
+        threatId: pulumi.Input<string>;
+    }
+
     export interface ServerTlsPolicyMtlsPolicy {
         /**
          * Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
@@ -113262,6 +113846,11 @@ export namespace networksecurity {
          * Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
          */
         ipProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Primary IP ranges to match (for the capture point).
+         * When unset, matches any primary IP.
+         */
+        primaryIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * Source IP ranges to match. When unset, matches any source IP range.
          */
@@ -116157,6 +116746,12 @@ export namespace oracledatabase {
          */
         dbServerVersion?: pulumi.Input<string | undefined>;
         /**
+         * (Output)
+         * The Exascale configuration for the Exadata Infrastructure.
+         * Structure is documented below.
+         */
+        exascaleConfigs?: pulumi.Input<pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructurePropertiesExascaleConfig>[] | undefined>;
+        /**
          * Maintenance window as defined by Oracle.
          * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
          * Structure is documented below.
@@ -116265,8 +116860,29 @@ export namespace oracledatabase {
         /**
          * The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
+         *
+         * <a name="nestedPropertiesExascaleConfig"></a>The `exascaleConfig` block contains:
          */
         email: pulumi.Input<string>;
+    }
+
+    export interface CloudExadataInfrastructurePropertiesExascaleConfig {
+        /**
+         * Available storage size for Exascale in GBs.
+         */
+        availableStorageSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Available storage size for VM storage on Exascale in GBs.
+         */
+        availableVmStorageSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Total storage size needed for Exascale in GBs.
+         */
+        totalStorageSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Storage size needed for VM storage on Exascale in GBs.
+         */
+        totalVmStorageSizeGb?: pulumi.Input<number | undefined>;
     }
 
     export interface CloudExadataInfrastructurePropertiesMaintenanceWindow {

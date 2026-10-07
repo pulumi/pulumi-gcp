@@ -143,16 +143,16 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="source", required=true)
-    private Output<BindingSourceArgs> source;
+    @Import(name="source")
+    private @Nullable Output<BindingSourceArgs> source;
 
     /**
      * @return The source of the Binding.
      * Structure is documented below.
      * 
      */
-    public Output<BindingSourceArgs> source() {
-        return this.source;
+    public Optional<Output<BindingSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     /**
@@ -372,7 +372,7 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder source(Output<BindingSourceArgs> source) {
+        public Builder source(@Nullable Output<BindingSourceArgs> source) {
             $.source = source;
             return this;
         }
@@ -420,9 +420,6 @@ public final class BindingArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("BindingArgs", "location");
-            }
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("BindingArgs", "source");
             }
             if ($.target == null) {
                 throw new MissingRequiredPropertyException("BindingArgs", "target");

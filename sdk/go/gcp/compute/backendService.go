@@ -845,6 +845,47 @@ import (
 //	}
 //
 // ```
+// ### Backend Service Identity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHealthCheck, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("HTTPS"),
+//				TlsSettings: &compute.BackendServiceTlsSettingsArgs{
+//					Identity: pulumi.String("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id"),
+//				},
+//				Description: pulumi.String("description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Backend Service Dynamic Forwarding
 //
 // ```go
@@ -1120,7 +1161,7 @@ type BackendService struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL to networkservices.ServiceLbPolicy resource.
-	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 	ServiceLbPolicy pulumi.StringPtrOutput `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
@@ -1394,7 +1435,7 @@ type backendServiceState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// URL to networkservices.ServiceLbPolicy resource.
-	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
@@ -1639,7 +1680,7 @@ type BackendServiceState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// URL to networkservices.ServiceLbPolicy resource.
-	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
@@ -1879,7 +1920,7 @@ type backendServiceArgs struct {
 	// Structure is documented below.
 	SecuritySettings *BackendServiceSecuritySettings `pulumi:"securitySettings"`
 	// URL to networkservices.ServiceLbPolicy resource.
-	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
@@ -2116,7 +2157,7 @@ type BackendServiceArgs struct {
 	// Structure is documented below.
 	SecuritySettings BackendServiceSecuritySettingsPtrInput
 	// URL to networkservices.ServiceLbPolicy resource.
-	// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+	// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
@@ -2563,7 +2604,7 @@ func (o BackendServiceOutput) SelfLink() pulumi.StringOutput {
 }
 
 // URL to networkservices.ServiceLbPolicy resource.
-// Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+// Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
 func (o BackendServiceOutput) ServiceLbPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.ServiceLbPolicy }).(pulumi.StringPtrOutput)
 }

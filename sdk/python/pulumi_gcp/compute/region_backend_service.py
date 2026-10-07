@@ -51,6 +51,7 @@ class RegionBackendServiceArgs:
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
                  strong_session_affinity_cookie: pulumi.Input[Optional['RegionBackendServiceStrongSessionAffinityCookieArgs']] = None,
                  subsetting: pulumi.Input[Optional['RegionBackendServiceSubsettingArgs']] = None,
@@ -217,6 +218,9 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[_builtins.str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -292,6 +296,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "region", region)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
+        if service_lb_policy is not None:
+            pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if strong_session_affinity_cookie is not None:
@@ -792,6 +798,20 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "security_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL to networkservices.ServiceLbPolicy resource.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        The service lb policy must be regional and in the same region as the backend service.
+        """
+        return pulumi.get(self, "service_lb_policy")
+
+    @service_lb_policy.setter
+    def service_lb_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_lb_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -898,6 +918,7 @@ class _RegionBackendServiceState:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
                  strong_session_affinity_cookie: pulumi.Input[Optional['RegionBackendServiceStrongSessionAffinityCookieArgs']] = None,
                  subsetting: pulumi.Input[Optional['RegionBackendServiceSubsettingArgs']] = None,
@@ -1069,6 +1090,9 @@ class _RegionBackendServiceState:
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
+        :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -1152,6 +1176,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "security_policy", security_policy)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if service_lb_policy is not None:
+            pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if strong_session_affinity_cookie is not None:
@@ -1701,6 +1727,20 @@ class _RegionBackendServiceState:
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL to networkservices.ServiceLbPolicy resource.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        The service lb policy must be regional and in the same region as the backend service.
+        """
+        return pulumi.get(self, "service_lb_policy")
+
+    @service_lb_policy.setter
+    def service_lb_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_lb_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1806,6 +1846,7 @@ class RegionBackendService(pulumi.CustomResource):
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
                  strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
                  subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
@@ -2044,6 +2085,70 @@ class RegionBackendService(pulumi.CustomResource):
             protocol="H2C",
             timeout_sec=10,
             health_checks=default_region_health_check.id)
+        ```
+        ### Region Backend Service In Flight
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.compute.Network("custom",
+            name="custom-vpc",
+            auto_create_subnetworks=False)
+        default = gcp.compute.Subnetwork("default",
+            name="custom-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=custom.id)
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="instance-template",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "debian-cloud/debian-13",
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": custom.id,
+                "subnetwork": default.id,
+            }],
+            metadata={
+                "startup-script": \"\"\"#!/bin/bash
+        echo \\"Hello World from MIG VM\\" > /var/www/html/index.html
+        apt-get update -y
+        apt-get install -y apache2
+        systemctl start apache2
+        \"\"\",
+            })
+        foobar = gcp.compute.RegionInstanceGroupManager("foobar",
+            name="instance-group-manager",
+            base_instance_name="vm",
+            region="us-central1",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="rbs-health-check",
+            region="us-central1",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            description="Hello World 1234",
+            port_name="http",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[{
+                "group": foobar.instance_group,
+                "balancing_mode": "IN_FLIGHT",
+                "capacity_scaler": float(1),
+                "max_in_flight_requests_per_instance": 100,
+                "traffic_duration": "LONG",
+            }],
+            health_checks=default_region_health_check.self_link)
         ```
         ### Region Backend Service Connection Tracking
 
@@ -2362,6 +2467,29 @@ class RegionBackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+        ### Region Backend Service Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-north1",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            region="europe-north1",
+            name="backend-service",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="HTTPS",
+            tls_settings={
+                "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+            },
+            description="description")
+        ```
 
         ## Import
 
@@ -2542,6 +2670,9 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -2796,6 +2927,70 @@ class RegionBackendService(pulumi.CustomResource):
             timeout_sec=10,
             health_checks=default_region_health_check.id)
         ```
+        ### Region Backend Service In Flight
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom = gcp.compute.Network("custom",
+            name="custom-vpc",
+            auto_create_subnetworks=False)
+        default = gcp.compute.Subnetwork("default",
+            name="custom-subnet",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=custom.id)
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            name="instance-template",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "debian-cloud/debian-13",
+                "auto_delete": True,
+                "boot": True,
+            }],
+            network_interfaces=[{
+                "network": custom.id,
+                "subnetwork": default.id,
+            }],
+            metadata={
+                "startup-script": \"\"\"#!/bin/bash
+        echo \\"Hello World from MIG VM\\" > /var/www/html/index.html
+        apt-get update -y
+        apt-get install -y apache2
+        systemctl start apache2
+        \"\"\",
+            })
+        foobar = gcp.compute.RegionInstanceGroupManager("foobar",
+            name="instance-group-manager",
+            base_instance_name="vm",
+            region="us-central1",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="rbs-health-check",
+            region="us-central1",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="region-service",
+            region="us-central1",
+            description="Hello World 1234",
+            port_name="http",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            backends=[{
+                "group": foobar.instance_group,
+                "balancing_mode": "IN_FLIGHT",
+                "capacity_scaler": float(1),
+                "max_in_flight_requests_per_instance": 100,
+                "traffic_duration": "LONG",
+            }],
+            health_checks=default_region_health_check.self_link)
+        ```
         ### Region Backend Service Connection Tracking
 
         ```python
@@ -3113,6 +3308,29 @@ class RegionBackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+        ### Region Backend Service Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="health-check",
+            region="europe-north1",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            region="europe-north1",
+            name="backend-service",
+            health_checks=default_region_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="HTTPS",
+            tls_settings={
+                "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+            },
+            description="description")
+        ```
 
         ## Import
 
@@ -3178,6 +3396,7 @@ class RegionBackendService(pulumi.CustomResource):
                  protocol: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
                  strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
                  subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
@@ -3222,6 +3441,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
             __props__.__dict__["security_policy"] = security_policy
+            __props__.__dict__["service_lb_policy"] = service_lb_policy
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
             __props__.__dict__["subsetting"] = subsetting
@@ -3275,6 +3495,7 @@ class RegionBackendService(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             security_policy: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_lb_policy: pulumi.Input[Optional[_builtins.str]] = None,
             session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
             strong_session_affinity_cookie: pulumi.Input[Optional[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict', 'outputs.RegionBackendServiceStrongSessionAffinityCookie']]] = None,
             subsetting: pulumi.Input[Optional[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict', 'outputs.RegionBackendServiceSubsetting']]] = None,
@@ -3450,6 +3671,9 @@ class RegionBackendService(pulumi.CustomResource):
                If it is not provided, the provider region is used.
         :param pulumi.Input[_builtins.str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
+        :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+               The service lb policy must be regional and in the same region as the backend service.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -3503,6 +3727,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["security_policy"] = security_policy
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_lb_policy"] = service_lb_policy
         __props__.__dict__["session_affinity"] = session_affinity
         __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
         __props__.__dict__["subsetting"] = subsetting
@@ -3910,6 +4135,16 @@ class RegionBackendService(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        URL to networkservices.ServiceLbPolicy resource.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        The service lb policy must be regional and in the same region as the backend service.
+        """
+        return pulumi.get(self, "service_lb_policy")
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")

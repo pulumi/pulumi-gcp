@@ -16,7 +16,7 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
     public static final FoldersPolicyBindingTargetArgs Empty = new FoldersPolicyBindingTargetArgs();
 
     /**
-     * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
@@ -26,7 +26,7 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
     private @Nullable Output<String> principalSet;
 
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
@@ -36,10 +36,32 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.principalSet);
     }
 
+    /**
+     * Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+     *   It must be the policy binding&#39;s parent (the folder).
+     * 
+     */
+    @Import(name="resource")
+    private @Nullable Output<String> resource;
+
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+     *   It must be the policy binding&#39;s parent (the folder).
+     * 
+     */
+    public Optional<Output<String>> resource() {
+        return Optional.ofNullable(this.resource);
+    }
+
     private FoldersPolicyBindingTargetArgs() {}
 
     private FoldersPolicyBindingTargetArgs(FoldersPolicyBindingTargetArgs $) {
         this.principalSet = $.principalSet;
+        this.resource = $.resource;
     }
 
     public static Builder builder() {
@@ -61,7 +83,7 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * @param principalSet Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
          *   It must be parent by the policy binding&#39;s parent (the folder).
@@ -75,7 +97,7 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * @param principalSet Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
          *   It must be parent by the policy binding&#39;s parent (the folder).
@@ -85,6 +107,33 @@ public final class FoldersPolicyBindingTargetArgs extends com.pulumi.resources.R
          */
         public Builder principalSet(String principalSet) {
             return principalSet(Output.of(principalSet));
+        }
+
+        /**
+         * @param resource Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         *   It must be the policy binding&#39;s parent (the folder).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resource(@Nullable Output<String> resource) {
+            $.resource = resource;
+            return this;
+        }
+
+        /**
+         * @param resource Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         *   It must be the policy binding&#39;s parent (the folder).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resource(String resource) {
+            return resource(Output.of(resource));
         }
 
         public FoldersPolicyBindingTargetArgs build() {

@@ -177,6 +177,61 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Services Service Lb Policies Regional
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkservices.ServiceLbPolicies;
+ * import com.pulumi.gcp.networkservices.ServiceLbPoliciesArgs;
+ * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesAutoCapacityDrainArgs;
+ * import com.pulumi.gcp.networkservices.inputs.ServiceLbPoliciesFailoverConfigArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ServiceLbPolicies("default", ServiceLbPoliciesArgs.builder()
+ *             .name("my-regional-lb-policy")
+ *             .location("us-central1")
+ *             .description("my regional service lb policy")
+ *             .loadBalancingAlgorithm("SPRAY_TO_REGION")
+ *             .autoCapacityDrain(ServiceLbPoliciesAutoCapacityDrainArgs.builder()
+ *                 .enable(true)
+ *                 .build())
+ *             .failoverConfig(ServiceLbPoliciesFailoverConfigArgs.builder()
+ *                 .failoverHealthThreshold(70)
+ *                 .build())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("my-regional-lb-backend")
+ *             .region("us-central1")
+ *             .description("my regional backend service")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .protocol("HTTP")
+ *             .serviceLbPolicy(default_.id().applyValue(_id -> String.format("//networkservices.googleapis.com/%s", _id)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

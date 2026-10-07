@@ -69,60 +69,6 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
  *             .name("backend-service")
- *             .protocol("TCP")
- *             .timeoutSec(10)
- *             .healthChecks(defaultHealthCheck.id())
- *             .build());
- * 
- *         var default_ = new TargetTCPProxy("default", TargetTCPProxyArgs.builder()
- *             .name("test-proxy")
- *             .backendService(defaultBackendService.id())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * ### Target Tcp Proxy Basic Beta
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.HealthCheck;
- * import com.pulumi.gcp.compute.HealthCheckArgs;
- * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
- * import com.pulumi.gcp.compute.BackendService;
- * import com.pulumi.gcp.compute.BackendServiceArgs;
- * import com.pulumi.gcp.compute.TargetTCPProxy;
- * import com.pulumi.gcp.compute.TargetTCPProxyArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
- *             .name("health-check")
- *             .timeoutSec(1)
- *             .checkIntervalSec(1)
- *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
- *                 .port(443)
- *                 .build())
- *             .build());
- * 
- *         var defaultBackendService = new BackendService("defaultBackendService", BackendServiceArgs.builder()
- *             .name("backend-service")
  *             .loadBalancingScheme("EXTERNAL_MANAGED")
  *             .protocol("TCP")
  *             .timeoutSec(10)
@@ -267,7 +213,7 @@ import javax.annotation.Nullable;
 public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     @Export(name="backendService", refs={String.class}, tree="[0]")
@@ -275,7 +221,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     public Output<Optional<String>> backendService() {
@@ -334,7 +280,6 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -345,8 +290,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> loadBalancingScheme;
 
     /**
-     * @return (Optional, Beta)
-     * Specifies the load balancer type. A target TCP proxy created for one type
+     * @return Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.

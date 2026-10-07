@@ -108,6 +108,34 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// ### Database Migration Service Private Connection Reserved Public Ip
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
+    ///     {
+    ///         DisplayName = "dbms_pc",
+    ///         Location = "us-west1",
+    ///         PrivateConnectionId = "my-connection",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         ReservedPublicIpConfig = new Gcp.DatabaseMigrationService.Inputs.PrivateConnectionReservedPublicIpConfigArgs
+    ///         {
+    ///             NatIpsCount = 1,
+    ///         },
+    ///         CreateWithoutValidation = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -211,6 +239,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The Reserved Public IP configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("reservedPublicIpConfig")]
+        public Output<Outputs.PrivateConnectionReservedPublicIpConfig?> ReservedPublicIpConfig { get; private set; } = null!;
 
         /// <summary>
         /// State of the PrivateConnection.
@@ -340,6 +375,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("pscInterfaceConfig")]
         public Input<Inputs.PrivateConnectionPscInterfaceConfigArgs>? PscInterfaceConfig { get; set; }
+
+        /// <summary>
+        /// The Reserved Public IP configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservedPublicIpConfig")]
+        public Input<Inputs.PrivateConnectionReservedPublicIpConfigArgs>? ReservedPublicIpConfig { get; set; }
 
         /// <summary>
         /// The VPC Peering configuration is used to create VPC peering
@@ -472,6 +514,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The Reserved Public IP configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("reservedPublicIpConfig")]
+        public Input<Inputs.PrivateConnectionReservedPublicIpConfigGetArgs>? ReservedPublicIpConfig { get; set; }
 
         /// <summary>
         /// State of the PrivateConnection.

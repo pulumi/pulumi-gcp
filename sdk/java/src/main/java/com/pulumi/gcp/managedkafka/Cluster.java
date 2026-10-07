@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  *                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
  *                 .build())
  *             .labels(Map.of("key", "value"))
+ *             .kafkaVersion("3.7.x")
  *             .build());
  * 
  *     }
@@ -431,6 +432,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterGcpConfig> gcpConfig() {
         return this.gcpConfig;
+    }
+    /**
+     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * 
+     */
+    @Export(name="kafkaVersion", refs={String.class}, tree="[0]")
+    private Output<String> kafkaVersion;
+
+    /**
+     * @return The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * 
+     */
+    public Output<String> kafkaVersion() {
+        return this.kafkaVersion;
     }
     /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.

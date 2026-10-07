@@ -2006,7 +2006,9 @@ class InstanceConnectionPoolConfigArgs:
 class InstanceMachineConfigArgsDict(TypedDict):
     cpu_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The number of CPU's in the VM instance.
+    The number of CPUs in the VM instance. For read pool instances, this
+    value is applied to the instances in the pool and is not replaced by
+    a fixed default.
     """
     machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2021,7 +2023,9 @@ class InstanceMachineConfigArgs:
                  cpu_count: pulumi.Input[Optional[_builtins.int]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] cpu_count: The number of CPU's in the VM instance.
+        :param pulumi.Input[_builtins.int] cpu_count: The number of CPUs in the VM instance. For read pool instances, this
+               value is applied to the instances in the pool and is not replaced by
+               a fixed default.
         :param pulumi.Input[_builtins.str] machine_type: Machine type of the VM instance.
                E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
                `cpu_count` must match the number of vCPUs in the machine type.
@@ -2035,7 +2039,9 @@ class InstanceMachineConfigArgs:
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of CPU's in the VM instance.
+        The number of CPUs in the VM instance. For read pool instances, this
+        value is applied to the instances in the pool and is not replaced by
+        a fixed default.
         """
         return pulumi.get(self, "cpu_count")
 

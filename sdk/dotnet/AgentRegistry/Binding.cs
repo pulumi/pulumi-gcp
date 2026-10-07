@@ -21,25 +21,24 @@ namespace Pulumi.Gcp.AgentRegistry
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Google = Pulumi.Google;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var @default = Gcp.AgentRegistry.GetAgent.Invoke(new()
     ///     {
-    ///         Location = "global",
+    ///         Location = "us-central1",
     ///         Filter = "displayName:Workspace Agent",
     ///     });
     /// 
-    ///     var defaultIamConnectorsConnector = new Google.IamConnectorsConnector("default", new()
+    ///     var defaultAuthProvider = new Gcp.AgentIdentity.AuthProvider("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         ConnectorId = "ar-binding",
-    ///         ConnectorTypeParams = new[]
+    ///         AuthProviderId = "ar-binding",
+    ///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
     ///         {
-    ///             
+    ///             ApiKey = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs
     ///             {
-    ///                 { "connectorVersion", "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1" },
+    ///                 ApiKey = "test-api-key-value",
     ///             },
     ///         },
     ///     });
@@ -60,7 +59,7 @@ namespace Pulumi.Gcp.AgentRegistry
     ///         },
     ///         AuthProviderBinding = new Gcp.AgentRegistry.Inputs.BindingAuthProviderBindingArgs
     ///         {
-    ///             AuthProvider = defaultIamConnectorsConnector.Id,
+    ///             AuthProvider = defaultAuthProvider.Id,
     ///             Scopes = new[]
     ///             {
     ///                 "https://www.googleapis.com/auth/cloud-platform",
@@ -71,7 +70,65 @@ namespace Pulumi.Gcp.AgentRegistry
     ///     {
     ///         DependsOn =
     ///         {
-    ///             defaultIamConnectorsConnector,
+    ///             defaultAuthProvider,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Agent Registry Binding Target Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.AgentRegistry.GetAgent.Invoke(new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Filter = "displayName:Workspace Agent",
+    ///     });
+    /// 
+    ///     var defaultAuthProvider = new Gcp.AgentIdentity.AuthProvider("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         AuthProviderId = "ar-binding",
+    ///         AuthProviderTypeParams = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsArgs
+    ///         {
+    ///             ApiKey = new Gcp.AgentIdentity.Inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs
+    ///             {
+    ///                 ApiKey = "test-api-key-value",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBinding = new Gcp.AgentRegistry.Binding("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         BindingId = "ar-binding",
+    ///         DisplayName = "Target Only Binding",
+    ///         Description = "Agent registry binding without source",
+    ///         Target = new Gcp.AgentRegistry.Inputs.BindingTargetArgs
+    ///         {
+    ///             Identifier = @default.Apply(@default =&gt; @default.Apply(getAgentResult =&gt; getAgentResult.Urn)),
+    ///         },
+    ///         AuthProviderBinding = new Gcp.AgentRegistry.Inputs.BindingAuthProviderBindingArgs
+    ///         {
+    ///             AuthProvider = defaultAuthProvider.Id,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "https://www.googleapis.com/auth/cloud-platform",
+    ///             },
+    ///             ContinueUri = "https://example.com/continue",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             defaultAuthProvider,
     ///         },
     ///     });
     /// 
@@ -163,7 +220,7 @@ namespace Pulumi.Gcp.AgentRegistry
         /// Structure is documented below.
         /// </summary>
         [Output("source")]
-        public Output<Outputs.BindingSource> Source { get; private set; } = null!;
+        public Output<Outputs.BindingSource?> Source { get; private set; } = null!;
 
         /// <summary>
         /// The target of the Binding.
@@ -277,8 +334,8 @@ namespace Pulumi.Gcp.AgentRegistry
         /// The source of the Binding.
         /// Structure is documented below.
         /// </summary>
-        [Input("source", required: true)]
-        public Input<Inputs.BindingSourceArgs> Source { get; set; } = null!;
+        [Input("source")]
+        public Input<Inputs.BindingSourceArgs>? Source { get; set; }
 
         /// <summary>
         /// The target of the Binding.

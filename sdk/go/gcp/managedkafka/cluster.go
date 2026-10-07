@@ -57,6 +57,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),
 //				},
+//				KafkaVersion: pulumi.String("3.7.x"),
 //			})
 //			if err != nil {
 //				return err
@@ -281,6 +282,8 @@ type Cluster struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigOutput `pulumi:"gcpConfig"`
+	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	KafkaVersion pulumi.StringOutput `pulumi:"kafkaVersion"`
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -381,6 +384,8 @@ type clusterState struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig *ClusterGcpConfig `pulumi:"gcpConfig"`
+	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -435,6 +440,8 @@ type ClusterState struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigPtrInput
+	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	KafkaVersion pulumi.StringPtrInput
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -487,6 +494,8 @@ type clusterArgs struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfig `pulumi:"gcpConfig"`
+	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -524,6 +533,8 @@ type ClusterArgs struct {
 	// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
 	// Structure is documented below.
 	GcpConfig ClusterGcpConfigInput
+	// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+	KafkaVersion pulumi.StringPtrInput
 	// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -674,6 +685,11 @@ func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ClusterOutput) GcpConfig() ClusterGcpConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterGcpConfigOutput { return v.GcpConfig }).(ClusterGcpConfigOutput)
+}
+
+// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+func (o ClusterOutput) KafkaVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.KafkaVersion }).(pulumi.StringOutput)
 }
 
 // List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.

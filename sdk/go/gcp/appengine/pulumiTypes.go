@@ -162,9 +162,19 @@ type ApplicationIap struct {
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow.
 	// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+	Oauth2ClientSecret *string `pulumi:"oauth2ClientSecret"`
 	// Hex-encoded SHA-256 hash of the client secret.
 	Oauth2ClientSecretSha256 *string `pulumi:"oauth2ClientSecretSha256"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// OAuth2 client secret to use for the authentication flow.
+	// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+	Oauth2ClientSecretWo *string `pulumi:"oauth2ClientSecretWo"`
+	// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientSecretWoVersion *string `pulumi:"oauth2ClientSecretWoVersion"`
 }
 
 // ApplicationIapInput is an input type that accepts ApplicationIapArgs and ApplicationIapOutput values.
@@ -186,9 +196,19 @@ type ApplicationIapArgs struct {
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
 	// OAuth2 client secret to use for the authentication flow.
 	// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+	Oauth2ClientSecret pulumi.StringPtrInput `pulumi:"oauth2ClientSecret"`
 	// Hex-encoded SHA-256 hash of the client secret.
 	Oauth2ClientSecretSha256 pulumi.StringPtrInput `pulumi:"oauth2ClientSecretSha256"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// OAuth2 client secret to use for the authentication flow.
+	// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+	Oauth2ClientSecretWo pulumi.StringPtrInput `pulumi:"oauth2ClientSecretWo"`
+	// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientSecretWoVersion pulumi.StringPtrInput `pulumi:"oauth2ClientSecretWoVersion"`
 }
 
 func (ApplicationIapArgs) ElementType() reflect.Type {
@@ -281,13 +301,29 @@ func (o ApplicationIapOutput) Oauth2ClientId() pulumi.StringOutput {
 
 // OAuth2 client secret to use for the authentication flow.
 // The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-func (o ApplicationIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+// Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+func (o ApplicationIapOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecret }).(pulumi.StringPtrOutput)
 }
 
 // Hex-encoded SHA-256 hash of the client secret.
 func (o ApplicationIapOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// OAuth2 client secret to use for the authentication flow.
+// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+func (o ApplicationIapOutput) Oauth2ClientSecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o ApplicationIapOutput) Oauth2ClientSecretWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationIap) *string { return v.Oauth2ClientSecretWoVersion }).(pulumi.StringPtrOutput)
 }
 
 type ApplicationIapPtrOutput struct{ *pulumi.OutputState }
@@ -337,12 +373,13 @@ func (o ApplicationIapPtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
 
 // OAuth2 client secret to use for the authentication flow.
 // The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+// Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
 func (o ApplicationIapPtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationIap) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Oauth2ClientSecret
+		return v.Oauth2ClientSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -353,6 +390,31 @@ func (o ApplicationIapPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.Oauth2ClientSecretSha256
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// OAuth2 client secret to use for the authentication flow.
+// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+func (o ApplicationIapPtrOutput) Oauth2ClientSecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientSecretWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o ApplicationIapPtrOutput) Oauth2ClientSecretWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationIap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2ClientSecretWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 

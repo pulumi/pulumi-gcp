@@ -38,11 +38,20 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// captured by the route's pathTemplate matchers.
         /// pathTemplateRewrite may only be used when all of a route's
         /// MatchRules specify pathTemplate.
-        /// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        /// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
         /// specified.
         /// </summary>
         [Input("pathTemplateRewrite")]
         public Input<string>? PathTemplateRewrite { get; set; }
+
+        /// <summary>
+        /// The regex rewrite to be applied to the URL. Only one of
+        /// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+        /// specified.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("regexRewrite")]
+        public Input<Inputs.URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteGetArgs>? RegexRewrite { get; set; }
 
         public URLMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs()
         {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,7 +64,7 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs extends c
      * captured by the route&#39;s pathTemplate matchers.
      * pathTemplateRewrite may only be used when all of a route&#39;s
      * MatchRules specify pathTemplate.
-     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
      * specified.
      * 
      */
@@ -80,12 +81,33 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs extends c
      * captured by the route&#39;s pathTemplate matchers.
      * pathTemplateRewrite may only be used when all of a route&#39;s
      * MatchRules specify pathTemplate.
-     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
      * specified.
      * 
      */
     public Optional<Output<String>> pathTemplateRewrite() {
         return Optional.ofNullable(this.pathTemplateRewrite);
+    }
+
+    /**
+     * The regex rewrite to be applied to the URL. Only one of
+     * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+     * specified.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="regexRewrite")
+    private @Nullable Output<URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs> regexRewrite;
+
+    /**
+     * @return The regex rewrite to be applied to the URL. Only one of
+     * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+     * specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs>> regexRewrite() {
+        return Optional.ofNullable(this.regexRewrite);
     }
 
     private URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs() {}
@@ -94,6 +116,7 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs extends c
         this.hostRewrite = $.hostRewrite;
         this.pathPrefixRewrite = $.pathPrefixRewrite;
         this.pathTemplateRewrite = $.pathTemplateRewrite;
+        this.regexRewrite = $.regexRewrite;
     }
 
     public static Builder builder() {
@@ -174,7 +197,7 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs extends c
          * captured by the route&#39;s pathTemplate matchers.
          * pathTemplateRewrite may only be used when all of a route&#39;s
          * MatchRules specify pathTemplate.
-         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
          * specified.
          * 
          * @return builder
@@ -195,7 +218,7 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs extends c
          * captured by the route&#39;s pathTemplate matchers.
          * pathTemplateRewrite may only be used when all of a route&#39;s
          * MatchRules specify pathTemplate.
-         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
          * specified.
          * 
          * @return builder
@@ -203,6 +226,33 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs extends c
          */
         public Builder pathTemplateRewrite(String pathTemplateRewrite) {
             return pathTemplateRewrite(Output.of(pathTemplateRewrite));
+        }
+
+        /**
+         * @param regexRewrite The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regexRewrite(@Nullable Output<URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs> regexRewrite) {
+            $.regexRewrite = regexRewrite;
+            return this;
+        }
+
+        /**
+         * @param regexRewrite The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regexRewrite(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs regexRewrite) {
+            return regexRewrite(Output.of(regexRewrite));
         }
 
         public URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs build() {

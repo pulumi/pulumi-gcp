@@ -125,6 +125,11 @@ export type SipTrunk = import("./sipTrunk").SipTrunk;
 export const SipTrunk: typeof import("./sipTrunk").SipTrunk = null as any;
 utilities.lazyLoad(exports, ["SipTrunk"], () => require("./sipTrunk"));
 
+export { ToolArgs, ToolState } from "./tool";
+export type Tool = import("./tool").Tool;
+export const Tool: typeof import("./tool").Tool = null as any;
+utilities.lazyLoad(exports, ["Tool"], () => require("./tool"));
+
 export { VersionArgs, VersionState } from "./version";
 export type Version = import("./version").Version;
 export const Version: typeof import("./version").Version = null as any;
@@ -183,6 +188,8 @@ const _module = {
                 return new Intent(name, <any>undefined, { urn })
             case "gcp:diagflow/sipTrunk:SipTrunk":
                 return new SipTrunk(name, <any>undefined, { urn })
+            case "gcp:diagflow/tool:Tool":
+                return new Tool(name, <any>undefined, { urn })
             case "gcp:diagflow/version:Version":
                 return new Version(name, <any>undefined, { urn })
             default:
@@ -214,4 +221,5 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/fulfillment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/generator", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/intent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/sipTrunk", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/tool", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/version", _module)

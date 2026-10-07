@@ -39,6 +39,8 @@ class FoldersPolicyBindingArgs:
         :param pulumi.Input[_builtins.str] policy: Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         :param pulumi.Input[_builtins.str] policy_binding_id: The Policy Binding ID.
         :param pulumi.Input['FoldersPolicyBindingTargetArgs'] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
                
@@ -67,6 +69,7 @@ class FoldersPolicyBindingArgs:
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -148,6 +151,8 @@ class FoldersPolicyBindingArgs:
     def target(self) -> pulumi.Input['FoldersPolicyBindingTargetArgs']:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        Exactly one of `principal_set` (for principal access boundary policy bindings) or
+        `resource` (for access policy bindings) must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "target")
@@ -198,6 +203,7 @@ class FoldersPolicyBindingArgs:
         The exact variables and functions that may be referenced within an expression are
         determined by the service that evaluates it. See the service documentation for
         additional information.
+        Conditions are currently only supported when the bound policy is a principal access boundary policy.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -300,6 +306,7 @@ class _FoldersPolicyBindingState:
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -321,6 +328,8 @@ class _FoldersPolicyBindingState:
                to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[_builtins.str] policy_uid: Output only. The globally unique ID of the policy to be bound.
         :param pulumi.Input['FoldersPolicyBindingTargetArgs'] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the policy binding was most recently updated.
@@ -402,6 +411,7 @@ class _FoldersPolicyBindingState:
         The exact variables and functions that may be referenced within an expression are
         determined by the service that evaluates it. See the service documentation for
         additional information.
+        Conditions are currently only supported when the bound policy is a principal access boundary policy.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -566,6 +576,8 @@ class _FoldersPolicyBindingState:
     def target(self) -> pulumi.Input[Optional['FoldersPolicyBindingTargetArgs']]:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        Exactly one of `principal_set` (for principal access boundary policy bindings) or
+        `resource` (for access policy bindings) must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "target")
@@ -657,6 +669,67 @@ class FoldersPolicyBinding(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait120s]))
         ```
+        ### Iam Folders Policy Binding Access Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="ap-folder-",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        # Binding access policies can be blocked by the managed org policy constraint
+        # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this folder.
+        allow_access_policy_binding = gcp.orgpolicy.Policy("allow_access_policy_binding",
+            name=folder.folder_id.apply(lambda folder_id: f"folders/{folder_id}/policies/iam.managed.disableAccessPolicyBinding"),
+            parent=folder.folder_id.apply(lambda folder_id: f"folders/{folder_id}"),
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                folder,
+                allow_access_policy_binding,
+            ]))
+        test_sa = gcp.serviceaccount.Account("test_sa",
+            account_id="ap-sa-",
+            display_name="Test Service Account for Access Policy")
+        access_policy = gcp.iam.FolderAccessPolicy("access_policy",
+            folder=folder.folder_id,
+            location="global",
+            access_policy_id="my-folder-policy-",
+            details={
+                "rules": [{
+                    "effect": "ALLOW",
+                    "principals": [test_sa.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    "operation": {
+                        "permissions": ["eventarc.googleapis.com/messageBuses.publish"],
+                    },
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        opts = pulumi.ResourceOptions(depends_on=[access_policy]))
+        my_folder_access_policy_binding = gcp.iam.FoldersPolicyBinding("my-folder-access-policy-binding",
+            folder=folder.folder_id,
+            location="global",
+            display_name="Binding for a folder access policy",
+            policy_kind="ACCESS",
+            policy_binding_id="my-folder-access-binding-",
+            policy=pulumi.Output.all(
+                folder_id=folder.folder_id,
+                access_policy_id=access_policy.access_policy_id
+        ).apply(lambda resolved_outputs: f"folders/{resolved_outputs['folder_id']}/locations/global/accessPolicies/{resolved_outputs['access_policy_id']}")
+        ,
+            target={
+                "resource": folder.folder_id.apply(lambda folder_id: f"//cloudresourcemanager.googleapis.com/folders/{folder_id}"),
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        ```
 
         ## Import
 
@@ -702,6 +775,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -718,6 +792,8 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                field must be one of the following:  - Left empty (will be automatically set
                to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict', 'outputs.FoldersPolicyBindingTarget']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         """
         ...
@@ -766,6 +842,67 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                 "principal_set": folder.folder_id.apply(lambda folder_id: f"//cloudresourcemanager.googleapis.com/folders/{folder_id}"),
             },
             opts = pulumi.ResourceOptions(depends_on=[wait120s]))
+        ```
+        ### Iam Folders Policy Binding Access Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="ap-folder-",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        # Binding access policies can be blocked by the managed org policy constraint
+        # iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this folder.
+        allow_access_policy_binding = gcp.orgpolicy.Policy("allow_access_policy_binding",
+            name=folder.folder_id.apply(lambda folder_id: f"folders/{folder_id}/policies/iam.managed.disableAccessPolicyBinding"),
+            parent=folder.folder_id.apply(lambda folder_id: f"folders/{folder_id}"),
+            spec={
+                "rules": [{
+                    "enforce": "FALSE",
+                }],
+            })
+        wait120s = time.Sleep("wait_120s", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[
+                folder,
+                allow_access_policy_binding,
+            ]))
+        test_sa = gcp.serviceaccount.Account("test_sa",
+            account_id="ap-sa-",
+            display_name="Test Service Account for Access Policy")
+        access_policy = gcp.iam.FolderAccessPolicy("access_policy",
+            folder=folder.folder_id,
+            location="global",
+            access_policy_id="my-folder-policy-",
+            details={
+                "rules": [{
+                    "effect": "ALLOW",
+                    "principals": [test_sa.email.apply(lambda email: f"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}")],
+                    "operation": {
+                        "permissions": ["eventarc.googleapis.com/messageBuses.publish"],
+                    },
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait120s]))
+        wait60_seconds = time.Sleep("wait_60_seconds", create_duration="60s",
+        opts = pulumi.ResourceOptions(depends_on=[access_policy]))
+        my_folder_access_policy_binding = gcp.iam.FoldersPolicyBinding("my-folder-access-policy-binding",
+            folder=folder.folder_id,
+            location="global",
+            display_name="Binding for a folder access policy",
+            policy_kind="ACCESS",
+            policy_binding_id="my-folder-access-binding-",
+            policy=pulumi.Output.all(
+                folder_id=folder.folder_id,
+                access_policy_id=access_policy.access_policy_id
+        ).apply(lambda resolved_outputs: f"folders/{resolved_outputs['folder_id']}/locations/global/accessPolicies/{resolved_outputs['access_policy_id']}")
+        ,
+            target={
+                "resource": folder.folder_id.apply(lambda folder_id: f"//cloudresourcemanager.googleapis.com/folders/{folder_id}"),
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait60_seconds]))
         ```
 
         ## Import
@@ -905,6 +1042,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                The exact variables and functions that may be referenced within an expression are
                determined by the service that evaluates it. See the service documentation for
                additional information.
+               Conditions are currently only supported when the bound policy is a principal access boundary policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the policy binding was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -926,6 +1064,8 @@ class FoldersPolicyBinding(pulumi.CustomResource):
                to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
         :param pulumi.Input[_builtins.str] policy_uid: Output only. The globally unique ID of the policy to be bound.
         :param pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict', 'outputs.FoldersPolicyBindingTarget']] target: Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+               Exactly one of `principal_set` (for principal access boundary policy bindings) or
+               `resource` (for access policy bindings) must be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] uid: Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the policy binding was most recently updated.
@@ -991,6 +1131,7 @@ class FoldersPolicyBinding(pulumi.CustomResource):
         The exact variables and functions that may be referenced within an expression are
         determined by the service that evaluates it. See the service documentation for
         additional information.
+        Conditions are currently only supported when the bound policy is a principal access boundary policy.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -1103,6 +1244,8 @@ class FoldersPolicyBinding(pulumi.CustomResource):
     def target(self) -> pulumi.Output['outputs.FoldersPolicyBindingTarget']:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        Exactly one of `principal_set` (for principal access boundary policy bindings) or
+        `resource` (for access policy bindings) must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "target")

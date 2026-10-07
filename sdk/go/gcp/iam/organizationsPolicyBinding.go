@@ -79,6 +79,87 @@ import (
 //	}
 //
 // ```
+// ### Iam Organizations Policy Binding Access Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("ap-sa-"),
+//				DisplayName: pulumi.String("Test Service Account for Access Policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			accessPolicy, err := iam.NewOrganizationAccessPolicy(ctx, "access_policy", &iam.OrganizationAccessPolicyArgs{
+//				Organization:   pulumi.String("123456789"),
+//				Location:       pulumi.String("global"),
+//				AccessPolicyId: pulumi.String("my-org-policy-"),
+//				Details: &iam.OrganizationAccessPolicyDetailsArgs{
+//					Rules: iam.OrganizationAccessPolicyDetailsRuleArray{
+//						&iam.OrganizationAccessPolicyDetailsRuleArgs{
+//							Effect: pulumi.String("ALLOW"),
+//							Principals: pulumi.StringArray{
+//								testSa.Email.ApplyT(func(email string) (string, error) {
+//									return fmt.Sprintf("principal://iam.googleapis.com/projects/-/serviceAccounts/%v", email), nil
+//								}).(pulumi.StringOutput),
+//							},
+//							Operation: &iam.OrganizationAccessPolicyDetailsRuleOperationArgs{
+//								Permissions: pulumi.StringArray{
+//									pulumi.String("eventarc.googleapis.com/messageBuses.publish"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("60s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				accessPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewOrganizationsPolicyBinding(ctx, "my-org-access-policy-binding", &iam.OrganizationsPolicyBindingArgs{
+//				Organization:    pulumi.String("123456789"),
+//				Location:        pulumi.String("global"),
+//				DisplayName:     pulumi.String("Binding for an organization access policy"),
+//				PolicyKind:      pulumi.String("ACCESS"),
+//				PolicyBindingId: pulumi.String("my-org-access-binding-"),
+//				Policy: accessPolicy.AccessPolicyId.ApplyT(func(accessPolicyId string) (string, error) {
+//					return fmt.Sprintf("organizations/123456789/locations/global/accessPolicies/%v", accessPolicyId), nil
+//				}).(pulumi.StringOutput),
+//				Target: &iam.OrganizationsPolicyBindingTargetArgs{
+//					Resource: pulumi.String("//cloudresourcemanager.googleapis.com/organizations/123456789"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -124,6 +205,7 @@ type OrganizationsPolicyBinding struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition OrganizationsPolicyBindingConditionPtrOutput `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
@@ -158,6 +240,8 @@ type OrganizationsPolicyBinding struct {
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid pulumi.StringOutput `pulumi:"policyUid"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target OrganizationsPolicyBindingTargetOutput `pulumi:"target"`
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -239,6 +323,7 @@ type organizationsPolicyBindingState struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition *OrganizationsPolicyBindingCondition `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
@@ -273,6 +358,8 @@ type organizationsPolicyBindingState struct {
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid *string `pulumi:"policyUid"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target *OrganizationsPolicyBindingTarget `pulumi:"target"`
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -310,6 +397,7 @@ type OrganizationsPolicyBindingState struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition OrganizationsPolicyBindingConditionPtrInput
 	// Output only. The time when the policy binding was created.
@@ -344,6 +432,8 @@ type OrganizationsPolicyBindingState struct {
 	// Output only. The globally unique ID of the policy to be bound.
 	PolicyUid pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target OrganizationsPolicyBindingTargetPtrInput
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -385,6 +475,7 @@ type organizationsPolicyBindingArgs struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition *OrganizationsPolicyBindingCondition `pulumi:"condition"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -409,6 +500,8 @@ type organizationsPolicyBindingArgs struct {
 	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind *string `pulumi:"policyKind"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target OrganizationsPolicyBindingTarget `pulumi:"target"`
 }
@@ -443,6 +536,7 @@ type OrganizationsPolicyBindingArgs struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition OrganizationsPolicyBindingConditionPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -467,6 +561,8 @@ type OrganizationsPolicyBindingArgs struct {
 	// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
 	PolicyKind pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target OrganizationsPolicyBindingTargetInput
 }
@@ -589,6 +685,7 @@ func (o OrganizationsPolicyBindingOutput) Annotations() pulumi.StringMapOutput {
 // The exact variables and functions that may be referenced within an expression are
 // determined by the service that evaluates it. See the service documentation for
 // additional information.
+// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 // Structure is documented below.
 func (o OrganizationsPolicyBindingOutput) Condition() OrganizationsPolicyBindingConditionPtrOutput {
 	return o.ApplyT(func(v *OrganizationsPolicyBinding) OrganizationsPolicyBindingConditionPtrOutput { return v.Condition }).(OrganizationsPolicyBindingConditionPtrOutput)
@@ -662,6 +759,8 @@ func (o OrganizationsPolicyBindingOutput) PolicyUid() pulumi.StringOutput {
 }
 
 // Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+// `resource` (for access policy bindings) must be set.
 // Structure is documented below.
 func (o OrganizationsPolicyBindingOutput) Target() OrganizationsPolicyBindingTargetOutput {
 	return o.ApplyT(func(v *OrganizationsPolicyBinding) OrganizationsPolicyBindingTargetOutput { return v.Target }).(OrganizationsPolicyBindingTargetOutput)

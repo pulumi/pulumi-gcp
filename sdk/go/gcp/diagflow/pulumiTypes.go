@@ -49967,6 +49967,2268 @@ func (o SipTrunkConnectionErrorDetailArrayOutput) Index(i pulumi.IntInput) SipTr
 	}).(SipTrunkConnectionErrorDetailOutput)
 }
 
+type ToolConnectorSpec struct {
+	// Actions for the tool to use.
+	// Structure is documented below.
+	Actions []ToolConnectorSpecAction `pulumi:"actions"`
+	// The full resource name of the referenced Integration Connectors Connection.
+	// Format: `projects/*/locations/*/connections/*`
+	Name string `pulumi:"name"`
+}
+
+// ToolConnectorSpecInput is an input type that accepts ToolConnectorSpecArgs and ToolConnectorSpecOutput values.
+// You can construct a concrete instance of `ToolConnectorSpecInput` via:
+//
+//	ToolConnectorSpecArgs{...}
+type ToolConnectorSpecInput interface {
+	pulumi.Input
+
+	ToToolConnectorSpecOutput() ToolConnectorSpecOutput
+	ToToolConnectorSpecOutputWithContext(context.Context) ToolConnectorSpecOutput
+}
+
+type ToolConnectorSpecArgs struct {
+	// Actions for the tool to use.
+	// Structure is documented below.
+	Actions ToolConnectorSpecActionArrayInput `pulumi:"actions"`
+	// The full resource name of the referenced Integration Connectors Connection.
+	// Format: `projects/*/locations/*/connections/*`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ToolConnectorSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorSpec)(nil)).Elem()
+}
+
+func (i ToolConnectorSpecArgs) ToToolConnectorSpecOutput() ToolConnectorSpecOutput {
+	return i.ToToolConnectorSpecOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorSpecArgs) ToToolConnectorSpecOutputWithContext(ctx context.Context) ToolConnectorSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecOutput)
+}
+
+func (i ToolConnectorSpecArgs) ToToolConnectorSpecPtrOutput() ToolConnectorSpecPtrOutput {
+	return i.ToToolConnectorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorSpecArgs) ToToolConnectorSpecPtrOutputWithContext(ctx context.Context) ToolConnectorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecOutput).ToToolConnectorSpecPtrOutputWithContext(ctx)
+}
+
+// ToolConnectorSpecPtrInput is an input type that accepts ToolConnectorSpecArgs, ToolConnectorSpecPtr and ToolConnectorSpecPtrOutput values.
+// You can construct a concrete instance of `ToolConnectorSpecPtrInput` via:
+//
+//	        ToolConnectorSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolConnectorSpecPtrInput interface {
+	pulumi.Input
+
+	ToToolConnectorSpecPtrOutput() ToolConnectorSpecPtrOutput
+	ToToolConnectorSpecPtrOutputWithContext(context.Context) ToolConnectorSpecPtrOutput
+}
+
+type toolConnectorSpecPtrType ToolConnectorSpecArgs
+
+func ToolConnectorSpecPtr(v *ToolConnectorSpecArgs) ToolConnectorSpecPtrInput {
+	return (*toolConnectorSpecPtrType)(v)
+}
+
+func (*toolConnectorSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolConnectorSpec)(nil)).Elem()
+}
+
+func (i *toolConnectorSpecPtrType) ToToolConnectorSpecPtrOutput() ToolConnectorSpecPtrOutput {
+	return i.ToToolConnectorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *toolConnectorSpecPtrType) ToToolConnectorSpecPtrOutputWithContext(ctx context.Context) ToolConnectorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecPtrOutput)
+}
+
+type ToolConnectorSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorSpec)(nil)).Elem()
+}
+
+func (o ToolConnectorSpecOutput) ToToolConnectorSpecOutput() ToolConnectorSpecOutput {
+	return o
+}
+
+func (o ToolConnectorSpecOutput) ToToolConnectorSpecOutputWithContext(ctx context.Context) ToolConnectorSpecOutput {
+	return o
+}
+
+func (o ToolConnectorSpecOutput) ToToolConnectorSpecPtrOutput() ToolConnectorSpecPtrOutput {
+	return o.ToToolConnectorSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ToolConnectorSpecOutput) ToToolConnectorSpecPtrOutputWithContext(ctx context.Context) ToolConnectorSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolConnectorSpec) *ToolConnectorSpec {
+		return &v
+	}).(ToolConnectorSpecPtrOutput)
+}
+
+// Actions for the tool to use.
+// Structure is documented below.
+func (o ToolConnectorSpecOutput) Actions() ToolConnectorSpecActionArrayOutput {
+	return o.ApplyT(func(v ToolConnectorSpec) []ToolConnectorSpecAction { return v.Actions }).(ToolConnectorSpecActionArrayOutput)
+}
+
+// The full resource name of the referenced Integration Connectors Connection.
+// Format: `projects/*/locations/*/connections/*`
+func (o ToolConnectorSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolConnectorSpec) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ToolConnectorSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolConnectorSpec)(nil)).Elem()
+}
+
+func (o ToolConnectorSpecPtrOutput) ToToolConnectorSpecPtrOutput() ToolConnectorSpecPtrOutput {
+	return o
+}
+
+func (o ToolConnectorSpecPtrOutput) ToToolConnectorSpecPtrOutputWithContext(ctx context.Context) ToolConnectorSpecPtrOutput {
+	return o
+}
+
+func (o ToolConnectorSpecPtrOutput) Elem() ToolConnectorSpecOutput {
+	return o.ApplyT(func(v *ToolConnectorSpec) ToolConnectorSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ToolConnectorSpec
+		return ret
+	}).(ToolConnectorSpecOutput)
+}
+
+// Actions for the tool to use.
+// Structure is documented below.
+func (o ToolConnectorSpecPtrOutput) Actions() ToolConnectorSpecActionArrayOutput {
+	return o.ApplyT(func(v *ToolConnectorSpec) []ToolConnectorSpecAction {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(ToolConnectorSpecActionArrayOutput)
+}
+
+// The full resource name of the referenced Integration Connectors Connection.
+// Format: `projects/*/locations/*/connections/*`
+func (o ToolConnectorSpecPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolConnectorSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolConnectorSpecAction struct {
+	// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+	ConnectionActionId *string `pulumi:"connectionActionId"`
+	// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+	// Structure is documented below.
+	EntityOperation *ToolConnectorSpecActionEntityOperation `pulumi:"entityOperation"`
+	// Entity fields to use as inputs for the operation.
+	// If no fields are specified, all fields of the Entity will be used.
+	InputFields []string `pulumi:"inputFields"`
+	// Entity fields to return from the operation.
+	// If no fields are specified, all fields of the Entity will be returned.
+	OutputFields []string `pulumi:"outputFields"`
+}
+
+// ToolConnectorSpecActionInput is an input type that accepts ToolConnectorSpecActionArgs and ToolConnectorSpecActionOutput values.
+// You can construct a concrete instance of `ToolConnectorSpecActionInput` via:
+//
+//	ToolConnectorSpecActionArgs{...}
+type ToolConnectorSpecActionInput interface {
+	pulumi.Input
+
+	ToToolConnectorSpecActionOutput() ToolConnectorSpecActionOutput
+	ToToolConnectorSpecActionOutputWithContext(context.Context) ToolConnectorSpecActionOutput
+}
+
+type ToolConnectorSpecActionArgs struct {
+	// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+	ConnectionActionId pulumi.StringPtrInput `pulumi:"connectionActionId"`
+	// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+	// Structure is documented below.
+	EntityOperation ToolConnectorSpecActionEntityOperationPtrInput `pulumi:"entityOperation"`
+	// Entity fields to use as inputs for the operation.
+	// If no fields are specified, all fields of the Entity will be used.
+	InputFields pulumi.StringArrayInput `pulumi:"inputFields"`
+	// Entity fields to return from the operation.
+	// If no fields are specified, all fields of the Entity will be returned.
+	OutputFields pulumi.StringArrayInput `pulumi:"outputFields"`
+}
+
+func (ToolConnectorSpecActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (i ToolConnectorSpecActionArgs) ToToolConnectorSpecActionOutput() ToolConnectorSpecActionOutput {
+	return i.ToToolConnectorSpecActionOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorSpecActionArgs) ToToolConnectorSpecActionOutputWithContext(ctx context.Context) ToolConnectorSpecActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecActionOutput)
+}
+
+// ToolConnectorSpecActionArrayInput is an input type that accepts ToolConnectorSpecActionArray and ToolConnectorSpecActionArrayOutput values.
+// You can construct a concrete instance of `ToolConnectorSpecActionArrayInput` via:
+//
+//	ToolConnectorSpecActionArray{ ToolConnectorSpecActionArgs{...} }
+type ToolConnectorSpecActionArrayInput interface {
+	pulumi.Input
+
+	ToToolConnectorSpecActionArrayOutput() ToolConnectorSpecActionArrayOutput
+	ToToolConnectorSpecActionArrayOutputWithContext(context.Context) ToolConnectorSpecActionArrayOutput
+}
+
+type ToolConnectorSpecActionArray []ToolConnectorSpecActionInput
+
+func (ToolConnectorSpecActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (i ToolConnectorSpecActionArray) ToToolConnectorSpecActionArrayOutput() ToolConnectorSpecActionArrayOutput {
+	return i.ToToolConnectorSpecActionArrayOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorSpecActionArray) ToToolConnectorSpecActionArrayOutputWithContext(ctx context.Context) ToolConnectorSpecActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecActionArrayOutput)
+}
+
+type ToolConnectorSpecActionOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorSpecActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (o ToolConnectorSpecActionOutput) ToToolConnectorSpecActionOutput() ToolConnectorSpecActionOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionOutput) ToToolConnectorSpecActionOutputWithContext(ctx context.Context) ToolConnectorSpecActionOutput {
+	return o
+}
+
+// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+func (o ToolConnectorSpecActionOutput) ConnectionActionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolConnectorSpecAction) *string { return v.ConnectionActionId }).(pulumi.StringPtrOutput)
+}
+
+// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+// Structure is documented below.
+func (o ToolConnectorSpecActionOutput) EntityOperation() ToolConnectorSpecActionEntityOperationPtrOutput {
+	return o.ApplyT(func(v ToolConnectorSpecAction) *ToolConnectorSpecActionEntityOperation { return v.EntityOperation }).(ToolConnectorSpecActionEntityOperationPtrOutput)
+}
+
+// Entity fields to use as inputs for the operation.
+// If no fields are specified, all fields of the Entity will be used.
+func (o ToolConnectorSpecActionOutput) InputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolConnectorSpecAction) []string { return v.InputFields }).(pulumi.StringArrayOutput)
+}
+
+// Entity fields to return from the operation.
+// If no fields are specified, all fields of the Entity will be returned.
+func (o ToolConnectorSpecActionOutput) OutputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolConnectorSpecAction) []string { return v.OutputFields }).(pulumi.StringArrayOutput)
+}
+
+type ToolConnectorSpecActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorSpecActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (o ToolConnectorSpecActionArrayOutput) ToToolConnectorSpecActionArrayOutput() ToolConnectorSpecActionArrayOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionArrayOutput) ToToolConnectorSpecActionArrayOutputWithContext(ctx context.Context) ToolConnectorSpecActionArrayOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionArrayOutput) Index(i pulumi.IntInput) ToolConnectorSpecActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolConnectorSpecAction {
+		return vs[0].([]ToolConnectorSpecAction)[vs[1].(int)]
+	}).(ToolConnectorSpecActionOutput)
+}
+
+type ToolConnectorSpecActionEntityOperation struct {
+	// ID of the entity.
+	EntityId string `pulumi:"entityId"`
+	// The operation to perform on the entity.
+	// Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+	Operation string `pulumi:"operation"`
+}
+
+// ToolConnectorSpecActionEntityOperationInput is an input type that accepts ToolConnectorSpecActionEntityOperationArgs and ToolConnectorSpecActionEntityOperationOutput values.
+// You can construct a concrete instance of `ToolConnectorSpecActionEntityOperationInput` via:
+//
+//	ToolConnectorSpecActionEntityOperationArgs{...}
+type ToolConnectorSpecActionEntityOperationInput interface {
+	pulumi.Input
+
+	ToToolConnectorSpecActionEntityOperationOutput() ToolConnectorSpecActionEntityOperationOutput
+	ToToolConnectorSpecActionEntityOperationOutputWithContext(context.Context) ToolConnectorSpecActionEntityOperationOutput
+}
+
+type ToolConnectorSpecActionEntityOperationArgs struct {
+	// ID of the entity.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// The operation to perform on the entity.
+	// Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+	Operation pulumi.StringInput `pulumi:"operation"`
+}
+
+func (ToolConnectorSpecActionEntityOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (i ToolConnectorSpecActionEntityOperationArgs) ToToolConnectorSpecActionEntityOperationOutput() ToolConnectorSpecActionEntityOperationOutput {
+	return i.ToToolConnectorSpecActionEntityOperationOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorSpecActionEntityOperationArgs) ToToolConnectorSpecActionEntityOperationOutputWithContext(ctx context.Context) ToolConnectorSpecActionEntityOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecActionEntityOperationOutput)
+}
+
+func (i ToolConnectorSpecActionEntityOperationArgs) ToToolConnectorSpecActionEntityOperationPtrOutput() ToolConnectorSpecActionEntityOperationPtrOutput {
+	return i.ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (i ToolConnectorSpecActionEntityOperationArgs) ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolConnectorSpecActionEntityOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecActionEntityOperationOutput).ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx)
+}
+
+// ToolConnectorSpecActionEntityOperationPtrInput is an input type that accepts ToolConnectorSpecActionEntityOperationArgs, ToolConnectorSpecActionEntityOperationPtr and ToolConnectorSpecActionEntityOperationPtrOutput values.
+// You can construct a concrete instance of `ToolConnectorSpecActionEntityOperationPtrInput` via:
+//
+//	        ToolConnectorSpecActionEntityOperationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolConnectorSpecActionEntityOperationPtrInput interface {
+	pulumi.Input
+
+	ToToolConnectorSpecActionEntityOperationPtrOutput() ToolConnectorSpecActionEntityOperationPtrOutput
+	ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Context) ToolConnectorSpecActionEntityOperationPtrOutput
+}
+
+type toolConnectorSpecActionEntityOperationPtrType ToolConnectorSpecActionEntityOperationArgs
+
+func ToolConnectorSpecActionEntityOperationPtr(v *ToolConnectorSpecActionEntityOperationArgs) ToolConnectorSpecActionEntityOperationPtrInput {
+	return (*toolConnectorSpecActionEntityOperationPtrType)(v)
+}
+
+func (*toolConnectorSpecActionEntityOperationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (i *toolConnectorSpecActionEntityOperationPtrType) ToToolConnectorSpecActionEntityOperationPtrOutput() ToolConnectorSpecActionEntityOperationPtrOutput {
+	return i.ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *toolConnectorSpecActionEntityOperationPtrType) ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolConnectorSpecActionEntityOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolConnectorSpecActionEntityOperationPtrOutput)
+}
+
+type ToolConnectorSpecActionEntityOperationOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorSpecActionEntityOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (o ToolConnectorSpecActionEntityOperationOutput) ToToolConnectorSpecActionEntityOperationOutput() ToolConnectorSpecActionEntityOperationOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionEntityOperationOutput) ToToolConnectorSpecActionEntityOperationOutputWithContext(ctx context.Context) ToolConnectorSpecActionEntityOperationOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionEntityOperationOutput) ToToolConnectorSpecActionEntityOperationPtrOutput() ToolConnectorSpecActionEntityOperationPtrOutput {
+	return o.ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (o ToolConnectorSpecActionEntityOperationOutput) ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolConnectorSpecActionEntityOperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolConnectorSpecActionEntityOperation) *ToolConnectorSpecActionEntityOperation {
+		return &v
+	}).(ToolConnectorSpecActionEntityOperationPtrOutput)
+}
+
+// ID of the entity.
+func (o ToolConnectorSpecActionEntityOperationOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolConnectorSpecActionEntityOperation) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// The operation to perform on the entity.
+// Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+func (o ToolConnectorSpecActionEntityOperationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolConnectorSpecActionEntityOperation) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+type ToolConnectorSpecActionEntityOperationPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolConnectorSpecActionEntityOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (o ToolConnectorSpecActionEntityOperationPtrOutput) ToToolConnectorSpecActionEntityOperationPtrOutput() ToolConnectorSpecActionEntityOperationPtrOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionEntityOperationPtrOutput) ToToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) ToolConnectorSpecActionEntityOperationPtrOutput {
+	return o
+}
+
+func (o ToolConnectorSpecActionEntityOperationPtrOutput) Elem() ToolConnectorSpecActionEntityOperationOutput {
+	return o.ApplyT(func(v *ToolConnectorSpecActionEntityOperation) ToolConnectorSpecActionEntityOperation {
+		if v != nil {
+			return *v
+		}
+		var ret ToolConnectorSpecActionEntityOperation
+		return ret
+	}).(ToolConnectorSpecActionEntityOperationOutput)
+}
+
+// ID of the entity.
+func (o ToolConnectorSpecActionEntityOperationPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolConnectorSpecActionEntityOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operation to perform on the entity.
+// Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+func (o ToolConnectorSpecActionEntityOperationPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolConnectorSpecActionEntityOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolFunctionSpec struct {
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+	// This input is a JSON object that contains the function's parameters as properties of the object.
+	InputSchema *string `pulumi:"inputSchema"`
+	// Optional. The method type of the function. If not specified, the default value is GET.
+	// Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+	MethodType *string `pulumi:"methodType"`
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+	// This output is a JSON object that contains the function's parameters as properties of the object.
+	OutputSchema *string `pulumi:"outputSchema"`
+}
+
+// ToolFunctionSpecInput is an input type that accepts ToolFunctionSpecArgs and ToolFunctionSpecOutput values.
+// You can construct a concrete instance of `ToolFunctionSpecInput` via:
+//
+//	ToolFunctionSpecArgs{...}
+type ToolFunctionSpecInput interface {
+	pulumi.Input
+
+	ToToolFunctionSpecOutput() ToolFunctionSpecOutput
+	ToToolFunctionSpecOutputWithContext(context.Context) ToolFunctionSpecOutput
+}
+
+type ToolFunctionSpecArgs struct {
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+	// This input is a JSON object that contains the function's parameters as properties of the object.
+	InputSchema pulumi.StringPtrInput `pulumi:"inputSchema"`
+	// Optional. The method type of the function. If not specified, the default value is GET.
+	// Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+	MethodType pulumi.StringPtrInput `pulumi:"methodType"`
+	// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+	// This output is a JSON object that contains the function's parameters as properties of the object.
+	OutputSchema pulumi.StringPtrInput `pulumi:"outputSchema"`
+}
+
+func (ToolFunctionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolFunctionSpec)(nil)).Elem()
+}
+
+func (i ToolFunctionSpecArgs) ToToolFunctionSpecOutput() ToolFunctionSpecOutput {
+	return i.ToToolFunctionSpecOutputWithContext(context.Background())
+}
+
+func (i ToolFunctionSpecArgs) ToToolFunctionSpecOutputWithContext(ctx context.Context) ToolFunctionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolFunctionSpecOutput)
+}
+
+func (i ToolFunctionSpecArgs) ToToolFunctionSpecPtrOutput() ToolFunctionSpecPtrOutput {
+	return i.ToToolFunctionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ToolFunctionSpecArgs) ToToolFunctionSpecPtrOutputWithContext(ctx context.Context) ToolFunctionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolFunctionSpecOutput).ToToolFunctionSpecPtrOutputWithContext(ctx)
+}
+
+// ToolFunctionSpecPtrInput is an input type that accepts ToolFunctionSpecArgs, ToolFunctionSpecPtr and ToolFunctionSpecPtrOutput values.
+// You can construct a concrete instance of `ToolFunctionSpecPtrInput` via:
+//
+//	        ToolFunctionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolFunctionSpecPtrInput interface {
+	pulumi.Input
+
+	ToToolFunctionSpecPtrOutput() ToolFunctionSpecPtrOutput
+	ToToolFunctionSpecPtrOutputWithContext(context.Context) ToolFunctionSpecPtrOutput
+}
+
+type toolFunctionSpecPtrType ToolFunctionSpecArgs
+
+func ToolFunctionSpecPtr(v *ToolFunctionSpecArgs) ToolFunctionSpecPtrInput {
+	return (*toolFunctionSpecPtrType)(v)
+}
+
+func (*toolFunctionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolFunctionSpec)(nil)).Elem()
+}
+
+func (i *toolFunctionSpecPtrType) ToToolFunctionSpecPtrOutput() ToolFunctionSpecPtrOutput {
+	return i.ToToolFunctionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *toolFunctionSpecPtrType) ToToolFunctionSpecPtrOutputWithContext(ctx context.Context) ToolFunctionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolFunctionSpecPtrOutput)
+}
+
+type ToolFunctionSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolFunctionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolFunctionSpec)(nil)).Elem()
+}
+
+func (o ToolFunctionSpecOutput) ToToolFunctionSpecOutput() ToolFunctionSpecOutput {
+	return o
+}
+
+func (o ToolFunctionSpecOutput) ToToolFunctionSpecOutputWithContext(ctx context.Context) ToolFunctionSpecOutput {
+	return o
+}
+
+func (o ToolFunctionSpecOutput) ToToolFunctionSpecPtrOutput() ToolFunctionSpecPtrOutput {
+	return o.ToToolFunctionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ToolFunctionSpecOutput) ToToolFunctionSpecPtrOutputWithContext(ctx context.Context) ToolFunctionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolFunctionSpec) *ToolFunctionSpec {
+		return &v
+	}).(ToolFunctionSpecPtrOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+// This input is a JSON object that contains the function's parameters as properties of the object.
+func (o ToolFunctionSpecOutput) InputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolFunctionSpec) *string { return v.InputSchema }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The method type of the function. If not specified, the default value is GET.
+// Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+func (o ToolFunctionSpecOutput) MethodType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolFunctionSpec) *string { return v.MethodType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+// This output is a JSON object that contains the function's parameters as properties of the object.
+func (o ToolFunctionSpecOutput) OutputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolFunctionSpec) *string { return v.OutputSchema }).(pulumi.StringPtrOutput)
+}
+
+type ToolFunctionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolFunctionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolFunctionSpec)(nil)).Elem()
+}
+
+func (o ToolFunctionSpecPtrOutput) ToToolFunctionSpecPtrOutput() ToolFunctionSpecPtrOutput {
+	return o
+}
+
+func (o ToolFunctionSpecPtrOutput) ToToolFunctionSpecPtrOutputWithContext(ctx context.Context) ToolFunctionSpecPtrOutput {
+	return o
+}
+
+func (o ToolFunctionSpecPtrOutput) Elem() ToolFunctionSpecOutput {
+	return o.ApplyT(func(v *ToolFunctionSpec) ToolFunctionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ToolFunctionSpec
+		return ret
+	}).(ToolFunctionSpecOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+// This input is a JSON object that contains the function's parameters as properties of the object.
+func (o ToolFunctionSpecPtrOutput) InputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFunctionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The method type of the function. If not specified, the default value is GET.
+// Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+func (o ToolFunctionSpecPtrOutput) MethodType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFunctionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MethodType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+// This output is a JSON object that contains the function's parameters as properties of the object.
+func (o ToolFunctionSpecPtrOutput) OutputSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolFunctionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpec struct {
+	// Optional. Authentication information required by the API.
+	// Structure is documented below.
+	Authentication *ToolOpenApiSpecAuthentication `pulumi:"authentication"`
+	// Optional. Service Directory configuration.
+	// Structure is documented below.
+	ServiceDirectoryConfig *ToolOpenApiSpecServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// Required. The OpenAPI schema specified as a text.
+	// Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+	TextSchema string `pulumi:"textSchema"`
+	// Optional. TLS configuration for the HTTPS verification.
+	// Structure is documented below.
+	TlsConfig *ToolOpenApiSpecTlsConfig `pulumi:"tlsConfig"`
+}
+
+// ToolOpenApiSpecInput is an input type that accepts ToolOpenApiSpecArgs and ToolOpenApiSpecOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecInput` via:
+//
+//	ToolOpenApiSpecArgs{...}
+type ToolOpenApiSpecInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecOutput() ToolOpenApiSpecOutput
+	ToToolOpenApiSpecOutputWithContext(context.Context) ToolOpenApiSpecOutput
+}
+
+type ToolOpenApiSpecArgs struct {
+	// Optional. Authentication information required by the API.
+	// Structure is documented below.
+	Authentication ToolOpenApiSpecAuthenticationPtrInput `pulumi:"authentication"`
+	// Optional. Service Directory configuration.
+	// Structure is documented below.
+	ServiceDirectoryConfig ToolOpenApiSpecServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// Required. The OpenAPI schema specified as a text.
+	// Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+	TextSchema pulumi.StringInput `pulumi:"textSchema"`
+	// Optional. TLS configuration for the HTTPS verification.
+	// Structure is documented below.
+	TlsConfig ToolOpenApiSpecTlsConfigPtrInput `pulumi:"tlsConfig"`
+}
+
+func (ToolOpenApiSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpec)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecArgs) ToToolOpenApiSpecOutput() ToolOpenApiSpecOutput {
+	return i.ToToolOpenApiSpecOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecArgs) ToToolOpenApiSpecOutputWithContext(ctx context.Context) ToolOpenApiSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecOutput)
+}
+
+func (i ToolOpenApiSpecArgs) ToToolOpenApiSpecPtrOutput() ToolOpenApiSpecPtrOutput {
+	return i.ToToolOpenApiSpecPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecArgs) ToToolOpenApiSpecPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecOutput).ToToolOpenApiSpecPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecPtrInput is an input type that accepts ToolOpenApiSpecArgs, ToolOpenApiSpecPtr and ToolOpenApiSpecPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecPtrInput` via:
+//
+//	        ToolOpenApiSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecPtrOutput() ToolOpenApiSpecPtrOutput
+	ToToolOpenApiSpecPtrOutputWithContext(context.Context) ToolOpenApiSpecPtrOutput
+}
+
+type toolOpenApiSpecPtrType ToolOpenApiSpecArgs
+
+func ToolOpenApiSpecPtr(v *ToolOpenApiSpecArgs) ToolOpenApiSpecPtrInput {
+	return (*toolOpenApiSpecPtrType)(v)
+}
+
+func (*toolOpenApiSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpec)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecPtrType) ToToolOpenApiSpecPtrOutput() ToolOpenApiSpecPtrOutput {
+	return i.ToToolOpenApiSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecPtrType) ToToolOpenApiSpecPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecPtrOutput)
+}
+
+type ToolOpenApiSpecOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpec)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecOutput) ToToolOpenApiSpecOutput() ToolOpenApiSpecOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecOutput) ToToolOpenApiSpecOutputWithContext(ctx context.Context) ToolOpenApiSpecOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecOutput) ToToolOpenApiSpecPtrOutput() ToolOpenApiSpecPtrOutput {
+	return o.ToToolOpenApiSpecPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecOutput) ToToolOpenApiSpecPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpec) *ToolOpenApiSpec {
+		return &v
+	}).(ToolOpenApiSpecPtrOutput)
+}
+
+// Optional. Authentication information required by the API.
+// Structure is documented below.
+func (o ToolOpenApiSpecOutput) Authentication() ToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpec) *ToolOpenApiSpecAuthentication { return v.Authentication }).(ToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+// Optional. Service Directory configuration.
+// Structure is documented below.
+func (o ToolOpenApiSpecOutput) ServiceDirectoryConfig() ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpec) *ToolOpenApiSpecServiceDirectoryConfig { return v.ServiceDirectoryConfig }).(ToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+// Required. The OpenAPI schema specified as a text.
+// Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+func (o ToolOpenApiSpecOutput) TextSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpec) string { return v.TextSchema }).(pulumi.StringOutput)
+}
+
+// Optional. TLS configuration for the HTTPS verification.
+// Structure is documented below.
+func (o ToolOpenApiSpecOutput) TlsConfig() ToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpec) *ToolOpenApiSpecTlsConfig { return v.TlsConfig }).(ToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+type ToolOpenApiSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpec)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecPtrOutput) ToToolOpenApiSpecPtrOutput() ToolOpenApiSpecPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecPtrOutput) ToToolOpenApiSpecPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecPtrOutput) Elem() ToolOpenApiSpecOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpec) ToolOpenApiSpec {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpec
+		return ret
+	}).(ToolOpenApiSpecOutput)
+}
+
+// Optional. Authentication information required by the API.
+// Structure is documented below.
+func (o ToolOpenApiSpecPtrOutput) Authentication() ToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpec) *ToolOpenApiSpecAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(ToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+// Optional. Service Directory configuration.
+// Structure is documented below.
+func (o ToolOpenApiSpecPtrOutput) ServiceDirectoryConfig() ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpec) *ToolOpenApiSpecServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+// Required. The OpenAPI schema specified as a text.
+// Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+func (o ToolOpenApiSpecPtrOutput) TextSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TextSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. TLS configuration for the HTTPS verification.
+// Structure is documented below.
+func (o ToolOpenApiSpecPtrOutput) TlsConfig() ToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpec) *ToolOpenApiSpecTlsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TlsConfig
+	}).(ToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthentication struct {
+	// Config for API key auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ApiKeyConfig *ToolOpenApiSpecAuthenticationApiKeyConfig `pulumi:"apiKeyConfig"`
+	// Config for bearer token auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	BearerTokenConfig *ToolOpenApiSpecAuthenticationBearerTokenConfig `pulumi:"bearerTokenConfig"`
+	// Config for OAuth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	OauthConfig *ToolOpenApiSpecAuthenticationOauthConfig `pulumi:"oauthConfig"`
+	// Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ServiceAgentAuthConfig *ToolOpenApiSpecAuthenticationServiceAgentAuthConfig `pulumi:"serviceAgentAuthConfig"`
+}
+
+// ToolOpenApiSpecAuthenticationInput is an input type that accepts ToolOpenApiSpecAuthenticationArgs and ToolOpenApiSpecAuthenticationOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationInput` via:
+//
+//	ToolOpenApiSpecAuthenticationArgs{...}
+type ToolOpenApiSpecAuthenticationInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationOutput() ToolOpenApiSpecAuthenticationOutput
+	ToToolOpenApiSpecAuthenticationOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationOutput
+}
+
+type ToolOpenApiSpecAuthenticationArgs struct {
+	// Config for API key auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ApiKeyConfig ToolOpenApiSpecAuthenticationApiKeyConfigPtrInput `pulumi:"apiKeyConfig"`
+	// Config for bearer token auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	BearerTokenConfig ToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput `pulumi:"bearerTokenConfig"`
+	// Config for OAuth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	OauthConfig ToolOpenApiSpecAuthenticationOauthConfigPtrInput `pulumi:"oauthConfig"`
+	// Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+	// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+	// Structure is documented below.
+	ServiceAgentAuthConfig ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput `pulumi:"serviceAgentAuthConfig"`
+}
+
+func (ToolOpenApiSpecAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecAuthenticationArgs) ToToolOpenApiSpecAuthenticationOutput() ToolOpenApiSpecAuthenticationOutput {
+	return i.ToToolOpenApiSpecAuthenticationOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationArgs) ToToolOpenApiSpecAuthenticationOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationOutput)
+}
+
+func (i ToolOpenApiSpecAuthenticationArgs) ToToolOpenApiSpecAuthenticationPtrOutput() ToolOpenApiSpecAuthenticationPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationArgs) ToToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationOutput).ToToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecAuthenticationPtrInput is an input type that accepts ToolOpenApiSpecAuthenticationArgs, ToolOpenApiSpecAuthenticationPtr and ToolOpenApiSpecAuthenticationPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationPtrInput` via:
+//
+//	        ToolOpenApiSpecAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationPtrOutput() ToolOpenApiSpecAuthenticationPtrOutput
+	ToToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationPtrOutput
+}
+
+type toolOpenApiSpecAuthenticationPtrType ToolOpenApiSpecAuthenticationArgs
+
+func ToolOpenApiSpecAuthenticationPtr(v *ToolOpenApiSpecAuthenticationArgs) ToolOpenApiSpecAuthenticationPtrInput {
+	return (*toolOpenApiSpecAuthenticationPtrType)(v)
+}
+
+func (*toolOpenApiSpecAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecAuthenticationPtrType) ToToolOpenApiSpecAuthenticationPtrOutput() ToolOpenApiSpecAuthenticationPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecAuthenticationPtrType) ToToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationOutput) ToToolOpenApiSpecAuthenticationOutput() ToolOpenApiSpecAuthenticationOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationOutput) ToToolOpenApiSpecAuthenticationOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationOutput) ToToolOpenApiSpecAuthenticationPtrOutput() ToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ToToolOpenApiSpecAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecAuthenticationOutput) ToToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthentication {
+		return &v
+	}).(ToolOpenApiSpecAuthenticationPtrOutput)
+}
+
+// Config for API key auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationOutput) ApiKeyConfig() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationApiKeyConfig {
+		return v.ApiKeyConfig
+	}).(ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Config for bearer token auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationOutput) BearerTokenConfig() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationBearerTokenConfig {
+		return v.BearerTokenConfig
+	}).(ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Config for OAuth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationOutput) OauthConfig() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationOauthConfig { return v.OauthConfig }).(ToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+// Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationOutput) ServiceAgentAuthConfig() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		return v.ServiceAgentAuthConfig
+	}).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthentication)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationPtrOutput) ToToolOpenApiSpecAuthenticationPtrOutput() ToolOpenApiSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationPtrOutput) ToToolOpenApiSpecAuthenticationPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationPtrOutput) Elem() ToolOpenApiSpecAuthenticationOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthentication) ToolOpenApiSpecAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecAuthentication
+		return ret
+	}).(ToolOpenApiSpecAuthenticationOutput)
+}
+
+// Config for API key auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationPtrOutput) ApiKeyConfig() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationApiKeyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyConfig
+	}).(ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Config for bearer token auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationPtrOutput) BearerTokenConfig() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationBearerTokenConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BearerTokenConfig
+	}).(ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Config for OAuth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationPtrOutput) OauthConfig() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationOauthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.OauthConfig
+	}).(ToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+// Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+// Structure is documented below.
+func (o ToolOpenApiSpecAuthenticationPtrOutput) ServiceAgentAuthConfig() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthentication) *ToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuthConfig
+	}).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationApiKeyConfig struct {
+	// Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ApiKey *string `pulumi:"apiKey"`
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName string `pulumi:"keyName"`
+	// Key location in the request.
+	// Possible values are: `HEADER`, `QUERY_STRING`.
+	RequestLocation string `pulumi:"requestLocation"`
+	// Optional. The name of the SecretManager secret version resource storing the API key.
+	// If this field is set, the `apiKey` field will be ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForApiKey *string `pulumi:"secretVersionForApiKey"`
+}
+
+// ToolOpenApiSpecAuthenticationApiKeyConfigInput is an input type that accepts ToolOpenApiSpecAuthenticationApiKeyConfigArgs and ToolOpenApiSpecAuthenticationApiKeyConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationApiKeyConfigInput` via:
+//
+//	ToolOpenApiSpecAuthenticationApiKeyConfigArgs{...}
+type ToolOpenApiSpecAuthenticationApiKeyConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationApiKeyConfigOutput() ToolOpenApiSpecAuthenticationApiKeyConfigOutput
+	ToToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigOutput
+}
+
+type ToolOpenApiSpecAuthenticationApiKeyConfigArgs struct {
+	// Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// The parameter name or the header name of the API key.
+	// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// Key location in the request.
+	// Possible values are: `HEADER`, `QUERY_STRING`.
+	RequestLocation pulumi.StringInput `pulumi:"requestLocation"`
+	// Optional. The name of the SecretManager secret version resource storing the API key.
+	// If this field is set, the `apiKey` field will be ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForApiKey pulumi.StringPtrInput `pulumi:"secretVersionForApiKey"`
+}
+
+func (ToolOpenApiSpecAuthenticationApiKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToToolOpenApiSpecAuthenticationApiKeyConfigOutput() ToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return i.ToToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationApiKeyConfigOutput)
+}
+
+func (i ToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationApiKeyConfigOutput).ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecAuthenticationApiKeyConfigPtrInput is an input type that accepts ToolOpenApiSpecAuthenticationApiKeyConfigArgs, ToolOpenApiSpecAuthenticationApiKeyConfigPtr and ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationApiKeyConfigPtrInput` via:
+//
+//	        ToolOpenApiSpecAuthenticationApiKeyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecAuthenticationApiKeyConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput
+	ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput
+}
+
+type toolOpenApiSpecAuthenticationApiKeyConfigPtrType ToolOpenApiSpecAuthenticationApiKeyConfigArgs
+
+func ToolOpenApiSpecAuthenticationApiKeyConfigPtr(v *ToolOpenApiSpecAuthenticationApiKeyConfigArgs) ToolOpenApiSpecAuthenticationApiKeyConfigPtrInput {
+	return (*toolOpenApiSpecAuthenticationApiKeyConfigPtrType)(v)
+}
+
+func (*toolOpenApiSpecAuthenticationApiKeyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecAuthenticationApiKeyConfigPtrType) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecAuthenticationApiKeyConfigPtrType) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationApiKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationApiKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToToolOpenApiSpecAuthenticationApiKeyConfigOutput() ToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToToolOpenApiSpecAuthenticationApiKeyConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecAuthenticationApiKeyConfig) *ToolOpenApiSpecAuthenticationApiKeyConfig {
+		return &v
+	}).(ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput)
+}
+
+// Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationApiKeyConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationApiKeyConfig) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Key location in the request.
+// Possible values are: `HEADER`, `QUERY_STRING`.
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) RequestLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationApiKeyConfig) string { return v.RequestLocation }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the API key.
+// If this field is set, the `apiKey` field will be ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigOutput) SecretVersionForApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationApiKeyConfig) *string { return v.SecretVersionForApiKey }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationApiKeyConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput() ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ToToolOpenApiSpecAuthenticationApiKeyConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) Elem() ToolOpenApiSpecAuthenticationApiKeyConfigOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationApiKeyConfig) ToolOpenApiSpecAuthenticationApiKeyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecAuthenticationApiKeyConfig
+		return ret
+	}).(ToolOpenApiSpecAuthenticationApiKeyConfigOutput)
+}
+
+// Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The parameter name or the header name of the API key.
+// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key location in the request.
+// Possible values are: `HEADER`, `QUERY_STRING`.
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) RequestLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the API key.
+// If this field is set, the `apiKey` field will be ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput) SecretVersionForApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationApiKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationBearerTokenConfig struct {
+	// Optional. The name of the SecretManager secret version resource storing the Bearer token.
+	// If this field is set, the `token` field will be ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForToken *string `pulumi:"secretVersionForToken"`
+	// Optional. The text token appended to the text `Bearer` to the request Authorization header.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Token *string `pulumi:"token"`
+}
+
+// ToolOpenApiSpecAuthenticationBearerTokenConfigInput is an input type that accepts ToolOpenApiSpecAuthenticationBearerTokenConfigArgs and ToolOpenApiSpecAuthenticationBearerTokenConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationBearerTokenConfigInput` via:
+//
+//	ToolOpenApiSpecAuthenticationBearerTokenConfigArgs{...}
+type ToolOpenApiSpecAuthenticationBearerTokenConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationBearerTokenConfigOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigOutput
+	ToToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigOutput
+}
+
+type ToolOpenApiSpecAuthenticationBearerTokenConfigArgs struct {
+	// Optional. The name of the SecretManager secret version resource storing the Bearer token.
+	// If this field is set, the `token` field will be ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForToken pulumi.StringPtrInput `pulumi:"secretVersionForToken"`
+	// Optional. The text token appended to the text `Bearer` to the request Authorization header.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+}
+
+func (ToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToToolOpenApiSpecAuthenticationBearerTokenConfigOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return i.ToToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationBearerTokenConfigOutput)
+}
+
+func (i ToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationBearerTokenConfigOutput).ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput is an input type that accepts ToolOpenApiSpecAuthenticationBearerTokenConfigArgs, ToolOpenApiSpecAuthenticationBearerTokenConfigPtr and ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput` via:
+//
+//	        ToolOpenApiSpecAuthenticationBearerTokenConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput
+	ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput
+}
+
+type toolOpenApiSpecAuthenticationBearerTokenConfigPtrType ToolOpenApiSpecAuthenticationBearerTokenConfigArgs
+
+func ToolOpenApiSpecAuthenticationBearerTokenConfigPtr(v *ToolOpenApiSpecAuthenticationBearerTokenConfigArgs) ToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput {
+	return (*toolOpenApiSpecAuthenticationBearerTokenConfigPtrType)(v)
+}
+
+func (*toolOpenApiSpecAuthenticationBearerTokenConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecAuthenticationBearerTokenConfigPtrType) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecAuthenticationBearerTokenConfigPtrType) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationBearerTokenConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToToolOpenApiSpecAuthenticationBearerTokenConfigOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToToolOpenApiSpecAuthenticationBearerTokenConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecAuthenticationBearerTokenConfig) *ToolOpenApiSpecAuthenticationBearerTokenConfig {
+		return &v
+	}).(ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the Bearer token.
+// If this field is set, the `token` field will be ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) SecretVersionForToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationBearerTokenConfig) *string { return v.SecretVersionForToken }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The text token appended to the text `Bearer` to the request Authorization header.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationBearerTokenConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationBearerTokenConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput() ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) ToToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) Elem() ToolOpenApiSpecAuthenticationBearerTokenConfigOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationBearerTokenConfig) ToolOpenApiSpecAuthenticationBearerTokenConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecAuthenticationBearerTokenConfig
+		return ret
+	}).(ToolOpenApiSpecAuthenticationBearerTokenConfigOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the Bearer token.
+// If this field is set, the `token` field will be ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) SecretVersionForToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationBearerTokenConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The text token appended to the text `Bearer` to the request Authorization header.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationBearerTokenConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationOauthConfig struct {
+	// The client ID from the OAuth provider.
+	ClientId string `pulumi:"clientId"`
+	// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// OAuth grant types.
+	// Possible values are: `CLIENT_CREDENTIAL`.
+	OauthGrantType string `pulumi:"oauthGrantType"`
+	// Optional. The OAuth scopes to grant.
+	Scopes []string `pulumi:"scopes"`
+	// Optional. The name of the SecretManager secret version resource storing the client secret.
+	// If this field is set, the `clientSecret` field will be ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForClientSecret *string `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint string `pulumi:"tokenEndpoint"`
+}
+
+// ToolOpenApiSpecAuthenticationOauthConfigInput is an input type that accepts ToolOpenApiSpecAuthenticationOauthConfigArgs and ToolOpenApiSpecAuthenticationOauthConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationOauthConfigInput` via:
+//
+//	ToolOpenApiSpecAuthenticationOauthConfigArgs{...}
+type ToolOpenApiSpecAuthenticationOauthConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationOauthConfigOutput() ToolOpenApiSpecAuthenticationOauthConfigOutput
+	ToToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationOauthConfigOutput
+}
+
+type ToolOpenApiSpecAuthenticationOauthConfigArgs struct {
+	// The client ID from the OAuth provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// OAuth grant types.
+	// Possible values are: `CLIENT_CREDENTIAL`.
+	OauthGrantType pulumi.StringInput `pulumi:"oauthGrantType"`
+	// Optional. The OAuth scopes to grant.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Optional. The name of the SecretManager secret version resource storing the client secret.
+	// If this field is set, the `clientSecret` field will be ignored.
+	// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+	SecretVersionForClientSecret pulumi.StringPtrInput `pulumi:"secretVersionForClientSecret"`
+	// The token endpoint in the OAuth provider to exchange for an access token.
+	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+}
+
+func (ToolOpenApiSpecAuthenticationOauthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecAuthenticationOauthConfigArgs) ToToolOpenApiSpecAuthenticationOauthConfigOutput() ToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return i.ToToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationOauthConfigArgs) ToToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationOauthConfigOutput)
+}
+
+func (i ToolOpenApiSpecAuthenticationOauthConfigArgs) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutput() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationOauthConfigArgs) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationOauthConfigOutput).ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecAuthenticationOauthConfigPtrInput is an input type that accepts ToolOpenApiSpecAuthenticationOauthConfigArgs, ToolOpenApiSpecAuthenticationOauthConfigPtr and ToolOpenApiSpecAuthenticationOauthConfigPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationOauthConfigPtrInput` via:
+//
+//	        ToolOpenApiSpecAuthenticationOauthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecAuthenticationOauthConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationOauthConfigPtrOutput() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput
+	ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationOauthConfigPtrOutput
+}
+
+type toolOpenApiSpecAuthenticationOauthConfigPtrType ToolOpenApiSpecAuthenticationOauthConfigArgs
+
+func ToolOpenApiSpecAuthenticationOauthConfigPtr(v *ToolOpenApiSpecAuthenticationOauthConfigArgs) ToolOpenApiSpecAuthenticationOauthConfigPtrInput {
+	return (*toolOpenApiSpecAuthenticationOauthConfigPtrType)(v)
+}
+
+func (*toolOpenApiSpecAuthenticationOauthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecAuthenticationOauthConfigPtrType) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutput() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecAuthenticationOauthConfigPtrType) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationOauthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationOauthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) ToToolOpenApiSpecAuthenticationOauthConfigOutput() ToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) ToToolOpenApiSpecAuthenticationOauthConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutput() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecAuthenticationOauthConfig) *ToolOpenApiSpecAuthenticationOauthConfig {
+		return &v
+	}).(ToolOpenApiSpecAuthenticationOauthConfigPtrOutput)
+}
+
+// The client ID from the OAuth provider.
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationOauthConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// OAuth grant types.
+// Possible values are: `CLIENT_CREDENTIAL`.
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) OauthGrantType() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationOauthConfig) string { return v.OauthGrantType }).(pulumi.StringOutput)
+}
+
+// Optional. The OAuth scopes to grant.
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationOauthConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the client secret.
+// If this field is set, the `clientSecret` field will be ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationOauthConfig) *string { return v.SecretVersionForClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolOpenApiSpecAuthenticationOauthConfigOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationOauthConfig) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+type ToolOpenApiSpecAuthenticationOauthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationOauthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutput() ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ToToolOpenApiSpecAuthenticationOauthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationOauthConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) Elem() ToolOpenApiSpecAuthenticationOauthConfigOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) ToolOpenApiSpecAuthenticationOauthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecAuthenticationOauthConfig
+		return ret
+	}).(ToolOpenApiSpecAuthenticationOauthConfigOutput)
+}
+
+// The client ID from the OAuth provider.
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth grant types.
+// Possible values are: `CLIENT_CREDENTIAL`.
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) OauthGrantType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthGrantType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The OAuth scopes to grant.
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The name of the SecretManager secret version resource storing the client secret.
+// If this field is set, the `clientSecret` field will be ignored.
+// Format: `projects/{project}/secrets/{secret}/versions/{version}`
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) SecretVersionForClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersionForClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The token endpoint in the OAuth provider to exchange for an access token.
+func (o ToolOpenApiSpecAuthenticationOauthConfigPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationOauthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationServiceAgentAuthConfig struct {
+	// Optional. Indicate the auth token type generated from the Dialogflow service agent.
+	// The generated token is sent in the Authorization header.
+	// Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+	ServiceAgentAuth *string `pulumi:"serviceAgentAuth"`
+}
+
+// ToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput is an input type that accepts ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs and ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput` via:
+//
+//	ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{...}
+type ToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput
+	ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput
+}
+
+type ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs struct {
+	// Optional. Indicate the auth token type generated from the Dialogflow service agent.
+	// The generated token is sent in the Authorization header.
+	// Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+	ServiceAgentAuth pulumi.StringPtrInput `pulumi:"serviceAgentAuth"`
+}
+
+func (ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return i.ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput)
+}
+
+func (i ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput).ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput is an input type that accepts ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs, ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtr and ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput` via:
+//
+//	        ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput
+	ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput
+}
+
+type toolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs
+
+func ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtr(v *ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput {
+	return (*toolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType)(v)
+}
+
+func (*toolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return i.ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrType) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecAuthenticationServiceAgentAuthConfig) *ToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		return &v
+	}).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput)
+}
+
+// Optional. Indicate the auth token type generated from the Dialogflow service agent.
+// The generated token is sent in the Authorization header.
+// Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecAuthenticationServiceAgentAuthConfig) *string { return v.ServiceAgentAuth }).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecAuthenticationServiceAgentAuthConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ToToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) Elem() ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationServiceAgentAuthConfig) ToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecAuthenticationServiceAgentAuthConfig
+		return ret
+	}).(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput)
+}
+
+// Optional. Indicate the auth token type generated from the Dialogflow service agent.
+// The generated token is sent in the Authorization header.
+// Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+func (o ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput) ServiceAgentAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecAuthenticationServiceAgentAuthConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAgentAuth
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecServiceDirectoryConfig struct {
+	// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+	// Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+	// `LocationID` of the service directory must be the same as the location of the tool.
+	Service string `pulumi:"service"`
+}
+
+// ToolOpenApiSpecServiceDirectoryConfigInput is an input type that accepts ToolOpenApiSpecServiceDirectoryConfigArgs and ToolOpenApiSpecServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecServiceDirectoryConfigInput` via:
+//
+//	ToolOpenApiSpecServiceDirectoryConfigArgs{...}
+type ToolOpenApiSpecServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecServiceDirectoryConfigOutput() ToolOpenApiSpecServiceDirectoryConfigOutput
+	ToToolOpenApiSpecServiceDirectoryConfigOutputWithContext(context.Context) ToolOpenApiSpecServiceDirectoryConfigOutput
+}
+
+type ToolOpenApiSpecServiceDirectoryConfigArgs struct {
+	// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+	// Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+	// `LocationID` of the service directory must be the same as the location of the tool.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ToolOpenApiSpecServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecServiceDirectoryConfigArgs) ToToolOpenApiSpecServiceDirectoryConfigOutput() ToolOpenApiSpecServiceDirectoryConfigOutput {
+	return i.ToToolOpenApiSpecServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecServiceDirectoryConfigArgs) ToToolOpenApiSpecServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecServiceDirectoryConfigOutput)
+}
+
+func (i ToolOpenApiSpecServiceDirectoryConfigArgs) ToToolOpenApiSpecServiceDirectoryConfigPtrOutput() ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return i.ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecServiceDirectoryConfigArgs) ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecServiceDirectoryConfigOutput).ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecServiceDirectoryConfigPtrInput is an input type that accepts ToolOpenApiSpecServiceDirectoryConfigArgs, ToolOpenApiSpecServiceDirectoryConfigPtr and ToolOpenApiSpecServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecServiceDirectoryConfigPtrInput` via:
+//
+//	        ToolOpenApiSpecServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecServiceDirectoryConfigPtrOutput() ToolOpenApiSpecServiceDirectoryConfigPtrOutput
+	ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Context) ToolOpenApiSpecServiceDirectoryConfigPtrOutput
+}
+
+type toolOpenApiSpecServiceDirectoryConfigPtrType ToolOpenApiSpecServiceDirectoryConfigArgs
+
+func ToolOpenApiSpecServiceDirectoryConfigPtr(v *ToolOpenApiSpecServiceDirectoryConfigArgs) ToolOpenApiSpecServiceDirectoryConfigPtrInput {
+	return (*toolOpenApiSpecServiceDirectoryConfigPtrType)(v)
+}
+
+func (*toolOpenApiSpecServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecServiceDirectoryConfigPtrType) ToToolOpenApiSpecServiceDirectoryConfigPtrOutput() ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return i.ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecServiceDirectoryConfigPtrType) ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+type ToolOpenApiSpecServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigOutput) ToToolOpenApiSpecServiceDirectoryConfigOutput() ToolOpenApiSpecServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigOutput) ToToolOpenApiSpecServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigOutput) ToToolOpenApiSpecServiceDirectoryConfigPtrOutput() ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigOutput) ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecServiceDirectoryConfig) *ToolOpenApiSpecServiceDirectoryConfig {
+		return &v
+	}).(ToolOpenApiSpecServiceDirectoryConfigPtrOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+// Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+// `LocationID` of the service directory must be the same as the location of the tool.
+func (o ToolOpenApiSpecServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ToolOpenApiSpecServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigPtrOutput) ToToolOpenApiSpecServiceDirectoryConfigPtrOutput() ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigPtrOutput) ToToolOpenApiSpecServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecServiceDirectoryConfigPtrOutput) Elem() ToolOpenApiSpecServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecServiceDirectoryConfig) ToolOpenApiSpecServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecServiceDirectoryConfig
+		return ret
+	}).(ToolOpenApiSpecServiceDirectoryConfigOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+// Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+// `LocationID` of the service directory must be the same as the location of the tool.
+func (o ToolOpenApiSpecServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type ToolOpenApiSpecTlsConfig struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS verification.
+	// Structure is documented below.
+	CaCerts []ToolOpenApiSpecTlsConfigCaCert `pulumi:"caCerts"`
+}
+
+// ToolOpenApiSpecTlsConfigInput is an input type that accepts ToolOpenApiSpecTlsConfigArgs and ToolOpenApiSpecTlsConfigOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecTlsConfigInput` via:
+//
+//	ToolOpenApiSpecTlsConfigArgs{...}
+type ToolOpenApiSpecTlsConfigInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecTlsConfigOutput() ToolOpenApiSpecTlsConfigOutput
+	ToToolOpenApiSpecTlsConfigOutputWithContext(context.Context) ToolOpenApiSpecTlsConfigOutput
+}
+
+type ToolOpenApiSpecTlsConfigArgs struct {
+	// Specifies a list of allowed custom CA certificates for HTTPS verification.
+	// Structure is documented below.
+	CaCerts ToolOpenApiSpecTlsConfigCaCertArrayInput `pulumi:"caCerts"`
+}
+
+func (ToolOpenApiSpecTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecTlsConfigArgs) ToToolOpenApiSpecTlsConfigOutput() ToolOpenApiSpecTlsConfigOutput {
+	return i.ToToolOpenApiSpecTlsConfigOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecTlsConfigArgs) ToToolOpenApiSpecTlsConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecTlsConfigOutput)
+}
+
+func (i ToolOpenApiSpecTlsConfigArgs) ToToolOpenApiSpecTlsConfigPtrOutput() ToolOpenApiSpecTlsConfigPtrOutput {
+	return i.ToToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecTlsConfigArgs) ToToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecTlsConfigOutput).ToToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx)
+}
+
+// ToolOpenApiSpecTlsConfigPtrInput is an input type that accepts ToolOpenApiSpecTlsConfigArgs, ToolOpenApiSpecTlsConfigPtr and ToolOpenApiSpecTlsConfigPtrOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecTlsConfigPtrInput` via:
+//
+//	        ToolOpenApiSpecTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolOpenApiSpecTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecTlsConfigPtrOutput() ToolOpenApiSpecTlsConfigPtrOutput
+	ToToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Context) ToolOpenApiSpecTlsConfigPtrOutput
+}
+
+type toolOpenApiSpecTlsConfigPtrType ToolOpenApiSpecTlsConfigArgs
+
+func ToolOpenApiSpecTlsConfigPtr(v *ToolOpenApiSpecTlsConfigArgs) ToolOpenApiSpecTlsConfigPtrInput {
+	return (*toolOpenApiSpecTlsConfigPtrType)(v)
+}
+
+func (*toolOpenApiSpecTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (i *toolOpenApiSpecTlsConfigPtrType) ToToolOpenApiSpecTlsConfigPtrOutput() ToolOpenApiSpecTlsConfigPtrOutput {
+	return i.ToToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolOpenApiSpecTlsConfigPtrType) ToToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+type ToolOpenApiSpecTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecTlsConfigOutput) ToToolOpenApiSpecTlsConfigOutput() ToolOpenApiSpecTlsConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigOutput) ToToolOpenApiSpecTlsConfigOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigOutput) ToToolOpenApiSpecTlsConfigPtrOutput() ToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ToToolOpenApiSpecTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolOpenApiSpecTlsConfigOutput) ToToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolOpenApiSpecTlsConfig) *ToolOpenApiSpecTlsConfig {
+		return &v
+	}).(ToolOpenApiSpecTlsConfigPtrOutput)
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS verification.
+// Structure is documented below.
+func (o ToolOpenApiSpecTlsConfigOutput) CaCerts() ToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecTlsConfig) []ToolOpenApiSpecTlsConfigCaCert { return v.CaCerts }).(ToolOpenApiSpecTlsConfigCaCertArrayOutput)
+}
+
+type ToolOpenApiSpecTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolOpenApiSpecTlsConfig)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecTlsConfigPtrOutput) ToToolOpenApiSpecTlsConfigPtrOutput() ToolOpenApiSpecTlsConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigPtrOutput) ToToolOpenApiSpecTlsConfigPtrOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigPtrOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigPtrOutput) Elem() ToolOpenApiSpecTlsConfigOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecTlsConfig) ToolOpenApiSpecTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolOpenApiSpecTlsConfig
+		return ret
+	}).(ToolOpenApiSpecTlsConfigOutput)
+}
+
+// Specifies a list of allowed custom CA certificates for HTTPS verification.
+// Structure is documented below.
+func (o ToolOpenApiSpecTlsConfigPtrOutput) CaCerts() ToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o.ApplyT(func(v *ToolOpenApiSpecTlsConfig) []ToolOpenApiSpecTlsConfigCaCert {
+		if v == nil {
+			return nil
+		}
+		return v.CaCerts
+	}).(ToolOpenApiSpecTlsConfigCaCertArrayOutput)
+}
+
+type ToolOpenApiSpecTlsConfigCaCert struct {
+	// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+	// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+	// A base64-encoded string.
+	Cert string `pulumi:"cert"`
+	// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+	DisplayName string `pulumi:"displayName"`
+}
+
+// ToolOpenApiSpecTlsConfigCaCertInput is an input type that accepts ToolOpenApiSpecTlsConfigCaCertArgs and ToolOpenApiSpecTlsConfigCaCertOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecTlsConfigCaCertInput` via:
+//
+//	ToolOpenApiSpecTlsConfigCaCertArgs{...}
+type ToolOpenApiSpecTlsConfigCaCertInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecTlsConfigCaCertOutput() ToolOpenApiSpecTlsConfigCaCertOutput
+	ToToolOpenApiSpecTlsConfigCaCertOutputWithContext(context.Context) ToolOpenApiSpecTlsConfigCaCertOutput
+}
+
+type ToolOpenApiSpecTlsConfigCaCertArgs struct {
+	// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+	// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+	// A base64-encoded string.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+}
+
+func (ToolOpenApiSpecTlsConfigCaCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecTlsConfigCaCertArgs) ToToolOpenApiSpecTlsConfigCaCertOutput() ToolOpenApiSpecTlsConfigCaCertOutput {
+	return i.ToToolOpenApiSpecTlsConfigCaCertOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecTlsConfigCaCertArgs) ToToolOpenApiSpecTlsConfigCaCertOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigCaCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecTlsConfigCaCertOutput)
+}
+
+// ToolOpenApiSpecTlsConfigCaCertArrayInput is an input type that accepts ToolOpenApiSpecTlsConfigCaCertArray and ToolOpenApiSpecTlsConfigCaCertArrayOutput values.
+// You can construct a concrete instance of `ToolOpenApiSpecTlsConfigCaCertArrayInput` via:
+//
+//	ToolOpenApiSpecTlsConfigCaCertArray{ ToolOpenApiSpecTlsConfigCaCertArgs{...} }
+type ToolOpenApiSpecTlsConfigCaCertArrayInput interface {
+	pulumi.Input
+
+	ToToolOpenApiSpecTlsConfigCaCertArrayOutput() ToolOpenApiSpecTlsConfigCaCertArrayOutput
+	ToToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(context.Context) ToolOpenApiSpecTlsConfigCaCertArrayOutput
+}
+
+type ToolOpenApiSpecTlsConfigCaCertArray []ToolOpenApiSpecTlsConfigCaCertInput
+
+func (ToolOpenApiSpecTlsConfigCaCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (i ToolOpenApiSpecTlsConfigCaCertArray) ToToolOpenApiSpecTlsConfigCaCertArrayOutput() ToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return i.ToToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOpenApiSpecTlsConfigCaCertArray) ToToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOpenApiSpecTlsConfigCaCertArrayOutput)
+}
+
+type ToolOpenApiSpecTlsConfigCaCertOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecTlsConfigCaCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecTlsConfigCaCertOutput) ToToolOpenApiSpecTlsConfigCaCertOutput() ToolOpenApiSpecTlsConfigCaCertOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigCaCertOutput) ToToolOpenApiSpecTlsConfigCaCertOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigCaCertOutput {
+	return o
+}
+
+// The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+// If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+// N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+// A base64-encoded string.
+func (o ToolOpenApiSpecTlsConfigCaCertOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecTlsConfigCaCert) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+func (o ToolOpenApiSpecTlsConfigCaCertOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolOpenApiSpecTlsConfigCaCert) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+type ToolOpenApiSpecTlsConfigCaCertArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOpenApiSpecTlsConfigCaCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOpenApiSpecTlsConfigCaCert)(nil)).Elem()
+}
+
+func (o ToolOpenApiSpecTlsConfigCaCertArrayOutput) ToToolOpenApiSpecTlsConfigCaCertArrayOutput() ToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigCaCertArrayOutput) ToToolOpenApiSpecTlsConfigCaCertArrayOutputWithContext(ctx context.Context) ToolOpenApiSpecTlsConfigCaCertArrayOutput {
+	return o
+}
+
+func (o ToolOpenApiSpecTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) ToolOpenApiSpecTlsConfigCaCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOpenApiSpecTlsConfigCaCert {
+		return vs[0].([]ToolOpenApiSpecTlsConfigCaCert)[vs[1].(int)]
+	}).(ToolOpenApiSpecTlsConfigCaCertOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileAutomatedAgentConfigPtrInput)(nil)).Elem(), ConversationProfileAutomatedAgentConfigArgs{})
@@ -50567,6 +52829,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionArrayInput)(nil)).Elem(), SipTrunkConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionErrorDetailInput)(nil)).Elem(), SipTrunkConnectionErrorDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SipTrunkConnectionErrorDetailArrayInput)(nil)).Elem(), SipTrunkConnectionErrorDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorSpecInput)(nil)).Elem(), ToolConnectorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorSpecPtrInput)(nil)).Elem(), ToolConnectorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorSpecActionInput)(nil)).Elem(), ToolConnectorSpecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorSpecActionArrayInput)(nil)).Elem(), ToolConnectorSpecActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorSpecActionEntityOperationInput)(nil)).Elem(), ToolConnectorSpecActionEntityOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolConnectorSpecActionEntityOperationPtrInput)(nil)).Elem(), ToolConnectorSpecActionEntityOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolFunctionSpecInput)(nil)).Elem(), ToolFunctionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolFunctionSpecPtrInput)(nil)).Elem(), ToolFunctionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecInput)(nil)).Elem(), ToolOpenApiSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecPtrInput)(nil)).Elem(), ToolOpenApiSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationPtrInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationApiKeyConfigInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationApiKeyConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationApiKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationBearerTokenConfigInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationBearerTokenConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationBearerTokenConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationOauthConfigInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationOauthConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationServiceAgentAuthConfigInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecServiceDirectoryConfigInput)(nil)).Elem(), ToolOpenApiSpecServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecServiceDirectoryConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigPtrInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigCaCertInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigCaCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiSpecTlsConfigCaCertArrayInput)(nil)).Elem(), ToolOpenApiSpecTlsConfigCaCertArray{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileHumanAgentAssistantConfigOutput{})
@@ -51166,4 +53454,30 @@ func init() {
 	pulumi.RegisterOutputType(SipTrunkConnectionArrayOutput{})
 	pulumi.RegisterOutputType(SipTrunkConnectionErrorDetailOutput{})
 	pulumi.RegisterOutputType(SipTrunkConnectionErrorDetailArrayOutput{})
+	pulumi.RegisterOutputType(ToolConnectorSpecOutput{})
+	pulumi.RegisterOutputType(ToolConnectorSpecPtrOutput{})
+	pulumi.RegisterOutputType(ToolConnectorSpecActionOutput{})
+	pulumi.RegisterOutputType(ToolConnectorSpecActionArrayOutput{})
+	pulumi.RegisterOutputType(ToolConnectorSpecActionEntityOperationOutput{})
+	pulumi.RegisterOutputType(ToolConnectorSpecActionEntityOperationPtrOutput{})
+	pulumi.RegisterOutputType(ToolFunctionSpecOutput{})
+	pulumi.RegisterOutputType(ToolFunctionSpecPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationApiKeyConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationApiKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationBearerTokenConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationBearerTokenConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationOauthConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecAuthenticationServiceAgentAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecTlsConfigOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecTlsConfigCaCertOutput{})
+	pulumi.RegisterOutputType(ToolOpenApiSpecTlsConfigCaCertArrayOutput{})
 }

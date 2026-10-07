@@ -2063,16 +2063,34 @@ class AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgsDict(TypedDict):
     """
     Examples for visualizations.
     """
+    visualization_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Mode for generating visualizations.
+    Possible values:
+    VISUALIZATION_MODE_EXPLICIT_ONLY
+    VISUALIZATION_MODE_WHEN_NECESSARY
+    VISUALIZATION_MODE_WHEN_HELPFUL
+    VISUALIZATION_MODE_ALWAYS
+    """
 
 @pulumi.input_type
 class AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs:
     def __init__(__self__, *,
-                 visualization_examples: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs']]]] = None):
+                 visualization_examples: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs']]]] = None,
+                 visualization_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs']]] visualization_examples: Examples for visualizations.
+        :param pulumi.Input[_builtins.str] visualization_mode: Mode for generating visualizations.
+               Possible values:
+               VISUALIZATION_MODE_EXPLICIT_ONLY
+               VISUALIZATION_MODE_WHEN_NECESSARY
+               VISUALIZATION_MODE_WHEN_HELPFUL
+               VISUALIZATION_MODE_ALWAYS
         """
         if visualization_examples is not None:
             pulumi.set(__self__, "visualization_examples", visualization_examples)
+        if visualization_mode is not None:
+            pulumi.set(__self__, "visualization_mode", visualization_mode)
 
     @_builtins.property
     @pulumi.getter(name="visualizationExamples")
@@ -2085,6 +2103,23 @@ class AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs:
     @visualization_examples.setter
     def visualization_examples(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs']]]]):
         pulumi.set(self, "visualization_examples", value)
+
+    @_builtins.property
+    @pulumi.getter(name="visualizationMode")
+    def visualization_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Mode for generating visualizations.
+        Possible values:
+        VISUALIZATION_MODE_EXPLICIT_ONLY
+        VISUALIZATION_MODE_WHEN_NECESSARY
+        VISUALIZATION_MODE_WHEN_HELPFUL
+        VISUALIZATION_MODE_ALWAYS
+        """
+        return pulumi.get(self, "visualization_mode")
+
+    @visualization_mode.setter
+    def visualization_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "visualization_mode", value)
 
 
 class AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgsDict(TypedDict):
@@ -2958,6 +2993,11 @@ class AnalystAgentPersonaMcpDataSourceArgsDict(TypedDict):
     """
     Input only. The API key of the MCP server.
     """
+    api_key_header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The HTTP header when the API key is passed in a request header
+    (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+    """
     api_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The API key parameter name.
@@ -2987,6 +3027,7 @@ class AnalystAgentPersonaMcpDataSourceArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  server_url: pulumi.Input[_builtins.str],
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_header: pulumi.Input[Optional[_builtins.str]] = None,
                  api_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_secret: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2998,6 +3039,8 @@ class AnalystAgentPersonaMcpDataSourceArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether this external data source is enabled for the current analysis.
         :param pulumi.Input[_builtins.str] server_url: The URL of the MCP server.
         :param pulumi.Input[_builtins.str] api_key: Input only. The API key of the MCP server.
+        :param pulumi.Input[_builtins.str] api_key_header: The HTTP header when the API key is passed in a request header
+               (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
         :param pulumi.Input[_builtins.str] api_key_name: The API key parameter name.
         :param pulumi.Input[_builtins.str] client_id: The client ID for authentication.
         :param pulumi.Input[_builtins.str] client_secret: Input only. The client secret for authentication.
@@ -3010,6 +3053,8 @@ class AnalystAgentPersonaMcpDataSourceArgs:
         pulumi.set(__self__, "server_url", server_url)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
+        if api_key_header is not None:
+            pulumi.set(__self__, "api_key_header", api_key_header)
         if api_key_name is not None:
             pulumi.set(__self__, "api_key_name", api_key_name)
         if client_id is not None:
@@ -3080,6 +3125,19 @@ class AnalystAgentPersonaMcpDataSourceArgs:
     @api_key.setter
     def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyHeader")
+    def api_key_header(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The HTTP header when the API key is passed in a request header
+        (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+        """
+        return pulumi.get(self, "api_key_header")
+
+    @api_key_header.setter
+    def api_key_header(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "api_key_header", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyName")
@@ -3938,6 +3996,11 @@ class AnalystAgentPersonaTableColumnArgs:
 
 
 class AnalystAgentPersonaWebSearchConfigArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether web search grounding is disabled for the analyst agent.
+    Defaults to false if not specified (i.e. web search grounding is enabled).
+    """
     excluded_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of domains to be excluded from Google Search / Enterprise Web Search
@@ -3947,13 +4010,31 @@ class AnalystAgentPersonaWebSearchConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AnalystAgentPersonaWebSearchConfigArgs:
     def __init__(__self__, *,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  excluded_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[_builtins.bool] disabled: Whether web search grounding is disabled for the analyst agent.
+               Defaults to false if not specified (i.e. web search grounding is enabled).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_domains: List of domains to be excluded from Google Search / Enterprise Web Search
                grounding.
         """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if excluded_domains is not None:
             pulumi.set(__self__, "excluded_domains", excluded_domains)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether web search grounding is disabled for the analyst agent.
+        Defaults to false if not specified (i.e. web search grounding is enabled).
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedDomains")

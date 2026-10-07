@@ -97,6 +97,123 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Iam Folders Policy Binding Access Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.iam.FolderAccessPolicy;
+ * import com.pulumi.gcp.iam.FolderAccessPolicyArgs;
+ * import com.pulumi.gcp.iam.inputs.FolderAccessPolicyDetailsArgs;
+ * import com.pulumi.gcp.iam.inputs.FolderAccessPolicyDetailsRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.FolderAccessPolicyDetailsRuleOperationArgs;
+ * import com.pulumi.gcp.iam.FoldersPolicyBinding;
+ * import com.pulumi.gcp.iam.FoldersPolicyBindingArgs;
+ * import com.pulumi.gcp.iam.inputs.FoldersPolicyBindingTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .displayName("ap-folder-")
+ *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         // Binding access policies can be blocked by the managed org policy constraint
+ *         // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this folder.
+ *         var allowAccessPolicyBinding = new Policy("allowAccessPolicyBinding", PolicyArgs.builder()
+ *             .name(folder.folderId().applyValue(_folderId -> String.format("folders/%s/policies/iam.managed.disableAccessPolicyBinding", _folderId)))
+ *             .parent(folder.folderId().applyValue(_folderId -> String.format("folders/%s", _folderId)))
+ *             .spec(PolicySpecArgs.builder()
+ *                 .rules(PolicySpecRuleArgs.builder()
+ *                     .enforce("FALSE")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var wait120s = new Sleep("wait120s", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     folder,
+ *                     allowAccessPolicyBinding)
+ *                 .build());
+ * 
+ *         var testSa = new Account("testSa", AccountArgs.builder()
+ *             .accountId("ap-sa-")
+ *             .displayName("Test Service Account for Access Policy")
+ *             .build());
+ * 
+ *         var accessPolicy = new FolderAccessPolicy("accessPolicy", FolderAccessPolicyArgs.builder()
+ *             .folder(folder.folderId())
+ *             .location("global")
+ *             .accessPolicyId("my-folder-policy-")
+ *             .details(FolderAccessPolicyDetailsArgs.builder()
+ *                 .rules(FolderAccessPolicyDetailsRuleArgs.builder()
+ *                     .effect("ALLOW")
+ *                     .principals(testSa.email().applyValue(_email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", _email)))
+ *                     .operation(FolderAccessPolicyDetailsRuleOperationArgs.builder()
+ *                         .permissions("eventarc.googleapis.com/messageBuses.publish")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120s)
+ *                 .build());
+ * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(accessPolicy)
+ *                 .build());
+ * 
+ *         var my_folder_access_policy_binding = new FoldersPolicyBinding("my-folder-access-policy-binding", FoldersPolicyBindingArgs.builder()
+ *             .folder(folder.folderId())
+ *             .location("global")
+ *             .displayName("Binding for a folder access policy")
+ *             .policyKind("ACCESS")
+ *             .policyBindingId("my-folder-access-binding-")
+ *             .policy(Output.tuple(folder.folderId(), accessPolicy.accessPolicyId()).applyValue(values -> {
+ *                 var folderId = values.t1;
+ *                 var accessPolicyId = values.t2;
+ *                 return String.format("folders/%s/locations/global/accessPolicies/%s", folderId,accessPolicyId);
+ *             }))
+ *             .target(FoldersPolicyBindingTargetArgs.builder()
+ *                 .resource(folder.folderId().applyValue(_folderId -> String.format("//cloudresourcemanager.googleapis.com/folders/%s", _folderId)))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -159,6 +276,7 @@ public class FoldersPolicyBinding extends com.pulumi.resources.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -189,6 +307,7 @@ public class FoldersPolicyBinding extends com.pulumi.resources.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -379,6 +498,8 @@ public class FoldersPolicyBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */
@@ -387,6 +508,8 @@ public class FoldersPolicyBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */

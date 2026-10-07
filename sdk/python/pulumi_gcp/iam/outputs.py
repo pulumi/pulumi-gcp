@@ -83,6 +83,7 @@ __all__ = [
     'GetWorkloadIdentityPoolInlineTrustConfigResult',
     'GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleResult',
     'GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorResult',
+    'GetWorkloadIdentityPoolJwksKeyResult',
     'GetWorkloadIdentityPoolProviderAwResult',
     'GetWorkloadIdentityPoolProviderOidcResult',
     'GetWorkloadIdentityPoolProviderSamlResult',
@@ -889,26 +890,44 @@ class FoldersPolicyBindingTarget(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 principal_set: Optional[_builtins.str] = None):
+                 principal_set: Optional[_builtins.str] = None,
+                 resource: Optional[_builtins.str] = None):
         """
-        :param _builtins.str principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        :param _builtins.str principal_set: Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
                  It must be parent by the policy binding's parent (the folder).
+        :param _builtins.str resource: Immutable. Full Resource Name of the resource used for access policy bindings.
+               Use this together with `policy_kind = "ACCESS"`. Examples:
+               * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+                 It must be the policy binding's parent (the folder).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> Optional[_builtins.str]:
         """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
           It must be parent by the policy binding's parent (the folder).
         """
         return pulumi.get(self, "principal_set")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> Optional[_builtins.str]:
+        """
+        Immutable. Full Resource Name of the resource used for access policy bindings.
+        Use this together with `policy_kind = "ACCESS"`. Examples:
+        * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+          It must be the policy binding's parent (the folder).
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -1320,23 +1339,30 @@ class OrganizationsPolicyBindingTarget(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 principal_set: Optional[_builtins.str] = None):
+                 principal_set: Optional[_builtins.str] = None,
+                 resource: Optional[_builtins.str] = None):
         """
-        :param _builtins.str principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        :param _builtins.str principal_set: Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
                * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
                * Workspace Identity: `//iam.googleapis.com/locations/global/workspace/WORKSPACE_ID`
                  It must be parent by the policy binding's parent (the organization).
+        :param _builtins.str resource: Immutable. Full Resource Name of the resource used for access policy bindings.
+               Use this together with `policy_kind = "ACCESS"`. Examples:
+               * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+                 It must be the policy binding's parent (the organization).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> Optional[_builtins.str]:
         """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
         * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -1344,6 +1370,17 @@ class OrganizationsPolicyBindingTarget(dict):
           It must be parent by the policy binding's parent (the organization).
         """
         return pulumi.get(self, "principal_set")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> Optional[_builtins.str]:
+        """
+        Immutable. Full Resource Name of the resource used for access policy bindings.
+        Use this together with `policy_kind = "ACCESS"`. Examples:
+        * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+          It must be the policy binding's parent (the organization).
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -1867,24 +1904,33 @@ class ProjectsPolicyBindingTarget(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 principal_set: Optional[_builtins.str] = None):
+                 principal_set: Optional[_builtins.str] = None,
+                 resource: Optional[_builtins.str] = None):
         """
-        :param _builtins.str principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        :param _builtins.str principal_set: Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
                * Project:
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
                * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
                * Workload Identity Pool: `//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID`
                  It must be parent by the policy binding's parent (the project).
+        :param _builtins.str resource: Immutable. Full Resource Name of the resource used for access policy bindings.
+               Use this together with `policy_kind = "ACCESS"`. Examples:
+               * Project:
+               * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+               * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+                 It must be the policy binding's parent (the project).
         """
         if principal_set is not None:
             pulumi.set(__self__, "principal_set", principal_set)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
     def principal_set(self) -> Optional[_builtins.str]:
         """
-        Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
         * Project:
         * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -1893,6 +1939,19 @@ class ProjectsPolicyBindingTarget(dict):
           It must be parent by the policy binding's parent (the project).
         """
         return pulumi.get(self, "principal_set")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> Optional[_builtins.str]:
+        """
+        Immutable. Full Resource Name of the resource used for access policy bindings.
+        Use this together with `policy_kind = "ACCESS"`. Examples:
+        * Project:
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+        * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+          It must be the policy binding's parent (the project).
+        """
+        return pulumi.get(self, "resource")
 
 
 @pulumi.output_type
@@ -4311,6 +4370,79 @@ class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorRe
         certificate(either root or intermediate cert).
         """
         return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolJwksKeyResult(dict):
+    def __init__(__self__, *,
+                 alg: _builtins.str,
+                 e: _builtins.str,
+                 kid: _builtins.str,
+                 kty: _builtins.str,
+                 n: _builtins.str,
+                 use: _builtins.str):
+        """
+        :param _builtins.str alg: The algorithm intended for use with the key (e.g. `RS256`).
+        :param _builtins.str e: The exponent for the RSA public key.
+        :param _builtins.str kid: The unique identifier for the key.
+        :param _builtins.str kty: The key type (e.g. `RSA`).
+        :param _builtins.str n: The modulus for the RSA public key.
+        :param _builtins.str use: The intended use of the public key (e.g. `sig`).
+        """
+        pulumi.set(__self__, "alg", alg)
+        pulumi.set(__self__, "e", e)
+        pulumi.set(__self__, "kid", kid)
+        pulumi.set(__self__, "kty", kty)
+        pulumi.set(__self__, "n", n)
+        pulumi.set(__self__, "use", use)
+
+    @_builtins.property
+    @pulumi.getter
+    def alg(self) -> _builtins.str:
+        """
+        The algorithm intended for use with the key (e.g. `RS256`).
+        """
+        return pulumi.get(self, "alg")
+
+    @_builtins.property
+    @pulumi.getter
+    def e(self) -> _builtins.str:
+        """
+        The exponent for the RSA public key.
+        """
+        return pulumi.get(self, "e")
+
+    @_builtins.property
+    @pulumi.getter
+    def kid(self) -> _builtins.str:
+        """
+        The unique identifier for the key.
+        """
+        return pulumi.get(self, "kid")
+
+    @_builtins.property
+    @pulumi.getter
+    def kty(self) -> _builtins.str:
+        """
+        The key type (e.g. `RSA`).
+        """
+        return pulumi.get(self, "kty")
+
+    @_builtins.property
+    @pulumi.getter
+    def n(self) -> _builtins.str:
+        """
+        The modulus for the RSA public key.
+        """
+        return pulumi.get(self, "n")
+
+    @_builtins.property
+    @pulumi.getter
+    def use(self) -> _builtins.str:
+        """
+        The intended use of the public key (e.g. `sig`).
+        """
+        return pulumi.get(self, "use")
 
 
 @pulumi.output_type

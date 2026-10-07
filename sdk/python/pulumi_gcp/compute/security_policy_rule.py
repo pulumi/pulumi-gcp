@@ -737,6 +737,27 @@ class SecurityPolicyRule(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_backend_service]))
         ```
+        ### Security Policy Rule Request Body Expression
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.SecurityPolicy("default",
+            name="policyruletest",
+            description="basic global security policy",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
+            security_policy=default.name,
+            description="Deny requests containing specific body string",
+            action="deny(403)",
+            priority=1000,
+            match={
+                "expr": {
+                    "expression": "request.body.contains('my-match-string')",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1016,6 +1037,27 @@ class SecurityPolicyRule(pulumi.CustomResource):
                 }],
             },
             opts = pulumi.ResourceOptions(depends_on=[default_backend_service]))
+        ```
+        ### Security Policy Rule Request Body Expression
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.SecurityPolicy("default",
+            name="policyruletest",
+            description="basic global security policy",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.SecurityPolicyRule("policy_rule",
+            security_policy=default.name,
+            description="Deny requests containing specific body string",
+            action="deny(403)",
+            priority=1000,
+            match={
+                "expr": {
+                    "expression": "request.body.contains('my-match-string')",
+                },
+            })
         ```
 
         ## Import

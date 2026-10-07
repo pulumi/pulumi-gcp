@@ -14,9 +14,17 @@ namespace Pulumi.Gcp.Ces.Outputs
     public sealed class AppAudioProcessingConfigSynthesizeSpeechConfig
     {
         /// <summary>
+        /// The instruction used to synthesize speech when using a generative model.
+        /// </summary>
+        public readonly string? Instruction;
+        /// <summary>
         /// The identifier for this object. Format specified above.
         /// </summary>
         public readonly string LanguageCode;
+        /// <summary>
+        /// The model used to synthesize audio.
+        /// </summary>
+        public readonly string? Model;
         /// <summary>
         /// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
         /// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
@@ -33,13 +41,19 @@ namespace Pulumi.Gcp.Ces.Outputs
 
         [OutputConstructor]
         private AppAudioProcessingConfigSynthesizeSpeechConfig(
+            string? instruction,
+
             string languageCode,
+
+            string? model,
 
             double? speakingRate,
 
             string? voice)
         {
+            Instruction = instruction;
             LanguageCode = languageCode;
+            Model = model;
             SpeakingRate = speakingRate;
             Voice = voice;
         }

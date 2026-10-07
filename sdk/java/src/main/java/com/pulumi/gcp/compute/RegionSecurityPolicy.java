@@ -211,6 +211,223 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Security Policy With Body Exclude
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyAdvancedOptionsConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceAccessConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("test-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("test-network-subnet")
+ *             .region("us-west2")
+ *             .network(default_.id())
+ *             .ipCidrRange("10.10.0.0/24")
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("test-health-check")
+ *             .region("us-west2")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var policyRuleOne = new RegionSecurityPolicy("policyRuleOne", RegionSecurityPolicyArgs.builder()
+ *             .name("policyruletest")
+ *             .description("regional security policy with body inspection")
+ *             .region("us-west2")
+ *             .type("CLOUD_ARMOR")
+ *             .advancedOptionsConfig(RegionSecurityPolicyAdvancedOptionsConfigArgs.builder()
+ *                 .jsonParsing("STANDARD")
+ *                 .logLevel("VERBOSE")
+ *                 .build())
+ *             .rules(            
+ *                 RegionSecurityPolicyRuleArgs.builder()
+ *                     .description("waf body rule")
+ *                     .action("deny(403)")
+ *                     .priority(100)
+ *                     .preview(true)
+ *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                         .expr(RegionSecurityPolicyRuleMatchExprArgs.builder()
+ *                             .expression("evaluatePreconfiguredWaf('sqli-v33-stable')")
+ *                             .build())
+ *                         .build())
+ *                     .preconfiguredWafConfig(RegionSecurityPolicyRulePreconfiguredWafConfigArgs.builder()
+ *                         .exclusions(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs.builder()
+ *                             .targetRuleSet("sqli-v33-stable")
+ *                             .requestBodies(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs.builder()
+ *                                 .operator("EQUALS")
+ *                                 .value("safe-field")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 RegionSecurityPolicyRuleArgs.builder()
+ *                     .action("allow")
+ *                     .priority(2147483647)
+ *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr("SRC_IPS_V1")
+ *                         .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
+ *                             .srcIpRanges("*")
+ *                             .build())
+ *                         .build())
+ *                     .description("default rule")
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .accessConfigs(InstanceTemplateNetworkInterfaceAccessConfigArgs.builder()
+ *                     .build())
+ *                 .subnetwork(defaultSubnetwork.id())
+ *                 .build())
+ *             .name("backendpolicy")
+ *             .machineType("e2-micro")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage("projects/debian-cloud/global/images/family/debian-11")
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionInstanceGroupManager = new RegionInstanceGroupManager("defaultRegionInstanceGroupManager", RegionInstanceGroupManagerArgs.builder()
+ *             .name("backendpolicy")
+ *             .region("us-west2")
+ *             .baseInstanceName("backend")
+ *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(defaultInstanceTemplate.id())
+ *                 .build())
+ *             .targetSize(1)
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("backendpolicy")
+ *             .region("us-west2")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .timeoutSec(30)
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(defaultRegionInstanceGroupManager.instanceGroup())
+ *                 .capacityScaler(1.0)
+ *                 .build())
+ *             .securityPolicy(policyRuleOne.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Security Policy Request Body Expression
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policyRule = new RegionSecurityPolicy("policyRule", RegionSecurityPolicyArgs.builder()
+ *             .name("policyruletest")
+ *             .description("Policy with Request Body inspection")
+ *             .region("us-west2")
+ *             .type("CLOUD_ARMOR")
+ *             .rules(            
+ *                 RegionSecurityPolicyRuleArgs.builder()
+ *                     .action("deny(403)")
+ *                     .priority(1000)
+ *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                         .expr(RegionSecurityPolicyRuleMatchExprArgs.builder()
+ *                             .expression("request.body.contains('my-match-string')")
+ *                             .build())
+ *                         .build())
+ *                     .description("Deny requests containing specific body string")
+ *                     .build(),
+ *                 RegionSecurityPolicyRuleArgs.builder()
+ *                     .action("allow")
+ *                     .priority(2147483647)
+ *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr("SRC_IPS_V1")
+ *                         .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
+ *                             .srcIpRanges("*")
+ *                             .build())
+ *                         .build())
+ *                     .description("default rule")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

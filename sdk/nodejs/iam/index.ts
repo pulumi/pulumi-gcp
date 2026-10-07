@@ -50,6 +50,11 @@ export const getWorkloadIdentityPoolIamPolicy: typeof import("./getWorkloadIdent
 export const getWorkloadIdentityPoolIamPolicyOutput: typeof import("./getWorkloadIdentityPoolIamPolicy").getWorkloadIdentityPoolIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadIdentityPoolIamPolicy","getWorkloadIdentityPoolIamPolicyOutput"], () => require("./getWorkloadIdentityPoolIamPolicy"));
 
+export { GetWorkloadIdentityPoolJwksArgs, GetWorkloadIdentityPoolJwksResult, GetWorkloadIdentityPoolJwksOutputArgs } from "./getWorkloadIdentityPoolJwks";
+export const getWorkloadIdentityPoolJwks: typeof import("./getWorkloadIdentityPoolJwks").getWorkloadIdentityPoolJwks = null as any;
+export const getWorkloadIdentityPoolJwksOutput: typeof import("./getWorkloadIdentityPoolJwks").getWorkloadIdentityPoolJwksOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkloadIdentityPoolJwks","getWorkloadIdentityPoolJwksOutput"], () => require("./getWorkloadIdentityPoolJwks"));
+
 export { GetWorkloadIdentityPoolOpenidConfigArgs, GetWorkloadIdentityPoolOpenidConfigResult, GetWorkloadIdentityPoolOpenidConfigOutputArgs } from "./getWorkloadIdentityPoolOpenidConfig";
 export const getWorkloadIdentityPoolOpenidConfig: typeof import("./getWorkloadIdentityPoolOpenidConfig").getWorkloadIdentityPoolOpenidConfig = null as any;
 export const getWorkloadIdentityPoolOpenidConfigOutput: typeof import("./getWorkloadIdentityPoolOpenidConfig").getWorkloadIdentityPoolOpenidConfigOutput = null as any;

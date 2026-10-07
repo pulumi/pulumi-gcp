@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.CloudExadataInfrastructurePropertiesCustomerContact;
+import com.pulumi.gcp.oracledatabase.outputs.CloudExadataInfrastructurePropertiesExascaleConfig;
 import com.pulumi.gcp.oracledatabase.outputs.CloudExadataInfrastructurePropertiesMaintenanceWindow;
 import java.lang.Double;
 import java.lang.Integer;
@@ -74,6 +75,13 @@ public final class CloudExadataInfrastructureProperties {
      * 
      */
     private @Nullable String dbServerVersion;
+    /**
+     * @return (Output)
+     * The Exascale configuration for the Exadata Infrastructure.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CloudExadataInfrastructurePropertiesExascaleConfig> exascaleConfigs;
     /**
      * @return Maintenance window as defined by Oracle.
      * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
@@ -273,6 +281,15 @@ public final class CloudExadataInfrastructureProperties {
         return Optional.ofNullable(this.dbServerVersion);
     }
     /**
+     * @return (Output)
+     * The Exascale configuration for the Exadata Infrastructure.
+     * Structure is documented below.
+     * 
+     */
+    public List<CloudExadataInfrastructurePropertiesExascaleConfig> exascaleConfigs() {
+        return this.exascaleConfigs == null ? List.of() : this.exascaleConfigs;
+    }
+    /**
      * @return Maintenance window as defined by Oracle.
      * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
      * Structure is documented below.
@@ -448,6 +465,7 @@ public final class CloudExadataInfrastructureProperties {
         private @Nullable Double dataStorageSizeTb;
         private @Nullable Integer dbNodeStorageSizeGb;
         private @Nullable String dbServerVersion;
+        private @Nullable List<CloudExadataInfrastructurePropertiesExascaleConfig> exascaleConfigs;
         private @Nullable CloudExadataInfrastructurePropertiesMaintenanceWindow maintenanceWindow;
         private @Nullable Integer maxCpuCount;
         private @Nullable Double maxDataStorageTb;
@@ -478,6 +496,7 @@ public final class CloudExadataInfrastructureProperties {
     	      this.dataStorageSizeTb = defaults.dataStorageSizeTb;
     	      this.dbNodeStorageSizeGb = defaults.dbNodeStorageSizeGb;
     	      this.dbServerVersion = defaults.dbServerVersion;
+    	      this.exascaleConfigs = defaults.exascaleConfigs;
     	      this.maintenanceWindow = defaults.maintenanceWindow;
     	      this.maxCpuCount = defaults.maxCpuCount;
     	      this.maxDataStorageTb = defaults.maxDataStorageTb;
@@ -554,6 +573,15 @@ public final class CloudExadataInfrastructureProperties {
 
             this.dbServerVersion = dbServerVersion;
             return this;
+        }
+        @CustomType.Setter
+        public Builder exascaleConfigs(@Nullable List<CloudExadataInfrastructurePropertiesExascaleConfig> exascaleConfigs) {
+
+            this.exascaleConfigs = exascaleConfigs;
+            return this;
+        }
+        public Builder exascaleConfigs(CloudExadataInfrastructurePropertiesExascaleConfig... exascaleConfigs) {
+            return exascaleConfigs(List.of(exascaleConfigs));
         }
         @CustomType.Setter
         public Builder maintenanceWindow(@Nullable CloudExadataInfrastructurePropertiesMaintenanceWindow maintenanceWindow) {
@@ -676,6 +704,7 @@ public final class CloudExadataInfrastructureProperties {
             _resultValue.dataStorageSizeTb = dataStorageSizeTb;
             _resultValue.dbNodeStorageSizeGb = dbNodeStorageSizeGb;
             _resultValue.dbServerVersion = dbServerVersion;
+            _resultValue.exascaleConfigs = exascaleConfigs;
             _resultValue.maintenanceWindow = maintenanceWindow;
             _resultValue.maxCpuCount = maxCpuCount;
             _resultValue.maxDataStorageTb = maxDataStorageTb;

@@ -248,11 +248,11 @@ type Instance struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-	// Note that primary and read instances can have different availability types.
-	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-	// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-	// can have regional availability (nodes are present in 2 or more zones in a region).
+	// 'Availability type of a primary Instance. Defaults to REGIONAL.
+	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+	// derive their availability from `read_pool_config.node_count`: a pool
+	// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+	// Read Pool instances do not support setting this field directly.
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringOutput `pulumi:"availabilityType"`
@@ -401,11 +401,11 @@ type instanceState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-	// Note that primary and read instances can have different availability types.
-	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-	// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-	// can have regional availability (nodes are present in 2 or more zones in a region).
+	// 'Availability type of a primary Instance. Defaults to REGIONAL.
+	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+	// derive their availability from `read_pool_config.node_count`: a pool
+	// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+	// Read Pool instances do not support setting this field directly.
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
@@ -511,11 +511,11 @@ type InstanceState struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-	// Note that primary and read instances can have different availability types.
-	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-	// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-	// can have regional availability (nodes are present in 2 or more zones in a region).
+	// 'Availability type of a primary Instance. Defaults to REGIONAL.
+	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+	// derive their availability from `read_pool_config.node_count`: a pool
+	// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+	// Read Pool instances do not support setting this field directly.
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
@@ -625,11 +625,11 @@ type instanceArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-	// Note that primary and read instances can have different availability types.
-	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-	// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-	// can have regional availability (nodes are present in 2 or more zones in a region).
+	// 'Availability type of a primary Instance. Defaults to REGIONAL.
+	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+	// derive their availability from `read_pool_config.node_count`: a pool
+	// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+	// Read Pool instances do not support setting this field directly.
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
@@ -707,11 +707,11 @@ type InstanceArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-	// Note that primary and read instances can have different availability types.
-	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-	// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-	// can have regional availability (nodes are present in 2 or more zones in a region).
+	// 'Availability type of a primary Instance. Defaults to REGIONAL.
+	// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+	// derive their availability from `read_pool_config.node_count`: a pool
+	// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+	// Read Pool instances do not support setting this field directly.
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
@@ -880,11 +880,11 @@ func (o InstanceOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
-// Note that primary and read instances can have different availability types.
-// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
-// Read pools of size 1 can only have zonal availability. Read pools with a node count of 2 or more
-// can have regional availability (nodes are present in 2 or more zones in a region).
+// 'Availability type of a primary Instance. Defaults to REGIONAL.
+// Primary instances can be either ZONAL or REGIONAL. Read Pool instances
+// derive their availability from `read_pool_config.node_count`: a pool
+// with one node is ZONAL, while a pool with two or more nodes is REGIONAL.
+// Read Pool instances do not support setting this field directly.
 // Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
 // Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 func (o InstanceOutput) AvailabilityType() pulumi.StringOutput {

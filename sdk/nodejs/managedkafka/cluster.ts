@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         key: "value",
  *     },
+ *     kafkaVersion: "3.7.x",
  * });
  * ```
  * ### Managedkafka Cluster Mtls
@@ -223,6 +224,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly gcpConfig: pulumi.Output<outputs.managedkafka.ClusterGcpConfig>;
     /**
+     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     */
+    declare public readonly kafkaVersion: pulumi.Output<string>;
+    /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -291,6 +296,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["gcpConfig"] = state?.gcpConfig;
+            resourceInputs["kafkaVersion"] = state?.kafkaVersion;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -320,6 +326,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["gcpConfig"] = args?.gcpConfig;
+            resourceInputs["kafkaVersion"] = args?.kafkaVersion;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
@@ -385,6 +392,10 @@ export interface ClusterState {
      * Structure is documented below.
      */
     gcpConfig?: pulumi.Input<inputs.managedkafka.ClusterGcpConfig | undefined>;
+    /**
+     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     */
+    kafkaVersion?: pulumi.Input<string | undefined>;
     /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -466,6 +477,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     gcpConfig: pulumi.Input<inputs.managedkafka.ClusterGcpConfig>;
+    /**
+     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     */
+    kafkaVersion?: pulumi.Input<string | undefined>;
     /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

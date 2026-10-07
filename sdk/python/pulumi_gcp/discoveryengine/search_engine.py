@@ -35,6 +35,7 @@ class SearchEngineArgs:
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']] = None,
+                 procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SearchEngine resource.
@@ -68,6 +69,7 @@ class SearchEngineArgs:
                protected by the KMS key, as indicated in the cmek_config field.
         :param pulumi.Input['SearchEngineKnowledgeGraphConfigArgs'] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] procurement_contact_emails: The emails of the procurement contacts.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -93,6 +95,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if knowledge_graph_config is not None:
             pulumi.set(__self__, "knowledge_graph_config", knowledge_graph_config)
+        if procurement_contact_emails is not None:
+            pulumi.set(__self__, "procurement_contact_emails", procurement_contact_emails)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -280,6 +284,18 @@ class SearchEngineArgs:
         pulumi.set(self, "knowledge_graph_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="procurementContactEmails")
+    def procurement_contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The emails of the procurement contacts.
+        """
+        return pulumi.get(self, "procurement_contact_emails")
+
+    @procurement_contact_emails.setter
+    def procurement_contact_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "procurement_contact_emails", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -311,6 +327,7 @@ class _SearchEngineState:
                  knowledge_graph_config: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  search_engine_config: pulumi.Input[Optional['SearchEngineSearchEngineConfigArgs']] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -349,6 +366,7 @@ class _SearchEngineState:
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] procurement_contact_emails: The emails of the procurement contacts.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SearchEngineSearchEngineConfigArgs'] search_engine_config: Configurations for a Search Engine.
@@ -385,6 +403,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if procurement_contact_emails is not None:
+            pulumi.set(__self__, "procurement_contact_emails", procurement_contact_emails)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if search_engine_config is not None:
@@ -590,6 +610,18 @@ class _SearchEngineState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="procurementContactEmails")
+    def procurement_contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The emails of the procurement contacts.
+        """
+        return pulumi.get(self, "procurement_contact_emails")
+
+    @procurement_contact_emails.setter
+    def procurement_contact_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "procurement_contact_emails", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -647,6 +679,7 @@ class SearchEngine(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
                  __props__=None):
@@ -764,6 +797,7 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']] knowledge_graph_config: Configurations for the Knowledge Graph.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Location.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] procurement_contact_emails: The emails of the procurement contacts.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']] search_engine_config: Configurations for a Search Engine.
@@ -888,6 +922,7 @@ class SearchEngine(pulumi.CustomResource):
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
                  __props__=None):
@@ -922,6 +957,7 @@ class SearchEngine(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["procurement_contact_emails"] = procurement_contact_emails
             __props__.__dict__["project"] = project
             if search_engine_config is None and not opts.urn:
                 raise TypeError("Missing required property 'search_engine_config'")
@@ -954,6 +990,7 @@ class SearchEngine(pulumi.CustomResource):
             knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict', 'outputs.SearchEngineKnowledgeGraphConfig']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            procurement_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SearchEngine':
@@ -996,6 +1033,7 @@ class SearchEngine(pulumi.CustomResource):
                `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
                This field must be a UTF-8 encoded string with a length limit of 1024
                characters.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] procurement_contact_emails: The emails of the procurement contacts.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict', 'outputs.SearchEngineSearchEngineConfig']] search_engine_config: Configurations for a Search Engine.
@@ -1021,6 +1059,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["knowledge_graph_config"] = knowledge_graph_config
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["procurement_contact_emails"] = procurement_contact_emails
         __props__.__dict__["project"] = project
         __props__.__dict__["search_engine_config"] = search_engine_config
         __props__.__dict__["update_time"] = update_time
@@ -1162,6 +1201,14 @@ class SearchEngine(pulumi.CustomResource):
         characters.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="procurementContactEmails")
+    def procurement_contact_emails(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The emails of the procurement contacts.
+        """
+        return pulumi.get(self, "procurement_contact_emails")
 
     @_builtins.property
     @pulumi.getter

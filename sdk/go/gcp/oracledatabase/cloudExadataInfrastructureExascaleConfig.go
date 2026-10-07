@@ -53,6 +53,7 @@ import (
 //				Location:                   pulumi.String("us-east4"),
 //				Project:                    pulumi.String("my-project"),
 //				TotalStorageSizeGb:         pulumi.Int(10240),
+//				TotalVmStorageSizeGb:       pulumi.Int(2048),
 //			})
 //			if err != nil {
 //				return err
@@ -97,6 +98,8 @@ type CloudExadataInfrastructureExascaleConfig struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The total storage to be allocated to Exascale in GBs.
 	TotalStorageSizeGb pulumi.IntOutput `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb pulumi.IntPtrOutput `pulumi:"totalVmStorageSizeGb"`
 }
 
 // NewCloudExadataInfrastructureExascaleConfig registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +157,8 @@ type cloudExadataInfrastructureExascaleConfigState struct {
 	Project *string `pulumi:"project"`
 	// The total storage to be allocated to Exascale in GBs.
 	TotalStorageSizeGb *int `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb *int `pulumi:"totalVmStorageSizeGb"`
 }
 
 type CloudExadataInfrastructureExascaleConfigState struct {
@@ -173,6 +178,8 @@ type CloudExadataInfrastructureExascaleConfigState struct {
 	Project pulumi.StringPtrInput
 	// The total storage to be allocated to Exascale in GBs.
 	TotalStorageSizeGb pulumi.IntPtrInput
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb pulumi.IntPtrInput
 }
 
 func (CloudExadataInfrastructureExascaleConfigState) ElementType() reflect.Type {
@@ -196,6 +203,8 @@ type cloudExadataInfrastructureExascaleConfigArgs struct {
 	Project *string `pulumi:"project"`
 	// The total storage to be allocated to Exascale in GBs.
 	TotalStorageSizeGb int `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb *int `pulumi:"totalVmStorageSizeGb"`
 }
 
 // The set of arguments for constructing a CloudExadataInfrastructureExascaleConfig resource.
@@ -216,6 +225,8 @@ type CloudExadataInfrastructureExascaleConfigArgs struct {
 	Project pulumi.StringPtrInput
 	// The total storage to be allocated to Exascale in GBs.
 	TotalStorageSizeGb pulumi.IntInput
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb pulumi.IntPtrInput
 }
 
 func (CloudExadataInfrastructureExascaleConfigArgs) ElementType() reflect.Type {
@@ -336,6 +347,11 @@ func (o CloudExadataInfrastructureExascaleConfigOutput) Project() pulumi.StringO
 // The total storage to be allocated to Exascale in GBs.
 func (o CloudExadataInfrastructureExascaleConfigOutput) TotalStorageSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudExadataInfrastructureExascaleConfig) pulumi.IntOutput { return v.TotalStorageSizeGb }).(pulumi.IntOutput)
+}
+
+// Storage size needed for VM storage on Exascale in GBs.
+func (o CloudExadataInfrastructureExascaleConfigOutput) TotalVmStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudExadataInfrastructureExascaleConfig) pulumi.IntPtrOutput { return v.TotalVmStorageSizeGb }).(pulumi.IntPtrOutput)
 }
 
 type CloudExadataInfrastructureExascaleConfigArrayOutput struct{ *pulumi.OutputState }

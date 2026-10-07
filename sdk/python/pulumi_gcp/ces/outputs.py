@@ -2422,10 +2422,14 @@ class AppAudioProcessingConfigSynthesizeSpeechConfig(dict):
 
     def __init__(__self__, *,
                  language_code: _builtins.str,
+                 instruction: Optional[_builtins.str] = None,
+                 model: Optional[_builtins.str] = None,
                  speaking_rate: Optional[_builtins.float] = None,
                  voice: Optional[_builtins.str] = None):
         """
         :param _builtins.str language_code: The identifier for this object. Format specified above.
+        :param _builtins.str instruction: The instruction used to synthesize speech when using a generative model.
+        :param _builtins.str model: The model used to synthesize audio.
         :param _builtins.float speaking_rate: The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
                speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
                half as fast. Values outside of the range [0.25, 2.0] will return an error.
@@ -2435,6 +2439,10 @@ class AppAudioProcessingConfigSynthesizeSpeechConfig(dict):
                languages from Cloud Text-to-Speech.
         """
         pulumi.set(__self__, "language_code", language_code)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
         if speaking_rate is not None:
             pulumi.set(__self__, "speaking_rate", speaking_rate)
         if voice is not None:
@@ -2447,6 +2455,22 @@ class AppAudioProcessingConfigSynthesizeSpeechConfig(dict):
         The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "language_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        The instruction used to synthesize speech when using a generative model.
+        """
+        return pulumi.get(self, "instruction")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        The model used to synthesize audio.
+        """
+        return pulumi.get(self, "model")
 
     @_builtins.property
     @pulumi.getter(name="speakingRate")

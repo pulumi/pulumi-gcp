@@ -27,14 +27,30 @@ public final class ApplicationIap {
     /**
      * @return OAuth2 client secret to use for the authentication flow.
      * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
      * 
      */
-    private String oauth2ClientSecret;
+    private @Nullable String oauth2ClientSecret;
     /**
      * @return Hex-encoded SHA-256 hash of the client secret.
      * 
      */
     private @Nullable String oauth2ClientSecretSha256;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OAuth2 client secret to use for the authentication flow.
+     * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+     * 
+     */
+    private @Nullable String oauth2ClientSecretWo;
+    /**
+     * @return Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String oauth2ClientSecretWoVersion;
 
     private ApplicationIap() {}
     /**
@@ -55,10 +71,11 @@ public final class ApplicationIap {
     /**
      * @return OAuth2 client secret to use for the authentication flow.
      * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
      * 
      */
-    public String oauth2ClientSecret() {
-        return this.oauth2ClientSecret;
+    public Optional<String> oauth2ClientSecret() {
+        return Optional.ofNullable(this.oauth2ClientSecret);
     }
     /**
      * @return Hex-encoded SHA-256 hash of the client secret.
@@ -66,6 +83,25 @@ public final class ApplicationIap {
      */
     public Optional<String> oauth2ClientSecretSha256() {
         return Optional.ofNullable(this.oauth2ClientSecretSha256);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OAuth2 client secret to use for the authentication flow.
+     * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+     * 
+     */
+    public Optional<String> oauth2ClientSecretWo() {
+        return Optional.ofNullable(this.oauth2ClientSecretWo);
+    }
+    /**
+     * @return Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> oauth2ClientSecretWoVersion() {
+        return Optional.ofNullable(this.oauth2ClientSecretWoVersion);
     }
 
     public static Builder builder() {
@@ -79,8 +115,10 @@ public final class ApplicationIap {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private String oauth2ClientId;
-        private String oauth2ClientSecret;
+        private @Nullable String oauth2ClientSecret;
         private @Nullable String oauth2ClientSecretSha256;
+        private @Nullable String oauth2ClientSecretWo;
+        private @Nullable String oauth2ClientSecretWoVersion;
         public Builder() {}
         public Builder(ApplicationIap defaults) {
     	      Objects.requireNonNull(defaults);
@@ -88,6 +126,8 @@ public final class ApplicationIap {
     	      this.oauth2ClientId = defaults.oauth2ClientId;
     	      this.oauth2ClientSecret = defaults.oauth2ClientSecret;
     	      this.oauth2ClientSecretSha256 = defaults.oauth2ClientSecretSha256;
+    	      this.oauth2ClientSecretWo = defaults.oauth2ClientSecretWo;
+    	      this.oauth2ClientSecretWoVersion = defaults.oauth2ClientSecretWoVersion;
         }
 
         @CustomType.Setter
@@ -105,10 +145,8 @@ public final class ApplicationIap {
             return this;
         }
         @CustomType.Setter
-        public Builder oauth2ClientSecret(String oauth2ClientSecret) {
-            if (oauth2ClientSecret == null) {
-              throw new MissingRequiredPropertyException("ApplicationIap", "oauth2ClientSecret");
-            }
+        public Builder oauth2ClientSecret(@Nullable String oauth2ClientSecret) {
+
             this.oauth2ClientSecret = oauth2ClientSecret;
             return this;
         }
@@ -118,12 +156,26 @@ public final class ApplicationIap {
             this.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
             return this;
         }
+        @CustomType.Setter
+        public Builder oauth2ClientSecretWo(@Nullable String oauth2ClientSecretWo) {
+
+            this.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oauth2ClientSecretWoVersion(@Nullable String oauth2ClientSecretWoVersion) {
+
+            this.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
+            return this;
+        }
         public ApplicationIap build() {
             final var _resultValue = new ApplicationIap();
             _resultValue.enabled = enabled;
             _resultValue.oauth2ClientId = oauth2ClientId;
             _resultValue.oauth2ClientSecret = oauth2ClientSecret;
             _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            _resultValue.oauth2ClientSecretWo = oauth2ClientSecretWo;
+            _resultValue.oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
             return _resultValue;
         }
     }

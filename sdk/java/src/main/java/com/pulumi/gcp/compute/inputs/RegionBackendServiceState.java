@@ -804,6 +804,25 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     * 
+     */
+    @Import(name="serviceLbPolicy")
+    private @Nullable Output<String> serviceLbPolicy;
+
+    /**
+     * @return URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     * 
+     */
+    public Optional<Output<String>> serviceLbPolicy() {
+        return Optional.ofNullable(this.serviceLbPolicy);
+    }
+
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -933,6 +952,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         this.region = $.region;
         this.securityPolicy = $.securityPolicy;
         this.selfLink = $.selfLink;
+        this.serviceLbPolicy = $.serviceLbPolicy;
         this.sessionAffinity = $.sessionAffinity;
         this.strongSessionAffinityCookie = $.strongSessionAffinityCookie;
         this.subsetting = $.subsetting;
@@ -1950,6 +1970,31 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param serviceLbPolicy URL to networkservices.ServiceLbPolicy resource.
+         * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+         * The service lb policy must be regional and in the same region as the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLbPolicy(@Nullable Output<String> serviceLbPolicy) {
+            $.serviceLbPolicy = serviceLbPolicy;
+            return this;
+        }
+
+        /**
+         * @param serviceLbPolicy URL to networkservices.ServiceLbPolicy resource.
+         * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+         * The service lb policy must be regional and in the same region as the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceLbPolicy(String serviceLbPolicy) {
+            return serviceLbPolicy(Output.of(serviceLbPolicy));
         }
 
         /**

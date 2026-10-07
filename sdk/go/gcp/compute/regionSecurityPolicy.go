@@ -172,6 +172,210 @@ import (
 //	}
 //
 // ```
+// ### Region Security Policy With Body Exclude
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("test-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("test-network-subnet"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				IpCidrRange: pulumi.String("10.10.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Name:   pulumi.String("test-health-check"),
+//				Region: pulumi.String("us-west2"),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policyRuleOne, err := compute.NewRegionSecurityPolicy(ctx, "policy_rule_one", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("policyruletest"),
+//				Description: pulumi.String("regional security policy with body inspection"),
+//				Region:      pulumi.String("us-west2"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//				AdvancedOptionsConfig: &compute.RegionSecurityPolicyAdvancedOptionsConfigArgs{
+//					JsonParsing: pulumi.String("STANDARD"),
+//					LogLevel:    pulumi.String("VERBOSE"),
+//				},
+//				Rules: compute.RegionSecurityPolicyRuleTypeArray{
+//					&compute.RegionSecurityPolicyRuleTypeArgs{
+//						Description: pulumi.String("waf body rule"),
+//						Action:      pulumi.String("deny(403)"),
+//						Priority:    pulumi.Int(100),
+//						Preview:     pulumi.Bool(true),
+//						Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//							Expr: &compute.RegionSecurityPolicyRuleMatchExprArgs{
+//								Expression: pulumi.String("evaluatePreconfiguredWaf('sqli-v33-stable')"),
+//							},
+//						},
+//						PreconfiguredWafConfig: &compute.RegionSecurityPolicyRulePreconfiguredWafConfigArgs{
+//							Exclusions: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{
+//								&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{
+//									TargetRuleSet: pulumi.String("sqli-v33-stable"),
+//									RequestBodies: compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{
+//										&compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{
+//											Operator: pulumi.String("EQUALS"),
+//											Value:    pulumi.String("safe-field"),
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&compute.RegionSecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("allow"),
+//						Priority: pulumi.Int(2147483647),
+//						Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//							Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("*"),
+//								},
+//							},
+//						},
+//						Description: pulumi.String("default rule"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "default", &compute.InstanceTemplateArgs{
+//				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+//					&compute.InstanceTemplateNetworkInterfaceArgs{
+//						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
+//							&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{},
+//						},
+//						Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//				Name:        pulumi.String("backendpolicy"),
+//				MachineType: pulumi.String("e2-micro"),
+//				Disks: compute.InstanceTemplateDiskArray{
+//					&compute.InstanceTemplateDiskArgs{
+//						SourceImage: pulumi.String("projects/debian-cloud/global/images/family/debian-11"),
+//						AutoDelete:  pulumi.Bool(true),
+//						Boot:        pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionInstanceGroupManager, err := compute.NewRegionInstanceGroupManager(ctx, "default", &compute.RegionInstanceGroupManagerArgs{
+//				Name:             pulumi.String("backendpolicy"),
+//				Region:           pulumi.String("us-west2"),
+//				BaseInstanceName: pulumi.String("backend"),
+//				Versions: compute.RegionInstanceGroupManagerVersionArray{
+//					&compute.RegionInstanceGroupManagerVersionArgs{
+//						InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//				TargetSize: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("backendpolicy"),
+//				Region:              pulumi.String("us-west2"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				TimeoutSec:          pulumi.Int(30),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				Backends: compute.RegionBackendServiceBackendArray{
+//					&compute.RegionBackendServiceBackendArgs{
+//						Group:          defaultRegionInstanceGroupManager.InstanceGroup,
+//						CapacityScaler: pulumi.Float64(1),
+//					},
+//				},
+//				SecurityPolicy: policyRuleOne.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Security Policy Request Body Expression
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSecurityPolicy(ctx, "policy_rule", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("policyruletest"),
+//				Description: pulumi.String("Policy with Request Body inspection"),
+//				Region:      pulumi.String("us-west2"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//				Rules: compute.RegionSecurityPolicyRuleTypeArray{
+//					&compute.RegionSecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("deny(403)"),
+//						Priority: pulumi.Int(1000),
+//						Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//							Expr: &compute.RegionSecurityPolicyRuleMatchExprArgs{
+//								Expression: pulumi.String("request.body.contains('my-match-string')"),
+//							},
+//						},
+//						Description: pulumi.String("Deny requests containing specific body string"),
+//					},
+//					&compute.RegionSecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("allow"),
+//						Priority: pulumi.Int(2147483647),
+//						Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//							Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("*"),
+//								},
+//							},
+//						},
+//						Description: pulumi.String("default rule"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

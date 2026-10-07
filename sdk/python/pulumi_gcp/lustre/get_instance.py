@@ -27,10 +27,13 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, deletion_policy=None, description=None, dynamic_tier_options=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, uid=None, upcoming_maintenance_schedules=None, update_time=None, zone=None):
+    def __init__(__self__, access_rules_options=None, available_version=None, capacity_gib=None, create_time=None, deletion_policy=None, description=None, dynamic_tier_options=None, effective_labels=None, effective_version=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, target_version=None, uid=None, upcoming_maintenance_schedules=None, update_time=None, zone=None):
         if access_rules_options and not isinstance(access_rules_options, list):
             raise TypeError("Expected argument 'access_rules_options' to be a list")
         pulumi.set(__self__, "access_rules_options", access_rules_options)
+        if available_version and not isinstance(available_version, str):
+            raise TypeError("Expected argument 'available_version' to be a str")
+        pulumi.set(__self__, "available_version", available_version)
         if capacity_gib and not isinstance(capacity_gib, str):
             raise TypeError("Expected argument 'capacity_gib' to be a str")
         pulumi.set(__self__, "capacity_gib", capacity_gib)
@@ -49,6 +52,9 @@ class GetInstanceResult:
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_version and not isinstance(effective_version, str):
+            raise TypeError("Expected argument 'effective_version' to be a str")
+        pulumi.set(__self__, "effective_version", effective_version)
         if filesystem and not isinstance(filesystem, str):
             raise TypeError("Expected argument 'filesystem' to be a str")
         pulumi.set(__self__, "filesystem", filesystem)
@@ -100,6 +106,9 @@ class GetInstanceResult:
         if state_reason and not isinstance(state_reason, str):
             raise TypeError("Expected argument 'state_reason' to be a str")
         pulumi.set(__self__, "state_reason", state_reason)
+        if target_version and not isinstance(target_version, str):
+            raise TypeError("Expected argument 'target_version' to be a str")
+        pulumi.set(__self__, "target_version", target_version)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -117,6 +126,11 @@ class GetInstanceResult:
     @pulumi.getter(name="accessRulesOptions")
     def access_rules_options(self) -> Sequence['outputs.GetInstanceAccessRulesOptionResult']:
         return pulumi.get(self, "access_rules_options")
+
+    @_builtins.property
+    @pulumi.getter(name="availableVersion")
+    def available_version(self) -> _builtins.str:
+        return pulumi.get(self, "available_version")
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
@@ -147,6 +161,11 @@ class GetInstanceResult:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveVersion")
+    def effective_version(self) -> _builtins.str:
+        return pulumi.get(self, "effective_version")
 
     @_builtins.property
     @pulumi.getter
@@ -237,6 +256,11 @@ class GetInstanceResult:
         return pulumi.get(self, "state_reason")
 
     @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> _builtins.str:
+        return pulumi.get(self, "target_version")
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> _builtins.str:
         return pulumi.get(self, "uid")
@@ -264,12 +288,14 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             access_rules_options=self.access_rules_options,
+            available_version=self.available_version,
             capacity_gib=self.capacity_gib,
             create_time=self.create_time,
             deletion_policy=self.deletion_policy,
             description=self.description,
             dynamic_tier_options=self.dynamic_tier_options,
             effective_labels=self.effective_labels,
+            effective_version=self.effective_version,
             filesystem=self.filesystem,
             gke_support_enabled=self.gke_support_enabled,
             id=self.id,
@@ -287,6 +313,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             pulumi_labels=self.pulumi_labels,
             state=self.state,
             state_reason=self.state_reason,
+            target_version=self.target_version,
             uid=self.uid,
             upcoming_maintenance_schedules=self.upcoming_maintenance_schedules,
             update_time=self.update_time,
@@ -316,12 +343,14 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
 
     return AwaitableGetInstanceResult(
         access_rules_options=pulumi.get(__ret__, 'access_rules_options'),
+        available_version=pulumi.get(__ret__, 'available_version'),
         capacity_gib=pulumi.get(__ret__, 'capacity_gib'),
         create_time=pulumi.get(__ret__, 'create_time'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         dynamic_tier_options=pulumi.get(__ret__, 'dynamic_tier_options'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
+        effective_version=pulumi.get(__ret__, 'effective_version'),
         filesystem=pulumi.get(__ret__, 'filesystem'),
         gke_support_enabled=pulumi.get(__ret__, 'gke_support_enabled'),
         id=pulumi.get(__ret__, 'id'),
@@ -339,6 +368,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         state=pulumi.get(__ret__, 'state'),
         state_reason=pulumi.get(__ret__, 'state_reason'),
+        target_version=pulumi.get(__ret__, 'target_version'),
         uid=pulumi.get(__ret__, 'uid'),
         upcoming_maintenance_schedules=pulumi.get(__ret__, 'upcoming_maintenance_schedules'),
         update_time=pulumi.get(__ret__, 'update_time'),
@@ -365,12 +395,14 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
     __ret__ = pulumi.runtime.invoke_output('gcp:lustre/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         access_rules_options=pulumi.get(__response__, 'access_rules_options'),
+        available_version=pulumi.get(__response__, 'available_version'),
         capacity_gib=pulumi.get(__response__, 'capacity_gib'),
         create_time=pulumi.get(__response__, 'create_time'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         dynamic_tier_options=pulumi.get(__response__, 'dynamic_tier_options'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
+        effective_version=pulumi.get(__response__, 'effective_version'),
         filesystem=pulumi.get(__response__, 'filesystem'),
         gke_support_enabled=pulumi.get(__response__, 'gke_support_enabled'),
         id=pulumi.get(__response__, 'id'),
@@ -388,6 +420,7 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         state=pulumi.get(__response__, 'state'),
         state_reason=pulumi.get(__response__, 'state_reason'),
+        target_version=pulumi.get(__response__, 'target_version'),
         uid=pulumi.get(__response__, 'uid'),
         upcoming_maintenance_schedules=pulumi.get(__response__, 'upcoming_maintenance_schedules'),
         update_time=pulumi.get(__response__, 'update_time'),

@@ -29,6 +29,7 @@ class PrivateConnectionArgs:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_interface_config: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']] = None,
+                 reserved_public_ip_config: pulumi.Input[Optional['PrivateConnectionReservedPublicIpConfigArgs']] = None,
                  vpc_peering_config: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         The set of arguments for constructing a PrivateConnection resource.
@@ -51,6 +52,8 @@ class PrivateConnectionArgs:
         :param pulumi.Input['PrivateConnectionPscInterfaceConfigArgs'] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
                between DMS's internal VPC and the consumer's PSC.
                Structure is documented below.
+        :param pulumi.Input['PrivateConnectionReservedPublicIpConfigArgs'] reserved_public_ip_config: The Reserved Public IP configuration.
+               Structure is documented below.
         :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
                Structure is documented below.
@@ -69,6 +72,8 @@ class PrivateConnectionArgs:
             pulumi.set(__self__, "project", project)
         if psc_interface_config is not None:
             pulumi.set(__self__, "psc_interface_config", psc_interface_config)
+        if reserved_public_ip_config is not None:
+            pulumi.set(__self__, "reserved_public_ip_config", reserved_public_ip_config)
         if vpc_peering_config is not None:
             pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
 
@@ -179,6 +184,19 @@ class PrivateConnectionArgs:
         pulumi.set(self, "psc_interface_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="reservedPublicIpConfig")
+    def reserved_public_ip_config(self) -> pulumi.Input[Optional['PrivateConnectionReservedPublicIpConfigArgs']]:
+        """
+        The Reserved Public IP configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reserved_public_ip_config")
+
+    @reserved_public_ip_config.setter
+    def reserved_public_ip_config(self, value: pulumi.Input[Optional['PrivateConnectionReservedPublicIpConfigArgs']]):
+        pulumi.set(self, "reserved_public_ip_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcPeeringConfig")
     def vpc_peering_config(self) -> pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]:
         """
@@ -208,6 +226,7 @@ class _PrivateConnectionState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_interface_config: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reserved_public_ip_config: pulumi.Input[Optional['PrivateConnectionReservedPublicIpConfigArgs']] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_peering_config: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
@@ -237,6 +256,8 @@ class _PrivateConnectionState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input['PrivateConnectionReservedPublicIpConfigArgs'] reserved_public_ip_config: The Reserved Public IP configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
         :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
@@ -266,6 +287,8 @@ class _PrivateConnectionState:
             pulumi.set(__self__, "psc_interface_config", psc_interface_config)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if reserved_public_ip_config is not None:
+            pulumi.set(__self__, "reserved_public_ip_config", reserved_public_ip_config)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if vpc_peering_config is not None:
@@ -428,6 +451,19 @@ class _PrivateConnectionState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="reservedPublicIpConfig")
+    def reserved_public_ip_config(self) -> pulumi.Input[Optional['PrivateConnectionReservedPublicIpConfigArgs']]:
+        """
+        The Reserved Public IP configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reserved_public_ip_config")
+
+    @reserved_public_ip_config.setter
+    def reserved_public_ip_config(self, value: pulumi.Input[Optional['PrivateConnectionReservedPublicIpConfigArgs']]):
+        pulumi.set(self, "reserved_public_ip_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -468,6 +504,7 @@ class PrivateConnection(pulumi.CustomResource):
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']]] = None,
+                 reserved_public_ip_config: pulumi.Input[Optional[Union['PrivateConnectionReservedPublicIpConfigArgs', 'PrivateConnectionReservedPublicIpConfigArgsDict', 'outputs.PrivateConnectionReservedPublicIpConfig']]] = None,
                  vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']]] = None,
                  __props__=None):
         """
@@ -534,6 +571,24 @@ class PrivateConnection(pulumi.CustomResource):
             region="us-west1",
             network=default_network.id)
         ```
+        ### Database Migration Service Private Connection Reserved Public Ip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.databasemigrationservice.PrivateConnection("default",
+            display_name="dbms_pc",
+            location="us-west1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            reserved_public_ip_config={
+                "nat_ips_count": 1,
+            },
+            create_without_validation=False)
+        ```
 
         ## Import
 
@@ -571,6 +626,8 @@ class PrivateConnection(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
                between DMS's internal VPC and the consumer's PSC.
+               Structure is documented below.
+        :param pulumi.Input[Union['PrivateConnectionReservedPublicIpConfigArgs', 'PrivateConnectionReservedPublicIpConfigArgsDict', 'outputs.PrivateConnectionReservedPublicIpConfig']] reserved_public_ip_config: The Reserved Public IP configuration.
                Structure is documented below.
         :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
@@ -646,6 +703,24 @@ class PrivateConnection(pulumi.CustomResource):
             region="us-west1",
             network=default_network.id)
         ```
+        ### Database Migration Service Private Connection Reserved Public Ip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.databasemigrationservice.PrivateConnection("default",
+            display_name="dbms_pc",
+            location="us-west1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            reserved_public_ip_config={
+                "nat_ips_count": 1,
+            },
+            create_without_validation=False)
+        ```
 
         ## Import
 
@@ -687,6 +762,7 @@ class PrivateConnection(pulumi.CustomResource):
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']]] = None,
+                 reserved_public_ip_config: pulumi.Input[Optional[Union['PrivateConnectionReservedPublicIpConfigArgs', 'PrivateConnectionReservedPublicIpConfigArgsDict', 'outputs.PrivateConnectionReservedPublicIpConfig']]] = None,
                  vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -709,6 +785,7 @@ class PrivateConnection(pulumi.CustomResource):
             __props__.__dict__["private_connection_id"] = private_connection_id
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_interface_config"] = psc_interface_config
+            __props__.__dict__["reserved_public_ip_config"] = reserved_public_ip_config
             __props__.__dict__["vpc_peering_config"] = vpc_peering_config
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["errors"] = None
@@ -739,6 +816,7 @@ class PrivateConnection(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict', 'outputs.PrivateConnectionPscInterfaceConfig']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reserved_public_ip_config: pulumi.Input[Optional[Union['PrivateConnectionReservedPublicIpConfigArgs', 'PrivateConnectionReservedPublicIpConfigArgsDict', 'outputs.PrivateConnectionReservedPublicIpConfig']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']]] = None) -> 'PrivateConnection':
         """
@@ -772,6 +850,8 @@ class PrivateConnection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param pulumi.Input[Union['PrivateConnectionReservedPublicIpConfigArgs', 'PrivateConnectionReservedPublicIpConfigArgsDict', 'outputs.PrivateConnectionReservedPublicIpConfig']] reserved_public_ip_config: The Reserved Public IP configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
         :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict', 'outputs.PrivateConnectionVpcPeeringConfig']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
@@ -793,6 +873,7 @@ class PrivateConnection(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_interface_config"] = psc_interface_config
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["reserved_public_ip_config"] = reserved_public_ip_config
         __props__.__dict__["state"] = state
         __props__.__dict__["vpc_peering_config"] = vpc_peering_config
         return PrivateConnection(resource_name, opts=opts, __props__=__props__)
@@ -904,6 +985,15 @@ class PrivateConnection(pulumi.CustomResource):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="reservedPublicIpConfig")
+    def reserved_public_ip_config(self) -> pulumi.Output[Optional['outputs.PrivateConnectionReservedPublicIpConfig']]:
+        """
+        The Reserved Public IP configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reserved_public_ip_config")
 
     @_builtins.property
     @pulumi.getter

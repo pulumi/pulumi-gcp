@@ -17,14 +17,18 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
     public static final InstanceMachineConfigArgs Empty = new InstanceMachineConfigArgs();
 
     /**
-     * The number of CPU&#39;s in the VM instance.
+     * The number of CPUs in the VM instance. For read pool instances, this
+     * value is applied to the instances in the pool and is not replaced by
+     * a fixed default.
      * 
      */
     @Import(name="cpuCount")
     private @Nullable Output<Integer> cpuCount;
 
     /**
-     * @return The number of CPU&#39;s in the VM instance.
+     * @return The number of CPUs in the VM instance. For read pool instances, this
+     * value is applied to the instances in the pool and is not replaced by
+     * a fixed default.
      * 
      */
     public Optional<Output<Integer>> cpuCount() {
@@ -76,7 +80,9 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param cpuCount The number of CPU&#39;s in the VM instance.
+         * @param cpuCount The number of CPUs in the VM instance. For read pool instances, this
+         * value is applied to the instances in the pool and is not replaced by
+         * a fixed default.
          * 
          * @return builder
          * 
@@ -87,7 +93,9 @@ public final class InstanceMachineConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param cpuCount The number of CPU&#39;s in the VM instance.
+         * @param cpuCount The number of CPUs in the VM instance. For read pool instances, this
+         * value is applied to the instances in the pool and is not replaced by
+         * a fixed default.
          * 
          * @return builder
          * 

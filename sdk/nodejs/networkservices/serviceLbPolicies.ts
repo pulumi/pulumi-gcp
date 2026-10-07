@@ -91,6 +91,36 @@ import * as utilities from "../utilities";
  *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
  * });
  * ```
+ * ### Network Services Service Lb Policies Regional
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networkservices.ServiceLbPolicies("default", {
+ *     name: "my-regional-lb-policy",
+ *     location: "us-central1",
+ *     description: "my regional service lb policy",
+ *     loadBalancingAlgorithm: "SPRAY_TO_REGION",
+ *     autoCapacityDrain: {
+ *         enable: true,
+ *     },
+ *     failoverConfig: {
+ *         failoverHealthThreshold: 70,
+ *     },
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "my-regional-lb-backend",
+ *     region: "us-central1",
+ *     description: "my regional backend service",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     protocol: "HTTP",
+ *     serviceLbPolicy: pulumi.interpolate`//networkservices.googleapis.com/${_default.id}`,
+ * });
+ * ```
  *
  * ## Import
  *

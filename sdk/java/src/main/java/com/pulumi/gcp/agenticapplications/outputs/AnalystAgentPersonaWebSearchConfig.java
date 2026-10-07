@@ -4,13 +4,21 @@
 package com.pulumi.gcp.agenticapplications.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class AnalystAgentPersonaWebSearchConfig {
+    /**
+     * @return Whether web search grounding is disabled for the analyst agent.
+     * Defaults to false if not specified (i.e. web search grounding is enabled).
+     * 
+     */
+    private @Nullable Boolean disabled;
     /**
      * @return List of domains to be excluded from Google Search / Enterprise Web Search
      * grounding.
@@ -19,6 +27,14 @@ public final class AnalystAgentPersonaWebSearchConfig {
     private @Nullable List<String> excludedDomains;
 
     private AnalystAgentPersonaWebSearchConfig() {}
+    /**
+     * @return Whether web search grounding is disabled for the analyst agent.
+     * Defaults to false if not specified (i.e. web search grounding is enabled).
+     * 
+     */
+    public Optional<Boolean> disabled() {
+        return Optional.ofNullable(this.disabled);
+    }
     /**
      * @return List of domains to be excluded from Google Search / Enterprise Web Search
      * grounding.
@@ -37,13 +53,21 @@ public final class AnalystAgentPersonaWebSearchConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean disabled;
         private @Nullable List<String> excludedDomains;
         public Builder() {}
         public Builder(AnalystAgentPersonaWebSearchConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disabled = defaults.disabled;
     	      this.excludedDomains = defaults.excludedDomains;
         }
 
+        @CustomType.Setter
+        public Builder disabled(@Nullable Boolean disabled) {
+
+            this.disabled = disabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder excludedDomains(@Nullable List<String> excludedDomains) {
 
@@ -55,6 +79,7 @@ public final class AnalystAgentPersonaWebSearchConfig {
         }
         public AnalystAgentPersonaWebSearchConfig build() {
             final var _resultValue = new AnalystAgentPersonaWebSearchConfig();
+            _resultValue.disabled = disabled;
             _resultValue.excludedDomains = excludedDomains;
             return _resultValue;
         }

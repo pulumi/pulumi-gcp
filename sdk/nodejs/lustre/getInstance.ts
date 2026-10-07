@@ -43,12 +43,14 @@ export interface GetInstanceArgs {
  */
 export interface GetInstanceResult {
     readonly accessRulesOptions: outputs.lustre.GetInstanceAccessRulesOption[];
+    readonly availableVersion: string;
     readonly capacityGib: string;
     readonly createTime: string;
     readonly deletionPolicy: string;
     readonly description: string;
     readonly dynamicTierOptions: outputs.lustre.GetInstanceDynamicTierOption[];
     readonly effectiveLabels: {[key: string]: string};
+    readonly effectiveVersion: string;
     readonly filesystem: string;
     readonly gkeSupportEnabled: boolean;
     /**
@@ -69,6 +71,7 @@ export interface GetInstanceResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly state: string;
     readonly stateReason: string;
+    readonly targetVersion: string;
     readonly uid: string;
     readonly upcomingMaintenanceSchedules: outputs.lustre.GetInstanceUpcomingMaintenanceSchedule[];
     readonly updateTime: string;

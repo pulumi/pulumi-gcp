@@ -33,6 +33,12 @@ public final class UllMirroringCollectorRuleMatch {
      */
     private @Nullable List<String> ipProtocols;
     /**
+     * @return Primary IP ranges to match (for the capture point).
+     * When unset, matches any primary IP.
+     * 
+     */
+    private @Nullable List<String> primaryIpRanges;
+    /**
      * @return Source IP ranges to match. When unset, matches any source IP range.
      * 
      */
@@ -66,6 +72,14 @@ public final class UllMirroringCollectorRuleMatch {
         return this.ipProtocols == null ? List.of() : this.ipProtocols;
     }
     /**
+     * @return Primary IP ranges to match (for the capture point).
+     * When unset, matches any primary IP.
+     * 
+     */
+    public List<String> primaryIpRanges() {
+        return this.primaryIpRanges == null ? List.of() : this.primaryIpRanges;
+    }
+    /**
      * @return Source IP ranges to match. When unset, matches any source IP range.
      * 
      */
@@ -85,6 +99,7 @@ public final class UllMirroringCollectorRuleMatch {
         private @Nullable String direction;
         private @Nullable List<String> dstIpRanges;
         private @Nullable List<String> ipProtocols;
+        private @Nullable List<String> primaryIpRanges;
         private @Nullable List<String> srcIpRanges;
         public Builder() {}
         public Builder(UllMirroringCollectorRuleMatch defaults) {
@@ -92,6 +107,7 @@ public final class UllMirroringCollectorRuleMatch {
     	      this.direction = defaults.direction;
     	      this.dstIpRanges = defaults.dstIpRanges;
     	      this.ipProtocols = defaults.ipProtocols;
+    	      this.primaryIpRanges = defaults.primaryIpRanges;
     	      this.srcIpRanges = defaults.srcIpRanges;
         }
 
@@ -120,6 +136,15 @@ public final class UllMirroringCollectorRuleMatch {
             return ipProtocols(List.of(ipProtocols));
         }
         @CustomType.Setter
+        public Builder primaryIpRanges(@Nullable List<String> primaryIpRanges) {
+
+            this.primaryIpRanges = primaryIpRanges;
+            return this;
+        }
+        public Builder primaryIpRanges(String... primaryIpRanges) {
+            return primaryIpRanges(List.of(primaryIpRanges));
+        }
+        @CustomType.Setter
         public Builder srcIpRanges(@Nullable List<String> srcIpRanges) {
 
             this.srcIpRanges = srcIpRanges;
@@ -133,6 +158,7 @@ public final class UllMirroringCollectorRuleMatch {
             _resultValue.direction = direction;
             _resultValue.dstIpRanges = dstIpRanges;
             _resultValue.ipProtocols = ipProtocols;
+            _resultValue.primaryIpRanges = primaryIpRanges;
             _resultValue.srcIpRanges = srcIpRanges;
             return _resultValue;
         }

@@ -246,6 +246,21 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The emails of the procurement contacts.
+     * 
+     */
+    @Import(name="procurementContactEmails")
+    private @Nullable Output<List<String>> procurementContactEmails;
+
+    /**
+     * @return The emails of the procurement contacts.
+     * 
+     */
+    public Optional<Output<List<String>>> procurementContactEmails() {
+        return Optional.ofNullable(this.procurementContactEmails);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -295,6 +310,7 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsKeyName = $.kmsKeyName;
         this.knowledgeGraphConfig = $.knowledgeGraphConfig;
         this.location = $.location;
+        this.procurementContactEmails = $.procurementContactEmails;
         this.project = $.project;
         this.searchEngineConfig = $.searchEngineConfig;
     }
@@ -626,6 +642,37 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param procurementContactEmails The emails of the procurement contacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder procurementContactEmails(@Nullable Output<List<String>> procurementContactEmails) {
+            $.procurementContactEmails = procurementContactEmails;
+            return this;
+        }
+
+        /**
+         * @param procurementContactEmails The emails of the procurement contacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder procurementContactEmails(List<String> procurementContactEmails) {
+            return procurementContactEmails(Output.of(procurementContactEmails));
+        }
+
+        /**
+         * @param procurementContactEmails The emails of the procurement contacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder procurementContactEmails(String... procurementContactEmails) {
+            return procurementContactEmails(List.of(procurementContactEmails));
         }
 
         /**

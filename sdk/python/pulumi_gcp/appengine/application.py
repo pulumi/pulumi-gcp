@@ -458,6 +458,9 @@ class Application(pulumi.CustomResource):
            successfully deleted; this is a limitation of the provider, and will go away in the future.
            This provider is not able to delete App Engine applications.
 
+        > **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ```python
@@ -518,6 +521,9 @@ class Application(pulumi.CustomResource):
            entire project to delete the application. This provider will report the application has been
            successfully deleted; this is a limitation of the provider, and will go away in the future.
            This provider is not able to delete App Engine applications.
+
+        > **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -744,7 +750,7 @@ class Application(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def iap(self) -> pulumi.Output['outputs.ApplicationIap']:
+    def iap(self) -> pulumi.Output[Optional['outputs.ApplicationIap']]:
         """
         Settings for enabling Cloud Identity Aware Proxy
         """

@@ -51,54 +51,13 @@ namespace Pulumi.Gcp.Compute
     ///         TimeoutSec = 10,
     ///         Region = "us-central1",
     ///         HealthChecks = defaultRegionHealthCheck.Id,
-    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
-    ///     {
-    ///         Name = "test-proxy",
-    ///         Region = "us-central1",
-    ///         BackendService = defaultRegionBackendService.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Region Target Tcp Proxy Basic Beta
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
-    ///     {
-    ///         Name = "health-check",
-    ///         Region = "europe-west4",
-    ///         TimeoutSec = 1,
-    ///         CheckIntervalSec = 1,
-    ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
-    ///         {
-    ///             Port = 80,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
-    ///     {
-    ///         Name = "backend-service",
-    ///         Protocol = "TCP",
-    ///         TimeoutSec = 10,
-    ///         Region = "europe-west4",
-    ///         HealthChecks = defaultRegionHealthCheck.Id,
     ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
     ///     {
     ///         Name = "test-proxy",
-    ///         Region = "europe-west4",
+    ///         Region = "us-central1",
     ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
     ///         BackendService = defaultRegionBackendService.Id,
     ///     });
@@ -225,7 +184,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource. This field is optional when
-        /// the loadBalancingScheme (available in beta) is specified.
+        /// the loadBalancingScheme is specified.
         /// </summary>
         [Output("backendService")]
         public Output<string?> BackendService { get; private set; } = null!;
@@ -254,7 +213,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the load balancer type. A target TCP proxy created for one type
         /// of load balancer cannot be used with another. For more information, refer
         /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -365,7 +323,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource. This field is optional when
-        /// the loadBalancingScheme (available in beta) is specified.
+        /// the loadBalancingScheme is specified.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
@@ -388,7 +346,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the load balancer type. A target TCP proxy created for one type
         /// of load balancer cannot be used with another. For more information, refer
         /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -449,7 +406,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource. This field is optional when
-        /// the loadBalancingScheme (available in beta) is specified.
+        /// the loadBalancingScheme is specified.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
@@ -478,7 +435,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the load balancer type. A target TCP proxy created for one type
         /// of load balancer cannot be used with another. For more information, refer
         /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).

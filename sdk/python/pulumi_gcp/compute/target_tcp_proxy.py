@@ -31,7 +31,7 @@ class TargetTCPProxyArgs:
         The set of arguments for constructing a TargetTCPProxy resource.
 
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
-               the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+               the loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -39,8 +39,7 @@ class TargetTCPProxyArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
-               Specifies the load balancer type. A target TCP proxy created for one type
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the load balancer type. A target TCP proxy created for one type
                of load balancer cannot be used with another. For more information, refer
                to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -82,7 +81,7 @@ class TargetTCPProxyArgs:
     def backend_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the BackendService resource. This field is optional when
-        the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+        the loadBalancingScheme is set to INTERNAL_MANAGED.
         """
         return pulumi.get(self, "backend_service")
 
@@ -123,7 +122,6 @@ class TargetTCPProxyArgs:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         Specifies the load balancer type. A target TCP proxy created for one type
         of load balancer cannot be used with another. For more information, refer
         to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -213,7 +211,7 @@ class _TargetTCPProxyState:
         Input properties used for looking up and filtering TargetTCPProxy resources.
 
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
-               the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+               the loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -222,8 +220,7 @@ class _TargetTCPProxyState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
-               Specifies the load balancer type. A target TCP proxy created for one type
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the load balancer type. A target TCP proxy created for one type
                of load balancer cannot be used with another. For more information, refer
                to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -273,7 +270,7 @@ class _TargetTCPProxyState:
     def backend_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the BackendService resource. This field is optional when
-        the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+        the loadBalancingScheme is set to INTERNAL_MANAGED.
         """
         return pulumi.get(self, "backend_service")
 
@@ -326,7 +323,6 @@ class _TargetTCPProxyState:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         Specifies the load balancer type. A target TCP proxy created for one type
         of load balancer cannot be used with another. For more information, refer
         to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -465,28 +461,6 @@ class TargetTCPProxy(pulumi.CustomResource):
             })
         default_backend_service = gcp.compute.BackendService("default",
             name="backend-service",
-            protocol="TCP",
-            timeout_sec=10,
-            health_checks=default_health_check.id)
-        default = gcp.compute.TargetTCPProxy("default",
-            name="test-proxy",
-            backend_service=default_backend_service.id)
-        ```
-        ### Target Tcp Proxy Basic Beta
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_health_check = gcp.compute.HealthCheck("default",
-            name="health-check",
-            timeout_sec=1,
-            check_interval_sec=1,
-            tcp_health_check={
-                "port": 443,
-            })
-        default_backend_service = gcp.compute.BackendService("default",
-            name="backend-service",
             load_balancing_scheme="EXTERNAL_MANAGED",
             protocol="TCP",
             timeout_sec=10,
@@ -560,7 +534,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
-               the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+               the loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -568,8 +542,7 @@ class TargetTCPProxy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
-               Specifies the load balancer type. A target TCP proxy created for one type
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the load balancer type. A target TCP proxy created for one type
                of load balancer cannot be used with another. For more information, refer
                to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -609,28 +582,6 @@ class TargetTCPProxy(pulumi.CustomResource):
         ## Example Usage
 
         ### Target Tcp Proxy Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_health_check = gcp.compute.HealthCheck("default",
-            name="health-check",
-            timeout_sec=1,
-            check_interval_sec=1,
-            tcp_health_check={
-                "port": 443,
-            })
-        default_backend_service = gcp.compute.BackendService("default",
-            name="backend-service",
-            protocol="TCP",
-            timeout_sec=10,
-            health_checks=default_health_check.id)
-        default = gcp.compute.TargetTCPProxy("default",
-            name="test-proxy",
-            backend_service=default_backend_service.id)
-        ```
-        ### Target Tcp Proxy Basic Beta
 
         ```python
         import pulumi
@@ -787,7 +738,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backend_service: A reference to the BackendService resource. This field is optional when
-               the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+               the loadBalancingScheme is set to INTERNAL_MANAGED.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -796,8 +747,7 @@ class TargetTCPProxy(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] load_balancing_scheme: (Optional, Beta)
-               Specifies the load balancer type. A target TCP proxy created for one type
+        :param pulumi.Input[_builtins.str] load_balancing_scheme: Specifies the load balancer type. A target TCP proxy created for one type
                of load balancer cannot be used with another. For more information, refer
                to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
                Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -841,7 +791,7 @@ class TargetTCPProxy(pulumi.CustomResource):
     def backend_service(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A reference to the BackendService resource. This field is optional when
-        the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+        the loadBalancingScheme is set to INTERNAL_MANAGED.
         """
         return pulumi.get(self, "backend_service")
 
@@ -878,7 +828,6 @@ class TargetTCPProxy(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         Specifies the load balancer type. A target TCP proxy created for one type
         of load balancer cannot be used with another. For more information, refer
         to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).

@@ -20,6 +20,9 @@ import (
 //	successfully deleted; this is a limitation of the provider, and will go away in the future.
 //	This provider is not able to delete App Engine applications.
 //
+// > **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ```go
@@ -92,7 +95,7 @@ type Application struct {
 	// The GCR domain used for storing managed Docker images for this app.
 	GcrDomain pulumi.StringOutput `pulumi:"gcrDomain"`
 	// Settings for enabling Cloud Identity Aware Proxy
-	Iap ApplicationIapOutput `pulumi:"iap"`
+	Iap ApplicationIapPtrOutput `pulumi:"iap"`
 	// The [location](https://cloud.google.com/appengine/docs/locations)
 	// to serve the app from.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
@@ -416,8 +419,8 @@ func (o ApplicationOutput) GcrDomain() pulumi.StringOutput {
 }
 
 // Settings for enabling Cloud Identity Aware Proxy
-func (o ApplicationOutput) Iap() ApplicationIapOutput {
-	return o.ApplyT(func(v *Application) ApplicationIapOutput { return v.Iap }).(ApplicationIapOutput)
+func (o ApplicationOutput) Iap() ApplicationIapPtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationIapPtrOutput { return v.Iap }).(ApplicationIapPtrOutput)
 }
 
 // The [location](https://cloud.google.com/appengine/docs/locations)

@@ -84,6 +84,20 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         [Input("dbServerVersion")]
         public Input<string>? DbServerVersion { get; set; }
 
+        [Input("exascaleConfigs")]
+        private InputList<Inputs.CloudExadataInfrastructurePropertiesExascaleConfigArgs>? _exascaleConfigs;
+
+        /// <summary>
+        /// (Output)
+        /// The Exascale configuration for the Exadata Infrastructure.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CloudExadataInfrastructurePropertiesExascaleConfigArgs> ExascaleConfigs
+        {
+            get => _exascaleConfigs ?? (_exascaleConfigs = new InputList<Inputs.CloudExadataInfrastructurePropertiesExascaleConfigArgs>());
+            set => _exascaleConfigs = value;
+        }
+
         /// <summary>
         /// Maintenance window as defined by Oracle.
         /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow

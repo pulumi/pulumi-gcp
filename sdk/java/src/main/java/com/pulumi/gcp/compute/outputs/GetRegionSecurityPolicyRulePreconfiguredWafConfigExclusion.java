@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody;
 import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky;
 import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader;
 import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam;
@@ -15,6 +16,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
+    /**
+     * @return A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+     * 
+     */
+    private List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies;
     /**
      * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
      * 
@@ -50,6 +56,13 @@ public final class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
     private String targetRuleSet;
 
     private GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion() {}
+    /**
+     * @return A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+     * 
+     */
+    public List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies() {
+        return this.requestBodies;
+    }
     /**
      * @return Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
      * 
@@ -105,6 +118,7 @@ public final class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies;
         private List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies;
         private List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> requestHeaders;
         private List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams;
@@ -114,6 +128,7 @@ public final class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         public Builder() {}
         public Builder(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.requestBodies = defaults.requestBodies;
     	      this.requestCookies = defaults.requestCookies;
     	      this.requestHeaders = defaults.requestHeaders;
     	      this.requestQueryParams = defaults.requestQueryParams;
@@ -122,6 +137,17 @@ public final class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
     	      this.targetRuleSet = defaults.targetRuleSet;
         }
 
+        @CustomType.Setter
+        public Builder requestBodies(List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> requestBodies) {
+            if (requestBodies == null) {
+              throw new MissingRequiredPropertyException("GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion", "requestBodies");
+            }
+            this.requestBodies = requestBodies;
+            return this;
+        }
+        public Builder requestBodies(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody... requestBodies) {
+            return requestBodies(List.of(requestBodies));
+        }
         @CustomType.Setter
         public Builder requestCookies(List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies) {
             if (requestCookies == null) {
@@ -187,6 +213,7 @@ public final class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         public GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion build() {
             final var _resultValue = new GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion();
+            _resultValue.requestBodies = requestBodies;
             _resultValue.requestCookies = requestCookies;
             _resultValue.requestHeaders = requestHeaders;
             _resultValue.requestQueryParams = requestQueryParams;

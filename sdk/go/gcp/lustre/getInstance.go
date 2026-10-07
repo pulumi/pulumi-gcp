@@ -37,12 +37,14 @@ type LookupInstanceArgs struct {
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
 	AccessRulesOptions []GetInstanceAccessRulesOption `pulumi:"accessRulesOptions"`
+	AvailableVersion   string                         `pulumi:"availableVersion"`
 	CapacityGib        string                         `pulumi:"capacityGib"`
 	CreateTime         string                         `pulumi:"createTime"`
 	DeletionPolicy     string                         `pulumi:"deletionPolicy"`
 	Description        string                         `pulumi:"description"`
 	DynamicTierOptions []GetInstanceDynamicTierOption `pulumi:"dynamicTierOptions"`
 	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
+	EffectiveVersion   string                         `pulumi:"effectiveVersion"`
 	Filesystem         string                         `pulumi:"filesystem"`
 	GkeSupportEnabled  bool                           `pulumi:"gkeSupportEnabled"`
 	// The provider-assigned unique ID for this managed resource.
@@ -61,6 +63,7 @@ type LookupInstanceResult struct {
 	PulumiLabels                 map[string]string                        `pulumi:"pulumiLabels"`
 	State                        string                                   `pulumi:"state"`
 	StateReason                  string                                   `pulumi:"stateReason"`
+	TargetVersion                string                                   `pulumi:"targetVersion"`
 	Uid                          string                                   `pulumi:"uid"`
 	UpcomingMaintenanceSchedules []GetInstanceUpcomingMaintenanceSchedule `pulumi:"upcomingMaintenanceSchedules"`
 	UpdateTime                   string                                   `pulumi:"updateTime"`
@@ -105,6 +108,10 @@ func (o LookupInstanceResultOutput) AccessRulesOptions() GetInstanceAccessRulesO
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAccessRulesOption { return v.AccessRulesOptions }).(GetInstanceAccessRulesOptionArrayOutput)
 }
 
+func (o LookupInstanceResultOutput) AvailableVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.AvailableVersion }).(pulumi.StringOutput)
+}
+
 func (o LookupInstanceResultOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CapacityGib }).(pulumi.StringOutput)
 }
@@ -127,6 +134,10 @@ func (o LookupInstanceResultOutput) DynamicTierOptions() GetInstanceDynamicTierO
 
 func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) EffectiveVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.EffectiveVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Filesystem() pulumi.StringOutput {
@@ -196,6 +207,10 @@ func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.StateReason }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) TargetVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.TargetVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Uid() pulumi.StringOutput {

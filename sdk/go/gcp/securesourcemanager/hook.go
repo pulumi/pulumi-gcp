@@ -73,6 +73,9 @@ type Hook struct {
 	// The sensitive query string to be appended to the target URI.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SensitiveQueryString pulumi.StringPtrOutput `pulumi:"sensitiveQueryString"`
+	// Determines if the hook uses the Repository Service Account to
+	// generate an OIDC ID Token for webhook authentication.
+	ServiceAccountAuth pulumi.BoolPtrOutput `pulumi:"serviceAccountAuth"`
 	// The target URI to which the payloads will be delivered.
 	TargetUri pulumi.StringOutput `pulumi:"targetUri"`
 	// Unique identifier of the hook.
@@ -163,6 +166,9 @@ type hookState struct {
 	// The sensitive query string to be appended to the target URI.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SensitiveQueryString *string `pulumi:"sensitiveQueryString"`
+	// Determines if the hook uses the Repository Service Account to
+	// generate an OIDC ID Token for webhook authentication.
+	ServiceAccountAuth *bool `pulumi:"serviceAccountAuth"`
 	// The target URI to which the payloads will be delivered.
 	TargetUri *string `pulumi:"targetUri"`
 	// Unique identifier of the hook.
@@ -205,6 +211,9 @@ type HookState struct {
 	// The sensitive query string to be appended to the target URI.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SensitiveQueryString pulumi.StringPtrInput
+	// Determines if the hook uses the Repository Service Account to
+	// generate an OIDC ID Token for webhook authentication.
+	ServiceAccountAuth pulumi.BoolPtrInput
 	// The target URI to which the payloads will be delivered.
 	TargetUri pulumi.StringPtrInput
 	// Unique identifier of the hook.
@@ -246,6 +255,9 @@ type hookArgs struct {
 	// The sensitive query string to be appended to the target URI.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SensitiveQueryString *string `pulumi:"sensitiveQueryString"`
+	// Determines if the hook uses the Repository Service Account to
+	// generate an OIDC ID Token for webhook authentication.
+	ServiceAccountAuth *bool `pulumi:"serviceAccountAuth"`
 	// The target URI to which the payloads will be delivered.
 	TargetUri string `pulumi:"targetUri"`
 }
@@ -280,6 +292,9 @@ type HookArgs struct {
 	// The sensitive query string to be appended to the target URI.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SensitiveQueryString pulumi.StringPtrInput
+	// Determines if the hook uses the Repository Service Account to
+	// generate an OIDC ID Token for webhook authentication.
+	ServiceAccountAuth pulumi.BoolPtrInput
 	// The target URI to which the payloads will be delivered.
 	TargetUri pulumi.StringInput
 }
@@ -435,6 +450,12 @@ func (o HookOutput) RepositoryId() pulumi.StringOutput {
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o HookOutput) SensitiveQueryString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Hook) pulumi.StringPtrOutput { return v.SensitiveQueryString }).(pulumi.StringPtrOutput)
+}
+
+// Determines if the hook uses the Repository Service Account to
+// generate an OIDC ID Token for webhook authentication.
+func (o HookOutput) ServiceAccountAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Hook) pulumi.BoolPtrOutput { return v.ServiceAccountAuth }).(pulumi.BoolPtrOutput)
 }
 
 // The target URI to which the payloads will be delivered.

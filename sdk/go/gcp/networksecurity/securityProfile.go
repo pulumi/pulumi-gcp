@@ -327,6 +327,102 @@ import (
 //	}
 //
 // ```
+// ### Network Security Security Profile Wildfire
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+//				Name:        pulumi.String("my-security-profile"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("my description"),
+//				Type:        pulumi.String("WILDFIRE_ANALYSIS"),
+//				WildfireAnalysisProfile: &networksecurity.SecurityProfileWildfireAnalysisProfileArgs{
+//					WildfireRealtimeLookup: pulumi.Bool(true),
+//					WildfireSubmissionRules: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray{
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{
+//							Direction:         pulumi.String("BOTH"),
+//							FileSelectionMode: pulumi.String("ALL_FILE_TYPES"),
+//						},
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{
+//							Direction:         pulumi.String("UPLOAD"),
+//							FileSelectionMode: pulumi.String("CUSTOM_FILE_TYPES"),
+//							CustomFileTypes: &networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs{
+//								FileTypes: pulumi.StringArray{
+//									pulumi.String("PDF"),
+//									pulumi.String("SCRIPT"),
+//								},
+//							},
+//						},
+//					},
+//					WildfireInlineCloudAnalysisRules: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArray{
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{
+//							Direction:         pulumi.String("BOTH"),
+//							Action:            pulumi.String("ALLOW"),
+//							FileSelectionMode: pulumi.String("ALL_FILE_TYPES"),
+//						},
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs{
+//							Direction:         pulumi.String("DOWNLOAD"),
+//							Action:            pulumi.String("DENY"),
+//							FileSelectionMode: pulumi.String("CUSTOM_FILE_TYPES"),
+//							CustomFileTypes: &networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs{
+//								FileTypes: pulumi.StringArray{
+//									pulumi.String("PE"),
+//								},
+//							},
+//						},
+//					},
+//					WildfireOverrides: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverrideArray{
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs{
+//							Protocol: pulumi.String("WILDFIRE_HTTP"),
+//							Action:   pulumi.String("WILDFIRE_DENY"),
+//						},
+//					},
+//					WildfireInlineMlOverrides: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArray{
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs{
+//							Protocol: pulumi.String("WILDFIRE_FTP"),
+//							Action:   pulumi.String("WILDFIRE_ALERT"),
+//						},
+//					},
+//					WildfireThreatOverrides: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArray{
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs{
+//							ThreatId: pulumi.String("12345"),
+//							Action:   pulumi.String("WILDFIRE_ALLOW"),
+//						},
+//					},
+//					WildfireInlineMlSetting: &networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs{
+//						InlineMlConfigs: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArray{
+//							&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs{
+//								FileType: pulumi.String("WINDOWS_EXECUTABLE"),
+//								Action:   pulumi.String("ENABLE"),
+//							},
+//						},
+//						FileExceptions: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArray{
+//							&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs{
+//								PartialHash: pulumi.String("12345abcdef"),
+//								Filename:    pulumi.String("virus.exe"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -388,14 +484,18 @@ type SecurityProfile struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrOutput `pulumi:"threatPreventionProfile"`
-	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time the security profile was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrOutput `pulumi:"urlFilteringProfile"`
+	// (Optional, Beta)
+	// The wildfire analysis configuration for the security profile.
+	// Structure is documented below.
+	WildfireAnalysisProfile SecurityProfileWildfireAnalysisProfilePtrOutput `pulumi:"wildfireAnalysisProfile"`
 }
 
 // NewSecurityProfile registers a new resource with the given unique name, arguments, and options.
@@ -482,14 +582,18 @@ type securityProfileState struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile *SecurityProfileThreatPreventionProfile `pulumi:"threatPreventionProfile"`
-	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type *string `pulumi:"type"`
 	// Time the security profile was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile *SecurityProfileUrlFilteringProfile `pulumi:"urlFilteringProfile"`
+	// (Optional, Beta)
+	// The wildfire analysis configuration for the security profile.
+	// Structure is documented below.
+	WildfireAnalysisProfile *SecurityProfileWildfireAnalysisProfile `pulumi:"wildfireAnalysisProfile"`
 }
 
 type SecurityProfileState struct {
@@ -539,14 +643,18 @@ type SecurityProfileState struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrInput
-	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type pulumi.StringPtrInput
 	// Time the security profile was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrInput
+	// (Optional, Beta)
+	// The wildfire analysis configuration for the security profile.
+	// Structure is documented below.
+	WildfireAnalysisProfile SecurityProfileWildfireAnalysisProfilePtrInput
 }
 
 func (SecurityProfileState) ElementType() reflect.Type {
@@ -587,12 +695,16 @@ type securityProfileArgs struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile *SecurityProfileThreatPreventionProfile `pulumi:"threatPreventionProfile"`
-	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type string `pulumi:"type"`
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile *SecurityProfileUrlFilteringProfile `pulumi:"urlFilteringProfile"`
+	// (Optional, Beta)
+	// The wildfire analysis configuration for the security profile.
+	// Structure is documented below.
+	WildfireAnalysisProfile *SecurityProfileWildfireAnalysisProfile `pulumi:"wildfireAnalysisProfile"`
 }
 
 // The set of arguments for constructing a SecurityProfile resource.
@@ -630,12 +742,16 @@ type SecurityProfileArgs struct {
 	// The threat prevention configuration for the security profile.
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrInput
-	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+	// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+	// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 	Type pulumi.StringInput
 	// The url filtering configuration for the security profile.
 	// Structure is documented below.
 	UrlFilteringProfile SecurityProfileUrlFilteringProfilePtrInput
+	// (Optional, Beta)
+	// The wildfire analysis configuration for the security profile.
+	// Structure is documented below.
+	WildfireAnalysisProfile SecurityProfileWildfireAnalysisProfilePtrInput
 }
 
 func (SecurityProfileArgs) ElementType() reflect.Type {
@@ -820,8 +936,8 @@ func (o SecurityProfileOutput) ThreatPreventionProfile() SecurityProfileThreatPr
 	}).(SecurityProfileThreatPreventionProfilePtrOutput)
 }
 
-// The type of security profile.
-// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
 func (o SecurityProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -835,6 +951,15 @@ func (o SecurityProfileOutput) UpdateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o SecurityProfileOutput) UrlFilteringProfile() SecurityProfileUrlFilteringProfilePtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) SecurityProfileUrlFilteringProfilePtrOutput { return v.UrlFilteringProfile }).(SecurityProfileUrlFilteringProfilePtrOutput)
+}
+
+// (Optional, Beta)
+// The wildfire analysis configuration for the security profile.
+// Structure is documented below.
+func (o SecurityProfileOutput) WildfireAnalysisProfile() SecurityProfileWildfireAnalysisProfilePtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) SecurityProfileWildfireAnalysisProfilePtrOutput {
+		return v.WildfireAnalysisProfile
+	}).(SecurityProfileWildfireAnalysisProfilePtrOutput)
 }
 
 type SecurityProfileArrayOutput struct{ *pulumi.OutputState }

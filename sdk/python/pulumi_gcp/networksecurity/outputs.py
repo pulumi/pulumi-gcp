@@ -103,6 +103,17 @@ __all__ = [
     'SecurityProfileThreatPreventionProfileThreatOverride',
     'SecurityProfileUrlFilteringProfile',
     'SecurityProfileUrlFilteringProfileUrlFilter',
+    'SecurityProfileWildfireAnalysisProfile',
+    'SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule',
+    'SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes',
+    'SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride',
+    'SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting',
+    'SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException',
+    'SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig',
+    'SecurityProfileWildfireAnalysisProfileWildfireOverride',
+    'SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule',
+    'SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes',
+    'SecurityProfileWildfireAnalysisProfileWildfireThreatOverride',
     'ServerTlsPolicyMtlsPolicy',
     'ServerTlsPolicyMtlsPolicyClientValidationCa',
     'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance',
@@ -4812,6 +4823,616 @@ class SecurityProfileUrlFilteringProfileUrlFilter(dict):
 
 
 @pulumi.output_type
+class SecurityProfileWildfireAnalysisProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "wildfireInlineCloudAnalysisRules":
+            suggest = "wildfire_inline_cloud_analysis_rules"
+        elif key == "wildfireInlineMlOverrides":
+            suggest = "wildfire_inline_ml_overrides"
+        elif key == "wildfireInlineMlSetting":
+            suggest = "wildfire_inline_ml_setting"
+        elif key == "wildfireOverrides":
+            suggest = "wildfire_overrides"
+        elif key == "wildfireRealtimeLookup":
+            suggest = "wildfire_realtime_lookup"
+        elif key == "wildfireSubmissionRules":
+            suggest = "wildfire_submission_rules"
+        elif key == "wildfireThreatOverrides":
+            suggest = "wildfire_threat_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 wildfire_inline_cloud_analysis_rules: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule']] = None,
+                 wildfire_inline_ml_overrides: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride']] = None,
+                 wildfire_inline_ml_setting: Optional['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting'] = None,
+                 wildfire_overrides: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireOverride']] = None,
+                 wildfire_realtime_lookup: Optional[_builtins.bool] = None,
+                 wildfire_submission_rules: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule']] = None,
+                 wildfire_threat_overrides: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireThreatOverride']] = None):
+        """
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs'] wildfire_inline_cloud_analysis_rules: The configuration for inline cloud analysis of files.
+               Structure is documented below.
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs'] wildfire_inline_ml_overrides: Defines what action to take for WildFire inline ML threats per protocol.
+               Structure is documented below.
+        :param 'SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs' wildfire_inline_ml_setting: WildFire inline Machine Learning setting for the Security Profile.
+               Structure is documented below.
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs'] wildfire_overrides: Defines what action to take for WildFire threats per protocol.
+               Structure is documented below.
+        :param _builtins.bool wildfire_realtime_lookup: Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs'] wildfire_submission_rules: The configuration for file submission to WildFire in cloud.
+               Structure is documented below.
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs'] wildfire_threat_overrides: The configuration for overriding threats actions by threat id match.
+               Structure is documented below.
+        """
+        if wildfire_inline_cloud_analysis_rules is not None:
+            pulumi.set(__self__, "wildfire_inline_cloud_analysis_rules", wildfire_inline_cloud_analysis_rules)
+        if wildfire_inline_ml_overrides is not None:
+            pulumi.set(__self__, "wildfire_inline_ml_overrides", wildfire_inline_ml_overrides)
+        if wildfire_inline_ml_setting is not None:
+            pulumi.set(__self__, "wildfire_inline_ml_setting", wildfire_inline_ml_setting)
+        if wildfire_overrides is not None:
+            pulumi.set(__self__, "wildfire_overrides", wildfire_overrides)
+        if wildfire_realtime_lookup is not None:
+            pulumi.set(__self__, "wildfire_realtime_lookup", wildfire_realtime_lookup)
+        if wildfire_submission_rules is not None:
+            pulumi.set(__self__, "wildfire_submission_rules", wildfire_submission_rules)
+        if wildfire_threat_overrides is not None:
+            pulumi.set(__self__, "wildfire_threat_overrides", wildfire_threat_overrides)
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireInlineCloudAnalysisRules")
+    def wildfire_inline_cloud_analysis_rules(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule']]:
+        """
+        The configuration for inline cloud analysis of files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_inline_cloud_analysis_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireInlineMlOverrides")
+    def wildfire_inline_ml_overrides(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride']]:
+        """
+        Defines what action to take for WildFire inline ML threats per protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_inline_ml_overrides")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireInlineMlSetting")
+    def wildfire_inline_ml_setting(self) -> Optional['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting']:
+        """
+        WildFire inline Machine Learning setting for the Security Profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_inline_ml_setting")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireOverrides")
+    def wildfire_overrides(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireOverride']]:
+        """
+        Defines what action to take for WildFire threats per protocol.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_overrides")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireRealtimeLookup")
+    def wildfire_realtime_lookup(self) -> Optional[_builtins.bool]:
+        """
+        Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+        """
+        return pulumi.get(self, "wildfire_realtime_lookup")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireSubmissionRules")
+    def wildfire_submission_rules(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule']]:
+        """
+        The configuration for file submission to WildFire in cloud.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_submission_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireThreatOverrides")
+    def wildfire_threat_overrides(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireThreatOverride']]:
+        """
+        The configuration for overriding threats actions by threat id match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_threat_overrides")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSelectionMode":
+            suggest = "file_selection_mode"
+        elif key == "customFileTypes":
+            suggest = "custom_file_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 direction: _builtins.str,
+                 file_selection_mode: _builtins.str,
+                 custom_file_types: Optional['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes'] = None):
+        """
+        :param _builtins.str action: The action to take when a rule is matched.
+               Possible values are: `ALLOW`, `DENY`, `ALERT`.
+        :param _builtins.str direction: Direction of traffic to match for a rule.
+               Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+        :param _builtins.str file_selection_mode: Defines the file selection mode for a rule.
+               Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+        :param 'SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs' custom_file_types: Defines the custom file types to match for a rule. The API will only accept this if `file_selection_mode` is set to `CUSTOM_FILE_TYPES`
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "file_selection_mode", file_selection_mode)
+        if custom_file_types is not None:
+            pulumi.set(__self__, "custom_file_types", custom_file_types)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action to take when a rule is matched.
+        Possible values are: `ALLOW`, `DENY`, `ALERT`.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of traffic to match for a rule.
+        Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="fileSelectionMode")
+    def file_selection_mode(self) -> _builtins.str:
+        """
+        Defines the file selection mode for a rule.
+        Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+        """
+        return pulumi.get(self, "file_selection_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customFileTypes")
+    def custom_file_types(self) -> Optional['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes']:
+        """
+        Defines the custom file types to match for a rule. The API will only accept this if `file_selection_mode` is set to `CUSTOM_FILE_TYPES`
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_file_types")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileTypes":
+            suggest = "file_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_types: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] file_types: The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+        """
+        pulumi.set(__self__, "file_types", file_types)
+
+    @_builtins.property
+    @pulumi.getter(name="fileTypes")
+    def file_types(self) -> Sequence[_builtins.str]:
+        """
+        The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+        """
+        return pulumi.get(self, "file_types")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str action: Threat action override.
+               Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+        :param _builtins.str protocol: Required protocol to match.
+               Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Threat action override.
+        Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Required protocol to match.
+        Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileExceptions":
+            suggest = "file_exceptions"
+        elif key == "inlineMlConfigs":
+            suggest = "inline_ml_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_exceptions: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException']] = None,
+                 inline_ml_configs: Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig']] = None):
+        """
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs'] file_exceptions: File exceptions to exclude from WildFire inline ML.
+               Structure is documented below.
+        :param Sequence['SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs'] inline_ml_configs: Defines what action to take for a specific file type in WildFire inline ML.
+               Structure is documented below.
+        """
+        if file_exceptions is not None:
+            pulumi.set(__self__, "file_exceptions", file_exceptions)
+        if inline_ml_configs is not None:
+            pulumi.set(__self__, "inline_ml_configs", inline_ml_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="fileExceptions")
+    def file_exceptions(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException']]:
+        """
+        File exceptions to exclude from WildFire inline ML.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "file_exceptions")
+
+    @_builtins.property
+    @pulumi.getter(name="inlineMlConfigs")
+    def inline_ml_configs(self) -> Optional[Sequence['outputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig']]:
+        """
+        Defines what action to take for a specific file type in WildFire inline ML.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inline_ml_configs")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partialHash":
+            suggest = "partial_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 partial_hash: _builtins.str,
+                 filename: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str partial_hash: Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+        :param _builtins.str filename: The file name associated with the partial hash.
+        """
+        pulumi.set(__self__, "partial_hash", partial_hash)
+        if filename is not None:
+            pulumi.set(__self__, "filename", filename)
+
+    @_builtins.property
+    @pulumi.getter(name="partialHash")
+    def partial_hash(self) -> _builtins.str:
+        """
+        Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+        """
+        return pulumi.get(self, "partial_hash")
+
+    @_builtins.property
+    @pulumi.getter
+    def filename(self) -> Optional[_builtins.str]:
+        """
+        The file name associated with the partial hash.
+        """
+        return pulumi.get(self, "filename")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileType":
+            suggest = "file_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 file_type: _builtins.str):
+        """
+        :param _builtins.str action: The action to take for a file type.
+               Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+        :param _builtins.str file_type: The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "file_type", file_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The action to take for a file type.
+        Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="fileType")
+    def file_type(self) -> _builtins.str:
+        """
+        The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+        """
+        return pulumi.get(self, "file_type")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireOverride(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str action: Threat action override.
+               Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+        :param _builtins.str protocol: Required protocol to match.
+               Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Threat action override.
+        Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Required protocol to match.
+        Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSelectionMode":
+            suggest = "file_selection_mode"
+        elif key == "customFileTypes":
+            suggest = "custom_file_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 direction: _builtins.str,
+                 file_selection_mode: _builtins.str,
+                 custom_file_types: Optional['outputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes'] = None):
+        """
+        :param _builtins.str direction: Direction of traffic to match for a rule.
+               Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+        :param _builtins.str file_selection_mode: Defines the file selection mode for a rule.
+               Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+        :param 'SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs' custom_file_types: Defines the custom file types to match for a rule. The API will only accept this if `file_selection_mode` is set to `CUSTOM_FILE_TYPES`
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "file_selection_mode", file_selection_mode)
+        if custom_file_types is not None:
+            pulumi.set(__self__, "custom_file_types", custom_file_types)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of traffic to match for a rule.
+        Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="fileSelectionMode")
+    def file_selection_mode(self) -> _builtins.str:
+        """
+        Defines the file selection mode for a rule.
+        Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+        """
+        return pulumi.get(self, "file_selection_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customFileTypes")
+    def custom_file_types(self) -> Optional['outputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes']:
+        """
+        Defines the custom file types to match for a rule. The API will only accept this if `file_selection_mode` is set to `CUSTOM_FILE_TYPES`
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_file_types")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileTypes":
+            suggest = "file_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_types: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] file_types: The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+        """
+        pulumi.set(__self__, "file_types", file_types)
+
+    @_builtins.property
+    @pulumi.getter(name="fileTypes")
+    def file_types(self) -> Sequence[_builtins.str]:
+        """
+        The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+        """
+        return pulumi.get(self, "file_types")
+
+
+@pulumi.output_type
+class SecurityProfileWildfireAnalysisProfileWildfireThreatOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threatId":
+            suggest = "threat_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileWildfireAnalysisProfileWildfireThreatOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireThreatOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileWildfireAnalysisProfileWildfireThreatOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 threat_id: _builtins.str):
+        """
+        :param _builtins.str action: Threat action override.
+               Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+        :param _builtins.str threat_id: Vendor-specific ID of a threat to override.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threat_id", threat_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        Threat action override.
+        Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter(name="threatId")
+    def threat_id(self) -> _builtins.str:
+        """
+        Vendor-specific ID of a threat to override.
+        """
+        return pulumi.get(self, "threat_id")
+
+
+@pulumi.output_type
 class ServerTlsPolicyMtlsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5148,6 +5769,8 @@ class UllMirroringCollectorRuleMatch(dict):
             suggest = "dst_ip_ranges"
         elif key == "ipProtocols":
             suggest = "ip_protocols"
+        elif key == "primaryIpRanges":
+            suggest = "primary_ip_ranges"
         elif key == "srcIpRanges":
             suggest = "src_ip_ranges"
 
@@ -5166,6 +5789,7 @@ class UllMirroringCollectorRuleMatch(dict):
                  direction: Optional[_builtins.str] = None,
                  dst_ip_ranges: Optional[Sequence[_builtins.str]] = None,
                  ip_protocols: Optional[Sequence[_builtins.str]] = None,
+                 primary_ip_ranges: Optional[Sequence[_builtins.str]] = None,
                  src_ip_ranges: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str direction: Direction of traffic to match. When unset, matches any direction.
@@ -5176,6 +5800,8 @@ class UllMirroringCollectorRuleMatch(dict):
                range.
         :param Sequence[_builtins.str] ip_protocols: IP protocols to match. When unset, matches any IP protocol.
                Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
+        :param Sequence[_builtins.str] primary_ip_ranges: Primary IP ranges to match (for the capture point).
+               When unset, matches any primary IP.
         :param Sequence[_builtins.str] src_ip_ranges: Source IP ranges to match. When unset, matches any source IP range.
         """
         if direction is not None:
@@ -5184,6 +5810,8 @@ class UllMirroringCollectorRuleMatch(dict):
             pulumi.set(__self__, "dst_ip_ranges", dst_ip_ranges)
         if ip_protocols is not None:
             pulumi.set(__self__, "ip_protocols", ip_protocols)
+        if primary_ip_ranges is not None:
+            pulumi.set(__self__, "primary_ip_ranges", primary_ip_ranges)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
 
@@ -5215,6 +5843,15 @@ class UllMirroringCollectorRuleMatch(dict):
         Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
         """
         return pulumi.get(self, "ip_protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryIpRanges")
+    def primary_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Primary IP ranges to match (for the capture point).
+        When unset, matches any primary IP.
+        """
+        return pulumi.get(self, "primary_ip_ranges")
 
     @_builtins.property
     @pulumi.getter(name="srcIpRanges")

@@ -125,6 +125,7 @@ import javax.annotation.Nullable;
  *                 .ipProtocols("tcp")
  *                 .srcIpRanges("10.0.0.0/8")
  *                 .dstIpRanges("192.168.0.0/16")
+ *                 .primaryIpRanges("10.1.0.0/16")
  *                 .build())
  *             .build());
  * 

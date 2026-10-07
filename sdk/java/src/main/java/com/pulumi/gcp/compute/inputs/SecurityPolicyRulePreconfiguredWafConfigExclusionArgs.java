@@ -24,7 +24,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
 
     /**
      * (Optional, Beta)
-     * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
      * Structure is documented below.
      * 
      */
@@ -33,7 +33,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
 
     /**
      * @return (Optional, Beta)
-     * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+     * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
      * Structure is documented below.
      * 
      */
@@ -177,7 +177,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
 
         /**
          * @param requestBodies (Optional, Beta)
-         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          * 
          * @return builder
@@ -190,7 +190,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
 
         /**
          * @param requestBodies (Optional, Beta)
-         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          * 
          * @return builder
@@ -202,7 +202,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
 
         /**
          * @param requestBodies (Optional, Beta)
-         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          * 
          * @return builder

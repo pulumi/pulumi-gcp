@@ -87,6 +87,8 @@ class DiskArgs:
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
@@ -378,6 +380,8 @@ class DiskArgs:
         If you do not provide an encryption key when creating the disk, then
         the disk will be encrypted using an automatically generated key and
         you do not need to provide a key to use the disk later.
+        ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+        done in place; other changes to this block recreate the disk.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
@@ -854,6 +858,8 @@ class _DiskState:
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1213,6 +1219,8 @@ class _DiskState:
         If you do not provide an encryption key when creating the disk, then
         the disk will be encrypted using an automatically generated key and
         you do not need to provide a key to use the disk later.
+        ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+        done in place; other changes to this block recreate the disk.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
@@ -1987,6 +1995,8 @@ class Disk(pulumi.CustomResource):
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
                Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
@@ -2449,6 +2459,8 @@ class Disk(pulumi.CustomResource):
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2732,6 +2744,8 @@ class Disk(pulumi.CustomResource):
         If you do not provide an encryption key when creating the disk, then
         the disk will be encrypted using an automatically generated key and
         you do not need to provide a key to use the disk later.
+        ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+        done in place; other changes to this block recreate the disk.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesCustomerContactArgs;
+import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesExascaleConfigArgs;
 import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesMaintenanceWindowArgs;
 import java.lang.Double;
 import java.lang.Integer;
@@ -178,6 +179,25 @@ public final class CloudExadataInfrastructurePropertiesArgs extends com.pulumi.r
      */
     public Optional<Output<String>> dbServerVersion() {
         return Optional.ofNullable(this.dbServerVersion);
+    }
+
+    /**
+     * (Output)
+     * The Exascale configuration for the Exadata Infrastructure.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="exascaleConfigs")
+    private @Nullable Output<List<CloudExadataInfrastructurePropertiesExascaleConfigArgs>> exascaleConfigs;
+
+    /**
+     * @return (Output)
+     * The Exascale configuration for the Exadata Infrastructure.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CloudExadataInfrastructurePropertiesExascaleConfigArgs>>> exascaleConfigs() {
+        return Optional.ofNullable(this.exascaleConfigs);
     }
 
     /**
@@ -524,6 +544,7 @@ public final class CloudExadataInfrastructurePropertiesArgs extends com.pulumi.r
         this.dataStorageSizeTb = $.dataStorageSizeTb;
         this.dbNodeStorageSizeGb = $.dbNodeStorageSizeGb;
         this.dbServerVersion = $.dbServerVersion;
+        this.exascaleConfigs = $.exascaleConfigs;
         this.maintenanceWindow = $.maintenanceWindow;
         this.maxCpuCount = $.maxCpuCount;
         this.maxDataStorageTb = $.maxDataStorageTb;
@@ -784,6 +805,43 @@ public final class CloudExadataInfrastructurePropertiesArgs extends com.pulumi.r
          */
         public Builder dbServerVersion(String dbServerVersion) {
             return dbServerVersion(Output.of(dbServerVersion));
+        }
+
+        /**
+         * @param exascaleConfigs (Output)
+         * The Exascale configuration for the Exadata Infrastructure.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exascaleConfigs(@Nullable Output<List<CloudExadataInfrastructurePropertiesExascaleConfigArgs>> exascaleConfigs) {
+            $.exascaleConfigs = exascaleConfigs;
+            return this;
+        }
+
+        /**
+         * @param exascaleConfigs (Output)
+         * The Exascale configuration for the Exadata Infrastructure.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exascaleConfigs(List<CloudExadataInfrastructurePropertiesExascaleConfigArgs> exascaleConfigs) {
+            return exascaleConfigs(Output.of(exascaleConfigs));
+        }
+
+        /**
+         * @param exascaleConfigs (Output)
+         * The Exascale configuration for the Exadata Infrastructure.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exascaleConfigs(CloudExadataInfrastructurePropertiesExascaleConfigArgs... exascaleConfigs) {
+            return exascaleConfigs(List.of(exascaleConfigs));
         }
 
         /**

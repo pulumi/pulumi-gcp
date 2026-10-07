@@ -18,7 +18,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     @Import(name="backendService")
@@ -26,7 +26,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+     * the loadBalancingScheme is set to INTERNAL_MANAGED.
      * 
      */
     public Optional<Output<String>> backendService() {
@@ -74,7 +74,6 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -85,8 +84,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> loadBalancingScheme;
 
     /**
-     * @return (Optional, Beta)
-     * Specifies the load balancer type. A target TCP proxy created for one type
+     * @return Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -211,7 +209,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param backendService A reference to the BackendService resource. This field is optional when
-         * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+         * the loadBalancingScheme is set to INTERNAL_MANAGED.
          * 
          * @return builder
          * 
@@ -223,7 +221,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param backendService A reference to the BackendService resource. This field is optional when
-         * the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+         * the loadBalancingScheme is set to INTERNAL_MANAGED.
          * 
          * @return builder
          * 
@@ -285,8 +283,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param loadBalancingScheme (Optional, Beta)
-         * Specifies the load balancer type. A target TCP proxy created for one type
+         * @param loadBalancingScheme Specifies the load balancer type. A target TCP proxy created for one type
          * of load balancer cannot be used with another. For more information, refer
          * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
          * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -300,8 +297,7 @@ public final class TargetTCPProxyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param loadBalancingScheme (Optional, Beta)
-         * Specifies the load balancer type. A target TCP proxy created for one type
+         * @param loadBalancingScheme Specifies the load balancer type. A target TCP proxy created for one type
          * of load balancer cannot be used with another. For more information, refer
          * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
          * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.

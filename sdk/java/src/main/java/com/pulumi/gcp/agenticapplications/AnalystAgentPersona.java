@@ -279,6 +279,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .visualizationOptions(AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs.builder()
+ *                     .visualizationMode("VISUALIZATION_MODE_WHEN_NECESSARY")
  *                     .visualizationExamples(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs.builder()
  *                         .visualizationType("VISUALIZATION_TYPE_UNSPECIFIED")
  *                         .resource(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceArgs.builder()
@@ -304,6 +305,7 @@ import javax.annotation.Nullable;
  *                 .enabled(true)
  *                 .prompt("Use this server for queries")
  *                 .apiKeyName("x-api-key")
+ *                 .apiKeyHeader("x-api-key-header")
  *                 .clientId("sample-client-id")
  *                 .oauthTokenUrl("https://example.com/oauth/token")
  *                 .build())
@@ -366,6 +368,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .mathRenderingMode("MATH_RENDERING_MODE_LATEX")
  *             .webSearchConfig(AnalystAgentPersonaWebSearchConfigArgs.builder()
+ *                 .disabled(false)
  *                 .excludedDomains("example.com")
  *                 .build())
  *             .build());
@@ -781,9 +784,18 @@ import javax.annotation.Nullable;
  * &lt;a name=&#34;nestedArtifactsConfigVisualizationOptions&#34;&gt;&lt;/a&gt;The `visualizationOptions` block supports:
  * 
  * * `visualizationExamples` -
- *   (Optional)
- *   Examples for visualizations.
- *   Structure is documented below.
+ * (Optional)
+ * Examples for visualizations.
+ * Structure is documented below.
+ * 
+ * * `visualizationMode` -
+ * (Optional)
+ * Mode for generating visualizations.
+ * Possible values:
+ * VISUALIZATION_MODE_EXPLICIT_ONLY
+ * VISUALIZATION_MODE_WHEN_NECESSARY
+ * VISUALIZATION_MODE_WHEN_HELPFUL
+ * VISUALIZATION_MODE_ALWAYS
  * 
  * &lt;a name=&#34;nestedArtifactsConfigVisualizationOptionsVisualizationExamples&#34;&gt;&lt;/a&gt;The `visualizationExamples` block supports:
  * 
@@ -958,6 +970,11 @@ import javax.annotation.Nullable;
  * (Optional)
  * Input only. The API key of the MCP server.
  * **Note**: This property is sensitive and will not be displayed in the plan.
+ * 
+ * * `apiKeyHeader` -
+ * (Optional)
+ * The HTTP header when the API key is passed in a request header
+ * (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
  * 
  * * `apiKeyName` -
  * (Optional)
@@ -1173,10 +1190,15 @@ import javax.annotation.Nullable;
  * 
  * &lt;a name=&#34;nestedWebSearchConfig&#34;&gt;&lt;/a&gt;The `webSearchConfig` block supports:
  * 
+ * * `disabled` -
+ * (Optional)
+ * Whether web search grounding is disabled for the analyst agent.
+ * Defaults to false if not specified (i.e. web search grounding is enabled).
+ * 
  * * `excludedDomains` -
- *   (Optional)
- *   List of domains to be excluded from Google Search / Enterprise Web Search
- *   grounding.
+ * (Optional)
+ * List of domains to be excluded from Google Search / Enterprise Web Search
+ * grounding.
  * 
  * ## Import
  * 

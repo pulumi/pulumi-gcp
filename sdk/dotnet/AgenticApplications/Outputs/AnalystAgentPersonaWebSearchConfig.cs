@@ -14,14 +14,23 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
     public sealed class AnalystAgentPersonaWebSearchConfig
     {
         /// <summary>
+        /// Whether web search grounding is disabled for the analyst agent.
+        /// Defaults to false if not specified (i.e. web search grounding is enabled).
+        /// </summary>
+        public readonly bool? Disabled;
+        /// <summary>
         /// List of domains to be excluded from Google Search / Enterprise Web Search
         /// grounding.
         /// </summary>
         public readonly ImmutableArray<string> ExcludedDomains;
 
         [OutputConstructor]
-        private AnalystAgentPersonaWebSearchConfig(ImmutableArray<string> excludedDomains)
+        private AnalystAgentPersonaWebSearchConfig(
+            bool? disabled,
+
+            ImmutableArray<string> excludedDomains)
         {
+            Disabled = disabled;
             ExcludedDomains = excludedDomains;
         }
     }

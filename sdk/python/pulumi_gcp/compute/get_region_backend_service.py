@@ -27,7 +27,7 @@ class GetRegionBackendServiceResult:
     """
     A collection of values returned by getRegionBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, deletion_policy=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, deletion_policy=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -133,6 +133,9 @@ class GetRegionBackendServiceResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if service_lb_policy and not isinstance(service_lb_policy, str):
+            raise TypeError("Expected argument 'service_lb_policy' to be a str")
+        pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity and not isinstance(session_affinity, str):
             raise TypeError("Expected argument 'session_affinity' to be a str")
         pulumi.set(__self__, "session_affinity", session_affinity)
@@ -328,6 +331,11 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "self_link")
 
     @_builtins.property
+    @pulumi.getter(name="serviceLbPolicy")
+    def service_lb_policy(self) -> _builtins.str:
+        return pulumi.get(self, "service_lb_policy")
+
+    @_builtins.property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> _builtins.str:
         return pulumi.get(self, "session_affinity")
@@ -394,6 +402,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             region=self.region,
             security_policy=self.security_policy,
             self_link=self.self_link,
+            service_lb_policy=self.service_lb_policy,
             session_affinity=self.session_affinity,
             strong_session_affinity_cookies=self.strong_session_affinity_cookies,
             subsettings=self.subsettings,
@@ -469,6 +478,7 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         security_policy=pulumi.get(__ret__, 'security_policy'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        service_lb_policy=pulumi.get(__ret__, 'service_lb_policy'),
         session_affinity=pulumi.get(__ret__, 'session_affinity'),
         strong_session_affinity_cookies=pulumi.get(__ret__, 'strong_session_affinity_cookies'),
         subsettings=pulumi.get(__ret__, 'subsettings'),
@@ -541,6 +551,7 @@ def get_region_backend_service_output(name: pulumi.Input[Optional[_builtins.str]
         region=pulumi.get(__response__, 'region'),
         security_policy=pulumi.get(__response__, 'security_policy'),
         self_link=pulumi.get(__response__, 'self_link'),
+        service_lb_policy=pulumi.get(__response__, 'service_lb_policy'),
         session_affinity=pulumi.get(__response__, 'session_affinity'),
         strong_session_affinity_cookies=pulumi.get(__response__, 'strong_session_affinity_cookies'),
         subsettings=pulumi.get(__response__, 'subsettings'),

@@ -328,6 +328,66 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### With Request Body Expression
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SecurityPolicy;
+ * import com.pulumi.gcp.compute.SecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var policy = new SecurityPolicy("policy", SecurityPolicyArgs.builder()
+ *             .name("my-policy")
+ *             .description("Policy with Request Body inspection")
+ *             .rules(            
+ *                 SecurityPolicyRuleArgs.builder()
+ *                     .action("deny(403)")
+ *                     .priority(1000)
+ *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .expr(SecurityPolicyRuleMatchExprArgs.builder()
+ *                             .expression("request.body.contains('my-match-string')")
+ *                             .build())
+ *                         .build())
+ *                     .description("Deny requests containing specific body string")
+ *                     .build(),
+ *                 SecurityPolicyRuleArgs.builder()
+ *                     .action("allow")
+ *                     .priority(2147483647)
+ *                     .match(SecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr("SRC_IPS_V1")
+ *                         .config(SecurityPolicyRuleMatchConfigArgs.builder()
+ *                             .srcIpRanges("*")
+ *                             .build())
+ *                         .build())
+ *                     .description("default rule")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Security policies can be imported using any of these accepted formats:

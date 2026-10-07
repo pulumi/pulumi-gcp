@@ -19,7 +19,7 @@ public final class GetRegionBackendServiceBackend {
      * @return Specifies the balancing mode for this backend.
      * 
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;]
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;, &#34;IN_FLIGHT&#34;]
      * 
      */
     private String balancingMode;
@@ -182,7 +182,7 @@ public final class GetRegionBackendServiceBackend {
      * @return Specifies the balancing mode for this backend.
      * 
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;]
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;, &#34;CUSTOM_METRICS&#34;, &#34;IN_FLIGHT&#34;]
      * 
      */
     public String balancingMode() {

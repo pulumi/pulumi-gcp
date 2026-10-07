@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.ManagedKafka
     ///         {
     ///             { "key", "value" },
     ///         },
+    ///         KafkaVersion = "3.7.x",
     ///     });
     /// 
     /// });
@@ -295,6 +296,12 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<Outputs.ClusterGcpConfig> GcpConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        /// </summary>
+        [Output("kafkaVersion")]
+        public Output<string> KafkaVersion { get; private set; } = null!;
+
+        /// <summary>
         /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
@@ -450,6 +457,12 @@ namespace Pulumi.Gcp.ManagedKafka
         [Input("gcpConfig", required: true)]
         public Input<Inputs.ClusterGcpConfigArgs> GcpConfig { get; set; } = null!;
 
+        /// <summary>
+        /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        /// </summary>
+        [Input("kafkaVersion")]
+        public Input<string>? KafkaVersion { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -564,6 +577,12 @@ namespace Pulumi.Gcp.ManagedKafka
         /// </summary>
         [Input("gcpConfig")]
         public Input<Inputs.ClusterGcpConfigGetArgs>? GcpConfig { get; set; }
+
+        /// <summary>
+        /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        /// </summary>
+        [Input("kafkaVersion")]
+        public Input<string>? KafkaVersion { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

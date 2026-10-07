@@ -24,6 +24,17 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
             set => _visualizationExamples = value;
         }
 
+        /// <summary>
+        /// Mode for generating visualizations.
+        /// Possible values:
+        /// VISUALIZATION_MODE_EXPLICIT_ONLY
+        /// VISUALIZATION_MODE_WHEN_NECESSARY
+        /// VISUALIZATION_MODE_WHEN_HELPFUL
+        /// VISUALIZATION_MODE_ALWAYS
+        /// </summary>
+        [Input("visualizationMode")]
+        public Input<string>? VisualizationMode { get; set; }
+
         public AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs()
         {
         }

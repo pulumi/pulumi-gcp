@@ -117,6 +117,9 @@ import (
 //					DstIpRanges: pulumi.StringArray{
 //						pulumi.String("192.168.0.0/16"),
 //					},
+//					PrimaryIpRanges: pulumi.StringArray{
+//						pulumi.String("10.1.0.0/16"),
+//					},
 //				},
 //			})
 //			if err != nil {

@@ -1847,7 +1847,9 @@ class InstanceMachineConfig(dict):
                  cpu_count: Optional[_builtins.int] = None,
                  machine_type: Optional[_builtins.str] = None):
         """
-        :param _builtins.int cpu_count: The number of CPU's in the VM instance.
+        :param _builtins.int cpu_count: The number of CPUs in the VM instance. For read pool instances, this
+               value is applied to the instances in the pool and is not replaced by
+               a fixed default.
         :param _builtins.str machine_type: Machine type of the VM instance.
                E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
                `cpu_count` must match the number of vCPUs in the machine type.
@@ -1861,7 +1863,9 @@ class InstanceMachineConfig(dict):
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> Optional[_builtins.int]:
         """
-        The number of CPU's in the VM instance.
+        The number of CPUs in the VM instance. For read pool instances, this
+        value is applied to the instances in the pool and is not replaced by
+        a fixed default.
         """
         return pulumi.get(self, "cpu_count")
 
@@ -3547,7 +3551,9 @@ class GetInstanceMachineConfigResult(dict):
                  cpu_count: _builtins.int,
                  machine_type: _builtins.str):
         """
-        :param _builtins.int cpu_count: The number of CPU's in the VM instance.
+        :param _builtins.int cpu_count: The number of CPUs in the VM instance. For read pool instances, this
+               value is applied to the instances in the pool and is not replaced by
+               a fixed default.
         :param _builtins.str machine_type: Machine type of the VM instance.
                E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
                'cpu_count' must match the number of vCPUs in the machine type.
@@ -3559,7 +3565,9 @@ class GetInstanceMachineConfigResult(dict):
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> _builtins.int:
         """
-        The number of CPU's in the VM instance.
+        The number of CPUs in the VM instance. For read pool instances, this
+        value is applied to the instances in the pool and is not replaced by
+        a fixed default.
         """
         return pulumi.get(self, "cpu_count")
 

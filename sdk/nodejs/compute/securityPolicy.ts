@@ -188,6 +188,41 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### With Request Body Expression
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.compute.SecurityPolicy("policy", {
+ *     name: "my-policy",
+ *     description: "Policy with Request Body inspection",
+ *     rules: [
+ *         {
+ *             action: "deny(403)",
+ *             priority: 1000,
+ *             match: {
+ *                 expr: {
+ *                     expression: "request.body.contains('my-match-string')",
+ *                 },
+ *             },
+ *             description: "Deny requests containing specific body string",
+ *         },
+ *         {
+ *             action: "allow",
+ *             priority: 2147483647,
+ *             match: {
+ *                 versionedExpr: "SRC_IPS_V1",
+ *                 config: {
+ *                     srcIpRanges: ["*"],
+ *                 },
+ *             },
+ *             description: "default rule",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Security policies can be imported using any of these accepted formats:

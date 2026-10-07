@@ -20,12 +20,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstanceResult {
     private List<GetInstanceAccessRulesOption> accessRulesOptions;
+    private String availableVersion;
     private String capacityGib;
     private String createTime;
     private String deletionPolicy;
     private String description;
     private List<GetInstanceDynamicTierOption> dynamicTierOptions;
     private Map<String,String> effectiveLabels;
+    private String effectiveVersion;
     private String filesystem;
     private Boolean gkeSupportEnabled;
     /**
@@ -47,6 +49,7 @@ public final class GetInstanceResult {
     private Map<String,String> pulumiLabels;
     private String state;
     private String stateReason;
+    private String targetVersion;
     private String uid;
     private List<GetInstanceUpcomingMaintenanceSchedule> upcomingMaintenanceSchedules;
     private String updateTime;
@@ -55,6 +58,9 @@ public final class GetInstanceResult {
     private GetInstanceResult() {}
     public List<GetInstanceAccessRulesOption> accessRulesOptions() {
         return this.accessRulesOptions;
+    }
+    public String availableVersion() {
+        return this.availableVersion;
     }
     public String capacityGib() {
         return this.capacityGib;
@@ -73,6 +79,9 @@ public final class GetInstanceResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public String effectiveVersion() {
+        return this.effectiveVersion;
     }
     public String filesystem() {
         return this.filesystem;
@@ -129,6 +138,9 @@ public final class GetInstanceResult {
     public String stateReason() {
         return this.stateReason;
     }
+    public String targetVersion() {
+        return this.targetVersion;
+    }
     public String uid() {
         return this.uid;
     }
@@ -152,12 +164,14 @@ public final class GetInstanceResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetInstanceAccessRulesOption> accessRulesOptions;
+        private String availableVersion;
         private String capacityGib;
         private String createTime;
         private String deletionPolicy;
         private String description;
         private List<GetInstanceDynamicTierOption> dynamicTierOptions;
         private Map<String,String> effectiveLabels;
+        private String effectiveVersion;
         private String filesystem;
         private Boolean gkeSupportEnabled;
         private String id;
@@ -175,6 +189,7 @@ public final class GetInstanceResult {
         private Map<String,String> pulumiLabels;
         private String state;
         private String stateReason;
+        private String targetVersion;
         private String uid;
         private List<GetInstanceUpcomingMaintenanceSchedule> upcomingMaintenanceSchedules;
         private String updateTime;
@@ -183,12 +198,14 @@ public final class GetInstanceResult {
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessRulesOptions = defaults.accessRulesOptions;
+    	      this.availableVersion = defaults.availableVersion;
     	      this.capacityGib = defaults.capacityGib;
     	      this.createTime = defaults.createTime;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.dynamicTierOptions = defaults.dynamicTierOptions;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.effectiveVersion = defaults.effectiveVersion;
     	      this.filesystem = defaults.filesystem;
     	      this.gkeSupportEnabled = defaults.gkeSupportEnabled;
     	      this.id = defaults.id;
@@ -206,6 +223,7 @@ public final class GetInstanceResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
     	      this.stateReason = defaults.stateReason;
+    	      this.targetVersion = defaults.targetVersion;
     	      this.uid = defaults.uid;
     	      this.upcomingMaintenanceSchedules = defaults.upcomingMaintenanceSchedules;
     	      this.updateTime = defaults.updateTime;
@@ -222,6 +240,14 @@ public final class GetInstanceResult {
         }
         public Builder accessRulesOptions(GetInstanceAccessRulesOption... accessRulesOptions) {
             return accessRulesOptions(List.of(accessRulesOptions));
+        }
+        @CustomType.Setter
+        public Builder availableVersion(String availableVersion) {
+            if (availableVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "availableVersion");
+            }
+            this.availableVersion = availableVersion;
+            return this;
         }
         @CustomType.Setter
         public Builder capacityGib(String capacityGib) {
@@ -272,6 +298,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveVersion(String effectiveVersion) {
+            if (effectiveVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveVersion");
+            }
+            this.effectiveVersion = effectiveVersion;
             return this;
         }
         @CustomType.Setter
@@ -412,6 +446,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder targetVersion(String targetVersion) {
+            if (targetVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "targetVersion");
+            }
+            this.targetVersion = targetVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uid(String uid) {
             if (uid == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "uid");
@@ -447,12 +489,14 @@ public final class GetInstanceResult {
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
             _resultValue.accessRulesOptions = accessRulesOptions;
+            _resultValue.availableVersion = availableVersion;
             _resultValue.capacityGib = capacityGib;
             _resultValue.createTime = createTime;
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.dynamicTierOptions = dynamicTierOptions;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.effectiveVersion = effectiveVersion;
             _resultValue.filesystem = filesystem;
             _resultValue.gkeSupportEnabled = gkeSupportEnabled;
             _resultValue.id = id;
@@ -470,6 +514,7 @@ public final class GetInstanceResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.state = state;
             _resultValue.stateReason = stateReason;
+            _resultValue.targetVersion = targetVersion;
             _resultValue.uid = uid;
             _resultValue.upcomingMaintenanceSchedules = upcomingMaintenanceSchedules;
             _resultValue.updateTime = updateTime;

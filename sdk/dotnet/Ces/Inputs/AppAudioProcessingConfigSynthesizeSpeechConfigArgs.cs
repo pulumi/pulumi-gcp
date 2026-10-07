@@ -13,10 +13,22 @@ namespace Pulumi.Gcp.Ces.Inputs
     public sealed class AppAudioProcessingConfigSynthesizeSpeechConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The instruction used to synthesize speech when using a generative model.
+        /// </summary>
+        [Input("instruction")]
+        public Input<string>? Instruction { get; set; }
+
+        /// <summary>
         /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("languageCode", required: true)]
         public Input<string> LanguageCode { get; set; } = null!;
+
+        /// <summary>
+        /// The model used to synthesize audio.
+        /// </summary>
+        [Input("model")]
+        public Input<string>? Model { get; set; }
 
         /// <summary>
         /// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native

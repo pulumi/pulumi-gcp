@@ -18,7 +18,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
 
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is specified.
+     * the loadBalancingScheme is specified.
      * 
      */
     @Import(name="backendService")
@@ -26,7 +26,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is specified.
+     * the loadBalancingScheme is specified.
      * 
      */
     public Optional<Output<String>> backendService() {
@@ -74,7 +74,6 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -85,8 +84,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> loadBalancingScheme;
 
     /**
-     * @return (Optional, Beta)
-     * Specifies the load balancer type. A target TCP proxy created for one type
+     * @return Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
      * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -229,7 +227,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param backendService A reference to the BackendService resource. This field is optional when
-         * the loadBalancingScheme (available in beta) is specified.
+         * the loadBalancingScheme is specified.
          * 
          * @return builder
          * 
@@ -241,7 +239,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param backendService A reference to the BackendService resource. This field is optional when
-         * the loadBalancingScheme (available in beta) is specified.
+         * the loadBalancingScheme is specified.
          * 
          * @return builder
          * 
@@ -303,8 +301,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param loadBalancingScheme (Optional, Beta)
-         * Specifies the load balancer type. A target TCP proxy created for one type
+         * @param loadBalancingScheme Specifies the load balancer type. A target TCP proxy created for one type
          * of load balancer cannot be used with another. For more information, refer
          * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
          * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.
@@ -318,8 +315,7 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param loadBalancingScheme (Optional, Beta)
-         * Specifies the load balancer type. A target TCP proxy created for one type
+         * @param loadBalancingScheme Specifies the load balancer type. A target TCP proxy created for one type
          * of load balancer cannot be used with another. For more information, refer
          * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
          * Possible values are: `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`.

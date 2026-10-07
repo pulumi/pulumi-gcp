@@ -52,6 +52,72 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait120s],
  * });
  * ```
+ * ### Iam Folders Policy Binding Access Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     displayName: "ap-folder-",
+ *     parent: "organizations/123456789",
+ *     deletionProtection: false,
+ * });
+ * // Binding access policies can be blocked by the managed org policy constraint
+ * // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this folder.
+ * const allowAccessPolicyBinding = new gcp.orgpolicy.Policy("allow_access_policy_binding", {
+ *     name: pulumi.interpolate`folders/${folder.folderId}/policies/iam.managed.disableAccessPolicyBinding`,
+ *     parent: pulumi.interpolate`folders/${folder.folderId}`,
+ *     spec: {
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ * });
+ * const wait120s = new time.Sleep("wait_120s", {createDuration: "120s"}, {
+ *     dependsOn: [
+ *         folder,
+ *         allowAccessPolicyBinding,
+ *     ],
+ * });
+ * const testSa = new gcp.serviceaccount.Account("test_sa", {
+ *     accountId: "ap-sa-",
+ *     displayName: "Test Service Account for Access Policy",
+ * });
+ * const accessPolicy = new gcp.iam.FolderAccessPolicy("access_policy", {
+ *     folder: folder.folderId,
+ *     location: "global",
+ *     accessPolicyId: "my-folder-policy-",
+ *     details: {
+ *         rules: [{
+ *             effect: "ALLOW",
+ *             principals: [pulumi.interpolate`principal://iam.googleapis.com/projects/-/serviceAccounts/${testSa.email}`],
+ *             operation: {
+ *                 permissions: ["eventarc.googleapis.com/messageBuses.publish"],
+ *             },
+ *         }],
+ *     },
+ * }, {
+ *     dependsOn: [wait120s],
+ * });
+ * const wait60Seconds = new time.Sleep("wait_60_seconds", {createDuration: "60s"}, {
+ *     dependsOn: [accessPolicy],
+ * });
+ * const my_folder_access_policy_binding = new gcp.iam.FoldersPolicyBinding("my-folder-access-policy-binding", {
+ *     folder: folder.folderId,
+ *     location: "global",
+ *     displayName: "Binding for a folder access policy",
+ *     policyKind: "ACCESS",
+ *     policyBindingId: "my-folder-access-binding-",
+ *     policy: pulumi.interpolate`folders/${folder.folderId}/locations/global/accessPolicies/${accessPolicy.accessPolicyId}`,
+ *     target: {
+ *         resource: pulumi.interpolate`//cloudresourcemanager.googleapis.com/folders/${folder.folderId}`,
+ *     },
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -126,6 +192,7 @@ export class FoldersPolicyBinding extends pulumi.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     declare public readonly condition: pulumi.Output<outputs.iam.FoldersPolicyBindingCondition | undefined>;
@@ -186,6 +253,8 @@ export class FoldersPolicyBinding extends pulumi.CustomResource {
     declare public /*out*/ readonly policyUid: pulumi.Output<string>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     declare public readonly target: pulumi.Output<outputs.iam.FoldersPolicyBindingTarget>;
@@ -303,6 +372,7 @@ export interface FoldersPolicyBindingState {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iam.FoldersPolicyBindingCondition | undefined>;
@@ -363,6 +433,8 @@ export interface FoldersPolicyBindingState {
     policyUid?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     target?: pulumi.Input<inputs.iam.FoldersPolicyBindingTarget | undefined>;
@@ -411,6 +483,7 @@ export interface FoldersPolicyBindingArgs {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.iam.FoldersPolicyBindingCondition | undefined>;
@@ -451,6 +524,8 @@ export interface FoldersPolicyBindingArgs {
     policyKind?: pulumi.Input<string | undefined>;
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      */
     target: pulumi.Input<inputs.iam.FoldersPolicyBindingTarget>;

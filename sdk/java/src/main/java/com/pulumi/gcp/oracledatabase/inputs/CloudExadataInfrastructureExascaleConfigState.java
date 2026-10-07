@@ -103,6 +103,21 @@ public final class CloudExadataInfrastructureExascaleConfigState extends com.pul
         return Optional.ofNullable(this.totalStorageSizeGb);
     }
 
+    /**
+     * Storage size needed for VM storage on Exascale in GBs.
+     * 
+     */
+    @Import(name="totalVmStorageSizeGb")
+    private @Nullable Output<Integer> totalVmStorageSizeGb;
+
+    /**
+     * @return Storage size needed for VM storage on Exascale in GBs.
+     * 
+     */
+    public Optional<Output<Integer>> totalVmStorageSizeGb() {
+        return Optional.ofNullable(this.totalVmStorageSizeGb);
+    }
+
     private CloudExadataInfrastructureExascaleConfigState() {}
 
     private CloudExadataInfrastructureExascaleConfigState(CloudExadataInfrastructureExascaleConfigState $) {
@@ -111,6 +126,7 @@ public final class CloudExadataInfrastructureExascaleConfigState extends com.pul
         this.location = $.location;
         this.project = $.project;
         this.totalStorageSizeGb = $.totalStorageSizeGb;
+        this.totalVmStorageSizeGb = $.totalVmStorageSizeGb;
     }
 
     public static Builder builder() {
@@ -246,6 +262,27 @@ public final class CloudExadataInfrastructureExascaleConfigState extends com.pul
          */
         public Builder totalStorageSizeGb(Integer totalStorageSizeGb) {
             return totalStorageSizeGb(Output.of(totalStorageSizeGb));
+        }
+
+        /**
+         * @param totalVmStorageSizeGb Storage size needed for VM storage on Exascale in GBs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalVmStorageSizeGb(@Nullable Output<Integer> totalVmStorageSizeGb) {
+            $.totalVmStorageSizeGb = totalVmStorageSizeGb;
+            return this;
+        }
+
+        /**
+         * @param totalVmStorageSizeGb Storage size needed for VM storage on Exascale in GBs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalVmStorageSizeGb(Integer totalVmStorageSizeGb) {
+            return totalVmStorageSizeGb(Output.of(totalVmStorageSizeGb));
         }
 
         public CloudExadataInfrastructureExascaleConfigState build() {

@@ -72,6 +72,23 @@ public final class UllMirroringCollectorRuleMatchArgs extends com.pulumi.resourc
     }
 
     /**
+     * Primary IP ranges to match (for the capture point).
+     * When unset, matches any primary IP.
+     * 
+     */
+    @Import(name="primaryIpRanges")
+    private @Nullable Output<List<String>> primaryIpRanges;
+
+    /**
+     * @return Primary IP ranges to match (for the capture point).
+     * When unset, matches any primary IP.
+     * 
+     */
+    public Optional<Output<List<String>>> primaryIpRanges() {
+        return Optional.ofNullable(this.primaryIpRanges);
+    }
+
+    /**
      * Source IP ranges to match. When unset, matches any source IP range.
      * 
      */
@@ -92,6 +109,7 @@ public final class UllMirroringCollectorRuleMatchArgs extends com.pulumi.resourc
         this.direction = $.direction;
         this.dstIpRanges = $.dstIpRanges;
         this.ipProtocols = $.ipProtocols;
+        this.primaryIpRanges = $.primaryIpRanges;
         this.srcIpRanges = $.srcIpRanges;
     }
 
@@ -206,6 +224,40 @@ public final class UllMirroringCollectorRuleMatchArgs extends com.pulumi.resourc
          */
         public Builder ipProtocols(String... ipProtocols) {
             return ipProtocols(List.of(ipProtocols));
+        }
+
+        /**
+         * @param primaryIpRanges Primary IP ranges to match (for the capture point).
+         * When unset, matches any primary IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpRanges(@Nullable Output<List<String>> primaryIpRanges) {
+            $.primaryIpRanges = primaryIpRanges;
+            return this;
+        }
+
+        /**
+         * @param primaryIpRanges Primary IP ranges to match (for the capture point).
+         * When unset, matches any primary IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpRanges(List<String> primaryIpRanges) {
+            return primaryIpRanges(Output.of(primaryIpRanges));
+        }
+
+        /**
+         * @param primaryIpRanges Primary IP ranges to match (for the capture point).
+         * When unset, matches any primary IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryIpRanges(String... primaryIpRanges) {
+            return primaryIpRanges(List.of(primaryIpRanges));
         }
 
         /**

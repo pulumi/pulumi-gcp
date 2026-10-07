@@ -71,6 +71,7 @@ public final class GetRegionBackendServiceResult {
     private @Nullable String region;
     private String securityPolicy;
     private String selfLink;
+    private String serviceLbPolicy;
     private String sessionAffinity;
     private List<GetRegionBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
     private List<GetRegionBackendServiceSubsetting> subsettings;
@@ -187,6 +188,9 @@ public final class GetRegionBackendServiceResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public String serviceLbPolicy() {
+        return this.serviceLbPolicy;
+    }
     public String sessionAffinity() {
         return this.sessionAffinity;
     }
@@ -247,6 +251,7 @@ public final class GetRegionBackendServiceResult {
         private @Nullable String region;
         private String securityPolicy;
         private String selfLink;
+        private String serviceLbPolicy;
         private String sessionAffinity;
         private List<GetRegionBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
         private List<GetRegionBackendServiceSubsetting> subsettings;
@@ -290,6 +295,7 @@ public final class GetRegionBackendServiceResult {
     	      this.region = defaults.region;
     	      this.securityPolicy = defaults.securityPolicy;
     	      this.selfLink = defaults.selfLink;
+    	      this.serviceLbPolicy = defaults.serviceLbPolicy;
     	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.strongSessionAffinityCookies = defaults.strongSessionAffinityCookies;
     	      this.subsettings = defaults.subsettings;
@@ -619,6 +625,14 @@ public final class GetRegionBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLbPolicy(String serviceLbPolicy) {
+            if (serviceLbPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "serviceLbPolicy");
+            }
+            this.serviceLbPolicy = serviceLbPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionAffinity(String sessionAffinity) {
             if (sessionAffinity == null) {
               throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "sessionAffinity");
@@ -704,6 +718,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.region = region;
             _resultValue.securityPolicy = securityPolicy;
             _resultValue.selfLink = selfLink;
+            _resultValue.serviceLbPolicy = serviceLbPolicy;
             _resultValue.sessionAffinity = sessionAffinity;
             _resultValue.strongSessionAffinityCookies = strongSessionAffinityCookies;
             _resultValue.subsettings = subsettings;

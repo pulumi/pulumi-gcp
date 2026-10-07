@@ -30,7 +30,8 @@ class HookArgs:
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  push_option: pulumi.Input[Optional['HookPushOptionArgs']] = None,
-                 sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None):
+                 sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_auth: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Hook resource.
 
@@ -54,6 +55,8 @@ class HookArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] sensitive_query_string: The sensitive query string to be appended to the target URI.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.bool] service_account_auth: Determines if the hook uses the Repository Service Account to
+               generate an OIDC ID Token for webhook authentication.
         """
         pulumi.set(__self__, "hook_id", hook_id)
         pulumi.set(__self__, "location", location)
@@ -71,6 +74,8 @@ class HookArgs:
             pulumi.set(__self__, "push_option", push_option)
         if sensitive_query_string is not None:
             pulumi.set(__self__, "sensitive_query_string", sensitive_query_string)
+        if service_account_auth is not None:
+            pulumi.set(__self__, "service_account_auth", service_account_auth)
 
     @_builtins.property
     @pulumi.getter(name="hookId")
@@ -202,6 +207,19 @@ class HookArgs:
     def sensitive_query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sensitive_query_string", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuth")
+    def service_account_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines if the hook uses the Repository Service Account to
+        generate an OIDC ID Token for webhook authentication.
+        """
+        return pulumi.get(self, "service_account_auth")
+
+    @service_account_auth.setter
+    def service_account_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "service_account_auth", value)
+
 
 @pulumi.input_type
 class _HookState:
@@ -217,6 +235,7 @@ class _HookState:
                  push_option: pulumi.Input[Optional['HookPushOptionArgs']] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -245,6 +264,8 @@ class _HookState:
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.str] sensitive_query_string: The sensitive query string to be appended to the target URI.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.bool] service_account_auth: Determines if the hook uses the Repository Service Account to
+               generate an OIDC ID Token for webhook authentication.
         :param pulumi.Input[_builtins.str] target_uri: The target URI to which the payloads will be delivered.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the hook.
         :param pulumi.Input[_builtins.str] update_time: Update timestamp.
@@ -271,6 +292,8 @@ class _HookState:
             pulumi.set(__self__, "repository_id", repository_id)
         if sensitive_query_string is not None:
             pulumi.set(__self__, "sensitive_query_string", sensitive_query_string)
+        if service_account_auth is not None:
+            pulumi.set(__self__, "service_account_auth", service_account_auth)
         if target_uri is not None:
             pulumi.set(__self__, "target_uri", target_uri)
         if uid is not None:
@@ -422,6 +445,19 @@ class _HookState:
         pulumi.set(self, "sensitive_query_string", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAccountAuth")
+    def service_account_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines if the hook uses the Repository Service Account to
+        generate an OIDC ID Token for webhook authentication.
+        """
+        return pulumi.get(self, "service_account_auth")
+
+    @service_account_auth.setter
+    def service_account_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "service_account_auth", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetUri")
     def target_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -473,6 +509,7 @@ class Hook(pulumi.CustomResource):
                  push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -524,6 +561,8 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.str] sensitive_query_string: The sensitive query string to be appended to the target URI.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.bool] service_account_auth: Determines if the hook uses the Repository Service Account to
+               generate an OIDC ID Token for webhook authentication.
         :param pulumi.Input[_builtins.str] target_uri: The target URI to which the payloads will be delivered.
         """
         ...
@@ -584,6 +623,7 @@ class Hook(pulumi.CustomResource):
                  push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_auth: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -609,6 +649,7 @@ class Hook(pulumi.CustomResource):
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["sensitive_query_string"] = None if sensitive_query_string is None else pulumi.Output.secret(sensitive_query_string)
+            __props__.__dict__["service_account_auth"] = service_account_auth
             if target_uri is None and not opts.urn:
                 raise TypeError("Missing required property 'target_uri'")
             __props__.__dict__["target_uri"] = target_uri
@@ -639,6 +680,7 @@ class Hook(pulumi.CustomResource):
             push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict', 'outputs.HookPushOption']]] = None,
             repository_id: pulumi.Input[Optional[_builtins.str]] = None,
             sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_auth: pulumi.Input[Optional[_builtins.bool]] = None,
             target_uri: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Hook':
@@ -671,6 +713,8 @@ class Hook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.str] sensitive_query_string: The sensitive query string to be appended to the target URI.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.bool] service_account_auth: Determines if the hook uses the Repository Service Account to
+               generate an OIDC ID Token for webhook authentication.
         :param pulumi.Input[_builtins.str] target_uri: The target URI to which the payloads will be delivered.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the hook.
         :param pulumi.Input[_builtins.str] update_time: Update timestamp.
@@ -690,6 +734,7 @@ class Hook(pulumi.CustomResource):
         __props__.__dict__["push_option"] = push_option
         __props__.__dict__["repository_id"] = repository_id
         __props__.__dict__["sensitive_query_string"] = sensitive_query_string
+        __props__.__dict__["service_account_auth"] = service_account_auth
         __props__.__dict__["target_uri"] = target_uri
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
@@ -793,6 +838,15 @@ class Hook(pulumi.CustomResource):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "sensitive_query_string")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuth")
+    def service_account_auth(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Determines if the hook uses the Repository Service Account to
+        generate an OIDC ID Token for webhook authentication.
+        """
+        return pulumi.get(self, "service_account_auth")
 
     @_builtins.property
     @pulumi.getter(name="targetUri")

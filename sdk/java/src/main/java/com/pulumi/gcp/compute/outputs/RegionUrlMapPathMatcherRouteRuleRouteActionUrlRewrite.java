@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -37,6 +38,14 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
      * 
      */
     private @Nullable String pathTemplateRewrite;
+    /**
+     * @return The regex rewrite to be applied to the URL. Only one of
+     * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+     * specified.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite regexRewrite;
 
     private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite() {}
     /**
@@ -71,6 +80,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
     public Optional<String> pathTemplateRewrite() {
         return Optional.ofNullable(this.pathTemplateRewrite);
     }
+    /**
+     * @return The regex rewrite to be applied to the URL. Only one of
+     * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+     * specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite> regexRewrite() {
+        return Optional.ofNullable(this.regexRewrite);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -84,12 +103,14 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
         private @Nullable String hostRewrite;
         private @Nullable String pathPrefixRewrite;
         private @Nullable String pathTemplateRewrite;
+        private @Nullable RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite regexRewrite;
         public Builder() {}
         public Builder(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRewrite = defaults.hostRewrite;
     	      this.pathPrefixRewrite = defaults.pathPrefixRewrite;
     	      this.pathTemplateRewrite = defaults.pathTemplateRewrite;
+    	      this.regexRewrite = defaults.regexRewrite;
         }
 
         @CustomType.Setter
@@ -110,11 +131,18 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
             this.pathTemplateRewrite = pathTemplateRewrite;
             return this;
         }
+        @CustomType.Setter
+        public Builder regexRewrite(@Nullable RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite regexRewrite) {
+
+            this.regexRewrite = regexRewrite;
+            return this;
+        }
         public RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite build() {
             final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite();
             _resultValue.hostRewrite = hostRewrite;
             _resultValue.pathPrefixRewrite = pathPrefixRewrite;
             _resultValue.pathTemplateRewrite = pathTemplateRewrite;
+            _resultValue.regexRewrite = regexRewrite;
             return _resultValue;
         }
     }
