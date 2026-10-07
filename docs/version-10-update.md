@@ -951,7 +951,7 @@ Only these two resources changed. The regional `gcp.compute.ForwardingRule` and 
 
 #### Impact/Risk
 
-**Resources already in state keep `EXTERNAL`.** The field is not replacing on either resource, so upgrading on its own neither recreates nor reconfigures a live load balancer.
+**Resources already in state keep `EXTERNAL`.** The field is not replacing on either resource, so upgrading on its own neither recreates nor reconfigures a live load balancer. Resources imported without `loadBalancingScheme` in their inputs are the exception: preview shows an in-place change to `EXTERNAL_MANAGED`, and `pulumi up` fails with `Cannot change the load balancing scheme until the migration state is set to TEST_ALL_TRAFFIC`. Apply the remediation below to them before the bump.
 
 **The new default arrives whenever one of these resources is created**, which includes a replacement and includes running the same program against a new stack. Expanding a service into another region builds a global external Application Load Balancer where the original is classic, and nothing in the diff says so.
 
@@ -959,7 +959,7 @@ Only these two resources changed. The regional `gcp.compute.ForwardingRule` and 
 
 **An existing classic load balancer accepts a mismatched backend service silently.** GCP does not run that check when a classic load balancer's URL map points at an `EXTERNAL_MANAGED` backend service. The configuration is accepted and serves traffic normally, leaving the load balancer mixed with nothing to show it.
 
-**Standard Tier cannot use the new default.** A global external Application Load Balancer requires Premium Tier; see the [Network Service Tiers overview](https://cloud.google.com/network-tiers/docs/overview). Setting `loadBalancingScheme: "EXTERNAL"` explicitly keeps these load balancers working.
+**Standard Tier cannot use the new default.** A global external Application Load Balancer requires Premium Tier; see the [Network Service Tiers overview](https://cloud.google.com/network-tiers/docs/overview). Standard Tier uses a regional `gcp.compute.ForwardingRule`, which still defaults to `EXTERNAL`, so a new Standard-tier load balancer that names no scheme is mixed and fails as above. Setting `loadBalancingScheme: "EXTERNAL"` explicitly keeps these load balancers working.
 
 **Going back is time limited and is a staged migration, not an edit.** Pinning `EXTERNAL` on a resource that already exists as `EXTERNAL_MANAGED` is rejected with `Downgrading the load balancing scheme to EXTERNAL is only supported for EXTERNAL_MANAGED backend services that were migrated from EXTERNAL in the last 90 days`, and needs `pulumi up --replace`. Migrating forwards deliberately requires `externalManagedMigrationState` to reach `TEST_ALL_TRAFFIC`, via `PREPARE` and optionally `TEST_BY_PERCENTAGE` with `externalManagedMigrationTestingPercentage`, before `loadBalancingScheme` may become `EXTERNAL_MANAGED`, and the reverse order to roll back. The provider does not automate either direction.
 
