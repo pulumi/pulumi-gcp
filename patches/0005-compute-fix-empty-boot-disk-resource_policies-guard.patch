@@ -5,7 +5,7 @@ Subject: [PATCH] compute: fix empty boot disk resource_policies guard
 
 
 diff --git a/google-beta/services/compute/resource_compute_instance.go b/google-beta/services/compute/resource_compute_instance.go
-index a76336714e40..afa8ef97f673 100644
+index 0222f41966ab..f9cb45f50390 100644
 --- a/google-beta/services/compute/resource_compute_instance.go
 +++ b/google-beta/services/compute/resource_compute_instance.go
 @@ -24,6 +24,7 @@ import (
@@ -16,7 +16,7 @@ index a76336714e40..afa8ef97f673 100644
  	"strconv"
  	"strings"
  	"time"
-@@ -4704,7 +4705,7 @@ func flattenBootDisk(d *schema.ResourceData, disk map[string]interface{}, config
+@@ -4711,7 +4712,7 @@ func flattenBootDisk(d *schema.ResourceData, disk map[string]interface{}, config
  	// Resource policies can get autofilled from the API and on this field and this will cause the instance to recreate
  	// This overrides any value set by the API not to cause a diff when the user didn't set this in their config.
  	if diskDetails != nil {
