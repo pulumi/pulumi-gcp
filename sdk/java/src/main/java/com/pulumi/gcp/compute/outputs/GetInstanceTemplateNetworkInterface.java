@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceTemplateNetworkInterfaceAccessC
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateNetworkInterfaceAliasIpRange;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateNetworkInterfaceAliasIpv6Range;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -38,6 +39,11 @@ public final class GetInstanceTemplateNetworkInterface {
      * 
      */
     private List<GetInstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges;
+    /**
+     * @return If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+     * 
+     */
+    private Boolean enableVpcScopedDns;
     /**
      * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
      * 
@@ -153,6 +159,13 @@ public final class GetInstanceTemplateNetworkInterface {
      */
     public List<GetInstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges() {
         return this.aliasIpv6Ranges;
+    }
+    /**
+     * @return If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+     * 
+     */
+    public Boolean enableVpcScopedDns() {
+        return this.enableVpcScopedDns;
     }
     /**
      * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -285,6 +298,7 @@ public final class GetInstanceTemplateNetworkInterface {
         private List<GetInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
         private List<GetInstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges;
+        private Boolean enableVpcScopedDns;
         private String igmpQuery;
         private Integer internalIpv6PrefixLength;
         private List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
@@ -307,6 +321,7 @@ public final class GetInstanceTemplateNetworkInterface {
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
     	      this.aliasIpv6Ranges = defaults.aliasIpv6Ranges;
+    	      this.enableVpcScopedDns = defaults.enableVpcScopedDns;
     	      this.igmpQuery = defaults.igmpQuery;
     	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
@@ -357,6 +372,14 @@ public final class GetInstanceTemplateNetworkInterface {
         }
         public Builder aliasIpv6Ranges(GetInstanceTemplateNetworkInterfaceAliasIpv6Range... aliasIpv6Ranges) {
             return aliasIpv6Ranges(List.of(aliasIpv6Ranges));
+        }
+        @CustomType.Setter
+        public Builder enableVpcScopedDns(Boolean enableVpcScopedDns) {
+            if (enableVpcScopedDns == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterface", "enableVpcScopedDns");
+            }
+            this.enableVpcScopedDns = enableVpcScopedDns;
+            return this;
         }
         @CustomType.Setter
         public Builder igmpQuery(String igmpQuery) {
@@ -494,6 +517,7 @@ public final class GetInstanceTemplateNetworkInterface {
             _resultValue.accessConfigs = accessConfigs;
             _resultValue.aliasIpRanges = aliasIpRanges;
             _resultValue.aliasIpv6Ranges = aliasIpv6Ranges;
+            _resultValue.enableVpcScopedDns = enableVpcScopedDns;
             _resultValue.igmpQuery = igmpQuery;
             _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
             _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;

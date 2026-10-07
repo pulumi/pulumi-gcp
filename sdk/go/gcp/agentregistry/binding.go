@@ -23,8 +23,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
-//	"github.com/pulumi/pulumi-google/sdk/go/google"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,18 +32,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := agentregistry.GetAgent(ctx, &agentregistry.GetAgentArgs{
-//				Location: "global",
+//				Location: "us-central1",
 //				Filter:   pulumi.StringRef("displayName:Workspace Agent"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultIamConnectorsConnector, err := google.NewIamConnectorsConnector(ctx, "default", &google.IamConnectorsConnectorArgs{
-//				Location:    "us-central1",
-//				ConnectorId: "ar-binding",
-//				ConnectorTypeParams: []map[string]string{
-//					{
-//						"connectorVersion": "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1",
+//			defaultAuthProvider, err := agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+//				Location:       pulumi.String("us-central1"),
+//				AuthProviderId: pulumi.String("ar-binding"),
+//				AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+//					ApiKey: &agentidentity.AuthProviderAuthProviderTypeParamsApiKeyArgs{
+//						ApiKey: pulumi.String("test-api-key-value"),
 //					},
 //				},
 //			})
@@ -62,14 +62,74 @@ import (
 //					Identifier: pulumi.String(_default.Urn),
 //				},
 //				AuthProviderBinding: &agentregistry.BindingAuthProviderBindingArgs{
-//					AuthProvider: defaultIamConnectorsConnector.Id,
+//					AuthProvider: defaultAuthProvider.ID().ToIDOutput().ToStringOutput(),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 //					},
 //					ContinueUri: pulumi.String("https://example.com/continue"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultIamConnectorsConnector,
+//				defaultAuthProvider,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Agent Registry Binding Target Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentidentity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := agentregistry.GetAgent(ctx, &agentregistry.GetAgentArgs{
+//				Location: "us-central1",
+//				Filter:   pulumi.StringRef("displayName:Workspace Agent"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAuthProvider, err := agentidentity.NewAuthProvider(ctx, "default", &agentidentity.AuthProviderArgs{
+//				Location:       pulumi.String("us-central1"),
+//				AuthProviderId: pulumi.String("ar-binding"),
+//				AuthProviderTypeParams: &agentidentity.AuthProviderAuthProviderTypeParamsArgs{
+//					ApiKey: &agentidentity.AuthProviderAuthProviderTypeParamsApiKeyArgs{
+//						ApiKey: pulumi.String("test-api-key-value"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = agentregistry.NewBinding(ctx, "default", &agentregistry.BindingArgs{
+//				Location:    pulumi.String("us-central1"),
+//				BindingId:   pulumi.String("ar-binding"),
+//				DisplayName: pulumi.String("Target Only Binding"),
+//				Description: pulumi.String("Agent registry binding without source"),
+//				Target: &agentregistry.BindingTargetArgs{
+//					Identifier: pulumi.String(_default.Urn),
+//				},
+//				AuthProviderBinding: &agentregistry.BindingAuthProviderBindingArgs{
+//					AuthProvider: defaultAuthProvider.ID().ToIDOutput().ToStringOutput(),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					},
+//					ContinueUri: pulumi.String("https://example.com/continue"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultAuthProvider,
 //			}))
 //			if err != nil {
 //				return err
@@ -125,7 +185,7 @@ type Binding struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The source of the Binding.
 	// Structure is documented below.
-	Source BindingSourceOutput `pulumi:"source"`
+	Source BindingSourcePtrOutput `pulumi:"source"`
 	// The target of the Binding.
 	// Structure is documented below.
 	Target BindingTargetOutput `pulumi:"target"`
@@ -148,9 +208,6 @@ func NewBinding(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Source == nil {
-		return nil, errors.New("invalid value for required argument 'Source'")
 	}
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
@@ -277,7 +334,7 @@ type bindingArgs struct {
 	Project *string `pulumi:"project"`
 	// The source of the Binding.
 	// Structure is documented below.
-	Source BindingSource `pulumi:"source"`
+	Source *BindingSource `pulumi:"source"`
 	// The target of the Binding.
 	// Structure is documented below.
 	Target BindingTarget `pulumi:"target"`
@@ -308,7 +365,7 @@ type BindingArgs struct {
 	Project pulumi.StringPtrInput
 	// The source of the Binding.
 	// Structure is documented below.
-	Source BindingSourceInput
+	Source BindingSourcePtrInput
 	// The target of the Binding.
 	// Structure is documented below.
 	Target BindingTargetInput
@@ -455,8 +512,8 @@ func (o BindingOutput) Project() pulumi.StringOutput {
 
 // The source of the Binding.
 // Structure is documented below.
-func (o BindingOutput) Source() BindingSourceOutput {
-	return o.ApplyT(func(v *Binding) BindingSourceOutput { return v.Source }).(BindingSourceOutput)
+func (o BindingOutput) Source() BindingSourcePtrOutput {
+	return o.ApplyT(func(v *Binding) BindingSourcePtrOutput { return v.Source }).(BindingSourcePtrOutput)
 }
 
 // The target of the Binding.

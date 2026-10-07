@@ -660,7 +660,7 @@ class Endpoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def network(self) -> pulumi.Output[_builtins.str]:
         """
         The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         """

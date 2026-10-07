@@ -26,7 +26,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
      * 
      */
     @Import(name="balancingMode")
@@ -37,7 +37,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
      * 
      */
     public Optional<Output<String>> balancingMode() {
@@ -467,7 +467,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
          * 
          * @return builder
          * 

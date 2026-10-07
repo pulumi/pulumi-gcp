@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectsPolicyBindingTarget {
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Project:
      * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -22,10 +22,20 @@ public final class ProjectsPolicyBindingTarget {
      * 
      */
     private @Nullable String principalSet;
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Project:
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+     *   It must be the policy binding&#39;s parent (the project).
+     * 
+     */
+    private @Nullable String resource;
 
     private ProjectsPolicyBindingTarget() {}
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Project:
      * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -36,6 +46,18 @@ public final class ProjectsPolicyBindingTarget {
      */
     public Optional<String> principalSet() {
         return Optional.ofNullable(this.principalSet);
+    }
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Project:
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+     *   It must be the policy binding&#39;s parent (the project).
+     * 
+     */
+    public Optional<String> resource() {
+        return Optional.ofNullable(this.resource);
     }
 
     public static Builder builder() {
@@ -48,10 +70,12 @@ public final class ProjectsPolicyBindingTarget {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String principalSet;
+        private @Nullable String resource;
         public Builder() {}
         public Builder(ProjectsPolicyBindingTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.principalSet = defaults.principalSet;
+    	      this.resource = defaults.resource;
         }
 
         @CustomType.Setter
@@ -60,9 +84,16 @@ public final class ProjectsPolicyBindingTarget {
             this.principalSet = principalSet;
             return this;
         }
+        @CustomType.Setter
+        public Builder resource(@Nullable String resource) {
+
+            this.resource = resource;
+            return this;
+        }
         public ProjectsPolicyBindingTarget build() {
             final var _resultValue = new ProjectsPolicyBindingTarget();
             _resultValue.principalSet = principalSet;
+            _resultValue.resource = resource;
             return _resultValue;
         }
     }

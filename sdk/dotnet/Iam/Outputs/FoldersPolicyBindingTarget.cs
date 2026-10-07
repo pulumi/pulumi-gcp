@@ -14,17 +14,28 @@ namespace Pulumi.Gcp.Iam.Outputs
     public sealed class FoldersPolicyBindingTarget
     {
         /// <summary>
-        /// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        /// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         /// Examples for each one of the following supported principal set types:
         /// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
         /// It must be parent by the policy binding's parent (the folder).
         /// </summary>
         public readonly string? PrincipalSet;
+        /// <summary>
+        /// Immutable. Full Resource Name of the resource used for access policy bindings.
+        /// Use this together with `PolicyKind = "ACCESS"`. Examples:
+        /// * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+        /// It must be the policy binding's parent (the folder).
+        /// </summary>
+        public readonly string? Resource;
 
         [OutputConstructor]
-        private FoldersPolicyBindingTarget(string? principalSet)
+        private FoldersPolicyBindingTarget(
+            string? principalSet,
+
+            string? resource)
         {
             PrincipalSet = principalSet;
+            Resource = resource;
         }
     }
 }

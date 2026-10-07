@@ -759,6 +759,113 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        ### Region Security Policy Rule With Body Exclude
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="test-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="test-network-subnet",
+            region="us-west2",
+            network=default.id,
+            ip_cidr_range="10.10.0.0/24")
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="test-health-check",
+            region="us-west2",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_security_policy = gcp.compute.RegionSecurityPolicy("default",
+            name="policyruletest",
+            description="regional security policy with body inspection",
+            region="us-west2",
+            type="CLOUD_ARMOR",
+            advanced_options_config={
+                "json_parsing": "STANDARD",
+                "log_level": "VERBOSE",
+            })
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
+            name="backendpolicy",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }])
+        default_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("default",
+            name="backendpolicy",
+            region="us-west2",
+            base_instance_name="backend",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backendpolicy",
+            region="us-west2",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            timeout_sec=30,
+            health_checks=default_region_health_check.id,
+            backends=[{
+                "group": default_region_instance_group_manager.instance_group,
+                "capacity_scaler": float(1),
+            }],
+            security_policy=default_region_security_policy.id)
+        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policy_rule_one",
+            security_policy=default_region_security_policy.name,
+            description="waf body rule",
+            region="us-west2",
+            action="deny(403)",
+            priority=100,
+            preview=True,
+            match={
+                "expr": {
+                    "expression": "evaluatePreconfiguredWaf('sqli-v33-stable')",
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [{
+                    "target_rule_set": "sqli-v33-stable",
+                    "request_bodies": [{
+                        "operator": "EQUALS",
+                        "value": "safe-field",
+                    }],
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_region_backend_service]))
+        ```
+        ### Region Security Policy Rule Request Body Expression
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSecurityPolicy("default",
+            name="policyruletest",
+            region="us-west2",
+            description="basic global security policy",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
+            security_policy=default.name,
+            region="us-west2",
+            description="Deny requests containing specific body string",
+            action="deny(403)",
+            priority=1000,
+            match={
+                "expr": {
+                    "expression": "request.body.contains('my-match-string')",
+                },
+            })
+        ```
 
         ## Import
 
@@ -1045,6 +1152,113 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             },
             action="allow",
             preview=True)
+        ```
+        ### Region Security Policy Rule With Body Exclude
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="test-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="test-network-subnet",
+            region="us-west2",
+            network=default.id,
+            ip_cidr_range="10.10.0.0/24")
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            name="test-health-check",
+            region="us-west2",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_security_policy = gcp.compute.RegionSecurityPolicy("default",
+            name="policyruletest",
+            description="regional security policy with body inspection",
+            region="us-west2",
+            type="CLOUD_ARMOR",
+            advanced_options_config={
+                "json_parsing": "STANDARD",
+                "log_level": "VERBOSE",
+            })
+        default_instance_template = gcp.compute.InstanceTemplate("default",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "subnetwork": default_subnetwork.id,
+            }],
+            name="backendpolicy",
+            machine_type="e2-micro",
+            disks=[{
+                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "auto_delete": True,
+                "boot": True,
+            }])
+        default_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("default",
+            name="backendpolicy",
+            region="us-west2",
+            base_instance_name="backend",
+            versions=[{
+                "instance_template": default_instance_template.id,
+            }],
+            target_size=1)
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="backendpolicy",
+            region="us-west2",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            timeout_sec=30,
+            health_checks=default_region_health_check.id,
+            backends=[{
+                "group": default_region_instance_group_manager.instance_group,
+                "capacity_scaler": float(1),
+            }],
+            security_policy=default_region_security_policy.id)
+        policy_rule_one = gcp.compute.RegionSecurityPolicyRule("policy_rule_one",
+            security_policy=default_region_security_policy.name,
+            description="waf body rule",
+            region="us-west2",
+            action="deny(403)",
+            priority=100,
+            preview=True,
+            match={
+                "expr": {
+                    "expression": "evaluatePreconfiguredWaf('sqli-v33-stable')",
+                },
+            },
+            preconfigured_waf_config={
+                "exclusions": [{
+                    "target_rule_set": "sqli-v33-stable",
+                    "request_bodies": [{
+                        "operator": "EQUALS",
+                        "value": "safe-field",
+                    }],
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_region_backend_service]))
+        ```
+        ### Region Security Policy Rule Request Body Expression
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSecurityPolicy("default",
+            name="policyruletest",
+            region="us-west2",
+            description="basic global security policy",
+            type="CLOUD_ARMOR")
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
+            security_policy=default.name,
+            region="us-west2",
+            description="Deny requests containing specific body string",
+            action="deny(403)",
+            priority=1000,
+            match={
+                "expr": {
+                    "expression": "request.body.contains('my-match-string')",
+                },
+            })
         ```
 
         ## Import

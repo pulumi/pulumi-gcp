@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         Location = "us-east4",
     ///         Project = "my-project",
     ///         TotalStorageSizeGb = 10240,
+    ///         TotalVmStorageSizeGb = 2048,
     ///     });
     /// 
     /// });
@@ -107,6 +108,12 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("totalStorageSizeGb")]
         public Output<int> TotalStorageSizeGb { get; private set; } = null!;
+
+        /// <summary>
+        /// Storage size needed for VM storage on Exascale in GBs.
+        /// </summary>
+        [Output("totalVmStorageSizeGb")]
+        public Output<int?> TotalVmStorageSizeGb { get; private set; } = null!;
 
 
         /// <summary>
@@ -190,6 +197,12 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("totalStorageSizeGb", required: true)]
         public Input<int> TotalStorageSizeGb { get; set; } = null!;
 
+        /// <summary>
+        /// Storage size needed for VM storage on Exascale in GBs.
+        /// </summary>
+        [Input("totalVmStorageSizeGb")]
+        public Input<int>? TotalVmStorageSizeGb { get; set; }
+
         public CloudExadataInfrastructureExascaleConfigArgs()
         {
         }
@@ -233,6 +246,12 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("totalStorageSizeGb")]
         public Input<int>? TotalStorageSizeGb { get; set; }
+
+        /// <summary>
+        /// Storage size needed for VM storage on Exascale in GBs.
+        /// </summary>
+        [Input("totalVmStorageSizeGb")]
+        public Input<int>? TotalVmStorageSizeGb { get; set; }
 
         public CloudExadataInfrastructureExascaleConfigState()
         {

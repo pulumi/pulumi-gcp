@@ -1759,6 +1759,8 @@ class AnalystAgentPersonaArtifactsConfigVisualizationOptions(dict):
         suggest = None
         if key == "visualizationExamples":
             suggest = "visualization_examples"
+        elif key == "visualizationMode":
+            suggest = "visualization_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AnalystAgentPersonaArtifactsConfigVisualizationOptions. Access the value via the '{suggest}' property getter instead.")
@@ -1772,12 +1774,21 @@ class AnalystAgentPersonaArtifactsConfigVisualizationOptions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 visualization_examples: Optional[Sequence['outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample']] = None):
+                 visualization_examples: Optional[Sequence['outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample']] = None,
+                 visualization_mode: Optional[_builtins.str] = None):
         """
         :param Sequence['AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs'] visualization_examples: Examples for visualizations.
+        :param _builtins.str visualization_mode: Mode for generating visualizations.
+               Possible values:
+               VISUALIZATION_MODE_EXPLICIT_ONLY
+               VISUALIZATION_MODE_WHEN_NECESSARY
+               VISUALIZATION_MODE_WHEN_HELPFUL
+               VISUALIZATION_MODE_ALWAYS
         """
         if visualization_examples is not None:
             pulumi.set(__self__, "visualization_examples", visualization_examples)
+        if visualization_mode is not None:
+            pulumi.set(__self__, "visualization_mode", visualization_mode)
 
     @_builtins.property
     @pulumi.getter(name="visualizationExamples")
@@ -1786,6 +1797,19 @@ class AnalystAgentPersonaArtifactsConfigVisualizationOptions(dict):
         Examples for visualizations.
         """
         return pulumi.get(self, "visualization_examples")
+
+    @_builtins.property
+    @pulumi.getter(name="visualizationMode")
+    def visualization_mode(self) -> Optional[_builtins.str]:
+        """
+        Mode for generating visualizations.
+        Possible values:
+        VISUALIZATION_MODE_EXPLICIT_ONLY
+        VISUALIZATION_MODE_WHEN_NECESSARY
+        VISUALIZATION_MODE_WHEN_HELPFUL
+        VISUALIZATION_MODE_ALWAYS
+        """
+        return pulumi.get(self, "visualization_mode")
 
 
 @pulumi.output_type
@@ -2500,6 +2524,8 @@ class AnalystAgentPersonaMcpDataSource(dict):
             suggest = "server_url"
         elif key == "apiKey":
             suggest = "api_key"
+        elif key == "apiKeyHeader":
+            suggest = "api_key_header"
         elif key == "apiKeyName":
             suggest = "api_key_name"
         elif key == "clientId":
@@ -2526,6 +2552,7 @@ class AnalystAgentPersonaMcpDataSource(dict):
                  enabled: _builtins.bool,
                  server_url: _builtins.str,
                  api_key: Optional[_builtins.str] = None,
+                 api_key_header: Optional[_builtins.str] = None,
                  api_key_name: Optional[_builtins.str] = None,
                  client_id: Optional[_builtins.str] = None,
                  client_secret: Optional[_builtins.str] = None,
@@ -2537,6 +2564,8 @@ class AnalystAgentPersonaMcpDataSource(dict):
         :param _builtins.bool enabled: Whether this external data source is enabled for the current analysis.
         :param _builtins.str server_url: The URL of the MCP server.
         :param _builtins.str api_key: Input only. The API key of the MCP server.
+        :param _builtins.str api_key_header: The HTTP header when the API key is passed in a request header
+               (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
         :param _builtins.str api_key_name: The API key parameter name.
         :param _builtins.str client_id: The client ID for authentication.
         :param _builtins.str client_secret: Input only. The client secret for authentication.
@@ -2549,6 +2578,8 @@ class AnalystAgentPersonaMcpDataSource(dict):
         pulumi.set(__self__, "server_url", server_url)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
+        if api_key_header is not None:
+            pulumi.set(__self__, "api_key_header", api_key_header)
         if api_key_name is not None:
             pulumi.set(__self__, "api_key_name", api_key_name)
         if client_id is not None:
@@ -2599,6 +2630,15 @@ class AnalystAgentPersonaMcpDataSource(dict):
         Input only. The API key of the MCP server.
         """
         return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyHeader")
+    def api_key_header(self) -> Optional[_builtins.str]:
+        """
+        The HTTP header when the API key is passed in a request header
+        (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+        """
+        return pulumi.get(self, "api_key_header")
 
     @_builtins.property
     @pulumi.getter(name="apiKeyName")
@@ -3335,13 +3375,27 @@ class AnalystAgentPersonaWebSearchConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
                  excluded_domains: Optional[Sequence[_builtins.str]] = None):
         """
+        :param _builtins.bool disabled: Whether web search grounding is disabled for the analyst agent.
+               Defaults to false if not specified (i.e. web search grounding is enabled).
         :param Sequence[_builtins.str] excluded_domains: List of domains to be excluded from Google Search / Enterprise Web Search
                grounding.
         """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if excluded_domains is not None:
             pulumi.set(__self__, "excluded_domains", excluded_domains)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether web search grounding is disabled for the analyst agent.
+        Defaults to false if not specified (i.e. web search grounding is enabled).
+        """
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter(name="excludedDomains")

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// (Optional, Beta)
-        /// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+        /// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody> RequestBodies;

@@ -15,6 +15,7 @@ import com.pulumi.gcp.appengine.outputs.ApplicationIap;
 import com.pulumi.gcp.appengine.outputs.ApplicationUrlDispatchRule;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -24,6 +25,9 @@ import javax.annotation.Nullable;
  *    entire project to delete the application. This provider will report the application has been
  *    successfully deleted; this is a limitation of the provider, and will go away in the future.
  *    This provider is not able to delete App Engine applications.
+ * 
+ * &gt; **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+ * Read more about Write-only Arguments.
  * 
  * ## Example Usage
  * 
@@ -209,14 +213,14 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="iap", refs={ApplicationIap.class}, tree="[0]")
-    private Output<ApplicationIap> iap;
+    private Output</* @Nullable */ ApplicationIap> iap;
 
     /**
      * @return Settings for enabling Cloud Identity Aware Proxy
      * 
      */
-    public Output<ApplicationIap> iap() {
-        return this.iap;
+    public Output<Optional<ApplicationIap>> iap() {
+        return Codegen.optional(this.iap);
     }
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)

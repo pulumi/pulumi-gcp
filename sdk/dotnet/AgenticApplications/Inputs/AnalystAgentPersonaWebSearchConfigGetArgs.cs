@@ -12,6 +12,13 @@ namespace Pulumi.Gcp.AgenticApplications.Inputs
 
     public sealed class AnalystAgentPersonaWebSearchConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether web search grounding is disabled for the analyst agent.
+        /// Defaults to false if not specified (i.e. web search grounding is enabled).
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
         [Input("excludedDomains")]
         private InputList<string>? _excludedDomains;
 

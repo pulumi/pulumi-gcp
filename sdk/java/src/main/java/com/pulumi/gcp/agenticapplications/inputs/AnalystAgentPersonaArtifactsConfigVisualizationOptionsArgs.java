@@ -6,6 +6,7 @@ package com.pulumi.gcp.agenticapplications.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.agenticapplications.inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,10 +32,36 @@ public final class AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs ex
         return Optional.ofNullable(this.visualizationExamples);
     }
 
+    /**
+     * Mode for generating visualizations.
+     * Possible values:
+     * VISUALIZATION_MODE_EXPLICIT_ONLY
+     * VISUALIZATION_MODE_WHEN_NECESSARY
+     * VISUALIZATION_MODE_WHEN_HELPFUL
+     * VISUALIZATION_MODE_ALWAYS
+     * 
+     */
+    @Import(name="visualizationMode")
+    private @Nullable Output<String> visualizationMode;
+
+    /**
+     * @return Mode for generating visualizations.
+     * Possible values:
+     * VISUALIZATION_MODE_EXPLICIT_ONLY
+     * VISUALIZATION_MODE_WHEN_NECESSARY
+     * VISUALIZATION_MODE_WHEN_HELPFUL
+     * VISUALIZATION_MODE_ALWAYS
+     * 
+     */
+    public Optional<Output<String>> visualizationMode() {
+        return Optional.ofNullable(this.visualizationMode);
+    }
+
     private AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs() {}
 
     private AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs(AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs $) {
         this.visualizationExamples = $.visualizationExamples;
+        this.visualizationMode = $.visualizationMode;
     }
 
     public static Builder builder() {
@@ -84,6 +111,37 @@ public final class AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs ex
          */
         public Builder visualizationExamples(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs... visualizationExamples) {
             return visualizationExamples(List.of(visualizationExamples));
+        }
+
+        /**
+         * @param visualizationMode Mode for generating visualizations.
+         * Possible values:
+         * VISUALIZATION_MODE_EXPLICIT_ONLY
+         * VISUALIZATION_MODE_WHEN_NECESSARY
+         * VISUALIZATION_MODE_WHEN_HELPFUL
+         * VISUALIZATION_MODE_ALWAYS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder visualizationMode(@Nullable Output<String> visualizationMode) {
+            $.visualizationMode = visualizationMode;
+            return this;
+        }
+
+        /**
+         * @param visualizationMode Mode for generating visualizations.
+         * Possible values:
+         * VISUALIZATION_MODE_EXPLICIT_ONLY
+         * VISUALIZATION_MODE_WHEN_NECESSARY
+         * VISUALIZATION_MODE_WHEN_HELPFUL
+         * VISUALIZATION_MODE_ALWAYS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder visualizationMode(String visualizationMode) {
+            return visualizationMode(Output.of(visualizationMode));
         }
 
         public AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs build() {

@@ -175,6 +175,23 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     * 
+     */
+    @Import(name="serviceAccountAuth")
+    private @Nullable Output<Boolean> serviceAccountAuth;
+
+    /**
+     * @return Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceAccountAuth() {
+        return Optional.ofNullable(this.serviceAccountAuth);
+    }
+
+    /**
      * The target URI to which the payloads will be delivered.
      * 
      */
@@ -201,6 +218,7 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
         this.pushOption = $.pushOption;
         this.repositoryId = $.repositoryId;
         this.sensitiveQueryString = $.sensitiveQueryString;
+        this.serviceAccountAuth = $.serviceAccountAuth;
         this.targetUri = $.targetUri;
     }
 
@@ -440,6 +458,29 @@ public final class HookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sensitiveQueryString(String sensitiveQueryString) {
             return sensitiveQueryString(Output.of(sensitiveQueryString));
+        }
+
+        /**
+         * @param serviceAccountAuth Determines if the hook uses the Repository Service Account to
+         * generate an OIDC ID Token for webhook authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountAuth(@Nullable Output<Boolean> serviceAccountAuth) {
+            $.serviceAccountAuth = serviceAccountAuth;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountAuth Determines if the hook uses the Repository Service Account to
+         * generate an OIDC ID Token for webhook authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountAuth(Boolean serviceAccountAuth) {
+            return serviceAccountAuth(Output.of(serviceAccountAuth));
         }
 
         /**

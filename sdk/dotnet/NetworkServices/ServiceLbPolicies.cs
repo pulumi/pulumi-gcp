@@ -126,6 +126,48 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Service Lb Policies Regional
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkServices.ServiceLbPolicies("default", new()
+    ///     {
+    ///         Name = "my-regional-lb-policy",
+    ///         Location = "us-central1",
+    ///         Description = "my regional service lb policy",
+    ///         LoadBalancingAlgorithm = "SPRAY_TO_REGION",
+    ///         AutoCapacityDrain = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesAutoCapacityDrainArgs
+    ///         {
+    ///             Enable = true,
+    ///         },
+    ///         FailoverConfig = new Gcp.NetworkServices.Inputs.ServiceLbPoliciesFailoverConfigArgs
+    ///         {
+    ///             FailoverHealthThreshold = 70,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "my-regional-lb-backend",
+    ///         Region = "us-central1",
+    ///         Description = "my regional backend service",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Protocol = "HTTP",
+    ///         ServiceLbPolicy = @default.Id.Apply(id =&gt; $"//networkservices.googleapis.com/{id}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

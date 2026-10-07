@@ -232,6 +232,7 @@ import (
 //						},
 //					},
 //					VisualizationOptions: &agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs{
+//						VisualizationMode: pulumi.String("VISUALIZATION_MODE_WHEN_NECESSARY"),
 //						VisualizationExamples: agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArray{
 //							&agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs{
 //								VisualizationType: pulumi.String("VISUALIZATION_TYPE_UNSPECIFIED"),
@@ -262,6 +263,7 @@ import (
 //						Enabled:       pulumi.Bool(true),
 //						Prompt:        pulumi.String("Use this server for queries"),
 //						ApiKeyName:    pulumi.String("x-api-key"),
+//						ApiKeyHeader:  pulumi.String("x-api-key-header"),
 //						ClientId:      pulumi.String("sample-client-id"),
 //						OauthTokenUrl: pulumi.String("https://example.com/oauth/token"),
 //					},
@@ -334,6 +336,7 @@ import (
 //				},
 //				MathRenderingMode: pulumi.String("MATH_RENDERING_MODE_LATEX"),
 //				WebSearchConfig: &agenticapplications.AnalystAgentPersonaWebSearchConfigArgs{
+//					Disabled: pulumi.Bool(false),
 //					ExcludedDomains: pulumi.StringArray{
 //						pulumi.String("example.com"),
 //					},
@@ -746,10 +749,19 @@ import (
 //
 // <a name="nestedArtifactsConfigVisualizationOptions"></a>The `visualizationOptions` block supports:
 //
-//   - `visualizationExamples` -
-//     (Optional)
-//     Examples for visualizations.
-//     Structure is documented below.
+// * `visualizationExamples` -
+// (Optional)
+// Examples for visualizations.
+// Structure is documented below.
+//
+// * `visualizationMode` -
+// (Optional)
+// Mode for generating visualizations.
+// Possible values:
+// VISUALIZATION_MODE_EXPLICIT_ONLY
+// VISUALIZATION_MODE_WHEN_NECESSARY
+// VISUALIZATION_MODE_WHEN_HELPFUL
+// VISUALIZATION_MODE_ALWAYS
 //
 // <a name="nestedArtifactsConfigVisualizationOptionsVisualizationExamples"></a>The `visualizationExamples` block supports:
 //
@@ -925,6 +937,11 @@ import (
 // (Optional)
 // Input only. The API key of the MCP server.
 // **Note**: This property is sensitive and will not be displayed in the plan.
+//
+// * `apiKeyHeader` -
+// (Optional)
+// The HTTP header when the API key is passed in a request header
+// (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
 //
 // * `apiKeyName` -
 // (Optional)
@@ -1141,10 +1158,15 @@ import (
 //
 // <a name="nestedWebSearchConfig"></a>The `webSearchConfig` block supports:
 //
-//   - `excludedDomains` -
-//     (Optional)
-//     List of domains to be excluded from Google Search / Enterprise Web Search
-//     grounding.
+// * `disabled` -
+// (Optional)
+// Whether web search grounding is disabled for the analyst agent.
+// Defaults to false if not specified (i.e. web search grounding is enabled).
+//
+// * `excludedDomains` -
+// (Optional)
+// List of domains to be excluded from Google Search / Enterprise Web Search
+// grounding.
 //
 // ## Import
 //

@@ -84,6 +84,144 @@ import (
 //	}
 //
 // ```
+// ### Iam Projects Policy Binding Access Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("ap-proj-"),
+//				Name:           pulumi.String("ap-proj-"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			iamApi, err := projects.NewService(ctx, "iam_api", &projects.ServiceArgs{
+//				Project:          project.ProjectId,
+//				Service:          pulumi.String("iam.googleapis.com"),
+//				DisableOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Binding access policies can be blocked by the managed org policy constraint
+//			// iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+//			allowAccessPolicyBinding, err := orgpolicy.NewPolicy(ctx, "allow_access_policy_binding", &orgpolicy.PolicyArgs{
+//				Name: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/policies/iam.managed.disableAccessPolicyBinding", projectId), nil
+//				}).(pulumi.StringOutput),
+//				Parent: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v", projectId), nil
+//				}).(pulumi.StringOutput),
+//				Spec: &orgpolicy.PolicySpecArgs{
+//					Rules: orgpolicy.PolicySpecRuleArray{
+//						&orgpolicy.PolicySpecRuleArgs{
+//							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			waitForProjectSetup, err := time.NewSleep(ctx, "wait_for_project_setup", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				iamApi,
+//				allowAccessPolicyBinding,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
+//				Project:     project.ProjectId,
+//				AccountId:   pulumi.String("ap-sa-"),
+//				DisplayName: pulumi.String("Test Service Account for Access Policy"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForProjectSetup,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			accessPolicy, err := iam.NewProjectAccessPolicy(ctx, "access_policy", &iam.ProjectAccessPolicyArgs{
+//				Project:        project.ProjectId,
+//				Location:       pulumi.String("global"),
+//				AccessPolicyId: pulumi.String("my-project-policy-"),
+//				Details: &iam.ProjectAccessPolicyDetailsArgs{
+//					Rules: iam.ProjectAccessPolicyDetailsRuleArray{
+//						&iam.ProjectAccessPolicyDetailsRuleArgs{
+//							Effect: pulumi.String("ALLOW"),
+//							Principals: pulumi.StringArray{
+//								testSa.Email.ApplyT(func(email string) (string, error) {
+//									return fmt.Sprintf("principal://iam.googleapis.com/projects/-/serviceAccounts/%v", email), nil
+//								}).(pulumi.StringOutput),
+//							},
+//							Operation: &iam.ProjectAccessPolicyDetailsRuleOperationArgs{
+//								Permissions: pulumi.StringArray{
+//									pulumi.String("eventarc.googleapis.com/messageBuses.publish"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("60s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				accessPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewProjectsPolicyBinding(ctx, "my-project-access-policy-binding", &iam.ProjectsPolicyBindingArgs{
+//				Project:         project.ProjectId,
+//				Location:        pulumi.String("global"),
+//				DisplayName:     pulumi.String("Binding for a project access policy"),
+//				PolicyKind:      pulumi.String("ACCESS"),
+//				PolicyBindingId: pulumi.String("my-project-access-binding-"),
+//				Policy: pulumi.All(project.ProjectId, accessPolicy.AccessPolicyId).ApplyT(func(_args []interface{}) (string, error) {
+//					projectId := _args[0].(string)
+//					accessPolicyId := _args[1].(string)
+//					return fmt.Sprintf("projects/%v/locations/global/accessPolicies/%v", projectId, accessPolicyId), nil
+//				}).(pulumi.StringOutput),
+//				Target: &iam.ProjectsPolicyBindingTargetArgs{
+//					Resource: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//						return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", projectId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -131,6 +269,7 @@ type ProjectsPolicyBinding struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition ProjectsPolicyBindingConditionPtrOutput `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
@@ -166,6 +305,8 @@ type ProjectsPolicyBinding struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target ProjectsPolicyBindingTargetOutput `pulumi:"target"`
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -244,6 +385,7 @@ type projectsPolicyBindingState struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition *ProjectsPolicyBindingCondition `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
@@ -279,6 +421,8 @@ type projectsPolicyBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target *ProjectsPolicyBindingTarget `pulumi:"target"`
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -316,6 +460,7 @@ type ProjectsPolicyBindingState struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition ProjectsPolicyBindingConditionPtrInput
 	// Output only. The time when the policy binding was created.
@@ -351,6 +496,8 @@ type ProjectsPolicyBindingState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target ProjectsPolicyBindingTargetPtrInput
 	// Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
@@ -392,6 +539,7 @@ type projectsPolicyBindingArgs struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition *ProjectsPolicyBindingCondition `pulumi:"condition"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -417,6 +565,8 @@ type projectsPolicyBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target ProjectsPolicyBindingTarget `pulumi:"target"`
 }
@@ -451,6 +601,7 @@ type ProjectsPolicyBindingArgs struct {
 	// The exact variables and functions that may be referenced within an expression are
 	// determined by the service that evaluates it. See the service documentation for
 	// additional information.
+	// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 	// Structure is documented below.
 	Condition ProjectsPolicyBindingConditionPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -476,6 +627,8 @@ type ProjectsPolicyBindingArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+	// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+	// `resource` (for access policy bindings) must be set.
 	// Structure is documented below.
 	Target ProjectsPolicyBindingTargetInput
 }
@@ -598,6 +751,7 @@ func (o ProjectsPolicyBindingOutput) Annotations() pulumi.StringMapOutput {
 // The exact variables and functions that may be referenced within an expression are
 // determined by the service that evaluates it. See the service documentation for
 // additional information.
+// Conditions are currently only supported when the bound policy is a principal access boundary policy.
 // Structure is documented below.
 func (o ProjectsPolicyBindingOutput) Condition() ProjectsPolicyBindingConditionPtrOutput {
 	return o.ApplyT(func(v *ProjectsPolicyBinding) ProjectsPolicyBindingConditionPtrOutput { return v.Condition }).(ProjectsPolicyBindingConditionPtrOutput)
@@ -672,6 +826,8 @@ func (o ProjectsPolicyBindingOutput) Project() pulumi.StringOutput {
 }
 
 // Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+// `resource` (for access policy bindings) must be set.
 // Structure is documented below.
 func (o ProjectsPolicyBindingOutput) Target() ProjectsPolicyBindingTargetOutput {
 	return o.ApplyT(func(v *ProjectsPolicyBinding) ProjectsPolicyBindingTargetOutput { return v.Target }).(ProjectsPolicyBindingTargetOutput)

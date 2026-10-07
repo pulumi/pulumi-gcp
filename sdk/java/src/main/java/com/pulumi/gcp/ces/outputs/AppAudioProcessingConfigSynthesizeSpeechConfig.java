@@ -14,10 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppAudioProcessingConfigSynthesizeSpeechConfig {
     /**
+     * @return The instruction used to synthesize speech when using a generative model.
+     * 
+     */
+    private @Nullable String instruction;
+    /**
      * @return The identifier for this object. Format specified above.
      * 
      */
     private String languageCode;
+    /**
+     * @return The model used to synthesize audio.
+     * 
+     */
+    private @Nullable String model;
     /**
      * @return The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
      * speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
@@ -36,11 +46,25 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfig {
 
     private AppAudioProcessingConfigSynthesizeSpeechConfig() {}
     /**
+     * @return The instruction used to synthesize speech when using a generative model.
+     * 
+     */
+    public Optional<String> instruction() {
+        return Optional.ofNullable(this.instruction);
+    }
+    /**
      * @return The identifier for this object. Format specified above.
      * 
      */
     public String languageCode() {
         return this.languageCode;
+    }
+    /**
+     * @return The model used to synthesize audio.
+     * 
+     */
+    public Optional<String> model() {
+        return Optional.ofNullable(this.model);
     }
     /**
      * @return The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
@@ -71,23 +95,39 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String instruction;
         private String languageCode;
+        private @Nullable String model;
         private @Nullable Double speakingRate;
         private @Nullable String voice;
         public Builder() {}
         public Builder(AppAudioProcessingConfigSynthesizeSpeechConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.instruction = defaults.instruction;
     	      this.languageCode = defaults.languageCode;
+    	      this.model = defaults.model;
     	      this.speakingRate = defaults.speakingRate;
     	      this.voice = defaults.voice;
         }
 
+        @CustomType.Setter
+        public Builder instruction(@Nullable String instruction) {
+
+            this.instruction = instruction;
+            return this;
+        }
         @CustomType.Setter
         public Builder languageCode(String languageCode) {
             if (languageCode == null) {
               throw new MissingRequiredPropertyException("AppAudioProcessingConfigSynthesizeSpeechConfig", "languageCode");
             }
             this.languageCode = languageCode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder model(@Nullable String model) {
+
+            this.model = model;
             return this;
         }
         @CustomType.Setter
@@ -104,7 +144,9 @@ public final class AppAudioProcessingConfigSynthesizeSpeechConfig {
         }
         public AppAudioProcessingConfigSynthesizeSpeechConfig build() {
             final var _resultValue = new AppAudioProcessingConfigSynthesizeSpeechConfig();
+            _resultValue.instruction = instruction;
             _resultValue.languageCode = languageCode;
+            _resultValue.model = model;
             _resultValue.speakingRate = speakingRate;
             _resultValue.voice = voice;
             return _resultValue;

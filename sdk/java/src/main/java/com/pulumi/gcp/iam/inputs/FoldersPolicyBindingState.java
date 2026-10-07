@@ -63,6 +63,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -93,6 +94,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -296,6 +298,8 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
 
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */
@@ -304,6 +308,8 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
 
     /**
      * @return Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */
@@ -432,6 +438,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
          * The exact variables and functions that may be referenced within an expression are
          * determined by the service that evaluates it. See the service documentation for
          * additional information.
+         * Conditions are currently only supported when the bound policy is a principal access boundary policy.
          * Structure is documented below.
          * 
          * @return builder
@@ -466,6 +473,7 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
          * The exact variables and functions that may be referenced within an expression are
          * determined by the service that evaluates it. See the service documentation for
          * additional information.
+         * Conditions are currently only supported when the bound policy is a principal access boundary policy.
          * Structure is documented below.
          * 
          * @return builder
@@ -743,6 +751,8 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
 
         /**
          * @param target Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+         * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+         * `resource` (for access policy bindings) must be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -755,6 +765,8 @@ public final class FoldersPolicyBindingState extends com.pulumi.resources.Resour
 
         /**
          * @param target Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+         * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+         * `resource` (for access policy bindings) must be set.
          * Structure is documented below.
          * 
          * @return builder

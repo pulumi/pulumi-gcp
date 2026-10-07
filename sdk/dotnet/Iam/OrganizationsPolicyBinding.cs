@@ -72,6 +72,84 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Organizations Policy Binding Access Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
+    ///     {
+    ///         AccountId = "ap-sa-",
+    ///         DisplayName = "Test Service Account for Access Policy",
+    ///     });
+    /// 
+    ///     var accessPolicy = new Gcp.Iam.OrganizationAccessPolicy("access_policy", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         AccessPolicyId = "my-org-policy-",
+    ///         Details = new Gcp.Iam.Inputs.OrganizationAccessPolicyDetailsArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.Iam.Inputs.OrganizationAccessPolicyDetailsRuleArgs
+    ///                 {
+    ///                     Effect = "ALLOW",
+    ///                     Principals = new[]
+    ///                     {
+    ///                         testSa.Email.Apply(email =&gt; $"principal://iam.googleapis.com/projects/-/serviceAccounts/{email}"),
+    ///                     },
+    ///                     Operation = new Gcp.Iam.Inputs.OrganizationAccessPolicyDetailsRuleOperationArgs
+    ///                     {
+    ///                         Permissions = new[]
+    ///                         {
+    ///                             "eventarc.googleapis.com/messageBuses.publish",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Sleep("wait_60_seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             accessPolicy,
+    ///         },
+    ///     });
+    /// 
+    ///     var my_org_access_policy_binding = new Gcp.Iam.OrganizationsPolicyBinding("my-org-access-policy-binding", new()
+    ///     {
+    ///         Organization = "123456789",
+    ///         Location = "global",
+    ///         DisplayName = "Binding for an organization access policy",
+    ///         PolicyKind = "ACCESS",
+    ///         PolicyBindingId = "my-org-access-binding-",
+    ///         Policy = accessPolicy.AccessPolicyId.Apply(accessPolicyId =&gt; $"organizations/123456789/locations/global/accessPolicies/{accessPolicyId}"),
+    ///         Target = new Gcp.Iam.Inputs.OrganizationsPolicyBindingTargetArgs
+    ///         {
+    ///             Resource = "//cloudresourcemanager.googleapis.com/organizations/123456789",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -123,6 +201,7 @@ namespace Pulumi.Gcp.Iam
         /// The exact variables and functions that may be referenced within an expression are
         /// determined by the service that evaluates it. See the service documentation for
         /// additional information.
+        /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -209,6 +288,8 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        /// Exactly one of `PrincipalSet` (for principal access boundary policy bindings) or
+        /// `Resource` (for access policy bindings) must be set.
         /// Structure is documented below.
         /// </summary>
         [Output("target")]
@@ -311,6 +392,7 @@ namespace Pulumi.Gcp.Iam
         /// The exact variables and functions that may be referenced within an expression are
         /// determined by the service that evaluates it. See the service documentation for
         /// additional information.
+        /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -367,6 +449,8 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        /// Exactly one of `PrincipalSet` (for principal access boundary policy bindings) or
+        /// `Resource` (for access policy bindings) must be set.
         /// Structure is documented below.
         /// </summary>
         [Input("target", required: true)]
@@ -419,6 +503,7 @@ namespace Pulumi.Gcp.Iam
         /// The exact variables and functions that may be referenced within an expression are
         /// determined by the service that evaluates it. See the service documentation for
         /// additional information.
+        /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -511,6 +596,8 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+        /// Exactly one of `PrincipalSet` (for principal access boundary policy bindings) or
+        /// `Resource` (for access policy bindings) must be set.
         /// Structure is documented below.
         /// </summary>
         [Input("target")]

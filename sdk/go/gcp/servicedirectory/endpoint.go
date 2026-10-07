@@ -171,7 +171,7 @@ type Endpoint struct {
 	// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
-	Network pulumi.StringPtrOutput `pulumi:"network"`
+	Network pulumi.StringOutput `pulumi:"network"`
 	// Port that the endpoint is running on, must be in the
 	// range of [0, 65535]. If unspecified, the default is 0.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
@@ -456,8 +456,8 @@ func (o EndpointOutput) Name() pulumi.StringOutput {
 }
 
 // The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
-func (o EndpointOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+func (o EndpointOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
 // Port that the endpoint is running on, must be in the

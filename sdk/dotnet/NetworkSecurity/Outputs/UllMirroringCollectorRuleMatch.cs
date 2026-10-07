@@ -31,6 +31,11 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpProtocols;
         /// <summary>
+        /// Primary IP ranges to match (for the capture point).
+        /// When unset, matches any primary IP.
+        /// </summary>
+        public readonly ImmutableArray<string> PrimaryIpRanges;
+        /// <summary>
         /// Source IP ranges to match. When unset, matches any source IP range.
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
@@ -43,11 +48,14 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
 
             ImmutableArray<string> ipProtocols,
 
+            ImmutableArray<string> primaryIpRanges,
+
             ImmutableArray<string> srcIpRanges)
         {
             Direction = direction;
             DstIpRanges = dstIpRanges;
             IpProtocols = ipProtocols;
+            PrimaryIpRanges = primaryIpRanges;
             SrcIpRanges = srcIpRanges;
         }
     }

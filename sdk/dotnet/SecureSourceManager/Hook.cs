@@ -117,6 +117,13 @@ namespace Pulumi.Gcp.SecureSourceManager
         public Output<string?> SensitiveQueryString { get; private set; } = null!;
 
         /// <summary>
+        /// Determines if the hook uses the Repository Service Account to
+        /// generate an OIDC ID Token for webhook authentication.
+        /// </summary>
+        [Output("serviceAccountAuth")]
+        public Output<bool?> ServiceAccountAuth { get; private set; } = null!;
+
+        /// <summary>
         /// The target URI to which the payloads will be delivered.
         /// </summary>
         [Output("targetUri")]
@@ -265,6 +272,13 @@ namespace Pulumi.Gcp.SecureSourceManager
         }
 
         /// <summary>
+        /// Determines if the hook uses the Repository Service Account to
+        /// generate an OIDC ID Token for webhook authentication.
+        /// </summary>
+        [Input("serviceAccountAuth")]
+        public Input<bool>? ServiceAccountAuth { get; set; }
+
+        /// <summary>
         /// The target URI to which the payloads will be delivered.
         /// </summary>
         [Input("targetUri", required: true)]
@@ -370,6 +384,13 @@ namespace Pulumi.Gcp.SecureSourceManager
                 _sensitiveQueryString = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Determines if the hook uses the Repository Service Account to
+        /// generate an OIDC ID Token for webhook authentication.
+        /// </summary>
+        [Input("serviceAccountAuth")]
+        public Input<bool>? ServiceAccountAuth { get; set; }
 
         /// <summary>
         /// The target URI to which the payloads will be delivered.

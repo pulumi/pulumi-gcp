@@ -3219,6 +3219,14 @@ class AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
+    instruction: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The instruction used to synthesize speech when using a generative model.
+    """
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The model used to synthesize audio.
+    """
     speaking_rate: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
@@ -3237,10 +3245,14 @@ class AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict(TypedDict):
 class AppAudioProcessingConfigSynthesizeSpeechConfigArgs:
     def __init__(__self__, *,
                  language_code: pulumi.Input[_builtins.str],
+                 instruction: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
                  speaking_rate: pulumi.Input[Optional[_builtins.float]] = None,
                  voice: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] language_code: The identifier for this object. Format specified above.
+        :param pulumi.Input[_builtins.str] instruction: The instruction used to synthesize speech when using a generative model.
+        :param pulumi.Input[_builtins.str] model: The model used to synthesize audio.
         :param pulumi.Input[_builtins.float] speaking_rate: The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
                speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
                half as fast. Values outside of the range [0.25, 2.0] will return an error.
@@ -3250,6 +3262,10 @@ class AppAudioProcessingConfigSynthesizeSpeechConfigArgs:
                languages from Cloud Text-to-Speech.
         """
         pulumi.set(__self__, "language_code", language_code)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
         if speaking_rate is not None:
             pulumi.set(__self__, "speaking_rate", speaking_rate)
         if voice is not None:
@@ -3266,6 +3282,30 @@ class AppAudioProcessingConfigSynthesizeSpeechConfigArgs:
     @language_code.setter
     def language_code(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "language_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The instruction used to synthesize speech when using a generative model.
+        """
+        return pulumi.get(self, "instruction")
+
+    @instruction.setter
+    def instruction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instruction", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The model used to synthesize audio.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="speakingRate")

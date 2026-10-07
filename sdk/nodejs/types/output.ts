@@ -3133,6 +3133,15 @@ export namespace agenticapplications {
          * Examples for visualizations.
          */
         visualizationExamples?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample[];
+        /**
+         * Mode for generating visualizations.
+         * Possible values:
+         * VISUALIZATION_MODE_EXPLICIT_ONLY
+         * VISUALIZATION_MODE_WHEN_NECESSARY
+         * VISUALIZATION_MODE_WHEN_HELPFUL
+         * VISUALIZATION_MODE_ALWAYS
+         */
+        visualizationMode?: string;
     }
 
     export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample {
@@ -3343,6 +3352,11 @@ export namespace agenticapplications {
          * Input only. The API key of the MCP server.
          */
         apiKey?: string;
+        /**
+         * The HTTP header when the API key is passed in a request header
+         * (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+         */
+        apiKeyHeader?: string;
         /**
          * The API key parameter name.
          */
@@ -3568,6 +3582,11 @@ export namespace agenticapplications {
     }
 
     export interface AnalystAgentPersonaWebSearchConfig {
+        /**
+         * Whether web search grounding is disabled for the analyst agent.
+         * Defaults to false if not specified (i.e. web search grounding is enabled).
+         */
+        disabled?: boolean;
         /**
          * List of domains to be excluded from Google Search / Enterprise Web Search
          * grounding.
@@ -4671,7 +4690,9 @@ export namespace alloydb {
 
     export interface GetInstanceMachineConfig {
         /**
-         * The number of CPU's in the VM instance.
+         * The number of CPUs in the VM instance. For read pool instances, this
+         * value is applied to the instances in the pool and is not replaced by
+         * a fixed default.
          */
         cpuCount: number;
         /**
@@ -4971,7 +4992,9 @@ export namespace alloydb {
 
     export interface InstanceMachineConfig {
         /**
-         * The number of CPU's in the VM instance.
+         * The number of CPUs in the VM instance. For read pool instances, this
+         * value is applied to the instances in the pool and is not replaced by
+         * a fixed default.
          */
         cpuCount: number;
         /**
@@ -6754,12 +6777,26 @@ export namespace appengine {
         /**
          * OAuth2 client secret to use for the authentication flow.
          * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
          */
-        oauth2ClientSecret: string;
+        oauth2ClientSecret?: string;
         /**
          * Hex-encoded SHA-256 hash of the client secret.
          */
         oauth2ClientSecretSha256: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * OAuth2 client secret to use for the authentication flow.
+         * The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** Exactly one of `oauth2ClientSecret` or `oauth2ClientSecretWo` can be set.
+         */
+        oauth2ClientSecretWo?: string;
+        /**
+         * Triggers update of `oauth2ClientSecretWo` write-only. Increment this value when an update to `oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        oauth2ClientSecretWoVersion?: string;
     }
 
     export interface ApplicationUrlDispatchRule {
@@ -19838,9 +19875,17 @@ export namespace ces {
 
     export interface AppAudioProcessingConfigSynthesizeSpeechConfig {
         /**
+         * The instruction used to synthesize speech when using a generative model.
+         */
+        instruction?: string;
+        /**
          * The identifier for this object. Format specified above.
          */
         languageCode: string;
+        /**
+         * The model used to synthesize audio.
+         */
+        model?: string;
         /**
          * The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
          * speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
@@ -49839,6 +49884,13 @@ export namespace compute {
          */
         authenticationConfig?: string;
         /**
+         * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         */
+        identity?: string;
+        /**
          * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
          * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
          * server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -52065,6 +52117,13 @@ export namespace compute {
          */
         authenticationConfig: string;
         /**
+         * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         */
+        identity: string;
+        /**
          * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
          * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
          * server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -53679,6 +53738,10 @@ export namespace compute {
          */
         aliasIpv6Ranges: outputs.compute.GetInstanceNetworkInterfaceAliasIpv6Range[];
         /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns: boolean;
+        /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
         igmpQuery: string;
@@ -54314,6 +54377,10 @@ export namespace compute {
          * An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
          */
         aliasIpv6Ranges: outputs.compute.GetInstanceTemplateNetworkInterfaceAliasIpv6Range[];
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns: boolean;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -54956,7 +55023,7 @@ export namespace compute {
          * Specifies the balancing mode for this backend.
          *
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-         * for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+         * for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
          */
         balancingMode: string;
         /**
@@ -55736,6 +55803,13 @@ export namespace compute {
          * Can only be specified if authenticationMode is not NONE.
          */
         authenticationConfig: string;
+        /**
+         * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         */
+        identity: string;
         /**
          * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
          * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
@@ -56594,6 +56668,10 @@ export namespace compute {
          */
         aliasIpv6Ranges: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range[];
         /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+         */
+        enableVpcScopedDns: boolean;
+        /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
         igmpQuery: string;
@@ -57276,6 +57354,10 @@ export namespace compute {
 
     export interface GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+         */
+        requestBodies: outputs.compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody[];
+        /**
          * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
          */
         requestCookies: outputs.compute.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky[];
@@ -57302,6 +57384,24 @@ export namespace compute {
          * Target WAF rule set to apply the preconfigured WAF exclusion.
          */
         targetRuleSet: string;
+    }
+
+    export interface GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value: string;
     }
 
     export interface GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
@@ -58988,6 +59088,10 @@ export namespace compute {
 
     export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
+         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         */
+        requestBodies: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody[];
+        /**
          * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
          */
         requestCookies: outputs.compute.GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky[];
@@ -59011,6 +59115,17 @@ export namespace compute {
          * Target WAF rule set to apply the preconfigured WAF exclusion.
          */
         targetRuleSet: string;
+    }
+
+    export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value: string;
     }
 
     export interface GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
@@ -61058,6 +61173,10 @@ export namespace compute {
          */
         aliasIpv6Ranges: outputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpv6Range[];
         /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+         */
+        enableVpcScopedDns: boolean;
+        /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
         igmpQuery: string;
@@ -61735,6 +61854,10 @@ export namespace compute {
          * An array of IPv6 alias IP ranges for this network interface.
          */
         aliasIpv6Ranges: outputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpv6Range[];
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+         */
+        enableVpcScopedDns: boolean;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -62482,6 +62605,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpv6Ranges?: outputs.compute.InstanceNetworkInterfaceAliasIpv6Range[];
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns?: boolean;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -63244,6 +63371,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpv6Ranges?: outputs.compute.InstanceTemplateNetworkInterfaceAliasIpv6Range[];
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns?: boolean;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -66004,7 +66135,7 @@ export namespace compute {
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
          */
         balancingMode?: string;
         /**
@@ -66857,6 +66988,13 @@ export namespace compute {
          * Can only be specified if authenticationMode is not NONE.
          */
         authenticationConfig?: string;
+        /**
+         * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         */
+        identity?: string;
         /**
          * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
          * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
@@ -68137,6 +68275,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpv6Ranges?: outputs.compute.RegionInstanceTemplateNetworkInterfaceAliasIpv6Range[];
+        /**
+         * If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         */
+        enableVpcScopedDns?: boolean;
         /**
          * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
          */
@@ -69980,6 +70122,12 @@ export namespace compute {
 
     export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
+         * (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         */
+        requestBodies?: outputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody[];
+        /**
          * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
@@ -70010,6 +70158,24 @@ export namespace compute {
          * Target WAF rule set to apply the preconfigured WAF exclusion.
          */
         targetRuleSet: string;
+    }
+
+    export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+        /**
+         * You can specify an exact match or a partial match by using a field operator and a field value.
+         * Available options:
+         * EQUALS: The operator matches if the field value equals the specified value.
+         * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * CONTAINS: The operator matches if the field value contains the specified value.
+         * EQUALS_ANY: The operator matches if the field value is any value.
+         */
+        operator: string;
+        /**
+         * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+         * The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+         */
+        value?: string;
     }
 
     export interface RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
@@ -72088,6 +72254,35 @@ export namespace compute {
          *   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
          */
         pathTemplateRewrite?: string;
+        /**
+         * The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         */
+        regexRewrite?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite;
+    }
+
+    export interface RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+        /**
+         * The regular expression used to match against the URL path.
+         * It uses RE2 syntax with the following constraints:
+         * * Any single character operators are allowed.
+         * * Groups may only contain a submatch operator, and may not
+         *   contain character repetition (for example, `.*`).
+         * * Character repetition (for example, `.*`) may only be used in
+         *   a regex together with empty string operators, other
+         *   repetitions, ranges, and repetitions of ranges.
+         * * Ranges may only contain character ranges, digit ranges, and
+         *   symbols allowed for ranges.
+         */
+        pathPattern: string;
+        /**
+         * The substitution used to rewrite the parts of the URL path
+         * matched by pathPattern. May reference capture groups from
+         * pathPattern.
+         */
+        pathSubstitution: string;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
@@ -74299,7 +74494,7 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
         /**
          * (Optional, Beta)
-         * A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
          * Structure is documented below.
          */
         requestBodies?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody[];
@@ -78335,10 +78530,39 @@ export namespace compute {
          * captured by the route's pathTemplate matchers.
          * pathTemplateRewrite may only be used when all of a route's
          * MatchRules specify pathTemplate.
-         * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+         * Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
          * specified.
          */
         pathTemplateRewrite?: string;
+        /**
+         * The regex rewrite to be applied to the URL. Only one of
+         * pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+         * specified.
+         * Structure is documented below.
+         */
+        regexRewrite?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+        /**
+         * The regular expression used to match against the URL path.
+         * It uses RE2 syntax with the following constraints:
+         * * Any single character operators are allowed.
+         * * Groups may only contain a submatch operator, and may not
+         *   contain character repetition (for example, `.*`).
+         * * Character repetition (for example, `.*`) may only be used in
+         *   a regex together with empty string operators, other
+         *   repetitions, ranges, and repetitions of ranges.
+         * * Ranges may only contain character ranges, digit ranges, and
+         *   symbols allowed for ranges.
+         */
+        pathPattern: string;
+        /**
+         * The substitution used to rewrite the parts of the URL path
+         * matched by pathPattern. May reference capture groups from
+         * pathPattern.
+         */
+        pathSubstitution: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
@@ -90046,6 +90270,18 @@ export namespace databasemigrationservice {
          * Format: projects/{project}/regions/{region}/networkAttachments/{name}
          */
         networkAttachment: string;
+    }
+
+    export interface PrivateConnectionReservedPublicIpConfig {
+        /**
+         * (Output)
+         * Output only. The reserved public IPs.
+         */
+        egressPublicIps: string[];
+        /**
+         * Optional. Number of static public IP addresses to reserve.
+         */
+        natIpsCount?: number;
     }
 
     export interface PrivateConnectionVpcPeeringConfig {
@@ -112280,6 +112516,230 @@ export namespace diagflow {
         message: string;
     }
 
+    export interface ToolConnectorSpec {
+        /**
+         * Actions for the tool to use.
+         * Structure is documented below.
+         */
+        actions: outputs.diagflow.ToolConnectorSpecAction[];
+        /**
+         * The full resource name of the referenced Integration Connectors Connection.
+         * Format: `projects/*&#47;locations/*&#47;connections/*`
+         */
+        name: string;
+    }
+
+    export interface ToolConnectorSpecAction {
+        /**
+         * ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+         */
+        connectionActionId?: string;
+        /**
+         * Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+         * Structure is documented below.
+         */
+        entityOperation?: outputs.diagflow.ToolConnectorSpecActionEntityOperation;
+        /**
+         * Entity fields to use as inputs for the operation.
+         * If no fields are specified, all fields of the Entity will be used.
+         */
+        inputFields?: string[];
+        /**
+         * Entity fields to return from the operation.
+         * If no fields are specified, all fields of the Entity will be returned.
+         */
+        outputFields?: string[];
+    }
+
+    export interface ToolConnectorSpecActionEntityOperation {
+        /**
+         * ID of the entity.
+         */
+        entityId: string;
+        /**
+         * The operation to perform on the entity.
+         * Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+         */
+        operation: string;
+    }
+
+    export interface ToolFunctionSpec {
+        /**
+         * Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+         * This input is a JSON object that contains the function's parameters as properties of the object.
+         */
+        inputSchema?: string;
+        /**
+         * Optional. The method type of the function. If not specified, the default value is GET.
+         * Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+         */
+        methodType?: string;
+        /**
+         * Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+         * This output is a JSON object that contains the function's parameters as properties of the object.
+         */
+        outputSchema?: string;
+    }
+
+    export interface ToolOpenApiSpec {
+        /**
+         * Optional. Authentication information required by the API.
+         * Structure is documented below.
+         */
+        authentication?: outputs.diagflow.ToolOpenApiSpecAuthentication;
+        /**
+         * Optional. Service Directory configuration.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: outputs.diagflow.ToolOpenApiSpecServiceDirectoryConfig;
+        /**
+         * Required. The OpenAPI schema specified as a text.
+         * Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+         */
+        textSchema: string;
+        /**
+         * Optional. TLS configuration for the HTTPS verification.
+         * Structure is documented below.
+         */
+        tlsConfig?: outputs.diagflow.ToolOpenApiSpecTlsConfig;
+    }
+
+    export interface ToolOpenApiSpecAuthentication {
+        /**
+         * Config for API key auth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        apiKeyConfig?: outputs.diagflow.ToolOpenApiSpecAuthenticationApiKeyConfig;
+        /**
+         * Config for bearer token auth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        bearerTokenConfig?: outputs.diagflow.ToolOpenApiSpecAuthenticationBearerTokenConfig;
+        /**
+         * Config for OAuth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        oauthConfig?: outputs.diagflow.ToolOpenApiSpecAuthenticationOauthConfig;
+        /**
+         * Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+         * This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+         * Structure is documented below.
+         */
+        serviceAgentAuthConfig?: outputs.diagflow.ToolOpenApiSpecAuthenticationServiceAgentAuthConfig;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationApiKeyConfig {
+        /**
+         * Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        apiKey?: string;
+        /**
+         * The parameter name or the header name of the API key.
+         * E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+         */
+        keyName: string;
+        /**
+         * Key location in the request.
+         * Possible values are: `HEADER`, `QUERY_STRING`.
+         */
+        requestLocation: string;
+        /**
+         * Optional. The name of the SecretManager secret version resource storing the API key.
+         * If this field is set, the `apiKey` field will be ignored.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         */
+        secretVersionForApiKey?: string;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationBearerTokenConfig {
+        /**
+         * Optional. The name of the SecretManager secret version resource storing the Bearer token.
+         * If this field is set, the `token` field will be ignored.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         */
+        secretVersionForToken?: string;
+        /**
+         * Optional. The text token appended to the text `Bearer` to the request Authorization header.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        token?: string;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationOauthConfig {
+        /**
+         * The client ID from the OAuth provider.
+         */
+        clientId: string;
+        /**
+         * Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: string;
+        /**
+         * OAuth grant types.
+         * Possible values are: `CLIENT_CREDENTIAL`.
+         */
+        oauthGrantType: string;
+        /**
+         * Optional. The OAuth scopes to grant.
+         */
+        scopes?: string[];
+        /**
+         * Optional. The name of the SecretManager secret version resource storing the client secret.
+         * If this field is set, the `clientSecret` field will be ignored.
+         * Format: `projects/{project}/secrets/{secret}/versions/{version}`
+         */
+        secretVersionForClientSecret?: string;
+        /**
+         * The token endpoint in the OAuth provider to exchange for an access token.
+         */
+        tokenEndpoint: string;
+    }
+
+    export interface ToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
+        /**
+         * Optional. Indicate the auth token type generated from the Dialogflow service agent.
+         * The generated token is sent in the Authorization header.
+         * Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+         */
+        serviceAgentAuth?: string;
+    }
+
+    export interface ToolOpenApiSpecServiceDirectoryConfig {
+        /**
+         * The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+         * Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+         * `LocationID` of the service directory must be the same as the location of the tool.
+         */
+        service: string;
+    }
+
+    export interface ToolOpenApiSpecTlsConfig {
+        /**
+         * Specifies a list of allowed custom CA certificates for HTTPS verification.
+         * Structure is documented below.
+         */
+        caCerts: outputs.diagflow.ToolOpenApiSpecTlsConfigCaCert[];
+    }
+
+    export interface ToolOpenApiSpecTlsConfigCaCert {
+        /**
+         * The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+         * If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+         * N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+         * A base64-encoded string.
+         */
+        cert: string;
+        /**
+         * The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+         */
+        displayName: string;
+    }
+
 }
 
 export namespace discoveryengine {
@@ -124222,12 +124682,19 @@ export namespace iam {
 
     export interface FoldersPolicyBindingTarget {
         /**
-         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
          *   It must be parent by the policy binding's parent (the folder).
          */
         principalSet?: string;
+        /**
+         * Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = "ACCESS"`. Examples:
+         * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+         *   It must be the policy binding's parent (the folder).
+         */
+        resource?: string;
     }
 
     export interface GetTestablePermissionsPermission {
@@ -124348,6 +124815,33 @@ export namespace iam {
          * certificate(either root or intermediate cert).
          */
         pemCertificate: string;
+    }
+
+    export interface GetWorkloadIdentityPoolJwksKey {
+        /**
+         * The algorithm intended for use with the key (e.g. `RS256`).
+         */
+        alg: string;
+        /**
+         * The exponent for the RSA public key.
+         */
+        e: string;
+        /**
+         * The unique identifier for the key.
+         */
+        kid: string;
+        /**
+         * The key type (e.g. `RSA`).
+         */
+        kty: string;
+        /**
+         * The modulus for the RSA public key.
+         */
+        n: string;
+        /**
+         * The intended use of the public key (e.g. `sig`).
+         */
+        use: string;
     }
 
     export interface GetWorkloadIdentityPoolProviderAw {
@@ -124604,7 +125098,7 @@ export namespace iam {
 
     export interface OrganizationsPolicyBindingTarget {
         /**
-         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
          * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -124612,6 +125106,13 @@ export namespace iam {
          *   It must be parent by the policy binding's parent (the organization).
          */
         principalSet?: string;
+        /**
+         * Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = "ACCESS"`. Examples:
+         * * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+         *   It must be the policy binding's parent (the organization).
+         */
+        resource?: string;
     }
 
     export interface PrincipalAccessBoundaryPolicyDetails {
@@ -124802,7 +125303,7 @@ export namespace iam {
 
     export interface ProjectsPolicyBindingTarget {
         /**
-         * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Project:
          * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -124811,6 +125312,15 @@ export namespace iam {
          *   It must be parent by the policy binding's parent (the project).
          */
         principalSet?: string;
+        /**
+         * Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = "ACCESS"`. Examples:
+         * * Project:
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+         *   It must be the policy binding's parent (the project).
+         */
+        resource?: string;
     }
 
     export interface WorkforcePoolAccessRestrictions {
@@ -138003,6 +138513,172 @@ export namespace networksecurity {
         urls?: string[];
     }
 
+    export interface SecurityProfileWildfireAnalysisProfile {
+        /**
+         * The configuration for inline cloud analysis of files.
+         * Structure is documented below.
+         */
+        wildfireInlineCloudAnalysisRules?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule[];
+        /**
+         * Defines what action to take for WildFire inline ML threats per protocol.
+         * Structure is documented below.
+         */
+        wildfireInlineMlOverrides?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride[];
+        /**
+         * WildFire inline Machine Learning setting for the Security Profile.
+         * Structure is documented below.
+         */
+        wildfireInlineMlSetting?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting;
+        /**
+         * Defines what action to take for WildFire threats per protocol.
+         * Structure is documented below.
+         */
+        wildfireOverrides?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireOverride[];
+        /**
+         * Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a signature lookup. Default value is false.
+         */
+        wildfireRealtimeLookup?: boolean;
+        /**
+         * The configuration for file submission to WildFire in cloud.
+         * Structure is documented below.
+         */
+        wildfireSubmissionRules?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule[];
+        /**
+         * The configuration for overriding threats actions by threat id match.
+         * Structure is documented below.
+         */
+        wildfireThreatOverrides?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireThreatOverride[];
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRule {
+        /**
+         * The action to take when a rule is matched.
+         * Possible values are: `ALLOW`, `DENY`, `ALERT`.
+         */
+        action: string;
+        /**
+         * Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+         * Structure is documented below.
+         */
+        customFileTypes?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes;
+        /**
+         * Direction of traffic to match for a rule.
+         * Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+         */
+        direction: string;
+        /**
+         * Defines the file selection mode for a rule.
+         * Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+         */
+        fileSelectionMode: string;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypes {
+        /**
+         * The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+         */
+        fileTypes: string[];
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+         */
+        action: string;
+        /**
+         * Required protocol to match.
+         * Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+         */
+        protocol: string;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlSetting {
+        /**
+         * File exceptions to exclude from WildFire inline ML.
+         * Structure is documented below.
+         */
+        fileExceptions?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException[];
+        /**
+         * Defines what action to take for a specific file type in WildFire inline ML.
+         * Structure is documented below.
+         */
+        inlineMlConfigs?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig[];
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileException {
+        /**
+         * The file name associated with the partial hash.
+         */
+        filename?: string;
+        /**
+         * Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+         */
+        partialHash: string;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfig {
+        /**
+         * The action to take for a file type.
+         * Possible values are: `DISABLE`, `ALERT`, `ENABLE`.
+         */
+        action: string;
+        /**
+         * The file type to match. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#inlinemlfiletype)
+         */
+        fileType: string;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`, `WILDFIRE_ALERT`, `WILDFIRE_DENY`.
+         */
+        action: string;
+        /**
+         * Required protocol to match.
+         * Possible values are: `WILDFIRE_SMTP`, `WILDFIRE_SMB`, `WILDFIRE_POP3`, `WILDFIRE_IMAP`, `WILDFIRE_HTTP2`, `WILDFIRE_HTTP`, `WILDFIRE_FTP`.
+         */
+        protocol: string;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireSubmissionRule {
+        /**
+         * Defines the custom file types to match for a rule. The API will only accept this if `fileSelectionMode` is set to `CUSTOM_FILE_TYPES`
+         * Structure is documented below.
+         */
+        customFileTypes?: outputs.networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes;
+        /**
+         * Direction of traffic to match for a rule.
+         * Possible values are: `UPLOAD`, `DOWNLOAD`, `BOTH`.
+         */
+        direction: string;
+        /**
+         * Defines the file selection mode for a rule.
+         * Possible values are: `ALL_FILE_TYPES`, `CUSTOM_FILE_TYPES`.
+         */
+        fileSelectionMode: string;
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypes {
+        /**
+         * The file types to match for a rule. For allowed values, see [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.securityProfiles#wildfireinlinecloudanalysisrule).
+         */
+        fileTypes: string[];
+    }
+
+    export interface SecurityProfileWildfireAnalysisProfileWildfireThreatOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `WILDFIRE_DEFAULT_ACTION`, `WILDFIRE_ALLOW`.
+         */
+        action: string;
+        /**
+         * Vendor-specific ID of a threat to override.
+         */
+        threatId: string;
+    }
+
     export interface ServerTlsPolicyMtlsPolicy {
         /**
          * Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
@@ -138098,6 +138774,11 @@ export namespace networksecurity {
          * Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
          */
         ipProtocols?: string[];
+        /**
+         * Primary IP ranges to match (for the capture point).
+         * When unset, matches any primary IP.
+         */
+        primaryIpRanges?: string[];
         /**
          * Source IP ranges to match. When unset, matches any source IP range.
          */
@@ -140996,6 +141677,12 @@ export namespace oracledatabase {
          */
         dbServerVersion: string;
         /**
+         * (Output)
+         * The Exascale configuration for the Exadata Infrastructure.
+         * Structure is documented below.
+         */
+        exascaleConfigs: outputs.oracledatabase.CloudExadataInfrastructurePropertiesExascaleConfig[];
+        /**
          * Maintenance window as defined by Oracle.
          * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
          * Structure is documented below.
@@ -141104,8 +141791,29 @@ export namespace oracledatabase {
         /**
          * The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
+         *
+         * <a name="nestedPropertiesExascaleConfig"></a>The `exascaleConfig` block contains:
          */
         email: string;
+    }
+
+    export interface CloudExadataInfrastructurePropertiesExascaleConfig {
+        /**
+         * Available storage size for Exascale in GBs.
+         */
+        availableStorageSizeGb: number;
+        /**
+         * Available storage size for VM storage on Exascale in GBs.
+         */
+        availableVmStorageSizeGb: number;
+        /**
+         * Total storage size needed for Exascale in GBs.
+         */
+        totalStorageSizeGb: number;
+        /**
+         * Storage size needed for VM storage on Exascale in GBs.
+         */
+        totalVmStorageSizeGb: number;
     }
 
     export interface CloudExadataInfrastructurePropertiesMaintenanceWindow {
@@ -143512,6 +144220,10 @@ export namespace oracledatabase {
          */
         dbServerVersion: string;
         /**
+         * The Exascale configuration for the Exadata Infrastructure.
+         */
+        exascaleConfigs: outputs.oracledatabase.GetCloudExadataInfrastructurePropertyExascaleConfig[];
+        /**
          * Maintenance window as defined by Oracle.
          * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
          */
@@ -143607,6 +144319,25 @@ export namespace oracledatabase {
          * and infrastructure.
          */
         email: string;
+    }
+
+    export interface GetCloudExadataInfrastructurePropertyExascaleConfig {
+        /**
+         * Available storage size for Exascale in GBs.
+         */
+        availableStorageSizeGb: number;
+        /**
+         * Available storage size for VM storage on Exascale in GBs.
+         */
+        availableVmStorageSizeGb: number;
+        /**
+         * Total storage size needed for Exascale in GBs.
+         */
+        totalStorageSizeGb: number;
+        /**
+         * Storage size needed for VM storage on Exascale in GBs.
+         */
+        totalVmStorageSizeGb: number;
     }
 
     export interface GetCloudExadataInfrastructurePropertyMaintenanceWindow {
@@ -143788,6 +144519,10 @@ export namespace oracledatabase {
          */
         dbServerVersion: string;
         /**
+         * The Exascale configuration for the Exadata Infrastructure.
+         */
+        exascaleConfigs: outputs.oracledatabase.GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig[];
+        /**
          * Maintenance window as defined by Oracle.
          * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
          */
@@ -143883,6 +144618,25 @@ export namespace oracledatabase {
          * and infrastructure.
          */
         email: string;
+    }
+
+    export interface GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig {
+        /**
+         * Available storage size for Exascale in GBs.
+         */
+        availableStorageSizeGb: number;
+        /**
+         * Available storage size for VM storage on Exascale in GBs.
+         */
+        availableVmStorageSizeGb: number;
+        /**
+         * Total storage size needed for Exascale in GBs.
+         */
+        totalStorageSizeGb: number;
+        /**
+         * Storage size needed for VM storage on Exascale in GBs.
+         */
+        totalVmStorageSizeGb: number;
     }
 
     export interface GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow {

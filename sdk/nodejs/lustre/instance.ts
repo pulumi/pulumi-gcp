@@ -99,6 +99,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly accessRulesOptions: pulumi.Output<outputs.lustre.InstanceAccessRulesOptions | undefined>;
     /**
+     * The version this instance can be upgraded to, if one is available. Empty
+     * when the instance is already running the newest release.
+     */
+    declare public /*out*/ readonly availableVersion: pulumi.Output<string>;
+    /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
      * See [Performance tiers and maximum storage
@@ -132,6 +137,11 @@ export class Instance extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The version of Managed Lustre software that this instance is currently
+     * running.
+     */
+    declare public /*out*/ readonly effectiveVersion: pulumi.Output<string>;
     /**
      * The filesystem name for this instance. This name is used by client-side
      * tools, including when mounting the instance. Must be eight characters or
@@ -232,6 +242,19 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
+     * The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     */
+    declare public readonly targetVersion: pulumi.Output<string | undefined>;
+    /**
      * Unique ID of the resource.
      * This is unrelated to the access rules which allow specifying the root
      * squash uid.
@@ -261,12 +284,14 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["accessRulesOptions"] = state?.accessRulesOptions;
+            resourceInputs["availableVersion"] = state?.availableVersion;
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dynamicTierOptions"] = state?.dynamicTierOptions;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveVersion"] = state?.effectiveVersion;
             resourceInputs["filesystem"] = state?.filesystem;
             resourceInputs["gkeSupportEnabled"] = state?.gkeSupportEnabled;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -283,6 +308,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
             resourceInputs["stateReason"] = state?.stateReason;
+            resourceInputs["targetVersion"] = state?.targetVersion;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["upcomingMaintenanceSchedules"] = state?.upcomingMaintenanceSchedules;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -319,8 +345,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["perUnitStorageThroughput"] = args?.perUnitStorageThroughput;
             resourceInputs["placementPolicy"] = args?.placementPolicy;
             resourceInputs["project"] = args?.project;
+            resourceInputs["targetVersion"] = args?.targetVersion;
+            resourceInputs["availableVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["effectiveVersion"] = undefined /*out*/;
             resourceInputs["mountPoint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -347,6 +376,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions | undefined>;
+    /**
+     * The version this instance can be upgraded to, if one is available. Empty
+     * when the instance is already running the newest release.
+     */
+    availableVersion?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
@@ -381,6 +415,11 @@ export interface InstanceState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The version of Managed Lustre software that this instance is currently
+     * running.
+     */
+    effectiveVersion?: pulumi.Input<string | undefined>;
     /**
      * The filesystem name for this instance. This name is used by client-side
      * tools, including when mounting the instance. Must be eight characters or
@@ -480,6 +519,19 @@ export interface InstanceState {
      * The reason why the instance is in a certain state (e.g. SUSPENDED).
      */
     stateReason?: pulumi.Input<string | undefined>;
+    /**
+     * The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     */
+    targetVersion?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the resource.
      * This is unrelated to the access rules which allow specifying the root
@@ -602,4 +654,17 @@ export interface InstanceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     */
+    targetVersion?: pulumi.Input<string | undefined>;
 }

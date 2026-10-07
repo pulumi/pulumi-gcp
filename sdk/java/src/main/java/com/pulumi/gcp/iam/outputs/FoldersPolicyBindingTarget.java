@@ -12,17 +12,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FoldersPolicyBindingTarget {
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
      * 
      */
     private @Nullable String principalSet;
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+     *   It must be the policy binding&#39;s parent (the folder).
+     * 
+     */
+    private @Nullable String resource;
 
     private FoldersPolicyBindingTarget() {}
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
      *   It must be parent by the policy binding&#39;s parent (the folder).
@@ -30,6 +38,16 @@ public final class FoldersPolicyBindingTarget {
      */
     public Optional<String> principalSet() {
         return Optional.ofNullable(this.principalSet);
+    }
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Folder: `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID`
+     *   It must be the policy binding&#39;s parent (the folder).
+     * 
+     */
+    public Optional<String> resource() {
+        return Optional.ofNullable(this.resource);
     }
 
     public static Builder builder() {
@@ -42,10 +60,12 @@ public final class FoldersPolicyBindingTarget {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String principalSet;
+        private @Nullable String resource;
         public Builder() {}
         public Builder(FoldersPolicyBindingTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.principalSet = defaults.principalSet;
+    	      this.resource = defaults.resource;
         }
 
         @CustomType.Setter
@@ -54,9 +74,16 @@ public final class FoldersPolicyBindingTarget {
             this.principalSet = principalSet;
             return this;
         }
+        @CustomType.Setter
+        public Builder resource(@Nullable String resource) {
+
+            this.resource = resource;
+            return this;
+        }
         public FoldersPolicyBindingTarget build() {
             final var _resultValue = new FoldersPolicyBindingTarget();
             _resultValue.principalSet = principalSet;
+            _resultValue.resource = resource;
             return _resultValue;
         }
     }

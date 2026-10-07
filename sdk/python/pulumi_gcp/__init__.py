@@ -6272,6 +6272,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/tool",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/tool:Tool": "Tool"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/version",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {

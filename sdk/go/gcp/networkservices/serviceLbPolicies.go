@@ -157,6 +157,59 @@ import (
 //	}
 //
 // ```
+// ### Network Services Service Lb Policies Regional
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
+//				Name:                   pulumi.String("my-regional-lb-policy"),
+//				Location:               pulumi.String("us-central1"),
+//				Description:            pulumi.String("my regional service lb policy"),
+//				LoadBalancingAlgorithm: pulumi.String("SPRAY_TO_REGION"),
+//				AutoCapacityDrain: &networkservices.ServiceLbPoliciesAutoCapacityDrainArgs{
+//					Enable: pulumi.Bool(true),
+//				},
+//				FailoverConfig: &networkservices.ServiceLbPoliciesFailoverConfigArgs{
+//					FailoverHealthThreshold: pulumi.Int(70),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("my-regional-lb-backend"),
+//				Region:              pulumi.String("us-central1"),
+//				Description:         pulumi.String("my regional backend service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("HTTP"),
+//				ServiceLbPolicy: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
+//					return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

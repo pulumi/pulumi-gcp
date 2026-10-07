@@ -93,6 +93,7 @@ export interface GetRegionBackendServiceResult {
     readonly region?: string;
     readonly securityPolicy: string;
     readonly selfLink: string;
+    readonly serviceLbPolicy: string;
     readonly sessionAffinity: string;
     readonly strongSessionAffinityCookies: outputs.compute.GetRegionBackendServiceStrongSessionAffinityCooky[];
     readonly subsettings: outputs.compute.GetRegionBackendServiceSubsetting[];

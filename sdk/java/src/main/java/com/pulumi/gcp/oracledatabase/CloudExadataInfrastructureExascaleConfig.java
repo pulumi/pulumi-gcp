@@ -12,6 +12,7 @@ import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureExascaleConfigArg
 import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructureExascaleConfigState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -67,6 +68,7 @@ import javax.annotation.Nullable;
  *             .location("us-east4")
  *             .project("my-project")
  *             .totalStorageSizeGb(10240)
+ *             .totalVmStorageSizeGb(2048)
  *             .build());
  * 
  *     }
@@ -174,6 +176,20 @@ public class CloudExadataInfrastructureExascaleConfig extends com.pulumi.resourc
      */
     public Output<Integer> totalStorageSizeGb() {
         return this.totalStorageSizeGb;
+    }
+    /**
+     * Storage size needed for VM storage on Exascale in GBs.
+     * 
+     */
+    @Export(name="totalVmStorageSizeGb", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> totalVmStorageSizeGb;
+
+    /**
+     * @return Storage size needed for VM storage on Exascale in GBs.
+     * 
+     */
+    public Output<Optional<Integer>> totalVmStorageSizeGb() {
+        return Codegen.optional(this.totalVmStorageSizeGb);
     }
 
     /**

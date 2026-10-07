@@ -89,6 +89,13 @@ namespace Pulumi.Gcp.Lustre
         public Output<Outputs.InstanceAccessRulesOptions?> AccessRulesOptions { get; private set; } = null!;
 
         /// <summary>
+        /// The version this instance can be upgraded to, if one is available. Empty
+        /// when the instance is already running the newest release.
+        /// </summary>
+        [Output("availableVersion")]
+        public Output<string> AvailableVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
         /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
         /// See [Performance tiers and maximum storage
@@ -133,6 +140,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of Managed Lustre software that this instance is currently
+        /// running.
+        /// </summary>
+        [Output("effectiveVersion")]
+        public Output<string> EffectiveVersion { get; private set; } = null!;
 
         /// <summary>
         /// The filesystem name for this instance. This name is used by client-side
@@ -264,6 +278,21 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Output("stateReason")]
         public Output<string> StateReason { get; private set; } = null!;
+
+        /// <summary>
+        /// The version to upgrade this instance to. Set this to the value reported in
+        /// `availableVersion`, or to `Latest` to move to the newest version available
+        /// at the time of the upgrade.
+        /// This field cannot be set when the instance is created; new instances are
+        /// always provisioned from the current release. It also cannot be changed in
+        /// the same operation as `capacityGib` or `maintenancePolicy`, and the
+        /// instance must be ACTIVE and outside of the hour preceding a scheduled
+        /// maintenance window.
+        /// The API clears this field once the upgrade finishes, so it always reads
+        /// back as empty on an idle instance.
+        /// </summary>
+        [Output("targetVersion")]
+        public Output<string?> TargetVersion { get; private set; } = null!;
 
         /// <summary>
         /// Unique ID of the resource.
@@ -476,6 +505,21 @@ namespace Pulumi.Gcp.Lustre
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The version to upgrade this instance to. Set this to the value reported in
+        /// `availableVersion`, or to `Latest` to move to the newest version available
+        /// at the time of the upgrade.
+        /// This field cannot be set when the instance is created; new instances are
+        /// always provisioned from the current release. It also cannot be changed in
+        /// the same operation as `capacityGib` or `maintenancePolicy`, and the
+        /// instance must be ACTIVE and outside of the hour preceding a scheduled
+        /// maintenance window.
+        /// The API clears this field once the upgrade finishes, so it always reads
+        /// back as empty on an idle instance.
+        /// </summary>
+        [Input("targetVersion")]
+        public Input<string>? TargetVersion { get; set; }
+
         public InstanceArgs()
         {
         }
@@ -491,6 +535,13 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("accessRulesOptions")]
         public Input<Inputs.InstanceAccessRulesOptionsGetArgs>? AccessRulesOptions { get; set; }
+
+        /// <summary>
+        /// The version this instance can be upgraded to, if one is available. Empty
+        /// when the instance is already running the newest release.
+        /// </summary>
+        [Input("availableVersion")]
+        public Input<string>? AvailableVersion { get; set; }
 
         /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
@@ -547,6 +598,13 @@ namespace Pulumi.Gcp.Lustre
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The version of Managed Lustre software that this instance is currently
+        /// running.
+        /// </summary>
+        [Input("effectiveVersion")]
+        public Input<string>? EffectiveVersion { get; set; }
 
         /// <summary>
         /// The filesystem name for this instance. This name is used by client-side
@@ -694,6 +752,21 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("stateReason")]
         public Input<string>? StateReason { get; set; }
+
+        /// <summary>
+        /// The version to upgrade this instance to. Set this to the value reported in
+        /// `availableVersion`, or to `Latest` to move to the newest version available
+        /// at the time of the upgrade.
+        /// This field cannot be set when the instance is created; new instances are
+        /// always provisioned from the current release. It also cannot be changed in
+        /// the same operation as `capacityGib` or `maintenancePolicy`, and the
+        /// instance must be ACTIVE and outside of the hour preceding a scheduled
+        /// maintenance window.
+        /// The API clears this field once the upgrade finishes, so it always reads
+        /// back as empty on an idle instance.
+        /// </summary>
+        [Input("targetVersion")]
+        public Input<string>? TargetVersion { get; set; }
 
         /// <summary>
         /// Unique ID of the resource.

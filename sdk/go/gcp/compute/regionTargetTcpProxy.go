@@ -55,56 +55,6 @@ import (
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("us-central1"),
 //				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
-//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
-//				Name:           pulumi.String("test-proxy"),
-//				Region:         pulumi.String("us-central1"),
-//				BackendService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Region Target Tcp Proxy Basic Beta
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
-//				Name:             pulumi.String("health-check"),
-//				Region:           pulumi.String("europe-west4"),
-//				TimeoutSec:       pulumi.Int(1),
-//				CheckIntervalSec: pulumi.Int(1),
-//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
-//					Port: pulumi.Int(80),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
-//				Name:                pulumi.String("backend-service"),
-//				Protocol:            pulumi.String("TCP"),
-//				TimeoutSec:          pulumi.Int(10),
-//				Region:              pulumi.String("europe-west4"),
-//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -112,7 +62,7 @@ import (
 //			}
 //			_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
 //				Name:                pulumi.String("test-proxy"),
-//				Region:              pulumi.String("europe-west4"),
+//				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //			})
@@ -252,7 +202,7 @@ type RegionTargetTcpProxy struct {
 	pulumi.CustomResourceState
 
 	// A reference to the BackendService resource. This field is optional when
-	// the loadBalancingScheme (available in beta) is specified.
+	// the loadBalancingScheme is specified.
 	BackendService pulumi.StringPtrOutput `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -265,7 +215,6 @@ type RegionTargetTcpProxy struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// (Optional, Beta)
 	// Specifies the load balancer type. A target TCP proxy created for one type
 	// of load balancer cannot be used with another. For more information, refer
 	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -330,7 +279,7 @@ func GetRegionTargetTcpProxy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RegionTargetTcpProxy resources.
 type regionTargetTcpProxyState struct {
 	// A reference to the BackendService resource. This field is optional when
-	// the loadBalancingScheme (available in beta) is specified.
+	// the loadBalancingScheme is specified.
 	BackendService *string `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -343,7 +292,6 @@ type regionTargetTcpProxyState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// (Optional, Beta)
 	// Specifies the load balancer type. A target TCP proxy created for one type
 	// of load balancer cannot be used with another. For more information, refer
 	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -379,7 +327,7 @@ type regionTargetTcpProxyState struct {
 
 type RegionTargetTcpProxyState struct {
 	// A reference to the BackendService resource. This field is optional when
-	// the loadBalancingScheme (available in beta) is specified.
+	// the loadBalancingScheme is specified.
 	BackendService pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -392,7 +340,6 @@ type RegionTargetTcpProxyState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Specifies the load balancer type. A target TCP proxy created for one type
 	// of load balancer cannot be used with another. For more information, refer
 	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -432,7 +379,7 @@ func (RegionTargetTcpProxyState) ElementType() reflect.Type {
 
 type regionTargetTcpProxyArgs struct {
 	// A reference to the BackendService resource. This field is optional when
-	// the loadBalancingScheme (available in beta) is specified.
+	// the loadBalancingScheme is specified.
 	BackendService *string `pulumi:"backendService"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -443,7 +390,6 @@ type regionTargetTcpProxyArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// (Optional, Beta)
 	// Specifies the load balancer type. A target TCP proxy created for one type
 	// of load balancer cannot be used with another. For more information, refer
 	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -476,7 +422,7 @@ type regionTargetTcpProxyArgs struct {
 // The set of arguments for constructing a RegionTargetTcpProxy resource.
 type RegionTargetTcpProxyArgs struct {
 	// A reference to the BackendService resource. This field is optional when
-	// the loadBalancingScheme (available in beta) is specified.
+	// the loadBalancingScheme is specified.
 	BackendService pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -487,7 +433,6 @@ type RegionTargetTcpProxyArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Specifies the load balancer type. A target TCP proxy created for one type
 	// of load balancer cannot be used with another. For more information, refer
 	// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -605,7 +550,7 @@ func (o RegionTargetTcpProxyOutput) ToRegionTargetTcpProxyOutputWithContext(ctx 
 }
 
 // A reference to the BackendService resource. This field is optional when
-// the loadBalancingScheme (available in beta) is specified.
+// the loadBalancingScheme is specified.
 func (o RegionTargetTcpProxyOutput) BackendService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringPtrOutput { return v.BackendService }).(pulumi.StringPtrOutput)
 }
@@ -630,7 +575,6 @@ func (o RegionTargetTcpProxyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Specifies the load balancer type. A target TCP proxy created for one type
 // of load balancer cannot be used with another. For more information, refer
 // to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).

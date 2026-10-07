@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     public sealed class InstanceMachineConfig
     {
         /// <summary>
-        /// The number of CPU's in the VM instance.
+        /// The number of CPUs in the VM instance. For read pool instances, this
+        /// value is applied to the instances in the pool and is not replaced by
+        /// a fixed default.
         /// </summary>
         public readonly int? CpuCount;
         /// <summary>

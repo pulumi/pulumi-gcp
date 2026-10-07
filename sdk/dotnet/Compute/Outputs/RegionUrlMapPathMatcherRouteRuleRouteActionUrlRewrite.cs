@@ -36,6 +36,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
         /// </summary>
         public readonly string? PathTemplateRewrite;
+        /// <summary>
+        /// The regex rewrite to be applied to the URL. Only one of
+        /// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+        /// specified.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite? RegexRewrite;
 
         [OutputConstructor]
         private RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(
@@ -43,11 +50,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? pathPrefixRewrite,
 
-            string? pathTemplateRewrite)
+            string? pathTemplateRewrite,
+
+            Outputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite? regexRewrite)
         {
             HostRewrite = hostRewrite;
             PathPrefixRewrite = pathPrefixRewrite;
             PathTemplateRewrite = pathTemplateRewrite;
+            RegexRewrite = regexRewrite;
         }
     }
 }

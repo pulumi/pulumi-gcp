@@ -46,43 +46,6 @@ namespace Pulumi.Gcp.Compute
     ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
     ///     {
     ///         Name = "backend-service",
-    ///         Protocol = "TCP",
-    ///         TimeoutSec = 10,
-    ///         HealthChecks = defaultHealthCheck.Id,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Compute.TargetTCPProxy("default", new()
-    ///     {
-    ///         Name = "test-proxy",
-    ///         BackendService = defaultBackendService.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Target Tcp Proxy Basic Beta
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
-    ///     {
-    ///         Name = "health-check",
-    ///         TimeoutSec = 1,
-    ///         CheckIntervalSec = 1,
-    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
-    ///         {
-    ///             Port = 443,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
-    ///     {
-    ///         Name = "backend-service",
     ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
     ///         Protocol = "TCP",
     ///         TimeoutSec = 10,
@@ -208,7 +171,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource. This field is optional when
-        /// the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+        /// the loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Output("backendService")]
         public Output<string?> BackendService { get; private set; } = null!;
@@ -237,7 +200,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the load balancer type. A target TCP proxy created for one type
         /// of load balancer cannot be used with another. For more information, refer
         /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -341,7 +303,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource. This field is optional when
-        /// the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+        /// the loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
@@ -364,7 +326,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the load balancer type. A target TCP proxy created for one type
         /// of load balancer cannot be used with another. For more information, refer
         /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -418,7 +379,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A reference to the BackendService resource. This field is optional when
-        /// the loadBalancingScheme (available in beta) is set to INTERNAL_MANAGED.
+        /// the loadBalancingScheme is set to INTERNAL_MANAGED.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
@@ -447,7 +408,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the load balancer type. A target TCP proxy created for one type
         /// of load balancer cannot be used with another. For more information, refer
         /// to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).

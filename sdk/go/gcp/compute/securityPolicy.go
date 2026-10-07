@@ -285,6 +285,58 @@ import (
 //
 // ```
 //
+// ### With Request Body Expression
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("my-policy"),
+//				Description: pulumi.String("Policy with Request Body inspection"),
+//				Rules: compute.SecurityPolicyRuleTypeArray{
+//					&compute.SecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("deny(403)"),
+//						Priority: pulumi.Int(1000),
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+//								Expression: pulumi.String("request.body.contains('my-match-string')"),
+//							},
+//						},
+//						Description: pulumi.String("Deny requests containing specific body string"),
+//					},
+//					&compute.SecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("allow"),
+//						Priority: pulumi.Int(2147483647),
+//						Match: &compute.SecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//							Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("*"),
+//								},
+//							},
+//						},
+//						Description: pulumi.String("default rule"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Security policies can be imported using any of these accepted formats:

@@ -38,40 +38,11 @@ import * as utilities from "../utilities";
  *     timeoutSec: 10,
  *     region: "us-central1",
  *     healthChecks: defaultRegionHealthCheck.id,
- *     loadBalancingScheme: "INTERNAL_MANAGED",
- * });
- * const _default = new gcp.compute.RegionTargetTcpProxy("default", {
- *     name: "test-proxy",
- *     region: "us-central1",
- *     backendService: defaultRegionBackendService.id,
- * });
- * ```
- * ### Region Target Tcp Proxy Basic Beta
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
- *     name: "health-check",
- *     region: "europe-west4",
- *     timeoutSec: 1,
- *     checkIntervalSec: 1,
- *     tcpHealthCheck: {
- *         port: 80,
- *     },
- * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
- *     name: "backend-service",
- *     protocol: "TCP",
- *     timeoutSec: 10,
- *     region: "europe-west4",
- *     healthChecks: defaultRegionHealthCheck.id,
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  * });
  * const _default = new gcp.compute.RegionTargetTcpProxy("default", {
  *     name: "test-proxy",
- *     region: "europe-west4",
+ *     region: "us-central1",
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
  *     backendService: defaultRegionBackendService.id,
  * });
@@ -181,7 +152,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
 
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is specified.
+     * the loadBalancingScheme is specified.
      */
     declare public readonly backendService: pulumi.Output<string | undefined>;
     /**
@@ -202,7 +173,6 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -301,7 +271,7 @@ export class RegionTargetTcpProxy extends pulumi.CustomResource {
 export interface RegionTargetTcpProxyState {
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is specified.
+     * the loadBalancingScheme is specified.
      */
     backendService?: pulumi.Input<string | undefined>;
     /**
@@ -322,7 +292,6 @@ export interface RegionTargetTcpProxyState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).
@@ -377,7 +346,7 @@ export interface RegionTargetTcpProxyState {
 export interface RegionTargetTcpProxyArgs {
     /**
      * A reference to the BackendService resource. This field is optional when
-     * the loadBalancingScheme (available in beta) is specified.
+     * the loadBalancingScheme is specified.
      */
     backendService?: pulumi.Input<string | undefined>;
     /**
@@ -394,7 +363,6 @@ export interface RegionTargetTcpProxyArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * Specifies the load balancer type. A target TCP proxy created for one type
      * of load balancer cannot be used with another. For more information, refer
      * to [Summary of types of Google Cloud load balancers](https://docs.cloud.google.com/load-balancing/docs/load-balancing-overview#summary-gclb).

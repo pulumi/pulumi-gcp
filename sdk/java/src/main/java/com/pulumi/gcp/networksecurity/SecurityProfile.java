@@ -14,6 +14,7 @@ import com.pulumi.gcp.networksecurity.outputs.SecurityProfileCustomInterceptProf
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileCustomMirroringProfile;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileThreatPreventionProfile;
 import com.pulumi.gcp.networksecurity.outputs.SecurityProfileUrlFilteringProfile;
+import com.pulumi.gcp.networksecurity.outputs.SecurityProfileWildfireAnalysisProfile;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -367,6 +368,105 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Security Profile Wildfire
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SecurityProfile("default", SecurityProfileArgs.builder()
+ *             .name("my-security-profile")
+ *             .parent("projects/my-project-name")
+ *             .description("my description")
+ *             .type("WILDFIRE_ANALYSIS")
+ *             .wildfireAnalysisProfile(SecurityProfileWildfireAnalysisProfileArgs.builder()
+ *                 .wildfireRealtimeLookup(true)
+ *                 .wildfireSubmissionRules(                
+ *                     SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs.builder()
+ *                         .direction("BOTH")
+ *                         .fileSelectionMode("ALL_FILE_TYPES")
+ *                         .build(),
+ *                     SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs.builder()
+ *                         .direction("UPLOAD")
+ *                         .fileSelectionMode("CUSTOM_FILE_TYPES")
+ *                         .customFileTypes(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs.builder()
+ *                             .fileTypes(                            
+ *                                 "PDF",
+ *                                 "SCRIPT")
+ *                             .build())
+ *                         .build())
+ *                 .wildfireInlineCloudAnalysisRules(                
+ *                     SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs.builder()
+ *                         .direction("BOTH")
+ *                         .action("ALLOW")
+ *                         .fileSelectionMode("ALL_FILE_TYPES")
+ *                         .build(),
+ *                     SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs.builder()
+ *                         .direction("DOWNLOAD")
+ *                         .action("DENY")
+ *                         .fileSelectionMode("CUSTOM_FILE_TYPES")
+ *                         .customFileTypes(SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs.builder()
+ *                             .fileTypes("PE")
+ *                             .build())
+ *                         .build())
+ *                 .wildfireOverrides(SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs.builder()
+ *                     .protocol("WILDFIRE_HTTP")
+ *                     .action("WILDFIRE_DENY")
+ *                     .build())
+ *                 .wildfireInlineMlOverrides(SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs.builder()
+ *                     .protocol("WILDFIRE_FTP")
+ *                     .action("WILDFIRE_ALERT")
+ *                     .build())
+ *                 .wildfireThreatOverrides(SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs.builder()
+ *                     .threatId("12345")
+ *                     .action("WILDFIRE_ALLOW")
+ *                     .build())
+ *                 .wildfireInlineMlSetting(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs.builder()
+ *                     .inlineMlConfigs(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs.builder()
+ *                         .fileType("WINDOWS_EXECUTABLE")
+ *                         .action("ENABLE")
+ *                         .build())
+ *                     .fileExceptions(SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs.builder()
+ *                         .partialHash("12345abcdef")
+ *                         .filename("virus.exe")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -616,16 +716,16 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.threatPreventionProfile);
     }
     /**
-     * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+     * @return The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+     * Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
      * 
      */
     public Output<String> type() {
@@ -660,6 +760,24 @@ public class SecurityProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SecurityProfileUrlFilteringProfile>> urlFilteringProfile() {
         return Codegen.optional(this.urlFilteringProfile);
+    }
+    /**
+     * (Optional, Beta)
+     * The wildfire analysis configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="wildfireAnalysisProfile", refs={SecurityProfileWildfireAnalysisProfile.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityProfileWildfireAnalysisProfile> wildfireAnalysisProfile;
+
+    /**
+     * @return (Optional, Beta)
+     * The wildfire analysis configuration for the security profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityProfileWildfireAnalysisProfile>> wildfireAnalysisProfile() {
+        return Codegen.optional(this.wildfireAnalysisProfile);
     }
 
     /**

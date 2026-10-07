@@ -21,6 +21,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? AuthenticationConfig { get; set; }
 
         /// <summary>
+        /// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+        /// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+        /// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+        /// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+        /// </summary>
+        [Input("identity")]
+        public Input<string>? Identity { get; set; }
+
+        /// <summary>
         /// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
         /// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
         /// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it

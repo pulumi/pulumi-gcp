@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs;
@@ -20,6 +21,25 @@ import javax.annotation.Nullable;
 public final class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs Empty = new RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs();
+
+    /**
+     * (Optional, Beta)
+     * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="requestBodies")
+    private @Nullable Output<List<RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs>> requestBodies;
+
+    /**
+     * @return (Optional, Beta)
+     * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs>>> requestBodies() {
+        return Optional.ofNullable(this.requestBodies);
+    }
 
     /**
      * Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -128,6 +148,7 @@ public final class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs e
     private RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs() {}
 
     private RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs $) {
+        this.requestBodies = $.requestBodies;
         this.requestCookies = $.requestCookies;
         this.requestHeaders = $.requestHeaders;
         this.requestQueryParams = $.requestQueryParams;
@@ -152,6 +173,43 @@ public final class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs e
 
         public Builder(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs defaults) {
             $ = new RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param requestBodies (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodies(@Nullable Output<List<RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs>> requestBodies) {
+            $.requestBodies = requestBodies;
+            return this;
+        }
+
+        /**
+         * @param requestBodies (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodies(List<RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs> requestBodies) {
+            return requestBodies(Output.of(requestBodies));
+        }
+
+        /**
+         * @param requestBodies (Optional, Beta)
+         * A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodies(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs... requestBodies) {
+            return requestBodies(List.of(requestBodies));
         }
 
         /**

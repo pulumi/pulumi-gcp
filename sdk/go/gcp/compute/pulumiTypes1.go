@@ -13180,6 +13180,10 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() Re
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// (Optional, Beta)
+	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+	// Structure is documented below.
+	RequestBodies []RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestCookies []RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky `pulumi:"requestCookies"`
@@ -13213,6 +13217,10 @@ type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// (Optional, Beta)
+	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+	// Structure is documented below.
+	RequestBodies RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestCookies RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput `pulumi:"requestCookies"`
@@ -13285,6 +13293,15 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToRegionS
 	return o
 }
 
+// (Optional, Beta)
+// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+// Structure is documented below.
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o.ApplyT(func(v RegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+		return v.RequestBodies
+	}).(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput)
+}
+
 // Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 // Structure is documented below.
 func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookies() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
@@ -13348,6 +13365,133 @@ func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Inde
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
 		return vs[0].([]RegionSecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
 	}).(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value *string `pulumi:"value"`
+}
+
+// RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput is an input type that accepts RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs and RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput values.
+// You can construct a concrete instance of `RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput` via:
+//
+//	RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{...}
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput interface {
+	pulumi.Input
+
+	ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput
+	ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(context.Context) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput
+}
+
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (i RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return i.ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(context.Background())
+}
+
+func (i RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(ctx context.Context) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput)
+}
+
+// RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput is an input type that accepts RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray and RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput values.
+// You can construct a concrete instance of `RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput` via:
+//
+//	RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{ RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{...} }
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput interface {
+	pulumi.Input
+
+	ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput
+	ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(context.Context) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput
+}
+
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray []RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput
+
+func (RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (i RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return i.ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(context.Background())
+}
+
+func (i RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(ctx context.Context) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput)
+}
+
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput struct{ *pulumi.OutputState }
+
+func (RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(ctx context.Context) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value.
+// Available options:
+// EQUALS: The operator matches if the field value equals the specified value.
+// STARTS_WITH: The operator matches if the field value starts with the specified value.
+// ENDS_WITH: The operator matches if the field value ends with the specified value.
+// CONTAINS: The operator matches if the field value contains the specified value.
+// EQUALS_ANY: The operator matches if the field value is any value.
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ToRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(ctx context.Context) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) Index(i pulumi.IntInput) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+		return vs[0].([]RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)[vs[1].(int)]
+	}).(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput)
 }
 
 type RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky struct {
@@ -29730,6 +29874,11 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite struct {
 	//   At least one non-empty routeRules[].matchRules[].path_template_match is required.
 	//   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
 	PathTemplateRewrite *string `pulumi:"pathTemplateRewrite"`
+	// The regex rewrite to be applied to the URL. Only one of
+	// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+	// specified.
+	// Structure is documented below.
+	RegexRewrite *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite `pulumi:"regexRewrite"`
 }
 
 // RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteInput is an input type that accepts RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs and RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteOutput values.
@@ -29761,6 +29910,11 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs struct {
 	//   At least one non-empty routeRules[].matchRules[].path_template_match is required.
 	//   Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
 	PathTemplateRewrite pulumi.StringPtrInput `pulumi:"pathTemplateRewrite"`
+	// The regex rewrite to be applied to the URL. Only one of
+	// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+	// specified.
+	// Structure is documented below.
+	RegexRewrite RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput `pulumi:"regexRewrite"`
 }
 
 func (RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ElementType() reflect.Type {
@@ -29866,6 +30020,16 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) PathTemplat
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite) *string { return v.PathTemplateRewrite }).(pulumi.StringPtrOutput)
 }
 
+// The regex rewrite to be applied to the URL. Only one of
+// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+// specified.
+// Structure is documented below.
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) RegexRewrite() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite) *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		return v.RegexRewrite
+	}).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
 type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
 
 func (RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) ElementType() reflect.Type {
@@ -29928,6 +30092,221 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) PathTemp
 			return nil
 		}
 		return v.PathTemplateRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regex rewrite to be applied to the URL. Only one of
+// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+// specified.
+// Structure is documented below.
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) RegexRewrite() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite) *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.RegexRewrite
+	}).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
+type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite struct {
+	// The regular expression used to match against the URL path.
+	// It uses RE2 syntax with the following constraints:
+	// * Any single character operators are allowed.
+	// * Groups may only contain a submatch operator, and may not
+	//   contain character repetition (for example, `.*`).
+	// * Character repetition (for example, `.*`) may only be used in
+	//   a regex together with empty string operators, other
+	//   repetitions, ranges, and repetitions of ranges.
+	// * Ranges may only contain character ranges, digit ranges, and
+	//   symbols allowed for ranges.
+	PathPattern string `pulumi:"pathPattern"`
+	// The substitution used to rewrite the parts of the URL path
+	// matched by pathPattern. May reference capture groups from
+	// pathPattern.
+	PathSubstitution string `pulumi:"pathSubstitution"`
+}
+
+// RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput is an input type that accepts RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs and RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput values.
+// You can construct a concrete instance of `RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput` via:
+//
+//	RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{...}
+type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput
+	ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput
+}
+
+type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs struct {
+	// The regular expression used to match against the URL path.
+	// It uses RE2 syntax with the following constraints:
+	// * Any single character operators are allowed.
+	// * Groups may only contain a submatch operator, and may not
+	//   contain character repetition (for example, `.*`).
+	// * Character repetition (for example, `.*`) may only be used in
+	//   a regex together with empty string operators, other
+	//   repetitions, ranges, and repetitions of ranges.
+	// * Ranges may only contain character ranges, digit ranges, and
+	//   symbols allowed for ranges.
+	PathPattern pulumi.StringInput `pulumi:"pathPattern"`
+	// The substitution used to rewrite the parts of the URL path
+	// matched by pathPattern. May reference capture groups from
+	// pathPattern.
+	PathSubstitution pulumi.StringInput `pulumi:"pathSubstitution"`
+}
+
+func (RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (i RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return i.ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput)
+}
+
+func (i RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return i.ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput).ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx)
+}
+
+// RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput is an input type that accepts RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs, RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtr and RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput values.
+// You can construct a concrete instance of `RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput` via:
+//
+//	        RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput
+	ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput
+}
+
+type regionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs
+
+func RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtr(v *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput {
+	return (*regionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType)(v)
+}
+
+func (*regionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (i *regionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return i.ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *regionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
+type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Background())
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		return &v
+	}).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
+// The regular expression used to match against the URL path.
+// It uses RE2 syntax with the following constraints:
+//   - Any single character operators are allowed.
+//   - Groups may only contain a submatch operator, and may not
+//     contain character repetition (for example, `.*`).
+//   - Character repetition (for example, `.*`) may only be used in
+//     a regex together with empty string operators, other
+//     repetitions, ranges, and repetitions of ranges.
+//   - Ranges may only contain character ranges, digit ranges, and
+//     symbols allowed for ranges.
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) PathPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) string { return v.PathPattern }).(pulumi.StringOutput)
+}
+
+// The substitution used to rewrite the parts of the URL path
+// matched by pathPattern. May reference capture groups from
+// pathPattern.
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) PathSubstitution() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) string {
+		return v.PathSubstitution
+	}).(pulumi.StringOutput)
+}
+
+type RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) ToRegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o
+}
+
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) Elem() RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite
+		return ret
+	}).(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput)
+}
+
+// The regular expression used to match against the URL path.
+// It uses RE2 syntax with the following constraints:
+//   - Any single character operators are allowed.
+//   - Groups may only contain a submatch operator, and may not
+//     contain character repetition (for example, `.*`).
+//   - Character repetition (for example, `.*`) may only be used in
+//     a regex together with empty string operators, other
+//     repetitions, ranges, and repetitions of ranges.
+//   - Ranges may only contain character ranges, digit ranges, and
+//     symbols allowed for ranges.
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) PathPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PathPattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// The substitution used to rewrite the parts of the URL path
+// matched by pathPattern. May reference capture groups from
+// pathPattern.
+func (o RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) PathSubstitution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PathSubstitution
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -46990,7 +47369,7 @@ func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() Security
 
 type SecurityPolicyRulePreconfiguredWafConfigExclusion struct {
 	// (Optional, Beta)
-	// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies []SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -47027,7 +47406,7 @@ type SecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 
 type SecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
 	// (Optional, Beta)
-	// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 	// Structure is documented below.
 	RequestBodies SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -47103,7 +47482,7 @@ func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolic
 }
 
 // (Optional, Beta)
-// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
 // Structure is documented below.
 func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
 	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
@@ -78445,9 +78824,14 @@ type URLMapPathMatcherRouteRuleRouteActionUrlRewrite struct {
 	// captured by the route's pathTemplate matchers.
 	// pathTemplateRewrite may only be used when all of a route's
 	// MatchRules specify pathTemplate.
-	// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+	// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 	// specified.
 	PathTemplateRewrite *string `pulumi:"pathTemplateRewrite"`
+	// The regex rewrite to be applied to the URL. Only one of
+	// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+	// specified.
+	// Structure is documented below.
+	RegexRewrite *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite `pulumi:"regexRewrite"`
 }
 
 // URLMapPathMatcherRouteRuleRouteActionUrlRewriteInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs and URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput values.
@@ -78479,9 +78863,14 @@ type URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs struct {
 	// captured by the route's pathTemplate matchers.
 	// pathTemplateRewrite may only be used when all of a route's
 	// MatchRules specify pathTemplate.
-	// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+	// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 	// specified.
 	PathTemplateRewrite pulumi.StringPtrInput `pulumi:"pathTemplateRewrite"`
+	// The regex rewrite to be applied to the URL. Only one of
+	// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+	// specified.
+	// Structure is documented below.
+	RegexRewrite URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput `pulumi:"regexRewrite"`
 }
 
 func (URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ElementType() reflect.Type {
@@ -78584,10 +78973,20 @@ func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) PathPrefixRewrite
 // captured by the route's pathTemplate matchers.
 // pathTemplateRewrite may only be used when all of a route's
 // MatchRules specify pathTemplate.
-// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 // specified.
 func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string { return v.PathTemplateRewrite }).(pulumi.StringPtrOutput)
+}
+
+// The regex rewrite to be applied to the URL. Only one of
+// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+// specified.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) RegexRewrite() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		return v.RegexRewrite
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
 }
 
 type URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
@@ -78647,7 +79046,7 @@ func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) PathPrefixRewr
 // captured by the route's pathTemplate matchers.
 // pathTemplateRewrite may only be used when all of a route's
 // MatchRules specify pathTemplate.
-// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+// Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
 // specified.
 func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string {
@@ -78655,6 +79054,219 @@ func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) PathTemplateRe
 			return nil
 		}
 		return v.PathTemplateRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regex rewrite to be applied to the URL. Only one of
+// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+// specified.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) RegexRewrite() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.RegexRewrite
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite struct {
+	// The regular expression used to match against the URL path.
+	// It uses RE2 syntax with the following constraints:
+	// * Any single character operators are allowed.
+	// * Groups may only contain a submatch operator, and may not
+	//   contain character repetition (for example, `.*`).
+	// * Character repetition (for example, `.*`) may only be used in
+	//   a regex together with empty string operators, other
+	//   repetitions, ranges, and repetitions of ranges.
+	// * Ranges may only contain character ranges, digit ranges, and
+	//   symbols allowed for ranges.
+	PathPattern string `pulumi:"pathPattern"`
+	// The substitution used to rewrite the parts of the URL path
+	// matched by pathPattern. May reference capture groups from
+	// pathPattern.
+	PathSubstitution string `pulumi:"pathSubstitution"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs and URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs struct {
+	// The regular expression used to match against the URL path.
+	// It uses RE2 syntax with the following constraints:
+	// * Any single character operators are allowed.
+	// * Groups may only contain a submatch operator, and may not
+	//   contain character repetition (for example, `.*`).
+	// * Character repetition (for example, `.*`) may only be used in
+	//   a regex together with empty string operators, other
+	//   repetitions, ranges, and repetitions of ranges.
+	// * Ranges may only contain character ranges, digit ranges, and
+	//   symbols allowed for ranges.
+	PathPattern pulumi.StringInput `pulumi:"pathPattern"`
+	// The substitution used to rewrite the parts of the URL path
+	// matched by pathPattern. May reference capture groups from
+	// pathPattern.
+	PathSubstitution pulumi.StringInput `pulumi:"pathSubstitution"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput).ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs, URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtr and URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs
+
+func URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtr(v *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrType) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput)
+}
+
+// The regular expression used to match against the URL path.
+// It uses RE2 syntax with the following constraints:
+//   - Any single character operators are allowed.
+//   - Groups may only contain a submatch operator, and may not
+//     contain character repetition (for example, `.*`).
+//   - Character repetition (for example, `.*`) may only be used in
+//     a regex together with empty string operators, other
+//     repetitions, ranges, and repetitions of ranges.
+//   - Ranges may only contain character ranges, digit ranges, and
+//     symbols allowed for ranges.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) PathPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) string { return v.PathPattern }).(pulumi.StringOutput)
+}
+
+// The substitution used to rewrite the parts of the URL path
+// matched by pathPattern. May reference capture groups from
+// pathPattern.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput) PathSubstitution() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) string { return v.PathSubstitution }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput)
+}
+
+// The regular expression used to match against the URL path.
+// It uses RE2 syntax with the following constraints:
+//   - Any single character operators are allowed.
+//   - Groups may only contain a submatch operator, and may not
+//     contain character repetition (for example, `.*`).
+//   - Character repetition (for example, `.*`) may only be used in
+//     a regex together with empty string operators, other
+//     repetitions, ranges, and repetitions of ranges.
+//   - Ranges may only contain character ranges, digit ranges, and
+//     symbols allowed for ranges.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) PathPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PathPattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// The substitution used to rewrite the parts of the URL path
+// matched by pathPattern. May reference capture groups from
+// pathPattern.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput) PathSubstitution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PathSubstitution
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -86948,391 +87560,6 @@ func (o GetBackendServiceParamArrayOutput) Index(i pulumi.IntInput) GetBackendSe
 	}).(GetBackendServiceParamOutput)
 }
 
-type GetBackendServiceSecuritySetting struct {
-	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
-	// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
-	AwsV4Authentications []GetBackendServiceSecuritySettingAwsV4Authentication `pulumi:"awsV4Authentications"`
-	// ClientTlsPolicy is a resource that specifies how a client should authenticate
-	// connections to backends of a service. This resource itself does not affect
-	// configuration unless it is attached to a backend service resource.
-	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
-	// A list of alternate names to verify the subject identity in the certificate.
-	// If specified, the client will verify that the server certificate's subject
-	// alt name matches one of the specified values.
-	SubjectAltNames []string `pulumi:"subjectAltNames"`
-}
-
-// GetBackendServiceSecuritySettingInput is an input type that accepts GetBackendServiceSecuritySettingArgs and GetBackendServiceSecuritySettingOutput values.
-// You can construct a concrete instance of `GetBackendServiceSecuritySettingInput` via:
-//
-//	GetBackendServiceSecuritySettingArgs{...}
-type GetBackendServiceSecuritySettingInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceSecuritySettingOutput() GetBackendServiceSecuritySettingOutput
-	ToGetBackendServiceSecuritySettingOutputWithContext(context.Context) GetBackendServiceSecuritySettingOutput
-}
-
-type GetBackendServiceSecuritySettingArgs struct {
-	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
-	// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
-	AwsV4Authentications GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput `pulumi:"awsV4Authentications"`
-	// ClientTlsPolicy is a resource that specifies how a client should authenticate
-	// connections to backends of a service. This resource itself does not affect
-	// configuration unless it is attached to a backend service resource.
-	ClientTlsPolicy pulumi.StringInput `pulumi:"clientTlsPolicy"`
-	// A list of alternate names to verify the subject identity in the certificate.
-	// If specified, the client will verify that the server certificate's subject
-	// alt name matches one of the specified values.
-	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
-}
-
-func (GetBackendServiceSecuritySettingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceSecuritySetting)(nil)).Elem()
-}
-
-func (i GetBackendServiceSecuritySettingArgs) ToGetBackendServiceSecuritySettingOutput() GetBackendServiceSecuritySettingOutput {
-	return i.ToGetBackendServiceSecuritySettingOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceSecuritySettingArgs) ToGetBackendServiceSecuritySettingOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingOutput)
-}
-
-// GetBackendServiceSecuritySettingArrayInput is an input type that accepts GetBackendServiceSecuritySettingArray and GetBackendServiceSecuritySettingArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceSecuritySettingArrayInput` via:
-//
-//	GetBackendServiceSecuritySettingArray{ GetBackendServiceSecuritySettingArgs{...} }
-type GetBackendServiceSecuritySettingArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceSecuritySettingArrayOutput() GetBackendServiceSecuritySettingArrayOutput
-	ToGetBackendServiceSecuritySettingArrayOutputWithContext(context.Context) GetBackendServiceSecuritySettingArrayOutput
-}
-
-type GetBackendServiceSecuritySettingArray []GetBackendServiceSecuritySettingInput
-
-func (GetBackendServiceSecuritySettingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceSecuritySetting)(nil)).Elem()
-}
-
-func (i GetBackendServiceSecuritySettingArray) ToGetBackendServiceSecuritySettingArrayOutput() GetBackendServiceSecuritySettingArrayOutput {
-	return i.ToGetBackendServiceSecuritySettingArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceSecuritySettingArray) ToGetBackendServiceSecuritySettingArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingArrayOutput)
-}
-
-type GetBackendServiceSecuritySettingOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceSecuritySettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceSecuritySetting)(nil)).Elem()
-}
-
-func (o GetBackendServiceSecuritySettingOutput) ToGetBackendServiceSecuritySettingOutput() GetBackendServiceSecuritySettingOutput {
-	return o
-}
-
-func (o GetBackendServiceSecuritySettingOutput) ToGetBackendServiceSecuritySettingOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingOutput {
-	return o
-}
-
-// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
-// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
-func (o GetBackendServiceSecuritySettingOutput) AwsV4Authentications() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySetting) []GetBackendServiceSecuritySettingAwsV4Authentication {
-		return v.AwsV4Authentications
-	}).(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput)
-}
-
-// ClientTlsPolicy is a resource that specifies how a client should authenticate
-// connections to backends of a service. This resource itself does not affect
-// configuration unless it is attached to a backend service resource.
-func (o GetBackendServiceSecuritySettingOutput) ClientTlsPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySetting) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
-}
-
-// A list of alternate names to verify the subject identity in the certificate.
-// If specified, the client will verify that the server certificate's subject
-// alt name matches one of the specified values.
-func (o GetBackendServiceSecuritySettingOutput) SubjectAltNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySetting) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
-}
-
-type GetBackendServiceSecuritySettingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceSecuritySettingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceSecuritySetting)(nil)).Elem()
-}
-
-func (o GetBackendServiceSecuritySettingArrayOutput) ToGetBackendServiceSecuritySettingArrayOutput() GetBackendServiceSecuritySettingArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceSecuritySettingArrayOutput) ToGetBackendServiceSecuritySettingArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceSecuritySettingArrayOutput) Index(i pulumi.IntInput) GetBackendServiceSecuritySettingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceSecuritySetting {
-		return vs[0].([]GetBackendServiceSecuritySetting)[vs[1].(int)]
-	}).(GetBackendServiceSecuritySettingOutput)
-}
-
-type GetBackendServiceSecuritySettingAwsV4Authentication struct {
-	// The access key used for s3 bucket authentication.
-	// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
-	AccessKey string `pulumi:"accessKey"`
-	// The identifier of an access key used for s3 bucket authentication.
-	AccessKeyId string `pulumi:"accessKeyId"`
-	// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
-	AccessKeyVersion string `pulumi:"accessKeyVersion"`
-	// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
-	// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
-	OriginRegion string `pulumi:"originRegion"`
-}
-
-// GetBackendServiceSecuritySettingAwsV4AuthenticationInput is an input type that accepts GetBackendServiceSecuritySettingAwsV4AuthenticationArgs and GetBackendServiceSecuritySettingAwsV4AuthenticationOutput values.
-// You can construct a concrete instance of `GetBackendServiceSecuritySettingAwsV4AuthenticationInput` via:
-//
-//	GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{...}
-type GetBackendServiceSecuritySettingAwsV4AuthenticationInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationOutput
-	ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput
-}
-
-type GetBackendServiceSecuritySettingAwsV4AuthenticationArgs struct {
-	// The access key used for s3 bucket authentication.
-	// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
-	AccessKey pulumi.StringInput `pulumi:"accessKey"`
-	// The identifier of an access key used for s3 bucket authentication.
-	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
-	// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
-	AccessKeyVersion pulumi.StringInput `pulumi:"accessKeyVersion"`
-	// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
-	// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
-	OriginRegion pulumi.StringInput `pulumi:"originRegion"`
-}
-
-func (GetBackendServiceSecuritySettingAwsV4AuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
-}
-
-func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArgs) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
-	return i.ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArgs) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput)
-}
-
-// GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput is an input type that accepts GetBackendServiceSecuritySettingAwsV4AuthenticationArray and GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput` via:
-//
-//	GetBackendServiceSecuritySettingAwsV4AuthenticationArray{ GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{...} }
-type GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput
-	ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput
-}
-
-type GetBackendServiceSecuritySettingAwsV4AuthenticationArray []GetBackendServiceSecuritySettingAwsV4AuthenticationInput
-
-func (GetBackendServiceSecuritySettingAwsV4AuthenticationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
-}
-
-func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArray) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
-	return i.ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArray) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput)
-}
-
-type GetBackendServiceSecuritySettingAwsV4AuthenticationOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
-}
-
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
-	return o
-}
-
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
-	return o
-}
-
-// The access key used for s3 bucket authentication.
-// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) AccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.AccessKey }).(pulumi.StringOutput)
-}
-
-// The identifier of an access key used for s3 bucket authentication.
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) AccessKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.AccessKeyId }).(pulumi.StringOutput)
-}
-
-// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) AccessKeyVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.AccessKeyVersion }).(pulumi.StringOutput)
-}
-
-// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
-// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) OriginRegion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.OriginRegion }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
-}
-
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) Index(i pulumi.IntInput) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceSecuritySettingAwsV4Authentication {
-		return vs[0].([]GetBackendServiceSecuritySettingAwsV4Authentication)[vs[1].(int)]
-	}).(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput)
-}
-
-type GetBackendServiceStrongSessionAffinityCooky struct {
-	// The name of the Backend Service.
-	//
-	// ***
-	Name string `pulumi:"name"`
-	// Path to set for the cookie.
-	Path string `pulumi:"path"`
-	// Lifetime of the cookie.
-	Ttls []GetBackendServiceStrongSessionAffinityCookyTtl `pulumi:"ttls"`
-}
-
-// GetBackendServiceStrongSessionAffinityCookyInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyArgs and GetBackendServiceStrongSessionAffinityCookyOutput values.
-// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyInput` via:
-//
-//	GetBackendServiceStrongSessionAffinityCookyArgs{...}
-type GetBackendServiceStrongSessionAffinityCookyInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput
-	ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyOutput
-}
-
-type GetBackendServiceStrongSessionAffinityCookyArgs struct {
-	// The name of the Backend Service.
-	//
-	// ***
-	Name pulumi.StringInput `pulumi:"name"`
-	// Path to set for the cookie.
-	Path pulumi.StringInput `pulumi:"path"`
-	// Lifetime of the cookie.
-	Ttls GetBackendServiceStrongSessionAffinityCookyTtlArrayInput `pulumi:"ttls"`
-}
-
-func (GetBackendServiceStrongSessionAffinityCookyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyArgs) ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput {
-	return i.ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyArgs) ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyOutput)
-}
-
-// GetBackendServiceStrongSessionAffinityCookyArrayInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyArray and GetBackendServiceStrongSessionAffinityCookyArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyArrayInput` via:
-//
-//	GetBackendServiceStrongSessionAffinityCookyArray{ GetBackendServiceStrongSessionAffinityCookyArgs{...} }
-type GetBackendServiceStrongSessionAffinityCookyArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput
-	ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput
-}
-
-type GetBackendServiceStrongSessionAffinityCookyArray []GetBackendServiceStrongSessionAffinityCookyInput
-
-func (GetBackendServiceStrongSessionAffinityCookyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyArray) ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput {
-	return i.ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyArray) ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyArrayOutput)
-}
-
-type GetBackendServiceStrongSessionAffinityCookyOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceStrongSessionAffinityCookyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyOutput) ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput {
-	return o
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyOutput) ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyOutput {
-	return o
-}
-
-// The name of the Backend Service.
-//
-// ***
-func (o GetBackendServiceStrongSessionAffinityCookyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Path to set for the cookie.
-func (o GetBackendServiceStrongSessionAffinityCookyOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// Lifetime of the cookie.
-func (o GetBackendServiceStrongSessionAffinityCookyOutput) Ttls() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) []GetBackendServiceStrongSessionAffinityCookyTtl {
-		return v.Ttls
-	}).(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
-}
-
-type GetBackendServiceStrongSessionAffinityCookyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceStrongSessionAffinityCookyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceStrongSessionAffinityCookyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceStrongSessionAffinityCooky {
-		return vs[0].([]GetBackendServiceStrongSessionAffinityCooky)[vs[1].(int)]
-	}).(GetBackendServiceStrongSessionAffinityCookyOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
@@ -87495,6 +87722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigPtrInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput)(nil)).Elem(), RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{})
@@ -87671,6 +87900,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutPtrInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
@@ -88209,6 +88440,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewriteInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
@@ -88325,12 +88558,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionIntervalArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionIntervalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceParamInput)(nil)).Elem(), GetBackendServiceParamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceParamArrayInput)(nil)).Elem(), GetBackendServiceParamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingInput)(nil)).Elem(), GetBackendServiceSecuritySettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArray{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigOutput{})
@@ -88492,6 +88719,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigPtrOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput{})
+	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput{})
@@ -88668,6 +88897,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
@@ -89206,6 +89437,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewritePtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
@@ -89322,10 +89555,4 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceParamOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceParamArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyArrayOutput{})
 }

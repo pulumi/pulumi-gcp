@@ -36,7 +36,8 @@ class InstanceArgs:
                  maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
                  per_unit_storage_throughput: pulumi.Input[Optional[_builtins.str]] = None,
                  placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -93,6 +94,16 @@ class InstanceArgs:
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] target_version: The version to upgrade this instance to. Set this to the value reported in
+               `availableVersion`, or to `latest` to move to the newest version available
+               at the time of the upgrade.
+               This field cannot be set when the instance is created; new instances are
+               always provisioned from the current release. It also cannot be changed in
+               the same operation as `capacityGib` or `maintenancePolicy`, and the
+               instance must be ACTIVE and outside of the hour preceding a scheduled
+               maintenance window.
+               The API clears this field once the upgrade finishes, so it always reads
+               back as empty on an idle instance.
         """
         pulumi.set(__self__, "capacity_gib", capacity_gib)
         pulumi.set(__self__, "filesystem", filesystem)
@@ -121,6 +132,8 @@ class InstanceArgs:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if target_version is not None:
+            pulumi.set(__self__, "target_version", target_version)
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
@@ -351,17 +364,40 @@ class InstanceArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version to upgrade this instance to. Set this to the value reported in
+        `availableVersion`, or to `latest` to move to the newest version available
+        at the time of the upgrade.
+        This field cannot be set when the instance is created; new instances are
+        always provisioned from the current release. It also cannot be changed in
+        the same operation as `capacityGib` or `maintenancePolicy`, and the
+        instance must be ACTIVE and outside of the hour preceding a scheduled
+        maintenance window.
+        The API clears this field once the upgrade finishes, so it always reads
+        back as empty on an idle instance.
+        """
+        return pulumi.get(self, "target_version")
+
+    @target_version.setter
+    def target_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_version", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
                  access_rules_options: pulumi.Input[Optional['InstanceAccessRulesOptionsArgs']] = None,
+                 available_version: pulumi.Input[Optional[_builtins.str]] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dynamic_tier_options: pulumi.Input[Optional['InstanceDynamicTierOptionsArgs']] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_version: pulumi.Input[Optional[_builtins.str]] = None,
                  filesystem: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -378,6 +414,7 @@ class _InstanceState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_version: pulumi.Input[Optional[_builtins.str]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  upcoming_maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUpcomingMaintenanceScheduleArgs']]]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -387,6 +424,8 @@ class _InstanceState:
         :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
                define the root user squash configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] available_version: The version this instance can be upgraded to, if one is available. Empty
+               when the instance is already running the newest release.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
                are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
                See [Performance tiers and maximum storage
@@ -403,6 +442,8 @@ class _InstanceState:
         :param pulumi.Input['InstanceDynamicTierOptionsArgs'] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] effective_version: The version of Managed Lustre software that this instance is currently
+               running.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
                less and can only contain letters and numbers.
@@ -454,6 +495,16 @@ class _InstanceState:
                UPDATING
                SUSPENDED
         :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state (e.g. SUSPENDED).
+        :param pulumi.Input[_builtins.str] target_version: The version to upgrade this instance to. Set this to the value reported in
+               `availableVersion`, or to `latest` to move to the newest version available
+               at the time of the upgrade.
+               This field cannot be set when the instance is created; new instances are
+               always provisioned from the current release. It also cannot be changed in
+               the same operation as `capacityGib` or `maintenancePolicy`, and the
+               instance must be ACTIVE and outside of the hour preceding a scheduled
+               maintenance window.
+               The API clears this field once the upgrade finishes, so it always reads
+               back as empty on an idle instance.
         :param pulumi.Input[_builtins.str] uid: Unique ID of the resource.
                This is unrelated to the access rules which allow specifying the root
                squash uid.
@@ -463,6 +514,8 @@ class _InstanceState:
         """
         if access_rules_options is not None:
             pulumi.set(__self__, "access_rules_options", access_rules_options)
+        if available_version is not None:
+            pulumi.set(__self__, "available_version", available_version)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
         if create_time is not None:
@@ -475,6 +528,8 @@ class _InstanceState:
             pulumi.set(__self__, "dynamic_tier_options", dynamic_tier_options)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_version is not None:
+            pulumi.set(__self__, "effective_version", effective_version)
         if filesystem is not None:
             pulumi.set(__self__, "filesystem", filesystem)
         if gke_support_enabled is not None:
@@ -507,6 +562,8 @@ class _InstanceState:
             pulumi.set(__self__, "state", state)
         if state_reason is not None:
             pulumi.set(__self__, "state_reason", state_reason)
+        if target_version is not None:
+            pulumi.set(__self__, "target_version", target_version)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if upcoming_maintenance_schedules is not None:
@@ -527,6 +584,19 @@ class _InstanceState:
     @access_rules_options.setter
     def access_rules_options(self, value: pulumi.Input[Optional['InstanceAccessRulesOptionsArgs']]):
         pulumi.set(self, "access_rules_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availableVersion")
+    def available_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version this instance can be upgraded to, if one is available. Empty
+        when the instance is already running the newest release.
+        """
+        return pulumi.get(self, "available_version")
+
+    @available_version.setter
+    def available_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "available_version", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
@@ -609,6 +679,19 @@ class _InstanceState:
     @effective_labels.setter
     def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveVersion")
+    def effective_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version of Managed Lustre software that this instance is currently
+        running.
+        """
+        return pulumi.get(self, "effective_version")
+
+    @effective_version.setter
+    def effective_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "effective_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -838,6 +921,27 @@ class _InstanceState:
         pulumi.set(self, "state_reason", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version to upgrade this instance to. Set this to the value reported in
+        `availableVersion`, or to `latest` to move to the newest version available
+        at the time of the upgrade.
+        This field cannot be set when the instance is created; new instances are
+        always provisioned from the current release. It also cannot be changed in
+        the same operation as `capacityGib` or `maintenancePolicy`, and the
+        instance must be ACTIVE and outside of the hour preceding a scheduled
+        maintenance window.
+        The API clears this field once the upgrade finishes, so it always reads
+        back as empty on an idle instance.
+        """
+        return pulumi.get(self, "target_version")
+
+    @target_version.setter
+    def target_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -899,6 +1003,7 @@ class Instance(pulumi.CustomResource):
                  per_unit_storage_throughput: pulumi.Input[Optional[_builtins.str]] = None,
                  placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Managed Lustre instance
@@ -1011,6 +1116,16 @@ class Instance(pulumi.CustomResource):
                projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] target_version: The version to upgrade this instance to. Set this to the value reported in
+               `availableVersion`, or to `latest` to move to the newest version available
+               at the time of the upgrade.
+               This field cannot be set when the instance is created; new instances are
+               always provisioned from the current release. It also cannot be changed in
+               the same operation as `capacityGib` or `maintenancePolicy`, and the
+               instance must be ACTIVE and outside of the hour preceding a scheduled
+               maintenance window.
+               The API clears this field once the upgrade finishes, so it always reads
+               back as empty on an idle instance.
         """
         ...
     @overload
@@ -1105,6 +1220,7 @@ class Instance(pulumi.CustomResource):
                  per_unit_storage_throughput: pulumi.Input[Optional[_builtins.str]] = None,
                  placement_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1140,8 +1256,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["per_unit_storage_throughput"] = per_unit_storage_throughput
             __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
+            __props__.__dict__["target_version"] = target_version
+            __props__.__dict__["available_version"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["effective_version"] = None
             __props__.__dict__["mount_point"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -1163,12 +1282,14 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_rules_options: pulumi.Input[Optional[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']]] = None,
+            available_version: pulumi.Input[Optional[_builtins.str]] = None,
             capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dynamic_tier_options: pulumi.Input[Optional[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_version: pulumi.Input[Optional[_builtins.str]] = None,
             filesystem: pulumi.Input[Optional[_builtins.str]] = None,
             gke_support_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1185,6 +1306,7 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             state_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            target_version: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             upcoming_maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpcomingMaintenanceScheduleArgs', 'InstanceUpcomingMaintenanceScheduleArgsDict', 'outputs.InstanceUpcomingMaintenanceSchedule']]]]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
@@ -1198,6 +1320,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict', 'outputs.InstanceAccessRulesOptions']] access_rules_options: IP-based access rules for the Managed Lustre instance. These options
                define the root user squash configuration.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] available_version: The version this instance can be upgraded to, if one is available. Empty
+               when the instance is already running the newest release.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
                are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
                See [Performance tiers and maximum storage
@@ -1214,6 +1338,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceDynamicTierOptionsArgs', 'InstanceDynamicTierOptionsArgsDict', 'outputs.InstanceDynamicTierOptions']] dynamic_tier_options: Dynamic tier options for a Managed Lustre instance.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] effective_version: The version of Managed Lustre software that this instance is currently
+               running.
         :param pulumi.Input[_builtins.str] filesystem: The filesystem name for this instance. This name is used by client-side
                tools, including when mounting the instance. Must be eight characters or
                less and can only contain letters and numbers.
@@ -1265,6 +1391,16 @@ class Instance(pulumi.CustomResource):
                UPDATING
                SUSPENDED
         :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state (e.g. SUSPENDED).
+        :param pulumi.Input[_builtins.str] target_version: The version to upgrade this instance to. Set this to the value reported in
+               `availableVersion`, or to `latest` to move to the newest version available
+               at the time of the upgrade.
+               This field cannot be set when the instance is created; new instances are
+               always provisioned from the current release. It also cannot be changed in
+               the same operation as `capacityGib` or `maintenancePolicy`, and the
+               instance must be ACTIVE and outside of the hour preceding a scheduled
+               maintenance window.
+               The API clears this field once the upgrade finishes, so it always reads
+               back as empty on an idle instance.
         :param pulumi.Input[_builtins.str] uid: Unique ID of the resource.
                This is unrelated to the access rules which allow specifying the root
                squash uid.
@@ -1277,12 +1413,14 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["access_rules_options"] = access_rules_options
+        __props__.__dict__["available_version"] = available_version
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dynamic_tier_options"] = dynamic_tier_options
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["effective_version"] = effective_version
         __props__.__dict__["filesystem"] = filesystem
         __props__.__dict__["gke_support_enabled"] = gke_support_enabled
         __props__.__dict__["instance_id"] = instance_id
@@ -1299,6 +1437,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
+        __props__.__dict__["target_version"] = target_version
         __props__.__dict__["uid"] = uid
         __props__.__dict__["upcoming_maintenance_schedules"] = upcoming_maintenance_schedules
         __props__.__dict__["update_time"] = update_time
@@ -1313,6 +1452,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "access_rules_options")
+
+    @_builtins.property
+    @pulumi.getter(name="availableVersion")
+    def available_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The version this instance can be upgraded to, if one is available. Empty
+        when the instance is already running the newest release.
+        """
+        return pulumi.get(self, "available_version")
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
@@ -1371,6 +1519,15 @@ class Instance(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveVersion")
+    def effective_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The version of Managed Lustre software that this instance is currently
+        running.
+        """
+        return pulumi.get(self, "effective_version")
 
     @_builtins.property
     @pulumi.getter
@@ -1534,6 +1691,23 @@ class Instance(pulumi.CustomResource):
         The reason why the instance is in a certain state (e.g. SUSPENDED).
         """
         return pulumi.get(self, "state_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The version to upgrade this instance to. Set this to the value reported in
+        `availableVersion`, or to `latest` to move to the newest version available
+        at the time of the upgrade.
+        This field cannot be set when the instance is created; new instances are
+        always provisioned from the current release. It also cannot be changed in
+        the same operation as `capacityGib` or `maintenancePolicy`, and the
+        instance must be ACTIVE and outside of the hour preceding a scheduled
+        maintenance window.
+        The API clears this field once the upgrade finishes, so it always reads
+        back as empty on an idle instance.
+        """
+        return pulumi.get(self, "target_version")
 
     @_builtins.property
     @pulumi.getter

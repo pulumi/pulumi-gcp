@@ -19,6 +19,12 @@ public final class AnalystAgentPersonaMcpDataSource {
      */
     private @Nullable String apiKey;
     /**
+     * @return The HTTP header when the API key is passed in a request header
+     * (e.g. &#39;x-api-key&#39;, &#39;api-key&#39;, &#39;X-Auth-Token&#39;).
+     * 
+     */
+    private @Nullable String apiKeyHeader;
+    /**
      * @return The API key parameter name.
      * 
      */
@@ -71,6 +77,14 @@ public final class AnalystAgentPersonaMcpDataSource {
      */
     public Optional<String> apiKey() {
         return Optional.ofNullable(this.apiKey);
+    }
+    /**
+     * @return The HTTP header when the API key is passed in a request header
+     * (e.g. &#39;x-api-key&#39;, &#39;api-key&#39;, &#39;X-Auth-Token&#39;).
+     * 
+     */
+    public Optional<String> apiKeyHeader() {
+        return Optional.ofNullable(this.apiKeyHeader);
     }
     /**
      * @return The API key parameter name.
@@ -146,6 +160,7 @@ public final class AnalystAgentPersonaMcpDataSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String apiKey;
+        private @Nullable String apiKeyHeader;
         private @Nullable String apiKeyName;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
@@ -159,6 +174,7 @@ public final class AnalystAgentPersonaMcpDataSource {
         public Builder(AnalystAgentPersonaMcpDataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKey = defaults.apiKey;
+    	      this.apiKeyHeader = defaults.apiKeyHeader;
     	      this.apiKeyName = defaults.apiKeyName;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
@@ -174,6 +190,12 @@ public final class AnalystAgentPersonaMcpDataSource {
         public Builder apiKey(@Nullable String apiKey) {
 
             this.apiKey = apiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder apiKeyHeader(@Nullable String apiKeyHeader) {
+
+            this.apiKeyHeader = apiKeyHeader;
             return this;
         }
         @CustomType.Setter
@@ -241,6 +263,7 @@ public final class AnalystAgentPersonaMcpDataSource {
         public AnalystAgentPersonaMcpDataSource build() {
             final var _resultValue = new AnalystAgentPersonaMcpDataSource();
             _resultValue.apiKey = apiKey;
+            _resultValue.apiKeyHeader = apiKeyHeader;
             _resultValue.apiKeyName = apiKeyName;
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;

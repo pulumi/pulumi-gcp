@@ -709,6 +709,40 @@ class SecurityPolicy(pulumi.CustomResource):
             })
         ```
 
+        ### With Request Body Expression
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            description="Policy with Request Body inspection",
+            rules=[
+                {
+                    "action": "deny(403)",
+                    "priority": 1000,
+                    "match": {
+                        "expr": {
+                            "expression": "request.body.contains('my-match-string')",
+                        },
+                    },
+                    "description": "Deny requests containing specific body string",
+                },
+                {
+                    "action": "allow",
+                    "priority": 2147483647,
+                    "match": {
+                        "versioned_expr": "SRC_IPS_V1",
+                        "config": {
+                            "src_ip_ranges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
+            ])
+        ```
+
         ## Import
 
         Security policies can be imported using any of these accepted formats:
@@ -939,6 +973,40 @@ class SecurityPolicy(pulumi.CustomResource):
                     "x-custom-ip",
                 ],
             })
+        ```
+
+        ### With Request Body Expression
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy",
+            name="my-policy",
+            description="Policy with Request Body inspection",
+            rules=[
+                {
+                    "action": "deny(403)",
+                    "priority": 1000,
+                    "match": {
+                        "expr": {
+                            "expression": "request.body.contains('my-match-string')",
+                        },
+                    },
+                    "description": "Deny requests containing specific body string",
+                },
+                {
+                    "action": "allow",
+                    "priority": 2147483647,
+                    "match": {
+                        "versioned_expr": "SRC_IPS_V1",
+                        "config": {
+                            "src_ip_ranges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
+            ])
         ```
 
         ## Import

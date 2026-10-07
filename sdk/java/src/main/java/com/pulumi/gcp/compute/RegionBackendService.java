@@ -518,6 +518,117 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Region Backend Service In Flight
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManager;
+ * import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceBackendArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom = new Network("custom", NetworkArgs.builder()
+ *             .name("custom-vpc")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var default_ = new Subnetwork("default", SubnetworkArgs.builder()
+ *             .name("custom-subnet")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(custom.id())
+ *             .build());
+ * 
+ *         var defaultInstanceTemplate = new InstanceTemplate("defaultInstanceTemplate", InstanceTemplateArgs.builder()
+ *             .name("instance-template")
+ *             .machineType("e2-micro")
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage("debian-cloud/debian-13")
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network(custom.id())
+ *                 .subnetwork(default_.id())
+ *                 .build())
+ *             .metadata(Map.of("startup-script", """
+ * #!/bin/bash
+ * echo \"Hello World from MIG VM\" > /var/www/html/index.html
+ * apt-get update -y
+ * apt-get install -y apache2
+ * systemctl start apache2
+ *             """))
+ *             .build());
+ * 
+ *         var foobar = new RegionInstanceGroupManager("foobar", RegionInstanceGroupManagerArgs.builder()
+ *             .name("instance-group-manager")
+ *             .baseInstanceName("vm")
+ *             .region("us-central1")
+ *             .versions(RegionInstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(defaultInstanceTemplate.id())
+ *                 .build())
+ *             .targetSize(1)
+ *             .build());
+ * 
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("rbs-health-check")
+ *             .region("us-central1")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("region-service")
+ *             .region("us-central1")
+ *             .description("Hello World 1234")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .backends(RegionBackendServiceBackendArgs.builder()
+ *                 .group(foobar.instanceGroup())
+ *                 .balancingMode("IN_FLIGHT")
+ *                 .capacityScaler(1.0)
+ *                 .maxInFlightRequestsPerInstance(100)
+ *                 .trafficDuration("LONG")
+ *                 .build())
+ *             .healthChecks(defaultRegionHealthCheck.selfLink())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Region Backend Service Connection Tracking
  * 
  * <pre>
@@ -1177,6 +1288,58 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .authenticationConfig(defaultBackendAuthenticationConfig.id().applyValue(_id -> String.format("//networksecurity.googleapis.com/%s", _id)))
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Region Backend Service Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceTlsSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .region("europe-north1")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .region("europe-north1")
+ *             .name("backend-service")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .protocol("HTTPS")
+ *             .tlsSettings(RegionBackendServiceTlsSettingsArgs.builder()
+ *                 .identity("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id")
+ *                 .build())
+ *             .description("description")
  *             .build());
  * 
  *     }
@@ -1938,6 +2101,24 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     * 
+     */
+    @Export(name="serviceLbPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceLbPolicy;
+
+    /**
+     * @return URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     * 
+     */
+    public Output<Optional<String>> serviceLbPolicy() {
+        return Codegen.optional(this.serviceLbPolicy);
     }
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is

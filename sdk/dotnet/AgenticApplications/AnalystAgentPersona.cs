@@ -251,6 +251,7 @@ namespace Pulumi.Gcp.AgenticApplications
     ///             },
     ///             VisualizationOptions = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs
     ///             {
+    ///                 VisualizationMode = "VISUALIZATION_MODE_WHEN_NECESSARY",
     ///                 VisualizationExamples = new[]
     ///                 {
     ///                     new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArgs
@@ -289,6 +290,7 @@ namespace Pulumi.Gcp.AgenticApplications
     ///                 Enabled = true,
     ///                 Prompt = "Use this server for queries",
     ///                 ApiKeyName = "x-api-key",
+    ///                 ApiKeyHeader = "x-api-key-header",
     ///                 ClientId = "sample-client-id",
     ///                 OauthTokenUrl = "https://example.com/oauth/token",
     ///             },
@@ -381,6 +383,7 @@ namespace Pulumi.Gcp.AgenticApplications
     ///         MathRenderingMode = "MATH_RENDERING_MODE_LATEX",
     ///         WebSearchConfig = new Gcp.AgenticApplications.Inputs.AnalystAgentPersonaWebSearchConfigArgs
     ///         {
+    ///             Disabled = false,
     ///             ExcludedDomains = new[]
     ///             {
     ///                 "example.com",
@@ -782,9 +785,18 @@ namespace Pulumi.Gcp.AgenticApplications
     /// &lt;a name="NestedArtifactsConfigVisualizationOptions"&gt;&lt;/a&gt;The `VisualizationOptions` block supports:
     /// 
     /// * `VisualizationExamples` -
-    ///   (Optional)
-    ///   Examples for visualizations.
-    ///   Structure is documented below.
+    /// (Optional)
+    /// Examples for visualizations.
+    /// Structure is documented below.
+    /// 
+    /// * `VisualizationMode` -
+    /// (Optional)
+    /// Mode for generating visualizations.
+    /// Possible values:
+    /// VISUALIZATION_MODE_EXPLICIT_ONLY
+    /// VISUALIZATION_MODE_WHEN_NECESSARY
+    /// VISUALIZATION_MODE_WHEN_HELPFUL
+    /// VISUALIZATION_MODE_ALWAYS
     /// 
     /// &lt;a name="NestedArtifactsConfigVisualizationOptionsVisualizationExamples"&gt;&lt;/a&gt;The `VisualizationExamples` block supports:
     /// 
@@ -959,6 +971,11 @@ namespace Pulumi.Gcp.AgenticApplications
     /// (Optional)
     /// Input only. The API key of the MCP server.
     /// **Note**: This property is sensitive and will not be displayed in the plan.
+    /// 
+    /// * `ApiKeyHeader` -
+    /// (Optional)
+    /// The HTTP header when the API key is passed in a request header
+    /// (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
     /// 
     /// * `ApiKeyName` -
     /// (Optional)
@@ -1174,10 +1191,15 @@ namespace Pulumi.Gcp.AgenticApplications
     /// 
     /// &lt;a name="NestedWebSearchConfig"&gt;&lt;/a&gt;The `WebSearchConfig` block supports:
     /// 
+    /// * `Disabled` -
+    /// (Optional)
+    /// Whether web search grounding is disabled for the analyst agent.
+    /// Defaults to false if not specified (i.e. web search grounding is enabled).
+    /// 
     /// * `ExcludedDomains` -
-    ///   (Optional)
-    ///   List of domains to be excluded from Google Search / Enterprise Web Search
-    ///   grounding.
+    /// (Optional)
+    /// List of domains to be excluded from Google Search / Enterprise Web Search
+    /// grounding.
     /// 
     /// ## Import
     /// 

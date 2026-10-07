@@ -6333,6 +6333,166 @@ func (o PrivateConnectionPscInterfaceConfigPtrOutput) NetworkAttachment() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrivateConnectionReservedPublicIpConfig struct {
+	// (Output)
+	// Output only. The reserved public IPs.
+	EgressPublicIps []string `pulumi:"egressPublicIps"`
+	// Optional. Number of static public IP addresses to reserve.
+	NatIpsCount *int `pulumi:"natIpsCount"`
+}
+
+// PrivateConnectionReservedPublicIpConfigInput is an input type that accepts PrivateConnectionReservedPublicIpConfigArgs and PrivateConnectionReservedPublicIpConfigOutput values.
+// You can construct a concrete instance of `PrivateConnectionReservedPublicIpConfigInput` via:
+//
+//	PrivateConnectionReservedPublicIpConfigArgs{...}
+type PrivateConnectionReservedPublicIpConfigInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionReservedPublicIpConfigOutput() PrivateConnectionReservedPublicIpConfigOutput
+	ToPrivateConnectionReservedPublicIpConfigOutputWithContext(context.Context) PrivateConnectionReservedPublicIpConfigOutput
+}
+
+type PrivateConnectionReservedPublicIpConfigArgs struct {
+	// (Output)
+	// Output only. The reserved public IPs.
+	EgressPublicIps pulumi.StringArrayInput `pulumi:"egressPublicIps"`
+	// Optional. Number of static public IP addresses to reserve.
+	NatIpsCount pulumi.IntPtrInput `pulumi:"natIpsCount"`
+}
+
+func (PrivateConnectionReservedPublicIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionReservedPublicIpConfig)(nil)).Elem()
+}
+
+func (i PrivateConnectionReservedPublicIpConfigArgs) ToPrivateConnectionReservedPublicIpConfigOutput() PrivateConnectionReservedPublicIpConfigOutput {
+	return i.ToPrivateConnectionReservedPublicIpConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionReservedPublicIpConfigArgs) ToPrivateConnectionReservedPublicIpConfigOutputWithContext(ctx context.Context) PrivateConnectionReservedPublicIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionReservedPublicIpConfigOutput)
+}
+
+func (i PrivateConnectionReservedPublicIpConfigArgs) ToPrivateConnectionReservedPublicIpConfigPtrOutput() PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return i.ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectionReservedPublicIpConfigArgs) ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionReservedPublicIpConfigOutput).ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateConnectionReservedPublicIpConfigPtrInput is an input type that accepts PrivateConnectionReservedPublicIpConfigArgs, PrivateConnectionReservedPublicIpConfigPtr and PrivateConnectionReservedPublicIpConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateConnectionReservedPublicIpConfigPtrInput` via:
+//
+//	        PrivateConnectionReservedPublicIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateConnectionReservedPublicIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateConnectionReservedPublicIpConfigPtrOutput() PrivateConnectionReservedPublicIpConfigPtrOutput
+	ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(context.Context) PrivateConnectionReservedPublicIpConfigPtrOutput
+}
+
+type privateConnectionReservedPublicIpConfigPtrType PrivateConnectionReservedPublicIpConfigArgs
+
+func PrivateConnectionReservedPublicIpConfigPtr(v *PrivateConnectionReservedPublicIpConfigArgs) PrivateConnectionReservedPublicIpConfigPtrInput {
+	return (*privateConnectionReservedPublicIpConfigPtrType)(v)
+}
+
+func (*privateConnectionReservedPublicIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionReservedPublicIpConfig)(nil)).Elem()
+}
+
+func (i *privateConnectionReservedPublicIpConfigPtrType) ToPrivateConnectionReservedPublicIpConfigPtrOutput() PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return i.ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateConnectionReservedPublicIpConfigPtrType) ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectionReservedPublicIpConfigPtrOutput)
+}
+
+type PrivateConnectionReservedPublicIpConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionReservedPublicIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectionReservedPublicIpConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionReservedPublicIpConfigOutput) ToPrivateConnectionReservedPublicIpConfigOutput() PrivateConnectionReservedPublicIpConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionReservedPublicIpConfigOutput) ToPrivateConnectionReservedPublicIpConfigOutputWithContext(ctx context.Context) PrivateConnectionReservedPublicIpConfigOutput {
+	return o
+}
+
+func (o PrivateConnectionReservedPublicIpConfigOutput) ToPrivateConnectionReservedPublicIpConfigPtrOutput() PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return o.ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateConnectionReservedPublicIpConfigOutput) ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectionReservedPublicIpConfig) *PrivateConnectionReservedPublicIpConfig {
+		return &v
+	}).(PrivateConnectionReservedPublicIpConfigPtrOutput)
+}
+
+// (Output)
+// Output only. The reserved public IPs.
+func (o PrivateConnectionReservedPublicIpConfigOutput) EgressPublicIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateConnectionReservedPublicIpConfig) []string { return v.EgressPublicIps }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Number of static public IP addresses to reserve.
+func (o PrivateConnectionReservedPublicIpConfigOutput) NatIpsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrivateConnectionReservedPublicIpConfig) *int { return v.NatIpsCount }).(pulumi.IntPtrOutput)
+}
+
+type PrivateConnectionReservedPublicIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectionReservedPublicIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectionReservedPublicIpConfig)(nil)).Elem()
+}
+
+func (o PrivateConnectionReservedPublicIpConfigPtrOutput) ToPrivateConnectionReservedPublicIpConfigPtrOutput() PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionReservedPublicIpConfigPtrOutput) ToPrivateConnectionReservedPublicIpConfigPtrOutputWithContext(ctx context.Context) PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return o
+}
+
+func (o PrivateConnectionReservedPublicIpConfigPtrOutput) Elem() PrivateConnectionReservedPublicIpConfigOutput {
+	return o.ApplyT(func(v *PrivateConnectionReservedPublicIpConfig) PrivateConnectionReservedPublicIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateConnectionReservedPublicIpConfig
+		return ret
+	}).(PrivateConnectionReservedPublicIpConfigOutput)
+}
+
+// (Output)
+// Output only. The reserved public IPs.
+func (o PrivateConnectionReservedPublicIpConfigPtrOutput) EgressPublicIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateConnectionReservedPublicIpConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressPublicIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Number of static public IP addresses to reserve.
+func (o PrivateConnectionReservedPublicIpConfigPtrOutput) NatIpsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectionReservedPublicIpConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NatIpsCount
+	}).(pulumi.IntPtrOutput)
+}
+
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
@@ -6562,6 +6722,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionPscInterfaceConfigInput)(nil)).Elem(), PrivateConnectionPscInterfaceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionPscInterfaceConfigPtrInput)(nil)).Elem(), PrivateConnectionPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionReservedPublicIpConfigInput)(nil)).Elem(), PrivateConnectionReservedPublicIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionReservedPublicIpConfigPtrInput)(nil)).Elem(), PrivateConnectionReservedPublicIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigPtrInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(ConnectionProfileAlloydbOutput{})
@@ -6632,6 +6794,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionPscInterfaceConfigOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionPscInterfaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionReservedPublicIpConfigOutput{})
+	pulumi.RegisterOutputType(PrivateConnectionReservedPublicIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigPtrOutput{})
 }

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrganizationsPolicyBindingTarget {
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
      * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -21,10 +21,18 @@ public final class OrganizationsPolicyBindingTarget {
      * 
      */
     private @Nullable String principalSet;
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+     *   It must be the policy binding&#39;s parent (the organization).
+     * 
+     */
+    private @Nullable String resource;
 
     private OrganizationsPolicyBindingTarget() {}
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
      * * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -34,6 +42,16 @@ public final class OrganizationsPolicyBindingTarget {
      */
     public Optional<String> principalSet() {
         return Optional.ofNullable(this.principalSet);
+    }
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+     *   It must be the policy binding&#39;s parent (the organization).
+     * 
+     */
+    public Optional<String> resource() {
+        return Optional.ofNullable(this.resource);
     }
 
     public static Builder builder() {
@@ -46,10 +64,12 @@ public final class OrganizationsPolicyBindingTarget {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String principalSet;
+        private @Nullable String resource;
         public Builder() {}
         public Builder(OrganizationsPolicyBindingTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.principalSet = defaults.principalSet;
+    	      this.resource = defaults.resource;
         }
 
         @CustomType.Setter
@@ -58,9 +78,16 @@ public final class OrganizationsPolicyBindingTarget {
             this.principalSet = principalSet;
             return this;
         }
+        @CustomType.Setter
+        public Builder resource(@Nullable String resource) {
+
+            this.resource = resource;
+            return this;
+        }
         public OrganizationsPolicyBindingTarget build() {
             final var _resultValue = new OrganizationsPolicyBindingTarget();
             _resultValue.principalSet = principalSet;
+            _resultValue.resource = resource;
             return _resultValue;
         }
     }

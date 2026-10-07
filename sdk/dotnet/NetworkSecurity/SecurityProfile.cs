@@ -286,6 +286,116 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Wildfire
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "my-security-profile",
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "my description",
+    ///         Type = "WILDFIRE_ANALYSIS",
+    ///         WildfireAnalysisProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileArgs
+    ///         {
+    ///             WildfireRealtimeLookup = true,
+    ///             WildfireSubmissionRules = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs
+    ///                 {
+    ///                     Direction = "BOTH",
+    ///                     FileSelectionMode = "ALL_FILE_TYPES",
+    ///                 },
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs
+    ///                 {
+    ///                     Direction = "UPLOAD",
+    ///                     FileSelectionMode = "CUSTOM_FILE_TYPES",
+    ///                     CustomFileTypes = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleCustomFileTypesArgs
+    ///                     {
+    ///                         FileTypes = new[]
+    ///                         {
+    ///                             "PDF",
+    ///                             "SCRIPT",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             WildfireInlineCloudAnalysisRules = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs
+    ///                 {
+    ///                     Direction = "BOTH",
+    ///                     Action = "ALLOW",
+    ///                     FileSelectionMode = "ALL_FILE_TYPES",
+    ///                 },
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleArgs
+    ///                 {
+    ///                     Direction = "DOWNLOAD",
+    ///                     Action = "DENY",
+    ///                     FileSelectionMode = "CUSTOM_FILE_TYPES",
+    ///                     CustomFileTypes = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineCloudAnalysisRuleCustomFileTypesArgs
+    ///                     {
+    ///                         FileTypes = new[]
+    ///                         {
+    ///                             "PE",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             WildfireOverrides = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireOverrideArgs
+    ///                 {
+    ///                     Protocol = "WILDFIRE_HTTP",
+    ///                     Action = "WILDFIRE_DENY",
+    ///                 },
+    ///             },
+    ///             WildfireInlineMlOverrides = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlOverrideArgs
+    ///                 {
+    ///                     Protocol = "WILDFIRE_FTP",
+    ///                     Action = "WILDFIRE_ALERT",
+    ///                 },
+    ///             },
+    ///             WildfireThreatOverrides = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireThreatOverrideArgs
+    ///                 {
+    ///                     ThreatId = "12345",
+    ///                     Action = "WILDFIRE_ALLOW",
+    ///                 },
+    ///             },
+    ///             WildfireInlineMlSetting = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingArgs
+    ///             {
+    ///                 InlineMlConfigs = new[]
+    ///                 {
+    ///                     new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingInlineMlConfigArgs
+    ///                     {
+    ///                         FileType = "WINDOWS_EXECUTABLE",
+    ///                         Action = "ENABLE",
+    ///                     },
+    ///                 },
+    ///                 FileExceptions = new[]
+    ///                 {
+    ///                     new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireInlineMlSettingFileExceptionArgs
+    ///                     {
+    ///                         PartialHash = "12345abcdef",
+    ///                         Filename = "virus.exe",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -405,8 +515,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<Outputs.SecurityProfileThreatPreventionProfile?> ThreatPreventionProfile { get; private set; } = null!;
 
         /// <summary>
-        /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -423,6 +533,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("urlFilteringProfile")]
         public Output<Outputs.SecurityProfileUrlFilteringProfile?> UrlFilteringProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The wildfire analysis configuration for the security profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("wildfireAnalysisProfile")]
+        public Output<Outputs.SecurityProfileWildfireAnalysisProfile?> WildfireAnalysisProfile { get; private set; } = null!;
 
 
         /// <summary>
@@ -551,8 +669,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileThreatPreventionProfileArgs>? ThreatPreventionProfile { get; set; }
 
         /// <summary>
-        /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -563,6 +681,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("urlFilteringProfile")]
         public Input<Inputs.SecurityProfileUrlFilteringProfileArgs>? UrlFilteringProfile { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The wildfire analysis configuration for the security profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("wildfireAnalysisProfile")]
+        public Input<Inputs.SecurityProfileWildfireAnalysisProfileArgs>? WildfireAnalysisProfile { get; set; }
 
         public SecurityProfileArgs()
         {
@@ -701,8 +827,8 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<Inputs.SecurityProfileThreatPreventionProfileGetArgs>? ThreatPreventionProfile { get; set; }
 
         /// <summary>
-        /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        /// The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        /// Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -719,6 +845,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("urlFilteringProfile")]
         public Input<Inputs.SecurityProfileUrlFilteringProfileGetArgs>? UrlFilteringProfile { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The wildfire analysis configuration for the security profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("wildfireAnalysisProfile")]
+        public Input<Inputs.SecurityProfileWildfireAnalysisProfileGetArgs>? WildfireAnalysisProfile { get; set; }
 
         public SecurityProfileState()
         {

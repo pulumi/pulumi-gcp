@@ -241,6 +241,124 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ * ### Region Security Policy Rule With Body Exclude
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "test-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "test-network-subnet",
+ *     region: "us-west2",
+ *     network: _default.id,
+ *     ipCidrRange: "10.10.0.0/24",
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "test-health-check",
+ *     region: "us-west2",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionSecurityPolicy = new gcp.compute.RegionSecurityPolicy("default", {
+ *     name: "policyruletest",
+ *     description: "regional security policy with body inspection",
+ *     region: "us-west2",
+ *     type: "CLOUD_ARMOR",
+ *     advancedOptionsConfig: {
+ *         jsonParsing: "STANDARD",
+ *         logLevel: "VERBOSE",
+ *     },
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         subnetwork: defaultSubnetwork.id,
+ *     }],
+ *     name: "backendpolicy",
+ *     machineType: "e2-micro",
+ *     disks: [{
+ *         sourceImage: "projects/debian-cloud/global/images/family/debian-11",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ * });
+ * const defaultRegionInstanceGroupManager = new gcp.compute.RegionInstanceGroupManager("default", {
+ *     name: "backendpolicy",
+ *     region: "us-west2",
+ *     baseInstanceName: "backend",
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *     }],
+ *     targetSize: 1,
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "backendpolicy",
+ *     region: "us-west2",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     timeoutSec: 30,
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     backends: [{
+ *         group: defaultRegionInstanceGroupManager.instanceGroup,
+ *         capacityScaler: 1,
+ *     }],
+ *     securityPolicy: defaultRegionSecurityPolicy.id,
+ * });
+ * const policyRuleOne = new gcp.compute.RegionSecurityPolicyRule("policy_rule_one", {
+ *     securityPolicy: defaultRegionSecurityPolicy.name,
+ *     description: "waf body rule",
+ *     region: "us-west2",
+ *     action: "deny(403)",
+ *     priority: 100,
+ *     preview: true,
+ *     match: {
+ *         expr: {
+ *             expression: "evaluatePreconfiguredWaf('sqli-v33-stable')",
+ *         },
+ *     },
+ *     preconfiguredWafConfig: {
+ *         exclusions: [{
+ *             targetRuleSet: "sqli-v33-stable",
+ *             requestBodies: [{
+ *                 operator: "EQUALS",
+ *                 value: "safe-field",
+ *             }],
+ *         }],
+ *     },
+ * }, {
+ *     dependsOn: [defaultRegionBackendService],
+ * });
+ * ```
+ * ### Region Security Policy Rule Request Body Expression
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionSecurityPolicy("default", {
+ *     name: "policyruletest",
+ *     region: "us-west2",
+ *     description: "basic global security policy",
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policy_rule", {
+ *     securityPolicy: _default.name,
+ *     region: "us-west2",
+ *     description: "Deny requests containing specific body string",
+ *     action: "deny(403)",
+ *     priority: 1000,
+ *     match: {
+ *         expr: {
+ *             expression: "request.body.contains('my-match-string')",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

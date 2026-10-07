@@ -200,6 +200,10 @@ export class SearchEngine extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * The emails of the procurement contacts.
+     */
+    declare public readonly procurementContactEmails: pulumi.Output<string[] | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -242,6 +246,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["knowledgeGraphConfig"] = state?.knowledgeGraphConfig;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
+            resourceInputs["procurementContactEmails"] = state?.procurementContactEmails;
             resourceInputs["project"] = state?.project;
             resourceInputs["searchEngineConfig"] = state?.searchEngineConfig;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -278,6 +283,7 @@ export class SearchEngine extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
             resourceInputs["knowledgeGraphConfig"] = args?.knowledgeGraphConfig;
             resourceInputs["location"] = args?.location;
+            resourceInputs["procurementContactEmails"] = args?.procurementContactEmails;
             resourceInputs["project"] = args?.project;
             resourceInputs["searchEngineConfig"] = args?.searchEngineConfig;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -371,6 +377,10 @@ export interface SearchEngineState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * The emails of the procurement contacts.
+     */
+    procurementContactEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -456,6 +466,10 @@ export interface SearchEngineArgs {
      * Location.
      */
     location: pulumi.Input<string>;
+    /**
+     * The emails of the procurement contacts.
+     */
+    procurementContactEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

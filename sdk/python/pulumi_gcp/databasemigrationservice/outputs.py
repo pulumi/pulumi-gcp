@@ -50,6 +50,7 @@ __all__ = [
     'MigrationJobVpcPeeringConnectivity',
     'PrivateConnectionError',
     'PrivateConnectionPscInterfaceConfig',
+    'PrivateConnectionReservedPublicIpConfig',
     'PrivateConnectionVpcPeeringConfig',
 ]
 
@@ -2388,6 +2389,58 @@ class PrivateConnectionPscInterfaceConfig(dict):
         Format: projects/{project}/regions/{region}/networkAttachments/{name}
         """
         return pulumi.get(self, "network_attachment")
+
+
+@pulumi.output_type
+class PrivateConnectionReservedPublicIpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressPublicIps":
+            suggest = "egress_public_ips"
+        elif key == "natIpsCount":
+            suggest = "nat_ips_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateConnectionReservedPublicIpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateConnectionReservedPublicIpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateConnectionReservedPublicIpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 egress_public_ips: Optional[Sequence[_builtins.str]] = None,
+                 nat_ips_count: Optional[_builtins.int] = None):
+        """
+        :param Sequence[_builtins.str] egress_public_ips: (Output)
+               Output only. The reserved public IPs.
+        :param _builtins.int nat_ips_count: Optional. Number of static public IP addresses to reserve.
+        """
+        if egress_public_ips is not None:
+            pulumi.set(__self__, "egress_public_ips", egress_public_ips)
+        if nat_ips_count is not None:
+            pulumi.set(__self__, "nat_ips_count", nat_ips_count)
+
+    @_builtins.property
+    @pulumi.getter(name="egressPublicIps")
+    def egress_public_ips(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        Output only. The reserved public IPs.
+        """
+        return pulumi.get(self, "egress_public_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="natIpsCount")
+    def nat_ips_count(self) -> Optional[_builtins.int]:
+        """
+        Optional. Number of static public IP addresses to reserve.
+        """
+        return pulumi.get(self, "nat_ips_count")
 
 
 @pulumi.output_type

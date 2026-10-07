@@ -18,6 +18,8 @@ import com.pulumi.gcp.iam.inputs.GetWorkforcePoolIamPolicyPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolIamPolicyPlainArgs;
+import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigPlainArgs;
 import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolPlainArgs;
@@ -27,6 +29,7 @@ import com.pulumi.gcp.iam.outputs.GetRuleResult;
 import com.pulumi.gcp.iam.outputs.GetTestablePermissionsResult;
 import com.pulumi.gcp.iam.outputs.GetWorkforcePoolIamPolicyResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolIamPolicyResult;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolJwksResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolOpenidConfigResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderResult;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolResult;
@@ -1087,6 +1090,231 @@ public final class IamFunctions {
      */
     public static CompletableFuture<GetWorkloadIdentityPoolIamPolicyResult> getWorkloadIdentityPoolIamPolicyPlain(GetWorkloadIdentityPoolIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPoolIamPolicy:getWorkloadIdentityPoolIamPolicy", TypeShape.of(GetWorkloadIdentityPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the JSON Web Key Set (JWKS) public keys (`/openid/jwks`) for an Agent Workload Identity Pool from GCP.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+     *             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+     *             .build());
+     * 
+     *         final var example = IamFunctions.getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs.builder()
+     *             .resourceName(oidc.jwksUri())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs args) {
+        return getWorkloadIdentityPoolJwks(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the JSON Web Key Set (JWKS) public keys (`/openid/jwks`) for an Agent Workload Identity Pool from GCP.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+     *             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+     *             .build());
+     * 
+     *         final var example = IamFunctions.getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs.builder()
+     *             .resourceName(oidc.jwksUri())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwksPlain(GetWorkloadIdentityPoolJwksPlainArgs args) {
+        return getWorkloadIdentityPoolJwksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the JSON Web Key Set (JWKS) public keys (`/openid/jwks`) for an Agent Workload Identity Pool from GCP.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+     *             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+     *             .build());
+     * 
+     *         final var example = IamFunctions.getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs.builder()
+     *             .resourceName(oidc.jwksUri())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolJwks:getWorkloadIdentityPoolJwks", TypeShape.of(GetWorkloadIdentityPoolJwksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the JSON Web Key Set (JWKS) public keys (`/openid/jwks`) for an Agent Workload Identity Pool from GCP.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+     *             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+     *             .build());
+     * 
+     *         final var example = IamFunctions.getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs.builder()
+     *             .resourceName(oidc.jwksUri())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolJwks:getWorkloadIdentityPoolJwks", TypeShape.of(GetWorkloadIdentityPoolJwksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the JSON Web Key Set (JWKS) public keys (`/openid/jwks`) for an Agent Workload Identity Pool from GCP.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolOpenidConfigArgs;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolJwksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = IamFunctions.getWorkloadIdentityPoolOpenidConfig(GetWorkloadIdentityPoolOpenidConfigArgs.builder()
+     *             .resourceName("https://sts.googleapis.com/v1/organizations/433637338589/locations/global/workloadIdentityPools/agents.global.org-433637338589.system.id.goog/.well-known/openid-configuration")
+     *             .build());
+     * 
+     *         final var example = IamFunctions.getWorkloadIdentityPoolJwks(GetWorkloadIdentityPoolJwksArgs.builder()
+     *             .resourceName(oidc.jwksUri())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkloadIdentityPoolJwksResult> getWorkloadIdentityPoolJwksPlain(GetWorkloadIdentityPoolJwksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iam/getWorkloadIdentityPoolJwks:getWorkloadIdentityPoolJwks", TypeShape.of(GetWorkloadIdentityPoolJwksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get the OpenID provider configuration (`/.well-known/openid-configuration`) for an Agent Workload Identity Pool from Google Cloud.

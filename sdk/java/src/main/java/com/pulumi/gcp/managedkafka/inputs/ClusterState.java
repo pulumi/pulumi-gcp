@@ -160,6 +160,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * 
+     */
+    @Import(name="kafkaVersion")
+    private @Nullable Output<String> kafkaVersion;
+
+    /**
+     * @return The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * 
+     */
+    public Optional<Output<String>> kafkaVersion() {
+        return Optional.ofNullable(this.kafkaVersion);
+    }
+
+    /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -334,6 +349,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.effectiveLabels = $.effectiveLabels;
         this.gcpConfig = $.gcpConfig;
+        this.kafkaVersion = $.kafkaVersion;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -546,6 +562,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gcpConfig(ClusterGcpConfigArgs gcpConfig) {
             return gcpConfig(Output.of(gcpConfig));
+        }
+
+        /**
+         * @param kafkaVersion The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaVersion(@Nullable Output<String> kafkaVersion) {
+            $.kafkaVersion = kafkaVersion;
+            return this;
+        }
+
+        /**
+         * @param kafkaVersion The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaVersion(String kafkaVersion) {
+            return kafkaVersion(Output.of(kafkaVersion));
         }
 
         /**

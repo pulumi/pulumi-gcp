@@ -37,6 +37,27 @@ public final class RegionBackendServiceTlsSettingsArgs extends com.pulumi.resour
     }
 
     /**
+     * The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+     * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+     * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+     * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+     * 
+     */
+    @Import(name="identity")
+    private @Nullable Output<String> identity;
+
+    /**
+     * @return The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+     * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+     * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+     * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+     * 
+     */
+    public Optional<Output<String>> identity() {
+        return Optional.ofNullable(this.identity);
+    }
+
+    /**
      * Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
      * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend&#39;s
      * server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -86,6 +107,7 @@ public final class RegionBackendServiceTlsSettingsArgs extends com.pulumi.resour
 
     private RegionBackendServiceTlsSettingsArgs(RegionBackendServiceTlsSettingsArgs $) {
         this.authenticationConfig = $.authenticationConfig;
+        this.identity = $.identity;
         this.sni = $.sni;
         this.subjectAltNames = $.subjectAltNames;
     }
@@ -131,6 +153,33 @@ public final class RegionBackendServiceTlsSettingsArgs extends com.pulumi.resour
          */
         public Builder authenticationConfig(String authenticationConfig) {
             return authenticationConfig(Output.of(authenticationConfig));
+        }
+
+        /**
+         * @param identity The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(@Nullable Output<String> identity) {
+            $.identity = identity;
+            return this;
+        }
+
+        /**
+         * @param identity The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+         * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+         * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+         * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identity(String identity) {
+            return identity(Output.of(identity));
         }
 
         /**

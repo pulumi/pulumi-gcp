@@ -24,12 +24,12 @@ class BindingArgs:
                  auth_provider_binding: pulumi.Input['BindingAuthProviderBindingArgs'],
                  binding_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 source: pulumi.Input['BindingSourceArgs'],
                  target: pulumi.Input['BindingTargetArgs'],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional['BindingSourceArgs']] = None):
         """
         The set of arguments for constructing a Binding resource.
 
@@ -37,8 +37,6 @@ class BindingArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] binding_id: The name of the Binding.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
-        :param pulumi.Input['BindingSourceArgs'] source: The source of the Binding.
-               Structure is documented below.
         :param pulumi.Input['BindingTargetArgs'] target: The target of the Binding.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -51,11 +49,12 @@ class BindingArgs:
         :param pulumi.Input[_builtins.str] display_name: User-defined display name for the Binding.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['BindingSourceArgs'] source: The source of the Binding.
+               Structure is documented below.
         """
         pulumi.set(__self__, "auth_provider_binding", auth_provider_binding)
         pulumi.set(__self__, "binding_id", binding_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "target", target)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -65,6 +64,8 @@ class BindingArgs:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @_builtins.property
     @pulumi.getter(name="authProviderBinding")
@@ -102,19 +103,6 @@ class BindingArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> pulumi.Input['BindingSourceArgs']:
-        """
-        The source of the Binding.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: pulumi.Input['BindingSourceArgs']):
-        pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +170,19 @@ class BindingArgs:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[Optional['BindingSourceArgs']]:
+        """
+        The source of the Binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[Optional['BindingSourceArgs']]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -429,16 +430,17 @@ class Binding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_google as google
 
-        default = gcp.agentregistry.get_agent(location="global",
+        default = gcp.agentregistry.get_agent(location="us-central1",
             filter="displayName:Workspace Agent")
-        default_iam_connectors_connector = google.IamConnectorsConnector("default",
-            location=us-central1,
-            connector_id=ar-binding,
-            connector_type_params=[{
-                connectorVersion: projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1,
-            }])
+        default_auth_provider = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="ar-binding",
+            auth_provider_type_params={
+                "api_key": {
+                    "api_key": "test-api-key-value",
+                },
+            })
         default_binding = gcp.agentregistry.Binding("default",
             location="us-central1",
             binding_id="ar-binding",
@@ -451,11 +453,42 @@ class Binding(pulumi.CustomResource):
                 "identifier": default.urn,
             },
             auth_provider_binding={
-                "auth_provider": default_iam_connectors_connector["id"],
+                "auth_provider": default_auth_provider.id,
                 "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
                 "continue_uri": "https://example.com/continue",
             },
-            opts = pulumi.ResourceOptions(depends_on=[default_iam_connectors_connector]))
+            opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
+        ```
+        ### Agent Registry Binding Target Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.agentregistry.get_agent(location="us-central1",
+            filter="displayName:Workspace Agent")
+        default_auth_provider = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="ar-binding",
+            auth_provider_type_params={
+                "api_key": {
+                    "api_key": "test-api-key-value",
+                },
+            })
+        default_binding = gcp.agentregistry.Binding("default",
+            location="us-central1",
+            binding_id="ar-binding",
+            display_name="Target Only Binding",
+            description="Agent registry binding without source",
+            target={
+                "identifier": default.urn,
+            },
+            auth_provider_binding={
+                "auth_provider": default_auth_provider.id,
+                "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "continue_uri": "https://example.com/continue",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
         ```
 
         ## Import
@@ -512,16 +545,17 @@ class Binding(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
-        import pulumi_google as google
 
-        default = gcp.agentregistry.get_agent(location="global",
+        default = gcp.agentregistry.get_agent(location="us-central1",
             filter="displayName:Workspace Agent")
-        default_iam_connectors_connector = google.IamConnectorsConnector("default",
-            location=us-central1,
-            connector_id=ar-binding,
-            connector_type_params=[{
-                connectorVersion: projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1,
-            }])
+        default_auth_provider = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="ar-binding",
+            auth_provider_type_params={
+                "api_key": {
+                    "api_key": "test-api-key-value",
+                },
+            })
         default_binding = gcp.agentregistry.Binding("default",
             location="us-central1",
             binding_id="ar-binding",
@@ -534,11 +568,42 @@ class Binding(pulumi.CustomResource):
                 "identifier": default.urn,
             },
             auth_provider_binding={
-                "auth_provider": default_iam_connectors_connector["id"],
+                "auth_provider": default_auth_provider.id,
                 "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
                 "continue_uri": "https://example.com/continue",
             },
-            opts = pulumi.ResourceOptions(depends_on=[default_iam_connectors_connector]))
+            opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
+        ```
+        ### Agent Registry Binding Target Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.agentregistry.get_agent(location="us-central1",
+            filter="displayName:Workspace Agent")
+        default_auth_provider = gcp.agentidentity.AuthProvider("default",
+            location="us-central1",
+            auth_provider_id="ar-binding",
+            auth_provider_type_params={
+                "api_key": {
+                    "api_key": "test-api-key-value",
+                },
+            })
+        default_binding = gcp.agentregistry.Binding("default",
+            location="us-central1",
+            binding_id="ar-binding",
+            display_name="Target Only Binding",
+            description="Agent registry binding without source",
+            target={
+                "identifier": default.urn,
+            },
+            auth_provider_binding={
+                "auth_provider": default_auth_provider.id,
+                "scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+                "continue_uri": "https://example.com/continue",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_auth_provider]))
         ```
 
         ## Import
@@ -604,8 +669,6 @@ class Binding(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
-            if source is None and not opts.urn:
-                raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
@@ -763,7 +826,7 @@ class Binding(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> pulumi.Output['outputs.BindingSource']:
+    def source(self) -> pulumi.Output[Optional['outputs.BindingSource']]:
         """
         The source of the Binding.
         Structure is documented below.

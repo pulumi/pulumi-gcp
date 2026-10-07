@@ -4223,6 +4223,13 @@ func (o AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleReso
 type AnalystAgentPersonaArtifactsConfigVisualizationOptions struct {
 	// Examples for visualizations.
 	VisualizationExamples []AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample `pulumi:"visualizationExamples"`
+	// Mode for generating visualizations.
+	// Possible values:
+	// VISUALIZATION_MODE_EXPLICIT_ONLY
+	// VISUALIZATION_MODE_WHEN_NECESSARY
+	// VISUALIZATION_MODE_WHEN_HELPFUL
+	// VISUALIZATION_MODE_ALWAYS
+	VisualizationMode *string `pulumi:"visualizationMode"`
 }
 
 // AnalystAgentPersonaArtifactsConfigVisualizationOptionsInput is an input type that accepts AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs and AnalystAgentPersonaArtifactsConfigVisualizationOptionsOutput values.
@@ -4239,6 +4246,13 @@ type AnalystAgentPersonaArtifactsConfigVisualizationOptionsInput interface {
 type AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs struct {
 	// Examples for visualizations.
 	VisualizationExamples AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArrayInput `pulumi:"visualizationExamples"`
+	// Mode for generating visualizations.
+	// Possible values:
+	// VISUALIZATION_MODE_EXPLICIT_ONLY
+	// VISUALIZATION_MODE_WHEN_NECESSARY
+	// VISUALIZATION_MODE_WHEN_HELPFUL
+	// VISUALIZATION_MODE_ALWAYS
+	VisualizationMode pulumi.StringPtrInput `pulumi:"visualizationMode"`
 }
 
 func (AnalystAgentPersonaArtifactsConfigVisualizationOptionsArgs) ElementType() reflect.Type {
@@ -4325,6 +4339,16 @@ func (o AnalystAgentPersonaArtifactsConfigVisualizationOptionsOutput) Visualizat
 	}).(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArrayOutput)
 }
 
+// Mode for generating visualizations.
+// Possible values:
+// VISUALIZATION_MODE_EXPLICIT_ONLY
+// VISUALIZATION_MODE_WHEN_NECESSARY
+// VISUALIZATION_MODE_WHEN_HELPFUL
+// VISUALIZATION_MODE_ALWAYS
+func (o AnalystAgentPersonaArtifactsConfigVisualizationOptionsOutput) VisualizationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaArtifactsConfigVisualizationOptions) *string { return v.VisualizationMode }).(pulumi.StringPtrOutput)
+}
+
 type AnalystAgentPersonaArtifactsConfigVisualizationOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (AnalystAgentPersonaArtifactsConfigVisualizationOptionsPtrOutput) ElementType() reflect.Type {
@@ -4357,6 +4381,21 @@ func (o AnalystAgentPersonaArtifactsConfigVisualizationOptionsPtrOutput) Visuali
 		}
 		return v.VisualizationExamples
 	}).(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleArrayOutput)
+}
+
+// Mode for generating visualizations.
+// Possible values:
+// VISUALIZATION_MODE_EXPLICIT_ONLY
+// VISUALIZATION_MODE_WHEN_NECESSARY
+// VISUALIZATION_MODE_WHEN_HELPFUL
+// VISUALIZATION_MODE_ALWAYS
+func (o AnalystAgentPersonaArtifactsConfigVisualizationOptionsPtrOutput) VisualizationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaArtifactsConfigVisualizationOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VisualizationMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample struct {
@@ -6676,6 +6715,9 @@ func (o AnalystAgentPersonaExternalDataSourceUsdaPtrOutput) Elem() AnalystAgentP
 type AnalystAgentPersonaMcpDataSource struct {
 	// Input only. The API key of the MCP server.
 	ApiKey *string `pulumi:"apiKey"`
+	// The HTTP header when the API key is passed in a request header
+	// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+	ApiKeyHeader *string `pulumi:"apiKeyHeader"`
 	// The API key parameter name.
 	ApiKeyName *string `pulumi:"apiKeyName"`
 	// The client ID for authentication.
@@ -6710,6 +6752,9 @@ type AnalystAgentPersonaMcpDataSourceInput interface {
 type AnalystAgentPersonaMcpDataSourceArgs struct {
 	// Input only. The API key of the MCP server.
 	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// The HTTP header when the API key is passed in a request header
+	// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+	ApiKeyHeader pulumi.StringPtrInput `pulumi:"apiKeyHeader"`
 	// The API key parameter name.
 	ApiKeyName pulumi.StringPtrInput `pulumi:"apiKeyName"`
 	// The client ID for authentication.
@@ -6784,6 +6829,12 @@ func (o AnalystAgentPersonaMcpDataSourceOutput) ToAnalystAgentPersonaMcpDataSour
 // Input only. The API key of the MCP server.
 func (o AnalystAgentPersonaMcpDataSourceOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP header when the API key is passed in a request header
+// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+func (o AnalystAgentPersonaMcpDataSourceOutput) ApiKeyHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaMcpDataSource) *string { return v.ApiKeyHeader }).(pulumi.StringPtrOutput)
 }
 
 // The API key parameter name.
@@ -8400,6 +8451,9 @@ func (o AnalystAgentPersonaTableColumnArrayOutput) Index(i pulumi.IntInput) Anal
 }
 
 type AnalystAgentPersonaWebSearchConfig struct {
+	// Whether web search grounding is disabled for the analyst agent.
+	// Defaults to false if not specified (i.e. web search grounding is enabled).
+	Disabled *bool `pulumi:"disabled"`
 	// List of domains to be excluded from Google Search / Enterprise Web Search
 	// grounding.
 	ExcludedDomains []string `pulumi:"excludedDomains"`
@@ -8417,6 +8471,9 @@ type AnalystAgentPersonaWebSearchConfigInput interface {
 }
 
 type AnalystAgentPersonaWebSearchConfigArgs struct {
+	// Whether web search grounding is disabled for the analyst agent.
+	// Defaults to false if not specified (i.e. web search grounding is enabled).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// List of domains to be excluded from Google Search / Enterprise Web Search
 	// grounding.
 	ExcludedDomains pulumi.StringArrayInput `pulumi:"excludedDomains"`
@@ -8499,6 +8556,12 @@ func (o AnalystAgentPersonaWebSearchConfigOutput) ToAnalystAgentPersonaWebSearch
 	}).(AnalystAgentPersonaWebSearchConfigPtrOutput)
 }
 
+// Whether web search grounding is disabled for the analyst agent.
+// Defaults to false if not specified (i.e. web search grounding is enabled).
+func (o AnalystAgentPersonaWebSearchConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnalystAgentPersonaWebSearchConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
 // List of domains to be excluded from Google Search / Enterprise Web Search
 // grounding.
 func (o AnalystAgentPersonaWebSearchConfigOutput) ExcludedDomains() pulumi.StringArrayOutput {
@@ -8527,6 +8590,17 @@ func (o AnalystAgentPersonaWebSearchConfigPtrOutput) Elem() AnalystAgentPersonaW
 		var ret AnalystAgentPersonaWebSearchConfig
 		return ret
 	}).(AnalystAgentPersonaWebSearchConfigOutput)
+}
+
+// Whether web search grounding is disabled for the analyst agent.
+// Defaults to false if not specified (i.e. web search grounding is enabled).
+func (o AnalystAgentPersonaWebSearchConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnalystAgentPersonaWebSearchConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // List of domains to be excluded from Google Search / Enterprise Web Search

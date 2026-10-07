@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         /// </summary>
         public readonly string? ApiKey;
         /// <summary>
+        /// The HTTP header when the API key is passed in a request header
+        /// (e.g. 'x-api-key', 'api-key', 'X-Auth-Token').
+        /// </summary>
+        public readonly string? ApiKeyHeader;
+        /// <summary>
         /// The API key parameter name.
         /// </summary>
         public readonly string? ApiKeyName;
@@ -58,6 +63,8 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         private AnalystAgentPersonaMcpDataSource(
             string? apiKey,
 
+            string? apiKeyHeader,
+
             string? apiKeyName,
 
             string? clientId,
@@ -77,6 +84,7 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
             string serverUrl)
         {
             ApiKey = apiKey;
+            ApiKeyHeader = apiKeyHeader;
             ApiKeyName = apiKeyName;
             ClientId = clientId;
             ClientSecret = clientSecret;

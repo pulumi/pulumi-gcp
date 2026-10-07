@@ -246,6 +246,29 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultBackendService],
  * });
  * ```
+ * ### Security Policy Rule Request Body Expression
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.SecurityPolicy("default", {
+ *     name: "policyruletest",
+ *     description: "basic global security policy",
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const policyRule = new gcp.compute.SecurityPolicyRule("policy_rule", {
+ *     securityPolicy: _default.name,
+ *     description: "Deny requests containing specific body string",
+ *     action: "deny(403)",
+ *     priority: 1000,
+ *     match: {
+ *         expr: {
+ *             expression: "request.body.contains('my-match-string')",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

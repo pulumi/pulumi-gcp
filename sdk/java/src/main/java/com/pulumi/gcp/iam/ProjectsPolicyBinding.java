@@ -94,6 +94,134 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Iam Projects Policy Binding Access Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.iam.ProjectAccessPolicy;
+ * import com.pulumi.gcp.iam.ProjectAccessPolicyArgs;
+ * import com.pulumi.gcp.iam.inputs.ProjectAccessPolicyDetailsArgs;
+ * import com.pulumi.gcp.iam.inputs.ProjectAccessPolicyDetailsRuleArgs;
+ * import com.pulumi.gcp.iam.inputs.ProjectAccessPolicyDetailsRuleOperationArgs;
+ * import com.pulumi.gcp.iam.ProjectsPolicyBinding;
+ * import com.pulumi.gcp.iam.ProjectsPolicyBindingArgs;
+ * import com.pulumi.gcp.iam.inputs.ProjectsPolicyBindingTargetArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("ap-proj-")
+ *             .name("ap-proj-")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var iamApi = new Service("iamApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("iam.googleapis.com")
+ *             .disableOnDestroy(false)
+ *             .build());
+ * 
+ *         // Binding access policies can be blocked by the managed org policy constraint
+ *         // iam.managed.disableAccessPolicyBinding. Make sure it is not enforced on this project.
+ *         var allowAccessPolicyBinding = new Policy("allowAccessPolicyBinding", PolicyArgs.builder()
+ *             .name(project.projectId().applyValue(_projectId -> String.format("projects/%s/policies/iam.managed.disableAccessPolicyBinding", _projectId)))
+ *             .parent(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
+ *             .spec(PolicySpecArgs.builder()
+ *                 .rules(PolicySpecRuleArgs.builder()
+ *                     .enforce("FALSE")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var waitForProjectSetup = new Sleep("waitForProjectSetup", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     iamApi,
+ *                     allowAccessPolicyBinding)
+ *                 .build());
+ * 
+ *         var testSa = new Account("testSa", AccountArgs.builder()
+ *             .project(project.projectId())
+ *             .accountId("ap-sa-")
+ *             .displayName("Test Service Account for Access Policy")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForProjectSetup)
+ *                 .build());
+ * 
+ *         var accessPolicy = new ProjectAccessPolicy("accessPolicy", ProjectAccessPolicyArgs.builder()
+ *             .project(project.projectId())
+ *             .location("global")
+ *             .accessPolicyId("my-project-policy-")
+ *             .details(ProjectAccessPolicyDetailsArgs.builder()
+ *                 .rules(ProjectAccessPolicyDetailsRuleArgs.builder()
+ *                     .effect("ALLOW")
+ *                     .principals(testSa.email().applyValue(_email -> String.format("principal://iam.googleapis.com/projects/-/serviceAccounts/%s", _email)))
+ *                     .operation(ProjectAccessPolicyDetailsRuleOperationArgs.builder()
+ *                         .permissions("eventarc.googleapis.com/messageBuses.publish")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(accessPolicy)
+ *                 .build());
+ * 
+ *         var my_project_access_policy_binding = new ProjectsPolicyBinding("my-project-access-policy-binding", ProjectsPolicyBindingArgs.builder()
+ *             .project(project.projectId())
+ *             .location("global")
+ *             .displayName("Binding for a project access policy")
+ *             .policyKind("ACCESS")
+ *             .policyBindingId("my-project-access-binding-")
+ *             .policy(Output.tuple(project.projectId(), accessPolicy.accessPolicyId()).applyValue(values -> {
+ *                 var projectId = values.t1;
+ *                 var accessPolicyId = values.t2;
+ *                 return String.format("projects/%s/locations/global/accessPolicies/%s", projectId,accessPolicyId);
+ *             }))
+ *             .target(ProjectsPolicyBindingTargetArgs.builder()
+ *                 .resource(project.projectId().applyValue(_projectId -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", _projectId)))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -158,6 +286,7 @@ public class ProjectsPolicyBinding extends com.pulumi.resources.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -188,6 +317,7 @@ public class ProjectsPolicyBinding extends com.pulumi.resources.CustomResource {
      * The exact variables and functions that may be referenced within an expression are
      * determined by the service that evaluates it. See the service documentation for
      * additional information.
+     * Conditions are currently only supported when the bound policy is a principal access boundary policy.
      * Structure is documented below.
      * 
      */
@@ -380,6 +510,8 @@ public class ProjectsPolicyBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */
@@ -388,6 +520,8 @@ public class ProjectsPolicyBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+     * Exactly one of `principalSet` (for principal access boundary policy bindings) or
+     * `resource` (for access policy bindings) must be set.
      * Structure is documented below.
      * 
      */

@@ -127,6 +127,40 @@ import (
 //	}
 //
 // ```
+// ### Database Migration Service Private Connection Reserved Public Ip
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
+//				DisplayName:         pulumi.String("dbms_pc"),
+//				Location:            pulumi.String("us-west1"),
+//				PrivateConnectionId: pulumi.String("my-connection"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				ReservedPublicIpConfig: &databasemigrationservice.PrivateConnectionReservedPublicIpConfigArgs{
+//					NatIpsCount: pulumi.Int(1),
+//				},
+//				CreateWithoutValidation: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -182,6 +216,9 @@ type PrivateConnection struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The Reserved Public IP configuration.
+	// Structure is documented below.
+	ReservedPublicIpConfig PrivateConnectionReservedPublicIpConfigPtrOutput `pulumi:"reservedPublicIpConfig"`
 	// State of the PrivateConnection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The VPC Peering configuration is used to create VPC peering
@@ -267,6 +304,9 @@ type privateConnectionState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The Reserved Public IP configuration.
+	// Structure is documented below.
+	ReservedPublicIpConfig *PrivateConnectionReservedPublicIpConfig `pulumi:"reservedPublicIpConfig"`
 	// State of the PrivateConnection.
 	State *string `pulumi:"state"`
 	// The VPC Peering configuration is used to create VPC peering
@@ -312,6 +352,9 @@ type PrivateConnectionState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The Reserved Public IP configuration.
+	// Structure is documented below.
+	ReservedPublicIpConfig PrivateConnectionReservedPublicIpConfigPtrInput
 	// State of the PrivateConnection.
 	State pulumi.StringPtrInput
 	// The VPC Peering configuration is used to create VPC peering
@@ -351,6 +394,9 @@ type privateConnectionArgs struct {
 	// between DMS's internal VPC and the consumer's PSC.
 	// Structure is documented below.
 	PscInterfaceConfig *PrivateConnectionPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
+	// The Reserved Public IP configuration.
+	// Structure is documented below.
+	ReservedPublicIpConfig *PrivateConnectionReservedPublicIpConfig `pulumi:"reservedPublicIpConfig"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
@@ -385,6 +431,9 @@ type PrivateConnectionArgs struct {
 	// between DMS's internal VPC and the consumer's PSC.
 	// Structure is documented below.
 	PscInterfaceConfig PrivateConnectionPscInterfaceConfigPtrInput
+	// The Reserved Public IP configuration.
+	// Structure is documented below.
+	ReservedPublicIpConfig PrivateConnectionReservedPublicIpConfigPtrInput
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
@@ -549,6 +598,14 @@ func (o PrivateConnectionOutput) PscInterfaceConfig() PrivateConnectionPscInterf
 //	and default labels configured on the provider.
 func (o PrivateConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The Reserved Public IP configuration.
+// Structure is documented below.
+func (o PrivateConnectionOutput) ReservedPublicIpConfig() PrivateConnectionReservedPublicIpConfigPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionReservedPublicIpConfigPtrOutput {
+		return v.ReservedPublicIpConfig
+	}).(PrivateConnectionReservedPublicIpConfigPtrOutput)
 }
 
 // State of the PrivateConnection.

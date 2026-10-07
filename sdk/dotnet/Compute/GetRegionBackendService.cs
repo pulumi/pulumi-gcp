@@ -190,6 +190,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Region;
         public readonly string SecurityPolicy;
         public readonly string SelfLink;
+        public readonly string ServiceLbPolicy;
         public readonly string SessionAffinity;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceStrongSessionAffinityCookyResult> StrongSessionAffinityCookies;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceSubsettingResult> Subsettings;
@@ -268,6 +269,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            string serviceLbPolicy,
+
             string sessionAffinity,
 
             ImmutableArray<Outputs.GetRegionBackendServiceStrongSessionAffinityCookyResult> strongSessionAffinityCookies,
@@ -313,6 +316,7 @@ namespace Pulumi.Gcp.Compute
             Region = region;
             SecurityPolicy = securityPolicy;
             SelfLink = selfLink;
+            ServiceLbPolicy = serviceLbPolicy;
             SessionAffinity = sessionAffinity;
             StrongSessionAffinityCookies = strongSessionAffinityCookies;
             Subsettings = subsettings;

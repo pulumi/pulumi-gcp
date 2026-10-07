@@ -14,6 +14,9 @@ import * as utilities from "../utilities";
  *    successfully deleted; this is a limitation of the provider, and will go away in the future.
  *    This provider is not able to delete App Engine applications.
  *
+ * > **Note:** All arguments marked as write-only values will not be stored in the state: `iap.oauth2_client_secret_wo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -111,7 +114,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Settings for enabling Cloud Identity Aware Proxy
      */
-    declare public readonly iap: pulumi.Output<outputs.appengine.ApplicationIap>;
+    declare public readonly iap: pulumi.Output<outputs.appengine.ApplicationIap | undefined>;
     /**
      * The [location](https://cloud.google.com/appengine/docs/locations)
      * to serve the app from.

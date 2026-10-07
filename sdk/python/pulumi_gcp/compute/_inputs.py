@@ -1177,6 +1177,8 @@ __all__ = [
     'RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs',
+    'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict',
     'RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs',
@@ -1353,6 +1355,8 @@ __all__ = [
     'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs',
     'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs',
+    'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict',
     'RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs',
@@ -1873,6 +1877,8 @@ __all__ = [
     'URLMapPathMatcherRouteRuleRouteActionTimeoutArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs',
     'URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict',
+    'URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs',
+    'URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs',
@@ -7078,6 +7084,13 @@ class BackendServiceTlsSettingsArgsDict(TypedDict):
     Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
     Can only be specified if authenticationMode is not NONE.
     """
+    identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+    The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+    The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+    If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+    """
     sni: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
@@ -7099,12 +7112,17 @@ class BackendServiceTlsSettingsArgsDict(TypedDict):
 class BackendServiceTlsSettingsArgs:
     def __init__(__self__, *,
                  authentication_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
                  sni: pulumi.Input[Optional[_builtins.str]] = None,
                  subject_alt_names: pulumi.Input[Optional[Sequence[pulumi.Input['BackendServiceTlsSettingsSubjectAltNameArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] authentication_config: Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
                Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
                Can only be specified if authenticationMode is not NONE.
+        :param pulumi.Input[_builtins.str] identity: The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+               The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+               The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+               If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
         :param pulumi.Input[_builtins.str] sni: Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
                TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
                server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -7118,6 +7136,8 @@ class BackendServiceTlsSettingsArgs:
         """
         if authentication_config is not None:
             pulumi.set(__self__, "authentication_config", authentication_config)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
         if sni is not None:
             pulumi.set(__self__, "sni", sni)
         if subject_alt_names is not None:
@@ -7136,6 +7156,21 @@ class BackendServiceTlsSettingsArgs:
     @authentication_config.setter
     def authentication_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+        The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+        The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+        If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter
@@ -18759,6 +18794,10 @@ class InstanceFromMachineImageNetworkInterfaceArgsDict(TypedDict):
     """
     An array of IPv6 alias IP ranges for this network interface.
     """
+    enable_vpc_scoped_dns: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+    """
     igmp_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -18839,6 +18878,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
                  access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]] = None,
                  alias_ipv6_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs']]]] = None,
+                 enable_vpc_scoped_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  igmp_query: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv6_access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
@@ -18861,6 +18901,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs']]] alias_ipv6_ranges: An array of IPv6 alias IP ranges for this network interface.
+        :param pulumi.Input[_builtins.bool] enable_vpc_scoped_dns: If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
         :param pulumi.Input[_builtins.str] igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param pulumi.Input[_builtins.int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -18887,6 +18928,8 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
         if alias_ipv6_ranges is not None:
             pulumi.set(__self__, "alias_ipv6_ranges", alias_ipv6_ranges)
+        if enable_vpc_scoped_dns is not None:
+            pulumi.set(__self__, "enable_vpc_scoped_dns", enable_vpc_scoped_dns)
         if igmp_query is not None:
             pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
@@ -18959,6 +19002,18 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @alias_ipv6_ranges.setter
     def alias_ipv6_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs']]]]):
         pulumi.set(self, "alias_ipv6_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVpcScopedDns")
+    def enable_vpc_scoped_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+        """
+        return pulumi.get(self, "enable_vpc_scoped_dns")
+
+    @enable_vpc_scoped_dns.setter
+    def enable_vpc_scoped_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_vpc_scoped_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="igmpQuery")
@@ -21963,6 +22018,10 @@ class InstanceFromTemplateNetworkInterfaceArgsDict(TypedDict):
     """
     An array of IPv6 alias IP ranges for this network interface.
     """
+    enable_vpc_scoped_dns: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+    """
     igmp_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -22043,6 +22102,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
                  access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
                  alias_ipv6_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpv6RangeArgs']]]] = None,
+                 enable_vpc_scoped_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  igmp_query: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv6_access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
@@ -22065,6 +22125,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpv6RangeArgs']]] alias_ipv6_ranges: An array of IPv6 alias IP ranges for this network interface.
+        :param pulumi.Input[_builtins.bool] enable_vpc_scoped_dns: If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
         :param pulumi.Input[_builtins.str] igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param pulumi.Input[_builtins.int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -22091,6 +22152,8 @@ class InstanceFromTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
         if alias_ipv6_ranges is not None:
             pulumi.set(__self__, "alias_ipv6_ranges", alias_ipv6_ranges)
+        if enable_vpc_scoped_dns is not None:
+            pulumi.set(__self__, "enable_vpc_scoped_dns", enable_vpc_scoped_dns)
         if igmp_query is not None:
             pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
@@ -22163,6 +22226,18 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @alias_ipv6_ranges.setter
     def alias_ipv6_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpv6RangeArgs']]]]):
         pulumi.set(self, "alias_ipv6_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVpcScopedDns")
+    def enable_vpc_scoped_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+        """
+        return pulumi.get(self, "enable_vpc_scoped_dns")
+
+    @enable_vpc_scoped_dns.setter
+    def enable_vpc_scoped_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_vpc_scoped_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="igmpQuery")
@@ -25286,6 +25361,10 @@ class InstanceNetworkInterfaceArgsDict(TypedDict):
     array of alias IPv6 ranges for this network interface. Can only be specified for network
     interfaces on subnet-mode networks. Structure documented below.
     """
+    enable_vpc_scoped_dns: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+    """
     igmp_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -25381,6 +25460,7 @@ class InstanceNetworkInterfaceArgs:
                  access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]]] = None,
                  alias_ipv6_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpv6RangeArgs']]]] = None,
+                 enable_vpc_scoped_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  igmp_query: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv6_access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
@@ -25412,6 +25492,7 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpv6RangeArgs']]] alias_ipv6_ranges: [Beta] An
                array of alias IPv6 ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[_builtins.bool] enable_vpc_scoped_dns: If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
         :param pulumi.Input[_builtins.str] igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param pulumi.Input[_builtins.int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
@@ -25453,6 +25534,8 @@ class InstanceNetworkInterfaceArgs:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
         if alias_ipv6_ranges is not None:
             pulumi.set(__self__, "alias_ipv6_ranges", alias_ipv6_ranges)
+        if enable_vpc_scoped_dns is not None:
+            pulumi.set(__self__, "enable_vpc_scoped_dns", enable_vpc_scoped_dns)
         if igmp_query is not None:
             pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
@@ -25534,6 +25617,18 @@ class InstanceNetworkInterfaceArgs:
     @alias_ipv6_ranges.setter
     def alias_ipv6_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpv6RangeArgs']]]]):
         pulumi.set(self, "alias_ipv6_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVpcScopedDns")
+    def enable_vpc_scoped_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+        """
+        return pulumi.get(self, "enable_vpc_scoped_dns")
+
+    @enable_vpc_scoped_dns.setter
+    def enable_vpc_scoped_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_vpc_scoped_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="igmpQuery")
@@ -28589,6 +28684,10 @@ class InstanceTemplateNetworkInterfaceArgsDict(TypedDict):
     array of alias IPv6 ranges for this network interface. Can only be specified for network
     interfaces on subnet-mode networks. Structure documented below.
     """
+    enable_vpc_scoped_dns: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+    """
     igmp_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -28669,6 +28768,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                  access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
                  alias_ipv6_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpv6RangeArgs']]]] = None,
+                 enable_vpc_scoped_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  igmp_query: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv6_access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
@@ -28698,6 +28798,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpv6RangeArgs']]] alias_ipv6_ranges: [Beta] An
                array of alias IPv6 ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[_builtins.bool] enable_vpc_scoped_dns: If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
         :param pulumi.Input[_builtins.str] igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param pulumi.Input[_builtins.int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
@@ -28730,6 +28831,8 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
         if alias_ipv6_ranges is not None:
             pulumi.set(__self__, "alias_ipv6_ranges", alias_ipv6_ranges)
+        if enable_vpc_scoped_dns is not None:
+            pulumi.set(__self__, "enable_vpc_scoped_dns", enable_vpc_scoped_dns)
         if igmp_query is not None:
             pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
@@ -28807,6 +28910,18 @@ class InstanceTemplateNetworkInterfaceArgs:
     @alias_ipv6_ranges.setter
     def alias_ipv6_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpv6RangeArgs']]]]):
         pulumi.set(self, "alias_ipv6_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVpcScopedDns")
+    def enable_vpc_scoped_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+        """
+        return pulumi.get(self, "enable_vpc_scoped_dns")
+
+    @enable_vpc_scoped_dns.setter
+    def enable_vpc_scoped_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_vpc_scoped_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="igmpQuery")
@@ -40192,7 +40307,7 @@ class RegionBackendServiceBackendArgsDict(TypedDict):
     See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
     for an explanation of load balancing modes.
     Default value is `UTILIZATION`.
-    Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+    Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
     """
     capacity_scaler: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
@@ -40350,7 +40465,7 @@ class RegionBackendServiceBackendArgs:
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
                Default value is `UTILIZATION`.
-               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
         :param pulumi.Input[_builtins.float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                ~>**NOTE**: This field cannot be set for
@@ -40490,7 +40605,7 @@ class RegionBackendServiceBackendArgs:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -43637,6 +43752,13 @@ class RegionBackendServiceTlsSettingsArgsDict(TypedDict):
     Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
     Can only be specified if authenticationMode is not NONE.
     """
+    identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+    The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+    The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+    If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+    """
     sni: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
@@ -43658,12 +43780,17 @@ class RegionBackendServiceTlsSettingsArgsDict(TypedDict):
 class RegionBackendServiceTlsSettingsArgs:
     def __init__(__self__, *,
                  authentication_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
                  sni: pulumi.Input[Optional[_builtins.str]] = None,
                  subject_alt_names: pulumi.Input[Optional[Sequence[pulumi.Input['RegionBackendServiceTlsSettingsSubjectAltNameArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] authentication_config: Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
                Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
                Can only be specified if authenticationMode is not NONE.
+        :param pulumi.Input[_builtins.str] identity: The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+               The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+               The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+               If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
         :param pulumi.Input[_builtins.str] sni: Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
                TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
                server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -43677,6 +43804,8 @@ class RegionBackendServiceTlsSettingsArgs:
         """
         if authentication_config is not None:
             pulumi.set(__self__, "authentication_config", authentication_config)
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
         if sni is not None:
             pulumi.set(__self__, "sni", sni)
         if subject_alt_names is not None:
@@ -43695,6 +43824,21 @@ class RegionBackendServiceTlsSettingsArgs:
     @authentication_config.setter
     def authentication_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+        The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+        The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+        If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter
@@ -49119,6 +49263,10 @@ class RegionInstanceTemplateNetworkInterfaceArgsDict(TypedDict):
     array of alias IPv6 ranges for this network interface. Can only be specified for network
     interfaces on subnet-mode networks. Structure documented below.
     """
+    enable_vpc_scoped_dns: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+    """
     igmp_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -49199,6 +49347,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
                  access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAccessConfigArgs']]]] = None,
                  alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs']]]] = None,
                  alias_ipv6_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs']]]] = None,
+                 enable_vpc_scoped_dns: pulumi.Input[Optional[_builtins.bool]] = None,
                  igmp_query: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv6_access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
@@ -49228,6 +49377,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs']]] alias_ipv6_ranges: [Beta] An
                array of alias IPv6 ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[_builtins.bool] enable_vpc_scoped_dns: If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
         :param pulumi.Input[_builtins.str] igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param pulumi.Input[_builtins.int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
@@ -49260,6 +49410,8 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
         if alias_ipv6_ranges is not None:
             pulumi.set(__self__, "alias_ipv6_ranges", alias_ipv6_ranges)
+        if enable_vpc_scoped_dns is not None:
+            pulumi.set(__self__, "enable_vpc_scoped_dns", enable_vpc_scoped_dns)
         if igmp_query is not None:
             pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
@@ -49337,6 +49489,18 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @alias_ipv6_ranges.setter
     def alias_ipv6_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs']]]]):
         pulumi.set(self, "alias_ipv6_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVpcScopedDns")
+    def enable_vpc_scoped_dns(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+        """
+        return pulumi.get(self, "enable_vpc_scoped_dns")
+
+    @enable_vpc_scoped_dns.setter
+    def enable_vpc_scoped_dns(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_vpc_scoped_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="igmpQuery")
@@ -57055,6 +57219,12 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict)
     """
     Target WAF rule set to apply the preconfigured WAF exclusion.
     """
+    request_bodies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgsDict']]]]]
+    """
+    (Optional, Beta)
+    A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+    Structure is documented below.
+    """
     request_cookies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict']]]]]
     """
     Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -57087,6 +57257,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict)
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     def __init__(__self__, *,
                  target_rule_set: pulumi.Input[_builtins.str],
+                 request_bodies: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]]] = None,
                  request_cookies: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]]] = None,
                  request_headers: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]]] = None,
                  request_query_params: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]]] = None,
@@ -57094,6 +57265,9 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
                  target_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]] request_bodies: (Optional, Beta)
+               A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs']]] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -57108,6 +57282,8 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
                If omitted, it refers to all the rule IDs under the WAF rule set.
         """
         pulumi.set(__self__, "target_rule_set", target_rule_set)
+        if request_bodies is not None:
+            pulumi.set(__self__, "request_bodies", request_bodies)
         if request_cookies is not None:
             pulumi.set(__self__, "request_cookies", request_cookies)
         if request_headers is not None:
@@ -57130,6 +57306,20 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @target_rule_set.setter
     def target_rule_set(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "target_rule_set", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestBodies")
+    def request_bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]]]:
+        """
+        (Optional, Beta)
+        A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_bodies")
+
+    @request_bodies.setter
+    def request_bodies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]]]):
+        pulumi.set(self, "request_bodies", value)
 
     @_builtins.property
     @pulumi.getter(name="requestCookies")
@@ -57197,6 +57387,75 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     @target_rule_ids.setter
     def target_rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_rule_ids", value)
+
+
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    You can specify an exact match or a partial match by using a field operator and a field value.
+    Available options:
+    EQUALS: The operator matches if the field value equals the specified value.
+    STARTS_WITH: The operator matches if the field value starts with the specified value.
+    ENDS_WITH: The operator matches if the field value ends with the specified value.
+    CONTAINS: The operator matches if the field value contains the specified value.
+    EQUALS_ANY: The operator matches if the field value is any value.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+    The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+    """
+
+@pulumi.input_type
+class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value.
+        :param pulumi.Input[_builtins.str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict(TypedDict):
@@ -65720,13 +65979,21 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict(TypedDict):
       At least one non-empty routeRules[].matchRules[].path_template_match is required.
       Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
     """
+    regex_rewrite: NotRequired[pulumi.Input[Optional['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgsDict']]]
+    """
+    The regex rewrite to be applied to the URL. Only one of
+    pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+    specified.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     def __init__(__self__, *,
                  host_rewrite: pulumi.Input[Optional[_builtins.str]] = None,
                  path_prefix_rewrite: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_template_rewrite: pulumi.Input[Optional[_builtins.str]] = None):
+                 path_template_rewrite: pulumi.Input[Optional[_builtins.str]] = None,
+                 regex_rewrite: pulumi.Input[Optional['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
                The value must be from 1 to 255 characters.
@@ -65742,6 +66009,10 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
                  rewritten as /content/{format}/{country}/{suffix}.
                  At least one non-empty routeRules[].matchRules[].path_template_match is required.
                  Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
+        :param pulumi.Input['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs'] regex_rewrite: The regex rewrite to be applied to the URL. Only one of
+               pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+               specified.
+               Structure is documented below.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
@@ -65749,6 +66020,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
             pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
         if path_template_rewrite is not None:
             pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
+        if regex_rewrite is not None:
+            pulumi.set(__self__, "regex_rewrite", regex_rewrite)
 
     @_builtins.property
     @pulumi.getter(name="hostRewrite")
@@ -65796,6 +66069,101 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     @path_template_rewrite.setter
     def path_template_rewrite(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_template_rewrite", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regexRewrite")
+    def regex_rewrite(self) -> pulumi.Input[Optional['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs']]:
+        """
+        The regex rewrite to be applied to the URL. Only one of
+        pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+        specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex_rewrite")
+
+    @regex_rewrite.setter
+    def regex_rewrite(self, value: pulumi.Input[Optional['RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs']]):
+        pulumi.set(self, "regex_rewrite", value)
+
+
+class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgsDict(TypedDict):
+    path_pattern: pulumi.Input[_builtins.str]
+    """
+    The regular expression used to match against the URL path.
+    It uses RE2 syntax with the following constraints:
+    * Any single character operators are allowed.
+    * Groups may only contain a submatch operator, and may not
+      contain character repetition (for example, `.*`).
+    * Character repetition (for example, `.*`) may only be used in
+      a regex together with empty string operators, other
+      repetitions, ranges, and repetitions of ranges.
+    * Ranges may only contain character ranges, digit ranges, and
+      symbols allowed for ranges.
+    """
+    path_substitution: pulumi.Input[_builtins.str]
+    """
+    The substitution used to rewrite the parts of the URL path
+    matched by pathPattern. May reference capture groups from
+    pathPattern.
+    """
+
+@pulumi.input_type
+class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs:
+    def __init__(__self__, *,
+                 path_pattern: pulumi.Input[_builtins.str],
+                 path_substitution: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] path_pattern: The regular expression used to match against the URL path.
+               It uses RE2 syntax with the following constraints:
+               * Any single character operators are allowed.
+               * Groups may only contain a submatch operator, and may not
+                 contain character repetition (for example, `.*`).
+               * Character repetition (for example, `.*`) may only be used in
+                 a regex together with empty string operators, other
+                 repetitions, ranges, and repetitions of ranges.
+               * Ranges may only contain character ranges, digit ranges, and
+                 symbols allowed for ranges.
+        :param pulumi.Input[_builtins.str] path_substitution: The substitution used to rewrite the parts of the URL path
+               matched by pathPattern. May reference capture groups from
+               pathPattern.
+        """
+        pulumi.set(__self__, "path_pattern", path_pattern)
+        pulumi.set(__self__, "path_substitution", path_substitution)
+
+    @_builtins.property
+    @pulumi.getter(name="pathPattern")
+    def path_pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        The regular expression used to match against the URL path.
+        It uses RE2 syntax with the following constraints:
+        * Any single character operators are allowed.
+        * Groups may only contain a submatch operator, and may not
+          contain character repetition (for example, `.*`).
+        * Character repetition (for example, `.*`) may only be used in
+          a regex together with empty string operators, other
+          repetitions, ranges, and repetitions of ranges.
+        * Ranges may only contain character ranges, digit ranges, and
+          symbols allowed for ranges.
+        """
+        return pulumi.get(self, "path_pattern")
+
+    @path_pattern.setter
+    def path_pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path_pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pathSubstitution")
+    def path_substitution(self) -> pulumi.Input[_builtins.str]:
+        """
+        The substitution used to rewrite the parts of the URL path
+        matched by pathPattern. May reference capture groups from
+        pathPattern.
+        """
+        return pulumi.get(self, "path_substitution")
+
+    @path_substitution.setter
+    def path_substitution(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path_substitution", value)
 
 
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict(TypedDict):
@@ -73413,7 +73781,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgsDict(TypedDict):
     request_bodies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgsDict']]]]]
     """
     (Optional, Beta)
-    A list of request body fields to be excluded from inspection during\\npreconfigured WAF evaluation.
+    A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
     Structure is documented below.
     """
     request_cookies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgsDict']]]]]
@@ -73457,7 +73825,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
         """
         :param pulumi.Input[_builtins.str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]] request_bodies: (Optional, Beta)
-               A list of request body fields to be excluded from inspection during\\npreconfigured WAF evaluation.
+               A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs']]] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
                Structure is documented below.
@@ -73503,7 +73871,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     def request_bodies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs']]]]:
         """
         (Optional, Beta)
-        A list of request body fields to be excluded from inspection during\\npreconfigured WAF evaluation.
+        A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
         Structure is documented below.
         """
         return pulumi.get(self, "request_bodies")
@@ -89806,8 +90174,15 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgsDict(TypedDict):
     captured by the route's pathTemplate matchers.
     pathTemplateRewrite may only be used when all of a route's
     MatchRules specify pathTemplate.
-    Only one of pathPrefixRewrite and pathTemplateRewrite may be
+    Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
     specified.
+    """
+    regex_rewrite: NotRequired[pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgsDict']]]
+    """
+    The regex rewrite to be applied to the URL. Only one of
+    pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+    specified.
+    Structure is documented below.
     """
 
 @pulumi.input_type
@@ -89815,7 +90190,8 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     def __init__(__self__, *,
                  host_rewrite: pulumi.Input[Optional[_builtins.str]] = None,
                  path_prefix_rewrite: pulumi.Input[Optional[_builtins.str]] = None,
-                 path_template_rewrite: pulumi.Input[Optional[_builtins.str]] = None):
+                 path_template_rewrite: pulumi.Input[Optional[_builtins.str]] = None,
+                 regex_rewrite: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] host_rewrite: Prior to forwarding the request to the selected service, the request's host header is replaced
                with contents of hostRewrite.
@@ -89832,8 +90208,12 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
                captured by the route's pathTemplate matchers.
                pathTemplateRewrite may only be used when all of a route's
                MatchRules specify pathTemplate.
-               Only one of pathPrefixRewrite and pathTemplateRewrite may be
+               Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
                specified.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs'] regex_rewrite: The regex rewrite to be applied to the URL. Only one of
+               pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+               specified.
+               Structure is documented below.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
@@ -89841,6 +90221,8 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
             pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
         if path_template_rewrite is not None:
             pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
+        if regex_rewrite is not None:
+            pulumi.set(__self__, "regex_rewrite", regex_rewrite)
 
     @_builtins.property
     @pulumi.getter(name="hostRewrite")
@@ -89883,7 +90265,7 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
         captured by the route's pathTemplate matchers.
         pathTemplateRewrite may only be used when all of a route's
         MatchRules specify pathTemplate.
-        Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        Only one of pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
         specified.
         """
         return pulumi.get(self, "path_template_rewrite")
@@ -89891,6 +90273,101 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     @path_template_rewrite.setter
     def path_template_rewrite(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_template_rewrite", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regexRewrite")
+    def regex_rewrite(self) -> pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs']]:
+        """
+        The regex rewrite to be applied to the URL. Only one of
+        pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+        specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex_rewrite")
+
+    @regex_rewrite.setter
+    def regex_rewrite(self, value: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs']]):
+        pulumi.set(self, "regex_rewrite", value)
+
+
+class URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgsDict(TypedDict):
+    path_pattern: pulumi.Input[_builtins.str]
+    """
+    The regular expression used to match against the URL path.
+    It uses RE2 syntax with the following constraints:
+    * Any single character operators are allowed.
+    * Groups may only contain a submatch operator, and may not
+      contain character repetition (for example, `.*`).
+    * Character repetition (for example, `.*`) may only be used in
+      a regex together with empty string operators, other
+      repetitions, ranges, and repetitions of ranges.
+    * Ranges may only contain character ranges, digit ranges, and
+      symbols allowed for ranges.
+    """
+    path_substitution: pulumi.Input[_builtins.str]
+    """
+    The substitution used to rewrite the parts of the URL path
+    matched by pathPattern. May reference capture groups from
+    pathPattern.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteArgs:
+    def __init__(__self__, *,
+                 path_pattern: pulumi.Input[_builtins.str],
+                 path_substitution: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] path_pattern: The regular expression used to match against the URL path.
+               It uses RE2 syntax with the following constraints:
+               * Any single character operators are allowed.
+               * Groups may only contain a submatch operator, and may not
+                 contain character repetition (for example, `.*`).
+               * Character repetition (for example, `.*`) may only be used in
+                 a regex together with empty string operators, other
+                 repetitions, ranges, and repetitions of ranges.
+               * Ranges may only contain character ranges, digit ranges, and
+                 symbols allowed for ranges.
+        :param pulumi.Input[_builtins.str] path_substitution: The substitution used to rewrite the parts of the URL path
+               matched by pathPattern. May reference capture groups from
+               pathPattern.
+        """
+        pulumi.set(__self__, "path_pattern", path_pattern)
+        pulumi.set(__self__, "path_substitution", path_substitution)
+
+    @_builtins.property
+    @pulumi.getter(name="pathPattern")
+    def path_pattern(self) -> pulumi.Input[_builtins.str]:
+        """
+        The regular expression used to match against the URL path.
+        It uses RE2 syntax with the following constraints:
+        * Any single character operators are allowed.
+        * Groups may only contain a submatch operator, and may not
+          contain character repetition (for example, `.*`).
+        * Character repetition (for example, `.*`) may only be used in
+          a regex together with empty string operators, other
+          repetitions, ranges, and repetitions of ranges.
+        * Ranges may only contain character ranges, digit ranges, and
+          symbols allowed for ranges.
+        """
+        return pulumi.get(self, "path_pattern")
+
+    @path_pattern.setter
+    def path_pattern(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path_pattern", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pathSubstitution")
+    def path_substitution(self) -> pulumi.Input[_builtins.str]:
+        """
+        The substitution used to rewrite the parts of the URL path
+        matched by pathPattern. May reference capture groups from
+        pathPattern.
+        """
+        return pulumi.get(self, "path_substitution")
+
+    @path_substitution.setter
+    def path_substitution(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path_substitution", value)
 
 
 class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgsDict(TypedDict):

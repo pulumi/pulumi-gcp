@@ -33,6 +33,23 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
     }
 
     /**
+     * The HTTP header when the API key is passed in a request header
+     * (e.g. &#39;x-api-key&#39;, &#39;api-key&#39;, &#39;X-Auth-Token&#39;).
+     * 
+     */
+    @Import(name="apiKeyHeader")
+    private @Nullable Output<String> apiKeyHeader;
+
+    /**
+     * @return The HTTP header when the API key is passed in a request header
+     * (e.g. &#39;x-api-key&#39;, &#39;api-key&#39;, &#39;X-Auth-Token&#39;).
+     * 
+     */
+    public Optional<Output<String>> apiKeyHeader() {
+        return Optional.ofNullable(this.apiKeyHeader);
+    }
+
+    /**
      * The API key parameter name.
      * 
      */
@@ -171,6 +188,7 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
 
     private AnalystAgentPersonaMcpDataSourceArgs(AnalystAgentPersonaMcpDataSourceArgs $) {
         this.apiKey = $.apiKey;
+        this.apiKeyHeader = $.apiKeyHeader;
         this.apiKeyName = $.apiKeyName;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
@@ -219,6 +237,29 @@ public final class AnalystAgentPersonaMcpDataSourceArgs extends com.pulumi.resou
          */
         public Builder apiKey(String apiKey) {
             return apiKey(Output.of(apiKey));
+        }
+
+        /**
+         * @param apiKeyHeader The HTTP header when the API key is passed in a request header
+         * (e.g. &#39;x-api-key&#39;, &#39;api-key&#39;, &#39;X-Auth-Token&#39;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyHeader(@Nullable Output<String> apiKeyHeader) {
+            $.apiKeyHeader = apiKeyHeader;
+            return this;
+        }
+
+        /**
+         * @param apiKeyHeader The HTTP header when the API key is passed in a request header
+         * (e.g. &#39;x-api-key&#39;, &#39;api-key&#39;, &#39;X-Auth-Token&#39;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyHeader(String apiKeyHeader) {
+            return apiKeyHeader(Output.of(apiKeyHeader));
         }
 
         /**

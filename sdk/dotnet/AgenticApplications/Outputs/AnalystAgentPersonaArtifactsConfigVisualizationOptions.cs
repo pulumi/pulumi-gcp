@@ -17,11 +17,24 @@ namespace Pulumi.Gcp.AgenticApplications.Outputs
         /// Examples for visualizations.
         /// </summary>
         public readonly ImmutableArray<Outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample> VisualizationExamples;
+        /// <summary>
+        /// Mode for generating visualizations.
+        /// Possible values:
+        /// VISUALIZATION_MODE_EXPLICIT_ONLY
+        /// VISUALIZATION_MODE_WHEN_NECESSARY
+        /// VISUALIZATION_MODE_WHEN_HELPFUL
+        /// VISUALIZATION_MODE_ALWAYS
+        /// </summary>
+        public readonly string? VisualizationMode;
 
         [OutputConstructor]
-        private AnalystAgentPersonaArtifactsConfigVisualizationOptions(ImmutableArray<Outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample> visualizationExamples)
+        private AnalystAgentPersonaArtifactsConfigVisualizationOptions(
+            ImmutableArray<Outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample> visualizationExamples,
+
+            string? visualizationMode)
         {
             VisualizationExamples = visualizationExamples;
+            VisualizationMode = visualizationMode;
         }
     }
 }

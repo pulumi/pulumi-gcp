@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.OrgPolicy
     ///                     Parameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                     {
     ///                         ["isSizeLimitCheck"] = true,
-    ///                         ["allowedDiskTypes"] = new object?[]
+    ///                         ["allowedDiskTypes"] = new[]
     ///                         {
     ///                             "pd-ssd",
     ///                             "pd-standard",

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionErrorArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionPscInterfaceConfigArgs;
+import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionReservedPublicIpConfigArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionVpcPeeringConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -226,6 +227,23 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The Reserved Public IP configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="reservedPublicIpConfig")
+    private @Nullable Output<PrivateConnectionReservedPublicIpConfigArgs> reservedPublicIpConfig;
+
+    /**
+     * @return The Reserved Public IP configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PrivateConnectionReservedPublicIpConfigArgs>> reservedPublicIpConfig() {
+        return Optional.ofNullable(this.reservedPublicIpConfig);
+    }
+
+    /**
      * State of the PrivateConnection.
      * 
      */
@@ -274,6 +292,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.pscInterfaceConfig = $.pscInterfaceConfig;
         this.pulumiLabels = $.pulumiLabels;
+        this.reservedPublicIpConfig = $.reservedPublicIpConfig;
         this.state = $.state;
         this.vpcPeeringConfig = $.vpcPeeringConfig;
     }
@@ -581,6 +600,29 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param reservedPublicIpConfig The Reserved Public IP configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedPublicIpConfig(@Nullable Output<PrivateConnectionReservedPublicIpConfigArgs> reservedPublicIpConfig) {
+            $.reservedPublicIpConfig = reservedPublicIpConfig;
+            return this;
+        }
+
+        /**
+         * @param reservedPublicIpConfig The Reserved Public IP configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedPublicIpConfig(PrivateConnectionReservedPublicIpConfigArgs reservedPublicIpConfig) {
+            return reservedPublicIpConfig(Output.of(reservedPublicIpConfig));
         }
 
         /**

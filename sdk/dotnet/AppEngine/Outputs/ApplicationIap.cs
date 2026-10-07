@@ -25,12 +25,26 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// <summary>
         /// OAuth2 client secret to use for the authentication flow.
         /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        /// Exactly one of `Oauth2ClientSecret` or `Oauth2ClientSecretWo` can be set.
         /// </summary>
-        public readonly string Oauth2ClientSecret;
+        public readonly string? Oauth2ClientSecret;
         /// <summary>
         /// Hex-encoded SHA-256 hash of the client secret.
         /// </summary>
         public readonly string? Oauth2ClientSecretSha256;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// OAuth2 client secret to use for the authentication flow.
+        /// The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** Exactly one of `Oauth2ClientSecret` or `Oauth2ClientSecretWo` can be set.
+        /// </summary>
+        public readonly string? Oauth2ClientSecretWo;
+        /// <summary>
+        /// Triggers update of `Oauth2ClientSecretWo` write-only. Increment this value when an update to `Oauth2ClientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string? Oauth2ClientSecretWoVersion;
 
         [OutputConstructor]
         private ApplicationIap(
@@ -38,14 +52,20 @@ namespace Pulumi.Gcp.AppEngine.Outputs
 
             string oauth2ClientId,
 
-            string oauth2ClientSecret,
+            string? oauth2ClientSecret,
 
-            string? oauth2ClientSecretSha256)
+            string? oauth2ClientSecretSha256,
+
+            string? oauth2ClientSecretWo,
+
+            string? oauth2ClientSecretWoVersion)
         {
             Enabled = enabled;
             Oauth2ClientId = oauth2ClientId;
             Oauth2ClientSecret = oauth2ClientSecret;
             Oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            Oauth2ClientSecretWo = oauth2ClientSecretWo;
+            Oauth2ClientSecretWoVersion = oauth2ClientSecretWoVersion;
         }
     }
 }

@@ -9994,6 +9994,11 @@ type BackendServiceTlsSettings struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig *string `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity *string `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -10024,6 +10029,11 @@ type BackendServiceTlsSettingsArgs struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig pulumi.StringPtrInput `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -10122,6 +10132,14 @@ func (o BackendServiceTlsSettingsOutput) AuthenticationConfig() pulumi.StringPtr
 	return o.ApplyT(func(v BackendServiceTlsSettings) *string { return v.AuthenticationConfig }).(pulumi.StringPtrOutput)
 }
 
+// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+func (o BackendServiceTlsSettingsOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceTlsSettings) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
 // Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 // TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 // server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -10173,6 +10191,19 @@ func (o BackendServiceTlsSettingsPtrOutput) AuthenticationConfig() pulumi.String
 			return nil
 		}
 		return v.AuthenticationConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+func (o BackendServiceTlsSettingsPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceTlsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31319,6 +31350,8 @@ type InstanceFromMachineImageNetworkInterface struct {
 	AliasIpRanges []InstanceFromMachineImageNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of IPv6 alias IP ranges for this network interface.
 	AliasIpv6Ranges []InstanceFromMachineImageNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery *string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -31376,6 +31409,8 @@ type InstanceFromMachineImageNetworkInterfaceArgs struct {
 	AliasIpRanges InstanceFromMachineImageNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of IPv6 alias IP ranges for this network interface.
 	AliasIpv6Ranges InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -31485,6 +31520,11 @@ func (o InstanceFromMachineImageNetworkInterfaceOutput) AliasIpv6Ranges() Instan
 	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) []InstanceFromMachineImageNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+func (o InstanceFromMachineImageNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -37099,6 +37139,8 @@ type InstanceFromTemplateNetworkInterface struct {
 	AliasIpRanges []InstanceFromTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of IPv6 alias IP ranges for this network interface.
 	AliasIpv6Ranges []InstanceFromTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery *string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -37156,6 +37198,8 @@ type InstanceFromTemplateNetworkInterfaceArgs struct {
 	AliasIpRanges InstanceFromTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of IPv6 alias IP ranges for this network interface.
 	AliasIpv6Ranges InstanceFromTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -37265,6 +37309,11 @@ func (o InstanceFromTemplateNetworkInterfaceOutput) AliasIpv6Ranges() InstanceFr
 	return o.ApplyT(func(v InstanceFromTemplateNetworkInterface) []InstanceFromTemplateNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(InstanceFromTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+func (o InstanceFromTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -44156,6 +44205,8 @@ type InstanceNetworkInterface struct {
 	// array of alias IPv6 ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpv6Ranges []InstanceNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery *string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -44237,6 +44288,8 @@ type InstanceNetworkInterfaceArgs struct {
 	// array of alias IPv6 ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpv6Ranges InstanceNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -44364,6 +44417,11 @@ func (o InstanceNetworkInterfaceOutput) AliasIpRanges() InstanceNetworkInterface
 // interfaces on subnet-mode networks. Structure documented below.
 func (o InstanceNetworkInterfaceOutput) AliasIpv6Ranges() InstanceNetworkInterfaceAliasIpv6RangeArrayOutput {
 	return o.ApplyT(func(v InstanceNetworkInterface) []InstanceNetworkInterfaceAliasIpv6Range { return v.AliasIpv6Ranges }).(InstanceNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+func (o InstanceNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -49780,6 +49838,8 @@ type InstanceTemplateNetworkInterface struct {
 	// array of alias IPv6 ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpv6Ranges []InstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery *string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -49850,6 +49910,8 @@ type InstanceTemplateNetworkInterfaceArgs struct {
 	// array of alias IPv6 ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpv6Ranges InstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -49972,6 +50034,11 @@ func (o InstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() InstanceTempla
 	return o.ApplyT(func(v InstanceTemplateNetworkInterface) []InstanceTemplateNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(InstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+func (o InstanceTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -71683,7 +71750,7 @@ type RegionBackendServiceBackend struct {
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
 	// for an explanation of load balancing modes.
 	// Default value is `UTILIZATION`.
-	// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+	// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
 	BalancingMode *string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -71804,7 +71871,7 @@ type RegionBackendServiceBackendArgs struct {
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
 	// for an explanation of load balancing modes.
 	// Default value is `UTILIZATION`.
-	// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+	// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
 	BalancingMode pulumi.StringPtrInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -71964,7 +72031,7 @@ func (o RegionBackendServiceBackendOutput) ToRegionBackendServiceBackendOutputWi
 // See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
 // for an explanation of load balancing modes.
 // Default value is `UTILIZATION`.
-// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`.
+// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`, `CUSTOM_METRICS`, `IN_FLIGHT`.
 func (o RegionBackendServiceBackendOutput) BalancingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceBackend) *string { return v.BalancingMode }).(pulumi.StringPtrOutput)
 }
@@ -78542,6 +78609,11 @@ type RegionBackendServiceTlsSettings struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig *string `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity *string `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -78572,6 +78644,11 @@ type RegionBackendServiceTlsSettingsArgs struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig pulumi.StringPtrInput `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -78670,6 +78747,14 @@ func (o RegionBackendServiceTlsSettingsOutput) AuthenticationConfig() pulumi.Str
 	return o.ApplyT(func(v RegionBackendServiceTlsSettings) *string { return v.AuthenticationConfig }).(pulumi.StringPtrOutput)
 }
 
+// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+func (o RegionBackendServiceTlsSettingsOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceTlsSettings) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
 // Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 // TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 // server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -78723,6 +78808,19 @@ func (o RegionBackendServiceTlsSettingsPtrOutput) AuthenticationConfig() pulumi.
 			return nil
 		}
 		return v.AuthenticationConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+func (o RegionBackendServiceTlsSettingsPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceTlsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -88726,6 +88824,8 @@ type RegionInstanceTemplateNetworkInterface struct {
 	// array of alias IPv6 ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpv6Ranges []RegionInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery *string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -88796,6 +88896,8 @@ type RegionInstanceTemplateNetworkInterfaceArgs struct {
 	// array of alias IPv6 ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpv6Ranges RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -88918,6 +89020,11 @@ func (o RegionInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() RegionIn
 	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.

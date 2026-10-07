@@ -467,6 +467,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
                 "ip_protocols": ["tcp"],
                 "src_ip_ranges": ["10.0.0.0/8"],
                 "dst_ip_ranges": ["192.168.0.0/16"],
+                "primary_ip_ranges": ["10.1.0.0/16"],
             })
         ```
 
@@ -573,6 +574,7 @@ class UllMirroringCollectorRule(pulumi.CustomResource):
                 "ip_protocols": ["tcp"],
                 "src_ip_ranges": ["10.0.0.0/8"],
                 "dst_ip_ranges": ["192.168.0.0/16"],
+                "primary_ip_ranges": ["10.1.0.0/16"],
             })
         ```
 

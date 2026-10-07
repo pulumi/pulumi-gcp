@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Iam.Outputs
     public sealed class OrganizationsPolicyBindingTarget
     {
         /// <summary>
-        /// Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+        /// Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         /// Examples for each one of the following supported principal set types:
         /// * Organization `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
         /// * Workforce Identity: `//iam.googleapis.com/locations/global/workforcePools/WORKFORCE_POOL_ID`
@@ -22,11 +22,22 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// It must be parent by the policy binding's parent (the organization).
         /// </summary>
         public readonly string? PrincipalSet;
+        /// <summary>
+        /// Immutable. Full Resource Name of the resource used for access policy bindings.
+        /// Use this together with `PolicyKind = "ACCESS"`. Examples:
+        /// * Organization: `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID`
+        /// It must be the policy binding's parent (the organization).
+        /// </summary>
+        public readonly string? Resource;
 
         [OutputConstructor]
-        private OrganizationsPolicyBindingTarget(string? principalSet)
+        private OrganizationsPolicyBindingTarget(
+            string? principalSet,
+
+            string? resource)
         {
             PrincipalSet = principalSet;
+            Resource = resource;
         }
     }
 }

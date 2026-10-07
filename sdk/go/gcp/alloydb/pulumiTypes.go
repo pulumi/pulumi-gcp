@@ -4897,7 +4897,9 @@ func (o InstanceConnectionPoolConfigPtrOutput) PoolerCount() pulumi.IntPtrOutput
 }
 
 type InstanceMachineConfig struct {
-	// The number of CPU's in the VM instance.
+	// The number of CPUs in the VM instance. For read pool instances, this
+	// value is applied to the instances in the pool and is not replaced by
+	// a fixed default.
 	CpuCount *int `pulumi:"cpuCount"`
 	// Machine type of the VM instance.
 	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
@@ -4917,7 +4919,9 @@ type InstanceMachineConfigInput interface {
 }
 
 type InstanceMachineConfigArgs struct {
-	// The number of CPU's in the VM instance.
+	// The number of CPUs in the VM instance. For read pool instances, this
+	// value is applied to the instances in the pool and is not replaced by
+	// a fixed default.
 	CpuCount pulumi.IntPtrInput `pulumi:"cpuCount"`
 	// Machine type of the VM instance.
 	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
@@ -5002,7 +5006,9 @@ func (o InstanceMachineConfigOutput) ToInstanceMachineConfigPtrOutputWithContext
 	}).(InstanceMachineConfigPtrOutput)
 }
 
-// The number of CPU's in the VM instance.
+// The number of CPUs in the VM instance. For read pool instances, this
+// value is applied to the instances in the pool and is not replaced by
+// a fixed default.
 func (o InstanceMachineConfigOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceMachineConfig) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
 }
@@ -5038,7 +5044,9 @@ func (o InstanceMachineConfigPtrOutput) Elem() InstanceMachineConfigOutput {
 	}).(InstanceMachineConfigOutput)
 }
 
-// The number of CPU's in the VM instance.
+// The number of CPUs in the VM instance. For read pool instances, this
+// value is applied to the instances in the pool and is not replaced by
+// a fixed default.
 func (o InstanceMachineConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceMachineConfig) *int {
 		if v == nil {
@@ -9957,7 +9965,9 @@ func (o GetInstanceConnectionPoolConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetInstanceMachineConfig struct {
-	// The number of CPU's in the VM instance.
+	// The number of CPUs in the VM instance. For read pool instances, this
+	// value is applied to the instances in the pool and is not replaced by
+	// a fixed default.
 	CpuCount int `pulumi:"cpuCount"`
 	// Machine type of the VM instance.
 	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
@@ -9977,7 +9987,9 @@ type GetInstanceMachineConfigInput interface {
 }
 
 type GetInstanceMachineConfigArgs struct {
-	// The number of CPU's in the VM instance.
+	// The number of CPUs in the VM instance. For read pool instances, this
+	// value is applied to the instances in the pool and is not replaced by
+	// a fixed default.
 	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
 	// Machine type of the VM instance.
 	// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
@@ -10036,7 +10048,9 @@ func (o GetInstanceMachineConfigOutput) ToGetInstanceMachineConfigOutputWithCont
 	return o
 }
 
-// The number of CPU's in the VM instance.
+// The number of CPUs in the VM instance. For read pool instances, this
+// value is applied to the instances in the pool and is not replaced by
+// a fixed default.
 func (o GetInstanceMachineConfigOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMachineConfig) int { return v.CpuCount }).(pulumi.IntOutput)
 }

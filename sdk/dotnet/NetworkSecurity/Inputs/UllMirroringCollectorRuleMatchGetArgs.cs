@@ -47,6 +47,19 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
             set => _ipProtocols = value;
         }
 
+        [Input("primaryIpRanges")]
+        private InputList<string>? _primaryIpRanges;
+
+        /// <summary>
+        /// Primary IP ranges to match (for the capture point).
+        /// When unset, matches any primary IP.
+        /// </summary>
+        public InputList<string> PrimaryIpRanges
+        {
+            get => _primaryIpRanges ?? (_primaryIpRanges = new InputList<string>());
+            set => _primaryIpRanges = value;
+        }
+
         [Input("srcIpRanges")]
         private InputList<string>? _srcIpRanges;
 

@@ -375,6 +375,111 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service In Flight
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var custom = new Gcp.Compute.Network("custom", new()
+    ///     {
+    ///         Name = "custom-vpc",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "custom-subnet",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = custom.Id,
+    ///     });
+    /// 
+    ///     var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("default", new()
+    ///     {
+    ///         Name = "instance-template",
+    ///         MachineType = "e2-micro",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///             {
+    ///                 SourceImage = "debian-cloud/debian-13",
+    ///                 AutoDelete = true,
+    ///                 Boot = true,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///             {
+    ///                 Network = custom.Id,
+    ///                 Subnetwork = @default.Id,
+    ///             },
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "startup-script", @"#!/bin/bash
+    /// echo \""Hello World from MIG VM\"" &gt; /var/www/html/index.html
+    /// apt-get update -y
+    /// apt-get install -y apache2
+    /// systemctl start apache2
+    /// " },
+    ///         },
+    ///     });
+    /// 
+    ///     var foobar = new Gcp.Compute.RegionInstanceGroupManager("foobar", new()
+    ///     {
+    ///         Name = "instance-group-manager",
+    ///         BaseInstanceName = "vm",
+    ///         Region = "us-central1",
+    ///         Versions = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///             {
+    ///                 InstanceTemplate = defaultInstanceTemplate.Id,
+    ///             },
+    ///         },
+    ///         TargetSize = 1,
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "rbs-health-check",
+    ///         Region = "us-central1",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "region-service",
+    ///         Region = "us-central1",
+    ///         Description = "Hello World 1234",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Backends = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///             {
+    ///                 Group = foobar.InstanceGroup,
+    ///                 BalancingMode = "IN_FLIGHT",
+    ///                 CapacityScaler = 1.0,
+    ///                 MaxInFlightRequestsPerInstance = 100,
+    ///                 TrafficDuration = "LONG",
+    ///             },
+    ///         },
+    ///         HealthChecks = defaultRegionHealthCheck.SelfLink,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Backend Service Connection Tracking
     /// 
     /// ```csharp
@@ -899,6 +1004,42 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Backend Service Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         Region = "europe-north1",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "europe-north1",
+    ///         Name = "backend-service",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         Protocol = "HTTPS",
+    ///         TlsSettings = new Gcp.Compute.Inputs.RegionBackendServiceTlsSettingsArgs
+    ///         {
+    ///             Identity = "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+    ///         },
+    ///         Description = "description",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1253,6 +1394,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource.
+        /// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        /// The service lb policy must be regional and in the same region as the backend service.
+        /// </summary>
+        [Output("serviceLbPolicy")]
+        public Output<string?> ServiceLbPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
@@ -1660,6 +1809,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource.
+        /// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        /// The service lb policy must be regional and in the same region as the backend service.
+        /// </summary>
+        [Input("serviceLbPolicy")]
+        public Input<string>? ServiceLbPolicy { get; set; }
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
         /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -2050,6 +2207,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// URL to networkservices.ServiceLbPolicy resource.
+        /// Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+        /// The service lb policy must be regional and in the same region as the backend service.
+        /// </summary>
+        [Input("serviceLbPolicy")]
+        public Input<string>? ServiceLbPolicy { get; set; }
 
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is

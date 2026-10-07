@@ -4994,8 +4994,12 @@ func (o AppAudioProcessingConfigBargeInConfigPtrOutput) BargeInAwareness() pulum
 }
 
 type AppAudioProcessingConfigSynthesizeSpeechConfig struct {
+	// The instruction used to synthesize speech when using a generative model.
+	Instruction *string `pulumi:"instruction"`
 	// The identifier for this object. Format specified above.
 	LanguageCode string `pulumi:"languageCode"`
+	// The model used to synthesize audio.
+	Model *string `pulumi:"model"`
 	// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
 	// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
 	// half as fast. Values outside of the range [0.25, 2.0] will return an error.
@@ -5019,8 +5023,12 @@ type AppAudioProcessingConfigSynthesizeSpeechConfigInput interface {
 }
 
 type AppAudioProcessingConfigSynthesizeSpeechConfigArgs struct {
+	// The instruction used to synthesize speech when using a generative model.
+	Instruction pulumi.StringPtrInput `pulumi:"instruction"`
 	// The identifier for this object. Format specified above.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+	// The model used to synthesize audio.
+	Model pulumi.StringPtrInput `pulumi:"model"`
 	// The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
 	// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
 	// half as fast. Values outside of the range [0.25, 2.0] will return an error.
@@ -5083,9 +5091,19 @@ func (o AppAudioProcessingConfigSynthesizeSpeechConfigOutput) ToAppAudioProcessi
 	return o
 }
 
+// The instruction used to synthesize speech when using a generative model.
+func (o AppAudioProcessingConfigSynthesizeSpeechConfigOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigSynthesizeSpeechConfig) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+}
+
 // The identifier for this object. Format specified above.
 func (o AppAudioProcessingConfigSynthesizeSpeechConfigOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AppAudioProcessingConfigSynthesizeSpeechConfig) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// The model used to synthesize audio.
+func (o AppAudioProcessingConfigSynthesizeSpeechConfigOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppAudioProcessingConfigSynthesizeSpeechConfig) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
 
 // The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native

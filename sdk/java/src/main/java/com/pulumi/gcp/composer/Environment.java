@@ -613,7 +613,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .config(EnvironmentConfigArgs.builder()
  *                 .nodeConfig(EnvironmentConfigNodeConfigArgs.builder()
- *                     .composerNetworkAttachment(Output.tuple(projects, example_project, regions, us_central1, networkAttachments, example_network_attachment).applyValue(values -> {
+ *                     .composerNetworkAttachment(Output.tuple(((Number) projects).doubleValue(), ((Number) example_project).doubleValue(), ((Number) regions).doubleValue(), ((Number) us_central1).doubleValue(), ((Number) networkAttachments).doubleValue(), ((Number) example_network_attachment).doubleValue()).applyValue(values -> {
  *                         var __convert = values.t1;
  *                         var __convert1 = values.t2;
  *                         var __convert2 = values.t3;

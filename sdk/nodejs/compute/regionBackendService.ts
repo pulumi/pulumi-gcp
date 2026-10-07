@@ -260,6 +260,76 @@ import * as utilities from "../utilities";
  *     healthChecks: defaultRegionHealthCheck.id,
  * });
  * ```
+ * ### Region Backend Service In Flight
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom = new gcp.compute.Network("custom", {
+ *     name: "custom-vpc",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const _default = new gcp.compute.Subnetwork("default", {
+ *     name: "custom-subnet",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: custom.id,
+ * });
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
+ *     name: "instance-template",
+ *     machineType: "e2-micro",
+ *     disks: [{
+ *         sourceImage: "debian-cloud/debian-13",
+ *         autoDelete: true,
+ *         boot: true,
+ *     }],
+ *     networkInterfaces: [{
+ *         network: custom.id,
+ *         subnetwork: _default.id,
+ *     }],
+ *     metadata: {
+ *         "startup-script": `#!/bin/bash
+ * echo \\"Hello World from MIG VM\\" > /var/www/html/index.html
+ * apt-get update -y
+ * apt-get install -y apache2
+ * systemctl start apache2
+ * `,
+ *     },
+ * });
+ * const foobar = new gcp.compute.RegionInstanceGroupManager("foobar", {
+ *     name: "instance-group-manager",
+ *     baseInstanceName: "vm",
+ *     region: "us-central1",
+ *     versions: [{
+ *         instanceTemplate: defaultInstanceTemplate.id,
+ *     }],
+ *     targetSize: 1,
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "rbs-health-check",
+ *     region: "us-central1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     description: "Hello World 1234",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     backends: [{
+ *         group: foobar.instanceGroup,
+ *         balancingMode: "IN_FLIGHT",
+ *         capacityScaler: 1,
+ *         maxInFlightRequestsPerInstance: 100,
+ *         trafficDuration: "LONG",
+ *     }],
+ *     healthChecks: defaultRegionHealthCheck.selfLink,
+ * });
+ * ```
  * ### Region Backend Service Connection Tracking
  *
  * ```typescript
@@ -607,6 +677,31 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Backend Service Identity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     name: "health-check",
+ *     region: "europe-north1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     region: "europe-north1",
+ *     name: "backend-service",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     protocol: "HTTPS",
+ *     tlsSettings: {
+ *         identity: "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+ *     },
+ *     description: "description",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -920,6 +1015,12 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     */
+    declare public readonly serviceLbPolicy: pulumi.Output<string | undefined>;
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -996,6 +1097,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["securityPolicy"] = state?.securityPolicy;
             resourceInputs["selfLink"] = state?.selfLink;
+            resourceInputs["serviceLbPolicy"] = state?.serviceLbPolicy;
             resourceInputs["sessionAffinity"] = state?.sessionAffinity;
             resourceInputs["strongSessionAffinityCookie"] = state?.strongSessionAffinityCookie;
             resourceInputs["subsetting"] = state?.subsetting;
@@ -1033,6 +1135,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["protocol"] = args?.protocol;
             resourceInputs["region"] = args?.region;
             resourceInputs["securityPolicy"] = args?.securityPolicy;
+            resourceInputs["serviceLbPolicy"] = args?.serviceLbPolicy;
             resourceInputs["sessionAffinity"] = args?.sessionAffinity;
             resourceInputs["strongSessionAffinityCookie"] = args?.strongSessionAffinityCookie;
             resourceInputs["subsetting"] = args?.subsetting;
@@ -1318,6 +1421,12 @@ export interface RegionBackendServiceState {
      */
     selfLink?: pulumi.Input<string | undefined>;
     /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     */
+    serviceLbPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
@@ -1600,6 +1709,12 @@ export interface RegionBackendServiceArgs {
      * The security policy associated with this backend service.
      */
     securityPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * URL to networkservices.ServiceLbPolicy resource.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED or INTERNAL_MANAGED.
+     * The service lb policy must be regional and in the same region as the backend service.
+     */
+    serviceLbPolicy?: pulumi.Input<string | undefined>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.

@@ -245,7 +245,7 @@ class BackendServiceArgs:
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
@@ -897,7 +897,7 @@ class BackendServiceArgs:
     def service_lb_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to networkservices.ServiceLbPolicy resource.
-        Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         """
         return pulumi.get(self, "service_lb_policy")
 
@@ -1197,7 +1197,7 @@ class _BackendServiceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
@@ -1906,7 +1906,7 @@ class _BackendServiceState:
     def service_lb_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to networkservices.ServiceLbPolicy resource.
-        Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         """
         return pulumi.get(self, "service_lb_policy")
 
@@ -2483,6 +2483,27 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+        ### Backend Service Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="HTTPS",
+            tls_settings={
+                "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+            },
+            description="description")
+        ```
         ### Backend Service Dynamic Forwarding
 
         ```python
@@ -2700,7 +2721,7 @@ class BackendService(pulumi.CustomResource):
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
@@ -3186,6 +3207,27 @@ class BackendService(pulumi.CustomResource):
                 "authentication_config": default_backend_authentication_config.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
             })
         ```
+        ### Backend Service Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=default_health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            protocol="HTTPS",
+            tls_settings={
+                "identity": "//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id",
+            },
+            description="description")
+        ```
         ### Backend Service Dynamic Forwarding
 
         ```python
@@ -3572,7 +3614,7 @@ class BackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_lb_policy: URL to networkservices.ServiceLbPolicy resource.
-               Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+               Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         :param pulumi.Input[_builtins.str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
@@ -4091,7 +4133,7 @@ class BackendService(pulumi.CustomResource):
     def service_lb_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         URL to networkservices.ServiceLbPolicy resource.
-        Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
         """
         return pulumi.get(self, "service_lb_policy")
 

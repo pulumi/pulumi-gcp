@@ -243,6 +243,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The emails of the procurement contacts.
+        /// </summary>
+        [Output("procurementContactEmails")]
+        public Output<ImmutableArray<string>> ProcurementContactEmails { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -412,6 +418,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        [Input("procurementContactEmails")]
+        private InputList<string>? _procurementContactEmails;
+
+        /// <summary>
+        /// The emails of the procurement contacts.
+        /// </summary>
+        public InputList<string> ProcurementContactEmails
+        {
+            get => _procurementContactEmails ?? (_procurementContactEmails = new InputList<string>());
+            set => _procurementContactEmails = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -552,6 +570,18 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("procurementContactEmails")]
+        private InputList<string>? _procurementContactEmails;
+
+        /// <summary>
+        /// The emails of the procurement contacts.
+        /// </summary>
+        public InputList<string> ProcurementContactEmails
+        {
+            get => _procurementContactEmails ?? (_procurementContactEmails = new InputList<string>());
+            set => _procurementContactEmails = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

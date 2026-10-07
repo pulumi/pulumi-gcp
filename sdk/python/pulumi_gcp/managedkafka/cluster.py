@@ -27,6 +27,7 @@ class ClusterArgs:
                  location: pulumi.Input[_builtins.str],
                  broker_capacity_config: pulumi.Input[Optional['ClusterBrokerCapacityConfigArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rebalance_config: pulumi.Input[Optional['ClusterRebalanceConfigArgs']] = None,
@@ -48,6 +49,7 @@ class ClusterArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] kafka_version: The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -66,6 +68,8 @@ class ClusterArgs:
             pulumi.set(__self__, "broker_capacity_config", broker_capacity_config)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if kafka_version is not None:
+            pulumi.set(__self__, "kafka_version", kafka_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -156,6 +160,18 @@ class ClusterArgs:
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="kafkaVersion")
+    def kafka_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        """
+        return pulumi.get(self, "kafka_version")
+
+    @kafka_version.setter
+    def kafka_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kafka_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -220,6 +236,7 @@ class _ClusterState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gcp_config: pulumi.Input[Optional['ClusterGcpConfigArgs']] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -249,6 +266,7 @@ class _ClusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ClusterGcpConfigArgs'] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] kafka_version: The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -283,6 +301,8 @@ class _ClusterState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if gcp_config is not None:
             pulumi.set(__self__, "gcp_config", gcp_config)
+        if kafka_version is not None:
+            pulumi.set(__self__, "kafka_version", kafka_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -407,6 +427,18 @@ class _ClusterState:
     @gcp_config.setter
     def gcp_config(self, value: pulumi.Input[Optional['ClusterGcpConfigArgs']]):
         pulumi.set(self, "gcp_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaVersion")
+    def kafka_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        """
+        return pulumi.get(self, "kafka_version")
+
+    @kafka_version.setter
+    def kafka_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kafka_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -547,6 +579,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -584,7 +617,8 @@ class Cluster(pulumi.CustomResource):
             },
             labels={
                 "key": "value",
-            })
+            },
+            kafka_version="3.7.x")
         ```
         ### Managedkafka Cluster Mtls
 
@@ -711,6 +745,7 @@ class Cluster(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] kafka_version: The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -759,7 +794,8 @@ class Cluster(pulumi.CustomResource):
             },
             labels={
                 "key": "value",
-            })
+            },
+            kafka_version="3.7.x")
         ```
         ### Managedkafka Cluster Mtls
 
@@ -891,6 +927,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -916,6 +953,7 @@ class Cluster(pulumi.CustomResource):
             if gcp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'gcp_config'")
             __props__.__dict__["gcp_config"] = gcp_config
+            __props__.__dict__["kafka_version"] = kafka_version
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -951,6 +989,7 @@ class Cluster(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             gcp_config: pulumi.Input[Optional[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']]] = None,
+            kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -984,6 +1023,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ClusterGcpConfigArgs', 'ClusterGcpConfigArgsDict', 'outputs.ClusterGcpConfig']] gcp_config: Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] kafka_version: The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1014,6 +1054,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gcp_config"] = gcp_config
+        __props__.__dict__["kafka_version"] = kafka_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1097,6 +1138,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "gcp_config")
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaVersion")
+    def kafka_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        """
+        return pulumi.get(self, "kafka_version")
 
     @_builtins.property
     @pulumi.getter

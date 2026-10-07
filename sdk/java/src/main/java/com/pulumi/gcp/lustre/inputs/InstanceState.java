@@ -42,6 +42,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version this instance can be upgraded to, if one is available. Empty
+     * when the instance is already running the newest release.
+     * 
+     */
+    @Import(name="availableVersion")
+    private @Nullable Output<String> availableVersion;
+
+    /**
+     * @return The version this instance can be upgraded to, if one is available. Empty
+     * when the instance is already running the newest release.
+     * 
+     */
+    public Optional<Output<String>> availableVersion() {
+        return Optional.ofNullable(this.availableVersion);
+    }
+
+    /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
      * See [Performance tiers and maximum storage
@@ -149,6 +166,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * The version of Managed Lustre software that this instance is currently
+     * running.
+     * 
+     */
+    @Import(name="effectiveVersion")
+    private @Nullable Output<String> effectiveVersion;
+
+    /**
+     * @return The version of Managed Lustre software that this instance is currently
+     * running.
+     * 
+     */
+    public Optional<Output<String>> effectiveVersion() {
+        return Optional.ofNullable(this.effectiveVersion);
     }
 
     /**
@@ -462,6 +496,39 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     * 
+     */
+    @Import(name="targetVersion")
+    private @Nullable Output<String> targetVersion;
+
+    /**
+     * @return The version to upgrade this instance to. Set this to the value reported in
+     * `availableVersion`, or to `latest` to move to the newest version available
+     * at the time of the upgrade.
+     * This field cannot be set when the instance is created; new instances are
+     * always provisioned from the current release. It also cannot be changed in
+     * the same operation as `capacityGib` or `maintenancePolicy`, and the
+     * instance must be ACTIVE and outside of the hour preceding a scheduled
+     * maintenance window.
+     * The API clears this field once the upgrade finishes, so it always reads
+     * back as empty on an idle instance.
+     * 
+     */
+    public Optional<Output<String>> targetVersion() {
+        return Optional.ofNullable(this.targetVersion);
+    }
+
+    /**
      * Unique ID of the resource.
      * This is unrelated to the access rules which allow specifying the root
      * squash uid.
@@ -516,12 +583,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.accessRulesOptions = $.accessRulesOptions;
+        this.availableVersion = $.availableVersion;
         this.capacityGib = $.capacityGib;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.dynamicTierOptions = $.dynamicTierOptions;
         this.effectiveLabels = $.effectiveLabels;
+        this.effectiveVersion = $.effectiveVersion;
         this.filesystem = $.filesystem;
         this.gkeSupportEnabled = $.gkeSupportEnabled;
         this.instanceId = $.instanceId;
@@ -538,6 +607,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.state = $.state;
         this.stateReason = $.stateReason;
+        this.targetVersion = $.targetVersion;
         this.uid = $.uid;
         this.upcomingMaintenanceSchedules = $.upcomingMaintenanceSchedules;
         this.updateTime = $.updateTime;
@@ -584,6 +654,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessRulesOptions(InstanceAccessRulesOptionsArgs accessRulesOptions) {
             return accessRulesOptions(Output.of(accessRulesOptions));
+        }
+
+        /**
+         * @param availableVersion The version this instance can be upgraded to, if one is available. Empty
+         * when the instance is already running the newest release.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableVersion(@Nullable Output<String> availableVersion) {
+            $.availableVersion = availableVersion;
+            return this;
+        }
+
+        /**
+         * @param availableVersion The version this instance can be upgraded to, if one is available. Empty
+         * when the instance is already running the newest release.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availableVersion(String availableVersion) {
+            return availableVersion(Output.of(availableVersion));
         }
 
         /**
@@ -730,6 +823,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param effectiveVersion The version of Managed Lustre software that this instance is currently
+         * running.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveVersion(@Nullable Output<String> effectiveVersion) {
+            $.effectiveVersion = effectiveVersion;
+            return this;
+        }
+
+        /**
+         * @param effectiveVersion The version of Managed Lustre software that this instance is currently
+         * running.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveVersion(String effectiveVersion) {
+            return effectiveVersion(Output.of(effectiveVersion));
         }
 
         /**
@@ -1136,6 +1252,45 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stateReason(String stateReason) {
             return stateReason(Output.of(stateReason));
+        }
+
+        /**
+         * @param targetVersion The version to upgrade this instance to. Set this to the value reported in
+         * `availableVersion`, or to `latest` to move to the newest version available
+         * at the time of the upgrade.
+         * This field cannot be set when the instance is created; new instances are
+         * always provisioned from the current release. It also cannot be changed in
+         * the same operation as `capacityGib` or `maintenancePolicy`, and the
+         * instance must be ACTIVE and outside of the hour preceding a scheduled
+         * maintenance window.
+         * The API clears this field once the upgrade finishes, so it always reads
+         * back as empty on an idle instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetVersion(@Nullable Output<String> targetVersion) {
+            $.targetVersion = targetVersion;
+            return this;
+        }
+
+        /**
+         * @param targetVersion The version to upgrade this instance to. Set this to the value reported in
+         * `availableVersion`, or to `latest` to move to the newest version available
+         * at the time of the upgrade.
+         * This field cannot be set when the instance is created; new instances are
+         * always provisioned from the current release. It also cannot be changed in
+         * the same operation as `capacityGib` or `maintenancePolicy`, and the
+         * instance must be ACTIVE and outside of the hour preceding a scheduled
+         * maintenance window.
+         * The API clears this field once the upgrade finishes, so it always reads
+         * back as empty on an idle instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetVersion(String targetVersion) {
+            return targetVersion(Output.of(targetVersion));
         }
 
         /**

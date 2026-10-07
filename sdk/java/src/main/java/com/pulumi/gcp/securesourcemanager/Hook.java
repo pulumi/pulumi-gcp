@@ -224,6 +224,22 @@ public class Hook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sensitiveQueryString);
     }
     /**
+     * Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     * 
+     */
+    @Export(name="serviceAccountAuth", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> serviceAccountAuth;
+
+    /**
+     * @return Determines if the hook uses the Repository Service Account to
+     * generate an OIDC ID Token for webhook authentication.
+     * 
+     */
+    public Output<Optional<Boolean>> serviceAccountAuth() {
+        return Codegen.optional(this.serviceAccountAuth);
+    }
+    /**
      * The target URI to which the payloads will be delivered.
      * 
      */

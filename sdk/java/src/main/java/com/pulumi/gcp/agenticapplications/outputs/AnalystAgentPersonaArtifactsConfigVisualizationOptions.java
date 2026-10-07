@@ -5,8 +5,10 @@ package com.pulumi.gcp.agenticapplications.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.agenticapplications.outputs.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -16,6 +18,16 @@ public final class AnalystAgentPersonaArtifactsConfigVisualizationOptions {
      * 
      */
     private @Nullable List<AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample> visualizationExamples;
+    /**
+     * @return Mode for generating visualizations.
+     * Possible values:
+     * VISUALIZATION_MODE_EXPLICIT_ONLY
+     * VISUALIZATION_MODE_WHEN_NECESSARY
+     * VISUALIZATION_MODE_WHEN_HELPFUL
+     * VISUALIZATION_MODE_ALWAYS
+     * 
+     */
+    private @Nullable String visualizationMode;
 
     private AnalystAgentPersonaArtifactsConfigVisualizationOptions() {}
     /**
@@ -24,6 +36,18 @@ public final class AnalystAgentPersonaArtifactsConfigVisualizationOptions {
      */
     public List<AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample> visualizationExamples() {
         return this.visualizationExamples == null ? List.of() : this.visualizationExamples;
+    }
+    /**
+     * @return Mode for generating visualizations.
+     * Possible values:
+     * VISUALIZATION_MODE_EXPLICIT_ONLY
+     * VISUALIZATION_MODE_WHEN_NECESSARY
+     * VISUALIZATION_MODE_WHEN_HELPFUL
+     * VISUALIZATION_MODE_ALWAYS
+     * 
+     */
+    public Optional<String> visualizationMode() {
+        return Optional.ofNullable(this.visualizationMode);
     }
 
     public static Builder builder() {
@@ -36,10 +60,12 @@ public final class AnalystAgentPersonaArtifactsConfigVisualizationOptions {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample> visualizationExamples;
+        private @Nullable String visualizationMode;
         public Builder() {}
         public Builder(AnalystAgentPersonaArtifactsConfigVisualizationOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.visualizationExamples = defaults.visualizationExamples;
+    	      this.visualizationMode = defaults.visualizationMode;
         }
 
         @CustomType.Setter
@@ -51,9 +77,16 @@ public final class AnalystAgentPersonaArtifactsConfigVisualizationOptions {
         public Builder visualizationExamples(AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample... visualizationExamples) {
             return visualizationExamples(List.of(visualizationExamples));
         }
+        @CustomType.Setter
+        public Builder visualizationMode(@Nullable String visualizationMode) {
+
+            this.visualizationMode = visualizationMode;
+            return this;
+        }
         public AnalystAgentPersonaArtifactsConfigVisualizationOptions build() {
             final var _resultValue = new AnalystAgentPersonaArtifactsConfigVisualizationOptions();
             _resultValue.visualizationExamples = visualizationExamples;
+            _resultValue.visualizationMode = visualizationMode;
             return _resultValue;
         }
     }

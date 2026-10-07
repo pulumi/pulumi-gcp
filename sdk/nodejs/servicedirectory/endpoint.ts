@@ -146,7 +146,7 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
      */
-    declare public readonly network: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.

@@ -16,18 +16,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as google from "@pulumi/google";
  *
  * const _default = gcp.agentregistry.getAgent({
- *     location: "global",
+ *     location: "us-central1",
  *     filter: "displayName:Workspace Agent",
  * });
- * const defaultIamConnectorsConnector = new google.index.IamConnectorsConnector("default", {
+ * const defaultAuthProvider = new gcp.agentidentity.AuthProvider("default", {
  *     location: "us-central1",
- *     connectorId: "ar-binding",
- *     connectorTypeParams: [{
- *         connectorVersion: "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1",
- *     }],
+ *     authProviderId: "ar-binding",
+ *     authProviderTypeParams: {
+ *         apiKey: {
+ *             apiKey: "test-api-key-value",
+ *         },
+ *     },
  * });
  * const defaultBinding = new gcp.agentregistry.Binding("default", {
  *     location: "us-central1",
@@ -41,12 +42,48 @@ import * as utilities from "../utilities";
  *         identifier: _default.then(_default => _default.urn),
  *     },
  *     authProviderBinding: {
- *         authProvider: defaultIamConnectorsConnector.id,
+ *         authProvider: defaultAuthProvider.id,
  *         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *         continueUri: "https://example.com/continue",
  *     },
  * }, {
- *     dependsOn: [defaultIamConnectorsConnector],
+ *     dependsOn: [defaultAuthProvider],
+ * });
+ * ```
+ * ### Agent Registry Binding Target Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.agentregistry.getAgent({
+ *     location: "us-central1",
+ *     filter: "displayName:Workspace Agent",
+ * });
+ * const defaultAuthProvider = new gcp.agentidentity.AuthProvider("default", {
+ *     location: "us-central1",
+ *     authProviderId: "ar-binding",
+ *     authProviderTypeParams: {
+ *         apiKey: {
+ *             apiKey: "test-api-key-value",
+ *         },
+ *     },
+ * });
+ * const defaultBinding = new gcp.agentregistry.Binding("default", {
+ *     location: "us-central1",
+ *     bindingId: "ar-binding",
+ *     displayName: "Target Only Binding",
+ *     description: "Agent registry binding without source",
+ *     target: {
+ *         identifier: _default.then(_default => _default.urn),
+ *     },
+ *     authProviderBinding: {
+ *         authProvider: defaultAuthProvider.id,
+ *         scopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *         continueUri: "https://example.com/continue",
+ *     },
+ * }, {
+ *     dependsOn: [defaultAuthProvider],
  * });
  * ```
  *
@@ -141,7 +178,7 @@ export class Binding extends pulumi.CustomResource {
      * The source of the Binding.
      * Structure is documented below.
      */
-    declare public readonly source: pulumi.Output<outputs.agentregistry.BindingSource>;
+    declare public readonly source: pulumi.Output<outputs.agentregistry.BindingSource | undefined>;
     /**
      * The target of the Binding.
      * Structure is documented below.
@@ -187,9 +224,6 @@ export class Binding extends pulumi.CustomResource {
             }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if (args?.source === undefined && !opts.urn) {
-                throw new Error("Missing required property 'source'");
             }
             if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
@@ -318,7 +352,7 @@ export interface BindingArgs {
      * The source of the Binding.
      * Structure is documented below.
      */
-    source: pulumi.Input<inputs.agentregistry.BindingSource>;
+    source?: pulumi.Input<inputs.agentregistry.BindingSource | undefined>;
     /**
      * The target of the Binding.
      * Structure is documented below.

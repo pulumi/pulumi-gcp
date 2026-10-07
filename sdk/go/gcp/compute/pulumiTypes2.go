@@ -13,6 +13,391 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetBackendServiceSecuritySetting struct {
+	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+	// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+	AwsV4Authentications []GetBackendServiceSecuritySettingAwsV4Authentication `pulumi:"awsV4Authentications"`
+	// ClientTlsPolicy is a resource that specifies how a client should authenticate
+	// connections to backends of a service. This resource itself does not affect
+	// configuration unless it is attached to a backend service resource.
+	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
+	// A list of alternate names to verify the subject identity in the certificate.
+	// If specified, the client will verify that the server certificate's subject
+	// alt name matches one of the specified values.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// GetBackendServiceSecuritySettingInput is an input type that accepts GetBackendServiceSecuritySettingArgs and GetBackendServiceSecuritySettingOutput values.
+// You can construct a concrete instance of `GetBackendServiceSecuritySettingInput` via:
+//
+//	GetBackendServiceSecuritySettingArgs{...}
+type GetBackendServiceSecuritySettingInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceSecuritySettingOutput() GetBackendServiceSecuritySettingOutput
+	ToGetBackendServiceSecuritySettingOutputWithContext(context.Context) GetBackendServiceSecuritySettingOutput
+}
+
+type GetBackendServiceSecuritySettingArgs struct {
+	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+	// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+	AwsV4Authentications GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput `pulumi:"awsV4Authentications"`
+	// ClientTlsPolicy is a resource that specifies how a client should authenticate
+	// connections to backends of a service. This resource itself does not affect
+	// configuration unless it is attached to a backend service resource.
+	ClientTlsPolicy pulumi.StringInput `pulumi:"clientTlsPolicy"`
+	// A list of alternate names to verify the subject identity in the certificate.
+	// If specified, the client will verify that the server certificate's subject
+	// alt name matches one of the specified values.
+	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (GetBackendServiceSecuritySettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceSecuritySetting)(nil)).Elem()
+}
+
+func (i GetBackendServiceSecuritySettingArgs) ToGetBackendServiceSecuritySettingOutput() GetBackendServiceSecuritySettingOutput {
+	return i.ToGetBackendServiceSecuritySettingOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceSecuritySettingArgs) ToGetBackendServiceSecuritySettingOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingOutput)
+}
+
+// GetBackendServiceSecuritySettingArrayInput is an input type that accepts GetBackendServiceSecuritySettingArray and GetBackendServiceSecuritySettingArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceSecuritySettingArrayInput` via:
+//
+//	GetBackendServiceSecuritySettingArray{ GetBackendServiceSecuritySettingArgs{...} }
+type GetBackendServiceSecuritySettingArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceSecuritySettingArrayOutput() GetBackendServiceSecuritySettingArrayOutput
+	ToGetBackendServiceSecuritySettingArrayOutputWithContext(context.Context) GetBackendServiceSecuritySettingArrayOutput
+}
+
+type GetBackendServiceSecuritySettingArray []GetBackendServiceSecuritySettingInput
+
+func (GetBackendServiceSecuritySettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceSecuritySetting)(nil)).Elem()
+}
+
+func (i GetBackendServiceSecuritySettingArray) ToGetBackendServiceSecuritySettingArrayOutput() GetBackendServiceSecuritySettingArrayOutput {
+	return i.ToGetBackendServiceSecuritySettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceSecuritySettingArray) ToGetBackendServiceSecuritySettingArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingArrayOutput)
+}
+
+type GetBackendServiceSecuritySettingOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceSecuritySettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceSecuritySetting)(nil)).Elem()
+}
+
+func (o GetBackendServiceSecuritySettingOutput) ToGetBackendServiceSecuritySettingOutput() GetBackendServiceSecuritySettingOutput {
+	return o
+}
+
+func (o GetBackendServiceSecuritySettingOutput) ToGetBackendServiceSecuritySettingOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingOutput {
+	return o
+}
+
+// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
+// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+func (o GetBackendServiceSecuritySettingOutput) AwsV4Authentications() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySetting) []GetBackendServiceSecuritySettingAwsV4Authentication {
+		return v.AwsV4Authentications
+	}).(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput)
+}
+
+// ClientTlsPolicy is a resource that specifies how a client should authenticate
+// connections to backends of a service. This resource itself does not affect
+// configuration unless it is attached to a backend service resource.
+func (o GetBackendServiceSecuritySettingOutput) ClientTlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySetting) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate.
+// If specified, the client will verify that the server certificate's subject
+// alt name matches one of the specified values.
+func (o GetBackendServiceSecuritySettingOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySetting) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type GetBackendServiceSecuritySettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceSecuritySettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceSecuritySetting)(nil)).Elem()
+}
+
+func (o GetBackendServiceSecuritySettingArrayOutput) ToGetBackendServiceSecuritySettingArrayOutput() GetBackendServiceSecuritySettingArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceSecuritySettingArrayOutput) ToGetBackendServiceSecuritySettingArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceSecuritySettingArrayOutput) Index(i pulumi.IntInput) GetBackendServiceSecuritySettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceSecuritySetting {
+		return vs[0].([]GetBackendServiceSecuritySetting)[vs[1].(int)]
+	}).(GetBackendServiceSecuritySettingOutput)
+}
+
+type GetBackendServiceSecuritySettingAwsV4Authentication struct {
+	// The access key used for s3 bucket authentication.
+	// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+	AccessKey string `pulumi:"accessKey"`
+	// The identifier of an access key used for s3 bucket authentication.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+	AccessKeyVersion string `pulumi:"accessKeyVersion"`
+	// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+	// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+	OriginRegion string `pulumi:"originRegion"`
+}
+
+// GetBackendServiceSecuritySettingAwsV4AuthenticationInput is an input type that accepts GetBackendServiceSecuritySettingAwsV4AuthenticationArgs and GetBackendServiceSecuritySettingAwsV4AuthenticationOutput values.
+// You can construct a concrete instance of `GetBackendServiceSecuritySettingAwsV4AuthenticationInput` via:
+//
+//	GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{...}
+type GetBackendServiceSecuritySettingAwsV4AuthenticationInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationOutput
+	ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput
+}
+
+type GetBackendServiceSecuritySettingAwsV4AuthenticationArgs struct {
+	// The access key used for s3 bucket authentication.
+	// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// The identifier of an access key used for s3 bucket authentication.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+	AccessKeyVersion pulumi.StringInput `pulumi:"accessKeyVersion"`
+	// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+	// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+	OriginRegion pulumi.StringInput `pulumi:"originRegion"`
+}
+
+func (GetBackendServiceSecuritySettingAwsV4AuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
+}
+
+func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArgs) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
+	return i.ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArgs) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput)
+}
+
+// GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput is an input type that accepts GetBackendServiceSecuritySettingAwsV4AuthenticationArray and GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput` via:
+//
+//	GetBackendServiceSecuritySettingAwsV4AuthenticationArray{ GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{...} }
+type GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput
+	ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput
+}
+
+type GetBackendServiceSecuritySettingAwsV4AuthenticationArray []GetBackendServiceSecuritySettingAwsV4AuthenticationInput
+
+func (GetBackendServiceSecuritySettingAwsV4AuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
+}
+
+func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArray) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
+	return i.ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceSecuritySettingAwsV4AuthenticationArray) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput)
+}
+
+type GetBackendServiceSecuritySettingAwsV4AuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
+}
+
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
+	return o
+}
+
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
+	return o
+}
+
+// The access key used for s3 bucket authentication.
+// Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The identifier of an access key used for s3 bucket authentication.
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) AccessKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.AccessKeyVersion }).(pulumi.StringOutput)
+}
+
+// The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.
+// For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationOutput) OriginRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceSecuritySettingAwsV4Authentication) string { return v.OriginRegion }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceSecuritySettingAwsV4Authentication)(nil)).Elem()
+}
+
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput() GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) ToGetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutputWithContext(ctx context.Context) GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) Index(i pulumi.IntInput) GetBackendServiceSecuritySettingAwsV4AuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceSecuritySettingAwsV4Authentication {
+		return vs[0].([]GetBackendServiceSecuritySettingAwsV4Authentication)[vs[1].(int)]
+	}).(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCooky struct {
+	// The name of the Backend Service.
+	//
+	// ***
+	Name string `pulumi:"name"`
+	// Path to set for the cookie.
+	Path string `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls []GetBackendServiceStrongSessionAffinityCookyTtl `pulumi:"ttls"`
+}
+
+// GetBackendServiceStrongSessionAffinityCookyInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyArgs and GetBackendServiceStrongSessionAffinityCookyOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyArgs{...}
+type GetBackendServiceStrongSessionAffinityCookyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput
+	ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyArgs struct {
+	// The name of the Backend Service.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to set for the cookie.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls GetBackendServiceStrongSessionAffinityCookyTtlArrayInput `pulumi:"ttls"`
+}
+
+func (GetBackendServiceStrongSessionAffinityCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArgs) ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArgs) ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyOutput)
+}
+
+// GetBackendServiceStrongSessionAffinityCookyArrayInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyArray and GetBackendServiceStrongSessionAffinityCookyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyArrayInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyArray{ GetBackendServiceStrongSessionAffinityCookyArgs{...} }
+type GetBackendServiceStrongSessionAffinityCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput
+	ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyArray []GetBackendServiceStrongSessionAffinityCookyInput
+
+func (GetBackendServiceStrongSessionAffinityCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArray) ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArray) ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyArrayOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyOutput {
+	return o
+}
+
+// The name of the Backend Service.
+//
+// ***
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path to set for the cookie.
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Lifetime of the cookie.
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) Ttls() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) []GetBackendServiceStrongSessionAffinityCookyTtl {
+		return v.Ttls
+	}).(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceStrongSessionAffinityCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceStrongSessionAffinityCooky {
+		return vs[0].([]GetBackendServiceStrongSessionAffinityCooky)[vs[1].(int)]
+	}).(GetBackendServiceStrongSessionAffinityCookyOutput)
+}
+
 type GetBackendServiceStrongSessionAffinityCookyTtl struct {
 	// Span of time that's a fraction of a second at nanosecond
 	// resolution. Durations less than one second are represented
@@ -136,6 +521,11 @@ type GetBackendServiceTlsSetting struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig string `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity string `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -165,6 +555,11 @@ type GetBackendServiceTlsSettingArgs struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig pulumi.StringInput `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity pulumi.StringInput `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -234,6 +629,14 @@ func (o GetBackendServiceTlsSettingOutput) ToGetBackendServiceTlsSettingOutputWi
 // Can only be specified if authenticationMode is not NONE.
 func (o GetBackendServiceTlsSettingOutput) AuthenticationConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceTlsSetting) string { return v.AuthenticationConfig }).(pulumi.StringOutput)
+}
+
+// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+func (o GetBackendServiceTlsSettingOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceTlsSetting) string { return v.Identity }).(pulumi.StringOutput)
 }
 
 // Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
@@ -8827,6 +9230,8 @@ type GetInstanceNetworkInterface struct {
 	AliasIpRanges []GetInstanceNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of IPv6 alias IP ranges for this network interface.
 	AliasIpv6Ranges []GetInstanceNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -8884,6 +9289,8 @@ type GetInstanceNetworkInterfaceArgs struct {
 	AliasIpRanges GetInstanceNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of IPv6 alias IP ranges for this network interface.
 	AliasIpv6Ranges GetInstanceNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns pulumi.BoolInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -8989,6 +9396,11 @@ func (o GetInstanceNetworkInterfaceOutput) AliasIpv6Ranges() GetInstanceNetworkI
 	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(GetInstanceNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+func (o GetInstanceNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) bool { return v.EnableVpcScopedDns }).(pulumi.BoolOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -12536,6 +12948,8 @@ type GetInstanceTemplateNetworkInterface struct {
 	AliasIpRanges []GetInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 	AliasIpv6Ranges []GetInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -12601,6 +13015,8 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	AliasIpRanges GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 	AliasIpv6Ranges GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns pulumi.BoolInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -12718,6 +13134,11 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() GetInstance
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+func (o GetInstanceTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) bool { return v.EnableVpcScopedDns }).(pulumi.BoolOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -16303,7 +16724,7 @@ type GetRegionBackendServiceBackend struct {
 	// Specifies the balancing mode for this backend.
 	//
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
 	BalancingMode string `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -16427,7 +16848,7 @@ type GetRegionBackendServiceBackendArgs struct {
 	// Specifies the balancing mode for this backend.
 	//
 	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
 	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
 	// A multiplier applied to the group's maximum servicing capacity
 	// (based on UTILIZATION, RATE or CONNECTION).
@@ -16590,7 +17011,7 @@ func (o GetRegionBackendServiceBackendOutput) ToGetRegionBackendServiceBackendOu
 // Specifies the balancing mode for this backend.
 //
 // See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
 func (o GetRegionBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionBackendServiceBackend) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
@@ -20872,6 +21293,11 @@ type GetRegionBackendServiceTlsSetting struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig string `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity string `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -20901,6 +21327,11 @@ type GetRegionBackendServiceTlsSettingArgs struct {
 	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
 	// Can only be specified if authenticationMode is not NONE.
 	AuthenticationConfig pulumi.StringInput `pulumi:"authenticationConfig"`
+	// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+	// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+	// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+	// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+	Identity pulumi.StringInput `pulumi:"identity"`
 	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
 	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
 	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -20970,6 +21401,14 @@ func (o GetRegionBackendServiceTlsSettingOutput) ToGetRegionBackendServiceTlsSet
 // Can only be specified if authenticationMode is not NONE.
 func (o GetRegionBackendServiceTlsSettingOutput) AuthenticationConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionBackendServiceTlsSetting) string { return v.AuthenticationConfig }).(pulumi.StringOutput)
+}
+
+// The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //<trust_domain>/ns/<namespace>/sa/<subject>.
+// The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+// The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+// If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+func (o GetRegionBackendServiceTlsSettingOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceTlsSetting) string { return v.Identity }).(pulumi.StringOutput)
 }
 
 // Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
@@ -26510,6 +26949,8 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	AliasIpRanges []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
 	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 	AliasIpv6Ranges []GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+	EnableVpcScopedDns bool `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -26575,6 +27016,8 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	AliasIpRanges GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
 	// An array of alias IPv6 ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
 	AliasIpv6Ranges GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+	EnableVpcScopedDns pulumi.BoolInput `pulumi:"enableVpcScopedDns"`
 	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
 	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
@@ -26692,6 +27135,11 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() GetRe
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
 		return v.AliasIpv6Ranges
 	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) bool { return v.EnableVpcScopedDns }).(pulumi.BoolOutput)
 }
 
 // Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -30980,6 +31428,8 @@ func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput) Index(i pu
 }
 
 type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+	RequestBodies []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 	RequestCookies []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky `pulumi:"requestCookies"`
 	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -31009,6 +31459,8 @@ type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+	RequestBodies GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 	RequestCookies GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput `pulumi:"requestCookies"`
 	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -31077,6 +31529,13 @@ func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToGetR
 	return o
 }
 
+// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+		return v.RequestBodies
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput)
+}
+
 // Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookies() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
 	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
@@ -31136,6 +31595,135 @@ func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
 		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
 	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value.
+// Available options:
+// EQUALS: The operator matches if the field value equals the specified value.
+// STARTS_WITH: The operator matches if the field value starts with the specified value.
+// ENDS_WITH: The operator matches if the field value ends with the specified value.
+// CONTAINS: The operator matches if the field value contains the specified value.
+// EQUALS_ANY: The operator matches if the field value is any value.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput)
 }
 
 type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky struct {
@@ -42477,6 +43065,8 @@ func (o GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+	RequestBodies []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 	RequestCookies []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky `pulumi:"requestCookies"`
 	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -42503,6 +43093,8 @@ type GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
 }
 
 type GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+	RequestBodies GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput `pulumi:"requestBodies"`
 	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 	RequestCookies GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput `pulumi:"requestCookies"`
 	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -42568,6 +43160,13 @@ func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToGetSecurit
 	return o
 }
 
+// A list of request body fields to be excluded from inspection during\npreconfigured WAF evaluation.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestBodies() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+		return v.RequestBodies
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput)
+}
+
 // Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
 func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookies() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
 	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
@@ -42624,6 +43223,112 @@ func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusion {
 		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
 	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{...}
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput)
+}
+
+// GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput is an input type that accepts GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray and GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput` via:
+//
+//	GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{ GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{...} }
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput
+	ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray []GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return i.ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput() GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) ToGetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutputWithContext(ctx context.Context) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody {
+		return vs[0].([]GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody)[vs[1].(int)]
+	}).(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput)
 }
 
 type GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky struct {
@@ -46446,6 +47151,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingInput)(nil)).Elem(), GetBackendServiceSecuritySettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingInput)(nil)).Elem(), GetBackendServiceTlsSettingArgs{})
@@ -46894,6 +47605,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{})
@@ -47068,6 +47781,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput)(nil)).Elem(), GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{})
@@ -47124,6 +47839,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceTlsSettingOutput{})
@@ -47572,6 +48293,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
 	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput{})
 	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput{})
@@ -47746,6 +48469,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBodyArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput{})

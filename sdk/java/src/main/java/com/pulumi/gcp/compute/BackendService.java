@@ -982,6 +982,56 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Backend Service Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceTlsSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .protocol("HTTPS")
+ *             .tlsSettings(BackendServiceTlsSettingsArgs.builder()
+ *                 .identity("//test.global.123456789.workload.id.goog/ns/test-ns/sa/test-id")
+ *                 .build())
+ *             .description("description")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Backend Service Dynamic Forwarding
  * 
  * <pre>
@@ -1872,7 +1922,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     }
     /**
      * URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
      * 
      */
     @Export(name="serviceLbPolicy", refs={String.class}, tree="[0]")
@@ -1880,7 +1930,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return URL to networkservices.ServiceLbPolicy resource.
-     * Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+     * Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a global backend service, the service lb policy must be global. For a regional backend service, the service lb policy must be regional and in the same region.
      * 
      */
     public Output<Optional<String>> serviceLbPolicy() {

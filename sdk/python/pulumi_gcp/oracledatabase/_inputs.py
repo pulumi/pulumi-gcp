@@ -43,6 +43,8 @@ __all__ = [
     'CloudExadataInfrastructurePropertiesArgsDict',
     'CloudExadataInfrastructurePropertiesCustomerContactArgs',
     'CloudExadataInfrastructurePropertiesCustomerContactArgsDict',
+    'CloudExadataInfrastructurePropertiesExascaleConfigArgs',
+    'CloudExadataInfrastructurePropertiesExascaleConfigArgsDict',
     'CloudExadataInfrastructurePropertiesMaintenanceWindowArgs',
     'CloudExadataInfrastructurePropertiesMaintenanceWindowArgsDict',
     'CloudVmClusterIdentityConnectorArgs',
@@ -3178,6 +3180,12 @@ class CloudExadataInfrastructurePropertiesArgsDict(TypedDict):
     The software version of the database servers (dom0) in the Exadata
     Infrastructure.
     """
+    exascale_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesExascaleConfigArgsDict']]]]]
+    """
+    (Output)
+    The Exascale configuration for the Exadata Infrastructure.
+    Structure is documented below.
+    """
     maintenance_window: NotRequired[pulumi.Input[Optional['CloudExadataInfrastructurePropertiesMaintenanceWindowArgsDict']]]
     """
     Maintenance window as defined by Oracle.
@@ -3290,6 +3298,7 @@ class CloudExadataInfrastructurePropertiesArgs:
                  data_storage_size_tb: pulumi.Input[Optional[_builtins.float]] = None,
                  db_node_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  db_server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 exascale_configs: pulumi.Input[Optional[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesExascaleConfigArgs']]]] = None,
                  maintenance_window: pulumi.Input[Optional['CloudExadataInfrastructurePropertiesMaintenanceWindowArgs']] = None,
                  max_cpu_count: pulumi.Input[Optional[_builtins.int]] = None,
                  max_data_storage_tb: pulumi.Input[Optional[_builtins.float]] = None,
@@ -3331,6 +3340,9 @@ class CloudExadataInfrastructurePropertiesArgs:
         :param pulumi.Input[_builtins.str] db_server_version: (Output)
                The software version of the database servers (dom0) in the Exadata
                Infrastructure.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesExascaleConfigArgs']]] exascale_configs: (Output)
+               The Exascale configuration for the Exadata Infrastructure.
+               Structure is documented below.
         :param pulumi.Input['CloudExadataInfrastructurePropertiesMaintenanceWindowArgs'] maintenance_window: Maintenance window as defined by Oracle.
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
                Structure is documented below.
@@ -3398,6 +3410,8 @@ class CloudExadataInfrastructurePropertiesArgs:
             pulumi.set(__self__, "db_node_storage_size_gb", db_node_storage_size_gb)
         if db_server_version is not None:
             pulumi.set(__self__, "db_server_version", db_server_version)
+        if exascale_configs is not None:
+            pulumi.set(__self__, "exascale_configs", exascale_configs)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if max_cpu_count is not None:
@@ -3565,6 +3579,20 @@ class CloudExadataInfrastructurePropertiesArgs:
     @db_server_version.setter
     def db_server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_server_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleConfigs")
+    def exascale_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesExascaleConfigArgs']]]]:
+        """
+        (Output)
+        The Exascale configuration for the Exadata Infrastructure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exascale_configs")
+
+    @exascale_configs.setter
+    def exascale_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesExascaleConfigArgs']]]]):
+        pulumi.set(self, "exascale_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindow")
@@ -3806,6 +3834,8 @@ class CloudExadataInfrastructurePropertiesCustomerContactArgsDict(TypedDict):
     """
     The email address used by Oracle to send notifications regarding databases
     and infrastructure.
+
+    <a name="nested_properties_exascale_config"></a>The `exascale_config` block contains:
     """
 
 @pulumi.input_type
@@ -3815,6 +3845,8 @@ class CloudExadataInfrastructurePropertiesCustomerContactArgs:
         """
         :param pulumi.Input[_builtins.str] email: The email address used by Oracle to send notifications regarding databases
                and infrastructure.
+               
+               <a name="nested_properties_exascale_config"></a>The `exascale_config` block contains:
         """
         pulumi.set(__self__, "email", email)
 
@@ -3824,12 +3856,103 @@ class CloudExadataInfrastructurePropertiesCustomerContactArgs:
         """
         The email address used by Oracle to send notifications regarding databases
         and infrastructure.
+
+        <a name="nested_properties_exascale_config"></a>The `exascale_config` block contains:
         """
         return pulumi.get(self, "email")
 
     @email.setter
     def email(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "email", value)
+
+
+class CloudExadataInfrastructurePropertiesExascaleConfigArgsDict(TypedDict):
+    available_storage_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Available storage size for Exascale in GBs.
+    """
+    available_vm_storage_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Available storage size for VM storage on Exascale in GBs.
+    """
+    total_storage_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Total storage size needed for Exascale in GBs.
+    """
+    total_vm_storage_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Storage size needed for VM storage on Exascale in GBs.
+    """
+
+@pulumi.input_type
+class CloudExadataInfrastructurePropertiesExascaleConfigArgs:
+    def __init__(__self__, *,
+                 available_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 available_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] available_storage_size_gb: Available storage size for Exascale in GBs.
+        :param pulumi.Input[_builtins.int] available_vm_storage_size_gb: Available storage size for VM storage on Exascale in GBs.
+        :param pulumi.Input[_builtins.int] total_storage_size_gb: Total storage size needed for Exascale in GBs.
+        :param pulumi.Input[_builtins.int] total_vm_storage_size_gb: Storage size needed for VM storage on Exascale in GBs.
+        """
+        if available_storage_size_gb is not None:
+            pulumi.set(__self__, "available_storage_size_gb", available_storage_size_gb)
+        if available_vm_storage_size_gb is not None:
+            pulumi.set(__self__, "available_vm_storage_size_gb", available_vm_storage_size_gb)
+        if total_storage_size_gb is not None:
+            pulumi.set(__self__, "total_storage_size_gb", total_storage_size_gb)
+        if total_vm_storage_size_gb is not None:
+            pulumi.set(__self__, "total_vm_storage_size_gb", total_vm_storage_size_gb)
+
+    @_builtins.property
+    @pulumi.getter(name="availableStorageSizeGb")
+    def available_storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Available storage size for Exascale in GBs.
+        """
+        return pulumi.get(self, "available_storage_size_gb")
+
+    @available_storage_size_gb.setter
+    def available_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "available_storage_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availableVmStorageSizeGb")
+    def available_vm_storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Available storage size for VM storage on Exascale in GBs.
+        """
+        return pulumi.get(self, "available_vm_storage_size_gb")
+
+    @available_vm_storage_size_gb.setter
+    def available_vm_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "available_vm_storage_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalStorageSizeGb")
+    def total_storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Total storage size needed for Exascale in GBs.
+        """
+        return pulumi.get(self, "total_storage_size_gb")
+
+    @total_storage_size_gb.setter
+    def total_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "total_storage_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalVmStorageSizeGb")
+    def total_vm_storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Storage size needed for VM storage on Exascale in GBs.
+        """
+        return pulumi.get(self, "total_vm_storage_size_gb")
+
+    @total_vm_storage_size_gb.setter
+    def total_vm_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "total_vm_storage_size_gb", value)
 
 
 class CloudExadataInfrastructurePropertiesMaintenanceWindowArgsDict(TypedDict):

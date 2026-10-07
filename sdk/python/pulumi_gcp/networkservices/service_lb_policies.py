@@ -566,6 +566,34 @@ class ServiceLbPolicies(pulumi.CustomResource):
             protocol="HTTP",
             service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
         ```
+        ### Network Services Service Lb Policies Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.ServiceLbPolicies("default",
+            name="my-regional-lb-policy",
+            location="us-central1",
+            description="my regional service lb policy",
+            load_balancing_algorithm="SPRAY_TO_REGION",
+            auto_capacity_drain={
+                "enable": True,
+            },
+            failover_config={
+                "failover_health_threshold": 70,
+            },
+            labels={
+                "foo": "bar",
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="my-regional-lb-backend",
+            region="us-central1",
+            description="my regional backend service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="HTTP",
+            service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
+        ```
 
         ## Import
 
@@ -692,6 +720,34 @@ class ServiceLbPolicies(pulumi.CustomResource):
             name="my-lb-backend",
             description="my description",
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            protocol="HTTP",
+            service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
+        ```
+        ### Network Services Service Lb Policies Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networkservices.ServiceLbPolicies("default",
+            name="my-regional-lb-policy",
+            location="us-central1",
+            description="my regional service lb policy",
+            load_balancing_algorithm="SPRAY_TO_REGION",
+            auto_capacity_drain={
+                "enable": True,
+            },
+            failover_config={
+                "failover_health_threshold": 70,
+            },
+            labels={
+                "foo": "bar",
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            name="my-regional-lb-backend",
+            region="us-central1",
+            description="my regional backend service",
+            load_balancing_scheme="INTERNAL_MANAGED",
             protocol="HTTP",
             service_lb_policy=default.id.apply(lambda id: f"//networkservices.googleapis.com/{id}"))
         ```

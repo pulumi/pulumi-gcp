@@ -31,12 +31,13 @@ class SecurityProfileArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  threat_prevention_profile: pulumi.Input[Optional['SecurityProfileThreatPreventionProfileArgs']] = None,
-                 url_filtering_profile: pulumi.Input[Optional['SecurityProfileUrlFilteringProfileArgs']] = None):
+                 url_filtering_profile: pulumi.Input[Optional['SecurityProfileUrlFilteringProfileArgs']] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional['SecurityProfileWildfireAnalysisProfileArgs']] = None):
         """
         The set of arguments for constructing a SecurityProfile resource.
 
-        :param pulumi.Input[_builtins.str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        :param pulumi.Input[_builtins.str] type: The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         :param pulumi.Input['SecurityProfileCustomInterceptProfileArgs'] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
                intercept traffic to third-party firewall appliances.
                Structure is documented below.
@@ -63,6 +64,9 @@ class SecurityProfileArgs:
                Structure is documented below.
         :param pulumi.Input['SecurityProfileUrlFilteringProfileArgs'] url_filtering_profile: The url filtering configuration for the security profile.
                Structure is documented below.
+        :param pulumi.Input['SecurityProfileWildfireAnalysisProfileArgs'] wildfire_analysis_profile: (Optional, Beta)
+               The wildfire analysis configuration for the security profile.
+               Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
         if custom_intercept_profile is not None:
@@ -85,13 +89,15 @@ class SecurityProfileArgs:
             pulumi.set(__self__, "threat_prevention_profile", threat_prevention_profile)
         if url_filtering_profile is not None:
             pulumi.set(__self__, "url_filtering_profile", url_filtering_profile)
+        if wildfire_analysis_profile is not None:
+            pulumi.set(__self__, "wildfire_analysis_profile", wildfire_analysis_profile)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of security profile.
-        Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         """
         return pulumi.get(self, "type")
 
@@ -235,6 +241,20 @@ class SecurityProfileArgs:
     def url_filtering_profile(self, value: pulumi.Input[Optional['SecurityProfileUrlFilteringProfileArgs']]):
         pulumi.set(self, "url_filtering_profile", value)
 
+    @_builtins.property
+    @pulumi.getter(name="wildfireAnalysisProfile")
+    def wildfire_analysis_profile(self) -> pulumi.Input[Optional['SecurityProfileWildfireAnalysisProfileArgs']]:
+        """
+        (Optional, Beta)
+        The wildfire analysis configuration for the security profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_analysis_profile")
+
+    @wildfire_analysis_profile.setter
+    def wildfire_analysis_profile(self, value: pulumi.Input[Optional['SecurityProfileWildfireAnalysisProfileArgs']]):
+        pulumi.set(self, "wildfire_analysis_profile", value)
+
 
 @pulumi.input_type
 class _SecurityProfileState:
@@ -255,7 +275,8 @@ class _SecurityProfileState:
                  threat_prevention_profile: pulumi.Input[Optional['SecurityProfileThreatPreventionProfileArgs']] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_filtering_profile: pulumi.Input[Optional['SecurityProfileUrlFilteringProfileArgs']] = None):
+                 url_filtering_profile: pulumi.Input[Optional['SecurityProfileUrlFilteringProfileArgs']] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional['SecurityProfileWildfireAnalysisProfileArgs']] = None):
         """
         Input properties used for looking up and filtering SecurityProfile resources.
 
@@ -291,10 +312,13 @@ class _SecurityProfileState:
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input['SecurityProfileThreatPreventionProfileArgs'] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        :param pulumi.Input[_builtins.str] type: The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile was updated in UTC.
         :param pulumi.Input['SecurityProfileUrlFilteringProfileArgs'] url_filtering_profile: The url filtering configuration for the security profile.
+               Structure is documented below.
+        :param pulumi.Input['SecurityProfileWildfireAnalysisProfileArgs'] wildfire_analysis_profile: (Optional, Beta)
+               The wildfire analysis configuration for the security profile.
                Structure is documented below.
         """
         if create_time is not None:
@@ -331,6 +355,8 @@ class _SecurityProfileState:
             pulumi.set(__self__, "update_time", update_time)
         if url_filtering_profile is not None:
             pulumi.set(__self__, "url_filtering_profile", url_filtering_profile)
+        if wildfire_analysis_profile is not None:
+            pulumi.set(__self__, "wildfire_analysis_profile", wildfire_analysis_profile)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -522,8 +548,8 @@ class _SecurityProfileState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of security profile.
-        Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         """
         return pulumi.get(self, "type")
 
@@ -556,6 +582,20 @@ class _SecurityProfileState:
     def url_filtering_profile(self, value: pulumi.Input[Optional['SecurityProfileUrlFilteringProfileArgs']]):
         pulumi.set(self, "url_filtering_profile", value)
 
+    @_builtins.property
+    @pulumi.getter(name="wildfireAnalysisProfile")
+    def wildfire_analysis_profile(self) -> pulumi.Input[Optional['SecurityProfileWildfireAnalysisProfileArgs']]:
+        """
+        (Optional, Beta)
+        The wildfire analysis configuration for the security profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_analysis_profile")
+
+    @wildfire_analysis_profile.setter
+    def wildfire_analysis_profile(self, value: pulumi.Input[Optional['SecurityProfileWildfireAnalysisProfileArgs']]):
+        pulumi.set(self, "wildfire_analysis_profile", value)
+
 
 @pulumi.type_token("gcp:networksecurity/securityProfile:SecurityProfile")
 class SecurityProfile(pulumi.CustomResource):
@@ -574,6 +614,7 @@ class SecurityProfile(pulumi.CustomResource):
                  threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional[Union['SecurityProfileWildfireAnalysisProfileArgs', 'SecurityProfileWildfireAnalysisProfileArgsDict', 'outputs.SecurityProfileWildfireAnalysisProfile']]] = None,
                  __props__=None):
         """
         A security profile defines the behavior associated to a profile type.
@@ -746,6 +787,74 @@ class SecurityProfile(pulumi.CustomResource):
                 "mirroring_deployment_groups": [default_mirroring_deployment_group.id],
             })
         ```
+        ### Network Security Security Profile Wildfire
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="projects/my-project-name",
+            description="my description",
+            type="WILDFIRE_ANALYSIS",
+            wildfire_analysis_profile={
+                "wildfire_realtime_lookup": True,
+                "wildfire_submission_rules": [
+                    {
+                        "direction": "BOTH",
+                        "file_selection_mode": "ALL_FILE_TYPES",
+                    },
+                    {
+                        "direction": "UPLOAD",
+                        "file_selection_mode": "CUSTOM_FILE_TYPES",
+                        "custom_file_types": {
+                            "file_types": [
+                                "PDF",
+                                "SCRIPT",
+                            ],
+                        },
+                    },
+                ],
+                "wildfire_inline_cloud_analysis_rules": [
+                    {
+                        "direction": "BOTH",
+                        "action": "ALLOW",
+                        "file_selection_mode": "ALL_FILE_TYPES",
+                    },
+                    {
+                        "direction": "DOWNLOAD",
+                        "action": "DENY",
+                        "file_selection_mode": "CUSTOM_FILE_TYPES",
+                        "custom_file_types": {
+                            "file_types": ["PE"],
+                        },
+                    },
+                ],
+                "wildfire_overrides": [{
+                    "protocol": "WILDFIRE_HTTP",
+                    "action": "WILDFIRE_DENY",
+                }],
+                "wildfire_inline_ml_overrides": [{
+                    "protocol": "WILDFIRE_FTP",
+                    "action": "WILDFIRE_ALERT",
+                }],
+                "wildfire_threat_overrides": [{
+                    "threat_id": "12345",
+                    "action": "WILDFIRE_ALLOW",
+                }],
+                "wildfire_inline_ml_setting": {
+                    "inline_ml_configs": [{
+                        "file_type": "WINDOWS_EXECUTABLE",
+                        "action": "ENABLE",
+                    }],
+                    "file_exceptions": [{
+                        "partial_hash": "12345abcdef",
+                        "filename": "virus.exe",
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -786,9 +895,12 @@ class SecurityProfile(pulumi.CustomResource):
                Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        :param pulumi.Input[_builtins.str] type: The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         :param pulumi.Input[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']] url_filtering_profile: The url filtering configuration for the security profile.
+               Structure is documented below.
+        :param pulumi.Input[Union['SecurityProfileWildfireAnalysisProfileArgs', 'SecurityProfileWildfireAnalysisProfileArgsDict', 'outputs.SecurityProfileWildfireAnalysisProfile']] wildfire_analysis_profile: (Optional, Beta)
+               The wildfire analysis configuration for the security profile.
                Structure is documented below.
         """
         ...
@@ -968,6 +1080,74 @@ class SecurityProfile(pulumi.CustomResource):
                 "mirroring_deployment_groups": [default_mirroring_deployment_group.id],
             })
         ```
+        ### Network Security Security Profile Wildfire
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="projects/my-project-name",
+            description="my description",
+            type="WILDFIRE_ANALYSIS",
+            wildfire_analysis_profile={
+                "wildfire_realtime_lookup": True,
+                "wildfire_submission_rules": [
+                    {
+                        "direction": "BOTH",
+                        "file_selection_mode": "ALL_FILE_TYPES",
+                    },
+                    {
+                        "direction": "UPLOAD",
+                        "file_selection_mode": "CUSTOM_FILE_TYPES",
+                        "custom_file_types": {
+                            "file_types": [
+                                "PDF",
+                                "SCRIPT",
+                            ],
+                        },
+                    },
+                ],
+                "wildfire_inline_cloud_analysis_rules": [
+                    {
+                        "direction": "BOTH",
+                        "action": "ALLOW",
+                        "file_selection_mode": "ALL_FILE_TYPES",
+                    },
+                    {
+                        "direction": "DOWNLOAD",
+                        "action": "DENY",
+                        "file_selection_mode": "CUSTOM_FILE_TYPES",
+                        "custom_file_types": {
+                            "file_types": ["PE"],
+                        },
+                    },
+                ],
+                "wildfire_overrides": [{
+                    "protocol": "WILDFIRE_HTTP",
+                    "action": "WILDFIRE_DENY",
+                }],
+                "wildfire_inline_ml_overrides": [{
+                    "protocol": "WILDFIRE_FTP",
+                    "action": "WILDFIRE_ALERT",
+                }],
+                "wildfire_threat_overrides": [{
+                    "threat_id": "12345",
+                    "action": "WILDFIRE_ALLOW",
+                }],
+                "wildfire_inline_ml_setting": {
+                    "inline_ml_configs": [{
+                        "file_type": "WINDOWS_EXECUTABLE",
+                        "action": "ENABLE",
+                    }],
+                    "file_exceptions": [{
+                        "partial_hash": "12345abcdef",
+                        "filename": "virus.exe",
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1008,6 +1188,7 @@ class SecurityProfile(pulumi.CustomResource):
                  threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional[Union['SecurityProfileWildfireAnalysisProfileArgs', 'SecurityProfileWildfireAnalysisProfileArgsDict', 'outputs.SecurityProfileWildfireAnalysisProfile']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1030,6 +1211,7 @@ class SecurityProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["url_filtering_profile"] = url_filtering_profile
+            __props__.__dict__["wildfire_analysis_profile"] = wildfire_analysis_profile
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
@@ -1064,7 +1246,8 @@ class SecurityProfile(pulumi.CustomResource):
             threat_prevention_profile: pulumi.Input[Optional[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None) -> 'SecurityProfile':
+            url_filtering_profile: pulumi.Input[Optional[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']]] = None,
+            wildfire_analysis_profile: pulumi.Input[Optional[Union['SecurityProfileWildfireAnalysisProfileArgs', 'SecurityProfileWildfireAnalysisProfileArgsDict', 'outputs.SecurityProfileWildfireAnalysisProfile']]] = None) -> 'SecurityProfile':
         """
         Get an existing SecurityProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1104,10 +1287,13 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict', 'outputs.SecurityProfileThreatPreventionProfile']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        :param pulumi.Input[_builtins.str] type: The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+               Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile was updated in UTC.
         :param pulumi.Input[Union['SecurityProfileUrlFilteringProfileArgs', 'SecurityProfileUrlFilteringProfileArgsDict', 'outputs.SecurityProfileUrlFilteringProfile']] url_filtering_profile: The url filtering configuration for the security profile.
+               Structure is documented below.
+        :param pulumi.Input[Union['SecurityProfileWildfireAnalysisProfileArgs', 'SecurityProfileWildfireAnalysisProfileArgsDict', 'outputs.SecurityProfileWildfireAnalysisProfile']] wildfire_analysis_profile: (Optional, Beta)
+               The wildfire analysis configuration for the security profile.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1131,6 +1317,7 @@ class SecurityProfile(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["url_filtering_profile"] = url_filtering_profile
+        __props__.__dict__["wildfire_analysis_profile"] = wildfire_analysis_profile
         return SecurityProfile(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1267,8 +1454,8 @@ class SecurityProfile(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of security profile.
-        Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        The type of security profile. `WILDFIRE_ANALYSIS` is beta-only.
+        Possible values are: `THREAT_PREVENTION`, `URL_FILTERING`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`, `WILDFIRE_ANALYSIS`.
         """
         return pulumi.get(self, "type")
 
@@ -1288,4 +1475,14 @@ class SecurityProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "url_filtering_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireAnalysisProfile")
+    def wildfire_analysis_profile(self) -> pulumi.Output[Optional['outputs.SecurityProfileWildfireAnalysisProfile']]:
+        """
+        (Optional, Beta)
+        The wildfire analysis configuration for the security profile.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_analysis_profile")
 

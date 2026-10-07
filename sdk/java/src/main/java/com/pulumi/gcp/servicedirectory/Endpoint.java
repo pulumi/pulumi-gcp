@@ -260,14 +260,14 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> network;
+    private Output<String> network;
 
     /**
      * @return The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
      * 
      */
-    public Output<Optional<String>> network() {
-        return Codegen.optional(this.network);
+    public Output<String> network() {
+        return this.network;
     }
     /**
      * Port that the endpoint is running on, must be in the

@@ -16,7 +16,7 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
     public static final ProjectsPolicyBindingTargetArgs Empty = new ProjectsPolicyBindingTargetArgs();
 
     /**
-     * Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Project:
      * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -29,7 +29,7 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
     private @Nullable Output<String> principalSet;
 
     /**
-     * @return Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+     * @return Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
      * Examples for each one of the following supported principal set types:
      * * Project:
      * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -42,10 +42,36 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.principalSet);
     }
 
+    /**
+     * Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Project:
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+     *   It must be the policy binding&#39;s parent (the project).
+     * 
+     */
+    @Import(name="resource")
+    private @Nullable Output<String> resource;
+
+    /**
+     * @return Immutable. Full Resource Name of the resource used for access policy bindings.
+     * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+     * * Project:
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+     * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+     *   It must be the policy binding&#39;s parent (the project).
+     * 
+     */
+    public Optional<Output<String>> resource() {
+        return Optional.ofNullable(this.resource);
+    }
+
     private ProjectsPolicyBindingTargetArgs() {}
 
     private ProjectsPolicyBindingTargetArgs(ProjectsPolicyBindingTargetArgs $) {
         this.principalSet = $.principalSet;
+        this.resource = $.resource;
     }
 
     public static Builder builder() {
@@ -67,7 +93,7 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * @param principalSet Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Project:
          * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -84,7 +110,7 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param principalSet Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
+         * @param principalSet Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
          * Examples for each one of the following supported principal set types:
          * * Project:
          * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
@@ -97,6 +123,37 @@ public final class ProjectsPolicyBindingTargetArgs extends com.pulumi.resources.
          */
         public Builder principalSet(String principalSet) {
             return principalSet(Output.of(principalSet));
+        }
+
+        /**
+         * @param resource Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+         * * Project:
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+         *   It must be the policy binding&#39;s parent (the project).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resource(@Nullable Output<String> resource) {
+            $.resource = resource;
+            return this;
+        }
+
+        /**
+         * @param resource Immutable. Full Resource Name of the resource used for access policy bindings.
+         * Use this together with `policyKind = &#34;ACCESS&#34;`. Examples:
+         * * Project:
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER`
+         * * `//cloudresourcemanager.googleapis.com/projects/PROJECT_ID`
+         *   It must be the policy binding&#39;s parent (the project).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resource(String resource) {
+            return resource(Output.of(resource));
         }
 
         public ProjectsPolicyBindingTargetArgs build() {

@@ -94,12 +94,14 @@ namespace Pulumi.Gcp.Lustre
     public sealed class GetInstanceResult
     {
         public readonly ImmutableArray<Outputs.GetInstanceAccessRulesOptionResult> AccessRulesOptions;
+        public readonly string AvailableVersion;
         public readonly string CapacityGib;
         public readonly string CreateTime;
         public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetInstanceDynamicTierOptionResult> DynamicTierOptions;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly string EffectiveVersion;
         public readonly string Filesystem;
         public readonly bool GkeSupportEnabled;
         /// <summary>
@@ -120,6 +122,7 @@ namespace Pulumi.Gcp.Lustre
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string State;
         public readonly string StateReason;
+        public readonly string TargetVersion;
         public readonly string Uid;
         public readonly ImmutableArray<Outputs.GetInstanceUpcomingMaintenanceScheduleResult> UpcomingMaintenanceSchedules;
         public readonly string UpdateTime;
@@ -128,6 +131,8 @@ namespace Pulumi.Gcp.Lustre
         [OutputConstructor]
         private GetInstanceResult(
             ImmutableArray<Outputs.GetInstanceAccessRulesOptionResult> accessRulesOptions,
+
+            string availableVersion,
 
             string capacityGib,
 
@@ -140,6 +145,8 @@ namespace Pulumi.Gcp.Lustre
             ImmutableArray<Outputs.GetInstanceDynamicTierOptionResult> dynamicTierOptions,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            string effectiveVersion,
 
             string filesystem,
 
@@ -175,6 +182,8 @@ namespace Pulumi.Gcp.Lustre
 
             string stateReason,
 
+            string targetVersion,
+
             string uid,
 
             ImmutableArray<Outputs.GetInstanceUpcomingMaintenanceScheduleResult> upcomingMaintenanceSchedules,
@@ -184,12 +193,14 @@ namespace Pulumi.Gcp.Lustre
             string? zone)
         {
             AccessRulesOptions = accessRulesOptions;
+            AvailableVersion = availableVersion;
             CapacityGib = capacityGib;
             CreateTime = createTime;
             DeletionPolicy = deletionPolicy;
             Description = description;
             DynamicTierOptions = dynamicTierOptions;
             EffectiveLabels = effectiveLabels;
+            EffectiveVersion = effectiveVersion;
             Filesystem = filesystem;
             GkeSupportEnabled = gkeSupportEnabled;
             Id = id;
@@ -207,6 +218,7 @@ namespace Pulumi.Gcp.Lustre
             PulumiLabels = pulumiLabels;
             State = state;
             StateReason = stateReason;
+            TargetVersion = targetVersion;
             Uid = uid;
             UpcomingMaintenanceSchedules = upcomingMaintenanceSchedules;
             UpdateTime = updateTime;

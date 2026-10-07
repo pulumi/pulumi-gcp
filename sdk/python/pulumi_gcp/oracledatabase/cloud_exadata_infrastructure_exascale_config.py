@@ -23,7 +23,8 @@ class CloudExadataInfrastructureExascaleConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  total_storage_size_gb: pulumi.Input[_builtins.int],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a CloudExadataInfrastructureExascaleConfig resource.
 
@@ -38,6 +39,7 @@ class CloudExadataInfrastructureExascaleConfigArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.int] total_vm_storage_size_gb: Storage size needed for VM storage on Exascale in GBs.
         """
         pulumi.set(__self__, "cloud_exadata_infrastructure", cloud_exadata_infrastructure)
         pulumi.set(__self__, "location", location)
@@ -46,6 +48,8 @@ class CloudExadataInfrastructureExascaleConfigArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if total_vm_storage_size_gb is not None:
+            pulumi.set(__self__, "total_vm_storage_size_gb", total_vm_storage_size_gb)
 
     @_builtins.property
     @pulumi.getter(name="cloudExadataInfrastructure")
@@ -113,6 +117,18 @@ class CloudExadataInfrastructureExascaleConfigArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="totalVmStorageSizeGb")
+    def total_vm_storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Storage size needed for VM storage on Exascale in GBs.
+        """
+        return pulumi.get(self, "total_vm_storage_size_gb")
+
+    @total_vm_storage_size_gb.setter
+    def total_vm_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "total_vm_storage_size_gb", value)
+
 
 @pulumi.input_type
 class _CloudExadataInfrastructureExascaleConfigState:
@@ -121,7 +137,8 @@ class _CloudExadataInfrastructureExascaleConfigState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None):
+                 total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CloudExadataInfrastructureExascaleConfig resources.
 
@@ -136,6 +153,7 @@ class _CloudExadataInfrastructureExascaleConfigState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] total_storage_size_gb: The total storage to be allocated to Exascale in GBs.
+        :param pulumi.Input[_builtins.int] total_vm_storage_size_gb: Storage size needed for VM storage on Exascale in GBs.
         """
         if cloud_exadata_infrastructure is not None:
             pulumi.set(__self__, "cloud_exadata_infrastructure", cloud_exadata_infrastructure)
@@ -147,6 +165,8 @@ class _CloudExadataInfrastructureExascaleConfigState:
             pulumi.set(__self__, "project", project)
         if total_storage_size_gb is not None:
             pulumi.set(__self__, "total_storage_size_gb", total_storage_size_gb)
+        if total_vm_storage_size_gb is not None:
+            pulumi.set(__self__, "total_vm_storage_size_gb", total_vm_storage_size_gb)
 
     @_builtins.property
     @pulumi.getter(name="cloudExadataInfrastructure")
@@ -214,6 +234,18 @@ class _CloudExadataInfrastructureExascaleConfigState:
     def total_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_storage_size_gb", value)
 
+    @_builtins.property
+    @pulumi.getter(name="totalVmStorageSizeGb")
+    def total_vm_storage_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Storage size needed for VM storage on Exascale in GBs.
+        """
+        return pulumi.get(self, "total_vm_storage_size_gb")
+
+    @total_vm_storage_size_gb.setter
+    def total_vm_storage_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "total_vm_storage_size_gb", value)
+
 
 @pulumi.type_token("gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig")
 class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
@@ -226,6 +258,7 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         A resource to configure Exascale storage on an Oracle Cloud Exadata Infrastructure.
@@ -256,7 +289,8 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
             cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
             location="us-east4",
             project="my-project",
-            total_storage_size_gb=10240)
+            total_storage_size_gb=10240,
+            total_vm_storage_size_gb=2048)
         ```
 
         ## Import
@@ -289,6 +323,7 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] total_storage_size_gb: The total storage to be allocated to Exascale in GBs.
+        :param pulumi.Input[_builtins.int] total_vm_storage_size_gb: Storage size needed for VM storage on Exascale in GBs.
         """
         ...
     @overload
@@ -325,7 +360,8 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
             cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
             location="us-east4",
             project="my-project",
-            total_storage_size_gb=10240)
+            total_storage_size_gb=10240,
+            total_vm_storage_size_gb=2048)
         ```
 
         ## Import
@@ -365,6 +401,7 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,6 +422,7 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
             if total_storage_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'total_storage_size_gb'")
             __props__.__dict__["total_storage_size_gb"] = total_storage_size_gb
+            __props__.__dict__["total_vm_storage_size_gb"] = total_vm_storage_size_gb
         super(CloudExadataInfrastructureExascaleConfig, __self__).__init__(
             'gcp:oracledatabase/cloudExadataInfrastructureExascaleConfig:CloudExadataInfrastructureExascaleConfig',
             resource_name,
@@ -399,7 +437,8 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None) -> 'CloudExadataInfrastructureExascaleConfig':
+            total_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            total_vm_storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None) -> 'CloudExadataInfrastructureExascaleConfig':
         """
         Get an existing CloudExadataInfrastructureExascaleConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -418,6 +457,7 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.int] total_storage_size_gb: The total storage to be allocated to Exascale in GBs.
+        :param pulumi.Input[_builtins.int] total_vm_storage_size_gb: Storage size needed for VM storage on Exascale in GBs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -428,6 +468,7 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["project"] = project
         __props__.__dict__["total_storage_size_gb"] = total_storage_size_gb
+        __props__.__dict__["total_vm_storage_size_gb"] = total_vm_storage_size_gb
         return CloudExadataInfrastructureExascaleConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -475,4 +516,12 @@ class CloudExadataInfrastructureExascaleConfig(pulumi.CustomResource):
         The total storage to be allocated to Exascale in GBs.
         """
         return pulumi.get(self, "total_storage_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="totalVmStorageSizeGb")
+    def total_vm_storage_size_gb(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Storage size needed for VM storage on Exascale in GBs.
+        """
+        return pulumi.get(self, "total_vm_storage_size_gb")
 

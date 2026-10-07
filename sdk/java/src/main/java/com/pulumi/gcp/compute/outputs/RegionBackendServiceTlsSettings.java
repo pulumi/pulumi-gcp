@@ -21,6 +21,14 @@ public final class RegionBackendServiceTlsSettings {
      */
     private @Nullable String authenticationConfig;
     /**
+     * @return The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+     * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+     * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+     * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+     * 
+     */
+    private @Nullable String identity;
+    /**
      * @return Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
      * TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend&#39;s
      * server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
@@ -48,6 +56,16 @@ public final class RegionBackendServiceTlsSettings {
      */
     public Optional<String> authenticationConfig() {
         return Optional.ofNullable(this.authenticationConfig);
+    }
+    /**
+     * @return The fully-specified SPIFFE ID without the spiffe:// scheme. Must be in the format //&lt;trust_domain&gt;/ns/&lt;namespace&gt;/sa/&lt;subject&gt;.
+     * The load balancer uses certificates and roots of trust provisioned by the Managed Workload Identity system for this identity.
+     * The Trust Domain within the identity must refer to a valid Workload Identity Pool, from which the TrustConfig and CertificateIssuanceConfig are inherited.
+     * If set, you cannot configure sni, subjectAltNames, or authenticationConfig manually.
+     * 
+     */
+    public Optional<String> identity() {
+        return Optional.ofNullable(this.identity);
     }
     /**
      * @return Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
@@ -82,12 +100,14 @@ public final class RegionBackendServiceTlsSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String authenticationConfig;
+        private @Nullable String identity;
         private @Nullable String sni;
         private @Nullable List<RegionBackendServiceTlsSettingsSubjectAltName> subjectAltNames;
         public Builder() {}
         public Builder(RegionBackendServiceTlsSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authenticationConfig = defaults.authenticationConfig;
+    	      this.identity = defaults.identity;
     	      this.sni = defaults.sni;
     	      this.subjectAltNames = defaults.subjectAltNames;
         }
@@ -96,6 +116,12 @@ public final class RegionBackendServiceTlsSettings {
         public Builder authenticationConfig(@Nullable String authenticationConfig) {
 
             this.authenticationConfig = authenticationConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identity(@Nullable String identity) {
+
+            this.identity = identity;
             return this;
         }
         @CustomType.Setter
@@ -116,6 +142,7 @@ public final class RegionBackendServiceTlsSettings {
         public RegionBackendServiceTlsSettings build() {
             final var _resultValue = new RegionBackendServiceTlsSettings();
             _resultValue.authenticationConfig = authenticationConfig;
+            _resultValue.identity = identity;
             _resultValue.sni = sni;
             _resultValue.subjectAltNames = subjectAltNames;
             return _resultValue;

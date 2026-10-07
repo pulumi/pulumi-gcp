@@ -54,6 +54,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string DbServerVersion;
         /// <summary>
+        /// The Exascale configuration for the Exadata Infrastructure.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCloudExadataInfrastructurePropertyExascaleConfigResult> ExascaleConfigs;
+        /// <summary>
         /// Maintenance window as defined by Oracle.
         /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
         /// </summary>
@@ -162,6 +166,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string dbServerVersion,
 
+            ImmutableArray<Outputs.GetCloudExadataInfrastructurePropertyExascaleConfigResult> exascaleConfigs,
+
             ImmutableArray<Outputs.GetCloudExadataInfrastructurePropertyMaintenanceWindowResult> maintenanceWindows,
 
             int maxCpuCount,
@@ -207,6 +213,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             DataStorageSizeTb = dataStorageSizeTb;
             DbNodeStorageSizeGb = dbNodeStorageSizeGb;
             DbServerVersion = dbServerVersion;
+            ExascaleConfigs = exascaleConfigs;
             MaintenanceWindows = maintenanceWindows;
             MaxCpuCount = maxCpuCount;
             MaxDataStorageTb = maxDataStorageTb;

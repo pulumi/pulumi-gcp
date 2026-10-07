@@ -3618,6 +3618,10 @@ type CloudExadataInfrastructureProperties struct {
 	// The software version of the database servers (dom0) in the Exadata
 	// Infrastructure.
 	DbServerVersion *string `pulumi:"dbServerVersion"`
+	// (Output)
+	// The Exascale configuration for the Exadata Infrastructure.
+	// Structure is documented below.
+	ExascaleConfigs []CloudExadataInfrastructurePropertiesExascaleConfig `pulumi:"exascaleConfigs"`
 	// Maintenance window as defined by Oracle.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 	// Structure is documented below.
@@ -3729,6 +3733,10 @@ type CloudExadataInfrastructurePropertiesArgs struct {
 	// The software version of the database servers (dom0) in the Exadata
 	// Infrastructure.
 	DbServerVersion pulumi.StringPtrInput `pulumi:"dbServerVersion"`
+	// (Output)
+	// The Exascale configuration for the Exadata Infrastructure.
+	// Structure is documented below.
+	ExascaleConfigs CloudExadataInfrastructurePropertiesExascaleConfigArrayInput `pulumi:"exascaleConfigs"`
 	// Maintenance window as defined by Oracle.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 	// Structure is documented below.
@@ -3932,6 +3940,15 @@ func (o CloudExadataInfrastructurePropertiesOutput) DbNodeStorageSizeGb() pulumi
 // Infrastructure.
 func (o CloudExadataInfrastructurePropertiesOutput) DbServerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudExadataInfrastructureProperties) *string { return v.DbServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Exascale configuration for the Exadata Infrastructure.
+// Structure is documented below.
+func (o CloudExadataInfrastructurePropertiesOutput) ExascaleConfigs() CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput {
+	return o.ApplyT(func(v CloudExadataInfrastructureProperties) []CloudExadataInfrastructurePropertiesExascaleConfig {
+		return v.ExascaleConfigs
+	}).(CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput)
 }
 
 // Maintenance window as defined by Oracle.
@@ -4183,6 +4200,18 @@ func (o CloudExadataInfrastructurePropertiesPtrOutput) DbServerVersion() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// The Exascale configuration for the Exadata Infrastructure.
+// Structure is documented below.
+func (o CloudExadataInfrastructurePropertiesPtrOutput) ExascaleConfigs() CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput {
+	return o.ApplyT(func(v *CloudExadataInfrastructureProperties) []CloudExadataInfrastructurePropertiesExascaleConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ExascaleConfigs
+	}).(CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput)
+}
+
 // Maintenance window as defined by Oracle.
 // https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 // Structure is documented below.
@@ -4397,6 +4426,8 @@ func (o CloudExadataInfrastructurePropertiesPtrOutput) TotalStorageSizeGb() pulu
 type CloudExadataInfrastructurePropertiesCustomerContact struct {
 	// The email address used by Oracle to send notifications regarding databases
 	// and infrastructure.
+	//
+	// <a name="nestedPropertiesExascaleConfig"></a>The `exascaleConfig` block contains:
 	Email string `pulumi:"email"`
 }
 
@@ -4414,6 +4445,8 @@ type CloudExadataInfrastructurePropertiesCustomerContactInput interface {
 type CloudExadataInfrastructurePropertiesCustomerContactArgs struct {
 	// The email address used by Oracle to send notifications regarding databases
 	// and infrastructure.
+	//
+	// <a name="nestedPropertiesExascaleConfig"></a>The `exascaleConfig` block contains:
 	Email pulumi.StringInput `pulumi:"email"`
 }
 
@@ -4470,6 +4503,8 @@ func (o CloudExadataInfrastructurePropertiesCustomerContactOutput) ToCloudExadat
 
 // The email address used by Oracle to send notifications regarding databases
 // and infrastructure.
+//
+// <a name="nestedPropertiesExascaleConfig"></a>The `exascaleConfig` block contains:
 func (o CloudExadataInfrastructurePropertiesCustomerContactOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudExadataInfrastructurePropertiesCustomerContact) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -4492,6 +4527,130 @@ func (o CloudExadataInfrastructurePropertiesCustomerContactArrayOutput) Index(i 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudExadataInfrastructurePropertiesCustomerContact {
 		return vs[0].([]CloudExadataInfrastructurePropertiesCustomerContact)[vs[1].(int)]
 	}).(CloudExadataInfrastructurePropertiesCustomerContactOutput)
+}
+
+type CloudExadataInfrastructurePropertiesExascaleConfig struct {
+	// Available storage size for Exascale in GBs.
+	AvailableStorageSizeGb *int `pulumi:"availableStorageSizeGb"`
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVmStorageSizeGb *int `pulumi:"availableVmStorageSizeGb"`
+	// Total storage size needed for Exascale in GBs.
+	TotalStorageSizeGb *int `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb *int `pulumi:"totalVmStorageSizeGb"`
+}
+
+// CloudExadataInfrastructurePropertiesExascaleConfigInput is an input type that accepts CloudExadataInfrastructurePropertiesExascaleConfigArgs and CloudExadataInfrastructurePropertiesExascaleConfigOutput values.
+// You can construct a concrete instance of `CloudExadataInfrastructurePropertiesExascaleConfigInput` via:
+//
+//	CloudExadataInfrastructurePropertiesExascaleConfigArgs{...}
+type CloudExadataInfrastructurePropertiesExascaleConfigInput interface {
+	pulumi.Input
+
+	ToCloudExadataInfrastructurePropertiesExascaleConfigOutput() CloudExadataInfrastructurePropertiesExascaleConfigOutput
+	ToCloudExadataInfrastructurePropertiesExascaleConfigOutputWithContext(context.Context) CloudExadataInfrastructurePropertiesExascaleConfigOutput
+}
+
+type CloudExadataInfrastructurePropertiesExascaleConfigArgs struct {
+	// Available storage size for Exascale in GBs.
+	AvailableStorageSizeGb pulumi.IntPtrInput `pulumi:"availableStorageSizeGb"`
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVmStorageSizeGb pulumi.IntPtrInput `pulumi:"availableVmStorageSizeGb"`
+	// Total storage size needed for Exascale in GBs.
+	TotalStorageSizeGb pulumi.IntPtrInput `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb pulumi.IntPtrInput `pulumi:"totalVmStorageSizeGb"`
+}
+
+func (CloudExadataInfrastructurePropertiesExascaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudExadataInfrastructurePropertiesExascaleConfig)(nil)).Elem()
+}
+
+func (i CloudExadataInfrastructurePropertiesExascaleConfigArgs) ToCloudExadataInfrastructurePropertiesExascaleConfigOutput() CloudExadataInfrastructurePropertiesExascaleConfigOutput {
+	return i.ToCloudExadataInfrastructurePropertiesExascaleConfigOutputWithContext(context.Background())
+}
+
+func (i CloudExadataInfrastructurePropertiesExascaleConfigArgs) ToCloudExadataInfrastructurePropertiesExascaleConfigOutputWithContext(ctx context.Context) CloudExadataInfrastructurePropertiesExascaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudExadataInfrastructurePropertiesExascaleConfigOutput)
+}
+
+// CloudExadataInfrastructurePropertiesExascaleConfigArrayInput is an input type that accepts CloudExadataInfrastructurePropertiesExascaleConfigArray and CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput values.
+// You can construct a concrete instance of `CloudExadataInfrastructurePropertiesExascaleConfigArrayInput` via:
+//
+//	CloudExadataInfrastructurePropertiesExascaleConfigArray{ CloudExadataInfrastructurePropertiesExascaleConfigArgs{...} }
+type CloudExadataInfrastructurePropertiesExascaleConfigArrayInput interface {
+	pulumi.Input
+
+	ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutput() CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput
+	ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutputWithContext(context.Context) CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput
+}
+
+type CloudExadataInfrastructurePropertiesExascaleConfigArray []CloudExadataInfrastructurePropertiesExascaleConfigInput
+
+func (CloudExadataInfrastructurePropertiesExascaleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudExadataInfrastructurePropertiesExascaleConfig)(nil)).Elem()
+}
+
+func (i CloudExadataInfrastructurePropertiesExascaleConfigArray) ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutput() CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput {
+	return i.ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i CloudExadataInfrastructurePropertiesExascaleConfigArray) ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutputWithContext(ctx context.Context) CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput)
+}
+
+type CloudExadataInfrastructurePropertiesExascaleConfigOutput struct{ *pulumi.OutputState }
+
+func (CloudExadataInfrastructurePropertiesExascaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudExadataInfrastructurePropertiesExascaleConfig)(nil)).Elem()
+}
+
+func (o CloudExadataInfrastructurePropertiesExascaleConfigOutput) ToCloudExadataInfrastructurePropertiesExascaleConfigOutput() CloudExadataInfrastructurePropertiesExascaleConfigOutput {
+	return o
+}
+
+func (o CloudExadataInfrastructurePropertiesExascaleConfigOutput) ToCloudExadataInfrastructurePropertiesExascaleConfigOutputWithContext(ctx context.Context) CloudExadataInfrastructurePropertiesExascaleConfigOutput {
+	return o
+}
+
+// Available storage size for Exascale in GBs.
+func (o CloudExadataInfrastructurePropertiesExascaleConfigOutput) AvailableStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudExadataInfrastructurePropertiesExascaleConfig) *int { return v.AvailableStorageSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Available storage size for VM storage on Exascale in GBs.
+func (o CloudExadataInfrastructurePropertiesExascaleConfigOutput) AvailableVmStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudExadataInfrastructurePropertiesExascaleConfig) *int { return v.AvailableVmStorageSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Total storage size needed for Exascale in GBs.
+func (o CloudExadataInfrastructurePropertiesExascaleConfigOutput) TotalStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudExadataInfrastructurePropertiesExascaleConfig) *int { return v.TotalStorageSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Storage size needed for VM storage on Exascale in GBs.
+func (o CloudExadataInfrastructurePropertiesExascaleConfigOutput) TotalVmStorageSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudExadataInfrastructurePropertiesExascaleConfig) *int { return v.TotalVmStorageSizeGb }).(pulumi.IntPtrOutput)
+}
+
+type CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudExadataInfrastructurePropertiesExascaleConfig)(nil)).Elem()
+}
+
+func (o CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput) ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutput() CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput {
+	return o
+}
+
+func (o CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput) ToCloudExadataInfrastructurePropertiesExascaleConfigArrayOutputWithContext(ctx context.Context) CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput {
+	return o
+}
+
+func (o CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput) Index(i pulumi.IntInput) CloudExadataInfrastructurePropertiesExascaleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudExadataInfrastructurePropertiesExascaleConfig {
+		return vs[0].([]CloudExadataInfrastructurePropertiesExascaleConfig)[vs[1].(int)]
+	}).(CloudExadataInfrastructurePropertiesExascaleConfigOutput)
 }
 
 type CloudExadataInfrastructurePropertiesMaintenanceWindow struct {
@@ -33070,6 +33229,8 @@ type GetCloudExadataInfrastructureProperty struct {
 	// The software version of the database servers (dom0) in the Exadata
 	// Infrastructure.
 	DbServerVersion string `pulumi:"dbServerVersion"`
+	// The Exascale configuration for the Exadata Infrastructure.
+	ExascaleConfigs []GetCloudExadataInfrastructurePropertyExascaleConfig `pulumi:"exascaleConfigs"`
 	// Maintenance window as defined by Oracle.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 	MaintenanceWindows []GetCloudExadataInfrastructurePropertyMaintenanceWindow `pulumi:"maintenanceWindows"`
@@ -33158,6 +33319,8 @@ type GetCloudExadataInfrastructurePropertyArgs struct {
 	// The software version of the database servers (dom0) in the Exadata
 	// Infrastructure.
 	DbServerVersion pulumi.StringInput `pulumi:"dbServerVersion"`
+	// The Exascale configuration for the Exadata Infrastructure.
+	ExascaleConfigs GetCloudExadataInfrastructurePropertyExascaleConfigArrayInput `pulumi:"exascaleConfigs"`
 	// Maintenance window as defined by Oracle.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 	MaintenanceWindows GetCloudExadataInfrastructurePropertyMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
@@ -33312,6 +33475,13 @@ func (o GetCloudExadataInfrastructurePropertyOutput) DbNodeStorageSizeGb() pulum
 // Infrastructure.
 func (o GetCloudExadataInfrastructurePropertyOutput) DbServerVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructureProperty) string { return v.DbServerVersion }).(pulumi.StringOutput)
+}
+
+// The Exascale configuration for the Exadata Infrastructure.
+func (o GetCloudExadataInfrastructurePropertyOutput) ExascaleConfigs() GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructureProperty) []GetCloudExadataInfrastructurePropertyExascaleConfig {
+		return v.ExascaleConfigs
+	}).(GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput)
 }
 
 // Maintenance window as defined by Oracle.
@@ -33542,6 +33712,130 @@ func (o GetCloudExadataInfrastructurePropertyCustomerContactArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudExadataInfrastructurePropertyCustomerContact {
 		return vs[0].([]GetCloudExadataInfrastructurePropertyCustomerContact)[vs[1].(int)]
 	}).(GetCloudExadataInfrastructurePropertyCustomerContactOutput)
+}
+
+type GetCloudExadataInfrastructurePropertyExascaleConfig struct {
+	// Available storage size for Exascale in GBs.
+	AvailableStorageSizeGb int `pulumi:"availableStorageSizeGb"`
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVmStorageSizeGb int `pulumi:"availableVmStorageSizeGb"`
+	// Total storage size needed for Exascale in GBs.
+	TotalStorageSizeGb int `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb int `pulumi:"totalVmStorageSizeGb"`
+}
+
+// GetCloudExadataInfrastructurePropertyExascaleConfigInput is an input type that accepts GetCloudExadataInfrastructurePropertyExascaleConfigArgs and GetCloudExadataInfrastructurePropertyExascaleConfigOutput values.
+// You can construct a concrete instance of `GetCloudExadataInfrastructurePropertyExascaleConfigInput` via:
+//
+//	GetCloudExadataInfrastructurePropertyExascaleConfigArgs{...}
+type GetCloudExadataInfrastructurePropertyExascaleConfigInput interface {
+	pulumi.Input
+
+	ToGetCloudExadataInfrastructurePropertyExascaleConfigOutput() GetCloudExadataInfrastructurePropertyExascaleConfigOutput
+	ToGetCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(context.Context) GetCloudExadataInfrastructurePropertyExascaleConfigOutput
+}
+
+type GetCloudExadataInfrastructurePropertyExascaleConfigArgs struct {
+	// Available storage size for Exascale in GBs.
+	AvailableStorageSizeGb pulumi.IntInput `pulumi:"availableStorageSizeGb"`
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVmStorageSizeGb pulumi.IntInput `pulumi:"availableVmStorageSizeGb"`
+	// Total storage size needed for Exascale in GBs.
+	TotalStorageSizeGb pulumi.IntInput `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb pulumi.IntInput `pulumi:"totalVmStorageSizeGb"`
+}
+
+func (GetCloudExadataInfrastructurePropertyExascaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (i GetCloudExadataInfrastructurePropertyExascaleConfigArgs) ToGetCloudExadataInfrastructurePropertyExascaleConfigOutput() GetCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return i.ToGetCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(context.Background())
+}
+
+func (i GetCloudExadataInfrastructurePropertyExascaleConfigArgs) ToGetCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(ctx context.Context) GetCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudExadataInfrastructurePropertyExascaleConfigOutput)
+}
+
+// GetCloudExadataInfrastructurePropertyExascaleConfigArrayInput is an input type that accepts GetCloudExadataInfrastructurePropertyExascaleConfigArray and GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput values.
+// You can construct a concrete instance of `GetCloudExadataInfrastructurePropertyExascaleConfigArrayInput` via:
+//
+//	GetCloudExadataInfrastructurePropertyExascaleConfigArray{ GetCloudExadataInfrastructurePropertyExascaleConfigArgs{...} }
+type GetCloudExadataInfrastructurePropertyExascaleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput() GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput
+	ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(context.Context) GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput
+}
+
+type GetCloudExadataInfrastructurePropertyExascaleConfigArray []GetCloudExadataInfrastructurePropertyExascaleConfigInput
+
+func (GetCloudExadataInfrastructurePropertyExascaleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (i GetCloudExadataInfrastructurePropertyExascaleConfigArray) ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput() GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return i.ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudExadataInfrastructurePropertyExascaleConfigArray) ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(ctx context.Context) GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput)
+}
+
+type GetCloudExadataInfrastructurePropertyExascaleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCloudExadataInfrastructurePropertyExascaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigOutput) ToGetCloudExadataInfrastructurePropertyExascaleConfigOutput() GetCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return o
+}
+
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigOutput) ToGetCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(ctx context.Context) GetCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return o
+}
+
+// Available storage size for Exascale in GBs.
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigOutput) AvailableStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructurePropertyExascaleConfig) int { return v.AvailableStorageSizeGb }).(pulumi.IntOutput)
+}
+
+// Available storage size for VM storage on Exascale in GBs.
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigOutput) AvailableVmStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructurePropertyExascaleConfig) int { return v.AvailableVmStorageSizeGb }).(pulumi.IntOutput)
+}
+
+// Total storage size needed for Exascale in GBs.
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigOutput) TotalStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructurePropertyExascaleConfig) int { return v.TotalStorageSizeGb }).(pulumi.IntOutput)
+}
+
+// Storage size needed for VM storage on Exascale in GBs.
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigOutput) TotalVmStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructurePropertyExascaleConfig) int { return v.TotalVmStorageSizeGb }).(pulumi.IntOutput)
+}
+
+type GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput() GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return o
+}
+
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) ToGetCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(ctx context.Context) GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return o
+}
+
+func (o GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) Index(i pulumi.IntInput) GetCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudExadataInfrastructurePropertyExascaleConfig {
+		return vs[0].([]GetCloudExadataInfrastructurePropertyExascaleConfig)[vs[1].(int)]
+	}).(GetCloudExadataInfrastructurePropertyExascaleConfigOutput)
 }
 
 type GetCloudExadataInfrastructurePropertyMaintenanceWindow struct {
@@ -34083,6 +34377,8 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty struct {
 	// The software version of the database servers (dom0) in the Exadata
 	// Infrastructure.
 	DbServerVersion string `pulumi:"dbServerVersion"`
+	// The Exascale configuration for the Exadata Infrastructure.
+	ExascaleConfigs []GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig `pulumi:"exascaleConfigs"`
 	// Maintenance window as defined by Oracle.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 	MaintenanceWindows []GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow `pulumi:"maintenanceWindows"`
@@ -34171,6 +34467,8 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyArgs struct
 	// The software version of the database servers (dom0) in the Exadata
 	// Infrastructure.
 	DbServerVersion pulumi.StringInput `pulumi:"dbServerVersion"`
+	// The Exascale configuration for the Exadata Infrastructure.
+	ExascaleConfigs GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayInput `pulumi:"exascaleConfigs"`
 	// Maintenance window as defined by Oracle.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
 	MaintenanceWindows GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
@@ -34337,6 +34635,13 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyOutput) 
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty) string {
 		return v.DbServerVersion
 	}).(pulumi.StringOutput)
+}
+
+// The Exascale configuration for the Exadata Infrastructure.
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyOutput) ExascaleConfigs() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty) []GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig {
+		return v.ExascaleConfigs
+	}).(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput)
 }
 
 // Maintenance window as defined by Oracle.
@@ -34587,6 +34892,138 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact {
 		return vs[0].([]GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContact)[vs[1].(int)]
 	}).(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactOutput)
+}
+
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig struct {
+	// Available storage size for Exascale in GBs.
+	AvailableStorageSizeGb int `pulumi:"availableStorageSizeGb"`
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVmStorageSizeGb int `pulumi:"availableVmStorageSizeGb"`
+	// Total storage size needed for Exascale in GBs.
+	TotalStorageSizeGb int `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb int `pulumi:"totalVmStorageSizeGb"`
+}
+
+// GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigInput is an input type that accepts GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs and GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput values.
+// You can construct a concrete instance of `GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigInput` via:
+//
+//	GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs{...}
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigInput interface {
+	pulumi.Input
+
+	ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput
+	ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(context.Context) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput
+}
+
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs struct {
+	// Available storage size for Exascale in GBs.
+	AvailableStorageSizeGb pulumi.IntInput `pulumi:"availableStorageSizeGb"`
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVmStorageSizeGb pulumi.IntInput `pulumi:"availableVmStorageSizeGb"`
+	// Total storage size needed for Exascale in GBs.
+	TotalStorageSizeGb pulumi.IntInput `pulumi:"totalStorageSizeGb"`
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVmStorageSizeGb pulumi.IntInput `pulumi:"totalVmStorageSizeGb"`
+}
+
+func (GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (i GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return i.ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(context.Background())
+}
+
+func (i GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(ctx context.Context) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput)
+}
+
+// GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayInput is an input type that accepts GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray and GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput values.
+// You can construct a concrete instance of `GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayInput` via:
+//
+//	GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray{ GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs{...} }
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput
+	ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(context.Context) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput
+}
+
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray []GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigInput
+
+func (GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (i GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return i.ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(ctx context.Context) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput)
+}
+
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return o
+}
+
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutputWithContext(ctx context.Context) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return o
+}
+
+// Available storage size for Exascale in GBs.
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) AvailableStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig) int {
+		return v.AvailableStorageSizeGb
+	}).(pulumi.IntOutput)
+}
+
+// Available storage size for VM storage on Exascale in GBs.
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) AvailableVmStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig) int {
+		return v.AvailableVmStorageSizeGb
+	}).(pulumi.IntOutput)
+}
+
+// Total storage size needed for Exascale in GBs.
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) TotalStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig) int {
+		return v.TotalStorageSizeGb
+	}).(pulumi.IntOutput)
+}
+
+// Storage size needed for VM storage on Exascale in GBs.
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput) TotalVmStorageSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig) int {
+		return v.TotalVmStorageSizeGb
+	}).(pulumi.IntOutput)
+}
+
+type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig)(nil)).Elem()
+}
+
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput() GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return o
+}
+
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) ToGetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutputWithContext(ctx context.Context) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput {
+	return o
+}
+
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput) Index(i pulumi.IntInput) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig {
+		return vs[0].([]GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfig)[vs[1].(int)]
+	}).(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput)
 }
 
 type GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindow struct {
@@ -39402,6 +39839,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesPtrInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesCustomerContactInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesCustomerContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesCustomerContactArrayInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesCustomerContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesExascaleConfigInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesExascaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesExascaleConfigArrayInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesExascaleConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesMaintenanceWindowInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesMaintenanceWindowPtrInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudVmClusterIdentityConnectorInput)(nil)).Elem(), CloudVmClusterIdentityConnectorArgs{})
@@ -39612,6 +40051,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyArrayInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyCustomerContactInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyCustomerContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyCustomerContactArrayInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyCustomerContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyExascaleConfigInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyExascaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyExascaleConfigArrayInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyExascaleConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyMaintenanceWindowInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyMaintenanceWindowArrayInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructureInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructureArgs{})
@@ -39620,6 +40061,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyArrayInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArrayInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArrayInput)(nil)).Elem(), GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudVmClusterIdentityConnectorInput)(nil)).Elem(), GetCloudVmClusterIdentityConnectorArgs{})
@@ -39700,6 +40143,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesCustomerContactOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesCustomerContactArrayOutput{})
+	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesExascaleConfigOutput{})
+	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesExascaleConfigArrayOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(CloudVmClusterIdentityConnectorOutput{})
@@ -39910,6 +40355,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyCustomerContactOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyCustomerContactArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyExascaleConfigOutput{})
+	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyExascaleConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput{})
@@ -39918,6 +40365,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigOutput{})
+	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyExascaleConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudVmClusterIdentityConnectorOutput{})

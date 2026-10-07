@@ -1093,6 +1093,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                     }],
                 },
                 "visualization_options": {
+                    "visualization_mode": "VISUALIZATION_MODE_WHEN_NECESSARY",
                     "visualization_examples": [{
                         "visualization_type": "VISUALIZATION_TYPE_UNSPECIFIED",
                         "resource": {
@@ -1118,6 +1119,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "enabled": True,
                 "prompt": "Use this server for queries",
                 "api_key_name": "x-api-key",
+                "api_key_header": "x-api-key-header",
                 "client_id": "sample-client-id",
                 "oauth_token_url": "https://example.com/oauth/token",
             }],
@@ -1180,6 +1182,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             }],
             math_rendering_mode="MATH_RENDERING_MODE_LATEX",
             web_search_config={
+                "disabled": False,
                 "excluded_domains": ["example.com"],
             })
         ```
@@ -1565,9 +1568,18 @@ class AnalystAgentPersona(pulumi.CustomResource):
         <a name="nested_artifacts_config_visualization_options"></a>The `visualization_options` block supports:
 
         * `visualization_examples` -
-          (Optional)
-          Examples for visualizations.
-          Structure is documented below.
+        (Optional)
+        Examples for visualizations.
+        Structure is documented below.
+
+        * `visualization_mode` -
+        (Optional)
+        Mode for generating visualizations.
+        Possible values:
+        VISUALIZATION_MODE_EXPLICIT_ONLY
+        VISUALIZATION_MODE_WHEN_NECESSARY
+        VISUALIZATION_MODE_WHEN_HELPFUL
+        VISUALIZATION_MODE_ALWAYS
 
         <a name="nested_artifacts_config_visualization_options_visualization_examples"></a>The `visualization_examples` block supports:
 
@@ -1742,6 +1754,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
         (Optional)
         Input only. The API key of the MCP server.
         **Note**: This property is sensitive and will not be displayed in the plan.
+
+        * `api_key_header` -
+        (Optional)
+        The HTTP header when the API key is passed in a request header
+        (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
 
         * `api_key_name` -
         (Optional)
@@ -1957,10 +1974,15 @@ class AnalystAgentPersona(pulumi.CustomResource):
 
         <a name="nested_web_search_config"></a>The `web_search_config` block supports:
 
+        * `disabled` -
+        (Optional)
+        Whether web search grounding is disabled for the analyst agent.
+        Defaults to false if not specified (i.e. web search grounding is enabled).
+
         * `excluded_domains` -
-          (Optional)
-          List of domains to be excluded from Google Search / Enterprise Web Search
-          grounding.
+        (Optional)
+        List of domains to be excluded from Google Search / Enterprise Web Search
+        grounding.
 
         ## Import
 
@@ -2225,6 +2247,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                     }],
                 },
                 "visualization_options": {
+                    "visualization_mode": "VISUALIZATION_MODE_WHEN_NECESSARY",
                     "visualization_examples": [{
                         "visualization_type": "VISUALIZATION_TYPE_UNSPECIFIED",
                         "resource": {
@@ -2250,6 +2273,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
                 "enabled": True,
                 "prompt": "Use this server for queries",
                 "api_key_name": "x-api-key",
+                "api_key_header": "x-api-key-header",
                 "client_id": "sample-client-id",
                 "oauth_token_url": "https://example.com/oauth/token",
             }],
@@ -2312,6 +2336,7 @@ class AnalystAgentPersona(pulumi.CustomResource):
             }],
             math_rendering_mode="MATH_RENDERING_MODE_LATEX",
             web_search_config={
+                "disabled": False,
                 "excluded_domains": ["example.com"],
             })
         ```
@@ -2697,9 +2722,18 @@ class AnalystAgentPersona(pulumi.CustomResource):
         <a name="nested_artifacts_config_visualization_options"></a>The `visualization_options` block supports:
 
         * `visualization_examples` -
-          (Optional)
-          Examples for visualizations.
-          Structure is documented below.
+        (Optional)
+        Examples for visualizations.
+        Structure is documented below.
+
+        * `visualization_mode` -
+        (Optional)
+        Mode for generating visualizations.
+        Possible values:
+        VISUALIZATION_MODE_EXPLICIT_ONLY
+        VISUALIZATION_MODE_WHEN_NECESSARY
+        VISUALIZATION_MODE_WHEN_HELPFUL
+        VISUALIZATION_MODE_ALWAYS
 
         <a name="nested_artifacts_config_visualization_options_visualization_examples"></a>The `visualization_examples` block supports:
 
@@ -2874,6 +2908,11 @@ class AnalystAgentPersona(pulumi.CustomResource):
         (Optional)
         Input only. The API key of the MCP server.
         **Note**: This property is sensitive and will not be displayed in the plan.
+
+        * `api_key_header` -
+        (Optional)
+        The HTTP header when the API key is passed in a request header
+        (e.g. `x-api-key`, `api-key`, `X-Auth-Token`).
 
         * `api_key_name` -
         (Optional)
@@ -3089,10 +3128,15 @@ class AnalystAgentPersona(pulumi.CustomResource):
 
         <a name="nested_web_search_config"></a>The `web_search_config` block supports:
 
+        * `disabled` -
+        (Optional)
+        Whether web search grounding is disabled for the analyst agent.
+        Defaults to false if not specified (i.e. web search grounding is enabled).
+
         * `excluded_domains` -
-          (Optional)
-          List of domains to be excluded from Google Search / Enterprise Web Search
-          grounding.
+        (Optional)
+        List of domains to be excluded from Google Search / Enterprise Web Search
+        grounding.
 
         ## Import
 

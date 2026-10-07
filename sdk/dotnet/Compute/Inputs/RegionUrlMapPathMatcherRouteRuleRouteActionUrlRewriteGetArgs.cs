@@ -41,6 +41,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("pathTemplateRewrite")]
         public Input<string>? PathTemplateRewrite { get; set; }
 
+        /// <summary>
+        /// The regex rewrite to be applied to the URL. Only one of
+        /// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+        /// specified.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("regexRewrite")]
+        public Input<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewriteGetArgs>? RegexRewrite { get; set; }
+
         public RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteGetArgs()
         {
         }

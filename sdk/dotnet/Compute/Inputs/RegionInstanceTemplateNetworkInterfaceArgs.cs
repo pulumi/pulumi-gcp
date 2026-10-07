@@ -58,6 +58,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// If true, DNS resolution will be enabled over this interface. Only valid with `NetworkAttachment`.
+        /// </summary>
+        [Input("enableVpcScopedDns")]
+        public Input<bool>? EnableVpcScopedDns { get; set; }
+
+        /// <summary>
         /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         /// </summary>
         [Input("igmpQuery")]

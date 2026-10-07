@@ -33,8 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.agentregistry.AgentregistryFunctions;
  * import com.pulumi.gcp.agentregistry.inputs.GetAgentArgs;
- * import com.pulumi.google.IamConnectorsConnector;
- * import com.pulumi.google.IamConnectorsConnectorArgs;
+ * import com.pulumi.gcp.agentidentity.AuthProvider;
+ * import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs;
  * import com.pulumi.gcp.agentregistry.Binding;
  * import com.pulumi.gcp.agentregistry.BindingArgs;
  * import com.pulumi.gcp.agentregistry.inputs.BindingSourceArgs;
@@ -55,14 +57,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = AgentregistryFunctions.getAgent(GetAgentArgs.builder()
- *             .location("global")
+ *             .location("us-central1")
  *             .filter("displayName:Workspace Agent")
  *             .build());
  * 
- *         var defaultIamConnectorsConnector = new IamConnectorsConnector("defaultIamConnectorsConnector", IamConnectorsConnectorArgs.builder()
+ *         var defaultAuthProvider = new AuthProvider("defaultAuthProvider", AuthProviderArgs.builder()
  *             .location("us-central1")
- *             .connectorId("ar-binding")
- *             .connectorTypeParams(Arrays.asList(Map.of("connectorVersion", "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1")))
+ *             .authProviderId("ar-binding")
+ *             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+ *                 .apiKey(AuthProviderAuthProviderTypeParamsApiKeyArgs.builder()
+ *                     .apiKey("test-api-key-value")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
@@ -77,12 +83,81 @@ import javax.annotation.Nullable;
  *                 .identifier(default_.urn())
  *                 .build())
  *             .authProviderBinding(BindingAuthProviderBindingArgs.builder()
- *                 .authProvider(defaultIamConnectorsConnector.get("id"))
+ *                 .authProvider(defaultAuthProvider.id())
  *                 .scopes("https://www.googleapis.com/auth/cloud-platform")
  *                 .continueUri("https://example.com/continue")
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultIamConnectorsConnector)
+ *                 .dependsOn(defaultAuthProvider)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Agent Registry Binding Target Only
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.agentregistry.AgentregistryFunctions;
+ * import com.pulumi.gcp.agentregistry.inputs.GetAgentArgs;
+ * import com.pulumi.gcp.agentidentity.AuthProvider;
+ * import com.pulumi.gcp.agentidentity.AuthProviderArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsArgs;
+ * import com.pulumi.gcp.agentidentity.inputs.AuthProviderAuthProviderTypeParamsApiKeyArgs;
+ * import com.pulumi.gcp.agentregistry.Binding;
+ * import com.pulumi.gcp.agentregistry.BindingArgs;
+ * import com.pulumi.gcp.agentregistry.inputs.BindingTargetArgs;
+ * import com.pulumi.gcp.agentregistry.inputs.BindingAuthProviderBindingArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = AgentregistryFunctions.getAgent(GetAgentArgs.builder()
+ *             .location("us-central1")
+ *             .filter("displayName:Workspace Agent")
+ *             .build());
+ * 
+ *         var defaultAuthProvider = new AuthProvider("defaultAuthProvider", AuthProviderArgs.builder()
+ *             .location("us-central1")
+ *             .authProviderId("ar-binding")
+ *             .authProviderTypeParams(AuthProviderAuthProviderTypeParamsArgs.builder()
+ *                 .apiKey(AuthProviderAuthProviderTypeParamsApiKeyArgs.builder()
+ *                     .apiKey("test-api-key-value")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
+ *             .location("us-central1")
+ *             .bindingId("ar-binding")
+ *             .displayName("Target Only Binding")
+ *             .description("Agent registry binding without source")
+ *             .target(BindingTargetArgs.builder()
+ *                 .identifier(default_.urn())
+ *                 .build())
+ *             .authProviderBinding(BindingAuthProviderBindingArgs.builder()
+ *                 .authProvider(defaultAuthProvider.id())
+ *                 .scopes("https://www.googleapis.com/auth/cloud-platform")
+ *                 .continueUri("https://example.com/continue")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultAuthProvider)
  *                 .build());
  * 
  *     }
@@ -255,15 +330,15 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="source", refs={BindingSource.class}, tree="[0]")
-    private Output<BindingSource> source;
+    private Output</* @Nullable */ BindingSource> source;
 
     /**
      * @return The source of the Binding.
      * Structure is documented below.
      * 
      */
-    public Output<BindingSource> source() {
-        return this.source;
+    public Output<Optional<BindingSource>> source() {
+        return Codegen.optional(this.source);
     }
     /**
      * The target of the Binding.

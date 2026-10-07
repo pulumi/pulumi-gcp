@@ -617,6 +617,32 @@ __all__ = [
     'SipTrunkConnectionArgsDict',
     'SipTrunkConnectionErrorDetailArgs',
     'SipTrunkConnectionErrorDetailArgsDict',
+    'ToolConnectorSpecArgs',
+    'ToolConnectorSpecArgsDict',
+    'ToolConnectorSpecActionArgs',
+    'ToolConnectorSpecActionArgsDict',
+    'ToolConnectorSpecActionEntityOperationArgs',
+    'ToolConnectorSpecActionEntityOperationArgsDict',
+    'ToolFunctionSpecArgs',
+    'ToolFunctionSpecArgsDict',
+    'ToolOpenApiSpecArgs',
+    'ToolOpenApiSpecArgsDict',
+    'ToolOpenApiSpecAuthenticationArgs',
+    'ToolOpenApiSpecAuthenticationArgsDict',
+    'ToolOpenApiSpecAuthenticationApiKeyConfigArgs',
+    'ToolOpenApiSpecAuthenticationApiKeyConfigArgsDict',
+    'ToolOpenApiSpecAuthenticationBearerTokenConfigArgs',
+    'ToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict',
+    'ToolOpenApiSpecAuthenticationOauthConfigArgs',
+    'ToolOpenApiSpecAuthenticationOauthConfigArgsDict',
+    'ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs',
+    'ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict',
+    'ToolOpenApiSpecServiceDirectoryConfigArgs',
+    'ToolOpenApiSpecServiceDirectoryConfigArgsDict',
+    'ToolOpenApiSpecTlsConfigArgs',
+    'ToolOpenApiSpecTlsConfigArgsDict',
+    'ToolOpenApiSpecTlsConfigCaCertArgs',
+    'ToolOpenApiSpecTlsConfigCaCertArgsDict',
 ]
 
 class ConversationProfileAutomatedAgentConfigArgsDict(TypedDict):
@@ -22726,5 +22752,951 @@ class SipTrunkConnectionErrorDetailArgs:
     @message.setter
     def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
+
+
+class ToolConnectorSpecArgsDict(TypedDict):
+    actions: pulumi.Input[Sequence[pulumi.Input['ToolConnectorSpecActionArgsDict']]]
+    """
+    Actions for the tool to use.
+    Structure is documented below.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The full resource name of the referenced Integration Connectors Connection.
+    Format: `projects/*/locations/*/connections/*`
+    """
+
+@pulumi.input_type
+class ToolConnectorSpecArgs:
+    def __init__(__self__, *,
+                 actions: pulumi.Input[Sequence[pulumi.Input['ToolConnectorSpecActionArgs']]],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ToolConnectorSpecActionArgs']]] actions: Actions for the tool to use.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The full resource name of the referenced Integration Connectors Connection.
+               Format: `projects/*/locations/*/connections/*`
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> pulumi.Input[Sequence[pulumi.Input['ToolConnectorSpecActionArgs']]]:
+        """
+        Actions for the tool to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: pulumi.Input[Sequence[pulumi.Input['ToolConnectorSpecActionArgs']]]):
+        pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full resource name of the referenced Integration Connectors Connection.
+        Format: `projects/*/locations/*/connections/*`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class ToolConnectorSpecActionArgsDict(TypedDict):
+    connection_action_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+    """
+    entity_operation: NotRequired[pulumi.Input[Optional['ToolConnectorSpecActionEntityOperationArgsDict']]]
+    """
+    Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+    Structure is documented below.
+    """
+    input_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity fields to use as inputs for the operation.
+    If no fields are specified, all fields of the Entity will be used.
+    """
+    output_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity fields to return from the operation.
+    If no fields are specified, all fields of the Entity will be returned.
+    """
+
+@pulumi.input_type
+class ToolConnectorSpecActionArgs:
+    def __init__(__self__, *,
+                 connection_action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_operation: pulumi.Input[Optional['ToolConnectorSpecActionEntityOperationArgs']] = None,
+                 input_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_action_id: ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        :param pulumi.Input['ToolConnectorSpecActionEntityOperationArgs'] entity_operation: Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_fields: Entity fields to use as inputs for the operation.
+               If no fields are specified, all fields of the Entity will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_fields: Entity fields to return from the operation.
+               If no fields are specified, all fields of the Entity will be returned.
+        """
+        if connection_action_id is not None:
+            pulumi.set(__self__, "connection_action_id", connection_action_id)
+        if entity_operation is not None:
+            pulumi.set(__self__, "entity_operation", entity_operation)
+        if input_fields is not None:
+            pulumi.set(__self__, "input_fields", input_fields)
+        if output_fields is not None:
+            pulumi.set(__self__, "output_fields", output_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionActionId")
+    def connection_action_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        """
+        return pulumi.get(self, "connection_action_id")
+
+    @connection_action_id.setter
+    def connection_action_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_action_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityOperation")
+    def entity_operation(self) -> pulumi.Input[Optional['ToolConnectorSpecActionEntityOperationArgs']]:
+        """
+        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entity_operation")
+
+    @entity_operation.setter
+    def entity_operation(self, value: pulumi.Input[Optional['ToolConnectorSpecActionEntityOperationArgs']]):
+        pulumi.set(self, "entity_operation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputFields")
+    def input_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity fields to use as inputs for the operation.
+        If no fields are specified, all fields of the Entity will be used.
+        """
+        return pulumi.get(self, "input_fields")
+
+    @input_fields.setter
+    def input_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputFields")
+    def output_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity fields to return from the operation.
+        If no fields are specified, all fields of the Entity will be returned.
+        """
+        return pulumi.get(self, "output_fields")
+
+    @output_fields.setter
+    def output_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "output_fields", value)
+
+
+class ToolConnectorSpecActionEntityOperationArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.str]
+    """
+    ID of the entity.
+    """
+    operation: pulumi.Input[_builtins.str]
+    """
+    The operation to perform on the entity.
+    Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+    """
+
+@pulumi.input_type
+class ToolConnectorSpecActionEntityOperationArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[_builtins.str],
+                 operation: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] entity_id: ID of the entity.
+        :param pulumi.Input[_builtins.str] operation: The operation to perform on the entity.
+               Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "operation", operation)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entity_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[_builtins.str]:
+        """
+        The operation to perform on the entity.
+        Possible values are: `LIST`, `GET`, `CREATE`, `UPDATE`, `DELETE`.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation", value)
+
+
+class ToolFunctionSpecArgsDict(TypedDict):
+    input_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+    This input is a JSON object that contains the function's parameters as properties of the object.
+    """
+    method_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The method type of the function. If not specified, the default value is GET.
+    Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+    """
+    output_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+    This output is a JSON object that contains the function's parameters as properties of the object.
+    """
+
+@pulumi.input_type
+class ToolFunctionSpecArgs:
+    def __init__(__self__, *,
+                 input_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 method_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_schema: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] input_schema: Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+               This input is a JSON object that contains the function's parameters as properties of the object.
+        :param pulumi.Input[_builtins.str] method_type: Optional. The method type of the function. If not specified, the default value is GET.
+               Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+        :param pulumi.Input[_builtins.str] output_schema: Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+               This output is a JSON object that contains the function's parameters as properties of the object.
+        """
+        if input_schema is not None:
+            pulumi.set(__self__, "input_schema", input_schema)
+        if method_type is not None:
+            pulumi.set(__self__, "method_type", method_type)
+        if output_schema is not None:
+            pulumi.set(__self__, "output_schema", output_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="inputSchema")
+    def input_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+        This input is a JSON object that contains the function's parameters as properties of the object.
+        """
+        return pulumi.get(self, "input_schema")
+
+    @input_schema.setter
+    def input_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "input_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="methodType")
+    def method_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The method type of the function. If not specified, the default value is GET.
+        Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+        """
+        return pulumi.get(self, "method_type")
+
+    @method_type.setter
+    def method_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "method_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputSchema")
+    def output_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+        This output is a JSON object that contains the function's parameters as properties of the object.
+        """
+        return pulumi.get(self, "output_schema")
+
+    @output_schema.setter
+    def output_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "output_schema", value)
+
+
+class ToolOpenApiSpecArgsDict(TypedDict):
+    text_schema: pulumi.Input[_builtins.str]
+    """
+    Required. The OpenAPI schema specified as a text.
+    Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+    """
+    authentication: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecAuthenticationArgsDict']]]
+    """
+    Optional. Authentication information required by the API.
+    Structure is documented below.
+    """
+    service_directory_config: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecServiceDirectoryConfigArgsDict']]]
+    """
+    Optional. Service Directory configuration.
+    Structure is documented below.
+    """
+    tls_config: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecTlsConfigArgsDict']]]
+    """
+    Optional. TLS configuration for the HTTPS verification.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecArgs:
+    def __init__(__self__, *,
+                 text_schema: pulumi.Input[_builtins.str],
+                 authentication: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationArgs']] = None,
+                 service_directory_config: pulumi.Input[Optional['ToolOpenApiSpecServiceDirectoryConfigArgs']] = None,
+                 tls_config: pulumi.Input[Optional['ToolOpenApiSpecTlsConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] text_schema: Required. The OpenAPI schema specified as a text.
+               Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+        :param pulumi.Input['ToolOpenApiSpecAuthenticationArgs'] authentication: Optional. Authentication information required by the API.
+               Structure is documented below.
+        :param pulumi.Input['ToolOpenApiSpecServiceDirectoryConfigArgs'] service_directory_config: Optional. Service Directory configuration.
+               Structure is documented below.
+        :param pulumi.Input['ToolOpenApiSpecTlsConfigArgs'] tls_config: Optional. TLS configuration for the HTTPS verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "text_schema", text_schema)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter(name="textSchema")
+    def text_schema(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The OpenAPI schema specified as a text.
+        Note: Plays a role in linking the OpenAPI spec with the tool. The `info.title` field in the OpenAPI schema must match the `toolKey` of the tool, otherwise the API will overwrite `info.title` with `toolKey`.
+        """
+        return pulumi.get(self, "text_schema")
+
+    @text_schema.setter
+    def text_schema(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "text_schema", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> pulumi.Input[Optional['ToolOpenApiSpecAuthenticationArgs']]:
+        """
+        Optional. Authentication information required by the API.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationArgs']]):
+        pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> pulumi.Input[Optional['ToolOpenApiSpecServiceDirectoryConfigArgs']]:
+        """
+        Optional. Service Directory configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: pulumi.Input[Optional['ToolOpenApiSpecServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> pulumi.Input[Optional['ToolOpenApiSpecTlsConfigArgs']]:
+        """
+        Optional. TLS configuration for the HTTPS verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+    @tls_config.setter
+    def tls_config(self, value: pulumi.Input[Optional['ToolOpenApiSpecTlsConfigArgs']]):
+        pulumi.set(self, "tls_config", value)
+
+
+class ToolOpenApiSpecAuthenticationArgsDict(TypedDict):
+    api_key_config: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecAuthenticationApiKeyConfigArgsDict']]]
+    """
+    Config for API key auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    bearer_token_config: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict']]]
+    """
+    Config for bearer token auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    oauth_config: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecAuthenticationOauthConfigArgsDict']]]
+    """
+    Config for OAuth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+    service_agent_auth_config: NotRequired[pulumi.Input[Optional['ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict']]]
+    """
+    Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+    This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecAuthenticationArgs:
+    def __init__(__self__, *,
+                 api_key_config: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationApiKeyConfigArgs']] = None,
+                 bearer_token_config: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationBearerTokenConfigArgs']] = None,
+                 oauth_config: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationOauthConfigArgs']] = None,
+                 service_agent_auth_config: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs']] = None):
+        """
+        :param pulumi.Input['ToolOpenApiSpecAuthenticationApiKeyConfigArgs'] api_key_config: Config for API key auth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        :param pulumi.Input['ToolOpenApiSpecAuthenticationBearerTokenConfigArgs'] bearer_token_config: Config for bearer token auth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        :param pulumi.Input['ToolOpenApiSpecAuthenticationOauthConfigArgs'] oauth_config: Config for OAuth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        :param pulumi.Input['ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs'] service_agent_auth_config: Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        """
+        if api_key_config is not None:
+            pulumi.set(__self__, "api_key_config", api_key_config)
+        if bearer_token_config is not None:
+            pulumi.set(__self__, "bearer_token_config", bearer_token_config)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if service_agent_auth_config is not None:
+            pulumi.set(__self__, "service_agent_auth_config", service_agent_auth_config)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfig")
+    def api_key_config(self) -> pulumi.Input[Optional['ToolOpenApiSpecAuthenticationApiKeyConfigArgs']]:
+        """
+        Config for API key auth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_config")
+
+    @api_key_config.setter
+    def api_key_config(self, value: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationApiKeyConfigArgs']]):
+        pulumi.set(self, "api_key_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfig")
+    def bearer_token_config(self) -> pulumi.Input[Optional['ToolOpenApiSpecAuthenticationBearerTokenConfigArgs']]:
+        """
+        Config for bearer token auth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_config")
+
+    @bearer_token_config.setter
+    def bearer_token_config(self, value: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationBearerTokenConfigArgs']]):
+        pulumi.set(self, "bearer_token_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> pulumi.Input[Optional['ToolOpenApiSpecAuthenticationOauthConfigArgs']]:
+        """
+        Config for OAuth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @oauth_config.setter
+    def oauth_config(self, value: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationOauthConfigArgs']]):
+        pulumi.set(self, "oauth_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentAuthConfig")
+    def service_agent_auth_config(self) -> pulumi.Input[Optional['ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs']]:
+        """
+        Config for [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_agent_auth_config")
+
+    @service_agent_auth_config.setter
+    def service_agent_auth_config(self, value: pulumi.Input[Optional['ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs']]):
+        pulumi.set(self, "service_agent_auth_config", value)
+
+
+class ToolOpenApiSpecAuthenticationApiKeyConfigArgsDict(TypedDict):
+    key_name: pulumi.Input[_builtins.str]
+    """
+    The parameter name or the header name of the API key.
+    E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+    """
+    request_location: pulumi.Input[_builtins.str]
+    """
+    Key location in the request.
+    Possible values are: `HEADER`, `QUERY_STRING`.
+    """
+    api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    secret_version_for_api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the API key.
+    If this field is set, the `apiKey` field will be ignored.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecAuthenticationApiKeyConfigArgs:
+    def __init__(__self__, *,
+                 key_name: pulumi.Input[_builtins.str],
+                 request_location: pulumi.Input[_builtins.str],
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_version_for_api_key: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key_name: The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param pulumi.Input[_builtins.str] request_location: Key location in the request.
+               Possible values are: `HEADER`, `QUERY_STRING`.
+        :param pulumi.Input[_builtins.str] api_key: Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] secret_version_for_api_key: Optional. The name of the SecretManager secret version resource storing the API key.
+               If this field is set, the `apiKey` field will be ignored.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "request_location", request_location)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if secret_version_for_api_key is not None:
+            pulumi.set(__self__, "secret_version_for_api_key", secret_version_for_api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> pulumi.Input[_builtins.str]:
+        """
+        Key location in the request.
+        Possible values are: `HEADER`, `QUERY_STRING`.
+        """
+        return pulumi.get(self, "request_location")
+
+    @request_location.setter
+    def request_location(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "request_location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The API key. If the `secretVersionForApiKey` field is set, this field will be ignored.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForApiKey")
+    def secret_version_for_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the SecretManager secret version resource storing the API key.
+        If this field is set, the `apiKey` field will be ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_api_key")
+
+    @secret_version_for_api_key.setter
+    def secret_version_for_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_api_key", value)
+
+
+class ToolOpenApiSpecAuthenticationBearerTokenConfigArgsDict(TypedDict):
+    secret_version_for_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the Bearer token.
+    If this field is set, the `token` field will be ignored.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The text token appended to the text `Bearer` to the request Authorization header.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecAuthenticationBearerTokenConfigArgs:
+    def __init__(__self__, *,
+                 secret_version_for_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] secret_version_for_token: Optional. The name of the SecretManager secret version resource storing the Bearer token.
+               If this field is set, the `token` field will be ignored.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        :param pulumi.Input[_builtins.str] token: Optional. The text token appended to the text `Bearer` to the request Authorization header.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if secret_version_for_token is not None:
+            pulumi.set(__self__, "secret_version_for_token", secret_version_for_token)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForToken")
+    def secret_version_for_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the SecretManager secret version resource storing the Bearer token.
+        If this field is set, the `token` field will be ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_token")
+
+    @secret_version_for_token.setter
+    def secret_version_for_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_token", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The text token appended to the text `Bearer` to the request Authorization header.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token", value)
+
+
+class ToolOpenApiSpecAuthenticationOauthConfigArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The client ID from the OAuth provider.
+    """
+    oauth_grant_type: pulumi.Input[_builtins.str]
+    """
+    OAuth grant types.
+    Possible values are: `CLIENT_CREDENTIAL`.
+    """
+    token_endpoint: pulumi.Input[_builtins.str]
+    """
+    The token endpoint in the OAuth provider to exchange for an access token.
+    """
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+    **Note**: This property is sensitive and will not be displayed in the plan.
+    """
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. The OAuth scopes to grant.
+    """
+    secret_version_for_client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The name of the SecretManager secret version resource storing the client secret.
+    If this field is set, the `clientSecret` field will be ignored.
+    Format: `projects/{project}/secrets/{secret}/versions/{version}`
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecAuthenticationOauthConfigArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 oauth_grant_type: pulumi.Input[_builtins.str],
+                 token_endpoint: pulumi.Input[_builtins.str],
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_version_for_client_secret: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The client ID from the OAuth provider.
+        :param pulumi.Input[_builtins.str] oauth_grant_type: OAuth grant types.
+               Possible values are: `CLIENT_CREDENTIAL`.
+        :param pulumi.Input[_builtins.str] token_endpoint: The token endpoint in the OAuth provider to exchange for an access token.
+        :param pulumi.Input[_builtins.str] client_secret: Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Optional. The OAuth scopes to grant.
+        :param pulumi.Input[_builtins.str] secret_version_for_client_secret: Optional. The name of the SecretManager secret version resource storing the client secret.
+               If this field is set, the `clientSecret` field will be ignored.
+               Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_version_for_client_secret is not None:
+            pulumi.set(__self__, "secret_version_for_client_secret", secret_version_for_client_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        OAuth grant types.
+        Possible values are: `CLIENT_CREDENTIAL`.
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @oauth_grant_type.setter
+    def oauth_grant_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "oauth_grant_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @token_endpoint.setter
+    def token_endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "token_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForClientSecret")
+    def secret_version_for_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The name of the SecretManager secret version resource storing the client secret.
+        If this field is set, the `clientSecret` field will be ignored.
+        Format: `projects/{project}/secrets/{secret}/versions/{version}`
+        """
+        return pulumi.get(self, "secret_version_for_client_secret")
+
+    @secret_version_for_client_secret.setter
+    def secret_version_for_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_version_for_client_secret", value)
+
+
+class ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgsDict(TypedDict):
+    service_agent_auth: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Indicate the auth token type generated from the Dialogflow service agent.
+    The generated token is sent in the Authorization header.
+    Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs:
+    def __init__(__self__, *,
+                 service_agent_auth: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] service_agent_auth: Optional. Indicate the auth token type generated from the Dialogflow service agent.
+               The generated token is sent in the Authorization header.
+               Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+        """
+        if service_agent_auth is not None:
+            pulumi.set(__self__, "service_agent_auth", service_agent_auth)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentAuth")
+    def service_agent_auth(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Indicate the auth token type generated from the Dialogflow service agent.
+        The generated token is sent in the Authorization header.
+        Possible values are: `ID_TOKEN`, `ACCESS_TOKEN`.
+        """
+        return pulumi.get(self, "service_agent_auth")
+
+    @service_agent_auth.setter
+    def service_agent_auth(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_agent_auth", value)
+
+
+class ToolOpenApiSpecServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+    Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+    `LocationID` of the service directory must be the same as the location of the tool.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] service: The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+               Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+               `LocationID` of the service directory must be the same as the location of the tool.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+        Format: `projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>`.
+        `LocationID` of the service directory must be the same as the location of the tool.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service", value)
+
+
+class ToolOpenApiSpecTlsConfigArgsDict(TypedDict):
+    ca_certs: pulumi.Input[Sequence[pulumi.Input['ToolOpenApiSpecTlsConfigCaCertArgsDict']]]
+    """
+    Specifies a list of allowed custom CA certificates for HTTPS verification.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecTlsConfigArgs:
+    def __init__(__self__, *,
+                 ca_certs: pulumi.Input[Sequence[pulumi.Input['ToolOpenApiSpecTlsConfigCaCertArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ToolOpenApiSpecTlsConfigCaCertArgs']]] ca_certs: Specifies a list of allowed custom CA certificates for HTTPS verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @_builtins.property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> pulumi.Input[Sequence[pulumi.Input['ToolOpenApiSpecTlsConfigCaCertArgs']]]:
+        """
+        Specifies a list of allowed custom CA certificates for HTTPS verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+    @ca_certs.setter
+    def ca_certs(self, value: pulumi.Input[Sequence[pulumi.Input['ToolOpenApiSpecTlsConfigCaCertArgs']]]):
+        pulumi.set(self, "ca_certs", value)
+
+
+class ToolOpenApiSpecTlsConfigCaCertArgsDict(TypedDict):
+    cert: pulumi.Input[_builtins.str]
+    """
+    The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+    If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+    N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+    A base64-encoded string.
+    """
+    display_name: pulumi.Input[_builtins.str]
+    """
+    The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+    """
+
+@pulumi.input_type
+class ToolOpenApiSpecTlsConfigCaCertArgs:
+    def __init__(__self__, *,
+                 cert: pulumi.Input[_builtins.str],
+                 display_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] cert: The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+               If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+               N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+               A base64-encoded string.
+        :param pulumi.Input[_builtins.str] display_name: The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+        """
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> pulumi.Input[_builtins.str]:
+        """
+        The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+        If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+        N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "cert")
+
+    @cert.setter
+    def cert(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "display_name", value)
 
 

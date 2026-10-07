@@ -395,6 +395,47 @@ import (
 //	}
 //
 // ```
+// ### Security Policy Rule Request Body Expression
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewSecurityPolicy(ctx, "default", &compute.SecurityPolicyArgs{
+//				Name:        pulumi.String("policyruletest"),
+//				Description: pulumi.String("basic global security policy"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityPolicyRule(ctx, "policy_rule", &compute.SecurityPolicyRuleArgs{
+//				SecurityPolicy: _default.Name,
+//				Description:    pulumi.String("Deny requests containing specific body string"),
+//				Action:         pulumi.String("deny(403)"),
+//				Priority:       pulumi.Int(1000),
+//				Match: &compute.SecurityPolicyRuleMatchArgs{
+//					Expr: &compute.SecurityPolicyRuleMatchExprArgs{
+//						Expression: pulumi.String("request.body.contains('my-match-string')"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

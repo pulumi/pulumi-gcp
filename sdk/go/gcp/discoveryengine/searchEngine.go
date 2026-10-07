@@ -194,6 +194,8 @@ type SearchEngine struct {
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The emails of the procurement contacts.
+	ProcurementContactEmails pulumi.StringArrayOutput `pulumi:"procurementContactEmails"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -299,6 +301,8 @@ type searchEngineState struct {
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
 	Name *string `pulumi:"name"`
+	// The emails of the procurement contacts.
+	ProcurementContactEmails []string `pulumi:"procurementContactEmails"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -357,6 +361,8 @@ type SearchEngineState struct {
 	// This field must be a UTF-8 encoded string with a length limit of 1024
 	// characters.
 	Name pulumi.StringPtrInput
+	// The emails of the procurement contacts.
+	ProcurementContactEmails pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -412,6 +418,8 @@ type searchEngineArgs struct {
 	KnowledgeGraphConfig *SearchEngineKnowledgeGraphConfig `pulumi:"knowledgeGraphConfig"`
 	// Location.
 	Location string `pulumi:"location"`
+	// The emails of the procurement contacts.
+	ProcurementContactEmails []string `pulumi:"procurementContactEmails"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -462,6 +470,8 @@ type SearchEngineArgs struct {
 	KnowledgeGraphConfig SearchEngineKnowledgeGraphConfigPtrInput
 	// Location.
 	Location pulumi.StringInput
+	// The emails of the procurement contacts.
+	ProcurementContactEmails pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -647,6 +657,11 @@ func (o SearchEngineOutput) Location() pulumi.StringOutput {
 // characters.
 func (o SearchEngineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The emails of the procurement contacts.
+func (o SearchEngineOutput) ProcurementContactEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SearchEngine) pulumi.StringArrayOutput { return v.ProcurementContactEmails }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project in which the resource belongs.
