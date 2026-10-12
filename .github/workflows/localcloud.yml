@@ -64,7 +64,7 @@ jobs:
       env:
         LOCALCLOUD_GATEWAY_URL: ${{ steps.localcloud.outputs.runtime-url }}
     - name: Run LocalCloud tests
-      run: env LOCALCLOUD_GATEWAY_URL=http://localhost:5380 bash scripts/localcloud-test.sh
+      run: bash scripts/localcloud-test.sh
       working-directory: .
       env:
         LOCALCLOUD_GATEWAY_URL: ${{ steps.localcloud.outputs.runtime-url }}

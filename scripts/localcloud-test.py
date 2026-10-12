@@ -93,8 +93,6 @@ TEST_SPEC_JSON = r"""
   "dedicated_lane": {
     "cwd": ".",
     "command": [
-      "env",
-      "LOCALCLOUD_GATEWAY_URL=http://localhost:5380",
       "bash",
       "scripts/localcloud-test.sh"
     ]
