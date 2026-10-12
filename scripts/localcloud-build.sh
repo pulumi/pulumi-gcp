@@ -5,6 +5,10 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 unset GOROOT
 tools_dir="$(pwd)/.localcloud-tools"
+# Keep dependency/compiler caches outside the reviewed application diff.
+if ! grep -qxF "/.localcloud-tools/" .git/info/exclude; then
+    printf "\n/.localcloud-tools/\n" >>.git/info/exclude
+fi
 mkdir -p "$tools_dir/go-mod" "$tools_dir/go-build"
 # Optional cache warming only; go mod download still resolves the locked set in
 # a fresh checkout. Clone macOS caches so sandboxed builds can write locally.

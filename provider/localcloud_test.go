@@ -124,6 +124,12 @@ func newLocalCloudFixture(t *testing.T) *localCloudFixture {
 	require.Equal(t, f.project, discovery["GOOGLE_CLOUD_PROJECT"])
 	f.token = discovery["CLOUDSDK_AUTH_ACCESS_TOKEN"]
 	require.NotEmpty(t, f.token, "LocalCloud caller token must be advertised")
+	// CI exports mapped host ports; direct runtime discovery is the fallback.
+	for _, variable := range []string{"STORAGE_EMULATOR_HOST", "BIGQUERY_EMULATOR_HOST"} {
+		if endpoint := os.Getenv(variable); endpoint != "" {
+			discovery[variable] = endpoint
+		}
+	}
 	storageOrigin := localCloudOrigin(t, discovery["STORAGE_EMULATOR_HOST"])
 	bigQueryOrigin := localCloudOrigin(t, discovery["BIGQUERY_EMULATOR_HOST"])
 	allowed[storageOrigin], allowed[bigQueryOrigin] = true, true
