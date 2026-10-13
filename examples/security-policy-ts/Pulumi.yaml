@@ -1,3 +1,0 @@
-name: test
-runtime: nodejs
-description: A minimal Pulumi YAML program
