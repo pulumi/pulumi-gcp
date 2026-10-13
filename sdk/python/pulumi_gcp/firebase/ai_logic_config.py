@@ -377,7 +377,7 @@ class AiLogicConfig(pulumi.CustomResource):
             project=project.project_id,
             service="firebasevertexai.googleapis.com")
         # It takes a while for permissions to propagate
-        # If your Terraform setup has a retry mechanism, this wait is unnecessary
+        # If your Pulumi setup has a retry mechanism, this wait is unnecessary
         wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
@@ -409,7 +409,7 @@ class AiLogicConfig(pulumi.CustomResource):
             project=project.project_id,
             service="firebasevertexai.googleapis.com")
         # It takes a while for permissions to propagate
-        # If your Terraform setup has a retry mechanism, this wait is unnecessary
+        # If your Pulumi setup has a retry mechanism, this wait is unnecessary
         wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
@@ -516,7 +516,7 @@ class AiLogicConfig(pulumi.CustomResource):
             project=project.project_id,
             service="firebasevertexai.googleapis.com")
         # It takes a while for permissions to propagate
-        # If your Terraform setup has a retry mechanism, this wait is unnecessary
+        # If your Pulumi setup has a retry mechanism, this wait is unnecessary
         wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,
@@ -548,7 +548,7 @@ class AiLogicConfig(pulumi.CustomResource):
             project=project.project_id,
             service="firebasevertexai.googleapis.com")
         # It takes a while for permissions to propagate
-        # If your Terraform setup has a retry mechanism, this wait is unnecessary
+        # If your Pulumi setup has a retry mechanism, this wait is unnecessary
         wait30s = time.Sleep("wait_30s", create_duration="30s",
         opts = pulumi.ResourceOptions(depends_on=[
                 ailogic,

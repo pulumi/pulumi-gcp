@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // It takes a while for permissions to propagate
- *         // If your Terraform setup has a retry mechanism, this wait is unnecessary
+ *         // If your Pulumi setup has a retry mechanism, this wait is unnecessary
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // It takes a while for permissions to propagate
- *         // If your Terraform setup has a retry mechanism, this wait is unnecessary
+ *         // If your Pulumi setup has a retry mechanism, this wait is unnecessary
  *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
  *             .createDuration("30s")
  *             .build(), CustomResourceOptions.builder()

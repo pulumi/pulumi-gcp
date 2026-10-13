@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.LicenseManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Reference design doc: go/lima-terraform
+    ///     // Reference design doc: go/lima-pulumi
     ///     var example_configuration = new Gcp.LicenseManager.Configuration("example-configuration", new()
     ///     {
     ///         Location = "us-central1",

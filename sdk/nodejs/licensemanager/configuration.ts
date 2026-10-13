@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Reference design doc: go/lima-terraform
+ * // Reference design doc: go/lima-pulumi
  * const example_configuration = new gcp.licensemanager.Configuration("example-configuration", {
  *     location: "us-central1",
  *     configurationId: "example-configuration",

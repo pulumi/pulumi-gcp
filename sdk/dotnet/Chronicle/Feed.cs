@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // This is a basic example for Terraform support in Chronicle feeds APIs.
+    ///     // This is a basic example for Pulumi support in Chronicle feeds APIs.
     ///     var exampleFeed = new Gcp.Chronicle.Feed("example_feed", new()
     ///     {
     ///         Location = "us",

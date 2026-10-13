@@ -59,7 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a network or use datasource to reference existing network
+//			// Create a network or use function to reference existing network
 //			peeringNetwork, err := compute.NewNetwork(ctx, "peering_network", &compute.NetworkArgs{
 //				Name: pulumi.String("test-network"),
 //			})

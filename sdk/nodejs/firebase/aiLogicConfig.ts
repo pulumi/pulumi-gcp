@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     service: "firebasevertexai.googleapis.com",
  * });
  * // It takes a while for permissions to propagate
- * // If your Terraform setup has a retry mechanism, this wait is unnecessary
+ * // If your Pulumi setup has a retry mechanism, this wait is unnecessary
  * const wait30s = new time.Sleep("wait_30s", {createDuration: "30s"}, {
  *     dependsOn: [
  *         ailogic,
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  *     service: "firebasevertexai.googleapis.com",
  * });
  * // It takes a while for permissions to propagate
- * // If your Terraform setup has a retry mechanism, this wait is unnecessary
+ * // If your Pulumi setup has a retry mechanism, this wait is unnecessary
  * const wait30s = new time.Sleep("wait_30s", {createDuration: "30s"}, {
  *     dependsOn: [
  *         ailogic,

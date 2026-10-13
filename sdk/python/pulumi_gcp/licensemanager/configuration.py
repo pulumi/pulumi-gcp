@@ -442,7 +442,7 @@ class Configuration(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Reference design doc: go/lima-terraform
+        # Reference design doc: go/lima-pulumi
         example_configuration = gcp.licensemanager.Configuration("example-configuration",
             location="us-central1",
             configuration_id="example-configuration",
@@ -503,7 +503,7 @@ class Configuration(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Reference design doc: go/lima-terraform
+        # Reference design doc: go/lima-pulumi
         example_configuration = gcp.licensemanager.Configuration("example-configuration",
             location="us-central1",
             configuration_id="example-configuration",

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ * // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "my-database-instance",
  *     region: "us-central1",
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ * // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "my-database-instance",
  *     region: "us-central1",

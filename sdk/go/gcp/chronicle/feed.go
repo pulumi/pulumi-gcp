@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// This is a basic example for Terraform support in Chronicle feeds APIs.
+//			// This is a basic example for Pulumi support in Chronicle feeds APIs.
 //			_, err := chronicle.NewFeed(ctx, "example_feed", &chronicle.FeedArgs{
 //				Location:    pulumi.String("us"),
 //				Instance:    pulumi.String("00000000-0000-0000-0000-000000000000"),

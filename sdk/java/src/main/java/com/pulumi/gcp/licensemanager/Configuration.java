@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Reference design doc: go/lima-terraform
+ *         // Reference design doc: go/lima-pulumi
  *         var example_configuration = new Configuration("example-configuration", ConfigurationArgs.builder()
  *             .location("us-central1")
  *             .configurationId("example-configuration")
