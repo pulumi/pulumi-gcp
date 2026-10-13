@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Create a network or use datasource to reference existing network
+ * // Create a network or use function to reference existing network
  * const peeringNetwork = new gcp.compute.Network("peering_network", {name: "test-network"});
  * // Reserve a CIDR for NetApp Volumes to use
  * // When using shared-VPCs, this resource needs to be created in host project

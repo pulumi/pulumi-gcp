@@ -330,7 +330,7 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -349,7 +349,7 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -426,7 +426,7 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",
@@ -445,7 +445,7 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+        # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
             region="us-central1",

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+//			// See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 //				Name:            pulumi.String("my-database-instance"),
 //				Region:          pulumi.String("us-central1"),
@@ -70,7 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+//			// See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 //				Name:            pulumi.String("my-database-instance"),
 //				Region:          pulumi.String("us-central1"),

@@ -1113,7 +1113,7 @@ class StoragePool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Create a network or use datasource to reference existing network
+        # Create a network or use function to reference existing network
         peering_network = gcp.compute.Network("peering_network", name="test-network")
         # Reserve a CIDR for NetApp Volumes to use
         # When using shared-VPCs, this resource needs to be created in host project
@@ -1263,7 +1263,7 @@ class StoragePool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # Create a network or use datasource to reference existing network
+        # Create a network or use function to reference existing network
         peering_network = gcp.compute.Network("peering_network", name="test-network")
         # Reserve a CIDR for NetApp Volumes to use
         # When using shared-VPCs, this resource needs to be created in host project

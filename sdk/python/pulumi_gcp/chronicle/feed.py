@@ -551,7 +551,7 @@ class Feed(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # This is a basic example for Terraform support in Chronicle feeds APIs.
+        # This is a basic example for Pulumi support in Chronicle feeds APIs.
         example_feed = gcp.chronicle.Feed("example_feed",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
@@ -708,7 +708,7 @@ class Feed(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # This is a basic example for Terraform support in Chronicle feeds APIs.
+        # This is a basic example for Pulumi support in Chronicle feeds APIs.
         example_feed = gcp.chronicle.Feed("example_feed",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",

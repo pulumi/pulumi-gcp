@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a network or use datasource to reference existing network
+    ///     // Create a network or use function to reference existing network
     ///     var peeringNetwork = new Gcp.Compute.Network("peering_network", new()
     ///     {
     ///         Name = "test-network",

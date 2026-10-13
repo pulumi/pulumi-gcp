@@ -443,7 +443,7 @@ class Key(pulumi.CustomResource):
         myaccount = gcp.serviceaccount.Account("myaccount",
             account_id="myaccount",
             display_name="My Service Account")
-        # note this requires the terraform to be run regularly
+        # note this requires the pulumi to be run regularly
         mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
         mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
@@ -545,7 +545,7 @@ class Key(pulumi.CustomResource):
         myaccount = gcp.serviceaccount.Account("myaccount",
             account_id="myaccount",
             display_name="My Service Account")
-        # note this requires the terraform to be run regularly
+        # note this requires the pulumi to be run regularly
         mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
         mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,

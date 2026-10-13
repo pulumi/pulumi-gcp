@@ -463,16 +463,16 @@ class DataObject(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # NOTE: This resource issues one CreateDataObject request per block.
-        # It does NOT batch across resources. Terraform will parallelize a
+        # It does NOT batch across resources. Pulumi will parallelize a
         # 'for_each' up to '-parallelism', but each item is still a separate
         # HTTP call.
         #
         # For bulk ingestion of many items, prefer one of these out-of-band
-        # paths instead of Terraform:
+        # paths instead of Pulumi:
         #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
         #     but only available *before* any Index is created on the Collection.
         #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-        #     time, but must be driven from client code, not Terraform.
+        #     time, but must be driven from client code, not Pulumi.
         parent = gcp.vectorsearch.Collection("parent",
             location="us-central1",
             collection_id="example-collection",
@@ -522,16 +522,16 @@ class DataObject(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # NOTE: This resource issues one CreateDataObject request per block.
-        # It does NOT batch across resources. Terraform will parallelize a
+        # It does NOT batch across resources. Pulumi will parallelize a
         # 'for_each' up to '-parallelism', but each item is still a separate
         # HTTP call.
         #
         # For bulk ingestion of many items, prefer one of these out-of-band
-        # paths instead of Terraform:
+        # paths instead of Pulumi:
         #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
         #     but only available *before* any Index is created on the Collection.
         #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-        #     time, but must be driven from client code, not Terraform.
+        #     time, but must be driven from client code, not Pulumi.
         parent = gcp.vectorsearch.Collection("parent",
             location="us-central1",
             collection_id="example-vectors-collection",
@@ -687,16 +687,16 @@ class DataObject(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # NOTE: This resource issues one CreateDataObject request per block.
-        # It does NOT batch across resources. Terraform will parallelize a
+        # It does NOT batch across resources. Pulumi will parallelize a
         # 'for_each' up to '-parallelism', but each item is still a separate
         # HTTP call.
         #
         # For bulk ingestion of many items, prefer one of these out-of-band
-        # paths instead of Terraform:
+        # paths instead of Pulumi:
         #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
         #     but only available *before* any Index is created on the Collection.
         #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-        #     time, but must be driven from client code, not Terraform.
+        #     time, but must be driven from client code, not Pulumi.
         parent = gcp.vectorsearch.Collection("parent",
             location="us-central1",
             collection_id="example-collection",
@@ -746,16 +746,16 @@ class DataObject(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         # NOTE: This resource issues one CreateDataObject request per block.
-        # It does NOT batch across resources. Terraform will parallelize a
+        # It does NOT batch across resources. Pulumi will parallelize a
         # 'for_each' up to '-parallelism', but each item is still a separate
         # HTTP call.
         #
         # For bulk ingestion of many items, prefer one of these out-of-band
-        # paths instead of Terraform:
+        # paths instead of Pulumi:
         #   * 'importDataObjects' (from Cloud Storage) -- highest throughput,
         #     but only available *before* any Index is created on the Collection.
         #   * 'batchCreate' (up to ~1000 items per call) -- available at any
-        #     time, but must be driven from client code, not Terraform.
+        #     time, but must be driven from client code, not Pulumi.
         parent = gcp.vectorsearch.Collection("parent",
             location="us-central1",
             collection_id="example-vectors-collection",

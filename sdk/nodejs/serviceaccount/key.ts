@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
- * // note this requires the terraform to be run regularly
+ * // note this requires the pulumi to be run regularly
  * const mykeyRotation = new time.Rotating("mykey_rotation", {rotationDays: 30});
  * const mykey = new gcp.serviceaccount.Key("mykey", {
  *     serviceAccountId: myaccount.name,

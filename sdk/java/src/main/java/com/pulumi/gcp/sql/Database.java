@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ *         // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .region("us-central1")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ *         // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
  *             .region("us-central1")

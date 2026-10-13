@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // This is a basic example for Terraform support in Chronicle feeds APIs.
+ *         // This is a basic example for Pulumi support in Chronicle feeds APIs.
  *         var exampleFeed = new Feed("exampleFeed", FeedArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")

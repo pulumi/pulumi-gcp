@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .displayName("My Service Account")
  *             .build());
  * 
- *         // note this requires the terraform to be run regularly
+ *         // note this requires the pulumi to be run regularly
  *         var mykeyRotation = new Rotating("mykeyRotation", RotatingArgs.builder()
  *             .rotationDays(30)
  *             .build());

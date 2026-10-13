@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Reference design doc: go/lima-terraform
+//			// Reference design doc: go/lima-pulumi
 //			_, err := licensemanager.NewConfiguration(ctx, "example-configuration", &licensemanager.ConfigurationArgs{
 //				Location:        pulumi.String("us-central1"),
 //				ConfigurationId: pulumi.String("example-configuration"),

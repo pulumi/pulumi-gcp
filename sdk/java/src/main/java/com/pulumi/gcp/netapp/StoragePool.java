@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a network or use datasource to reference existing network
+ *         // Create a network or use function to reference existing network
  *         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()
  *             .name("test-network")
  *             .build());

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // This is a basic example for Terraform support in Chronicle feeds APIs.
+ * // This is a basic example for Pulumi support in Chronicle feeds APIs.
  * const exampleFeed = new gcp.chronicle.Feed("example_feed", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",

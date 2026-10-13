@@ -19,12 +19,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // NOTE: For most workloads we recommend creating the Collection and the Index
- * // in *separate* Terraform configurations (i.e. create and apply the Collection
+ * // in *separate* Pulumi configurations (i.e. create and apply the Collection
  * // first, ingest data via importDataObjects, and only then create the Index in a
  * // second configuration). Once an Index exists on a Collection you can no longer
  * // run importDataObjects for bulk ingestion of data objects on that Collection --
  * // you are limited to creating data objects one at a time or in small online
- * // batches. Defining both resources in the same Terraform file (as shown below)
+ * // batches. Defining both resources in the same Pulumi file (as shown below)
  * // is convenient for a quick start, but locks you into the online / batched
  * // create path for any subsequent data ingestion.
  * const parent = new gcp.vectorsearch.Collection("parent", {
@@ -76,12 +76,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // NOTE: For most workloads we recommend creating the Collection and the Index
- * // in *separate* Terraform configurations (i.e. create and apply the Collection
+ * // in *separate* Pulumi configurations (i.e. create and apply the Collection
  * // first, ingest data via importDataObjects, and only then create the Index in a
  * // second configuration). Once an Index exists on a Collection you can no longer
  * // run importDataObjects for bulk ingestion of data objects on that Collection --
  * // you are limited to creating data objects one at a time or in small online
- * // batches. Defining both resources in the same Terraform file (as shown below)
+ * // batches. Defining both resources in the same Pulumi file (as shown below)
  * // is convenient for a quick start, but locks you into the online / batched
  * // create path for any subsequent data ingestion.
  * const parent = new gcp.vectorsearch.Collection("parent", {

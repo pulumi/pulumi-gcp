@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			// It takes a while for permissions to propagate
-//			// If your Terraform setup has a retry mechanism, this wait is unnecessary
+//			// If your Pulumi setup has a retry mechanism, this wait is unnecessary
 //			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
 //				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -147,7 +147,7 @@ import (
 //				return err
 //			}
 //			// It takes a while for permissions to propagate
-//			// If your Terraform setup has a retry mechanism, this wait is unnecessary
+//			// If your Pulumi setup has a retry mechanism, this wait is unnecessary
 //			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
 //				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{

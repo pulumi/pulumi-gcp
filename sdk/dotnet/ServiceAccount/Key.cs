@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         DisplayName = "My Service Account",
     ///     });
     /// 
-    ///     // note this requires the terraform to be run regularly
+    ///     // note this requires the pulumi to be run regularly
     ///     var mykeyRotation = new Time.Rotating("mykey_rotation", new()
     ///     {
     ///         RotationDays = 30,

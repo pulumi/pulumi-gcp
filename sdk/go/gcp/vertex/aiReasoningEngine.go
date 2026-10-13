@@ -350,7 +350,7 @@ import (
 //			}
 //			// When PSC-I is configured, Agent deletion will fail,
 //			// although the agent will be deleted.
-//			// Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+//			// Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 //			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
 //				DisplayName: pulumi.String("reasoning-engine"),
 //				Description: pulumi.String("A basic reasoning engine"),
