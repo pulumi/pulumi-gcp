@@ -9,8 +9,8 @@ require (
 	github.com/hexops/autogold/v2 v2.3.1
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.141.0
-	github.com/pulumi/pulumi/pkg/v3 v3.269.0
-	github.com/pulumi/pulumi/sdk/v3 v3.269.0
+	github.com/pulumi/pulumi/pkg/v3 v3.270.0
+	github.com/pulumi/pulumi/sdk/v3 v3.270.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/api v0.298.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -225,7 +225,7 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-cloud-sdk/go v1.20261015.0 // indirect
+	github.com/pulumi/pulumi-cloud-sdk/go v1.20261016.0 // indirect
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.114.2 // indirect
 	github.com/pulumi/pulumi-hcl v0.18.5 // indirect
 	github.com/pulumi/pulumi-java v1.37.4 // indirect
