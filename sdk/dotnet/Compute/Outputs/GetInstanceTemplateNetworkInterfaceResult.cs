@@ -88,6 +88,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int QueueCount;
         /// <summary>
+        /// Producer Service's Service class Id for the region of this network interface. Can only be used with `NetworkAttachment`. It is not possible to use on its own; however, `NetworkAttachment` can be used without `ServiceClassId`.
+        /// </summary>
+        public readonly string ServiceClassId;
+        /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         /// </summary>
         public readonly string StackType;
@@ -141,6 +145,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int queueCount,
 
+            string serviceClassId,
+
             string stackType,
 
             string subnetwork,
@@ -165,6 +171,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             NicType = nicType;
             ParentNicName = parentNicName;
             QueueCount = queueCount;
+            ServiceClassId = serviceClassId;
             StackType = stackType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;

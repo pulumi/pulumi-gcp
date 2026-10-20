@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,52 @@ import javax.annotation.Nullable;
 public final class FirewallEndpointEndpointSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FirewallEndpointEndpointSettingsArgs Empty = new FirewallEndpointEndpointSettingsArgs();
+
+    /**
+     * (Optional, Beta)
+     * The Palo Alto Networks content cloud region of the firewall endpoint,
+     * for example `US_CENTRAL` or `CANADA`. See
+     * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+     * for the list of supported regions.
+     * 
+     */
+    @Import(name="contentCloudRegion")
+    private @Nullable Output<String> contentCloudRegion;
+
+    /**
+     * @return (Optional, Beta)
+     * The Palo Alto Networks content cloud region of the firewall endpoint,
+     * for example `US_CENTRAL` or `CANADA`. See
+     * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+     * for the list of supported regions.
+     * 
+     */
+    public Optional<Output<String>> contentCloudRegion() {
+        return Optional.ofNullable(this.contentCloudRegion);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Whether to block HTTP partial responses for the firewall endpoint.
+     * When `true`, resumption of blocked malicious HTTP file downloads is
+     * blocked by the firewall. `false` provides maximum availability, `true`
+     * provides maximum security.
+     * 
+     */
+    @Import(name="httpPartialResponseBlocked")
+    private @Nullable Output<Boolean> httpPartialResponseBlocked;
+
+    /**
+     * @return (Optional, Beta)
+     * Whether to block HTTP partial responses for the firewall endpoint.
+     * When `true`, resumption of blocked malicious HTTP file downloads is
+     * blocked by the firewall. `false` provides maximum availability, `true`
+     * provides maximum security.
+     * 
+     */
+    public Optional<Output<Boolean>> httpPartialResponseBlocked() {
+        return Optional.ofNullable(this.httpPartialResponseBlocked);
+    }
 
     /**
      * Indicates whether Jumbo Frames are enabled for the firewall endpoint.
@@ -33,6 +80,8 @@ public final class FirewallEndpointEndpointSettingsArgs extends com.pulumi.resou
     private FirewallEndpointEndpointSettingsArgs() {}
 
     private FirewallEndpointEndpointSettingsArgs(FirewallEndpointEndpointSettingsArgs $) {
+        this.contentCloudRegion = $.contentCloudRegion;
+        this.httpPartialResponseBlocked = $.httpPartialResponseBlocked;
         this.jumboFramesEnabled = $.jumboFramesEnabled;
     }
 
@@ -52,6 +101,64 @@ public final class FirewallEndpointEndpointSettingsArgs extends com.pulumi.resou
 
         public Builder(FirewallEndpointEndpointSettingsArgs defaults) {
             $ = new FirewallEndpointEndpointSettingsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param contentCloudRegion (Optional, Beta)
+         * The Palo Alto Networks content cloud region of the firewall endpoint,
+         * for example `US_CENTRAL` or `CANADA`. See
+         * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+         * for the list of supported regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentCloudRegion(@Nullable Output<String> contentCloudRegion) {
+            $.contentCloudRegion = contentCloudRegion;
+            return this;
+        }
+
+        /**
+         * @param contentCloudRegion (Optional, Beta)
+         * The Palo Alto Networks content cloud region of the firewall endpoint,
+         * for example `US_CENTRAL` or `CANADA`. See
+         * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+         * for the list of supported regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentCloudRegion(String contentCloudRegion) {
+            return contentCloudRegion(Output.of(contentCloudRegion));
+        }
+
+        /**
+         * @param httpPartialResponseBlocked (Optional, Beta)
+         * Whether to block HTTP partial responses for the firewall endpoint.
+         * When `true`, resumption of blocked malicious HTTP file downloads is
+         * blocked by the firewall. `false` provides maximum availability, `true`
+         * provides maximum security.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpPartialResponseBlocked(@Nullable Output<Boolean> httpPartialResponseBlocked) {
+            $.httpPartialResponseBlocked = httpPartialResponseBlocked;
+            return this;
+        }
+
+        /**
+         * @param httpPartialResponseBlocked (Optional, Beta)
+         * Whether to block HTTP partial responses for the firewall endpoint.
+         * When `true`, resumption of blocked malicious HTTP file downloads is
+         * blocked by the firewall. `false` provides maximum availability, `true`
+         * provides maximum security.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpPartialResponseBlocked(Boolean httpPartialResponseBlocked) {
+            return httpPartialResponseBlocked(Output.of(httpPartialResponseBlocked));
         }
 
         /**

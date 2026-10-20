@@ -132,6 +132,7 @@ class ProviderArgs:
                  firebaserules_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  firestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gemini_data_analytics_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_hub2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -467,6 +468,8 @@ class ProviderArgs:
             pulumi.set(__self__, "firestore_custom_endpoint", firestore_custom_endpoint)
         if gemini_custom_endpoint is not None:
             pulumi.set(__self__, "gemini_custom_endpoint", gemini_custom_endpoint)
+        if gemini_data_analytics_custom_endpoint is not None:
+            pulumi.set(__self__, "gemini_data_analytics_custom_endpoint", gemini_data_analytics_custom_endpoint)
         if gke_backup_custom_endpoint is not None:
             pulumi.set(__self__, "gke_backup_custom_endpoint", gke_backup_custom_endpoint)
         if gke_hub2_custom_endpoint is not None:
@@ -1699,6 +1702,15 @@ class ProviderArgs:
         pulumi.set(self, "gemini_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="geminiDataAnalyticsCustomEndpoint")
+    def gemini_data_analytics_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "gemini_data_analytics_custom_endpoint")
+
+    @gemini_data_analytics_custom_endpoint.setter
+    def gemini_data_analytics_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gemini_data_analytics_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="gkeBackupCustomEndpoint")
     def gke_backup_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gke_backup_custom_endpoint")
@@ -2789,6 +2801,7 @@ class Provider(pulumi.ProviderResource):
                  firebaserules_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  firestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gemini_data_analytics_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_hub2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3048,6 +3061,7 @@ class Provider(pulumi.ProviderResource):
                  firebaserules_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  firestore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gemini_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gemini_data_analytics_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_hub2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_hub_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3277,6 +3291,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
             __props__.__dict__["gemini_custom_endpoint"] = gemini_custom_endpoint
+            __props__.__dict__["gemini_data_analytics_custom_endpoint"] = gemini_data_analytics_custom_endpoint
             __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
             __props__.__dict__["gke_hub2_custom_endpoint"] = gke_hub2_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
@@ -3933,6 +3948,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="geminiCustomEndpoint")
     def gemini_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "gemini_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="geminiDataAnalyticsCustomEndpoint")
+    def gemini_data_analytics_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "gemini_data_analytics_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="gkeBackupCustomEndpoint")

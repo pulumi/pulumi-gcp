@@ -36,6 +36,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }
 
+        /// <summary>
+        /// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigGetArgs()
         {
         }

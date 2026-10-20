@@ -913,6 +913,14 @@ Object.defineProperty(exports, "geminiCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const geminiDataAnalyticsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "geminiDataAnalyticsCustomEndpoint", {
+    get() {
+        return __config.get("geminiDataAnalyticsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const gkeBackupCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkeBackupCustomEndpoint", {
     get() {

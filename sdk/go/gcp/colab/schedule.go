@@ -323,7 +323,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -332,7 +332,7 @@ import (
 //			dataformRepository, err := dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 //				Name:                                   pulumi.String("dataform-repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
-//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
 //				KmsKeyName:                             pulumi.String("my-key"),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
@@ -340,7 +340,7 @@ import (
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 //					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+//					AuthenticationTokenSecretVersion: secretVersion.ID(),
 //				},
 //				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 //					DefaultDatabase: pulumi.String("database"),
@@ -482,7 +482,7 @@ import (
 //			}
 //			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("colab-test-default"),
-//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //			})
@@ -526,8 +526,8 @@ import (
 //							},
 //							NetworkSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs{
 //								EnableInternetAccess: pulumi.Bool(true),
-//								Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
-//								Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+//								Network:              myNetwork.ID(),
+//								Subnetwork:           mySubnetwork.ID(),
 //							},
 //						},
 //						EncryptionSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs{
@@ -618,7 +618,7 @@ import (
 //					PipelineJob: &colab.ScheduleCreatePipelineJobRequestPipelineJobArgs{
 //						DisplayName:          pulumi.String("test-pipeline-job"),
 //						PreflightValidations: pulumi.Bool(true),
-//						Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
+//						Network:              myNetwork.ID(),
 //						ServiceAccount:       pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //						TemplateUri:          pulumi.String("https://us-kfp.pkg.dev/proj/repo/template/v1"),
 //						ReservedIpRanges: pulumi.StringArray{
@@ -635,7 +635,7 @@ import (
 //							DnsPeeringConfigs: colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray{
 //								&colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{
 //									Domain:        pulumi.String("my-internal-domain.corp."),
-//									TargetNetwork: myNetwork.ID().ToIDOutput().ToStringOutput(),
+//									TargetNetwork: myNetwork.ID(),
 //									TargetProject: pulumi.String(project.ProjectId),
 //								},
 //							},

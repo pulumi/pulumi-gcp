@@ -42,6 +42,36 @@ import (
 // ```
 //
 // ### Configure Kubernetes Provider With OAuth2 Access Token
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.LookupCluster(ctx, &container.LookupClusterArgs{
+//				Name: "my-cluster",
+//				Zone: "us-east1-a",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientConfigResult

@@ -14,6 +14,33 @@ import (
 // This data source fetches information of a tag from a provided Artifact Registry repository.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.GetTags(ctx, &artifactregistry.GetTagsArgs{
+//				Location:     "us-central1",
+//				RepositoryId: "example-repo",
+//				PackageName:  "example-package",
+//				TagName:      "latest",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTag(ctx *pulumi.Context, args *GetTagArgs, opts ...pulumi.InvokeOption) (*GetTagResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagResult

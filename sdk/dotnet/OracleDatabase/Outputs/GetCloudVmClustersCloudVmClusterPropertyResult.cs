@@ -171,6 +171,22 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// [IANA Time Zone Database](https://www.iana.org/time-zones).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult> TimeZones;
+        /// <summary>
+        /// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        /// Possible values:
+        /// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+        /// VM_BACKUP_STORAGE_TYPE_LOCAL
+        /// VM_BACKUP_STORAGE_TYPE_EXASCALE
+        /// </summary>
+        public readonly string VmBackupStorageType;
+        /// <summary>
+        /// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+        /// Possible values:
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+        /// </summary>
+        public readonly string VmFileSystemStorageType;
 
         [OutputConstructor]
         private GetCloudVmClustersCloudVmClusterPropertyResult(
@@ -238,7 +254,11 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string systemVersion,
 
-            ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult> timeZones)
+            ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult> timeZones,
+
+            string vmBackupStorageType,
+
+            string vmFileSystemStorageType)
         {
             ClusterName = clusterName;
             CompartmentId = compartmentId;
@@ -273,6 +293,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             StorageSizeGb = storageSizeGb;
             SystemVersion = systemVersion;
             TimeZones = timeZones;
+            VmBackupStorageType = vmBackupStorageType;
+            VmFileSystemStorageType = vmFileSystemStorageType;
         }
     }
 }

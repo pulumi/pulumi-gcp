@@ -1203,6 +1203,7 @@ class Agent(pulumi.CustomResource):
             model_settings={
                 "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
+                "thinking_level": "LOW",
             },
             before_agent_callbacks=[{
                 "description": "Example callback",
@@ -1630,6 +1631,7 @@ class Agent(pulumi.CustomResource):
             model_settings={
                 "model": "gemini-3.0-flash-001",
                 "temperature": 0.5,
+                "thinking_level": "LOW",
             },
             before_agent_callbacks=[{
                 "description": "Example callback",

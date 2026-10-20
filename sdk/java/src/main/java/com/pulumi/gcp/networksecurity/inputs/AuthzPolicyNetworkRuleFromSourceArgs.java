@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleFromSourceIpBlockArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleFromSourcePrincipalArgs;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleFromSourceResourceArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -53,11 +54,31 @@ public final class AuthzPolicyNetworkRuleFromSourceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.principals);
     }
 
+    /**
+     * A list of resources to match against the resource of the source VM of a request.
+     * Limited to 5 resources.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable Output<List<AuthzPolicyNetworkRuleFromSourceResourceArgs>> resources;
+
+    /**
+     * @return A list of resources to match against the resource of the source VM of a request.
+     * Limited to 5 resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AuthzPolicyNetworkRuleFromSourceResourceArgs>>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
     private AuthzPolicyNetworkRuleFromSourceArgs() {}
 
     private AuthzPolicyNetworkRuleFromSourceArgs(AuthzPolicyNetworkRuleFromSourceArgs $) {
         this.ipBlocks = $.ipBlocks;
         this.principals = $.principals;
+        this.resources = $.resources;
     }
 
     public static Builder builder() {
@@ -147,6 +168,43 @@ public final class AuthzPolicyNetworkRuleFromSourceArgs extends com.pulumi.resou
          */
         public Builder principals(AuthzPolicyNetworkRuleFromSourcePrincipalArgs... principals) {
             return principals(List.of(principals));
+        }
+
+        /**
+         * @param resources A list of resources to match against the resource of the source VM of a request.
+         * Limited to 5 resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable Output<List<AuthzPolicyNetworkRuleFromSourceResourceArgs>> resources) {
+            $.resources = resources;
+            return this;
+        }
+
+        /**
+         * @param resources A list of resources to match against the resource of the source VM of a request.
+         * Limited to 5 resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(List<AuthzPolicyNetworkRuleFromSourceResourceArgs> resources) {
+            return resources(Output.of(resources));
+        }
+
+        /**
+         * @param resources A list of resources to match against the resource of the source VM of a request.
+         * Limited to 5 resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(AuthzPolicyNetworkRuleFromSourceResourceArgs... resources) {
+            return resources(List.of(resources));
         }
 
         public AuthzPolicyNetworkRuleFromSourceArgs build() {

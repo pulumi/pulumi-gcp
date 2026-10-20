@@ -310,6 +310,8 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             CpuCoreCount = 4,
     ///             GiVersion = "23.0.0.0",
     ///             HostnamePrefix = "hostname1",
+    ///             VmFileSystemStorageType = "VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL",
+    ///             VmBackupStorageType = "VM_BACKUP_STORAGE_TYPE_LOCAL",
     ///             MemorySizeGb = 60,
     ///             DbNodeStorageSizeGb = 120,
     ///             DbServerOcids = new[]

@@ -158,8 +158,9 @@ import (
 //				Description: pulumi.String("test agent"),
 //				Instruction: pulumi.String("You are a helpful assistant for this example."),
 //				ModelSettings: &ces.AgentModelSettingsArgs{
-//					Model:       pulumi.String("gemini-3.0-flash-001"),
-//					Temperature: pulumi.Float64(0.5),
+//					Model:         pulumi.String("gemini-3.0-flash-001"),
+//					Temperature:   pulumi.Float64(0.5),
+//					ThinkingLevel: pulumi.String("LOW"),
 //				},
 //				BeforeAgentCallbacks: ces.AgentBeforeAgentCallbackArray{
 //					&ces.AgentBeforeAgentCallbackArgs{
@@ -204,14 +205,14 @@ import (
 //					},
 //				},
 //				Tools: pulumi.StringArray{
-//					cesToolForAgent.ID().ToIDOutput().ToStringOutput(),
+//					cesToolForAgent.ID(),
 //				},
 //				Guardrails: pulumi.StringArray{
-//					cesGuardrailForAgent.ID().ToIDOutput().ToStringOutput(),
+//					cesGuardrailForAgent.ID(),
 //				},
 //				Toolsets: ces.AgentToolsetArray{
 //					&ces.AgentToolsetArgs{
-//						Toolset: cesToolsetForAgent.ID().ToIDOutput().ToStringOutput(),
+//						Toolset: cesToolsetForAgent.ID(),
 //						ToolIds: pulumi.StringArray{
 //							pulumi.String("testtoolid"),
 //						},

@@ -474,6 +474,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('geminiCustomEndpoint')
 
     @_builtins.property
+    def gemini_data_analytics_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('geminiDataAnalyticsCustomEndpoint')
+
+    @_builtins.property
     def gke_backup_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkeBackupCustomEndpoint')
 

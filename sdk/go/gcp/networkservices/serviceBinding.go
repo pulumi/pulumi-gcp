@@ -47,7 +47,7 @@ import (
 //			}
 //			defaultService, err := servicedirectory.NewService(ctx, "default", &servicedirectory.ServiceArgs{
 //				ServiceId: pulumi.String("my-service"),
-//				Namespace: _default.ID().ToIDOutput().ToStringOutput(),
+//				Namespace: _default.ID(),
 //				Metadata: pulumi.StringMap{
 //					"stage":  pulumi.String("prod"),
 //					"region": pulumi.String("us-central1"),
@@ -62,7 +62,7 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description: pulumi.String("my description"),
-//				Service:     defaultService.ID().ToIDOutput().ToStringOutput(),
+//				Service:     defaultService.ID(),
 //			})
 //			if err != nil {
 //				return err

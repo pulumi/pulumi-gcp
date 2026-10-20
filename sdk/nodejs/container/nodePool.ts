@@ -127,6 +127,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly autoscaling: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
+     * Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    declare public readonly bestEffortProvisioning: pulumi.Output<outputs.container.NodePoolBestEffortProvisioning | undefined>;
+    /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
      * ***
@@ -139,8 +145,6 @@ export class NodePool extends pulumi.CustomResource {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -202,7 +206,7 @@ export class NodePool extends pulumi.CustomResource {
      * Resulting name for a `namePrefix` <= 14 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 15 - 31 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     declare public readonly namePrefix: pulumi.Output<string>;
     /**
@@ -280,6 +284,7 @@ export class NodePool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
             resourceInputs["autoscaling"] = state?.autoscaling;
+            resourceInputs["bestEffortProvisioning"] = state?.bestEffortProvisioning;
             resourceInputs["cluster"] = state?.cluster;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["ignoreNodeCountChanges"] = state?.ignoreNodeCountChanges;
@@ -309,6 +314,7 @@ export class NodePool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'cluster'");
             }
             resourceInputs["autoscaling"] = args?.autoscaling;
+            resourceInputs["bestEffortProvisioning"] = args?.bestEffortProvisioning;
             resourceInputs["cluster"] = args?.cluster;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["ignoreNodeCountChanges"] = args?.ignoreNodeCountChanges;
@@ -348,6 +354,12 @@ export interface NodePoolState {
      */
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling | undefined>;
     /**
+     * Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    bestEffortProvisioning?: pulumi.Input<inputs.container.NodePoolBestEffortProvisioning | undefined>;
+    /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
      * ***
@@ -360,8 +372,6 @@ export interface NodePoolState {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -423,7 +433,7 @@ export interface NodePoolState {
      * Resulting name for a `namePrefix` <= 14 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 15 - 31 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**
@@ -498,6 +508,12 @@ export interface NodePoolArgs {
      */
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling | undefined>;
     /**
+     * Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    bestEffortProvisioning?: pulumi.Input<inputs.container.NodePoolBestEffortProvisioning | undefined>;
+    /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
      * ***
@@ -510,8 +526,6 @@ export interface NodePoolArgs {
      * When set to "ABANDON", the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -565,7 +579,7 @@ export interface NodePoolArgs {
      * Resulting name for a `namePrefix` <= 14 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 15 - 31 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**

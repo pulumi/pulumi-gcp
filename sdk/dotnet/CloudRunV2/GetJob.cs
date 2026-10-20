@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string Etag;
         public readonly int ExecutionCount;
         public readonly string ExpireTime;
+        public readonly string FunctionalType;
         public readonly string Generation;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -226,6 +227,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             string expireTime,
 
+            string functionalType,
+
             string generation,
 
             string id,
@@ -279,6 +282,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Etag = etag;
             ExecutionCount = executionCount;
             ExpireTime = expireTime;
+            FunctionalType = functionalType;
             Generation = generation;
             Id = id;
             Labels = labels;

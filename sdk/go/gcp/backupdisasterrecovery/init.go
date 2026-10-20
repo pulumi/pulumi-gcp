@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:backupdisasterrecovery/autoProtectionPolicy:AutoProtectionPolicy":
+		r = &AutoProtectionPolicy{}
 	case "gcp:backupdisasterrecovery/backupPlan:BackupPlan":
 		r = &BackupPlan{}
 	case "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation":
@@ -46,6 +48,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"backupdisasterrecovery/autoProtectionPolicy",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"backupdisasterrecovery/backupPlan",

@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-basic", &parametermanager.ParameterVersionArgs{
-//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
 //				ParameterData:      pulumi.String("app-parameter-version-data"),
 //			})
@@ -85,7 +85,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-json-format", &parametermanager.ParameterVersionArgs{
-//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
 //				ParameterData:      pulumi.String(json0),
 //			})
@@ -124,7 +124,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-kms-key", &parametermanager.ParameterVersionArgs{
-//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
 //				ParameterData:      pulumi.String("app-parameter-version-data"),
 //			})
@@ -165,7 +165,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-json-format-with-file", &parametermanager.ParameterVersionArgs{
-//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
 //				ParameterData:      pulumi.String(invokeFile.Result),
 //			})
@@ -206,7 +206,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-yaml-format-with-file", &parametermanager.ParameterVersionArgs{
-//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
 //				ParameterData:      pulumi.String(invokeFile.Result),
 //			})
@@ -239,7 +239,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-data-crc32c", &parametermanager.ParameterVersionArgs{
-//				Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("parameter_version"),
 //				ParameterData:      pulumi.String("app-parameter-version-data"),
 //				DataCrc32c:         pulumi.String("3931523681"),

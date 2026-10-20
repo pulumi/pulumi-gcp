@@ -5,9 +5,12 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.GeneratorAgentCoachingContextArgs;
+import com.pulumi.gcp.diagflow.inputs.GeneratorFreeFormContextArgs;
 import com.pulumi.gcp.diagflow.inputs.GeneratorInferenceParameterArgs;
 import com.pulumi.gcp.diagflow.inputs.GeneratorSummarizationContextArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,23 @@ import javax.annotation.Nullable;
 public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
 
     public static final GeneratorState Empty = new GeneratorState();
+
+    /**
+     * Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="agentCoachingContext")
+    private @Nullable Output<GeneratorAgentCoachingContextArgs> agentCoachingContext;
+
+    /**
+     * @return Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GeneratorAgentCoachingContextArgs>> agentCoachingContext() {
+        return Optional.ofNullable(this.agentCoachingContext);
+    }
 
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -55,6 +75,23 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Input of free form generator to LLM.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="freeFormContext")
+    private @Nullable Output<GeneratorFreeFormContextArgs> freeFormContext;
+
+    /**
+     * @return Input of free form generator to LLM.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GeneratorFreeFormContextArgs>> freeFormContext() {
+        return Optional.ofNullable(this.freeFormContext);
     }
 
     /**
@@ -169,6 +206,21 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+     * 
+     */
+    @Import(name="tools")
+    private @Nullable Output<List<String>> tools;
+
+    /**
+     * @return Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+     * 
+     */
+    public Optional<Output<List<String>>> tools() {
+        return Optional.ofNullable(this.tools);
+    }
+
+    /**
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
      * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
      * 
@@ -188,8 +240,10 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
     private GeneratorState() {}
 
     private GeneratorState(GeneratorState $) {
+        this.agentCoachingContext = $.agentCoachingContext;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
+        this.freeFormContext = $.freeFormContext;
         this.generatorId = $.generatorId;
         this.inferenceParameter = $.inferenceParameter;
         this.location = $.location;
@@ -197,6 +251,7 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.publishedModel = $.publishedModel;
         this.summarizationContext = $.summarizationContext;
+        this.tools = $.tools;
         this.triggerEvent = $.triggerEvent;
     }
 
@@ -216,6 +271,29 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GeneratorState defaults) {
             $ = new GeneratorState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param agentCoachingContext Input of prebuilt Agent Coaching feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentCoachingContext(@Nullable Output<GeneratorAgentCoachingContextArgs> agentCoachingContext) {
+            $.agentCoachingContext = agentCoachingContext;
+            return this;
+        }
+
+        /**
+         * @param agentCoachingContext Input of prebuilt Agent Coaching feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentCoachingContext(GeneratorAgentCoachingContextArgs agentCoachingContext) {
+            return agentCoachingContext(Output.of(agentCoachingContext));
         }
 
         /**
@@ -268,6 +346,29 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param freeFormContext Input of free form generator to LLM.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder freeFormContext(@Nullable Output<GeneratorFreeFormContextArgs> freeFormContext) {
+            $.freeFormContext = freeFormContext;
+            return this;
+        }
+
+        /**
+         * @param freeFormContext Input of free form generator to LLM.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder freeFormContext(GeneratorFreeFormContextArgs freeFormContext) {
+            return freeFormContext(Output.of(freeFormContext));
         }
 
         /**
@@ -421,6 +522,37 @@ public final class GeneratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder summarizationContext(GeneratorSummarizationContextArgs summarizationContext) {
             return summarizationContext(Output.of(summarizationContext));
+        }
+
+        /**
+         * @param tools Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tools(@Nullable Output<List<String>> tools) {
+            $.tools = tools;
+            return this;
+        }
+
+        /**
+         * @param tools Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tools(List<String> tools) {
+            return tools(Output.of(tools));
+        }
+
+        /**
+         * @param tools Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tools(String... tools) {
+            return tools(List.of(tools));
         }
 
         /**

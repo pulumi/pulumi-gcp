@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         [Input("to")]
         public Input<Inputs.AuthzPolicyNetworkRuleToArgs>? To { get; set; }
 
+        /// <summary>
+        /// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+        /// </summary>
+        [Input("when")]
+        public Input<string>? When { get; set; }
+
         public AuthzPolicyNetworkRuleArgs()
         {
         }

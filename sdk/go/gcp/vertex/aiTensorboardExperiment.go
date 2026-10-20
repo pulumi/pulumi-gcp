@@ -48,7 +48,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("sample experiment"),
 //				Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//					Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+//					Input: tensorboard.ID(),
 //				}, nil).Result(),
 //				TensorboardExperimentId: pulumi.String("experiment"),
 //				Source:                  pulumi.String("a custom training job"),

@@ -10,6 +10,7 @@ import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDet
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -171,6 +172,33 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Specifies the modalities to scan. If empty, only text modality will be
+     * scanned. Image screening is in Preview and is only supported in the `us`
+     * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+     * support it.
+     * Possible values:
+     * MODALITY_TEXT
+     * MODALITY_IMAGE
+     * 
+     */
+    @Import(name="modalities")
+    private @Nullable Output<List<String>> modalities;
+
+    /**
+     * @return Specifies the modalities to scan. If empty, only text modality will be
+     * scanned. Image screening is in Preview and is only supported in the `us`
+     * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+     * support it.
+     * Possible values:
+     * MODALITY_TEXT
+     * MODALITY_IMAGE
+     * 
+     */
+    public Optional<Output<List<String>>> modalities() {
+        return Optional.ofNullable(this.modalities);
+    }
+
+    /**
      * Metadata to enable multi language detection via template.
      * Structure is documented below.
      * 
@@ -199,6 +227,7 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
         this.ignorePartialInvocationFailures = $.ignorePartialInvocationFailures;
         this.logSanitizeOperations = $.logSanitizeOperations;
         this.logTemplateOperations = $.logTemplateOperations;
+        this.modalities = $.modalities;
         this.multiLanguageDetection = $.multiLanguageDetection;
     }
 
@@ -423,6 +452,55 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
          */
         public Builder logTemplateOperations(Boolean logTemplateOperations) {
             return logTemplateOperations(Output.of(logTemplateOperations));
+        }
+
+        /**
+         * @param modalities Specifies the modalities to scan. If empty, only text modality will be
+         * scanned. Image screening is in Preview and is only supported in the `us`
+         * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+         * support it.
+         * Possible values:
+         * MODALITY_TEXT
+         * MODALITY_IMAGE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modalities(@Nullable Output<List<String>> modalities) {
+            $.modalities = modalities;
+            return this;
+        }
+
+        /**
+         * @param modalities Specifies the modalities to scan. If empty, only text modality will be
+         * scanned. Image screening is in Preview and is only supported in the `us`
+         * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+         * support it.
+         * Possible values:
+         * MODALITY_TEXT
+         * MODALITY_IMAGE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modalities(List<String> modalities) {
+            return modalities(Output.of(modalities));
+        }
+
+        /**
+         * @param modalities Specifies the modalities to scan. If empty, only text modality will be
+         * scanned. Image screening is in Preview and is only supported in the `us`
+         * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+         * support it.
+         * Possible values:
+         * MODALITY_TEXT
+         * MODALITY_IMAGE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modalities(String... modalities) {
+            return modalities(List.of(modalities));
         }
 
         /**

@@ -26,8 +26,7 @@ public final class CloudControlParameterSpecDefaultValueOneofValueParameterValue
      */
     private @Nullable Double numberValue;
     /**
-     * @return Sub-parameter values.
-     * Structure is documented below.
+     * @return Sub-parameter values, in JSON format.
      * 
      */
     private @Nullable CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue oneofValue;
@@ -59,8 +58,7 @@ public final class CloudControlParameterSpecDefaultValueOneofValueParameterValue
         return Optional.ofNullable(this.numberValue);
     }
     /**
-     * @return Sub-parameter values.
-     * Structure is documented below.
+     * @return Sub-parameter values, in JSON format.
      * 
      */
     public Optional<CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue> oneofValue() {

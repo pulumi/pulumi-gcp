@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleFromSourceIpBlock;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleFromSourcePrincipal;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleFromSourceResource;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -25,6 +26,13 @@ public final class AuthzPolicyNetworkRuleFromSource {
      * 
      */
     private @Nullable List<AuthzPolicyNetworkRuleFromSourcePrincipal> principals;
+    /**
+     * @return A list of resources to match against the resource of the source VM of a request.
+     * Limited to 5 resources.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AuthzPolicyNetworkRuleFromSourceResource> resources;
 
     private AuthzPolicyNetworkRuleFromSource() {}
     /**
@@ -44,6 +52,15 @@ public final class AuthzPolicyNetworkRuleFromSource {
     public List<AuthzPolicyNetworkRuleFromSourcePrincipal> principals() {
         return this.principals == null ? List.of() : this.principals;
     }
+    /**
+     * @return A list of resources to match against the resource of the source VM of a request.
+     * Limited to 5 resources.
+     * Structure is documented below.
+     * 
+     */
+    public List<AuthzPolicyNetworkRuleFromSourceResource> resources() {
+        return this.resources == null ? List.of() : this.resources;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -56,11 +73,13 @@ public final class AuthzPolicyNetworkRuleFromSource {
     public static final class Builder {
         private @Nullable List<AuthzPolicyNetworkRuleFromSourceIpBlock> ipBlocks;
         private @Nullable List<AuthzPolicyNetworkRuleFromSourcePrincipal> principals;
+        private @Nullable List<AuthzPolicyNetworkRuleFromSourceResource> resources;
         public Builder() {}
         public Builder(AuthzPolicyNetworkRuleFromSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipBlocks = defaults.ipBlocks;
     	      this.principals = defaults.principals;
+    	      this.resources = defaults.resources;
         }
 
         @CustomType.Setter
@@ -81,10 +100,20 @@ public final class AuthzPolicyNetworkRuleFromSource {
         public Builder principals(AuthzPolicyNetworkRuleFromSourcePrincipal... principals) {
             return principals(List.of(principals));
         }
+        @CustomType.Setter
+        public Builder resources(@Nullable List<AuthzPolicyNetworkRuleFromSourceResource> resources) {
+
+            this.resources = resources;
+            return this;
+        }
+        public Builder resources(AuthzPolicyNetworkRuleFromSourceResource... resources) {
+            return resources(List.of(resources));
+        }
         public AuthzPolicyNetworkRuleFromSource build() {
             final var _resultValue = new AuthzPolicyNetworkRuleFromSource();
             _resultValue.ipBlocks = ipBlocks;
             _resultValue.principals = principals;
+            _resultValue.resources = resources;
             return _resultValue;
         }
     }

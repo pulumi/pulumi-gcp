@@ -47,7 +47,7 @@ import (
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-network-policy"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-//				VmwareEngineNetwork: network_policy_nw.ID().ToIDOutput().ToStringOutput(),
+//				VmwareEngineNetwork: network_policy_nw.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,7 +84,7 @@ import (
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-network-policy"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-//				VmwareEngineNetwork: network_policy_nw.ID().ToIDOutput().ToStringOutput(),
+//				VmwareEngineNetwork: network_policy_nw.ID(),
 //				Description:         pulumi.String("Sample Network Policy"),
 //				InternetAccess: &vmwareengine.NetworkPolicyInternetAccessArgs{
 //					Enabled: pulumi.Bool(true),

@@ -95,7 +95,7 @@ import (
 //					"inputFilePattern": bucket1.Url.ApplyT(func(url string) (string, error) {
 //						return fmt.Sprintf("%v/*.json", url), nil
 //					}).(pulumi.StringOutput),
-//					"outputTopic": topic.ID().ToIDOutput().ToStringOutput(),
+//					"outputTopic": topic.ID(),
 //				},
 //				TransformNameMapping: pulumi.StringMap{
 //					"name": pulumi.String("test_job"),

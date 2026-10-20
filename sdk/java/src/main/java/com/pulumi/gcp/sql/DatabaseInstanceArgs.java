@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceBlueGreenDeploymentArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceCloneArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstancePointInTimeRestoreContextArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicaConfigurationArgs;
@@ -44,6 +45,23 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> backupdrBackup() {
         return Optional.ofNullable(this.backupdrBackup);
+    }
+
+    /**
+     * The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+     * &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+     * 
+     */
+    @Import(name="blueGreenDeployment")
+    private @Nullable Output<DatabaseInstanceBlueGreenDeploymentArgs> blueGreenDeployment;
+
+    /**
+     * @return The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+     * &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+     * 
+     */
+    public Optional<Output<DatabaseInstanceBlueGreenDeploymentArgs>> blueGreenDeployment() {
+        return Optional.ofNullable(this.blueGreenDeployment);
     }
 
     /**
@@ -536,6 +554,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     private DatabaseInstanceArgs(DatabaseInstanceArgs $) {
         this.backupdrBackup = $.backupdrBackup;
+        this.blueGreenDeployment = $.blueGreenDeployment;
         this.clone = $.clone;
         this.databaseVersion = $.databaseVersion;
         this.deletionPolicy = $.deletionPolicy;
@@ -607,6 +626,29 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder backupdrBackup(String backupdrBackup) {
             return backupdrBackup(Output.of(backupdrBackup));
+        }
+
+        /**
+         * @param blueGreenDeployment The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+         * &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blueGreenDeployment(@Nullable Output<DatabaseInstanceBlueGreenDeploymentArgs> blueGreenDeployment) {
+            $.blueGreenDeployment = blueGreenDeployment;
+            return this;
+        }
+
+        /**
+         * @param blueGreenDeployment The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+         * &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blueGreenDeployment(DatabaseInstanceBlueGreenDeploymentArgs blueGreenDeployment) {
+            return blueGreenDeployment(Output.of(blueGreenDeployment));
         }
 
         /**

@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = storage.NewBucketIAMMember(ctx, "viewer", &storage.BucketIAMMemberArgs{
-//				Bucket: registry.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: registry.ID(),
 //				Role:   pulumi.String("roles/storage.objectViewer"),
 //				Member: pulumi.String("user:jane@example.com"),
 //			})

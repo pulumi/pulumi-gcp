@@ -14,6 +14,43 @@ import (
 // This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mavenRepo, err := artifactregistry.NewRepository(ctx, "maven_repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("my-maven-repo"),
+//				Format:       pulumi.String("MAVEN"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = artifactregistry.GetMavenArtifactOutput(ctx, artifactregistry.GetMavenArtifactOutputArgs{
+//				Location:     mavenRepo.Location,
+//				RepositoryId: mavenRepo.RepositoryId,
+//				GroupId:      pulumi.String("com.example"),
+//				ArtifactId:   pulumi.String("my-artifact"),
+//			}, nil)
+//			_ = artifactregistry.GetMavenArtifactOutput(ctx, artifactregistry.GetMavenArtifactOutputArgs{
+//				Location:     mavenRepo.Location,
+//				RepositoryId: mavenRepo.RepositoryId,
+//				ArtifactName: "my-artifact:1.0.0",
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMavenArtifact(ctx *pulumi.Context, args *GetMavenArtifactArgs, opts ...pulumi.InvokeOption) (*GetMavenArtifactResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMavenArtifactResult

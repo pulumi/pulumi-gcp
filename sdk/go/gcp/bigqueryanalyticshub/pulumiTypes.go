@@ -6554,6 +6554,147 @@ func (o ListingSubscriptionLinkedResourceArrayOutput) Index(i pulumi.IntInput) L
 	}).(ListingSubscriptionLinkedResourceOutput)
 }
 
+type QueryTemplateEncryptionConfiguration struct {
+	// The KMS key used to encrypt the query template.
+	// Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// QueryTemplateEncryptionConfigurationInput is an input type that accepts QueryTemplateEncryptionConfigurationArgs and QueryTemplateEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `QueryTemplateEncryptionConfigurationInput` via:
+//
+//	QueryTemplateEncryptionConfigurationArgs{...}
+type QueryTemplateEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToQueryTemplateEncryptionConfigurationOutput() QueryTemplateEncryptionConfigurationOutput
+	ToQueryTemplateEncryptionConfigurationOutputWithContext(context.Context) QueryTemplateEncryptionConfigurationOutput
+}
+
+type QueryTemplateEncryptionConfigurationArgs struct {
+	// The KMS key used to encrypt the query template.
+	// Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (QueryTemplateEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryTemplateEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i QueryTemplateEncryptionConfigurationArgs) ToQueryTemplateEncryptionConfigurationOutput() QueryTemplateEncryptionConfigurationOutput {
+	return i.ToQueryTemplateEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i QueryTemplateEncryptionConfigurationArgs) ToQueryTemplateEncryptionConfigurationOutputWithContext(ctx context.Context) QueryTemplateEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryTemplateEncryptionConfigurationOutput)
+}
+
+func (i QueryTemplateEncryptionConfigurationArgs) ToQueryTemplateEncryptionConfigurationPtrOutput() QueryTemplateEncryptionConfigurationPtrOutput {
+	return i.ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i QueryTemplateEncryptionConfigurationArgs) ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(ctx context.Context) QueryTemplateEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryTemplateEncryptionConfigurationOutput).ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// QueryTemplateEncryptionConfigurationPtrInput is an input type that accepts QueryTemplateEncryptionConfigurationArgs, QueryTemplateEncryptionConfigurationPtr and QueryTemplateEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `QueryTemplateEncryptionConfigurationPtrInput` via:
+//
+//	        QueryTemplateEncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueryTemplateEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToQueryTemplateEncryptionConfigurationPtrOutput() QueryTemplateEncryptionConfigurationPtrOutput
+	ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(context.Context) QueryTemplateEncryptionConfigurationPtrOutput
+}
+
+type queryTemplateEncryptionConfigurationPtrType QueryTemplateEncryptionConfigurationArgs
+
+func QueryTemplateEncryptionConfigurationPtr(v *QueryTemplateEncryptionConfigurationArgs) QueryTemplateEncryptionConfigurationPtrInput {
+	return (*queryTemplateEncryptionConfigurationPtrType)(v)
+}
+
+func (*queryTemplateEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryTemplateEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *queryTemplateEncryptionConfigurationPtrType) ToQueryTemplateEncryptionConfigurationPtrOutput() QueryTemplateEncryptionConfigurationPtrOutput {
+	return i.ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *queryTemplateEncryptionConfigurationPtrType) ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(ctx context.Context) QueryTemplateEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryTemplateEncryptionConfigurationPtrOutput)
+}
+
+type QueryTemplateEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (QueryTemplateEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryTemplateEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o QueryTemplateEncryptionConfigurationOutput) ToQueryTemplateEncryptionConfigurationOutput() QueryTemplateEncryptionConfigurationOutput {
+	return o
+}
+
+func (o QueryTemplateEncryptionConfigurationOutput) ToQueryTemplateEncryptionConfigurationOutputWithContext(ctx context.Context) QueryTemplateEncryptionConfigurationOutput {
+	return o
+}
+
+func (o QueryTemplateEncryptionConfigurationOutput) ToQueryTemplateEncryptionConfigurationPtrOutput() QueryTemplateEncryptionConfigurationPtrOutput {
+	return o.ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o QueryTemplateEncryptionConfigurationOutput) ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(ctx context.Context) QueryTemplateEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryTemplateEncryptionConfiguration) *QueryTemplateEncryptionConfiguration {
+		return &v
+	}).(QueryTemplateEncryptionConfigurationPtrOutput)
+}
+
+// The KMS key used to encrypt the query template.
+// Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+func (o QueryTemplateEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v QueryTemplateEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type QueryTemplateEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (QueryTemplateEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryTemplateEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o QueryTemplateEncryptionConfigurationPtrOutput) ToQueryTemplateEncryptionConfigurationPtrOutput() QueryTemplateEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o QueryTemplateEncryptionConfigurationPtrOutput) ToQueryTemplateEncryptionConfigurationPtrOutputWithContext(ctx context.Context) QueryTemplateEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o QueryTemplateEncryptionConfigurationPtrOutput) Elem() QueryTemplateEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *QueryTemplateEncryptionConfiguration) QueryTemplateEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret QueryTemplateEncryptionConfiguration
+		return ret
+	}).(QueryTemplateEncryptionConfigurationOutput)
+}
+
+// The KMS key used to encrypt the query template.
+// Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+func (o QueryTemplateEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryTemplateEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type QueryTemplateRoutine struct {
 	// SQL query logic.
 	DefinitionBody *string `pulumi:"definitionBody"`
@@ -6789,6 +6930,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedDatasetMapArrayInput)(nil)).Elem(), ListingSubscriptionLinkedDatasetMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceArrayInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryTemplateEncryptionConfigurationInput)(nil)).Elem(), QueryTemplateEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryTemplateEncryptionConfigurationPtrInput)(nil)).Elem(), QueryTemplateEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryTemplateRoutineInput)(nil)).Elem(), QueryTemplateRoutineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryTemplateRoutinePtrInput)(nil)).Elem(), QueryTemplateRoutineArgs{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionOutput{})
@@ -6865,6 +7008,8 @@ func init() {
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedDatasetMapArrayOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceArrayOutput{})
+	pulumi.RegisterOutputType(QueryTemplateEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(QueryTemplateEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(QueryTemplateRoutineOutput{})
 	pulumi.RegisterOutputType(QueryTemplateRoutinePtrOutput{})
 }

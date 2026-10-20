@@ -22,19 +22,22 @@ __all__ = ['GeneratorArgs', 'Generator']
 class GeneratorArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 summarization_context: pulumi.Input['GeneratorSummarizationContextArgs'],
+                 agent_coaching_context: pulumi.Input[Optional['GeneratorAgentCoachingContextArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 free_form_context: pulumi.Input[Optional['GeneratorFreeFormContextArgs']] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional['GeneratorInferenceParameterArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  published_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 summarization_context: pulumi.Input[Optional['GeneratorSummarizationContextArgs']] = None,
+                 tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  trigger_event: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Generator resource.
 
         :param pulumi.Input[_builtins.str] location: desc
-        :param pulumi.Input['GeneratorSummarizationContextArgs'] summarization_context: Input of prebuilt Summarization feature.
+        :param pulumi.Input['GeneratorAgentCoachingContextArgs'] agent_coaching_context: Input of prebuilt Agent Coaching feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -43,21 +46,29 @@ class GeneratorArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
+        :param pulumi.Input['GeneratorFreeFormContextArgs'] free_form_context: Input of free form generator to LLM.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input['GeneratorInferenceParameterArgs'] inference_parameter: Optional. Inference parameters for this generator.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] published_model: Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
+        :param pulumi.Input['GeneratorSummarizationContextArgs'] summarization_context: Input of prebuilt Summarization feature.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "summarization_context", summarization_context)
+        if agent_coaching_context is not None:
+            pulumi.set(__self__, "agent_coaching_context", agent_coaching_context)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if free_form_context is not None:
+            pulumi.set(__self__, "free_form_context", free_form_context)
         if generator_id is not None:
             pulumi.set(__self__, "generator_id", generator_id)
         if inference_parameter is not None:
@@ -66,6 +77,10 @@ class GeneratorArgs:
             pulumi.set(__self__, "project", project)
         if published_model is not None:
             pulumi.set(__self__, "published_model", published_model)
+        if summarization_context is not None:
+            pulumi.set(__self__, "summarization_context", summarization_context)
+        if tools is not None:
+            pulumi.set(__self__, "tools", tools)
         if trigger_event is not None:
             pulumi.set(__self__, "trigger_event", trigger_event)
 
@@ -82,17 +97,17 @@ class GeneratorArgs:
         pulumi.set(self, "location", value)
 
     @_builtins.property
-    @pulumi.getter(name="summarizationContext")
-    def summarization_context(self) -> pulumi.Input['GeneratorSummarizationContextArgs']:
+    @pulumi.getter(name="agentCoachingContext")
+    def agent_coaching_context(self) -> pulumi.Input[Optional['GeneratorAgentCoachingContextArgs']]:
         """
-        Input of prebuilt Summarization feature.
+        Input of prebuilt Agent Coaching feature.
         Structure is documented below.
         """
-        return pulumi.get(self, "summarization_context")
+        return pulumi.get(self, "agent_coaching_context")
 
-    @summarization_context.setter
-    def summarization_context(self, value: pulumi.Input['GeneratorSummarizationContextArgs']):
-        pulumi.set(self, "summarization_context", value)
+    @agent_coaching_context.setter
+    def agent_coaching_context(self, value: pulumi.Input[Optional['GeneratorAgentCoachingContextArgs']]):
+        pulumi.set(self, "agent_coaching_context", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -122,6 +137,19 @@ class GeneratorArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="freeFormContext")
+    def free_form_context(self) -> pulumi.Input[Optional['GeneratorFreeFormContextArgs']]:
+        """
+        Input of free form generator to LLM.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "free_form_context")
+
+    @free_form_context.setter
+    def free_form_context(self, value: pulumi.Input[Optional['GeneratorFreeFormContextArgs']]):
+        pulumi.set(self, "free_form_context", value)
 
     @_builtins.property
     @pulumi.getter(name="generatorId")
@@ -174,6 +202,31 @@ class GeneratorArgs:
         pulumi.set(self, "published_model", value)
 
     @_builtins.property
+    @pulumi.getter(name="summarizationContext")
+    def summarization_context(self) -> pulumi.Input[Optional['GeneratorSummarizationContextArgs']]:
+        """
+        Input of prebuilt Summarization feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_context")
+
+    @summarization_context.setter
+    def summarization_context(self, value: pulumi.Input[Optional['GeneratorSummarizationContextArgs']]):
+        pulumi.set(self, "summarization_context", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+        """
+        return pulumi.get(self, "tools")
+
+    @tools.setter
+    def tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tools", value)
+
+    @_builtins.property
     @pulumi.getter(name="triggerEvent")
     def trigger_event(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -190,8 +243,10 @@ class GeneratorArgs:
 @pulumi.input_type
 class _GeneratorState:
     def __init__(__self__, *,
+                 agent_coaching_context: pulumi.Input[Optional['GeneratorAgentCoachingContextArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 free_form_context: pulumi.Input[Optional['GeneratorFreeFormContextArgs']] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional['GeneratorInferenceParameterArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -199,10 +254,13 @@ class _GeneratorState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  published_model: pulumi.Input[Optional[_builtins.str]] = None,
                  summarization_context: pulumi.Input[Optional['GeneratorSummarizationContextArgs']] = None,
+                 tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  trigger_event: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Generator resources.
 
+        :param pulumi.Input['GeneratorAgentCoachingContextArgs'] agent_coaching_context: Input of prebuilt Agent Coaching feature.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -210,6 +268,8 @@ class _GeneratorState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
+        :param pulumi.Input['GeneratorFreeFormContextArgs'] free_form_context: Input of free form generator to LLM.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input['GeneratorInferenceParameterArgs'] inference_parameter: Optional. Inference parameters for this generator.
                Structure is documented below.
@@ -220,13 +280,18 @@ class _GeneratorState:
         :param pulumi.Input[_builtins.str] published_model: Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
         :param pulumi.Input['GeneratorSummarizationContextArgs'] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
         """
+        if agent_coaching_context is not None:
+            pulumi.set(__self__, "agent_coaching_context", agent_coaching_context)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if free_form_context is not None:
+            pulumi.set(__self__, "free_form_context", free_form_context)
         if generator_id is not None:
             pulumi.set(__self__, "generator_id", generator_id)
         if inference_parameter is not None:
@@ -241,8 +306,23 @@ class _GeneratorState:
             pulumi.set(__self__, "published_model", published_model)
         if summarization_context is not None:
             pulumi.set(__self__, "summarization_context", summarization_context)
+        if tools is not None:
+            pulumi.set(__self__, "tools", tools)
         if trigger_event is not None:
             pulumi.set(__self__, "trigger_event", trigger_event)
+
+    @_builtins.property
+    @pulumi.getter(name="agentCoachingContext")
+    def agent_coaching_context(self) -> pulumi.Input[Optional['GeneratorAgentCoachingContextArgs']]:
+        """
+        Input of prebuilt Agent Coaching feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_coaching_context")
+
+    @agent_coaching_context.setter
+    def agent_coaching_context(self, value: pulumi.Input[Optional['GeneratorAgentCoachingContextArgs']]):
+        pulumi.set(self, "agent_coaching_context", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -272,6 +352,19 @@ class _GeneratorState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="freeFormContext")
+    def free_form_context(self) -> pulumi.Input[Optional['GeneratorFreeFormContextArgs']]:
+        """
+        Input of free form generator to LLM.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "free_form_context")
+
+    @free_form_context.setter
+    def free_form_context(self, value: pulumi.Input[Optional['GeneratorFreeFormContextArgs']]):
+        pulumi.set(self, "free_form_context", value)
 
     @_builtins.property
     @pulumi.getter(name="generatorId")
@@ -361,6 +454,18 @@ class _GeneratorState:
         pulumi.set(self, "summarization_context", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+        """
+        return pulumi.get(self, "tools")
+
+    @tools.setter
+    def tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tools", value)
+
+    @_builtins.property
     @pulumi.getter(name="triggerEvent")
     def trigger_event(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -380,14 +485,17 @@ class Generator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_coaching_context: pulumi.Input[Optional[Union['GeneratorAgentCoachingContextArgs', 'GeneratorAgentCoachingContextArgsDict', 'outputs.GeneratorAgentCoachingContext']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 free_form_context: pulumi.Input[Optional[Union['GeneratorFreeFormContextArgs', 'GeneratorFreeFormContextArgsDict', 'outputs.GeneratorFreeFormContext']]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  published_model: pulumi.Input[Optional[_builtins.str]] = None,
                  summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
+                 tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  trigger_event: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -417,8 +525,67 @@ class Generator(pulumi.CustomResource):
                 "top_p": 0.95,
             },
             summarization_context={
-                "version": "4.0",
+                "version": "6.0",
                 "output_language_code": "en",
+            },
+            trigger_event="MANUAL_CALL")
+        ```
+        ### Dialogflow Generator Agent Coaching
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent_coaching_generator = gcp.diagflow.Generator("agent_coaching_generator",
+            location="global",
+            description="An agent coaching generator.",
+            agent_coaching_context={
+                "version": "2.5",
+                "overarching_guidance": "Be helpful and polite.",
+                "output_language_code": "en",
+                "instructions": [{
+                    "display_name": "Greeting",
+                    "display_details": "Greet the customer warmly",
+                    "condition": "Customer starts the conversation",
+                    "agent_action": "Say hello and ask how to help",
+                    "system_action": "Log greeting event",
+                    "triggering_event": "END_OF_UTTERANCE",
+                }],
+            },
+            trigger_event="END_OF_UTTERANCE")
+        ```
+        ### Dialogflow Generator With Tools
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_tool = gcp.diagflow.Tool("test_tool",
+            location="global",
+            tool_key="generator_tool_key",
+            display_name="test-tool",
+            description="A test tool",
+            open_api_spec={
+                "text_schema": \"\"\"openapi: 3.0.0
+        info:
+          title: generator_tool_key
+          version: 1.0.0
+        paths:
+          /search:
+            get:
+              summary: Search function
+              operationId: searchAction
+              responses:
+                '200':
+                  description: OK
+        \"\"\",
+            })
+        generator_with_tools = gcp.diagflow.Generator("generator_with_tools",
+            location="global",
+            description="A generator with tools and free form context.",
+            tools=[test_tool.name],
+            free_form_context={
+                "text": "Use the search tool to answer the user's query.",
             },
             trigger_event="MANUAL_CALL")
         ```
@@ -442,6 +609,8 @@ class Generator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['GeneratorAgentCoachingContextArgs', 'GeneratorAgentCoachingContextArgsDict', 'outputs.GeneratorAgentCoachingContext']] agent_coaching_context: Input of prebuilt Agent Coaching feature.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -449,6 +618,8 @@ class Generator(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
+        :param pulumi.Input[Union['GeneratorFreeFormContextArgs', 'GeneratorFreeFormContextArgsDict', 'outputs.GeneratorFreeFormContext']] free_form_context: Input of free form generator to LLM.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']] inference_parameter: Optional. Inference parameters for this generator.
                Structure is documented below.
@@ -458,6 +629,7 @@ class Generator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] published_model: Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
         :param pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
         """
@@ -494,8 +666,67 @@ class Generator(pulumi.CustomResource):
                 "top_p": 0.95,
             },
             summarization_context={
-                "version": "4.0",
+                "version": "6.0",
                 "output_language_code": "en",
+            },
+            trigger_event="MANUAL_CALL")
+        ```
+        ### Dialogflow Generator Agent Coaching
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent_coaching_generator = gcp.diagflow.Generator("agent_coaching_generator",
+            location="global",
+            description="An agent coaching generator.",
+            agent_coaching_context={
+                "version": "2.5",
+                "overarching_guidance": "Be helpful and polite.",
+                "output_language_code": "en",
+                "instructions": [{
+                    "display_name": "Greeting",
+                    "display_details": "Greet the customer warmly",
+                    "condition": "Customer starts the conversation",
+                    "agent_action": "Say hello and ask how to help",
+                    "system_action": "Log greeting event",
+                    "triggering_event": "END_OF_UTTERANCE",
+                }],
+            },
+            trigger_event="END_OF_UTTERANCE")
+        ```
+        ### Dialogflow Generator With Tools
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_tool = gcp.diagflow.Tool("test_tool",
+            location="global",
+            tool_key="generator_tool_key",
+            display_name="test-tool",
+            description="A test tool",
+            open_api_spec={
+                "text_schema": \"\"\"openapi: 3.0.0
+        info:
+          title: generator_tool_key
+          version: 1.0.0
+        paths:
+          /search:
+            get:
+              summary: Search function
+              operationId: searchAction
+              responses:
+                '200':
+                  description: OK
+        \"\"\",
+            })
+        generator_with_tools = gcp.diagflow.Generator("generator_with_tools",
+            location="global",
+            description="A generator with tools and free form context.",
+            tools=[test_tool.name],
+            free_form_context={
+                "text": "Use the search tool to answer the user's query.",
             },
             trigger_event="MANUAL_CALL")
         ```
@@ -532,14 +763,17 @@ class Generator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 agent_coaching_context: pulumi.Input[Optional[Union['GeneratorAgentCoachingContextArgs', 'GeneratorAgentCoachingContextArgsDict', 'outputs.GeneratorAgentCoachingContext']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 free_form_context: pulumi.Input[Optional[Union['GeneratorFreeFormContextArgs', 'GeneratorFreeFormContextArgsDict', 'outputs.GeneratorFreeFormContext']]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  published_model: pulumi.Input[Optional[_builtins.str]] = None,
                  summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
+                 tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  trigger_event: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -550,8 +784,10 @@ class Generator(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GeneratorArgs.__new__(GeneratorArgs)
 
+            __props__.__dict__["agent_coaching_context"] = agent_coaching_context
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
+            __props__.__dict__["free_form_context"] = free_form_context
             __props__.__dict__["generator_id"] = generator_id
             __props__.__dict__["inference_parameter"] = inference_parameter
             if location is None and not opts.urn:
@@ -559,9 +795,8 @@ class Generator(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["published_model"] = published_model
-            if summarization_context is None and not opts.urn:
-                raise TypeError("Missing required property 'summarization_context'")
             __props__.__dict__["summarization_context"] = summarization_context
+            __props__.__dict__["tools"] = tools
             __props__.__dict__["trigger_event"] = trigger_event
             __props__.__dict__["name"] = None
         super(Generator, __self__).__init__(
@@ -574,8 +809,10 @@ class Generator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            agent_coaching_context: pulumi.Input[Optional[Union['GeneratorAgentCoachingContextArgs', 'GeneratorAgentCoachingContextArgsDict', 'outputs.GeneratorAgentCoachingContext']]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            free_form_context: pulumi.Input[Optional[Union['GeneratorFreeFormContextArgs', 'GeneratorFreeFormContextArgsDict', 'outputs.GeneratorFreeFormContext']]] = None,
             generator_id: pulumi.Input[Optional[_builtins.str]] = None,
             inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -583,6 +820,7 @@ class Generator(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             published_model: pulumi.Input[Optional[_builtins.str]] = None,
             summarization_context: pulumi.Input[Optional[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']]] = None,
+            tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             trigger_event: pulumi.Input[Optional[_builtins.str]] = None) -> 'Generator':
         """
         Get an existing Generator resource's state with the given name, id, and optional extra
@@ -591,6 +829,8 @@ class Generator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['GeneratorAgentCoachingContextArgs', 'GeneratorAgentCoachingContextArgsDict', 'outputs.GeneratorAgentCoachingContext']] agent_coaching_context: Input of prebuilt Agent Coaching feature.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -598,6 +838,8 @@ class Generator(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
+        :param pulumi.Input[Union['GeneratorFreeFormContextArgs', 'GeneratorFreeFormContextArgsDict', 'outputs.GeneratorFreeFormContext']] free_form_context: Input of free form generator to LLM.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict', 'outputs.GeneratorInferenceParameter']] inference_parameter: Optional. Inference parameters for this generator.
                Structure is documented below.
@@ -608,6 +850,7 @@ class Generator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] published_model: Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
         :param pulumi.Input[Union['GeneratorSummarizationContextArgs', 'GeneratorSummarizationContextArgsDict', 'outputs.GeneratorSummarizationContext']] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
         """
@@ -615,8 +858,10 @@ class Generator(pulumi.CustomResource):
 
         __props__ = _GeneratorState.__new__(_GeneratorState)
 
+        __props__.__dict__["agent_coaching_context"] = agent_coaching_context
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
+        __props__.__dict__["free_form_context"] = free_form_context
         __props__.__dict__["generator_id"] = generator_id
         __props__.__dict__["inference_parameter"] = inference_parameter
         __props__.__dict__["location"] = location
@@ -624,8 +869,18 @@ class Generator(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["published_model"] = published_model
         __props__.__dict__["summarization_context"] = summarization_context
+        __props__.__dict__["tools"] = tools
         __props__.__dict__["trigger_event"] = trigger_event
         return Generator(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="agentCoachingContext")
+    def agent_coaching_context(self) -> pulumi.Output[Optional['outputs.GeneratorAgentCoachingContext']]:
+        """
+        Input of prebuilt Agent Coaching feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_coaching_context")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -647,6 +902,15 @@ class Generator(pulumi.CustomResource):
         Optional. Human readable description of the generator.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="freeFormContext")
+    def free_form_context(self) -> pulumi.Output[Optional['outputs.GeneratorFreeFormContext']]:
+        """
+        Input of free form generator to LLM.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "free_form_context")
 
     @_builtins.property
     @pulumi.getter(name="generatorId")
@@ -700,12 +964,20 @@ class Generator(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="summarizationContext")
-    def summarization_context(self) -> pulumi.Output['outputs.GeneratorSummarizationContext']:
+    def summarization_context(self) -> pulumi.Output[Optional['outputs.GeneratorSummarizationContext']]:
         """
         Input of prebuilt Summarization feature.
         Structure is documented below.
         """
         return pulumi.get(self, "summarization_context")
+
+    @_builtins.property
+    @pulumi.getter
+    def tools(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+        """
+        return pulumi.get(self, "tools")
 
     @_builtins.property
     @pulumi.getter(name="triggerEvent")

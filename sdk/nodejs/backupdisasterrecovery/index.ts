@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AutoProtectionPolicyArgs, AutoProtectionPolicyState } from "./autoProtectionPolicy";
+export type AutoProtectionPolicy = import("./autoProtectionPolicy").AutoProtectionPolicy;
+export const AutoProtectionPolicy: typeof import("./autoProtectionPolicy").AutoProtectionPolicy = null as any;
+utilities.lazyLoad(exports, ["AutoProtectionPolicy"], () => require("./autoProtectionPolicy"));
+
 export { BackupPlanArgs, BackupPlanState } from "./backupPlan";
 export type BackupPlan = import("./backupPlan").BackupPlan;
 export const BackupPlan: typeof import("./backupPlan").BackupPlan = null as any;
@@ -90,6 +95,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:backupdisasterrecovery/autoProtectionPolicy:AutoProtectionPolicy":
+                return new AutoProtectionPolicy(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/backupPlan:BackupPlan":
                 return new BackupPlan(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation":
@@ -107,6 +114,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/autoProtectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlan", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlanAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupVault", _module)

@@ -47673,6 +47673,488 @@ func (o FulfillmentGenericWebServicePtrOutput) Username() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type GeneratorAgentCoachingContext struct {
+	// Optional. Customized instructions for agent coaching.
+	// Structure is documented below.
+	Instructions []GeneratorAgentCoachingContextInstruction `pulumi:"instructions"`
+	// Optional. Output language code.
+	OutputLanguageCode *string `pulumi:"outputLanguageCode"`
+	// Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+	OverarchingGuidance *string `pulumi:"overarchingGuidance"`
+	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+	Version *string `pulumi:"version"`
+}
+
+// GeneratorAgentCoachingContextInput is an input type that accepts GeneratorAgentCoachingContextArgs and GeneratorAgentCoachingContextOutput values.
+// You can construct a concrete instance of `GeneratorAgentCoachingContextInput` via:
+//
+//	GeneratorAgentCoachingContextArgs{...}
+type GeneratorAgentCoachingContextInput interface {
+	pulumi.Input
+
+	ToGeneratorAgentCoachingContextOutput() GeneratorAgentCoachingContextOutput
+	ToGeneratorAgentCoachingContextOutputWithContext(context.Context) GeneratorAgentCoachingContextOutput
+}
+
+type GeneratorAgentCoachingContextArgs struct {
+	// Optional. Customized instructions for agent coaching.
+	// Structure is documented below.
+	Instructions GeneratorAgentCoachingContextInstructionArrayInput `pulumi:"instructions"`
+	// Optional. Output language code.
+	OutputLanguageCode pulumi.StringPtrInput `pulumi:"outputLanguageCode"`
+	// Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+	OverarchingGuidance pulumi.StringPtrInput `pulumi:"overarchingGuidance"`
+	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GeneratorAgentCoachingContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorAgentCoachingContext)(nil)).Elem()
+}
+
+func (i GeneratorAgentCoachingContextArgs) ToGeneratorAgentCoachingContextOutput() GeneratorAgentCoachingContextOutput {
+	return i.ToGeneratorAgentCoachingContextOutputWithContext(context.Background())
+}
+
+func (i GeneratorAgentCoachingContextArgs) ToGeneratorAgentCoachingContextOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorAgentCoachingContextOutput)
+}
+
+func (i GeneratorAgentCoachingContextArgs) ToGeneratorAgentCoachingContextPtrOutput() GeneratorAgentCoachingContextPtrOutput {
+	return i.ToGeneratorAgentCoachingContextPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorAgentCoachingContextArgs) ToGeneratorAgentCoachingContextPtrOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorAgentCoachingContextOutput).ToGeneratorAgentCoachingContextPtrOutputWithContext(ctx)
+}
+
+// GeneratorAgentCoachingContextPtrInput is an input type that accepts GeneratorAgentCoachingContextArgs, GeneratorAgentCoachingContextPtr and GeneratorAgentCoachingContextPtrOutput values.
+// You can construct a concrete instance of `GeneratorAgentCoachingContextPtrInput` via:
+//
+//	        GeneratorAgentCoachingContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorAgentCoachingContextPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorAgentCoachingContextPtrOutput() GeneratorAgentCoachingContextPtrOutput
+	ToGeneratorAgentCoachingContextPtrOutputWithContext(context.Context) GeneratorAgentCoachingContextPtrOutput
+}
+
+type generatorAgentCoachingContextPtrType GeneratorAgentCoachingContextArgs
+
+func GeneratorAgentCoachingContextPtr(v *GeneratorAgentCoachingContextArgs) GeneratorAgentCoachingContextPtrInput {
+	return (*generatorAgentCoachingContextPtrType)(v)
+}
+
+func (*generatorAgentCoachingContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorAgentCoachingContext)(nil)).Elem()
+}
+
+func (i *generatorAgentCoachingContextPtrType) ToGeneratorAgentCoachingContextPtrOutput() GeneratorAgentCoachingContextPtrOutput {
+	return i.ToGeneratorAgentCoachingContextPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorAgentCoachingContextPtrType) ToGeneratorAgentCoachingContextPtrOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorAgentCoachingContextPtrOutput)
+}
+
+type GeneratorAgentCoachingContextOutput struct{ *pulumi.OutputState }
+
+func (GeneratorAgentCoachingContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorAgentCoachingContext)(nil)).Elem()
+}
+
+func (o GeneratorAgentCoachingContextOutput) ToGeneratorAgentCoachingContextOutput() GeneratorAgentCoachingContextOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextOutput) ToGeneratorAgentCoachingContextOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextOutput) ToGeneratorAgentCoachingContextPtrOutput() GeneratorAgentCoachingContextPtrOutput {
+	return o.ToGeneratorAgentCoachingContextPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorAgentCoachingContextOutput) ToGeneratorAgentCoachingContextPtrOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorAgentCoachingContext) *GeneratorAgentCoachingContext {
+		return &v
+	}).(GeneratorAgentCoachingContextPtrOutput)
+}
+
+// Optional. Customized instructions for agent coaching.
+// Structure is documented below.
+func (o GeneratorAgentCoachingContextOutput) Instructions() GeneratorAgentCoachingContextInstructionArrayOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContext) []GeneratorAgentCoachingContextInstruction {
+		return v.Instructions
+	}).(GeneratorAgentCoachingContextInstructionArrayOutput)
+}
+
+// Optional. Output language code.
+func (o GeneratorAgentCoachingContextOutput) OutputLanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContext) *string { return v.OutputLanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+func (o GeneratorAgentCoachingContextOutput) OverarchingGuidance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContext) *string { return v.OverarchingGuidance }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+func (o GeneratorAgentCoachingContextOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContext) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorAgentCoachingContextPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorAgentCoachingContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorAgentCoachingContext)(nil)).Elem()
+}
+
+func (o GeneratorAgentCoachingContextPtrOutput) ToGeneratorAgentCoachingContextPtrOutput() GeneratorAgentCoachingContextPtrOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextPtrOutput) ToGeneratorAgentCoachingContextPtrOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextPtrOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextPtrOutput) Elem() GeneratorAgentCoachingContextOutput {
+	return o.ApplyT(func(v *GeneratorAgentCoachingContext) GeneratorAgentCoachingContext {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorAgentCoachingContext
+		return ret
+	}).(GeneratorAgentCoachingContextOutput)
+}
+
+// Optional. Customized instructions for agent coaching.
+// Structure is documented below.
+func (o GeneratorAgentCoachingContextPtrOutput) Instructions() GeneratorAgentCoachingContextInstructionArrayOutput {
+	return o.ApplyT(func(v *GeneratorAgentCoachingContext) []GeneratorAgentCoachingContextInstruction {
+		if v == nil {
+			return nil
+		}
+		return v.Instructions
+	}).(GeneratorAgentCoachingContextInstructionArrayOutput)
+}
+
+// Optional. Output language code.
+func (o GeneratorAgentCoachingContextPtrOutput) OutputLanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorAgentCoachingContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputLanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+func (o GeneratorAgentCoachingContextPtrOutput) OverarchingGuidance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorAgentCoachingContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverarchingGuidance
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+func (o GeneratorAgentCoachingContextPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorAgentCoachingContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GeneratorAgentCoachingContextInstruction struct {
+	// Optional. The action that human agent should take.
+	AgentAction *string `pulumi:"agentAction"`
+	// Optional. The condition of the instruction.
+	Condition *string `pulumi:"condition"`
+	// Optional. The detailed description of this instruction.
+	DisplayDetails *string `pulumi:"displayDetails"`
+	// Optional. Display name for the instruction.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. The action that system should take.
+	SystemAction *string `pulumi:"systemAction"`
+	// Optional. The trigger event of the instruction.
+	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`, `TOOL_CALL_COMPLETION`.
+	TriggeringEvent *string `pulumi:"triggeringEvent"`
+}
+
+// GeneratorAgentCoachingContextInstructionInput is an input type that accepts GeneratorAgentCoachingContextInstructionArgs and GeneratorAgentCoachingContextInstructionOutput values.
+// You can construct a concrete instance of `GeneratorAgentCoachingContextInstructionInput` via:
+//
+//	GeneratorAgentCoachingContextInstructionArgs{...}
+type GeneratorAgentCoachingContextInstructionInput interface {
+	pulumi.Input
+
+	ToGeneratorAgentCoachingContextInstructionOutput() GeneratorAgentCoachingContextInstructionOutput
+	ToGeneratorAgentCoachingContextInstructionOutputWithContext(context.Context) GeneratorAgentCoachingContextInstructionOutput
+}
+
+type GeneratorAgentCoachingContextInstructionArgs struct {
+	// Optional. The action that human agent should take.
+	AgentAction pulumi.StringPtrInput `pulumi:"agentAction"`
+	// Optional. The condition of the instruction.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// Optional. The detailed description of this instruction.
+	DisplayDetails pulumi.StringPtrInput `pulumi:"displayDetails"`
+	// Optional. Display name for the instruction.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. The action that system should take.
+	SystemAction pulumi.StringPtrInput `pulumi:"systemAction"`
+	// Optional. The trigger event of the instruction.
+	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`, `TOOL_CALL_COMPLETION`.
+	TriggeringEvent pulumi.StringPtrInput `pulumi:"triggeringEvent"`
+}
+
+func (GeneratorAgentCoachingContextInstructionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorAgentCoachingContextInstruction)(nil)).Elem()
+}
+
+func (i GeneratorAgentCoachingContextInstructionArgs) ToGeneratorAgentCoachingContextInstructionOutput() GeneratorAgentCoachingContextInstructionOutput {
+	return i.ToGeneratorAgentCoachingContextInstructionOutputWithContext(context.Background())
+}
+
+func (i GeneratorAgentCoachingContextInstructionArgs) ToGeneratorAgentCoachingContextInstructionOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextInstructionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorAgentCoachingContextInstructionOutput)
+}
+
+// GeneratorAgentCoachingContextInstructionArrayInput is an input type that accepts GeneratorAgentCoachingContextInstructionArray and GeneratorAgentCoachingContextInstructionArrayOutput values.
+// You can construct a concrete instance of `GeneratorAgentCoachingContextInstructionArrayInput` via:
+//
+//	GeneratorAgentCoachingContextInstructionArray{ GeneratorAgentCoachingContextInstructionArgs{...} }
+type GeneratorAgentCoachingContextInstructionArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorAgentCoachingContextInstructionArrayOutput() GeneratorAgentCoachingContextInstructionArrayOutput
+	ToGeneratorAgentCoachingContextInstructionArrayOutputWithContext(context.Context) GeneratorAgentCoachingContextInstructionArrayOutput
+}
+
+type GeneratorAgentCoachingContextInstructionArray []GeneratorAgentCoachingContextInstructionInput
+
+func (GeneratorAgentCoachingContextInstructionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorAgentCoachingContextInstruction)(nil)).Elem()
+}
+
+func (i GeneratorAgentCoachingContextInstructionArray) ToGeneratorAgentCoachingContextInstructionArrayOutput() GeneratorAgentCoachingContextInstructionArrayOutput {
+	return i.ToGeneratorAgentCoachingContextInstructionArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorAgentCoachingContextInstructionArray) ToGeneratorAgentCoachingContextInstructionArrayOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextInstructionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorAgentCoachingContextInstructionArrayOutput)
+}
+
+type GeneratorAgentCoachingContextInstructionOutput struct{ *pulumi.OutputState }
+
+func (GeneratorAgentCoachingContextInstructionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorAgentCoachingContextInstruction)(nil)).Elem()
+}
+
+func (o GeneratorAgentCoachingContextInstructionOutput) ToGeneratorAgentCoachingContextInstructionOutput() GeneratorAgentCoachingContextInstructionOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextInstructionOutput) ToGeneratorAgentCoachingContextInstructionOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextInstructionOutput {
+	return o
+}
+
+// Optional. The action that human agent should take.
+func (o GeneratorAgentCoachingContextInstructionOutput) AgentAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContextInstruction) *string { return v.AgentAction }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The condition of the instruction.
+func (o GeneratorAgentCoachingContextInstructionOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContextInstruction) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The detailed description of this instruction.
+func (o GeneratorAgentCoachingContextInstructionOutput) DisplayDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContextInstruction) *string { return v.DisplayDetails }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Display name for the instruction.
+func (o GeneratorAgentCoachingContextInstructionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContextInstruction) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The action that system should take.
+func (o GeneratorAgentCoachingContextInstructionOutput) SystemAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContextInstruction) *string { return v.SystemAction }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The trigger event of the instruction.
+// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`, `TOOL_CALL_COMPLETION`.
+func (o GeneratorAgentCoachingContextInstructionOutput) TriggeringEvent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorAgentCoachingContextInstruction) *string { return v.TriggeringEvent }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorAgentCoachingContextInstructionArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorAgentCoachingContextInstructionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorAgentCoachingContextInstruction)(nil)).Elem()
+}
+
+func (o GeneratorAgentCoachingContextInstructionArrayOutput) ToGeneratorAgentCoachingContextInstructionArrayOutput() GeneratorAgentCoachingContextInstructionArrayOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextInstructionArrayOutput) ToGeneratorAgentCoachingContextInstructionArrayOutputWithContext(ctx context.Context) GeneratorAgentCoachingContextInstructionArrayOutput {
+	return o
+}
+
+func (o GeneratorAgentCoachingContextInstructionArrayOutput) Index(i pulumi.IntInput) GeneratorAgentCoachingContextInstructionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorAgentCoachingContextInstruction {
+		return vs[0].([]GeneratorAgentCoachingContextInstruction)[vs[1].(int)]
+	}).(GeneratorAgentCoachingContextInstructionOutput)
+}
+
+type GeneratorFreeFormContext struct {
+	// Optional. Free form text input to LLM.
+	Text *string `pulumi:"text"`
+}
+
+// GeneratorFreeFormContextInput is an input type that accepts GeneratorFreeFormContextArgs and GeneratorFreeFormContextOutput values.
+// You can construct a concrete instance of `GeneratorFreeFormContextInput` via:
+//
+//	GeneratorFreeFormContextArgs{...}
+type GeneratorFreeFormContextInput interface {
+	pulumi.Input
+
+	ToGeneratorFreeFormContextOutput() GeneratorFreeFormContextOutput
+	ToGeneratorFreeFormContextOutputWithContext(context.Context) GeneratorFreeFormContextOutput
+}
+
+type GeneratorFreeFormContextArgs struct {
+	// Optional. Free form text input to LLM.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (GeneratorFreeFormContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorFreeFormContext)(nil)).Elem()
+}
+
+func (i GeneratorFreeFormContextArgs) ToGeneratorFreeFormContextOutput() GeneratorFreeFormContextOutput {
+	return i.ToGeneratorFreeFormContextOutputWithContext(context.Background())
+}
+
+func (i GeneratorFreeFormContextArgs) ToGeneratorFreeFormContextOutputWithContext(ctx context.Context) GeneratorFreeFormContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorFreeFormContextOutput)
+}
+
+func (i GeneratorFreeFormContextArgs) ToGeneratorFreeFormContextPtrOutput() GeneratorFreeFormContextPtrOutput {
+	return i.ToGeneratorFreeFormContextPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorFreeFormContextArgs) ToGeneratorFreeFormContextPtrOutputWithContext(ctx context.Context) GeneratorFreeFormContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorFreeFormContextOutput).ToGeneratorFreeFormContextPtrOutputWithContext(ctx)
+}
+
+// GeneratorFreeFormContextPtrInput is an input type that accepts GeneratorFreeFormContextArgs, GeneratorFreeFormContextPtr and GeneratorFreeFormContextPtrOutput values.
+// You can construct a concrete instance of `GeneratorFreeFormContextPtrInput` via:
+//
+//	        GeneratorFreeFormContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorFreeFormContextPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorFreeFormContextPtrOutput() GeneratorFreeFormContextPtrOutput
+	ToGeneratorFreeFormContextPtrOutputWithContext(context.Context) GeneratorFreeFormContextPtrOutput
+}
+
+type generatorFreeFormContextPtrType GeneratorFreeFormContextArgs
+
+func GeneratorFreeFormContextPtr(v *GeneratorFreeFormContextArgs) GeneratorFreeFormContextPtrInput {
+	return (*generatorFreeFormContextPtrType)(v)
+}
+
+func (*generatorFreeFormContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorFreeFormContext)(nil)).Elem()
+}
+
+func (i *generatorFreeFormContextPtrType) ToGeneratorFreeFormContextPtrOutput() GeneratorFreeFormContextPtrOutput {
+	return i.ToGeneratorFreeFormContextPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorFreeFormContextPtrType) ToGeneratorFreeFormContextPtrOutputWithContext(ctx context.Context) GeneratorFreeFormContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorFreeFormContextPtrOutput)
+}
+
+type GeneratorFreeFormContextOutput struct{ *pulumi.OutputState }
+
+func (GeneratorFreeFormContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorFreeFormContext)(nil)).Elem()
+}
+
+func (o GeneratorFreeFormContextOutput) ToGeneratorFreeFormContextOutput() GeneratorFreeFormContextOutput {
+	return o
+}
+
+func (o GeneratorFreeFormContextOutput) ToGeneratorFreeFormContextOutputWithContext(ctx context.Context) GeneratorFreeFormContextOutput {
+	return o
+}
+
+func (o GeneratorFreeFormContextOutput) ToGeneratorFreeFormContextPtrOutput() GeneratorFreeFormContextPtrOutput {
+	return o.ToGeneratorFreeFormContextPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorFreeFormContextOutput) ToGeneratorFreeFormContextPtrOutputWithContext(ctx context.Context) GeneratorFreeFormContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorFreeFormContext) *GeneratorFreeFormContext {
+		return &v
+	}).(GeneratorFreeFormContextPtrOutput)
+}
+
+// Optional. Free form text input to LLM.
+func (o GeneratorFreeFormContextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorFreeFormContext) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorFreeFormContextPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorFreeFormContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorFreeFormContext)(nil)).Elem()
+}
+
+func (o GeneratorFreeFormContextPtrOutput) ToGeneratorFreeFormContextPtrOutput() GeneratorFreeFormContextPtrOutput {
+	return o
+}
+
+func (o GeneratorFreeFormContextPtrOutput) ToGeneratorFreeFormContextPtrOutputWithContext(ctx context.Context) GeneratorFreeFormContextPtrOutput {
+	return o
+}
+
+func (o GeneratorFreeFormContextPtrOutput) Elem() GeneratorFreeFormContextOutput {
+	return o.ApplyT(func(v *GeneratorFreeFormContext) GeneratorFreeFormContext {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorFreeFormContext
+		return ret
+	}).(GeneratorFreeFormContextOutput)
+}
+
+// Optional. Free form text input to LLM.
+func (o GeneratorFreeFormContextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorFreeFormContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
 type GeneratorInferenceParameter struct {
 	// Optional. Maximum number of the output tokens for the generator.
 	MaxOutputTokens *int `pulumi:"maxOutputTokens"`
@@ -47876,7 +48358,7 @@ type GeneratorSummarizationContext struct {
 	// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
 	// Structure is documented below.
 	SummarizationSections []GeneratorSummarizationContextSummarizationSection `pulumi:"summarizationSections"`
-	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
 	Version *string `pulumi:"version"`
 }
 
@@ -47900,7 +48382,7 @@ type GeneratorSummarizationContextArgs struct {
 	// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
 	// Structure is documented below.
 	SummarizationSections GeneratorSummarizationContextSummarizationSectionArrayInput `pulumi:"summarizationSections"`
-	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -48002,7 +48484,7 @@ func (o GeneratorSummarizationContextOutput) SummarizationSections() GeneratorSu
 	}).(GeneratorSummarizationContextSummarizationSectionArrayOutput)
 }
 
-// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
 func (o GeneratorSummarizationContextOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GeneratorSummarizationContext) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -48063,7 +48545,7 @@ func (o GeneratorSummarizationContextPtrOutput) SummarizationSections() Generato
 	}).(GeneratorSummarizationContextSummarizationSectionArrayOutput)
 }
 
-// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
 func (o GeneratorSummarizationContextPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GeneratorSummarizationContext) *string {
 		if v == nil {
@@ -52796,6 +53278,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentFeatureArrayInput)(nil)).Elem(), FulfillmentFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServiceInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServicePtrInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorAgentCoachingContextInput)(nil)).Elem(), GeneratorAgentCoachingContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorAgentCoachingContextPtrInput)(nil)).Elem(), GeneratorAgentCoachingContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorAgentCoachingContextInstructionInput)(nil)).Elem(), GeneratorAgentCoachingContextInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorAgentCoachingContextInstructionArrayInput)(nil)).Elem(), GeneratorAgentCoachingContextInstructionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorFreeFormContextInput)(nil)).Elem(), GeneratorFreeFormContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorFreeFormContextPtrInput)(nil)).Elem(), GeneratorFreeFormContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorInferenceParameterInput)(nil)).Elem(), GeneratorInferenceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorInferenceParameterPtrInput)(nil)).Elem(), GeneratorInferenceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextInput)(nil)).Elem(), GeneratorSummarizationContextArgs{})
@@ -53421,6 +53909,12 @@ func init() {
 	pulumi.RegisterOutputType(FulfillmentFeatureArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(FulfillmentGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(GeneratorAgentCoachingContextOutput{})
+	pulumi.RegisterOutputType(GeneratorAgentCoachingContextPtrOutput{})
+	pulumi.RegisterOutputType(GeneratorAgentCoachingContextInstructionOutput{})
+	pulumi.RegisterOutputType(GeneratorAgentCoachingContextInstructionArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorFreeFormContextOutput{})
+	pulumi.RegisterOutputType(GeneratorFreeFormContextPtrOutput{})
 	pulumi.RegisterOutputType(GeneratorInferenceParameterOutput{})
 	pulumi.RegisterOutputType(GeneratorInferenceParameterPtrOutput{})
 	pulumi.RegisterOutputType(GeneratorSummarizationContextOutput{})

@@ -119,7 +119,7 @@ import (
 //					TrustConfig: &managedkafka.ClusterTlsConfigTrustConfigArgs{
 //						CasConfigs: managedkafka.ClusterTlsConfigTrustConfigCasConfigArray{
 //							&managedkafka.ClusterTlsConfigTrustConfigCasConfigArgs{
-//								CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
+//								CaPool: caPool.ID(),
 //							},
 //						},
 //					},

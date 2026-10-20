@@ -117,7 +117,7 @@ import (
 //				MetadataFeedId: pulumi.String("tf-test-feed"),
 //				Location:       pulumi.String("us-central1"),
 //				Project:        pulumi.String("my-project-name"),
-//				PubsubTopic:    primary.ID().ToIDOutput().ToStringOutput(),
+//				PubsubTopic:    primary.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

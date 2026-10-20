@@ -62,7 +62,7 @@ import (
 //					Identifier: pulumi.String(_default.Urn),
 //				},
 //				AuthProviderBinding: &agentregistry.BindingAuthProviderBindingArgs{
-//					AuthProvider: defaultAuthProvider.ID().ToIDOutput().ToStringOutput(),
+//					AuthProvider: defaultAuthProvider.ID(),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 //					},
@@ -122,7 +122,7 @@ import (
 //					Identifier: pulumi.String(_default.Urn),
 //				},
 //				AuthProviderBinding: &agentregistry.BindingAuthProviderBindingArgs{
-//					AuthProvider: defaultAuthProvider.ID().ToIDOutput().ToStringOutput(),
+//					AuthProvider: defaultAuthProvider.ID(),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 //					},

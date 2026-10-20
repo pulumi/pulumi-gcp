@@ -258,6 +258,4613 @@ func (o CodeToolsSettingEnabledToolConfigArrayOutput) Index(i pulumi.IntInput) C
 	}).(CodeToolsSettingEnabledToolConfigOutput)
 }
 
+type DataAnalyticsDataAgentDataAnalyticsAgent struct {
+	// (Output)
+	// Output only. The last published context for the agent.
+	// Structure is documented below.
+	LastPublishedContexts []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext `pulumi:"lastPublishedContexts"`
+	// Optional. The published context for the agent. This context is used by
+	// the Chat API in production.
+	// Structure is documented below.
+	PublishedContext *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext `pulumi:"publishedContext"`
+	// Optional. The staging context for the agent. This context is used to
+	// test and validate changes before publishing.
+	// Structure is documented below.
+	StagingContext *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext `pulumi:"stagingContext"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentArgs and DataAnalyticsDataAgentDataAnalyticsAgentOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentOutput() DataAnalyticsDataAgentDataAnalyticsAgentOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentArgs struct {
+	// (Output)
+	// Output only. The last published context for the agent.
+	// Structure is documented below.
+	LastPublishedContexts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayInput `pulumi:"lastPublishedContexts"`
+	// Optional. The published context for the agent. This context is used by
+	// the Chat API in production.
+	// Structure is documented below.
+	PublishedContext DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrInput `pulumi:"publishedContext"`
+	// Optional. The staging context for the agent. This context is used to
+	// test and validate changes before publishing.
+	// Structure is documented below.
+	StagingContext DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrInput `pulumi:"stagingContext"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgent)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentOutput() DataAnalyticsDataAgentDataAnalyticsAgentOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentArgs, DataAnalyticsDataAgentDataAnalyticsAgentPtr and DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPtrType DataAnalyticsDataAgentDataAnalyticsAgentArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentArgs) DataAnalyticsDataAgentDataAnalyticsAgentPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgent)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgent)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentOutput() DataAnalyticsDataAgentDataAnalyticsAgentOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgent) *DataAnalyticsDataAgentDataAnalyticsAgent {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput)
+}
+
+// (Output)
+// Output only. The last published context for the agent.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) LastPublishedContexts() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgent) []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext {
+		return v.LastPublishedContexts
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput)
+}
+
+// Optional. The published context for the agent. This context is used by
+// the Chat API in production.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) PublishedContext() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgent) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext {
+		return v.PublishedContext
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput)
+}
+
+// Optional. The staging context for the agent. This context is used to
+// test and validate changes before publishing.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentOutput) StagingContext() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgent) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
+		return v.StagingContext
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgent)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgent) DataAnalyticsDataAgentDataAnalyticsAgent {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgent
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentOutput)
+}
+
+// (Output)
+// Output only. The last published context for the agent.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) LastPublishedContexts() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgent) []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext {
+		if v == nil {
+			return nil
+		}
+		return v.LastPublishedContexts
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput)
+}
+
+// Optional. The published context for the agent. This context is used by
+// the Chat API in production.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) PublishedContext() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgent) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext {
+		if v == nil {
+			return nil
+		}
+		return v.PublishedContext
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput)
+}
+
+// Optional. The staging context for the agent. This context is used to
+// test and validate changes before publishing.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput) StagingContext() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgent) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
+		if v == nil {
+			return nil
+		}
+		return v.StagingContext
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext struct {
+	// Output only. Data sources that are available for answering questions.
+	DatasourceReferences *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences `pulumi:"datasourceReferences"`
+	// Output only. The basic entry point for data owners creating domain
+	// knowledge for the agent.
+	SystemInstruction *string `pulumi:"systemInstruction"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs struct {
+	// Output only. Data sources that are available for answering questions.
+	DatasourceReferences DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrInput `pulumi:"datasourceReferences"`
+	// Output only. The basic entry point for data owners creating domain
+	// knowledge for the agent.
+	SystemInstruction pulumi.StringPtrInput `pulumi:"systemInstruction"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray{ DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput {
+	return o
+}
+
+// Output only. Data sources that are available for answering questions.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput) DatasourceReferences() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext) *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences {
+		return v.DatasourceReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput)
+}
+
+// Output only. The basic entry point for data owners creating domain
+// knowledge for the agent.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput) SystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext) *string {
+		return v.SystemInstruction
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	Bq *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq `pulumi:"bq"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	Bq DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrInput `pulumi:"bq"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs, DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtr and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrType DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput) Bq() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq {
+		return v.Bq
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput) Bq() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq {
+		if v == nil {
+			return nil
+		}
+		return v.Bq
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	TableReferences []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference `pulumi:"tableReferences"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	TableReferences DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayInput `pulumi:"tableReferences"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs, DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtr and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrType DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq) *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput) TableReferences() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq) []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference {
+		return v.TableReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput) TableReferences() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq) []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference {
+		if v == nil {
+			return nil
+		}
+		return v.TableReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference struct {
+	// The dataset that the table belongs to.
+	DatasetId *string `pulumi:"datasetId"`
+	// The project that the table belongs to.
+	ProjectId *string `pulumi:"projectId"`
+	// The table ID.
+	TableId *string `pulumi:"tableId"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs struct {
+	// The dataset that the table belongs to.
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
+	// The project that the table belongs to.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The table ID.
+	TableId pulumi.StringPtrInput `pulumi:"tableId"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray and DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray{ DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray []DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return o
+}
+
+// The dataset that the table belongs to.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference) *string {
+		return v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The project that the table belongs to.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference) *string {
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table ID.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference) *string {
+		return v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext struct {
+	// Required. Data sources that are available for answering questions.
+	// This Terraform resource currently supports BigQuery table references.
+	// Structure is documented below.
+	DatasourceReferences DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences `pulumi:"datasourceReferences"`
+	// Optional. A list of example queries for BigQuery data sources.
+	// Structure is documented below.
+	ExampleQueries []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery `pulumi:"exampleQueries"`
+	// Optional. Term definitions for the agent's domain.
+	// Structure is documented below.
+	GlossaryTerms []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm `pulumi:"glossaryTerms"`
+	// Optional. Additional options for the conversation.
+	// Structure is documented below.
+	Options *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions `pulumi:"options"`
+	// Optional. Relationships between table schemas, including referencing
+	// and referenced columns.
+	// Structure is documented below.
+	SchemaRelationships []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship `pulumi:"schemaRelationships"`
+	// Optional. The basic entry point for data owners creating domain
+	// knowledge for the agent.
+	SystemInstruction *string `pulumi:"systemInstruction"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs struct {
+	// Required. Data sources that are available for answering questions.
+	// This Terraform resource currently supports BigQuery table references.
+	// Structure is documented below.
+	DatasourceReferences DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesInput `pulumi:"datasourceReferences"`
+	// Optional. A list of example queries for BigQuery data sources.
+	// Structure is documented below.
+	ExampleQueries DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayInput `pulumi:"exampleQueries"`
+	// Optional. Term definitions for the agent's domain.
+	// Structure is documented below.
+	GlossaryTerms DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayInput `pulumi:"glossaryTerms"`
+	// Optional. Additional options for the conversation.
+	// Structure is documented below.
+	Options DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrInput `pulumi:"options"`
+	// Optional. Relationships between table schemas, including referencing
+	// and referenced columns.
+	// Structure is documented below.
+	SchemaRelationships DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayInput `pulumi:"schemaRelationships"`
+	// Optional. The basic entry point for data owners creating domain
+	// knowledge for the agent.
+	SystemInstruction pulumi.StringPtrInput `pulumi:"systemInstruction"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput)
+}
+
+// Required. Data sources that are available for answering questions.
+// This Terraform resource currently supports BigQuery table references.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) DatasourceReferences() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences {
+		return v.DatasourceReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput)
+}
+
+// Optional. A list of example queries for BigQuery data sources.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) ExampleQueries() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery {
+		return v.ExampleQueries
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput)
+}
+
+// Optional. Term definitions for the agent's domain.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) GlossaryTerms() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm {
+		return v.GlossaryTerms
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput)
+}
+
+// Optional. Additional options for the conversation.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) Options() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions {
+		return v.Options
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput)
+}
+
+// Optional. Relationships between table schemas, including referencing
+// and referenced columns.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) SchemaRelationships() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship {
+		return v.SchemaRelationships
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput)
+}
+
+// Optional. The basic entry point for data owners creating domain
+// knowledge for the agent.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput) SystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) *string { return v.SystemInstruction }).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput)
+}
+
+// Required. Data sources that are available for answering questions.
+// This Terraform resource currently supports BigQuery table references.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) DatasourceReferences() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasourceReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput)
+}
+
+// Optional. A list of example queries for BigQuery data sources.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) ExampleQueries() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery {
+		if v == nil {
+			return nil
+		}
+		return v.ExampleQueries
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput)
+}
+
+// Optional. Term definitions for the agent's domain.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) GlossaryTerms() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm {
+		if v == nil {
+			return nil
+		}
+		return v.GlossaryTerms
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput)
+}
+
+// Optional. Additional options for the conversation.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) Options() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput)
+}
+
+// Optional. Relationships between table schemas, including referencing
+// and referenced columns.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) SchemaRelationships() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRelationships
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput)
+}
+
+// Optional. The basic entry point for data owners creating domain
+// knowledge for the agent.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput) SystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemInstruction
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	Bq DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq `pulumi:"bq"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	Bq DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqInput `pulumi:"bq"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput) Bq() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq {
+		return v.Bq
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput) Bq() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq {
+		if v == nil {
+			return nil
+		}
+		return &v.Bq
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	TableReferences []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference `pulumi:"tableReferences"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	TableReferences DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayInput `pulumi:"tableReferences"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput) TableReferences() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference {
+		return v.TableReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput) TableReferences() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq) []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference {
+		if v == nil {
+			return nil
+		}
+		return v.TableReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference struct {
+	// The dataset that the table belongs to.
+	DatasetId string `pulumi:"datasetId"`
+	// The project that the table belongs to.
+	ProjectId string `pulumi:"projectId"`
+	// The table ID.
+	TableId string `pulumi:"tableId"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs struct {
+	// The dataset that the table belongs to.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The project that the table belongs to.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The table ID.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray{ DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return o
+}
+
+// The dataset that the table belongs to.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference) string {
+		return v.DatasetId
+	}).(pulumi.StringOutput)
+}
+
+// The project that the table belongs to.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference) string {
+		return v.ProjectId
+	}).(pulumi.StringOutput)
+}
+
+// The table ID.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference) string {
+		return v.TableId
+	}).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery struct {
+	// Optional. A natural language question that a user might ask.
+	NaturalLanguageQuestion *string `pulumi:"naturalLanguageQuestion"`
+	// Optional. The SQL query that should be generated to answer
+	// the natural language question.
+	SqlQuery *string `pulumi:"sqlQuery"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs struct {
+	// Optional. A natural language question that a user might ask.
+	NaturalLanguageQuestion pulumi.StringPtrInput `pulumi:"naturalLanguageQuestion"`
+	// Optional. The SQL query that should be generated to answer
+	// the natural language question.
+	SqlQuery pulumi.StringPtrInput `pulumi:"sqlQuery"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray{ DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput {
+	return o
+}
+
+// Optional. A natural language question that a user might ask.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput) NaturalLanguageQuestion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery) *string {
+		return v.NaturalLanguageQuestion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The SQL query that should be generated to answer
+// the natural language question.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput) SqlQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery) *string {
+		return v.SqlQuery
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm struct {
+	// Required. The description or meaning of the term.
+	Description string `pulumi:"description"`
+	// Required. User friendly display name of the glossary term.
+	DisplayName string `pulumi:"displayName"`
+	// Optional. A list of general purpose labels associated with this term.
+	Labels []string `pulumi:"labels"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs struct {
+	// Required. The description or meaning of the term.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Required. User friendly display name of the glossary term.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Optional. A list of general purpose labels associated with this term.
+	Labels pulumi.StringArrayInput `pulumi:"labels"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray{ DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput {
+	return o
+}
+
+// Required. The description or meaning of the term.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// Required. User friendly display name of the glossary term.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// Optional. A list of general purpose labels associated with this term.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions struct {
+	// Optional. Options for analysis.
+	// Structure is documented below.
+	Analysis *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis `pulumi:"analysis"`
+	// Optional. Options for datasource configuration.
+	// Structure is documented below.
+	Datasource *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource `pulumi:"datasource"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs struct {
+	// Optional. Options for analysis.
+	// Structure is documented below.
+	Analysis DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrInput `pulumi:"analysis"`
+	// Optional. Options for datasource configuration.
+	// Structure is documented below.
+	Datasource DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrInput `pulumi:"datasource"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput)
+}
+
+// Optional. Options for analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) Analysis() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis {
+		return v.Analysis
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput)
+}
+
+// Optional. Options for datasource configuration.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput) Datasource() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource {
+		return v.Datasource
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput)
+}
+
+// Optional. Options for analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput) Analysis() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis {
+		if v == nil {
+			return nil
+		}
+		return v.Analysis
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput)
+}
+
+// Optional. Options for datasource configuration.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput) Datasource() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource {
+		if v == nil {
+			return nil
+		}
+		return v.Datasource
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis struct {
+	// Optional. Options for Python analysis.
+	// Structure is documented below.
+	Python *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython `pulumi:"python"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs struct {
+	// Optional. Options for Python analysis.
+	// Structure is documented below.
+	Python DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrInput `pulumi:"python"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput)
+}
+
+// Optional. Options for Python analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput) Python() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython {
+		return v.Python
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput)
+}
+
+// Optional. Options for Python analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput) Python() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython {
+		if v == nil {
+			return nil
+		}
+		return v.Python
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython struct {
+	// Optional. Whether to enable Python analysis. Defaults to false.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs struct {
+	// Optional. Whether to enable Python analysis. Defaults to false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput)
+}
+
+// Optional. Whether to enable Python analysis. Defaults to false.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput)
+}
+
+// Optional. Whether to enable Python analysis. Defaults to false.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource struct {
+	// Optional. Limits the bytes billed for each BigQuery query job.
+	BigQueryMaxBilledBytes *int `pulumi:"bigQueryMaxBilledBytes"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs struct {
+	// Optional. Limits the bytes billed for each BigQuery query job.
+	BigQueryMaxBilledBytes pulumi.IntPtrInput `pulumi:"bigQueryMaxBilledBytes"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs, DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtr and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrType DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtr(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource) *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput)
+}
+
+// Optional. Limits the bytes billed for each BigQuery query job.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput) BigQueryMaxBilledBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource) *int {
+		return v.BigQueryMaxBilledBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput)
+}
+
+// Optional. Limits the bytes billed for each BigQuery query job.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput) BigQueryMaxBilledBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BigQueryMaxBilledBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship struct {
+	// Optional. A confidence score for the suggested relationship.
+	ConfidenceScore *float64 `pulumi:"confidenceScore"`
+	// Required. An ordered list of fields for the left side of the join.
+	// Structure is documented below.
+	LeftSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths `pulumi:"leftSchemaPaths"`
+	// Required. An ordered list of fields for the right side of the join.
+	// Structure is documented below.
+	RightSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths `pulumi:"rightSchemaPaths"`
+	// Optional. Sources which generated the schema relation edge.
+	// Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+	Sources []string `pulumi:"sources"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs struct {
+	// Optional. A confidence score for the suggested relationship.
+	ConfidenceScore pulumi.Float64PtrInput `pulumi:"confidenceScore"`
+	// Required. An ordered list of fields for the left side of the join.
+	// Structure is documented below.
+	LeftSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsInput `pulumi:"leftSchemaPaths"`
+	// Required. An ordered list of fields for the right side of the join.
+	// Structure is documented below.
+	RightSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsInput `pulumi:"rightSchemaPaths"`
+	// Optional. Sources which generated the schema relation edge.
+	// Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+	Sources pulumi.StringArrayInput `pulumi:"sources"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray{ DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray []DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput {
+	return o
+}
+
+// Optional. A confidence score for the suggested relationship.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) ConfidenceScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship) *float64 {
+		return v.ConfidenceScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required. An ordered list of fields for the left side of the join.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) LeftSchemaPaths() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths {
+		return v.LeftSchemaPaths
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput)
+}
+
+// Required. An ordered list of fields for the right side of the join.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) RightSchemaPaths() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths {
+		return v.RightSchemaPaths
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput)
+}
+
+// Optional. Sources which generated the schema relation edge.
+// Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput) Sources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship) []string {
+		return v.Sources
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths struct {
+	// Required. The ordered list of paths within the table schema.
+	Paths []string `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn string `pulumi:"tableFqn"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs struct {
+	// Required. The ordered list of paths within the table schema.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn pulumi.StringInput `pulumi:"tableFqn"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput {
+	return o
+}
+
+// Required. The ordered list of paths within the table schema.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths) []string {
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The service-qualified full resource name of the table.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput) TableFqn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths) string {
+		return v.TableFqn
+	}).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths struct {
+	// Required. The ordered list of paths within the table schema.
+	//
+	// <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+	Paths []string `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn string `pulumi:"tableFqn"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs and DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs struct {
+	// Required. The ordered list of paths within the table schema.
+	//
+	// <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn pulumi.StringInput `pulumi:"tableFqn"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput {
+	return o
+}
+
+// Required. The ordered list of paths within the table schema.
+//
+// <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths) []string {
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The service-qualified full resource name of the table.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput) TableFqn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths) string {
+		return v.TableFqn
+	}).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContext struct {
+	// Required. Data sources that are available for answering questions.
+	// This Terraform resource currently supports BigQuery table references.
+	// Structure is documented below.
+	DatasourceReferences DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences `pulumi:"datasourceReferences"`
+	// Optional. A list of example queries for BigQuery data sources.
+	// Structure is documented below.
+	ExampleQueries []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery `pulumi:"exampleQueries"`
+	// Optional. Term definitions for the agent's domain.
+	// Structure is documented below.
+	GlossaryTerms []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm `pulumi:"glossaryTerms"`
+	// Optional. Additional options for the conversation.
+	// Structure is documented below.
+	Options *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions `pulumi:"options"`
+	// Optional. Relationships between table schemas, including referencing
+	// and referenced columns.
+	// Structure is documented below.
+	SchemaRelationships []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship `pulumi:"schemaRelationships"`
+	// Optional. The basic entry point for data owners creating domain
+	// knowledge for the agent.
+	SystemInstruction *string `pulumi:"systemInstruction"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs struct {
+	// Required. Data sources that are available for answering questions.
+	// This Terraform resource currently supports BigQuery table references.
+	// Structure is documented below.
+	DatasourceReferences DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesInput `pulumi:"datasourceReferences"`
+	// Optional. A list of example queries for BigQuery data sources.
+	// Structure is documented below.
+	ExampleQueries DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayInput `pulumi:"exampleQueries"`
+	// Optional. Term definitions for the agent's domain.
+	// Structure is documented below.
+	GlossaryTerms DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayInput `pulumi:"glossaryTerms"`
+	// Optional. Additional options for the conversation.
+	// Structure is documented below.
+	Options DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrInput `pulumi:"options"`
+	// Optional. Relationships between table schemas, including referencing
+	// and referenced columns.
+	// Structure is documented below.
+	SchemaRelationships DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayInput `pulumi:"schemaRelationships"`
+	// Optional. The basic entry point for data owners creating domain
+	// knowledge for the agent.
+	SystemInstruction pulumi.StringPtrInput `pulumi:"systemInstruction"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContext)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContext)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContext)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput)
+}
+
+// Required. Data sources that are available for answering questions.
+// This Terraform resource currently supports BigQuery table references.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) DatasourceReferences() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
+		return v.DatasourceReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput)
+}
+
+// Optional. A list of example queries for BigQuery data sources.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) ExampleQueries() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery {
+		return v.ExampleQueries
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput)
+}
+
+// Optional. Term definitions for the agent's domain.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) GlossaryTerms() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm {
+		return v.GlossaryTerms
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput)
+}
+
+// Optional. Additional options for the conversation.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) Options() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions {
+		return v.Options
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput)
+}
+
+// Optional. Relationships between table schemas, including referencing
+// and referenced columns.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) SchemaRelationships() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship {
+		return v.SchemaRelationships
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput)
+}
+
+// Optional. The basic entry point for data owners creating domain
+// knowledge for the agent.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput) SystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) *string { return v.SystemInstruction }).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContext)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContext
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput)
+}
+
+// Required. Data sources that are available for answering questions.
+// This Terraform resource currently supports BigQuery table references.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) DatasourceReferences() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasourceReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput)
+}
+
+// Optional. A list of example queries for BigQuery data sources.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) ExampleQueries() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery {
+		if v == nil {
+			return nil
+		}
+		return v.ExampleQueries
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput)
+}
+
+// Optional. Term definitions for the agent's domain.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) GlossaryTerms() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm {
+		if v == nil {
+			return nil
+		}
+		return v.GlossaryTerms
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput)
+}
+
+// Optional. Additional options for the conversation.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) Options() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions {
+		if v == nil {
+			return nil
+		}
+		return v.Options
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput)
+}
+
+// Optional. Relationships between table schemas, including referencing
+// and referenced columns.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) SchemaRelationships() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRelationships
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput)
+}
+
+// Optional. The basic entry point for data owners creating domain
+// knowledge for the agent.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput) SystemInstruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemInstruction
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	Bq DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq `pulumi:"bq"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	Bq DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqInput `pulumi:"bq"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput) Bq() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
+		return v.Bq
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput) Bq() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
+		if v == nil {
+			return nil
+		}
+		return &v.Bq
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	TableReferences []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference `pulumi:"tableReferences"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs struct {
+	// References to BigQuery tables.
+	// Structure is documented below.
+	TableReferences DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayInput `pulumi:"tableReferences"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput) TableReferences() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference {
+		return v.TableReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput)
+}
+
+// References to BigQuery tables.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput) TableReferences() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq) []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference {
+		if v == nil {
+			return nil
+		}
+		return v.TableReferences
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference struct {
+	// The dataset that the table belongs to.
+	DatasetId string `pulumi:"datasetId"`
+	// The project that the table belongs to.
+	ProjectId string `pulumi:"projectId"`
+	// The table ID.
+	TableId string `pulumi:"tableId"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs struct {
+	// The dataset that the table belongs to.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The project that the table belongs to.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The table ID.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray{ DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput {
+	return o
+}
+
+// The dataset that the table belongs to.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference) string {
+		return v.DatasetId
+	}).(pulumi.StringOutput)
+}
+
+// The project that the table belongs to.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference) string {
+		return v.ProjectId
+	}).(pulumi.StringOutput)
+}
+
+// The table ID.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference) string {
+		return v.TableId
+	}).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery struct {
+	// Optional. A natural language question that a user might ask.
+	NaturalLanguageQuestion *string `pulumi:"naturalLanguageQuestion"`
+	// Optional. The SQL query that should be generated to answer
+	// the natural language question.
+	SqlQuery *string `pulumi:"sqlQuery"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs struct {
+	// Optional. A natural language question that a user might ask.
+	NaturalLanguageQuestion pulumi.StringPtrInput `pulumi:"naturalLanguageQuestion"`
+	// Optional. The SQL query that should be generated to answer
+	// the natural language question.
+	SqlQuery pulumi.StringPtrInput `pulumi:"sqlQuery"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray{ DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput {
+	return o
+}
+
+// Optional. A natural language question that a user might ask.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput) NaturalLanguageQuestion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery) *string {
+		return v.NaturalLanguageQuestion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The SQL query that should be generated to answer
+// the natural language question.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput) SqlQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery) *string { return v.SqlQuery }).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm struct {
+	// Required. The description or meaning of the term.
+	Description string `pulumi:"description"`
+	// Required. User friendly display name of the glossary term.
+	DisplayName string `pulumi:"displayName"`
+	// Optional. A list of general purpose labels associated with this term.
+	Labels []string `pulumi:"labels"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs struct {
+	// Required. The description or meaning of the term.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Required. User friendly display name of the glossary term.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Optional. A list of general purpose labels associated with this term.
+	Labels pulumi.StringArrayInput `pulumi:"labels"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray{ DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput {
+	return o
+}
+
+// Required. The description or meaning of the term.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// Required. User friendly display name of the glossary term.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// Optional. A list of general purpose labels associated with this term.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions struct {
+	// Optional. Options for analysis.
+	// Structure is documented below.
+	Analysis *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis `pulumi:"analysis"`
+	// Optional. Options for datasource configuration.
+	// Structure is documented below.
+	Datasource *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource `pulumi:"datasource"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs struct {
+	// Optional. Options for analysis.
+	// Structure is documented below.
+	Analysis DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrInput `pulumi:"analysis"`
+	// Optional. Options for datasource configuration.
+	// Structure is documented below.
+	Datasource DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrInput `pulumi:"datasource"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput)
+}
+
+// Optional. Options for analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) Analysis() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis {
+		return v.Analysis
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput)
+}
+
+// Optional. Options for datasource configuration.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput) Datasource() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource {
+		return v.Datasource
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput)
+}
+
+// Optional. Options for analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput) Analysis() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis {
+		if v == nil {
+			return nil
+		}
+		return v.Analysis
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput)
+}
+
+// Optional. Options for datasource configuration.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput) Datasource() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource {
+		if v == nil {
+			return nil
+		}
+		return v.Datasource
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis struct {
+	// Optional. Options for Python analysis.
+	// Structure is documented below.
+	Python *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython `pulumi:"python"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs struct {
+	// Optional. Options for Python analysis.
+	// Structure is documented below.
+	Python DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrInput `pulumi:"python"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput)
+}
+
+// Optional. Options for Python analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput) Python() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython {
+		return v.Python
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput)
+}
+
+// Optional. Options for Python analysis.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput) Python() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython {
+		if v == nil {
+			return nil
+		}
+		return v.Python
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython struct {
+	// Optional. Whether to enable Python analysis. Defaults to false.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs struct {
+	// Optional. Whether to enable Python analysis. Defaults to false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput)
+}
+
+// Optional. Whether to enable Python analysis. Defaults to false.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput)
+}
+
+// Optional. Whether to enable Python analysis. Defaults to false.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource struct {
+	// Optional. Limits the bytes billed for each BigQuery query job.
+	BigQueryMaxBilledBytes *int `pulumi:"bigQueryMaxBilledBytes"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs struct {
+	// Optional. Limits the bytes billed for each BigQuery query job.
+	BigQueryMaxBilledBytes pulumi.IntPtrInput `pulumi:"bigQueryMaxBilledBytes"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput)
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput).ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs, DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtr and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrInput` via:
+//
+//	        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput
+}
+
+type dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrType DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs
+
+func DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtr(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrInput {
+	return (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrType) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return o.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource) *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource {
+		return &v
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput)
+}
+
+// Optional. Limits the bytes billed for each BigQuery query job.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput) BigQueryMaxBilledBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource) *int {
+		return v.BigQueryMaxBilledBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput) Elem() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource
+		return ret
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput)
+}
+
+// Optional. Limits the bytes billed for each BigQuery query job.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput) BigQueryMaxBilledBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BigQueryMaxBilledBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship struct {
+	// Optional. A confidence score for the suggested relationship.
+	ConfidenceScore *float64 `pulumi:"confidenceScore"`
+	// Required. An ordered list of fields for the left side of the join.
+	// Structure is documented below.
+	LeftSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths `pulumi:"leftSchemaPaths"`
+	// Required. An ordered list of fields for the right side of the join.
+	// Structure is documented below.
+	RightSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths `pulumi:"rightSchemaPaths"`
+	// Optional. Sources which generated the schema relation edge.
+	// Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+	Sources []string `pulumi:"sources"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs struct {
+	// Optional. A confidence score for the suggested relationship.
+	ConfidenceScore pulumi.Float64PtrInput `pulumi:"confidenceScore"`
+	// Required. An ordered list of fields for the left side of the join.
+	// Structure is documented below.
+	LeftSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsInput `pulumi:"leftSchemaPaths"`
+	// Required. An ordered list of fields for the right side of the join.
+	// Structure is documented below.
+	RightSchemaPaths DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsInput `pulumi:"rightSchemaPaths"`
+	// Optional. Sources which generated the schema relation edge.
+	// Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+	Sources pulumi.StringArrayInput `pulumi:"sources"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput)
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray{ DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs{...} }
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray []DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipInput
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput {
+	return o
+}
+
+// Optional. A confidence score for the suggested relationship.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) ConfidenceScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship) *float64 {
+		return v.ConfidenceScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required. An ordered list of fields for the left side of the join.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) LeftSchemaPaths() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths {
+		return v.LeftSchemaPaths
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput)
+}
+
+// Required. An ordered list of fields for the right side of the join.
+// Structure is documented below.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) RightSchemaPaths() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths {
+		return v.RightSchemaPaths
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput)
+}
+
+// Optional. Sources which generated the schema relation edge.
+// Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput) Sources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship) []string {
+		return v.Sources
+	}).(pulumi.StringArrayOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput) Index(i pulumi.IntInput) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship {
+		return vs[0].([]DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship)[vs[1].(int)]
+	}).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths struct {
+	// Required. The ordered list of paths within the table schema.
+	Paths []string `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn string `pulumi:"tableFqn"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs struct {
+	// Required. The ordered list of paths within the table schema.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn pulumi.StringInput `pulumi:"tableFqn"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput {
+	return o
+}
+
+// Required. The ordered list of paths within the table schema.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths) []string {
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The service-qualified full resource name of the table.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput) TableFqn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths) string {
+		return v.TableFqn
+	}).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths struct {
+	// Required. The ordered list of paths within the table schema.
+	//
+	// <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+	Paths []string `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn string `pulumi:"tableFqn"`
+}
+
+// DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsInput is an input type that accepts DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs and DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsInput` via:
+//
+//	DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs{...}
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput
+	ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutputWithContext(context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs struct {
+	// Required. The ordered list of paths within the table schema.
+	//
+	// <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Required. The service-qualified full resource name of the table.
+	TableFqn pulumi.StringInput `pulumi:"tableFqn"`
+}
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput {
+	return i.ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput)
+}
+
+type DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput() DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput) ToDataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutputWithContext(ctx context.Context) DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput {
+	return o
+}
+
+// Required. The ordered list of paths within the table schema.
+//
+// <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths) []string {
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The service-qualified full resource name of the table.
+func (o DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput) TableFqn() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths) string {
+		return v.TableFqn
+	}).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DataAnalyticsDataAgentIamBindingConditionInput is an input type that accepts DataAnalyticsDataAgentIamBindingConditionArgs and DataAnalyticsDataAgentIamBindingConditionOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentIamBindingConditionInput` via:
+//
+//	DataAnalyticsDataAgentIamBindingConditionArgs{...}
+type DataAnalyticsDataAgentIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentIamBindingConditionOutput() DataAnalyticsDataAgentIamBindingConditionOutput
+	ToDataAnalyticsDataAgentIamBindingConditionOutputWithContext(context.Context) DataAnalyticsDataAgentIamBindingConditionOutput
+}
+
+type DataAnalyticsDataAgentIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DataAnalyticsDataAgentIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentIamBindingCondition)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentIamBindingConditionArgs) ToDataAnalyticsDataAgentIamBindingConditionOutput() DataAnalyticsDataAgentIamBindingConditionOutput {
+	return i.ToDataAnalyticsDataAgentIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentIamBindingConditionArgs) ToDataAnalyticsDataAgentIamBindingConditionOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentIamBindingConditionOutput)
+}
+
+func (i DataAnalyticsDataAgentIamBindingConditionArgs) ToDataAnalyticsDataAgentIamBindingConditionPtrOutput() DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return i.ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentIamBindingConditionArgs) ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentIamBindingConditionOutput).ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentIamBindingConditionPtrInput is an input type that accepts DataAnalyticsDataAgentIamBindingConditionArgs, DataAnalyticsDataAgentIamBindingConditionPtr and DataAnalyticsDataAgentIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentIamBindingConditionPtrInput` via:
+//
+//	        DataAnalyticsDataAgentIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentIamBindingConditionPtrOutput() DataAnalyticsDataAgentIamBindingConditionPtrOutput
+	ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(context.Context) DataAnalyticsDataAgentIamBindingConditionPtrOutput
+}
+
+type dataAnalyticsDataAgentIamBindingConditionPtrType DataAnalyticsDataAgentIamBindingConditionArgs
+
+func DataAnalyticsDataAgentIamBindingConditionPtr(v *DataAnalyticsDataAgentIamBindingConditionArgs) DataAnalyticsDataAgentIamBindingConditionPtrInput {
+	return (*dataAnalyticsDataAgentIamBindingConditionPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentIamBindingCondition)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentIamBindingConditionPtrType) ToDataAnalyticsDataAgentIamBindingConditionPtrOutput() DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return i.ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentIamBindingConditionPtrType) ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentIamBindingConditionPtrOutput)
+}
+
+type DataAnalyticsDataAgentIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentIamBindingCondition)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) ToDataAnalyticsDataAgentIamBindingConditionOutput() DataAnalyticsDataAgentIamBindingConditionOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) ToDataAnalyticsDataAgentIamBindingConditionOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamBindingConditionOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) ToDataAnalyticsDataAgentIamBindingConditionPtrOutput() DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return o.ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentIamBindingCondition) *DataAnalyticsDataAgentIamBindingCondition {
+		return &v
+	}).(DataAnalyticsDataAgentIamBindingConditionPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentIamBindingCondition)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionPtrOutput) ToDataAnalyticsDataAgentIamBindingConditionPtrOutput() DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionPtrOutput) ToDataAnalyticsDataAgentIamBindingConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionPtrOutput) Elem() DataAnalyticsDataAgentIamBindingConditionOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamBindingCondition) DataAnalyticsDataAgentIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentIamBindingCondition
+		return ret
+	}).(DataAnalyticsDataAgentIamBindingConditionOutput)
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAnalyticsDataAgentIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DataAnalyticsDataAgentIamMemberConditionInput is an input type that accepts DataAnalyticsDataAgentIamMemberConditionArgs and DataAnalyticsDataAgentIamMemberConditionOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentIamMemberConditionInput` via:
+//
+//	DataAnalyticsDataAgentIamMemberConditionArgs{...}
+type DataAnalyticsDataAgentIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentIamMemberConditionOutput() DataAnalyticsDataAgentIamMemberConditionOutput
+	ToDataAnalyticsDataAgentIamMemberConditionOutputWithContext(context.Context) DataAnalyticsDataAgentIamMemberConditionOutput
+}
+
+type DataAnalyticsDataAgentIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DataAnalyticsDataAgentIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentIamMemberCondition)(nil)).Elem()
+}
+
+func (i DataAnalyticsDataAgentIamMemberConditionArgs) ToDataAnalyticsDataAgentIamMemberConditionOutput() DataAnalyticsDataAgentIamMemberConditionOutput {
+	return i.ToDataAnalyticsDataAgentIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentIamMemberConditionArgs) ToDataAnalyticsDataAgentIamMemberConditionOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentIamMemberConditionOutput)
+}
+
+func (i DataAnalyticsDataAgentIamMemberConditionArgs) ToDataAnalyticsDataAgentIamMemberConditionPtrOutput() DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return i.ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DataAnalyticsDataAgentIamMemberConditionArgs) ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentIamMemberConditionOutput).ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DataAnalyticsDataAgentIamMemberConditionPtrInput is an input type that accepts DataAnalyticsDataAgentIamMemberConditionArgs, DataAnalyticsDataAgentIamMemberConditionPtr and DataAnalyticsDataAgentIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DataAnalyticsDataAgentIamMemberConditionPtrInput` via:
+//
+//	        DataAnalyticsDataAgentIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAnalyticsDataAgentIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDataAnalyticsDataAgentIamMemberConditionPtrOutput() DataAnalyticsDataAgentIamMemberConditionPtrOutput
+	ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(context.Context) DataAnalyticsDataAgentIamMemberConditionPtrOutput
+}
+
+type dataAnalyticsDataAgentIamMemberConditionPtrType DataAnalyticsDataAgentIamMemberConditionArgs
+
+func DataAnalyticsDataAgentIamMemberConditionPtr(v *DataAnalyticsDataAgentIamMemberConditionArgs) DataAnalyticsDataAgentIamMemberConditionPtrInput {
+	return (*dataAnalyticsDataAgentIamMemberConditionPtrType)(v)
+}
+
+func (*dataAnalyticsDataAgentIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentIamMemberCondition)(nil)).Elem()
+}
+
+func (i *dataAnalyticsDataAgentIamMemberConditionPtrType) ToDataAnalyticsDataAgentIamMemberConditionPtrOutput() DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return i.ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAnalyticsDataAgentIamMemberConditionPtrType) ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAnalyticsDataAgentIamMemberConditionPtrOutput)
+}
+
+type DataAnalyticsDataAgentIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAnalyticsDataAgentIamMemberCondition)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) ToDataAnalyticsDataAgentIamMemberConditionOutput() DataAnalyticsDataAgentIamMemberConditionOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) ToDataAnalyticsDataAgentIamMemberConditionOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamMemberConditionOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) ToDataAnalyticsDataAgentIamMemberConditionPtrOutput() DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return o.ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAnalyticsDataAgentIamMemberCondition) *DataAnalyticsDataAgentIamMemberCondition {
+		return &v
+	}).(DataAnalyticsDataAgentIamMemberConditionPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAnalyticsDataAgentIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DataAnalyticsDataAgentIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAnalyticsDataAgentIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAnalyticsDataAgentIamMemberCondition)(nil)).Elem()
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionPtrOutput) ToDataAnalyticsDataAgentIamMemberConditionPtrOutput() DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionPtrOutput) ToDataAnalyticsDataAgentIamMemberConditionPtrOutputWithContext(ctx context.Context) DataAnalyticsDataAgentIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionPtrOutput) Elem() DataAnalyticsDataAgentIamMemberConditionOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamMemberCondition) DataAnalyticsDataAgentIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DataAnalyticsDataAgentIamMemberCondition
+		return ret
+	}).(DataAnalyticsDataAgentIamMemberConditionOutput)
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataAnalyticsDataAgentIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAnalyticsDataAgentIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type GdaObservabilitySettingConversationalAnalyticsSetting struct {
 	// Whether to enable feedback.
 	FeedbackEnabled *bool `pulumi:"feedbackEnabled"`
@@ -1089,6 +5696,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolArrayInput)(nil)).Elem(), CodeToolsSettingEnabledToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolConfigInput)(nil)).Elem(), CodeToolsSettingEnabledToolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeToolsSettingEnabledToolConfigArrayInput)(nil)).Elem(), CodeToolsSettingEnabledToolConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsInput)(nil)).Elem(), DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentIamBindingConditionInput)(nil)).Elem(), DataAnalyticsDataAgentIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentIamBindingConditionPtrInput)(nil)).Elem(), DataAnalyticsDataAgentIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentIamMemberConditionInput)(nil)).Elem(), DataAnalyticsDataAgentIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAnalyticsDataAgentIamMemberConditionPtrInput)(nil)).Elem(), DataAnalyticsDataAgentIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GdaObservabilitySettingConversationalAnalyticsSettingInput)(nil)).Elem(), GdaObservabilitySettingConversationalAnalyticsSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GdaObservabilitySettingConversationalAnalyticsSettingPtrInput)(nil)).Elem(), GdaObservabilitySettingConversationalAnalyticsSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GibqObservabilitySettingConversationalAnalyticsSettingInput)(nil)).Elem(), GibqObservabilitySettingConversationalAnalyticsSettingArgs{})
@@ -1103,6 +5772,68 @@ func init() {
 	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolArrayOutput{})
 	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolConfigOutput{})
 	pulumi.RegisterOutputType(CodeToolsSettingEnabledToolConfigArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourcePtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourcePtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArrayOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DataAnalyticsDataAgentIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(GdaObservabilitySettingConversationalAnalyticsSettingOutput{})
 	pulumi.RegisterOutputType(GdaObservabilitySettingConversationalAnalyticsSettingPtrOutput{})
 	pulumi.RegisterOutputType(GibqObservabilitySettingConversationalAnalyticsSettingOutput{})

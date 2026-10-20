@@ -90,12 +90,12 @@ import (
 //				Zone: pulumi.String("us-central1-f"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
-//						InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//						InstanceTemplate: defaultInstanceTemplate.ID(),
 //						Name:             pulumi.String("primary"),
 //					},
 //				},
 //				TargetPools: pulumi.StringArray{
-//					defaultTargetPool.ID().ToIDOutput().ToStringOutput(),
+//					defaultTargetPool.ID(),
 //				},
 //				BaseInstanceName: pulumi.String("autoscaler-sample"),
 //			})
@@ -105,7 +105,7 @@ import (
 //			_, err = compute.NewAutoscaler(ctx, "default", &compute.AutoscalerArgs{
 //				Name:   pulumi.String("my-autoscaler"),
 //				Zone:   pulumi.String("us-central1-f"),
-//				Target: defaultInstanceGroupManager.ID().ToIDOutput().ToStringOutput(),
+//				Target: defaultInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
 //					MaxReplicas:         pulumi.Int(5),
 //					MinReplicas:         pulumi.Int(1),
@@ -192,12 +192,12 @@ import (
 //				Zone: pulumi.String("us-central1-f"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
-//						InstanceTemplate: foobarInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//						InstanceTemplate: foobarInstanceTemplate.ID(),
 //						Name:             pulumi.String("primary"),
 //					},
 //				},
 //				TargetPools: pulumi.StringArray{
-//					foobarTargetPool.ID().ToIDOutput().ToStringOutput(),
+//					foobarTargetPool.ID(),
 //				},
 //				BaseInstanceName: pulumi.String("foobar"),
 //			})
@@ -207,7 +207,7 @@ import (
 //			_, err = compute.NewAutoscaler(ctx, "foobar", &compute.AutoscalerArgs{
 //				Name:   pulumi.String("my-autoscaler"),
 //				Zone:   pulumi.String("us-central1-f"),
-//				Target: foobarInstanceGroupManager.ID().ToIDOutput().ToStringOutput(),
+//				Target: foobarInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
 //					MaxReplicas:         pulumi.Int(5),
 //					MinReplicas:         pulumi.Int(1),

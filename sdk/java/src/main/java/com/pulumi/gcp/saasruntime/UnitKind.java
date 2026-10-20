@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .releaseId("example-release")
  *             .unitKind(clusterUnitKind.id())
  *             .blueprint(ReleaseBlueprintArgs.builder()
- *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image}{@literal @}{@code sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee")
+ *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image}{@literal @}{@code sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680")
  *                 .build())
  *             .build());
  * 

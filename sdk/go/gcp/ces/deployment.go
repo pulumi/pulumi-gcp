@@ -58,7 +58,7 @@ import (
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("my-deployment"),
 //				App:         my_app.Name,
-//				AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
+//				AppVersion:  my_app_version.ID(),
 //				ChannelProfile: &ces.DeploymentChannelProfileArgs{
 //					ChannelType:           pulumi.String("API"),
 //					DisableBargeInControl: pulumi.Bool(true),
@@ -121,7 +121,7 @@ import (
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("my-deployment"),
 //				App:         my_app.Name,
-//				AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
+//				AppVersion:  my_app_version.ID(),
 //				ChannelProfile: &ces.DeploymentChannelProfileArgs{
 //					ChannelType:           pulumi.String("API"),
 //					DisableBargeInControl: pulumi.Bool(true),
@@ -193,7 +193,7 @@ import (
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("my-deployment"),
 //				App:         my_app.Name,
-//				AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
+//				AppVersion:  my_app_version.ID(),
 //				ChannelProfile: &ces.DeploymentChannelProfileArgs{
 //					ChannelType: pulumi.String("API"),
 //					ProfileId:   pulumi.String("temp_profile_id"),

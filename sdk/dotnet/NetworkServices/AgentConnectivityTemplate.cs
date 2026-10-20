@@ -40,6 +40,8 @@ namespace Pulumi.Gcp.NetworkServices
     ///             { "env", "test" },
     ///             { "tier", "gold" },
     ///         },
+    ///         AgentCompute = "GKE",
+    ///         DeploymentModel = "CENTRALIZED",
     ///         AccessPath = "CLIENT_TO_AGENT",
     ///     });
     /// 
@@ -138,6 +140,8 @@ namespace Pulumi.Gcp.NetworkServices
     ///         AgentConnectivityTemplateId = "my-connectivity-template",
     ///         Location = "us-west2",
     ///         Description = "An advanced configuration for Agent Connectivity Template",
+    ///         AgentCompute = "GKE",
+    ///         DeploymentModel = "CENTRALIZED",
     ///         AccessTypes = new[]
     ///         {
     ///             "PRIVATE",
@@ -207,6 +211,14 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableArray<string>> AccessTypes { get; private set; } = null!;
 
         /// <summary>
+        /// The compute environment where the agent is hosted.
+        /// Exactly one type of compute must be chosen.
+        /// Possible values are: `GKE`, `CLOUD_RUN`.
+        /// </summary>
+        [Output("agentCompute")]
+        public Output<string?> AgentCompute { get; private set; } = null!;
+
+        /// <summary>
         /// Short name of the AgentConnectivityTemplate resource.
         /// </summary>
         [Output("agentConnectivityTemplateId")]
@@ -228,6 +240,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The deployment model for the gateway.
+        /// Possible values are: `CENTRALIZED`, `AMBIENT`.
+        /// </summary>
+        [Output("deploymentModel")]
+        public Output<string?> DeploymentModel { get; private set; } = null!;
 
         /// <summary>
         /// A free-text description of the resource. Max length 1024 characters.
@@ -372,6 +391,14 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
+        /// The compute environment where the agent is hosted.
+        /// Exactly one type of compute must be chosen.
+        /// Possible values are: `GKE`, `CLOUD_RUN`.
+        /// </summary>
+        [Input("agentCompute")]
+        public Input<string>? AgentCompute { get; set; }
+
+        /// <summary>
         /// Short name of the AgentConnectivityTemplate resource.
         /// </summary>
         [Input("agentConnectivityTemplateId", required: true)]
@@ -387,6 +414,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// The deployment model for the gateway.
+        /// Possible values are: `CENTRALIZED`, `AMBIENT`.
+        /// </summary>
+        [Input("deploymentModel")]
+        public Input<string>? DeploymentModel { get; set; }
 
         /// <summary>
         /// A free-text description of the resource. Max length 1024 characters.
@@ -460,6 +494,14 @@ namespace Pulumi.Gcp.NetworkServices
         }
 
         /// <summary>
+        /// The compute environment where the agent is hosted.
+        /// Exactly one type of compute must be chosen.
+        /// Possible values are: `GKE`, `CLOUD_RUN`.
+        /// </summary>
+        [Input("agentCompute")]
+        public Input<string>? AgentCompute { get; set; }
+
+        /// <summary>
         /// Short name of the AgentConnectivityTemplate resource.
         /// </summary>
         [Input("agentConnectivityTemplateId")]
@@ -481,6 +523,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// The deployment model for the gateway.
+        /// Possible values are: `CENTRALIZED`, `AMBIENT`.
+        /// </summary>
+        [Input("deploymentModel")]
+        public Input<string>? DeploymentModel { get; set; }
 
         /// <summary>
         /// A free-text description of the resource. Max length 1024 characters.

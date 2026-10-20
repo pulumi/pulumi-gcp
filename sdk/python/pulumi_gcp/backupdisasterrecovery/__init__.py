@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .auto_protection_policy import *
 from .backup_plan import *
 from .backup_plan_association import *
 from .backup_vault import *

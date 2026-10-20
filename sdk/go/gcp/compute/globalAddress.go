@@ -72,7 +72,7 @@ import (
 //				Name:        pulumi.String("global-psconnect-ip"),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-//				Network:     network.ID().ToIDOutput().ToStringOutput(),
+//				Network:     network.ID(),
 //				Address:     pulumi.String("100.100.100.105"),
 //			})
 //			if err != nil {

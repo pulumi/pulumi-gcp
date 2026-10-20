@@ -24,11 +24,18 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// controls the randomness of the model's responses. Lower temperatures
         /// produce responses that are more predictable. Higher temperatures produce
         /// responses that are more creative.
-        /// 
-        /// &lt;a name="NestedRemoteA2aAgent"&gt;&lt;/a&gt;The `RemoteA2aAgent` block supports:
         /// </summary>
         [Input("temperature")]
         public Input<double>? Temperature { get; set; }
+
+        /// <summary>
+        /// The thinking level of the model.
+        /// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+        /// 
+        /// &lt;a name="NestedRemoteA2aAgent"&gt;&lt;/a&gt;The `RemoteA2aAgent` block supports:
+        /// </summary>
+        [Input("thinkingLevel")]
+        public Input<string>? ThinkingLevel { get; set; }
 
         public AgentModelSettingsArgs()
         {

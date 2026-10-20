@@ -47,7 +47,9 @@ import (
 //					"env":  pulumi.String("test"),
 //					"tier": pulumi.String("gold"),
 //				},
-//				AccessPath: pulumi.String("CLIENT_TO_AGENT"),
+//				AgentCompute:    pulumi.String("GKE"),
+//				DeploymentModel: pulumi.String("CENTRALIZED"),
+//				AccessPath:      pulumi.String("CLIENT_TO_AGENT"),
 //			})
 //			if err != nil {
 //				return err
@@ -92,7 +94,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
 //				Region:      pulumi.String("us-west2"),
-//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:     _default.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
@@ -103,7 +105,7 @@ import (
 //				Region:               pulumi.String("us-west2"),
 //				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 //				Subnetworks: pulumi.StringArray{
-//					defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//					defaultSubnetwork.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -117,7 +119,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: _default.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: _default.ID(),
 //						},
 //					},
 //				},
@@ -162,18 +164,20 @@ import (
 //				AgentConnectivityTemplateId: pulumi.String("my-connectivity-template"),
 //				Location:                    pulumi.String("us-west2"),
 //				Description:                 pulumi.String("An advanced configuration for Agent Connectivity Template"),
+//				AgentCompute:                pulumi.String("GKE"),
+//				DeploymentModel:             pulumi.String("CENTRALIZED"),
 //				AccessTypes: pulumi.StringArray{
 //					pulumi.String("PRIVATE"),
 //				},
 //				AccessPath: pulumi.String("AGENT_TO_ANYWHERE"),
 //				EgressNetworkConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigArgs{
 //					VpcEgress:         pulumi.String("ALL_TRAFFIC"),
-//					NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
+//					NetworkAttachment: defaultNetworkAttachment.ID(),
 //					DnsPeeringConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigDnsPeeringConfigArgs{
 //						Domains: pulumi.StringArray{
 //							defaultManagedZone.DnsName,
 //						},
-//						TargetNetwork: _default.ID().ToIDOutput().ToStringOutput(),
+//						TargetNetwork: _default.ID(),
 //					},
 //					TlsConfig: &networkservices.AgentConnectivityTemplateEgressNetworkConfigTlsConfigArgs{
 //						TrustConfig: defaultTrustConfig.Name.ApplyT(func(name string) (string, error) {
@@ -218,6 +222,10 @@ type AgentConnectivityTemplate struct {
 	// Both PUBLIC and PRIVATE can be configured.
 	// Each value may be one of: `PUBLIC`, `PRIVATE`.
 	AccessTypes pulumi.StringArrayOutput `pulumi:"accessTypes"`
+	// The compute environment where the agent is hosted.
+	// Exactly one type of compute must be chosen.
+	// Possible values are: `GKE`, `CLOUD_RUN`.
+	AgentCompute pulumi.StringPtrOutput `pulumi:"agentCompute"`
 	// Short name of the AgentConnectivityTemplate resource.
 	AgentConnectivityTemplateId pulumi.StringOutput `pulumi:"agentConnectivityTemplateId"`
 	// The timestamp when the resource was created.
@@ -229,6 +237,9 @@ type AgentConnectivityTemplate struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// The deployment model for the gateway.
+	// Possible values are: `CENTRALIZED`, `AMBIENT`.
+	DeploymentModel pulumi.StringPtrOutput `pulumi:"deploymentModel"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -312,6 +323,10 @@ type agentConnectivityTemplateState struct {
 	// Both PUBLIC and PRIVATE can be configured.
 	// Each value may be one of: `PUBLIC`, `PRIVATE`.
 	AccessTypes []string `pulumi:"accessTypes"`
+	// The compute environment where the agent is hosted.
+	// Exactly one type of compute must be chosen.
+	// Possible values are: `GKE`, `CLOUD_RUN`.
+	AgentCompute *string `pulumi:"agentCompute"`
 	// Short name of the AgentConnectivityTemplate resource.
 	AgentConnectivityTemplateId *string `pulumi:"agentConnectivityTemplateId"`
 	// The timestamp when the resource was created.
@@ -323,6 +338,9 @@ type agentConnectivityTemplateState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The deployment model for the gateway.
+	// Possible values are: `CENTRALIZED`, `AMBIENT`.
+	DeploymentModel *string `pulumi:"deploymentModel"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -363,6 +381,10 @@ type AgentConnectivityTemplateState struct {
 	// Both PUBLIC and PRIVATE can be configured.
 	// Each value may be one of: `PUBLIC`, `PRIVATE`.
 	AccessTypes pulumi.StringArrayInput
+	// The compute environment where the agent is hosted.
+	// Exactly one type of compute must be chosen.
+	// Possible values are: `GKE`, `CLOUD_RUN`.
+	AgentCompute pulumi.StringPtrInput
 	// Short name of the AgentConnectivityTemplate resource.
 	AgentConnectivityTemplateId pulumi.StringPtrInput
 	// The timestamp when the resource was created.
@@ -374,6 +396,9 @@ type AgentConnectivityTemplateState struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// The deployment model for the gateway.
+	// Possible values are: `CENTRALIZED`, `AMBIENT`.
+	DeploymentModel pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -418,6 +443,10 @@ type agentConnectivityTemplateArgs struct {
 	// Both PUBLIC and PRIVATE can be configured.
 	// Each value may be one of: `PUBLIC`, `PRIVATE`.
 	AccessTypes []string `pulumi:"accessTypes"`
+	// The compute environment where the agent is hosted.
+	// Exactly one type of compute must be chosen.
+	// Possible values are: `GKE`, `CLOUD_RUN`.
+	AgentCompute *string `pulumi:"agentCompute"`
 	// Short name of the AgentConnectivityTemplate resource.
 	AgentConnectivityTemplateId string `pulumi:"agentConnectivityTemplateId"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -427,6 +456,9 @@ type agentConnectivityTemplateArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The deployment model for the gateway.
+	// Possible values are: `CENTRALIZED`, `AMBIENT`.
+	DeploymentModel *string `pulumi:"deploymentModel"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Configuration for egress network traffic.
@@ -454,6 +486,10 @@ type AgentConnectivityTemplateArgs struct {
 	// Both PUBLIC and PRIVATE can be configured.
 	// Each value may be one of: `PUBLIC`, `PRIVATE`.
 	AccessTypes pulumi.StringArrayInput
+	// The compute environment where the agent is hosted.
+	// Exactly one type of compute must be chosen.
+	// Possible values are: `GKE`, `CLOUD_RUN`.
+	AgentCompute pulumi.StringPtrInput
 	// Short name of the AgentConnectivityTemplate resource.
 	AgentConnectivityTemplateId pulumi.StringInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -463,6 +499,9 @@ type AgentConnectivityTemplateArgs struct {
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
+	// The deployment model for the gateway.
+	// Possible values are: `CENTRALIZED`, `AMBIENT`.
+	DeploymentModel pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Configuration for egress network traffic.
@@ -581,6 +620,13 @@ func (o AgentConnectivityTemplateOutput) AccessTypes() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v *AgentConnectivityTemplate) pulumi.StringArrayOutput { return v.AccessTypes }).(pulumi.StringArrayOutput)
 }
 
+// The compute environment where the agent is hosted.
+// Exactly one type of compute must be chosen.
+// Possible values are: `GKE`, `CLOUD_RUN`.
+func (o AgentConnectivityTemplateOutput) AgentCompute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplate) pulumi.StringPtrOutput { return v.AgentCompute }).(pulumi.StringPtrOutput)
+}
+
 // Short name of the AgentConnectivityTemplate resource.
 func (o AgentConnectivityTemplateOutput) AgentConnectivityTemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentConnectivityTemplate) pulumi.StringOutput { return v.AgentConnectivityTemplateId }).(pulumi.StringOutput)
@@ -599,6 +645,12 @@ func (o AgentConnectivityTemplateOutput) CreateTime() pulumi.StringOutput {
 // When set to "DELETE", deleting the resource is allowed.
 func (o AgentConnectivityTemplateOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentConnectivityTemplate) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// The deployment model for the gateway.
+// Possible values are: `CENTRALIZED`, `AMBIENT`.
+func (o AgentConnectivityTemplateOutput) DeploymentModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentConnectivityTemplate) pulumi.StringPtrOutput { return v.DeploymentModel }).(pulumi.StringPtrOutput)
 }
 
 // A free-text description of the resource. Max length 1024 characters.

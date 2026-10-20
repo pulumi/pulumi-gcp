@@ -49,13 +49,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(20),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultConnection, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAddress.Name,

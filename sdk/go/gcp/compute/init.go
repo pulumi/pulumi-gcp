@@ -213,6 +213,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationSecurityPolicyAssociation{}
 	case "gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule":
 		r = &OrganizationSecurityPolicyRule{}
+	case "gcp:compute/organizationSnapshotRecycleBinPolicy:OrganizationSnapshotRecycleBinPolicy":
+		r = &OrganizationSnapshotRecycleBinPolicy{}
 	case "gcp:compute/packetMirroring:PacketMirroring":
 		r = &PacketMirroring{}
 	case "gcp:compute/perInstanceConfig:PerInstanceConfig":
@@ -373,6 +375,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SnapshotIamMember{}
 	case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
+	case "gcp:compute/snapshotRecycleBinPolicy:SnapshotRecycleBinPolicy":
+		r = &SnapshotRecycleBinPolicy{}
 	case "gcp:compute/snapshotSettings:SnapshotSettings":
 		r = &SnapshotSettings{}
 	case "gcp:compute/storagePool:StoragePool":
@@ -910,6 +914,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/organizationSnapshotRecycleBinPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/packetMirroring",
 		&module{version},
 	)
@@ -1306,6 +1315,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/snapshotIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/snapshotRecycleBinPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -88,13 +88,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      privateNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      privateNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateVpcConnection, err := servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: privateNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: privateNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAddress.Name,
@@ -509,6 +509,60 @@ import (
 // - Only the 2 instances involved in switchover have planned changes
 // - (Recommended) Use `deletionProtection` on instances as a safety measure
 //
+// ## Blue-Green Deployment
+//
+// You can manage the full lifecycle of a Cloud SQL Blue-Green Deployment using the `blueGreenDeployment` block on the primary `sql.DatabaseInstance` resource across a 4-step workflow:
+//
+// > **WARNING:** `blueGreenDeployment` is authoritatively managed on the primary instance resource. If a Blue-Green Deployment is created on the instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not included in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+//
+// ### 4-Step Workflow
+//
+// 1. **Create the Blue-Green Deployment (`activeEnvironment = "SOURCE"`)**:
+// Add the `blueGreenDeployment` block to your primary instance with `activeEnvironment = "SOURCE"` (the default) and an optional `targetDatabaseVersion`, then run `pulumi up`. Cloud SQL provisions and synchronizes the green (target) environment.
+//
+//	```go
+//	```
+//
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "primary", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("my-primary-instance"),
+//				DatabaseVersion: pulumi.String("MYSQL_5_7"),
+//				Region:          pulumi.String("us-central1"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-n1-standard-2"),
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//				},
+//				BlueGreenDeployment: &sql.DatabaseInstanceBlueGreenDeploymentArgs{
+//					DeploymentName:        pulumi.String("my-bgd-upgrade"),
+//					TargetDatabaseVersion: pulumi.String("MYSQL_8_0"),
+//					ActiveEnvironment:     pulumi.String("SOURCE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+//  4. **Clean Up / Delete the Blue-Green Deployment**:
+//     Once you have verified the new primary after switchover (or if you wish to abort a deployment before switchover while `activeEnvironment = "SOURCE"`), remove the `blueGreenDeployment` block from your configuration and run `pulumi up`.
+//     * If removed before switchover (`activeEnvironment = "SOURCE"`), the Blue-Green Deployment is aborted and the green target instance is deleted.
+//     * If removed after switchover (`activeEnvironment = "TARGET"`), the Blue-Green Deployment is deleted; if `deleteOldSourceOnDestroy = true` was previously applied in state, the old source (blue) instance is also deleted.
+//
 // ## Import
 //
 // Database instances can be imported using one of any of these accepted formats:
@@ -539,6 +593,9 @@ type DatabaseInstance struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup pulumi.StringPtrOutput `pulumi:"backupdrBackup"`
+	// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+	// > **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+	BlueGreenDeployment DatabaseInstanceBlueGreenDeploymentPtrOutput `pulumi:"blueGreenDeployment"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -719,6 +776,9 @@ type databaseInstanceState struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup *string `pulumi:"backupdrBackup"`
+	// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+	// > **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+	BlueGreenDeployment *DatabaseInstanceBlueGreenDeployment `pulumi:"blueGreenDeployment"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -851,6 +911,9 @@ type DatabaseInstanceState struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup pulumi.StringPtrInput
+	// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+	// > **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+	BlueGreenDeployment DatabaseInstanceBlueGreenDeploymentPtrInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -985,6 +1048,9 @@ type databaseInstanceArgs struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup *string `pulumi:"backupdrBackup"`
+	// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+	// > **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+	BlueGreenDeployment *DatabaseInstanceBlueGreenDeployment `pulumi:"blueGreenDeployment"`
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -1094,6 +1160,9 @@ type DatabaseInstanceArgs struct {
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
 	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	BackupdrBackup pulumi.StringPtrInput
+	// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+	// > **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+	BlueGreenDeployment DatabaseInstanceBlueGreenDeploymentPtrInput
 	// The context needed to create this instance as a clone of another instance. When this field is set during
 	// resource creation, this provider will attempt to clone another instance as indicated in the context. The
 	// configuration is detailed below.
@@ -1294,6 +1363,12 @@ func (o DatabaseInstanceOutput) AvailableMaintenanceVersions() pulumi.StringArra
 // block during resource creation/update will trigger the restore action after the resource is created/updated.
 func (o DatabaseInstanceOutput) BackupdrBackup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.BackupdrBackup }).(pulumi.StringPtrOutput)
+}
+
+// The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+// > **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+func (o DatabaseInstanceOutput) BlueGreenDeployment() DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceBlueGreenDeploymentPtrOutput { return v.BlueGreenDeployment }).(DatabaseInstanceBlueGreenDeploymentPtrOutput)
 }
 
 // The context needed to create this instance as a clone of another instance. When this field is set during

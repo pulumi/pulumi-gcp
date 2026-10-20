@@ -15,6 +15,39 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mavenRepo = new Gcp.ArtifactRegistry.Repository("maven_repo", new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "my-maven-repo",
+        ///         Format = "MAVEN",
+        ///     });
+        /// 
+        ///     var latest = Gcp.ArtifactRegistry.GetMavenArtifact.Invoke(new()
+        ///     {
+        ///         Location = mavenRepo.Location,
+        ///         RepositoryId = mavenRepo.RepositoryId,
+        ///         GroupId = "com.example",
+        ///         ArtifactId = "my-artifact",
+        ///     });
+        /// 
+        ///     var withVersion = Gcp.ArtifactRegistry.GetMavenArtifact.Invoke(new()
+        ///     {
+        ///         Location = mavenRepo.Location,
+        ///         RepositoryId = mavenRepo.RepositoryId,
+        ///         ArtifactName = "my-artifact:1.0.0",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetMavenArtifactResult> InvokeAsync(GetMavenArtifactArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMavenArtifactResult>("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args ?? new GetMavenArtifactArgs(), options.WithDefaults());
@@ -23,6 +56,39 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mavenRepo = new Gcp.ArtifactRegistry.Repository("maven_repo", new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "my-maven-repo",
+        ///         Format = "MAVEN",
+        ///     });
+        /// 
+        ///     var latest = Gcp.ArtifactRegistry.GetMavenArtifact.Invoke(new()
+        ///     {
+        ///         Location = mavenRepo.Location,
+        ///         RepositoryId = mavenRepo.RepositoryId,
+        ///         GroupId = "com.example",
+        ///         ArtifactId = "my-artifact",
+        ///     });
+        /// 
+        ///     var withVersion = Gcp.ArtifactRegistry.GetMavenArtifact.Invoke(new()
+        ///     {
+        ///         Location = mavenRepo.Location,
+        ///         RepositoryId = mavenRepo.RepositoryId,
+        ///         ArtifactName = "my-artifact:1.0.0",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMavenArtifactResult> Invoke(GetMavenArtifactInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMavenArtifactResult>("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args ?? new GetMavenArtifactInvokeArgs(), options.WithDefaults());
@@ -31,6 +97,39 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mavenRepo = new Gcp.ArtifactRegistry.Repository("maven_repo", new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "my-maven-repo",
+        ///         Format = "MAVEN",
+        ///     });
+        /// 
+        ///     var latest = Gcp.ArtifactRegistry.GetMavenArtifact.Invoke(new()
+        ///     {
+        ///         Location = mavenRepo.Location,
+        ///         RepositoryId = mavenRepo.RepositoryId,
+        ///         GroupId = "com.example",
+        ///         ArtifactId = "my-artifact",
+        ///     });
+        /// 
+        ///     var withVersion = Gcp.ArtifactRegistry.GetMavenArtifact.Invoke(new()
+        ///     {
+        ///         Location = mavenRepo.Location,
+        ///         RepositoryId = mavenRepo.RepositoryId,
+        ///         ArtifactName = "my-artifact:1.0.0",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetMavenArtifactResult> Invoke(GetMavenArtifactInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMavenArtifactResult>("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", args ?? new GetMavenArtifactInvokeArgs(), options.WithDefaults());

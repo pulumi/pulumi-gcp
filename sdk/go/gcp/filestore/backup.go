@@ -62,7 +62,7 @@ import (
 //				Name:            pulumi.String("fs-bkup"),
 //				Location:        pulumi.String("us-central1"),
 //				Description:     pulumi.String("This is a filestore backup for the test instance"),
-//				SourceInstance:  instance.ID().ToIDOutput().ToStringOutput(),
+//				SourceInstance:  instance.ID(),
 //				SourceFileShare: pulumi.String("share1"),
 //				Labels: pulumi.StringMap{
 //					"files":       pulumi.String("label1"),

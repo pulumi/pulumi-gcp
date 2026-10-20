@@ -54,7 +54,7 @@ import (
 //			}
 //			fhirstore, err := healthcare.NewFhirStore(ctx, "fhirstore", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("fhir_store"),
-//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(true),
 //				DisableReferentialIntegrity: pulumi.Bool(true),
@@ -81,7 +81,7 @@ import (
 //			_, err = healthcare.NewPipelineJob(ctx, "example-pipeline", &healthcare.PipelineJobArgs{
 //				Name:           pulumi.String("example_pipeline_job"),
 //				Location:       pulumi.String("us-central1"),
-//				Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:        dataset.ID(),
 //				DisableLineage: pulumi.Bool(true),
 //				ReconciliationPipelineJob: &healthcare.PipelineJobReconciliationPipelineJobArgs{
 //					MergeConfig: &healthcare.PipelineJobReconciliationPipelineJobMergeConfigArgs{
@@ -149,7 +149,7 @@ import (
 //			_, err = healthcare.NewPipelineJob(ctx, "example-pipeline", &healthcare.PipelineJobArgs{
 //				Name:     pulumi.String("example_backfill_pipeline"),
 //				Location: pulumi.String("us-central1"),
-//				Dataset:  dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:  dataset.ID(),
 //				BackfillPipelineJob: &healthcare.PipelineJobBackfillPipelineJobArgs{
 //					MappingPipelineJob: dataset.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //						return fmt.Sprintf("%v/pipelineJobs/example_mapping_pipeline_job", id), nil
@@ -195,7 +195,7 @@ import (
 //			}
 //			sourceFhirstore, err := healthcare.NewFhirStore(ctx, "source_fhirstore", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("source_fhir_store"),
-//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(true),
 //				DisableReferentialIntegrity: pulumi.Bool(true),
@@ -205,7 +205,7 @@ import (
 //			}
 //			destFhirstore, err := healthcare.NewFhirStore(ctx, "dest_fhirstore", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("dest_fhir_store"),
-//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(true),
 //				DisableReferentialIntegrity: pulumi.Bool(true),
@@ -232,7 +232,7 @@ import (
 //			_, err = healthcare.NewPipelineJob(ctx, "example-mapping-pipeline", &healthcare.PipelineJobArgs{
 //				Name:           pulumi.String("example_mapping_pipeline_job"),
 //				Location:       pulumi.String("us-central1"),
-//				Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:        dataset.ID(),
 //				DisableLineage: pulumi.Bool(true),
 //				Labels: pulumi.StringMap{
 //					"example_label_key": pulumi.String("example_label_value"),
@@ -313,7 +313,7 @@ import (
 //			}
 //			destFhirstore, err := healthcare.NewFhirStore(ctx, "dest_fhirstore", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("dest_fhir_store"),
-//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(true),
 //				DisableReferentialIntegrity: pulumi.Bool(true),
@@ -340,7 +340,7 @@ import (
 //			recon, err := healthcare.NewPipelineJob(ctx, "recon", &healthcare.PipelineJobArgs{
 //				Name:           pulumi.String("example_recon_pipeline_job"),
 //				Location:       pulumi.String("us-central1"),
-//				Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:        dataset.ID(),
 //				DisableLineage: pulumi.Bool(true),
 //				ReconciliationPipelineJob: &healthcare.PipelineJobReconciliationPipelineJobArgs{
 //					MergeConfig: &healthcare.PipelineJobReconciliationPipelineJobMergeConfigArgs{
@@ -371,7 +371,7 @@ import (
 //			}
 //			sourceFhirstore, err := healthcare.NewFhirStore(ctx, "source_fhirstore", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("source_fhir_store"),
-//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:                     dataset.ID(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(true),
 //				DisableReferentialIntegrity: pulumi.Bool(true),
@@ -390,7 +390,7 @@ import (
 //			_, err = healthcare.NewPipelineJob(ctx, "example-mapping-pipeline", &healthcare.PipelineJobArgs{
 //				Name:           pulumi.String("example_mapping_pipeline_job"),
 //				Location:       pulumi.String("us-central1"),
-//				Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
+//				Dataset:        dataset.ID(),
 //				DisableLineage: pulumi.Bool(true),
 //				Labels: pulumi.StringMap{
 //					"example_label_key": pulumi.String("example_label_value"),

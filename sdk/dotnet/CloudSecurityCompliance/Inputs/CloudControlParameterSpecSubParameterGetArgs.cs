@@ -47,8 +47,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Inputs
         private InputList<Inputs.CloudControlParameterSpecSubParameterSubParameterGetArgs>? _subParameters;
 
         /// <summary>
-        /// The parameter spec of the cloud control.
-        /// Structure is documented below.
+        /// The parameter spec of the cloud control, in JSON format.
         /// </summary>
         public InputList<Inputs.CloudControlParameterSpecSubParameterSubParameterGetArgs> SubParameters
         {

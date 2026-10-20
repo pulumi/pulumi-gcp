@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source fetches information of a version from a provided Artifact Registry repository.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myVersions = gcp.artifactregistry.getVersions({
+ *     location: "us-central1",
+ *     repositoryId: "example-repo",
+ *     packageName: "example-package",
+ *     versionName: "latest",
+ * });
+ * ```
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -96,6 +108,18 @@ export interface GetVersionResult {
  * This data source fetches information of a version from a provided Artifact Registry repository.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myVersions = gcp.artifactregistry.getVersions({
+ *     location: "us-central1",
+ *     repositoryId: "example-repo",
+ *     packageName: "example-package",
+ *     versionName: "latest",
+ * });
+ * ```
  */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

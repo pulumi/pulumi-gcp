@@ -606,8 +606,7 @@ type CloudControlParameterSpecDefaultValueOneofValueParameterValue struct {
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue *CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -632,8 +631,7 @@ type CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs struct {
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -729,8 +727,7 @@ func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) Num
 	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *float64 { return v.NumberValue }).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) OneofValue() CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue {
 		return v.OneofValue
@@ -794,8 +791,7 @@ func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) 
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) OneofValue() CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue {
 		if v == nil {
@@ -993,6 +989,8 @@ type CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePara
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue *string `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
@@ -1016,6 +1014,8 @@ type CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePara
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue pulumi.StringPtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -1114,6 +1114,13 @@ func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueP
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue) *string {
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrOutput {
@@ -1171,6 +1178,16 @@ func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueP
 		}
 		return v.NumberValue
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValuePtrOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of strings.
@@ -1621,8 +1638,7 @@ type CloudControlParameterSpecSubParameter struct {
 	IsRequired bool `pulumi:"isRequired"`
 	// The name of the parameter.
 	Name string `pulumi:"name"`
-	// The parameter spec of the cloud control.
-	// Structure is documented below.
+	// The parameter spec of the cloud control, in JSON format.
 	SubParameters []CloudControlParameterSpecSubParameterSubParameter `pulumi:"subParameters"`
 	// List of parameter substitutions.
 	// Structure is documented below.
@@ -1663,8 +1679,7 @@ type CloudControlParameterSpecSubParameterArgs struct {
 	IsRequired pulumi.BoolInput `pulumi:"isRequired"`
 	// The name of the parameter.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The parameter spec of the cloud control.
-	// Structure is documented below.
+	// The parameter spec of the cloud control, in JSON format.
 	SubParameters CloudControlParameterSpecSubParameterSubParameterArrayInput `pulumi:"subParameters"`
 	// List of parameter substitutions.
 	// Structure is documented below.
@@ -1761,8 +1776,7 @@ func (o CloudControlParameterSpecSubParameterOutput) Name() pulumi.StringOutput 
 	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The parameter spec of the cloud control.
-// Structure is documented below.
+// The parameter spec of the cloud control, in JSON format.
 func (o CloudControlParameterSpecSubParameterOutput) SubParameters() CloudControlParameterSpecSubParameterSubParameterArrayOutput {
 	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) []CloudControlParameterSpecSubParameterSubParameter {
 		return v.SubParameters
@@ -2208,8 +2222,7 @@ type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue s
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -2234,8 +2247,7 @@ type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueAr
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -2335,8 +2347,7 @@ func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) OneofValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue {
 		return v.OneofValue
@@ -2402,8 +2413,7 @@ func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) OneofValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue {
 		if v == nil {
@@ -2603,6 +2613,8 @@ type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOn
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue *string `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
@@ -2626,6 +2638,8 @@ type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOn
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue pulumi.StringPtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -2724,6 +2738,13 @@ func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValu
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue) *string {
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrOutput {
@@ -2781,6 +2802,16 @@ func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValu
 		}
 		return v.NumberValue
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValuePtrOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of strings.
@@ -3231,6 +3262,8 @@ type CloudControlParameterSpecSubParameterSubParameter struct {
 	IsRequired bool `pulumi:"isRequired"`
 	// The name of the parameter.
 	Name string `pulumi:"name"`
+	// The parameter spec of the cloud control, in JSON format.
+	SubParameters *string `pulumi:"subParameters"`
 	// List of parameter substitutions.
 	// Structure is documented below.
 	SubstitutionRules []CloudControlParameterSpecSubParameterSubParameterSubstitutionRule `pulumi:"substitutionRules"`
@@ -3270,6 +3303,8 @@ type CloudControlParameterSpecSubParameterSubParameterArgs struct {
 	IsRequired pulumi.BoolInput `pulumi:"isRequired"`
 	// The name of the parameter.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter spec of the cloud control, in JSON format.
+	SubParameters pulumi.StringPtrInput `pulumi:"subParameters"`
 	// List of parameter substitutions.
 	// Structure is documented below.
 	SubstitutionRules CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleArrayInput `pulumi:"substitutionRules"`
@@ -3363,6 +3398,11 @@ func (o CloudControlParameterSpecSubParameterSubParameterOutput) IsRequired() pu
 // The name of the parameter.
 func (o CloudControlParameterSpecSubParameterSubParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameter spec of the cloud control, in JSON format.
+func (o CloudControlParameterSpecSubParameterSubParameterOutput) SubParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubParameter) *string { return v.SubParameters }).(pulumi.StringPtrOutput)
 }
 
 // List of parameter substitutions.
@@ -3804,6 +3844,8 @@ type CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValuePara
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue *string `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
@@ -3827,6 +3869,8 @@ type CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValuePara
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue pulumi.StringPtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -3925,6 +3969,13 @@ func (o CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueP
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue) *string {
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
@@ -3982,6 +4033,16 @@ func (o CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueP
 		}
 		return v.NumberValue
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValuePtrOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of strings.
@@ -5335,6 +5396,8 @@ type CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesVal
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue *string `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
@@ -5358,6 +5421,8 @@ type CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesVal
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue pulumi.StringPtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -5456,6 +5521,13 @@ func (o CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue) *string {
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
@@ -5513,6 +5585,16 @@ func (o CloudControlParameterSpecSubParameterSubParameterValidationAllowedValues
 		}
 		return v.NumberValue
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of strings.
@@ -7159,8 +7241,7 @@ type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -7185,8 +7266,7 @@ type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -7286,8 +7366,7 @@ func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofVa
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) OneofValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue {
 		return v.OneofValue
@@ -7353,8 +7432,7 @@ func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofVa
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) OneofValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue {
 		if v == nil {
@@ -7554,6 +7632,8 @@ type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue *string `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
@@ -7577,6 +7657,8 @@ type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue pulumi.StringPtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -7675,6 +7757,13 @@ func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofVa
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue) *string {
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrOutput {
@@ -7732,6 +7821,16 @@ func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofVa
 		}
 		return v.NumberValue
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValuePtrOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of strings.
@@ -9507,8 +9606,7 @@ type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVal
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -9533,8 +9631,7 @@ type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVal
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
-	// Sub-parameter values.
-	// Structure is documented below.
+	// Sub-parameter values, in JSON format.
 	OneofValue CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
@@ -9634,8 +9731,7 @@ func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameter
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) OneofValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue {
 		return v.OneofValue
@@ -9701,8 +9797,7 @@ func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameter
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Sub-parameter values.
-// Structure is documented below.
+// Sub-parameter values, in JSON format.
 func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) OneofValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValuePtrOutput {
 	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue {
 		if v == nil {
@@ -9902,6 +9997,8 @@ type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVal
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue *string `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
@@ -9925,6 +10022,8 @@ type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVal
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values, in JSON format.
+	OneofValue pulumi.StringPtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -10023,6 +10122,13 @@ func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameter
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue) *string {
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValuePtrOutput {
@@ -10080,6 +10186,16 @@ func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameter
 		}
 		return v.NumberValue
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values, in JSON format.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValuePtrOutput) OneofValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(pulumi.StringPtrOutput)
 }
 
 // A list of strings.

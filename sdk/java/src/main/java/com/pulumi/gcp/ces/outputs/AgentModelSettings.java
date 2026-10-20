@@ -24,10 +24,16 @@ public final class AgentModelSettings {
      * produce responses that are more predictable. Higher temperatures produce
      * responses that are more creative.
      * 
+     */
+    private @Nullable Double temperature;
+    /**
+     * @return The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
      * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
      * 
      */
-    private @Nullable Double temperature;
+    private @Nullable String thinkingLevel;
 
     private AgentModelSettings() {}
     /**
@@ -44,11 +50,19 @@ public final class AgentModelSettings {
      * produce responses that are more predictable. Higher temperatures produce
      * responses that are more creative.
      * 
-     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
-     * 
      */
     public Optional<Double> temperature() {
         return Optional.ofNullable(this.temperature);
+    }
+    /**
+     * @return The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+     * 
+     */
+    public Optional<String> thinkingLevel() {
+        return Optional.ofNullable(this.thinkingLevel);
     }
 
     public static Builder builder() {
@@ -62,11 +76,13 @@ public final class AgentModelSettings {
     public static final class Builder {
         private @Nullable String model;
         private @Nullable Double temperature;
+        private @Nullable String thinkingLevel;
         public Builder() {}
         public Builder(AgentModelSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.model = defaults.model;
     	      this.temperature = defaults.temperature;
+    	      this.thinkingLevel = defaults.thinkingLevel;
         }
 
         @CustomType.Setter
@@ -81,10 +97,17 @@ public final class AgentModelSettings {
             this.temperature = temperature;
             return this;
         }
+        @CustomType.Setter
+        public Builder thinkingLevel(@Nullable String thinkingLevel) {
+
+            this.thinkingLevel = thinkingLevel;
+            return this;
+        }
         public AgentModelSettings build() {
             final var _resultValue = new AgentModelSettings();
             _resultValue.model = model;
             _resultValue.temperature = temperature;
+            _resultValue.thinkingLevel = thinkingLevel;
             return _resultValue;
         }
     }

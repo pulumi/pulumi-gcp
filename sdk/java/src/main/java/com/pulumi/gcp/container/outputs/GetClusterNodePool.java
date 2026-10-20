@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoscaling;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolBestEffortProvisioning;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfig;
@@ -27,6 +28,11 @@ public final class GetClusterNodePool {
      * 
      */
     private List<GetClusterNodePoolAutoscaling> autoscalings;
+    /**
+     * @return Specifies the configuration for best effort provisioning.
+     * 
+     */
+    private List<GetClusterNodePoolBestEffortProvisioning> bestEffortProvisionings;
     /**
      * @return When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managedInstanceGroupUrls in the state.
      * 
@@ -125,6 +131,13 @@ public final class GetClusterNodePool {
      */
     public List<GetClusterNodePoolAutoscaling> autoscalings() {
         return this.autoscalings;
+    }
+    /**
+     * @return Specifies the configuration for best effort provisioning.
+     * 
+     */
+    public List<GetClusterNodePoolBestEffortProvisioning> bestEffortProvisionings() {
+        return this.bestEffortProvisionings;
     }
     /**
      * @return When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managedInstanceGroupUrls in the state.
@@ -263,6 +276,7 @@ public final class GetClusterNodePool {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolAutoscaling> autoscalings;
+        private List<GetClusterNodePoolBestEffortProvisioning> bestEffortProvisionings;
         private Boolean ignoreNodeCountChanges;
         private Integer initialNodeCount;
         private List<String> instanceGroupUrls;
@@ -285,6 +299,7 @@ public final class GetClusterNodePool {
         public Builder(GetClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalings = defaults.autoscalings;
+    	      this.bestEffortProvisionings = defaults.bestEffortProvisionings;
     	      this.ignoreNodeCountChanges = defaults.ignoreNodeCountChanges;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.instanceGroupUrls = defaults.instanceGroupUrls;
@@ -315,6 +330,17 @@ public final class GetClusterNodePool {
         }
         public Builder autoscalings(GetClusterNodePoolAutoscaling... autoscalings) {
             return autoscalings(List.of(autoscalings));
+        }
+        @CustomType.Setter
+        public Builder bestEffortProvisionings(List<GetClusterNodePoolBestEffortProvisioning> bestEffortProvisionings) {
+            if (bestEffortProvisionings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "bestEffortProvisionings");
+            }
+            this.bestEffortProvisionings = bestEffortProvisionings;
+            return this;
+        }
+        public Builder bestEffortProvisionings(GetClusterNodePoolBestEffortProvisioning... bestEffortProvisionings) {
+            return bestEffortProvisionings(List.of(bestEffortProvisionings));
         }
         @CustomType.Setter
         public Builder ignoreNodeCountChanges(Boolean ignoreNodeCountChanges) {
@@ -496,6 +522,7 @@ public final class GetClusterNodePool {
         public GetClusterNodePool build() {
             final var _resultValue = new GetClusterNodePool();
             _resultValue.autoscalings = autoscalings;
+            _resultValue.bestEffortProvisionings = bestEffortProvisionings;
             _resultValue.ignoreNodeCountChanges = ignoreNodeCountChanges;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.instanceGroupUrls = instanceGroupUrls;

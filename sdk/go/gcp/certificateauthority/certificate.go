@@ -342,7 +342,7 @@ import (
 //				Name:                 pulumi.String("my-certificate"),
 //				Lifetime:             pulumi.String("860s"),
 //				PemCsr:               pulumi.String(invokeFile.Result),
-//				CertificateTemplate:  defaultCertificateTemplate.ID().ToIDOutput().ToStringOutput(),
+//				CertificateTemplate:  defaultCertificateTemplate.ID(),
 //			})
 //			if err != nil {
 //				return err

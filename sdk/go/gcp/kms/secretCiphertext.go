@@ -51,14 +51,14 @@ import (
 //			}
 //			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
 //				Name:           pulumi.String("crypto-key-example"),
-//				KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing:        keyring.ID(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			myPassword, err := kms.NewSecretCiphertext(ctx, "my_password", &kms.SecretCiphertextArgs{
-//				CryptoKey: cryptokey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKey: cryptokey.ID(),
 //				Plaintext: pulumi.String("my-secret-password"),
 //			})
 //			if err != nil {

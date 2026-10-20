@@ -120,10 +120,10 @@ import (
 //				Query: &bigquery.JobQueryArgs{
 //					Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
 //					DestinationTable: &bigquery.JobQueryDestinationTableArgs{
-//						TableId: foo.ID().ToIDOutput().ToStringOutput(),
+//						TableId: foo.ID(),
 //					},
 //					DefaultDataset: &bigquery.JobQueryDefaultDatasetArgs{
-//						DatasetId: bar.ID().ToIDOutput().ToStringOutput(),
+//						DatasetId: bar.ID(),
 //					},
 //					AllowLargeResults: pulumi.Bool(true),
 //					FlattenResults:    pulumi.Bool(true),

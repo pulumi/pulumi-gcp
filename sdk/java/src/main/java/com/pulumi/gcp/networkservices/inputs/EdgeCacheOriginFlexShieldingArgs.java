@@ -18,8 +18,10 @@ public final class EdgeCacheOriginFlexShieldingArgs extends com.pulumi.resources
     /**
      * Whenever possible, content will be fetched from origin and cached in or
      * near the specified origin. Best effort.
-     * You must specify exactly one FlexShieldingRegion.
-     * Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+     * You must specify exactly one FlexShieldingRegion. Possible values include
+     * `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+     * [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+     * for the full list of supported regions.
      * 
      */
     @Import(name="flexShieldingRegions")
@@ -28,8 +30,10 @@ public final class EdgeCacheOriginFlexShieldingArgs extends com.pulumi.resources
     /**
      * @return Whenever possible, content will be fetched from origin and cached in or
      * near the specified origin. Best effort.
-     * You must specify exactly one FlexShieldingRegion.
-     * Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+     * You must specify exactly one FlexShieldingRegion. Possible values include
+     * `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+     * [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+     * for the full list of supported regions.
      * 
      */
     public Optional<Output<String>> flexShieldingRegions() {
@@ -63,8 +67,10 @@ public final class EdgeCacheOriginFlexShieldingArgs extends com.pulumi.resources
         /**
          * @param flexShieldingRegions Whenever possible, content will be fetched from origin and cached in or
          * near the specified origin. Best effort.
-         * You must specify exactly one FlexShieldingRegion.
-         * Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+         * You must specify exactly one FlexShieldingRegion. Possible values include
+         * `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+         * [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+         * for the full list of supported regions.
          * 
          * @return builder
          * 
@@ -77,8 +83,10 @@ public final class EdgeCacheOriginFlexShieldingArgs extends com.pulumi.resources
         /**
          * @param flexShieldingRegions Whenever possible, content will be fetched from origin and cached in or
          * near the specified origin. Best effort.
-         * You must specify exactly one FlexShieldingRegion.
-         * Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+         * You must specify exactly one FlexShieldingRegion. Possible values include
+         * `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+         * [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+         * for the full list of supported regions.
          * 
          * @return builder
          * 

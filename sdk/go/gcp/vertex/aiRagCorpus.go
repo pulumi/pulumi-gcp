@@ -243,8 +243,8 @@ import (
 //				DeployedIndexId: pulumi.String("deployed_index"),
 //				DisplayName:     pulumi.String("deployed_index"),
 //				Region:          pulumi.String("europe-west4"),
-//				Index:           index.ID().ToIDOutput().ToStringOutput(),
-//				IndexEndpoint:   indexEndpoint.ID().ToIDOutput().ToStringOutput(),
+//				Index:           index.ID(),
+//				IndexEndpoint:   indexEndpoint.ID(),
 //				AutomaticResources: &vertex.AiIndexEndpointDeployedIndexAutomaticResourcesArgs{
 //					MinReplicaCount: pulumi.Int(1),
 //					MaxReplicaCount: pulumi.Int(1),
@@ -313,7 +313,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret.ID(),
 //				SecretData: pulumi.String("secret-api-key"),
 //			})
 //			if err != nil {
@@ -324,7 +324,7 @@ import (
 //				return err
 //			}
 //			secretAccessor, err := secretmanager.NewSecretIamMember(ctx, "secret_accessor", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-vertex-rag.iam.gserviceaccount.com", project.Number),
 //			})

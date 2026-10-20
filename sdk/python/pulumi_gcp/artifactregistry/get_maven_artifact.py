@@ -168,6 +168,23 @@ def get_maven_artifact(artifact_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    maven_repo = gcp.artifactregistry.Repository("maven_repo",
+        location="us-central1",
+        repository_id="my-maven-repo",
+        format="MAVEN")
+    latest = gcp.artifactregistry.get_maven_artifact_output(location=maven_repo.location,
+        repository_id=maven_repo.repository_id,
+        group_id="com.example",
+        artifact_id="my-artifact")
+    with_version = gcp.artifactregistry.get_maven_artifact_output(location=maven_repo.location,
+        repository_id=maven_repo.repository_id,
+        artifact_name="my-artifact:1.0.0")
+    ```
+
 
     :param _builtins.str artifact_id: The name of the artifact to fetch. Can optionally include a specific version (e.g., `my_artifact:1.2.3`). If no version is provided, the latest version is used.
     :param _builtins.str group_id: Group ID for the artifact. Example: `com.google.guava`
@@ -206,6 +223,23 @@ def get_maven_artifact_output(artifact_id: pulumi.Input[Optional[_builtins.str]]
     This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    maven_repo = gcp.artifactregistry.Repository("maven_repo",
+        location="us-central1",
+        repository_id="my-maven-repo",
+        format="MAVEN")
+    latest = gcp.artifactregistry.get_maven_artifact_output(location=maven_repo.location,
+        repository_id=maven_repo.repository_id,
+        group_id="com.example",
+        artifact_id="my-artifact")
+    with_version = gcp.artifactregistry.get_maven_artifact_output(location=maven_repo.location,
+        repository_id=maven_repo.repository_id,
+        artifact_name="my-artifact:1.0.0")
+    ```
 
 
     :param _builtins.str artifact_id: The name of the artifact to fetch. Can optionally include a specific version (e.g., `my_artifact:1.2.3`). If no version is provided, the latest version is used.

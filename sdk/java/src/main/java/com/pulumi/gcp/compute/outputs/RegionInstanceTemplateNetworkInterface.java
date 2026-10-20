@@ -114,6 +114,11 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable Integer queueCount;
     /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+     * 
+     */
+    private @Nullable String serviceClassId;
+    /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -266,6 +271,13 @@ public final class RegionInstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.queueCount);
     }
     /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+     * 
+     */
+    public Optional<String> serviceClassId() {
+        return Optional.ofNullable(this.serviceClassId);
+    }
+    /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -322,6 +334,7 @@ public final class RegionInstanceTemplateNetworkInterface {
         private @Nullable String nicType;
         private @Nullable String parentNicName;
         private @Nullable Integer queueCount;
+        private @Nullable String serviceClassId;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
@@ -345,6 +358,7 @@ public final class RegionInstanceTemplateNetworkInterface {
     	      this.nicType = defaults.nicType;
     	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
+    	      this.serviceClassId = defaults.serviceClassId;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
@@ -460,6 +474,12 @@ public final class RegionInstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceClassId(@Nullable String serviceClassId) {
+
+            this.serviceClassId = serviceClassId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder stackType(@Nullable String stackType) {
 
             this.stackType = stackType;
@@ -501,6 +521,7 @@ public final class RegionInstanceTemplateNetworkInterface {
             _resultValue.nicType = nicType;
             _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
+            _resultValue.serviceClassId = serviceClassId;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;

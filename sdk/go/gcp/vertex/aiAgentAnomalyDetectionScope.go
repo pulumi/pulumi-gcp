@@ -63,7 +63,7 @@ import (
 //				AgentAnomalyDetectionScopeId: pulumi.String("agent-anomaly-detection-scope"),
 //				DisplayName:                  pulumi.String("Basic AAD scope"),
 //				LogBuckets: pulumi.StringArray{
-//					aad_log_bucket.ID().ToIDOutput().ToStringOutput(),
+//					aad_log_bucket.ID(),
 //				},
 //				ObservabilityBuckets: pulumi.StringArray{
 //					pulumi.Sprintf("projects/%v/locations/us/buckets/_Trace/datasets/Spans", project.ProjectId),

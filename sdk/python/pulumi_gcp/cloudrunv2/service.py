@@ -33,6 +33,7 @@ class ServiceArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ingress: pulumi.Input[Optional[_builtins.str]] = None,
                  invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -79,6 +80,13 @@ class ServiceArgs:
                or `terraform destroy` that would delete the service will fail.
                When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Service. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+               to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
         :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -129,6 +137,8 @@ class ServiceArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if functional_type is not None:
+            pulumi.set(__self__, "functional_type", functional_type)
         if iap_enabled is not None:
             pulumi.set(__self__, "iap_enabled", iap_enabled)
         if ingress is not None:
@@ -318,6 +328,24 @@ class ServiceArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The functional type of the Service. Declares the primary purpose of the workload so that it can be
+        registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        Once set, this field cannot be changed or unset.
+        A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+        to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+        """
+        return pulumi.get(self, "functional_type")
+
+    @functional_type.setter
+    def functional_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "functional_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="iapEnabled")
     def iap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -498,6 +526,7 @@ class _ServiceState:
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  generation: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ingress: pulumi.Input[Optional[_builtins.str]] = None,
@@ -565,6 +594,13 @@ class _ServiceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Service. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+               to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -652,6 +688,8 @@ class _ServiceState:
             pulumi.set(__self__, "etag", etag)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
+        if functional_type is not None:
+            pulumi.set(__self__, "functional_type", functional_type)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
         if iap_enabled is not None:
@@ -941,6 +979,24 @@ class _ServiceState:
     @expire_time.setter
     def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The functional type of the Service. Declares the primary purpose of the workload so that it can be
+        registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        Once set, this field cannot be changed or unset.
+        A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+        to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+        """
+        return pulumi.get(self, "functional_type")
+
+    @functional_type.setter
+    def functional_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "functional_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1306,6 +1362,7 @@ class Service(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ingress: pulumi.Input[Optional[_builtins.str]] = None,
                  invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2010,6 +2067,47 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Agent Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            functional_type="FUNCTIONAL_TYPE_AGENT",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+                "workload_identity_config": {
+                    "identity_type": "IDENTITY_TYPE_AGENT_IDENTITY",
+                    "identity_certificate_enabled": True,
+                },
+            })
+        ```
+        ### Cloudrunv2 Service Mcp Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            functional_type="FUNCTIONAL_TYPE_MCP_SERVER",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+                "workload_identity_config": {
+                    "identity_type": "IDENTITY_TYPE_SERVICE_ACCOUNT",
+                },
+            })
+        ```
 
         ## Import
 
@@ -2058,6 +2156,13 @@ class Service(pulumi.CustomResource):
                or `terraform destroy` that would delete the service will fail.
                When the field is set to false, deleting the service is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of the Service. This field currently has a 512-character limit.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Service. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+               to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
         :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -2784,6 +2889,47 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Agent Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            functional_type="FUNCTIONAL_TYPE_AGENT",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+                "workload_identity_config": {
+                    "identity_type": "IDENTITY_TYPE_AGENT_IDENTITY",
+                    "identity_certificate_enabled": True,
+                },
+            })
+        ```
+        ### Cloudrunv2 Service Mcp Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            functional_type="FUNCTIONAL_TYPE_MCP_SERVER",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+                "workload_identity_config": {
+                    "identity_type": "IDENTITY_TYPE_SERVICE_ACCOUNT",
+                },
+            })
+        ```
 
         ## Import
 
@@ -2827,6 +2973,7 @@ class Service(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ingress: pulumi.Input[Optional[_builtins.str]] = None,
                  invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2860,6 +3007,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["functional_type"] = functional_type
             __props__.__dict__["iap_enabled"] = iap_enabled
             __props__.__dict__["ingress"] = ingress
             __props__.__dict__["invoker_iam_disabled"] = invoker_iam_disabled
@@ -2929,6 +3077,7 @@ class Service(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            functional_type: pulumi.Input[Optional[_builtins.str]] = None,
             generation: pulumi.Input[Optional[_builtins.str]] = None,
             iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             ingress: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3000,6 +3149,13 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Service. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+               to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[_builtins.bool] iap_enabled: Used to enable/disable IAP for the cloud-run service.
         :param pulumi.Input[_builtins.str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -3073,6 +3229,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["expire_time"] = expire_time
+        __props__.__dict__["functional_type"] = functional_type
         __props__.__dict__["generation"] = generation
         __props__.__dict__["iap_enabled"] = iap_enabled
         __props__.__dict__["ingress"] = ingress
@@ -3264,6 +3421,20 @@ class Service(pulumi.CustomResource):
         For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
+
+    @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional, Beta)
+        The functional type of the Service. Declares the primary purpose of the workload so that it can be
+        registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        Once set, this field cannot be changed or unset.
+        A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+        to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+        """
+        return pulumi.get(self, "functional_type")
 
     @_builtins.property
     @pulumi.getter

@@ -62,7 +62,7 @@ import (
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//					Network: defaultNetwork.ID(),
 //				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -208,7 +208,7 @@ import (
 //				ClusterId: pulumi.String("alloydb-cluster-full"),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID().ToIDOutput().ToStringOutput(),
+//					Network: _default.ID(),
 //				},
 //				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -403,7 +403,7 @@ import (
 //				ClusterId: pulumi.String("alloydb-primary-cluster"),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID().ToIDOutput().ToStringOutput(),
+//					Network: _default.ID(),
 //				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -415,13 +415,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -447,7 +447,7 @@ import (
 //				ClusterId: pulumi.String("alloydb-secondary-cluster"),
 //				Location:  pulumi.String("us-east1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID().ToIDOutput().ToStringOutput(),
+//					Network: _default.ID(),
 //				},
 //				ClusterType: pulumi.String("SECONDARY"),
 //				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{

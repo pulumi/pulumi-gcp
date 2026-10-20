@@ -61,7 +61,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 //					ExcludeExportRanges: pulumi.StringArray{
 //						pulumi.String("198.51.100.0/24"),
@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			defaultGroup, err := networkconnectivity.NewGroup(ctx, "default_group", &networkconnectivity.GroupArgs{
-//				Hub:         basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub:         basicHub.ID(),
 //				Name:        pulumi.String("default"),
 //				Description: pulumi.String("A sample hub group"),
 //			})
@@ -129,7 +129,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 //					ExcludeExportRanges: pulumi.StringArray{
 //						pulumi.String("198.51.100.0/24"),
@@ -141,7 +141,7 @@ import (
 //					},
 //					Uri: network.SelfLink,
 //				},
-//				Group: defaultGroup.ID().ToIDOutput().ToStringOutput(),
+//				Group: defaultGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -224,7 +224,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
 //					Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
 //						&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
@@ -291,7 +291,7 @@ import (
 //			}
 //			gateway, err := compute.NewHaVpnGateway(ctx, "gateway", &compute.HaVpnGatewayArgs{
 //				Name:    pulumi.String("vpn-gateway"),
-//				Network: network.ID().ToIDOutput().ToStringOutput(),
+//				Network: network.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -324,11 +324,11 @@ import (
 //			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
 //				Name:                         pulumi.String("tunnel1"),
 //				Region:                       pulumi.String("us-central1"),
-//				VpnGateway:                   gateway.ID().ToIDOutput().ToStringOutput(),
-//				PeerExternalGateway:          externalVpnGw.ID().ToIDOutput().ToStringOutput(),
+//				VpnGateway:                   gateway.ID(),
+//				PeerExternalGateway:          externalVpnGw.ID(),
 //				PeerExternalGatewayInterface: pulumi.Int(0),
 //				SharedSecret:                 pulumi.String("a secret message"),
-//				Router:                       router.ID().ToIDOutput().ToStringOutput(),
+//				Router:                       router.ID(),
 //				VpnGatewayInterface:          pulumi.Int(0),
 //			})
 //			if err != nil {
@@ -337,8 +337,8 @@ import (
 //			tunnel2, err := compute.NewVPNTunnel(ctx, "tunnel2", &compute.VPNTunnelArgs{
 //				Name:                         pulumi.String("tunnel2"),
 //				Region:                       pulumi.String("us-central1"),
-//				VpnGateway:                   gateway.ID().ToIDOutput().ToStringOutput(),
-//				PeerExternalGateway:          externalVpnGw.ID().ToIDOutput().ToStringOutput(),
+//				VpnGateway:                   gateway.ID(),
+//				PeerExternalGateway:          externalVpnGw.ID(),
 //				PeerExternalGatewayInterface: pulumi.Int(0),
 //				SharedSecret:                 pulumi.String("a secret message"),
 //				Router: router.ID().ApplyT(func(id pulumi.ID) (string, error) {
@@ -400,7 +400,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedVpnTunnels: &networkconnectivity.SpokeLinkedVpnTunnelsArgs{
 //					Uris: pulumi.StringArray{
 //						tunnel1.SelfLink,
@@ -421,7 +421,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedVpnTunnels: &networkconnectivity.SpokeLinkedVpnTunnelsArgs{
 //					Uris: pulumi.StringArray{
 //						tunnel2.SelfLink,
@@ -487,7 +487,7 @@ import (
 //				Name:                   pulumi.String("partner-interconnect1"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID().ToIDOutput().ToStringOutput(),
+//				Router:                 router.ID(),
 //				Mtu:                    pulumi.String("1500"),
 //				Region:                 pulumi.String("us-central1"),
 //			})
@@ -501,7 +501,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedInterconnectAttachments: &networkconnectivity.SpokeLinkedInterconnectAttachmentsArgs{
 //					Uris: pulumi.StringArray{
 //						interconnect_attachment.SelfLink,
@@ -548,13 +548,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      network.ID().ToIDOutput().ToStringOutput(),
+//				Network:      network.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			peering, err := servicenetworking.NewConnection(ctx, "peering", &servicenetworking.ConnectionArgs{
-//				Network: network.ID().ToIDOutput().ToStringOutput(),
+//				Network: network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					address.Name,
@@ -572,7 +572,7 @@ import (
 //			linkedVpcSpoke, err := networkconnectivity.NewSpoke(ctx, "linked_vpc_spoke", &networkconnectivity.SpokeArgs{
 //				Name:     pulumi.String("vpc-spoke"),
 //				Location: pulumi.String("global"),
-//				Hub:      basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub:      basicHub.ID(),
 //				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 //					Uri: network.SelfLink,
 //				},
@@ -587,7 +587,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedProducerVpcNetwork: &networkconnectivity.SpokeLinkedProducerVpcNetworkArgs{
 //					Network: network.Name,
 //					Peering: peering.Peering,
@@ -638,7 +638,7 @@ import (
 //			}
 //			centerGroup, err := networkconnectivity.NewGroup(ctx, "center_group", &networkconnectivity.GroupArgs{
 //				Name: pulumi.String("center"),
-//				Hub:  starHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub:  starHub.ID(),
 //				AutoAccept: &networkconnectivity.GroupAutoAcceptArgs{
 //					AutoAcceptProjects: pulumi.StringArray{
 //						pulumi.String("foo"),
@@ -656,8 +656,8 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub:   starHub.ID().ToIDOutput().ToStringOutput(),
-//				Group: centerGroup.ID().ToIDOutput().ToStringOutput(),
+//				Hub:   starHub.ID(),
+//				Group: centerGroup.ID(),
 //				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 //					Uri: network.SelfLink,
 //				},
@@ -709,7 +709,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 //					IncludeExportRanges: pulumi.StringArray{
 //						pulumi.String("ALL_IPV6_RANGES"),
@@ -775,7 +775,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				Gateway: &networkconnectivity.SpokeGatewayArgs{
 //					IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 //						&networkconnectivity.SpokeGatewayIpRangeReservationArgs{

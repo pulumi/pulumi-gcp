@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateNodeSelectorArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVpcAccessArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -184,6 +185,27 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.vpcAccess);
     }
 
+    /**
+     * (Optional, Beta)
+     * The Task&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<JobTemplateTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * The Task&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobTemplateTemplateWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
     private JobTemplateTemplateArgs() {}
 
     private JobTemplateTemplateArgs(JobTemplateTemplateArgs $) {
@@ -197,6 +219,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
         this.timeout = $.timeout;
         this.volumes = $.volumes;
         this.vpcAccess = $.vpcAccess;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
     }
 
     public static Builder builder() {
@@ -459,6 +482,33 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
          */
         public Builder vpcAccess(JobTemplateTemplateVpcAccessArgs vpcAccess) {
             return vpcAccess(Output.of(vpcAccess));
+        }
+
+        /**
+         * @param workloadIdentityConfig (Optional, Beta)
+         * The Task&#39;s workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<JobTemplateTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig (Optional, Beta)
+         * The Task&#39;s workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(JobTemplateTemplateWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         public JobTemplateTemplateArgs build() {

@@ -1331,6 +1331,10 @@ class Instance(pulumi.CustomResource):
             deletion_policy="FORCE")
         ```
 
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+
         ## Import
 
         Instance can be imported using any of these accepted formats:
@@ -1648,6 +1652,10 @@ class Instance(pulumi.CustomResource):
             },
             deletion_policy="FORCE")
         ```
+
+        ## Regional Endpoint Policies
+
+        This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 
         ## Import
 

@@ -111,7 +111,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -120,7 +120,7 @@ import (
 //				Name:           pulumi.String("my-image"),
 //				SourceInstance: vm.SelfLink,
 //				MachineImageEncryptionKey: &compute.MachineImageMachineImageEncryptionKeyArgs{
-//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					KmsKeyName: cryptoKey.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -132,79 +132,6 @@ import (
 //
 // ```
 // ### Machine Image Resource Manager Tags
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
-//				Parent:    pulumi.Sprintf("projects/%v", project.Number),
-//				ShortName: pulumi.String("tagkey"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-//				Parent:    tagKey1.ID().ToIDOutput().ToStringOutput(),
-//				ShortName: pulumi.String("tagvalue"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
-//				Name:        pulumi.String("my-vm"),
-//				MachineType: pulumi.String("e2-medium"),
-//				BootDisk: &compute.InstanceBootDiskArgs{
-//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String("debian-cloud/debian-13"),
-//					},
-//				},
-//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-//					&compute.InstanceNetworkInterfaceArgs{
-//						Network: pulumi.String("default"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
-//				Name:           pulumi.String("my-image"),
-//				SourceInstance: vm.SelfLink,
-//				Params: &compute.MachineImageParamsArgs{
-//					ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
-//						tagKey1Id := _args[0].(pulumi.ID)
-//						tagValue1Id := _args[1].(pulumi.ID)
-//						return map[string]pulumi.ID(tagKey1Id.ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
-//							return map[string]pulumi.ID{
-//								__convert: tagValue1Id,
-//							}, nil
-//						}).(pulumi.IDMapOutput)), nil
-//					}).(pulumi.IDMapOutput)),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

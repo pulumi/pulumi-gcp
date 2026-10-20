@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.BackendServiceDynamicForwardingForwardProxy;
 import com.pulumi.gcp.compute.outputs.BackendServiceDynamicForwardingIpPortSelection;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,13 @@ import javax.annotation.Nullable;
 public final class BackendServiceDynamicForwarding {
     /**
      * @return (Optional, Beta)
+     * Dynamic Forwarding Proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BackendServiceDynamicForwardingForwardProxy forwardProxy;
+    /**
+     * @return (Optional, Beta)
      * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
@@ -20,6 +28,15 @@ public final class BackendServiceDynamicForwarding {
     private @Nullable BackendServiceDynamicForwardingIpPortSelection ipPortSelection;
 
     private BackendServiceDynamicForwarding() {}
+    /**
+     * @return (Optional, Beta)
+     * Dynamic Forwarding Proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BackendServiceDynamicForwardingForwardProxy> forwardProxy() {
+        return Optional.ofNullable(this.forwardProxy);
+    }
     /**
      * @return (Optional, Beta)
      * IP:PORT based dynamic forwarding configuration.
@@ -39,13 +56,21 @@ public final class BackendServiceDynamicForwarding {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable BackendServiceDynamicForwardingForwardProxy forwardProxy;
         private @Nullable BackendServiceDynamicForwardingIpPortSelection ipPortSelection;
         public Builder() {}
         public Builder(BackendServiceDynamicForwarding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.forwardProxy = defaults.forwardProxy;
     	      this.ipPortSelection = defaults.ipPortSelection;
         }
 
+        @CustomType.Setter
+        public Builder forwardProxy(@Nullable BackendServiceDynamicForwardingForwardProxy forwardProxy) {
+
+            this.forwardProxy = forwardProxy;
+            return this;
+        }
         @CustomType.Setter
         public Builder ipPortSelection(@Nullable BackendServiceDynamicForwardingIpPortSelection ipPortSelection) {
 
@@ -54,6 +79,7 @@ public final class BackendServiceDynamicForwarding {
         }
         public BackendServiceDynamicForwarding build() {
             final var _resultValue = new BackendServiceDynamicForwarding();
+            _resultValue.forwardProxy = forwardProxy;
             _resultValue.ipPortSelection = ipPortSelection;
             return _resultValue;
         }

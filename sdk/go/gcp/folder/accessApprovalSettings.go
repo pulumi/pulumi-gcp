@@ -109,7 +109,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("crypto-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -122,7 +122,7 @@ import (
 //				FolderId: myFolder.FolderId,
 //			}, nil)
 //			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail), nil
@@ -132,7 +132,7 @@ import (
 //				return err
 //			}
 //			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKey: cryptoKey.ID(),
 //			}, nil)
 //			_, err = folder.NewAccessApprovalSettings(ctx, "folder_access_approval", &folder.AccessApprovalSettingsArgs{
 //				FolderId:         myFolder.FolderId,

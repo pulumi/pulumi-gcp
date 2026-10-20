@@ -119,7 +119,7 @@ import (
 //					Disks: compute.RegionPerInstanceConfigPreservedStateDiskArray{
 //						&compute.RegionPerInstanceConfigPreservedStateDiskArgs{
 //							DeviceName: pulumi.String("my-stateful-disk"),
-//							Source:     _default.ID().ToIDOutput().ToStringOutput(),
+//							Source:     _default.ID(),
 //							Mode:       pulumi.String("READ_ONLY"),
 //						},
 //					},

@@ -45,7 +45,7 @@ import (
 //			exampleUnitKind, err := saasruntime.NewUnitKind(ctx, "example_unit_kind", &saasruntime.UnitKindArgs{
 //				Location:   pulumi.String("us-central1"),
 //				UnitKindId: pulumi.String("example-unitkind"),
-//				Saas:       exampleSaasRegional.ID().ToIDOutput().ToStringOutput(),
+//				Saas:       exampleSaasRegional.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +53,7 @@ import (
 //			_, err = saasruntime.NewUnit(ctx, "example", &saasruntime.UnitArgs{
 //				Location:       pulumi.String("us-central1"),
 //				UnitId:         pulumi.String("example-unit"),
-//				UnitKind:       exampleUnitKind.ID().ToIDOutput().ToStringOutput(),
+//				UnitKind:       exampleUnitKind.ID(),
 //				ManagementMode: pulumi.String("MANAGEMENT_MODE_USER"),
 //			})
 //			if err != nil {

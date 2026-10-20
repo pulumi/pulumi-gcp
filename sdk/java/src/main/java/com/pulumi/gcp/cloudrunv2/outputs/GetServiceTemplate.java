@@ -125,7 +125,8 @@ public final class GetServiceTemplate {
      */
     private List<GetServiceTemplateVpcAccess> vpcAccesses;
     /**
-     * @return Workload identity settings for this Revision.
+     * @return The Revision&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
      * 
      */
     private List<GetServiceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
@@ -270,7 +271,8 @@ public final class GetServiceTemplate {
         return this.vpcAccesses;
     }
     /**
-     * @return Workload identity settings for this Revision.
+     * @return The Revision&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
      * 
      */
     public List<GetServiceTemplateWorkloadIdentityConfig> workloadIdentityConfigs() {

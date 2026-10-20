@@ -141,7 +141,7 @@ import (
 //				Location: pulumi.String("us-central1"),
 //				Topics: secretmanager.RegionalSecretTopicArray{
 //					&secretmanager.RegionalSecretTopicArgs{
-//						Name: topic.ID().ToIDOutput().ToStringOutput(),
+//						Name: topic.ID(),
 //					},
 //				},
 //				Rotation: &secretmanager.RegionalSecretRotationArgs{

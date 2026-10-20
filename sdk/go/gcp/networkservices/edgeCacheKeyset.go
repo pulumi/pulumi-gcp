@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -99,7 +99,7 @@ import (
 //				},
 //				ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
 //					&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
-//						SecretVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
+//						SecretVersion: secret_version_basic.ID(),
 //					},
 //				},
 //			})

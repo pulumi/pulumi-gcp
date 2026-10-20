@@ -89,14 +89,14 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      apigeeNetwork.ID(),
 //				Project:      project.ProjectId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -110,7 +110,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         project.ProjectId,
-//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //				apigee2,
@@ -119,7 +119,7 @@ import (
 //				return err
 //			}
 //			apigeeEnvironment, err := apigee.NewEnvironment(ctx, "apigee_environment", &apigee.EnvironmentArgs{
-//				OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				OrgId:       apigeeOrg.ID(),
 //				Name:        pulumi.String("my-environment-name"),
 //				Description: pulumi.String("Apigee Environment"),
 //				DisplayName: pulumi.String("environment-1"),
@@ -133,7 +133,7 @@ import (
 //				Protocol:    pulumi.String("HTTP"),
 //				Host:        pulumi.String("abc.foo.com"),
 //				Port:        pulumi.Int(8080),
-//				EnvId:       apigeeEnvironment.ID().ToIDOutput().ToStringOutput(),
+//				EnvId:       apigeeEnvironment.ID(),
 //			})
 //			if err != nil {
 //				return err

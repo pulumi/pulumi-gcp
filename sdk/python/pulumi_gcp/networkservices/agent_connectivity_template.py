@@ -25,7 +25,9 @@ class AgentConnectivityTemplateArgs:
                  agent_connectivity_template_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  access_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 agent_compute: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_network_config: pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -41,12 +43,17 @@ class AgentConnectivityTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_types: The types of network access provided to the gateway.
                Both PUBLIC and PRIVATE can be configured.
                Each value may be one of: `PUBLIC`, `PRIVATE`.
+        :param pulumi.Input[_builtins.str] agent_compute: The compute environment where the agent is hosted.
+               Exactly one type of compute must be chosen.
+               Possible values are: `GKE`, `CLOUD_RUN`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] deployment_model: The deployment model for the gateway.
+               Possible values are: `CENTRALIZED`, `AMBIENT`.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input['AgentConnectivityTemplateEgressNetworkConfigArgs'] egress_network_config: Configuration for egress network traffic.
                Structure is documented below.
@@ -62,8 +69,12 @@ class AgentConnectivityTemplateArgs:
         pulumi.set(__self__, "location", location)
         if access_types is not None:
             pulumi.set(__self__, "access_types", access_types)
+        if agent_compute is not None:
+            pulumi.set(__self__, "agent_compute", agent_compute)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if deployment_model is not None:
+            pulumi.set(__self__, "deployment_model", deployment_model)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if egress_network_config is not None:
@@ -126,6 +137,20 @@ class AgentConnectivityTemplateArgs:
         pulumi.set(self, "access_types", value)
 
     @_builtins.property
+    @pulumi.getter(name="agentCompute")
+    def agent_compute(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The compute environment where the agent is hosted.
+        Exactly one type of compute must be chosen.
+        Possible values are: `GKE`, `CLOUD_RUN`.
+        """
+        return pulumi.get(self, "agent_compute")
+
+    @agent_compute.setter
+    def agent_compute(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_compute", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -141,6 +166,19 @@ class AgentConnectivityTemplateArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentModel")
+    def deployment_model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The deployment model for the gateway.
+        Possible values are: `CENTRALIZED`, `AMBIENT`.
+        """
+        return pulumi.get(self, "deployment_model")
+
+    @deployment_model.setter
+    def deployment_model(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deployment_model", value)
 
     @_builtins.property
     @pulumi.getter
@@ -201,9 +239,11 @@ class _AgentConnectivityTemplateState:
     def __init__(__self__, *,
                  access_path: pulumi.Input[Optional[_builtins.str]] = None,
                  access_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 agent_compute: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_connectivity_template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  egress_network_config: pulumi.Input[Optional['AgentConnectivityTemplateEgressNetworkConfigArgs']] = None,
@@ -223,6 +263,9 @@ class _AgentConnectivityTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_types: The types of network access provided to the gateway.
                Both PUBLIC and PRIVATE can be configured.
                Each value may be one of: `PUBLIC`, `PRIVATE`.
+        :param pulumi.Input[_builtins.str] agent_compute: The compute environment where the agent is hosted.
+               Exactly one type of compute must be chosen.
+               Possible values are: `GKE`, `CLOUD_RUN`.
         :param pulumi.Input[_builtins.str] agent_connectivity_template_id: Short name of the AgentConnectivityTemplate resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -231,6 +274,8 @@ class _AgentConnectivityTemplateState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] deployment_model: The deployment model for the gateway.
+               Possible values are: `CENTRALIZED`, `AMBIENT`.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AgentConnectivityTemplateEgressNetworkConfigArgs'] egress_network_config: Configuration for egress network traffic.
@@ -255,12 +300,16 @@ class _AgentConnectivityTemplateState:
             pulumi.set(__self__, "access_path", access_path)
         if access_types is not None:
             pulumi.set(__self__, "access_types", access_types)
+        if agent_compute is not None:
+            pulumi.set(__self__, "agent_compute", agent_compute)
         if agent_connectivity_template_id is not None:
             pulumi.set(__self__, "agent_connectivity_template_id", agent_connectivity_template_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if deployment_model is not None:
+            pulumi.set(__self__, "deployment_model", deployment_model)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -311,6 +360,20 @@ class _AgentConnectivityTemplateState:
         pulumi.set(self, "access_types", value)
 
     @_builtins.property
+    @pulumi.getter(name="agentCompute")
+    def agent_compute(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The compute environment where the agent is hosted.
+        Exactly one type of compute must be chosen.
+        Possible values are: `GKE`, `CLOUD_RUN`.
+        """
+        return pulumi.get(self, "agent_compute")
+
+    @agent_compute.setter
+    def agent_compute(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_compute", value)
+
+    @_builtins.property
     @pulumi.getter(name="agentConnectivityTemplateId")
     def agent_connectivity_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -350,6 +413,19 @@ class _AgentConnectivityTemplateState:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentModel")
+    def deployment_model(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The deployment model for the gateway.
+        Possible values are: `CENTRALIZED`, `AMBIENT`.
+        """
+        return pulumi.get(self, "deployment_model")
+
+    @deployment_model.setter
+    def deployment_model(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deployment_model", value)
 
     @_builtins.property
     @pulumi.getter
@@ -489,8 +565,10 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_path: pulumi.Input[Optional[_builtins.str]] = None,
                  access_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 agent_compute: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_connectivity_template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_network_config: pulumi.Input[Optional[Union['AgentConnectivityTemplateEgressNetworkConfigArgs', 'AgentConnectivityTemplateEgressNetworkConfigArgsDict', 'outputs.AgentConnectivityTemplateEgressNetworkConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -521,6 +599,8 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                 "env": "test",
                 "tier": "gold",
             },
+            agent_compute="GKE",
+            deployment_model="CENTRALIZED",
             access_path="CLIENT_TO_AGENT")
         ```
         ### Network Services Agent Connectivity Template Advanced
@@ -569,6 +649,8 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
             agent_connectivity_template_id="my-connectivity-template",
             location="us-west2",
             description="An advanced configuration for Agent Connectivity Template",
+            agent_compute="GKE",
+            deployment_model="CENTRALIZED",
             access_types=["PRIVATE"],
             access_path="AGENT_TO_ANYWHERE",
             egress_network_config={
@@ -610,6 +692,9 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_types: The types of network access provided to the gateway.
                Both PUBLIC and PRIVATE can be configured.
                Each value may be one of: `PUBLIC`, `PRIVATE`.
+        :param pulumi.Input[_builtins.str] agent_compute: The compute environment where the agent is hosted.
+               Exactly one type of compute must be chosen.
+               Possible values are: `GKE`, `CLOUD_RUN`.
         :param pulumi.Input[_builtins.str] agent_connectivity_template_id: Short name of the AgentConnectivityTemplate resource.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -617,6 +702,8 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] deployment_model: The deployment model for the gateway.
+               Possible values are: `CENTRALIZED`, `AMBIENT`.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Union['AgentConnectivityTemplateEgressNetworkConfigArgs', 'AgentConnectivityTemplateEgressNetworkConfigArgsDict', 'outputs.AgentConnectivityTemplateEgressNetworkConfig']] egress_network_config: Configuration for egress network traffic.
                Structure is documented below.
@@ -658,6 +745,8 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                 "env": "test",
                 "tier": "gold",
             },
+            agent_compute="GKE",
+            deployment_model="CENTRALIZED",
             access_path="CLIENT_TO_AGENT")
         ```
         ### Network Services Agent Connectivity Template Advanced
@@ -706,6 +795,8 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
             agent_connectivity_template_id="my-connectivity-template",
             location="us-west2",
             description="An advanced configuration for Agent Connectivity Template",
+            agent_compute="GKE",
+            deployment_model="CENTRALIZED",
             access_types=["PRIVATE"],
             access_path="AGENT_TO_ANYWHERE",
             egress_network_config={
@@ -756,8 +847,10 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_path: pulumi.Input[Optional[_builtins.str]] = None,
                  access_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 agent_compute: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_connectivity_template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_network_config: pulumi.Input[Optional[Union['AgentConnectivityTemplateEgressNetworkConfigArgs', 'AgentConnectivityTemplateEgressNetworkConfigArgsDict', 'outputs.AgentConnectivityTemplateEgressNetworkConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -776,10 +869,12 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'access_path'")
             __props__.__dict__["access_path"] = access_path
             __props__.__dict__["access_types"] = access_types
+            __props__.__dict__["agent_compute"] = agent_compute
             if agent_connectivity_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_connectivity_template_id'")
             __props__.__dict__["agent_connectivity_template_id"] = agent_connectivity_template_id
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["deployment_model"] = deployment_model
             __props__.__dict__["description"] = description
             __props__.__dict__["egress_network_config"] = egress_network_config
             __props__.__dict__["labels"] = labels
@@ -807,9 +902,11 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_path: pulumi.Input[Optional[_builtins.str]] = None,
             access_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            agent_compute: pulumi.Input[Optional[_builtins.str]] = None,
             agent_connectivity_template_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             egress_network_config: pulumi.Input[Optional[Union['AgentConnectivityTemplateEgressNetworkConfigArgs', 'AgentConnectivityTemplateEgressNetworkConfigArgsDict', 'outputs.AgentConnectivityTemplateEgressNetworkConfig']]] = None,
@@ -833,6 +930,9 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_types: The types of network access provided to the gateway.
                Both PUBLIC and PRIVATE can be configured.
                Each value may be one of: `PUBLIC`, `PRIVATE`.
+        :param pulumi.Input[_builtins.str] agent_compute: The compute environment where the agent is hosted.
+               Exactly one type of compute must be chosen.
+               Possible values are: `GKE`, `CLOUD_RUN`.
         :param pulumi.Input[_builtins.str] agent_connectivity_template_id: Short name of the AgentConnectivityTemplate resource.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -841,6 +941,8 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] deployment_model: The deployment model for the gateway.
+               Possible values are: `CENTRALIZED`, `AMBIENT`.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['AgentConnectivityTemplateEgressNetworkConfigArgs', 'AgentConnectivityTemplateEgressNetworkConfigArgsDict', 'outputs.AgentConnectivityTemplateEgressNetworkConfig']] egress_network_config: Configuration for egress network traffic.
@@ -867,9 +969,11 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
 
         __props__.__dict__["access_path"] = access_path
         __props__.__dict__["access_types"] = access_types
+        __props__.__dict__["agent_compute"] = agent_compute
         __props__.__dict__["agent_connectivity_template_id"] = agent_connectivity_template_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["deployment_model"] = deployment_model
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["egress_network_config"] = egress_network_config
@@ -903,6 +1007,16 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
         return pulumi.get(self, "access_types")
 
     @_builtins.property
+    @pulumi.getter(name="agentCompute")
+    def agent_compute(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The compute environment where the agent is hosted.
+        Exactly one type of compute must be chosen.
+        Possible values are: `GKE`, `CLOUD_RUN`.
+        """
+        return pulumi.get(self, "agent_compute")
+
+    @_builtins.property
     @pulumi.getter(name="agentConnectivityTemplateId")
     def agent_connectivity_template_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -930,6 +1044,15 @@ class AgentConnectivityTemplate(pulumi.CustomResource):
         When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentModel")
+    def deployment_model(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The deployment model for the gateway.
+        Possible values are: `CENTRALIZED`, `AMBIENT`.
+        """
+        return pulumi.get(self, "deployment_model")
 
     @_builtins.property
     @pulumi.getter

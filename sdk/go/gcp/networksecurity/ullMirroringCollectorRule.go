@@ -60,7 +60,7 @@ import (
 //			backendService, err := compute.NewRegionBackendService(ctx, "backend_service", &compute.RegionBackendServiceArgs{
 //				Name:                pulumi.String("example-bs"),
 //				Region:              pulumi.String("us-south1"),
-//				HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        healthCheck.ID(),
 //				Protocol:            pulumi.String("UDP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //			})
@@ -72,7 +72,7 @@ import (
 //				Region:              pulumi.String("us-south1"),
 //				Network:             network.Name,
 //				Subnetwork:          subnetwork.Name,
-//				BackendService:      backendService.ID().ToIDOutput().ToStringOutput(),
+//				BackendService:      backendService.ID(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				Ports: pulumi.StringArray{
 //					pulumi.String("6081"),
@@ -93,8 +93,8 @@ import (
 //			collector, err := networksecurity.NewUllMirroringCollector(ctx, "collector", &networksecurity.UllMirroringCollectorArgs{
 //				UllMirroringCollectorId: pulumi.String("example-ull-col"),
 //				Location:                pulumi.String("us-south1-d"),
-//				ForwardingRule:          forwardingRule.ID().ToIDOutput().ToStringOutput(),
-//				Engine:                  ullMirroringEngine.ID().ToIDOutput().ToStringOutput(),
+//				ForwardingRule:          forwardingRule.ID(),
+//				Engine:                  ullMirroringEngine.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

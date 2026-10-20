@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			_, err = siteverification.NewOwner(ctx, "example", &siteverification.OwnerArgs{
-//				WebResourceId: example.ID().ToIDOutput().ToStringOutput(),
+//				WebResourceId: example.ID(),
 //				Email:         pulumi.String("user@example.com"),
 //			})
 //			if err != nil {

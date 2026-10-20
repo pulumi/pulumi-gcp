@@ -28,7 +28,8 @@ class SecurityProfileGroupArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None):
+                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityProfileGroup resource.
 
@@ -52,6 +53,8 @@ class SecurityProfileGroupArgs:
                Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        :param pulumi.Input[_builtins.str] wildfire_analysis_profile: (Optional, Beta)
+               Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         """
         if custom_intercept_profile is not None:
             pulumi.set(__self__, "custom_intercept_profile", custom_intercept_profile)
@@ -73,6 +76,8 @@ class SecurityProfileGroupArgs:
             pulumi.set(__self__, "threat_prevention_profile", threat_prevention_profile)
         if url_filtering_profile is not None:
             pulumi.set(__self__, "url_filtering_profile", url_filtering_profile)
+        if wildfire_analysis_profile is not None:
+            pulumi.set(__self__, "wildfire_analysis_profile", wildfire_analysis_profile)
 
     @_builtins.property
     @pulumi.getter(name="customInterceptProfile")
@@ -204,6 +209,19 @@ class SecurityProfileGroupArgs:
     def url_filtering_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering_profile", value)
 
+    @_builtins.property
+    @pulumi.getter(name="wildfireAnalysisProfile")
+    def wildfire_analysis_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+        """
+        return pulumi.get(self, "wildfire_analysis_profile")
+
+    @wildfire_analysis_profile.setter
+    def wildfire_analysis_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "wildfire_analysis_profile", value)
+
 
 @pulumi.input_type
 class _SecurityProfileGroupState:
@@ -222,7 +240,8 @@ class _SecurityProfileGroupState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None):
+                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityProfileGroup resources.
 
@@ -254,6 +273,8 @@ class _SecurityProfileGroupState:
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile group was updated in UTC.
         :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        :param pulumi.Input[_builtins.str] wildfire_analysis_profile: (Optional, Beta)
+               Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -285,6 +306,8 @@ class _SecurityProfileGroupState:
             pulumi.set(__self__, "update_time", update_time)
         if url_filtering_profile is not None:
             pulumi.set(__self__, "url_filtering_profile", url_filtering_profile)
+        if wildfire_analysis_profile is not None:
+            pulumi.set(__self__, "wildfire_analysis_profile", wildfire_analysis_profile)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -479,6 +502,19 @@ class _SecurityProfileGroupState:
     def url_filtering_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering_profile", value)
 
+    @_builtins.property
+    @pulumi.getter(name="wildfireAnalysisProfile")
+    def wildfire_analysis_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+        """
+        return pulumi.get(self, "wildfire_analysis_profile")
+
+    @wildfire_analysis_profile.setter
+    def wildfire_analysis_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "wildfire_analysis_profile", value)
+
 
 @pulumi.type_token("gcp:networksecurity/securityProfileGroup:SecurityProfileGroup")
 class SecurityProfileGroup(pulumi.CustomResource):
@@ -496,6 +532,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A security profile group defines a container for security profiles.
@@ -622,6 +659,39 @@ class SecurityProfileGroup(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Network Security Security Profile Group Wildfire
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        threat_prevention_profile = gcp.networksecurity.SecurityProfile("threat_prevention_profile",
+            name="tp-sec-profile",
+            type="THREAT_PREVENTION",
+            parent="projects/my-project-name",
+            location="global")
+        wildfire_profile = gcp.networksecurity.SecurityProfile("wildfire_profile",
+            name="wf-sec-profile",
+            type="WILDFIRE_ANALYSIS",
+            parent="projects/my-project-name",
+            location="global",
+            wildfire_analysis_profile={
+                "wildfire_realtime_lookup": True,
+                "wildfire_submission_rules": [{
+                    "direction": "BOTH",
+                    "file_selection_mode": "ALL_FILE_TYPES",
+                }],
+            })
+        default = gcp.networksecurity.SecurityProfileGroup("default",
+            name="sec-profile-group",
+            parent="projects/my-project-name",
+            description="my description",
+            threat_prevention_profile=threat_prevention_profile.id,
+            wildfire_analysis_profile=wildfire_profile.id,
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -658,6 +728,8 @@ class SecurityProfileGroup(pulumi.CustomResource):
                Format: `organizations/{organization_id}` or `projects/{project_id}`.
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        :param pulumi.Input[_builtins.str] wildfire_analysis_profile: (Optional, Beta)
+               Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         """
         ...
     @overload
@@ -790,6 +862,39 @@ class SecurityProfileGroup(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Network Security Security Profile Group Wildfire
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        threat_prevention_profile = gcp.networksecurity.SecurityProfile("threat_prevention_profile",
+            name="tp-sec-profile",
+            type="THREAT_PREVENTION",
+            parent="projects/my-project-name",
+            location="global")
+        wildfire_profile = gcp.networksecurity.SecurityProfile("wildfire_profile",
+            name="wf-sec-profile",
+            type="WILDFIRE_ANALYSIS",
+            parent="projects/my-project-name",
+            location="global",
+            wildfire_analysis_profile={
+                "wildfire_realtime_lookup": True,
+                "wildfire_submission_rules": [{
+                    "direction": "BOTH",
+                    "file_selection_mode": "ALL_FILE_TYPES",
+                }],
+            })
+        default = gcp.networksecurity.SecurityProfileGroup("default",
+            name="sec-profile-group",
+            parent="projects/my-project-name",
+            description="my description",
+            threat_prevention_profile=threat_prevention_profile.id,
+            wildfire_analysis_profile=wildfire_profile.id,
+            labels={
+                "foo": "bar",
+            })
+        ```
 
         ## Import
 
@@ -829,6 +934,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_analysis_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -848,6 +954,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["threat_prevention_profile"] = threat_prevention_profile
             __props__.__dict__["url_filtering_profile"] = url_filtering_profile
+            __props__.__dict__["wildfire_analysis_profile"] = wildfire_analysis_profile
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
@@ -879,7 +986,8 @@ class SecurityProfileGroup(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
-            url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityProfileGroup':
+            url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            wildfire_analysis_profile: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityProfileGroup':
         """
         Get an existing SecurityProfileGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -915,6 +1023,8 @@ class SecurityProfileGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] threat_prevention_profile: Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         :param pulumi.Input[_builtins.str] update_time: Time the security profile group was updated in UTC.
         :param pulumi.Input[_builtins.str] url_filtering_profile: Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+        :param pulumi.Input[_builtins.str] wildfire_analysis_profile: (Optional, Beta)
+               Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -935,6 +1045,7 @@ class SecurityProfileGroup(pulumi.CustomResource):
         __props__.__dict__["threat_prevention_profile"] = threat_prevention_profile
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["url_filtering_profile"] = url_filtering_profile
+        __props__.__dict__["wildfire_analysis_profile"] = wildfire_analysis_profile
         return SecurityProfileGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1069,4 +1180,13 @@ class SecurityProfileGroup(pulumi.CustomResource):
         Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "url_filtering_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireAnalysisProfile")
+    def wildfire_analysis_profile(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+        """
+        return pulumi.get(self, "wildfire_analysis_profile")
 

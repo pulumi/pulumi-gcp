@@ -32,14 +32,16 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
     }
 
     /**
-     * Controls whether an instance receives a MWLID certificate.
+     * Controls whether an instance receives a managed workload identity (MWLID) certificate.
+     * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
     @Import(name="identityCertificateEnabled")
     private @Nullable Output<Boolean> identityCertificateEnabled;
 
     /**
-     * @return Controls whether an instance receives a MWLID certificate.
+     * @return Controls whether an instance receives a managed workload identity (MWLID) certificate.
+     * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
     public Optional<Output<Boolean>> identityCertificateEnabled() {
@@ -47,7 +49,9 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
     }
 
     /**
-     * The type of identity to use.
+     * The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+     * is required when the Service&#39;s `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+     * cannot be changed or unset.
      * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
@@ -55,7 +59,9 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
     private @Nullable Output<String> identityType;
 
     /**
-     * @return The type of identity to use.
+     * @return The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+     * is required when the Service&#39;s `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+     * cannot be changed or unset.
      * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
@@ -111,7 +117,8 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param identityCertificateEnabled Controls whether an instance receives a MWLID certificate.
+         * @param identityCertificateEnabled Controls whether an instance receives a managed workload identity (MWLID) certificate.
+         * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
          * 
          * @return builder
          * 
@@ -122,7 +129,8 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param identityCertificateEnabled Controls whether an instance receives a MWLID certificate.
+         * @param identityCertificateEnabled Controls whether an instance receives a managed workload identity (MWLID) certificate.
+         * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
          * 
          * @return builder
          * 
@@ -132,7 +140,9 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param identityType The type of identity to use.
+         * @param identityType The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+         * is required when the Service&#39;s `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+         * cannot be changed or unset.
          * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
          * 
          * @return builder
@@ -144,7 +154,9 @@ public final class ServiceTemplateWorkloadIdentityConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param identityType The type of identity to use.
+         * @param identityType The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+         * is required when the Service&#39;s `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+         * cannot be changed or unset.
          * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
          * 
          * @return builder

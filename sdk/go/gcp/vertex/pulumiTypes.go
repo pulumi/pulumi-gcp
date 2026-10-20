@@ -18486,6 +18486,3210 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 	}).(AiMetadataStoreStateTypeOutput)
 }
 
+type AiOnlineEvaluatorCloudObservability struct {
+	// Optional log view that will be used to query logs. If empty, the
+	// project's default view (`projects/{{project_id}}`) will be used.
+	LogView *string `pulumi:"logView"`
+	// Configuration for a data source following the OpenTelemetry
+	// convention. This is the convention that the data source follows.
+	// Structure is documented below.
+	OpenTelemetry AiOnlineEvaluatorCloudObservabilityOpenTelemetry `pulumi:"openTelemetry"`
+	// If chosen, the OnlineEvaluator will evaluate sessions matching the
+	// specified filter. A session is a group of traces with a common
+	// `gen_ai.conversation.id`. Exactly one of `traceScope` or
+	// `sessionScope` must be set.
+	// Structure is documented below.
+	SessionScope *AiOnlineEvaluatorCloudObservabilitySessionScope `pulumi:"sessionScope"`
+	// If chosen, the OnlineEvaluator will evaluate single traces matching
+	// the specified filter. Exactly one of `traceScope` or `sessionScope`
+	// must be set.
+	// Structure is documented below.
+	TraceScope *AiOnlineEvaluatorCloudObservabilityTraceScope `pulumi:"traceScope"`
+	// Optional trace view that will be used to query traces. If empty, the
+	// `_AllSpans` view from the `_Trace` US bucket will be used.
+	TraceView *string `pulumi:"traceView"`
+}
+
+// AiOnlineEvaluatorCloudObservabilityInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityArgs and AiOnlineEvaluatorCloudObservabilityOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityArgs{...}
+type AiOnlineEvaluatorCloudObservabilityInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityOutput() AiOnlineEvaluatorCloudObservabilityOutput
+	ToAiOnlineEvaluatorCloudObservabilityOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityArgs struct {
+	// Optional log view that will be used to query logs. If empty, the
+	// project's default view (`projects/{{project_id}}`) will be used.
+	LogView pulumi.StringPtrInput `pulumi:"logView"`
+	// Configuration for a data source following the OpenTelemetry
+	// convention. This is the convention that the data source follows.
+	// Structure is documented below.
+	OpenTelemetry AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput `pulumi:"openTelemetry"`
+	// If chosen, the OnlineEvaluator will evaluate sessions matching the
+	// specified filter. A session is a group of traces with a common
+	// `gen_ai.conversation.id`. Exactly one of `traceScope` or
+	// `sessionScope` must be set.
+	// Structure is documented below.
+	SessionScope AiOnlineEvaluatorCloudObservabilitySessionScopePtrInput `pulumi:"sessionScope"`
+	// If chosen, the OnlineEvaluator will evaluate single traces matching
+	// the specified filter. Exactly one of `traceScope` or `sessionScope`
+	// must be set.
+	// Structure is documented below.
+	TraceScope AiOnlineEvaluatorCloudObservabilityTraceScopePtrInput `pulumi:"traceScope"`
+	// Optional trace view that will be used to query traces. If empty, the
+	// `_AllSpans` view from the `_Trace` US bucket will be used.
+	TraceView pulumi.StringPtrInput `pulumi:"traceView"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservability)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityArgs) ToAiOnlineEvaluatorCloudObservabilityOutput() AiOnlineEvaluatorCloudObservabilityOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityArgs) ToAiOnlineEvaluatorCloudObservabilityOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityArgs) ToAiOnlineEvaluatorCloudObservabilityPtrOutput() AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityArgs) ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityOutput).ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilityPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityArgs, AiOnlineEvaluatorCloudObservabilityPtr and AiOnlineEvaluatorCloudObservabilityPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilityPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityPtrOutput() AiOnlineEvaluatorCloudObservabilityPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilityPtrType AiOnlineEvaluatorCloudObservabilityArgs
+
+func AiOnlineEvaluatorCloudObservabilityPtr(v *AiOnlineEvaluatorCloudObservabilityArgs) AiOnlineEvaluatorCloudObservabilityPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilityPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservability)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityPtrType) ToAiOnlineEvaluatorCloudObservabilityPtrOutput() AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityPtrType) ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservability)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOutput) ToAiOnlineEvaluatorCloudObservabilityOutput() AiOnlineEvaluatorCloudObservabilityOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOutput) ToAiOnlineEvaluatorCloudObservabilityOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOutput) ToAiOnlineEvaluatorCloudObservabilityPtrOutput() AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOutput) ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservability) *AiOnlineEvaluatorCloudObservability {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilityPtrOutput)
+}
+
+// Optional log view that will be used to query logs. If empty, the
+// project's default view (`projects/{{project_id}}`) will be used.
+func (o AiOnlineEvaluatorCloudObservabilityOutput) LogView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservability) *string { return v.LogView }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a data source following the OpenTelemetry
+// convention. This is the convention that the data source follows.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityOutput) OpenTelemetry() AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservability) AiOnlineEvaluatorCloudObservabilityOpenTelemetry {
+		return v.OpenTelemetry
+	}).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput)
+}
+
+// If chosen, the OnlineEvaluator will evaluate sessions matching the
+// specified filter. A session is a group of traces with a common
+// `gen_ai.conversation.id`. Exactly one of `traceScope` or
+// `sessionScope` must be set.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityOutput) SessionScope() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservability) *AiOnlineEvaluatorCloudObservabilitySessionScope {
+		return v.SessionScope
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput)
+}
+
+// If chosen, the OnlineEvaluator will evaluate single traces matching
+// the specified filter. Exactly one of `traceScope` or `sessionScope`
+// must be set.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityOutput) TraceScope() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservability) *AiOnlineEvaluatorCloudObservabilityTraceScope {
+		return v.TraceScope
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput)
+}
+
+// Optional trace view that will be used to query traces. If empty, the
+// `_AllSpans` view from the `_Trace` US bucket will be used.
+func (o AiOnlineEvaluatorCloudObservabilityOutput) TraceView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservability) *string { return v.TraceView }).(pulumi.StringPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservability)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) ToAiOnlineEvaluatorCloudObservabilityPtrOutput() AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) ToAiOnlineEvaluatorCloudObservabilityPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilityOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservability) AiOnlineEvaluatorCloudObservability {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservability
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilityOutput)
+}
+
+// Optional log view that will be used to query logs. If empty, the
+// project's default view (`projects/{{project_id}}`) will be used.
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) LogView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservability) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogView
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a data source following the OpenTelemetry
+// convention. This is the convention that the data source follows.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) OpenTelemetry() AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservability) *AiOnlineEvaluatorCloudObservabilityOpenTelemetry {
+		if v == nil {
+			return nil
+		}
+		return &v.OpenTelemetry
+	}).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput)
+}
+
+// If chosen, the OnlineEvaluator will evaluate sessions matching the
+// specified filter. A session is a group of traces with a common
+// `gen_ai.conversation.id`. Exactly one of `traceScope` or
+// `sessionScope` must be set.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) SessionScope() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservability) *AiOnlineEvaluatorCloudObservabilitySessionScope {
+		if v == nil {
+			return nil
+		}
+		return v.SessionScope
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput)
+}
+
+// If chosen, the OnlineEvaluator will evaluate single traces matching
+// the specified filter. Exactly one of `traceScope` or `sessionScope`
+// must be set.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) TraceScope() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservability) *AiOnlineEvaluatorCloudObservabilityTraceScope {
+		if v == nil {
+			return nil
+		}
+		return v.TraceScope
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput)
+}
+
+// Optional trace view that will be used to query traces. If empty, the
+// `_AllSpans` view from the `_Trace` US bucket will be used.
+func (o AiOnlineEvaluatorCloudObservabilityPtrOutput) TraceView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservability) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TraceView
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityOpenTelemetry struct {
+	// Defines which version of the OTel Semantic Convention the data
+	// follows. Can be "1.39.0" or newer.
+	SemconvVersion string `pulumi:"semconvVersion"`
+}
+
+// AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs and AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs{...}
+type AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput
+	ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs struct {
+	// Defines which version of the OTel Semantic Convention the data
+	// follows. Can be "1.39.0" or newer.
+	SemconvVersion pulumi.StringInput `pulumi:"semconvVersion"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityOpenTelemetry)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput).ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs, AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtr and AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrType AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs
+
+func AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtr(v *AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs) AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityOpenTelemetry)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrType) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrType) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityOpenTelemetry)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilityOpenTelemetry) *AiOnlineEvaluatorCloudObservabilityOpenTelemetry {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput)
+}
+
+// Defines which version of the OTel Semantic Convention the data
+// follows. Can be "1.39.0" or newer.
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput) SemconvVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityOpenTelemetry) string { return v.SemconvVersion }).(pulumi.StringOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityOpenTelemetry)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput() AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput) ToAiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityOpenTelemetry) AiOnlineEvaluatorCloudObservabilityOpenTelemetry {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilityOpenTelemetry
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput)
+}
+
+// Defines which version of the OTel Semantic Convention the data
+// follows. Can be "1.39.0" or newer.
+func (o AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput) SemconvVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityOpenTelemetry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SemconvVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScope struct {
+	// A list of predicates to filter sessions. Multiple predicates are
+	// combined using AND. The maximum number of predicates is 10.
+	// Structure is documented below.
+	Filters []AiOnlineEvaluatorCloudObservabilitySessionScopeFilter `pulumi:"filters"`
+	// Session is considered ready for evaluation when there are no new
+	// traces for a specified period of inactivity.
+	// Structure is documented below.
+	InactivityTrigger *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger `pulumi:"inactivityTrigger"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeArgs struct {
+	// A list of predicates to filter sessions. Multiple predicates are
+	// combined using AND. The maximum number of predicates is 10.
+	// Structure is documented below.
+	Filters AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayInput `pulumi:"filters"`
+	// Session is considered ready for evaluation when there are no new
+	// traces for a specified period of inactivity.
+	// Structure is documented below.
+	InactivityTrigger AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrInput `pulumi:"inactivityTrigger"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScope)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopePtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeArgs, AiOnlineEvaluatorCloudObservabilitySessionScopePtr and AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopePtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopePtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopePtrType AiOnlineEvaluatorCloudObservabilitySessionScopeArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopePtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeArgs) AiOnlineEvaluatorCloudObservabilitySessionScopePtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopePtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScope)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopePtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopePtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScope)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScope) *AiOnlineEvaluatorCloudObservabilitySessionScope {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput)
+}
+
+// A list of predicates to filter sessions. Multiple predicates are
+// combined using AND. The maximum number of predicates is 10.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) Filters() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScope) []AiOnlineEvaluatorCloudObservabilitySessionScopeFilter {
+		return v.Filters
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput)
+}
+
+// Session is considered ready for evaluation when there are no new
+// traces for a specified period of inactivity.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeOutput) InactivityTrigger() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScope) *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger {
+		return v.InactivityTrigger
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScope)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScope) AiOnlineEvaluatorCloudObservabilitySessionScope {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScope
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeOutput)
+}
+
+// A list of predicates to filter sessions. Multiple predicates are
+// combined using AND. The maximum number of predicates is 10.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput) Filters() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScope) []AiOnlineEvaluatorCloudObservabilitySessionScopeFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput)
+}
+
+// Session is considered ready for evaluation when there are no new
+// traces for a specified period of inactivity.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput) InactivityTrigger() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScope) *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.InactivityTrigger
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilter struct {
+	// Filter on the duration of a session (in seconds).
+	// Structure is documented below.
+	Duration *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration `pulumi:"duration"`
+	// Filter on the number of LLM call errors within a session.
+	// Structure is documented below.
+	ModelCallErrors *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors `pulumi:"modelCallErrors"`
+	// Filter on the number of underlying LLM calls within a session.
+	// Structure is documented below.
+	ModelCalls *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls `pulumi:"modelCalls"`
+	// Filter on the number of tool call errors within a session.
+	// Structure is documented below.
+	ToolCallErrors *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors `pulumi:"toolCallErrors"`
+	// Filter on the number of underlying tool calls within a session.
+	// Structure is documented below.
+	ToolCalls *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls `pulumi:"toolCalls"`
+	// Filter on the total token usage within a session.
+	// Structure is documented below.
+	TotalTokenUsage *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage `pulumi:"totalTokenUsage"`
+	// Filter on the number of user turns within a session.
+	// Structure is documented below.
+	UserTurns *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns `pulumi:"userTurns"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs struct {
+	// Filter on the duration of a session (in seconds).
+	// Structure is documented below.
+	Duration AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrInput `pulumi:"duration"`
+	// Filter on the number of LLM call errors within a session.
+	// Structure is documented below.
+	ModelCallErrors AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrInput `pulumi:"modelCallErrors"`
+	// Filter on the number of underlying LLM calls within a session.
+	// Structure is documented below.
+	ModelCalls AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrInput `pulumi:"modelCalls"`
+	// Filter on the number of tool call errors within a session.
+	// Structure is documented below.
+	ToolCallErrors AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrInput `pulumi:"toolCallErrors"`
+	// Filter on the number of underlying tool calls within a session.
+	// Structure is documented below.
+	ToolCalls AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrInput `pulumi:"toolCalls"`
+	// Filter on the total token usage within a session.
+	// Structure is documented below.
+	TotalTokenUsage AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrInput `pulumi:"totalTokenUsage"`
+	// Filter on the number of user turns within a session.
+	// Structure is documented below.
+	UserTurns AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrInput `pulumi:"userTurns"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilter)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray{ AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs{...} }
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray []AiOnlineEvaluatorCloudObservabilitySessionScopeFilterInput
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorCloudObservabilitySessionScopeFilter)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilter)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput {
+	return o
+}
+
+// Filter on the duration of a session (in seconds).
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) Duration() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration {
+		return v.Duration
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput)
+}
+
+// Filter on the number of LLM call errors within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ModelCallErrors() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors {
+		return v.ModelCallErrors
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput)
+}
+
+// Filter on the number of underlying LLM calls within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ModelCalls() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls {
+		return v.ModelCalls
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput)
+}
+
+// Filter on the number of tool call errors within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ToolCallErrors() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors {
+		return v.ToolCallErrors
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput)
+}
+
+// Filter on the number of underlying tool calls within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) ToolCalls() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls {
+		return v.ToolCalls
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput)
+}
+
+// Filter on the total token usage within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) TotalTokenUsage() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage {
+		return v.TotalTokenUsage
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput)
+}
+
+// Filter on the number of user turns within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput) UserTurns() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilter) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns {
+		return v.UserTurns
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorCloudObservabilitySessionScopeFilter)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput) Index(i pulumi.IntInput) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiOnlineEvaluatorCloudObservabilitySessionScopeFilter {
+		return vs[0].([]AiOnlineEvaluatorCloudObservabilitySessionScopeFilter)[vs[1].(int)]
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns) *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns) AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger struct {
+	// The amount of time that must pass with no new traces before a
+	// session is considered ready for evaluation. Must be a positive
+	// duration no greater than 7 days (604800 seconds), e.g. "3600s".
+	Threshold string `pulumi:"threshold"`
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs and AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs{...}
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs struct {
+	// The amount of time that must pass with no new traces before a
+	// session is considered ready for evaluation. Must be a positive
+	// duration no greater than 7 days (604800 seconds), e.g. "3600s".
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput).ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs, AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtr and AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrType AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs
+
+func AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtr(v *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrType) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger) *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput)
+}
+
+// The amount of time that must pass with no new traces before a
+// session is considered ready for evaluation. Must be a positive
+// duration no greater than 7 days (604800 seconds), e.g. "3600s".
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput) ToAiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger) AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput)
+}
+
+// The amount of time that must pass with no new traces before a
+// session is considered ready for evaluation. Must be a positive
+// duration no greater than 7 days (604800 seconds), e.g. "3600s".
+func (o AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScope struct {
+	// A list of predicates to filter traces. Multiple predicates are
+	// combined using AND. The maximum number of predicates is 10.
+	// Structure is documented below.
+	Filters []AiOnlineEvaluatorCloudObservabilityTraceScopeFilter `pulumi:"filters"`
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeArgs and AiOnlineEvaluatorCloudObservabilityTraceScopeOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityTraceScopeArgs{...}
+type AiOnlineEvaluatorCloudObservabilityTraceScopeInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeArgs struct {
+	// A list of predicates to filter traces. Multiple predicates are
+	// combined using AND. The maximum number of predicates is 10.
+	// Structure is documented below.
+	Filters AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayInput `pulumi:"filters"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScope)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeOutput).ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopePtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeArgs, AiOnlineEvaluatorCloudObservabilityTraceScopePtr and AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopePtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilityTraceScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilityTraceScopePtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilityTraceScopePtrType AiOnlineEvaluatorCloudObservabilityTraceScopeArgs
+
+func AiOnlineEvaluatorCloudObservabilityTraceScopePtr(v *AiOnlineEvaluatorCloudObservabilityTraceScopeArgs) AiOnlineEvaluatorCloudObservabilityTraceScopePtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilityTraceScopePtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilityTraceScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityTraceScope)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityTraceScopePtrType) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityTraceScopePtrType) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScope)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilityTraceScope) *AiOnlineEvaluatorCloudObservabilityTraceScope {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput)
+}
+
+// A list of predicates to filter traces. Multiple predicates are
+// combined using AND. The maximum number of predicates is 10.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeOutput) Filters() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScope) []AiOnlineEvaluatorCloudObservabilityTraceScopeFilter {
+		return v.Filters
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityTraceScope)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput) Elem() AiOnlineEvaluatorCloudObservabilityTraceScopeOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScope) AiOnlineEvaluatorCloudObservabilityTraceScope {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilityTraceScope
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeOutput)
+}
+
+// A list of predicates to filter traces. Multiple predicates are
+// combined using AND. The maximum number of predicates is 10.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput) Filters() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScope) []AiOnlineEvaluatorCloudObservabilityTraceScopeFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filters
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilter struct {
+	// Filter on the duration of a session (in seconds).
+	// Structure is documented below.
+	Duration *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration `pulumi:"duration"`
+	// Filter on the total token usage within a session.
+	// Structure is documented below.
+	TotalTokenUsage *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage `pulumi:"totalTokenUsage"`
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeFilterInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs and AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeFilterInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs{...}
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs struct {
+	// Filter on the duration of a session (in seconds).
+	// Structure is documented below.
+	Duration AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrInput `pulumi:"duration"`
+	// Filter on the total token usage within a session.
+	// Structure is documented below.
+	TotalTokenUsage AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrInput `pulumi:"totalTokenUsage"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilter)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput)
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray and AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray{ AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs{...} }
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray []AiOnlineEvaluatorCloudObservabilityTraceScopeFilterInput
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorCloudObservabilityTraceScopeFilter)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilter)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput {
+	return o
+}
+
+// Filter on the duration of a session (in seconds).
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput) Duration() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScopeFilter) *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration {
+		return v.Duration
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput)
+}
+
+// Filter on the total token usage within a session.
+// Structure is documented below.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput) TotalTokenUsage() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScopeFilter) *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage {
+		return v.TotalTokenUsage
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorCloudObservabilityTraceScopeFilter)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput) Index(i pulumi.IntInput) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiOnlineEvaluatorCloudObservabilityTraceScopeFilter {
+		return vs[0].([]AiOnlineEvaluatorCloudObservabilityTraceScopeFilter)[vs[1].(int)]
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs and AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs{...}
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput).ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs, AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtr and AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrType AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs
+
+func AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtr(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrType) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrType) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration) *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput) Elem() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value float64 `pulumi:"value"`
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs and AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageInput` via:
+//
+//	AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs{...}
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs struct {
+	// The comparison operator to apply. Possible values are:
+	// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+	// GREATER.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// The value to compare against.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput)
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput).ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrInput is an input type that accepts AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs, AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtr and AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrInput` via:
+//
+//	        AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput
+	ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput
+}
+
+type aiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrType AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs
+
+func AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtr(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrInput {
+	return (*aiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrType)(v)
+}
+
+func (*aiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrType) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return i.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrType) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return o.ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage) *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage {
+		return &v
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput) ToAiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput) Elem() AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage) AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage
+		return ret
+	}).(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput)
+}
+
+// The comparison operator to apply. Possible values are:
+// LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+// GREATER.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComparisonOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value to compare against.
+func (o AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiOnlineEvaluatorConfig struct {
+	// The maximum number of evaluations to perform per run. If set to 0, the
+	// number is unbounded.
+	MaxEvaluatedSamplesPerRun *string `pulumi:"maxEvaluatedSamplesPerRun"`
+	// Configuration for random sampling. This is the sampling method used to
+	// select traces for evaluation.
+	// Structure is documented below.
+	RandomSampling *AiOnlineEvaluatorConfigRandomSampling `pulumi:"randomSampling"`
+}
+
+// AiOnlineEvaluatorConfigInput is an input type that accepts AiOnlineEvaluatorConfigArgs and AiOnlineEvaluatorConfigOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorConfigInput` via:
+//
+//	AiOnlineEvaluatorConfigArgs{...}
+type AiOnlineEvaluatorConfigInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorConfigOutput() AiOnlineEvaluatorConfigOutput
+	ToAiOnlineEvaluatorConfigOutputWithContext(context.Context) AiOnlineEvaluatorConfigOutput
+}
+
+type AiOnlineEvaluatorConfigArgs struct {
+	// The maximum number of evaluations to perform per run. If set to 0, the
+	// number is unbounded.
+	MaxEvaluatedSamplesPerRun pulumi.StringPtrInput `pulumi:"maxEvaluatedSamplesPerRun"`
+	// Configuration for random sampling. This is the sampling method used to
+	// select traces for evaluation.
+	// Structure is documented below.
+	RandomSampling AiOnlineEvaluatorConfigRandomSamplingPtrInput `pulumi:"randomSampling"`
+}
+
+func (AiOnlineEvaluatorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorConfig)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorConfigArgs) ToAiOnlineEvaluatorConfigOutput() AiOnlineEvaluatorConfigOutput {
+	return i.ToAiOnlineEvaluatorConfigOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorConfigArgs) ToAiOnlineEvaluatorConfigOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorConfigOutput)
+}
+
+func (i AiOnlineEvaluatorConfigArgs) ToAiOnlineEvaluatorConfigPtrOutput() AiOnlineEvaluatorConfigPtrOutput {
+	return i.ToAiOnlineEvaluatorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorConfigArgs) ToAiOnlineEvaluatorConfigPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorConfigOutput).ToAiOnlineEvaluatorConfigPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorConfigPtrInput is an input type that accepts AiOnlineEvaluatorConfigArgs, AiOnlineEvaluatorConfigPtr and AiOnlineEvaluatorConfigPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorConfigPtrInput` via:
+//
+//	        AiOnlineEvaluatorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorConfigPtrOutput() AiOnlineEvaluatorConfigPtrOutput
+	ToAiOnlineEvaluatorConfigPtrOutputWithContext(context.Context) AiOnlineEvaluatorConfigPtrOutput
+}
+
+type aiOnlineEvaluatorConfigPtrType AiOnlineEvaluatorConfigArgs
+
+func AiOnlineEvaluatorConfigPtr(v *AiOnlineEvaluatorConfigArgs) AiOnlineEvaluatorConfigPtrInput {
+	return (*aiOnlineEvaluatorConfigPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorConfig)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorConfigPtrType) ToAiOnlineEvaluatorConfigPtrOutput() AiOnlineEvaluatorConfigPtrOutput {
+	return i.ToAiOnlineEvaluatorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorConfigPtrType) ToAiOnlineEvaluatorConfigPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorConfigPtrOutput)
+}
+
+type AiOnlineEvaluatorConfigOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorConfig)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorConfigOutput) ToAiOnlineEvaluatorConfigOutput() AiOnlineEvaluatorConfigOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigOutput) ToAiOnlineEvaluatorConfigOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigOutput) ToAiOnlineEvaluatorConfigPtrOutput() AiOnlineEvaluatorConfigPtrOutput {
+	return o.ToAiOnlineEvaluatorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorConfigOutput) ToAiOnlineEvaluatorConfigPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorConfig) *AiOnlineEvaluatorConfig {
+		return &v
+	}).(AiOnlineEvaluatorConfigPtrOutput)
+}
+
+// The maximum number of evaluations to perform per run. If set to 0, the
+// number is unbounded.
+func (o AiOnlineEvaluatorConfigOutput) MaxEvaluatedSamplesPerRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorConfig) *string { return v.MaxEvaluatedSamplesPerRun }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for random sampling. This is the sampling method used to
+// select traces for evaluation.
+// Structure is documented below.
+func (o AiOnlineEvaluatorConfigOutput) RandomSampling() AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorConfig) *AiOnlineEvaluatorConfigRandomSampling { return v.RandomSampling }).(AiOnlineEvaluatorConfigRandomSamplingPtrOutput)
+}
+
+type AiOnlineEvaluatorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorConfig)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorConfigPtrOutput) ToAiOnlineEvaluatorConfigPtrOutput() AiOnlineEvaluatorConfigPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigPtrOutput) ToAiOnlineEvaluatorConfigPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigPtrOutput) Elem() AiOnlineEvaluatorConfigOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorConfig) AiOnlineEvaluatorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorConfig
+		return ret
+	}).(AiOnlineEvaluatorConfigOutput)
+}
+
+// The maximum number of evaluations to perform per run. If set to 0, the
+// number is unbounded.
+func (o AiOnlineEvaluatorConfigPtrOutput) MaxEvaluatedSamplesPerRun() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEvaluatedSamplesPerRun
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for random sampling. This is the sampling method used to
+// select traces for evaluation.
+// Structure is documented below.
+func (o AiOnlineEvaluatorConfigPtrOutput) RandomSampling() AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorConfig) *AiOnlineEvaluatorConfigRandomSampling {
+		if v == nil {
+			return nil
+		}
+		return v.RandomSampling
+	}).(AiOnlineEvaluatorConfigRandomSamplingPtrOutput)
+}
+
+type AiOnlineEvaluatorConfigRandomSampling struct {
+	// The percentage of traces to sample for evaluation. Must be an
+	// integer between 1 and 100.
+	Percentage int `pulumi:"percentage"`
+}
+
+// AiOnlineEvaluatorConfigRandomSamplingInput is an input type that accepts AiOnlineEvaluatorConfigRandomSamplingArgs and AiOnlineEvaluatorConfigRandomSamplingOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorConfigRandomSamplingInput` via:
+//
+//	AiOnlineEvaluatorConfigRandomSamplingArgs{...}
+type AiOnlineEvaluatorConfigRandomSamplingInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorConfigRandomSamplingOutput() AiOnlineEvaluatorConfigRandomSamplingOutput
+	ToAiOnlineEvaluatorConfigRandomSamplingOutputWithContext(context.Context) AiOnlineEvaluatorConfigRandomSamplingOutput
+}
+
+type AiOnlineEvaluatorConfigRandomSamplingArgs struct {
+	// The percentage of traces to sample for evaluation. Must be an
+	// integer between 1 and 100.
+	Percentage pulumi.IntInput `pulumi:"percentage"`
+}
+
+func (AiOnlineEvaluatorConfigRandomSamplingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorConfigRandomSampling)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorConfigRandomSamplingArgs) ToAiOnlineEvaluatorConfigRandomSamplingOutput() AiOnlineEvaluatorConfigRandomSamplingOutput {
+	return i.ToAiOnlineEvaluatorConfigRandomSamplingOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorConfigRandomSamplingArgs) ToAiOnlineEvaluatorConfigRandomSamplingOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigRandomSamplingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorConfigRandomSamplingOutput)
+}
+
+func (i AiOnlineEvaluatorConfigRandomSamplingArgs) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutput() AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return i.ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorConfigRandomSamplingArgs) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorConfigRandomSamplingOutput).ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(ctx)
+}
+
+// AiOnlineEvaluatorConfigRandomSamplingPtrInput is an input type that accepts AiOnlineEvaluatorConfigRandomSamplingArgs, AiOnlineEvaluatorConfigRandomSamplingPtr and AiOnlineEvaluatorConfigRandomSamplingPtrOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorConfigRandomSamplingPtrInput` via:
+//
+//	        AiOnlineEvaluatorConfigRandomSamplingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiOnlineEvaluatorConfigRandomSamplingPtrInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorConfigRandomSamplingPtrOutput() AiOnlineEvaluatorConfigRandomSamplingPtrOutput
+	ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(context.Context) AiOnlineEvaluatorConfigRandomSamplingPtrOutput
+}
+
+type aiOnlineEvaluatorConfigRandomSamplingPtrType AiOnlineEvaluatorConfigRandomSamplingArgs
+
+func AiOnlineEvaluatorConfigRandomSamplingPtr(v *AiOnlineEvaluatorConfigRandomSamplingArgs) AiOnlineEvaluatorConfigRandomSamplingPtrInput {
+	return (*aiOnlineEvaluatorConfigRandomSamplingPtrType)(v)
+}
+
+func (*aiOnlineEvaluatorConfigRandomSamplingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorConfigRandomSampling)(nil)).Elem()
+}
+
+func (i *aiOnlineEvaluatorConfigRandomSamplingPtrType) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutput() AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return i.ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(context.Background())
+}
+
+func (i *aiOnlineEvaluatorConfigRandomSamplingPtrType) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorConfigRandomSamplingPtrOutput)
+}
+
+type AiOnlineEvaluatorConfigRandomSamplingOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorConfigRandomSamplingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorConfigRandomSampling)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingOutput) ToAiOnlineEvaluatorConfigRandomSamplingOutput() AiOnlineEvaluatorConfigRandomSamplingOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingOutput) ToAiOnlineEvaluatorConfigRandomSamplingOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigRandomSamplingOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingOutput) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutput() AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return o.ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(context.Background())
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingOutput) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiOnlineEvaluatorConfigRandomSampling) *AiOnlineEvaluatorConfigRandomSampling {
+		return &v
+	}).(AiOnlineEvaluatorConfigRandomSamplingPtrOutput)
+}
+
+// The percentage of traces to sample for evaluation. Must be an
+// integer between 1 and 100.
+func (o AiOnlineEvaluatorConfigRandomSamplingOutput) Percentage() pulumi.IntOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorConfigRandomSampling) int { return v.Percentage }).(pulumi.IntOutput)
+}
+
+type AiOnlineEvaluatorConfigRandomSamplingPtrOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorConfigRandomSamplingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiOnlineEvaluatorConfigRandomSampling)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingPtrOutput) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutput() AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingPtrOutput) ToAiOnlineEvaluatorConfigRandomSamplingPtrOutputWithContext(ctx context.Context) AiOnlineEvaluatorConfigRandomSamplingPtrOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorConfigRandomSamplingPtrOutput) Elem() AiOnlineEvaluatorConfigRandomSamplingOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorConfigRandomSampling) AiOnlineEvaluatorConfigRandomSampling {
+		if v != nil {
+			return *v
+		}
+		var ret AiOnlineEvaluatorConfigRandomSampling
+		return ret
+	}).(AiOnlineEvaluatorConfigRandomSamplingOutput)
+}
+
+// The percentage of traces to sample for evaluation. Must be an
+// integer between 1 and 100.
+func (o AiOnlineEvaluatorConfigRandomSamplingPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiOnlineEvaluatorConfigRandomSampling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiOnlineEvaluatorMetricSource struct {
+	// Inline metric config, provided as a JSON-formatted string using
+	// camelCase field names to match the API format (see the
+	// [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+	// The suggested predefined `metricSpecName` values depend on the
+	// evaluation scope configured in `cloudObservability`; a predefined
+	// metric must match the scope or the create request will be rejected:
+	Metric *string `pulumi:"metric"`
+	// Resource name of a registered metric (a
+	// `vertex.AiEvaluationMetric`), e.g.
+	// projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+	MetricResourceName *string `pulumi:"metricResourceName"`
+}
+
+// AiOnlineEvaluatorMetricSourceInput is an input type that accepts AiOnlineEvaluatorMetricSourceArgs and AiOnlineEvaluatorMetricSourceOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorMetricSourceInput` via:
+//
+//	AiOnlineEvaluatorMetricSourceArgs{...}
+type AiOnlineEvaluatorMetricSourceInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorMetricSourceOutput() AiOnlineEvaluatorMetricSourceOutput
+	ToAiOnlineEvaluatorMetricSourceOutputWithContext(context.Context) AiOnlineEvaluatorMetricSourceOutput
+}
+
+type AiOnlineEvaluatorMetricSourceArgs struct {
+	// Inline metric config, provided as a JSON-formatted string using
+	// camelCase field names to match the API format (see the
+	// [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+	// The suggested predefined `metricSpecName` values depend on the
+	// evaluation scope configured in `cloudObservability`; a predefined
+	// metric must match the scope or the create request will be rejected:
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// Resource name of a registered metric (a
+	// `vertex.AiEvaluationMetric`), e.g.
+	// projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+	MetricResourceName pulumi.StringPtrInput `pulumi:"metricResourceName"`
+}
+
+func (AiOnlineEvaluatorMetricSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorMetricSource)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorMetricSourceArgs) ToAiOnlineEvaluatorMetricSourceOutput() AiOnlineEvaluatorMetricSourceOutput {
+	return i.ToAiOnlineEvaluatorMetricSourceOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorMetricSourceArgs) ToAiOnlineEvaluatorMetricSourceOutputWithContext(ctx context.Context) AiOnlineEvaluatorMetricSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorMetricSourceOutput)
+}
+
+// AiOnlineEvaluatorMetricSourceArrayInput is an input type that accepts AiOnlineEvaluatorMetricSourceArray and AiOnlineEvaluatorMetricSourceArrayOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorMetricSourceArrayInput` via:
+//
+//	AiOnlineEvaluatorMetricSourceArray{ AiOnlineEvaluatorMetricSourceArgs{...} }
+type AiOnlineEvaluatorMetricSourceArrayInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorMetricSourceArrayOutput() AiOnlineEvaluatorMetricSourceArrayOutput
+	ToAiOnlineEvaluatorMetricSourceArrayOutputWithContext(context.Context) AiOnlineEvaluatorMetricSourceArrayOutput
+}
+
+type AiOnlineEvaluatorMetricSourceArray []AiOnlineEvaluatorMetricSourceInput
+
+func (AiOnlineEvaluatorMetricSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorMetricSource)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorMetricSourceArray) ToAiOnlineEvaluatorMetricSourceArrayOutput() AiOnlineEvaluatorMetricSourceArrayOutput {
+	return i.ToAiOnlineEvaluatorMetricSourceArrayOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorMetricSourceArray) ToAiOnlineEvaluatorMetricSourceArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorMetricSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorMetricSourceArrayOutput)
+}
+
+type AiOnlineEvaluatorMetricSourceOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorMetricSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorMetricSource)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorMetricSourceOutput) ToAiOnlineEvaluatorMetricSourceOutput() AiOnlineEvaluatorMetricSourceOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorMetricSourceOutput) ToAiOnlineEvaluatorMetricSourceOutputWithContext(ctx context.Context) AiOnlineEvaluatorMetricSourceOutput {
+	return o
+}
+
+// Inline metric config, provided as a JSON-formatted string using
+// camelCase field names to match the API format (see the
+// [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+// The suggested predefined `metricSpecName` values depend on the
+// evaluation scope configured in `cloudObservability`; a predefined
+// metric must match the scope or the create request will be rejected:
+func (o AiOnlineEvaluatorMetricSourceOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorMetricSource) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// Resource name of a registered metric (a
+// `vertex.AiEvaluationMetric`), e.g.
+// projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+func (o AiOnlineEvaluatorMetricSourceOutput) MetricResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorMetricSource) *string { return v.MetricResourceName }).(pulumi.StringPtrOutput)
+}
+
+type AiOnlineEvaluatorMetricSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorMetricSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorMetricSource)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorMetricSourceArrayOutput) ToAiOnlineEvaluatorMetricSourceArrayOutput() AiOnlineEvaluatorMetricSourceArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorMetricSourceArrayOutput) ToAiOnlineEvaluatorMetricSourceArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorMetricSourceArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorMetricSourceArrayOutput) Index(i pulumi.IntInput) AiOnlineEvaluatorMetricSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiOnlineEvaluatorMetricSource {
+		return vs[0].([]AiOnlineEvaluatorMetricSource)[vs[1].(int)]
+	}).(AiOnlineEvaluatorMetricSourceOutput)
+}
+
+type AiOnlineEvaluatorStateDetail struct {
+	// (Output)
+	// Human-readable message describing the state of the OnlineEvaluator.
+	Message *string `pulumi:"message"`
+}
+
+// AiOnlineEvaluatorStateDetailInput is an input type that accepts AiOnlineEvaluatorStateDetailArgs and AiOnlineEvaluatorStateDetailOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorStateDetailInput` via:
+//
+//	AiOnlineEvaluatorStateDetailArgs{...}
+type AiOnlineEvaluatorStateDetailInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorStateDetailOutput() AiOnlineEvaluatorStateDetailOutput
+	ToAiOnlineEvaluatorStateDetailOutputWithContext(context.Context) AiOnlineEvaluatorStateDetailOutput
+}
+
+type AiOnlineEvaluatorStateDetailArgs struct {
+	// (Output)
+	// Human-readable message describing the state of the OnlineEvaluator.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiOnlineEvaluatorStateDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorStateDetail)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorStateDetailArgs) ToAiOnlineEvaluatorStateDetailOutput() AiOnlineEvaluatorStateDetailOutput {
+	return i.ToAiOnlineEvaluatorStateDetailOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorStateDetailArgs) ToAiOnlineEvaluatorStateDetailOutputWithContext(ctx context.Context) AiOnlineEvaluatorStateDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorStateDetailOutput)
+}
+
+// AiOnlineEvaluatorStateDetailArrayInput is an input type that accepts AiOnlineEvaluatorStateDetailArray and AiOnlineEvaluatorStateDetailArrayOutput values.
+// You can construct a concrete instance of `AiOnlineEvaluatorStateDetailArrayInput` via:
+//
+//	AiOnlineEvaluatorStateDetailArray{ AiOnlineEvaluatorStateDetailArgs{...} }
+type AiOnlineEvaluatorStateDetailArrayInput interface {
+	pulumi.Input
+
+	ToAiOnlineEvaluatorStateDetailArrayOutput() AiOnlineEvaluatorStateDetailArrayOutput
+	ToAiOnlineEvaluatorStateDetailArrayOutputWithContext(context.Context) AiOnlineEvaluatorStateDetailArrayOutput
+}
+
+type AiOnlineEvaluatorStateDetailArray []AiOnlineEvaluatorStateDetailInput
+
+func (AiOnlineEvaluatorStateDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorStateDetail)(nil)).Elem()
+}
+
+func (i AiOnlineEvaluatorStateDetailArray) ToAiOnlineEvaluatorStateDetailArrayOutput() AiOnlineEvaluatorStateDetailArrayOutput {
+	return i.ToAiOnlineEvaluatorStateDetailArrayOutputWithContext(context.Background())
+}
+
+func (i AiOnlineEvaluatorStateDetailArray) ToAiOnlineEvaluatorStateDetailArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorStateDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiOnlineEvaluatorStateDetailArrayOutput)
+}
+
+type AiOnlineEvaluatorStateDetailOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorStateDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiOnlineEvaluatorStateDetail)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorStateDetailOutput) ToAiOnlineEvaluatorStateDetailOutput() AiOnlineEvaluatorStateDetailOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorStateDetailOutput) ToAiOnlineEvaluatorStateDetailOutputWithContext(ctx context.Context) AiOnlineEvaluatorStateDetailOutput {
+	return o
+}
+
+// (Output)
+// Human-readable message describing the state of the OnlineEvaluator.
+func (o AiOnlineEvaluatorStateDetailOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiOnlineEvaluatorStateDetail) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiOnlineEvaluatorStateDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (AiOnlineEvaluatorStateDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiOnlineEvaluatorStateDetail)(nil)).Elem()
+}
+
+func (o AiOnlineEvaluatorStateDetailArrayOutput) ToAiOnlineEvaluatorStateDetailArrayOutput() AiOnlineEvaluatorStateDetailArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorStateDetailArrayOutput) ToAiOnlineEvaluatorStateDetailArrayOutputWithContext(ctx context.Context) AiOnlineEvaluatorStateDetailArrayOutput {
+	return o
+}
+
+func (o AiOnlineEvaluatorStateDetailArrayOutput) Index(i pulumi.IntInput) AiOnlineEvaluatorStateDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiOnlineEvaluatorStateDetail {
+		return vs[0].([]AiOnlineEvaluatorStateDetail)[vs[1].(int)]
+	}).(AiOnlineEvaluatorStateDetailOutput)
+}
+
 type AiPersistentResourceEncryptionSpec struct {
 	// Resource name of the Cloud KMS key used to protect the resource.
 	// The Cloud KMS key must be in the same region as the resource. It must have
@@ -34972,6 +38176,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityOpenTelemetryInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopePtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopePtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrInput)(nil)).Elem(), AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorConfigInput)(nil)).Elem(), AiOnlineEvaluatorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorConfigPtrInput)(nil)).Elem(), AiOnlineEvaluatorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorConfigRandomSamplingInput)(nil)).Elem(), AiOnlineEvaluatorConfigRandomSamplingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorConfigRandomSamplingPtrInput)(nil)).Elem(), AiOnlineEvaluatorConfigRandomSamplingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorMetricSourceInput)(nil)).Elem(), AiOnlineEvaluatorMetricSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorMetricSourceArrayInput)(nil)).Elem(), AiOnlineEvaluatorMetricSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorStateDetailInput)(nil)).Elem(), AiOnlineEvaluatorStateDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiOnlineEvaluatorStateDetailArrayInput)(nil)).Elem(), AiOnlineEvaluatorStateDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceEncryptionSpecInput)(nil)).Elem(), AiPersistentResourceEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceEncryptionSpecPtrInput)(nil)).Elem(), AiPersistentResourceEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceErrorInput)(nil)).Elem(), AiPersistentResourceErrorArgs{})
@@ -35383,6 +38627,46 @@ func init() {
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOpenTelemetryOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityOpenTelemetryPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopePtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArrayOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsagePtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopePtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArrayOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsagePtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorConfigOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorConfigRandomSamplingOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorConfigRandomSamplingPtrOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorMetricSourceOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorMetricSourceArrayOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorStateDetailOutput{})
+	pulumi.RegisterOutputType(AiOnlineEvaluatorStateDetailArrayOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiPersistentResourceErrorOutput{})

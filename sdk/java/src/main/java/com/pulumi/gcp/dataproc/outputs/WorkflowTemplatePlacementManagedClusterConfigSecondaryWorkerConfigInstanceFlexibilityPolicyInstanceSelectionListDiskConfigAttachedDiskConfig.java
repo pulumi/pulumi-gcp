@@ -18,9 +18,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      */
     private @Nullable Integer diskSizeGb;
     /**
-     * @return The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * @return (Optional, Deprecated)
+     * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * 
+     * @deprecated
+     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
+    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
     private @Nullable String diskType;
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -32,6 +37,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      * 
      */
     private @Nullable Integer provisionedThroughput;
+    /**
+     * @return Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * 
+     */
+    private @Nullable String type;
 
     private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig() {}
     /**
@@ -42,9 +52,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         return Optional.ofNullable(this.diskSizeGb);
     }
     /**
-     * @return The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * @return (Optional, Deprecated)
+     * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * 
+     * @deprecated
+     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
+    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
@@ -62,6 +77,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     public Optional<Integer> provisionedThroughput() {
         return Optional.ofNullable(this.provisionedThroughput);
     }
+    /**
+     * @return Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +98,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         private @Nullable String diskType;
         private @Nullable Integer provisionedIops;
         private @Nullable Integer provisionedThroughput;
+        private @Nullable String type;
         public Builder() {}
         public Builder(WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +106,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     	      this.diskType = defaults.diskType;
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -109,12 +133,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
             this.provisionedThroughput = provisionedThroughput;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
         public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig build() {
             final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig();
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
             _resultValue.provisionedIops = provisionedIops;
             _resultValue.provisionedThroughput = provisionedThroughput;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

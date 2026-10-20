@@ -95,7 +95,7 @@ import (
 //						SourceImage:      pulumi.String("debian-cloud/debian-11"),
 //						AutoDelete:       pulumi.Bool(true),
 //						Boot:             pulumi.Bool(true),
-//						ResourcePolicies: dailyBackup.ID().ToIDOutput().ToStringOutput(),
+//						ResourcePolicies: dailyBackup.ID(),
 //					},
 //					&compute.InstanceTemplateDiskArgs{
 //						Source:     foobar.Name,
@@ -475,7 +475,7 @@ type InstanceTemplate struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -640,7 +640,7 @@ type instanceTemplateState struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -765,7 +765,7 @@ type InstanceTemplateState struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -888,7 +888,7 @@ type instanceTemplateArgs struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -997,7 +997,7 @@ type InstanceTemplateArgs struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -1255,7 +1255,7 @@ func (o InstanceTemplateOutput) Name() pulumi.StringOutput {
 // Resulting name for a `namePrefix` <= 37 characters:
 // `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 // Resulting name for a `namePrefix` 38 - 54 characters:
-// `namePrefix` + YYmmdd + 3 digit incremental counter
+// `namePrefix` + 9 random lowercase alphanumeric characters
 func (o InstanceTemplateOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

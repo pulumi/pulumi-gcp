@@ -102,7 +102,7 @@ class RegionInstanceTemplateArgs:
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -417,7 +417,7 @@ class RegionInstanceTemplateArgs:
         Resulting name for a `name_prefix` <= 37 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 38 - 54 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 
@@ -689,7 +689,7 @@ class _RegionInstanceTemplateState:
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -1060,7 +1060,7 @@ class _RegionInstanceTemplateState:
         Resulting name for a `name_prefix` <= 37 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 38 - 54 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 
@@ -1605,7 +1605,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -2073,7 +2073,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceTemplateNetworkInterfaceArgs', 'RegionInstanceTemplateNetworkInterfaceArgsDict', 'outputs.RegionInstanceTemplateNetworkInterface']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
@@ -2336,7 +2336,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         Resulting name for a `name_prefix` <= 37 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 38 - 54 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 

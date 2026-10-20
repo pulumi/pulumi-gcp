@@ -72,6 +72,7 @@ export interface GetJobResult {
     readonly etag: string;
     readonly executionCount: number;
     readonly expireTime: string;
+    readonly functionalType: string;
     readonly generation: string;
     /**
      * The provider-assigned unique ID for this managed resource.

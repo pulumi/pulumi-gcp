@@ -461,7 +461,7 @@ class Template(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         template_template_metadata = gcp.modelarmor.Template("template-template-metadata",
-            location="us-central1",
+            location="us",
             template_id="modelarmor3",
             filter_config={
                 "rai_settings": {
@@ -483,6 +483,10 @@ class Template(pulumi.CustomResource):
                 "custom_prompt_safety_error_message": "This is a custom error message for prompt",
                 "custom_llm_response_safety_error_code": 401,
                 "enforcement_type": "INSPECT_ONLY",
+                "modalities": [
+                    "MODALITY_TEXT",
+                    "MODALITY_IMAGE",
+                ],
                 "filter_version_selector": {
                     "alias": "FILTER_VERSION_ALIAS_LATEST",
                 },
@@ -649,7 +653,7 @@ class Template(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         template_template_metadata = gcp.modelarmor.Template("template-template-metadata",
-            location="us-central1",
+            location="us",
             template_id="modelarmor3",
             filter_config={
                 "rai_settings": {
@@ -671,6 +675,10 @@ class Template(pulumi.CustomResource):
                 "custom_prompt_safety_error_message": "This is a custom error message for prompt",
                 "custom_llm_response_safety_error_code": 401,
                 "enforcement_type": "INSPECT_ONLY",
+                "modalities": [
+                    "MODALITY_TEXT",
+                    "MODALITY_IMAGE",
+                ],
                 "filter_version_selector": {
                     "alias": "FILTER_VERSION_ALIAS_LATEST",
                 },

@@ -83,7 +83,7 @@ import (
 //				Name:        pulumi.String("my-subnetwork"),
 //				IpCidrRange: pulumi.String("10.1.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:     _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //				Location:            pulumi.String("us-central1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
 //				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-//					Vpc:    _default.ID().ToIDOutput().ToStringOutput(),
+//					Vpc:    _default.ID(),
 //					Subnet: pulumi.String("10.0.0.0/29"),
 //				},
 //			})
@@ -231,7 +231,7 @@ import (
 //					Port:     pulumi.Int(5432),
 //				},
 //				PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
-//					PrivateConnection: privateConnection.ID().ToIDOutput().ToStringOutput(),
+//					PrivateConnection: privateConnection.ID(),
 //				},
 //			})
 //			if err != nil {

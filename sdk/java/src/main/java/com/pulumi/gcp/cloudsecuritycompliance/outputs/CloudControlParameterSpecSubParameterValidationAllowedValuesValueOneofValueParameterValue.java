@@ -26,8 +26,7 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
      */
     private @Nullable Double numberValue;
     /**
-     * @return Sub-parameter values.
-     * Structure is documented below.
+     * @return Sub-parameter values, in JSON format.
      * 
      */
     private @Nullable CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue oneofValue;
@@ -59,8 +58,7 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
         return Optional.ofNullable(this.numberValue);
     }
     /**
-     * @return Sub-parameter values.
-     * Structure is documented below.
+     * @return Sub-parameter values, in JSON format.
      * 
      */
     public Optional<CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue> oneofValue() {

@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoscalingResult> Autoscalings;
         /// <summary>
+        /// Specifies the configuration for best effort provisioning.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolBestEffortProvisioningResult> BestEffortProvisionings;
+        /// <summary>
         /// When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing ManagedInstanceGroupUrls in the state.
         /// </summary>
         public readonly bool IgnoreNodeCountChanges;
@@ -94,6 +98,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodePoolResult(
             ImmutableArray<Outputs.GetClusterNodePoolAutoscalingResult> autoscalings,
 
+            ImmutableArray<Outputs.GetClusterNodePoolBestEffortProvisioningResult> bestEffortProvisionings,
+
             bool ignoreNodeCountChanges,
 
             int initialNodeCount,
@@ -131,6 +137,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string version)
         {
             Autoscalings = autoscalings;
+            BestEffortProvisionings = bestEffortProvisionings;
             IgnoreNodeCountChanges = ignoreNodeCountChanges;
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;

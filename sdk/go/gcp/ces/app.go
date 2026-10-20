@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			fakeSecretVersion, err := secretmanager.NewSecretVersion(ctx, "fake_secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     fakePrivateKeySecret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     fakePrivateKeySecret.ID(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {

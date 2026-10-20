@@ -73,6 +73,8 @@ __all__ = [
     'JobTemplateTemplateVpcAccessArgsDict',
     'JobTemplateTemplateVpcAccessNetworkInterfaceArgs',
     'JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict',
+    'JobTemplateTemplateWorkloadIdentityConfigArgs',
+    'JobTemplateTemplateWorkloadIdentityConfigArgsDict',
     'JobTerminalConditionArgs',
     'JobTerminalConditionArgsDict',
     'ServiceBinaryAuthorizationArgs',
@@ -882,6 +884,13 @@ class JobTemplateTemplateArgsDict(TypedDict):
     VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
     """
+    workload_identity_config: NotRequired[pulumi.Input[Optional['JobTemplateTemplateWorkloadIdentityConfigArgsDict']]]
+    """
+    (Optional, Beta)
+    The Task's workload identity settings. Used to assign an
+    [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class JobTemplateTemplateArgs:
@@ -895,7 +904,8 @@ class JobTemplateTemplateArgs:
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]] = None,
-                 vpc_access: pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']] = None):
+                 vpc_access: pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']] = None,
+                 workload_identity_config: pulumi.Input[Optional['JobTemplateTemplateWorkloadIdentityConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]] containers: Holds the single container that defines the unit of execution for this task.
                Structure is documented below.
@@ -912,6 +922,10 @@ class JobTemplateTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+               Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateWorkloadIdentityConfigArgs'] workload_identity_config: (Optional, Beta)
+               The Task's workload identity settings. Used to assign an
+               [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
                Structure is documented below.
         """
         if containers is not None:
@@ -934,6 +948,8 @@ class JobTemplateTemplateArgs:
             pulumi.set(__self__, "volumes", volumes)
         if vpc_access is not None:
             pulumi.set(__self__, "vpc_access", vpc_access)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
     @_builtins.property
     @pulumi.getter
@@ -1060,6 +1076,21 @@ class JobTemplateTemplateArgs:
     @vpc_access.setter
     def vpc_access(self, value: pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']]):
         pulumi.set(self, "vpc_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['JobTemplateTemplateWorkloadIdentityConfigArgs']]:
+        """
+        (Optional, Beta)
+        The Task's workload identity settings. Used to assign an
+        [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['JobTemplateTemplateWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
 
 
 class JobTemplateTemplateContainerArgsDict(TypedDict):
@@ -2706,6 +2737,87 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
         pulumi.set(self, "tags", value)
 
 
+class JobTemplateTemplateWorkloadIdentityConfigArgsDict(TypedDict):
+    identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+    """
+    identity_certificate_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Controls whether an instance receives a managed workload identity (MWLID) certificate.
+    Defaults to true when `identity_type` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+    """
+    identity_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+    and is required when the Job's `functional_type` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+    cannot be changed or unset.
+    Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+    """
+
+@pulumi.input_type
+class JobTemplateTemplateWorkloadIdentityConfigArgs:
+    def __init__(__self__, *,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_certificate_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identity_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] identity: The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        :param pulumi.Input[_builtins.bool] identity_certificate_enabled: Controls whether an instance receives a managed workload identity (MWLID) certificate.
+               Defaults to true when `identity_type` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+        :param pulumi.Input[_builtins.str] identity_type: The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+               and is required when the Job's `functional_type` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+               cannot be changed or unset.
+               Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+        """
+        if identity is not None:
+            pulumi.set(__self__, "identity", identity)
+        if identity_certificate_enabled is not None:
+            pulumi.set(__self__, "identity_certificate_enabled", identity_certificate_enabled)
+        if identity_type is not None:
+            pulumi.set(__self__, "identity_type", identity_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        """
+        return pulumi.get(self, "identity")
+
+    @identity.setter
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityCertificateEnabled")
+    def identity_certificate_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Controls whether an instance receives a managed workload identity (MWLID) certificate.
+        Defaults to true when `identity_type` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+        """
+        return pulumi.get(self, "identity_certificate_enabled")
+
+    @identity_certificate_enabled.setter
+    def identity_certificate_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "identity_certificate_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityType")
+    def identity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+        and is required when the Job's `functional_type` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+        cannot be changed or unset.
+        Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+        """
+        return pulumi.get(self, "identity_type")
+
+    @identity_type.setter
+    def identity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identity_type", value)
+
+
 class JobTerminalConditionArgsDict(TypedDict):
     execution_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3683,7 +3795,8 @@ class ServiceTemplateArgsDict(TypedDict):
     """
     workload_identity_config: NotRequired[pulumi.Input[Optional['ServiceTemplateWorkloadIdentityConfigArgsDict']]]
     """
-    Workload identity settings for this Revision.
+    The Revision's workload identity settings. Used to assign an
+    [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
     Structure is documented below.
     """
 
@@ -3745,7 +3858,8 @@ class ServiceTemplateArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateWorkloadIdentityConfigArgs'] workload_identity_config: Workload identity settings for this Revision.
+        :param pulumi.Input['ServiceTemplateWorkloadIdentityConfigArgs'] workload_identity_config: The Revision's workload identity settings. Used to assign an
+               [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
                Structure is documented below.
         """
         if annotations is not None:
@@ -4024,7 +4138,8 @@ class ServiceTemplateArgs:
     @pulumi.getter(name="workloadIdentityConfig")
     def workload_identity_config(self) -> pulumi.Input[Optional['ServiceTemplateWorkloadIdentityConfigArgs']]:
         """
-        Workload identity settings for this Revision.
+        The Revision's workload identity settings. Used to assign an
+        [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
         Structure is documented below.
         """
         return pulumi.get(self, "workload_identity_config")
@@ -7034,11 +7149,14 @@ class ServiceTemplateWorkloadIdentityConfigArgsDict(TypedDict):
     """
     identity_certificate_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Controls whether an instance receives a MWLID certificate.
+    Controls whether an instance receives a managed workload identity (MWLID) certificate.
+    Defaults to true when `identity_type` is `IDENTITY_TYPE_AGENT_IDENTITY`.
     """
     identity_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The type of identity to use.
+    The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+    is required when the Service's `functional_type` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+    cannot be changed or unset.
     Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
     """
 
@@ -7050,8 +7168,11 @@ class ServiceTemplateWorkloadIdentityConfigArgs:
                  identity_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] identity: The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
-        :param pulumi.Input[_builtins.bool] identity_certificate_enabled: Controls whether an instance receives a MWLID certificate.
-        :param pulumi.Input[_builtins.str] identity_type: The type of identity to use.
+        :param pulumi.Input[_builtins.bool] identity_certificate_enabled: Controls whether an instance receives a managed workload identity (MWLID) certificate.
+               Defaults to true when `identity_type` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+        :param pulumi.Input[_builtins.str] identity_type: The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+               is required when the Service's `functional_type` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+               cannot be changed or unset.
                Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
         """
         if identity is not None:
@@ -7077,7 +7198,8 @@ class ServiceTemplateWorkloadIdentityConfigArgs:
     @pulumi.getter(name="identityCertificateEnabled")
     def identity_certificate_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Controls whether an instance receives a MWLID certificate.
+        Controls whether an instance receives a managed workload identity (MWLID) certificate.
+        Defaults to true when `identity_type` is `IDENTITY_TYPE_AGENT_IDENTITY`.
         """
         return pulumi.get(self, "identity_certificate_enabled")
 
@@ -7089,7 +7211,9 @@ class ServiceTemplateWorkloadIdentityConfigArgs:
     @pulumi.getter(name="identityType")
     def identity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of identity to use.
+        The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+        is required when the Service's `functional_type` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+        cannot be changed or unset.
         Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
         """
         return pulumi.get(self, "identity_type")

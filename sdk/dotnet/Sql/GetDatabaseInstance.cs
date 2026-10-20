@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.Sql
     {
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
         public readonly string BackupdrBackup;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceBlueGreenDeploymentResult> BlueGreenDeployments;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         public readonly string ConnectionName;
         public readonly string DatabaseVersion;
@@ -178,6 +179,8 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<string> availableMaintenanceVersions,
 
             string backupdrBackup,
+
+            ImmutableArray<Outputs.GetDatabaseInstanceBlueGreenDeploymentResult> blueGreenDeployments,
 
             ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> clones,
 
@@ -257,6 +260,7 @@ namespace Pulumi.Gcp.Sql
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackupdrBackup = backupdrBackup;
+            BlueGreenDeployments = blueGreenDeployments;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;

@@ -63,6 +63,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("env", "test"),
  *                 Map.entry("tier", "gold")
  *             ))
+ *             .agentCompute("GKE")
+ *             .deploymentModel("CENTRALIZED")
  *             .accessPath("CLIENT_TO_AGENT")
  *             .build());
  * 
@@ -171,6 +173,8 @@ import javax.annotation.Nullable;
  *             .agentConnectivityTemplateId("my-connectivity-template")
  *             .location("us-west2")
  *             .description("An advanced configuration for Agent Connectivity Template")
+ *             .agentCompute("GKE")
+ *             .deploymentModel("CENTRALIZED")
  *             .accessTypes("PRIVATE")
  *             .accessPath("AGENT_TO_ANYWHERE")
  *             .egressNetworkConfig(AgentConnectivityTemplateEgressNetworkConfigArgs.builder()
@@ -248,6 +252,24 @@ public class AgentConnectivityTemplate extends com.pulumi.resources.CustomResour
         return this.accessTypes;
     }
     /**
+     * The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     * 
+     */
+    @Export(name="agentCompute", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> agentCompute;
+
+    /**
+     * @return The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     * 
+     */
+    public Output<Optional<String>> agentCompute() {
+        return Codegen.optional(this.agentCompute);
+    }
+    /**
      * Short name of the AgentConnectivityTemplate resource.
      * 
      */
@@ -298,6 +320,22 @@ public class AgentConnectivityTemplate extends com.pulumi.resources.CustomResour
      */
     public Output<String> deletionPolicy() {
         return this.deletionPolicy;
+    }
+    /**
+     * The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     * 
+     */
+    @Export(name="deploymentModel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deploymentModel;
+
+    /**
+     * @return The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     * 
+     */
+    public Output<Optional<String>> deploymentModel() {
+        return Codegen.optional(this.deploymentModel);
     }
     /**
      * A free-text description of the resource. Max length 1024 characters.

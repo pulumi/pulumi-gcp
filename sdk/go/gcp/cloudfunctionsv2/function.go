@@ -162,7 +162,7 @@ import (
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 //					TriggerRegion: pulumi.String("us-central1"),
 //					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
+//					PubsubTopic:   topic.ID(),
 //					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 //				},
 //			})
@@ -698,7 +698,7 @@ import (
 //							Object: object.Name,
 //						},
 //					},
-//					ServiceAccount: account.ID().ToIDOutput().ToStringOutput(),
+//					ServiceAccount: account.ID(),
 //				},
 //				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 //					MaxInstanceCount: pulumi.Int(1),
@@ -961,7 +961,7 @@ import (
 //							Object: object.Name,
 //						},
 //					},
-//					WorkerPool: pool.ID().ToIDOutput().ToStringOutput(),
+//					WorkerPool: pool.ID(),
 //				},
 //				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 //					MaxInstanceCount: pulumi.Int(1),
@@ -1078,7 +1078,7 @@ import (
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
 //					Runtime:          pulumi.String("nodejs20"),
 //					EntryPoint:       pulumi.String("helloHttp"),
-//					DockerRepository: encoded_ar_repo.ID().ToIDOutput().ToStringOutput(),
+//					DockerRepository: encoded_ar_repo.ID(),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
 //							Bucket: bucket.Name,
@@ -1184,7 +1184,7 @@ import (
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 //					TriggerRegion: pulumi.String("us-central1"),
 //					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
+//					PubsubTopic:   topic.ID(),
 //					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 //				},
 //			})
@@ -1278,7 +1278,7 @@ import (
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 //					TriggerRegion: pulumi.String("us-central1"),
 //					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
+//					PubsubTopic:   topic.ID(),
 //					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 //				},
 //			})

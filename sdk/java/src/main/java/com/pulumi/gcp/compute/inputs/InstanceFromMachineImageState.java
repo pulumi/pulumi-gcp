@@ -773,6 +773,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
      * 
      * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
      * 
+     * * `network_interface.service_class_id` - (Optional) Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+     * 
      * In addition to these, most* arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the machine image. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
@@ -788,6 +790,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
      * set, the provider zone is used.
      * 
      * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+     * 
+     * * `network_interface.service_class_id` - (Optional) Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
      * 
      * In addition to these, most* arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the machine image. All exported attributes
@@ -1952,6 +1956,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          * 
          * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
          * 
+         * * `network_interface.service_class_id` - (Optional) Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+         * 
          * In addition to these, most* arguments from `gcp.compute.Instance` are supported
          * as a way to override the properties in the machine image. All exported attributes
          * from `gcp.compute.Instance` are likewise exported here.
@@ -1971,6 +1977,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          * set, the provider zone is used.
          * 
          * * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+         * 
+         * * `network_interface.service_class_id` - (Optional) Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
          * 
          * In addition to these, most* arguments from `gcp.compute.Instance` are supported
          * as a way to override the properties in the machine image. All exported attributes

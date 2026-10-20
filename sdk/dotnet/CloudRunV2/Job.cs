@@ -703,6 +703,44 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Job Agent Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Name = "cloudrun-job",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         FunctionalType = "FUNCTIONAL_TYPE_AGENT",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+    ///                     },
+    ///                 },
+    ///                 WorkloadIdentityConfig = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateWorkloadIdentityConfigArgs
+    ///                 {
+    ///                     IdentityType = "IDENTITY_TYPE_AGENT_IDENTITY",
+    ///                     IdentityCertificateEnabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -831,6 +869,19 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The functional type of the Job. Declares the primary purpose of the workload so that it can be
+        /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        /// Once set, this field cannot be changed or unset.
+        /// Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+        /// A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+        /// `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        /// Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+        /// </summary>
+        [Output("functionalType")]
+        public Output<string> FunctionalType { get; private set; } = null!;
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state.
@@ -1069,6 +1120,19 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// The functional type of the Job. Declares the primary purpose of the workload so that it can be
+        /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        /// Once set, this field cannot be changed or unset.
+        /// Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+        /// A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+        /// `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        /// Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+        /// </summary>
+        [Input("functionalType")]
+        public Input<string>? FunctionalType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -1293,6 +1357,19 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The functional type of the Job. Declares the primary purpose of the workload so that it can be
+        /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        /// Once set, this field cannot be changed or unset.
+        /// Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+        /// A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+        /// `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        /// Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+        /// </summary>
+        [Input("functionalType")]
+        public Input<string>? FunctionalType { get; set; }
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state.

@@ -97,7 +97,7 @@ import (
 //				Project:     serviceProject.ProjectId,
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     ilbNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -122,7 +122,7 @@ import (
 //				Name:         pulumi.String("l7-ilb-backend-subnet"),
 //				Project:      serviceProject.ProjectId,
 //				Region:       pulumi.String("us-central1"),
-//				HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -135,9 +135,9 @@ import (
 //				IpVersion:           pulumi.String("IPV4"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				AllPorts:            pulumi.Bool(true),
-//				BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
-//				Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
+//				BackendService:      backend.ID(),
+//				Network:             ilbNetwork.ID(),
+//				Subnetwork:          ilbSubnet.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -252,7 +252,7 @@ import (
 //				Project:     serviceProject.ProjectId,
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     ilbNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -277,7 +277,7 @@ import (
 //				Name:         pulumi.String("l7-ilb-backend-subnet"),
 //				Project:      serviceProject.ProjectId,
 //				Region:       pulumi.String("us-central1"),
-//				HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -290,9 +290,9 @@ import (
 //				IpVersion:           pulumi.String("IPV4"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				AllPorts:            pulumi.Bool(true),
-//				BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
-//				Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
+//				BackendService:      backend.ID(),
+//				Network:             ilbNetwork.ID(),
+//				Subnetwork:          ilbSubnet.ID(),
 //			})
 //			if err != nil {
 //				return err

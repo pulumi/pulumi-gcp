@@ -110,7 +110,7 @@ import (
 //			_, err = networkservices.NewEdgeCacheOrigin(ctx, "default", &networkservices.EdgeCacheOriginArgs{
 //				Name:           pulumi.String("my-origin"),
 //				OriginAddress:  pulumi.String("gs://media-edge-default"),
-//				FailoverOrigin: fallback.ID().ToIDOutput().ToStringOutput(),
+//				FailoverOrigin: fallback.ID(),
 //				Description:    pulumi.String("The default bucket for media edge test"),
 //				MaxAttempts:    pulumi.Int(2),
 //				Labels: pulumi.StringMap{
@@ -153,7 +153,7 @@ import (
 //				return err
 //			}
 //			secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -165,7 +165,7 @@ import (
 //				Description:   pulumi.String("The default bucket for V4 authentication"),
 //				AwsV4Authentication: &networkservices.EdgeCacheOriginAwsV4AuthenticationArgs{
 //					AccessKeyId:            pulumi.String("ACCESSKEYID"),
-//					SecretAccessKeyVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
+//					SecretAccessKeyVersion: secret_version_basic.ID(),
 //					OriginRegion:           pulumi.String("auto"),
 //				},
 //			})

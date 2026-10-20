@@ -196,12 +196,12 @@ import (
 //					UpstreamPolicies: artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArray{
 //						&artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{
 //							Id:         pulumi.String("my-repository-upstream-1"),
-//							Repository: my_repo_upstream_1.ID().ToIDOutput().ToStringOutput(),
+//							Repository: my_repo_upstream_1.ID(),
 //							Priority:   pulumi.Int(20),
 //						},
 //						&artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{
 //							Id:         pulumi.String("my-repository-upstream-2"),
-//							Repository: my_repo_upstream_2.ID().ToIDOutput().ToStringOutput(),
+//							Repository: my_repo_upstream_2.ID(),
 //							Priority:   pulumi.Int(10),
 //						},
 //					},
@@ -280,14 +280,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
@@ -513,14 +513,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
@@ -585,14 +585,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
@@ -659,14 +659,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
@@ -733,14 +733,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
@@ -807,14 +807,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})
@@ -883,7 +883,7 @@ import (
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 //					Description: pulumi.String("pull-through cache of another Artifact Registry repository"),
 //					CommonRepository: &artifactregistry.RepositoryRemoteRepositoryConfigCommonRepositoryArgs{
-//						Uri: upstreamRepo.ID().ToIDOutput().ToStringOutput(),
+//						Uri: upstreamRepo.ID(),
 //					},
 //				},
 //			})
@@ -976,14 +976,14 @@ import (
 //				return err
 //			}
 //			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     example_remote_secret.ID(),
 //				SecretData: pulumi.String("remote-password"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: example_remote_secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
 //			})

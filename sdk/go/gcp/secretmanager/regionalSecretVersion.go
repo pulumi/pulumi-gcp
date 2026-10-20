@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_basic", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional-secret-version-basic-write-only", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:              secret_basic_write_only.ID().ToIDOutput().ToStringOutput(),
+//				Secret:              secret_basic_write_only.ID(),
 //				SecretDataWoVersion: pulumi.String("1"),
 //				SecretDataWo:        pulumi.String("regional-secret-data-write-only"),
 //			})
@@ -130,7 +130,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional-secret-version-base64-write-only", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:              secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:              secret_basic.ID(),
 //				IsSecretDataBase64:  pulumi.Bool(true),
 //				SecretDataWoVersion: pulumi.String("1"),
 //				SecretDataWo:        pulumi.String(invokeFilebase64.Result),
@@ -172,7 +172,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_base64", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:             secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:             secret_basic.ID(),
 //				SecretData:         pulumi.String(invokeFilebase64.Result),
 //				IsSecretDataBase64: pulumi.Bool(true),
 //			})
@@ -206,7 +206,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_disabled", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //				Enabled:    pulumi.Bool(false),
 //			})
@@ -240,7 +240,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_deletion_policy", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:         secret_basic.ID(),
 //				SecretData:     pulumi.String("secret-data"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
 //			})
@@ -274,7 +274,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_deletion_policy", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
+//				Secret:         secret_basic.ID(),
 //				SecretData:     pulumi.String("secret-data"),
 //				DeletionPolicy: pulumi.String("DISABLE"),
 //			})

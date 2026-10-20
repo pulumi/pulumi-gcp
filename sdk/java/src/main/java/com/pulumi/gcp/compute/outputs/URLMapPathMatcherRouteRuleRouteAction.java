@@ -6,7 +6,9 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionCachePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionCorsPolicy;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
+import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteActionRetryPolicy;
@@ -37,6 +39,14 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
      */
     private @Nullable URLMapPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy;
     /**
+     * @return (Optional, Beta)
+     * Dynamic compression policy for this URL Map&#39;s route. Available only for
+     * Global EXTERNAL_MANAGED load balancer schemes.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy dynamicCompressionPolicy;
+    /**
      * @return The specification for fault injection introduced into traffic to test the
      * resiliency of clients to backend service failure. As part of fault injection,
      * when clients send requests to a backend service, delays can be introduced by
@@ -48,6 +58,13 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
      * 
      */
     private @Nullable URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
+    /**
+     * @return (Optional, Beta)
+     * Specifies the policy for optimizing images returned in the HTTP response.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy imageOptimizationPolicy;
     /**
      * @return Specifies the maximum duration (timeout) for streams on the selected route.
      * Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -125,6 +142,16 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
         return Optional.ofNullable(this.corsPolicy);
     }
     /**
+     * @return (Optional, Beta)
+     * Dynamic compression policy for this URL Map&#39;s route. Available only for
+     * Global EXTERNAL_MANAGED load balancer schemes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy> dynamicCompressionPolicy() {
+        return Optional.ofNullable(this.dynamicCompressionPolicy);
+    }
+    /**
      * @return The specification for fault injection introduced into traffic to test the
      * resiliency of clients to backend service failure. As part of fault injection,
      * when clients send requests to a backend service, delays can be introduced by
@@ -137,6 +164,15 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
      */
     public Optional<URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy> faultInjectionPolicy() {
         return Optional.ofNullable(this.faultInjectionPolicy);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Specifies the policy for optimizing images returned in the HTTP response.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy> imageOptimizationPolicy() {
+        return Optional.ofNullable(this.imageOptimizationPolicy);
     }
     /**
      * @return Specifies the maximum duration (timeout) for streams on the selected route.
@@ -216,7 +252,9 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
     public static final class Builder {
         private @Nullable URLMapPathMatcherRouteRuleRouteActionCachePolicy cachePolicy;
         private @Nullable URLMapPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy;
+        private @Nullable URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy dynamicCompressionPolicy;
         private @Nullable URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy faultInjectionPolicy;
+        private @Nullable URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy imageOptimizationPolicy;
         private @Nullable URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration maxStreamDuration;
         private @Nullable URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy requestMirrorPolicy;
         private @Nullable URLMapPathMatcherRouteRuleRouteActionRetryPolicy retryPolicy;
@@ -228,7 +266,9 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
     	      Objects.requireNonNull(defaults);
     	      this.cachePolicy = defaults.cachePolicy;
     	      this.corsPolicy = defaults.corsPolicy;
+    	      this.dynamicCompressionPolicy = defaults.dynamicCompressionPolicy;
     	      this.faultInjectionPolicy = defaults.faultInjectionPolicy;
+    	      this.imageOptimizationPolicy = defaults.imageOptimizationPolicy;
     	      this.maxStreamDuration = defaults.maxStreamDuration;
     	      this.requestMirrorPolicy = defaults.requestMirrorPolicy;
     	      this.retryPolicy = defaults.retryPolicy;
@@ -250,9 +290,21 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
             return this;
         }
         @CustomType.Setter
+        public Builder dynamicCompressionPolicy(@Nullable URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy dynamicCompressionPolicy) {
+
+            this.dynamicCompressionPolicy = dynamicCompressionPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy faultInjectionPolicy) {
 
             this.faultInjectionPolicy = faultInjectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageOptimizationPolicy(@Nullable URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy imageOptimizationPolicy) {
+
+            this.imageOptimizationPolicy = imageOptimizationPolicy;
             return this;
         }
         @CustomType.Setter
@@ -298,7 +350,9 @@ public final class URLMapPathMatcherRouteRuleRouteAction {
             final var _resultValue = new URLMapPathMatcherRouteRuleRouteAction();
             _resultValue.cachePolicy = cachePolicy;
             _resultValue.corsPolicy = corsPolicy;
+            _resultValue.dynamicCompressionPolicy = dynamicCompressionPolicy;
             _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.imageOptimizationPolicy = imageOptimizationPolicy;
             _resultValue.maxStreamDuration = maxStreamDuration;
             _resultValue.requestMirrorPolicy = requestMirrorPolicy;
             _resultValue.retryPolicy = retryPolicy;

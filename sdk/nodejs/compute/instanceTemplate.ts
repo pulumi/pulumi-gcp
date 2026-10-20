@@ -404,7 +404,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * Resulting name for a `namePrefix` <= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     declare public readonly namePrefix: pulumi.Output<string>;
     /**
@@ -708,7 +708,7 @@ export interface InstanceTemplateState {
      * Resulting name for a `namePrefix` <= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**
@@ -898,7 +898,7 @@ export interface InstanceTemplateArgs {
      * Resulting name for a `namePrefix` <= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**

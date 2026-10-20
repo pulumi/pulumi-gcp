@@ -109,7 +109,7 @@ import (
 //			}
 //			crypto_key, err := kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("test-attestor-key"),
-//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyring.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("RSA_SIGN_PKCS1_4096_SHA512"),
@@ -119,7 +119,7 @@ import (
 //				return err
 //			}
 //			version := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: crypto_key.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKey: crypto_key.ID(),
 //			}, nil)
 //			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
 //				Name: pulumi.String("test-attestor-note"),

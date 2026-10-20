@@ -307,6 +307,8 @@ export class RegionDisk extends pulumi.CustomResource {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
+     * ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+     * in place; other changes to this block recreate the disk.
      * Structure is documented below.
      */
     declare public readonly diskEncryptionKey: pulumi.Output<outputs.compute.RegionDiskDiskEncryptionKey | undefined>;
@@ -660,6 +662,8 @@ export interface RegionDiskState {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
+     * ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+     * in place; other changes to this block recreate the disk.
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey | undefined>;
@@ -908,6 +912,8 @@ export interface RegionDiskArgs {
      * If you do not provide an encryption key when creating the disk, then
      * the disk will be encrypted using an automatically generated key and
      * you do not need to provide a key to use the disk later.
+     * ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+     * in place; other changes to this block recreate the disk.
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskDiskEncryptionKey | undefined>;

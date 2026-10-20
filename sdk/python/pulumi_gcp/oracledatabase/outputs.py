@@ -3187,6 +3187,10 @@ class CloudVmClusterProperties(dict):
             suggest = "system_version"
         elif key == "timeZone":
             suggest = "time_zone"
+        elif key == "vmBackupStorageType":
+            suggest = "vm_backup_storage_type"
+        elif key == "vmFileSystemStorageType":
+            suggest = "vm_file_system_storage_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloudVmClusterProperties. Access the value via the '{suggest}' property getter instead.")
@@ -3232,7 +3236,9 @@ class CloudVmClusterProperties(dict):
                  storage_management_type: Optional[_builtins.str] = None,
                  storage_size_gb: Optional[_builtins.int] = None,
                  system_version: Optional[_builtins.str] = None,
-                 time_zone: Optional['outputs.CloudVmClusterPropertiesTimeZone'] = None):
+                 time_zone: Optional['outputs.CloudVmClusterPropertiesTimeZone'] = None,
+                 vm_backup_storage_type: Optional[_builtins.str] = None,
+                 vm_file_system_storage_type: Optional[_builtins.str] = None):
         """
         :param _builtins.int cpu_core_count: Number of enabled CPU cores.
         :param _builtins.str license_type: License type of VM Cluster.
@@ -3311,6 +3317,16 @@ class CloudVmClusterProperties(dict):
         :param 'CloudVmClusterPropertiesTimeZoneArgs' time_zone: Represents a time zone from the
                [IANA Time Zone Database](https://www.iana.org/time-zones).
                Structure is documented below.
+        :param _builtins.str vm_backup_storage_type: Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+               Possible values:
+               VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+               VM_BACKUP_STORAGE_TYPE_LOCAL
+               VM_BACKUP_STORAGE_TYPE_EXASCALE
+        :param _builtins.str vm_file_system_storage_type: Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+               Possible values:
+               VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+               VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+               VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
         """
         pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         pulumi.set(__self__, "license_type", license_type)
@@ -3376,6 +3392,10 @@ class CloudVmClusterProperties(dict):
             pulumi.set(__self__, "system_version", system_version)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
+        if vm_backup_storage_type is not None:
+            pulumi.set(__self__, "vm_backup_storage_type", vm_backup_storage_type)
+        if vm_file_system_storage_type is not None:
+            pulumi.set(__self__, "vm_file_system_storage_type", vm_file_system_storage_type)
 
     @_builtins.property
     @pulumi.getter(name="cpuCoreCount")
@@ -3684,6 +3704,30 @@ class CloudVmClusterProperties(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="vmBackupStorageType")
+    def vm_backup_storage_type(self) -> Optional[_builtins.str]:
+        """
+        Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        Possible values:
+        VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+        VM_BACKUP_STORAGE_TYPE_LOCAL
+        VM_BACKUP_STORAGE_TYPE_EXASCALE
+        """
+        return pulumi.get(self, "vm_backup_storage_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmFileSystemStorageType")
+    def vm_file_system_storage_type(self) -> Optional[_builtins.str]:
+        """
+        Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+        Possible values:
+        VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+        VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+        VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+        """
+        return pulumi.get(self, "vm_file_system_storage_type")
 
 
 @pulumi.output_type
@@ -18507,7 +18551,9 @@ class GetCloudVmClusterPropertyResult(dict):
                  storage_management_type: _builtins.str,
                  storage_size_gb: _builtins.int,
                  system_version: _builtins.str,
-                 time_zones: Sequence['outputs.GetCloudVmClusterPropertyTimeZoneResult']):
+                 time_zones: Sequence['outputs.GetCloudVmClusterPropertyTimeZoneResult'],
+                 vm_backup_storage_type: _builtins.str,
+                 vm_file_system_storage_type: _builtins.str):
         """
         :param _builtins.str cluster_name: OCI Cluster name.
         :param _builtins.str compartment_id: Compartment ID of cluster.
@@ -18568,6 +18614,16 @@ class GetCloudVmClusterPropertyResult(dict):
         :param _builtins.str system_version: Operating system version of the image.
         :param Sequence['GetCloudVmClusterPropertyTimeZoneArgs'] time_zones: Represents a time zone from the
                [IANA Time Zone Database](https://www.iana.org/time-zones).
+        :param _builtins.str vm_backup_storage_type: Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+               Possible values:
+               VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+               VM_BACKUP_STORAGE_TYPE_LOCAL
+               VM_BACKUP_STORAGE_TYPE_EXASCALE
+        :param _builtins.str vm_file_system_storage_type: Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+               Possible values:
+               VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+               VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+               VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "compartment_id", compartment_id)
@@ -18602,6 +18658,8 @@ class GetCloudVmClusterPropertyResult(dict):
         pulumi.set(__self__, "storage_size_gb", storage_size_gb)
         pulumi.set(__self__, "system_version", system_version)
         pulumi.set(__self__, "time_zones", time_zones)
+        pulumi.set(__self__, "vm_backup_storage_type", vm_backup_storage_type)
+        pulumi.set(__self__, "vm_file_system_storage_type", vm_file_system_storage_type)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
@@ -18892,6 +18950,30 @@ class GetCloudVmClusterPropertyResult(dict):
         [IANA Time Zone Database](https://www.iana.org/time-zones).
         """
         return pulumi.get(self, "time_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="vmBackupStorageType")
+    def vm_backup_storage_type(self) -> _builtins.str:
+        """
+        Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        Possible values:
+        VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+        VM_BACKUP_STORAGE_TYPE_LOCAL
+        VM_BACKUP_STORAGE_TYPE_EXASCALE
+        """
+        return pulumi.get(self, "vm_backup_storage_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmFileSystemStorageType")
+    def vm_file_system_storage_type(self) -> _builtins.str:
+        """
+        Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+        Possible values:
+        VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+        VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+        VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+        """
+        return pulumi.get(self, "vm_file_system_storage_type")
 
 
 @pulumi.output_type
@@ -19352,7 +19434,9 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
                  storage_management_type: _builtins.str,
                  storage_size_gb: _builtins.int,
                  system_version: _builtins.str,
-                 time_zones: Sequence['outputs.GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult']):
+                 time_zones: Sequence['outputs.GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult'],
+                 vm_backup_storage_type: _builtins.str,
+                 vm_file_system_storage_type: _builtins.str):
         """
         :param _builtins.str cluster_name: OCI Cluster name.
         :param _builtins.str compartment_id: Compartment ID of cluster.
@@ -19413,6 +19497,16 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         :param _builtins.str system_version: Operating system version of the image.
         :param Sequence['GetCloudVmClustersCloudVmClusterPropertyTimeZoneArgs'] time_zones: Represents a time zone from the
                [IANA Time Zone Database](https://www.iana.org/time-zones).
+        :param _builtins.str vm_backup_storage_type: Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+               Possible values:
+               VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+               VM_BACKUP_STORAGE_TYPE_LOCAL
+               VM_BACKUP_STORAGE_TYPE_EXASCALE
+        :param _builtins.str vm_file_system_storage_type: Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+               Possible values:
+               VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+               VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+               VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "compartment_id", compartment_id)
@@ -19447,6 +19541,8 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         pulumi.set(__self__, "storage_size_gb", storage_size_gb)
         pulumi.set(__self__, "system_version", system_version)
         pulumi.set(__self__, "time_zones", time_zones)
+        pulumi.set(__self__, "vm_backup_storage_type", vm_backup_storage_type)
+        pulumi.set(__self__, "vm_file_system_storage_type", vm_file_system_storage_type)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
@@ -19737,6 +19833,30 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         [IANA Time Zone Database](https://www.iana.org/time-zones).
         """
         return pulumi.get(self, "time_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="vmBackupStorageType")
+    def vm_backup_storage_type(self) -> _builtins.str:
+        """
+        Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        Possible values:
+        VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+        VM_BACKUP_STORAGE_TYPE_LOCAL
+        VM_BACKUP_STORAGE_TYPE_EXASCALE
+        """
+        return pulumi.get(self, "vm_backup_storage_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vmFileSystemStorageType")
+    def vm_file_system_storage_type(self) -> _builtins.str:
+        """
+        Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+        Possible values:
+        VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+        VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+        VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+        """
+        return pulumi.get(self, "vm_file_system_storage_type")
 
 
 @pulumi.output_type

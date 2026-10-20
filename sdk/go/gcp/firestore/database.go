@@ -151,14 +151,14 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("kms-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			firestoreCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number),
@@ -178,7 +178,7 @@ import (
 //				DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
 //				DeletionPolicy:                pulumi.String("DELETE"),
 //				CmekConfig: &firestore.DatabaseCmekConfigArgs{
-//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					KmsKeyName: cryptoKey.ID(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				firestoreCmekKeyuser,
@@ -281,14 +281,14 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("kms-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			firestoreCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "firestore_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-firestore.iam.gserviceaccount.com", project.Number),
@@ -308,7 +308,7 @@ import (
 //				DeleteProtectionState:         pulumi.String("DELETE_PROTECTION_ENABLED"),
 //				DeletionPolicy:                pulumi.String("DELETE"),
 //				CmekConfig: &firestore.DatabaseCmekConfigArgs{
-//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					KmsKeyName: cryptoKey.ID(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				firestoreCmekKeyuser,

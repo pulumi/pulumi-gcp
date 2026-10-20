@@ -64,7 +64,7 @@ import (
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("Test Description"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: subscriptionDataset.ID().ToIDOutput().ToStringOutput(),
+//					Dataset: subscriptionDataset.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -194,7 +194,7 @@ import (
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("example pubsub listing subscription"),
 //				PubsubTopic: &bigqueryanalyticshub.ListingPubsubTopicArgs{
-//					Topic: subscriptionTopic.ID().ToIDOutput().ToStringOutput(),
+//					Topic: subscriptionTopic.ID(),
 //				},
 //			})
 //			if err != nil {

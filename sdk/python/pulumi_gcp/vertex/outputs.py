@@ -119,6 +119,26 @@ __all__ = [
     'AiIndexMetadataConfigAlgorithmConfigTreeAhConfig',
     'AiMetadataStoreEncryptionSpec',
     'AiMetadataStoreState',
+    'AiOnlineEvaluatorCloudObservability',
+    'AiOnlineEvaluatorCloudObservabilityOpenTelemetry',
+    'AiOnlineEvaluatorCloudObservabilitySessionScope',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilter',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger',
+    'AiOnlineEvaluatorCloudObservabilityTraceScope',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilter',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage',
+    'AiOnlineEvaluatorConfig',
+    'AiOnlineEvaluatorConfigRandomSampling',
+    'AiOnlineEvaluatorMetricSource',
+    'AiOnlineEvaluatorStateDetail',
     'AiPersistentResourceEncryptionSpec',
     'AiPersistentResourceError',
     'AiPersistentResourcePscInterfaceConfig',
@@ -6703,6 +6723,1050 @@ class AiMetadataStoreState(dict):
         The disk utilization of the MetadataStore in bytes.
         """
         return pulumi.get(self, "disk_utilization_bytes")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservability(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openTelemetry":
+            suggest = "open_telemetry"
+        elif key == "logView":
+            suggest = "log_view"
+        elif key == "sessionScope":
+            suggest = "session_scope"
+        elif key == "traceScope":
+            suggest = "trace_scope"
+        elif key == "traceView":
+            suggest = "trace_view"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservability. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservability.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservability.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 open_telemetry: 'outputs.AiOnlineEvaluatorCloudObservabilityOpenTelemetry',
+                 log_view: Optional[_builtins.str] = None,
+                 session_scope: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScope'] = None,
+                 trace_scope: Optional['outputs.AiOnlineEvaluatorCloudObservabilityTraceScope'] = None,
+                 trace_view: Optional[_builtins.str] = None):
+        """
+        :param 'AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs' open_telemetry: Configuration for a data source following the OpenTelemetry
+               convention. This is the convention that the data source follows.
+               Structure is documented below.
+        :param _builtins.str log_view: Optional log view that will be used to query logs. If empty, the
+               project's default view (`projects/{{project_id}}`) will be used.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeArgs' session_scope: If chosen, the OnlineEvaluator will evaluate sessions matching the
+               specified filter. A session is a group of traces with a common
+               `gen_ai.conversation.id`. Exactly one of `trace_scope` or
+               `session_scope` must be set.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilityTraceScopeArgs' trace_scope: If chosen, the OnlineEvaluator will evaluate single traces matching
+               the specified filter. Exactly one of `trace_scope` or `session_scope`
+               must be set.
+               Structure is documented below.
+        :param _builtins.str trace_view: Optional trace view that will be used to query traces. If empty, the
+               `_AllSpans` view from the `_Trace` US bucket will be used.
+        """
+        pulumi.set(__self__, "open_telemetry", open_telemetry)
+        if log_view is not None:
+            pulumi.set(__self__, "log_view", log_view)
+        if session_scope is not None:
+            pulumi.set(__self__, "session_scope", session_scope)
+        if trace_scope is not None:
+            pulumi.set(__self__, "trace_scope", trace_scope)
+        if trace_view is not None:
+            pulumi.set(__self__, "trace_view", trace_view)
+
+    @_builtins.property
+    @pulumi.getter(name="openTelemetry")
+    def open_telemetry(self) -> 'outputs.AiOnlineEvaluatorCloudObservabilityOpenTelemetry':
+        """
+        Configuration for a data source following the OpenTelemetry
+        convention. This is the convention that the data source follows.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "open_telemetry")
+
+    @_builtins.property
+    @pulumi.getter(name="logView")
+    def log_view(self) -> Optional[_builtins.str]:
+        """
+        Optional log view that will be used to query logs. If empty, the
+        project's default view (`projects/{{project_id}}`) will be used.
+        """
+        return pulumi.get(self, "log_view")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionScope")
+    def session_scope(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScope']:
+        """
+        If chosen, the OnlineEvaluator will evaluate sessions matching the
+        specified filter. A session is a group of traces with a common
+        `gen_ai.conversation.id`. Exactly one of `trace_scope` or
+        `session_scope` must be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "session_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="traceScope")
+    def trace_scope(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilityTraceScope']:
+        """
+        If chosen, the OnlineEvaluator will evaluate single traces matching
+        the specified filter. Exactly one of `trace_scope` or `session_scope`
+        must be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trace_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="traceView")
+    def trace_view(self) -> Optional[_builtins.str]:
+        """
+        Optional trace view that will be used to query traces. If empty, the
+        `_AllSpans` view from the `_Trace` US bucket will be used.
+        """
+        return pulumi.get(self, "trace_view")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilityOpenTelemetry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "semconvVersion":
+            suggest = "semconv_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilityOpenTelemetry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilityOpenTelemetry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilityOpenTelemetry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 semconv_version: _builtins.str):
+        """
+        :param _builtins.str semconv_version: Defines which version of the OTel Semantic Convention the data
+               follows. Can be "1.39.0" or newer.
+        """
+        pulumi.set(__self__, "semconv_version", semconv_version)
+
+    @_builtins.property
+    @pulumi.getter(name="semconvVersion")
+    def semconv_version(self) -> _builtins.str:
+        """
+        Defines which version of the OTel Semantic Convention the data
+        follows. Can be "1.39.0" or newer.
+        """
+        return pulumi.get(self, "semconv_version")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inactivityTrigger":
+            suggest = "inactivity_trigger"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filters: Optional[Sequence['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilter']] = None,
+                 inactivity_trigger: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger'] = None):
+        """
+        :param Sequence['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs'] filters: A list of predicates to filter sessions. Multiple predicates are
+               combined using AND. The maximum number of predicates is 10.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs' inactivity_trigger: Session is considered ready for evaluation when there are no new
+               traces for a specified period of inactivity.
+               Structure is documented below.
+        """
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if inactivity_trigger is not None:
+            pulumi.set(__self__, "inactivity_trigger", inactivity_trigger)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilter']]:
+        """
+        A list of predicates to filter sessions. Multiple predicates are
+        combined using AND. The maximum number of predicates is 10.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @_builtins.property
+    @pulumi.getter(name="inactivityTrigger")
+    def inactivity_trigger(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger']:
+        """
+        Session is considered ready for evaluation when there are no new
+        traces for a specified period of inactivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inactivity_trigger")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelCallErrors":
+            suggest = "model_call_errors"
+        elif key == "modelCalls":
+            suggest = "model_calls"
+        elif key == "toolCallErrors":
+            suggest = "tool_call_errors"
+        elif key == "toolCalls":
+            suggest = "tool_calls"
+        elif key == "totalTokenUsage":
+            suggest = "total_token_usage"
+        elif key == "userTurns":
+            suggest = "user_turns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration'] = None,
+                 model_call_errors: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors'] = None,
+                 model_calls: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls'] = None,
+                 tool_call_errors: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors'] = None,
+                 tool_calls: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls'] = None,
+                 total_token_usage: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage'] = None,
+                 user_turns: Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns'] = None):
+        """
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs' duration: Filter on the duration of a session (in seconds).
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs' model_call_errors: Filter on the number of LLM call errors within a session.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs' model_calls: Filter on the number of underlying LLM calls within a session.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs' tool_call_errors: Filter on the number of tool call errors within a session.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs' tool_calls: Filter on the number of underlying tool calls within a session.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs' total_token_usage: Filter on the total token usage within a session.
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs' user_turns: Filter on the number of user turns within a session.
+               Structure is documented below.
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if model_call_errors is not None:
+            pulumi.set(__self__, "model_call_errors", model_call_errors)
+        if model_calls is not None:
+            pulumi.set(__self__, "model_calls", model_calls)
+        if tool_call_errors is not None:
+            pulumi.set(__self__, "tool_call_errors", tool_call_errors)
+        if tool_calls is not None:
+            pulumi.set(__self__, "tool_calls", tool_calls)
+        if total_token_usage is not None:
+            pulumi.set(__self__, "total_token_usage", total_token_usage)
+        if user_turns is not None:
+            pulumi.set(__self__, "user_turns", user_turns)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration']:
+        """
+        Filter on the duration of a session (in seconds).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCallErrors")
+    def model_call_errors(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors']:
+        """
+        Filter on the number of LLM call errors within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_call_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCalls")
+    def model_calls(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls']:
+        """
+        Filter on the number of underlying LLM calls within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_calls")
+
+    @_builtins.property
+    @pulumi.getter(name="toolCallErrors")
+    def tool_call_errors(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors']:
+        """
+        Filter on the number of tool call errors within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call_errors")
+
+    @_builtins.property
+    @pulumi.getter(name="toolCalls")
+    def tool_calls(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls']:
+        """
+        Filter on the number of underlying tool calls within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_calls")
+
+    @_builtins.property
+    @pulumi.getter(name="totalTokenUsage")
+    def total_token_usage(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage']:
+        """
+        Filter on the total token usage within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "total_token_usage")
+
+    @_builtins.property
+    @pulumi.getter(name="userTurns")
+    def user_turns(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns']:
+        """
+        Filter on the number of user turns within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_turns")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger(dict):
+    def __init__(__self__, *,
+                 threshold: _builtins.str):
+        """
+        :param _builtins.str threshold: The amount of time that must pass with no new traces before a
+               session is considered ready for evaluation. Must be a positive
+               duration no greater than 7 days (604800 seconds), e.g. "3600s".
+        """
+        pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> _builtins.str:
+        """
+        The amount of time that must pass with no new traces before a
+        session is considered ready for evaluation. Must be a positive
+        duration no greater than 7 days (604800 seconds), e.g. "3600s".
+        """
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilityTraceScope(dict):
+    def __init__(__self__, *,
+                 filters: Optional[Sequence['outputs.AiOnlineEvaluatorCloudObservabilityTraceScopeFilter']] = None):
+        """
+        :param Sequence['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs'] filters: A list of predicates to filter traces. Multiple predicates are
+               combined using AND. The maximum number of predicates is 10.
+               Structure is documented below.
+        """
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.AiOnlineEvaluatorCloudObservabilityTraceScopeFilter']]:
+        """
+        A list of predicates to filter traces. Multiple predicates are
+        combined using AND. The maximum number of predicates is 10.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalTokenUsage":
+            suggest = "total_token_usage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilityTraceScopeFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilityTraceScopeFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilityTraceScopeFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: Optional['outputs.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration'] = None,
+                 total_token_usage: Optional['outputs.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage'] = None):
+        """
+        :param 'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs' duration: Filter on the duration of a session (in seconds).
+               Structure is documented below.
+        :param 'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs' total_token_usage: Filter on the total token usage within a session.
+               Structure is documented below.
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if total_token_usage is not None:
+            pulumi.set(__self__, "total_token_usage", total_token_usage)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration']:
+        """
+        Filter on the duration of a session (in seconds).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="totalTokenUsage")
+    def total_token_usage(self) -> Optional['outputs.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage']:
+        """
+        Filter on the total token usage within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "total_token_usage")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: _builtins.str,
+                 value: _builtins.float):
+        """
+        :param _builtins.str comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param _builtins.float value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> _builtins.str:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.float:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxEvaluatedSamplesPerRun":
+            suggest = "max_evaluated_samples_per_run"
+        elif key == "randomSampling":
+            suggest = "random_sampling"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_evaluated_samples_per_run: Optional[_builtins.str] = None,
+                 random_sampling: Optional['outputs.AiOnlineEvaluatorConfigRandomSampling'] = None):
+        """
+        :param _builtins.str max_evaluated_samples_per_run: The maximum number of evaluations to perform per run. If set to 0, the
+               number is unbounded.
+        :param 'AiOnlineEvaluatorConfigRandomSamplingArgs' random_sampling: Configuration for random sampling. This is the sampling method used to
+               select traces for evaluation.
+               Structure is documented below.
+        """
+        if max_evaluated_samples_per_run is not None:
+            pulumi.set(__self__, "max_evaluated_samples_per_run", max_evaluated_samples_per_run)
+        if random_sampling is not None:
+            pulumi.set(__self__, "random_sampling", random_sampling)
+
+    @_builtins.property
+    @pulumi.getter(name="maxEvaluatedSamplesPerRun")
+    def max_evaluated_samples_per_run(self) -> Optional[_builtins.str]:
+        """
+        The maximum number of evaluations to perform per run. If set to 0, the
+        number is unbounded.
+        """
+        return pulumi.get(self, "max_evaluated_samples_per_run")
+
+    @_builtins.property
+    @pulumi.getter(name="randomSampling")
+    def random_sampling(self) -> Optional['outputs.AiOnlineEvaluatorConfigRandomSampling']:
+        """
+        Configuration for random sampling. This is the sampling method used to
+        select traces for evaluation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "random_sampling")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorConfigRandomSampling(dict):
+    def __init__(__self__, *,
+                 percentage: _builtins.int):
+        """
+        :param _builtins.int percentage: The percentage of traces to sample for evaluation. Must be an
+               integer between 1 and 100.
+        """
+        pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.int:
+        """
+        The percentage of traces to sample for evaluation. Must be an
+        integer between 1 and 100.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorMetricSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricResourceName":
+            suggest = "metric_resource_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiOnlineEvaluatorMetricSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiOnlineEvaluatorMetricSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiOnlineEvaluatorMetricSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metric: Optional[_builtins.str] = None,
+                 metric_resource_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str metric: Inline metric config, provided as a JSON-formatted string using
+               camelCase field names to match the API format (see the
+               [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+               The suggested predefined `metricSpecName` values depend on the
+               evaluation scope configured in `cloud_observability`; a predefined
+               metric must match the scope or the create request will be rejected:
+        :param _builtins.str metric_resource_name: Resource name of a registered metric (a
+               `vertex.AiEvaluationMetric`), e.g.
+               projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+        """
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if metric_resource_name is not None:
+            pulumi.set(__self__, "metric_resource_name", metric_resource_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> Optional[_builtins.str]:
+        """
+        Inline metric config, provided as a JSON-formatted string using
+        camelCase field names to match the API format (see the
+        [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+        The suggested predefined `metricSpecName` values depend on the
+        evaluation scope configured in `cloud_observability`; a predefined
+        metric must match the scope or the create request will be rejected:
+        """
+        return pulumi.get(self, "metric")
+
+    @_builtins.property
+    @pulumi.getter(name="metricResourceName")
+    def metric_resource_name(self) -> Optional[_builtins.str]:
+        """
+        Resource name of a registered metric (a
+        `vertex.AiEvaluationMetric`), e.g.
+        projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+        """
+        return pulumi.get(self, "metric_resource_name")
+
+
+@pulumi.output_type
+class AiOnlineEvaluatorStateDetail(dict):
+    def __init__(__self__, *,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str message: (Output)
+               Human-readable message describing the state of the OnlineEvaluator.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Human-readable message describing the state of the OnlineEvaluator.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

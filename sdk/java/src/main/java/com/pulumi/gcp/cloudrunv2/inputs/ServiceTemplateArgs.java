@@ -332,7 +332,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Workload identity settings for this Revision.
+     * The Revision&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
      * Structure is documented below.
      * 
      */
@@ -340,7 +341,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<ServiceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig;
 
     /**
-     * @return Workload identity settings for this Revision.
+     * @return The Revision&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
      * Structure is documented below.
      * 
      */
@@ -825,7 +827,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workloadIdentityConfig Workload identity settings for this Revision.
+         * @param workloadIdentityConfig The Revision&#39;s workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
          * Structure is documented below.
          * 
          * @return builder
@@ -837,7 +840,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workloadIdentityConfig Workload identity settings for this Revision.
+         * @param workloadIdentityConfig The Revision&#39;s workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
          * Structure is documented below.
          * 
          * @return builder

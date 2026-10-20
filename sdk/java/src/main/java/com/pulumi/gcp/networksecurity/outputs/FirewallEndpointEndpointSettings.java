@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,12 +13,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallEndpointEndpointSettings {
     /**
+     * @return (Optional, Beta)
+     * The Palo Alto Networks content cloud region of the firewall endpoint,
+     * for example `US_CENTRAL` or `CANADA`. See
+     * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+     * for the list of supported regions.
+     * 
+     */
+    private @Nullable String contentCloudRegion;
+    /**
+     * @return (Optional, Beta)
+     * Whether to block HTTP partial responses for the firewall endpoint.
+     * When `true`, resumption of blocked malicious HTTP file downloads is
+     * blocked by the firewall. `false` provides maximum availability, `true`
+     * provides maximum security.
+     * 
+     */
+    private @Nullable Boolean httpPartialResponseBlocked;
+    /**
      * @return Indicates whether Jumbo Frames are enabled for the firewall endpoint.
      * 
      */
     private @Nullable Boolean jumboFramesEnabled;
 
     private FirewallEndpointEndpointSettings() {}
+    /**
+     * @return (Optional, Beta)
+     * The Palo Alto Networks content cloud region of the firewall endpoint,
+     * for example `US_CENTRAL` or `CANADA`. See
+     * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+     * for the list of supported regions.
+     * 
+     */
+    public Optional<String> contentCloudRegion() {
+        return Optional.ofNullable(this.contentCloudRegion);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Whether to block HTTP partial responses for the firewall endpoint.
+     * When `true`, resumption of blocked malicious HTTP file downloads is
+     * blocked by the firewall. `false` provides maximum availability, `true`
+     * provides maximum security.
+     * 
+     */
+    public Optional<Boolean> httpPartialResponseBlocked() {
+        return Optional.ofNullable(this.httpPartialResponseBlocked);
+    }
     /**
      * @return Indicates whether Jumbo Frames are enabled for the firewall endpoint.
      * 
@@ -35,13 +76,29 @@ public final class FirewallEndpointEndpointSettings {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String contentCloudRegion;
+        private @Nullable Boolean httpPartialResponseBlocked;
         private @Nullable Boolean jumboFramesEnabled;
         public Builder() {}
         public Builder(FirewallEndpointEndpointSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.contentCloudRegion = defaults.contentCloudRegion;
+    	      this.httpPartialResponseBlocked = defaults.httpPartialResponseBlocked;
     	      this.jumboFramesEnabled = defaults.jumboFramesEnabled;
         }
 
+        @CustomType.Setter
+        public Builder contentCloudRegion(@Nullable String contentCloudRegion) {
+
+            this.contentCloudRegion = contentCloudRegion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpPartialResponseBlocked(@Nullable Boolean httpPartialResponseBlocked) {
+
+            this.httpPartialResponseBlocked = httpPartialResponseBlocked;
+            return this;
+        }
         @CustomType.Setter
         public Builder jumboFramesEnabled(@Nullable Boolean jumboFramesEnabled) {
 
@@ -50,6 +107,8 @@ public final class FirewallEndpointEndpointSettings {
         }
         public FirewallEndpointEndpointSettings build() {
             final var _resultValue = new FirewallEndpointEndpointSettings();
+            _resultValue.contentCloudRegion = contentCloudRegion;
+            _resultValue.httpPartialResponseBlocked = httpPartialResponseBlocked;
             _resultValue.jumboFramesEnabled = jumboFramesEnabled;
             return _resultValue;
         }

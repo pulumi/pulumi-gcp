@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class AuthzPolicyHttpRuleTo
     {
         /// <summary>
-        /// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+        /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AuthzPolicyHttpRuleToNotOperation> NotOperations;

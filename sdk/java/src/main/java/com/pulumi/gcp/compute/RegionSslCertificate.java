@@ -189,7 +189,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * Resulting name for a `namePrefix` &lt;= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      * 
      */
     @Export(name="namePrefix", refs={String.class}, tree="[0]")
@@ -203,7 +203,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * Resulting name for a `namePrefix` &lt;= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      * 
      */
     public Output<String> namePrefix() {

@@ -32,16 +32,26 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDisk
     }
 
     /**
-     * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * (Optional, Deprecated)
+     * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * 
+     * @deprecated
+     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
+    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * @return (Optional, Deprecated)
+     * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * 
+     * @deprecated
+     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
      * 
      */
+    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
     }
@@ -76,6 +86,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDisk
         return Optional.ofNullable(this.provisionedThroughput);
     }
 
+    /**
+     * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs() {}
 
     private WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs(WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs $) {
@@ -83,6 +108,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDisk
         this.diskType = $.diskType;
         this.provisionedIops = $.provisionedIops;
         this.provisionedThroughput = $.provisionedThroughput;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -125,22 +151,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDisk
         }
 
         /**
-         * @param diskType The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * @param diskType (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * 
          */
+        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
         public Builder diskType(@Nullable Output<String> diskType) {
             $.diskType = diskType;
             return this;
         }
 
         /**
-         * @param diskType The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * @param diskType (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * 
          */
+        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
         }
@@ -185,6 +221,27 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDisk
          */
         public Builder provisionedThroughput(Integer provisionedThroughput) {
             return provisionedThroughput(Output.of(provisionedThroughput));
+        }
+
+        /**
+         * @param type Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs build() {

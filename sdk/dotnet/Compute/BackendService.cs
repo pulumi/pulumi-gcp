@@ -801,6 +801,60 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Protocol = "HTTP2",
+    ///         DynamicForwarding = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingArgs
+    ///         {
+    ///             ForwardProxy = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingForwardProxyArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 ProxyMode = "CLOUD_RUN",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Protocol = "HTTP2",
+    ///         DynamicForwarding = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingArgs
+    ///         {
+    ///             ForwardProxy = new Gcp.Compute.Inputs.BackendServiceDynamicForwardingForwardProxyArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 ProxyMode = "DIRECT_FORWARDING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

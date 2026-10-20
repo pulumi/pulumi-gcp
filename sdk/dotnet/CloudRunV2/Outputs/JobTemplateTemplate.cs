@@ -59,6 +59,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobTemplateTemplateVpcAccess? VpcAccess;
+        /// <summary>
+        /// (Optional, Beta)
+        /// The Task's workload identity settings. Used to assign an
+        /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobTemplateTemplateWorkloadIdentityConfig? WorkloadIdentityConfig;
 
         [OutputConstructor]
         private JobTemplateTemplate(
@@ -80,7 +87,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.JobTemplateTemplateVolume> volumes,
 
-            Outputs.JobTemplateTemplateVpcAccess? vpcAccess)
+            Outputs.JobTemplateTemplateVpcAccess? vpcAccess,
+
+            Outputs.JobTemplateTemplateWorkloadIdentityConfig? workloadIdentityConfig)
         {
             Containers = containers;
             EncryptionKey = encryptionKey;
@@ -92,6 +101,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Timeout = timeout;
             Volumes = volumes;
             VpcAccess = vpcAccess;
+            WorkloadIdentityConfig = workloadIdentityConfig;
         }
     }
 }

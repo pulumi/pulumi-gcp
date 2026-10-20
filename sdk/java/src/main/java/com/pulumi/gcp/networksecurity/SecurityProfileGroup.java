@@ -272,6 +272,68 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Security Profile Group Wildfire
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var threatPreventionProfile = new SecurityProfile("threatPreventionProfile", SecurityProfileArgs.builder()
+ *             .name("tp-sec-profile")
+ *             .type("THREAT_PREVENTION")
+ *             .parent("projects/my-project-name")
+ *             .location("global")
+ *             .build());
+ * 
+ *         var wildfireProfile = new SecurityProfile("wildfireProfile", SecurityProfileArgs.builder()
+ *             .name("wf-sec-profile")
+ *             .type("WILDFIRE_ANALYSIS")
+ *             .parent("projects/my-project-name")
+ *             .location("global")
+ *             .wildfireAnalysisProfile(SecurityProfileWildfireAnalysisProfileArgs.builder()
+ *                 .wildfireRealtimeLookup(true)
+ *                 .wildfireSubmissionRules(SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs.builder()
+ *                     .direction("BOTH")
+ *                     .fileSelectionMode("ALL_FILE_TYPES")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new SecurityProfileGroup("default", SecurityProfileGroupArgs.builder()
+ *             .name("sec-profile-group")
+ *             .parent("projects/my-project-name")
+ *             .description("my description")
+ *             .threatPreventionProfile(threatPreventionProfile.id())
+ *             .wildfireAnalysisProfile(wildfireProfile.id())
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -523,6 +585,22 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> urlFilteringProfile() {
         return Codegen.optional(this.urlFilteringProfile);
+    }
+    /**
+     * (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Export(name="wildfireAnalysisProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> wildfireAnalysisProfile;
+
+    /**
+     * @return (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Output<Optional<String>> wildfireAnalysisProfile() {
+        return Codegen.optional(this.wildfireAnalysisProfile);
     }
 
     /**

@@ -339,6 +339,9 @@ namespace Pulumi.Gcp
         [Output("geminiCustomEndpoint")]
         public Output<string?> GeminiCustomEndpoint { get; private set; } = null!;
 
+        [Output("geminiDataAnalyticsCustomEndpoint")]
+        public Output<string?> GeminiDataAnalyticsCustomEndpoint { get; private set; } = null!;
+
         [Output("gkeBackupCustomEndpoint")]
         public Output<string?> GkeBackupCustomEndpoint { get; private set; } = null!;
 
@@ -1035,6 +1038,9 @@ namespace Pulumi.Gcp
 
         [Input("geminiCustomEndpoint")]
         public Input<string>? GeminiCustomEndpoint { get; set; }
+
+        [Input("geminiDataAnalyticsCustomEndpoint")]
+        public Input<string>? GeminiDataAnalyticsCustomEndpoint { get; set; }
 
         [Input("gkeBackupCustomEndpoint")]
         public Input<string>? GkeBackupCustomEndpoint { get; set; }

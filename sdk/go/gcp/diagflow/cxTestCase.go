@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			intent, err := diagflow.NewCxIntent(ctx, "intent", &diagflow.CxIntentArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyIntent"),
 //				Priority:    pulumi.Int(1),
 //				TrainingPhrases: diagflow.CxIntentTrainingPhraseArray{
@@ -82,7 +82,7 @@ import (
 //				DisplayName: pulumi.String("MyPage"),
 //				TransitionRoutes: diagflow.CxPageTransitionRouteArray{
 //					&diagflow.CxPageTransitionRouteArgs{
-//						Intent: intent.ID().ToIDOutput().ToStringOutput(),
+//						Intent: intent.ID(),
 //						TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
 //							Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
 //								&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{
@@ -131,7 +131,7 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = diagflow.NewCxTestCase(ctx, "basic_test_case", &diagflow.CxTestCaseArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyTestCase"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("#tag1"),
@@ -141,7 +141,7 @@ import (
 //					TrackingParameters: pulumi.StringArray{
 //						pulumi.String("some_param"),
 //					},
-//					Page: page.ID().ToIDOutput().ToStringOutput(),
+//					Page: page.ID(),
 //				},
 //				TestCaseConversationTurns: diagflow.CxTestCaseTestCaseConversationTurnArray{
 //					&diagflow.CxTestCaseTestCaseConversationTurnArgs{
@@ -159,10 +159,10 @@ import (
 //						VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
 //							SessionParameters: pulumi.String(json1),
 //							TriggeredIntent: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{
-//								Name: intent.ID().ToIDOutput().ToStringOutput(),
+//								Name: intent.ID(),
 //							},
 //							CurrentPage: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{
-//								Name: page.ID().ToIDOutput().ToStringOutput(),
+//								Name: page.ID(),
 //							},
 //							TextResponses: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{
 //								&diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{
@@ -183,7 +183,7 @@ import (
 //						},
 //						VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
 //							CurrentPage: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{
-//								Name: page.ID().ToIDOutput().ToStringOutput(),
+//								Name: page.ID(),
 //							},
 //							TextResponses: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{
 //								&diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{

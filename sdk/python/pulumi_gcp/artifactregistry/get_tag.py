@@ -129,6 +129,16 @@ def get_tag(location: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_tags = gcp.artifactregistry.get_tags(location="us-central1",
+        repository_id="example-repo",
+        package_name="example-package",
+        tag_name="latest")
+    ```
+
 
     :param _builtins.str location: The location of the artifact registry.
     :param _builtins.str package_name: The name of the package.
@@ -164,6 +174,16 @@ def get_tag_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     This data source fetches information of a tag from a provided Artifact Registry repository.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_tags = gcp.artifactregistry.get_tags(location="us-central1",
+        repository_id="example-repo",
+        package_name="example-package",
+        tag_name="latest")
+    ```
 
 
     :param _builtins.str location: The location of the artifact registry.

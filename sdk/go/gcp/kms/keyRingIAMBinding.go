@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewKeyRingIAMPolicy(ctx, "key_ring", &kms.KeyRingIAMPolicyArgs{
-//				KeyRingId:  keyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRingId:  keyring.ID(),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -111,7 +111,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewKeyRingIAMPolicy(ctx, "key_ring", &kms.KeyRingIAMPolicyArgs{
-//				KeyRingId:  keyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRingId:  keyring.ID(),
 //				PolicyData: pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {

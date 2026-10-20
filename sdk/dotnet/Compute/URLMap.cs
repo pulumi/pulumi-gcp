@@ -1404,6 +1404,176 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Url Map Dynamic Compression Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "home",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         DefaultService = @default.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.URLMapDefaultRouteActionArgs
+    ///         {
+    ///             DynamicCompressionPolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionDynamicCompressionPolicyArgs
+    ///             {
+    ///                 CompressionMode = "AUTOMATIC",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Url Map Dynamic Compression Policy Multi Level
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "home",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         HealthChecks = defaultHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         DefaultService = @default.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.URLMapDefaultRouteActionArgs
+    ///         {
+    ///             DynamicCompressionPolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionDynamicCompressionPolicyArgs
+    ///             {
+    ///                 CompressionMode = "AUTOMATIC",
+    ///             },
+    ///         },
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "example.com",
+    ///                 },
+    ///                 PathMatcher = "main-matcher",
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "api.example.com",
+    ///                 },
+    ///                 PathMatcher = "api-matcher",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "main-matcher",
+    ///                 DefaultService = @default.Id,
+    ///                 DefaultRouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionArgs
+    ///                 {
+    ///                     DynamicCompressionPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs
+    ///                     {
+    ///                         CompressionMode = "DISABLED",
+    ///                     },
+    ///                 },
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/static/*",
+    ///                         },
+    ///                         Service = @default.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionArgs
+    ///                         {
+    ///                             DynamicCompressionPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs
+    ///                             {
+    ///                                 CompressionMode = "AUTOMATIC",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "api-matcher",
+    ///                 DefaultService = @default.Id,
+    ///                 DefaultRouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionArgs
+    ///                 {
+    ///                     DynamicCompressionPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs
+    ///                     {
+    ///                         CompressionMode = "AUTOMATIC",
+    ///                     },
+    ///                 },
+    ///                 RouteRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         Priority = 1,
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PrefixMatch = "/api/v1",
+    ///                             },
+    ///                         },
+    ///                         Service = @default.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionArgs
+    ///                         {
+    ///                             DynamicCompressionPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs
+    ///                             {
+    ///                                 CompressionMode = "DISABLED",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Url Map Path Rule Mirror Percent
     /// 
     /// ```csharp
@@ -2360,6 +2530,131 @@ namespace Pulumi.Gcp.Compute
     ///                 Service = @default.Id,
     ///                 Host = "mysite.com",
     ///                 Path = "/",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Url Map Image Optimization Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.HealthCheck("default", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new Gcp.Compute.BackendService("example", new()
+    ///     {
+    ///         Name = "example",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         EnableCdn = true,
+    ///         HealthChecks = @default.Id,
+    ///     });
+    /// 
+    ///     var urlmap = new Gcp.Compute.URLMap("urlmap", new()
+    ///     {
+    ///         Name = "urlmap",
+    ///         Description = "a description",
+    ///         DefaultService = example.Id,
+    ///         DefaultRouteAction = new Gcp.Compute.Inputs.URLMapDefaultRouteActionArgs
+    ///         {
+    ///             ImageOptimizationPolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionImageOptimizationPolicyArgs
+    ///             {
+    ///                 QueryParameterInterpretation = "ENABLED",
+    ///             },
+    ///         },
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "mysite-path",
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "api.mysite.com",
+    ///                 },
+    ///                 PathMatcher = "mysite-route",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "mysite-path",
+    ///                 DefaultService = example.Id,
+    ///                 DefaultRouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionArgs
+    ///                 {
+    ///                     ImageOptimizationPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs
+    ///                     {
+    ///                         QueryParameterInterpretation = "DISABLED",
+    ///                     },
+    ///                 },
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/private/*",
+    ///                         },
+    ///                         Service = example.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionArgs
+    ///                         {
+    ///                             ImageOptimizationPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs
+    ///                             {
+    ///                                 QueryParameterInterpretation = "ENABLED",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///             {
+    ///                 Name = "mysite-route",
+    ///                 DefaultService = example.Id,
+    ///                 RouteRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleArgs
+    ///                     {
+    ///                         Priority = 1,
+    ///                         MatchRules = new[]
+    ///                         {
+    ///                             new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleMatchRuleArgs
+    ///                             {
+    ///                                 PrefixMatch = "/images",
+    ///                             },
+    ///                         },
+    ///                         Service = example.Id,
+    ///                         RouteAction = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionArgs
+    ///                         {
+    ///                             ImageOptimizationPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs
+    ///                             {
+    ///                                 QueryParameterInterpretation = "DISABLED",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
     ///             },
     ///         },
     ///     });

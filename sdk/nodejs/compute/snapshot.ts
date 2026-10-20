@@ -285,6 +285,8 @@ export class Snapshot extends pulumi.CustomResource {
      * If you do not provide an encryption key when creating the snapshot,
      * then the snapshot will be encrypted using an automatically generated
      * key and you do not need to provide a key to use the snapshot later.
+     * ~>**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
+     * done in place; other changes to this block recreate the snapshot.
      * Structure is documented below.
      */
     declare public readonly snapshotEncryptionKey: pulumi.Output<outputs.compute.SnapshotSnapshotEncryptionKey | undefined>;
@@ -499,6 +501,8 @@ export interface SnapshotState {
      * If you do not provide an encryption key when creating the snapshot,
      * then the snapshot will be encrypted using an automatically generated
      * key and you do not need to provide a key to use the snapshot later.
+     * ~>**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
+     * done in place; other changes to this block recreate the snapshot.
      * Structure is documented below.
      */
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey | undefined>;
@@ -610,6 +614,8 @@ export interface SnapshotArgs {
      * If you do not provide an encryption key when creating the snapshot,
      * then the snapshot will be encrypted using an automatically generated
      * key and you do not need to provide a key to use the snapshot later.
+     * ~>**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
+     * done in place; other changes to this block recreate the snapshot.
      * Structure is documented below.
      */
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey | undefined>;

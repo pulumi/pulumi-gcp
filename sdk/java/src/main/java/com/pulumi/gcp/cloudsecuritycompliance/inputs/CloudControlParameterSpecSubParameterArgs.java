@@ -100,16 +100,14 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
     }
 
     /**
-     * The parameter spec of the cloud control.
-     * Structure is documented below.
+     * The parameter spec of the cloud control, in JSON format.
      * 
      */
     @Import(name="subParameters")
     private @Nullable Output<List<CloudControlParameterSpecSubParameterSubParameterArgs>> subParameters;
 
     /**
-     * @return The parameter spec of the cloud control.
-     * Structure is documented below.
+     * @return The parameter spec of the cloud control, in JSON format.
      * 
      */
     public Optional<Output<List<CloudControlParameterSpecSubParameterSubParameterArgs>>> subParameters() {
@@ -317,8 +315,7 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
         }
 
         /**
-         * @param subParameters The parameter spec of the cloud control.
-         * Structure is documented below.
+         * @param subParameters The parameter spec of the cloud control, in JSON format.
          * 
          * @return builder
          * 
@@ -329,8 +326,7 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
         }
 
         /**
-         * @param subParameters The parameter spec of the cloud control.
-         * Structure is documented below.
+         * @param subParameters The parameter spec of the cloud control, in JSON format.
          * 
          * @return builder
          * 
@@ -340,8 +336,7 @@ public final class CloudControlParameterSpecSubParameterArgs extends com.pulumi.
         }
 
         /**
-         * @param subParameters The parameter spec of the cloud control.
-         * Structure is documented below.
+         * @param subParameters The parameter spec of the cloud control, in JSON format.
          * 
          * @return builder
          * 

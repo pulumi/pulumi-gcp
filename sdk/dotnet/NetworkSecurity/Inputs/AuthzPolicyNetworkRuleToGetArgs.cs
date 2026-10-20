@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
 
     public sealed class AuthzPolicyNetworkRuleToGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("notOperations")]
+        private InputList<Inputs.AuthzPolicyNetworkRuleToNotOperationGetArgs>? _notOperations;
+
+        /// <summary>
+        /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AuthzPolicyNetworkRuleToNotOperationGetArgs> NotOperations
+        {
+            get => _notOperations ?? (_notOperations = new InputList<Inputs.AuthzPolicyNetworkRuleToNotOperationGetArgs>());
+            set => _notOperations = value;
+        }
+
         [Input("operations")]
         private InputList<Inputs.AuthzPolicyNetworkRuleToOperationGetArgs>? _operations;
 

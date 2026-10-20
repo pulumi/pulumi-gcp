@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
         /// <summary>
+        /// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+        /// </summary>
+        [Input("bestEffortProvisioning")]
+        public Input<Inputs.ClusterNodePoolBestEffortProvisioningGetArgs>? BestEffortProvisioning { get; set; }
+
+        /// <summary>
         /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `True` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { IgnoreChanges = [NodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         /// </summary>
         [Input("ignoreNodeCountChanges")]

@@ -55,13 +55,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(24),
-//				Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      vertexNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: vertexNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					vertexRange.Name,
@@ -178,7 +178,7 @@ import (
 //					PscAutomationConfigs: vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray{
 //						&vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{
 //							ProjectId: pulumi.String(project.ProjectId),
-//							Network:   _default.ID().ToIDOutput().ToStringOutput(),
+//							Network:   _default.ID(),
 //						},
 //					},
 //				},

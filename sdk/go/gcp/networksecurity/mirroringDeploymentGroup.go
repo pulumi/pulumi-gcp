@@ -49,7 +49,7 @@ import (
 //			_, err = networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("example-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    network.ID().ToIDOutput().ToStringOutput(),
+//				Network:                    network.ID(),
 //				Description:                pulumi.String("some description"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

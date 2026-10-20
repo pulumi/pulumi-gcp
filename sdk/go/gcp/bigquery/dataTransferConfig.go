@@ -136,7 +136,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -153,7 +153,7 @@ import (
 //					"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
 //				},
 //				EncryptionConfiguration: &bigquery.DataTransferConfigEncryptionConfigurationArgs{
-//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					KmsKeyName: cryptoKey.ID(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				permissions,

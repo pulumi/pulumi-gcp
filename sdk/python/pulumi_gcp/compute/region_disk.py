@@ -80,6 +80,8 @@ class RegionDiskArgs:
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+               in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
                Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -321,6 +323,8 @@ class RegionDiskArgs:
         If you do not provide an encryption key when creating the disk, then
         the disk will be encrypted using an automatically generated key and
         you do not need to provide a key to use the disk later.
+        ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+        in place; other changes to this block recreate the disk.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
@@ -676,6 +680,8 @@ class _RegionDiskState:
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+               in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -968,6 +974,8 @@ class _RegionDiskState:
         If you do not provide an encryption key when creating the disk, then
         the disk will be encrypted using an automatically generated key and
         you do not need to provide a key to use the disk later.
+        ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+        in place; other changes to this block recreate the disk.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
@@ -1680,6 +1688,8 @@ class RegionDisk(pulumi.CustomResource):
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+               in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] erase_windows_vss_signature: (Optional, Beta)
                Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -2148,6 +2158,8 @@ class RegionDisk(pulumi.CustomResource):
                If you do not provide an encryption key when creating the disk, then
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
+               ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+               in place; other changes to this block recreate the disk.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] disk_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2376,6 +2388,8 @@ class RegionDisk(pulumi.CustomResource):
         If you do not provide an encryption key when creating the disk, then
         the disk will be encrypted using an automatically generated key and
         you do not need to provide a key to use the disk later.
+        ~>**NOTE** Only changing `kms_key_name` between Cloud KMS keys is done
+        in place; other changes to this block recreate the disk.
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")

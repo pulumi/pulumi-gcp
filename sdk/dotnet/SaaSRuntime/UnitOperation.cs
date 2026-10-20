@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///         UnitKind = clusterUnitKind.Id,
     ///         Blueprint = new Gcp.SaaSRuntime.Inputs.ReleaseBlueprintArgs
     ///         {
-    ///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+    ///             Package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
     ///         },
     ///     });
     /// 
@@ -115,6 +115,14 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///         ServiceAccountId = actuationServiceAccount.Name,
     ///         Role = "roles/iam.serviceAccountTokenCreator",
     ///         Member = "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     // Infra Manager engine: actuation SA needs config.agent in the producer project.
+    ///     var producerConfigAgent = new Gcp.Projects.IAMMember("producer_config_agent", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/config.agent",
+    ///         Member = actuationServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
     ///     var provisionUnitOperation = new Gcp.SaaSRuntime.UnitOperation("provision_unit_operation", new()
@@ -177,6 +185,7 @@ namespace Pulumi.Gcp.SaaSRuntime
     ///             tenantComputeAdmin,
     ///             actuationTokenCreator,
     ///             saasServices,
+    ///             producerConfigAgent,
     ///         },
     ///     });
     /// 

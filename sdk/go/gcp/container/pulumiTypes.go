@@ -34903,6 +34903,8 @@ func (o ClusterNodeCreationConfigPtrOutput) NodeCreationMode() pulumi.StringPtrO
 type ClusterNodePool struct {
 	// Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
 	Autoscaling *ClusterNodePoolAutoscaling `pulumi:"autoscaling"`
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	BestEffortProvisioning *ClusterNodePoolBestEffortProvisioning `pulumi:"bestEffortProvisioning"`
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges *bool `pulumi:"ignoreNodeCountChanges"`
 	// The number of nodes to create in this
@@ -34975,6 +34977,8 @@ type ClusterNodePoolInput interface {
 type ClusterNodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
 	Autoscaling ClusterNodePoolAutoscalingPtrInput `pulumi:"autoscaling"`
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	BestEffortProvisioning ClusterNodePoolBestEffortProvisioningPtrInput `pulumi:"bestEffortProvisioning"`
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges pulumi.BoolPtrInput `pulumi:"ignoreNodeCountChanges"`
 	// The number of nodes to create in this
@@ -35087,6 +35091,11 @@ func (o ClusterNodePoolOutput) ToClusterNodePoolOutputWithContext(ctx context.Co
 // Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
 func (o ClusterNodePoolOutput) Autoscaling() ClusterNodePoolAutoscalingPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolAutoscaling { return v.Autoscaling }).(ClusterNodePoolAutoscalingPtrOutput)
+}
+
+// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+func (o ClusterNodePoolOutput) BestEffortProvisioning() ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolBestEffortProvisioning { return v.BestEffortProvisioning }).(ClusterNodePoolBestEffortProvisioningPtrOutput)
 }
 
 // Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
@@ -36232,6 +36241,162 @@ func (o ClusterNodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOu
 			return nil
 		}
 		return v.TotalMinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolBestEffortProvisioning struct {
+	// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+	Enabled bool `pulumi:"enabled"`
+	// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+	MinProvisionNodes *int `pulumi:"minProvisionNodes"`
+}
+
+// ClusterNodePoolBestEffortProvisioningInput is an input type that accepts ClusterNodePoolBestEffortProvisioningArgs and ClusterNodePoolBestEffortProvisioningOutput values.
+// You can construct a concrete instance of `ClusterNodePoolBestEffortProvisioningInput` via:
+//
+//	ClusterNodePoolBestEffortProvisioningArgs{...}
+type ClusterNodePoolBestEffortProvisioningInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolBestEffortProvisioningOutput() ClusterNodePoolBestEffortProvisioningOutput
+	ToClusterNodePoolBestEffortProvisioningOutputWithContext(context.Context) ClusterNodePoolBestEffortProvisioningOutput
+}
+
+type ClusterNodePoolBestEffortProvisioningArgs struct {
+	// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+	MinProvisionNodes pulumi.IntPtrInput `pulumi:"minProvisionNodes"`
+}
+
+func (ClusterNodePoolBestEffortProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (i ClusterNodePoolBestEffortProvisioningArgs) ToClusterNodePoolBestEffortProvisioningOutput() ClusterNodePoolBestEffortProvisioningOutput {
+	return i.ToClusterNodePoolBestEffortProvisioningOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolBestEffortProvisioningArgs) ToClusterNodePoolBestEffortProvisioningOutputWithContext(ctx context.Context) ClusterNodePoolBestEffortProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolBestEffortProvisioningOutput)
+}
+
+func (i ClusterNodePoolBestEffortProvisioningArgs) ToClusterNodePoolBestEffortProvisioningPtrOutput() ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return i.ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolBestEffortProvisioningArgs) ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolBestEffortProvisioningOutput).ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolBestEffortProvisioningPtrInput is an input type that accepts ClusterNodePoolBestEffortProvisioningArgs, ClusterNodePoolBestEffortProvisioningPtr and ClusterNodePoolBestEffortProvisioningPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolBestEffortProvisioningPtrInput` via:
+//
+//	        ClusterNodePoolBestEffortProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolBestEffortProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolBestEffortProvisioningPtrOutput() ClusterNodePoolBestEffortProvisioningPtrOutput
+	ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(context.Context) ClusterNodePoolBestEffortProvisioningPtrOutput
+}
+
+type clusterNodePoolBestEffortProvisioningPtrType ClusterNodePoolBestEffortProvisioningArgs
+
+func ClusterNodePoolBestEffortProvisioningPtr(v *ClusterNodePoolBestEffortProvisioningArgs) ClusterNodePoolBestEffortProvisioningPtrInput {
+	return (*clusterNodePoolBestEffortProvisioningPtrType)(v)
+}
+
+func (*clusterNodePoolBestEffortProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (i *clusterNodePoolBestEffortProvisioningPtrType) ToClusterNodePoolBestEffortProvisioningPtrOutput() ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return i.ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolBestEffortProvisioningPtrType) ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolBestEffortProvisioningPtrOutput)
+}
+
+type ClusterNodePoolBestEffortProvisioningOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolBestEffortProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (o ClusterNodePoolBestEffortProvisioningOutput) ToClusterNodePoolBestEffortProvisioningOutput() ClusterNodePoolBestEffortProvisioningOutput {
+	return o
+}
+
+func (o ClusterNodePoolBestEffortProvisioningOutput) ToClusterNodePoolBestEffortProvisioningOutputWithContext(ctx context.Context) ClusterNodePoolBestEffortProvisioningOutput {
+	return o
+}
+
+func (o ClusterNodePoolBestEffortProvisioningOutput) ToClusterNodePoolBestEffortProvisioningPtrOutput() ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return o.ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolBestEffortProvisioningOutput) ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolBestEffortProvisioning) *ClusterNodePoolBestEffortProvisioning {
+		return &v
+	}).(ClusterNodePoolBestEffortProvisioningPtrOutput)
+}
+
+// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+func (o ClusterNodePoolBestEffortProvisioningOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolBestEffortProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+func (o ClusterNodePoolBestEffortProvisioningOutput) MinProvisionNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolBestEffortProvisioning) *int { return v.MinProvisionNodes }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolBestEffortProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolBestEffortProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (o ClusterNodePoolBestEffortProvisioningPtrOutput) ToClusterNodePoolBestEffortProvisioningPtrOutput() ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolBestEffortProvisioningPtrOutput) ToClusterNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolBestEffortProvisioningPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolBestEffortProvisioningPtrOutput) Elem() ClusterNodePoolBestEffortProvisioningOutput {
+	return o.ApplyT(func(v *ClusterNodePoolBestEffortProvisioning) ClusterNodePoolBestEffortProvisioning {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolBestEffortProvisioning
+		return ret
+	}).(ClusterNodePoolBestEffortProvisioningOutput)
+}
+
+// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+func (o ClusterNodePoolBestEffortProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolBestEffortProvisioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+func (o ClusterNodePoolBestEffortProvisioningPtrOutput) MinProvisionNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolBestEffortProvisioning) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProvisionNodes
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -55176,6 +55341,162 @@ func (o NodePoolAutoscalingPtrOutput) TotalMinNodeCount() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.TotalMinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type NodePoolBestEffortProvisioning struct {
+	// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+	Enabled bool `pulumi:"enabled"`
+	// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+	MinProvisionNodes *int `pulumi:"minProvisionNodes"`
+}
+
+// NodePoolBestEffortProvisioningInput is an input type that accepts NodePoolBestEffortProvisioningArgs and NodePoolBestEffortProvisioningOutput values.
+// You can construct a concrete instance of `NodePoolBestEffortProvisioningInput` via:
+//
+//	NodePoolBestEffortProvisioningArgs{...}
+type NodePoolBestEffortProvisioningInput interface {
+	pulumi.Input
+
+	ToNodePoolBestEffortProvisioningOutput() NodePoolBestEffortProvisioningOutput
+	ToNodePoolBestEffortProvisioningOutputWithContext(context.Context) NodePoolBestEffortProvisioningOutput
+}
+
+type NodePoolBestEffortProvisioningArgs struct {
+	// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+	MinProvisionNodes pulumi.IntPtrInput `pulumi:"minProvisionNodes"`
+}
+
+func (NodePoolBestEffortProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (i NodePoolBestEffortProvisioningArgs) ToNodePoolBestEffortProvisioningOutput() NodePoolBestEffortProvisioningOutput {
+	return i.ToNodePoolBestEffortProvisioningOutputWithContext(context.Background())
+}
+
+func (i NodePoolBestEffortProvisioningArgs) ToNodePoolBestEffortProvisioningOutputWithContext(ctx context.Context) NodePoolBestEffortProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolBestEffortProvisioningOutput)
+}
+
+func (i NodePoolBestEffortProvisioningArgs) ToNodePoolBestEffortProvisioningPtrOutput() NodePoolBestEffortProvisioningPtrOutput {
+	return i.ToNodePoolBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolBestEffortProvisioningArgs) ToNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) NodePoolBestEffortProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolBestEffortProvisioningOutput).ToNodePoolBestEffortProvisioningPtrOutputWithContext(ctx)
+}
+
+// NodePoolBestEffortProvisioningPtrInput is an input type that accepts NodePoolBestEffortProvisioningArgs, NodePoolBestEffortProvisioningPtr and NodePoolBestEffortProvisioningPtrOutput values.
+// You can construct a concrete instance of `NodePoolBestEffortProvisioningPtrInput` via:
+//
+//	        NodePoolBestEffortProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolBestEffortProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolBestEffortProvisioningPtrOutput() NodePoolBestEffortProvisioningPtrOutput
+	ToNodePoolBestEffortProvisioningPtrOutputWithContext(context.Context) NodePoolBestEffortProvisioningPtrOutput
+}
+
+type nodePoolBestEffortProvisioningPtrType NodePoolBestEffortProvisioningArgs
+
+func NodePoolBestEffortProvisioningPtr(v *NodePoolBestEffortProvisioningArgs) NodePoolBestEffortProvisioningPtrInput {
+	return (*nodePoolBestEffortProvisioningPtrType)(v)
+}
+
+func (*nodePoolBestEffortProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (i *nodePoolBestEffortProvisioningPtrType) ToNodePoolBestEffortProvisioningPtrOutput() NodePoolBestEffortProvisioningPtrOutput {
+	return i.ToNodePoolBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolBestEffortProvisioningPtrType) ToNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) NodePoolBestEffortProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolBestEffortProvisioningPtrOutput)
+}
+
+type NodePoolBestEffortProvisioningOutput struct{ *pulumi.OutputState }
+
+func (NodePoolBestEffortProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (o NodePoolBestEffortProvisioningOutput) ToNodePoolBestEffortProvisioningOutput() NodePoolBestEffortProvisioningOutput {
+	return o
+}
+
+func (o NodePoolBestEffortProvisioningOutput) ToNodePoolBestEffortProvisioningOutputWithContext(ctx context.Context) NodePoolBestEffortProvisioningOutput {
+	return o
+}
+
+func (o NodePoolBestEffortProvisioningOutput) ToNodePoolBestEffortProvisioningPtrOutput() NodePoolBestEffortProvisioningPtrOutput {
+	return o.ToNodePoolBestEffortProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolBestEffortProvisioningOutput) ToNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) NodePoolBestEffortProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolBestEffortProvisioning) *NodePoolBestEffortProvisioning {
+		return &v
+	}).(NodePoolBestEffortProvisioningPtrOutput)
+}
+
+// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+func (o NodePoolBestEffortProvisioningOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolBestEffortProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+func (o NodePoolBestEffortProvisioningOutput) MinProvisionNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolBestEffortProvisioning) *int { return v.MinProvisionNodes }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolBestEffortProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolBestEffortProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolBestEffortProvisioning)(nil)).Elem()
+}
+
+func (o NodePoolBestEffortProvisioningPtrOutput) ToNodePoolBestEffortProvisioningPtrOutput() NodePoolBestEffortProvisioningPtrOutput {
+	return o
+}
+
+func (o NodePoolBestEffortProvisioningPtrOutput) ToNodePoolBestEffortProvisioningPtrOutputWithContext(ctx context.Context) NodePoolBestEffortProvisioningPtrOutput {
+	return o
+}
+
+func (o NodePoolBestEffortProvisioningPtrOutput) Elem() NodePoolBestEffortProvisioningOutput {
+	return o.ApplyT(func(v *NodePoolBestEffortProvisioning) NodePoolBestEffortProvisioning {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolBestEffortProvisioning
+		return ret
+	}).(NodePoolBestEffortProvisioningOutput)
+}
+
+// When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+func (o NodePoolBestEffortProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolBestEffortProvisioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+func (o NodePoolBestEffortProvisioningPtrOutput) MinProvisionNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolBestEffortProvisioning) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinProvisionNodes
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -78464,218 +78785,6 @@ func (o GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput) I
 	}).(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput)
 }
 
-type GetClusterNodeConfigContainerdConfigWritableCgroup struct {
-	// Whether writable cgroups are enabled.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetClusterNodeConfigContainerdConfigWritableCgroupInput is an input type that accepts GetClusterNodeConfigContainerdConfigWritableCgroupArgs and GetClusterNodeConfigContainerdConfigWritableCgroupOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigWritableCgroupInput` via:
-//
-//	GetClusterNodeConfigContainerdConfigWritableCgroupArgs{...}
-type GetClusterNodeConfigContainerdConfigWritableCgroupInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigContainerdConfigWritableCgroupOutput() GetClusterNodeConfigContainerdConfigWritableCgroupOutput
-	ToGetClusterNodeConfigContainerdConfigWritableCgroupOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigWritableCgroupOutput
-}
-
-type GetClusterNodeConfigContainerdConfigWritableCgroupArgs struct {
-	// Whether writable cgroups are enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetClusterNodeConfigContainerdConfigWritableCgroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroup)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigContainerdConfigWritableCgroupArgs) ToGetClusterNodeConfigContainerdConfigWritableCgroupOutput() GetClusterNodeConfigContainerdConfigWritableCgroupOutput {
-	return i.ToGetClusterNodeConfigContainerdConfigWritableCgroupOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigContainerdConfigWritableCgroupArgs) ToGetClusterNodeConfigContainerdConfigWritableCgroupOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigWritableCgroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigWritableCgroupOutput)
-}
-
-// GetClusterNodeConfigContainerdConfigWritableCgroupArrayInput is an input type that accepts GetClusterNodeConfigContainerdConfigWritableCgroupArray and GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigContainerdConfigWritableCgroupArrayInput` via:
-//
-//	GetClusterNodeConfigContainerdConfigWritableCgroupArray{ GetClusterNodeConfigContainerdConfigWritableCgroupArgs{...} }
-type GetClusterNodeConfigContainerdConfigWritableCgroupArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput() GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput
-	ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutputWithContext(context.Context) GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput
-}
-
-type GetClusterNodeConfigContainerdConfigWritableCgroupArray []GetClusterNodeConfigContainerdConfigWritableCgroupInput
-
-func (GetClusterNodeConfigContainerdConfigWritableCgroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigWritableCgroup)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigContainerdConfigWritableCgroupArray) ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput() GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput {
-	return i.ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigContainerdConfigWritableCgroupArray) ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput)
-}
-
-type GetClusterNodeConfigContainerdConfigWritableCgroupOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigContainerdConfigWritableCgroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroup)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigContainerdConfigWritableCgroupOutput) ToGetClusterNodeConfigContainerdConfigWritableCgroupOutput() GetClusterNodeConfigContainerdConfigWritableCgroupOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigContainerdConfigWritableCgroupOutput) ToGetClusterNodeConfigContainerdConfigWritableCgroupOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigWritableCgroupOutput {
-	return o
-}
-
-// Whether writable cgroups are enabled.
-func (o GetClusterNodeConfigContainerdConfigWritableCgroupOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigContainerdConfigWritableCgroup) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigContainerdConfigWritableCgroup)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput) ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput() GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput) ToGetClusterNodeConfigContainerdConfigWritableCgroupArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigContainerdConfigWritableCgroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigContainerdConfigWritableCgroup {
-		return vs[0].([]GetClusterNodeConfigContainerdConfigWritableCgroup)[vs[1].(int)]
-	}).(GetClusterNodeConfigContainerdConfigWritableCgroupOutput)
-}
-
-type GetClusterNodeConfigEffectiveTaint struct {
-	// Effect for taint.
-	Effect string `pulumi:"effect"`
-	// Key for taint.
-	Key string `pulumi:"key"`
-	// Value for taint.
-	Value string `pulumi:"value"`
-}
-
-// GetClusterNodeConfigEffectiveTaintInput is an input type that accepts GetClusterNodeConfigEffectiveTaintArgs and GetClusterNodeConfigEffectiveTaintOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigEffectiveTaintInput` via:
-//
-//	GetClusterNodeConfigEffectiveTaintArgs{...}
-type GetClusterNodeConfigEffectiveTaintInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigEffectiveTaintOutput() GetClusterNodeConfigEffectiveTaintOutput
-	ToGetClusterNodeConfigEffectiveTaintOutputWithContext(context.Context) GetClusterNodeConfigEffectiveTaintOutput
-}
-
-type GetClusterNodeConfigEffectiveTaintArgs struct {
-	// Effect for taint.
-	Effect pulumi.StringInput `pulumi:"effect"`
-	// Key for taint.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Value for taint.
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetClusterNodeConfigEffectiveTaintArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigEffectiveTaintArgs) ToGetClusterNodeConfigEffectiveTaintOutput() GetClusterNodeConfigEffectiveTaintOutput {
-	return i.ToGetClusterNodeConfigEffectiveTaintOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigEffectiveTaintArgs) ToGetClusterNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEffectiveTaintOutput)
-}
-
-// GetClusterNodeConfigEffectiveTaintArrayInput is an input type that accepts GetClusterNodeConfigEffectiveTaintArray and GetClusterNodeConfigEffectiveTaintArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigEffectiveTaintArrayInput` via:
-//
-//	GetClusterNodeConfigEffectiveTaintArray{ GetClusterNodeConfigEffectiveTaintArgs{...} }
-type GetClusterNodeConfigEffectiveTaintArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigEffectiveTaintArrayOutput() GetClusterNodeConfigEffectiveTaintArrayOutput
-	ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(context.Context) GetClusterNodeConfigEffectiveTaintArrayOutput
-}
-
-type GetClusterNodeConfigEffectiveTaintArray []GetClusterNodeConfigEffectiveTaintInput
-
-func (GetClusterNodeConfigEffectiveTaintArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigEffectiveTaintArray) ToGetClusterNodeConfigEffectiveTaintArrayOutput() GetClusterNodeConfigEffectiveTaintArrayOutput {
-	return i.ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigEffectiveTaintArray) ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEffectiveTaintArrayOutput)
-}
-
-type GetClusterNodeConfigEffectiveTaintOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigEffectiveTaintOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigEffectiveTaintOutput) ToGetClusterNodeConfigEffectiveTaintOutput() GetClusterNodeConfigEffectiveTaintOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEffectiveTaintOutput) ToGetClusterNodeConfigEffectiveTaintOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintOutput {
-	return o
-}
-
-// Effect for taint.
-func (o GetClusterNodeConfigEffectiveTaintOutput) Effect() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigEffectiveTaint) string { return v.Effect }).(pulumi.StringOutput)
-}
-
-// Key for taint.
-func (o GetClusterNodeConfigEffectiveTaintOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigEffectiveTaint) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Value for taint.
-func (o GetClusterNodeConfigEffectiveTaintOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigEffectiveTaint) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetClusterNodeConfigEffectiveTaintArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigEffectiveTaintArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigEffectiveTaint)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigEffectiveTaintArrayOutput) ToGetClusterNodeConfigEffectiveTaintArrayOutput() GetClusterNodeConfigEffectiveTaintArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEffectiveTaintArrayOutput) ToGetClusterNodeConfigEffectiveTaintArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEffectiveTaintArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigEffectiveTaintArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigEffectiveTaintOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEffectiveTaint {
-		return vs[0].([]GetClusterNodeConfigEffectiveTaint)[vs[1].(int)]
-	}).(GetClusterNodeConfigEffectiveTaintOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
@@ -79107,6 +79216,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNodeKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoscalingPtrInput)(nil)).Elem(), ClusterNodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolBestEffortProvisioningInput)(nil)).Elem(), ClusterNodePoolBestEffortProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolBestEffortProvisioningPtrInput)(nil)).Elem(), ClusterNodePoolBestEffortProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsInput)(nil)).Elem(), ClusterNodePoolDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsPtrInput)(nil)).Elem(), ClusterNodePoolDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolDefaultsNodeConfigDefaultsInput)(nil)).Elem(), ClusterNodePoolDefaultsNodeConfigDefaultsArgs{})
@@ -79329,6 +79440,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadIdentityConfigPtrInput)(nil)).Elem(), ClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolBestEffortProvisioningInput)(nil)).Elem(), NodePoolBestEffortProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolBestEffortProvisioningPtrInput)(nil)).Elem(), NodePoolBestEffortProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolMaintenancePolicyInput)(nil)).Elem(), NodePoolMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolMaintenancePolicyArrayInput)(nil)).Elem(), NodePoolMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolMaintenancePolicyExclusionUntilEndOfSupportInput)(nil)).Elem(), NodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs{})
@@ -79665,10 +79778,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroupInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigWritableCgroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigContainerdConfigWritableCgroupArrayInput)(nil)).Elem(), GetClusterNodeConfigContainerdConfigWritableCgroupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEffectiveTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigEffectiveTaintArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationOutput{})
@@ -80099,6 +80208,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNodeKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolBestEffortProvisioningOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolBestEffortProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolDefaultsNodeConfigDefaultsOutput{})
@@ -80321,6 +80432,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterWorkloadIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolBestEffortProvisioningOutput{})
+	pulumi.RegisterOutputType(NodePoolBestEffortProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput{})
@@ -80657,8 +80770,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigWritableCgroupOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigContainerdConfigWritableCgroupArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigEffectiveTaintArrayOutput{})
 }

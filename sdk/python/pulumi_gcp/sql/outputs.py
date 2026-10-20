@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DatabaseInstanceBlueGreenDeployment',
+    'DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress',
     'DatabaseInstanceClone',
     'DatabaseInstanceDnsName',
     'DatabaseInstanceIpAddress',
@@ -52,6 +54,8 @@ __all__ = [
     'UserPasswordPolicyStatus',
     'UserSqlServerUserDetail',
     'GetCaCertsCertResult',
+    'GetDatabaseInstanceBlueGreenDeploymentResult',
+    'GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressResult',
     'GetDatabaseInstanceCloneResult',
     'GetDatabaseInstanceDnsNameResult',
     'GetDatabaseInstanceIpAddressResult',
@@ -85,6 +89,8 @@ __all__ = [
     'GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetricResult',
     'GetDatabaseInstanceSettingSqlServerAuditConfigResult',
     'GetDatabaseInstancesInstanceResult',
+    'GetDatabaseInstancesInstanceBlueGreenDeploymentResult',
+    'GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressResult',
     'GetDatabaseInstancesInstanceCloneResult',
     'GetDatabaseInstancesInstanceDnsNameResult',
     'GetDatabaseInstancesInstanceIpAddressResult',
@@ -120,6 +126,215 @@ __all__ = [
     'GetDatabasesDatabaseResult',
     'GetTiersTierResult',
 ]
+
+@pulumi.output_type
+class DatabaseInstanceBlueGreenDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentName":
+            suggest = "deployment_name"
+        elif key == "activeEnvironment":
+            suggest = "active_environment"
+        elif key == "deleteOldSourceOnDestroy":
+            suggest = "delete_old_source_on_destroy"
+        elif key == "oldSourceInstanceConnectionName":
+            suggest = "old_source_instance_connection_name"
+        elif key == "oldSourceInstanceName":
+            suggest = "old_source_instance_name"
+        elif key == "targetDatabaseVersion":
+            suggest = "target_database_version"
+        elif key == "targetInstanceConnectionName":
+            suggest = "target_instance_connection_name"
+        elif key == "targetInstanceIpAddresses":
+            suggest = "target_instance_ip_addresses"
+        elif key == "targetInstanceName":
+            suggest = "target_instance_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceBlueGreenDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceBlueGreenDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceBlueGreenDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment_name: _builtins.str,
+                 active_environment: Optional[_builtins.str] = None,
+                 delete_old_source_on_destroy: Optional[_builtins.bool] = None,
+                 old_source_instance_connection_name: Optional[_builtins.str] = None,
+                 old_source_instance_name: Optional[_builtins.str] = None,
+                 target_database_version: Optional[_builtins.str] = None,
+                 target_instance_connection_name: Optional[_builtins.str] = None,
+                 target_instance_ip_addresses: Optional[Sequence['outputs.DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress']] = None,
+                 target_instance_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str deployment_name: The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+        :param _builtins.str active_environment: Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+        :param _builtins.bool delete_old_source_on_destroy: Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`active_environment = "TARGET"`). Defaults to `false`.
+        :param _builtins.str old_source_instance_connection_name: The connection name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
+        :param _builtins.str old_source_instance_name: The name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
+        :param _builtins.str target_database_version: The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `database_version`. Cannot be changed while the deployment is active.
+        :param _builtins.str target_instance_connection_name: The connection name of the green (target) instance.
+        :param Sequence['DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs'] target_instance_ip_addresses: The IP addresses assigned to the green (target) instance. Structure is documented below.
+        :param _builtins.str target_instance_name: The name of the green (target) instance created for the Blue-Green Deployment.
+        """
+        pulumi.set(__self__, "deployment_name", deployment_name)
+        if active_environment is not None:
+            pulumi.set(__self__, "active_environment", active_environment)
+        if delete_old_source_on_destroy is not None:
+            pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
+        if old_source_instance_connection_name is not None:
+            pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
+        if old_source_instance_name is not None:
+            pulumi.set(__self__, "old_source_instance_name", old_source_instance_name)
+        if target_database_version is not None:
+            pulumi.set(__self__, "target_database_version", target_database_version)
+        if target_instance_connection_name is not None:
+            pulumi.set(__self__, "target_instance_connection_name", target_instance_connection_name)
+        if target_instance_ip_addresses is not None:
+            pulumi.set(__self__, "target_instance_ip_addresses", target_instance_ip_addresses)
+        if target_instance_name is not None:
+            pulumi.set(__self__, "target_instance_name", target_instance_name)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentName")
+    def deployment_name(self) -> _builtins.str:
+        """
+        The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+        """
+        return pulumi.get(self, "deployment_name")
+
+    @_builtins.property
+    @pulumi.getter(name="activeEnvironment")
+    def active_environment(self) -> Optional[_builtins.str]:
+        """
+        Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+        """
+        return pulumi.get(self, "active_environment")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOldSourceOnDestroy")
+    def delete_old_source_on_destroy(self) -> Optional[_builtins.bool]:
+        """
+        Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`active_environment = "TARGET"`). Defaults to `false`.
+        """
+        return pulumi.get(self, "delete_old_source_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="oldSourceInstanceConnectionName")
+    def old_source_instance_connection_name(self) -> Optional[_builtins.str]:
+        """
+        The connection name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
+        """
+        return pulumi.get(self, "old_source_instance_connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="oldSourceInstanceName")
+    def old_source_instance_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the old source (blue) instance, populated after switchover (`active_environment = "TARGET"`).
+        """
+        return pulumi.get(self, "old_source_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetDatabaseVersion")
+    def target_database_version(self) -> Optional[_builtins.str]:
+        """
+        The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `database_version`. Cannot be changed while the deployment is active.
+        """
+        return pulumi.get(self, "target_database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceConnectionName")
+    def target_instance_connection_name(self) -> Optional[_builtins.str]:
+        """
+        The connection name of the green (target) instance.
+        """
+        return pulumi.get(self, "target_instance_connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceIpAddresses")
+    def target_instance_ip_addresses(self) -> Optional[Sequence['outputs.DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress']]:
+        """
+        The IP addresses assigned to the green (target) instance. Structure is documented below.
+        """
+        return pulumi.get(self, "target_instance_ip_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceName")
+    def target_instance_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the green (target) instance created for the Blue-Green Deployment.
+        """
+        return pulumi.get(self, "target_instance_name")
+
+
+@pulumi.output_type
+class DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "timeToRetire":
+            suggest = "time_to_retire"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_address: Optional[_builtins.str] = None,
+                 time_to_retire: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ip_address: The IPv4 address assigned to the target instance.
+        :param _builtins.str time_to_retire: The time this IP address will be retired, in RFC 3339 format.
+        :param _builtins.str type: The type of this IP address (`PRIMARY`, `OUTGOING`, or `PRIVATE`).
+        """
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if time_to_retire is not None:
+            pulumi.set(__self__, "time_to_retire", time_to_retire)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 address assigned to the target instance.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="timeToRetire")
+    def time_to_retire(self) -> Optional[_builtins.str]:
+        """
+        The time this IP address will be retired, in RFC 3339 format.
+        """
+        return pulumi.get(self, "time_to_retire")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of this IP address (`PRIMARY`, `OUTGOING`, or `PRIVATE`).
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class DatabaseInstanceClone(dict):
@@ -3674,6 +3889,138 @@ class GetCaCertsCertResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstanceBlueGreenDeploymentResult(dict):
+    def __init__(__self__, *,
+                 active_environment: _builtins.str,
+                 delete_old_source_on_destroy: _builtins.bool,
+                 deployment_name: _builtins.str,
+                 old_source_instance_connection_name: _builtins.str,
+                 old_source_instance_name: _builtins.str,
+                 target_database_version: _builtins.str,
+                 target_instance_connection_name: _builtins.str,
+                 target_instance_ip_addresses: Sequence['outputs.GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressResult'],
+                 target_instance_name: _builtins.str):
+        """
+        :param _builtins.str active_environment: Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+        :param _builtins.bool delete_old_source_on_destroy: Defaults to false. If true, removing the blue_green_deployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+        :param _builtins.str deployment_name: A unique identifier for the blue-green deployment within the project and region.
+        :param _builtins.str old_source_instance_connection_name: Auth Proxy connection string for the former Blue instance post-switchover.
+        :param _builtins.str old_source_instance_name: Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+        :param _builtins.str target_database_version: The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+        :param _builtins.str target_instance_connection_name: The Cloud SQL Auth Proxy connection string for the Green instance.
+        :param Sequence['GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs'] target_instance_ip_addresses: Standard Cloud SQL IP address list for the Green instance.
+        :param _builtins.str target_instance_name: The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+        """
+        pulumi.set(__self__, "active_environment", active_environment)
+        pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
+        pulumi.set(__self__, "deployment_name", deployment_name)
+        pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
+        pulumi.set(__self__, "old_source_instance_name", old_source_instance_name)
+        pulumi.set(__self__, "target_database_version", target_database_version)
+        pulumi.set(__self__, "target_instance_connection_name", target_instance_connection_name)
+        pulumi.set(__self__, "target_instance_ip_addresses", target_instance_ip_addresses)
+        pulumi.set(__self__, "target_instance_name", target_instance_name)
+
+    @_builtins.property
+    @pulumi.getter(name="activeEnvironment")
+    def active_environment(self) -> _builtins.str:
+        """
+        Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+        """
+        return pulumi.get(self, "active_environment")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOldSourceOnDestroy")
+    def delete_old_source_on_destroy(self) -> _builtins.bool:
+        """
+        Defaults to false. If true, removing the blue_green_deployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+        """
+        return pulumi.get(self, "delete_old_source_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentName")
+    def deployment_name(self) -> _builtins.str:
+        """
+        A unique identifier for the blue-green deployment within the project and region.
+        """
+        return pulumi.get(self, "deployment_name")
+
+    @_builtins.property
+    @pulumi.getter(name="oldSourceInstanceConnectionName")
+    def old_source_instance_connection_name(self) -> _builtins.str:
+        """
+        Auth Proxy connection string for the former Blue instance post-switchover.
+        """
+        return pulumi.get(self, "old_source_instance_connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="oldSourceInstanceName")
+    def old_source_instance_name(self) -> _builtins.str:
+        """
+        Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+        """
+        return pulumi.get(self, "old_source_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetDatabaseVersion")
+    def target_database_version(self) -> _builtins.str:
+        """
+        The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+        """
+        return pulumi.get(self, "target_database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceConnectionName")
+    def target_instance_connection_name(self) -> _builtins.str:
+        """
+        The Cloud SQL Auth Proxy connection string for the Green instance.
+        """
+        return pulumi.get(self, "target_instance_connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceIpAddresses")
+    def target_instance_ip_addresses(self) -> Sequence['outputs.GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressResult']:
+        """
+        Standard Cloud SQL IP address list for the Green instance.
+        """
+        return pulumi.get(self, "target_instance_ip_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceName")
+    def target_instance_name(self) -> _builtins.str:
+        """
+        The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+        """
+        return pulumi.get(self, "target_instance_name")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressResult(dict):
+    def __init__(__self__, *,
+                 ip_address: _builtins.str,
+                 time_to_retire: _builtins.str,
+                 type: _builtins.str):
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "time_to_retire", time_to_retire)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="timeToRetire")
+    def time_to_retire(self) -> _builtins.str:
+        return pulumi.get(self, "time_to_retire")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetDatabaseInstanceCloneResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: _builtins.str,
@@ -5903,6 +6250,7 @@ class GetDatabaseInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  available_maintenance_versions: Sequence[_builtins.str],
                  backupdr_backup: _builtins.str,
+                 blue_green_deployments: Sequence['outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentResult'],
                  clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
                  connection_name: _builtins.str,
                  database_version: _builtins.str,
@@ -5943,6 +6291,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         """
         :param Sequence[_builtins.str] available_maintenance_versions: Available Maintenance versions.
         :param _builtins.str backupdr_backup: The name of the BackupDR backup to restore from.
+        :param Sequence['GetDatabaseInstancesInstanceBlueGreenDeploymentArgs'] blue_green_deployments: Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param _builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
@@ -5985,6 +6334,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         """
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         pulumi.set(__self__, "backupdr_backup", backupdr_backup)
+        pulumi.set(__self__, "blue_green_deployments", blue_green_deployments)
         pulumi.set(__self__, "clones", clones)
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "database_version", database_version)
@@ -6038,6 +6388,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         The name of the BackupDR backup to restore from.
         """
         return pulumi.get(self, "backupdr_backup")
+
+    @_builtins.property
+    @pulumi.getter(name="blueGreenDeployments")
+    def blue_green_deployments(self) -> Sequence['outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentResult']:
+        """
+        Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+        """
+        return pulumi.get(self, "blue_green_deployments")
 
     @_builtins.property
     @pulumi.getter
@@ -6328,6 +6686,138 @@ class GetDatabaseInstancesInstanceResult(dict):
         When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
         return pulumi.get(self, "switch_transaction_logs_to_cloud_storage_enabled")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceBlueGreenDeploymentResult(dict):
+    def __init__(__self__, *,
+                 active_environment: _builtins.str,
+                 delete_old_source_on_destroy: _builtins.bool,
+                 deployment_name: _builtins.str,
+                 old_source_instance_connection_name: _builtins.str,
+                 old_source_instance_name: _builtins.str,
+                 target_database_version: _builtins.str,
+                 target_instance_connection_name: _builtins.str,
+                 target_instance_ip_addresses: Sequence['outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressResult'],
+                 target_instance_name: _builtins.str):
+        """
+        :param _builtins.str active_environment: Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+        :param _builtins.bool delete_old_source_on_destroy: Defaults to false. If true, removing the blue_green_deployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+        :param _builtins.str deployment_name: A unique identifier for the blue-green deployment within the project and region.
+        :param _builtins.str old_source_instance_connection_name: Auth Proxy connection string for the former Blue instance post-switchover.
+        :param _builtins.str old_source_instance_name: Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+        :param _builtins.str target_database_version: The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+        :param _builtins.str target_instance_connection_name: The Cloud SQL Auth Proxy connection string for the Green instance.
+        :param Sequence['GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs'] target_instance_ip_addresses: Standard Cloud SQL IP address list for the Green instance.
+        :param _builtins.str target_instance_name: The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+        """
+        pulumi.set(__self__, "active_environment", active_environment)
+        pulumi.set(__self__, "delete_old_source_on_destroy", delete_old_source_on_destroy)
+        pulumi.set(__self__, "deployment_name", deployment_name)
+        pulumi.set(__self__, "old_source_instance_connection_name", old_source_instance_connection_name)
+        pulumi.set(__self__, "old_source_instance_name", old_source_instance_name)
+        pulumi.set(__self__, "target_database_version", target_database_version)
+        pulumi.set(__self__, "target_instance_connection_name", target_instance_connection_name)
+        pulumi.set(__self__, "target_instance_ip_addresses", target_instance_ip_addresses)
+        pulumi.set(__self__, "target_instance_name", target_instance_name)
+
+    @_builtins.property
+    @pulumi.getter(name="activeEnvironment")
+    def active_environment(self) -> _builtins.str:
+        """
+        Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+        """
+        return pulumi.get(self, "active_environment")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteOldSourceOnDestroy")
+    def delete_old_source_on_destroy(self) -> _builtins.bool:
+        """
+        Defaults to false. If true, removing the blue_green_deployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+        """
+        return pulumi.get(self, "delete_old_source_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentName")
+    def deployment_name(self) -> _builtins.str:
+        """
+        A unique identifier for the blue-green deployment within the project and region.
+        """
+        return pulumi.get(self, "deployment_name")
+
+    @_builtins.property
+    @pulumi.getter(name="oldSourceInstanceConnectionName")
+    def old_source_instance_connection_name(self) -> _builtins.str:
+        """
+        Auth Proxy connection string for the former Blue instance post-switchover.
+        """
+        return pulumi.get(self, "old_source_instance_connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="oldSourceInstanceName")
+    def old_source_instance_name(self) -> _builtins.str:
+        """
+        Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+        """
+        return pulumi.get(self, "old_source_instance_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetDatabaseVersion")
+    def target_database_version(self) -> _builtins.str:
+        """
+        The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+        """
+        return pulumi.get(self, "target_database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceConnectionName")
+    def target_instance_connection_name(self) -> _builtins.str:
+        """
+        The Cloud SQL Auth Proxy connection string for the Green instance.
+        """
+        return pulumi.get(self, "target_instance_connection_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceIpAddresses")
+    def target_instance_ip_addresses(self) -> Sequence['outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressResult']:
+        """
+        Standard Cloud SQL IP address list for the Green instance.
+        """
+        return pulumi.get(self, "target_instance_ip_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="targetInstanceName")
+    def target_instance_name(self) -> _builtins.str:
+        """
+        The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+        """
+        return pulumi.get(self, "target_instance_name")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressResult(dict):
+    def __init__(__self__, *,
+                 ip_address: _builtins.str,
+                 time_to_retire: _builtins.str,
+                 type: _builtins.str):
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "time_to_retire", time_to_retire)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="timeToRetire")
+    def time_to_retire(self) -> _builtins.str:
+        return pulumi.get(self, "time_to_retire")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -227,6 +227,24 @@ public final class CloudVmClusterProperties {
      * 
      */
     private @Nullable CloudVmClusterPropertiesTimeZone timeZone;
+    /**
+     * @return Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+     * VM_BACKUP_STORAGE_TYPE_LOCAL
+     * VM_BACKUP_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    private @Nullable String vmBackupStorageType;
+    /**
+     * @return Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+     * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+     * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    private @Nullable String vmFileSystemStorageType;
 
     private CloudVmClusterProperties() {}
     /**
@@ -504,6 +522,28 @@ public final class CloudVmClusterProperties {
     public Optional<CloudVmClusterPropertiesTimeZone> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
+    /**
+     * @return Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+     * VM_BACKUP_STORAGE_TYPE_LOCAL
+     * VM_BACKUP_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    public Optional<String> vmBackupStorageType() {
+        return Optional.ofNullable(this.vmBackupStorageType);
+    }
+    /**
+     * @return Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+     * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+     * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    public Optional<String> vmFileSystemStorageType() {
+        return Optional.ofNullable(this.vmFileSystemStorageType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -547,6 +587,8 @@ public final class CloudVmClusterProperties {
         private @Nullable Integer storageSizeGb;
         private @Nullable String systemVersion;
         private @Nullable CloudVmClusterPropertiesTimeZone timeZone;
+        private @Nullable String vmBackupStorageType;
+        private @Nullable String vmFileSystemStorageType;
         public Builder() {}
         public Builder(CloudVmClusterProperties defaults) {
     	      Objects.requireNonNull(defaults);
@@ -583,6 +625,8 @@ public final class CloudVmClusterProperties {
     	      this.storageSizeGb = defaults.storageSizeGb;
     	      this.systemVersion = defaults.systemVersion;
     	      this.timeZone = defaults.timeZone;
+    	      this.vmBackupStorageType = defaults.vmBackupStorageType;
+    	      this.vmFileSystemStorageType = defaults.vmFileSystemStorageType;
         }
 
         @CustomType.Setter
@@ -796,6 +840,18 @@ public final class CloudVmClusterProperties {
             this.timeZone = timeZone;
             return this;
         }
+        @CustomType.Setter
+        public Builder vmBackupStorageType(@Nullable String vmBackupStorageType) {
+
+            this.vmBackupStorageType = vmBackupStorageType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vmFileSystemStorageType(@Nullable String vmFileSystemStorageType) {
+
+            this.vmFileSystemStorageType = vmFileSystemStorageType;
+            return this;
+        }
         public CloudVmClusterProperties build() {
             final var _resultValue = new CloudVmClusterProperties();
             _resultValue.clusterName = clusterName;
@@ -831,6 +887,8 @@ public final class CloudVmClusterProperties {
             _resultValue.storageSizeGb = storageSizeGb;
             _resultValue.systemVersion = systemVersion;
             _resultValue.timeZone = timeZone;
+            _resultValue.vmBackupStorageType = vmBackupStorageType;
+            _resultValue.vmFileSystemStorageType = vmFileSystemStorageType;
             return _resultValue;
         }
     }

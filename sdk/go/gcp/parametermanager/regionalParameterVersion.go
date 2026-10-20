@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-basic", &parametermanager.RegionalParameterVersionArgs{
-//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
 //				ParameterData:      pulumi.String("regional-parameter-version-data"),
 //			})
@@ -87,7 +87,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-json-format", &parametermanager.RegionalParameterVersionArgs{
-//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
 //				ParameterData:      pulumi.String(json0),
 //			})
@@ -127,7 +127,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-kms-key", &parametermanager.RegionalParameterVersionArgs{
-//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
 //				ParameterData:      pulumi.String("regional-parameter-version-data"),
 //			})
@@ -169,7 +169,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-json-format-with-file", &parametermanager.RegionalParameterVersionArgs{
-//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
 //				ParameterData:      pulumi.String(invokeFile.Result),
 //			})
@@ -211,7 +211,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-yaml-format-with-file", &parametermanager.RegionalParameterVersionArgs{
-//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
 //				ParameterData:      pulumi.String(invokeFile.Result),
 //			})
@@ -245,7 +245,7 @@ import (
 //				return err
 //			}
 //			_, err = parametermanager.NewRegionalParameterVersion(ctx, "regional-parameter-version-with-data-crc32c", &parametermanager.RegionalParameterVersionArgs{
-//				Parameter:          regional_parameter_basic.ID().ToIDOutput().ToStringOutput(),
+//				Parameter:          regional_parameter_basic.ID(),
 //				ParameterVersionId: pulumi.String("regional_parameter_version"),
 //				ParameterData:      pulumi.String("regional-parameter-version-data"),
 //				DataCrc32c:         pulumi.String("4019737965"),

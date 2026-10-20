@@ -20,6 +20,26 @@ export type CodeToolsSettingBinding = import("./codeToolsSettingBinding").CodeTo
 export const CodeToolsSettingBinding: typeof import("./codeToolsSettingBinding").CodeToolsSettingBinding = null as any;
 utilities.lazyLoad(exports, ["CodeToolsSettingBinding"], () => require("./codeToolsSettingBinding"));
 
+export { DataAnalyticsDataAgentArgs, DataAnalyticsDataAgentState } from "./dataAnalyticsDataAgent";
+export type DataAnalyticsDataAgent = import("./dataAnalyticsDataAgent").DataAnalyticsDataAgent;
+export const DataAnalyticsDataAgent: typeof import("./dataAnalyticsDataAgent").DataAnalyticsDataAgent = null as any;
+utilities.lazyLoad(exports, ["DataAnalyticsDataAgent"], () => require("./dataAnalyticsDataAgent"));
+
+export { DataAnalyticsDataAgentIamBindingArgs, DataAnalyticsDataAgentIamBindingState } from "./dataAnalyticsDataAgentIamBinding";
+export type DataAnalyticsDataAgentIamBinding = import("./dataAnalyticsDataAgentIamBinding").DataAnalyticsDataAgentIamBinding;
+export const DataAnalyticsDataAgentIamBinding: typeof import("./dataAnalyticsDataAgentIamBinding").DataAnalyticsDataAgentIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataAnalyticsDataAgentIamBinding"], () => require("./dataAnalyticsDataAgentIamBinding"));
+
+export { DataAnalyticsDataAgentIamMemberArgs, DataAnalyticsDataAgentIamMemberState } from "./dataAnalyticsDataAgentIamMember";
+export type DataAnalyticsDataAgentIamMember = import("./dataAnalyticsDataAgentIamMember").DataAnalyticsDataAgentIamMember;
+export const DataAnalyticsDataAgentIamMember: typeof import("./dataAnalyticsDataAgentIamMember").DataAnalyticsDataAgentIamMember = null as any;
+utilities.lazyLoad(exports, ["DataAnalyticsDataAgentIamMember"], () => require("./dataAnalyticsDataAgentIamMember"));
+
+export { DataAnalyticsDataAgentIamPolicyArgs, DataAnalyticsDataAgentIamPolicyState } from "./dataAnalyticsDataAgentIamPolicy";
+export type DataAnalyticsDataAgentIamPolicy = import("./dataAnalyticsDataAgentIamPolicy").DataAnalyticsDataAgentIamPolicy;
+export const DataAnalyticsDataAgentIamPolicy: typeof import("./dataAnalyticsDataAgentIamPolicy").DataAnalyticsDataAgentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataAnalyticsDataAgentIamPolicy"], () => require("./dataAnalyticsDataAgentIamPolicy"));
+
 export { DataSharingWithGoogleSettingArgs, DataSharingWithGoogleSettingState } from "./dataSharingWithGoogleSetting";
 export type DataSharingWithGoogleSetting = import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting;
 export const DataSharingWithGoogleSetting: typeof import("./dataSharingWithGoogleSetting").DataSharingWithGoogleSetting = null as any;
@@ -49,6 +69,11 @@ export { GeminiGcpEnablementSettingBindingArgs, GeminiGcpEnablementSettingBindin
 export type GeminiGcpEnablementSettingBinding = import("./geminiGcpEnablementSettingBinding").GeminiGcpEnablementSettingBinding;
 export const GeminiGcpEnablementSettingBinding: typeof import("./geminiGcpEnablementSettingBinding").GeminiGcpEnablementSettingBinding = null as any;
 utilities.lazyLoad(exports, ["GeminiGcpEnablementSettingBinding"], () => require("./geminiGcpEnablementSettingBinding"));
+
+export { GetDataAnalyticsDataAgentIamPolicyArgs, GetDataAnalyticsDataAgentIamPolicyResult, GetDataAnalyticsDataAgentIamPolicyOutputArgs } from "./getDataAnalyticsDataAgentIamPolicy";
+export const getDataAnalyticsDataAgentIamPolicy: typeof import("./getDataAnalyticsDataAgentIamPolicy").getDataAnalyticsDataAgentIamPolicy = null as any;
+export const getDataAnalyticsDataAgentIamPolicyOutput: typeof import("./getDataAnalyticsDataAgentIamPolicy").getDataAnalyticsDataAgentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataAnalyticsDataAgentIamPolicy","getDataAnalyticsDataAgentIamPolicyOutput"], () => require("./getDataAnalyticsDataAgentIamPolicy"));
 
 export { GetRepositoryGroupIamPolicyArgs, GetRepositoryGroupIamPolicyResult, GetRepositoryGroupIamPolicyOutputArgs } from "./getRepositoryGroupIamPolicy";
 export const getRepositoryGroupIamPolicy: typeof import("./getRepositoryGroupIamPolicy").getRepositoryGroupIamPolicy = null as any;
@@ -116,6 +141,14 @@ const _module = {
                 return new CodeToolsSetting(name, <any>undefined, { urn })
             case "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding":
                 return new CodeToolsSettingBinding(name, <any>undefined, { urn })
+            case "gcp:gemini/dataAnalyticsDataAgent:DataAnalyticsDataAgent":
+                return new DataAnalyticsDataAgent(name, <any>undefined, { urn })
+            case "gcp:gemini/dataAnalyticsDataAgentIamBinding:DataAnalyticsDataAgentIamBinding":
+                return new DataAnalyticsDataAgentIamBinding(name, <any>undefined, { urn })
+            case "gcp:gemini/dataAnalyticsDataAgentIamMember:DataAnalyticsDataAgentIamMember":
+                return new DataAnalyticsDataAgentIamMember(name, <any>undefined, { urn })
+            case "gcp:gemini/dataAnalyticsDataAgentIamPolicy:DataAnalyticsDataAgentIamPolicy":
+                return new DataAnalyticsDataAgentIamPolicy(name, <any>undefined, { urn })
             case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
                 return new DataSharingWithGoogleSetting(name, <any>undefined, { urn })
             case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
@@ -156,6 +189,10 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeRepositoryIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeToolsSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/codeToolsSettingBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/dataAnalyticsDataAgent", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/dataAnalyticsDataAgentIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/dataAnalyticsDataAgentIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "gemini/dataAnalyticsDataAgentIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSetting", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/dataSharingWithGoogleSettingBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gemini/gdaObservabilitySetting", _module)

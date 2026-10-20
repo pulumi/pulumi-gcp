@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notification_config", &pubsub.TopicIAMMemberArgs{
-//				Topic:  topic.ID().ToIDOutput().ToStringOutput(),
+//				Topic:  topic.ID(),
 //				Role:   pulumi.String("roles/pubsub.publisher"),
 //				Member: pulumi.Sprintf("serviceAccount:%v", _default.Email),
 //			})
@@ -122,7 +122,7 @@ import (
 //					RepeatInterval: pulumi.String("604800s"),
 //				},
 //				NotificationConfig: &storage.TransferJobNotificationConfigArgs{
-//					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
+//					PubsubTopic: topic.ID(),
 //					EventTypes: pulumi.StringArray{
 //						pulumi.String("TRANSFER_OPERATION_SUCCESS"),
 //						pulumi.String("TRANSFER_OPERATION_FAILED"),

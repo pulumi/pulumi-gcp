@@ -161,7 +161,7 @@ import (
 //			}
 //			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("colab-test-default"),
-//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //			})
@@ -237,8 +237,8 @@ import (
 //					},
 //					NetworkSpec: &colab.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{
 //						EnableInternetAccess: pulumi.Bool(true),
-//						Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
-//						Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+//						Network:              myNetwork.ID(),
+//						Subnetwork:           mySubnetwork.ID(),
 //					},
 //					ShieldedInstanceConfig: &colab.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{
 //						EnableIntegrityMonitoring: pulumi.Bool(true),
@@ -643,7 +643,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -652,7 +652,7 @@ import (
 //			dataformRepository, err := dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 //				Name:                                   pulumi.String("dataform-repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
-//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
 //				KmsKeyName:                             pulumi.String("my-crypto-key"),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
@@ -660,7 +660,7 @@ import (
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 //					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+//					AuthenticationTokenSecretVersion: secretVersion.ID(),
 //				},
 //				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 //					DefaultDatabase: pulumi.String("database"),

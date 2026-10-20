@@ -17,12 +17,15 @@ public final class GetServiceTemplateWorkloadIdentityConfig {
      */
     private String identity;
     /**
-     * @return Controls whether an instance receives a MWLID certificate.
+     * @return Controls whether an instance receives a managed workload identity (MWLID) certificate.
+     * Defaults to true when &#39;identity_type&#39; is &#39;IDENTITY_TYPE_AGENT_IDENTITY&#39;.
      * 
      */
     private Boolean identityCertificateEnabled;
     /**
-     * @return The type of identity to use. Possible values: [&#34;IDENTITY_TYPE_SERVICE_ACCOUNT&#34;, &#34;IDENTITY_TYPE_WORKLOAD_IDENTITY&#34;, &#34;IDENTITY_TYPE_AGENT_IDENTITY&#34;]
+     * @return The type of identity to use. &#39;IDENTITY_TYPE_AGENT_IDENTITY&#39; assigns a system-managed agent identity and
+     * is required when the Service&#39;s &#39;functional_type&#39; is &#39;FUNCTIONAL_TYPE_AGENT&#39;. Once set, this field
+     * cannot be changed or unset. Possible values: [&#34;IDENTITY_TYPE_SERVICE_ACCOUNT&#34;, &#34;IDENTITY_TYPE_WORKLOAD_IDENTITY&#34;, &#34;IDENTITY_TYPE_AGENT_IDENTITY&#34;]
      * 
      */
     private String identityType;
@@ -36,14 +39,17 @@ public final class GetServiceTemplateWorkloadIdentityConfig {
         return this.identity;
     }
     /**
-     * @return Controls whether an instance receives a MWLID certificate.
+     * @return Controls whether an instance receives a managed workload identity (MWLID) certificate.
+     * Defaults to true when &#39;identity_type&#39; is &#39;IDENTITY_TYPE_AGENT_IDENTITY&#39;.
      * 
      */
     public Boolean identityCertificateEnabled() {
         return this.identityCertificateEnabled;
     }
     /**
-     * @return The type of identity to use. Possible values: [&#34;IDENTITY_TYPE_SERVICE_ACCOUNT&#34;, &#34;IDENTITY_TYPE_WORKLOAD_IDENTITY&#34;, &#34;IDENTITY_TYPE_AGENT_IDENTITY&#34;]
+     * @return The type of identity to use. &#39;IDENTITY_TYPE_AGENT_IDENTITY&#39; assigns a system-managed agent identity and
+     * is required when the Service&#39;s &#39;functional_type&#39; is &#39;FUNCTIONAL_TYPE_AGENT&#39;. Once set, this field
+     * cannot be changed or unset. Possible values: [&#34;IDENTITY_TYPE_SERVICE_ACCOUNT&#34;, &#34;IDENTITY_TYPE_WORKLOAD_IDENTITY&#34;, &#34;IDENTITY_TYPE_AGENT_IDENTITY&#34;]
      * 
      */
     public String identityType() {

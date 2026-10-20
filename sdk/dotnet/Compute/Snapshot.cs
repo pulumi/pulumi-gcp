@@ -352,6 +352,8 @@ namespace Pulumi.Gcp.Compute
         /// If you do not provide an encryption key when creating the snapshot,
         /// then the snapshot will be encrypted using an automatically generated
         /// key and you do not need to provide a key to use the snapshot later.
+        /// ~&gt;**NOTE** Only changing `KmsKeySelfLink` between Cloud KMS keys is
+        /// done in place; other changes to this block recreate the snapshot.
         /// Structure is documented below.
         /// </summary>
         [Output("snapshotEncryptionKey")]
@@ -548,6 +550,8 @@ namespace Pulumi.Gcp.Compute
         /// If you do not provide an encryption key when creating the snapshot,
         /// then the snapshot will be encrypted using an automatically generated
         /// key and you do not need to provide a key to use the snapshot later.
+        /// ~&gt;**NOTE** Only changing `KmsKeySelfLink` between Cloud KMS keys is
+        /// done in place; other changes to this block recreate the snapshot.
         /// Structure is documented below.
         /// </summary>
         [Input("snapshotEncryptionKey")]
@@ -766,6 +770,8 @@ namespace Pulumi.Gcp.Compute
         /// If you do not provide an encryption key when creating the snapshot,
         /// then the snapshot will be encrypted using an automatically generated
         /// key and you do not need to provide a key to use the snapshot later.
+        /// ~&gt;**NOTE** Only changing `KmsKeySelfLink` between Cloud KMS keys is
+        /// done in place; other changes to this block recreate the snapshot.
         /// Structure is documented below.
         /// </summary>
         [Input("snapshotEncryptionKey")]

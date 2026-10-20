@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:               pulumi.String("example-subscription"),
-//				Topic:              example.ID().ToIDOutput().ToStringOutput(),
+//				Topic:              example.ID(),
 //				AckDeadlineSeconds: pulumi.Int(20),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
@@ -90,7 +90,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -135,7 +135,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -178,9 +178,9 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				DeadLetterPolicy: &pubsub.SubscriptionDeadLetterPolicyArgs{
-//					DeadLetterTopic:     exampleDeadLetter.ID().ToIDOutput().ToStringOutput(),
+//					DeadLetterTopic:     exampleDeadLetter.ID(),
 //					MaxDeliveryAttempts: pulumi.Int(10),
 //				},
 //			})
@@ -243,7 +243,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 //					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 //						project := _args[0].(string)
@@ -316,7 +316,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 //					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 //						project := _args[0].(string)
@@ -423,7 +423,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 //					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 //						project := _args[0].(string)
@@ -490,7 +490,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
+//				Topic: exampleTopic.ID(),
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
@@ -556,7 +556,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
+//				Topic: exampleTopic.ID(),
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
@@ -623,7 +623,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
+//				Topic: exampleTopic.ID(),
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
@@ -701,7 +701,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: exampleTopic.ID().ToIDOutput().ToStringOutput(),
+//				Topic: exampleTopic.ID(),
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
@@ -750,7 +750,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				MessageTransforms: pubsub.SubscriptionMessageTransformArray{
 //					&pubsub.SubscriptionMessageTransformArgs{
 //						JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
@@ -790,7 +790,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				MessageTransforms: pubsub.SubscriptionMessageTransformArray{
 //					&pubsub.SubscriptionMessageTransformArgs{
 //						JavascriptUdf: &pubsub.SubscriptionMessageTransformJavascriptUdfArgs{
@@ -865,7 +865,7 @@ import (
 //				return err
 //			}
 //			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-//				Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
+//				Parent:    tagKey.ID(),
 //				ShortName: pulumi.String("tag_value"),
 //			})
 //			if err != nil {
@@ -873,7 +873,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				Tags: pulumi.All(tagKey.NamespacedName, tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
 //					namespacedName := _args[0].(string)
 //					shortName := _args[1].(string)
@@ -942,7 +942,7 @@ import (
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
 //				Name:  pulumi.String("example-subscription"),
-//				Topic: example.ID().ToIDOutput().ToStringOutput(),
+//				Topic: example.ID(),
 //				MessageTransforms: pubsub.SubscriptionMessageTransformArray{
 //					&pubsub.SubscriptionMessageTransformArgs{
 //						AiInference: &pubsub.SubscriptionMessageTransformAiInferenceArgs{

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingForwardProxyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingIpPortSelectionArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,25 @@ import javax.annotation.Nullable;
 public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BackendServiceDynamicForwardingArgs Empty = new BackendServiceDynamicForwardingArgs();
+
+    /**
+     * (Optional, Beta)
+     * Dynamic Forwarding Proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="forwardProxy")
+    private @Nullable Output<BackendServiceDynamicForwardingForwardProxyArgs> forwardProxy;
+
+    /**
+     * @return (Optional, Beta)
+     * Dynamic Forwarding Proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackendServiceDynamicForwardingForwardProxyArgs>> forwardProxy() {
+        return Optional.ofNullable(this.forwardProxy);
+    }
 
     /**
      * (Optional, Beta)
@@ -37,6 +57,7 @@ public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resour
     private BackendServiceDynamicForwardingArgs() {}
 
     private BackendServiceDynamicForwardingArgs(BackendServiceDynamicForwardingArgs $) {
+        this.forwardProxy = $.forwardProxy;
         this.ipPortSelection = $.ipPortSelection;
     }
 
@@ -56,6 +77,31 @@ public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resour
 
         public Builder(BackendServiceDynamicForwardingArgs defaults) {
             $ = new BackendServiceDynamicForwardingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param forwardProxy (Optional, Beta)
+         * Dynamic Forwarding Proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardProxy(@Nullable Output<BackendServiceDynamicForwardingForwardProxyArgs> forwardProxy) {
+            $.forwardProxy = forwardProxy;
+            return this;
+        }
+
+        /**
+         * @param forwardProxy (Optional, Beta)
+         * Dynamic Forwarding Proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardProxy(BackendServiceDynamicForwardingForwardProxyArgs forwardProxy) {
+            return forwardProxy(Output.of(forwardProxy));
         }
 
         /**

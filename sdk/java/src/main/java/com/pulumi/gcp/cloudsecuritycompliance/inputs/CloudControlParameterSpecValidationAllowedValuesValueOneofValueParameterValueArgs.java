@@ -50,16 +50,14 @@ public final class CloudControlParameterSpecValidationAllowedValuesValueOneofVal
     }
 
     /**
-     * Sub-parameter values.
-     * Structure is documented below.
+     * Sub-parameter values, in JSON format.
      * 
      */
     @Import(name="oneofValue")
     private @Nullable Output<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs> oneofValue;
 
     /**
-     * @return Sub-parameter values.
-     * Structure is documented below.
+     * @return Sub-parameter values, in JSON format.
      * 
      */
     public Optional<Output<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs>> oneofValue() {
@@ -169,8 +167,7 @@ public final class CloudControlParameterSpecValidationAllowedValuesValueOneofVal
         }
 
         /**
-         * @param oneofValue Sub-parameter values.
-         * Structure is documented below.
+         * @param oneofValue Sub-parameter values, in JSON format.
          * 
          * @return builder
          * 
@@ -181,8 +178,7 @@ public final class CloudControlParameterSpecValidationAllowedValuesValueOneofVal
         }
 
         /**
-         * @param oneofValue Sub-parameter values.
-         * Structure is documented below.
+         * @param oneofValue Sub-parameter values, in JSON format.
          * 
          * @return builder
          * 

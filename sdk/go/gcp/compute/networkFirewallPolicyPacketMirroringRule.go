@@ -64,7 +64,7 @@ import (
 //			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("deployment-group"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:                    _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +72,7 @@ import (
 //			defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 //				MirroringEndpointGroupId: pulumi.String("endpoint-group"),
 //				Location:                 pulumi.String("global"),
-//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_MIRRORING"),
 //				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ import (
 //				Name:                   pulumi.String("sec-profile-group"),
 //				Parent:                 pulumi.String("organizations/123456789"),
 //				Description:            pulumi.String("my description"),
-//				CustomMirroringProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
+//				CustomMirroringProfile: defaultSecurityProfile.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -114,7 +114,7 @@ import (
 //			}
 //			secureTagValue1, err := tags.NewTagValue(ctx, "secure_tag_value_1", &tags.TagValueArgs{
 //				Description: pulumi.String("Test tag value description."),
-//				Parent:      secureTagKey1.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      secureTagKey1.ID(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -125,7 +125,7 @@ import (
 //				Description:    pulumi.String("This is a simple packet mirroring rule description"),
 //				Direction:      pulumi.String("INGRESS"),
 //				Disabled:       pulumi.Bool(false),
-//				FirewallPolicy: basicNetworkFirewallPolicy.ID().ToIDOutput().ToStringOutput(),
+//				FirewallPolicy: basicNetworkFirewallPolicy.ID(),
 //				Priority:       pulumi.Int(1000),
 //				RuleName:       pulumi.String("test-rule"),
 //				Match: &compute.NetworkFirewallPolicyPacketMirroringRuleMatchArgs{

@@ -51,6 +51,56 @@ import * as utilities from "../utilities";
  *     submit: false,
  * });
  * ```
+ * ### Bigquery Analyticshub Querytemplate Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const me = gcp.organizations.getClientOpenIdUserInfo({});
+ * const analyticshubSa = new gcp.projects.ServiceIdentity("analyticshub_sa", {service: "analyticshub.googleapis.com"});
+ * const waitForSa = new time.Sleep("wait_for_sa", {createDuration: "30s"}, {
+ *     dependsOn: [analyticshubSa],
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("crypto_key", {
+ *     cryptoKeyId: "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: analyticshubSa.member,
+ * }, {
+ *     dependsOn: [waitForSa],
+ * });
+ * const waitForIam = new time.Sleep("wait_for_iam", {createDuration: "30s"}, {
+ *     dependsOn: [cryptoKey],
+ * });
+ * const querytemplate = new gcp.bigqueryanalyticshub.DataExchange("querytemplate", {
+ *     displayName: "My Audience Data Exchange",
+ *     dataExchangeId: "my_data_exchange",
+ *     description: "example of query template with cmek",
+ *     location: "us",
+ *     sharingEnvironmentConfig: {
+ *         dcrExchangeConfig: {},
+ *     },
+ * });
+ * const querytemplateQueryTemplate = new gcp.bigqueryanalyticshub.QueryTemplate("querytemplate", {
+ *     location: "us",
+ *     dataExchangeId: querytemplate.dataExchangeId,
+ *     queryTemplateId: "my_query_template",
+ *     displayName: "my_query_template",
+ *     description: "example of query template with cmek",
+ *     primaryContact: me.then(me => me.email),
+ *     documentation: "This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through.",
+ *     routine: {
+ *         routineType: "TABLE_VALUED_FUNCTION",
+ *         definitionBody: "my_query_template() as (select * from t1)",
+ *     },
+ *     encryptionConfiguration: {
+ *         kmsKeyName: "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+ *     },
+ * }, {
+ *     dependsOn: [waitForIam],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -131,6 +181,13 @@ export class QueryTemplate extends pulumi.CustomResource {
      */
     declare public readonly documentation: pulumi.Output<string | undefined>;
     /**
+     * Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionConfiguration: pulumi.Output<outputs.bigqueryanalyticshub.QueryTemplateEncryptionConfiguration | undefined>;
+    /**
      * The name of the location this data exchange query template.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -188,6 +245,7 @@ export class QueryTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["documentation"] = state?.documentation;
+            resourceInputs["encryptionConfiguration"] = state?.encryptionConfiguration;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["primaryContact"] = state?.primaryContact;
@@ -216,6 +274,7 @@ export class QueryTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["documentation"] = args?.documentation;
+            resourceInputs["encryptionConfiguration"] = args?.encryptionConfiguration;
             resourceInputs["location"] = args?.location;
             resourceInputs["primaryContact"] = args?.primaryContact;
             resourceInputs["project"] = args?.project;
@@ -270,6 +329,13 @@ export interface QueryTemplateState {
      * Documentation describing the QueryTemplate.
      */
     documentation?: pulumi.Input<string | undefined>;
+    /**
+     * Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     */
+    encryptionConfiguration?: pulumi.Input<inputs.bigqueryanalyticshub.QueryTemplateEncryptionConfiguration | undefined>;
     /**
      * The name of the location this data exchange query template.
      */
@@ -344,6 +410,13 @@ export interface QueryTemplateArgs {
      * Documentation describing the QueryTemplate.
      */
     documentation?: pulumi.Input<string | undefined>;
+    /**
+     * Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     */
+    encryptionConfiguration?: pulumi.Input<inputs.bigqueryanalyticshub.QueryTemplateEncryptionConfiguration | undefined>;
     /**
      * The name of the location this data exchange query template.
      */

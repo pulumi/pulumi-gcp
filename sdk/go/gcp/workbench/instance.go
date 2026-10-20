@@ -235,7 +235,7 @@ import (
 //			}
 //			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("wbi-test-default"),
-//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-east1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //			})
@@ -329,13 +329,13 @@ import (
 //						DiskEncryption: pulumi.String("CMEK"),
 //						KmsKey:         pulumi.String("my-crypto-key"),
 //						ResourcePolicies: pulumi.StringArray{
-//							myPolicy.ID().ToIDOutput().ToStringOutput(),
+//							myPolicy.ID(),
 //						},
 //					},
 //					NetworkInterfaces: workbench.InstanceGceSetupNetworkInterfaceArray{
 //						&workbench.InstanceGceSetupNetworkInterfaceArgs{
-//							Network: myNetwork.ID().ToIDOutput().ToStringOutput(),
-//							Subnet:  mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+//							Network: myNetwork.ID(),
+//							Subnet:  mySubnetwork.ID(),
 //							NicType: pulumi.String("GVNIC"),
 //							AccessConfigs: workbench.InstanceGceSetupNetworkInterfaceAccessConfigArray{
 //								&workbench.InstanceGceSetupNetworkInterfaceAccessConfigArgs{

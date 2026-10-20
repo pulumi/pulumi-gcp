@@ -55,7 +55,7 @@ import (
 //				},
 //				ReservedIpRange: pulumi.String("192.168.255.0/24"),
 //				AuthorizedNetworks: pulumi.StringArray{
-//					source_network.ID().ToIDOutput().ToStringOutput(),
+//					source_network.ID(),
 //				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -89,7 +89,7 @@ import (
 //			_, err = activedirectory.NewPeering(ctx, "ad-domain-peering", &activedirectory.PeeringArgs{
 //				DomainResource:     ad_domain.Name,
 //				PeeringId:          pulumi.String("ad-domain-peering"),
-//				AuthorizedNetwork:  peered_network.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork:  peered_network.ID(),
 //				DeletionProtection: false,
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

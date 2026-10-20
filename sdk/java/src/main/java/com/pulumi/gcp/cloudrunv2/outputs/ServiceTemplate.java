@@ -131,7 +131,8 @@ public final class ServiceTemplate {
      */
     private @Nullable ServiceTemplateVpcAccess vpcAccess;
     /**
-     * @return Workload identity settings for this Revision.
+     * @return The Revision&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
      * Structure is documented below.
      * 
      */
@@ -282,7 +283,8 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.vpcAccess);
     }
     /**
-     * @return Workload identity settings for this Revision.
+     * @return The Revision&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
      * Structure is documented below.
      * 
      */

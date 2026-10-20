@@ -328,7 +328,7 @@ import (
 //						},
 //					},
 //					PubsubDestination: &transcoder.JobConfigPubsubDestinationArgs{
-//						Topic: transcoderNotifications.ID().ToIDOutput().ToStringOutput(),
+//						Topic: transcoderNotifications.ID(),
 //					},
 //					Output: &transcoder.JobConfigOutputTypeArgs{
 //						Uri: _default.Name.ApplyT(func(name string) (string, error) {

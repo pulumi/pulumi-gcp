@@ -43,6 +43,22 @@ import * as utilities from "../utilities";
  *     exportPsc: true,
  * });
  * ```
+ * ### Network Connectivity Hub With Export Psc Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.networkconnectivity.Hub("primary", {
+ *     name: "psc-config",
+ *     description: "A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+ *     exportPsc: true,
+ *     exportPscConfig: {
+ *         publishedServicesAndRegionalGoogleApis: false,
+ *         globalGoogleApis: true,
+ *     },
+ * });
+ * ```
  * ### Network Connectivity Hub Mesh Topology
  *
  * ```typescript
@@ -159,6 +175,13 @@ export class Hub extends pulumi.CustomResource {
      */
     declare public readonly exportPsc: pulumi.Output<boolean>;
     /**
+     * (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     */
+    declare public readonly exportPscConfig: pulumi.Output<outputs.networkconnectivity.HubExportPscConfig>;
+    /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -224,6 +247,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["exportPsc"] = state?.exportPsc;
+            resourceInputs["exportPscConfig"] = state?.exportPscConfig;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["policyMode"] = state?.policyMode;
@@ -239,6 +263,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["exportPsc"] = args?.exportPsc;
+            resourceInputs["exportPscConfig"] = args?.exportPscConfig;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["policyMode"] = args?.policyMode;
@@ -288,6 +313,13 @@ export interface HubState {
      * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
      */
     exportPsc?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     */
+    exportPscConfig?: pulumi.Input<inputs.networkconnectivity.HubExportPscConfig | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -358,6 +390,13 @@ export interface HubArgs {
      * Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
      */
     exportPsc?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     */
+    exportPscConfig?: pulumi.Input<inputs.networkconnectivity.HubExportPscConfig | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

@@ -58,7 +58,7 @@ import (
 //			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 //				Name:                pulumi.String("test-health-source-bs"),
 //				Region:              pulumi.String("us-central1"),
-//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        _default.ID(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //			})
 //			if err != nil {
@@ -69,8 +69,8 @@ import (
 //				Description:             pulumi.String("Example health source basic"),
 //				Region:                  pulumi.String("us-central1"),
 //				SourceType:              pulumi.String("BACKEND_SERVICE"),
-//				Sources:                 defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
-//				HealthAggregationPolicy: hap.ID().ToIDOutput().ToStringOutput(),
+//				Sources:                 defaultRegionBackendService.ID(),
+//				HealthAggregationPolicy: hap.ID(),
 //			})
 //			if err != nil {
 //				return err

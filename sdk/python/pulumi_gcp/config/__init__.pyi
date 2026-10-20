@@ -241,6 +241,8 @@ firestoreCustomEndpoint: Optional[str]
 
 geminiCustomEndpoint: Optional[str]
 
+geminiDataAnalyticsCustomEndpoint: Optional[str]
+
 gkeBackupCustomEndpoint: Optional[str]
 
 gkeHub2CustomEndpoint: Optional[str]

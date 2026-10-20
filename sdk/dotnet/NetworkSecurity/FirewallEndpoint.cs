@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// Structure is documented below.
         /// </summary>
         [Output("endpointSettings")]
-        public Output<Outputs.FirewallEndpointEndpointSettings?> EndpointSettings { get; private set; } = null!;
+        public Output<Outputs.FirewallEndpointEndpointSettings> EndpointSettings { get; private set; } = null!;
 
         /// <summary>
         /// A map of key/value label pairs to assign to the resource.
@@ -198,6 +198,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Settings for WildFire analysis on the firewall endpoint.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("wildfireSettings")]
+        public Output<Outputs.FirewallEndpointWildfireSettings> WildfireSettings { get; private set; } = null!;
 
 
         /// <summary>
@@ -310,6 +318,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Settings for WildFire analysis on the firewall endpoint.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("wildfireSettings")]
+        public Input<Inputs.FirewallEndpointWildfireSettingsArgs>? WildfireSettings { get; set; }
 
         public FirewallEndpointArgs()
         {
@@ -457,6 +473,14 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Settings for WildFire analysis on the firewall endpoint.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("wildfireSettings")]
+        public Input<Inputs.FirewallEndpointWildfireSettingsGetArgs>? WildfireSettings { get; set; }
 
         public FirewallEndpointState()
         {

@@ -49,7 +49,7 @@ import (
 //				Name:                    pulumi.String("sec-profile-group"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
-//				ThreatPreventionProfile: securityProfile.ID().ToIDOutput().ToStringOutput(),
+//				ThreatPreventionProfile: securityProfile.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -87,7 +87,7 @@ import (
 //			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("deployment-group"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:                    _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,7 +95,7 @@ import (
 //			defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 //				MirroringEndpointGroupId: pulumi.String("endpoint-group"),
 //				Location:                 pulumi.String("global"),
-//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_MIRRORING"),
 //				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -116,7 +116,7 @@ import (
 //				Name:                   pulumi.String("sec-profile-group"),
 //				Parent:                 pulumi.String("organizations/123456789"),
 //				Description:            pulumi.String("my description"),
-//				CustomMirroringProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
+//				CustomMirroringProfile: defaultSecurityProfile.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -151,7 +151,7 @@ import (
 //			defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 //				InterceptDeploymentGroupId: pulumi.String("deployment-group"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:                    _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -159,7 +159,7 @@ import (
 //			defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 //				InterceptEndpointGroupId: pulumi.String("endpoint-group"),
 //				Location:                 pulumi.String("global"),
-//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
+//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -170,7 +170,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_INTERCEPT"),
 //				CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
-//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -180,7 +180,7 @@ import (
 //				Name:                   pulumi.String("sec-profile-group"),
 //				Parent:                 pulumi.String("organizations/123456789"),
 //				Description:            pulumi.String("my description"),
-//				CustomInterceptProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
+//				CustomInterceptProfile: defaultSecurityProfile.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -230,7 +230,66 @@ import (
 //				Name:                pulumi.String("sec-profile-group"),
 //				Parent:              pulumi.String("organizations/123456789"),
 //				Description:         pulumi.String("my description"),
-//				UrlFilteringProfile: securityProfile.ID().ToIDOutput().ToStringOutput(),
+//				UrlFilteringProfile: securityProfile.ID(),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Security Profile Group Wildfire
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			threatPreventionProfile, err := networksecurity.NewSecurityProfile(ctx, "threat_prevention_profile", &networksecurity.SecurityProfileArgs{
+//				Name:     pulumi.String("tp-sec-profile"),
+//				Type:     pulumi.String("THREAT_PREVENTION"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wildfireProfile, err := networksecurity.NewSecurityProfile(ctx, "wildfire_profile", &networksecurity.SecurityProfileArgs{
+//				Name:     pulumi.String("wf-sec-profile"),
+//				Type:     pulumi.String("WILDFIRE_ANALYSIS"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Location: pulumi.String("global"),
+//				WildfireAnalysisProfile: &networksecurity.SecurityProfileWildfireAnalysisProfileArgs{
+//					WildfireRealtimeLookup: pulumi.Bool(true),
+//					WildfireSubmissionRules: networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArray{
+//						&networksecurity.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs{
+//							Direction:         pulumi.String("BOTH"),
+//							FileSelectionMode: pulumi.String("ALL_FILE_TYPES"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewSecurityProfileGroup(ctx, "default", &networksecurity.SecurityProfileGroupArgs{
+//				Name:                    pulumi.String("sec-profile-group"),
+//				Parent:                  pulumi.String("projects/my-project-name"),
+//				Description:             pulumi.String("my description"),
+//				ThreatPreventionProfile: threatPreventionProfile.ID(),
+//				WildfireAnalysisProfile: wildfireProfile.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -301,6 +360,9 @@ type SecurityProfileGroup struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile pulumi.StringPtrOutput `pulumi:"urlFilteringProfile"`
+	// (Optional, Beta)
+	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+	WildfireAnalysisProfile pulumi.StringPtrOutput `pulumi:"wildfireAnalysisProfile"`
 }
 
 // NewSecurityProfileGroup registers a new resource with the given unique name, arguments, and options.
@@ -381,6 +443,9 @@ type securityProfileGroupState struct {
 	UpdateTime *string `pulumi:"updateTime"`
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile *string `pulumi:"urlFilteringProfile"`
+	// (Optional, Beta)
+	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+	WildfireAnalysisProfile *string `pulumi:"wildfireAnalysisProfile"`
 }
 
 type SecurityProfileGroupState struct {
@@ -427,6 +492,9 @@ type SecurityProfileGroupState struct {
 	UpdateTime pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+	WildfireAnalysisProfile pulumi.StringPtrInput
 }
 
 func (SecurityProfileGroupState) ElementType() reflect.Type {
@@ -464,6 +532,9 @@ type securityProfileGroupArgs struct {
 	ThreatPreventionProfile *string `pulumi:"threatPreventionProfile"`
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile *string `pulumi:"urlFilteringProfile"`
+	// (Optional, Beta)
+	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+	WildfireAnalysisProfile *string `pulumi:"wildfireAnalysisProfile"`
 }
 
 // The set of arguments for constructing a SecurityProfileGroup resource.
@@ -498,6 +569,9 @@ type SecurityProfileGroupArgs struct {
 	ThreatPreventionProfile pulumi.StringPtrInput
 	// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 	UrlFilteringProfile pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+	WildfireAnalysisProfile pulumi.StringPtrInput
 }
 
 func (SecurityProfileGroupArgs) ElementType() reflect.Type {
@@ -674,6 +748,12 @@ func (o SecurityProfileGroupOutput) UpdateTime() pulumi.StringOutput {
 // Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
 func (o SecurityProfileGroupOutput) UrlFilteringProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.UrlFilteringProfile }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+func (o SecurityProfileGroupOutput) WildfireAnalysisProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileGroup) pulumi.StringPtrOutput { return v.WildfireAnalysisProfile }).(pulumi.StringPtrOutput)
 }
 
 type SecurityProfileGroupArrayOutput struct{ *pulumi.OutputState }

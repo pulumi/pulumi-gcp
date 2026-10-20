@@ -508,7 +508,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+        /// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+        /// field at any other time forces recreation of the subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
         public Output<string> ExternalIpv6Prefix { get; private set; } = null!;
@@ -545,7 +547,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-        /// mode. Use one of the following formats to specify a sub-PDP when creating
+        /// mode. It's immutable and can only be specified during creation or the first
+        /// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+        /// any other time forces recreation of the subnetwork.
+        /// Use one of the following formats to specify a sub-PDP when creating
         /// a dual stack or IPv6-only subnetwork using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -559,7 +564,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the Ipv6Type is EXTERNAL then this subnet
-        /// cannot enable direct path.
+        /// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Output("ipv6AccessType")]
@@ -806,7 +811,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+        /// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+        /// field at any other time forces recreation of the subnetwork.
         /// </summary>
         [Input("externalIpv6Prefix")]
         public Input<string>? ExternalIpv6Prefix { get; set; }
@@ -830,7 +837,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-        /// mode. Use one of the following formats to specify a sub-PDP when creating
+        /// mode. It's immutable and can only be specified during creation or the first
+        /// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+        /// any other time forces recreation of the subnetwork.
+        /// Use one of the following formats to specify a sub-PDP when creating
         /// a dual stack or IPv6-only subnetwork using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -844,7 +854,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the Ipv6Type is EXTERNAL then this subnet
-        /// cannot enable direct path.
+        /// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("ipv6AccessType")]
@@ -1028,7 +1038,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+        /// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+        /// field at any other time forces recreation of the subnetwork.
         /// </summary>
         [Input("externalIpv6Prefix")]
         public Input<string>? ExternalIpv6Prefix { get; set; }
@@ -1065,7 +1077,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         /// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-        /// mode. Use one of the following formats to specify a sub-PDP when creating
+        /// mode. It's immutable and can only be specified during creation or the first
+        /// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+        /// any other time forces recreation of the subnetwork.
+        /// Use one of the following formats to specify a sub-PDP when creating
         /// a dual stack or IPv6-only subnetwork using BYOIP:
         /// Full resource URL, as in:
         /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -1079,7 +1094,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the Ipv6Type is EXTERNAL then this subnet
-        /// cannot enable direct path.
+        /// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("ipv6AccessType")]

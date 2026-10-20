@@ -93,7 +93,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network.ID(),
 //						},
 //					},
 //				},

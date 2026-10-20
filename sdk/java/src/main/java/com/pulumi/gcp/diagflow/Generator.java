@@ -10,9 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.GeneratorArgs;
 import com.pulumi.gcp.diagflow.inputs.GeneratorState;
+import com.pulumi.gcp.diagflow.outputs.GeneratorAgentCoachingContext;
+import com.pulumi.gcp.diagflow.outputs.GeneratorFreeFormContext;
 import com.pulumi.gcp.diagflow.outputs.GeneratorInferenceParameter;
 import com.pulumi.gcp.diagflow.outputs.GeneratorSummarizationContext;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -63,8 +66,122 @@ import javax.annotation.Nullable;
  *                 .topP(0.95)
  *                 .build())
  *             .summarizationContext(GeneratorSummarizationContextArgs.builder()
- *                 .version("4.0")
+ *                 .version("6.0")
  *                 .outputLanguageCode("en")
+ *                 .build())
+ *             .triggerEvent("MANUAL_CALL")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Dialogflow Generator Agent Coaching
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.Generator;
+ * import com.pulumi.gcp.diagflow.GeneratorArgs;
+ * import com.pulumi.gcp.diagflow.inputs.GeneratorAgentCoachingContextArgs;
+ * import com.pulumi.gcp.diagflow.inputs.GeneratorAgentCoachingContextInstructionArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var agentCoachingGenerator = new Generator("agentCoachingGenerator", GeneratorArgs.builder()
+ *             .location("global")
+ *             .description("An agent coaching generator.")
+ *             .agentCoachingContext(GeneratorAgentCoachingContextArgs.builder()
+ *                 .version("2.5")
+ *                 .overarchingGuidance("Be helpful and polite.")
+ *                 .outputLanguageCode("en")
+ *                 .instructions(GeneratorAgentCoachingContextInstructionArgs.builder()
+ *                     .displayName("Greeting")
+ *                     .displayDetails("Greet the customer warmly")
+ *                     .condition("Customer starts the conversation")
+ *                     .agentAction("Say hello and ask how to help")
+ *                     .systemAction("Log greeting event")
+ *                     .triggeringEvent("END_OF_UTTERANCE")
+ *                     .build())
+ *                 .build())
+ *             .triggerEvent("END_OF_UTTERANCE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Dialogflow Generator With Tools
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.Tool;
+ * import com.pulumi.gcp.diagflow.ToolArgs;
+ * import com.pulumi.gcp.diagflow.inputs.ToolOpenApiSpecArgs;
+ * import com.pulumi.gcp.diagflow.Generator;
+ * import com.pulumi.gcp.diagflow.GeneratorArgs;
+ * import com.pulumi.gcp.diagflow.inputs.GeneratorFreeFormContextArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testTool = new Tool("testTool", ToolArgs.builder()
+ *             .location("global")
+ *             .toolKey("generator_tool_key")
+ *             .displayName("test-tool")
+ *             .description("A test tool")
+ *             .openApiSpec(ToolOpenApiSpecArgs.builder()
+ *                 .textSchema("""
+ * openapi: 3.0.0
+ * info:
+ *   title: generator_tool_key
+ *   version: 1.0.0
+ * paths:
+ *   /search:
+ *     get:
+ *       summary: Search function
+ *       operationId: searchAction
+ *       responses:
+ *         '200':
+ *           description: OK
+ *                 """)
+ *                 .build())
+ *             .build());
+ * 
+ *         var generatorWithTools = new Generator("generatorWithTools", GeneratorArgs.builder()
+ *             .location("global")
+ *             .description("A generator with tools and free form context.")
+ *             .tools(testTool.name())
+ *             .freeFormContext(GeneratorFreeFormContextArgs.builder()
+ *                 .text("Use the search tool to answer the user's query.")
  *                 .build())
  *             .triggerEvent("MANUAL_CALL")
  *             .build());
@@ -93,6 +210,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/generator:Generator")
 public class Generator extends com.pulumi.resources.CustomResource {
+    /**
+     * Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="agentCoachingContext", refs={GeneratorAgentCoachingContext.class}, tree="[0]")
+    private Output</* @Nullable */ GeneratorAgentCoachingContext> agentCoachingContext;
+
+    /**
+     * @return Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<GeneratorAgentCoachingContext>> agentCoachingContext() {
+        return Codegen.optional(this.agentCoachingContext);
+    }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
@@ -130,6 +263,22 @@ public class Generator extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Input of free form generator to LLM.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="freeFormContext", refs={GeneratorFreeFormContext.class}, tree="[0]")
+    private Output</* @Nullable */ GeneratorFreeFormContext> freeFormContext;
+
+    /**
+     * @return Input of free form generator to LLM.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<GeneratorFreeFormContext>> freeFormContext() {
+        return Codegen.optional(this.freeFormContext);
     }
     /**
      * Optional. The ID to use for the generator, which will become the final component of the generator&#39;s resource name.
@@ -225,15 +374,29 @@ public class Generator extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="summarizationContext", refs={GeneratorSummarizationContext.class}, tree="[0]")
-    private Output<GeneratorSummarizationContext> summarizationContext;
+    private Output</* @Nullable */ GeneratorSummarizationContext> summarizationContext;
 
     /**
      * @return Input of prebuilt Summarization feature.
      * Structure is documented below.
      * 
      */
-    public Output<GeneratorSummarizationContext> summarizationContext() {
-        return this.summarizationContext;
+    public Output<Optional<GeneratorSummarizationContext>> summarizationContext() {
+        return Codegen.optional(this.summarizationContext);
+    }
+    /**
+     * Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+     * 
+     */
+    @Export(name="tools", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tools;
+
+    /**
+     * @return Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+     * 
+     */
+    public Output<Optional<List<String>>> tools() {
+        return Codegen.optional(this.tools);
     }
     /**
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.

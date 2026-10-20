@@ -437,6 +437,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Job Agent Identity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     functionalType: "FUNCTIONAL_TYPE_AGENT",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
+ *             }],
+ *             workloadIdentityConfig: {
+ *                 identityType: "IDENTITY_TYPE_AGENT_IDENTITY",
+ *                 identityCertificateEnabled: true,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -562,6 +586,17 @@ export class Job extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     */
+    declare public readonly functionalType: pulumi.Output<string>;
+    /**
      * A number that monotonically increases every time the user modifies the desired state.
      */
     declare public /*out*/ readonly generation: pulumi.Output<string>;
@@ -682,6 +717,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["executionCount"] = state?.executionCount;
             resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["functionalType"] = state?.functionalType;
             resourceInputs["generation"] = state?.generation;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["lastModifier"] = state?.lastModifier;
@@ -714,6 +750,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["clientVersion"] = args?.clientVersion;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["functionalType"] = args?.functionalType;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["launchStage"] = args?.launchStage;
             resourceInputs["location"] = args?.location;
@@ -832,6 +869,17 @@ export interface JobState {
      * For a deleted resource, the time after which it will be permanently deleted.
      */
     expireTime?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     */
+    functionalType?: pulumi.Input<string | undefined>;
     /**
      * A number that monotonically increases every time the user modifies the desired state.
      */
@@ -970,6 +1018,17 @@ export interface JobArgs {
      * When the field is set to false, deleting the job is allowed.
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     */
+    functionalType?: pulumi.Input<string | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.

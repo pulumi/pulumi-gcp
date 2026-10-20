@@ -46,8 +46,113 @@ import (
 //					TopP:            pulumi.Float64(0.95),
 //				},
 //				SummarizationContext: &diagflow.GeneratorSummarizationContextArgs{
-//					Version:            pulumi.String("4.0"),
+//					Version:            pulumi.String("6.0"),
 //					OutputLanguageCode: pulumi.String("en"),
+//				},
+//				TriggerEvent: pulumi.String("MANUAL_CALL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflow Generator Agent Coaching
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := diagflow.NewGenerator(ctx, "agent_coaching_generator", &diagflow.GeneratorArgs{
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("An agent coaching generator."),
+//				AgentCoachingContext: &diagflow.GeneratorAgentCoachingContextArgs{
+//					Version:             pulumi.String("2.5"),
+//					OverarchingGuidance: pulumi.String("Be helpful and polite."),
+//					OutputLanguageCode:  pulumi.String("en"),
+//					Instructions: diagflow.GeneratorAgentCoachingContextInstructionArray{
+//						&diagflow.GeneratorAgentCoachingContextInstructionArgs{
+//							DisplayName:     pulumi.String("Greeting"),
+//							DisplayDetails:  pulumi.String("Greet the customer warmly"),
+//							Condition:       pulumi.String("Customer starts the conversation"),
+//							AgentAction:     pulumi.String("Say hello and ask how to help"),
+//							SystemAction:    pulumi.String("Log greeting event"),
+//							TriggeringEvent: pulumi.String("END_OF_UTTERANCE"),
+//						},
+//					},
+//				},
+//				TriggerEvent: pulumi.String("END_OF_UTTERANCE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflow Generator With Tools
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testTool, err := diagflow.NewTool(ctx, "test_tool", &diagflow.ToolArgs{
+//				Location:    pulumi.String("global"),
+//				ToolKey:     pulumi.String("generator_tool_key"),
+//				DisplayName: pulumi.String("test-tool"),
+//				Description: pulumi.String("A test tool"),
+//				OpenApiSpec: &diagflow.ToolOpenApiSpecArgs{
+//					TextSchema: pulumi.String(`openapi: 3.0.0
+//
+// info:
+//
+//	title: generator_tool_key
+//	version: 1.0.0
+//
+// paths:
+//
+//	/search:
+//	  get:
+//	    summary: Search function
+//	    operationId: searchAction
+//	    responses:
+//	      '200':
+//	        description: OK
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewGenerator(ctx, "generator_with_tools", &diagflow.GeneratorArgs{
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("A generator with tools and free form context."),
+//				Tools: pulumi.StringArray{
+//					testTool.Name,
+//				},
+//				FreeFormContext: &diagflow.GeneratorFreeFormContextArgs{
+//					Text: pulumi.String("Use the search tool to answer the user's query."),
 //				},
 //				TriggerEvent: pulumi.String("MANUAL_CALL"),
 //			})
@@ -78,6 +183,9 @@ import (
 type Generator struct {
 	pulumi.CustomResourceState
 
+	// Input of prebuilt Agent Coaching feature.
+	// Structure is documented below.
+	AgentCoachingContext GeneratorAgentCoachingContextPtrOutput `pulumi:"agentCoachingContext"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -87,6 +195,9 @@ type Generator struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Human readable description of the generator.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Input of free form generator to LLM.
+	// Structure is documented below.
+	FreeFormContext GeneratorFreeFormContextPtrOutput `pulumi:"freeFormContext"`
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
 	GeneratorId pulumi.StringOutput `pulumi:"generatorId"`
 	// Optional. Inference parameters for this generator.
@@ -103,7 +214,9 @@ type Generator struct {
 	PublishedModel pulumi.StringPtrOutput `pulumi:"publishedModel"`
 	// Input of prebuilt Summarization feature.
 	// Structure is documented below.
-	SummarizationContext GeneratorSummarizationContextOutput `pulumi:"summarizationContext"`
+	SummarizationContext GeneratorSummarizationContextPtrOutput `pulumi:"summarizationContext"`
+	// Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+	Tools pulumi.StringArrayOutput `pulumi:"tools"`
 	// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
 	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
 	TriggerEvent pulumi.StringPtrOutput `pulumi:"triggerEvent"`
@@ -118,9 +231,6 @@ func NewGenerator(ctx *pulumi.Context,
 
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.SummarizationContext == nil {
-		return nil, errors.New("invalid value for required argument 'SummarizationContext'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Generator
@@ -145,6 +255,9 @@ func GetGenerator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Generator resources.
 type generatorState struct {
+	// Input of prebuilt Agent Coaching feature.
+	// Structure is documented below.
+	AgentCoachingContext *GeneratorAgentCoachingContext `pulumi:"agentCoachingContext"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -154,6 +267,9 @@ type generatorState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Human readable description of the generator.
 	Description *string `pulumi:"description"`
+	// Input of free form generator to LLM.
+	// Structure is documented below.
+	FreeFormContext *GeneratorFreeFormContext `pulumi:"freeFormContext"`
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
 	GeneratorId *string `pulumi:"generatorId"`
 	// Optional. Inference parameters for this generator.
@@ -171,12 +287,17 @@ type generatorState struct {
 	// Input of prebuilt Summarization feature.
 	// Structure is documented below.
 	SummarizationContext *GeneratorSummarizationContext `pulumi:"summarizationContext"`
+	// Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+	Tools []string `pulumi:"tools"`
 	// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
 	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
 	TriggerEvent *string `pulumi:"triggerEvent"`
 }
 
 type GeneratorState struct {
+	// Input of prebuilt Agent Coaching feature.
+	// Structure is documented below.
+	AgentCoachingContext GeneratorAgentCoachingContextPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -186,6 +307,9 @@ type GeneratorState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Human readable description of the generator.
 	Description pulumi.StringPtrInput
+	// Input of free form generator to LLM.
+	// Structure is documented below.
+	FreeFormContext GeneratorFreeFormContextPtrInput
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
 	GeneratorId pulumi.StringPtrInput
 	// Optional. Inference parameters for this generator.
@@ -203,6 +327,8 @@ type GeneratorState struct {
 	// Input of prebuilt Summarization feature.
 	// Structure is documented below.
 	SummarizationContext GeneratorSummarizationContextPtrInput
+	// Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+	Tools pulumi.StringArrayInput
 	// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
 	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
 	TriggerEvent pulumi.StringPtrInput
@@ -213,6 +339,9 @@ func (GeneratorState) ElementType() reflect.Type {
 }
 
 type generatorArgs struct {
+	// Input of prebuilt Agent Coaching feature.
+	// Structure is documented below.
+	AgentCoachingContext *GeneratorAgentCoachingContext `pulumi:"agentCoachingContext"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -222,6 +351,9 @@ type generatorArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Human readable description of the generator.
 	Description *string `pulumi:"description"`
+	// Input of free form generator to LLM.
+	// Structure is documented below.
+	FreeFormContext *GeneratorFreeFormContext `pulumi:"freeFormContext"`
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
 	GeneratorId *string `pulumi:"generatorId"`
 	// Optional. Inference parameters for this generator.
@@ -236,7 +368,9 @@ type generatorArgs struct {
 	PublishedModel *string `pulumi:"publishedModel"`
 	// Input of prebuilt Summarization feature.
 	// Structure is documented below.
-	SummarizationContext GeneratorSummarizationContext `pulumi:"summarizationContext"`
+	SummarizationContext *GeneratorSummarizationContext `pulumi:"summarizationContext"`
+	// Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+	Tools []string `pulumi:"tools"`
 	// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
 	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
 	TriggerEvent *string `pulumi:"triggerEvent"`
@@ -244,6 +378,9 @@ type generatorArgs struct {
 
 // The set of arguments for constructing a Generator resource.
 type GeneratorArgs struct {
+	// Input of prebuilt Agent Coaching feature.
+	// Structure is documented below.
+	AgentCoachingContext GeneratorAgentCoachingContextPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
 	// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -253,6 +390,9 @@ type GeneratorArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Human readable description of the generator.
 	Description pulumi.StringPtrInput
+	// Input of free form generator to LLM.
+	// Structure is documented below.
+	FreeFormContext GeneratorFreeFormContextPtrInput
 	// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
 	GeneratorId pulumi.StringPtrInput
 	// Optional. Inference parameters for this generator.
@@ -267,7 +407,9 @@ type GeneratorArgs struct {
 	PublishedModel pulumi.StringPtrInput
 	// Input of prebuilt Summarization feature.
 	// Structure is documented below.
-	SummarizationContext GeneratorSummarizationContextInput
+	SummarizationContext GeneratorSummarizationContextPtrInput
+	// Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+	Tools pulumi.StringArrayInput
 	// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
 	// Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
 	TriggerEvent pulumi.StringPtrInput
@@ -360,6 +502,12 @@ func (o GeneratorOutput) ToGeneratorOutputWithContext(ctx context.Context) Gener
 	return o
 }
 
+// Input of prebuilt Agent Coaching feature.
+// Structure is documented below.
+func (o GeneratorOutput) AgentCoachingContext() GeneratorAgentCoachingContextPtrOutput {
+	return o.ApplyT(func(v *Generator) GeneratorAgentCoachingContextPtrOutput { return v.AgentCoachingContext }).(GeneratorAgentCoachingContextPtrOutput)
+}
+
 // Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
 // When a 'terraform destroy' or 'pulumi up' would delete the resource,
 // the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -373,6 +521,12 @@ func (o GeneratorOutput) DeletionPolicy() pulumi.StringOutput {
 // Optional. Human readable description of the generator.
 func (o GeneratorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Generator) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Input of free form generator to LLM.
+// Structure is documented below.
+func (o GeneratorOutput) FreeFormContext() GeneratorFreeFormContextPtrOutput {
+	return o.ApplyT(func(v *Generator) GeneratorFreeFormContextPtrOutput { return v.FreeFormContext }).(GeneratorFreeFormContextPtrOutput)
 }
 
 // Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -409,8 +563,13 @@ func (o GeneratorOutput) PublishedModel() pulumi.StringPtrOutput {
 
 // Input of prebuilt Summarization feature.
 // Structure is documented below.
-func (o GeneratorOutput) SummarizationContext() GeneratorSummarizationContextOutput {
-	return o.ApplyT(func(v *Generator) GeneratorSummarizationContextOutput { return v.SummarizationContext }).(GeneratorSummarizationContextOutput)
+func (o GeneratorOutput) SummarizationContext() GeneratorSummarizationContextPtrOutput {
+	return o.ApplyT(func(v *Generator) GeneratorSummarizationContextPtrOutput { return v.SummarizationContext }).(GeneratorSummarizationContextPtrOutput)
+}
+
+// Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+func (o GeneratorOutput) Tools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Generator) pulumi.StringArrayOutput { return v.Tools }).(pulumi.StringArrayOutput)
 }
 
 // Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.

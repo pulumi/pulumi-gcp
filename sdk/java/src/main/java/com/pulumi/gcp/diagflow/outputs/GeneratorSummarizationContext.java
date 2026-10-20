@@ -32,7 +32,7 @@ public final class GeneratorSummarizationContext {
      */
     private @Nullable List<GeneratorSummarizationContextSummarizationSection> summarizationSections;
     /**
-     * @return Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;1.0&#34;].
+     * @return Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;5.0&#34;, &#34;6.0&#34;].
      * 
      */
     private @Nullable String version;
@@ -62,7 +62,7 @@ public final class GeneratorSummarizationContext {
         return this.summarizationSections == null ? List.of() : this.summarizationSections;
     }
     /**
-     * @return Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;1.0&#34;].
+     * @return Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;5.0&#34;, &#34;6.0&#34;].
      * 
      */
     public Optional<String> version() {

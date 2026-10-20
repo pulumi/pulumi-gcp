@@ -369,6 +369,8 @@ import javax.annotation.Nullable;
  *                 .cpuCoreCount(4)
  *                 .giVersion("23.0.0.0")
  *                 .hostnamePrefix("hostname1")
+ *                 .vmFileSystemStorageType("VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL")
+ *                 .vmBackupStorageType("VM_BACKUP_STORAGE_TYPE_LOCAL")
  *                 .memorySizeGb(60)
  *                 .dbNodeStorageSizeGb(120)
  *                 .dbServerOcids(                

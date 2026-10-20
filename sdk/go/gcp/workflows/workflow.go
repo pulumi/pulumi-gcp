@@ -48,7 +48,7 @@ import (
 //				Name:           pulumi.String("workflow"),
 //				Region:         pulumi.String("us-central1"),
 //				Description:    pulumi.String("Magic"),
-//				ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
+//				ServiceAccount: testAccount.ID(),
 //				CallLogLevel:   pulumi.String("LOG_ERRORS_ONLY"),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),
@@ -97,100 +97,6 @@ import (
 //
 // ```
 // ### Workflow Tags
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workflows"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-// Parent: pulumi.Sprintf("projects/%v", project.Number),
-// ShortName: pulumi.String("tag_key"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-// Parent: tagKey.Name.ApplyT(func(name string) (string, error) {
-// return fmt.Sprintf("tagKeys/%v", name), nil
-// }).(pulumi.StringOutput),
-// ShortName: pulumi.String("tag_value"),
-// })
-// if err != nil {
-// return err
-// }
-// testAccount, err := serviceaccount.NewAccount(ctx, "test_account", &serviceaccount.AccountArgs{
-// AccountId: pulumi.String("my-account"),
-// DisplayName: pulumi.String("Test Service Account"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
-// Name: pulumi.String("workflow"),
-// Region: pulumi.String("us-central1"),
-// Description: pulumi.String("Magic"),
-// ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
-// DeletionProtection: pulumi.Bool(false),
-// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKeyShortName := _args[0].(string)
-// tagValueShortName := _args[1].(string)
-// return map[string]string{
-// fmt.Sprintf("%v/%v", project.ProjectId, tagKeyShortName): tagValueShortName,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// SourceContents: pulumi.String(`# This is a sample workflow. You can replace it with your source code.
-// #
-// # This workflow does the following:
-// # - reads current time and date information from an external API and stores
-// #   the response in currentTime variable
-// # - retrieves a list of Wikipedia articles related to the day of the week
-// #   from currentTime
-// # - returns the list of articles as an output of the workflow
-// #
-// # Note: In Terraform you need to escape the $$ or it will cause errors.
-//
-//   - getCurrentTime:
-//     call: http.get
-//     args:
-//     url: ${sys.get_env(\"url\")}
-//     result: currentTime
-//   - readWikipedia:
-//     call: http.get
-//     args:
-//     url: https://en.wikipedia.org/w/api.php
-//     query:
-//     action: opensearch
-//     search: ${currentTime.body.dayOfWeek}
-//     result: wikiResult
-//   - returnOutput:
-//     return: ${wikiResult.body[1]}
-//
-// `),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 //
 // ## Import
 //

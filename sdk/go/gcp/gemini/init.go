@@ -27,6 +27,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CodeToolsSetting{}
 	case "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding":
 		r = &CodeToolsSettingBinding{}
+	case "gcp:gemini/dataAnalyticsDataAgent:DataAnalyticsDataAgent":
+		r = &DataAnalyticsDataAgent{}
+	case "gcp:gemini/dataAnalyticsDataAgentIamBinding:DataAnalyticsDataAgentIamBinding":
+		r = &DataAnalyticsDataAgentIamBinding{}
+	case "gcp:gemini/dataAnalyticsDataAgentIamMember:DataAnalyticsDataAgentIamMember":
+		r = &DataAnalyticsDataAgentIamMember{}
+	case "gcp:gemini/dataAnalyticsDataAgentIamPolicy:DataAnalyticsDataAgentIamPolicy":
+		r = &DataAnalyticsDataAgentIamPolicy{}
 	case "gcp:gemini/dataSharingWithGoogleSetting:DataSharingWithGoogleSetting":
 		r = &DataSharingWithGoogleSetting{}
 	case "gcp:gemini/dataSharingWithGoogleSettingBinding:DataSharingWithGoogleSettingBinding":
@@ -85,6 +93,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gemini/codeToolsSettingBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/dataAnalyticsDataAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/dataAnalyticsDataAgentIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/dataAnalyticsDataAgentIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gemini/dataAnalyticsDataAgentIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

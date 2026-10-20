@@ -235,6 +235,10 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Regional Endpoint Policies
+ *
+ * This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
+ *
  * ## Import
  *
  * Instance can be imported using any of these accepted formats:

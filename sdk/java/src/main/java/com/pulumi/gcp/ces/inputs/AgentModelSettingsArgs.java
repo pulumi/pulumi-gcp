@@ -39,8 +39,6 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
      * produce responses that are more predictable. Higher temperatures produce
      * responses that are more creative.
      * 
-     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
-     * 
      */
     @Import(name="temperature")
     private @Nullable Output<Double> temperature;
@@ -51,11 +49,30 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
      * produce responses that are more predictable. Higher temperatures produce
      * responses that are more creative.
      * 
-     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
-     * 
      */
     public Optional<Output<Double>> temperature() {
         return Optional.ofNullable(this.temperature);
+    }
+
+    /**
+     * The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+     * 
+     */
+    @Import(name="thinkingLevel")
+    private @Nullable Output<String> thinkingLevel;
+
+    /**
+     * @return The thinking level of the model.
+     * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+     * 
+     * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+     * 
+     */
+    public Optional<Output<String>> thinkingLevel() {
+        return Optional.ofNullable(this.thinkingLevel);
     }
 
     private AgentModelSettingsArgs() {}
@@ -63,6 +80,7 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
     private AgentModelSettingsArgs(AgentModelSettingsArgs $) {
         this.model = $.model;
         this.temperature = $.temperature;
+        this.thinkingLevel = $.thinkingLevel;
     }
 
     public static Builder builder() {
@@ -112,8 +130,6 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
          * produce responses that are more predictable. Higher temperatures produce
          * responses that are more creative.
          * 
-         * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
-         * 
          * @return builder
          * 
          */
@@ -128,13 +144,38 @@ public final class AgentModelSettingsArgs extends com.pulumi.resources.ResourceA
          * produce responses that are more predictable. Higher temperatures produce
          * responses that are more creative.
          * 
-         * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
-         * 
          * @return builder
          * 
          */
         public Builder temperature(Double temperature) {
             return temperature(Output.of(temperature));
+        }
+
+        /**
+         * @param thinkingLevel The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         * 
+         * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thinkingLevel(@Nullable Output<String> thinkingLevel) {
+            $.thinkingLevel = thinkingLevel;
+            return this;
+        }
+
+        /**
+         * @param thinkingLevel The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+         * 
+         * &lt;a name=&#34;nestedRemoteA2aAgent&#34;&gt;&lt;/a&gt;The `remoteA2aAgent` block supports:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thinkingLevel(String thinkingLevel) {
+            return thinkingLevel(Output.of(thinkingLevel));
         }
 
         public AgentModelSettingsArgs build() {

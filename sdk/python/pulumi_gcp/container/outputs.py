@@ -232,6 +232,7 @@ __all__ = [
     'ClusterNodePoolAutoConfigNetworkTags',
     'ClusterNodePoolAutoConfigNodeKubeletConfig',
     'ClusterNodePoolAutoscaling',
+    'ClusterNodePoolBestEffortProvisioning',
     'ClusterNodePoolDefaults',
     'ClusterNodePoolDefaultsNodeConfigDefaults',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig',
@@ -345,6 +346,7 @@ __all__ = [
     'ClusterWorkloadAltsConfig',
     'ClusterWorkloadIdentityConfig',
     'NodePoolAutoscaling',
+    'NodePoolBestEffortProvisioning',
     'NodePoolMaintenancePolicy',
     'NodePoolMaintenancePolicyExclusionUntilEndOfSupport',
     'NodePoolManagement',
@@ -564,6 +566,7 @@ __all__ = [
     'GetClusterNodePoolAutoConfigNetworkTagResult',
     'GetClusterNodePoolAutoConfigNodeKubeletConfigResult',
     'GetClusterNodePoolAutoscalingResult',
+    'GetClusterNodePoolBestEffortProvisioningResult',
     'GetClusterNodePoolDefaultResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult',
@@ -12387,7 +12390,9 @@ class ClusterNodePool(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ignoreNodeCountChanges":
+        if key == "bestEffortProvisioning":
+            suggest = "best_effort_provisioning"
+        elif key == "ignoreNodeCountChanges":
             suggest = "ignore_node_count_changes"
         elif key == "initialNodeCount":
             suggest = "initial_node_count"
@@ -12431,6 +12436,7 @@ class ClusterNodePool(dict):
 
     def __init__(__self__, *,
                  autoscaling: Optional['outputs.ClusterNodePoolAutoscaling'] = None,
+                 best_effort_provisioning: Optional['outputs.ClusterNodePoolBestEffortProvisioning'] = None,
                  ignore_node_count_changes: Optional[_builtins.bool] = None,
                  initial_node_count: Optional[_builtins.int] = None,
                  instance_group_urls: Optional[Sequence[_builtins.str]] = None,
@@ -12451,6 +12457,7 @@ class ClusterNodePool(dict):
                  version: Optional[_builtins.str] = None):
         """
         :param 'ClusterNodePoolAutoscalingArgs' autoscaling: Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        :param 'ClusterNodePoolBestEffortProvisioningArgs' best_effort_provisioning: Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
         :param _builtins.bool ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param _builtins.int initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -12492,6 +12499,8 @@ class ClusterNodePool(dict):
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if best_effort_provisioning is not None:
+            pulumi.set(__self__, "best_effort_provisioning", best_effort_provisioning)
         if ignore_node_count_changes is not None:
             pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         if initial_node_count is not None:
@@ -12536,6 +12545,14 @@ class ClusterNodePool(dict):
         Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         """
         return pulumi.get(self, "autoscaling")
+
+    @_builtins.property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> Optional['outputs.ClusterNodePoolBestEffortProvisioning']:
+        """
+        Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+        """
+        return pulumi.get(self, "best_effort_provisioning")
 
     @_builtins.property
     @pulumi.getter(name="ignoreNodeCountChanges")
@@ -13012,6 +13029,53 @@ class ClusterNodePoolAutoscaling(dict):
         Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
         """
         return pulumi.get(self, "total_min_node_count")
+
+
+@pulumi.output_type
+class ClusterNodePoolBestEffortProvisioning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minProvisionNodes":
+            suggest = "min_provision_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolBestEffortProvisioning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolBestEffortProvisioning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolBestEffortProvisioning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_provision_nodes: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enabled: When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+        :param _builtins.int min_provision_nodes: Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if min_provision_nodes is not None:
+            pulumi.set(__self__, "min_provision_nodes", min_provision_nodes)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minProvisionNodes")
+    def min_provision_nodes(self) -> Optional[_builtins.int]:
+        """
+        Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+        """
+        return pulumi.get(self, "min_provision_nodes")
 
 
 @pulumi.output_type
@@ -19820,6 +19884,53 @@ class NodePoolAutoscaling(dict):
         Total size limits are supported only in 1.24.1+ clusters.
         """
         return pulumi.get(self, "total_min_node_count")
+
+
+@pulumi.output_type
+class NodePoolBestEffortProvisioning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minProvisionNodes":
+            suggest = "min_provision_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolBestEffortProvisioning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolBestEffortProvisioning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolBestEffortProvisioning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_provision_nodes: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enabled: When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+        :param _builtins.int min_provision_nodes: Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if min_provision_nodes is not None:
+            pulumi.set(__self__, "min_provision_nodes", min_provision_nodes)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minProvisionNodes")
+    def min_provision_nodes(self) -> Optional[_builtins.int]:
+        """
+        Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+        """
+        return pulumi.get(self, "min_provision_nodes")
 
 
 @pulumi.output_type
@@ -29602,6 +29713,7 @@ class GetClusterNodeCreationConfigResult(dict):
 class GetClusterNodePoolResult(dict):
     def __init__(__self__, *,
                  autoscalings: Sequence['outputs.GetClusterNodePoolAutoscalingResult'],
+                 best_effort_provisionings: Sequence['outputs.GetClusterNodePoolBestEffortProvisioningResult'],
                  ignore_node_count_changes: _builtins.bool,
                  initial_node_count: _builtins.int,
                  instance_group_urls: Sequence[_builtins.str],
@@ -29622,6 +29734,7 @@ class GetClusterNodePoolResult(dict):
                  version: _builtins.str):
         """
         :param Sequence['GetClusterNodePoolAutoscalingArgs'] autoscalings: Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        :param Sequence['GetClusterNodePoolBestEffortProvisioningArgs'] best_effort_provisionings: Specifies the configuration for best effort provisioning.
         :param _builtins.bool ignore_node_count_changes: When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managed_instance_group_urls in the state.
         :param _builtins.int initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
         :param Sequence[_builtins.str] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
@@ -29642,6 +29755,7 @@ class GetClusterNodePoolResult(dict):
         :param _builtins.str version: The Kubernetes version for the nodes in this pool. Note that if this field and auto_upgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the container_get_engine_versions data source's version_prefix field to approximate fuzzy versions in a Terraform-compatible way.
         """
         pulumi.set(__self__, "autoscalings", autoscalings)
+        pulumi.set(__self__, "best_effort_provisionings", best_effort_provisionings)
         pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         pulumi.set(__self__, "instance_group_urls", instance_group_urls)
@@ -29668,6 +29782,14 @@ class GetClusterNodePoolResult(dict):
         Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
         """
         return pulumi.get(self, "autoscalings")
+
+    @_builtins.property
+    @pulumi.getter(name="bestEffortProvisionings")
+    def best_effort_provisionings(self) -> Sequence['outputs.GetClusterNodePoolBestEffortProvisioningResult']:
+        """
+        Specifies the configuration for best effort provisioning.
+        """
+        return pulumi.get(self, "best_effort_provisionings")
 
     @_builtins.property
     @pulumi.getter(name="ignoreNodeCountChanges")
@@ -30008,6 +30130,35 @@ class GetClusterNodePoolAutoscalingResult(dict):
         Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
         """
         return pulumi.get(self, "total_min_node_count")
+
+
+@pulumi.output_type
+class GetClusterNodePoolBestEffortProvisioningResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 min_provision_nodes: _builtins.int):
+        """
+        :param _builtins.bool enabled: Whether node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible, eventually bringing up the target number of nodes.
+        :param _builtins.int min_provision_nodes: Minimum number of nodes that must be provisioned for the creation to be considered successful. Can only be set when enabled is true.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "min_provision_nodes", min_provision_nodes)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible, eventually bringing up the target number of nodes.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="minProvisionNodes")
+    def min_provision_nodes(self) -> _builtins.int:
+        """
+        Minimum number of nodes that must be provisioned for the creation to be considered successful. Can only be set when enabled is true.
+        """
+        return pulumi.get(self, "min_provision_nodes")
 
 
 @pulumi.output_type

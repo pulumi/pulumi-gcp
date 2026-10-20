@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  *         env: "test",
  *         tier: "gold",
  *     },
+ *     agentCompute: "GKE",
+ *     deploymentModel: "CENTRALIZED",
  *     accessPath: "CLIENT_TO_AGENT",
  * });
  * ```
@@ -88,6 +90,8 @@ import * as utilities from "../utilities";
  *     agentConnectivityTemplateId: "my-connectivity-template",
  *     location: "us-west2",
  *     description: "An advanced configuration for Agent Connectivity Template",
+ *     agentCompute: "GKE",
+ *     deploymentModel: "CENTRALIZED",
  *     accessTypes: ["PRIVATE"],
  *     accessPath: "AGENT_TO_ANYWHERE",
  *     egressNetworkConfig: {
@@ -162,6 +166,12 @@ export class AgentConnectivityTemplate extends pulumi.CustomResource {
      */
     declare public readonly accessTypes: pulumi.Output<string[]>;
     /**
+     * The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     */
+    declare public readonly agentCompute: pulumi.Output<string | undefined>;
+    /**
      * Short name of the AgentConnectivityTemplate resource.
      */
     declare public readonly agentConnectivityTemplateId: pulumi.Output<string>;
@@ -178,6 +188,11 @@ export class AgentConnectivityTemplate extends pulumi.CustomResource {
      * When set to "DELETE", deleting the resource is allowed.
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
+     * The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     */
+    declare public readonly deploymentModel: pulumi.Output<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
@@ -243,9 +258,11 @@ export class AgentConnectivityTemplate extends pulumi.CustomResource {
             const state = argsOrState as AgentConnectivityTemplateState | undefined;
             resourceInputs["accessPath"] = state?.accessPath;
             resourceInputs["accessTypes"] = state?.accessTypes;
+            resourceInputs["agentCompute"] = state?.agentCompute;
             resourceInputs["agentConnectivityTemplateId"] = state?.agentConnectivityTemplateId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["deploymentModel"] = state?.deploymentModel;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["egressNetworkConfig"] = state?.egressNetworkConfig;
@@ -269,8 +286,10 @@ export class AgentConnectivityTemplate extends pulumi.CustomResource {
             }
             resourceInputs["accessPath"] = args?.accessPath;
             resourceInputs["accessTypes"] = args?.accessTypes;
+            resourceInputs["agentCompute"] = args?.agentCompute;
             resourceInputs["agentConnectivityTemplateId"] = args?.agentConnectivityTemplateId;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["deploymentModel"] = args?.deploymentModel;
             resourceInputs["description"] = args?.description;
             resourceInputs["egressNetworkConfig"] = args?.egressNetworkConfig;
             resourceInputs["labels"] = args?.labels;
@@ -307,6 +326,12 @@ export interface AgentConnectivityTemplateState {
      */
     accessTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     */
+    agentCompute?: pulumi.Input<string | undefined>;
+    /**
      * Short name of the AgentConnectivityTemplate resource.
      */
     agentConnectivityTemplateId?: pulumi.Input<string | undefined>;
@@ -323,6 +348,11 @@ export interface AgentConnectivityTemplateState {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     */
+    deploymentModel?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
@@ -391,6 +421,12 @@ export interface AgentConnectivityTemplateArgs {
      */
     accessTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     */
+    agentCompute?: pulumi.Input<string | undefined>;
+    /**
      * Short name of the AgentConnectivityTemplate resource.
      */
     agentConnectivityTemplateId: pulumi.Input<string>;
@@ -403,6 +439,11 @@ export interface AgentConnectivityTemplateArgs {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     */
+    deploymentModel?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */

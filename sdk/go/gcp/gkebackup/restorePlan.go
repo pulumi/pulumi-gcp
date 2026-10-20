@@ -61,7 +61,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("restore-all-ns"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -75,8 +75,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "all_ns", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("restore-all-ns"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					AllNamespaces:                 pulumi.Bool(true),
 //					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -134,7 +134,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rollback-ns"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -148,8 +148,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "rollback_ns", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("rollback-ns-rp"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
 //						Namespaces: pulumi.StringArray{
@@ -220,7 +220,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rollback-app"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -234,8 +234,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "rollback_app", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("rollback-app-rp"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					SelectedApplications: &gkebackup.RestorePlanRestoreConfigSelectedApplicationsArgs{
 //						NamespacedNames: gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray{
@@ -299,7 +299,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("all-groupkinds"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -313,8 +313,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "all_cluster_resources", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("all-groupkinds-rp"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					NoNamespaces:                  pulumi.Bool(true),
 //					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -371,7 +371,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rename-ns"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -385,8 +385,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "rename_ns", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("rename-ns-rp"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					SelectedNamespaces: &gkebackup.RestorePlanRestoreConfigSelectedNamespacesArgs{
 //						Namespaces: pulumi.StringArray{
@@ -482,7 +482,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("transform-rule"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -500,8 +500,8 @@ import (
 //					"app": pulumi.String("nginx"),
 //				},
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					ExcludedNamespaces: &gkebackup.RestorePlanRestoreConfigExcludedNamespacesArgs{
 //						Namespaces: pulumi.StringArray{
@@ -589,7 +589,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("gitops-mode"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -603,8 +603,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "gitops_mode", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("gitops-mode"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					AllNamespaces:                 pulumi.Bool(true),
 //					NamespacedResourceRestoreMode: pulumi.String("MERGE_SKIP_ON_CONFLICT"),
@@ -662,7 +662,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("restore-order"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -676,8 +676,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "restore_order", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("restore-order"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					AllNamespaces:                 pulumi.Bool(true),
 //					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),
@@ -759,7 +759,7 @@ import (
 //			}
 //			basic, err := gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("volume-res"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -773,8 +773,8 @@ import (
 //			_, err = gkebackup.NewRestorePlan(ctx, "volume_res", &gkebackup.RestorePlanArgs{
 //				Name:       pulumi.String("volume-res"),
 //				Location:   pulumi.String("us-east1"),
-//				BackupPlan: basic.ID().ToIDOutput().ToStringOutput(),
-//				Cluster:    primary.ID().ToIDOutput().ToStringOutput(),
+//				BackupPlan: basic.ID(),
+//				Cluster:    primary.ID(),
 //				RestoreConfig: &gkebackup.RestorePlanRestoreConfigArgs{
 //					AllNamespaces:                 pulumi.Bool(true),
 //					NamespacedResourceRestoreMode: pulumi.String("FAIL_ON_CONFLICT"),

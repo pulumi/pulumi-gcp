@@ -507,6 +507,162 @@ func (o GroupAutoAcceptPtrOutput) AutoAcceptProjects() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+type HubExportPscConfig struct {
+	// Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+	GlobalGoogleApis *bool `pulumi:"globalGoogleApis"`
+	// Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+	PublishedServicesAndRegionalGoogleApis *bool `pulumi:"publishedServicesAndRegionalGoogleApis"`
+}
+
+// HubExportPscConfigInput is an input type that accepts HubExportPscConfigArgs and HubExportPscConfigOutput values.
+// You can construct a concrete instance of `HubExportPscConfigInput` via:
+//
+//	HubExportPscConfigArgs{...}
+type HubExportPscConfigInput interface {
+	pulumi.Input
+
+	ToHubExportPscConfigOutput() HubExportPscConfigOutput
+	ToHubExportPscConfigOutputWithContext(context.Context) HubExportPscConfigOutput
+}
+
+type HubExportPscConfigArgs struct {
+	// Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+	GlobalGoogleApis pulumi.BoolPtrInput `pulumi:"globalGoogleApis"`
+	// Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+	PublishedServicesAndRegionalGoogleApis pulumi.BoolPtrInput `pulumi:"publishedServicesAndRegionalGoogleApis"`
+}
+
+func (HubExportPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HubExportPscConfig)(nil)).Elem()
+}
+
+func (i HubExportPscConfigArgs) ToHubExportPscConfigOutput() HubExportPscConfigOutput {
+	return i.ToHubExportPscConfigOutputWithContext(context.Background())
+}
+
+func (i HubExportPscConfigArgs) ToHubExportPscConfigOutputWithContext(ctx context.Context) HubExportPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubExportPscConfigOutput)
+}
+
+func (i HubExportPscConfigArgs) ToHubExportPscConfigPtrOutput() HubExportPscConfigPtrOutput {
+	return i.ToHubExportPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i HubExportPscConfigArgs) ToHubExportPscConfigPtrOutputWithContext(ctx context.Context) HubExportPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubExportPscConfigOutput).ToHubExportPscConfigPtrOutputWithContext(ctx)
+}
+
+// HubExportPscConfigPtrInput is an input type that accepts HubExportPscConfigArgs, HubExportPscConfigPtr and HubExportPscConfigPtrOutput values.
+// You can construct a concrete instance of `HubExportPscConfigPtrInput` via:
+//
+//	        HubExportPscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type HubExportPscConfigPtrInput interface {
+	pulumi.Input
+
+	ToHubExportPscConfigPtrOutput() HubExportPscConfigPtrOutput
+	ToHubExportPscConfigPtrOutputWithContext(context.Context) HubExportPscConfigPtrOutput
+}
+
+type hubExportPscConfigPtrType HubExportPscConfigArgs
+
+func HubExportPscConfigPtr(v *HubExportPscConfigArgs) HubExportPscConfigPtrInput {
+	return (*hubExportPscConfigPtrType)(v)
+}
+
+func (*hubExportPscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HubExportPscConfig)(nil)).Elem()
+}
+
+func (i *hubExportPscConfigPtrType) ToHubExportPscConfigPtrOutput() HubExportPscConfigPtrOutput {
+	return i.ToHubExportPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *hubExportPscConfigPtrType) ToHubExportPscConfigPtrOutputWithContext(ctx context.Context) HubExportPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HubExportPscConfigPtrOutput)
+}
+
+type HubExportPscConfigOutput struct{ *pulumi.OutputState }
+
+func (HubExportPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HubExportPscConfig)(nil)).Elem()
+}
+
+func (o HubExportPscConfigOutput) ToHubExportPscConfigOutput() HubExportPscConfigOutput {
+	return o
+}
+
+func (o HubExportPscConfigOutput) ToHubExportPscConfigOutputWithContext(ctx context.Context) HubExportPscConfigOutput {
+	return o
+}
+
+func (o HubExportPscConfigOutput) ToHubExportPscConfigPtrOutput() HubExportPscConfigPtrOutput {
+	return o.ToHubExportPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o HubExportPscConfigOutput) ToHubExportPscConfigPtrOutputWithContext(ctx context.Context) HubExportPscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HubExportPscConfig) *HubExportPscConfig {
+		return &v
+	}).(HubExportPscConfigPtrOutput)
+}
+
+// Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+func (o HubExportPscConfigOutput) GlobalGoogleApis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HubExportPscConfig) *bool { return v.GlobalGoogleApis }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+func (o HubExportPscConfigOutput) PublishedServicesAndRegionalGoogleApis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HubExportPscConfig) *bool { return v.PublishedServicesAndRegionalGoogleApis }).(pulumi.BoolPtrOutput)
+}
+
+type HubExportPscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (HubExportPscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HubExportPscConfig)(nil)).Elem()
+}
+
+func (o HubExportPscConfigPtrOutput) ToHubExportPscConfigPtrOutput() HubExportPscConfigPtrOutput {
+	return o
+}
+
+func (o HubExportPscConfigPtrOutput) ToHubExportPscConfigPtrOutputWithContext(ctx context.Context) HubExportPscConfigPtrOutput {
+	return o
+}
+
+func (o HubExportPscConfigPtrOutput) Elem() HubExportPscConfigOutput {
+	return o.ApplyT(func(v *HubExportPscConfig) HubExportPscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret HubExportPscConfig
+		return ret
+	}).(HubExportPscConfigOutput)
+}
+
+// Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+func (o HubExportPscConfigPtrOutput) GlobalGoogleApis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HubExportPscConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GlobalGoogleApis
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+func (o HubExportPscConfigPtrOutput) PublishedServicesAndRegionalGoogleApis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HubExportPscConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PublishedServicesAndRegionalGoogleApis
+	}).(pulumi.BoolPtrOutput)
+}
+
 type HubIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -4497,6 +4653,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationStateTimelineStateArrayInput)(nil)).Elem(), DestinationStateTimelineStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptPtrInput)(nil)).Elem(), GroupAutoAcceptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HubExportPscConfigInput)(nil)).Elem(), HubExportPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HubExportPscConfigPtrInput)(nil)).Elem(), HubExportPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubIamBindingConditionInput)(nil)).Elem(), HubIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubIamBindingConditionPtrInput)(nil)).Elem(), HubIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubIamMemberConditionInput)(nil)).Elem(), HubIamMemberConditionArgs{})
@@ -4553,6 +4711,8 @@ func init() {
 	pulumi.RegisterOutputType(DestinationStateTimelineStateArrayOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptPtrOutput{})
+	pulumi.RegisterOutputType(HubExportPscConfigOutput{})
+	pulumi.RegisterOutputType(HubExportPscConfigPtrOutput{})
 	pulumi.RegisterOutputType(HubIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(HubIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(HubIamMemberConditionOutput{})

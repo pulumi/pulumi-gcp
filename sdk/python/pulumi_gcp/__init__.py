@@ -1360,6 +1360,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "backupdisasterrecovery/autoProtectionPolicy",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/autoProtectionPolicy:AutoProtectionPolicy": "AutoProtectionPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "backupdisasterrecovery/backupPlan",
   "fqn": "pulumi_gcp.backupdisasterrecovery",
   "classes": {
@@ -4064,6 +4072,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/organizationSnapshotRecycleBinPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/organizationSnapshotRecycleBinPolicy:OrganizationSnapshotRecycleBinPolicy": "OrganizationSnapshotRecycleBinPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/packetMirroring",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4700,6 +4716,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": "SnapshotIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/snapshotRecycleBinPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/snapshotRecycleBinPolicy:SnapshotRecycleBinPolicy": "SnapshotRecycleBinPolicy"
   }
  },
  {
@@ -7156,6 +7180,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.gemini",
   "classes": {
    "gcp:gemini/codeToolsSettingBinding:CodeToolsSettingBinding": "CodeToolsSettingBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/dataAnalyticsDataAgent",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/dataAnalyticsDataAgent:DataAnalyticsDataAgent": "DataAnalyticsDataAgent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/dataAnalyticsDataAgentIamBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/dataAnalyticsDataAgentIamBinding:DataAnalyticsDataAgentIamBinding": "DataAnalyticsDataAgentIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/dataAnalyticsDataAgentIamMember",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/dataAnalyticsDataAgentIamMember:DataAnalyticsDataAgentIamMember": "DataAnalyticsDataAgentIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/dataAnalyticsDataAgentIamPolicy",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/dataAnalyticsDataAgentIamPolicy:DataAnalyticsDataAgentIamPolicy": "DataAnalyticsDataAgentIamPolicy"
   }
  },
  {
@@ -12060,6 +12116,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel": "AiModelGardenEnableModel"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiOnlineEvaluator",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiOnlineEvaluator:AiOnlineEvaluator": "AiOnlineEvaluator"
   }
  },
  {

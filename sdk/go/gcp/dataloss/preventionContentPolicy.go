@@ -320,7 +320,7 @@ import (
 //							},
 //							Likelihood: pulumi.String("POSSIBLE"),
 //							StoredType: &dataloss.PreventionContentPolicyInspectConfigCustomInfoTypeStoredTypeArgs{
-//								Name: basic.ID().ToIDOutput().ToStringOutput(),
+//								Name: basic.ID(),
 //							},
 //						},
 //					},

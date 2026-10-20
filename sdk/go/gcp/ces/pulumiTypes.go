@@ -991,9 +991,12 @@ type AgentModelSettings struct {
 	// controls the randomness of the model's responses. Lower temperatures
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
+	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
 	//
 	// <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
-	Temperature *float64 `pulumi:"temperature"`
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
 }
 
 // AgentModelSettingsInput is an input type that accepts AgentModelSettingsArgs and AgentModelSettingsOutput values.
@@ -1015,9 +1018,12 @@ type AgentModelSettingsArgs struct {
 	// controls the randomness of the model's responses. Lower temperatures
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
 	//
 	// <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
-	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
 }
 
 func (AgentModelSettingsArgs) ElementType() reflect.Type {
@@ -1107,10 +1113,16 @@ func (o AgentModelSettingsOutput) Model() pulumi.StringPtrOutput {
 // controls the randomness of the model's responses. Lower temperatures
 // produce responses that are more predictable. Higher temperatures produce
 // responses that are more creative.
-//
-// <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
 func (o AgentModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AgentModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+//
+// <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
+func (o AgentModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AgentModelSettings) *string { return v.ThinkingLevel }).(pulumi.StringPtrOutput)
 }
 
 type AgentModelSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -1152,8 +1164,6 @@ func (o AgentModelSettingsPtrOutput) Model() pulumi.StringPtrOutput {
 // controls the randomness of the model's responses. Lower temperatures
 // produce responses that are more predictable. Higher temperatures produce
 // responses that are more creative.
-//
-// <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
 func (o AgentModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *AgentModelSettings) *float64 {
 		if v == nil {
@@ -1161,6 +1171,19 @@ func (o AgentModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
 		}
 		return v.Temperature
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+//
+// <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
+func (o AgentModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AgentModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type AgentRemoteA2aAgent struct {

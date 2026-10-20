@@ -736,6 +736,49 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Agent Identity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     functionalType: "FUNCTIONAL_TYPE_AGENT",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *         workloadIdentityConfig: {
+ *             identityType: "IDENTITY_TYPE_AGENT_IDENTITY",
+ *             identityCertificateEnabled: true,
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Mcp Server
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     functionalType: "FUNCTIONAL_TYPE_MCP_SERVER",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *         workloadIdentityConfig: {
+ *             identityType: "IDENTITY_TYPE_SERVICE_ACCOUNT",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -872,6 +915,16 @@ export class Service extends pulumi.CustomResource {
      * For a deleted resource, the time after which it will be permanently deleted.
      */
     declare public /*out*/ readonly expireTime: pulumi.Output<string>;
+    /**
+     * (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     */
+    declare public readonly functionalType: pulumi.Output<string>;
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
@@ -1035,6 +1088,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["functionalType"] = state?.functionalType;
             resourceInputs["generation"] = state?.generation;
             resourceInputs["iapEnabled"] = state?.iapEnabled;
             resourceInputs["ingress"] = state?.ingress;
@@ -1080,6 +1134,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
+            resourceInputs["functionalType"] = args?.functionalType;
             resourceInputs["iapEnabled"] = args?.iapEnabled;
             resourceInputs["ingress"] = args?.ingress;
             resourceInputs["invokerIamDisabled"] = args?.invokerIamDisabled;
@@ -1218,6 +1273,16 @@ export interface ServiceState {
      * For a deleted resource, the time after which it will be permanently deleted.
      */
     expireTime?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     */
+    functionalType?: pulumi.Input<string | undefined>;
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
@@ -1413,6 +1478,16 @@ export interface ServiceArgs {
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     */
+    functionalType?: pulumi.Input<string | undefined>;
     /**
      * Used to enable/disable IAP for the cloud-run service.
      */

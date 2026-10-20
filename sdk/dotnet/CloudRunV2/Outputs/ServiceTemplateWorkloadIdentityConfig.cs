@@ -18,11 +18,14 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? Identity;
         /// <summary>
-        /// Controls whether an instance receives a MWLID certificate.
+        /// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+        /// Defaults to true when `IdentityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
         /// </summary>
         public readonly bool? IdentityCertificateEnabled;
         /// <summary>
-        /// The type of identity to use.
+        /// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+        /// is required when the Service's `FunctionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+        /// cannot be changed or unset.
         /// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
         /// </summary>
         public readonly string? IdentityType;

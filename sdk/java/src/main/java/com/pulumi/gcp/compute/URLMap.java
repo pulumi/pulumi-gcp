@@ -1286,6 +1286,184 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Url Map Dynamic Compression Policy Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionDynamicCompressionPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .defaultService(default_.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .dynamicCompressionPolicy(URLMapDefaultRouteActionDynamicCompressionPolicyArgs.builder()
+ *                     .compressionMode("AUTOMATIC")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Url Map Dynamic Compression Policy Multi Level
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionDynamicCompressionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHealthCheck = new HealthCheck("defaultHealthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("home")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .defaultService(default_.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .dynamicCompressionPolicy(URLMapDefaultRouteActionDynamicCompressionPolicyArgs.builder()
+ *                     .compressionMode("AUTOMATIC")
+ *                     .build())
+ *                 .build())
+ *             .hostRules(            
+ *                 URLMapHostRuleArgs.builder()
+ *                     .hosts("example.com")
+ *                     .pathMatcher("main-matcher")
+ *                     .build(),
+ *                 URLMapHostRuleArgs.builder()
+ *                     .hosts("api.example.com")
+ *                     .pathMatcher("api-matcher")
+ *                     .build())
+ *             .pathMatchers(            
+ *                 URLMapPathMatcherArgs.builder()
+ *                     .name("main-matcher")
+ *                     .defaultService(default_.id())
+ *                     .defaultRouteAction(URLMapPathMatcherDefaultRouteActionArgs.builder()
+ *                         .dynamicCompressionPolicy(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs.builder()
+ *                             .compressionMode("DISABLED")
+ *                             .build())
+ *                         .build())
+ *                     .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                         .paths("/static/*")
+ *                         .service(default_.id())
+ *                         .routeAction(URLMapPathMatcherPathRuleRouteActionArgs.builder()
+ *                             .dynamicCompressionPolicy(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs.builder()
+ *                                 .compressionMode("AUTOMATIC")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 URLMapPathMatcherArgs.builder()
+ *                     .name("api-matcher")
+ *                     .defaultService(default_.id())
+ *                     .defaultRouteAction(URLMapPathMatcherDefaultRouteActionArgs.builder()
+ *                         .dynamicCompressionPolicy(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs.builder()
+ *                             .compressionMode("AUTOMATIC")
+ *                             .build())
+ *                         .build())
+ *                     .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(1)
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/api/v1")
+ *                             .build())
+ *                         .service(default_.id())
+ *                         .routeAction(URLMapPathMatcherRouteRuleRouteActionArgs.builder()
+ *                             .dynamicCompressionPolicy(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs.builder()
+ *                                 .compressionMode("DISABLED")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Url Map Path Rule Mirror Percent
  * 
  * <pre>
@@ -2210,6 +2388,124 @@ import javax.annotation.Nullable;
  *                 .host("mysite.com")
  *                 .path("/")
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Url Map Image Optimization Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapDefaultRouteActionImageOptimizationPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HealthCheck("default", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var example = new BackendService("example", BackendServiceArgs.builder()
+ *             .name("example")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .enableCdn(true)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var urlmap = new URLMap("urlmap", URLMapArgs.builder()
+ *             .name("urlmap")
+ *             .description("a description")
+ *             .defaultService(example.id())
+ *             .defaultRouteAction(URLMapDefaultRouteActionArgs.builder()
+ *                 .imageOptimizationPolicy(URLMapDefaultRouteActionImageOptimizationPolicyArgs.builder()
+ *                     .queryParameterInterpretation("ENABLED")
+ *                     .build())
+ *                 .build())
+ *             .hostRules(            
+ *                 URLMapHostRuleArgs.builder()
+ *                     .hosts("mysite.com")
+ *                     .pathMatcher("mysite-path")
+ *                     .build(),
+ *                 URLMapHostRuleArgs.builder()
+ *                     .hosts("api.mysite.com")
+ *                     .pathMatcher("mysite-route")
+ *                     .build())
+ *             .pathMatchers(            
+ *                 URLMapPathMatcherArgs.builder()
+ *                     .name("mysite-path")
+ *                     .defaultService(example.id())
+ *                     .defaultRouteAction(URLMapPathMatcherDefaultRouteActionArgs.builder()
+ *                         .imageOptimizationPolicy(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs.builder()
+ *                             .queryParameterInterpretation("DISABLED")
+ *                             .build())
+ *                         .build())
+ *                     .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                         .paths("/private/*")
+ *                         .service(example.id())
+ *                         .routeAction(URLMapPathMatcherPathRuleRouteActionArgs.builder()
+ *                             .imageOptimizationPolicy(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs.builder()
+ *                                 .queryParameterInterpretation("ENABLED")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 URLMapPathMatcherArgs.builder()
+ *                     .name("mysite-route")
+ *                     .defaultService(example.id())
+ *                     .routeRules(URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .priority(1)
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .prefixMatch("/images")
+ *                             .build())
+ *                         .service(example.id())
+ *                         .routeAction(URLMapPathMatcherRouteRuleRouteActionArgs.builder()
+ *                             .imageOptimizationPolicy(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs.builder()
+ *                                 .queryParameterInterpretation("DISABLED")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
  *             .build());
  * 
  *     }

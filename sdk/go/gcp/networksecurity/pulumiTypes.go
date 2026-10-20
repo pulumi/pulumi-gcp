@@ -4079,7 +4079,7 @@ func (o AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetPtrOutput) Ids() pulum
 }
 
 type AuthzPolicyHttpRuleTo struct {
-	// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 	// Structure is documented below.
 	NotOperations []AuthzPolicyHttpRuleToNotOperation `pulumi:"notOperations"`
 	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
@@ -4099,7 +4099,7 @@ type AuthzPolicyHttpRuleToInput interface {
 }
 
 type AuthzPolicyHttpRuleToArgs struct {
-	// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 	// Structure is documented below.
 	NotOperations AuthzPolicyHttpRuleToNotOperationArrayInput `pulumi:"notOperations"`
 	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
@@ -4184,7 +4184,7 @@ func (o AuthzPolicyHttpRuleToOutput) ToAuthzPolicyHttpRuleToPtrOutputWithContext
 	}).(AuthzPolicyHttpRuleToPtrOutput)
 }
 
-// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToOutput) NotOperations() AuthzPolicyHttpRuleToNotOperationArrayOutput {
 	return o.ApplyT(func(v AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToNotOperation { return v.NotOperations }).(AuthzPolicyHttpRuleToNotOperationArrayOutput)
@@ -4220,7 +4220,7 @@ func (o AuthzPolicyHttpRuleToPtrOutput) Elem() AuthzPolicyHttpRuleToOutput {
 	}).(AuthzPolicyHttpRuleToOutput)
 }
 
-// Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 // Structure is documented below.
 func (o AuthzPolicyHttpRuleToPtrOutput) NotOperations() AuthzPolicyHttpRuleToNotOperationArrayOutput {
 	return o.ApplyT(func(v *AuthzPolicyHttpRuleTo) []AuthzPolicyHttpRuleToNotOperation {
@@ -6597,6 +6597,8 @@ type AuthzPolicyNetworkRule struct {
 	// Describes properties of one or more targets of a request
 	// Structure is documented below.
 	To *AuthzPolicyNetworkRuleTo `pulumi:"to"`
+	// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+	When *string `pulumi:"when"`
 }
 
 // AuthzPolicyNetworkRuleInput is an input type that accepts AuthzPolicyNetworkRuleArgs and AuthzPolicyNetworkRuleOutput values.
@@ -6617,6 +6619,8 @@ type AuthzPolicyNetworkRuleArgs struct {
 	// Describes properties of one or more targets of a request
 	// Structure is documented below.
 	To AuthzPolicyNetworkRuleToPtrInput `pulumi:"to"`
+	// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+	When pulumi.StringPtrInput `pulumi:"when"`
 }
 
 func (AuthzPolicyNetworkRuleArgs) ElementType() reflect.Type {
@@ -6680,6 +6684,11 @@ func (o AuthzPolicyNetworkRuleOutput) From() AuthzPolicyNetworkRuleFromPtrOutput
 // Structure is documented below.
 func (o AuthzPolicyNetworkRuleOutput) To() AuthzPolicyNetworkRuleToPtrOutput {
 	return o.ApplyT(func(v AuthzPolicyNetworkRule) *AuthzPolicyNetworkRuleTo { return v.To }).(AuthzPolicyNetworkRuleToPtrOutput)
+}
+
+// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+func (o AuthzPolicyNetworkRuleOutput) When() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRule) *string { return v.When }).(pulumi.StringPtrOutput)
 }
 
 type AuthzPolicyNetworkRuleArrayOutput struct{ *pulumi.OutputState }
@@ -6874,6 +6883,10 @@ type AuthzPolicyNetworkRuleFromNotSource struct {
 	// Limited to 5 principals.
 	// Structure is documented below.
 	Principals []AuthzPolicyNetworkRuleFromNotSourcePrincipal `pulumi:"principals"`
+	// A list of resources to match against the resource of the source VM of a request.
+	// Limited to 5 resources.
+	// Structure is documented below.
+	Resources []AuthzPolicyNetworkRuleFromNotSourceResource `pulumi:"resources"`
 }
 
 // AuthzPolicyNetworkRuleFromNotSourceInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceArgs and AuthzPolicyNetworkRuleFromNotSourceOutput values.
@@ -6895,6 +6908,10 @@ type AuthzPolicyNetworkRuleFromNotSourceArgs struct {
 	// Limited to 5 principals.
 	// Structure is documented below.
 	Principals AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput `pulumi:"principals"`
+	// A list of resources to match against the resource of the source VM of a request.
+	// Limited to 5 resources.
+	// Structure is documented below.
+	Resources AuthzPolicyNetworkRuleFromNotSourceResourceArrayInput `pulumi:"resources"`
 }
 
 func (AuthzPolicyNetworkRuleFromNotSourceArgs) ElementType() reflect.Type {
@@ -6963,6 +6980,15 @@ func (o AuthzPolicyNetworkRuleFromNotSourceOutput) Principals() AuthzPolicyNetwo
 	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSource) []AuthzPolicyNetworkRuleFromNotSourcePrincipal {
 		return v.Principals
 	}).(AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput)
+}
+
+// A list of resources to match against the resource of the source VM of a request.
+// Limited to 5 resources.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromNotSourceOutput) Resources() AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSource) []AuthzPolicyNetworkRuleFromNotSourceResource {
+		return v.Resources
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput)
 }
 
 type AuthzPolicyNetworkRuleFromNotSourceArrayOutput struct{ *pulumi.OutputState }
@@ -7216,6 +7242,8 @@ type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal struct {
 	// Examples:
 	// * abc only matches the value abc.
 	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
 }
 
 // AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs and AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput values.
@@ -7234,6 +7262,8 @@ type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs struct {
 	// Examples:
 	// * abc only matches the value abc.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
 }
 
 func (AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs) ElementType() reflect.Type {
@@ -7320,6 +7350,11 @@ func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) Exact() pul
 	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
 type AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) ElementType() reflect.Type {
@@ -7356,6 +7391,518 @@ func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) Exact() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResource struct {
+	// An IAM service account to match against the source service account of the VM sending the request.
+	// Structure is documented below.
+	IamServiceAccount *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount `pulumi:"iamServiceAccount"`
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+	// Structure is documented below.
+	TagValueIdSet *AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet `pulumi:"tagValueIdSet"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceResourceInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceResourceArgs and AuthzPolicyNetworkRuleFromNotSourceResourceOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceResourceInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceResourceArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourceResourceInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceOutput() AuthzPolicyNetworkRuleFromNotSourceResourceOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceArgs struct {
+	// An IAM service account to match against the source service account of the VM sending the request.
+	// Structure is documented below.
+	IamServiceAccount AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrInput `pulumi:"iamServiceAccount"`
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+	// Structure is documented below.
+	TagValueIdSet AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrInput `pulumi:"tagValueIdSet"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceOutput() AuthzPolicyNetworkRuleFromNotSourceResourceOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceOutput)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceResourceArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceResourceArray and AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceResourceArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceResourceArray{ AuthzPolicyNetworkRuleFromNotSourceResourceArgs{...} }
+type AuthzPolicyNetworkRuleFromNotSourceResourceArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput() AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceArray []AuthzPolicyNetworkRuleFromNotSourceResourceInput
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSourceResource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceArray) ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput() AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceArray) ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceOutput() AuthzPolicyNetworkRuleFromNotSourceResourceOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceOutput {
+	return o
+}
+
+// An IAM service account to match against the source service account of the VM sending the request.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceOutput) IamServiceAccount() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResource) *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount {
+		return v.IamServiceAccount
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput)
+}
+
+// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceOutput) TagValueIdSet() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResource) *AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet {
+		return v.TagValueIdSet
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromNotSourceResource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput() AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromNotSourceResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromNotSourceResource {
+		return vs[0].([]AuthzPolicyNetworkRuleFromNotSourceResource)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs and AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput).ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs, AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtr and AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput
+}
+
+type authzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrType AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs
+
+func AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtr(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrInput {
+	return (*authzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrType) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrType) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput)
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) Elem() AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount
+		return ret
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput)
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Contains
+	}).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Suffix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet struct {
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+	// Limited to 5 matches.
+	Ids []string `pulumi:"ids"`
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs and AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetInput` via:
+//
+//	AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs{...}
+type AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs struct {
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+	// Limited to 5 matches.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput).ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs, AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtr and AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput
+	ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput
+}
+
+type authzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrType AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs
+
+func AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtr(v *AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrInput {
+	return (*authzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrType) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrType) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet) *AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput)
+}
+
+// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+// Limited to 5 matches.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput) ToAuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput) Elem() AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet) AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet
+		return ret
+	}).(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput)
+}
+
+// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+// Limited to 5 matches.
+func (o AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
 type AuthzPolicyNetworkRuleFromSource struct {
 	// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
 	// Structure is documented below.
@@ -7364,6 +7911,10 @@ type AuthzPolicyNetworkRuleFromSource struct {
 	// Limited to 5 principals.
 	// Structure is documented below.
 	Principals []AuthzPolicyNetworkRuleFromSourcePrincipal `pulumi:"principals"`
+	// A list of resources to match against the resource of the source VM of a request.
+	// Limited to 5 resources.
+	// Structure is documented below.
+	Resources []AuthzPolicyNetworkRuleFromSourceResource `pulumi:"resources"`
 }
 
 // AuthzPolicyNetworkRuleFromSourceInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceArgs and AuthzPolicyNetworkRuleFromSourceOutput values.
@@ -7385,6 +7936,10 @@ type AuthzPolicyNetworkRuleFromSourceArgs struct {
 	// Limited to 5 principals.
 	// Structure is documented below.
 	Principals AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput `pulumi:"principals"`
+	// A list of resources to match against the resource of the source VM of a request.
+	// Limited to 5 resources.
+	// Structure is documented below.
+	Resources AuthzPolicyNetworkRuleFromSourceResourceArrayInput `pulumi:"resources"`
 }
 
 func (AuthzPolicyNetworkRuleFromSourceArgs) ElementType() reflect.Type {
@@ -7451,6 +8006,15 @@ func (o AuthzPolicyNetworkRuleFromSourceOutput) Principals() AuthzPolicyNetworkR
 	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSource) []AuthzPolicyNetworkRuleFromSourcePrincipal {
 		return v.Principals
 	}).(AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput)
+}
+
+// A list of resources to match against the resource of the source VM of a request.
+// Limited to 5 resources.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromSourceOutput) Resources() AuthzPolicyNetworkRuleFromSourceResourceArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSource) []AuthzPolicyNetworkRuleFromSourceResource {
+		return v.Resources
+	}).(AuthzPolicyNetworkRuleFromSourceResourceArrayOutput)
 }
 
 type AuthzPolicyNetworkRuleFromSourceArrayOutput struct{ *pulumi.OutputState }
@@ -7704,6 +8268,8 @@ type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal struct {
 	// Examples:
 	// * abc only matches the value abc.
 	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
 }
 
 // AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalInput is an input type that accepts AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs and AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput values.
@@ -7722,6 +8288,8 @@ type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs struct {
 	// Examples:
 	// * abc only matches the value abc.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
 }
 
 func (AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs) ElementType() reflect.Type {
@@ -7808,6 +8376,11 @@ func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) Exact() pulumi
 	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) *string { return v.Exact }).(pulumi.StringPtrOutput)
 }
 
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
 type AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) ElementType() reflect.Type {
@@ -7844,7 +8417,522 @@ func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) Exact() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourcePrincipalPrincipal) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResource struct {
+	// An IAM service account to match against the source service account of the VM sending the request.
+	// Structure is documented below.
+	IamServiceAccount *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount `pulumi:"iamServiceAccount"`
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+	// Structure is documented below.
+	TagValueIdSet *AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet `pulumi:"tagValueIdSet"`
+}
+
+// AuthzPolicyNetworkRuleFromSourceResourceInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceResourceArgs and AuthzPolicyNetworkRuleFromSourceResourceOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceResourceInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceResourceArgs{...}
+type AuthzPolicyNetworkRuleFromSourceResourceInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceResourceOutput() AuthzPolicyNetworkRuleFromSourceResourceOutput
+	ToAuthzPolicyNetworkRuleFromSourceResourceOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceResourceOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceArgs struct {
+	// An IAM service account to match against the source service account of the VM sending the request.
+	// Structure is documented below.
+	IamServiceAccount AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrInput `pulumi:"iamServiceAccount"`
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+	// Structure is documented below.
+	TagValueIdSet AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrInput `pulumi:"tagValueIdSet"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourceResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceArgs) ToAuthzPolicyNetworkRuleFromSourceResourceOutput() AuthzPolicyNetworkRuleFromSourceResourceOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceArgs) ToAuthzPolicyNetworkRuleFromSourceResourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceOutput)
+}
+
+// AuthzPolicyNetworkRuleFromSourceResourceArrayInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceResourceArray and AuthzPolicyNetworkRuleFromSourceResourceArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceResourceArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceResourceArray{ AuthzPolicyNetworkRuleFromSourceResourceArgs{...} }
+type AuthzPolicyNetworkRuleFromSourceResourceArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutput() AuthzPolicyNetworkRuleFromSourceResourceArrayOutput
+	ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceResourceArrayOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceArray []AuthzPolicyNetworkRuleFromSourceResourceInput
+
+func (AuthzPolicyNetworkRuleFromSourceResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSourceResource)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceArray) ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutput() AuthzPolicyNetworkRuleFromSourceResourceArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceArray) ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceOutput) ToAuthzPolicyNetworkRuleFromSourceResourceOutput() AuthzPolicyNetworkRuleFromSourceResourceOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceOutput) ToAuthzPolicyNetworkRuleFromSourceResourceOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceOutput {
+	return o
+}
+
+// An IAM service account to match against the source service account of the VM sending the request.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromSourceResourceOutput) IamServiceAccount() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResource) *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount {
+		return v.IamServiceAccount
+	}).(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput)
+}
+
+// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleFromSourceResourceOutput) TagValueIdSet() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResource) *AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet {
+		return v.TagValueIdSet
+	}).(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleFromSourceResource)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceArrayOutput) ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutput() AuthzPolicyNetworkRuleFromSourceResourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceArrayOutput) ToAuthzPolicyNetworkRuleFromSourceResourceArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleFromSourceResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleFromSourceResource {
+		return vs[0].([]AuthzPolicyNetworkRuleFromSourceResource)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleFromSourceResourceOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs and AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs{...}
+type AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput
+	ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput).ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs, AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtr and AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput
+	ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput
+}
+
+type authzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrType AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs
+
+func AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtr(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrInput {
+	return (*authzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrType) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrType) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput)
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) ToAuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) Elem() AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount
+		return ret
+	}).(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput)
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Contains
+	}).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Suffix
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet struct {
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+	// Limited to 5 matches.
+	Ids []string `pulumi:"ids"`
+}
+
+// AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs and AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetInput` via:
+//
+//	AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs{...}
+type AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput
+	ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs struct {
+	// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+	// Limited to 5 matches.
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+}
+
+func (AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput)
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput).ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(ctx)
+}
+
+// AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrInput is an input type that accepts AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs, AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtr and AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrInput` via:
+//
+//	        AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput
+	ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput
+}
+
+type authzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrType AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs
+
+func AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtr(v *AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrInput {
+	return (*authzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrType)(v)
+}
+
+func (*authzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (i *authzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrType) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return i.ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(context.Background())
+}
+
+func (i *authzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrType) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return o.ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(context.Background())
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet) *AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet {
+		return &v
+	}).(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput)
+}
+
+// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+// Limited to 5 matches.
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput) ToAuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput) Elem() AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet) AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet {
+		if v != nil {
+			return *v
+		}
+		var ret AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet
+		return ret
+	}).(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput)
+}
+
+// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+// Limited to 5 matches.
+func (o AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ids
+	}).(pulumi.StringArrayOutput)
+}
+
 type AuthzPolicyNetworkRuleTo struct {
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+	// Structure is documented below.
+	NotOperations []AuthzPolicyNetworkRuleToNotOperation `pulumi:"notOperations"`
 	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 	// Structure is documented below.
 	Operations []AuthzPolicyNetworkRuleToOperation `pulumi:"operations"`
@@ -7862,6 +8950,9 @@ type AuthzPolicyNetworkRuleToInput interface {
 }
 
 type AuthzPolicyNetworkRuleToArgs struct {
+	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+	// Structure is documented below.
+	NotOperations AuthzPolicyNetworkRuleToNotOperationArrayInput `pulumi:"notOperations"`
 	// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 	// Structure is documented below.
 	Operations AuthzPolicyNetworkRuleToOperationArrayInput `pulumi:"operations"`
@@ -7946,6 +9037,12 @@ func (o AuthzPolicyNetworkRuleToOutput) ToAuthzPolicyNetworkRuleToPtrOutputWithC
 
 // Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 // Structure is documented below.
+func (o AuthzPolicyNetworkRuleToOutput) NotOperations() AuthzPolicyNetworkRuleToNotOperationArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleTo) []AuthzPolicyNetworkRuleToNotOperation { return v.NotOperations }).(AuthzPolicyNetworkRuleToNotOperationArrayOutput)
+}
+
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+// Structure is documented below.
 func (o AuthzPolicyNetworkRuleToOutput) Operations() AuthzPolicyNetworkRuleToOperationArrayOutput {
 	return o.ApplyT(func(v AuthzPolicyNetworkRuleTo) []AuthzPolicyNetworkRuleToOperation { return v.Operations }).(AuthzPolicyNetworkRuleToOperationArrayOutput)
 }
@@ -7976,6 +9073,17 @@ func (o AuthzPolicyNetworkRuleToPtrOutput) Elem() AuthzPolicyNetworkRuleToOutput
 
 // Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
 // Structure is documented below.
+func (o AuthzPolicyNetworkRuleToPtrOutput) NotOperations() AuthzPolicyNetworkRuleToNotOperationArrayOutput {
+	return o.ApplyT(func(v *AuthzPolicyNetworkRuleTo) []AuthzPolicyNetworkRuleToNotOperation {
+		if v == nil {
+			return nil
+		}
+		return v.NotOperations
+	}).(AuthzPolicyNetworkRuleToNotOperationArrayOutput)
+}
+
+// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+// Structure is documented below.
 func (o AuthzPolicyNetworkRuleToPtrOutput) Operations() AuthzPolicyNetworkRuleToOperationArrayOutput {
 	return o.ApplyT(func(v *AuthzPolicyNetworkRuleTo) []AuthzPolicyNetworkRuleToOperation {
 		if v == nil {
@@ -7983,6 +9091,260 @@ func (o AuthzPolicyNetworkRuleToPtrOutput) Operations() AuthzPolicyNetworkRuleTo
 		}
 		return v.Operations
 	}).(AuthzPolicyNetworkRuleToOperationArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToNotOperation struct {
+	// Structure is documented below.
+	Snis []AuthzPolicyNetworkRuleToNotOperationSni `pulumi:"snis"`
+}
+
+// AuthzPolicyNetworkRuleToNotOperationInput is an input type that accepts AuthzPolicyNetworkRuleToNotOperationArgs and AuthzPolicyNetworkRuleToNotOperationOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToNotOperationInput` via:
+//
+//	AuthzPolicyNetworkRuleToNotOperationArgs{...}
+type AuthzPolicyNetworkRuleToNotOperationInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToNotOperationOutput() AuthzPolicyNetworkRuleToNotOperationOutput
+	ToAuthzPolicyNetworkRuleToNotOperationOutputWithContext(context.Context) AuthzPolicyNetworkRuleToNotOperationOutput
+}
+
+type AuthzPolicyNetworkRuleToNotOperationArgs struct {
+	// Structure is documented below.
+	Snis AuthzPolicyNetworkRuleToNotOperationSniArrayInput `pulumi:"snis"`
+}
+
+func (AuthzPolicyNetworkRuleToNotOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperation)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationArgs) ToAuthzPolicyNetworkRuleToNotOperationOutput() AuthzPolicyNetworkRuleToNotOperationOutput {
+	return i.ToAuthzPolicyNetworkRuleToNotOperationOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationArgs) ToAuthzPolicyNetworkRuleToNotOperationOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToNotOperationOutput)
+}
+
+// AuthzPolicyNetworkRuleToNotOperationArrayInput is an input type that accepts AuthzPolicyNetworkRuleToNotOperationArray and AuthzPolicyNetworkRuleToNotOperationArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToNotOperationArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleToNotOperationArray{ AuthzPolicyNetworkRuleToNotOperationArgs{...} }
+type AuthzPolicyNetworkRuleToNotOperationArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToNotOperationArrayOutput() AuthzPolicyNetworkRuleToNotOperationArrayOutput
+	ToAuthzPolicyNetworkRuleToNotOperationArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleToNotOperationArrayOutput
+}
+
+type AuthzPolicyNetworkRuleToNotOperationArray []AuthzPolicyNetworkRuleToNotOperationInput
+
+func (AuthzPolicyNetworkRuleToNotOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToNotOperation)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationArray) ToAuthzPolicyNetworkRuleToNotOperationArrayOutput() AuthzPolicyNetworkRuleToNotOperationArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleToNotOperationArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationArray) ToAuthzPolicyNetworkRuleToNotOperationArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToNotOperationArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToNotOperationOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToNotOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperation)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationOutput) ToAuthzPolicyNetworkRuleToNotOperationOutput() AuthzPolicyNetworkRuleToNotOperationOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationOutput) ToAuthzPolicyNetworkRuleToNotOperationOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationOutput {
+	return o
+}
+
+// Structure is documented below.
+func (o AuthzPolicyNetworkRuleToNotOperationOutput) Snis() AuthzPolicyNetworkRuleToNotOperationSniArrayOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToNotOperation) []AuthzPolicyNetworkRuleToNotOperationSni { return v.Snis }).(AuthzPolicyNetworkRuleToNotOperationSniArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToNotOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToNotOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToNotOperation)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationArrayOutput) ToAuthzPolicyNetworkRuleToNotOperationArrayOutput() AuthzPolicyNetworkRuleToNotOperationArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationArrayOutput) ToAuthzPolicyNetworkRuleToNotOperationArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleToNotOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleToNotOperation {
+		return vs[0].([]AuthzPolicyNetworkRuleToNotOperation)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleToNotOperationOutput)
+}
+
+type AuthzPolicyNetworkRuleToNotOperationSni struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
+}
+
+// AuthzPolicyNetworkRuleToNotOperationSniInput is an input type that accepts AuthzPolicyNetworkRuleToNotOperationSniArgs and AuthzPolicyNetworkRuleToNotOperationSniOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToNotOperationSniInput` via:
+//
+//	AuthzPolicyNetworkRuleToNotOperationSniArgs{...}
+type AuthzPolicyNetworkRuleToNotOperationSniInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToNotOperationSniOutput() AuthzPolicyNetworkRuleToNotOperationSniOutput
+	ToAuthzPolicyNetworkRuleToNotOperationSniOutputWithContext(context.Context) AuthzPolicyNetworkRuleToNotOperationSniOutput
+}
+
+type AuthzPolicyNetworkRuleToNotOperationSniArgs struct {
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (AuthzPolicyNetworkRuleToNotOperationSniArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperationSni)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationSniArgs) ToAuthzPolicyNetworkRuleToNotOperationSniOutput() AuthzPolicyNetworkRuleToNotOperationSniOutput {
+	return i.ToAuthzPolicyNetworkRuleToNotOperationSniOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationSniArgs) ToAuthzPolicyNetworkRuleToNotOperationSniOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationSniOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToNotOperationSniOutput)
+}
+
+// AuthzPolicyNetworkRuleToNotOperationSniArrayInput is an input type that accepts AuthzPolicyNetworkRuleToNotOperationSniArray and AuthzPolicyNetworkRuleToNotOperationSniArrayOutput values.
+// You can construct a concrete instance of `AuthzPolicyNetworkRuleToNotOperationSniArrayInput` via:
+//
+//	AuthzPolicyNetworkRuleToNotOperationSniArray{ AuthzPolicyNetworkRuleToNotOperationSniArgs{...} }
+type AuthzPolicyNetworkRuleToNotOperationSniArrayInput interface {
+	pulumi.Input
+
+	ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutput() AuthzPolicyNetworkRuleToNotOperationSniArrayOutput
+	ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutputWithContext(context.Context) AuthzPolicyNetworkRuleToNotOperationSniArrayOutput
+}
+
+type AuthzPolicyNetworkRuleToNotOperationSniArray []AuthzPolicyNetworkRuleToNotOperationSniInput
+
+func (AuthzPolicyNetworkRuleToNotOperationSniArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToNotOperationSni)(nil)).Elem()
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationSniArray) ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutput() AuthzPolicyNetworkRuleToNotOperationSniArrayOutput {
+	return i.ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutputWithContext(context.Background())
+}
+
+func (i AuthzPolicyNetworkRuleToNotOperationSniArray) ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationSniArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthzPolicyNetworkRuleToNotOperationSniArrayOutput)
+}
+
+type AuthzPolicyNetworkRuleToNotOperationSniOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToNotOperationSniOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperationSni)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) ToAuthzPolicyNetworkRuleToNotOperationSniOutput() AuthzPolicyNetworkRuleToNotOperationSniOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) ToAuthzPolicyNetworkRuleToNotOperationSniOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationSniOutput {
+	return o
+}
+
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToNotOperationSni) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToNotOperationSni) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToNotOperationSni) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToNotOperationSni) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyNetworkRuleToNotOperationSniOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToNotOperationSni) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type AuthzPolicyNetworkRuleToNotOperationSniArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthzPolicyNetworkRuleToNotOperationSniArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthzPolicyNetworkRuleToNotOperationSni)(nil)).Elem()
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationSniArrayOutput) ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutput() AuthzPolicyNetworkRuleToNotOperationSniArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationSniArrayOutput) ToAuthzPolicyNetworkRuleToNotOperationSniArrayOutputWithContext(ctx context.Context) AuthzPolicyNetworkRuleToNotOperationSniArrayOutput {
+	return o
+}
+
+func (o AuthzPolicyNetworkRuleToNotOperationSniArrayOutput) Index(i pulumi.IntInput) AuthzPolicyNetworkRuleToNotOperationSniOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthzPolicyNetworkRuleToNotOperationSni {
+		return vs[0].([]AuthzPolicyNetworkRuleToNotOperationSni)[vs[1].(int)]
+	}).(AuthzPolicyNetworkRuleToNotOperationSniOutput)
 }
 
 type AuthzPolicyNetworkRuleToOperation struct {
@@ -8083,8 +9445,24 @@ func (o AuthzPolicyNetworkRuleToOperationArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type AuthzPolicyNetworkRuleToOperationSni struct {
-	// (Optional)
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains *string `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
 	Exact *string `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix *string `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix *string `pulumi:"suffix"`
 }
 
 // AuthzPolicyNetworkRuleToOperationSniInput is an input type that accepts AuthzPolicyNetworkRuleToOperationSniArgs and AuthzPolicyNetworkRuleToOperationSniOutput values.
@@ -8099,8 +9477,24 @@ type AuthzPolicyNetworkRuleToOperationSniInput interface {
 }
 
 type AuthzPolicyNetworkRuleToOperationSniArgs struct {
-	// (Optional)
+	// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc.def
+	Contains pulumi.StringPtrInput `pulumi:"contains"`
+	// The input string must match exactly the string specified here.
+	// Examples:
+	// * abc only matches the value abc.
 	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value abc.xyz
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+	// Examples:
+	// * abc matches the value xyz.abc
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
 }
 
 func (AuthzPolicyNetworkRuleToOperationSniArgs) ElementType() reflect.Type {
@@ -8154,9 +9548,37 @@ func (o AuthzPolicyNetworkRuleToOperationSniOutput) ToAuthzPolicyNetworkRuleToOp
 	return o
 }
 
-// (Optional)
+// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc.def
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) Contains() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperationSni) *string { return v.Contains }).(pulumi.StringPtrOutput)
+}
+
+// The input string must match exactly the string specified here.
+// Examples:
+// * abc only matches the value abc.
 func (o AuthzPolicyNetworkRuleToOperationSniOutput) Exact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperationSni) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperationSni) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value abc.xyz
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperationSni) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+// Examples:
+// * abc matches the value xyz.abc
+func (o AuthzPolicyNetworkRuleToOperationSniOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuthzPolicyNetworkRuleToOperationSni) *string { return v.Suffix }).(pulumi.StringPtrOutput)
 }
 
 type AuthzPolicyNetworkRuleToOperationSniArrayOutput struct{ *pulumi.OutputState }
@@ -9184,6 +10606,18 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 }
 
 type FirewallEndpointEndpointSettings struct {
+	// (Optional, Beta)
+	// The Palo Alto Networks content cloud region of the firewall endpoint,
+	// for example `US_CENTRAL` or `CANADA`. See
+	// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+	// for the list of supported regions.
+	ContentCloudRegion *string `pulumi:"contentCloudRegion"`
+	// (Optional, Beta)
+	// Whether to block HTTP partial responses for the firewall endpoint.
+	// When `true`, resumption of blocked malicious HTTP file downloads is
+	// blocked by the firewall. `false` provides maximum availability, `true`
+	// provides maximum security.
+	HttpPartialResponseBlocked *bool `pulumi:"httpPartialResponseBlocked"`
 	// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
 	JumboFramesEnabled *bool `pulumi:"jumboFramesEnabled"`
 }
@@ -9200,6 +10634,18 @@ type FirewallEndpointEndpointSettingsInput interface {
 }
 
 type FirewallEndpointEndpointSettingsArgs struct {
+	// (Optional, Beta)
+	// The Palo Alto Networks content cloud region of the firewall endpoint,
+	// for example `US_CENTRAL` or `CANADA`. See
+	// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+	// for the list of supported regions.
+	ContentCloudRegion pulumi.StringPtrInput `pulumi:"contentCloudRegion"`
+	// (Optional, Beta)
+	// Whether to block HTTP partial responses for the firewall endpoint.
+	// When `true`, resumption of blocked malicious HTTP file downloads is
+	// blocked by the firewall. `false` provides maximum availability, `true`
+	// provides maximum security.
+	HttpPartialResponseBlocked pulumi.BoolPtrInput `pulumi:"httpPartialResponseBlocked"`
 	// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
 	JumboFramesEnabled pulumi.BoolPtrInput `pulumi:"jumboFramesEnabled"`
 }
@@ -9281,6 +10727,24 @@ func (o FirewallEndpointEndpointSettingsOutput) ToFirewallEndpointEndpointSettin
 	}).(FirewallEndpointEndpointSettingsPtrOutput)
 }
 
+// (Optional, Beta)
+// The Palo Alto Networks content cloud region of the firewall endpoint,
+// for example `US_CENTRAL` or `CANADA`. See
+// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+// for the list of supported regions.
+func (o FirewallEndpointEndpointSettingsOutput) ContentCloudRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointEndpointSettings) *string { return v.ContentCloudRegion }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Whether to block HTTP partial responses for the firewall endpoint.
+// When `true`, resumption of blocked malicious HTTP file downloads is
+// blocked by the firewall. `false` provides maximum availability, `true`
+// provides maximum security.
+func (o FirewallEndpointEndpointSettingsOutput) HttpPartialResponseBlocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointEndpointSettings) *bool { return v.HttpPartialResponseBlocked }).(pulumi.BoolPtrOutput)
+}
+
 // Indicates whether Jumbo Frames are enabled for the firewall endpoint.
 func (o FirewallEndpointEndpointSettingsOutput) JumboFramesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallEndpointEndpointSettings) *bool { return v.JumboFramesEnabled }).(pulumi.BoolPtrOutput)
@@ -9310,6 +10774,34 @@ func (o FirewallEndpointEndpointSettingsPtrOutput) Elem() FirewallEndpointEndpoi
 	}).(FirewallEndpointEndpointSettingsOutput)
 }
 
+// (Optional, Beta)
+// The Palo Alto Networks content cloud region of the firewall endpoint,
+// for example `US_CENTRAL` or `CANADA`. See
+// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+// for the list of supported regions.
+func (o FirewallEndpointEndpointSettingsPtrOutput) ContentCloudRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointEndpointSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentCloudRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Whether to block HTTP partial responses for the firewall endpoint.
+// When `true`, resumption of blocked malicious HTTP file downloads is
+// blocked by the firewall. `false` provides maximum availability, `true`
+// provides maximum security.
+func (o FirewallEndpointEndpointSettingsPtrOutput) HttpPartialResponseBlocked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointEndpointSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPartialResponseBlocked
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Indicates whether Jumbo Frames are enabled for the firewall endpoint.
 func (o FirewallEndpointEndpointSettingsPtrOutput) JumboFramesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallEndpointEndpointSettings) *bool {
@@ -9318,6 +10810,474 @@ func (o FirewallEndpointEndpointSettingsPtrOutput) JumboFramesEnabled() pulumi.B
 		}
 		return v.JumboFramesEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type FirewallEndpointWildfireSettings struct {
+	// Indicates whether WildFire is enabled for the firewall endpoint.
+	// Enabling WildFire requires accepting the WildFire end-user license
+	// agreement (EULA) for the endpoint's billing project; see
+	// [Configure WildFire](https://docs.cloud.google.com/firewall/docs/configure-wildfire).
+	Enabled *bool `pulumi:"enabled"`
+	// Settings for WildFire inline cloud analysis.
+	// Structure is documented below.
+	WildfireInlineCloudAnalysisSettings *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings `pulumi:"wildfireInlineCloudAnalysisSettings"`
+	// The duration for which the firewall endpoint waits for a real-time
+	// signature lookup response from the WildFire cloud before taking the
+	// configured timeout action (1ms to 5000ms, default 1000ms).
+	// A duration in seconds with up to nine fractional digits, ending with 's'.
+	// Example: "1s".
+	WildfireRealtimeLookupDuration *string `pulumi:"wildfireRealtimeLookupDuration"`
+	// The action to take when a WildFire real-time signature lookup times out.
+	// Possible values are: `ALLOW`, `DENY`.
+	WildfireRealtimeLookupTimeoutAction *string `pulumi:"wildfireRealtimeLookupTimeoutAction"`
+	// The WildFire region for the firewall endpoint, for example
+	// `UNITED_STATES` or `CANADA`. See
+	// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#wildfireregion)
+	// for the list of supported regions.
+	WildfireRegion *string `pulumi:"wildfireRegion"`
+}
+
+// FirewallEndpointWildfireSettingsInput is an input type that accepts FirewallEndpointWildfireSettingsArgs and FirewallEndpointWildfireSettingsOutput values.
+// You can construct a concrete instance of `FirewallEndpointWildfireSettingsInput` via:
+//
+//	FirewallEndpointWildfireSettingsArgs{...}
+type FirewallEndpointWildfireSettingsInput interface {
+	pulumi.Input
+
+	ToFirewallEndpointWildfireSettingsOutput() FirewallEndpointWildfireSettingsOutput
+	ToFirewallEndpointWildfireSettingsOutputWithContext(context.Context) FirewallEndpointWildfireSettingsOutput
+}
+
+type FirewallEndpointWildfireSettingsArgs struct {
+	// Indicates whether WildFire is enabled for the firewall endpoint.
+	// Enabling WildFire requires accepting the WildFire end-user license
+	// agreement (EULA) for the endpoint's billing project; see
+	// [Configure WildFire](https://docs.cloud.google.com/firewall/docs/configure-wildfire).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Settings for WildFire inline cloud analysis.
+	// Structure is documented below.
+	WildfireInlineCloudAnalysisSettings FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrInput `pulumi:"wildfireInlineCloudAnalysisSettings"`
+	// The duration for which the firewall endpoint waits for a real-time
+	// signature lookup response from the WildFire cloud before taking the
+	// configured timeout action (1ms to 5000ms, default 1000ms).
+	// A duration in seconds with up to nine fractional digits, ending with 's'.
+	// Example: "1s".
+	WildfireRealtimeLookupDuration pulumi.StringPtrInput `pulumi:"wildfireRealtimeLookupDuration"`
+	// The action to take when a WildFire real-time signature lookup times out.
+	// Possible values are: `ALLOW`, `DENY`.
+	WildfireRealtimeLookupTimeoutAction pulumi.StringPtrInput `pulumi:"wildfireRealtimeLookupTimeoutAction"`
+	// The WildFire region for the firewall endpoint, for example
+	// `UNITED_STATES` or `CANADA`. See
+	// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#wildfireregion)
+	// for the list of supported regions.
+	WildfireRegion pulumi.StringPtrInput `pulumi:"wildfireRegion"`
+}
+
+func (FirewallEndpointWildfireSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointWildfireSettings)(nil)).Elem()
+}
+
+func (i FirewallEndpointWildfireSettingsArgs) ToFirewallEndpointWildfireSettingsOutput() FirewallEndpointWildfireSettingsOutput {
+	return i.ToFirewallEndpointWildfireSettingsOutputWithContext(context.Background())
+}
+
+func (i FirewallEndpointWildfireSettingsArgs) ToFirewallEndpointWildfireSettingsOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointWildfireSettingsOutput)
+}
+
+func (i FirewallEndpointWildfireSettingsArgs) ToFirewallEndpointWildfireSettingsPtrOutput() FirewallEndpointWildfireSettingsPtrOutput {
+	return i.ToFirewallEndpointWildfireSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallEndpointWildfireSettingsArgs) ToFirewallEndpointWildfireSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointWildfireSettingsOutput).ToFirewallEndpointWildfireSettingsPtrOutputWithContext(ctx)
+}
+
+// FirewallEndpointWildfireSettingsPtrInput is an input type that accepts FirewallEndpointWildfireSettingsArgs, FirewallEndpointWildfireSettingsPtr and FirewallEndpointWildfireSettingsPtrOutput values.
+// You can construct a concrete instance of `FirewallEndpointWildfireSettingsPtrInput` via:
+//
+//	        FirewallEndpointWildfireSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallEndpointWildfireSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFirewallEndpointWildfireSettingsPtrOutput() FirewallEndpointWildfireSettingsPtrOutput
+	ToFirewallEndpointWildfireSettingsPtrOutputWithContext(context.Context) FirewallEndpointWildfireSettingsPtrOutput
+}
+
+type firewallEndpointWildfireSettingsPtrType FirewallEndpointWildfireSettingsArgs
+
+func FirewallEndpointWildfireSettingsPtr(v *FirewallEndpointWildfireSettingsArgs) FirewallEndpointWildfireSettingsPtrInput {
+	return (*firewallEndpointWildfireSettingsPtrType)(v)
+}
+
+func (*firewallEndpointWildfireSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallEndpointWildfireSettings)(nil)).Elem()
+}
+
+func (i *firewallEndpointWildfireSettingsPtrType) ToFirewallEndpointWildfireSettingsPtrOutput() FirewallEndpointWildfireSettingsPtrOutput {
+	return i.ToFirewallEndpointWildfireSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallEndpointWildfireSettingsPtrType) ToFirewallEndpointWildfireSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointWildfireSettingsPtrOutput)
+}
+
+type FirewallEndpointWildfireSettingsOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointWildfireSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointWildfireSettings)(nil)).Elem()
+}
+
+func (o FirewallEndpointWildfireSettingsOutput) ToFirewallEndpointWildfireSettingsOutput() FirewallEndpointWildfireSettingsOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsOutput) ToFirewallEndpointWildfireSettingsOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsOutput) ToFirewallEndpointWildfireSettingsPtrOutput() FirewallEndpointWildfireSettingsPtrOutput {
+	return o.ToFirewallEndpointWildfireSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallEndpointWildfireSettingsOutput) ToFirewallEndpointWildfireSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallEndpointWildfireSettings) *FirewallEndpointWildfireSettings {
+		return &v
+	}).(FirewallEndpointWildfireSettingsPtrOutput)
+}
+
+// Indicates whether WildFire is enabled for the firewall endpoint.
+// Enabling WildFire requires accepting the WildFire end-user license
+// agreement (EULA) for the endpoint's billing project; see
+// [Configure WildFire](https://docs.cloud.google.com/firewall/docs/configure-wildfire).
+func (o FirewallEndpointWildfireSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Settings for WildFire inline cloud analysis.
+// Structure is documented below.
+func (o FirewallEndpointWildfireSettingsOutput) WildfireInlineCloudAnalysisSettings() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettings) *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
+		return v.WildfireInlineCloudAnalysisSettings
+	}).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput)
+}
+
+// The duration for which the firewall endpoint waits for a real-time
+// signature lookup response from the WildFire cloud before taking the
+// configured timeout action (1ms to 5000ms, default 1000ms).
+// A duration in seconds with up to nine fractional digits, ending with 's'.
+// Example: "1s".
+func (o FirewallEndpointWildfireSettingsOutput) WildfireRealtimeLookupDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettings) *string { return v.WildfireRealtimeLookupDuration }).(pulumi.StringPtrOutput)
+}
+
+// The action to take when a WildFire real-time signature lookup times out.
+// Possible values are: `ALLOW`, `DENY`.
+func (o FirewallEndpointWildfireSettingsOutput) WildfireRealtimeLookupTimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettings) *string { return v.WildfireRealtimeLookupTimeoutAction }).(pulumi.StringPtrOutput)
+}
+
+// The WildFire region for the firewall endpoint, for example
+// `UNITED_STATES` or `CANADA`. See
+// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#wildfireregion)
+// for the list of supported regions.
+func (o FirewallEndpointWildfireSettingsOutput) WildfireRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettings) *string { return v.WildfireRegion }).(pulumi.StringPtrOutput)
+}
+
+type FirewallEndpointWildfireSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointWildfireSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallEndpointWildfireSettings)(nil)).Elem()
+}
+
+func (o FirewallEndpointWildfireSettingsPtrOutput) ToFirewallEndpointWildfireSettingsPtrOutput() FirewallEndpointWildfireSettingsPtrOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsPtrOutput) ToFirewallEndpointWildfireSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsPtrOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsPtrOutput) Elem() FirewallEndpointWildfireSettingsOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettings) FirewallEndpointWildfireSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallEndpointWildfireSettings
+		return ret
+	}).(FirewallEndpointWildfireSettingsOutput)
+}
+
+// Indicates whether WildFire is enabled for the firewall endpoint.
+// Enabling WildFire requires accepting the WildFire end-user license
+// agreement (EULA) for the endpoint's billing project; see
+// [Configure WildFire](https://docs.cloud.google.com/firewall/docs/configure-wildfire).
+func (o FirewallEndpointWildfireSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Settings for WildFire inline cloud analysis.
+// Structure is documented below.
+func (o FirewallEndpointWildfireSettingsPtrOutput) WildfireInlineCloudAnalysisSettings() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettings) *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireInlineCloudAnalysisSettings
+	}).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput)
+}
+
+// The duration for which the firewall endpoint waits for a real-time
+// signature lookup response from the WildFire cloud before taking the
+// configured timeout action (1ms to 5000ms, default 1000ms).
+// A duration in seconds with up to nine fractional digits, ending with 's'.
+// Example: "1s".
+func (o FirewallEndpointWildfireSettingsPtrOutput) WildfireRealtimeLookupDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireRealtimeLookupDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The action to take when a WildFire real-time signature lookup times out.
+// Possible values are: `ALLOW`, `DENY`.
+func (o FirewallEndpointWildfireSettingsPtrOutput) WildfireRealtimeLookupTimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireRealtimeLookupTimeoutAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The WildFire region for the firewall endpoint, for example
+// `UNITED_STATES` or `CANADA`. See
+// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#wildfireregion)
+// for the list of supported regions.
+func (o FirewallEndpointWildfireSettingsPtrOutput) WildfireRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WildfireRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings struct {
+	// The maximum duration for which the firewall endpoint holds a file
+	// while waiting for an inline cloud analysis verdict before taking
+	// the configured timeout action (1ms to 240000ms, default 30000ms).
+	// A duration in seconds with up to nine fractional digits, ending with 's'.
+	// Example: "30s".
+	MaxAnalysisDuration *string `pulumi:"maxAnalysisDuration"`
+	// Indicates whether logging is disabled when a WildFire inline cloud
+	// analysis submission times out.
+	SubmissionTimeoutLoggingDisabled *bool `pulumi:"submissionTimeoutLoggingDisabled"`
+	// The action to take when WildFire inline cloud analysis times out.
+	// Possible values are: `ALLOW`, `DENY`.
+	TimeoutAction *string `pulumi:"timeoutAction"`
+}
+
+// FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsInput is an input type that accepts FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs and FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput values.
+// You can construct a concrete instance of `FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsInput` via:
+//
+//	FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs{...}
+type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsInput interface {
+	pulumi.Input
+
+	ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput
+	ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutputWithContext(context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput
+}
+
+type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs struct {
+	// The maximum duration for which the firewall endpoint holds a file
+	// while waiting for an inline cloud analysis verdict before taking
+	// the configured timeout action (1ms to 240000ms, default 30000ms).
+	// A duration in seconds with up to nine fractional digits, ending with 's'.
+	// Example: "30s".
+	MaxAnalysisDuration pulumi.StringPtrInput `pulumi:"maxAnalysisDuration"`
+	// Indicates whether logging is disabled when a WildFire inline cloud
+	// analysis submission times out.
+	SubmissionTimeoutLoggingDisabled pulumi.BoolPtrInput `pulumi:"submissionTimeoutLoggingDisabled"`
+	// The action to take when WildFire inline cloud analysis times out.
+	// Possible values are: `ALLOW`, `DENY`.
+	TimeoutAction pulumi.StringPtrInput `pulumi:"timeoutAction"`
+}
+
+func (FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings)(nil)).Elem()
+}
+
+func (i FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput {
+	return i.ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutputWithContext(context.Background())
+}
+
+func (i FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput)
+}
+
+func (i FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return i.ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput).ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(ctx)
+}
+
+// FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrInput is an input type that accepts FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs, FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtr and FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput values.
+// You can construct a concrete instance of `FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrInput` via:
+//
+//	        FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput
+	ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput
+}
+
+type firewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrType FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs
+
+func FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtr(v *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrInput {
+	return (*firewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrType)(v)
+}
+
+func (*firewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings)(nil)).Elem()
+}
+
+func (i *firewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrType) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return i.ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrType) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput)
+}
+
+type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings)(nil)).Elem()
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return o.ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
+		return &v
+	}).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput)
+}
+
+// The maximum duration for which the firewall endpoint holds a file
+// while waiting for an inline cloud analysis verdict before taking
+// the configured timeout action (1ms to 240000ms, default 30000ms).
+// A duration in seconds with up to nine fractional digits, ending with 's'.
+// Example: "30s".
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) MaxAnalysisDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *string {
+		return v.MaxAnalysisDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether logging is disabled when a WildFire inline cloud
+// analysis submission times out.
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) SubmissionTimeoutLoggingDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *bool {
+		return v.SubmissionTimeoutLoggingDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The action to take when WildFire inline cloud analysis times out.
+// Possible values are: `ALLOW`, `DENY`.
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput) TimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *string {
+		return v.TimeoutAction
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings)(nil)).Elem()
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) ToFirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutputWithContext(ctx context.Context) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput {
+	return o
+}
+
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) Elem() FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings
+		return ret
+	}).(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput)
+}
+
+// The maximum duration for which the firewall endpoint holds a file
+// while waiting for an inline cloud analysis verdict before taking
+// the configured timeout action (1ms to 240000ms, default 30000ms).
+// A duration in seconds with up to nine fractional digits, ending with 's'.
+// Example: "30s".
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) MaxAnalysisDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAnalysisDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether logging is disabled when a WildFire inline cloud
+// analysis submission times out.
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) SubmissionTimeoutLoggingDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SubmissionTimeoutLoggingDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The action to take when WildFire inline cloud analysis times out.
+// Possible values are: `ALLOW`, `DENY`.
+func (o FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput) TimeoutAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutAction
+	}).(pulumi.StringPtrOutput)
 }
 
 type InterceptDeploymentGroupConnectedEndpointGroup struct {
@@ -15734,6 +17694,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceIpBlockInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceIpBlockArgs{})
@@ -15742,8 +17708,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToInput)(nil)).Elem(), AuthzPolicyNetworkRuleToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToPtrInput)(nil)).Elem(), AuthzPolicyNetworkRuleToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperationInput)(nil)).Elem(), AuthzPolicyNetworkRuleToNotOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperationArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleToNotOperationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperationSniInput)(nil)).Elem(), AuthzPolicyNetworkRuleToNotOperationSniArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToNotOperationSniArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleToNotOperationSniArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationArrayInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthzPolicyNetworkRuleToOperationSniInput)(nil)).Elem(), AuthzPolicyNetworkRuleToOperationSniArgs{})
@@ -15764,6 +17740,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointEndpointSettingsInput)(nil)).Elem(), FirewallEndpointEndpointSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointEndpointSettingsPtrInput)(nil)).Elem(), FirewallEndpointEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointWildfireSettingsInput)(nil)).Elem(), FirewallEndpointWildfireSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointWildfireSettingsPtrInput)(nil)).Elem(), FirewallEndpointWildfireSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsInput)(nil)).Elem(), FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrInput)(nil)).Elem(), FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupConnectedEndpointGroupInput)(nil)).Elem(), InterceptDeploymentGroupConnectedEndpointGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupConnectedEndpointGroupArrayInput)(nil)).Elem(), InterceptDeploymentGroupConnectedEndpointGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterceptDeploymentGroupLocationInput)(nil)).Elem(), InterceptDeploymentGroupLocationArgs{})
@@ -15948,6 +17928,12 @@ func init() {
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipalPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceResourceOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceResourceArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSetPtrOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceIpBlockOutput{})
@@ -15956,8 +17942,18 @@ func init() {
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceResourceOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceResourceArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccountPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSetPtrOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToPtrOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToNotOperationOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToNotOperationArrayOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToNotOperationSniOutput{})
+	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToNotOperationSniArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationArrayOutput{})
 	pulumi.RegisterOutputType(AuthzPolicyNetworkRuleToOperationSniOutput{})
@@ -15978,6 +17974,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput{})
 	pulumi.RegisterOutputType(FirewallEndpointEndpointSettingsOutput{})
 	pulumi.RegisterOutputType(FirewallEndpointEndpointSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointWildfireSettingsOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointWildfireSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsOutput{})
+	pulumi.RegisterOutputType(FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupConnectedEndpointGroupOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupConnectedEndpointGroupArrayOutput{})
 	pulumi.RegisterOutputType(InterceptDeploymentGroupLocationOutput{})

@@ -17,6 +17,42 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var disk = Gcp.Compute.GetRegionDisk.Invoke(new()
+        ///     {
+        ///         Name = "persistent-regional-disk",
+        ///         Project = "example",
+        ///         Region = "us-central1",
+        ///         Type = "pd-ssd",
+        ///         PhysicalBlockSizeBytes = 4096,
+        ///         ReplicaZones = new[]
+        ///         {
+        ///             "us-central1-a",
+        ///             "us-central1-f",
+        ///         },
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         AttachedDisks = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceAttachedDiskArgs
+        ///             {
+        ///                 Source = diskGoogleComputeDisk.SelfLink,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetRegionDiskResult> InvokeAsync(GetRegionDiskArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionDiskResult>("gcp:compute/getRegionDisk:getRegionDisk", args ?? new GetRegionDiskArgs(), options.WithDefaults());
@@ -27,6 +63,42 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var disk = Gcp.Compute.GetRegionDisk.Invoke(new()
+        ///     {
+        ///         Name = "persistent-regional-disk",
+        ///         Project = "example",
+        ///         Region = "us-central1",
+        ///         Type = "pd-ssd",
+        ///         PhysicalBlockSizeBytes = 4096,
+        ///         ReplicaZones = new[]
+        ///         {
+        ///             "us-central1-a",
+        ///             "us-central1-f",
+        ///         },
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         AttachedDisks = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceAttachedDiskArgs
+        ///             {
+        ///                 Source = diskGoogleComputeDisk.SelfLink,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRegionDiskResult> Invoke(GetRegionDiskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("gcp:compute/getRegionDisk:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithDefaults());
@@ -37,6 +109,42 @@ namespace Pulumi.Gcp.Compute
         /// [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var disk = Gcp.Compute.GetRegionDisk.Invoke(new()
+        ///     {
+        ///         Name = "persistent-regional-disk",
+        ///         Project = "example",
+        ///         Region = "us-central1",
+        ///         Type = "pd-ssd",
+        ///         PhysicalBlockSizeBytes = 4096,
+        ///         ReplicaZones = new[]
+        ///         {
+        ///             "us-central1-a",
+        ///             "us-central1-f",
+        ///         },
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         AttachedDisks = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceAttachedDiskArgs
+        ///             {
+        ///                 Source = diskGoogleComputeDisk.SelfLink,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRegionDiskResult> Invoke(GetRegionDiskInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("gcp:compute/getRegionDisk:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithDefaults());

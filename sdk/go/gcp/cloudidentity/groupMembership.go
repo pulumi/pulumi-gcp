@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
-//				Group: group.ID().ToIDOutput().ToStringOutput(),
+//				Group: group.ID(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 //					Id: child_group.GroupKey.Id(),
 //				},
@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
-//				Group: group.ID().ToIDOutput().ToStringOutput(),
+//				Group: group.ID(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 //					Id: pulumi.String("cloud_identity_user@example.com"),
 //				},

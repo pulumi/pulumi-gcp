@@ -720,14 +720,18 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The range of external IPv6 addresses that are owned by this subnetwork.
+     * The range of external IPv6 addresses that are owned by this subnetwork. It&#39;s immutable and can only be
+     * specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+     * field at any other time forces recreation of the subnetwork.
      * 
      */
     @Export(name="externalIpv6Prefix", refs={String.class}, tree="[0]")
     private Output<String> externalIpv6Prefix;
 
     /**
-     * @return The range of external IPv6 addresses that are owned by this subnetwork.
+     * @return The range of external IPv6 addresses that are owned by this subnetwork. It&#39;s immutable and can only be
+     * specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+     * field at any other time forces recreation of the subnetwork.
      * 
      */
     public Output<String> externalIpv6Prefix() {
@@ -806,7 +810,10 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
      * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * mode. It&#39;s immutable and can only be specified during creation or the first
+     * time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+     * any other time forces recreation of the subnetwork.
+     * Use one of the following formats to specify a sub-PDP when creating
      * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -821,7 +828,10 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * @return Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
      * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-     * mode. Use one of the following formats to specify a sub-PDP when creating
+     * mode. It&#39;s immutable and can only be specified during creation or the first
+     * time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+     * any other time forces recreation of the subnetwork.
+     * Use one of the following formats to specify a sub-PDP when creating
      * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -836,7 +846,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-     * cannot enable direct path.
+     * cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
@@ -846,7 +856,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * @return The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-     * cannot enable direct path.
+     * cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */

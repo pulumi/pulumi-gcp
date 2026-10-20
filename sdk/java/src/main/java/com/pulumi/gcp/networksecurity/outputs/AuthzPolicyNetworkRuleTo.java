@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleToNotOperation;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleToOperation;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +17,23 @@ public final class AuthzPolicyNetworkRuleTo {
      * Structure is documented below.
      * 
      */
+    private @Nullable List<AuthzPolicyNetworkRuleToNotOperation> notOperations;
+    /**
+     * @return Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<AuthzPolicyNetworkRuleToOperation> operations;
 
     private AuthzPolicyNetworkRuleTo() {}
+    /**
+     * @return Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+     * Structure is documented below.
+     * 
+     */
+    public List<AuthzPolicyNetworkRuleToNotOperation> notOperations() {
+        return this.notOperations == null ? List.of() : this.notOperations;
+    }
     /**
      * @return Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
      * Structure is documented below.
@@ -37,13 +52,24 @@ public final class AuthzPolicyNetworkRuleTo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AuthzPolicyNetworkRuleToNotOperation> notOperations;
         private @Nullable List<AuthzPolicyNetworkRuleToOperation> operations;
         public Builder() {}
         public Builder(AuthzPolicyNetworkRuleTo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.notOperations = defaults.notOperations;
     	      this.operations = defaults.operations;
         }
 
+        @CustomType.Setter
+        public Builder notOperations(@Nullable List<AuthzPolicyNetworkRuleToNotOperation> notOperations) {
+
+            this.notOperations = notOperations;
+            return this;
+        }
+        public Builder notOperations(AuthzPolicyNetworkRuleToNotOperation... notOperations) {
+            return notOperations(List.of(notOperations));
+        }
         @CustomType.Setter
         public Builder operations(@Nullable List<AuthzPolicyNetworkRuleToOperation> operations) {
 
@@ -55,6 +81,7 @@ public final class AuthzPolicyNetworkRuleTo {
         }
         public AuthzPolicyNetworkRuleTo build() {
             final var _resultValue = new AuthzPolicyNetworkRuleTo();
+            _resultValue.notOperations = notOperations;
             _resultValue.operations = operations;
             return _resultValue;
         }

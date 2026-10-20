@@ -15,14 +15,24 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// (Optional, Beta)
+        /// Dynamic Forwarding Proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BackendServiceDynamicForwardingForwardProxy? ForwardProxy;
+        /// <summary>
+        /// (Optional, Beta)
         /// IP:PORT based dynamic forwarding configuration.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BackendServiceDynamicForwardingIpPortSelection? IpPortSelection;
 
         [OutputConstructor]
-        private BackendServiceDynamicForwarding(Outputs.BackendServiceDynamicForwardingIpPortSelection? ipPortSelection)
+        private BackendServiceDynamicForwarding(
+            Outputs.BackendServiceDynamicForwardingForwardProxy? forwardProxy,
+
+            Outputs.BackendServiceDynamicForwardingIpPortSelection? ipPortSelection)
         {
+            ForwardProxy = forwardProxy;
             IpPortSelection = ipPortSelection;
         }
     }

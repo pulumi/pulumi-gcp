@@ -15,6 +15,18 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AutoProtectionPolicyBackupPlanDetailArgs',
+    'AutoProtectionPolicyBackupPlanDetailArgsDict',
+    'AutoProtectionPolicyBindingSummaryArgs',
+    'AutoProtectionPolicyBindingSummaryArgsDict',
+    'AutoProtectionPolicyCriteriaArgs',
+    'AutoProtectionPolicyCriteriaArgsDict',
+    'AutoProtectionPolicyCriteriaMatchingConditionArgs',
+    'AutoProtectionPolicyCriteriaMatchingConditionArgsDict',
+    'AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs',
+    'AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgsDict',
+    'AutoProtectionPolicyPolicyEvaluationSummaryArgs',
+    'AutoProtectionPolicyPolicyEvaluationSummaryArgsDict',
     'BackupPlanAssociationRulesConfigInfoArgs',
     'BackupPlanAssociationRulesConfigInfoArgsDict',
     'BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs',
@@ -114,6 +126,288 @@ __all__ = [
     'RestoreWorkloadTargetResourceGcpResourceArgs',
     'RestoreWorkloadTargetResourceGcpResourceArgsDict',
 ]
+
+class AutoProtectionPolicyBackupPlanDetailArgsDict(TypedDict):
+    backup_plan: pulumi.Input[_builtins.str]
+    """
+    The resource name of the backup plan to apply to the matching resources, in the format
+    `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+    must be in the same location as the auto protection policy.
+    """
+    resource_type: pulumi.Input[_builtins.str]
+    """
+    The type of resource that this policy automatically protects, for example
+    `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyBackupPlanDetailArgs:
+    def __init__(__self__, *,
+                 backup_plan: pulumi.Input[_builtins.str],
+                 resource_type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] backup_plan: The resource name of the backup plan to apply to the matching resources, in the format
+               `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+               must be in the same location as the auto protection policy.
+        :param pulumi.Input[_builtins.str] resource_type: The type of resource that this policy automatically protects, for example
+               `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+        """
+        pulumi.set(__self__, "backup_plan", backup_plan)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter(name="backupPlan")
+    def backup_plan(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the backup plan to apply to the matching resources, in the format
+        `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+        must be in the same location as the auto protection policy.
+        """
+        return pulumi.get(self, "backup_plan")
+
+    @backup_plan.setter
+    def backup_plan(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "backup_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of resource that this policy automatically protects, for example
+        `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_type", value)
+
+
+class AutoProtectionPolicyBindingSummaryArgsDict(TypedDict):
+    project_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The total number of projects protected by the policy.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyBindingSummaryArgs:
+    def __init__(__self__, *,
+                 project_count: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] project_count: (Output)
+               The total number of projects protected by the policy.
+        """
+        if project_count is not None:
+            pulumi.set(__self__, "project_count", project_count)
+
+    @_builtins.property
+    @pulumi.getter(name="projectCount")
+    def project_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The total number of projects protected by the policy.
+        """
+        return pulumi.get(self, "project_count")
+
+    @project_count.setter
+    def project_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project_count", value)
+
+
+class AutoProtectionPolicyCriteriaArgsDict(TypedDict):
+    matching_conditions: pulumi.Input[Sequence[pulumi.Input['AutoProtectionPolicyCriteriaMatchingConditionArgsDict']]]
+    """
+    A list of matching conditions that a resource must meet to be protected by the policy.
+    Currently, only one condition is supported.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyCriteriaArgs:
+    def __init__(__self__, *,
+                 matching_conditions: pulumi.Input[Sequence[pulumi.Input['AutoProtectionPolicyCriteriaMatchingConditionArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AutoProtectionPolicyCriteriaMatchingConditionArgs']]] matching_conditions: A list of matching conditions that a resource must meet to be protected by the policy.
+               Currently, only one condition is supported.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "matching_conditions", matching_conditions)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingConditions")
+    def matching_conditions(self) -> pulumi.Input[Sequence[pulumi.Input['AutoProtectionPolicyCriteriaMatchingConditionArgs']]]:
+        """
+        A list of matching conditions that a resource must meet to be protected by the policy.
+        Currently, only one condition is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matching_conditions")
+
+    @matching_conditions.setter
+    def matching_conditions(self, value: pulumi.Input[Sequence[pulumi.Input['AutoProtectionPolicyCriteriaMatchingConditionArgs']]]):
+        pulumi.set(self, "matching_conditions", value)
+
+
+class AutoProtectionPolicyCriteriaMatchingConditionArgsDict(TypedDict):
+    label_condition: NotRequired[pulumi.Input[Optional['AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgsDict']]]
+    """
+    A condition that matches resources based on their labels.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyCriteriaMatchingConditionArgs:
+    def __init__(__self__, *,
+                 label_condition: pulumi.Input[Optional['AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs']] = None):
+        """
+        :param pulumi.Input['AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs'] label_condition: A condition that matches resources based on their labels.
+               Structure is documented below.
+        """
+        if label_condition is not None:
+            pulumi.set(__self__, "label_condition", label_condition)
+
+    @_builtins.property
+    @pulumi.getter(name="labelCondition")
+    def label_condition(self) -> pulumi.Input[Optional['AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs']]:
+        """
+        A condition that matches resources based on their labels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "label_condition")
+
+    @label_condition.setter
+    def label_condition(self, value: pulumi.Input[Optional['AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs']]):
+        pulumi.set(self, "label_condition", value)
+
+
+class AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    The key of the label to match.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The values of the label to match. A resource matches the condition if its label
+    value is equal to any of the listed values. Currently, only one value is supported.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the label to match.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The values of the label to match. A resource matches the condition if its label
+               value is equal to any of the listed values. Currently, only one value is supported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The key of the label to match.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The values of the label to match. A resource matches the condition if its label
+        value is equal to any of the listed values. Currently, only one value is supported.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "values", value)
+
+
+class AutoProtectionPolicyPolicyEvaluationSummaryArgsDict(TypedDict):
+    failed_resource_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The number of matching resources whose protection failed during the last job run.
+    """
+    matching_resource_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The number of resources that currently match the policy's criteria.
+    """
+    protected_resource_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The number of matching resources that are successfully protected.
+    """
+
+@pulumi.input_type
+class AutoProtectionPolicyPolicyEvaluationSummaryArgs:
+    def __init__(__self__, *,
+                 failed_resource_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching_resource_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_resource_count: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] failed_resource_count: (Output)
+               The number of matching resources whose protection failed during the last job run.
+        :param pulumi.Input[_builtins.str] matching_resource_count: (Output)
+               The number of resources that currently match the policy's criteria.
+        :param pulumi.Input[_builtins.str] protected_resource_count: (Output)
+               The number of matching resources that are successfully protected.
+        """
+        if failed_resource_count is not None:
+            pulumi.set(__self__, "failed_resource_count", failed_resource_count)
+        if matching_resource_count is not None:
+            pulumi.set(__self__, "matching_resource_count", matching_resource_count)
+        if protected_resource_count is not None:
+            pulumi.set(__self__, "protected_resource_count", protected_resource_count)
+
+    @_builtins.property
+    @pulumi.getter(name="failedResourceCount")
+    def failed_resource_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The number of matching resources whose protection failed during the last job run.
+        """
+        return pulumi.get(self, "failed_resource_count")
+
+    @failed_resource_count.setter
+    def failed_resource_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "failed_resource_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchingResourceCount")
+    def matching_resource_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The number of resources that currently match the policy's criteria.
+        """
+        return pulumi.get(self, "matching_resource_count")
+
+    @matching_resource_count.setter
+    def matching_resource_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "matching_resource_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protectedResourceCount")
+    def protected_resource_count(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The number of matching resources that are successfully protected.
+        """
+        return pulumi.get(self, "protected_resource_count")
+
+    @protected_resource_count.setter
+    def protected_resource_count(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protected_resource_count", value)
+
 
 class BackupPlanAssociationRulesConfigInfoArgsDict(TypedDict):
     last_backup_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgsDict']]]]]

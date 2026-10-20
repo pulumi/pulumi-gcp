@@ -148,6 +148,14 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.NodePoolAutoscaling?> Autoscaling { get; private set; } = null!;
 
         /// <summary>
+        /// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+        /// 
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Output("bestEffortProvisioning")]
+        public Output<Outputs.NodePoolBestEffortProvisioning?> BestEffortProvisioning { get; private set; } = null!;
+
+        /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `Location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// 
         /// - - -
@@ -162,8 +170,6 @@ namespace Pulumi.Gcp.Container
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
-        /// 
-        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -245,7 +251,7 @@ namespace Pulumi.Gcp.Container
         /// Resulting name for a `NamePrefix` &lt;= 14 characters:
         /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         /// Resulting name for a `NamePrefix` 15 - 31 characters:
-        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
+        /// `NamePrefix` + 9 random lowercase alphanumeric characters
         /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
@@ -386,6 +392,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
         /// <summary>
+        /// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+        /// 
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Input("bestEffortProvisioning")]
+        public Input<Inputs.NodePoolBestEffortProvisioningArgs>? BestEffortProvisioning { get; set; }
+
+        /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `Location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// 
         /// - - -
@@ -400,8 +414,6 @@ namespace Pulumi.Gcp.Container
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
-        /// 
-        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -477,7 +489,7 @@ namespace Pulumi.Gcp.Container
         /// Resulting name for a `NamePrefix` &lt;= 14 characters:
         /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         /// Resulting name for a `NamePrefix` 15 - 31 characters:
-        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
+        /// `NamePrefix` + 9 random lowercase alphanumeric characters
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -589,6 +601,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.NodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
         /// <summary>
+        /// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+        /// 
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Input("bestEffortProvisioning")]
+        public Input<Inputs.NodePoolBestEffortProvisioningGetArgs>? BestEffortProvisioning { get; set; }
+
+        /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `Location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
         /// 
         /// - - -
@@ -603,8 +623,6 @@ namespace Pulumi.Gcp.Container
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
-        /// 
-        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -704,7 +722,7 @@ namespace Pulumi.Gcp.Container
         /// Resulting name for a `NamePrefix` &lt;= 14 characters:
         /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         /// Resulting name for a `NamePrefix` 15 - 31 characters:
-        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
+        /// `NamePrefix` + 9 random lowercase alphanumeric characters
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }

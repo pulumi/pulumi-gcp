@@ -272,6 +272,26 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         [Input("timeZone")]
         public Input<Inputs.CloudVmClusterPropertiesTimeZoneArgs>? TimeZone { get; set; }
 
+        /// <summary>
+        /// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        /// Possible values:
+        /// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+        /// VM_BACKUP_STORAGE_TYPE_LOCAL
+        /// VM_BACKUP_STORAGE_TYPE_EXASCALE
+        /// </summary>
+        [Input("vmBackupStorageType")]
+        public Input<string>? VmBackupStorageType { get; set; }
+
+        /// <summary>
+        /// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+        /// Possible values:
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+        /// </summary>
+        [Input("vmFileSystemStorageType")]
+        public Input<string>? VmFileSystemStorageType { get; set; }
+
         public CloudVmClusterPropertiesArgs()
         {
         }

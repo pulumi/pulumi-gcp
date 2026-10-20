@@ -212,6 +212,33 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     * 
+     */
+    @Import(name="functionalType")
+    private @Nullable Output<String> functionalType;
+
+    /**
+     * @return (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     * 
+     */
+    public Optional<Output<String>> functionalType() {
+        return Optional.ofNullable(this.functionalType);
+    }
+
+    /**
      * Used to enable/disable IAP for the cloud-run service.
      * 
      */
@@ -466,6 +493,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.functionalType = $.functionalType;
         this.iapEnabled = $.iapEnabled;
         this.ingress = $.ingress;
         this.invokerIamDisabled = $.invokerIamDisabled;
@@ -755,6 +783,39 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+         * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(@Nullable Output<String> functionalType) {
+            $.functionalType = functionalType;
+            return this;
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+         * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(String functionalType) {
+            return functionalType(Output.of(functionalType));
         }
 
         /**

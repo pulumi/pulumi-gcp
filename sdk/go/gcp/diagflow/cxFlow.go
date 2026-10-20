@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				Description: pulumi.String("Test Flow"),
 //				NluSettings: &diagflow.CxFlowNluSettingsArgs{
@@ -184,7 +184,7 @@ import (
 //				return err
 //			}
 //			myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -361,7 +361,7 @@ import (
 //			}
 //			json6 := string(tmpJSON6)
 //			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				Description: pulumi.String("Test Flow"),
 //				NluSettings: &diagflow.CxFlowNluSettingsArgs{
@@ -628,7 +628,7 @@ import (
 //								},
 //							},
 //						},
-//						Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
+//						Webhook:                myWebhook.ID(),
 //						ReturnPartialResponses: pulumi.Bool(true),
 //						Tag:                    pulumi.String("some-tag"),
 //						SetParameterActions: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{

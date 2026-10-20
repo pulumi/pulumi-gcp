@@ -196,7 +196,7 @@ import (
 //					PeripheralsConfig: &dataproc.BatchEnvironmentConfigPeripheralsConfigArgs{
 //						MetastoreService: ms.Name,
 //						SparkHistoryServerConfig: &dataproc.BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{
-//							DataprocCluster: basic.ID().ToIDOutput().ToStringOutput(),
+//							DataprocCluster: basic.ID(),
 //						},
 //					},
 //				},

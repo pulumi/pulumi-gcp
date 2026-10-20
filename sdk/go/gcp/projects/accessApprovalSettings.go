@@ -81,7 +81,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("crypto-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member:      pulumi.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail),
 //			})
@@ -105,7 +105,7 @@ import (
 //				return err
 //			}
 //			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKey: cryptoKey.ID(),
 //			}, nil)
 //			_, err = projects.NewAccessApprovalSettings(ctx, "project_access_approval", &projects.AccessApprovalSettingsArgs{
 //				ProjectId:        pulumi.String("my-project-name"),

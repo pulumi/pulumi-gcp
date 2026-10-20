@@ -67,7 +67,7 @@ import (
 //			}
 //			secureTagValue1, err := tags.NewTagValue(ctx, "secure_tag_value_1", &tags.TagValueArgs{
 //				Description: pulumi.String("Tag value"),
-//				Parent:      secureTagKey1.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      secureTagKey1.ID(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ import (
 //				Name:                    pulumi.String("spg"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
-//				ThreatPreventionProfile: securityProfile1.ID().ToIDOutput().ToStringOutput(),
+//				ThreatPreventionProfile: securityProfile1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -118,7 +118,7 @@ import (
 //								pulumi.String("iplist-tor-exit-nodes"),
 //							},
 //							DestAddressGroups: pulumi.StringArray{
-//								addressGroup1.ID().ToIDOutput().ToStringOutput(),
+//								addressGroup1.ID(),
 //							},
 //							Layer4Configs: compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -132,7 +132,7 @@ import (
 //						},
 //						TargetSecureTags: compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTagArray{
 //							&compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs{
-//								Name: secureTagValue1.ID().ToIDOutput().ToStringOutput(),
+//								Name: secureTagValue1.ID(),
 //							},
 //						},
 //					},
@@ -160,11 +160,11 @@ import (
 //								pulumi.String("iplist-public-clouds"),
 //							},
 //							SrcAddressGroups: pulumi.StringArray{
-//								addressGroup1.ID().ToIDOutput().ToStringOutput(),
+//								addressGroup1.ID(),
 //							},
 //							SrcSecureTags: compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
 //								&compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
-//									Name: secureTagValue1.ID().ToIDOutput().ToStringOutput(),
+//									Name: secureTagValue1.ID(),
 //								},
 //							},
 //							Layer4Configs: compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{

@@ -23,6 +23,7 @@ class NodePoolArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[_builtins.str],
                  autoscaling: pulumi.Input[Optional['NodePoolAutoscalingArgs']] = None,
+                 best_effort_provisioning: pulumi.Input[Optional['NodePoolBestEffortProvisioningArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -50,14 +51,15 @@ class NodePoolArgs:
                ***
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input['NodePoolBestEffortProvisioningArgs'] best_effort_provisioning: Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -87,7 +89,7 @@ class NodePoolArgs:
                Resulting name for a `name_prefix` <= 14 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 15 - 31 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -121,6 +123,8 @@ class NodePoolArgs:
         pulumi.set(__self__, "cluster", cluster)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if best_effort_provisioning is not None:
+            pulumi.set(__self__, "best_effort_provisioning", best_effort_provisioning)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if ignore_node_count_changes is not None:
@@ -188,6 +192,20 @@ class NodePoolArgs:
         pulumi.set(self, "autoscaling", value)
 
     @_builtins.property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> pulumi.Input[Optional['NodePoolBestEffortProvisioningArgs']]:
+        """
+        Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "best_effort_provisioning")
+
+    @best_effort_provisioning.setter
+    def best_effort_provisioning(self, value: pulumi.Input[Optional['NodePoolBestEffortProvisioningArgs']]):
+        pulumi.set(self, "best_effort_provisioning", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -197,8 +215,6 @@ class NodePoolArgs:
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -316,7 +332,7 @@ class NodePoolArgs:
         Resulting name for a `name_prefix` <= 14 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 15 - 31 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 
@@ -468,6 +484,7 @@ class NodePoolArgs:
 class _NodePoolState:
     def __init__(__self__, *,
                  autoscaling: pulumi.Input[Optional['NodePoolAutoscalingArgs']] = None,
+                 best_effort_provisioning: pulumi.Input[Optional['NodePoolBestEffortProvisioningArgs']] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -496,6 +513,9 @@ class _NodePoolState:
 
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input['NodePoolBestEffortProvisioningArgs'] best_effort_provisioning: Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                ***
@@ -505,8 +525,6 @@ class _NodePoolState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -538,7 +556,7 @@ class _NodePoolState:
                Resulting name for a `name_prefix` <= 14 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 15 - 31 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input['NodePoolNetworkConfigArgs'] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -571,6 +589,8 @@ class _NodePoolState:
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if best_effort_provisioning is not None:
+            pulumi.set(__self__, "best_effort_provisioning", best_effort_provisioning)
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
         if deletion_policy is not None:
@@ -632,6 +652,20 @@ class _NodePoolState:
         pulumi.set(self, "autoscaling", value)
 
     @_builtins.property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> pulumi.Input[Optional['NodePoolBestEffortProvisioningArgs']]:
+        """
+        Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "best_effort_provisioning")
+
+    @best_effort_provisioning.setter
+    def best_effort_provisioning(self, value: pulumi.Input[Optional['NodePoolBestEffortProvisioningArgs']]):
+        pulumi.set(self, "best_effort_provisioning", value)
+
+    @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -655,8 +689,6 @@ class _NodePoolState:
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -798,7 +830,7 @@ class _NodePoolState:
         Resulting name for a `name_prefix` <= 14 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 15 - 31 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 
@@ -962,6 +994,7 @@ class NodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
+                 best_effort_provisioning: pulumi.Input[Optional[Union['NodePoolBestEffortProvisioningArgs', 'NodePoolBestEffortProvisioningArgsDict', 'outputs.NodePoolBestEffortProvisioning']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1069,6 +1102,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input[Union['NodePoolBestEffortProvisioningArgs', 'NodePoolBestEffortProvisioningArgsDict', 'outputs.NodePoolBestEffortProvisioning']] best_effort_provisioning: Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                ***
@@ -1078,8 +1114,6 @@ class NodePool(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -1109,7 +1143,7 @@ class NodePool(pulumi.CustomResource):
                Resulting name for a `name_prefix` <= 14 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 15 - 31 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -1244,6 +1278,7 @@ class NodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
+                 best_effort_provisioning: pulumi.Input[Optional[Union['NodePoolBestEffortProvisioningArgs', 'NodePoolBestEffortProvisioningArgsDict', 'outputs.NodePoolBestEffortProvisioning']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1274,6 +1309,7 @@ class NodePool(pulumi.CustomResource):
             __props__ = NodePoolArgs.__new__(NodePoolArgs)
 
             __props__.__dict__["autoscaling"] = autoscaling
+            __props__.__dict__["best_effort_provisioning"] = best_effort_provisioning
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
@@ -1310,6 +1346,7 @@ class NodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling: pulumi.Input[Optional[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']]] = None,
+            best_effort_provisioning: pulumi.Input[Optional[Union['NodePoolBestEffortProvisioningArgs', 'NodePoolBestEffortProvisioningArgsDict', 'outputs.NodePoolBestEffortProvisioning']]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1342,6 +1379,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodePoolAutoscalingArgs', 'NodePoolAutoscalingArgsDict', 'outputs.NodePoolAutoscaling']] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
+        :param pulumi.Input[Union['NodePoolBestEffortProvisioningArgs', 'NodePoolBestEffortProvisioningArgsDict', 'outputs.NodePoolBestEffortProvisioning']] best_effort_provisioning: Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
                ***
@@ -1351,8 +1391,6 @@ class NodePool(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[_builtins.bool] ignore_node_count_changes: Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignore_changes = [node_count] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
         :param pulumi.Input[_builtins.int] initial_node_count: The initial number of nodes for the pool. In
                regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -1384,7 +1422,7 @@ class NodePool(pulumi.CustomResource):
                Resulting name for a `name_prefix` <= 14 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 15 - 31 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict', 'outputs.NodePoolNetworkConfig']] network_config: The network configuration of the pool. Such as
                configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
                documented below
@@ -1420,6 +1458,7 @@ class NodePool(pulumi.CustomResource):
         __props__ = _NodePoolState.__new__(_NodePoolState)
 
         __props__.__dict__["autoscaling"] = autoscaling
+        __props__.__dict__["best_effort_provisioning"] = best_effort_provisioning
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["ignore_node_count_changes"] = ignore_node_count_changes
@@ -1455,6 +1494,16 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "autoscaling")
 
     @_builtins.property
+    @pulumi.getter(name="bestEffortProvisioning")
+    def best_effort_provisioning(self) -> pulumi.Output[Optional['outputs.NodePoolBestEffortProvisioning']]:
+        """
+        Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "best_effort_provisioning")
+
+    @_builtins.property
     @pulumi.getter
     def cluster(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1474,8 +1523,6 @@ class NodePool(pulumi.CustomResource):
         When set to "ABANDON", the command will remove the resource from Terraform
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1577,7 +1624,7 @@ class NodePool(pulumi.CustomResource):
         Resulting name for a `name_prefix` <= 14 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 15 - 31 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 

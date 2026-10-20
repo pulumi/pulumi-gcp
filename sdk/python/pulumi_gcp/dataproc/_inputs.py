@@ -4843,6 +4843,10 @@ class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgsDict(Typed
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs:
@@ -4850,21 +4854,28 @@ class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs:
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -4880,6 +4891,7 @@ class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
@@ -4913,6 +4925,18 @@ class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs:
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
@@ -5189,7 +5213,7 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+    The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -5199,6 +5223,10 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
     """
     Indicates how much throughput to provision for the disk.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
@@ -5206,21 +5234,28 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk.
+        :param pulumi.Input[_builtins.str] type: The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -5236,9 +5271,10 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -5269,6 +5305,18 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -5668,6 +5716,10 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArg
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs:
@@ -5675,21 +5727,28 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArg
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -5705,6 +5764,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArg
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
@@ -5738,6 +5798,18 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArg
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
@@ -6044,6 +6116,10 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
@@ -6051,21 +6127,28 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
         :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -6081,6 +6164,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
@@ -6114,6 +6198,18 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -7247,7 +7343,7 @@ class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgsDict(Typed
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+    The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -7257,6 +7353,10 @@ class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgsDict(Typed
     """
     Indicates how much throughput to provision for the disk.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs:
@@ -7264,21 +7364,28 @@ class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs:
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk.
+        :param pulumi.Input[_builtins.str] type: The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -7294,9 +7401,10 @@ class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -7327,6 +7435,18 @@ class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs:
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
@@ -7603,7 +7723,7 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+    The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -7613,6 +7733,10 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
     """
     Indicates how much throughput to provision for the disk.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+    """
 
 @pulumi.input_type
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
@@ -7620,21 +7744,28 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk.
+        :param pulumi.Input[_builtins.str] type: The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -7650,9 +7781,10 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -7683,6 +7815,18 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -16246,7 +16390,8 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttache
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    (Optional, Deprecated)
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -16256,6 +16401,10 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttache
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs:
@@ -16263,21 +16412,29 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttache
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.str] disk_type: (Optional, Deprecated)
+               The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -16293,9 +16450,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttache
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        (Optional, Deprecated)
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -16326,6 +16485,18 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttache
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
@@ -16622,7 +16793,8 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibili
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    (Optional, Deprecated)
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -16632,6 +16804,10 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibili
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
@@ -16639,21 +16815,29 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibili
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.str] disk_type: (Optional, Deprecated)
+               The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -16669,9 +16853,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibili
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        (Optional, Deprecated)
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -16702,6 +16888,18 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibili
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -17264,7 +17462,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    (Optional, Deprecated)
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -17274,6 +17473,10 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs:
@@ -17281,21 +17484,29 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.str] disk_type: (Optional, Deprecated)
+               The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -17311,9 +17522,11 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        (Optional, Deprecated)
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -17344,6 +17557,18 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
@@ -17660,7 +17885,8 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstance
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    (Optional, Deprecated)
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -17670,6 +17896,10 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstance
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
@@ -17677,21 +17907,29 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstance
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.str] disk_type: (Optional, Deprecated)
+               The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -17707,9 +17945,11 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstance
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        (Optional, Deprecated)
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -17740,6 +17980,18 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstance
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -18772,7 +19024,8 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttache
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    (Optional, Deprecated)
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -18782,6 +19035,10 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttache
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs:
@@ -18789,21 +19046,29 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttache
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.str] disk_type: (Optional, Deprecated)
+               The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -18819,9 +19084,11 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttache
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        (Optional, Deprecated)
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -18852,6 +19119,18 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttache
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
@@ -19148,7 +19427,8 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibili
     """
     disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    (Optional, Deprecated)
+    The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -19158,6 +19438,10 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibili
     """
     Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
     """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+    """
 
 @pulumi.input_type
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs:
@@ -19165,21 +19449,29 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibili
                  disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
-                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None):
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the attached disk, specified in GB.
-        :param pulumi.Input[_builtins.str] disk_type: The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        :param pulumi.Input[_builtins.str] disk_type: (Optional, Deprecated)
+               The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         :param pulumi.Input[_builtins.int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.str] type: Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            warnings.warn("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""disk_type is deprecated: `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if provisioned_throughput is not None:
             pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
@@ -19195,9 +19487,11 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibili
 
     @_builtins.property
     @pulumi.getter(name="diskType")
+    @_utilities.deprecated("""`disk_type` is deprecated and will be removed in a future major release. Use `type` instead.""")
     def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        (Optional, Deprecated)
+        The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `disk_type` is deprecated and will be removed in a future major release. Use `type` instead.
         """
         return pulumi.get(self, "disk_type")
 
@@ -19228,6 +19522,18 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibili
     @provisioned_throughput.setter
     def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):

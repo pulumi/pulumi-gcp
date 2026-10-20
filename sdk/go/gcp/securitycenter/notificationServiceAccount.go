@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			sccPubsubPublisher, err := pubsub.NewTopicIAMMember(ctx, "scc_pubsub_publisher", &pubsub.TopicIAMMemberArgs{
-//				Topic:  sccNotifications.ID().ToIDOutput().ToStringOutput(),
+//				Topic:  sccNotifications.ID(),
 //				Role:   pulumi.String("roles/pubsub.publisher"),
 //				Member: sccSa.Member,
 //			})
@@ -63,7 +63,7 @@ import (
 //				ConfigId:     pulumi.String("my-config"),
 //				Organization: pulumi.String("1234567890"),
 //				Description:  pulumi.String("My custom SCC Finding Notification Configuration"),
-//				PubsubTopic:  sccNotifications.ID().ToIDOutput().ToStringOutput(),
+//				PubsubTopic:  sccNotifications.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				sccPubsubPublisher,
 //			}))

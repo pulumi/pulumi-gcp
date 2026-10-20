@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
         public readonly string ExpireTime;
+        public readonly string FunctionalType;
         public readonly string Generation;
         public readonly bool IapEnabled;
         /// <summary>
@@ -243,6 +244,8 @@ namespace Pulumi.Gcp.CloudRunV2
             string etag,
 
             string expireTime,
+
+            string functionalType,
 
             string generation,
 
@@ -318,6 +321,7 @@ namespace Pulumi.Gcp.CloudRunV2
             EffectiveLabels = effectiveLabels;
             Etag = etag;
             ExpireTime = expireTime;
+            FunctionalType = functionalType;
             Generation = generation;
             IapEnabled = iapEnabled;
             Id = id;

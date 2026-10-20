@@ -98,7 +98,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVpcAccessResult> VpcAccesses;
         /// <summary>
-        /// Workload identity settings for this Revision.
+        /// The Revision's workload identity settings. Used to assign an
+        /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
 

@@ -13,6 +13,26 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
     public sealed class FirewallEndpointEndpointSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// The Palo Alto Networks content cloud region of the firewall endpoint,
+        /// for example `US_CENTRAL` or `CANADA`. See
+        /// [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+        /// for the list of supported regions.
+        /// </summary>
+        [Input("contentCloudRegion")]
+        public Input<string>? ContentCloudRegion { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Whether to block HTTP partial responses for the firewall endpoint.
+        /// When `True`, resumption of blocked malicious HTTP file downloads is
+        /// blocked by the firewall. `False` provides maximum availability, `True`
+        /// provides maximum security.
+        /// </summary>
+        [Input("httpPartialResponseBlocked")]
+        public Input<bool>? HttpPartialResponseBlocked { get; set; }
+
+        /// <summary>
         /// Indicates whether Jumbo Frames are enabled for the firewall endpoint.
         /// </summary>
         [Input("jumboFramesEnabled")]

@@ -1208,6 +1208,75 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Agent Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         FunctionalType = "FUNCTIONAL_TYPE_AGENT",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///             WorkloadIdentityConfig = new Gcp.CloudRunV2.Inputs.ServiceTemplateWorkloadIdentityConfigArgs
+    ///             {
+    ///                 IdentityType = "IDENTITY_TYPE_AGENT_IDENTITY",
+    ///                 IdentityCertificateEnabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Service Mcp Server
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         FunctionalType = "FUNCTIONAL_TYPE_MCP_SERVER",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///             WorkloadIdentityConfig = new Gcp.CloudRunV2.Inputs.ServiceTemplateWorkloadIdentityConfigArgs
+    ///             {
+    ///                 IdentityType = "IDENTITY_TYPE_SERVICE_ACCOUNT",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -1354,6 +1423,18 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+        /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        /// Once set, this field cannot be changed or unset.
+        /// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+        /// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        /// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+        /// </summary>
+        [Output("functionalType")]
+        public Output<string> FunctionalType { get; private set; } = null!;
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -1682,6 +1763,18 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+        /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        /// Once set, this field cannot be changed or unset.
+        /// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+        /// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        /// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+        /// </summary>
+        [Input("functionalType")]
+        public Input<string>? FunctionalType { get; set; }
+
+        /// <summary>
         /// Used to enable/disable IAP for the cloud-run service.
         /// </summary>
         [Input("iapEnabled")]
@@ -1967,6 +2060,18 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+        /// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        /// Once set, this field cannot be changed or unset.
+        /// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+        /// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        /// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+        /// </summary>
+        [Input("functionalType")]
+        public Input<string>? FunctionalType { get; set; }
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.

@@ -842,6 +842,56 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Job Agent Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateWorkloadIdentityConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job("default", JobArgs.builder()
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .functionalType("FUNCTIONAL_TYPE_AGENT")
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
+ *                         .build())
+ *                     .workloadIdentityConfig(JobTemplateTemplateWorkloadIdentityConfigArgs.builder()
+ *                         .identityType("IDENTITY_TYPE_AGENT_IDENTITY")
+ *                         .identityCertificateEnabled(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1109,6 +1159,34 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<String> expireTime() {
         return this.expireTime;
+    }
+    /**
+     * (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     * 
+     */
+    @Export(name="functionalType", refs={String.class}, tree="[0]")
+    private Output<String> functionalType;
+
+    /**
+     * @return (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     * 
+     */
+    public Output<String> functionalType() {
+        return this.functionalType;
     }
     /**
      * A number that monotonically increases every time the user modifies the desired state.

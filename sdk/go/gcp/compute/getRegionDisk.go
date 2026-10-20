@@ -16,6 +16,48 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupRegionDisk(ctx, &compute.LookupRegionDiskArgs{
+//				Name:                   "persistent-regional-disk",
+//				Project:                pulumi.StringRef("example"),
+//				Region:                 pulumi.StringRef("us-central1"),
+//				Type:                   "pd-ssd",
+//				PhysicalBlockSizeBytes: 4096,
+//				ReplicaZones: []string{
+//					"us-central1-a",
+//					"us-central1-f",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
+//				AttachedDisks: compute.InstanceAttachedDiskArray{
+//					&compute.InstanceAttachedDiskArgs{
+//						Source: pulumi.Any(diskGoogleComputeDisk.SelfLink),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRegionDisk(ctx *pulumi.Context, args *LookupRegionDiskArgs, opts ...pulumi.InvokeOption) (*LookupRegionDiskResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionDiskResult

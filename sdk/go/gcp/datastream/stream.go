@@ -177,7 +177,7 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
 //					MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
 //						IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
 //							MysqlDatabases: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{
@@ -230,7 +230,7 @@ import (
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
 //					GcsDestinationConfig: &datastream.StreamDestinationConfigGcsDestinationConfigArgs{
 //						Path:                 pulumi.String("mydata"),
 //						FileRotationMb:       pulumi.Int(200),
@@ -321,7 +321,7 @@ import (
 //				StreamId:     pulumi.String("my-stream"),
 //				DesiredState: pulumi.String("RUNNING"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: source.ID(),
 //					PostgresqlSourceConfig: &datastream.StreamSourceConfigPostgresqlSourceConfigArgs{
 //						MaxConcurrentBackfillTasks: pulumi.Int(12),
 //						Publication:                pulumi.String("publication"),
@@ -363,7 +363,7 @@ import (
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destination.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						DataFreshness: pulumi.String("900s"),
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -445,7 +445,7 @@ import (
 //				StreamId:     pulumi.String("my-stream"),
 //				DesiredState: pulumi.String("RUNNING"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: source.ID(),
 //					OracleSourceConfig: &datastream.StreamSourceConfigOracleSourceConfigArgs{
 //						MaxConcurrentCdcTasks:      pulumi.Int(8),
 //						MaxConcurrentBackfillTasks: pulumi.Int(12),
@@ -487,7 +487,7 @@ import (
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destination.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						DataFreshness: pulumi.String("900s"),
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -618,7 +618,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				StreamId:    pulumi.String("stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: source.ID(),
 //					SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
 //						IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
 //							Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
@@ -636,7 +636,7 @@ import (
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destination.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						DataFreshness: pulumi.String("900s"),
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -749,7 +749,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				StreamId:    pulumi.String("stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: source.ID(),
 //					SqlServerSourceConfig: &datastream.StreamSourceConfigSqlServerSourceConfigArgs{
 //						IncludeObjects: &datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs{
 //							Schemas: datastream.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArray{
@@ -767,7 +767,7 @@ import (
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destination.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						DataFreshness: pulumi.String("900s"),
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -880,7 +880,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				StreamId:    pulumi.String("<%= ctx[:vars]['stream_id'] %>"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: source.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: source.ID(),
 //					MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
 //						IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
 //							Schemas: []map[string]interface{}{
@@ -898,7 +898,7 @@ import (
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destination.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destination.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						DataFreshness: pulumi.String("900s"),
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
@@ -1022,15 +1022,15 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				StreamId:    pulumi.String("postgres-bigquery"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
 //					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destinationConnectionProfile2.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destinationConnectionProfile2.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						DataFreshness: pulumi.String("900s"),
 //						SingleTargetDataset: &datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{
-//							DatasetId: postgres.ID().ToIDOutput().ToStringOutput(),
+//							DatasetId: postgres.ID(),
 //						},
 //					},
 //				},
@@ -1171,11 +1171,11 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("my stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
 //					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 //							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -1343,11 +1343,11 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("my stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
 //					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 //							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -1473,11 +1473,11 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("my stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
 //					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 //							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{
@@ -1632,11 +1632,11 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("My BLMT stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
-//					SourceConnectionProfile: sourceConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					SourceConnectionProfile: sourceConnectionProfile.ID(),
 //					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
-//					DestinationConnectionProfile: destinationConnectionProfile.ID().ToIDOutput().ToStringOutput(),
+//					DestinationConnectionProfile: destinationConnectionProfile.ID(),
 //					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
 //						SourceHierarchyDatasets: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs{
 //							DatasetTemplate: &datastream.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs{

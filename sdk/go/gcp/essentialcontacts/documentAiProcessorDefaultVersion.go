@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewDocumentAiProcessorDefaultVersion(ctx, "processor", &essentialcontacts.DocumentAiProcessorDefaultVersionArgs{
-//				Processor: processor.ID().ToIDOutput().ToStringOutput(),
+//				Processor: processor.ID(),
 //				Version: processor.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("%v/processorVersions/stable", id), nil
 //				}).(pulumi.StringOutput),

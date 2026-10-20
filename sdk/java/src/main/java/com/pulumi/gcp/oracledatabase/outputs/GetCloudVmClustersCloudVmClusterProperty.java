@@ -207,6 +207,24 @@ public final class GetCloudVmClustersCloudVmClusterProperty {
      * 
      */
     private List<GetCloudVmClustersCloudVmClusterPropertyTimeZone> timeZones;
+    /**
+     * @return Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+     * VM_BACKUP_STORAGE_TYPE_LOCAL
+     * VM_BACKUP_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    private String vmBackupStorageType;
+    /**
+     * @return Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+     * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+     * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    private String vmFileSystemStorageType;
 
     private GetCloudVmClustersCloudVmClusterProperty() {}
     /**
@@ -466,6 +484,28 @@ public final class GetCloudVmClustersCloudVmClusterProperty {
     public List<GetCloudVmClustersCloudVmClusterPropertyTimeZone> timeZones() {
         return this.timeZones;
     }
+    /**
+     * @return Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+     * VM_BACKUP_STORAGE_TYPE_LOCAL
+     * VM_BACKUP_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    public String vmBackupStorageType() {
+        return this.vmBackupStorageType;
+    }
+    /**
+     * @return Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+     * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+     * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    public String vmFileSystemStorageType() {
+        return this.vmFileSystemStorageType;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -509,6 +549,8 @@ public final class GetCloudVmClustersCloudVmClusterProperty {
         private Integer storageSizeGb;
         private String systemVersion;
         private List<GetCloudVmClustersCloudVmClusterPropertyTimeZone> timeZones;
+        private String vmBackupStorageType;
+        private String vmFileSystemStorageType;
         public Builder() {}
         public Builder(GetCloudVmClustersCloudVmClusterProperty defaults) {
     	      Objects.requireNonNull(defaults);
@@ -545,6 +587,8 @@ public final class GetCloudVmClustersCloudVmClusterProperty {
     	      this.storageSizeGb = defaults.storageSizeGb;
     	      this.systemVersion = defaults.systemVersion;
     	      this.timeZones = defaults.timeZones;
+    	      this.vmBackupStorageType = defaults.vmBackupStorageType;
+    	      this.vmFileSystemStorageType = defaults.vmFileSystemStorageType;
         }
 
         @CustomType.Setter
@@ -826,6 +870,22 @@ public final class GetCloudVmClustersCloudVmClusterProperty {
         public Builder timeZones(GetCloudVmClustersCloudVmClusterPropertyTimeZone... timeZones) {
             return timeZones(List.of(timeZones));
         }
+        @CustomType.Setter
+        public Builder vmBackupStorageType(String vmBackupStorageType) {
+            if (vmBackupStorageType == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmClusterProperty", "vmBackupStorageType");
+            }
+            this.vmBackupStorageType = vmBackupStorageType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vmFileSystemStorageType(String vmFileSystemStorageType) {
+            if (vmFileSystemStorageType == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmClusterProperty", "vmFileSystemStorageType");
+            }
+            this.vmFileSystemStorageType = vmFileSystemStorageType;
+            return this;
+        }
         public GetCloudVmClustersCloudVmClusterProperty build() {
             final var _resultValue = new GetCloudVmClustersCloudVmClusterProperty();
             _resultValue.clusterName = clusterName;
@@ -861,6 +921,8 @@ public final class GetCloudVmClustersCloudVmClusterProperty {
             _resultValue.storageSizeGb = storageSizeGb;
             _resultValue.systemVersion = systemVersion;
             _resultValue.timeZones = timeZones;
+            _resultValue.vmBackupStorageType = vmBackupStorageType;
+            _resultValue.vmFileSystemStorageType = vmFileSystemStorageType;
             return _resultValue;
         }
     }

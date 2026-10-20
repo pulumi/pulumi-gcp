@@ -23,15 +23,22 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AuthzPolicyNetworkRuleTo? To;
+        /// <summary>
+        /// CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+        /// </summary>
+        public readonly string? When;
 
         [OutputConstructor]
         private AuthzPolicyNetworkRule(
             Outputs.AuthzPolicyNetworkRuleFrom? from,
 
-            Outputs.AuthzPolicyNetworkRuleTo? to)
+            Outputs.AuthzPolicyNetworkRuleTo? to,
+
+            string? when)
         {
             From = from;
             To = to;
+            When = when;
         }
     }
 }

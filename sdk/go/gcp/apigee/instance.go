@@ -54,13 +54,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      apigeeNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -72,7 +72,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -82,7 +82,7 @@ import (
 //			_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:     pulumi.String("my-instance-name"),
 //				Location: pulumi.String("us-central1"),
-//				OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				OrgId:    apigeeOrg.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -124,13 +124,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(22),
-//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      apigeeNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -142,7 +142,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -152,7 +152,7 @@ import (
 //			_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:             pulumi.String("my-instance-name"),
 //				Location:         pulumi.String("us-central1"),
-//				OrgId:            apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				OrgId:            apigeeOrg.ID(),
 //				PeeringCidrRange: pulumi.String("SLASH_22"),
 //			})
 //			if err != nil {
@@ -195,13 +195,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(22),
-//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      apigeeNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -213,7 +213,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -223,7 +223,7 @@ import (
 //			_, err = apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:     pulumi.String("my-instance-name"),
 //				Location: pulumi.String("us-central1"),
-//				OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				OrgId:    apigeeOrg.ID(),
 //				IpRange:  pulumi.String("10.87.8.0/22"),
 //			})
 //			if err != nil {
@@ -268,13 +268,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      apigeeNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -292,7 +292,7 @@ import (
 //			}
 //			apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("apigee-key"),
-//				KeyRing: apigeeKeyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: apigeeKeyring.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -305,7 +305,7 @@ import (
 //				return err
 //			}
 //			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: apigeeKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      apigeeSa.Member,
 //			})
@@ -317,8 +317,8 @@ import (
 //				DisplayName:                      pulumi.String("apigee-org"),
 //				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
 //				ProjectId:                        pulumi.String(current.Project),
-//				AuthorizedNetwork:                apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
-//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork:                apigeeNetwork.ID(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //				apigeeSaKeyuser,
@@ -331,8 +331,8 @@ import (
 //				Location:              pulumi.String("us-central1"),
 //				Description:           pulumi.String("Auto-managed Apigee Runtime Instance"),
 //				DisplayName:           pulumi.String("my-instance-name"),
-//				OrgId:                 apigeeOrg.ID().ToIDOutput().ToStringOutput(),
-//				DiskEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
+//				OrgId:                 apigeeOrg.ID(),
+//				DiskEncryptionKeyName: apigeeKey.ID(),
 //			})
 //			if err != nil {
 //				return err

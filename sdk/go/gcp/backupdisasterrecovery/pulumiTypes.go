@@ -13,6 +13,754 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AutoProtectionPolicyBackupPlanDetail struct {
+	// The resource name of the backup plan to apply to the matching resources, in the format
+	// `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+	// must be in the same location as the auto protection policy.
+	BackupPlan string `pulumi:"backupPlan"`
+	// The type of resource that this policy automatically protects, for example
+	// `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// AutoProtectionPolicyBackupPlanDetailInput is an input type that accepts AutoProtectionPolicyBackupPlanDetailArgs and AutoProtectionPolicyBackupPlanDetailOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyBackupPlanDetailInput` via:
+//
+//	AutoProtectionPolicyBackupPlanDetailArgs{...}
+type AutoProtectionPolicyBackupPlanDetailInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyBackupPlanDetailOutput() AutoProtectionPolicyBackupPlanDetailOutput
+	ToAutoProtectionPolicyBackupPlanDetailOutputWithContext(context.Context) AutoProtectionPolicyBackupPlanDetailOutput
+}
+
+type AutoProtectionPolicyBackupPlanDetailArgs struct {
+	// The resource name of the backup plan to apply to the matching resources, in the format
+	// `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+	// must be in the same location as the auto protection policy.
+	BackupPlan pulumi.StringInput `pulumi:"backupPlan"`
+	// The type of resource that this policy automatically protects, for example
+	// `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (AutoProtectionPolicyBackupPlanDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyBackupPlanDetail)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyBackupPlanDetailArgs) ToAutoProtectionPolicyBackupPlanDetailOutput() AutoProtectionPolicyBackupPlanDetailOutput {
+	return i.ToAutoProtectionPolicyBackupPlanDetailOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyBackupPlanDetailArgs) ToAutoProtectionPolicyBackupPlanDetailOutputWithContext(ctx context.Context) AutoProtectionPolicyBackupPlanDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyBackupPlanDetailOutput)
+}
+
+// AutoProtectionPolicyBackupPlanDetailArrayInput is an input type that accepts AutoProtectionPolicyBackupPlanDetailArray and AutoProtectionPolicyBackupPlanDetailArrayOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyBackupPlanDetailArrayInput` via:
+//
+//	AutoProtectionPolicyBackupPlanDetailArray{ AutoProtectionPolicyBackupPlanDetailArgs{...} }
+type AutoProtectionPolicyBackupPlanDetailArrayInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyBackupPlanDetailArrayOutput() AutoProtectionPolicyBackupPlanDetailArrayOutput
+	ToAutoProtectionPolicyBackupPlanDetailArrayOutputWithContext(context.Context) AutoProtectionPolicyBackupPlanDetailArrayOutput
+}
+
+type AutoProtectionPolicyBackupPlanDetailArray []AutoProtectionPolicyBackupPlanDetailInput
+
+func (AutoProtectionPolicyBackupPlanDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyBackupPlanDetail)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyBackupPlanDetailArray) ToAutoProtectionPolicyBackupPlanDetailArrayOutput() AutoProtectionPolicyBackupPlanDetailArrayOutput {
+	return i.ToAutoProtectionPolicyBackupPlanDetailArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyBackupPlanDetailArray) ToAutoProtectionPolicyBackupPlanDetailArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyBackupPlanDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyBackupPlanDetailArrayOutput)
+}
+
+type AutoProtectionPolicyBackupPlanDetailOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyBackupPlanDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyBackupPlanDetail)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyBackupPlanDetailOutput) ToAutoProtectionPolicyBackupPlanDetailOutput() AutoProtectionPolicyBackupPlanDetailOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBackupPlanDetailOutput) ToAutoProtectionPolicyBackupPlanDetailOutputWithContext(ctx context.Context) AutoProtectionPolicyBackupPlanDetailOutput {
+	return o
+}
+
+// The resource name of the backup plan to apply to the matching resources, in the format
+// `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+// must be in the same location as the auto protection policy.
+func (o AutoProtectionPolicyBackupPlanDetailOutput) BackupPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyBackupPlanDetail) string { return v.BackupPlan }).(pulumi.StringOutput)
+}
+
+// The type of resource that this policy automatically protects, for example
+// `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+func (o AutoProtectionPolicyBackupPlanDetailOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyBackupPlanDetail) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type AutoProtectionPolicyBackupPlanDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyBackupPlanDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyBackupPlanDetail)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyBackupPlanDetailArrayOutput) ToAutoProtectionPolicyBackupPlanDetailArrayOutput() AutoProtectionPolicyBackupPlanDetailArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBackupPlanDetailArrayOutput) ToAutoProtectionPolicyBackupPlanDetailArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyBackupPlanDetailArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBackupPlanDetailArrayOutput) Index(i pulumi.IntInput) AutoProtectionPolicyBackupPlanDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProtectionPolicyBackupPlanDetail {
+		return vs[0].([]AutoProtectionPolicyBackupPlanDetail)[vs[1].(int)]
+	}).(AutoProtectionPolicyBackupPlanDetailOutput)
+}
+
+type AutoProtectionPolicyBindingSummary struct {
+	// (Output)
+	// The total number of projects protected by the policy.
+	ProjectCount *string `pulumi:"projectCount"`
+}
+
+// AutoProtectionPolicyBindingSummaryInput is an input type that accepts AutoProtectionPolicyBindingSummaryArgs and AutoProtectionPolicyBindingSummaryOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyBindingSummaryInput` via:
+//
+//	AutoProtectionPolicyBindingSummaryArgs{...}
+type AutoProtectionPolicyBindingSummaryInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyBindingSummaryOutput() AutoProtectionPolicyBindingSummaryOutput
+	ToAutoProtectionPolicyBindingSummaryOutputWithContext(context.Context) AutoProtectionPolicyBindingSummaryOutput
+}
+
+type AutoProtectionPolicyBindingSummaryArgs struct {
+	// (Output)
+	// The total number of projects protected by the policy.
+	ProjectCount pulumi.StringPtrInput `pulumi:"projectCount"`
+}
+
+func (AutoProtectionPolicyBindingSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyBindingSummary)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyBindingSummaryArgs) ToAutoProtectionPolicyBindingSummaryOutput() AutoProtectionPolicyBindingSummaryOutput {
+	return i.ToAutoProtectionPolicyBindingSummaryOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyBindingSummaryArgs) ToAutoProtectionPolicyBindingSummaryOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyBindingSummaryOutput)
+}
+
+// AutoProtectionPolicyBindingSummaryArrayInput is an input type that accepts AutoProtectionPolicyBindingSummaryArray and AutoProtectionPolicyBindingSummaryArrayOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyBindingSummaryArrayInput` via:
+//
+//	AutoProtectionPolicyBindingSummaryArray{ AutoProtectionPolicyBindingSummaryArgs{...} }
+type AutoProtectionPolicyBindingSummaryArrayInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyBindingSummaryArrayOutput() AutoProtectionPolicyBindingSummaryArrayOutput
+	ToAutoProtectionPolicyBindingSummaryArrayOutputWithContext(context.Context) AutoProtectionPolicyBindingSummaryArrayOutput
+}
+
+type AutoProtectionPolicyBindingSummaryArray []AutoProtectionPolicyBindingSummaryInput
+
+func (AutoProtectionPolicyBindingSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyBindingSummary)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyBindingSummaryArray) ToAutoProtectionPolicyBindingSummaryArrayOutput() AutoProtectionPolicyBindingSummaryArrayOutput {
+	return i.ToAutoProtectionPolicyBindingSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyBindingSummaryArray) ToAutoProtectionPolicyBindingSummaryArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyBindingSummaryArrayOutput)
+}
+
+type AutoProtectionPolicyBindingSummaryOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyBindingSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyBindingSummary)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyBindingSummaryOutput) ToAutoProtectionPolicyBindingSummaryOutput() AutoProtectionPolicyBindingSummaryOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBindingSummaryOutput) ToAutoProtectionPolicyBindingSummaryOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingSummaryOutput {
+	return o
+}
+
+// (Output)
+// The total number of projects protected by the policy.
+func (o AutoProtectionPolicyBindingSummaryOutput) ProjectCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyBindingSummary) *string { return v.ProjectCount }).(pulumi.StringPtrOutput)
+}
+
+type AutoProtectionPolicyBindingSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyBindingSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyBindingSummary)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyBindingSummaryArrayOutput) ToAutoProtectionPolicyBindingSummaryArrayOutput() AutoProtectionPolicyBindingSummaryArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBindingSummaryArrayOutput) ToAutoProtectionPolicyBindingSummaryArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyBindingSummaryArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyBindingSummaryArrayOutput) Index(i pulumi.IntInput) AutoProtectionPolicyBindingSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProtectionPolicyBindingSummary {
+		return vs[0].([]AutoProtectionPolicyBindingSummary)[vs[1].(int)]
+	}).(AutoProtectionPolicyBindingSummaryOutput)
+}
+
+type AutoProtectionPolicyCriteria struct {
+	// A list of matching conditions that a resource must meet to be protected by the policy.
+	// Currently, only one condition is supported.
+	// Structure is documented below.
+	MatchingConditions []AutoProtectionPolicyCriteriaMatchingCondition `pulumi:"matchingConditions"`
+}
+
+// AutoProtectionPolicyCriteriaInput is an input type that accepts AutoProtectionPolicyCriteriaArgs and AutoProtectionPolicyCriteriaOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyCriteriaInput` via:
+//
+//	AutoProtectionPolicyCriteriaArgs{...}
+type AutoProtectionPolicyCriteriaInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyCriteriaOutput() AutoProtectionPolicyCriteriaOutput
+	ToAutoProtectionPolicyCriteriaOutputWithContext(context.Context) AutoProtectionPolicyCriteriaOutput
+}
+
+type AutoProtectionPolicyCriteriaArgs struct {
+	// A list of matching conditions that a resource must meet to be protected by the policy.
+	// Currently, only one condition is supported.
+	// Structure is documented below.
+	MatchingConditions AutoProtectionPolicyCriteriaMatchingConditionArrayInput `pulumi:"matchingConditions"`
+}
+
+func (AutoProtectionPolicyCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyCriteria)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyCriteriaArgs) ToAutoProtectionPolicyCriteriaOutput() AutoProtectionPolicyCriteriaOutput {
+	return i.ToAutoProtectionPolicyCriteriaOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyCriteriaArgs) ToAutoProtectionPolicyCriteriaOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaOutput)
+}
+
+func (i AutoProtectionPolicyCriteriaArgs) ToAutoProtectionPolicyCriteriaPtrOutput() AutoProtectionPolicyCriteriaPtrOutput {
+	return i.ToAutoProtectionPolicyCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyCriteriaArgs) ToAutoProtectionPolicyCriteriaPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaOutput).ToAutoProtectionPolicyCriteriaPtrOutputWithContext(ctx)
+}
+
+// AutoProtectionPolicyCriteriaPtrInput is an input type that accepts AutoProtectionPolicyCriteriaArgs, AutoProtectionPolicyCriteriaPtr and AutoProtectionPolicyCriteriaPtrOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyCriteriaPtrInput` via:
+//
+//	        AutoProtectionPolicyCriteriaArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoProtectionPolicyCriteriaPtrInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyCriteriaPtrOutput() AutoProtectionPolicyCriteriaPtrOutput
+	ToAutoProtectionPolicyCriteriaPtrOutputWithContext(context.Context) AutoProtectionPolicyCriteriaPtrOutput
+}
+
+type autoProtectionPolicyCriteriaPtrType AutoProtectionPolicyCriteriaArgs
+
+func AutoProtectionPolicyCriteriaPtr(v *AutoProtectionPolicyCriteriaArgs) AutoProtectionPolicyCriteriaPtrInput {
+	return (*autoProtectionPolicyCriteriaPtrType)(v)
+}
+
+func (*autoProtectionPolicyCriteriaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProtectionPolicyCriteria)(nil)).Elem()
+}
+
+func (i *autoProtectionPolicyCriteriaPtrType) ToAutoProtectionPolicyCriteriaPtrOutput() AutoProtectionPolicyCriteriaPtrOutput {
+	return i.ToAutoProtectionPolicyCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i *autoProtectionPolicyCriteriaPtrType) ToAutoProtectionPolicyCriteriaPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaPtrOutput)
+}
+
+type AutoProtectionPolicyCriteriaOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyCriteria)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyCriteriaOutput) ToAutoProtectionPolicyCriteriaOutput() AutoProtectionPolicyCriteriaOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaOutput) ToAutoProtectionPolicyCriteriaOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaOutput) ToAutoProtectionPolicyCriteriaPtrOutput() AutoProtectionPolicyCriteriaPtrOutput {
+	return o.ToAutoProtectionPolicyCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (o AutoProtectionPolicyCriteriaOutput) ToAutoProtectionPolicyCriteriaPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoProtectionPolicyCriteria) *AutoProtectionPolicyCriteria {
+		return &v
+	}).(AutoProtectionPolicyCriteriaPtrOutput)
+}
+
+// A list of matching conditions that a resource must meet to be protected by the policy.
+// Currently, only one condition is supported.
+// Structure is documented below.
+func (o AutoProtectionPolicyCriteriaOutput) MatchingConditions() AutoProtectionPolicyCriteriaMatchingConditionArrayOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyCriteria) []AutoProtectionPolicyCriteriaMatchingCondition {
+		return v.MatchingConditions
+	}).(AutoProtectionPolicyCriteriaMatchingConditionArrayOutput)
+}
+
+type AutoProtectionPolicyCriteriaPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyCriteriaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProtectionPolicyCriteria)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyCriteriaPtrOutput) ToAutoProtectionPolicyCriteriaPtrOutput() AutoProtectionPolicyCriteriaPtrOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaPtrOutput) ToAutoProtectionPolicyCriteriaPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaPtrOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaPtrOutput) Elem() AutoProtectionPolicyCriteriaOutput {
+	return o.ApplyT(func(v *AutoProtectionPolicyCriteria) AutoProtectionPolicyCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret AutoProtectionPolicyCriteria
+		return ret
+	}).(AutoProtectionPolicyCriteriaOutput)
+}
+
+// A list of matching conditions that a resource must meet to be protected by the policy.
+// Currently, only one condition is supported.
+// Structure is documented below.
+func (o AutoProtectionPolicyCriteriaPtrOutput) MatchingConditions() AutoProtectionPolicyCriteriaMatchingConditionArrayOutput {
+	return o.ApplyT(func(v *AutoProtectionPolicyCriteria) []AutoProtectionPolicyCriteriaMatchingCondition {
+		if v == nil {
+			return nil
+		}
+		return v.MatchingConditions
+	}).(AutoProtectionPolicyCriteriaMatchingConditionArrayOutput)
+}
+
+type AutoProtectionPolicyCriteriaMatchingCondition struct {
+	// A condition that matches resources based on their labels.
+	// Structure is documented below.
+	LabelCondition *AutoProtectionPolicyCriteriaMatchingConditionLabelCondition `pulumi:"labelCondition"`
+}
+
+// AutoProtectionPolicyCriteriaMatchingConditionInput is an input type that accepts AutoProtectionPolicyCriteriaMatchingConditionArgs and AutoProtectionPolicyCriteriaMatchingConditionOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyCriteriaMatchingConditionInput` via:
+//
+//	AutoProtectionPolicyCriteriaMatchingConditionArgs{...}
+type AutoProtectionPolicyCriteriaMatchingConditionInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyCriteriaMatchingConditionOutput() AutoProtectionPolicyCriteriaMatchingConditionOutput
+	ToAutoProtectionPolicyCriteriaMatchingConditionOutputWithContext(context.Context) AutoProtectionPolicyCriteriaMatchingConditionOutput
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionArgs struct {
+	// A condition that matches resources based on their labels.
+	// Structure is documented below.
+	LabelCondition AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrInput `pulumi:"labelCondition"`
+}
+
+func (AutoProtectionPolicyCriteriaMatchingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingCondition)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionArgs) ToAutoProtectionPolicyCriteriaMatchingConditionOutput() AutoProtectionPolicyCriteriaMatchingConditionOutput {
+	return i.ToAutoProtectionPolicyCriteriaMatchingConditionOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionArgs) ToAutoProtectionPolicyCriteriaMatchingConditionOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaMatchingConditionOutput)
+}
+
+// AutoProtectionPolicyCriteriaMatchingConditionArrayInput is an input type that accepts AutoProtectionPolicyCriteriaMatchingConditionArray and AutoProtectionPolicyCriteriaMatchingConditionArrayOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyCriteriaMatchingConditionArrayInput` via:
+//
+//	AutoProtectionPolicyCriteriaMatchingConditionArray{ AutoProtectionPolicyCriteriaMatchingConditionArgs{...} }
+type AutoProtectionPolicyCriteriaMatchingConditionArrayInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutput() AutoProtectionPolicyCriteriaMatchingConditionArrayOutput
+	ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutputWithContext(context.Context) AutoProtectionPolicyCriteriaMatchingConditionArrayOutput
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionArray []AutoProtectionPolicyCriteriaMatchingConditionInput
+
+func (AutoProtectionPolicyCriteriaMatchingConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyCriteriaMatchingCondition)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionArray) ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutput() AutoProtectionPolicyCriteriaMatchingConditionArrayOutput {
+	return i.ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionArray) ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaMatchingConditionArrayOutput)
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyCriteriaMatchingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingCondition)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionOutput) ToAutoProtectionPolicyCriteriaMatchingConditionOutput() AutoProtectionPolicyCriteriaMatchingConditionOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionOutput) ToAutoProtectionPolicyCriteriaMatchingConditionOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionOutput {
+	return o
+}
+
+// A condition that matches resources based on their labels.
+// Structure is documented below.
+func (o AutoProtectionPolicyCriteriaMatchingConditionOutput) LabelCondition() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyCriteriaMatchingCondition) *AutoProtectionPolicyCriteriaMatchingConditionLabelCondition {
+		return v.LabelCondition
+	}).(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput)
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyCriteriaMatchingConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyCriteriaMatchingCondition)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionArrayOutput) ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutput() AutoProtectionPolicyCriteriaMatchingConditionArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionArrayOutput) ToAutoProtectionPolicyCriteriaMatchingConditionArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionArrayOutput) Index(i pulumi.IntInput) AutoProtectionPolicyCriteriaMatchingConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProtectionPolicyCriteriaMatchingCondition {
+		return vs[0].([]AutoProtectionPolicyCriteriaMatchingCondition)[vs[1].(int)]
+	}).(AutoProtectionPolicyCriteriaMatchingConditionOutput)
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionLabelCondition struct {
+	// The key of the label to match.
+	Key string `pulumi:"key"`
+	// The values of the label to match. A resource matches the condition if its label
+	// value is equal to any of the listed values. Currently, only one value is supported.
+	Values []string `pulumi:"values"`
+}
+
+// AutoProtectionPolicyCriteriaMatchingConditionLabelConditionInput is an input type that accepts AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs and AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyCriteriaMatchingConditionLabelConditionInput` via:
+//
+//	AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs{...}
+type AutoProtectionPolicyCriteriaMatchingConditionLabelConditionInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput
+	ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutputWithContext(context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs struct {
+	// The key of the label to match.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The values of the label to match. A resource matches the condition if its label
+	// value is equal to any of the listed values. Currently, only one value is supported.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingConditionLabelCondition)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput {
+	return i.ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput)
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return i.ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput).ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(ctx)
+}
+
+// AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrInput is an input type that accepts AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs, AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtr and AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrInput` via:
+//
+//	        AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput
+	ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput
+}
+
+type autoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrType AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs
+
+func AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtr(v *AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrInput {
+	return (*autoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrType)(v)
+}
+
+func (*autoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProtectionPolicyCriteriaMatchingConditionLabelCondition)(nil)).Elem()
+}
+
+func (i *autoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrType) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return i.ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *autoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrType) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput)
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingConditionLabelCondition)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return o.ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoProtectionPolicyCriteriaMatchingConditionLabelCondition) *AutoProtectionPolicyCriteriaMatchingConditionLabelCondition {
+		return &v
+	}).(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput)
+}
+
+// The key of the label to match.
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyCriteriaMatchingConditionLabelCondition) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The values of the label to match. A resource matches the condition if its label
+// value is equal to any of the listed values. Currently, only one value is supported.
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyCriteriaMatchingConditionLabelCondition) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProtectionPolicyCriteriaMatchingConditionLabelCondition)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput) ToAutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutputWithContext(ctx context.Context) AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput) Elem() AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput {
+	return o.ApplyT(func(v *AutoProtectionPolicyCriteriaMatchingConditionLabelCondition) AutoProtectionPolicyCriteriaMatchingConditionLabelCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AutoProtectionPolicyCriteriaMatchingConditionLabelCondition
+		return ret
+	}).(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput)
+}
+
+// The key of the label to match.
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoProtectionPolicyCriteriaMatchingConditionLabelCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The values of the label to match. A resource matches the condition if its label
+// value is equal to any of the listed values. Currently, only one value is supported.
+func (o AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutoProtectionPolicyCriteriaMatchingConditionLabelCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type AutoProtectionPolicyPolicyEvaluationSummary struct {
+	// (Output)
+	// The number of matching resources whose protection failed during the last job run.
+	FailedResourceCount *string `pulumi:"failedResourceCount"`
+	// (Output)
+	// The number of resources that currently match the policy's criteria.
+	MatchingResourceCount *string `pulumi:"matchingResourceCount"`
+	// (Output)
+	// The number of matching resources that are successfully protected.
+	ProtectedResourceCount *string `pulumi:"protectedResourceCount"`
+}
+
+// AutoProtectionPolicyPolicyEvaluationSummaryInput is an input type that accepts AutoProtectionPolicyPolicyEvaluationSummaryArgs and AutoProtectionPolicyPolicyEvaluationSummaryOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyPolicyEvaluationSummaryInput` via:
+//
+//	AutoProtectionPolicyPolicyEvaluationSummaryArgs{...}
+type AutoProtectionPolicyPolicyEvaluationSummaryInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyPolicyEvaluationSummaryOutput() AutoProtectionPolicyPolicyEvaluationSummaryOutput
+	ToAutoProtectionPolicyPolicyEvaluationSummaryOutputWithContext(context.Context) AutoProtectionPolicyPolicyEvaluationSummaryOutput
+}
+
+type AutoProtectionPolicyPolicyEvaluationSummaryArgs struct {
+	// (Output)
+	// The number of matching resources whose protection failed during the last job run.
+	FailedResourceCount pulumi.StringPtrInput `pulumi:"failedResourceCount"`
+	// (Output)
+	// The number of resources that currently match the policy's criteria.
+	MatchingResourceCount pulumi.StringPtrInput `pulumi:"matchingResourceCount"`
+	// (Output)
+	// The number of matching resources that are successfully protected.
+	ProtectedResourceCount pulumi.StringPtrInput `pulumi:"protectedResourceCount"`
+}
+
+func (AutoProtectionPolicyPolicyEvaluationSummaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyPolicyEvaluationSummary)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyPolicyEvaluationSummaryArgs) ToAutoProtectionPolicyPolicyEvaluationSummaryOutput() AutoProtectionPolicyPolicyEvaluationSummaryOutput {
+	return i.ToAutoProtectionPolicyPolicyEvaluationSummaryOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyPolicyEvaluationSummaryArgs) ToAutoProtectionPolicyPolicyEvaluationSummaryOutputWithContext(ctx context.Context) AutoProtectionPolicyPolicyEvaluationSummaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyPolicyEvaluationSummaryOutput)
+}
+
+// AutoProtectionPolicyPolicyEvaluationSummaryArrayInput is an input type that accepts AutoProtectionPolicyPolicyEvaluationSummaryArray and AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput values.
+// You can construct a concrete instance of `AutoProtectionPolicyPolicyEvaluationSummaryArrayInput` via:
+//
+//	AutoProtectionPolicyPolicyEvaluationSummaryArray{ AutoProtectionPolicyPolicyEvaluationSummaryArgs{...} }
+type AutoProtectionPolicyPolicyEvaluationSummaryArrayInput interface {
+	pulumi.Input
+
+	ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutput() AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput
+	ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutputWithContext(context.Context) AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput
+}
+
+type AutoProtectionPolicyPolicyEvaluationSummaryArray []AutoProtectionPolicyPolicyEvaluationSummaryInput
+
+func (AutoProtectionPolicyPolicyEvaluationSummaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyPolicyEvaluationSummary)(nil)).Elem()
+}
+
+func (i AutoProtectionPolicyPolicyEvaluationSummaryArray) ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutput() AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput {
+	return i.ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutputWithContext(context.Background())
+}
+
+func (i AutoProtectionPolicyPolicyEvaluationSummaryArray) ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput)
+}
+
+type AutoProtectionPolicyPolicyEvaluationSummaryOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyPolicyEvaluationSummaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionPolicyPolicyEvaluationSummary)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyPolicyEvaluationSummaryOutput) ToAutoProtectionPolicyPolicyEvaluationSummaryOutput() AutoProtectionPolicyPolicyEvaluationSummaryOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyPolicyEvaluationSummaryOutput) ToAutoProtectionPolicyPolicyEvaluationSummaryOutputWithContext(ctx context.Context) AutoProtectionPolicyPolicyEvaluationSummaryOutput {
+	return o
+}
+
+// (Output)
+// The number of matching resources whose protection failed during the last job run.
+func (o AutoProtectionPolicyPolicyEvaluationSummaryOutput) FailedResourceCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyPolicyEvaluationSummary) *string { return v.FailedResourceCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of resources that currently match the policy's criteria.
+func (o AutoProtectionPolicyPolicyEvaluationSummaryOutput) MatchingResourceCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyPolicyEvaluationSummary) *string { return v.MatchingResourceCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of matching resources that are successfully protected.
+func (o AutoProtectionPolicyPolicyEvaluationSummaryOutput) ProtectedResourceCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoProtectionPolicyPolicyEvaluationSummary) *string { return v.ProtectedResourceCount }).(pulumi.StringPtrOutput)
+}
+
+type AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoProtectionPolicyPolicyEvaluationSummary)(nil)).Elem()
+}
+
+func (o AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput) ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutput() AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput) ToAutoProtectionPolicyPolicyEvaluationSummaryArrayOutputWithContext(ctx context.Context) AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput {
+	return o
+}
+
+func (o AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput) Index(i pulumi.IntInput) AutoProtectionPolicyPolicyEvaluationSummaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoProtectionPolicyPolicyEvaluationSummary {
+		return vs[0].([]AutoProtectionPolicyPolicyEvaluationSummary)[vs[1].(int)]
+	}).(AutoProtectionPolicyPolicyEvaluationSummaryOutput)
+}
+
 type BackupPlanAssociationRulesConfigInfo struct {
 	// (Output)
 	// google.rpc.Status object to store the last backup error
@@ -12326,6 +13074,18 @@ func (o GetManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) GetManag
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBackupPlanDetailInput)(nil)).Elem(), AutoProtectionPolicyBackupPlanDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBackupPlanDetailArrayInput)(nil)).Elem(), AutoProtectionPolicyBackupPlanDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBindingSummaryInput)(nil)).Elem(), AutoProtectionPolicyBindingSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyBindingSummaryArrayInput)(nil)).Elem(), AutoProtectionPolicyBindingSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaInput)(nil)).Elem(), AutoProtectionPolicyCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaPtrInput)(nil)).Elem(), AutoProtectionPolicyCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingConditionInput)(nil)).Elem(), AutoProtectionPolicyCriteriaMatchingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingConditionArrayInput)(nil)).Elem(), AutoProtectionPolicyCriteriaMatchingConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingConditionLabelConditionInput)(nil)).Elem(), AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrInput)(nil)).Elem(), AutoProtectionPolicyCriteriaMatchingConditionLabelConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyPolicyEvaluationSummaryInput)(nil)).Elem(), AutoProtectionPolicyPolicyEvaluationSummaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoProtectionPolicyPolicyEvaluationSummaryArrayInput)(nil)).Elem(), AutoProtectionPolicyPolicyEvaluationSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoArrayInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{})
@@ -12485,6 +13245,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriArrayInput)(nil)).Elem(), GetManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkInput)(nil)).Elem(), GetManagementServerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkArrayInput)(nil)).Elem(), GetManagementServerNetworkArray{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyBackupPlanDetailOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyBackupPlanDetailArrayOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyBindingSummaryOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyBindingSummaryArrayOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaMatchingConditionOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaMatchingConditionArrayOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyCriteriaMatchingConditionLabelConditionPtrOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyPolicyEvaluationSummaryOutput{})
+	pulumi.RegisterOutputType(AutoProtectionPolicyPolicyEvaluationSummaryArrayOutput{})
 	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoOutput{})
 	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoArrayOutput{})
 	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput{})

@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
         [Input("exact")]
         public Input<string>? Exact { get; set; }
 
+        /// <summary>
+        /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        /// </summary>
+        [Input("ignoreCase")]
+        public Input<bool>? IgnoreCase { get; set; }
+
         public AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs()
         {
         }

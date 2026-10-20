@@ -54,7 +54,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("us-central1"),
-//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //				Name:                pulumi.String("test-proxy"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				BackendService:      defaultRegionBackendService.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -141,7 +141,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("europe-west4"),
-//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {

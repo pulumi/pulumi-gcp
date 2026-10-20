@@ -94,10 +94,10 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network_1.ID(),
 //						},
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network_2.ID(),
 //						},
 //					},
 //				},
@@ -150,10 +150,10 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network_1.ID(),
 //						},
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network_2.ID(),
 //						},
 //					},
 //				},
@@ -206,7 +206,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network1.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network1.ID(),
 //						},
 //					},
 //				},
@@ -312,7 +312,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					GkeClusters: dns.ManagedZonePrivateVisibilityConfigGkeClusterArray{
 //						&dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs{
-//							GkeClusterName: cluster_1.ID().ToIDOutput().ToStringOutput(),
+//							GkeClusterName: cluster_1.ID(),
 //						},
 //					},
 //				},
@@ -362,13 +362,13 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network_source.ID().ToIDOutput().ToStringOutput(),
+//							NetworkUrl: network_source.ID(),
 //						},
 //					},
 //				},
 //				PeeringConfig: &dns.ManagedZonePeeringConfigArgs{
 //					TargetNetwork: &dns.ManagedZonePeeringConfigTargetNetworkArgs{
-//						NetworkUrl: network_target.ID().ToIDOutput().ToStringOutput(),
+//						NetworkUrl: network_target.ID(),
 //					},
 //				},
 //			})
@@ -410,7 +410,7 @@ import (
 //				Visibility:  pulumi.String("private"),
 //				ServiceDirectoryConfig: &dns.ManagedZoneServiceDirectoryConfigArgs{
 //					Namespace: &dns.ManagedZoneServiceDirectoryConfigNamespaceArgs{
-//						NamespaceUrl: example.ID().ToIDOutput().ToStringOutput(),
+//						NamespaceUrl: example.ID(),
 //					},
 //				},
 //			})

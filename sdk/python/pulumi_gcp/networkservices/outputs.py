@@ -833,8 +833,10 @@ class EdgeCacheOriginFlexShielding(dict):
         """
         :param _builtins.str flex_shielding_regions: Whenever possible, content will be fetched from origin and cached in or
                near the specified origin. Best effort.
-               You must specify exactly one FlexShieldingRegion.
-               Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+               You must specify exactly one FlexShieldingRegion. Possible values include
+               `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+               [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+               for the full list of supported regions.
         """
         if flex_shielding_regions is not None:
             pulumi.set(__self__, "flex_shielding_regions", flex_shielding_regions)
@@ -845,8 +847,10 @@ class EdgeCacheOriginFlexShielding(dict):
         """
         Whenever possible, content will be fetched from origin and cached in or
         near the specified origin. Best effort.
-        You must specify exactly one FlexShieldingRegion.
-        Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+        You must specify exactly one FlexShieldingRegion. Possible values include
+        `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+        [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+        for the full list of supported regions.
         """
         return pulumi.get(self, "flex_shielding_regions")
 

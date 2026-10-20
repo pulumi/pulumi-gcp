@@ -34,14 +34,22 @@ public final class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigA
     /**
      * The disk type of the attached disk. Such as &#34;pd-ssd&#34; or &#34;pd-standard&#34;.
      * 
+     * @deprecated
+     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * 
      */
+    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
      * @return The disk type of the attached disk. Such as &#34;pd-ssd&#34; or &#34;pd-standard&#34;.
      * 
+     * @deprecated
+     * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+     * 
      */
+    @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
     }
@@ -76,6 +84,21 @@ public final class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigA
         return Optional.ofNullable(this.provisionedThroughput);
     }
 
+    /**
+     * The disk type of the attached disk. Currently only supports Hyperdisks: &#34;hyperdisk-balanced&#34;, &#34;hyperdisk-extreme&#34;, &#34;hyperdisk-ml&#34;, &#34;hyperdisk-throughput&#34;.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The disk type of the attached disk. Currently only supports Hyperdisks: &#34;hyperdisk-balanced&#34;, &#34;hyperdisk-extreme&#34;, &#34;hyperdisk-ml&#34;, &#34;hyperdisk-throughput&#34;.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs() {}
 
     private ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs $) {
@@ -83,6 +106,7 @@ public final class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigA
         this.diskType = $.diskType;
         this.provisionedIops = $.provisionedIops;
         this.provisionedThroughput = $.provisionedThroughput;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -129,7 +153,11 @@ public final class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigA
          * 
          * @return builder
          * 
+         * @deprecated
+         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * 
          */
+        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
         public Builder diskType(@Nullable Output<String> diskType) {
             $.diskType = diskType;
             return this;
@@ -140,7 +168,11 @@ public final class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigA
          * 
          * @return builder
          * 
+         * @deprecated
+         * `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         * 
          */
+        @Deprecated /* `diskType` is deprecated and will be removed in a future major release. Use `type` instead. */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
         }
@@ -185,6 +217,27 @@ public final class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigA
          */
         public Builder provisionedThroughput(Integer provisionedThroughput) {
             return provisionedThroughput(Output.of(provisionedThroughput));
+        }
+
+        /**
+         * @param type The disk type of the attached disk. Currently only supports Hyperdisks: &#34;hyperdisk-balanced&#34;, &#34;hyperdisk-extreme&#34;, &#34;hyperdisk-ml&#34;, &#34;hyperdisk-throughput&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The disk type of the attached disk. Currently only supports Hyperdisks: &#34;hyperdisk-balanced&#34;, &#34;hyperdisk-extreme&#34;, &#34;hyperdisk-ml&#34;, &#34;hyperdisk-throughput&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs build() {

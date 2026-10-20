@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,11 @@ public final class AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
      * 
      */
     private @Nullable String exact;
+    /**
+     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     */
+    private @Nullable Boolean ignoreCase;
 
     private AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal() {}
     /**
@@ -28,6 +34,13 @@ public final class AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
      */
     public Optional<String> exact() {
         return Optional.ofNullable(this.exact);
+    }
+    /**
+     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     */
+    public Optional<Boolean> ignoreCase() {
+        return Optional.ofNullable(this.ignoreCase);
     }
 
     public static Builder builder() {
@@ -40,10 +53,12 @@ public final class AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String exact;
+        private @Nullable Boolean ignoreCase;
         public Builder() {}
         public Builder(AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exact = defaults.exact;
+    	      this.ignoreCase = defaults.ignoreCase;
         }
 
         @CustomType.Setter
@@ -52,9 +67,16 @@ public final class AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal {
             this.exact = exact;
             return this;
         }
+        @CustomType.Setter
+        public Builder ignoreCase(@Nullable Boolean ignoreCase) {
+
+            this.ignoreCase = ignoreCase;
+            return this;
+        }
         public AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal build() {
             final var _resultValue = new AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal();
             _resultValue.exact = exact;
+            _resultValue.ignoreCase = ignoreCase;
             return _resultValue;
         }
     }

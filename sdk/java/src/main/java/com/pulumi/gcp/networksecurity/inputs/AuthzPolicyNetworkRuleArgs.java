@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleFromArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleToArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,11 +51,27 @@ public final class AuthzPolicyNetworkRuleArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.to);
     }
 
+    /**
+     * CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+     * 
+     */
+    @Import(name="when")
+    private @Nullable Output<String> when;
+
+    /**
+     * @return CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+     * 
+     */
+    public Optional<Output<String>> when() {
+        return Optional.ofNullable(this.when);
+    }
+
     private AuthzPolicyNetworkRuleArgs() {}
 
     private AuthzPolicyNetworkRuleArgs(AuthzPolicyNetworkRuleArgs $) {
         this.from = $.from;
         this.to = $.to;
+        this.when = $.when;
     }
 
     public static Builder builder() {
@@ -119,6 +136,27 @@ public final class AuthzPolicyNetworkRuleArgs extends com.pulumi.resources.Resou
          */
         public Builder to(AuthzPolicyNetworkRuleToArgs to) {
             return to(Output.of(to));
+        }
+
+        /**
+         * @param when CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder when(@Nullable Output<String> when) {
+            $.when = when;
+            return this;
+        }
+
+        /**
+         * @param when CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder when(String when) {
+            return when(Output.of(when));
         }
 
         public AuthzPolicyNetworkRuleArgs build() {

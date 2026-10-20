@@ -45,14 +45,14 @@ import (
 //			}
 //			exampleService, err := servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 //				ServiceId: pulumi.String("example-service"),
-//				Namespace: example.ID().ToIDOutput().ToStringOutput(),
+//				Namespace: example.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = servicedirectory.NewEndpoint(ctx, "example", &servicedirectory.EndpointArgs{
 //				EndpointId: pulumi.String("example-endpoint"),
-//				Service:    exampleService.ID().ToIDOutput().ToStringOutput(),
+//				Service:    exampleService.ID(),
 //				Metadata: pulumi.StringMap{
 //					"stage":  pulumi.String("prod"),
 //					"region": pulumi.String("us-central1"),
@@ -105,14 +105,14 @@ import (
 //			}
 //			exampleService, err := servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 //				ServiceId: pulumi.String("example-service"),
-//				Namespace: exampleNamespace.ID().ToIDOutput().ToStringOutput(),
+//				Namespace: exampleNamespace.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = servicedirectory.NewEndpoint(ctx, "example", &servicedirectory.EndpointArgs{
 //				EndpointId: pulumi.String("example-endpoint"),
-//				Service:    exampleService.ID().ToIDOutput().ToStringOutput(),
+//				Service:    exampleService.ID(),
 //				Metadata: pulumi.StringMap{
 //					"stage":  pulumi.String("prod"),
 //					"region": pulumi.String("us-central1"),

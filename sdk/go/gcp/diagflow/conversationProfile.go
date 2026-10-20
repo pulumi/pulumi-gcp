@@ -94,7 +94,7 @@ import (
 //				DisplayName: pulumi.String("dialogflow-profile"),
 //				Location:    pulumi.String("global"),
 //				NewRecognitionResultNotificationConfig: &diagflow.ConversationProfileNewRecognitionResultNotificationConfigArgs{
-//					Topic:         recognitionResultNotificationProfileTopic.ID().ToIDOutput().ToStringOutput(),
+//					Topic:         recognitionResultNotificationProfileTopic.ID(),
 //					MessageFormat: pulumi.String("JSON"),
 //				},
 //			})
@@ -138,7 +138,7 @@ import (
 //				LanguageCode:     pulumi.String("en-US"),
 //				UseBidiStreaming: pulumi.Bool(true),
 //				AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
-//					Agent: cesAppForAgent.ID().ToIDOutput().ToStringOutput(),
+//					Agent: cesAppForAgent.ID(),
 //				},
 //				SipConfig: &diagflow.ConversationProfileSipConfigArgs{
 //					AllowVirtualAgentInteraction: pulumi.Bool(true),

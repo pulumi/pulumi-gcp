@@ -49,7 +49,7 @@ import (
 //			}
 //			group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
 //				Name:                pulumi.String("ip-port-neg"),
-//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:             _default.ID(),
 //				Region:              pulumi.String("us-central1"),
 //				NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 //			})
@@ -93,7 +93,7 @@ import (
 //			}
 //			group, err := compute.NewRegionNetworkEndpointGroup(ctx, "group", &compute.RegionNetworkEndpointGroupArgs{
 //				Name:                pulumi.String("fqdn-port-neg"),
-//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:             _default.ID(),
 //				Region:              pulumi.String("us-central1"),
 //				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 //			})
@@ -139,7 +139,7 @@ import (
 //				Name:        pulumi.String("subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:     _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -147,8 +147,8 @@ import (
 //			defaultRegionNetworkEndpointGroup, err := compute.NewRegionNetworkEndpointGroup(ctx, "default", &compute.RegionNetworkEndpointGroupArgs{
 //				Name:                pulumi.String("portmap-neg"),
 //				Region:              pulumi.String("us-central1"),
-//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:             _default.ID(),
+//				Subnetwork:          defaultSubnetwork.ID(),
 //				NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
 //			})
 //			if err != nil {
@@ -167,7 +167,7 @@ import (
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//						Subnetwork: defaultSubnetwork.ID(),
 //					},
 //				},
 //				Name:        pulumi.String("instance"),

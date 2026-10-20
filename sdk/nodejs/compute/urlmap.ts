@@ -849,6 +849,113 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Url Map Dynamic Compression Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     defaultService: _default.id,
+ *     defaultRouteAction: {
+ *         dynamicCompressionPolicy: {
+ *             compressionMode: "AUTOMATIC",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Url Map Dynamic Compression Policy Multi Level
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "home",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     healthChecks: defaultHealthCheck.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     defaultService: _default.id,
+ *     defaultRouteAction: {
+ *         dynamicCompressionPolicy: {
+ *             compressionMode: "AUTOMATIC",
+ *         },
+ *     },
+ *     hostRules: [
+ *         {
+ *             hosts: ["example.com"],
+ *             pathMatcher: "main-matcher",
+ *         },
+ *         {
+ *             hosts: ["api.example.com"],
+ *             pathMatcher: "api-matcher",
+ *         },
+ *     ],
+ *     pathMatchers: [
+ *         {
+ *             name: "main-matcher",
+ *             defaultService: _default.id,
+ *             defaultRouteAction: {
+ *                 dynamicCompressionPolicy: {
+ *                     compressionMode: "DISABLED",
+ *                 },
+ *             },
+ *             pathRules: [{
+ *                 paths: ["/static/*"],
+ *                 service: _default.id,
+ *                 routeAction: {
+ *                     dynamicCompressionPolicy: {
+ *                         compressionMode: "AUTOMATIC",
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: "api-matcher",
+ *             defaultService: _default.id,
+ *             defaultRouteAction: {
+ *                 dynamicCompressionPolicy: {
+ *                     compressionMode: "AUTOMATIC",
+ *                 },
+ *             },
+ *             routeRules: [{
+ *                 priority: 1,
+ *                 matchRules: [{
+ *                     prefixMatch: "/api/v1",
+ *                 }],
+ *                 service: _default.id,
+ *                 routeAction: {
+ *                     dynamicCompressionPolicy: {
+ *                         compressionMode: "DISABLED",
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *     ],
+ * });
+ * ```
  * ### Url Map Path Rule Mirror Percent
  *
  * ```typescript
@@ -1458,6 +1565,84 @@ import * as utilities from "../utilities";
  *         host: "mysite.com",
  *         path: "/",
  *     }],
+ * });
+ * ```
+ * ### Url Map Image Optimization Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.HealthCheck("default", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const example = new gcp.compute.BackendService("example", {
+ *     name: "example",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     enableCdn: true,
+ *     healthChecks: _default.id,
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     name: "urlmap",
+ *     description: "a description",
+ *     defaultService: example.id,
+ *     defaultRouteAction: {
+ *         imageOptimizationPolicy: {
+ *             queryParameterInterpretation: "ENABLED",
+ *         },
+ *     },
+ *     hostRules: [
+ *         {
+ *             hosts: ["mysite.com"],
+ *             pathMatcher: "mysite-path",
+ *         },
+ *         {
+ *             hosts: ["api.mysite.com"],
+ *             pathMatcher: "mysite-route",
+ *         },
+ *     ],
+ *     pathMatchers: [
+ *         {
+ *             name: "mysite-path",
+ *             defaultService: example.id,
+ *             defaultRouteAction: {
+ *                 imageOptimizationPolicy: {
+ *                     queryParameterInterpretation: "DISABLED",
+ *                 },
+ *             },
+ *             pathRules: [{
+ *                 paths: ["/private/*"],
+ *                 service: example.id,
+ *                 routeAction: {
+ *                     imageOptimizationPolicy: {
+ *                         queryParameterInterpretation: "ENABLED",
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *         {
+ *             name: "mysite-route",
+ *             defaultService: example.id,
+ *             routeRules: [{
+ *                 priority: 1,
+ *                 matchRules: [{
+ *                     prefixMatch: "/images",
+ *                 }],
+ *                 service: example.id,
+ *                 routeAction: {
+ *                     imageOptimizationPolicy: {
+ *                         queryParameterInterpretation: "DISABLED",
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *     ],
  * });
  * ```
  *

@@ -99,7 +99,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -111,7 +111,7 @@ import (
 //				Location:                 pulumi.String("US"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DefaultEncryptionConfiguration: &bigquery.DatasetDefaultEncryptionConfigurationArgs{
-//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					KmsKeyName: cryptoKey.ID(),
 //				},
 //			})
 //			if err != nil {

@@ -403,6 +403,24 @@ def get_region_disk(name: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    disk = gcp.compute.get_region_disk(name="persistent-regional-disk",
+        project="example",
+        region="us-central1",
+        type="pd-ssd",
+        physical_block_size_bytes=4096,
+        replica_zones=[
+            "us-central1-a",
+            "us-central1-f",
+        ])
+    default = gcp.compute.Instance("default", attached_disks=[{
+        "source": disk_google_compute_disk["selfLink"],
+    }])
+    ```
+
 
     :param _builtins.str name: The name of a specific disk.
            
@@ -468,6 +486,24 @@ def get_region_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    disk = gcp.compute.get_region_disk(name="persistent-regional-disk",
+        project="example",
+        region="us-central1",
+        type="pd-ssd",
+        physical_block_size_bytes=4096,
+        replica_zones=[
+            "us-central1-a",
+            "us-central1-f",
+        ])
+    default = gcp.compute.Instance("default", attached_disks=[{
+        "source": disk_google_compute_disk["selfLink"],
+    }])
+    ```
 
 
     :param _builtins.str name: The name of a specific disk.

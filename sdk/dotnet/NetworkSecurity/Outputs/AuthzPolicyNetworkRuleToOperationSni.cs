@@ -14,14 +14,51 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class AuthzPolicyNetworkRuleToOperationSni
     {
         /// <summary>
-        /// (Optional)
+        /// The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+        /// Examples:
+        /// * abc matches the value xyz.abc.def
+        /// </summary>
+        public readonly string? Contains;
+        /// <summary>
+        /// The input string must match exactly the string specified here.
+        /// Examples:
+        /// * abc only matches the value abc.
         /// </summary>
         public readonly string? Exact;
+        /// <summary>
+        /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        /// </summary>
+        public readonly bool? IgnoreCase;
+        /// <summary>
+        /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+        /// Examples:
+        /// * abc matches the value abc.xyz
+        /// </summary>
+        public readonly string? Prefix;
+        /// <summary>
+        /// The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+        /// Examples:
+        /// * abc matches the value xyz.abc
+        /// </summary>
+        public readonly string? Suffix;
 
         [OutputConstructor]
-        private AuthzPolicyNetworkRuleToOperationSni(string? exact)
+        private AuthzPolicyNetworkRuleToOperationSni(
+            string? contains,
+
+            string? exact,
+
+            bool? ignoreCase,
+
+            string? prefix,
+
+            string? suffix)
         {
+            Contains = contains;
             Exact = exact;
+            IgnoreCase = ignoreCase;
+            Prefix = prefix;
+            Suffix = suffix;
         }
     }
 }

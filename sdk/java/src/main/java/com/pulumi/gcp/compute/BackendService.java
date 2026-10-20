@@ -1072,6 +1072,90 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingForwardProxyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .protocol("HTTP2")
+ *             .dynamicForwarding(BackendServiceDynamicForwardingArgs.builder()
+ *                 .forwardProxy(BackendServiceDynamicForwardingForwardProxyArgs.builder()
+ *                     .enabled(true)
+ *                     .proxyMode("CLOUD_RUN")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceDynamicForwardingForwardProxyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .protocol("HTTP2")
+ *             .dynamicForwarding(BackendServiceDynamicForwardingArgs.builder()
+ *                 .forwardProxy(BackendServiceDynamicForwardingForwardProxyArgs.builder()
+ *                     .enabled(true)
+ *                     .proxyMode("DIRECT_FORWARDING")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

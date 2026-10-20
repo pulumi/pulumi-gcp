@@ -56,8 +56,8 @@ import (
 //			}
 //			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:              defaultNetwork.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -112,8 +112,8 @@ import (
 //			}
 //			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster-private"),
-//				Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:              defaultNetwork.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
 //				Location:             pulumi.String("us-central1"),
 //				PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
 //					EnablePrivateEndpoint: pulumi.Bool(true),
@@ -171,8 +171,8 @@ import (
 //			}
 //			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster-custom-domain"),
-//				Network:              defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:              defaultNetwork.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
 //				Location:             pulumi.String("us-central1"),
 //				PrivateClusterConfig: &workstations.WorkstationClusterPrivateClusterConfigArgs{
 //					EnablePrivateEndpoint: pulumi.Bool(true),
@@ -201,79 +201,6 @@ import (
 // ```
 // ### Workstation Cluster Tags
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
-//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-// Parent: pulumi.Sprintf("projects/%v", project.Number),
-// ShortName: pulumi.String("keyname"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-// Parent: tagKey.Name.ApplyT(func(name string) (string, error) {
-// return fmt.Sprintf("tagKeys/%v", name), nil
-// }).(pulumi.StringOutput),
-// ShortName: pulumi.String("valuename"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-// Name: pulumi.String("workstation-cluster-tags"),
-// AutoCreateSubnetworks: pulumi.Bool(false),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
-// Name: pulumi.String("workstation-cluster-tags"),
-// IpCidrRange: pulumi.String("10.0.0.0/24"),
-// Region: pulumi.String("us-central1"),
-// Network: defaultNetwork.Name,
-// })
-// if err != nil {
-// return err
-// }
-// _, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
-// WorkstationClusterId: pulumi.String("workstation-cluster-tags"),
-// Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-// Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
-// Location: pulumi.String("us-central1"),
-// Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKeyShortName := _args[0].(string)
-// tagValueShortName := _args[1].(string)
-// return map[string]string{
-// fmt.Sprintf("%v/%v", project.ProjectId, tagKeyShortName): tagValueShortName,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 // ### Workstation Cluster Custom Urls
 //
 // ```go
@@ -308,8 +235,8 @@ import (
 //			}
 //			_, err = workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId:        pulumi.String("custom-urls-cluster"),
-//				Network:                     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:                  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:                     defaultNetwork.ID(),
+//				Subnetwork:                  defaultSubnetwork.ID(),
 //				Location:                    pulumi.String("us-central1"),
 //				WorkstationAuthorizationUrl: pulumi.String("https://console.cloud.google.com/workstations/auth"),
 //				WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),

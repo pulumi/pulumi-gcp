@@ -119,6 +119,7 @@ import * as utilities from "../utilities";
  *     modelSettings: {
  *         model: "gemini-3.0-flash-001",
  *         temperature: 0.5,
+ *         thinkingLevel: "LOW",
  *     },
  *     beforeAgentCallbacks: [{
  *         description: "Example callback",

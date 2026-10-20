@@ -73,7 +73,7 @@ import (
 //				},
 //				Criteria: &monitoring.SnoozeCriteriaArgs{
 //					Policies: pulumi.StringArray{
-//						alertPolicy.ID().ToIDOutput().ToStringOutput(),
+//						alertPolicy.ID(),
 //					},
 //				},
 //			})
@@ -130,7 +130,7 @@ import (
 //				},
 //				Criteria: &monitoring.SnoozeCriteriaArgs{
 //					Policies: pulumi.StringArray{
-//						alertPolicy.ID().ToIDOutput().ToStringOutput(),
+//						alertPolicy.ID(),
 //					},
 //					Filter: pulumi.String("resource.labels.instance_id=\"1234567890\""),
 //				},

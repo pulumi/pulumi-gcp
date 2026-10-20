@@ -186,6 +186,23 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.urlFilteringProfile);
     }
 
+    /**
+     * (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Import(name="wildfireAnalysisProfile")
+    private @Nullable Output<String> wildfireAnalysisProfile;
+
+    /**
+     * @return (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Optional<Output<String>> wildfireAnalysisProfile() {
+        return Optional.ofNullable(this.wildfireAnalysisProfile);
+    }
+
     private SecurityProfileGroupArgs() {}
 
     private SecurityProfileGroupArgs(SecurityProfileGroupArgs $) {
@@ -199,6 +216,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
         this.parent = $.parent;
         this.threatPreventionProfile = $.threatPreventionProfile;
         this.urlFilteringProfile = $.urlFilteringProfile;
+        this.wildfireAnalysisProfile = $.wildfireAnalysisProfile;
     }
 
     public static Builder builder() {
@@ -447,6 +465,29 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
          */
         public Builder urlFilteringProfile(String urlFilteringProfile) {
             return urlFilteringProfile(Output.of(urlFilteringProfile));
+        }
+
+        /**
+         * @param wildfireAnalysisProfile (Optional, Beta)
+         * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildfireAnalysisProfile(@Nullable Output<String> wildfireAnalysisProfile) {
+            $.wildfireAnalysisProfile = wildfireAnalysisProfile;
+            return this;
+        }
+
+        /**
+         * @param wildfireAnalysisProfile (Optional, Beta)
+         * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildfireAnalysisProfile(String wildfireAnalysisProfile) {
+            return wildfireAnalysisProfile(Output.of(wildfireAnalysisProfile));
         }
 
         public SecurityProfileGroupArgs build() {

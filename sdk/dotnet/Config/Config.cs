@@ -823,6 +823,13 @@ namespace Pulumi.Gcp
             set => _geminiCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _geminiDataAnalyticsCustomEndpoint = new __Value<string?>(() => __config.Get("geminiDataAnalyticsCustomEndpoint"));
+        public static string? GeminiDataAnalyticsCustomEndpoint
+        {
+            get => _geminiDataAnalyticsCustomEndpoint.Get();
+            set => _geminiDataAnalyticsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _gkeBackupCustomEndpoint = new __Value<string?>(() => __config.Get("gkeBackupCustomEndpoint"));
         public static string? GkeBackupCustomEndpoint
         {
