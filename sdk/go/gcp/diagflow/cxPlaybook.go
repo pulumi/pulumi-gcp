@@ -72,7 +72,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = diagflow.NewCxPlaybook(ctx, "my-playbook", &diagflow.CxPlaybookArgs{
-//				Parent:       agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:       agent.ID(),
 //				DisplayName:  pulumi.String("Example Display Name"),
 //				Goal:         pulumi.String("Example Goal"),
 //				PlaybookType: pulumi.String("ROUTINE"),
@@ -135,7 +135,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -145,7 +145,7 @@ import (
 //				return err
 //			}
 //			myTool, err := diagflow.NewCxTool(ctx, "my_tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("Example Tool"),
 //				Description: pulumi.String("Example Description"),
 //			})
@@ -153,7 +153,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxGenerator(ctx, "my_generator", &diagflow.CxGeneratorArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("TF Prompt generator"),
 //				LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{
 //					Model:      pulumi.String("gemini-2.0-flash-001"),
@@ -193,7 +193,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = diagflow.NewCxPlaybook(ctx, "my-playbook", &diagflow.CxPlaybookArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("Playbook Example with Fulfillment"),
 //				Goal:        pulumi.String("Example Goal"),
 //				Instruction: &diagflow.CxPlaybookInstructionArgs{
@@ -216,7 +216,7 @@ import (
 //					PromptText: pulumi.String("Return me some great results"),
 //				},
 //				ReferencedTools: pulumi.StringArray{
-//					myTool.ID().ToIDOutput().ToStringOutput(),
+//					myTool.ID(),
 //				},
 //			})
 //			if err != nil {

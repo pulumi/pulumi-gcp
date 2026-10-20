@@ -105,14 +105,14 @@ import (
 //			}
 //			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("my-key"),
-//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyring.ID(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: key.ID(),
 //				Member: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
 //					Text:    gcpSa.Member,
 //					Search:  pulumi.String("@gcp-sa-contactcenterinsights.iam"),
@@ -128,7 +128,7 @@ import (
 //			_, err = contactcenterinsights.NewEncryptionSpec(ctx, "my-encryption-spec", &contactcenterinsights.EncryptionSpecArgs{
 //				Project:  project.ProjectId,
 //				Location: pulumi.String("us-east1"),
-//				KmsKey:   key.ID().ToIDOutput().ToStringOutput(),
+//				KmsKey:   key.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKey,
 //			}))

@@ -591,8 +591,7 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict(Type
     """
     oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueArgsDict']]]
     """
-    Sub-parameter values.
-    Structure is documented below.
+    Sub-parameter values, in JSON format.
     """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict']]]
     """
@@ -615,8 +614,7 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
-        :param pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values.
-               Structure is documented below.
+        :param pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -660,8 +658,7 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
     @pulumi.getter(name="oneofValue")
     def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueArgs']]:
         """
-        Sub-parameter values.
-        Structure is documented below.
+        Sub-parameter values, in JSON format.
         """
         return pulumi.get(self, "oneof_value")
 
@@ -756,6 +753,10 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePar
     """
     Represents a double value.
     """
+    oneof_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sub-parameter values, in JSON format.
+    """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
@@ -771,11 +772,13 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePar
     def __init__(__self__, *,
                  bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
                  number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional[_builtins.str]] = None,
                  string_list_value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs']] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
+        :param pulumi.Input[_builtins.str] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -784,6 +787,8 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePar
             pulumi.set(__self__, "bool_value", bool_value)
         if number_value is not None:
             pulumi.set(__self__, "number_value", number_value)
+        if oneof_value is not None:
+            pulumi.set(__self__, "oneof_value", oneof_value)
         if string_list_value is not None:
             pulumi.set(__self__, "string_list_value", string_list_value)
         if string_value is not None:
@@ -812,6 +817,18 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValuePar
     @number_value.setter
     def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oneofValue")
+    def oneof_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sub-parameter values, in JSON format.
+        """
+        return pulumi.get(self, "oneof_value")
+
+    @oneof_value.setter
+    def oneof_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
@@ -957,8 +974,7 @@ class CloudControlParameterSpecSubParameterArgsDict(TypedDict):
     """
     sub_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterArgsDict']]]]]
     """
-    The parameter spec of the cloud control.
-    Structure is documented below.
+    The parameter spec of the cloud control, in JSON format.
     """
     substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict']]]]]
     """
@@ -997,8 +1013,7 @@ class CloudControlParameterSpecSubParameterArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the parameter. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the parameter. The maximum length is 200 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterArgs']]] sub_parameters: The parameter spec of the cloud control.
-               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterArgs']]] sub_parameters: The parameter spec of the cloud control, in JSON format.
         :param pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]] substitution_rules: List of parameter substitutions.
                Structure is documented below.
         :param pulumi.Input['CloudControlParameterSpecSubParameterValidationArgs'] validation: Validation of the parameter.
@@ -1103,8 +1118,7 @@ class CloudControlParameterSpecSubParameterArgs:
     @pulumi.getter(name="subParameters")
     def sub_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterArgs']]]]:
         """
-        The parameter spec of the cloud control.
-        Structure is documented below.
+        The parameter spec of the cloud control, in JSON format.
         """
         return pulumi.get(self, "sub_parameters")
 
@@ -1317,8 +1331,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
     """
     oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueArgsDict']]]
     """
-    Sub-parameter values.
-    Structure is documented below.
+    Sub-parameter values, in JSON format.
     """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict']]]
     """
@@ -1341,8 +1354,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
-        :param pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values.
-               Structure is documented below.
+        :param pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -1386,8 +1398,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
     @pulumi.getter(name="oneofValue")
     def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueArgs']]:
         """
-        Sub-parameter values.
-        Structure is documented below.
+        Sub-parameter values, in JSON format.
         """
         return pulumi.get(self, "oneof_value")
 
@@ -1482,6 +1493,10 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueO
     """
     Represents a double value.
     """
+    oneof_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sub-parameter values, in JSON format.
+    """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
@@ -1497,11 +1512,13 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueO
     def __init__(__self__, *,
                  bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
                  number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional[_builtins.str]] = None,
                  string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs']] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
+        :param pulumi.Input[_builtins.str] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -1510,6 +1527,8 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueO
             pulumi.set(__self__, "bool_value", bool_value)
         if number_value is not None:
             pulumi.set(__self__, "number_value", number_value)
+        if oneof_value is not None:
+            pulumi.set(__self__, "oneof_value", oneof_value)
         if string_list_value is not None:
             pulumi.set(__self__, "string_list_value", string_list_value)
         if string_value is not None:
@@ -1538,6 +1557,18 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueO
     @number_value.setter
     def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oneofValue")
+    def oneof_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sub-parameter values, in JSON format.
+        """
+        return pulumi.get(self, "oneof_value")
+
+    @oneof_value.setter
+    def oneof_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
@@ -1681,6 +1712,10 @@ class CloudControlParameterSpecSubParameterSubParameterArgsDict(TypedDict):
     """
     The display name of the parameter. The maximum length is 200 characters.
     """
+    sub_parameters: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The parameter spec of the cloud control, in JSON format.
+    """
     substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleArgsDict']]]]]
     """
     List of parameter substitutions.
@@ -1701,6 +1736,7 @@ class CloudControlParameterSpecSubParameterSubParameterArgs:
                  default_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubParameterDefaultValueArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  substitution_rules: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleArgs']]]] = None,
                  validation: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubParameterValidationArgs']] = None):
         """
@@ -1717,6 +1753,7 @@ class CloudControlParameterSpecSubParameterSubParameterArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the parameter. The maximum length is 2000 characters.
         :param pulumi.Input[_builtins.str] display_name: The display name of the parameter. The maximum length is 200 characters.
+        :param pulumi.Input[_builtins.str] sub_parameters: The parameter spec of the cloud control, in JSON format.
         :param pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubParameterSubstitutionRuleArgs']]] substitution_rules: List of parameter substitutions.
                Structure is documented below.
         :param pulumi.Input['CloudControlParameterSpecSubParameterSubParameterValidationArgs'] validation: Validation of the parameter.
@@ -1731,6 +1768,8 @@ class CloudControlParameterSpecSubParameterSubParameterArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if sub_parameters is not None:
+            pulumi.set(__self__, "sub_parameters", sub_parameters)
         if substitution_rules is not None:
             pulumi.set(__self__, "substitution_rules", substitution_rules)
         if validation is not None:
@@ -1814,6 +1853,18 @@ class CloudControlParameterSpecSubParameterSubParameterArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subParameters")
+    def sub_parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The parameter spec of the cloud control, in JSON format.
+        """
+        return pulumi.get(self, "sub_parameters")
+
+    @sub_parameters.setter
+    def sub_parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sub_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="substitutionRules")
@@ -2018,6 +2069,10 @@ class CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValuePar
     """
     Represents a double value.
     """
+    oneof_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sub-parameter values, in JSON format.
+    """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
@@ -2033,11 +2088,13 @@ class CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValuePar
     def __init__(__self__, *,
                  bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
                  number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional[_builtins.str]] = None,
                  string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
+        :param pulumi.Input[_builtins.str] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -2046,6 +2103,8 @@ class CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValuePar
             pulumi.set(__self__, "bool_value", bool_value)
         if number_value is not None:
             pulumi.set(__self__, "number_value", number_value)
+        if oneof_value is not None:
+            pulumi.set(__self__, "oneof_value", oneof_value)
         if string_list_value is not None:
             pulumi.set(__self__, "string_list_value", string_list_value)
         if string_value is not None:
@@ -2074,6 +2133,18 @@ class CloudControlParameterSpecSubParameterSubParameterDefaultValueOneofValuePar
     @number_value.setter
     def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oneofValue")
+    def oneof_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sub-parameter values, in JSON format.
+        """
+        return pulumi.get(self, "oneof_value")
+
+    @oneof_value.setter
+    def oneof_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
@@ -2558,6 +2629,10 @@ class CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesVa
     """
     Represents a double value.
     """
+    oneof_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sub-parameter values, in JSON format.
+    """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
@@ -2573,11 +2648,13 @@ class CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesVa
     def __init__(__self__, *,
                  bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
                  number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional[_builtins.str]] = None,
                  string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
+        :param pulumi.Input[_builtins.str] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -2586,6 +2663,8 @@ class CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesVa
             pulumi.set(__self__, "bool_value", bool_value)
         if number_value is not None:
             pulumi.set(__self__, "number_value", number_value)
+        if oneof_value is not None:
+            pulumi.set(__self__, "oneof_value", oneof_value)
         if string_list_value is not None:
             pulumi.set(__self__, "string_list_value", string_list_value)
         if string_value is not None:
@@ -2614,6 +2693,18 @@ class CloudControlParameterSpecSubParameterSubParameterValidationAllowedValuesVa
     @number_value.setter
     def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oneofValue")
+    def oneof_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sub-parameter values, in JSON format.
+        """
+        return pulumi.get(self, "oneof_value")
+
+    @oneof_value.setter
+    def oneof_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
@@ -3175,8 +3266,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     """
     oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueArgsDict']]]
     """
-    Sub-parameter values.
-    Structure is documented below.
+    Sub-parameter values, in JSON format.
     """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]]
     """
@@ -3199,8 +3289,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
-        :param pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values.
-               Structure is documented below.
+        :param pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -3244,8 +3333,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     @pulumi.getter(name="oneofValue")
     def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs']]:
         """
-        Sub-parameter values.
-        Structure is documented below.
+        Sub-parameter values, in JSON format.
         """
         return pulumi.get(self, "oneof_value")
 
@@ -3340,6 +3428,10 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     """
     Represents a double value.
     """
+    oneof_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sub-parameter values, in JSON format.
+    """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
@@ -3355,11 +3447,13 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     def __init__(__self__, *,
                  bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
                  number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional[_builtins.str]] = None,
                  string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs']] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
+        :param pulumi.Input[_builtins.str] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -3368,6 +3462,8 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
             pulumi.set(__self__, "bool_value", bool_value)
         if number_value is not None:
             pulumi.set(__self__, "number_value", number_value)
+        if oneof_value is not None:
+            pulumi.set(__self__, "oneof_value", oneof_value)
         if string_list_value is not None:
             pulumi.set(__self__, "string_list_value", string_list_value)
         if string_value is not None:
@@ -3396,6 +3492,18 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     @number_value.setter
     def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oneofValue")
+    def oneof_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sub-parameter values, in JSON format.
+        """
+        return pulumi.get(self, "oneof_value")
+
+    @oneof_value.setter
+    def oneof_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
@@ -3985,8 +4093,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
     """
     oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgsDict']]]
     """
-    Sub-parameter values.
-    Structure is documented below.
+    Sub-parameter values, in JSON format.
     """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]]
     """
@@ -4009,8 +4116,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
-        :param pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values.
-               Structure is documented below.
+        :param pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs'] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -4054,8 +4160,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
     @pulumi.getter(name="oneofValue")
     def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueArgs']]:
         """
-        Sub-parameter values.
-        Structure is documented below.
+        Sub-parameter values, in JSON format.
         """
         return pulumi.get(self, "oneof_value")
 
@@ -4150,6 +4255,10 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
     """
     Represents a double value.
     """
+    oneof_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sub-parameter values, in JSON format.
+    """
     string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
@@ -4165,11 +4274,13 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
     def __init__(__self__, *,
                  bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
                  number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional[_builtins.str]] = None,
                  string_list_value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs']] = None,
                  string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
+        :param pulumi.Input[_builtins.str] oneof_value: Sub-parameter values, in JSON format.
         :param pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValueArgs'] string_list_value: A list of strings.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] string_value: Represents a string value.
@@ -4178,6 +4289,8 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
             pulumi.set(__self__, "bool_value", bool_value)
         if number_value is not None:
             pulumi.set(__self__, "number_value", number_value)
+        if oneof_value is not None:
+            pulumi.set(__self__, "oneof_value", oneof_value)
         if string_list_value is not None:
             pulumi.set(__self__, "string_list_value", string_list_value)
         if string_value is not None:
@@ -4206,6 +4319,18 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
     @number_value.setter
     def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oneofValue")
+    def oneof_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sub-parameter values, in JSON format.
+        """
+        return pulumi.get(self, "oneof_value")
+
+    @oneof_value.setter
+    def oneof_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")

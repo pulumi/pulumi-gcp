@@ -66,7 +66,7 @@ import (
 //			}
 //			foobar, err := compute.NewRegionDisk(ctx, "foobar", &compute.RegionDiskArgs{
 //				Name:                   pulumi.String("existing-disk"),
-//				Snapshot:               snapDisk.ID().ToIDOutput().ToStringOutput(),
+//				Snapshot:               snapDisk.ID(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -115,7 +115,7 @@ import (
 //						SourceImage:      pulumi.String("debian-cloud/debian-11"),
 //						AutoDelete:       pulumi.Bool(true),
 //						Boot:             pulumi.Bool(true),
-//						ResourcePolicies: dailyBackup.ID().ToIDOutput().ToStringOutput(),
+//						ResourcePolicies: dailyBackup.ID(),
 //					},
 //					&compute.RegionInstanceTemplateDiskArgs{
 //						Source:     foobar.SelfLink,
@@ -437,7 +437,7 @@ type RegionInstanceTemplate struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -599,7 +599,7 @@ type regionInstanceTemplateState struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -721,7 +721,7 @@ type RegionInstanceTemplateState struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -841,7 +841,7 @@ type regionInstanceTemplateArgs struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -950,7 +950,7 @@ type RegionInstanceTemplateArgs struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// Networks to attach to instances created from
 	// this template. This can be specified multiple times for multiple networks.
@@ -1213,7 +1213,7 @@ func (o RegionInstanceTemplateOutput) Name() pulumi.StringOutput {
 // Resulting name for a `namePrefix` <= 37 characters:
 // `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 // Resulting name for a `namePrefix` 38 - 54 characters:
-// `namePrefix` + YYmmdd + 3 digit incremental counter
+// `namePrefix` + 9 random lowercase alphanumeric characters
 func (o RegionInstanceTemplateOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

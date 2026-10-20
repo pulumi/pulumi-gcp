@@ -207,7 +207,7 @@ import (
 //				ScanConfig: &securesourcemanager.RepositoryScanConfigArgs{
 //					SecretScanConfig: &securesourcemanager.RepositoryScanConfigSecretScanConfigArgs{
 //						Enabled:         pulumi.Bool(true),
-//						InspectTemplate: template.ID().ToIDOutput().ToStringOutput(),
+//						InspectTemplate: template.ID(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

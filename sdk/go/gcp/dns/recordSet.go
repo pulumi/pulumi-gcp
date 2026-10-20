@@ -350,7 +350,7 @@ import (
 //				Name:                pulumi.String("prod-ilb"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				BackendService:      prodRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				BackendService:      prodRegionBackendService.ID(),
 //				AllPorts:            pulumi.Bool(true),
 //				Network:             prodNetwork.Name,
 //				AllowGlobalAccess:   pulumi.Bool(true),
@@ -375,7 +375,7 @@ import (
 //									IpAddress:        prodForwardingRule.IpAddress,
 //									Port:             pulumi.String("80"),
 //									IpProtocol:       pulumi.String("tcp"),
-//									NetworkUrl:       prodNetwork.ID().ToIDOutput().ToStringOutput(),
+//									NetworkUrl:       prodNetwork.ID(),
 //									Project:          prodForwardingRule.Project,
 //									Region:           prodForwardingRule.Region,
 //								},
@@ -453,7 +453,7 @@ import (
 //				Type:        pulumi.String("A"),
 //				Ttl:         pulumi.Int(300),
 //				RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{
-//					HealthCheck: http_health_check.ID().ToIDOutput().ToStringOutput(),
+//					HealthCheck: http_health_check.ID(),
 //					PrimaryBackup: &dns.RecordSetRoutingPolicyPrimaryBackupArgs{
 //						TrickleRatio: pulumi.Float64(0.1),
 //						Primary: &dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{

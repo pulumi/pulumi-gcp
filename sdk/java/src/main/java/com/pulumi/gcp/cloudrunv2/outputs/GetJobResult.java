@@ -36,6 +36,7 @@ public final class GetJobResult {
     private String etag;
     private Integer executionCount;
     private String expireTime;
+    private String functionalType;
     private String generation;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -105,6 +106,9 @@ public final class GetJobResult {
     }
     public String expireTime() {
         return this.expireTime;
+    }
+    public String functionalType() {
+        return this.functionalType;
     }
     public String generation() {
         return this.generation;
@@ -192,6 +196,7 @@ public final class GetJobResult {
         private String etag;
         private Integer executionCount;
         private String expireTime;
+        private String functionalType;
         private String generation;
         private String id;
         private Map<String,String> labels;
@@ -229,6 +234,7 @@ public final class GetJobResult {
     	      this.etag = defaults.etag;
     	      this.executionCount = defaults.executionCount;
     	      this.expireTime = defaults.expireTime;
+    	      this.functionalType = defaults.functionalType;
     	      this.generation = defaults.generation;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -374,6 +380,14 @@ public final class GetJobResult {
               throw new MissingRequiredPropertyException("GetJobResult", "expireTime");
             }
             this.expireTime = expireTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder functionalType(String functionalType) {
+            if (functionalType == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "functionalType");
+            }
+            this.functionalType = functionalType;
             return this;
         }
         @CustomType.Setter
@@ -550,6 +564,7 @@ public final class GetJobResult {
             _resultValue.etag = etag;
             _resultValue.executionCount = executionCount;
             _resultValue.expireTime = expireTime;
+            _resultValue.functionalType = functionalType;
             _resultValue.generation = generation;
             _resultValue.id = id;
             _resultValue.labels = labels;

@@ -49,6 +49,21 @@ public final class CloudControlParameterSpecDefaultValueOneofValueParameterValue
     }
 
     /**
+     * Sub-parameter values, in JSON format.
+     * 
+     */
+    @Import(name="oneofValue")
+    private @Nullable Output<String> oneofValue;
+
+    /**
+     * @return Sub-parameter values, in JSON format.
+     * 
+     */
+    public Optional<Output<String>> oneofValue() {
+        return Optional.ofNullable(this.oneofValue);
+    }
+
+    /**
      * A list of strings.
      * Structure is documented below.
      * 
@@ -85,6 +100,7 @@ public final class CloudControlParameterSpecDefaultValueOneofValueParameterValue
     private CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueArgs(CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueParameterValueArgs $) {
         this.boolValue = $.boolValue;
         this.numberValue = $.numberValue;
+        this.oneofValue = $.oneofValue;
         this.stringListValue = $.stringListValue;
         this.stringValue = $.stringValue;
     }
@@ -147,6 +163,27 @@ public final class CloudControlParameterSpecDefaultValueOneofValueParameterValue
          */
         public Builder numberValue(Double numberValue) {
             return numberValue(Output.of(numberValue));
+        }
+
+        /**
+         * @param oneofValue Sub-parameter values, in JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneofValue(@Nullable Output<String> oneofValue) {
+            $.oneofValue = oneofValue;
+            return this;
+        }
+
+        /**
+         * @param oneofValue Sub-parameter values, in JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneofValue(String oneofValue) {
+            return oneofValue(Output.of(oneofValue));
         }
 
         /**

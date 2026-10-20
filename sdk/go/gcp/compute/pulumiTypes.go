@@ -5806,6 +5806,10 @@ func (o BackendServiceCustomMetricArrayOutput) Index(i pulumi.IntInput) BackendS
 
 type BackendServiceDynamicForwarding struct {
 	// (Optional, Beta)
+	// Dynamic Forwarding Proxy configuration.
+	// Structure is documented below.
+	ForwardProxy *BackendServiceDynamicForwardingForwardProxy `pulumi:"forwardProxy"`
+	// (Optional, Beta)
 	// IP:PORT based dynamic forwarding configuration.
 	// Structure is documented below.
 	IpPortSelection *BackendServiceDynamicForwardingIpPortSelection `pulumi:"ipPortSelection"`
@@ -5823,6 +5827,10 @@ type BackendServiceDynamicForwardingInput interface {
 }
 
 type BackendServiceDynamicForwardingArgs struct {
+	// (Optional, Beta)
+	// Dynamic Forwarding Proxy configuration.
+	// Structure is documented below.
+	ForwardProxy BackendServiceDynamicForwardingForwardProxyPtrInput `pulumi:"forwardProxy"`
 	// (Optional, Beta)
 	// IP:PORT based dynamic forwarding configuration.
 	// Structure is documented below.
@@ -5907,6 +5915,15 @@ func (o BackendServiceDynamicForwardingOutput) ToBackendServiceDynamicForwarding
 }
 
 // (Optional, Beta)
+// Dynamic Forwarding Proxy configuration.
+// Structure is documented below.
+func (o BackendServiceDynamicForwardingOutput) ForwardProxy() BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return o.ApplyT(func(v BackendServiceDynamicForwarding) *BackendServiceDynamicForwardingForwardProxy {
+		return v.ForwardProxy
+	}).(BackendServiceDynamicForwardingForwardProxyPtrOutput)
+}
+
+// (Optional, Beta)
 // IP:PORT based dynamic forwarding configuration.
 // Structure is documented below.
 func (o BackendServiceDynamicForwardingOutput) IpPortSelection() BackendServiceDynamicForwardingIpPortSelectionPtrOutput {
@@ -5940,6 +5957,18 @@ func (o BackendServiceDynamicForwardingPtrOutput) Elem() BackendServiceDynamicFo
 }
 
 // (Optional, Beta)
+// Dynamic Forwarding Proxy configuration.
+// Structure is documented below.
+func (o BackendServiceDynamicForwardingPtrOutput) ForwardProxy() BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return o.ApplyT(func(v *BackendServiceDynamicForwarding) *BackendServiceDynamicForwardingForwardProxy {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardProxy
+	}).(BackendServiceDynamicForwardingForwardProxyPtrOutput)
+}
+
+// (Optional, Beta)
 // IP:PORT based dynamic forwarding configuration.
 // Structure is documented below.
 func (o BackendServiceDynamicForwardingPtrOutput) IpPortSelection() BackendServiceDynamicForwardingIpPortSelectionPtrOutput {
@@ -5949,6 +5978,174 @@ func (o BackendServiceDynamicForwardingPtrOutput) IpPortSelection() BackendServi
 		}
 		return v.IpPortSelection
 	}).(BackendServiceDynamicForwardingIpPortSelectionPtrOutput)
+}
+
+type BackendServiceDynamicForwardingForwardProxy struct {
+	// (Required, Beta)
+	// A boolean flag enabling dynamic forwarding proxy.
+	Enabled bool `pulumi:"enabled"`
+	// (Required, Beta)
+	// Determines the dynamic forwarding proxy mode
+	// Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+	ProxyMode string `pulumi:"proxyMode"`
+}
+
+// BackendServiceDynamicForwardingForwardProxyInput is an input type that accepts BackendServiceDynamicForwardingForwardProxyArgs and BackendServiceDynamicForwardingForwardProxyOutput values.
+// You can construct a concrete instance of `BackendServiceDynamicForwardingForwardProxyInput` via:
+//
+//	BackendServiceDynamicForwardingForwardProxyArgs{...}
+type BackendServiceDynamicForwardingForwardProxyInput interface {
+	pulumi.Input
+
+	ToBackendServiceDynamicForwardingForwardProxyOutput() BackendServiceDynamicForwardingForwardProxyOutput
+	ToBackendServiceDynamicForwardingForwardProxyOutputWithContext(context.Context) BackendServiceDynamicForwardingForwardProxyOutput
+}
+
+type BackendServiceDynamicForwardingForwardProxyArgs struct {
+	// (Required, Beta)
+	// A boolean flag enabling dynamic forwarding proxy.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Required, Beta)
+	// Determines the dynamic forwarding proxy mode
+	// Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+	ProxyMode pulumi.StringInput `pulumi:"proxyMode"`
+}
+
+func (BackendServiceDynamicForwardingForwardProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (i BackendServiceDynamicForwardingForwardProxyArgs) ToBackendServiceDynamicForwardingForwardProxyOutput() BackendServiceDynamicForwardingForwardProxyOutput {
+	return i.ToBackendServiceDynamicForwardingForwardProxyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceDynamicForwardingForwardProxyArgs) ToBackendServiceDynamicForwardingForwardProxyOutputWithContext(ctx context.Context) BackendServiceDynamicForwardingForwardProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceDynamicForwardingForwardProxyOutput)
+}
+
+func (i BackendServiceDynamicForwardingForwardProxyArgs) ToBackendServiceDynamicForwardingForwardProxyPtrOutput() BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return i.ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(context.Background())
+}
+
+func (i BackendServiceDynamicForwardingForwardProxyArgs) ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(ctx context.Context) BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceDynamicForwardingForwardProxyOutput).ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(ctx)
+}
+
+// BackendServiceDynamicForwardingForwardProxyPtrInput is an input type that accepts BackendServiceDynamicForwardingForwardProxyArgs, BackendServiceDynamicForwardingForwardProxyPtr and BackendServiceDynamicForwardingForwardProxyPtrOutput values.
+// You can construct a concrete instance of `BackendServiceDynamicForwardingForwardProxyPtrInput` via:
+//
+//	        BackendServiceDynamicForwardingForwardProxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackendServiceDynamicForwardingForwardProxyPtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceDynamicForwardingForwardProxyPtrOutput() BackendServiceDynamicForwardingForwardProxyPtrOutput
+	ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(context.Context) BackendServiceDynamicForwardingForwardProxyPtrOutput
+}
+
+type backendServiceDynamicForwardingForwardProxyPtrType BackendServiceDynamicForwardingForwardProxyArgs
+
+func BackendServiceDynamicForwardingForwardProxyPtr(v *BackendServiceDynamicForwardingForwardProxyArgs) BackendServiceDynamicForwardingForwardProxyPtrInput {
+	return (*backendServiceDynamicForwardingForwardProxyPtrType)(v)
+}
+
+func (*backendServiceDynamicForwardingForwardProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (i *backendServiceDynamicForwardingForwardProxyPtrType) ToBackendServiceDynamicForwardingForwardProxyPtrOutput() BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return i.ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *backendServiceDynamicForwardingForwardProxyPtrType) ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(ctx context.Context) BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceDynamicForwardingForwardProxyPtrOutput)
+}
+
+type BackendServiceDynamicForwardingForwardProxyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceDynamicForwardingForwardProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyOutput) ToBackendServiceDynamicForwardingForwardProxyOutput() BackendServiceDynamicForwardingForwardProxyOutput {
+	return o
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyOutput) ToBackendServiceDynamicForwardingForwardProxyOutputWithContext(ctx context.Context) BackendServiceDynamicForwardingForwardProxyOutput {
+	return o
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyOutput) ToBackendServiceDynamicForwardingForwardProxyPtrOutput() BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return o.ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyOutput) ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(ctx context.Context) BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceDynamicForwardingForwardProxy) *BackendServiceDynamicForwardingForwardProxy {
+		return &v
+	}).(BackendServiceDynamicForwardingForwardProxyPtrOutput)
+}
+
+// (Required, Beta)
+// A boolean flag enabling dynamic forwarding proxy.
+func (o BackendServiceDynamicForwardingForwardProxyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackendServiceDynamicForwardingForwardProxy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Required, Beta)
+// Determines the dynamic forwarding proxy mode
+// Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+func (o BackendServiceDynamicForwardingForwardProxyOutput) ProxyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceDynamicForwardingForwardProxy) string { return v.ProxyMode }).(pulumi.StringOutput)
+}
+
+type BackendServiceDynamicForwardingForwardProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceDynamicForwardingForwardProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyPtrOutput) ToBackendServiceDynamicForwardingForwardProxyPtrOutput() BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return o
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyPtrOutput) ToBackendServiceDynamicForwardingForwardProxyPtrOutputWithContext(ctx context.Context) BackendServiceDynamicForwardingForwardProxyPtrOutput {
+	return o
+}
+
+func (o BackendServiceDynamicForwardingForwardProxyPtrOutput) Elem() BackendServiceDynamicForwardingForwardProxyOutput {
+	return o.ApplyT(func(v *BackendServiceDynamicForwardingForwardProxy) BackendServiceDynamicForwardingForwardProxy {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceDynamicForwardingForwardProxy
+		return ret
+	}).(BackendServiceDynamicForwardingForwardProxyOutput)
+}
+
+// (Required, Beta)
+// A boolean flag enabling dynamic forwarding proxy.
+func (o BackendServiceDynamicForwardingForwardProxyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServiceDynamicForwardingForwardProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Required, Beta)
+// Determines the dynamic forwarding proxy mode
+// Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+func (o BackendServiceDynamicForwardingForwardProxyPtrOutput) ProxyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceDynamicForwardingForwardProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProxyMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type BackendServiceDynamicForwardingIpPortSelection struct {
@@ -31381,6 +31578,8 @@ type InstanceFromMachineImageNetworkInterface struct {
 	QueueCount *int `pulumi:"queueCount"`
 	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+	ServiceClassId *string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType *string `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
@@ -31440,6 +31639,8 @@ type InstanceFromMachineImageNetworkInterfaceArgs struct {
 	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy pulumi.StringPtrInput `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+	ServiceClassId pulumi.StringPtrInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
@@ -31598,6 +31799,11 @@ func (o InstanceFromMachineImageNetworkInterfaceOutput) QueueCount() pulumi.IntP
 // A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o InstanceFromMachineImageNetworkInterfaceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+func (o InstanceFromMachineImageNetworkInterfaceOutput) ServiceClassId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.ServiceClassId }).(pulumi.StringPtrOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -37170,6 +37376,8 @@ type InstanceFromTemplateNetworkInterface struct {
 	QueueCount *int `pulumi:"queueCount"`
 	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+	ServiceClassId *string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType *string `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
@@ -37229,6 +37437,8 @@ type InstanceFromTemplateNetworkInterfaceArgs struct {
 	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy pulumi.StringPtrInput `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+	ServiceClassId pulumi.StringPtrInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
@@ -37387,6 +37597,11 @@ func (o InstanceFromTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntPtrOu
 // A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o InstanceFromTemplateNetworkInterfaceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFromTemplateNetworkInterface) *string { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+func (o InstanceFromTemplateNetworkInterfaceOutput) ServiceClassId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateNetworkInterface) *string { return v.ServiceClassId }).(pulumi.StringPtrOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -44242,6 +44457,8 @@ type InstanceNetworkInterface struct {
 	QueueCount *int `pulumi:"queueCount"`
 	// Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId *string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
 	StackType *string `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork to attach this
@@ -44325,6 +44542,8 @@ type InstanceNetworkInterfaceArgs struct {
 	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy pulumi.StringPtrInput `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId pulumi.StringPtrInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork to attach this
@@ -44501,6 +44720,11 @@ func (o InstanceNetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
 // Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o InstanceNetworkInterfaceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+func (o InstanceNetworkInterfaceOutput) ServiceClassId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.ServiceClassId }).(pulumi.StringPtrOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -45690,7 +45914,7 @@ type InstanceScheduling struct {
 	// If this field is set to true, then `automaticRestart` must be
 	// set to false.  Defaults to false.
 	Preemptible *bool `pulumi:"preemptible"`
-	// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+	// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 	PreemptionNoticeDuration *InstanceSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDuration"`
 	// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
 	// `preemptible` should be `true` and `automaticRestart` should be
@@ -45754,7 +45978,7 @@ type InstanceSchedulingArgs struct {
 	// If this field is set to true, then `automaticRestart` must be
 	// set to false.  Defaults to false.
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+	// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 	PreemptionNoticeDuration InstanceSchedulingPreemptionNoticeDurationPtrInput `pulumi:"preemptionNoticeDuration"`
 	// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
 	// `preemptible` should be `true` and `automaticRestart` should be
@@ -45924,7 +46148,7 @@ func (o InstanceSchedulingOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceScheduling) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 func (o InstanceSchedulingOutput) PreemptionNoticeDuration() InstanceSchedulingPreemptionNoticeDurationPtrOutput {
 	return o.ApplyT(func(v InstanceScheduling) *InstanceSchedulingPreemptionNoticeDuration {
 		return v.PreemptionNoticeDuration
@@ -46116,7 +46340,7 @@ func (o InstanceSchedulingPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 func (o InstanceSchedulingPtrOutput) PreemptionNoticeDuration() InstanceSchedulingPreemptionNoticeDurationPtrOutput {
 	return o.ApplyT(func(v *InstanceScheduling) *InstanceSchedulingPreemptionNoticeDuration {
 		if v == nil {
@@ -49870,6 +50094,8 @@ type InstanceTemplateNetworkInterface struct {
 	ParentNicName *string `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount *int `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId *string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
 	StackType *string `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
@@ -49942,6 +50168,8 @@ type InstanceTemplateNetworkInterfaceArgs struct {
 	ParentNicName pulumi.StringPtrInput `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId pulumi.StringPtrInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
@@ -50107,6 +50335,11 @@ func (o InstanceTemplateNetworkInterfaceOutput) ParentNicName() pulumi.StringPtr
 // The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 func (o InstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+func (o InstanceTemplateNetworkInterfaceOutput) ServiceClassId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.ServiceClassId }).(pulumi.StringPtrOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -51130,7 +51363,7 @@ type InstanceTemplateScheduling struct {
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
 	Preemptible *bool `pulumi:"preemptible"`
-	// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+	// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 	PreemptionNoticeDuration *InstanceTemplateSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDuration"`
 	// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
 	// `preemptible` should be `true` and `automaticRestart` should be
@@ -51193,7 +51426,7 @@ type InstanceTemplateSchedulingArgs struct {
 	// false. Read more on this
 	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
-	// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+	// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 	PreemptionNoticeDuration InstanceTemplateSchedulingPreemptionNoticeDurationPtrInput `pulumi:"preemptionNoticeDuration"`
 	// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
 	// `preemptible` should be `true` and `automaticRestart` should be
@@ -51366,7 +51599,7 @@ func (o InstanceTemplateSchedulingOutput) Preemptible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateScheduling) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
 }
 
-// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 func (o InstanceTemplateSchedulingOutput) PreemptionNoticeDuration() InstanceTemplateSchedulingPreemptionNoticeDurationPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateScheduling) *InstanceTemplateSchedulingPreemptionNoticeDuration {
 		return v.PreemptionNoticeDuration
@@ -51557,7 +51790,7 @@ func (o InstanceTemplateSchedulingPtrOutput) Preemptible() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
 func (o InstanceTemplateSchedulingPtrOutput) PreemptionNoticeDuration() InstanceTemplateSchedulingPreemptionNoticeDurationPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateScheduling) *InstanceTemplateSchedulingPreemptionNoticeDuration {
 		if v == nil {
@@ -67205,6 +67438,474 @@ func (o OrganizationSecurityPolicyRuleRedirectOptionsPtrOutput) Type() pulumi.St
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicyRule struct {
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots *OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots `pulumi:"standardSnapshots"`
+}
+
+// OrganizationSnapshotRecycleBinPolicyRuleInput is an input type that accepts OrganizationSnapshotRecycleBinPolicyRuleArgs and OrganizationSnapshotRecycleBinPolicyRuleOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicyRuleInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicyRuleArgs{...}
+type OrganizationSnapshotRecycleBinPolicyRuleInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicyRuleOutput() OrganizationSnapshotRecycleBinPolicyRuleOutput
+	ToOrganizationSnapshotRecycleBinPolicyRuleOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicyRuleOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleArgs struct {
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput `pulumi:"standardSnapshots"`
+}
+
+func (OrganizationSnapshotRecycleBinPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleArgs) ToOrganizationSnapshotRecycleBinPolicyRuleOutput() OrganizationSnapshotRecycleBinPolicyRuleOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleArgs) ToOrganizationSnapshotRecycleBinPolicyRuleOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicyRuleOutput)
+}
+
+// OrganizationSnapshotRecycleBinPolicyRuleArrayInput is an input type that accepts OrganizationSnapshotRecycleBinPolicyRuleArray and OrganizationSnapshotRecycleBinPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicyRuleArrayInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicyRuleArray{ OrganizationSnapshotRecycleBinPolicyRuleArgs{...} }
+type OrganizationSnapshotRecycleBinPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutput() OrganizationSnapshotRecycleBinPolicyRuleArrayOutput
+	ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicyRuleArrayOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleArray []OrganizationSnapshotRecycleBinPolicyRuleInput
+
+func (OrganizationSnapshotRecycleBinPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleArray) ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutput() OrganizationSnapshotRecycleBinPolicyRuleArrayOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleArray) ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicyRuleArrayOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleOutput) ToOrganizationSnapshotRecycleBinPolicyRuleOutput() OrganizationSnapshotRecycleBinPolicyRuleOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleOutput) ToOrganizationSnapshotRecycleBinPolicyRuleOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o OrganizationSnapshotRecycleBinPolicyRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSnapshotRecycleBinPolicyRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The rule config for standard snapshots.
+// Structure is documented below.
+func (o OrganizationSnapshotRecycleBinPolicyRuleOutput) StandardSnapshots() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o.ApplyT(func(v OrganizationSnapshotRecycleBinPolicyRule) *OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots {
+		return v.StandardSnapshots
+	}).(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleArrayOutput) ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutput() OrganizationSnapshotRecycleBinPolicyRuleArrayOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleArrayOutput) ToOrganizationSnapshotRecycleBinPolicyRuleArrayOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleArrayOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleArrayOutput) Index(i pulumi.IntInput) OrganizationSnapshotRecycleBinPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSnapshotRecycleBinPolicyRule {
+		return vs[0].([]OrganizationSnapshotRecycleBinPolicyRule)[vs[1].(int)]
+	}).(OrganizationSnapshotRecycleBinPolicyRuleOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays *int `pulumi:"retentionDurationDays"`
+}
+
+// OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsInput is an input type that accepts OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs and OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{...}
+type OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput
+	ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays pulumi.IntPtrInput `pulumi:"retentionDurationDays"`
+}
+
+func (OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput)
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput).ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx)
+}
+
+// OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput is an input type that accepts OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs, OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtr and OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput` via:
+//
+//	        OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput
+	ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput
+}
+
+type organizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrType OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs
+
+func OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtr(v *OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput {
+	return (*organizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrType)(v)
+}
+
+func (*organizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (i *organizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrType) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrType) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o.ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots) *OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots {
+		return &v
+	}).(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput)
+}
+
+// The retention duration for snapshots in the recycle bin after which the
+// snapshots are automatically deleted from recycle bin.
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) RetentionDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots) *int { return v.RetentionDurationDays }).(pulumi.IntPtrOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) ToOrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) Elem() OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return o.ApplyT(func(v *OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots) OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots
+		return ret
+	}).(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput)
+}
+
+// The retention duration for snapshots in the recycle bin after which the
+// snapshots are automatically deleted from recycle bin.
+func (o OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) RetentionDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDurationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRule struct {
+	// (Required) The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// (Output)
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots []OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot `pulumi:"standardSnapshots"`
+}
+
+// OrganizationSnapshotRecycleBinPolicySystemRuleInput is an input type that accepts OrganizationSnapshotRecycleBinPolicySystemRuleArgs and OrganizationSnapshotRecycleBinPolicySystemRuleOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicySystemRuleInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicySystemRuleArgs{...}
+type OrganizationSnapshotRecycleBinPolicySystemRuleInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleOutput() OrganizationSnapshotRecycleBinPolicySystemRuleOutput
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleArgs struct {
+	// (Required) The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Output)
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput `pulumi:"standardSnapshots"`
+}
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleArgs) ToOrganizationSnapshotRecycleBinPolicySystemRuleOutput() OrganizationSnapshotRecycleBinPolicySystemRuleOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicySystemRuleOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleArgs) ToOrganizationSnapshotRecycleBinPolicySystemRuleOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicySystemRuleOutput)
+}
+
+// OrganizationSnapshotRecycleBinPolicySystemRuleArrayInput is an input type that accepts OrganizationSnapshotRecycleBinPolicySystemRuleArray and OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicySystemRuleArrayInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicySystemRuleArray{ OrganizationSnapshotRecycleBinPolicySystemRuleArgs{...} }
+type OrganizationSnapshotRecycleBinPolicySystemRuleArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput() OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleArray []OrganizationSnapshotRecycleBinPolicySystemRuleInput
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleArray) ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput() OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleArray) ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleOutput() OrganizationSnapshotRecycleBinPolicySystemRuleOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleOutput {
+	return o
+}
+
+// (Required) The identifier for this object. Format specified above.
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationSnapshotRecycleBinPolicySystemRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The rule config for standard snapshots.
+// Structure is documented below.
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleOutput) StandardSnapshots() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return o.ApplyT(func(v OrganizationSnapshotRecycleBinPolicySystemRule) []OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot {
+		return v.StandardSnapshots
+	}).(OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput() OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput) Index(i pulumi.IntInput) OrganizationSnapshotRecycleBinPolicySystemRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSnapshotRecycleBinPolicySystemRule {
+		return vs[0].([]OrganizationSnapshotRecycleBinPolicySystemRule)[vs[1].(int)]
+	}).(OrganizationSnapshotRecycleBinPolicySystemRuleOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays *int `pulumi:"retentionDurationDays"`
+}
+
+// OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotInput is an input type that accepts OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs and OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs{...}
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays pulumi.IntPtrInput `pulumi:"retentionDurationDays"`
+}
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput)
+}
+
+// OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput is an input type that accepts OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray and OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput values.
+// You can construct a concrete instance of `OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput` via:
+//
+//	OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray{ OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs{...} }
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput
+	ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray []OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotInput
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return i.ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return o
+}
+
+// The retention duration for snapshots in the recycle bin after which the
+// snapshots are automatically deleted from recycle bin.
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) RetentionDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot) *int {
+		return v.RetentionDurationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput() OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) ToOrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(ctx context.Context) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return o
+}
+
+func (o OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) Index(i pulumi.IntInput) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot {
+		return vs[0].([]OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot)[vs[1].(int)]
+	}).(OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput)
 }
 
 type PacketMirroringCollectorIlb struct {
@@ -88702,793 +89403,6 @@ func (o RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput) RsaEncry
 	}).(pulumi.StringPtrOutput)
 }
 
-type RegionInstanceTemplateGuestAccelerator struct {
-	// The number of the guest accelerator cards exposed to this instance.
-	Count int `pulumi:"count"`
-	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-	Type string `pulumi:"type"`
-}
-
-// RegionInstanceTemplateGuestAcceleratorInput is an input type that accepts RegionInstanceTemplateGuestAcceleratorArgs and RegionInstanceTemplateGuestAcceleratorOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateGuestAcceleratorInput` via:
-//
-//	RegionInstanceTemplateGuestAcceleratorArgs{...}
-type RegionInstanceTemplateGuestAcceleratorInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateGuestAcceleratorOutput() RegionInstanceTemplateGuestAcceleratorOutput
-	ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(context.Context) RegionInstanceTemplateGuestAcceleratorOutput
-}
-
-type RegionInstanceTemplateGuestAcceleratorArgs struct {
-	// The number of the guest accelerator cards exposed to this instance.
-	Count pulumi.IntInput `pulumi:"count"`
-	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (RegionInstanceTemplateGuestAcceleratorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateGuestAcceleratorArgs) ToRegionInstanceTemplateGuestAcceleratorOutput() RegionInstanceTemplateGuestAcceleratorOutput {
-	return i.ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateGuestAcceleratorArgs) ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateGuestAcceleratorOutput)
-}
-
-// RegionInstanceTemplateGuestAcceleratorArrayInput is an input type that accepts RegionInstanceTemplateGuestAcceleratorArray and RegionInstanceTemplateGuestAcceleratorArrayOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateGuestAcceleratorArrayInput` via:
-//
-//	RegionInstanceTemplateGuestAcceleratorArray{ RegionInstanceTemplateGuestAcceleratorArgs{...} }
-type RegionInstanceTemplateGuestAcceleratorArrayInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateGuestAcceleratorArrayOutput() RegionInstanceTemplateGuestAcceleratorArrayOutput
-	ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Context) RegionInstanceTemplateGuestAcceleratorArrayOutput
-}
-
-type RegionInstanceTemplateGuestAcceleratorArray []RegionInstanceTemplateGuestAcceleratorInput
-
-func (RegionInstanceTemplateGuestAcceleratorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateGuestAcceleratorArray) ToRegionInstanceTemplateGuestAcceleratorArrayOutput() RegionInstanceTemplateGuestAcceleratorArrayOutput {
-	return i.ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateGuestAcceleratorArray) ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateGuestAcceleratorArrayOutput)
-}
-
-type RegionInstanceTemplateGuestAcceleratorOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateGuestAcceleratorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateGuestAcceleratorOutput) ToRegionInstanceTemplateGuestAcceleratorOutput() RegionInstanceTemplateGuestAcceleratorOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateGuestAcceleratorOutput) ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorOutput {
-	return o
-}
-
-// The number of the guest accelerator cards exposed to this instance.
-func (o RegionInstanceTemplateGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
-}
-
-// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-func (o RegionInstanceTemplateGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type RegionInstanceTemplateGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateGuestAcceleratorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateGuestAcceleratorArrayOutput) ToRegionInstanceTemplateGuestAcceleratorArrayOutput() RegionInstanceTemplateGuestAcceleratorArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateGuestAcceleratorArrayOutput) ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateGuestAccelerator {
-		return vs[0].([]RegionInstanceTemplateGuestAccelerator)[vs[1].(int)]
-	}).(RegionInstanceTemplateGuestAcceleratorOutput)
-}
-
-type RegionInstanceTemplateNetworkInterface struct {
-	// Access configurations, i.e. IPs via which this
-	// instance can be accessed via the Internet. Omit to ensure that the instance
-	// is not accessible from the Internet (this means that ssh provisioners will
-	// not work unless you are running Terraform can send traffic to the instance's
-	// network (e.g. via tunnel or because it is running on another cloud instance
-	// on that network). This block can be specified once per `networkInterface`. Structure documented below.
-	AccessConfigs []RegionInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
-	// An
-	// array of alias IP ranges for this network interface. Can only be specified for network
-	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges []RegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
-	// [Beta] An
-	// array of alias IPv6 ranges for this network interface. Can only be specified for network
-	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpv6Ranges []RegionInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
-	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
-	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
-	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
-	IgmpQuery *string `pulumi:"igmpQuery"`
-	// The prefix length of the primary internal IPv6 range.
-	InternalIpv6PrefixLength *int `pulumi:"internalIpv6PrefixLength"`
-	// An array of IPv6 access configurations for this interface.
-	// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
-	// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
-	Ipv6AccessConfigs []RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
-	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-	Ipv6Address *string `pulumi:"ipv6Address"`
-	// The name of the instance template. If you leave
-	// this blank, Terraform will auto-generate a unique name.
-	Name *string `pulumi:"name"`
-	// The name or selfLink of the network to attach this interface to.
-	// Use `network` attribute for Legacy or Auto subnetted networks and
-	// `subnetwork` for custom subnetted networks.
-	Network *string `pulumi:"network"`
-	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
-	NetworkAttachment *string `pulumi:"networkAttachment"`
-	// The private IP address to assign to the instance. If
-	// empty, the address will be automatically assigned.
-	NetworkIp *string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
-	NicType *string `pulumi:"nicType"`
-	// Name of the parent network interface of a dynamic network interface.
-	ParentNicName *string `pulumi:"parentNicName"`
-	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-	QueueCount *int `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
-	StackType *string `pulumi:"stackType"`
-	// the name of the subnetwork to attach this interface
-	// to. The subnetwork must exist in the same `region` this instance will be
-	// created in. Either `network` or `subnetwork` must be provided.
-	Subnetwork *string `pulumi:"subnetwork"`
-	// The ID of the project in which the subnetwork belongs.
-	// If it is not provided, the provider project is used.
-	SubnetworkProject *string `pulumi:"subnetworkProject"`
-	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
-	Vlan *int `pulumi:"vlan"`
-}
-
-// RegionInstanceTemplateNetworkInterfaceInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceArgs and RegionInstanceTemplateNetworkInterfaceOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceArgs{...}
-type RegionInstanceTemplateNetworkInterfaceInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceOutput() RegionInstanceTemplateNetworkInterfaceOutput
-	ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceArgs struct {
-	// Access configurations, i.e. IPs via which this
-	// instance can be accessed via the Internet. Omit to ensure that the instance
-	// is not accessible from the Internet (this means that ssh provisioners will
-	// not work unless you are running Terraform can send traffic to the instance's
-	// network (e.g. via tunnel or because it is running on another cloud instance
-	// on that network). This block can be specified once per `networkInterface`. Structure documented below.
-	AccessConfigs RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
-	// An
-	// array of alias IP ranges for this network interface. Can only be specified for network
-	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
-	// [Beta] An
-	// array of alias IPv6 ranges for this network interface. Can only be specified for network
-	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpv6Ranges RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
-	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
-	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
-	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
-	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
-	// The prefix length of the primary internal IPv6 range.
-	InternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"internalIpv6PrefixLength"`
-	// An array of IPv6 access configurations for this interface.
-	// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
-	// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
-	Ipv6AccessConfigs RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-	Ipv6AccessType pulumi.StringPtrInput `pulumi:"ipv6AccessType"`
-	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
-	// The name of the instance template. If you leave
-	// this blank, Terraform will auto-generate a unique name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The name or selfLink of the network to attach this interface to.
-	// Use `network` attribute for Legacy or Auto subnetted networks and
-	// `subnetwork` for custom subnetted networks.
-	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
-	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
-	// The private IP address to assign to the instance. If
-	// empty, the address will be automatically assigned.
-	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
-	NicType pulumi.StringPtrInput `pulumi:"nicType"`
-	// Name of the parent network interface of a dynamic network interface.
-	ParentNicName pulumi.StringPtrInput `pulumi:"parentNicName"`
-	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
-	StackType pulumi.StringPtrInput `pulumi:"stackType"`
-	// the name of the subnetwork to attach this interface
-	// to. The subnetwork must exist in the same `region` this instance will be
-	// created in. Either `network` or `subnetwork` must be provided.
-	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// The ID of the project in which the subnetwork belongs.
-	// If it is not provided, the provider project is used.
-	SubnetworkProject pulumi.StringPtrInput `pulumi:"subnetworkProject"`
-	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
-	Vlan pulumi.IntPtrInput `pulumi:"vlan"`
-}
-
-func (RegionInstanceTemplateNetworkInterfaceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterface)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceArgs) ToRegionInstanceTemplateNetworkInterfaceOutput() RegionInstanceTemplateNetworkInterfaceOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceArgs) ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceOutput)
-}
-
-// RegionInstanceTemplateNetworkInterfaceArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceArray and RegionInstanceTemplateNetworkInterfaceArrayOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceArrayInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceArray{ RegionInstanceTemplateNetworkInterfaceArgs{...} }
-type RegionInstanceTemplateNetworkInterfaceArrayInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceArrayOutput() RegionInstanceTemplateNetworkInterfaceArrayOutput
-	ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceArrayOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceArray []RegionInstanceTemplateNetworkInterfaceInput
-
-func (RegionInstanceTemplateNetworkInterfaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterface)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceArray) ToRegionInstanceTemplateNetworkInterfaceArrayOutput() RegionInstanceTemplateNetworkInterfaceArrayOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceArray) ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceArrayOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterface)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceOutput) ToRegionInstanceTemplateNetworkInterfaceOutput() RegionInstanceTemplateNetworkInterfaceOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceOutput) ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceOutput {
-	return o
-}
-
-// Access configurations, i.e. IPs via which this
-// instance can be accessed via the Internet. Omit to ensure that the instance
-// is not accessible from the Internet (this means that ssh provisioners will
-// not work unless you are running Terraform can send traffic to the instance's
-// network (e.g. via tunnel or because it is running on another cloud instance
-// on that network). This block can be specified once per `networkInterface`. Structure documented below.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) AccessConfigs() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAccessConfig {
-		return v.AccessConfigs
-	}).(RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
-}
-
-// An
-// array of alias IP ranges for this network interface. Can only be specified for network
-// interfaces on subnet-mode networks. Structure documented below.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAliasIpRange {
-		return v.AliasIpRanges
-	}).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
-}
-
-// [Beta] An
-// array of alias IPv6 ranges for this network interface. Can only be specified for network
-// interfaces on subnet-mode networks. Structure documented below.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
-		return v.AliasIpv6Ranges
-	}).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
-}
-
-// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) IgmpQuery() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.IgmpQuery }).(pulumi.StringPtrOutput)
-}
-
-// The prefix length of the primary internal IPv6 range.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *int { return v.InternalIpv6PrefixLength }).(pulumi.IntPtrOutput)
-}
-
-// An array of IPv6 access configurations for this interface.
-// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
-// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
-		return v.Ipv6AccessConfigs
-	}).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
-}
-
-// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Ipv6AccessType }).(pulumi.StringPtrOutput)
-}
-
-// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
-}
-
-// The name of the instance template. If you leave
-// this blank, Terraform will auto-generate a unique name.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The name or selfLink of the network to attach this interface to.
-// Use `network` attribute for Legacy or Auto subnetted networks and
-// `subnetwork` for custom subnetted networks.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
-}
-
-// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) NetworkAttachment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
-}
-
-// The private IP address to assign to the instance. If
-// empty, the address will be automatically assigned.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
-}
-
-// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
-}
-
-// Name of the parent network interface of a dynamic network interface.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) ParentNicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.ParentNicName }).(pulumi.StringPtrOutput)
-}
-
-// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
-}
-
-// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) StackType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.StackType }).(pulumi.StringPtrOutput)
-}
-
-// the name of the subnetwork to attach this interface
-// to. The subnetwork must exist in the same `region` this instance will be
-// created in. Either `network` or `subnetwork` must be provided.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the project in which the subnetwork belongs.
-// If it is not provided, the provider project is used.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) SubnetworkProject() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.SubnetworkProject }).(pulumi.StringPtrOutput)
-}
-
-// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
-func (o RegionInstanceTemplateNetworkInterfaceOutput) Vlan() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *int { return v.Vlan }).(pulumi.IntPtrOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterface)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceArrayOutput) ToRegionInstanceTemplateNetworkInterfaceArrayOutput() RegionInstanceTemplateNetworkInterfaceArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceArrayOutput) ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterface {
-		return vs[0].([]RegionInstanceTemplateNetworkInterface)[vs[1].(int)]
-	}).(RegionInstanceTemplateNetworkInterfaceOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAccessConfig struct {
-	// The IP address that will be 1:1 mapped to the instance's
-	// network ip. If not given, one will be generated.
-	NatIp *string `pulumi:"natIp"`
-	// The service-level to be provided for IPv6 traffic when the
-	// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
-	NetworkTier *string `pulumi:"networkTier"`
-	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
-	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
-}
-
-// RegionInstanceTemplateNetworkInterfaceAccessConfigInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAccessConfigArgs and RegionInstanceTemplateNetworkInterfaceAccessConfigOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAccessConfigInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceAccessConfigArgs{...}
-type RegionInstanceTemplateNetworkInterfaceAccessConfigInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigOutput
-	ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceAccessConfigArgs struct {
-	// The IP address that will be 1:1 mapped to the instance's
-	// network ip. If not given, one will be generated.
-	NatIp pulumi.StringPtrInput `pulumi:"natIp"`
-	// The service-level to be provided for IPv6 traffic when the
-	// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
-	NetworkTier pulumi.StringPtrInput `pulumi:"networkTier"`
-	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
-	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
-}
-
-func (RegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAccessConfigOutput)
-}
-
-// RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAccessConfigArray and RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceAccessConfigArray{ RegionInstanceTemplateNetworkInterfaceAccessConfigArgs{...} }
-type RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
-	ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceAccessConfigArray []RegionInstanceTemplateNetworkInterfaceAccessConfigInput
-
-func (RegionInstanceTemplateNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
-	return o
-}
-
-// The IP address that will be 1:1 mapped to the instance's
-// network ip. If not given, one will be generated.
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAccessConfig) *string { return v.NatIp }).(pulumi.StringPtrOutput)
-}
-
-// The service-level to be provided for IPv6 traffic when the
-// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAccessConfig) *string { return v.NetworkTier }).(pulumi.StringPtrOutput)
-}
-
-// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceAccessConfig {
-		return vs[0].([]RegionInstanceTemplateNetworkInterfaceAccessConfig)[vs[1].(int)]
-	}).(RegionInstanceTemplateNetworkInterfaceAccessConfigOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpRange struct {
-	// The IP CIDR range represented by this alias IP range. This IP CIDR range
-	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
-	// system or used by other network interfaces. At the time of writing only a
-	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
-	// error.
-	IpCidrRange string `pulumi:"ipCidrRange"`
-	// The subnetwork secondary range name specifying
-	// the secondary range from which to allocate the IP CIDR range for this alias IP
-	// range. If left unspecified, the primary range of the subnetwork will be used.
-	SubnetworkRangeName *string `pulumi:"subnetworkRangeName"`
-}
-
-// RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs and RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...}
-type RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs struct {
-	// The IP CIDR range represented by this alias IP range. This IP CIDR range
-	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
-	// system or used by other network interfaces. At the time of writing only a
-	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
-	// error.
-	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
-	// The subnetwork secondary range name specifying
-	// the secondary range from which to allocate the IP CIDR range for this alias IP
-	// range. If left unspecified, the primary range of the subnetwork will be used.
-	SubnetworkRangeName pulumi.StringPtrInput `pulumi:"subnetworkRangeName"`
-}
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
-}
-
-// RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray and RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{ RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...} }
-type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray []RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
-	return o
-}
-
-// The IP CIDR range represented by this alias IP range. This IP CIDR range
-// must belong to the specified subnetwork and cannot contain IP addresses reserved by
-// system or used by other network interfaces. At the time of writing only a
-// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
-// error.
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
-}
-
-// The subnetwork secondary range name specifying
-// the secondary range from which to allocate the IP CIDR range for this alias IP
-// range. If left unspecified, the primary range of the subnetwork will be used.
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpRange) *string { return v.SubnetworkRangeName }).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceAliasIpRange {
-		return vs[0].([]RegionInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
-	}).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6Range struct {
-	// The IP CIDR range represented by this alias IPv6 range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. At the time of writing only a netmask (e.g. /96) may be supplied, with a CIDR format resulting in an API error.
-	IpCidrRange string `pulumi:"ipCidrRange"`
-	// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IPv6 range. If left unspecified, the primary range of the subnetwork will be used.
-	SubnetworkRangeName *string `pulumi:"subnetworkRangeName"`
-}
-
-// RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs and RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...}
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs struct {
-	// The IP CIDR range represented by this alias IPv6 range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. At the time of writing only a netmask (e.g. /96) may be supplied, with a CIDR format resulting in an API error.
-	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
-	// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IPv6 range. If left unspecified, the primary range of the subnetwork will be used.
-	SubnetworkRangeName pulumi.StringPtrInput `pulumi:"subnetworkRangeName"`
-}
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
-}
-
-// RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray and RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{ RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...} }
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
-	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray []RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
-	return o
-}
-
-// The IP CIDR range represented by this alias IPv6 range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. At the time of writing only a netmask (e.g. /96) may be supplied, with a CIDR format resulting in an API error.
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) IpCidrRange() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpv6Range) string { return v.IpCidrRange }).(pulumi.StringOutput)
-}
-
-// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IPv6 range. If left unspecified, the primary range of the subnetwork will be used.
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) SubnetworkRangeName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpv6Range) *string { return v.SubnetworkRangeName }).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
-		return vs[0].([]RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)[vs[1].(int)]
-	}).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerAutoscalingPolicyInput)(nil)).Elem(), AutoscalerAutoscalingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerAutoscalingPolicyPtrInput)(nil)).Elem(), AutoscalerAutoscalingPolicyArgs{})
@@ -89548,6 +89462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCustomMetricArrayInput)(nil)).Elem(), BackendServiceCustomMetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceDynamicForwardingInput)(nil)).Elem(), BackendServiceDynamicForwardingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceDynamicForwardingPtrInput)(nil)).Elem(), BackendServiceDynamicForwardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceDynamicForwardingForwardProxyInput)(nil)).Elem(), BackendServiceDynamicForwardingForwardProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceDynamicForwardingForwardProxyPtrInput)(nil)).Elem(), BackendServiceDynamicForwardingForwardProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceDynamicForwardingIpPortSelectionInput)(nil)).Elem(), BackendServiceDynamicForwardingIpPortSelectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceDynamicForwardingIpPortSelectionPtrInput)(nil)).Elem(), BackendServiceDynamicForwardingIpPortSelectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIamBindingConditionInput)(nil)).Elem(), BackendServiceIamBindingConditionArgs{})
@@ -90250,6 +90166,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput)(nil)).Elem(), OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityPolicyRuleRedirectOptionsInput)(nil)).Elem(), OrganizationSecurityPolicyRuleRedirectOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityPolicyRuleRedirectOptionsPtrInput)(nil)).Elem(), OrganizationSecurityPolicyRuleRedirectOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRuleInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRuleArrayInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRuleInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicySystemRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRuleArrayInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicySystemRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput)(nil)).Elem(), OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringCollectorIlbInput)(nil)).Elem(), PacketMirroringCollectorIlbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringCollectorIlbPtrInput)(nil)).Elem(), PacketMirroringCollectorIlbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterInput)(nil)).Elem(), PacketMirroringFilterArgs{})
@@ -90478,16 +90402,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceImageEncryptionKeyPtrInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrInput)(nil)).Elem(), RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateGuestAcceleratorInput)(nil)).Elem(), RegionInstanceTemplateGuestAcceleratorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateGuestAcceleratorArrayInput)(nil)).Elem(), RegionInstanceTemplateGuestAcceleratorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAccessConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAccessConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyCpuUtilizationOutput{})
@@ -90546,6 +90460,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceCustomMetricArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceDynamicForwardingOutput{})
 	pulumi.RegisterOutputType(BackendServiceDynamicForwardingPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceDynamicForwardingForwardProxyOutput{})
+	pulumi.RegisterOutputType(BackendServiceDynamicForwardingForwardProxyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceDynamicForwardingIpPortSelectionOutput{})
 	pulumi.RegisterOutputType(BackendServiceDynamicForwardingIpPortSelectionPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceIamBindingConditionOutput{})
@@ -91248,6 +91164,14 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleRedirectOptionsOutput{})
 	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleRedirectOptionsPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicyRuleOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicySystemRuleOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicySystemRuleArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput{})
+	pulumi.RegisterOutputType(OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(PacketMirroringCollectorIlbOutput{})
 	pulumi.RegisterOutputType(PacketMirroringCollectorIlbPtrOutput{})
 	pulumi.RegisterOutputType(PacketMirroringFilterOutput{})
@@ -91476,14 +91400,4 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceImageEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyPtrOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateGuestAcceleratorOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateGuestAcceleratorArrayOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceArrayOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAccessConfigOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput{})
 }

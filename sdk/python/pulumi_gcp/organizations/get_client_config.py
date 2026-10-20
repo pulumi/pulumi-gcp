@@ -124,6 +124,15 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     ```
 
     ### Configure Kubernetes Provider With OAuth2 Access Token
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.organizations.get_client_config()
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        zone="us-east1-a")
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -154,6 +163,15 @@ def get_client_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.I
     ```
 
     ### Configure Kubernetes Provider With OAuth2 Access Token
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.organizations.get_client_config()
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        zone="us-east1-a")
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

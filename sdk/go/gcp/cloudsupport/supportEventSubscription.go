@@ -49,7 +49,7 @@ import (
 //			}
 //			supportPublisher, err := pubsub.NewTopicIAMMember(ctx, "support_publisher", &pubsub.TopicIAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
-//				Topic:   supportTopic.ID().ToIDOutput().ToStringOutput(),
+//				Topic:   supportTopic.ID(),
 //				Role:    pulumi.String("roles/pubsub.publisher"),
 //				Member:  pulumi.String("serviceAccount:cloud-support-apievents@system.gserviceaccount.com"),
 //			})
@@ -58,7 +58,7 @@ import (
 //			}
 //			_, err = cloudsupport.NewSupportEventSubscription(ctx, "subscription", &cloudsupport.SupportEventSubscriptionArgs{
 //				Organization: pulumi.String("123456789"),
-//				PubSubTopic:  supportTopic.ID().ToIDOutput().ToStringOutput(),
+//				PubSubTopic:  supportTopic.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cloudsupport2,
 //				supportPublisher,
@@ -104,7 +104,7 @@ import (
 //			}
 //			supportPublisher2, err := pubsub.NewTopicIAMMember(ctx, "support_publisher_2", &pubsub.TopicIAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
-//				Topic:   supportTopic2.ID().ToIDOutput().ToStringOutput(),
+//				Topic:   supportTopic2.ID(),
 //				Role:    pulumi.String("roles/pubsub.publisher"),
 //				Member:  pulumi.String("serviceAccount:cloud-support-apievents@system.gserviceaccount.com"),
 //			})
@@ -113,7 +113,7 @@ import (
 //			}
 //			_, err = cloudsupport.NewSupportEventSubscription(ctx, "subscription", &cloudsupport.SupportEventSubscriptionArgs{
 //				Organization: pulumi.String("123456789"),
-//				PubSubTopic:  supportTopic2.ID().ToIDOutput().ToStringOutput(),
+//				PubSubTopic:  supportTopic2.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cloudsupport2,
 //				supportPublisher2,

@@ -48,7 +48,7 @@ import (
 //			exampleUnitkind, err := saasruntime.NewUnitKind(ctx, "example_unitkind", &saasruntime.UnitKindArgs{
 //				Location:   pulumi.String("global"),
 //				UnitKindId: pulumi.String("example-unitkind"),
-//				Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
+//				Saas:       exampleSaas.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ import (
 //			_, err = saasruntime.NewRolloutKind(ctx, "example", &saasruntime.RolloutKindArgs{
 //				Location:                     pulumi.String("global"),
 //				RolloutKindId:                pulumi.String("example-rolloutkind"),
-//				UnitKind:                     exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
+//				UnitKind:                     exampleUnitkind.ID(),
 //				RolloutOrchestrationStrategy: pulumi.String("Google.Cloud.Simple.OneLocationAtATime"),
 //				ErrorBudget: &saasruntime.RolloutKindErrorBudgetArgs{
 //					AllowedCount: pulumi.Int(1),

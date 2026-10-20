@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .releaseId("previous-release")
  *             .unitKind(exampleUnitkind.id())
  *             .blueprint(ReleaseBlueprintArgs.builder()
- *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image}{@literal @}{@code sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee")
+ *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image}{@literal @}{@code sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680")
  *                 .build())
  *             .build());
  * 
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .releaseId("example-release")
  *             .unitKind(exampleUnitkind.id())
  *             .blueprint(ReleaseBlueprintArgs.builder()
- *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image}{@literal @}{@code sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e")
+ *                 .package_("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image}{@literal @}{@code sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a")
  *                 .build())
  *             .inputVariableDefaults(ReleaseInputVariableDefaultArgs.builder()
  *                 .variable("name")

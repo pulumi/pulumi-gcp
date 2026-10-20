@@ -605,6 +605,52 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.timeZone);
     }
 
+    /**
+     * Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+     * VM_BACKUP_STORAGE_TYPE_LOCAL
+     * VM_BACKUP_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    @Import(name="vmBackupStorageType")
+    private @Nullable Output<String> vmBackupStorageType;
+
+    /**
+     * @return Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+     * VM_BACKUP_STORAGE_TYPE_LOCAL
+     * VM_BACKUP_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    public Optional<Output<String>> vmBackupStorageType() {
+        return Optional.ofNullable(this.vmBackupStorageType);
+    }
+
+    /**
+     * Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+     * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+     * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    @Import(name="vmFileSystemStorageType")
+    private @Nullable Output<String> vmFileSystemStorageType;
+
+    /**
+     * @return Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+     * Possible values:
+     * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+     * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+     * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+     * 
+     */
+    public Optional<Output<String>> vmFileSystemStorageType() {
+        return Optional.ofNullable(this.vmFileSystemStorageType);
+    }
+
     private CloudVmClusterPropertiesArgs() {}
 
     private CloudVmClusterPropertiesArgs(CloudVmClusterPropertiesArgs $) {
@@ -641,6 +687,8 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         this.storageSizeGb = $.storageSizeGb;
         this.systemVersion = $.systemVersion;
         this.timeZone = $.timeZone;
+        this.vmBackupStorageType = $.vmBackupStorageType;
+        this.vmFileSystemStorageType = $.vmFileSystemStorageType;
     }
 
     public static Builder builder() {
@@ -1471,6 +1519,64 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
          */
         public Builder timeZone(CloudVmClusterPropertiesTimeZoneArgs timeZone) {
             return timeZone(Output.of(timeZone));
+        }
+
+        /**
+         * @param vmBackupStorageType Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+         * VM_BACKUP_STORAGE_TYPE_LOCAL
+         * VM_BACKUP_STORAGE_TYPE_EXASCALE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmBackupStorageType(@Nullable Output<String> vmBackupStorageType) {
+            $.vmBackupStorageType = vmBackupStorageType;
+            return this;
+        }
+
+        /**
+         * @param vmBackupStorageType Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+         * VM_BACKUP_STORAGE_TYPE_LOCAL
+         * VM_BACKUP_STORAGE_TYPE_EXASCALE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmBackupStorageType(String vmBackupStorageType) {
+            return vmBackupStorageType(Output.of(vmBackupStorageType));
+        }
+
+        /**
+         * @param vmFileSystemStorageType Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+         * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+         * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmFileSystemStorageType(@Nullable Output<String> vmFileSystemStorageType) {
+            $.vmFileSystemStorageType = vmFileSystemStorageType;
+            return this;
+        }
+
+        /**
+         * @param vmFileSystemStorageType Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+         * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+         * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vmFileSystemStorageType(String vmFileSystemStorageType) {
+            return vmFileSystemStorageType(Output.of(vmFileSystemStorageType));
         }
 
         public CloudVmClusterPropertiesArgs build() {

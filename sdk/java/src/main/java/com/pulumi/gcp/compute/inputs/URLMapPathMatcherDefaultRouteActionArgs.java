@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionCachePolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionCorsPolicyArgs;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs;
+import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionRetryPolicyArgs;
@@ -67,6 +69,27 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
     }
 
     /**
+     * (Optional, Beta)
+     * Dynamic compression policy for this URL Map&#39;s route. Available only for
+     * Global EXTERNAL_MANAGED load balancer schemes.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dynamicCompressionPolicy")
+    private @Nullable Output<URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs> dynamicCompressionPolicy;
+
+    /**
+     * @return (Optional, Beta)
+     * Dynamic compression policy for this URL Map&#39;s route. Available only for
+     * Global EXTERNAL_MANAGED load balancer schemes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs>> dynamicCompressionPolicy() {
+        return Optional.ofNullable(this.dynamicCompressionPolicy);
+    }
+
+    /**
      * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
      * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
      * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -89,6 +112,25 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
      */
     public Optional<Output<URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs>> faultInjectionPolicy() {
         return Optional.ofNullable(this.faultInjectionPolicy);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Specifies the policy for optimizing images returned in the HTTP response.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="imageOptimizationPolicy")
+    private @Nullable Output<URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs> imageOptimizationPolicy;
+
+    /**
+     * @return (Optional, Beta)
+     * Specifies the policy for optimizing images returned in the HTTP response.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs>> imageOptimizationPolicy() {
+        return Optional.ofNullable(this.imageOptimizationPolicy);
     }
 
     /**
@@ -226,7 +268,9 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
     private URLMapPathMatcherDefaultRouteActionArgs(URLMapPathMatcherDefaultRouteActionArgs $) {
         this.cachePolicy = $.cachePolicy;
         this.corsPolicy = $.corsPolicy;
+        this.dynamicCompressionPolicy = $.dynamicCompressionPolicy;
         this.faultInjectionPolicy = $.faultInjectionPolicy;
+        this.imageOptimizationPolicy = $.imageOptimizationPolicy;
         this.maxStreamDuration = $.maxStreamDuration;
         this.requestMirrorPolicy = $.requestMirrorPolicy;
         this.retryPolicy = $.retryPolicy;
@@ -308,6 +352,33 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
         }
 
         /**
+         * @param dynamicCompressionPolicy (Optional, Beta)
+         * Dynamic compression policy for this URL Map&#39;s route. Available only for
+         * Global EXTERNAL_MANAGED load balancer schemes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicCompressionPolicy(@Nullable Output<URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs> dynamicCompressionPolicy) {
+            $.dynamicCompressionPolicy = dynamicCompressionPolicy;
+            return this;
+        }
+
+        /**
+         * @param dynamicCompressionPolicy (Optional, Beta)
+         * Dynamic compression policy for this URL Map&#39;s route. Available only for
+         * Global EXTERNAL_MANAGED load balancer schemes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicCompressionPolicy(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs dynamicCompressionPolicy) {
+            return dynamicCompressionPolicy(Output.of(dynamicCompressionPolicy));
+        }
+
+        /**
          * @param faultInjectionPolicy The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -336,6 +407,31 @@ public final class URLMapPathMatcherDefaultRouteActionArgs extends com.pulumi.re
          */
         public Builder faultInjectionPolicy(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs faultInjectionPolicy) {
             return faultInjectionPolicy(Output.of(faultInjectionPolicy));
+        }
+
+        /**
+         * @param imageOptimizationPolicy (Optional, Beta)
+         * Specifies the policy for optimizing images returned in the HTTP response.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageOptimizationPolicy(@Nullable Output<URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs> imageOptimizationPolicy) {
+            $.imageOptimizationPolicy = imageOptimizationPolicy;
+            return this;
+        }
+
+        /**
+         * @param imageOptimizationPolicy (Optional, Beta)
+         * Specifies the policy for optimizing images returned in the HTTP response.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageOptimizationPolicy(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs imageOptimizationPolicy) {
+            return imageOptimizationPolicy(Output.of(imageOptimizationPolicy));
         }
 
         /**

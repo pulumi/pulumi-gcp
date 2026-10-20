@@ -54,7 +54,7 @@ import (
 //				Name:     pulumi.String("colab-runtime"),
 //				Location: pulumi.String("us-central1"),
 //				NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-//					NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
+//					NotebookRuntimeTemplate: myTemplate.ID(),
 //				},
 //				DisplayName: pulumi.String("Runtime basic"),
 //				RuntimeUser: pulumi.String("gterraformtestuser@gmail.com"),
@@ -101,7 +101,7 @@ import (
 //				Name:     pulumi.String("colab-runtime"),
 //				Location: pulumi.String("us-central1"),
 //				NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-//					NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
+//					NotebookRuntimeTemplate: myTemplate.ID(),
 //				},
 //				DesiredState: pulumi.String("STOPPED"),
 //				DisplayName:  pulumi.String("Runtime stopped"),
@@ -175,7 +175,7 @@ import (
 //				Name:     pulumi.String("colab-runtime"),
 //				Location: pulumi.String("us-central1"),
 //				NotebookRuntimeTemplateRef: &colab.RuntimeNotebookRuntimeTemplateRefArgs{
-//					NotebookRuntimeTemplate: myTemplate.ID().ToIDOutput().ToStringOutput(),
+//					NotebookRuntimeTemplate: myTemplate.ID(),
 //				},
 //				DisplayName:  pulumi.String("Runtime full"),
 //				RuntimeUser:  pulumi.String("gterraformtestuser@gmail.com"),

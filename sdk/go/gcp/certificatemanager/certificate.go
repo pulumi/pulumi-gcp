@@ -67,8 +67,8 @@ import (
 //						instance2.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID().ToIDOutput().ToStringOutput(),
-//						instance2.ID().ToIDOutput().ToStringOutput(),
+//						instance.ID(),
+//						instance2.ID(),
 //					},
 //				},
 //			})
@@ -150,7 +150,7 @@ import (
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 //					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID().ToIDOutput().ToStringOutput(),
+//						CaPool: pool.ID(),
 //					},
 //				},
 //				Lifetime:                 pulumi.String("1814400s"),
@@ -170,7 +170,7 @@ import (
 //					Domains: pulumi.StringArray{
 //						pulumi.String("terraform.subdomain1.com"),
 //					},
-//					IssuanceConfig: issuanceconfig.ID().ToIDOutput().ToStringOutput(),
+//					IssuanceConfig: issuanceconfig.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -275,7 +275,7 @@ import (
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
 //					PemCertificate:         pulumi.String(invokeFile.Result),
 //					PemPrivateKeyWo:        pulumi.String(invokeFile1.Result),
-//					PemPrivateKeyWoVersion: pulumi.String(pulumi.Float64(invokeParseint2.Result) % pulumi.Float64(invokePow3.Result)),
+//					PemPrivateKeyWoVersion: pulumi.String(float64(invokeParseint2.Result) % float64(invokePow3.Result)),
 //				},
 //			})
 //			if err != nil {
@@ -400,7 +400,7 @@ import (
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 //					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID().ToIDOutput().ToStringOutput(),
+//						CaPool: pool.ID(),
 //					},
 //				},
 //				Lifetime:                 pulumi.String("1814400s"),
@@ -420,7 +420,7 @@ import (
 //					Domains: pulumi.StringArray{
 //						pulumi.String("terraform.subdomain1.com"),
 //					},
-//					IssuanceConfig: issuanceconfig.ID().ToIDOutput().ToStringOutput(),
+//					IssuanceConfig: issuanceconfig.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -471,8 +471,8 @@ import (
 //						instance2.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID().ToIDOutput().ToStringOutput(),
-//						instance2.ID().ToIDOutput().ToStringOutput(),
+//						instance.ID(),
+//						instance2.ID(),
 //					},
 //				},
 //			})
@@ -516,7 +516,7 @@ import (
 //						instance.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID().ToIDOutput().ToStringOutput(),
+//						instance.ID(),
 //					},
 //				},
 //			})

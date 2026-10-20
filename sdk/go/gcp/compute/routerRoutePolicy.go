@@ -45,7 +45,7 @@ import (
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //			})
@@ -55,7 +55,7 @@ import (
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 //				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
-//				Network: net.ID().ToIDOutput().ToStringOutput(),
+//				Network: net.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -110,7 +110,7 @@ import (
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //			})
@@ -120,7 +120,7 @@ import (
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 //				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
-//				Network: net.ID().ToIDOutput().ToStringOutput(),
+//				Network: net.ID(),
 //			})
 //			if err != nil {
 //				return err

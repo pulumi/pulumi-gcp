@@ -98,14 +98,14 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      apigeeNetwork.ID(),
 //				Project:      project.ProjectId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: apigeeNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -119,7 +119,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         project.ProjectId,
-//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //				apigee2,
@@ -128,7 +128,7 @@ import (
 //				return err
 //			}
 //			apigeeEnvironmentKeystoreSsAlias, err := apigee.NewEnvironment(ctx, "apigee_environment_keystore_ss_alias", &apigee.EnvironmentArgs{
-//				OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				OrgId:       apigeeOrg.ID(),
 //				Name:        pulumi.String("env-name"),
 //				Description: pulumi.String("Apigee Environment"),
 //				DisplayName: pulumi.String("environment-1"),
@@ -138,7 +138,7 @@ import (
 //			}
 //			apigeeEnvironmentKeystoreAlias, err := apigee.NewEnvKeystore(ctx, "apigee_environment_keystore_alias", &apigee.EnvKeystoreArgs{
 //				Name:  pulumi.String("env-keystore"),
-//				EnvId: apigeeEnvironmentKeystoreSsAlias.ID().ToIDOutput().ToStringOutput(),
+//				EnvId: apigeeEnvironmentKeystoreSsAlias.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -84,7 +84,7 @@ import (
 //				},
 //				DeletionPolicy: pulumi.String("FORCE"),
 //				BackupConfig: &netapp.VolumeBackupConfigArgs{
-//					BackupVault: defaultBackupVault.ID().ToIDOutput().ToStringOutput(),
+//					BackupVault: defaultBackupVault.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -94,7 +94,7 @@ import (
 //				Name:         pulumi.String("test-backup"),
 //				Location:     defaultBackupVault.Location,
 //				VaultName:    defaultBackupVault.Name,
-//				SourceVolume: defaultVolume.ID().ToIDOutput().ToStringOutput(),
+//				SourceVolume: defaultVolume.ID(),
 //			})
 //			if err != nil {
 //				return err

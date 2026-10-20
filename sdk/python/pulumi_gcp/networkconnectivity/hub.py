@@ -24,6 +24,7 @@ class HubArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  export_psc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_psc_config: pulumi.Input[Optional['HubExportPscConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +41,10 @@ class HubArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
         :param pulumi.Input[_builtins.bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        :param pulumi.Input['HubExportPscConfigArgs'] export_psc_config: (Optional, Beta)
+               Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+               If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -57,6 +62,8 @@ class HubArgs:
             pulumi.set(__self__, "description", description)
         if export_psc is not None:
             pulumi.set(__self__, "export_psc", export_psc)
+        if export_psc_config is not None:
+            pulumi.set(__self__, "export_psc_config", export_psc_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -108,6 +115,21 @@ class HubArgs:
     @export_psc.setter
     def export_psc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "export_psc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportPscConfig")
+    def export_psc_config(self) -> pulumi.Input[Optional['HubExportPscConfigArgs']]:
+        """
+        (Optional, Beta)
+        Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+        If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "export_psc_config")
+
+    @export_psc_config.setter
+    def export_psc_config(self, value: pulumi.Input[Optional['HubExportPscConfigArgs']]):
+        pulumi.set(self, "export_psc_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -183,6 +205,7 @@ class _HubState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  export_psc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_psc_config: pulumi.Input[Optional['HubExportPscConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -206,6 +229,10 @@ class _HubState:
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        :param pulumi.Input['HubExportPscConfigArgs'] export_psc_config: (Optional, Beta)
+               Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+               If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -234,6 +261,8 @@ class _HubState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if export_psc is not None:
             pulumi.set(__self__, "export_psc", export_psc)
+        if export_psc_config is not None:
+            pulumi.set(__self__, "export_psc_config", export_psc_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -319,6 +348,21 @@ class _HubState:
     @export_psc.setter
     def export_psc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "export_psc", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportPscConfig")
+    def export_psc_config(self) -> pulumi.Input[Optional['HubExportPscConfigArgs']]:
+        """
+        (Optional, Beta)
+        Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+        If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "export_psc_config")
+
+    @export_psc_config.setter
+    def export_psc_config(self, value: pulumi.Input[Optional['HubExportPscConfigArgs']]):
+        pulumi.set(self, "export_psc_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -457,6 +501,7 @@ class Hub(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  export_psc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_psc_config: pulumi.Input[Optional[Union['HubExportPscConfigArgs', 'HubExportPscConfigArgsDict', 'outputs.HubExportPscConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -497,6 +542,21 @@ class Hub(pulumi.CustomResource):
             name="basic",
             description="A sample hub with Private Service Connect transitivity is enabled",
             export_psc=True)
+        ```
+        ### Network Connectivity Hub With Export Psc Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="psc-config",
+            description="A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+            export_psc=True,
+            export_psc_config={
+                "published_services_and_regional_google_apis": False,
+                "global_google_apis": True,
+            })
         ```
         ### Network Connectivity Hub Mesh Topology
 
@@ -568,6 +628,10 @@ class Hub(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
         :param pulumi.Input[_builtins.bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        :param pulumi.Input[Union['HubExportPscConfigArgs', 'HubExportPscConfigArgsDict', 'outputs.HubExportPscConfig']] export_psc_config: (Optional, Beta)
+               Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+               If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -619,6 +683,21 @@ class Hub(pulumi.CustomResource):
             name="basic",
             description="A sample hub with Private Service Connect transitivity is enabled",
             export_psc=True)
+        ```
+        ### Network Connectivity Hub With Export Psc Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.networkconnectivity.Hub("primary",
+            name="psc-config",
+            description="A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+            export_psc=True,
+            export_psc_config={
+                "published_services_and_regional_google_apis": False,
+                "global_google_apis": True,
+            })
         ```
         ### Network Connectivity Hub Mesh Topology
 
@@ -698,6 +777,7 @@ class Hub(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  export_psc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_psc_config: pulumi.Input[Optional[Union['HubExportPscConfigArgs', 'HubExportPscConfigArgsDict', 'outputs.HubExportPscConfig']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -715,6 +795,7 @@ class Hub(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["export_psc"] = export_psc
+            __props__.__dict__["export_psc_config"] = export_psc_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["policy_mode"] = policy_mode
@@ -744,6 +825,7 @@ class Hub(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             export_psc: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_psc_config: pulumi.Input[Optional[Union['HubExportPscConfigArgs', 'HubExportPscConfigArgsDict', 'outputs.HubExportPscConfig']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -771,6 +853,10 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] export_psc: Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+        :param pulumi.Input[Union['HubExportPscConfigArgs', 'HubExportPscConfigArgsDict', 'outputs.HubExportPscConfig']] export_psc_config: (Optional, Beta)
+               Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+               If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -798,6 +884,7 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["export_psc"] = export_psc
+        __props__.__dict__["export_psc_config"] = export_psc_config
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["policy_mode"] = policy_mode
@@ -854,6 +941,17 @@ class Hub(pulumi.CustomResource):
         Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
         """
         return pulumi.get(self, "export_psc")
+
+    @_builtins.property
+    @pulumi.getter(name="exportPscConfig")
+    def export_psc_config(self) -> pulumi.Output['outputs.HubExportPscConfig']:
+        """
+        (Optional, Beta)
+        Config for more granular control of Private Service Connect transitivity. Only takes effect when `export_psc` is true.
+        If `export_psc` is true, at least one of `published_services_and_regional_google_apis` and `global_google_apis` must be true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "export_psc_config")
 
     @_builtins.property
     @pulumi.getter

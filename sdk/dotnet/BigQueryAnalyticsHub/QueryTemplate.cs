@@ -66,6 +66,99 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Querytemplate Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+    /// 
+    ///     var analyticshubSa = new Gcp.Projects.ServiceIdentity("analyticshub_sa", new()
+    ///     {
+    ///         Service = "analyticshub.googleapis.com",
+    ///     });
+    /// 
+    ///     var waitForSa = new Time.Sleep("wait_for_sa", new()
+    ///     {
+    ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             analyticshubSa,
+    ///         },
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("crypto_key", new()
+    ///     {
+    ///         CryptoKeyId = "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = analyticshubSa.Member,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForSa,
+    ///         },
+    ///     });
+    /// 
+    ///     var waitForIam = new Time.Sleep("wait_for_iam", new()
+    ///     {
+    ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKey,
+    ///         },
+    ///     });
+    /// 
+    ///     var querytemplate = new Gcp.BigQueryAnalyticsHub.DataExchange("querytemplate", new()
+    ///     {
+    ///         DisplayName = "My Audience Data Exchange",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         Description = "example of query template with cmek",
+    ///         Location = "us",
+    ///         SharingEnvironmentConfig = new Gcp.BigQueryAnalyticsHub.Inputs.DataExchangeSharingEnvironmentConfigArgs
+    ///         {
+    ///             DcrExchangeConfig = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var querytemplateQueryTemplate = new Gcp.BigQueryAnalyticsHub.QueryTemplate("querytemplate", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = querytemplate.DataExchangeId,
+    ///         QueryTemplateId = "my_query_template",
+    ///         DisplayName = "my_query_template",
+    ///         Description = "example of query template with cmek",
+    ///         PrimaryContact = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
+    ///         Documentation = "This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through.",
+    ///         Routine = new Gcp.BigQueryAnalyticsHub.Inputs.QueryTemplateRoutineArgs
+    ///         {
+    ///             RoutineType = "TABLE_VALUED_FUNCTION",
+    ///             DefinitionBody = "my_query_template() as (select * from t1)",
+    ///         },
+    ///         EncryptionConfiguration = new Gcp.BigQueryAnalyticsHub.Inputs.QueryTemplateEncryptionConfigurationArgs
+    ///         {
+    ///             KmsKeyName = "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForIam,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -131,6 +224,15 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Output("documentation")]
         public Output<string?> Documentation { get; private set; } = null!;
+
+        /// <summary>
+        /// Encryption configuration for the query template.
+        /// If set, the customer-managed KMS key is used to encrypt the query
+        /// template definition body.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfiguration")]
+        public Output<Outputs.QueryTemplateEncryptionConfiguration?> EncryptionConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The name of the location this data exchange query template.
@@ -275,6 +377,15 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Documentation { get; set; }
 
         /// <summary>
+        /// Encryption configuration for the query template.
+        /// If set, the customer-managed KMS key is used to encrypt the query
+        /// template definition body.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfiguration")]
+        public Input<Inputs.QueryTemplateEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
+
+        /// <summary>
         /// The name of the location this data exchange query template.
         /// </summary>
         [Input("location", required: true)]
@@ -365,6 +476,15 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("documentation")]
         public Input<string>? Documentation { get; set; }
+
+        /// <summary>
+        /// Encryption configuration for the query template.
+        /// If set, the customer-managed KMS key is used to encrypt the query
+        /// template definition body.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfiguration")]
+        public Input<Inputs.QueryTemplateEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
 
         /// <summary>
         /// The name of the location this data exchange query template.

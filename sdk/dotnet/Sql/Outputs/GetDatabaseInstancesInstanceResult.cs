@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string BackupdrBackup;
         /// <summary>
+        /// Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentResult> BlueGreenDeployments;
+        /// <summary>
         /// Configuration for creating a new instance as a clone of another instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> Clones;
@@ -170,6 +174,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string backupdrBackup,
 
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceBlueGreenDeploymentResult> blueGreenDeployments,
+
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> clones,
 
             string connectionName,
@@ -246,6 +252,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackupdrBackup = backupdrBackup;
+            BlueGreenDeployments = blueGreenDeployments;
             Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;

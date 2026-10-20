@@ -330,7 +330,7 @@ import (
 //				Name:        pulumi.String("vpc-service-sub"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     custom.ID().ToIDOutput().ToStringOutput(),
+//				Network:     custom.ID(),
 //			})
 //			if err != nil {
 //				return err

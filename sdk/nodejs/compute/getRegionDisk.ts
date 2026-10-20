@@ -12,6 +12,26 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const disk = gcp.compute.getRegionDisk({
+ *     name: "persistent-regional-disk",
+ *     project: "example",
+ *     region: "us-central1",
+ *     type: "pd-ssd",
+ *     physicalBlockSizeBytes: 4096,
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ * });
+ * const _default = new gcp.compute.Instance("default", {attachedDisks: [{
+ *     source: diskGoogleComputeDisk.selfLink,
+ * }]});
+ * ```
  */
 export function getRegionDisk(args: GetRegionDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -96,6 +116,26 @@ export interface GetRegionDiskResult {
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const disk = gcp.compute.getRegionDisk({
+ *     name: "persistent-regional-disk",
+ *     project: "example",
+ *     region: "us-central1",
+ *     type: "pd-ssd",
+ *     physicalBlockSizeBytes: 4096,
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ * });
+ * const _default = new gcp.compute.Instance("default", {attachedDisks: [{
+ *     source: diskGoogleComputeDisk.selfLink,
+ * }]});
+ * ```
  */
 export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

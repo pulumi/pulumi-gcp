@@ -1229,6 +1229,7 @@ class TemplateTemplateMetadata(dict):
                  ignore_partial_invocation_failures: Optional[_builtins.bool] = None,
                  log_sanitize_operations: Optional[_builtins.bool] = None,
                  log_template_operations: Optional[_builtins.bool] = None,
+                 modalities: Optional[Sequence[_builtins.str]] = None,
                  multi_language_detection: Optional['outputs.TemplateTemplateMetadataMultiLanguageDetection'] = None):
         """
         :param _builtins.int custom_llm_response_safety_error_code: Indicates the custom error code set by the user to be returned to the end
@@ -1248,6 +1249,13 @@ class TemplateTemplateMetadata(dict):
         :param _builtins.bool ignore_partial_invocation_failures: If true, partial detector failures should be ignored.
         :param _builtins.bool log_sanitize_operations: If true, log sanitize operations.
         :param _builtins.bool log_template_operations: If true, log template crud operations.
+        :param Sequence[_builtins.str] modalities: Specifies the modalities to scan. If empty, only text modality will be
+               scanned. Image screening is in Preview and is only supported in the `us`
+               and `eu` multi-regions; regional endpoints such as `us-central1` do not
+               support it.
+               Possible values:
+               MODALITY_TEXT
+               MODALITY_IMAGE
         :param 'TemplateTemplateMetadataMultiLanguageDetectionArgs' multi_language_detection: Metadata to enable multi language detection via template.
                Structure is documented below.
         """
@@ -1269,6 +1277,8 @@ class TemplateTemplateMetadata(dict):
             pulumi.set(__self__, "log_sanitize_operations", log_sanitize_operations)
         if log_template_operations is not None:
             pulumi.set(__self__, "log_template_operations", log_template_operations)
+        if modalities is not None:
+            pulumi.set(__self__, "modalities", modalities)
         if multi_language_detection is not None:
             pulumi.set(__self__, "multi_language_detection", multi_language_detection)
 
@@ -1351,6 +1361,20 @@ class TemplateTemplateMetadata(dict):
         If true, log template crud operations.
         """
         return pulumi.get(self, "log_template_operations")
+
+    @_builtins.property
+    @pulumi.getter
+    def modalities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Specifies the modalities to scan. If empty, only text modality will be
+        scanned. Image screening is in Preview and is only supported in the `us`
+        and `eu` multi-regions; regional endpoints such as `us-central1` do not
+        support it.
+        Possible values:
+        MODALITY_TEXT
+        MODALITY_IMAGE
+        """
+        return pulumi.get(self, "modalities")
 
     @_builtins.property
     @pulumi.getter(name="multiLanguageDetection")

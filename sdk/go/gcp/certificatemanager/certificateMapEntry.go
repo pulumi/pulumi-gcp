@@ -68,8 +68,8 @@ import (
 //						instance2.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID().ToIDOutput().ToStringOutput(),
-//						instance2.ID().ToIDOutput().ToStringOutput(),
+//						instance.ID(),
+//						instance2.ID(),
 //					},
 //				},
 //			})
@@ -85,7 +85,7 @@ import (
 //					"acc-test":  pulumi.String("true"),
 //				},
 //				Certificates: pulumi.StringArray{
-//					certificate.ID().ToIDOutput().ToStringOutput(),
+//					certificate.ID(),
 //				},
 //				Matcher: pulumi.String("PRIMARY"),
 //			})

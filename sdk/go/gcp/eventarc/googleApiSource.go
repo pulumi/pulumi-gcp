@@ -76,7 +76,7 @@ import (
 //			_, err = eventarc.NewGoogleApiSource(ctx, "primary", &eventarc.GoogleApiSourceArgs{
 //				Location:          pulumi.String("us-central1"),
 //				GoogleApiSourceId: pulumi.String("some-google-api-source"),
-//				Destination:       messageBus.ID().ToIDOutput().ToStringOutput(),
+//				Destination:       messageBus.ID(),
 //				CryptoKeyName:     pulumi.String(key.Id),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				keyMember,

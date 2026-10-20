@@ -50,7 +50,7 @@ import (
 //				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
 //					&dataproc.MetastoreFederationBackendMetastoreArgs{
 //						Rank:          pulumi.String("1"),
-//						Name:          defaultMetastoreService.ID().ToIDOutput().ToStringOutput(),
+//						Name:          defaultMetastoreService.ID(),
 //						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 //					},
 //				},
@@ -106,7 +106,7 @@ import (
 //					},
 //					&dataproc.MetastoreFederationBackendMetastoreArgs{
 //						Rank:          pulumi.String("1"),
-//						Name:          defaultMetastoreService.ID().ToIDOutput().ToStringOutput(),
+//						Name:          defaultMetastoreService.ID(),
 //						MetastoreType: pulumi.String("DATAPROC_METASTORE"),
 //					},
 //				},

@@ -189,6 +189,22 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CloudVmClusterPropertiesTimeZone? TimeZone;
+        /// <summary>
+        /// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        /// Possible values:
+        /// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+        /// VM_BACKUP_STORAGE_TYPE_LOCAL
+        /// VM_BACKUP_STORAGE_TYPE_EXASCALE
+        /// </summary>
+        public readonly string? VmBackupStorageType;
+        /// <summary>
+        /// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+        /// Possible values:
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+        /// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+        /// </summary>
+        public readonly string? VmFileSystemStorageType;
 
         [OutputConstructor]
         private CloudVmClusterProperties(
@@ -256,7 +272,11 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string? systemVersion,
 
-            Outputs.CloudVmClusterPropertiesTimeZone? timeZone)
+            Outputs.CloudVmClusterPropertiesTimeZone? timeZone,
+
+            string? vmBackupStorageType,
+
+            string? vmFileSystemStorageType)
         {
             ClusterName = clusterName;
             CompartmentId = compartmentId;
@@ -291,6 +311,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             StorageSizeGb = storageSizeGb;
             SystemVersion = systemVersion;
             TimeZone = timeZone;
+            VmBackupStorageType = vmBackupStorageType;
+            VmFileSystemStorageType = vmFileSystemStorageType;
         }
     }
 }

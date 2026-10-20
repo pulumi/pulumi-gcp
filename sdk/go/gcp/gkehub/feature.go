@@ -65,7 +65,7 @@ import (
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
-//						ConfigMembership: membership.ID().ToIDOutput().ToStringOutput(),
+//						ConfigMembership: membership.ID(),
 //					},
 //				},
 //			})

@@ -71,7 +71,7 @@ import (
 //			_, err = chronicle.NewFindingsRefinementDeployment(ctx, "example", &chronicle.FindingsRefinementDeploymentArgs{
 //				Location:           pulumi.String("us"),
 //				Instance:           pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				FindingsRefinement: pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				FindingsRefinement: pulumi.String(invokeSplit.Result[int(len([]string(invokeSplit1.Result))-1)]),
 //				Enabled:            pulumi.Bool(true),
 //				Archived:           pulumi.Bool(false),
 //			})

@@ -1304,6 +1304,16 @@ class TemplateTemplateMetadataArgsDict(TypedDict):
     """
     If true, log template crud operations.
     """
+    modalities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Specifies the modalities to scan. If empty, only text modality will be
+    scanned. Image screening is in Preview and is only supported in the `us`
+    and `eu` multi-regions; regional endpoints such as `us-central1` do not
+    support it.
+    Possible values:
+    MODALITY_TEXT
+    MODALITY_IMAGE
+    """
     multi_language_detection: NotRequired[pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgsDict']]]
     """
     Metadata to enable multi language detection via template.
@@ -1322,6 +1332,7 @@ class TemplateTemplateMetadataArgs:
                  ignore_partial_invocation_failures: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_sanitize_operations: pulumi.Input[Optional[_builtins.bool]] = None,
                  log_template_operations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  multi_language_detection: pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] custom_llm_response_safety_error_code: Indicates the custom error code set by the user to be returned to the end
@@ -1341,6 +1352,13 @@ class TemplateTemplateMetadataArgs:
         :param pulumi.Input[_builtins.bool] ignore_partial_invocation_failures: If true, partial detector failures should be ignored.
         :param pulumi.Input[_builtins.bool] log_sanitize_operations: If true, log sanitize operations.
         :param pulumi.Input[_builtins.bool] log_template_operations: If true, log template crud operations.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] modalities: Specifies the modalities to scan. If empty, only text modality will be
+               scanned. Image screening is in Preview and is only supported in the `us`
+               and `eu` multi-regions; regional endpoints such as `us-central1` do not
+               support it.
+               Possible values:
+               MODALITY_TEXT
+               MODALITY_IMAGE
         :param pulumi.Input['TemplateTemplateMetadataMultiLanguageDetectionArgs'] multi_language_detection: Metadata to enable multi language detection via template.
                Structure is documented below.
         """
@@ -1362,6 +1380,8 @@ class TemplateTemplateMetadataArgs:
             pulumi.set(__self__, "log_sanitize_operations", log_sanitize_operations)
         if log_template_operations is not None:
             pulumi.set(__self__, "log_template_operations", log_template_operations)
+        if modalities is not None:
+            pulumi.set(__self__, "modalities", modalities)
         if multi_language_detection is not None:
             pulumi.set(__self__, "multi_language_detection", multi_language_detection)
 
@@ -1480,6 +1500,24 @@ class TemplateTemplateMetadataArgs:
     @log_template_operations.setter
     def log_template_operations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_template_operations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def modalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies the modalities to scan. If empty, only text modality will be
+        scanned. Image screening is in Preview and is only supported in the `us`
+        and `eu` multi-regions; regional endpoints such as `us-central1` do not
+        support it.
+        Possible values:
+        MODALITY_TEXT
+        MODALITY_IMAGE
+        """
+        return pulumi.get(self, "modalities")
+
+    @modalities.setter
+    def modalities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "modalities", value)
 
     @_builtins.property
     @pulumi.getter(name="multiLanguageDetection")

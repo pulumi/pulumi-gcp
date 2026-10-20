@@ -133,7 +133,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      * Settings for the endpoint.
      * Structure is documented below.
      */
-    declare public readonly endpointSettings: pulumi.Output<outputs.networksecurity.FirewallEndpointEndpointSettings | undefined>;
+    declare public readonly endpointSettings: pulumi.Output<outputs.networksecurity.FirewallEndpointEndpointSettings>;
     /**
      * A map of key/value label pairs to assign to the resource.
      *
@@ -175,6 +175,12 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      * Time the firewall endpoint was updated in UTC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     */
+    declare public readonly wildfireSettings: pulumi.Output<outputs.networksecurity.FirewallEndpointWildfireSettings>;
 
     /**
      * Create a FirewallEndpoint resource with the given unique name, arguments, and options.
@@ -204,6 +210,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["state"] = state?.state;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["wildfireSettings"] = state?.wildfireSettings;
         } else {
             const args = argsOrState as FirewallEndpointArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
@@ -219,6 +226,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
             resourceInputs["parent"] = args?.parent;
+            resourceInputs["wildfireSettings"] = args?.wildfireSettings;
             resourceInputs["associatedNetworks"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -316,6 +324,12 @@ export interface FirewallEndpointState {
      * Time the firewall endpoint was updated in UTC.
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     */
+    wildfireSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointWildfireSettings | undefined>;
 }
 
 /**
@@ -363,4 +377,10 @@ export interface FirewallEndpointArgs {
      * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent: pulumi.Input<string>;
+    /**
+     * (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     */
+    wildfireSettings?: pulumi.Input<inputs.networksecurity.FirewallEndpointWildfireSettings | undefined>;
 }

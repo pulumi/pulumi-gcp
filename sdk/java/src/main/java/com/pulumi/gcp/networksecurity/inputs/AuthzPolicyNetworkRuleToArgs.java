@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleToNotOperationArgs;
 import com.pulumi.gcp.networksecurity.inputs.AuthzPolicyNetworkRuleToOperationArgs;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class AuthzPolicyNetworkRuleToArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AuthzPolicyNetworkRuleToArgs Empty = new AuthzPolicyNetworkRuleToArgs();
+
+    /**
+     * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="notOperations")
+    private @Nullable Output<List<AuthzPolicyNetworkRuleToNotOperationArgs>> notOperations;
+
+    /**
+     * @return Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AuthzPolicyNetworkRuleToNotOperationArgs>>> notOperations() {
+        return Optional.ofNullable(this.notOperations);
+    }
 
     /**
      * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
@@ -36,6 +54,7 @@ public final class AuthzPolicyNetworkRuleToArgs extends com.pulumi.resources.Res
     private AuthzPolicyNetworkRuleToArgs() {}
 
     private AuthzPolicyNetworkRuleToArgs(AuthzPolicyNetworkRuleToArgs $) {
+        this.notOperations = $.notOperations;
         this.operations = $.operations;
     }
 
@@ -55,6 +74,40 @@ public final class AuthzPolicyNetworkRuleToArgs extends com.pulumi.resources.Res
 
         public Builder(AuthzPolicyNetworkRuleToArgs defaults) {
             $ = new AuthzPolicyNetworkRuleToArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param notOperations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notOperations(@Nullable Output<List<AuthzPolicyNetworkRuleToNotOperationArgs>> notOperations) {
+            $.notOperations = notOperations;
+            return this;
+        }
+
+        /**
+         * @param notOperations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notOperations(List<AuthzPolicyNetworkRuleToNotOperationArgs> notOperations) {
+            return notOperations(Output.of(notOperations));
+        }
+
+        /**
+         * @param notOperations Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notOperations(AuthzPolicyNetworkRuleToNotOperationArgs... notOperations) {
+            return notOperations(List.of(notOperations));
         }
 
         /**

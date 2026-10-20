@@ -336,6 +336,33 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     * 
+     */
+    @Import(name="functionalType")
+    private @Nullable Output<String> functionalType;
+
+    /**
+     * @return (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     * 
+     */
+    public Optional<Output<String>> functionalType() {
+        return Optional.ofNullable(this.functionalType);
+    }
+
+    /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
@@ -807,6 +834,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
         this.expireTime = $.expireTime;
+        this.functionalType = $.functionalType;
         this.generation = $.generation;
         this.iapEnabled = $.iapEnabled;
         this.ingress = $.ingress;
@@ -1290,6 +1318,39 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expireTime(String expireTime) {
             return expireTime(Output.of(expireTime));
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+         * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(@Nullable Output<String> functionalType) {
+            $.functionalType = functionalType;
+            return this;
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+         * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(String functionalType) {
+            return functionalType(Output.of(functionalType));
         }
 
         /**

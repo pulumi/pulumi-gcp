@@ -29,6 +29,7 @@ class JobArgs:
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -64,6 +65,14 @@ class JobArgs:
                When the field is set to true or unset in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the job will fail.
                When the field is set to false, deleting the job is allowed.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Job. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+               A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+               `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -99,6 +108,8 @@ class JobArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if functional_type is not None:
+            pulumi.set(__self__, "functional_type", functional_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
@@ -228,6 +239,25 @@ class JobArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The functional type of the Job. Declares the primary purpose of the workload so that it can be
+        registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        Once set, this field cannot be changed or unset.
+        Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+        A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+        `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+        """
+        return pulumi.get(self, "functional_type")
+
+    @functional_type.setter
+    def functional_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "functional_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -343,6 +373,7 @@ class _JobState:
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_count: pulumi.Input[Optional[_builtins.int]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  generation: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -398,6 +429,14 @@ class _JobState:
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.int] execution_count: Number of executions created for this job.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Job. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+               A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+               `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -467,6 +506,8 @@ class _JobState:
             pulumi.set(__self__, "execution_count", execution_count)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
+        if functional_type is not None:
+            pulumi.set(__self__, "functional_type", functional_type)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
         if labels is not None:
@@ -702,6 +743,25 @@ class _JobState:
     @expire_time.setter
     def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The functional type of the Job. Declares the primary purpose of the workload so that it can be
+        registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        Once set, this field cannot be changed or unset.
+        Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+        A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+        `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+        """
+        return pulumi.get(self, "functional_type")
+
+    @functional_type.setter
+    def functional_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "functional_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -952,6 +1012,7 @@ class Job(pulumi.CustomResource):
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1367,6 +1428,29 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Agent Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            functional_type="FUNCTIONAL_TYPE_AGENT",
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                    }],
+                    "workload_identity_config": {
+                        "identity_type": "IDENTITY_TYPE_AGENT_IDENTITY",
+                        "identity_certificate_enabled": True,
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -1409,6 +1493,14 @@ class Job(pulumi.CustomResource):
                When the field is set to true or unset in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the job will fail.
                When the field is set to false, deleting the job is allowed.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Job. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+               A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+               `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -1844,6 +1936,29 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Agent Identity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            functional_type="FUNCTIONAL_TYPE_AGENT",
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                    }],
+                    "workload_identity_config": {
+                        "identity_type": "IDENTITY_TYPE_AGENT_IDENTITY",
+                        "identity_certificate_enabled": True,
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -1883,6 +1998,7 @@ class Job(pulumi.CustomResource):
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 functional_type: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1907,6 +2023,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["functional_type"] = functional_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
             if location is None and not opts.urn:
@@ -1965,6 +2082,7 @@ class Job(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             execution_count: pulumi.Input[Optional[_builtins.int]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            functional_type: pulumi.Input[Optional[_builtins.str]] = None,
             generation: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2024,6 +2142,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[_builtins.int] execution_count: Number of executions created for this job.
         :param pulumi.Input[_builtins.str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
+        :param pulumi.Input[_builtins.str] functional_type: (Optional, Beta)
+               The functional type of the Job. Declares the primary purpose of the workload so that it can be
+               registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+               Once set, this field cannot be changed or unset.
+               Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+               A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+               `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+               Possible values are: `FUNCTIONAL_TYPE_AGENT`.
         :param pulumi.Input[_builtins.str] generation: A number that monotonically increases every time the user modifies the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
                environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -2082,6 +2208,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_count"] = execution_count
         __props__.__dict__["expire_time"] = expire_time
+        __props__.__dict__["functional_type"] = functional_type
         __props__.__dict__["generation"] = generation
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_modifier"] = last_modifier
@@ -2240,6 +2367,21 @@ class Job(pulumi.CustomResource):
         For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
+
+    @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional, Beta)
+        The functional type of the Job. Declares the primary purpose of the workload so that it can be
+        registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+        Once set, this field cannot be changed or unset.
+        Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+        A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+        `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+        Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+        """
+        return pulumi.get(self, "functional_type")
 
     @_builtins.property
     @pulumi.getter

@@ -188,6 +188,16 @@ def get_version(location: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_versions = gcp.artifactregistry.get_versions(location="us-central1",
+        repository_id="example-repo",
+        package_name="example-package",
+        version_name="latest")
+    ```
+
 
     :param _builtins.str location: The location of the artifact registry.
     :param _builtins.str package_name: The name of the package.
@@ -231,6 +241,16 @@ def get_version_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     This data source fetches information of a version from a provided Artifact Registry repository.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_versions = gcp.artifactregistry.get_versions(location="us-central1",
+        repository_id="example-repo",
+        package_name="example-package",
+        version_name="latest")
+    ```
 
 
     :param _builtins.str location: The location of the artifact registry.

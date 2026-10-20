@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sql.DatabaseInstanceArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceState;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceBlueGreenDeployment;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceClone;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceIpAddress;
@@ -600,6 +601,70 @@ import javax.annotation.Nullable;
  * - Only the 2 instances involved in switchover have planned changes
  * - (Recommended) Use `deletionProtection` on instances as a safety measure
  * 
+ * ## Blue-Green Deployment
+ * 
+ * You can manage the full lifecycle of a Cloud SQL Blue-Green Deployment using the `blueGreenDeployment` block on the primary `gcp.sql.DatabaseInstance` resource across a 4-step workflow:
+ * 
+ * &gt; **WARNING:** `blueGreenDeployment` is authoritatively managed on the primary instance resource. If a Blue-Green Deployment is created on the instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not included in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+ * 
+ * ### 4-Step Workflow
+ * 
+ * 1. **Create the Blue-Green Deployment (`activeEnvironment = &#34;SOURCE&#34;`)**:
+ * Add the `blueGreenDeployment` block to your primary instance with `activeEnvironment = &#34;SOURCE&#34;` (the default) and an optional `targetDatabaseVersion`, then run `pulumi up`. Cloud SQL provisions and synchronizes the green (target) environment.
+ *    
+ *    <pre>
+ * {@code
+ *    }
+ * </pre>
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceBlueGreenDeploymentArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new DatabaseInstance(&#34;primary&#34;, DatabaseInstanceArgs.builder()
+ *             .name(&#34;my-primary-instance&#34;)
+ *             .databaseVersion(&#34;MYSQL_5_7&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-n1-standard-2&#34;)
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .build())
+ *             .blueGreenDeployment(DatabaseInstanceBlueGreenDeploymentArgs.builder()
+ *                 .deploymentName(&#34;my-bgd-upgrade&#34;)
+ *                 .targetDatabaseVersion(&#34;MYSQL_8_0&#34;)
+ *                 .activeEnvironment(&#34;SOURCE&#34;)
+ *                 .build())
+ *             .build());
+ *     
+ *     }
+ * }
+ * 
+ * 4. **Clean Up / Delete the Blue-Green Deployment**:
+ *    Once you have verified the new primary after switchover (or if you wish to abort a deployment before switchover while `activeEnvironment = &#34;SOURCE&#34;`), remove the `blueGreenDeployment` block from your configuration and run `pulumi up`.
+ *    * If removed before switchover (`activeEnvironment = &#34;SOURCE&#34;`), the Blue-Green Deployment is aborted and the green target instance is deleted.
+ *    * If removed after switchover (`activeEnvironment = &#34;TARGET&#34;`), the Blue-Green Deployment is deleted; if `deleteOldSourceOnDestroy = true` was previously applied in state, the old source (blue) instance is also deleted.
+ * 
  * ## Import
  * 
  * Database instances can be imported using one of any of these accepted formats:
@@ -657,6 +722,22 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> backupdrBackup() {
         return Codegen.optional(this.backupdrBackup);
+    }
+    /**
+     * The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+     * &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+     * 
+     */
+    @Export(name="blueGreenDeployment", refs={DatabaseInstanceBlueGreenDeployment.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseInstanceBlueGreenDeployment> blueGreenDeployment;
+
+    /**
+     * @return The configuration for a Cloud SQL Blue-Green Deployment on this instance. The configuration is detailed below.
+     * &gt; **WARNING:** Because `blueGreenDeployment` is authoritatively managed by Terraform on the primary instance resource, if a Blue-Green Deployment is created on this instance outside of Terraform (for example, via `gcloud` or the Cloud Console) and the `blueGreenDeployment` block is not present in your Terraform configuration, running `pulumi up` will delete the out-of-band Blue-Green Deployment along with its green target instance.
+     * 
+     */
+    public Output<Optional<DatabaseInstanceBlueGreenDeployment>> blueGreenDeployment() {
+        return Codegen.optional(this.blueGreenDeployment);
     }
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during

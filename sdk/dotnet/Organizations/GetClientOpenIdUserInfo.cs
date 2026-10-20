@@ -46,6 +46,56 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// 
         /// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Kubernetes = Pulumi.Kubernetes;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var providerIdentity = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+        /// 
+        ///     var provider = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Zone = "us-east1-a",
+        ///     });
+        /// 
+        ///     var user = new Kubernetes.ClusterRoleBinding("user", new()
+        ///     {
+        ///         Metadata = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "name", "provider-user-admin" },
+        ///             },
+        ///         },
+        ///         RoleRef = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "apiGroup", "rbac.authorization.k8s.io" },
+        ///                 { "kind", "ClusterRole" },
+        ///                 { "name", "cluster-admin" },
+        ///             },
+        ///         },
+        ///         Subject = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "kind", "User" },
+        ///                 { "name", providerIdentity.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email) },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClientOpenIdUserInfoResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithDefaults());
@@ -85,6 +135,56 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// 
         /// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Kubernetes = Pulumi.Kubernetes;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var providerIdentity = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+        /// 
+        ///     var provider = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Zone = "us-east1-a",
+        ///     });
+        /// 
+        ///     var user = new Kubernetes.ClusterRoleBinding("user", new()
+        ///     {
+        ///         Metadata = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "name", "provider-user-admin" },
+        ///             },
+        ///         },
+        ///         RoleRef = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "apiGroup", "rbac.authorization.k8s.io" },
+        ///                 { "kind", "ClusterRole" },
+        ///                 { "name", "cluster-admin" },
+        ///             },
+        ///         },
+        ///         Subject = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "kind", "User" },
+        ///                 { "name", providerIdentity.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email) },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClientOpenIdUserInfoResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithDefaults());
@@ -124,6 +224,56 @@ namespace Pulumi.Gcp.Organizations
         /// ```
         /// 
         /// ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Kubernetes = Pulumi.Kubernetes;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var providerIdentity = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+        /// 
+        ///     var provider = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Zone = "us-east1-a",
+        ///     });
+        /// 
+        ///     var user = new Kubernetes.ClusterRoleBinding("user", new()
+        ///     {
+        ///         Metadata = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "name", "provider-user-admin" },
+        ///             },
+        ///         },
+        ///         RoleRef = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "apiGroup", "rbac.authorization.k8s.io" },
+        ///                 { "kind", "ClusterRole" },
+        ///                 { "name", "cluster-admin" },
+        ///             },
+        ///         },
+        ///         Subject = new[]
+        ///         {
+        ///             
+        ///             {
+        ///                 { "kind", "User" },
+        ///                 { "name", providerIdentity.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email) },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClientOpenIdUserInfoResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientOpenIdUserInfoResult>("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", InvokeArgs.Empty, options.WithDefaults());

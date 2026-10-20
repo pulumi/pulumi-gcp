@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GeneratorSummarizationContextSummarizationSection> SummarizationSections;
         /// <summary>
-        /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
         /// </summary>
         public readonly string? Version;
 

@@ -240,14 +240,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     @Import(name="preemptionNoticeDuration")
     private @Nullable Output<InstanceSchedulingPreemptionNoticeDurationArgs> preemptionNoticeDuration;
 
     /**
-     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * @return Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingPreemptionNoticeDurationArgs>> preemptionNoticeDuration() {
@@ -659,7 +659,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param preemptionNoticeDuration Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+         * @param preemptionNoticeDuration Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          * 
          * @return builder
          * 
@@ -670,7 +670,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param preemptionNoticeDuration Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+         * @param preemptionNoticeDuration Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          * 
          * @return builder
          * 

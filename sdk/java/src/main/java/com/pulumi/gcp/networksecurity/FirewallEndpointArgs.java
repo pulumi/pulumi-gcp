@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networksecurity.inputs.FirewallEndpointEndpointSettingsArgs;
+import com.pulumi.gcp.networksecurity.inputs.FirewallEndpointWildfireSettingsArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -149,6 +150,25 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         return this.parent;
     }
 
+    /**
+     * (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="wildfireSettings")
+    private @Nullable Output<FirewallEndpointWildfireSettingsArgs> wildfireSettings;
+
+    /**
+     * @return (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FirewallEndpointWildfireSettingsArgs>> wildfireSettings() {
+        return Optional.ofNullable(this.wildfireSettings);
+    }
+
     private FirewallEndpointArgs() {}
 
     private FirewallEndpointArgs(FirewallEndpointArgs $) {
@@ -159,6 +179,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         this.location = $.location;
         this.name = $.name;
         this.parent = $.parent;
+        this.wildfireSettings = $.wildfireSettings;
     }
 
     public static Builder builder() {
@@ -350,6 +371,31 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param wildfireSettings (Optional, Beta)
+         * Settings for WildFire analysis on the firewall endpoint.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildfireSettings(@Nullable Output<FirewallEndpointWildfireSettingsArgs> wildfireSettings) {
+            $.wildfireSettings = wildfireSettings;
+            return this;
+        }
+
+        /**
+         * @param wildfireSettings (Optional, Beta)
+         * Settings for WildFire analysis on the firewall endpoint.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wildfireSettings(FirewallEndpointWildfireSettingsArgs wildfireSettings) {
+            return wildfireSettings(Output.of(wildfireSettings));
         }
 
         public FirewallEndpointArgs build() {

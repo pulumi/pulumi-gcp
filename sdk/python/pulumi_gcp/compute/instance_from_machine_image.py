@@ -110,6 +110,8 @@ class InstanceFromMachineImageArgs:
                
                * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
                
+               * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+               
                In addition to these, most* arguments from `compute.Instance` are supported
                as a way to override the properties in the machine image. All exported attributes
                from `compute.Instance` are likewise exported here.
@@ -615,6 +617,8 @@ class InstanceFromMachineImageArgs:
 
         * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
 
+        * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+
         In addition to these, most* arguments from `compute.Instance` are supported
         as a way to override the properties in the machine image. All exported attributes
         from `compute.Instance` are likewise exported here.
@@ -747,6 +751,8 @@ class _InstanceFromMachineImageState:
                set, the provider zone is used.
                
                * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+               
+               * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
                
                In addition to these, most* arguments from `compute.Instance` are supported
                as a way to override the properties in the machine image. All exported attributes
@@ -1438,6 +1444,8 @@ class _InstanceFromMachineImageState:
 
         * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
 
+        * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+
         In addition to these, most* arguments from `compute.Instance` are supported
         as a way to override the properties in the machine image. All exported attributes
         from `compute.Instance` are likewise exported here.
@@ -1575,6 +1583,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                set, the provider zone is used.
                
                * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+               
+               * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
                
                In addition to these, most* arguments from `compute.Instance` are supported
                as a way to override the properties in the machine image. All exported attributes
@@ -1859,6 +1869,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                set, the provider zone is used.
                
                * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+               
+               * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
                
                In addition to these, most* arguments from `compute.Instance` are supported
                as a way to override the properties in the machine image. All exported attributes
@@ -2318,6 +2330,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         set, the provider zone is used.
 
         * `network_interface.enable_vpc_scoped_dns` - (Optional) If true, DNS resolution will be enabled over this interface. Only valid with `network_attachment`.
+
+        * `network_interface.service_class_id` - (Optional) Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
 
         In addition to these, most* arguments from `compute.Instance` are supported
         as a way to override the properties in the machine image. All exported attributes

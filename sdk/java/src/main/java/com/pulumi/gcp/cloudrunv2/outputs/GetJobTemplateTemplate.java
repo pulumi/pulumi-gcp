@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVpcAccess;
+import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -69,6 +70,12 @@ public final class GetJobTemplateTemplate {
      * 
      */
     private List<GetJobTemplateTemplateVpcAccess> vpcAccesses;
+    /**
+     * @return The Task&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+     * 
+     */
+    private List<GetJobTemplateTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
 
     private GetJobTemplateTemplate() {}
     /**
@@ -143,6 +150,14 @@ public final class GetJobTemplateTemplate {
     public List<GetJobTemplateTemplateVpcAccess> vpcAccesses() {
         return this.vpcAccesses;
     }
+    /**
+     * @return The Task&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+     * 
+     */
+    public List<GetJobTemplateTemplateWorkloadIdentityConfig> workloadIdentityConfigs() {
+        return this.workloadIdentityConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -163,6 +178,7 @@ public final class GetJobTemplateTemplate {
         private String timeout;
         private List<GetJobTemplateTemplateVolume> volumes;
         private List<GetJobTemplateTemplateVpcAccess> vpcAccesses;
+        private List<GetJobTemplateTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
         public Builder() {}
         public Builder(GetJobTemplateTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -176,6 +192,7 @@ public final class GetJobTemplateTemplate {
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccesses = defaults.vpcAccesses;
+    	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
         }
 
         @CustomType.Setter
@@ -270,6 +287,17 @@ public final class GetJobTemplateTemplate {
         public Builder vpcAccesses(GetJobTemplateTemplateVpcAccess... vpcAccesses) {
             return vpcAccesses(List.of(vpcAccesses));
         }
+        @CustomType.Setter
+        public Builder workloadIdentityConfigs(List<GetJobTemplateTemplateWorkloadIdentityConfig> workloadIdentityConfigs) {
+            if (workloadIdentityConfigs == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "workloadIdentityConfigs");
+            }
+            this.workloadIdentityConfigs = workloadIdentityConfigs;
+            return this;
+        }
+        public Builder workloadIdentityConfigs(GetJobTemplateTemplateWorkloadIdentityConfig... workloadIdentityConfigs) {
+            return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
+        }
         public GetJobTemplateTemplate build() {
             final var _resultValue = new GetJobTemplateTemplate();
             _resultValue.containers = containers;
@@ -282,6 +310,7 @@ public final class GetJobTemplateTemplate {
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;
             _resultValue.vpcAccesses = vpcAccesses;
+            _resultValue.workloadIdentityConfigs = workloadIdentityConfigs;
             return _resultValue;
         }
     }

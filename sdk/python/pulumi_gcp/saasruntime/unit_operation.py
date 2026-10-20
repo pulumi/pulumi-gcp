@@ -772,7 +772,7 @@ class UnitOperation(pulumi.CustomResource):
             release_id="example-release",
             unit_kind=cluster_unit_kind.id,
             blueprint={
-                "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+                "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
             })
         example_unit = gcp.saasruntime.Unit("example_unit",
             location=location,
@@ -807,6 +807,11 @@ class UnitOperation(pulumi.CustomResource):
             service_account_id=actuation_service_account.name,
             role="roles/iam.serviceAccountTokenCreator",
             member="serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com")
+        # Infra Manager engine: actuation SA needs config.agent in the producer project.
+        producer_config_agent = gcp.projects.IAMMember("producer_config_agent",
+            project="my-project-name",
+            role="roles/config.agent",
+            member=actuation_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         provision_unit_operation = gcp.saasruntime.UnitOperation("provision_unit_operation",
             location=location,
             unit_operation_id="provision-unit-operation",
@@ -854,6 +859,7 @@ class UnitOperation(pulumi.CustomResource):
                     tenant_compute_admin,
                     actuation_token_creator,
                     saas_services,
+                    producer_config_agent,
                 ]))
         noop_upgrade_unit_operation = gcp.saasruntime.UnitOperation("noop_upgrade_unit_operation",
             location=location,
@@ -989,7 +995,7 @@ class UnitOperation(pulumi.CustomResource):
             release_id="example-release",
             unit_kind=cluster_unit_kind.id,
             blueprint={
-                "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+                "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
             })
         example_unit = gcp.saasruntime.Unit("example_unit",
             location=location,
@@ -1024,6 +1030,11 @@ class UnitOperation(pulumi.CustomResource):
             service_account_id=actuation_service_account.name,
             role="roles/iam.serviceAccountTokenCreator",
             member="serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com")
+        # Infra Manager engine: actuation SA needs config.agent in the producer project.
+        producer_config_agent = gcp.projects.IAMMember("producer_config_agent",
+            project="my-project-name",
+            role="roles/config.agent",
+            member=actuation_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         provision_unit_operation = gcp.saasruntime.UnitOperation("provision_unit_operation",
             location=location,
             unit_operation_id="provision-unit-operation",
@@ -1071,6 +1082,7 @@ class UnitOperation(pulumi.CustomResource):
                     tenant_compute_admin,
                     actuation_token_creator,
                     saas_services,
+                    producer_config_agent,
                 ]))
         noop_upgrade_unit_operation = gcp.saasruntime.UnitOperation("noop_upgrade_unit_operation",
             location=location,

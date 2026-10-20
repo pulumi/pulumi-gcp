@@ -53,8 +53,8 @@ import (
 //			_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "default", &compute.RegionNetworkFirewallPolicyAssociationArgs{
 //				Name:             pulumi.String("my-association"),
 //				Project:          pulumi.String("my-project-name"),
-//				AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
-//				FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
+//				AttachmentTarget: network.ID(),
+//				FirewallPolicy:   policy.ID(),
 //				Region:           pulumi.String("us-west1"),
 //			})
 //			if err != nil {
@@ -98,8 +98,8 @@ import (
 //			_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "association", &compute.RegionNetworkFirewallPolicyAssociationArgs{
 //				Name:             pulumi.String("my-association"),
 //				Project:          pulumi.String("my-project-name"),
-//				AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
-//				FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
+//				AttachmentTarget: network.ID(),
+//				FirewallPolicy:   policy.ID(),
 //				Region:           pulumi.String("us-west1"),
 //				Priority:         pulumi.Int(1),
 //			})

@@ -48,7 +48,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("sample experiment"),
 //				Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//					Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+//					Input: tensorboard.ID(),
 //				}, nil).Result(),
 //				TensorboardExperimentId: pulumi.String("experiment"),
 //			})
@@ -59,7 +59,7 @@ import (
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("sample run"),
 //				Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//					Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+//					Input: tensorboard.ID(),
 //				}, nil).Result(),
 //				Experiment:       experiment.TensorboardExperimentId,
 //				TensorboardRunId: pulumi.String("run"),

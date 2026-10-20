@@ -392,7 +392,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("test-network-subnet"),
 //				Region:      pulumi.String("us-west2"),
-//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:     _default.ID(),
 //				IpCidrRange: pulumi.String("10.10.0.0/24"),
 //			})
 //			if err != nil {
@@ -427,7 +427,7 @@ import (
 //						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Subnetwork: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//						Subnetwork: defaultSubnetwork.ID(),
 //					},
 //				},
 //				Name:        pulumi.String("backendpolicy"),
@@ -449,7 +449,7 @@ import (
 //				BaseInstanceName: pulumi.String("backend"),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//						InstanceTemplate: defaultInstanceTemplate.ID(),
 //					},
 //				},
 //				TargetSize: pulumi.Int(1),
@@ -463,14 +463,14 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(30),
-//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
 //				Backends: compute.RegionBackendServiceBackendArray{
 //					&compute.RegionBackendServiceBackendArgs{
 //						Group:          defaultRegionInstanceGroupManager.InstanceGroup,
 //						CapacityScaler: pulumi.Float64(1),
 //					},
 //				},
-//				SecurityPolicy: defaultRegionSecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+//				SecurityPolicy: defaultRegionSecurityPolicy.ID(),
 //			})
 //			if err != nil {
 //				return err

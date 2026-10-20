@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceBlueGreenDeployment;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceClone;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceDnsName;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceIpAddress;
@@ -32,6 +33,11 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String backupdrBackup;
+    /**
+     * @return Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+     * 
+     */
+    private List<GetDatabaseInstancesInstanceBlueGreenDeployment> blueGreenDeployments;
     /**
      * @return Configuration for creating a new instance as a clone of another instance.
      * 
@@ -222,6 +228,13 @@ public final class GetDatabaseInstancesInstance {
      */
     public String backupdrBackup() {
         return this.backupdrBackup;
+    }
+    /**
+     * @return Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+     * 
+     */
+    public List<GetDatabaseInstancesInstanceBlueGreenDeployment> blueGreenDeployments() {
+        return this.blueGreenDeployments;
     }
     /**
      * @return Configuration for creating a new instance as a clone of another instance.
@@ -484,6 +497,7 @@ public final class GetDatabaseInstancesInstance {
     public static final class Builder {
         private List<String> availableMaintenanceVersions;
         private String backupdrBackup;
+        private List<GetDatabaseInstancesInstanceBlueGreenDeployment> blueGreenDeployments;
         private List<GetDatabaseInstancesInstanceClone> clones;
         private String connectionName;
         private String databaseVersion;
@@ -526,6 +540,7 @@ public final class GetDatabaseInstancesInstance {
     	      Objects.requireNonNull(defaults);
     	      this.availableMaintenanceVersions = defaults.availableMaintenanceVersions;
     	      this.backupdrBackup = defaults.backupdrBackup;
+    	      this.blueGreenDeployments = defaults.blueGreenDeployments;
     	      this.clones = defaults.clones;
     	      this.connectionName = defaults.connectionName;
     	      this.databaseVersion = defaults.databaseVersion;
@@ -583,6 +598,17 @@ public final class GetDatabaseInstancesInstance {
             }
             this.backupdrBackup = backupdrBackup;
             return this;
+        }
+        @CustomType.Setter
+        public Builder blueGreenDeployments(List<GetDatabaseInstancesInstanceBlueGreenDeployment> blueGreenDeployments) {
+            if (blueGreenDeployments == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "blueGreenDeployments");
+            }
+            this.blueGreenDeployments = blueGreenDeployments;
+            return this;
+        }
+        public Builder blueGreenDeployments(GetDatabaseInstancesInstanceBlueGreenDeployment... blueGreenDeployments) {
+            return blueGreenDeployments(List.of(blueGreenDeployments));
         }
         @CustomType.Setter
         public Builder clones(List<GetDatabaseInstancesInstanceClone> clones) {
@@ -914,6 +940,7 @@ public final class GetDatabaseInstancesInstance {
             final var _resultValue = new GetDatabaseInstancesInstance();
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
             _resultValue.backupdrBackup = backupdrBackup;
+            _resultValue.blueGreenDeployments = blueGreenDeployments;
             _resultValue.clones = clones;
             _resultValue.connectionName = connectionName;
             _resultValue.databaseVersion = databaseVersion;

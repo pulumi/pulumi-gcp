@@ -23,6 +23,8 @@ __all__ = [
     'DestinationStateTimelineStateArgsDict',
     'GroupAutoAcceptArgs',
     'GroupAutoAcceptArgsDict',
+    'HubExportPscConfigArgs',
+    'HubExportPscConfigArgsDict',
     'HubIamBindingConditionArgs',
     'HubIamBindingConditionArgsDict',
     'HubIamMemberConditionArgs',
@@ -294,6 +296,55 @@ class GroupAutoAcceptArgs:
     @auto_accept_projects.setter
     def auto_accept_projects(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "auto_accept_projects", value)
+
+
+class HubExportPscConfigArgsDict(TypedDict):
+    global_google_apis: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+    """
+    published_services_and_regional_google_apis: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+    """
+
+@pulumi.input_type
+class HubExportPscConfigArgs:
+    def __init__(__self__, *,
+                 global_google_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 published_services_and_regional_google_apis: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] global_google_apis: Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+        :param pulumi.Input[_builtins.bool] published_services_and_regional_google_apis: Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+        """
+        if global_google_apis is not None:
+            pulumi.set(__self__, "global_google_apis", global_google_apis)
+        if published_services_and_regional_google_apis is not None:
+            pulumi.set(__self__, "published_services_and_regional_google_apis", published_services_and_regional_google_apis)
+
+    @_builtins.property
+    @pulumi.getter(name="globalGoogleApis")
+    def global_google_apis(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+        """
+        return pulumi.get(self, "global_google_apis")
+
+    @global_google_apis.setter
+    def global_google_apis(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "global_google_apis", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publishedServicesAndRegionalGoogleApis")
+    def published_services_and_regional_google_apis(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+        """
+        return pulumi.get(self, "published_services_and_regional_google_apis")
+
+    @published_services_and_regional_google_apis.setter
+    def published_services_and_regional_google_apis(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "published_services_and_regional_google_apis", value)
 
 
 class HubIamBindingConditionArgsDict(TypedDict):

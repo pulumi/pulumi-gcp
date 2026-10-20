@@ -96,7 +96,7 @@ public final class InstanceScheduling {
      */
     private @Nullable Boolean preemptible;
     /**
-     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * @return Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     private @Nullable InstanceSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
@@ -225,7 +225,7 @@ public final class InstanceScheduling {
         return Optional.ofNullable(this.preemptible);
     }
     /**
-     * @return Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+     * @return Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
      * 
      */
     public Optional<InstanceSchedulingPreemptionNoticeDuration> preemptionNoticeDuration() {

@@ -51,6 +51,64 @@ import (
 // ```
 //
 // ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			providerIdentity, err := organizations.GetClientOpenIdUserInfo(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.LookupCluster(ctx, &container.LookupClusterArgs{
+//				Name: "my-cluster",
+//				Zone: "us-east1-a",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kubernetes.NewClusterRoleBinding(ctx, "user", &kubernetes.ClusterRoleBindingArgs{
+//				Metadata: []map[string]string{
+//					{
+//						"name": "provider-user-admin",
+//					},
+//				},
+//				RoleRef: []map[string]string{
+//					{
+//						"apiGroup": "rbac.authorization.k8s.io",
+//						"kind":     "ClusterRole",
+//						"name":     "cluster-admin",
+//					},
+//				},
+//				Subject: []map[string]interface{}{
+//					map[string]interface{}{
+//						"kind": "User",
+//						"name": providerIdentity.Email,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientOpenIdUserInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientOpenIdUserInfoResult

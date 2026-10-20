@@ -187,6 +187,7 @@ from .node_template import *
 from .organization_security_policy import *
 from .organization_security_policy_association import *
 from .organization_security_policy_rule import *
+from .organization_snapshot_recycle_bin_policy import *
 from .packet_mirroring import *
 from .per_instance_config import *
 from .preview_feature import *
@@ -266,6 +267,7 @@ from .snapshot import *
 from .snapshot_iam_binding import *
 from .snapshot_iam_member import *
 from .snapshot_iam_policy import *
+from .snapshot_recycle_bin_policy import *
 from .snapshot_settings import *
 from .ssl_certificate import *
 from .ssl_policy import *

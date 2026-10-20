@@ -293,19 +293,15 @@ import javax.annotation.Nullable;
  *                 .pemPrivateKeyWo(StdFunctions.file(FileArgs.builder()
  *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
- *                 .pemPrivateKeyWoVersion(Output.tuple(StdFunctions.parseint(ParseintArgs.builder()
+ *                 .pemPrivateKeyWoVersion(StdFunctions.parseint(ParseintArgs.builder()
  *                     .input(StdFunctions.filesha256(Filesha256Args.builder()
  *                         .input("test-fixtures/private-key.pem")
  *                         .build()).result())
  *                     .base(16)
- *                     .build()).result(), StdFunctions.pow(PowArgs.builder()
+ *                     .build()).result() % StdFunctions.pow(PowArgs.builder()
  *                     .base(2.0)
  *                     .exponent(32.0)
- *                     .build()).result()).applyValue(values -> {
- *                     var __convert = values.t1;
- *                     var __convert1 = values.t2;
- *                     return __convert % __convert1;
- *                 }))
+ *                     .build()).result())
  *                 .build())
  *             .build());
  * 

@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewGroup(ctx, "primary", &networkconnectivity.GroupArgs{
-//				Hub:  basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub:  basicHub.ID(),
 //				Name: pulumi.String("default"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),

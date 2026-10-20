@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
-        /// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        /// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
@@ -29,6 +29,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Indicates how much throughput to provision for the disk.
         /// </summary>
         public readonly int? ProvisionedThroughput;
+        /// <summary>
+        /// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
         private ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig(
@@ -38,12 +42,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             int? provisionedIops,
 
-            int? provisionedThroughput)
+            int? provisionedThroughput,
+
+            string? type)
         {
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            Type = type;
         }
     }
 }

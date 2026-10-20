@@ -25,8 +25,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Inputs
         public Input<double>? NumberValue { get; set; }
 
         /// <summary>
-        /// Sub-parameter values.
-        /// Structure is documented below.
+        /// Sub-parameter values, in JSON format.
         /// </summary>
         [Input("oneofValue")]
         public Input<Inputs.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValueArgs>? OneofValue { get; set; }

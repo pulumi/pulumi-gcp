@@ -155,7 +155,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
+//				Hub: basicHub.ID(),
 //				Gateway: &networkconnectivity.SpokeGatewayArgs{
 //					IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 //						&networkconnectivity.SpokeGatewayIpRangeReservationArgs{
@@ -186,7 +186,7 @@ import (
 //						},
 //					},
 //				},
-//				NccGateway: primary.ID().ToIDOutput().ToStringOutput(),
+//				NccGateway: primary.ID(),
 //			})
 //			if err != nil {
 //				return err

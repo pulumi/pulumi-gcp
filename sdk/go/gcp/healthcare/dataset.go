@@ -78,14 +78,14 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			healthcareCmekKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "healthcare_cmek_keyuser", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-healthcare.iam.gserviceaccount.com", project.Number),
@@ -99,7 +99,7 @@ import (
 //				Location: pulumi.String("us-central1"),
 //				TimeZone: pulumi.String("UTC"),
 //				EncryptionSpec: &healthcare.DatasetEncryptionSpecArgs{
-//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					KmsKeyName: cryptoKey.ID(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				healthcareCmekKeyuser,

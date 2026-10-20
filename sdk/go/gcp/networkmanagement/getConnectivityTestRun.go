@@ -60,7 +60,7 @@ import (
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Network: vpc.ID().ToIDOutput().ToStringOutput(),
+//						Network: vpc.ID(),
 //					},
 //				},
 //				Name:        pulumi.String("source-vm"),
@@ -80,7 +80,7 @@ import (
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Network: vpc.ID().ToIDOutput().ToStringOutput(),
+//						Network: vpc.ID(),
 //					},
 //				},
 //				Name:        pulumi.String("dest-vm"),
@@ -97,10 +97,10 @@ import (
 //			instance_test, err := networkmanagement.NewConnectivityTest(ctx, "instance-test", &networkmanagement.ConnectivityTestArgs{
 //				Name: pulumi.String("conn-test-instances"),
 //				Source: &networkmanagement.ConnectivityTestSourceArgs{
-//					Instance: source.ID().ToIDOutput().ToStringOutput(),
+//					Instance: source.ID(),
 //				},
 //				Destination: &networkmanagement.ConnectivityTestDestinationArgs{
-//					Instance: destination.ID().ToIDOutput().ToStringOutput(),
+//					Instance: destination.ID(),
 //				},
 //				Protocol: pulumi.String("TCP"),
 //				Labels: pulumi.StringMap{

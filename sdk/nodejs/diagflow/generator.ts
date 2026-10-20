@@ -33,8 +33,70 @@ import * as utilities from "../utilities";
  *         topP: 0.95,
  *     },
  *     summarizationContext: {
- *         version: "4.0",
+ *         version: "6.0",
  *         outputLanguageCode: "en",
+ *     },
+ *     triggerEvent: "MANUAL_CALL",
+ * });
+ * ```
+ * ### Dialogflow Generator Agent Coaching
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agentCoachingGenerator = new gcp.diagflow.Generator("agent_coaching_generator", {
+ *     location: "global",
+ *     description: "An agent coaching generator.",
+ *     agentCoachingContext: {
+ *         version: "2.5",
+ *         overarchingGuidance: "Be helpful and polite.",
+ *         outputLanguageCode: "en",
+ *         instructions: [{
+ *             displayName: "Greeting",
+ *             displayDetails: "Greet the customer warmly",
+ *             condition: "Customer starts the conversation",
+ *             agentAction: "Say hello and ask how to help",
+ *             systemAction: "Log greeting event",
+ *             triggeringEvent: "END_OF_UTTERANCE",
+ *         }],
+ *     },
+ *     triggerEvent: "END_OF_UTTERANCE",
+ * });
+ * ```
+ * ### Dialogflow Generator With Tools
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testTool = new gcp.diagflow.Tool("test_tool", {
+ *     location: "global",
+ *     toolKey: "generator_tool_key",
+ *     displayName: "test-tool",
+ *     description: "A test tool",
+ *     openApiSpec: {
+ *         textSchema: `openapi: 3.0.0
+ * info:
+ *   title: generator_tool_key
+ *   version: 1.0.0
+ * paths:
+ *   /search:
+ *     get:
+ *       summary: Search function
+ *       operationId: searchAction
+ *       responses:
+ *         '200':
+ *           description: OK
+ * `,
+ *     },
+ * });
+ * const generatorWithTools = new gcp.diagflow.Generator("generator_with_tools", {
+ *     location: "global",
+ *     description: "A generator with tools and free form context.",
+ *     tools: [testTool.name],
+ *     freeFormContext: {
+ *         text: "Use the search tool to answer the user's query.",
  *     },
  *     triggerEvent: "MANUAL_CALL",
  * });
@@ -85,6 +147,11 @@ export class Generator extends pulumi.CustomResource {
     }
 
     /**
+     * Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     */
+    declare public readonly agentCoachingContext: pulumi.Output<outputs.diagflow.GeneratorAgentCoachingContext | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -97,6 +164,11 @@ export class Generator extends pulumi.CustomResource {
      * Optional. Human readable description of the generator.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Input of free form generator to LLM.
+     * Structure is documented below.
+     */
+    declare public readonly freeFormContext: pulumi.Output<outputs.diagflow.GeneratorFreeFormContext | undefined>;
     /**
      * Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
      */
@@ -127,7 +199,11 @@ export class Generator extends pulumi.CustomResource {
      * Input of prebuilt Summarization feature.
      * Structure is documented below.
      */
-    declare public readonly summarizationContext: pulumi.Output<outputs.diagflow.GeneratorSummarizationContext>;
+    declare public readonly summarizationContext: pulumi.Output<outputs.diagflow.GeneratorSummarizationContext | undefined>;
+    /**
+     * Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+     */
+    declare public readonly tools: pulumi.Output<string[] | undefined>;
     /**
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
      * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
@@ -147,8 +223,10 @@ export class Generator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GeneratorState | undefined;
+            resourceInputs["agentCoachingContext"] = state?.agentCoachingContext;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
+            resourceInputs["freeFormContext"] = state?.freeFormContext;
             resourceInputs["generatorId"] = state?.generatorId;
             resourceInputs["inferenceParameter"] = state?.inferenceParameter;
             resourceInputs["location"] = state?.location;
@@ -156,23 +234,24 @@ export class Generator extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["publishedModel"] = state?.publishedModel;
             resourceInputs["summarizationContext"] = state?.summarizationContext;
+            resourceInputs["tools"] = state?.tools;
             resourceInputs["triggerEvent"] = state?.triggerEvent;
         } else {
             const args = argsOrState as GeneratorArgs | undefined;
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if (args?.summarizationContext === undefined && !opts.urn) {
-                throw new Error("Missing required property 'summarizationContext'");
-            }
+            resourceInputs["agentCoachingContext"] = args?.agentCoachingContext;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
+            resourceInputs["freeFormContext"] = args?.freeFormContext;
             resourceInputs["generatorId"] = args?.generatorId;
             resourceInputs["inferenceParameter"] = args?.inferenceParameter;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["publishedModel"] = args?.publishedModel;
             resourceInputs["summarizationContext"] = args?.summarizationContext;
+            resourceInputs["tools"] = args?.tools;
             resourceInputs["triggerEvent"] = args?.triggerEvent;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -186,6 +265,11 @@ export class Generator extends pulumi.CustomResource {
  */
 export interface GeneratorState {
     /**
+     * Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     */
+    agentCoachingContext?: pulumi.Input<inputs.diagflow.GeneratorAgentCoachingContext | undefined>;
+    /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
      * the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -198,6 +282,11 @@ export interface GeneratorState {
      * Optional. Human readable description of the generator.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Input of free form generator to LLM.
+     * Structure is documented below.
+     */
+    freeFormContext?: pulumi.Input<inputs.diagflow.GeneratorFreeFormContext | undefined>;
     /**
      * Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
      */
@@ -230,6 +319,10 @@ export interface GeneratorState {
      */
     summarizationContext?: pulumi.Input<inputs.diagflow.GeneratorSummarizationContext | undefined>;
     /**
+     * Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+     */
+    tools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
      * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
      */
@@ -240,6 +333,11 @@ export interface GeneratorState {
  * The set of arguments for constructing a Generator resource.
  */
 export interface GeneratorArgs {
+    /**
+     * Input of prebuilt Agent Coaching feature.
+     * Structure is documented below.
+     */
+    agentCoachingContext?: pulumi.Input<inputs.diagflow.GeneratorAgentCoachingContext | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -253,6 +351,11 @@ export interface GeneratorArgs {
      * Optional. Human readable description of the generator.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Input of free form generator to LLM.
+     * Structure is documented below.
+     */
+    freeFormContext?: pulumi.Input<inputs.diagflow.GeneratorFreeFormContext | undefined>;
     /**
      * Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
      */
@@ -279,7 +382,11 @@ export interface GeneratorArgs {
      * Input of prebuilt Summarization feature.
      * Structure is documented below.
      */
-    summarizationContext: pulumi.Input<inputs.diagflow.GeneratorSummarizationContext>;
+    summarizationContext?: pulumi.Input<inputs.diagflow.GeneratorSummarizationContext | undefined>;
+    /**
+     * Optional. Resource names of the tools that the generator can choose from. Format: `projects/<Project ID>/locations/<Location ID>/tools/<tool ID>`.
+     */
+    tools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
      * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.

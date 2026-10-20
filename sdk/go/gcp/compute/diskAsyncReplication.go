@@ -44,7 +44,7 @@ import (
 //				Type: pulumi.String("pd-ssd"),
 //				Zone: pulumi.String("europe-west3-a"),
 //				AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
-//					Disk: primary_disk.ID().ToIDOutput().ToStringOutput(),
+//					Disk: primary_disk.ID(),
 //				},
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //			})
@@ -52,9 +52,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewDiskAsyncReplication(ctx, "replication", &compute.DiskAsyncReplicationArgs{
-//				PrimaryDisk: primary_disk.ID().ToIDOutput().ToStringOutput(),
+//				PrimaryDisk: primary_disk.ID(),
 //				SecondaryDisk: &compute.DiskAsyncReplicationSecondaryDiskArgs{
-//					Disk: secondary_disk.ID().ToIDOutput().ToStringOutput(),
+//					Disk: secondary_disk.ID(),
 //				},
 //			})
 //			if err != nil {

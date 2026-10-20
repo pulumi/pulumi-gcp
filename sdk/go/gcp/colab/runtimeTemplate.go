@@ -115,7 +115,7 @@ import (
 //			}
 //			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("colab-test-default"),
-//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //			})
@@ -138,8 +138,8 @@ import (
 //				},
 //				NetworkSpec: &colab.RuntimeTemplateNetworkSpecArgs{
 //					EnableInternetAccess: pulumi.Bool(true),
-//					Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
-//					Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+//					Network:              myNetwork.ID(),
+//					Subnetwork:           mySubnetwork.ID(),
 //				},
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),

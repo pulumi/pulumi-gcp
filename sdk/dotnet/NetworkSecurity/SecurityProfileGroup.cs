@@ -206,6 +206,59 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Group Wildfire
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var threatPreventionProfile = new Gcp.NetworkSecurity.SecurityProfile("threat_prevention_profile", new()
+    ///     {
+    ///         Name = "tp-sec-profile",
+    ///         Type = "THREAT_PREVENTION",
+    ///         Parent = "projects/my-project-name",
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var wildfireProfile = new Gcp.NetworkSecurity.SecurityProfile("wildfire_profile", new()
+    ///     {
+    ///         Name = "wf-sec-profile",
+    ///         Type = "WILDFIRE_ANALYSIS",
+    ///         Parent = "projects/my-project-name",
+    ///         Location = "global",
+    ///         WildfireAnalysisProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileArgs
+    ///         {
+    ///             WildfireRealtimeLookup = true,
+    ///             WildfireSubmissionRules = new[]
+    ///             {
+    ///                 new Gcp.NetworkSecurity.Inputs.SecurityProfileWildfireAnalysisProfileWildfireSubmissionRuleArgs
+    ///                 {
+    ///                     Direction = "BOTH",
+    ///                     FileSelectionMode = "ALL_FILE_TYPES",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkSecurity.SecurityProfileGroup("default", new()
+    ///     {
+    ///         Name = "sec-profile-group",
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "my description",
+    ///         ThreatPreventionProfile = threatPreventionProfile.Id,
+    ///         WildfireAnalysisProfile = wildfireProfile.Id,
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -324,6 +377,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("urlFilteringProfile")]
         public Output<string?> UrlFilteringProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Output("wildfireAnalysisProfile")]
+        public Output<string?> WildfireAnalysisProfile { get; private set; } = null!;
 
 
         /// <summary>
@@ -451,6 +511,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("urlFilteringProfile")]
         public Input<string>? UrlFilteringProfile { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Input("wildfireAnalysisProfile")]
+        public Input<string>? WildfireAnalysisProfile { get; set; }
 
         public SecurityProfileGroupArgs()
         {
@@ -588,6 +655,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("urlFilteringProfile")]
         public Input<string>? UrlFilteringProfile { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Input("wildfireAnalysisProfile")]
+        public Input<string>? WildfireAnalysisProfile { get; set; }
 
         public SecurityProfileGroupState()
         {

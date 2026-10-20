@@ -143,6 +143,35 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     * 
+     */
+    @Import(name="functionalType")
+    private @Nullable Output<String> functionalType;
+
+    /**
+     * @return (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     * 
+     */
+    public Optional<Output<String>> functionalType() {
+        return Optional.ofNullable(this.functionalType);
+    }
+
+    /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
      * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -314,6 +343,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.clientVersion = $.clientVersion;
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
+        this.functionalType = $.functionalType;
         this.labels = $.labels;
         this.launchStage = $.launchStage;
         this.location = $.location;
@@ -499,6 +529,41 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+         * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+         * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(@Nullable Output<String> functionalType) {
+            $.functionalType = functionalType;
+            return this;
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+         * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+         * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(String functionalType) {
+            return functionalType(Output.of(functionalType));
         }
 
         /**

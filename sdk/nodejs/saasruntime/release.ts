@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     releaseId: "previous-release",
  *     unitKind: exampleUnitkind.id,
  *     blueprint: {
- *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+ *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
  *     },
  * });
  * const example = new gcp.saasruntime.Release("example", {
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     releaseId: "example-release",
  *     unitKind: exampleUnitkind.id,
  *     blueprint: {
- *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e",
+ *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:c28fbfbb6c5d8ee1c1c1a00561df17c8e47d2c5b673c61ce0c189de9a27ae09a",
  *     },
  *     inputVariableDefaults: [{
  *         variable: "name",

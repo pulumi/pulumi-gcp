@@ -73,6 +73,8 @@ __all__ = [
     'BackendServiceCustomMetricArgsDict',
     'BackendServiceDynamicForwardingArgs',
     'BackendServiceDynamicForwardingArgsDict',
+    'BackendServiceDynamicForwardingForwardProxyArgs',
+    'BackendServiceDynamicForwardingForwardProxyArgsDict',
     'BackendServiceDynamicForwardingIpPortSelectionArgs',
     'BackendServiceDynamicForwardingIpPortSelectionArgsDict',
     'BackendServiceIamBindingConditionArgs',
@@ -777,6 +779,14 @@ __all__ = [
     'OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgsDict',
     'OrganizationSecurityPolicyRuleRedirectOptionsArgs',
     'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict',
+    'OrganizationSnapshotRecycleBinPolicyRuleArgs',
+    'OrganizationSnapshotRecycleBinPolicyRuleArgsDict',
+    'OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs',
+    'OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgsDict',
+    'OrganizationSnapshotRecycleBinPolicySystemRuleArgs',
+    'OrganizationSnapshotRecycleBinPolicySystemRuleArgsDict',
+    'OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs',
+    'OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgsDict',
     'PacketMirroringCollectorIlbArgs',
     'PacketMirroringCollectorIlbArgsDict',
     'PacketMirroringFilterArgs',
@@ -1601,6 +1611,14 @@ __all__ = [
     'SnapshotIamMemberConditionArgsDict',
     'SnapshotParamsArgs',
     'SnapshotParamsArgsDict',
+    'SnapshotRecycleBinPolicyRuleArgs',
+    'SnapshotRecycleBinPolicyRuleArgsDict',
+    'SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs',
+    'SnapshotRecycleBinPolicyRuleStandardSnapshotsArgsDict',
+    'SnapshotRecycleBinPolicySystemRuleArgs',
+    'SnapshotRecycleBinPolicySystemRuleArgsDict',
+    'SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs',
+    'SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgsDict',
     'SnapshotSettingsStorageLocationArgs',
     'SnapshotSettingsStorageLocationArgsDict',
     'SnapshotSettingsStorageLocationLocationArgs',
@@ -1653,6 +1671,8 @@ __all__ = [
     'URLMapDefaultRouteActionCachePolicyServeWhileStaleArgsDict',
     'URLMapDefaultRouteActionCorsPolicyArgs',
     'URLMapDefaultRouteActionCorsPolicyArgsDict',
+    'URLMapDefaultRouteActionDynamicCompressionPolicyArgs',
+    'URLMapDefaultRouteActionDynamicCompressionPolicyArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyArgs',
     'URLMapDefaultRouteActionFaultInjectionPolicyArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs',
@@ -1661,6 +1681,8 @@ __all__ = [
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapDefaultRouteActionImageOptimizationPolicyArgs',
+    'URLMapDefaultRouteActionImageOptimizationPolicyArgsDict',
     'URLMapDefaultRouteActionMaxStreamDurationArgs',
     'URLMapDefaultRouteActionMaxStreamDurationArgsDict',
     'URLMapDefaultRouteActionRequestMirrorPolicyArgs',
@@ -1717,6 +1739,8 @@ __all__ = [
     'URLMapPathMatcherDefaultRouteActionCachePolicyServeWhileStaleArgsDict',
     'URLMapPathMatcherDefaultRouteActionCorsPolicyArgs',
     'URLMapPathMatcherDefaultRouteActionCorsPolicyArgsDict',
+    'URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs',
+    'URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs',
@@ -1725,6 +1749,8 @@ __all__ = [
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs',
+    'URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgsDict',
     'URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs',
     'URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict',
     'URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs',
@@ -1779,6 +1805,8 @@ __all__ = [
     'URLMapPathMatcherPathRuleRouteActionCachePolicyServeWhileStaleArgsDict',
     'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs',
     'URLMapPathMatcherPathRuleRouteActionCorsPolicyArgsDict',
+    'URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs',
+    'URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs',
@@ -1787,6 +1815,8 @@ __all__ = [
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs',
+    'URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgsDict',
     'URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs',
     'URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict',
     'URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs',
@@ -1857,6 +1887,8 @@ __all__ = [
     'URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStaleArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs',
     'URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgsDict',
+    'URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs',
+    'URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs',
@@ -1865,6 +1897,8 @@ __all__ = [
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs',
     'URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgsDict',
+    'URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs',
+    'URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs',
     'URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict',
     'URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs',
@@ -5254,6 +5288,12 @@ class BackendServiceCustomMetricArgs:
 
 
 class BackendServiceDynamicForwardingArgsDict(TypedDict):
+    forward_proxy: NotRequired[pulumi.Input[Optional['BackendServiceDynamicForwardingForwardProxyArgsDict']]]
+    """
+    (Optional, Beta)
+    Dynamic Forwarding Proxy configuration.
+    Structure is documented below.
+    """
     ip_port_selection: NotRequired[pulumi.Input[Optional['BackendServiceDynamicForwardingIpPortSelectionArgsDict']]]
     """
     (Optional, Beta)
@@ -5264,14 +5304,34 @@ class BackendServiceDynamicForwardingArgsDict(TypedDict):
 @pulumi.input_type
 class BackendServiceDynamicForwardingArgs:
     def __init__(__self__, *,
+                 forward_proxy: pulumi.Input[Optional['BackendServiceDynamicForwardingForwardProxyArgs']] = None,
                  ip_port_selection: pulumi.Input[Optional['BackendServiceDynamicForwardingIpPortSelectionArgs']] = None):
         """
+        :param pulumi.Input['BackendServiceDynamicForwardingForwardProxyArgs'] forward_proxy: (Optional, Beta)
+               Dynamic Forwarding Proxy configuration.
+               Structure is documented below.
         :param pulumi.Input['BackendServiceDynamicForwardingIpPortSelectionArgs'] ip_port_selection: (Optional, Beta)
                IP:PORT based dynamic forwarding configuration.
                Structure is documented below.
         """
+        if forward_proxy is not None:
+            pulumi.set(__self__, "forward_proxy", forward_proxy)
         if ip_port_selection is not None:
             pulumi.set(__self__, "ip_port_selection", ip_port_selection)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardProxy")
+    def forward_proxy(self) -> pulumi.Input[Optional['BackendServiceDynamicForwardingForwardProxyArgs']]:
+        """
+        (Optional, Beta)
+        Dynamic Forwarding Proxy configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forward_proxy")
+
+    @forward_proxy.setter
+    def forward_proxy(self, value: pulumi.Input[Optional['BackendServiceDynamicForwardingForwardProxyArgs']]):
+        pulumi.set(self, "forward_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="ipPortSelection")
@@ -5286,6 +5346,62 @@ class BackendServiceDynamicForwardingArgs:
     @ip_port_selection.setter
     def ip_port_selection(self, value: pulumi.Input[Optional['BackendServiceDynamicForwardingIpPortSelectionArgs']]):
         pulumi.set(self, "ip_port_selection", value)
+
+
+class BackendServiceDynamicForwardingForwardProxyArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    (Required, Beta)
+    A boolean flag enabling dynamic forwarding proxy.
+    """
+    proxy_mode: pulumi.Input[_builtins.str]
+    """
+    (Required, Beta)
+    Determines the dynamic forwarding proxy mode
+    Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+    """
+
+@pulumi.input_type
+class BackendServiceDynamicForwardingForwardProxyArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 proxy_mode: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: (Required, Beta)
+               A boolean flag enabling dynamic forwarding proxy.
+        :param pulumi.Input[_builtins.str] proxy_mode: (Required, Beta)
+               Determines the dynamic forwarding proxy mode
+               Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "proxy_mode", proxy_mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        (Required, Beta)
+        A boolean flag enabling dynamic forwarding proxy.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyMode")
+    def proxy_mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        (Required, Beta)
+        Determines the dynamic forwarding proxy mode
+        Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+        """
+        return pulumi.get(self, "proxy_mode")
+
+    @proxy_mode.setter
+    def proxy_mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "proxy_mode", value)
 
 
 class BackendServiceDynamicForwardingIpPortSelectionArgsDict(TypedDict):
@@ -18855,6 +18971,10 @@ class InstanceFromMachineImageNetworkInterfaceArgsDict(TypedDict):
     """
     A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
     """
+    service_class_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, network_attachment can be used without service_class_id.
+    """
     stack_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -18893,6 +19013,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
                  parent_nic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_count: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_class_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -18917,6 +19038,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.str] parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param pulumi.Input[_builtins.int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[_builtins.str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[_builtins.str] service_class_id: Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, network_attachment can be used without service_class_id.
         :param pulumi.Input[_builtins.str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the subnetwork attached to this interface.
         :param pulumi.Input[_builtins.str] subnetwork_project: The project in which the subnetwork belongs.
@@ -18958,6 +19080,8 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
             pulumi.set(__self__, "queue_count", queue_count)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
+        if service_class_id is not None:
+            pulumi.set(__self__, "service_class_id", service_class_id)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -19183,6 +19307,18 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @security_policy.setter
     def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClassId")
+    def service_class_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, network_attachment can be used without service_class_id.
+        """
+        return pulumi.get(self, "service_class_id")
+
+    @service_class_id.setter
+    def service_class_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_class_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -22079,6 +22215,10 @@ class InstanceFromTemplateNetworkInterfaceArgsDict(TypedDict):
     """
     A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
     """
+    service_class_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, network_attachment can be used without service_class_id.
+    """
     stack_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -22117,6 +22257,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
                  parent_nic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_count: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_class_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -22141,6 +22282,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.str] parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param pulumi.Input[_builtins.int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[_builtins.str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[_builtins.str] service_class_id: Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, network_attachment can be used without service_class_id.
         :param pulumi.Input[_builtins.str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the subnetwork attached to this interface.
         :param pulumi.Input[_builtins.str] subnetwork_project: The project in which the subnetwork belongs.
@@ -22182,6 +22324,8 @@ class InstanceFromTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "queue_count", queue_count)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
+        if service_class_id is not None:
+            pulumi.set(__self__, "service_class_id", service_class_id)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -22407,6 +22551,18 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @security_policy.setter
     def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClassId")
+    def service_class_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, network_attachment can be used without service_class_id.
+        """
+        return pulumi.get(self, "service_class_id")
+
+    @service_class_id.setter
+    def service_class_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_class_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -25428,6 +25584,10 @@ class InstanceNetworkInterfaceArgsDict(TypedDict):
     """
     Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
     """
+    service_class_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+    """
     stack_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -25475,6 +25635,7 @@ class InstanceNetworkInterfaceArgs:
                  parent_nic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_count: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_class_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -25514,6 +25675,7 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.str] parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param pulumi.Input[_builtins.int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[_builtins.str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[_builtins.str] service_class_id: Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
         :param pulumi.Input[_builtins.str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[_builtins.str] subnetwork: The name or self_link of the subnetwork to attach this
                interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
@@ -25564,6 +25726,8 @@ class InstanceNetworkInterfaceArgs:
             pulumi.set(__self__, "queue_count", queue_count)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
+        if service_class_id is not None:
+            pulumi.set(__self__, "service_class_id", service_class_id)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -25804,6 +25968,18 @@ class InstanceNetworkInterfaceArgs:
     @security_policy.setter
     def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClassId")
+    def service_class_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+        """
+        return pulumi.get(self, "service_class_id")
+
+    @service_class_id.setter
+    def service_class_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_class_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -26426,7 +26602,7 @@ class InstanceSchedulingArgsDict(TypedDict):
     """
     preemption_notice_duration: NotRequired[pulumi.Input[Optional['InstanceSchedulingPreemptionNoticeDurationArgsDict']]]
     """
-    Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+    Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
     """
     provisioning_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -26491,7 +26667,7 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[_builtins.bool] preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
-        :param pulumi.Input['InstanceSchedulingPreemptionNoticeDurationArgs'] preemption_notice_duration: Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+        :param pulumi.Input['InstanceSchedulingPreemptionNoticeDurationArgs'] preemption_notice_duration: Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         :param pulumi.Input[_builtins.str] provisioning_model: Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
@@ -26707,7 +26883,7 @@ class InstanceSchedulingArgs:
     @pulumi.getter(name="preemptionNoticeDuration")
     def preemption_notice_duration(self) -> pulumi.Input[Optional['InstanceSchedulingPreemptionNoticeDurationArgs']]:
         """
-        Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+        Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         """
         return pulumi.get(self, "preemption_notice_duration")
 
@@ -28742,6 +28918,10 @@ class InstanceTemplateNetworkInterfaceArgsDict(TypedDict):
     """
     The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
     """
+    service_class_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+    """
     stack_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -28781,6 +28961,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                  nic_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_nic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_class_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -28817,6 +28998,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
         :param pulumi.Input[_builtins.str] parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param pulumi.Input[_builtins.int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        :param pulumi.Input[_builtins.str] service_class_id: Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
         :param pulumi.Input[_builtins.str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[_builtins.str] subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
@@ -28857,6 +29039,8 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
+        if service_class_id is not None:
+            pulumi.set(__self__, "service_class_id", service_class_id)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -29072,6 +29256,18 @@ class InstanceTemplateNetworkInterfaceArgs:
     @queue_count.setter
     def queue_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClassId")
+    def service_class_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+        """
+        return pulumi.get(self, "service_class_id")
+
+    @service_class_id.setter
+    def service_class_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_class_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -29615,7 +29811,7 @@ class InstanceTemplateSchedulingArgsDict(TypedDict):
     """
     preemption_notice_duration: NotRequired[pulumi.Input[Optional['InstanceTemplateSchedulingPreemptionNoticeDurationArgsDict']]]
     """
-    Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+    Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
     """
     provisioning_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -29679,7 +29875,7 @@ class InstanceTemplateSchedulingArgs:
         :param pulumi.Input[_builtins.bool] preemptible: Allows instance to be preempted. This defaults to
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
-        :param pulumi.Input['InstanceTemplateSchedulingPreemptionNoticeDurationArgs'] preemption_notice_duration: Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+        :param pulumi.Input['InstanceTemplateSchedulingPreemptionNoticeDurationArgs'] preemption_notice_duration: Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         :param pulumi.Input[_builtins.str] provisioning_model: Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
@@ -29894,7 +30090,7 @@ class InstanceTemplateSchedulingArgs:
     @pulumi.getter(name="preemptionNoticeDuration")
     def preemption_notice_duration(self) -> pulumi.Input[Optional['InstanceTemplateSchedulingPreemptionNoticeDurationArgs']]:
         """
-        Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+        Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         """
         return pulumi.get(self, "preemption_notice_duration")
 
@@ -38025,6 +38221,175 @@ class OrganizationSecurityPolicyRuleRedirectOptionsArgs:
     @target.setter
     def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
+
+
+class OrganizationSnapshotRecycleBinPolicyRuleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    standard_snapshots: NotRequired[pulumi.Input[Optional['OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgsDict']]]
+    """
+    The rule config for standard snapshots.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class OrganizationSnapshotRecycleBinPolicyRuleArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 standard_snapshots: pulumi.Input[Optional['OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input['OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs'] standard_snapshots: The rule config for standard snapshots.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if standard_snapshots is not None:
+            pulumi.set(__self__, "standard_snapshots", standard_snapshots)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardSnapshots")
+    def standard_snapshots(self) -> pulumi.Input[Optional['OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs']]:
+        """
+        The rule config for standard snapshots.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_snapshots")
+
+    @standard_snapshots.setter
+    def standard_snapshots(self, value: pulumi.Input[Optional['OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs']]):
+        pulumi.set(self, "standard_snapshots", value)
+
+
+class OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgsDict(TypedDict):
+    retention_duration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The retention duration for snapshots in the recycle bin after which the
+    snapshots are automatically deleted from recycle bin.
+    """
+
+@pulumi.input_type
+class OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshotsArgs:
+    def __init__(__self__, *,
+                 retention_duration_days: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] retention_duration_days: The retention duration for snapshots in the recycle bin after which the
+               snapshots are automatically deleted from recycle bin.
+        """
+        if retention_duration_days is not None:
+            pulumi.set(__self__, "retention_duration_days", retention_duration_days)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDurationDays")
+    def retention_duration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention duration for snapshots in the recycle bin after which the
+        snapshots are automatically deleted from recycle bin.
+        """
+        return pulumi.get(self, "retention_duration_days")
+
+    @retention_duration_days.setter
+    def retention_duration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_duration_days", value)
+
+
+class OrganizationSnapshotRecycleBinPolicySystemRuleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (Required) The identifier for this object. Format specified above.
+    """
+    standard_snapshots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgsDict']]]]]
+    """
+    (Output)
+    The rule config for standard snapshots.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class OrganizationSnapshotRecycleBinPolicySystemRuleArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 standard_snapshots: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: (Required) The identifier for this object. Format specified above.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]] standard_snapshots: (Output)
+               The rule config for standard snapshots.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if standard_snapshots is not None:
+            pulumi.set(__self__, "standard_snapshots", standard_snapshots)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (Required) The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardSnapshots")
+    def standard_snapshots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]]]:
+        """
+        (Output)
+        The rule config for standard snapshots.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_snapshots")
+
+    @standard_snapshots.setter
+    def standard_snapshots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]]]):
+        pulumi.set(self, "standard_snapshots", value)
+
+
+class OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgsDict(TypedDict):
+    retention_duration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The retention duration for snapshots in the recycle bin after which the
+    snapshots are automatically deleted from recycle bin.
+    """
+
+@pulumi.input_type
+class OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs:
+    def __init__(__self__, *,
+                 retention_duration_days: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] retention_duration_days: The retention duration for snapshots in the recycle bin after which the
+               snapshots are automatically deleted from recycle bin.
+        """
+        if retention_duration_days is not None:
+            pulumi.set(__self__, "retention_duration_days", retention_duration_days)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDurationDays")
+    def retention_duration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention duration for snapshots in the recycle bin after which the
+        snapshots are automatically deleted from recycle bin.
+        """
+        return pulumi.get(self, "retention_duration_days")
+
+    @retention_duration_days.setter
+    def retention_duration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_duration_days", value)
 
 
 class PacketMirroringCollectorIlbArgsDict(TypedDict):
@@ -49321,6 +49686,10 @@ class RegionInstanceTemplateNetworkInterfaceArgsDict(TypedDict):
     """
     The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
     """
+    service_class_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+    """
     stack_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -49360,6 +49729,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
                  nic_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_nic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_class_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -49396,6 +49766,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
         :param pulumi.Input[_builtins.str] parent_nic_name: Name of the parent network interface of a dynamic network interface.
         :param pulumi.Input[_builtins.int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        :param pulumi.Input[_builtins.str] service_class_id: Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
         :param pulumi.Input[_builtins.str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[_builtins.str] subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
@@ -49436,6 +49807,8 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
+        if service_class_id is not None:
+            pulumi.set(__self__, "service_class_id", service_class_id)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -49651,6 +50024,18 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @queue_count.setter
     def queue_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClassId")
+    def service_class_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Producer Service's Service class Id for the region of this network interface. Can only be used with `network_attachment`. It is not possible to use on its own; however, `network_attachment` can be used without `service_class_id`.
+        """
+        return pulumi.get(self, "service_class_id")
+
+    @service_class_id.setter
+    def service_class_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_class_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -75558,6 +75943,175 @@ class SnapshotParamsArgs:
         pulumi.set(self, "resource_manager_tags", value)
 
 
+class SnapshotRecycleBinPolicyRuleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    standard_snapshots: NotRequired[pulumi.Input[Optional['SnapshotRecycleBinPolicyRuleStandardSnapshotsArgsDict']]]
+    """
+    The rule config for standard snapshots.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class SnapshotRecycleBinPolicyRuleArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 standard_snapshots: pulumi.Input[Optional['SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input['SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs'] standard_snapshots: The rule config for standard snapshots.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if standard_snapshots is not None:
+            pulumi.set(__self__, "standard_snapshots", standard_snapshots)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardSnapshots")
+    def standard_snapshots(self) -> pulumi.Input[Optional['SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs']]:
+        """
+        The rule config for standard snapshots.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_snapshots")
+
+    @standard_snapshots.setter
+    def standard_snapshots(self, value: pulumi.Input[Optional['SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs']]):
+        pulumi.set(self, "standard_snapshots", value)
+
+
+class SnapshotRecycleBinPolicyRuleStandardSnapshotsArgsDict(TypedDict):
+    retention_duration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The retention duration for snapshots in the recycle bin after which the
+    snapshots are automatically deleted from recycle bin.
+    """
+
+@pulumi.input_type
+class SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs:
+    def __init__(__self__, *,
+                 retention_duration_days: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] retention_duration_days: The retention duration for snapshots in the recycle bin after which the
+               snapshots are automatically deleted from recycle bin.
+        """
+        if retention_duration_days is not None:
+            pulumi.set(__self__, "retention_duration_days", retention_duration_days)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDurationDays")
+    def retention_duration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention duration for snapshots in the recycle bin after which the
+        snapshots are automatically deleted from recycle bin.
+        """
+        return pulumi.get(self, "retention_duration_days")
+
+    @retention_duration_days.setter
+    def retention_duration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_duration_days", value)
+
+
+class SnapshotRecycleBinPolicySystemRuleArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    (Required) The identifier for this object. Format specified above.
+    """
+    standard_snapshots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgsDict']]]]]
+    """
+    (Output)
+    The rule config for standard snapshots.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class SnapshotRecycleBinPolicySystemRuleArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 standard_snapshots: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: (Required) The identifier for this object. Format specified above.
+        :param pulumi.Input[Sequence[pulumi.Input['SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]] standard_snapshots: (Output)
+               The rule config for standard snapshots.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if standard_snapshots is not None:
+            pulumi.set(__self__, "standard_snapshots", standard_snapshots)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        (Required) The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardSnapshots")
+    def standard_snapshots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]]]:
+        """
+        (Output)
+        The rule config for standard snapshots.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_snapshots")
+
+    @standard_snapshots.setter
+    def standard_snapshots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs']]]]):
+        pulumi.set(self, "standard_snapshots", value)
+
+
+class SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgsDict(TypedDict):
+    retention_duration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The retention duration for snapshots in the recycle bin after which the
+    snapshots are automatically deleted from recycle bin.
+    """
+
+@pulumi.input_type
+class SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs:
+    def __init__(__self__, *,
+                 retention_duration_days: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] retention_duration_days: The retention duration for snapshots in the recycle bin after which the
+               snapshots are automatically deleted from recycle bin.
+        """
+        if retention_duration_days is not None:
+            pulumi.set(__self__, "retention_duration_days", retention_duration_days)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDurationDays")
+    def retention_duration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The retention duration for snapshots in the recycle bin after which the
+        snapshots are automatically deleted from recycle bin.
+        """
+        return pulumi.get(self, "retention_duration_days")
+
+    @retention_duration_days.setter
+    def retention_duration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_duration_days", value)
+
+
 class SnapshotSettingsStorageLocationArgsDict(TypedDict):
     policy: pulumi.Input[_builtins.str]
     """
@@ -77296,6 +77850,13 @@ class URLMapDefaultRouteActionArgsDict(TypedDict):
     [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
     Structure is documented below.
     """
+    dynamic_compression_policy: NotRequired[pulumi.Input[Optional['URLMapDefaultRouteActionDynamicCompressionPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Dynamic compression policy for this URL Map's route. Available only for
+    Global EXTERNAL_MANAGED load balancer schemes.
+    Structure is documented below.
+    """
     fault_injection_policy: NotRequired[pulumi.Input[Optional['URLMapDefaultRouteActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
@@ -77303,6 +77864,12 @@ class URLMapDefaultRouteActionArgsDict(TypedDict):
     percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
     by the Loadbalancer for a percentage of requests.
     timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+    Structure is documented below.
+    """
+    image_optimization_policy: NotRequired[pulumi.Input[Optional['URLMapDefaultRouteActionImageOptimizationPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Specifies the policy for optimizing images returned in the HTTP response.
     Structure is documented below.
     """
     max_stream_duration: NotRequired[pulumi.Input[Optional['URLMapDefaultRouteActionMaxStreamDurationArgsDict']]]
@@ -77355,7 +77922,9 @@ class URLMapDefaultRouteActionArgs:
     def __init__(__self__, *,
                  cache_policy: pulumi.Input[Optional['URLMapDefaultRouteActionCachePolicyArgs']] = None,
                  cors_policy: pulumi.Input[Optional['URLMapDefaultRouteActionCorsPolicyArgs']] = None,
+                 dynamic_compression_policy: pulumi.Input[Optional['URLMapDefaultRouteActionDynamicCompressionPolicyArgs']] = None,
                  fault_injection_policy: pulumi.Input[Optional['URLMapDefaultRouteActionFaultInjectionPolicyArgs']] = None,
+                 image_optimization_policy: pulumi.Input[Optional['URLMapDefaultRouteActionImageOptimizationPolicyArgs']] = None,
                  max_stream_duration: pulumi.Input[Optional['URLMapDefaultRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: pulumi.Input[Optional['URLMapDefaultRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: pulumi.Input[Optional['URLMapDefaultRouteActionRetryPolicyArgs']] = None,
@@ -77371,11 +77940,18 @@ class URLMapDefaultRouteActionArgs:
         :param pulumi.Input['URLMapDefaultRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
+        :param pulumi.Input['URLMapDefaultRouteActionDynamicCompressionPolicyArgs'] dynamic_compression_policy: (Optional, Beta)
+               Dynamic compression policy for this URL Map's route. Available only for
+               Global EXTERNAL_MANAGED load balancer schemes.
+               Structure is documented below.
         :param pulumi.Input['URLMapDefaultRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapDefaultRouteActionImageOptimizationPolicyArgs'] image_optimization_policy: (Optional, Beta)
+               Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param pulumi.Input['URLMapDefaultRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -77408,8 +77984,12 @@ class URLMapDefaultRouteActionArgs:
             pulumi.set(__self__, "cache_policy", cache_policy)
         if cors_policy is not None:
             pulumi.set(__self__, "cors_policy", cors_policy)
+        if dynamic_compression_policy is not None:
+            pulumi.set(__self__, "dynamic_compression_policy", dynamic_compression_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if image_optimization_policy is not None:
+            pulumi.set(__self__, "image_optimization_policy", image_optimization_policy)
         if max_stream_duration is not None:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
@@ -77454,6 +78034,21 @@ class URLMapDefaultRouteActionArgs:
         pulumi.set(self, "cors_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicCompressionPolicy")
+    def dynamic_compression_policy(self) -> pulumi.Input[Optional['URLMapDefaultRouteActionDynamicCompressionPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Dynamic compression policy for this URL Map's route. Available only for
+        Global EXTERNAL_MANAGED load balancer schemes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_compression_policy")
+
+    @dynamic_compression_policy.setter
+    def dynamic_compression_policy(self, value: pulumi.Input[Optional['URLMapDefaultRouteActionDynamicCompressionPolicyArgs']]):
+        pulumi.set(self, "dynamic_compression_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> pulumi.Input[Optional['URLMapDefaultRouteActionFaultInjectionPolicyArgs']]:
         """
@@ -77469,6 +78064,20 @@ class URLMapDefaultRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: pulumi.Input[Optional['URLMapDefaultRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageOptimizationPolicy")
+    def image_optimization_policy(self) -> pulumi.Input[Optional['URLMapDefaultRouteActionImageOptimizationPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Specifies the policy for optimizing images returned in the HTTP response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_optimization_policy")
+
+    @image_optimization_policy.setter
+    def image_optimization_policy(self, value: pulumi.Input[Optional['URLMapDefaultRouteActionImageOptimizationPolicyArgs']]):
+        pulumi.set(self, "image_optimization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStreamDuration")
@@ -78736,6 +79345,41 @@ class URLMapDefaultRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+class URLMapDefaultRouteActionDynamicCompressionPolicyArgsDict(TypedDict):
+    compression_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compress text responses using Brotli or gzip compression, based on
+    the client's Accept-Encoding header.
+    Possible values are: `AUTOMATIC`, `DISABLED`.
+    """
+
+@pulumi.input_type
+class URLMapDefaultRouteActionDynamicCompressionPolicyArgs:
+    def __init__(__self__, *,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on
+               the client's Accept-Encoding header.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on
+        the client's Accept-Encoding header.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "compression_mode", value)
+
+
 class URLMapDefaultRouteActionFaultInjectionPolicyArgsDict(TypedDict):
     abort: NotRequired[pulumi.Input[Optional['URLMapDefaultRouteActionFaultInjectionPolicyAbortArgsDict']]]
     """
@@ -78954,6 +79598,44 @@ class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs:
     @seconds.setter
     def seconds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "seconds", value)
+
+
+class URLMapDefaultRouteActionImageOptimizationPolicyArgsDict(TypedDict):
+    query_parameter_interpretation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls whether presets or control parameters specified as URL query
+    parameters are used to optimize the image. If not specified, the default
+    value is DISABLED.
+    Possible values are: `DISABLED`, `ENABLED`.
+    """
+
+@pulumi.input_type
+class URLMapDefaultRouteActionImageOptimizationPolicyArgs:
+    def __init__(__self__, *,
+                 query_parameter_interpretation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] query_parameter_interpretation: Controls whether presets or control parameters specified as URL query
+               parameters are used to optimize the image. If not specified, the default
+               value is DISABLED.
+               Possible values are: `DISABLED`, `ENABLED`.
+        """
+        if query_parameter_interpretation is not None:
+            pulumi.set(__self__, "query_parameter_interpretation", query_parameter_interpretation)
+
+    @_builtins.property
+    @pulumi.getter(name="queryParameterInterpretation")
+    def query_parameter_interpretation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether presets or control parameters specified as URL query
+        parameters are used to optimize the image. If not specified, the default
+        value is DISABLED.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "query_parameter_interpretation")
+
+    @query_parameter_interpretation.setter
+    def query_parameter_interpretation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_parameter_interpretation", value)
 
 
 class URLMapDefaultRouteActionMaxStreamDurationArgsDict(TypedDict):
@@ -80682,6 +81364,13 @@ class URLMapPathMatcherDefaultRouteActionArgsDict(TypedDict):
     [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
     Structure is documented below.
     """
+    dynamic_compression_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Dynamic compression policy for this URL Map's route. Available only for
+    Global EXTERNAL_MANAGED load balancer schemes.
+    Structure is documented below.
+    """
     fault_injection_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
@@ -80689,6 +81378,12 @@ class URLMapPathMatcherDefaultRouteActionArgsDict(TypedDict):
     percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
     by the Loadbalancer for a percentage of requests.
     timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+    Structure is documented below.
+    """
+    image_optimization_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Specifies the policy for optimizing images returned in the HTTP response.
     Structure is documented below.
     """
     max_stream_duration: NotRequired[pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict']]]
@@ -80741,7 +81436,9 @@ class URLMapPathMatcherDefaultRouteActionArgs:
     def __init__(__self__, *,
                  cache_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionCachePolicyArgs']] = None,
                  cors_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs']] = None,
+                 dynamic_compression_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs']] = None,
                  fault_injection_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']] = None,
+                 image_optimization_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs']] = None,
                  max_stream_duration: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionRetryPolicyArgs']] = None,
@@ -80757,11 +81454,18 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         :param pulumi.Input['URLMapPathMatcherDefaultRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see
                [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs'] dynamic_compression_policy: (Optional, Beta)
+               Dynamic compression policy for this URL Map's route. Available only for
+               Global EXTERNAL_MANAGED load balancer schemes.
+               Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
                percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
                by the Loadbalancer for a percentage of requests.
                timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs'] image_optimization_policy: (Optional, Beta)
+               Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -80794,8 +81498,12 @@ class URLMapPathMatcherDefaultRouteActionArgs:
             pulumi.set(__self__, "cache_policy", cache_policy)
         if cors_policy is not None:
             pulumi.set(__self__, "cors_policy", cors_policy)
+        if dynamic_compression_policy is not None:
+            pulumi.set(__self__, "dynamic_compression_policy", dynamic_compression_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if image_optimization_policy is not None:
+            pulumi.set(__self__, "image_optimization_policy", image_optimization_policy)
         if max_stream_duration is not None:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
@@ -80840,6 +81548,21 @@ class URLMapPathMatcherDefaultRouteActionArgs:
         pulumi.set(self, "cors_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicCompressionPolicy")
+    def dynamic_compression_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Dynamic compression policy for this URL Map's route. Available only for
+        Global EXTERNAL_MANAGED load balancer schemes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_compression_policy")
+
+    @dynamic_compression_policy.setter
+    def dynamic_compression_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs']]):
+        pulumi.set(self, "dynamic_compression_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]:
         """
@@ -80855,6 +81578,20 @@ class URLMapPathMatcherDefaultRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageOptimizationPolicy")
+    def image_optimization_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Specifies the policy for optimizing images returned in the HTTP response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_optimization_policy")
+
+    @image_optimization_policy.setter
+    def image_optimization_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs']]):
+        pulumi.set(self, "image_optimization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStreamDuration")
@@ -82122,6 +82859,41 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+class URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgsDict(TypedDict):
+    compression_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compress text responses using Brotli or gzip compression, based on
+    the client's Accept-Encoding header.
+    Possible values are: `AUTOMATIC`, `DISABLED`.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs:
+    def __init__(__self__, *,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on
+               the client's Accept-Encoding header.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on
+        the client's Accept-Encoding header.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "compression_mode", value)
+
+
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgsDict(TypedDict):
     abort: NotRequired[pulumi.Input[Optional['URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgsDict']]]
     """
@@ -82340,6 +83112,44 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs
     @seconds.setter
     def seconds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "seconds", value)
+
+
+class URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgsDict(TypedDict):
+    query_parameter_interpretation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls whether presets or control parameters specified as URL query
+    parameters are used to optimize the image. If not specified, the default
+    value is DISABLED.
+    Possible values are: `DISABLED`, `ENABLED`.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs:
+    def __init__(__self__, *,
+                 query_parameter_interpretation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] query_parameter_interpretation: Controls whether presets or control parameters specified as URL query
+               parameters are used to optimize the image. If not specified, the default
+               value is DISABLED.
+               Possible values are: `DISABLED`, `ENABLED`.
+        """
+        if query_parameter_interpretation is not None:
+            pulumi.set(__self__, "query_parameter_interpretation", query_parameter_interpretation)
+
+    @_builtins.property
+    @pulumi.getter(name="queryParameterInterpretation")
+    def query_parameter_interpretation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether presets or control parameters specified as URL query
+        parameters are used to optimize the image. If not specified, the default
+        value is DISABLED.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "query_parameter_interpretation")
+
+    @query_parameter_interpretation.setter
+    def query_parameter_interpretation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_parameter_interpretation", value)
 
 
 class URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgsDict(TypedDict):
@@ -83870,6 +84680,13 @@ class URLMapPathMatcherPathRuleRouteActionArgsDict(TypedDict):
     Recommendation for Cross Origin Resource Sharing
     Structure is documented below.
     """
+    dynamic_compression_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Dynamic compression policy for this URL Map's route. Available only for
+    Global EXTERNAL_MANAGED load balancer schemes.
+    Structure is documented below.
+    """
     fault_injection_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the
@@ -83879,6 +84696,12 @@ class URLMapPathMatcherPathRuleRouteActionArgsDict(TypedDict):
     backend service. Similarly requests from clients can be aborted by the
     Loadbalancer for a percentage of requests. timeout and retry_policy will be
     ignored by clients that are configured with a fault_injection_policy.
+    Structure is documented below.
+    """
+    image_optimization_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Specifies the policy for optimizing images returned in the HTTP response.
     Structure is documented below.
     """
     max_stream_duration: NotRequired[pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict']]]
@@ -83935,7 +84758,9 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
     def __init__(__self__, *,
                  cache_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionCachePolicyArgs']] = None,
                  cors_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs']] = None,
+                 dynamic_compression_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs']] = None,
                  fault_injection_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']] = None,
+                 image_optimization_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs']] = None,
                  max_stream_duration: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionRetryPolicyArgs']] = None,
@@ -83951,6 +84776,10 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs'] dynamic_compression_policy: (Optional, Beta)
+               Dynamic compression policy for this URL Map's route. Available only for
+               Global EXTERNAL_MANAGED load balancer schemes.
+               Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
@@ -83958,6 +84787,9 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
                backend service. Similarly requests from clients can be aborted by the
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs'] image_optimization_policy: (Optional, Beta)
+               Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -83994,8 +84826,12 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
             pulumi.set(__self__, "cache_policy", cache_policy)
         if cors_policy is not None:
             pulumi.set(__self__, "cors_policy", cors_policy)
+        if dynamic_compression_policy is not None:
+            pulumi.set(__self__, "dynamic_compression_policy", dynamic_compression_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if image_optimization_policy is not None:
+            pulumi.set(__self__, "image_optimization_policy", image_optimization_policy)
         if max_stream_duration is not None:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
@@ -84040,6 +84876,21 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
         pulumi.set(self, "cors_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicCompressionPolicy")
+    def dynamic_compression_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Dynamic compression policy for this URL Map's route. Available only for
+        Global EXTERNAL_MANAGED load balancer schemes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_compression_policy")
+
+    @dynamic_compression_policy.setter
+    def dynamic_compression_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs']]):
+        pulumi.set(self, "dynamic_compression_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]:
         """
@@ -84057,6 +84908,20 @@ class URLMapPathMatcherPathRuleRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageOptimizationPolicy")
+    def image_optimization_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Specifies the policy for optimizing images returned in the HTTP response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_optimization_policy")
+
+    @image_optimization_policy.setter
+    def image_optimization_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs']]):
+        pulumi.set(self, "image_optimization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStreamDuration")
@@ -85327,6 +86192,41 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+class URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgsDict(TypedDict):
+    compression_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compress text responses using Brotli or gzip compression, based on
+    the client's Accept-Encoding header.
+    Possible values are: `AUTOMATIC`, `DISABLED`.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs:
+    def __init__(__self__, *,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on
+               the client's Accept-Encoding header.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on
+        the client's Accept-Encoding header.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "compression_mode", value)
+
+
 class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgsDict(TypedDict):
     abort: NotRequired[pulumi.Input[Optional['URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgsDict']]]
     """
@@ -85540,6 +86440,44 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArg
     @nanos.setter
     def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
+
+
+class URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgsDict(TypedDict):
+    query_parameter_interpretation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls whether presets or control parameters specified as URL query
+    parameters are used to optimize the image. If not specified, the default
+    value is DISABLED.
+    Possible values are: `DISABLED`, `ENABLED`.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs:
+    def __init__(__self__, *,
+                 query_parameter_interpretation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] query_parameter_interpretation: Controls whether presets or control parameters specified as URL query
+               parameters are used to optimize the image. If not specified, the default
+               value is DISABLED.
+               Possible values are: `DISABLED`, `ENABLED`.
+        """
+        if query_parameter_interpretation is not None:
+            pulumi.set(__self__, "query_parameter_interpretation", query_parameter_interpretation)
+
+    @_builtins.property
+    @pulumi.getter(name="queryParameterInterpretation")
+    def query_parameter_interpretation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether presets or control parameters specified as URL query
+        parameters are used to optimize the image. If not specified, the default
+        value is DISABLED.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "query_parameter_interpretation")
+
+    @query_parameter_interpretation.setter
+    def query_parameter_interpretation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_parameter_interpretation", value)
 
 
 class URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgsDict(TypedDict):
@@ -88138,6 +89076,13 @@ class URLMapPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
     Recommendation for Cross Origin Resource Sharing
     Structure is documented below.
     """
+    dynamic_compression_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Dynamic compression policy for this URL Map's route. Available only for
+    Global EXTERNAL_MANAGED load balancer schemes.
+    Structure is documented below.
+    """
     fault_injection_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the
@@ -88147,6 +89092,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
     backend service. Similarly requests from clients can be aborted by the
     Loadbalancer for a percentage of requests. timeout and retry_policy will be
     ignored by clients that are configured with a fault_injection_policy.
+    Structure is documented below.
+    """
+    image_optimization_policy: NotRequired[pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgsDict']]]
+    """
+    (Optional, Beta)
+    Specifies the policy for optimizing images returned in the HTTP response.
     Structure is documented below.
     """
     max_stream_duration: NotRequired[pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict']]]
@@ -88203,7 +89154,9 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
     def __init__(__self__, *,
                  cache_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionCachePolicyArgs']] = None,
                  cors_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs']] = None,
+                 dynamic_compression_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs']] = None,
                  fault_injection_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']] = None,
+                 image_optimization_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs']] = None,
                  max_stream_duration: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs']] = None,
                  request_mirror_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs']] = None,
                  retry_policy: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs']] = None,
@@ -88219,6 +89172,10 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
                Recommendation for Cross Origin Resource Sharing
                Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs'] dynamic_compression_policy: (Optional, Beta)
+               Dynamic compression policy for this URL Map's route. Available only for
+               Global EXTERNAL_MANAGED load balancer schemes.
+               Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the
                resiliency of clients to backend service failure. As part of fault injection,
                when clients send requests to a backend service, delays can be introduced by
@@ -88226,6 +89183,9 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
                backend service. Similarly requests from clients can be aborted by the
                Loadbalancer for a percentage of requests. timeout and retry_policy will be
                ignored by clients that are configured with a fault_injection_policy.
+               Structure is documented below.
+        :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs'] image_optimization_policy: (Optional, Beta)
+               Specifies the policy for optimizing images returned in the HTTP response.
                Structure is documented below.
         :param pulumi.Input['URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route.
                Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -88262,8 +89222,12 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
             pulumi.set(__self__, "cache_policy", cache_policy)
         if cors_policy is not None:
             pulumi.set(__self__, "cors_policy", cors_policy)
+        if dynamic_compression_policy is not None:
+            pulumi.set(__self__, "dynamic_compression_policy", dynamic_compression_policy)
         if fault_injection_policy is not None:
             pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if image_optimization_policy is not None:
+            pulumi.set(__self__, "image_optimization_policy", image_optimization_policy)
         if max_stream_duration is not None:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
         if request_mirror_policy is not None:
@@ -88308,6 +89272,21 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
         pulumi.set(self, "cors_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamicCompressionPolicy")
+    def dynamic_compression_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Dynamic compression policy for this URL Map's route. Available only for
+        Global EXTERNAL_MANAGED load balancer schemes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dynamic_compression_policy")
+
+    @dynamic_compression_policy.setter
+    def dynamic_compression_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs']]):
+        pulumi.set(self, "dynamic_compression_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]:
         """
@@ -88325,6 +89304,20 @@ class URLMapPathMatcherRouteRuleRouteActionArgs:
     @fault_injection_policy.setter
     def fault_injection_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs']]):
         pulumi.set(self, "fault_injection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageOptimizationPolicy")
+    def image_optimization_policy(self) -> pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs']]:
+        """
+        (Optional, Beta)
+        Specifies the policy for optimizing images returned in the HTTP response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "image_optimization_policy")
+
+    @image_optimization_policy.setter
+    def image_optimization_policy(self, value: pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs']]):
+        pulumi.set(self, "image_optimization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStreamDuration")
@@ -89596,6 +90589,41 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
         pulumi.set(self, "max_age", value)
 
 
+class URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgsDict(TypedDict):
+    compression_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compress text responses using Brotli or gzip compression, based on
+    the client's Accept-Encoding header.
+    Possible values are: `AUTOMATIC`, `DISABLED`.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs:
+    def __init__(__self__, *,
+                 compression_mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] compression_mode: Compress text responses using Brotli or gzip compression, based on
+               the client's Accept-Encoding header.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compress text responses using Brotli or gzip compression, based on
+        the client's Accept-Encoding header.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "compression_mode", value)
+
+
 class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgsDict(TypedDict):
     abort: NotRequired[pulumi.Input[Optional['URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgsDict']]]
     """
@@ -89813,6 +90841,44 @@ class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayAr
     @nanos.setter
     def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
+
+
+class URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgsDict(TypedDict):
+    query_parameter_interpretation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls whether presets or control parameters specified as URL query
+    parameters are used to optimize the image. If not specified, the default
+    value is DISABLED.
+    Possible values are: `DISABLED`, `ENABLED`.
+    """
+
+@pulumi.input_type
+class URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs:
+    def __init__(__self__, *,
+                 query_parameter_interpretation: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] query_parameter_interpretation: Controls whether presets or control parameters specified as URL query
+               parameters are used to optimize the image. If not specified, the default
+               value is DISABLED.
+               Possible values are: `DISABLED`, `ENABLED`.
+        """
+        if query_parameter_interpretation is not None:
+            pulumi.set(__self__, "query_parameter_interpretation", query_parameter_interpretation)
+
+    @_builtins.property
+    @pulumi.getter(name="queryParameterInterpretation")
+    def query_parameter_interpretation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether presets or control parameters specified as URL query
+        parameters are used to optimize the image. If not specified, the default
+        value is DISABLED.
+        Possible values are: `DISABLED`, `ENABLED`.
+        """
+        return pulumi.get(self, "query_parameter_interpretation")
+
+    @query_parameter_interpretation.setter
+    def query_parameter_interpretation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "query_parameter_interpretation", value)
 
 
 class URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgsDict(TypedDict):

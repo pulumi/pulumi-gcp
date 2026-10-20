@@ -73,7 +73,7 @@ import (
 //			}
 //			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 //				Name:                   pulumi.String("my-region-disk"),
-//				Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
+//				Snapshot:               snapdisk.ID(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -124,7 +124,7 @@ import (
 //			}
 //			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 //				Name:                   pulumi.String("my-region-disk"),
-//				Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
+//				Snapshot:               snapdisk.ID(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -179,7 +179,7 @@ import (
 //			}
 //			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 //				Name:                   pulumi.String("my-region-disk"),
-//				Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
+//				Snapshot:               snapdisk.ID(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -233,7 +233,7 @@ import (
 //				Region:                 pulumi.String("us-east1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //				AsyncPrimaryDisk: &compute.RegionDiskAsyncPrimaryDiskArgs{
-//					Disk: primary.ID().ToIDOutput().ToStringOutput(),
+//					Disk: primary.ID(),
 //				},
 //				ReplicaZones: pulumi.StringArray{
 //					pulumi.String("us-east1-b"),
@@ -384,6 +384,8 @@ type RegionDisk struct {
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
 	// you do not need to provide a key to use the disk later.
+	// ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+	// in place; other changes to this block recreate the disk.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
 	// The unique identifier for the resource. This identifier is defined by the server.
@@ -594,6 +596,8 @@ type regionDiskState struct {
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
 	// you do not need to provide a key to use the disk later.
+	// ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+	// in place; other changes to this block recreate the disk.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// The unique identifier for the resource. This identifier is defined by the server.
@@ -767,6 +771,8 @@ type RegionDiskState struct {
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
 	// you do not need to provide a key to use the disk later.
+	// ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+	// in place; other changes to this block recreate the disk.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
@@ -942,6 +948,8 @@ type regionDiskArgs struct {
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
 	// you do not need to provide a key to use the disk later.
+	// ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+	// in place; other changes to this block recreate the disk.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// (Optional, Beta)
@@ -1078,6 +1086,8 @@ type RegionDiskArgs struct {
 	// If you do not provide an encryption key when creating the disk, then
 	// the disk will be encrypted using an automatically generated key and
 	// you do not need to provide a key to use the disk later.
+	// ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+	// in place; other changes to this block recreate the disk.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
 	// (Optional, Beta)
@@ -1322,6 +1332,8 @@ func (o RegionDiskOutput) Description() pulumi.StringPtrOutput {
 // If you do not provide an encryption key when creating the disk, then
 // the disk will be encrypted using an automatically generated key and
 // you do not need to provide a key to use the disk later.
+// ~>**NOTE** Only changing `kmsKeyName` between Cloud KMS keys is done
+// in place; other changes to this block recreate the disk.
 // Structure is documented below.
 func (o RegionDiskOutput) DiskEncryptionKey() RegionDiskDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *RegionDisk) RegionDiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(RegionDiskDiskEncryptionKeyPtrOutput)

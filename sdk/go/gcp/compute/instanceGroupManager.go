@@ -77,7 +77,7 @@ import (
 //					},
 //				},
 //				AutoHealingPolicies: &compute.InstanceGroupManagerAutoHealingPoliciesArgs{
-//					HealthCheck:     autohealing.ID().ToIDOutput().ToStringOutput(),
+//					HealthCheck:     autohealing.ID(),
 //					InitialDelaySec: pulumi.Int(300),
 //				},
 //			})

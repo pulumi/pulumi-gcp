@@ -25,6 +25,11 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
      */
     private @Nullable Double numberValue;
     /**
+     * @return Sub-parameter values, in JSON format.
+     * 
+     */
+    private @Nullable String oneofValue;
+    /**
      * @return A list of strings.
      * Structure is documented below.
      * 
@@ -50,6 +55,13 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
      */
     public Optional<Double> numberValue() {
         return Optional.ofNullable(this.numberValue);
+    }
+    /**
+     * @return Sub-parameter values, in JSON format.
+     * 
+     */
+    public Optional<String> oneofValue() {
+        return Optional.ofNullable(this.oneofValue);
     }
     /**
      * @return A list of strings.
@@ -78,6 +90,7 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
     public static final class Builder {
         private @Nullable Boolean boolValue;
         private @Nullable Double numberValue;
+        private @Nullable String oneofValue;
         private @Nullable CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValueStringListValue stringListValue;
         private @Nullable String stringValue;
         public Builder() {}
@@ -85,6 +98,7 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
     	      Objects.requireNonNull(defaults);
     	      this.boolValue = defaults.boolValue;
     	      this.numberValue = defaults.numberValue;
+    	      this.oneofValue = defaults.oneofValue;
     	      this.stringListValue = defaults.stringListValue;
     	      this.stringValue = defaults.stringValue;
         }
@@ -99,6 +113,12 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
         public Builder numberValue(@Nullable Double numberValue) {
 
             this.numberValue = numberValue;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oneofValue(@Nullable String oneofValue) {
+
+            this.oneofValue = oneofValue;
             return this;
         }
         @CustomType.Setter
@@ -117,6 +137,7 @@ public final class CloudControlParameterSpecSubParameterValidationAllowedValuesV
             final var _resultValue = new CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValueParameterValue();
             _resultValue.boolValue = boolValue;
             _resultValue.numberValue = numberValue;
+            _resultValue.oneofValue = oneofValue;
             _resultValue.stringListValue = stringListValue;
             _resultValue.stringValue = stringValue;
             return _resultValue;

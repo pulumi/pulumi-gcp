@@ -27,7 +27,7 @@ class GetJobResult:
     """
     A collection of values returned by getJob.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, etag=None, execution_count=None, expire_time=None, generation=None, id=None, labels=None, last_modifier=None, latest_created_executions=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, run_execution_token=None, start_execution_token=None, tags=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, etag=None, execution_count=None, expire_time=None, functional_type=None, generation=None, id=None, labels=None, last_modifier=None, latest_created_executions=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, run_execution_token=None, start_execution_token=None, tags=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -73,6 +73,9 @@ class GetJobResult:
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
+        if functional_type and not isinstance(functional_type, str):
+            raise TypeError("Expected argument 'functional_type' to be a str")
+        pulumi.set(__self__, "functional_type", functional_type)
         if generation and not isinstance(generation, str):
             raise TypeError("Expected argument 'generation' to be a str")
         pulumi.set(__self__, "generation", generation)
@@ -207,6 +210,11 @@ class GetJobResult:
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
+    @pulumi.getter(name="functionalType")
+    def functional_type(self) -> _builtins.str:
+        return pulumi.get(self, "functional_type")
+
+    @_builtins.property
     @pulumi.getter
     def generation(self) -> _builtins.str:
         return pulumi.get(self, "generation")
@@ -326,6 +334,7 @@ class AwaitableGetJobResult(GetJobResult):
             etag=self.etag,
             execution_count=self.execution_count,
             expire_time=self.expire_time,
+            functional_type=self.functional_type,
             generation=self.generation,
             id=self.id,
             labels=self.labels,
@@ -397,6 +406,7 @@ def get_job(location: Optional[_builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         execution_count=pulumi.get(__ret__, 'execution_count'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
+        functional_type=pulumi.get(__ret__, 'functional_type'),
         generation=pulumi.get(__ret__, 'generation'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -465,6 +475,7 @@ def get_job_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = N
         etag=pulumi.get(__response__, 'etag'),
         execution_count=pulumi.get(__response__, 'execution_count'),
         expire_time=pulumi.get(__response__, 'expire_time'),
+        functional_type=pulumi.get(__response__, 'functional_type'),
         generation=pulumi.get(__response__, 'generation'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),

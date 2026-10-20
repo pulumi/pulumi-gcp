@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         }
 
         /// <summary>
-        /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

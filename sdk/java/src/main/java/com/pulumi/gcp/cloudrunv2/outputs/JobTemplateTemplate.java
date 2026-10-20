@@ -8,6 +8,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVpcAccess;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -74,6 +75,14 @@ public final class JobTemplateTemplate {
      * 
      */
     private @Nullable JobTemplateTemplateVpcAccess vpcAccess;
+    /**
+     * @return (Optional, Beta)
+     * The Task&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable JobTemplateTemplateWorkloadIdentityConfig workloadIdentityConfig;
 
     private JobTemplateTemplate() {}
     /**
@@ -152,6 +161,16 @@ public final class JobTemplateTemplate {
     public Optional<JobTemplateTemplateVpcAccess> vpcAccess() {
         return Optional.ofNullable(this.vpcAccess);
     }
+    /**
+     * @return (Optional, Beta)
+     * The Task&#39;s workload identity settings. Used to assign an
+     * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<JobTemplateTemplateWorkloadIdentityConfig> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -172,6 +191,7 @@ public final class JobTemplateTemplate {
         private @Nullable String timeout;
         private @Nullable List<JobTemplateTemplateVolume> volumes;
         private @Nullable JobTemplateTemplateVpcAccess vpcAccess;
+        private @Nullable JobTemplateTemplateWorkloadIdentityConfig workloadIdentityConfig;
         public Builder() {}
         public Builder(JobTemplateTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -185,6 +205,7 @@ public final class JobTemplateTemplate {
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccess = defaults.vpcAccess;
+    	      this.workloadIdentityConfig = defaults.workloadIdentityConfig;
         }
 
         @CustomType.Setter
@@ -253,6 +274,12 @@ public final class JobTemplateTemplate {
             this.vpcAccess = vpcAccess;
             return this;
         }
+        @CustomType.Setter
+        public Builder workloadIdentityConfig(@Nullable JobTemplateTemplateWorkloadIdentityConfig workloadIdentityConfig) {
+
+            this.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
         public JobTemplateTemplate build() {
             final var _resultValue = new JobTemplateTemplate();
             _resultValue.containers = containers;
@@ -265,6 +292,7 @@ public final class JobTemplateTemplate {
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;
             _resultValue.vpcAccess = vpcAccess;
+            _resultValue.workloadIdentityConfig = workloadIdentityConfig;
             return _resultValue;
         }
     }

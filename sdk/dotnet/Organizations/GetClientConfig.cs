@@ -38,6 +38,25 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// 
         /// ### Configure Kubernetes Provider With OAuth2 Access Token
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Zone = "us-east1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -69,6 +88,25 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// 
         /// ### Configure Kubernetes Provider With OAuth2 Access Token
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Zone = "us-east1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -100,6 +138,25 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// 
         /// ### Configure Kubernetes Provider With OAuth2 Access Token
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Zone = "us-east1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());

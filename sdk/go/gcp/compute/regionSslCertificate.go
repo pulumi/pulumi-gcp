@@ -83,7 +83,7 @@ type RegionSslCertificate struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -191,7 +191,7 @@ type regionSslCertificateState struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -252,7 +252,7 @@ type RegionSslCertificateState struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -311,7 +311,7 @@ type regionSslCertificateArgs struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -365,7 +365,7 @@ type RegionSslCertificateArgs struct {
 	// Resulting name for a `namePrefix` <= 37 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 38 - 54 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -531,7 +531,7 @@ func (o RegionSslCertificateOutput) Name() pulumi.StringOutput {
 // Resulting name for a `namePrefix` <= 37 characters:
 // `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 // Resulting name for a `namePrefix` 38 - 54 characters:
-// `namePrefix` + YYmmdd + 3 digit incremental counter
+// `namePrefix` + 9 random lowercase alphanumeric characters
 func (o RegionSslCertificateOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

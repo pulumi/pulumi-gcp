@@ -68,10 +68,10 @@ import (
 //				},
 //				Networks: dns.PolicyNetworkArray{
 //					&dns.PolicyNetworkArgs{
-//						NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
+//						NetworkUrl: network_1.ID(),
 //					},
 //					&dns.PolicyNetworkArgs{
-//						NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
+//						NetworkUrl: network_2.ID(),
 //					},
 //				},
 //			})

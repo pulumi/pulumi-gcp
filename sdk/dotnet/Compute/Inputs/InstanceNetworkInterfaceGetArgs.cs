@@ -161,6 +161,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
+        /// Producer Service's Service class Id for the region of this network interface. Can only be used with `NetworkAttachment`. It is not possible to use on its own; however, `NetworkAttachment` can be used without `ServiceClassId`.
+        /// </summary>
+        [Input("serviceClassId")]
+        public Input<string>? ServiceClassId { get; set; }
+
+        /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         /// </summary>
         [Input("stackType")]

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigqueryanalyticshub.QueryTemplateArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.QueryTemplateState;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.QueryTemplateEncryptionConfiguration;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.QueryTemplateRoutine;
 import java.lang.Boolean;
 import java.lang.String;
@@ -87,6 +88,104 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .submit(false)
  *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Bigquery Analyticshub Querytemplate Cmek
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.QueryTemplate;
+ * import com.pulumi.gcp.bigqueryanalyticshub.QueryTemplateArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.QueryTemplateRoutineArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.QueryTemplateEncryptionConfigurationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var analyticshubSa = new ServiceIdentity("analyticshubSa", ServiceIdentityArgs.builder()
+ *             .service("analyticshub.googleapis.com")
+ *             .build());
+ * 
+ *         var waitForSa = new Sleep("waitForSa", SleepArgs.builder()
+ *             .createDuration("30s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(analyticshubSa)
+ *                 .build());
+ * 
+ *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key")
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(analyticshubSa.member())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForSa)
+ *                 .build());
+ * 
+ *         var waitForIam = new Sleep("waitForIam", SleepArgs.builder()
+ *             .createDuration("30s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKey)
+ *                 .build());
+ * 
+ *         var querytemplate = new DataExchange("querytemplate", DataExchangeArgs.builder()
+ *             .displayName("My Audience Data Exchange")
+ *             .dataExchangeId("my_data_exchange")
+ *             .description("example of query template with cmek")
+ *             .location("us")
+ *             .sharingEnvironmentConfig(DataExchangeSharingEnvironmentConfigArgs.builder()
+ *                 .dcrExchangeConfig(DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var querytemplateQueryTemplate = new QueryTemplate("querytemplateQueryTemplate", QueryTemplateArgs.builder()
+ *             .location("us")
+ *             .dataExchangeId(querytemplate.dataExchangeId())
+ *             .queryTemplateId("my_query_template")
+ *             .displayName("my_query_template")
+ *             .description("example of query template with cmek")
+ *             .primaryContact(me.email())
+ *             .documentation("This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through.")
+ *             .routine(QueryTemplateRoutineArgs.builder()
+ *                 .routineType("TABLE_VALUED_FUNCTION")
+ *                 .definitionBody("my_query_template() as (select * from t1)")
+ *                 .build())
+ *             .encryptionConfiguration(QueryTemplateEncryptionConfigurationArgs.builder()
+ *                 .kmsKeyName("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForIam)
+ *                 .build());
  * 
  *     }
  * }
@@ -215,6 +314,26 @@ public class QueryTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> documentation() {
         return Codegen.optional(this.documentation);
+    }
+    /**
+     * Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionConfiguration", refs={QueryTemplateEncryptionConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ QueryTemplateEncryptionConfiguration> encryptionConfiguration;
+
+    /**
+     * @return Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<QueryTemplateEncryptionConfiguration>> encryptionConfiguration() {
+        return Codegen.optional(this.encryptionConfiguration);
     }
     /**
      * The name of the location this data exchange query template.

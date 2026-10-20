@@ -31,6 +31,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.URLMapDefaultRouteActionCorsPolicyGetArgs>? CorsPolicy { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Dynamic compression policy for this URL Map's route. Available only for
+        /// Global EXTERNAL_MANAGED load balancer schemes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dynamicCompressionPolicy")]
+        public Input<Inputs.URLMapDefaultRouteActionDynamicCompressionPolicyGetArgs>? DynamicCompressionPolicy { get; set; }
+
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         /// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
         /// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -40,6 +49,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("faultInjectionPolicy")]
         public Input<Inputs.URLMapDefaultRouteActionFaultInjectionPolicyGetArgs>? FaultInjectionPolicy { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the policy for optimizing images returned in the HTTP response.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("imageOptimizationPolicy")]
+        public Input<Inputs.URLMapDefaultRouteActionImageOptimizationPolicyGetArgs>? ImageOptimizationPolicy { get; set; }
 
         /// <summary>
         /// Specifies the maximum duration (timeout) for streams on the selected route.

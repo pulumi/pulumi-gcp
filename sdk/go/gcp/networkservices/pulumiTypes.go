@@ -1947,8 +1947,10 @@ func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) SecretAccessKeyVersion() pu
 type EdgeCacheOriginFlexShielding struct {
 	// Whenever possible, content will be fetched from origin and cached in or
 	// near the specified origin. Best effort.
-	// You must specify exactly one FlexShieldingRegion.
-	// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+	// You must specify exactly one FlexShieldingRegion. Possible values include
+	// `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+	// [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+	// for the full list of supported regions.
 	FlexShieldingRegions *string `pulumi:"flexShieldingRegions"`
 }
 
@@ -1966,8 +1968,10 @@ type EdgeCacheOriginFlexShieldingInput interface {
 type EdgeCacheOriginFlexShieldingArgs struct {
 	// Whenever possible, content will be fetched from origin and cached in or
 	// near the specified origin. Best effort.
-	// You must specify exactly one FlexShieldingRegion.
-	// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+	// You must specify exactly one FlexShieldingRegion. Possible values include
+	// `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+	// [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+	// for the full list of supported regions.
 	FlexShieldingRegions pulumi.StringPtrInput `pulumi:"flexShieldingRegions"`
 }
 
@@ -2050,8 +2054,10 @@ func (o EdgeCacheOriginFlexShieldingOutput) ToEdgeCacheOriginFlexShieldingPtrOut
 
 // Whenever possible, content will be fetched from origin and cached in or
 // near the specified origin. Best effort.
-// You must specify exactly one FlexShieldingRegion.
-// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+// You must specify exactly one FlexShieldingRegion. Possible values include
+// `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+// [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+// for the full list of supported regions.
 func (o EdgeCacheOriginFlexShieldingOutput) FlexShieldingRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheOriginFlexShielding) *string { return v.FlexShieldingRegions }).(pulumi.StringPtrOutput)
 }
@@ -2082,8 +2088,10 @@ func (o EdgeCacheOriginFlexShieldingPtrOutput) Elem() EdgeCacheOriginFlexShieldi
 
 // Whenever possible, content will be fetched from origin and cached in or
 // near the specified origin. Best effort.
-// You must specify exactly one FlexShieldingRegion.
-// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+// You must specify exactly one FlexShieldingRegion. Possible values include
+// `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+// [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+// for the full list of supported regions.
 func (o EdgeCacheOriginFlexShieldingPtrOutput) FlexShieldingRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOriginFlexShielding) *string {
 		if v == nil {

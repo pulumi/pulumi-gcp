@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,10 +35,26 @@ public final class AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs extend
         return Optional.ofNullable(this.exact);
     }
 
+    /**
+     * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     */
+    @Import(name="ignoreCase")
+    private @Nullable Output<Boolean> ignoreCase;
+
+    /**
+     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreCase() {
+        return Optional.ofNullable(this.ignoreCase);
+    }
+
     private AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs() {}
 
     private AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs(AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs $) {
         this.exact = $.exact;
+        this.ignoreCase = $.ignoreCase;
     }
 
     public static Builder builder() {
@@ -81,6 +98,27 @@ public final class AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs extend
          */
         public Builder exact(String exact) {
             return exact(Output.of(exact));
+        }
+
+        /**
+         * @param ignoreCase If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreCase(@Nullable Output<Boolean> ignoreCase) {
+            $.ignoreCase = ignoreCase;
+            return this;
+        }
+
+        /**
+         * @param ignoreCase If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreCase(Boolean ignoreCase) {
+            return ignoreCase(Output.of(ignoreCase));
         }
 
         public AuthzPolicyNetworkRuleFromSourcePrincipalPrincipalArgs build() {

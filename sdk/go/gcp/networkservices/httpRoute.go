@@ -348,7 +348,7 @@ import (
 //					pulumi.String("example"),
 //				},
 //				Meshes: pulumi.StringArray{
-//					_default.ID().ToIDOutput().ToStringOutput(),
+//					_default.ID(),
 //				},
 //				Rules: networkservices.HttpRouteRuleArray{
 //					&networkservices.HttpRouteRuleArgs{

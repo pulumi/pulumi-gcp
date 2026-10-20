@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkconnectivity.inputs.HubExportPscConfigArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.HubRoutingVpcArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -102,6 +103,27 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> exportPsc() {
         return Optional.ofNullable(this.exportPsc);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="exportPscConfig")
+    private @Nullable Output<HubExportPscConfigArgs> exportPscConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<HubExportPscConfigArgs>> exportPscConfig() {
+        return Optional.ofNullable(this.exportPscConfig);
     }
 
     /**
@@ -276,6 +298,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.exportPsc = $.exportPsc;
+        this.exportPscConfig = $.exportPscConfig;
         this.labels = $.labels;
         this.name = $.name;
         this.policyMode = $.policyMode;
@@ -419,6 +442,33 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder exportPsc(Boolean exportPsc) {
             return exportPsc(Output.of(exportPsc));
+        }
+
+        /**
+         * @param exportPscConfig (Optional, Beta)
+         * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+         * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPscConfig(@Nullable Output<HubExportPscConfigArgs> exportPscConfig) {
+            $.exportPscConfig = exportPscConfig;
+            return this;
+        }
+
+        /**
+         * @param exportPscConfig (Optional, Beta)
+         * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+         * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exportPscConfig(HubExportPscConfigArgs exportPscConfig) {
+            return exportPscConfig(Output.of(exportPscConfig));
         }
 
         /**

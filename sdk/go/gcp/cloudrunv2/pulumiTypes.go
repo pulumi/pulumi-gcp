@@ -1119,6 +1119,11 @@ type JobTemplateTemplate struct {
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	// Structure is documented below.
 	VpcAccess *JobTemplateTemplateVpcAccess `pulumi:"vpcAccess"`
+	// (Optional, Beta)
+	// The Task's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+	// Structure is documented below.
+	WorkloadIdentityConfig *JobTemplateTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
 
 // JobTemplateTemplateInput is an input type that accepts JobTemplateTemplateArgs and JobTemplateTemplateOutput values.
@@ -1159,6 +1164,11 @@ type JobTemplateTemplateArgs struct {
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	// Structure is documented below.
 	VpcAccess JobTemplateTemplateVpcAccessPtrInput `pulumi:"vpcAccess"`
+	// (Optional, Beta)
+	// The Task's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+	// Structure is documented below.
+	WorkloadIdentityConfig JobTemplateTemplateWorkloadIdentityConfigPtrInput `pulumi:"workloadIdentityConfig"`
 }
 
 func (JobTemplateTemplateArgs) ElementType() reflect.Type {
@@ -1294,6 +1304,16 @@ func (o JobTemplateTemplateOutput) VpcAccess() JobTemplateTemplateVpcAccessPtrOu
 	return o.ApplyT(func(v JobTemplateTemplate) *JobTemplateTemplateVpcAccess { return v.VpcAccess }).(JobTemplateTemplateVpcAccessPtrOutput)
 }
 
+// (Optional, Beta)
+// The Task's workload identity settings. Used to assign an
+// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+// Structure is documented below.
+func (o JobTemplateTemplateOutput) WorkloadIdentityConfig() JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplate) *JobTemplateTemplateWorkloadIdentityConfig {
+		return v.WorkloadIdentityConfig
+	}).(JobTemplateTemplateWorkloadIdentityConfigPtrOutput)
+}
+
 type JobTemplateTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplatePtrOutput) ElementType() reflect.Type {
@@ -1422,6 +1442,19 @@ func (o JobTemplateTemplatePtrOutput) VpcAccess() JobTemplateTemplateVpcAccessPt
 		}
 		return v.VpcAccess
 	}).(JobTemplateTemplateVpcAccessPtrOutput)
+}
+
+// (Optional, Beta)
+// The Task's workload identity settings. Used to assign an
+// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+// Structure is documented below.
+func (o JobTemplateTemplatePtrOutput) WorkloadIdentityConfig() JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplate) *JobTemplateTemplateWorkloadIdentityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WorkloadIdentityConfig
+	}).(JobTemplateTemplateWorkloadIdentityConfigPtrOutput)
 }
 
 type JobTemplateTemplateContainer struct {
@@ -4871,6 +4904,197 @@ func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.
 	}).(JobTemplateTemplateVpcAccessNetworkInterfaceOutput)
 }
 
+type JobTemplateTemplateWorkloadIdentityConfig struct {
+	// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity *string `pulumi:"identity"`
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+	IdentityCertificateEnabled *bool `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+	// and is required when the Job's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+	// cannot be changed or unset.
+	// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// JobTemplateTemplateWorkloadIdentityConfigInput is an input type that accepts JobTemplateTemplateWorkloadIdentityConfigArgs and JobTemplateTemplateWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateWorkloadIdentityConfigInput` via:
+//
+//	JobTemplateTemplateWorkloadIdentityConfigArgs{...}
+type JobTemplateTemplateWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateWorkloadIdentityConfigOutput() JobTemplateTemplateWorkloadIdentityConfigOutput
+	ToJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(context.Context) JobTemplateTemplateWorkloadIdentityConfigOutput
+}
+
+type JobTemplateTemplateWorkloadIdentityConfigArgs struct {
+	// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+	IdentityCertificateEnabled pulumi.BoolPtrInput `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+	// and is required when the Job's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+	// cannot be changed or unset.
+	// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (JobTemplateTemplateWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateWorkloadIdentityConfigArgs) ToJobTemplateTemplateWorkloadIdentityConfigOutput() JobTemplateTemplateWorkloadIdentityConfigOutput {
+	return i.ToJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateWorkloadIdentityConfigArgs) ToJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) JobTemplateTemplateWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateWorkloadIdentityConfigOutput)
+}
+
+func (i JobTemplateTemplateWorkloadIdentityConfigArgs) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutput() JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return i.ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateWorkloadIdentityConfigArgs) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateWorkloadIdentityConfigOutput).ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateWorkloadIdentityConfigPtrInput is an input type that accepts JobTemplateTemplateWorkloadIdentityConfigArgs, JobTemplateTemplateWorkloadIdentityConfigPtr and JobTemplateTemplateWorkloadIdentityConfigPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateWorkloadIdentityConfigPtrInput` via:
+//
+//	        JobTemplateTemplateWorkloadIdentityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateWorkloadIdentityConfigPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateWorkloadIdentityConfigPtrOutput() JobTemplateTemplateWorkloadIdentityConfigPtrOutput
+	ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Context) JobTemplateTemplateWorkloadIdentityConfigPtrOutput
+}
+
+type jobTemplateTemplateWorkloadIdentityConfigPtrType JobTemplateTemplateWorkloadIdentityConfigArgs
+
+func JobTemplateTemplateWorkloadIdentityConfigPtr(v *JobTemplateTemplateWorkloadIdentityConfigArgs) JobTemplateTemplateWorkloadIdentityConfigPtrInput {
+	return (*jobTemplateTemplateWorkloadIdentityConfigPtrType)(v)
+}
+
+func (*jobTemplateTemplateWorkloadIdentityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateWorkloadIdentityConfigPtrType) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutput() JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return i.ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateWorkloadIdentityConfigPtrType) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateWorkloadIdentityConfigPtrOutput)
+}
+
+type JobTemplateTemplateWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) ToJobTemplateTemplateWorkloadIdentityConfigOutput() JobTemplateTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) ToJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) JobTemplateTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutput() JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateWorkloadIdentityConfig) *JobTemplateTemplateWorkloadIdentityConfig {
+		return &v
+	}).(JobTemplateTemplateWorkloadIdentityConfigPtrOutput)
+}
+
+// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateWorkloadIdentityConfig) *string { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateWorkloadIdentityConfig) *bool { return v.IdentityCertificateEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+// and is required when the Job's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+// cannot be changed or unset.
+// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+func (o JobTemplateTemplateWorkloadIdentityConfigOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateWorkloadIdentityConfig) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateWorkloadIdentityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateWorkloadIdentityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigPtrOutput) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutput() JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigPtrOutput) ToJobTemplateTemplateWorkloadIdentityConfigPtrOutputWithContext(ctx context.Context) JobTemplateTemplateWorkloadIdentityConfigPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateWorkloadIdentityConfigPtrOutput) Elem() JobTemplateTemplateWorkloadIdentityConfigOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateWorkloadIdentityConfig) JobTemplateTemplateWorkloadIdentityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateWorkloadIdentityConfig
+		return ret
+	}).(JobTemplateTemplateWorkloadIdentityConfigOutput)
+}
+
+// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+func (o JobTemplateTemplateWorkloadIdentityConfigPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateWorkloadIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+func (o JobTemplateTemplateWorkloadIdentityConfigPtrOutput) IdentityCertificateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateWorkloadIdentityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityCertificateEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+// and is required when the Job's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+// cannot be changed or unset.
+// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+func (o JobTemplateTemplateWorkloadIdentityConfigPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateWorkloadIdentityConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
 type JobTerminalCondition struct {
 	// (Output)
 	// A reason for the execution condition.
@@ -6451,7 +6675,8 @@ type ServiceTemplate struct {
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	// Structure is documented below.
 	VpcAccess *ServiceTemplateVpcAccess `pulumi:"vpcAccess"`
-	// Workload identity settings for this Revision.
+	// The Revision's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 	// Structure is documented below.
 	WorkloadIdentityConfig *ServiceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
@@ -6521,7 +6746,8 @@ type ServiceTemplateArgs struct {
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	// Structure is documented below.
 	VpcAccess ServiceTemplateVpcAccessPtrInput `pulumi:"vpcAccess"`
-	// Workload identity settings for this Revision.
+	// The Revision's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 	// Structure is documented below.
 	WorkloadIdentityConfig ServiceTemplateWorkloadIdentityConfigPtrInput `pulumi:"workloadIdentityConfig"`
 }
@@ -6710,7 +6936,8 @@ func (o ServiceTemplateOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateVpcAccess { return v.VpcAccess }).(ServiceTemplateVpcAccessPtrOutput)
 }
 
-// Workload identity settings for this Revision.
+// The Revision's workload identity settings. Used to assign an
+// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 // Structure is documented below.
 func (o ServiceTemplateOutput) WorkloadIdentityConfig() ServiceTemplateWorkloadIdentityConfigPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateWorkloadIdentityConfig { return v.WorkloadIdentityConfig }).(ServiceTemplateWorkloadIdentityConfigPtrOutput)
@@ -6937,7 +7164,8 @@ func (o ServiceTemplatePtrOutput) VpcAccess() ServiceTemplateVpcAccessPtrOutput 
 	}).(ServiceTemplateVpcAccessPtrOutput)
 }
 
-// Workload identity settings for this Revision.
+// The Revision's workload identity settings. Used to assign an
+// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 // Structure is documented below.
 func (o ServiceTemplatePtrOutput) WorkloadIdentityConfig() ServiceTemplateWorkloadIdentityConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateWorkloadIdentityConfig {
@@ -13274,9 +13502,12 @@ func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntI
 type ServiceTemplateWorkloadIdentityConfig struct {
 	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
 	Identity *string `pulumi:"identity"`
-	// Controls whether an instance receives a MWLID certificate.
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
 	IdentityCertificateEnabled *bool `pulumi:"identityCertificateEnabled"`
-	// The type of identity to use.
+	// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+	// is required when the Service's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+	// cannot be changed or unset.
 	// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
 	IdentityType *string `pulumi:"identityType"`
 }
@@ -13295,9 +13526,12 @@ type ServiceTemplateWorkloadIdentityConfigInput interface {
 type ServiceTemplateWorkloadIdentityConfigArgs struct {
 	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
 	Identity pulumi.StringPtrInput `pulumi:"identity"`
-	// Controls whether an instance receives a MWLID certificate.
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
 	IdentityCertificateEnabled pulumi.BoolPtrInput `pulumi:"identityCertificateEnabled"`
-	// The type of identity to use.
+	// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+	// is required when the Service's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+	// cannot be changed or unset.
 	// Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
@@ -13384,12 +13618,15 @@ func (o ServiceTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringPtr
 	return o.ApplyT(func(v ServiceTemplateWorkloadIdentityConfig) *string { return v.Identity }).(pulumi.StringPtrOutput)
 }
 
-// Controls whether an instance receives a MWLID certificate.
+// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
 func (o ServiceTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateWorkloadIdentityConfig) *bool { return v.IdentityCertificateEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of identity to use.
+// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+// is required when the Service's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+// cannot be changed or unset.
 // Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
 func (o ServiceTemplateWorkloadIdentityConfigOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateWorkloadIdentityConfig) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
@@ -13429,7 +13666,8 @@ func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) Identity() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Controls whether an instance receives a MWLID certificate.
+// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+// Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
 func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) IdentityCertificateEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateWorkloadIdentityConfig) *bool {
 		if v == nil {
@@ -13439,7 +13677,9 @@ func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) IdentityCertificateEnabl
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The type of identity to use.
+// The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+// is required when the Service's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+// cannot be changed or unset.
 // Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
 func (o ServiceTemplateWorkloadIdentityConfigPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateWorkloadIdentityConfig) *string {
@@ -20397,6 +20637,9 @@ type GetJobTemplateTemplate struct {
 	Volumes []GetJobTemplateTemplateVolume `pulumi:"volumes"`
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	VpcAccesses []GetJobTemplateTemplateVpcAccess `pulumi:"vpcAccesses"`
+	// The Task's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+	WorkloadIdentityConfigs []GetJobTemplateTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
 }
 
 // GetJobTemplateTemplateInput is an input type that accepts GetJobTemplateTemplateArgs and GetJobTemplateTemplateOutput values.
@@ -20433,6 +20676,9 @@ type GetJobTemplateTemplateArgs struct {
 	Volumes GetJobTemplateTemplateVolumeArrayInput `pulumi:"volumes"`
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	VpcAccesses GetJobTemplateTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
+	// The Task's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+	WorkloadIdentityConfigs GetJobTemplateTemplateWorkloadIdentityConfigArrayInput `pulumi:"workloadIdentityConfigs"`
 }
 
 func (GetJobTemplateTemplateArgs) ElementType() reflect.Type {
@@ -20536,6 +20782,14 @@ func (o GetJobTemplateTemplateOutput) Volumes() GetJobTemplateTemplateVolumeArra
 // VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 func (o GetJobTemplateTemplateOutput) VpcAccesses() GetJobTemplateTemplateVpcAccessArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateVpcAccess { return v.VpcAccesses }).(GetJobTemplateTemplateVpcAccessArrayOutput)
+}
+
+// The Task's workload identity settings. Used to assign an
+// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+func (o GetJobTemplateTemplateOutput) WorkloadIdentityConfigs() GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateWorkloadIdentityConfig {
+		return v.WorkloadIdentityConfigs
+	}).(GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput)
 }
 
 type GetJobTemplateTemplateArrayOutput struct{ *pulumi.OutputState }
@@ -23177,6 +23431,130 @@ func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulu
 	}).(GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput)
 }
 
+type GetJobTemplateTemplateWorkloadIdentityConfig struct {
+	// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity string `pulumi:"identity"`
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
+	IdentityCertificateEnabled bool `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity
+	// and is required when the Job's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+	// cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_AGENT_IDENTITY"]
+	IdentityType string `pulumi:"identityType"`
+}
+
+// GetJobTemplateTemplateWorkloadIdentityConfigInput is an input type that accepts GetJobTemplateTemplateWorkloadIdentityConfigArgs and GetJobTemplateTemplateWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateWorkloadIdentityConfigInput` via:
+//
+//	GetJobTemplateTemplateWorkloadIdentityConfigArgs{...}
+type GetJobTemplateTemplateWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateWorkloadIdentityConfigOutput() GetJobTemplateTemplateWorkloadIdentityConfigOutput
+	ToGetJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(context.Context) GetJobTemplateTemplateWorkloadIdentityConfigOutput
+}
+
+type GetJobTemplateTemplateWorkloadIdentityConfigArgs struct {
+	// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
+	IdentityCertificateEnabled pulumi.BoolInput `pulumi:"identityCertificateEnabled"`
+	// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity
+	// and is required when the Job's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+	// cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_AGENT_IDENTITY"]
+	IdentityType pulumi.StringInput `pulumi:"identityType"`
+}
+
+func (GetJobTemplateTemplateWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateWorkloadIdentityConfigArgs) ToGetJobTemplateTemplateWorkloadIdentityConfigOutput() GetJobTemplateTemplateWorkloadIdentityConfigOutput {
+	return i.ToGetJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateWorkloadIdentityConfigArgs) ToGetJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetJobTemplateTemplateWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateWorkloadIdentityConfigOutput)
+}
+
+// GetJobTemplateTemplateWorkloadIdentityConfigArrayInput is an input type that accepts GetJobTemplateTemplateWorkloadIdentityConfigArray and GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `GetJobTemplateTemplateWorkloadIdentityConfigArrayInput` via:
+//
+//	GetJobTemplateTemplateWorkloadIdentityConfigArray{ GetJobTemplateTemplateWorkloadIdentityConfigArgs{...} }
+type GetJobTemplateTemplateWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutput() GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput
+	ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Context) GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput
+}
+
+type GetJobTemplateTemplateWorkloadIdentityConfigArray []GetJobTemplateTemplateWorkloadIdentityConfigInput
+
+func (GetJobTemplateTemplateWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetJobTemplateTemplateWorkloadIdentityConfigArray) ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutput() GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput {
+	return i.ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetJobTemplateTemplateWorkloadIdentityConfigArray) ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput)
+}
+
+type GetJobTemplateTemplateWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetJobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateWorkloadIdentityConfigOutput) ToGetJobTemplateTemplateWorkloadIdentityConfigOutput() GetJobTemplateTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateWorkloadIdentityConfigOutput) ToGetJobTemplateTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetJobTemplateTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+// The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+func (o GetJobTemplateTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateWorkloadIdentityConfig) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
+func (o GetJobTemplateTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateWorkloadIdentityConfig) bool { return v.IdentityCertificateEnabled }).(pulumi.BoolOutput)
+}
+
+// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity
+// and is required when the Job's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+// cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_AGENT_IDENTITY"]
+func (o GetJobTemplateTemplateWorkloadIdentityConfigOutput) IdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateWorkloadIdentityConfig) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+type GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetJobTemplateTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput) ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutput() GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput) ToGetJobTemplateTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) GetJobTemplateTemplateWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetJobTemplateTemplateWorkloadIdentityConfig {
+		return vs[0].([]GetJobTemplateTemplateWorkloadIdentityConfig)[vs[1].(int)]
+	}).(GetJobTemplateTemplateWorkloadIdentityConfigOutput)
+}
+
 type GetJobTerminalCondition struct {
 	// A reason for the execution condition.
 	ExecutionReason string `pulumi:"executionReason"`
@@ -24072,7 +24450,8 @@ type GetServiceTemplate struct {
 	Volumes []GetServiceTemplateVolume `pulumi:"volumes"`
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	VpcAccesses []GetServiceTemplateVpcAccess `pulumi:"vpcAccesses"`
-	// Workload identity settings for this Revision.
+	// The Revision's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 	WorkloadIdentityConfigs []GetServiceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
 }
 
@@ -24136,7 +24515,8 @@ type GetServiceTemplateArgs struct {
 	Volumes GetServiceTemplateVolumeArrayInput `pulumi:"volumes"`
 	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 	VpcAccesses GetServiceTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
-	// Workload identity settings for this Revision.
+	// The Revision's workload identity settings. Used to assign an
+	// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 	WorkloadIdentityConfigs GetServiceTemplateWorkloadIdentityConfigArrayInput `pulumi:"workloadIdentityConfigs"`
 }
 
@@ -24293,7 +24673,8 @@ func (o GetServiceTemplateOutput) VpcAccesses() GetServiceTemplateVpcAccessArray
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateVpcAccess { return v.VpcAccesses }).(GetServiceTemplateVpcAccessArrayOutput)
 }
 
-// Workload identity settings for this Revision.
+// The Revision's workload identity settings. Used to assign an
+// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
 func (o GetServiceTemplateOutput) WorkloadIdentityConfigs() GetServiceTemplateWorkloadIdentityConfigArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateWorkloadIdentityConfig {
 		return v.WorkloadIdentityConfigs
@@ -28982,9 +29363,12 @@ func (o GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.I
 type GetServiceTemplateWorkloadIdentityConfig struct {
 	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
 	Identity string `pulumi:"identity"`
-	// Controls whether an instance receives a MWLID certificate.
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
 	IdentityCertificateEnabled bool `pulumi:"identityCertificateEnabled"`
-	// The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+	// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity and
+	// is required when the Service's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+	// cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
 	IdentityType string `pulumi:"identityType"`
 }
 
@@ -29002,9 +29386,12 @@ type GetServiceTemplateWorkloadIdentityConfigInput interface {
 type GetServiceTemplateWorkloadIdentityConfigArgs struct {
 	// The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
 	Identity pulumi.StringInput `pulumi:"identity"`
-	// Controls whether an instance receives a MWLID certificate.
+	// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+	// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
 	IdentityCertificateEnabled pulumi.BoolInput `pulumi:"identityCertificateEnabled"`
-	// The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+	// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity and
+	// is required when the Service's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+	// cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
 	IdentityType pulumi.StringInput `pulumi:"identityType"`
 }
 
@@ -29064,12 +29451,15 @@ func (o GetServiceTemplateWorkloadIdentityConfigOutput) Identity() pulumi.String
 	return o.ApplyT(func(v GetServiceTemplateWorkloadIdentityConfig) string { return v.Identity }).(pulumi.StringOutput)
 }
 
-// Controls whether an instance receives a MWLID certificate.
+// Controls whether an instance receives a managed workload identity (MWLID) certificate.
+// Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
 func (o GetServiceTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateWorkloadIdentityConfig) bool { return v.IdentityCertificateEnabled }).(pulumi.BoolOutput)
 }
 
-// The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+// The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity and
+// is required when the Service's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+// cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
 func (o GetServiceTemplateWorkloadIdentityConfigOutput) IdentityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateWorkloadIdentityConfig) string { return v.IdentityType }).(pulumi.StringOutput)
 }
@@ -33665,6 +34055,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessPtrInput)(nil)).Elem(), JobTemplateTemplateVpcAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), JobTemplateTemplateVpcAccessNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), JobTemplateTemplateVpcAccessNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateWorkloadIdentityConfigInput)(nil)).Elem(), JobTemplateTemplateWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateWorkloadIdentityConfigPtrInput)(nil)).Elem(), JobTemplateTemplateWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTerminalConditionInput)(nil)).Elem(), JobTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTerminalConditionArrayInput)(nil)).Elem(), JobTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBinaryAuthorizationInput)(nil)).Elem(), ServiceBinaryAuthorizationArgs{})
@@ -33893,6 +34285,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessArrayInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), GetJobTemplateTemplateVpcAccessNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateWorkloadIdentityConfigInput)(nil)).Elem(), GetJobTemplateTemplateWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTemplateTemplateWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetJobTemplateTemplateWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTerminalConditionInput)(nil)).Elem(), GetJobTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTerminalConditionArrayInput)(nil)).Elem(), GetJobTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBinaryAuthorizationInput)(nil)).Elem(), GetServiceBinaryAuthorizationArgs{})
@@ -34117,6 +34511,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateWorkloadIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobTerminalConditionOutput{})
 	pulumi.RegisterOutputType(JobTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceBinaryAuthorizationOutput{})
@@ -34345,6 +34741,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(GetJobTemplateTemplateWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetJobTerminalConditionOutput{})
 	pulumi.RegisterOutputType(GetJobTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceBinaryAuthorizationOutput{})

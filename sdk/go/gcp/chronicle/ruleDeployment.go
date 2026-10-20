@@ -62,7 +62,7 @@ import (
 //			_, err = chronicle.NewRuleDeployment(ctx, "example", &chronicle.RuleDeploymentArgs{
 //				Location:     pulumi.String("us"),
 //				Instance:     pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				Rule:         pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				Rule:         pulumi.String(invokeSplit.Result[int(len([]string(invokeSplit1.Result))-1)]),
 //				Enabled:      pulumi.Bool(true),
 //				Alerting:     pulumi.Bool(true),
 //				Archived:     pulumi.Bool(false),
@@ -116,7 +116,7 @@ import (
 //			_, err = chronicle.NewRuleDeployment(ctx, "example", &chronicle.RuleDeploymentArgs{
 //				Location:     pulumi.String("us"),
 //				Instance:     pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				Rule:         pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				Rule:         pulumi.String(invokeSplit.Result[int(len([]string(invokeSplit1.Result))-1)]),
 //				Enabled:      pulumi.Bool(false),
 //				RunFrequency: pulumi.String("LIVE"),
 //			})
@@ -168,7 +168,7 @@ import (
 //			_, err = chronicle.NewRuleDeployment(ctx, "example", &chronicle.RuleDeploymentArgs{
 //				Location: pulumi.String("us"),
 //				Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				Rule:     pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				Rule:     pulumi.String(invokeSplit.Result[int(len([]string(invokeSplit1.Result))-1)]),
 //				Enabled:  pulumi.Bool(true),
 //				Alerting: pulumi.Bool(true),
 //				Archived: pulumi.Bool(false),

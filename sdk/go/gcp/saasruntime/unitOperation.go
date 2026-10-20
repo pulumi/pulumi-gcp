@@ -52,7 +52,7 @@ import (
 //			clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
 //				Location:       pulumi.String(location),
 //				UnitKindId:     pulumi.String("vm-unitkind"),
-//				Saas:           exampleSaas.ID().ToIDOutput().ToStringOutput(),
+//				Saas:           exampleSaas.ID(),
 //				DefaultRelease: pulumi.Sprintf("projects/my-project-name/locations/%v/releases/example-release", location),
 //			})
 //			if err != nil {
@@ -61,9 +61,9 @@ import (
 //			exampleRelease, err := saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
 //				Location:  pulumi.String(location),
 //				ReleaseId: pulumi.String("example-release"),
-//				UnitKind:  clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
+//				UnitKind:  clusterUnitKind.ID(),
 //				Blueprint: &saasruntime.ReleaseBlueprintArgs{
-//					Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
+//					Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680"),
 //				},
 //			})
 //			if err != nil {
@@ -72,7 +72,7 @@ import (
 //			exampleUnit, err := saasruntime.NewUnit(ctx, "example_unit", &saasruntime.UnitArgs{
 //				Location: pulumi.String(location),
 //				UnitId:   pulumi.String("example-unit"),
-//				UnitKind: clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
+//				UnitKind: clusterUnitKind.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -140,13 +140,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Infra Manager engine: actuation SA needs config.agent in the producer project.
+//			producerConfigAgent, err := projects.NewIAMMember(ctx, "producer_config_agent", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/config.agent"),
+//				Member: actuationServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			provisionUnitOperation, err := saasruntime.NewUnitOperation(ctx, "provision_unit_operation", &saasruntime.UnitOperationArgs{
 //				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("provision-unit-operation"),
-//				Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
+//				Unit:              exampleUnit.ID(),
 //				WaitForCompletion: pulumi.Bool(true),
 //				Provision: &saasruntime.UnitOperationProvisionArgs{
-//					Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
+//					Release: exampleRelease.ID(),
 //					InputVariables: saasruntime.UnitOperationProvisionInputVariableArray{
 //						&saasruntime.UnitOperationProvisionInputVariableArgs{
 //							Variable: pulumi.String("tenant_project_id"),
@@ -187,6 +198,7 @@ import (
 //				tenantComputeAdmin,
 //				actuationTokenCreator,
 //				saasServices,
+//				producerConfigAgent,
 //			}))
 //			if err != nil {
 //				return err
@@ -194,10 +206,10 @@ import (
 //			noopUpgradeUnitOperation, err := saasruntime.NewUnitOperation(ctx, "noop_upgrade_unit_operation", &saasruntime.UnitOperationArgs{
 //				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("upgrade-unit-operation"),
-//				Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
+//				Unit:              exampleUnit.ID(),
 //				WaitForCompletion: pulumi.Bool(true),
 //				Upgrade: &saasruntime.UnitOperationUpgradeArgs{
-//					Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
+//					Release: exampleRelease.ID(),
 //					InputVariables: saasruntime.UnitOperationUpgradeInputVariableArray{
 //						&saasruntime.UnitOperationUpgradeInputVariableArgs{
 //							Variable: pulumi.String("tenant_project_id"),
@@ -235,7 +247,7 @@ import (
 //			_, err = saasruntime.NewUnitOperation(ctx, "deprovision_operation", &saasruntime.UnitOperationArgs{
 //				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("deprovision-unit-operation"),
-//				Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
+//				Unit:              exampleUnit.ID(),
 //				WaitForCompletion: pulumi.Bool(true),
 //				Deprovision:       &saasruntime.UnitOperationDeprovisionArgs{},
 //			}, pulumi.DependsOn([]pulumi.Resource{

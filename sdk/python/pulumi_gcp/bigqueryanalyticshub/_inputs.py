@@ -89,6 +89,8 @@ __all__ = [
     'ListingSubscriptionLinkedDatasetMapArgsDict',
     'ListingSubscriptionLinkedResourceArgs',
     'ListingSubscriptionLinkedResourceArgsDict',
+    'QueryTemplateEncryptionConfigurationArgs',
+    'QueryTemplateEncryptionConfigurationArgsDict',
     'QueryTemplateRoutineArgs',
     'QueryTemplateRoutineArgsDict',
 ]
@@ -2952,6 +2954,37 @@ class ListingSubscriptionLinkedResourceArgs:
     @listing.setter
     def listing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing", value)
+
+
+class QueryTemplateEncryptionConfigurationArgsDict(TypedDict):
+    kms_key_name: pulumi.Input[_builtins.str]
+    """
+    The KMS key used to encrypt the query template.
+    Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+    """
+
+@pulumi.input_type
+class QueryTemplateEncryptionConfigurationArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: The KMS key used to encrypt the query template.
+               Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The KMS key used to encrypt the query template.
+        Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 class QueryTemplateRoutineArgsDict(TypedDict):

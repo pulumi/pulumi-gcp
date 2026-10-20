@@ -15,6 +15,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information of a version from a provided Artifact Registry repository.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myVersions = Gcp.ArtifactRegistry.GetVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "example-repo",
+        ///         PackageName = "example-package",
+        ///         VersionName = "latest",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("gcp:artifactregistry/getVersion:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
@@ -23,6 +42,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information of a version from a provided Artifact Registry repository.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myVersions = Gcp.ArtifactRegistry.GetVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "example-repo",
+        ///         PackageName = "example-package",
+        ///         VersionName = "latest",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("gcp:artifactregistry/getVersion:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
@@ -31,6 +69,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information of a version from a provided Artifact Registry repository.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myVersions = Gcp.ArtifactRegistry.GetVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "example-repo",
+        ///         PackageName = "example-package",
+        ///         VersionName = "latest",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("gcp:artifactregistry/getVersion:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());

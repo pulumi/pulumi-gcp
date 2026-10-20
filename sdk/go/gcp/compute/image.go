@@ -69,7 +69,7 @@ import (
 //			}
 //			_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
 //				Name:       pulumi.String("example-image"),
-//				SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+//				SourceDisk: persistent.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ import (
 //			}
 //			_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
 //				Name:       pulumi.String("example-image"),
-//				SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+//				SourceDisk: persistent.ID(),
 //				GuestOsFeatures: compute.ImageGuestOsFeatureArray{
 //					&compute.ImageGuestOsFeatureArgs{
 //						Type: pulumi.String("UEFI_COMPATIBLE"),
@@ -172,7 +172,7 @@ import (
 //			}
 //			_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
 //				Name:       pulumi.String("example-sl-image"),
-//				SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
+//				SourceDisk: persistent.ID(),
 //				StorageLocations: pulumi.StringArray{
 //					pulumi.String("us-central1"),
 //				},

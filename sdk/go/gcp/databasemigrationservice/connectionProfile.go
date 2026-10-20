@@ -439,13 +439,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -468,7 +468,7 @@ import (
 //							User:     pulumi.String("alloyuser_80332"),
 //							Password: pulumi.String("alloypass_13293"),
 //						},
-//						VpcNetwork: _default.ID().ToIDOutput().ToStringOutput(),
+//						VpcNetwork: _default.ID(),
 //						Labels: pulumi.StringMap{
 //							"alloyfoo": pulumi.String("alloybar"),
 //						},
@@ -633,7 +633,7 @@ import (
 //				ClusterId: pulumi.String("destination-alloydb"),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID().ToIDOutput().ToStringOutput(),
+//					Network: _default.ID(),
 //				},
 //				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -650,13 +650,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				Network: _default.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,

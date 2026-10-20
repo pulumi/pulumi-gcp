@@ -1451,6 +1451,107 @@ class URLMap(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Url Map Dynamic Compression Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "dynamic_compression_policy": {
+                    "compression_mode": "AUTOMATIC",
+                },
+            })
+        ```
+        ### Url Map Dynamic Compression Policy Multi Level
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "dynamic_compression_policy": {
+                    "compression_mode": "AUTOMATIC",
+                },
+            },
+            host_rules=[
+                {
+                    "hosts": ["example.com"],
+                    "path_matcher": "main-matcher",
+                },
+                {
+                    "hosts": ["api.example.com"],
+                    "path_matcher": "api-matcher",
+                },
+            ],
+            path_matchers=[
+                {
+                    "name": "main-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "dynamic_compression_policy": {
+                            "compression_mode": "DISABLED",
+                        },
+                    },
+                    "path_rules": [{
+                        "paths": ["/static/*"],
+                        "service": default.id,
+                        "route_action": {
+                            "dynamic_compression_policy": {
+                                "compression_mode": "AUTOMATIC",
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "api-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "dynamic_compression_policy": {
+                            "compression_mode": "AUTOMATIC",
+                        },
+                    },
+                    "route_rules": [{
+                        "priority": 1,
+                        "match_rules": [{
+                            "prefix_match": "/api/v1",
+                        }],
+                        "service": default.id,
+                        "route_action": {
+                            "dynamic_compression_policy": {
+                                "compression_mode": "DISABLED",
+                            },
+                        },
+                    }],
+                },
+            ])
+        ```
         ### Url Map Path Rule Mirror Percent
 
         ```python
@@ -2026,6 +2127,81 @@ class URLMap(pulumi.CustomResource):
                 "host": "mysite.com",
                 "path": "/",
             }])
+        ```
+        ### Url Map Image Optimization Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        example = gcp.compute.BackendService("example",
+            name="example",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            enable_cdn=True,
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="a description",
+            default_service=example.id,
+            default_route_action={
+                "image_optimization_policy": {
+                    "query_parameter_interpretation": "ENABLED",
+                },
+            },
+            host_rules=[
+                {
+                    "hosts": ["mysite.com"],
+                    "path_matcher": "mysite-path",
+                },
+                {
+                    "hosts": ["api.mysite.com"],
+                    "path_matcher": "mysite-route",
+                },
+            ],
+            path_matchers=[
+                {
+                    "name": "mysite-path",
+                    "default_service": example.id,
+                    "default_route_action": {
+                        "image_optimization_policy": {
+                            "query_parameter_interpretation": "DISABLED",
+                        },
+                    },
+                    "path_rules": [{
+                        "paths": ["/private/*"],
+                        "service": example.id,
+                        "route_action": {
+                            "image_optimization_policy": {
+                                "query_parameter_interpretation": "ENABLED",
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "mysite-route",
+                    "default_service": example.id,
+                    "route_rules": [{
+                        "priority": 1,
+                        "match_rules": [{
+                            "prefix_match": "/images",
+                        }],
+                        "service": example.id,
+                        "route_action": {
+                            "image_optimization_policy": {
+                                "query_parameter_interpretation": "DISABLED",
+                            },
+                        },
+                    }],
+                },
+            ])
         ```
 
         ## Import
@@ -2904,6 +3080,107 @@ class URLMap(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Url Map Dynamic Compression Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "dynamic_compression_policy": {
+                    "compression_mode": "AUTOMATIC",
+                },
+            })
+        ```
+        ### Url Map Dynamic Compression Policy Multi Level
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_health_check = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="home",
+            protocol="HTTP",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            health_checks=default_health_check.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            default_service=default.id,
+            default_route_action={
+                "dynamic_compression_policy": {
+                    "compression_mode": "AUTOMATIC",
+                },
+            },
+            host_rules=[
+                {
+                    "hosts": ["example.com"],
+                    "path_matcher": "main-matcher",
+                },
+                {
+                    "hosts": ["api.example.com"],
+                    "path_matcher": "api-matcher",
+                },
+            ],
+            path_matchers=[
+                {
+                    "name": "main-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "dynamic_compression_policy": {
+                            "compression_mode": "DISABLED",
+                        },
+                    },
+                    "path_rules": [{
+                        "paths": ["/static/*"],
+                        "service": default.id,
+                        "route_action": {
+                            "dynamic_compression_policy": {
+                                "compression_mode": "AUTOMATIC",
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "api-matcher",
+                    "default_service": default.id,
+                    "default_route_action": {
+                        "dynamic_compression_policy": {
+                            "compression_mode": "AUTOMATIC",
+                        },
+                    },
+                    "route_rules": [{
+                        "priority": 1,
+                        "match_rules": [{
+                            "prefix_match": "/api/v1",
+                        }],
+                        "service": default.id,
+                        "route_action": {
+                            "dynamic_compression_policy": {
+                                "compression_mode": "DISABLED",
+                            },
+                        },
+                    }],
+                },
+            ])
+        ```
         ### Url Map Path Rule Mirror Percent
 
         ```python
@@ -3479,6 +3756,81 @@ class URLMap(pulumi.CustomResource):
                 "host": "mysite.com",
                 "path": "/",
             }])
+        ```
+        ### Url Map Image Optimization Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HealthCheck("default",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        example = gcp.compute.BackendService("example",
+            name="example",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            enable_cdn=True,
+            health_checks=default.id)
+        urlmap = gcp.compute.URLMap("urlmap",
+            name="urlmap",
+            description="a description",
+            default_service=example.id,
+            default_route_action={
+                "image_optimization_policy": {
+                    "query_parameter_interpretation": "ENABLED",
+                },
+            },
+            host_rules=[
+                {
+                    "hosts": ["mysite.com"],
+                    "path_matcher": "mysite-path",
+                },
+                {
+                    "hosts": ["api.mysite.com"],
+                    "path_matcher": "mysite-route",
+                },
+            ],
+            path_matchers=[
+                {
+                    "name": "mysite-path",
+                    "default_service": example.id,
+                    "default_route_action": {
+                        "image_optimization_policy": {
+                            "query_parameter_interpretation": "DISABLED",
+                        },
+                    },
+                    "path_rules": [{
+                        "paths": ["/private/*"],
+                        "service": example.id,
+                        "route_action": {
+                            "image_optimization_policy": {
+                                "query_parameter_interpretation": "ENABLED",
+                            },
+                        },
+                    }],
+                },
+                {
+                    "name": "mysite-route",
+                    "default_service": example.id,
+                    "route_rules": [{
+                        "priority": 1,
+                        "match_rules": [{
+                            "prefix_match": "/images",
+                        }],
+                        "service": example.id,
+                        "route_action": {
+                            "image_optimization_policy": {
+                                "query_parameter_interpretation": "DISABLED",
+                            },
+                        },
+                    }],
+                },
+            ])
         ```
 
         ## Import

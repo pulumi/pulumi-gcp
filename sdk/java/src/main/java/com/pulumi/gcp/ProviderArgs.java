@@ -805,6 +805,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.geminiCustomEndpoint);
     }
 
+    @Import(name="geminiDataAnalyticsCustomEndpoint")
+    private @Nullable Output<String> geminiDataAnalyticsCustomEndpoint;
+
+    public Optional<Output<String>> geminiDataAnalyticsCustomEndpoint() {
+        return Optional.ofNullable(this.geminiDataAnalyticsCustomEndpoint);
+    }
+
     @Import(name="gkeBackupCustomEndpoint")
     private @Nullable Output<String> gkeBackupCustomEndpoint;
 
@@ -1676,6 +1683,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.firebaserulesCustomEndpoint = $.firebaserulesCustomEndpoint;
         this.firestoreCustomEndpoint = $.firestoreCustomEndpoint;
         this.geminiCustomEndpoint = $.geminiCustomEndpoint;
+        this.geminiDataAnalyticsCustomEndpoint = $.geminiDataAnalyticsCustomEndpoint;
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
         this.gkeHub2CustomEndpoint = $.gkeHub2CustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
@@ -2810,6 +2818,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder geminiCustomEndpoint(String geminiCustomEndpoint) {
             return geminiCustomEndpoint(Output.of(geminiCustomEndpoint));
+        }
+
+        public Builder geminiDataAnalyticsCustomEndpoint(@Nullable Output<String> geminiDataAnalyticsCustomEndpoint) {
+            $.geminiDataAnalyticsCustomEndpoint = geminiDataAnalyticsCustomEndpoint;
+            return this;
+        }
+
+        public Builder geminiDataAnalyticsCustomEndpoint(String geminiDataAnalyticsCustomEndpoint) {
+            return geminiDataAnalyticsCustomEndpoint(Output.of(geminiDataAnalyticsCustomEndpoint));
         }
 
         public Builder gkeBackupCustomEndpoint(@Nullable Output<String> gkeBackupCustomEndpoint) {

@@ -182,13 +182,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(20),
-//				Network:      lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      lookerNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "looker_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: lookerNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					lookerRange.Name,
@@ -205,7 +205,7 @@ import (
 //				PublicIpEnabled:  pulumi.Bool(false),
 //				GeminiEnabled:    pulumi.Bool(true),
 //				ReservedRange:    lookerRange.Name,
-//				ConsumerNetwork:  lookerNetwork.ID().ToIDOutput().ToStringOutput(),
+//				ConsumerNetwork:  lookerNetwork.ID(),
 //				AdminSettings: &looker.InstanceAdminSettingsArgs{
 //					AllowedEmailDomains: pulumi.StringArray{
 //						pulumi.String("google.com"),
@@ -373,6 +373,10 @@ import (
 //	}
 //
 // ```
+//
+// ## Regional Endpoint Policies
+//
+// This resource supports Regional Endpoint Policies (REP). See the provider reference for more details on configuration.
 //
 // ## Import
 //

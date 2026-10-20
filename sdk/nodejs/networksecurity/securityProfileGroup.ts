@@ -143,6 +143,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Security Profile Group Wildfire
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const threatPreventionProfile = new gcp.networksecurity.SecurityProfile("threat_prevention_profile", {
+ *     name: "tp-sec-profile",
+ *     type: "THREAT_PREVENTION",
+ *     parent: "projects/my-project-name",
+ *     location: "global",
+ * });
+ * const wildfireProfile = new gcp.networksecurity.SecurityProfile("wildfire_profile", {
+ *     name: "wf-sec-profile",
+ *     type: "WILDFIRE_ANALYSIS",
+ *     parent: "projects/my-project-name",
+ *     location: "global",
+ *     wildfireAnalysisProfile: {
+ *         wildfireRealtimeLookup: true,
+ *         wildfireSubmissionRules: [{
+ *             direction: "BOTH",
+ *             fileSelectionMode: "ALL_FILE_TYPES",
+ *         }],
+ *     },
+ * });
+ * const _default = new gcp.networksecurity.SecurityProfileGroup("default", {
+ *     name: "sec-profile-group",
+ *     parent: "projects/my-project-name",
+ *     description: "my description",
+ *     threatPreventionProfile: threatPreventionProfile.id,
+ *     wildfireAnalysisProfile: wildfireProfile.id,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -257,6 +293,11 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      */
     declare public readonly urlFilteringProfile: pulumi.Output<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     */
+    declare public readonly wildfireAnalysisProfile: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityProfileGroup resource with the given unique name, arguments, and options.
@@ -286,6 +327,7 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
             resourceInputs["threatPreventionProfile"] = state?.threatPreventionProfile;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["urlFilteringProfile"] = state?.urlFilteringProfile;
+            resourceInputs["wildfireAnalysisProfile"] = state?.wildfireAnalysisProfile;
         } else {
             const args = argsOrState as SecurityProfileGroupArgs | undefined;
             resourceInputs["customInterceptProfile"] = args?.customInterceptProfile;
@@ -298,6 +340,7 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
             resourceInputs["parent"] = args?.parent;
             resourceInputs["threatPreventionProfile"] = args?.threatPreventionProfile;
             resourceInputs["urlFilteringProfile"] = args?.urlFilteringProfile;
+            resourceInputs["wildfireAnalysisProfile"] = args?.wildfireAnalysisProfile;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -388,6 +431,11 @@ export interface SecurityProfileGroupState {
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      */
     urlFilteringProfile?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     */
+    wildfireAnalysisProfile?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -444,4 +492,9 @@ export interface SecurityProfileGroupArgs {
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      */
     urlFilteringProfile?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Reference to a SecurityProfile with the WildFire configuration for the SecurityProfileGroup.
+     */
+    wildfireAnalysisProfile?: pulumi.Input<string | undefined>;
 }

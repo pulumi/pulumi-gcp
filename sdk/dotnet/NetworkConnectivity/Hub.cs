@@ -61,6 +61,30 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Hub With Export Psc Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+    ///     {
+    ///         Name = "psc-config",
+    ///         Description = "A sample hub that propagates Private Service Connect endpoints for global Google APIs only",
+    ///         ExportPsc = true,
+    ///         ExportPscConfig = new Gcp.NetworkConnectivity.Inputs.HubExportPscConfigArgs
+    ///         {
+    ///             PublishedServicesAndRegionalGoogleApis = false,
+    ///             GlobalGoogleApis = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Network Connectivity Hub Mesh Topology
     /// 
     /// ```csharp
@@ -184,6 +208,15 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("exportPsc")]
         public Output<bool> ExportPsc { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Config for more granular control of Private Service Connect transitivity. Only takes effect when `ExportPsc` is true.
+        /// If `ExportPsc` is true, at least one of `PublishedServicesAndRegionalGoogleApis` and `GlobalGoogleApis` must be true.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("exportPscConfig")]
+        public Output<Outputs.HubExportPscConfig> ExportPscConfig { get; private set; } = null!;
 
         /// <summary>
         /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -326,6 +359,15 @@ namespace Pulumi.Gcp.NetworkConnectivity
         [Input("exportPsc")]
         public Input<bool>? ExportPsc { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// Config for more granular control of Private Service Connect transitivity. Only takes effect when `ExportPsc` is true.
+        /// If `ExportPsc` is true, at least one of `PublishedServicesAndRegionalGoogleApis` and `GlobalGoogleApis` must be true.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("exportPscConfig")]
+        public Input<Inputs.HubExportPscConfigArgs>? ExportPscConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -419,6 +461,15 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("exportPsc")]
         public Input<bool>? ExportPsc { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Config for more granular control of Private Service Connect transitivity. Only takes effect when `ExportPsc` is true.
+        /// If `ExportPsc` is true, at least one of `PublishedServicesAndRegionalGoogleApis` and `GlobalGoogleApis` must be true.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("exportPscConfig")]
+        public Input<Inputs.HubExportPscConfigGetArgs>? ExportPscConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

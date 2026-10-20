@@ -74,6 +74,24 @@ namespace Pulumi.Gcp.ModelArmor.Inputs
         [Input("logTemplateOperations")]
         public Input<bool>? LogTemplateOperations { get; set; }
 
+        [Input("modalities")]
+        private InputList<string>? _modalities;
+
+        /// <summary>
+        /// Specifies the modalities to scan. If empty, only text modality will be
+        /// scanned. Image screening is in Preview and is only supported in the `Us`
+        /// and `Eu` multi-regions; regional endpoints such as `us-central1` do not
+        /// support it.
+        /// Possible values:
+        /// MODALITY_TEXT
+        /// MODALITY_IMAGE
+        /// </summary>
+        public InputList<string> Modalities
+        {
+            get => _modalities ?? (_modalities = new InputList<string>());
+            set => _modalities = value;
+        }
+
         /// <summary>
         /// Metadata to enable multi language detection via template.
         /// Structure is documented below.

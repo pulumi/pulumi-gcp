@@ -8472,11 +8472,15 @@ type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type *string `pulumi:"type"`
 }
 
 // ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput values.
@@ -8494,11 +8498,15 @@ type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -8558,6 +8566,8 @@ func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) Disk
 }
 
 // The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -8572,6 +8582,11 @@ func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) Prov
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -9143,12 +9158,16 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type *string `pulumi:"type"`
 }
 
 // ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
@@ -9165,12 +9184,16 @@ type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionL
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -9231,7 +9254,9 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -9250,6 +9275,13 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -10055,11 +10087,15 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig str
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type *string `pulumi:"type"`
 }
 
 // ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput values.
@@ -10077,11 +10113,15 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -10143,6 +10183,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigO
 }
 
 // The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -10161,6 +10203,11 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigO
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -10754,11 +10801,15 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type *string `pulumi:"type"`
 }
 
 // ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
@@ -10776,11 +10827,15 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -10842,6 +10897,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 }
 
 // The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -10860,6 +10917,13 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -12925,12 +12989,16 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type *string `pulumi:"type"`
 }
 
 // ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput values.
@@ -12947,12 +13015,16 @@ type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput interface
 type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -13011,7 +13083,9 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) Disk
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -13026,6 +13100,11 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) Prov
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -13597,12 +13676,16 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type *string `pulumi:"type"`
 }
 
 // ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
@@ -13619,12 +13702,16 @@ type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionL
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -13685,7 +13772,9 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -13704,6 +13793,13 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -34500,12 +34596,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type *string `pulumi:"type"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput values.
@@ -34522,12 +34623,17 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttached
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -34588,7 +34694,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttac
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+// (Optional, Deprecated)
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -34607,6 +34716,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttac
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -35199,12 +35315,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibi
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type *string `pulumi:"type"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
@@ -35221,12 +35342,17 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilit
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -35287,7 +35413,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibi
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+// (Optional, Deprecated)
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -35306,6 +35435,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibi
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -36410,12 +36546,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type *string `pulumi:"type"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput values.
@@ -36432,12 +36573,17 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfi
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -36498,7 +36644,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+// (Optional, Deprecated)
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -36517,6 +36666,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -37130,12 +37286,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstan
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type *string `pulumi:"type"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
@@ -37152,12 +37313,17 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceF
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -37218,7 +37384,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstan
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+// (Optional, Deprecated)
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -37237,6 +37406,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstan
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -39159,12 +39335,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type *string `pulumi:"type"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput values.
@@ -39181,12 +39362,17 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttached
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -39247,7 +39433,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttac
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+// (Optional, Deprecated)
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -39266,6 +39455,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttac
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
@@ -39858,12 +40054,17 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibi
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType *string `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type *string `pulumi:"type"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
@@ -39880,12 +40081,17 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilit
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
 	// Size of the attached disk, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
-	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	// (Optional, Deprecated)
+	// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+	//
+	// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
@@ -39946,7 +40152,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibi
 	}).(pulumi.IntPtrOutput)
 }
 
-// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+// (Optional, Deprecated)
+// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+//
+// Deprecated: `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
 		return v.DiskType
@@ -39965,6 +40174,13 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibi
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
 		return v.ProvisionedThroughput
 	}).(pulumi.IntPtrOutput)
+}
+
+// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }

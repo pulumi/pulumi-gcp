@@ -9,6 +9,7 @@ import com.pulumi.gcp.modelarmor.outputs.TemplateTemplateMetadataMultiLanguageDe
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -68,6 +69,17 @@ public final class TemplateTemplateMetadata {
      * 
      */
     private @Nullable Boolean logTemplateOperations;
+    /**
+     * @return Specifies the modalities to scan. If empty, only text modality will be
+     * scanned. Image screening is in Preview and is only supported in the `us`
+     * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+     * support it.
+     * Possible values:
+     * MODALITY_TEXT
+     * MODALITY_IMAGE
+     * 
+     */
+    private @Nullable List<String> modalities;
     /**
      * @return Metadata to enable multi language detection via template.
      * Structure is documented below.
@@ -148,6 +160,19 @@ public final class TemplateTemplateMetadata {
         return Optional.ofNullable(this.logTemplateOperations);
     }
     /**
+     * @return Specifies the modalities to scan. If empty, only text modality will be
+     * scanned. Image screening is in Preview and is only supported in the `us`
+     * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+     * support it.
+     * Possible values:
+     * MODALITY_TEXT
+     * MODALITY_IMAGE
+     * 
+     */
+    public List<String> modalities() {
+        return this.modalities == null ? List.of() : this.modalities;
+    }
+    /**
      * @return Metadata to enable multi language detection via template.
      * Structure is documented below.
      * 
@@ -174,6 +199,7 @@ public final class TemplateTemplateMetadata {
         private @Nullable Boolean ignorePartialInvocationFailures;
         private @Nullable Boolean logSanitizeOperations;
         private @Nullable Boolean logTemplateOperations;
+        private @Nullable List<String> modalities;
         private @Nullable TemplateTemplateMetadataMultiLanguageDetection multiLanguageDetection;
         public Builder() {}
         public Builder(TemplateTemplateMetadata defaults) {
@@ -187,6 +213,7 @@ public final class TemplateTemplateMetadata {
     	      this.ignorePartialInvocationFailures = defaults.ignorePartialInvocationFailures;
     	      this.logSanitizeOperations = defaults.logSanitizeOperations;
     	      this.logTemplateOperations = defaults.logTemplateOperations;
+    	      this.modalities = defaults.modalities;
     	      this.multiLanguageDetection = defaults.multiLanguageDetection;
         }
 
@@ -245,6 +272,15 @@ public final class TemplateTemplateMetadata {
             return this;
         }
         @CustomType.Setter
+        public Builder modalities(@Nullable List<String> modalities) {
+
+            this.modalities = modalities;
+            return this;
+        }
+        public Builder modalities(String... modalities) {
+            return modalities(List.of(modalities));
+        }
+        @CustomType.Setter
         public Builder multiLanguageDetection(@Nullable TemplateTemplateMetadataMultiLanguageDetection multiLanguageDetection) {
 
             this.multiLanguageDetection = multiLanguageDetection;
@@ -261,6 +297,7 @@ public final class TemplateTemplateMetadata {
             _resultValue.ignorePartialInvocationFailures = ignorePartialInvocationFailures;
             _resultValue.logSanitizeOperations = logSanitizeOperations;
             _resultValue.logTemplateOperations = logTemplateOperations;
+            _resultValue.modalities = modalities;
             _resultValue.multiLanguageDetection = multiLanguageDetection;
             return _resultValue;
         }

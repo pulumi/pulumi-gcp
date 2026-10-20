@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     releaseId: "example-release",
  *     unitKind: clusterUnitKind.id,
  *     blueprint: {
- *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee",
+ *         "package": "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:16f50ddbcbc7926ad9d4f09fa6c37306b88ccc4d6370f627a4733b1ab0823680",
  *     },
  * });
  * const exampleUnit = new gcp.saasruntime.Unit("example_unit", {
@@ -80,6 +80,12 @@ import * as utilities from "../utilities";
  *     serviceAccountId: actuationServiceAccount.name,
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     member: "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com",
+ * });
+ * // Infra Manager engine: actuation SA needs config.agent in the producer project.
+ * const producerConfigAgent = new gcp.projects.IAMMember("producer_config_agent", {
+ *     project: "my-project-name",
+ *     role: "roles/config.agent",
+ *     member: pulumi.interpolate`serviceAccount:${actuationServiceAccount.email}`,
  * });
  * const provisionUnitOperation = new gcp.saasruntime.UnitOperation("provision_unit_operation", {
  *     location: location,
@@ -129,6 +135,7 @@ import * as utilities from "../utilities";
  *         tenantComputeAdmin,
  *         actuationTokenCreator,
  *         saasServices,
+ *         producerConfigAgent,
  *     ],
  * });
  * const noopUpgradeUnitOperation = new gcp.saasruntime.UnitOperation("noop_upgrade_unit_operation", {

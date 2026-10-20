@@ -289,7 +289,7 @@ import (
 //				Name:        pulumi.String("composer-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     testNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     testNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -330,8 +330,8 @@ import (
 //					},
 //					EnvironmentSize: pulumi.String("ENVIRONMENT_SIZE_SMALL"),
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
-//						Network:        testNetwork.ID().ToIDOutput().ToStringOutput(),
-//						Subnetwork:     testSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//						Network:        testNetwork.ID(),
+//						Subnetwork:     testSubnetwork.ID(),
 //						ServiceAccount: testAccount.Name,
 //					},
 //				},
@@ -385,7 +385,7 @@ import (
 //				Name:        pulumi.String("composer-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     testNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     testNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -408,8 +408,8 @@ import (
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
 //						Zone:           pulumi.String("us-central1-a"),
 //						MachineType:    pulumi.String("n1-standard-1"),
-//						Network:        testNetwork.ID().ToIDOutput().ToStringOutput(),
-//						Subnetwork:     testSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//						Network:        testNetwork.ID(),
+//						Subnetwork:     testSubnetwork.ID(),
 //						ServiceAccount: testAccount.Name,
 //					},
 //					DatabaseConfig: &composer.EnvironmentConfigDatabaseConfigArgs{
@@ -532,7 +532,7 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Config: &composer.EnvironmentConfigArgs{
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
-//						ComposerNetworkAttachment: string(pulumi.Float64(projects) / pulumi.Float64(example_project) / pulumi.Float64(regions) / pulumi.Float64(us_central1) / pulumi.Float64(networkAttachments) / pulumi.Float64(example_network_attachment)),
+//						ComposerNetworkAttachment: string(projects / example_project / regions / us_central1 / networkAttachments / example_network_attachment),
 //					},
 //				},
 //			})
@@ -574,7 +574,7 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Config: &composer.EnvironmentConfigArgs{
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
-//						ComposerNetworkAttachment: example.ID().ToIDOutput().ToStringOutput(),
+//						ComposerNetworkAttachment: example.ID(),
 //					},
 //				},
 //			})

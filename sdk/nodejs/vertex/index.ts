@@ -190,6 +190,11 @@ export type AiModelGardenEnableModel = import("./aiModelGardenEnableModel").AiMo
 export const AiModelGardenEnableModel: typeof import("./aiModelGardenEnableModel").AiModelGardenEnableModel = null as any;
 utilities.lazyLoad(exports, ["AiModelGardenEnableModel"], () => require("./aiModelGardenEnableModel"));
 
+export { AiOnlineEvaluatorArgs, AiOnlineEvaluatorState } from "./aiOnlineEvaluator";
+export type AiOnlineEvaluator = import("./aiOnlineEvaluator").AiOnlineEvaluator;
+export const AiOnlineEvaluator: typeof import("./aiOnlineEvaluator").AiOnlineEvaluator = null as any;
+utilities.lazyLoad(exports, ["AiOnlineEvaluator"], () => require("./aiOnlineEvaluator"));
+
 export { AiPersistentResourceArgs, AiPersistentResourceState } from "./aiPersistentResource";
 export type AiPersistentResource = import("./aiPersistentResource").AiPersistentResource;
 export const AiPersistentResource: typeof import("./aiPersistentResource").AiPersistentResource = null as any;
@@ -374,6 +379,8 @@ const _module = {
                 return new AiMetadataStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel":
                 return new AiModelGardenEnableModel(name, <any>undefined, { urn })
+            case "gcp:vertex/aiOnlineEvaluator:AiOnlineEvaluator":
+                return new AiOnlineEvaluator(name, <any>undefined, { urn })
             case "gcp:vertex/aiPersistentResource:AiPersistentResource":
                 return new AiPersistentResource(name, <any>undefined, { urn })
             case "gcp:vertex/aiRagCorpus:AiRagCorpus":
@@ -440,6 +447,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelGardenEnableModel", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiOnlineEvaluator", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiPersistentResource", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagCorpus", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiRagEngineConfig", _module)

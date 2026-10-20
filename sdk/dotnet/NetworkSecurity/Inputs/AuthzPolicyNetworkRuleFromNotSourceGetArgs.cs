@@ -39,6 +39,20 @@ namespace Pulumi.Gcp.NetworkSecurity.Inputs
             set => _principals = value;
         }
 
+        [Input("resources")]
+        private InputList<Inputs.AuthzPolicyNetworkRuleFromNotSourceResourceGetArgs>? _resources;
+
+        /// <summary>
+        /// A list of resources to match against the resource of the source VM of a request.
+        /// Limited to 5 resources.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AuthzPolicyNetworkRuleFromNotSourceResourceGetArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.AuthzPolicyNetworkRuleFromNotSourceResourceGetArgs>());
+            set => _resources = value;
+        }
+
         public AuthzPolicyNetworkRuleFromNotSourceGetArgs()
         {
         }

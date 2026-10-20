@@ -28,6 +28,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.URLMapPathMatcherPathRuleRouteActionCorsPolicy? CorsPolicy;
         /// <summary>
+        /// (Optional, Beta)
+        /// Dynamic compression policy for this URL Map's route. Available only for
+        /// Global EXTERNAL_MANAGED load balancer schemes.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy? DynamicCompressionPolicy;
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the
         /// resiliency of clients to backend service failure. As part of fault injection,
         /// when clients send requests to a backend service, delays can be introduced by
@@ -38,6 +45,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy? FaultInjectionPolicy;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the policy for optimizing images returned in the HTTP response.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy? ImageOptimizationPolicy;
         /// <summary>
         /// Specifies the maximum duration (timeout) for streams on the selected route.
         /// Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -93,7 +106,11 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.URLMapPathMatcherPathRuleRouteActionCorsPolicy? corsPolicy,
 
+            Outputs.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy? dynamicCompressionPolicy,
+
             Outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy? faultInjectionPolicy,
+
+            Outputs.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy? imageOptimizationPolicy,
 
             Outputs.URLMapPathMatcherPathRuleRouteActionMaxStreamDuration? maxStreamDuration,
 
@@ -109,7 +126,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             CachePolicy = cachePolicy;
             CorsPolicy = corsPolicy;
+            DynamicCompressionPolicy = dynamicCompressionPolicy;
             FaultInjectionPolicy = faultInjectionPolicy;
+            ImageOptimizationPolicy = imageOptimizationPolicy;
             MaxStreamDuration = maxStreamDuration;
             RequestMirrorPolicy = requestMirrorPolicy;
             RetryPolicy = retryPolicy;

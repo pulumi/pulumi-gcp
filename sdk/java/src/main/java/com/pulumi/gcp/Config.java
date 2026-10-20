@@ -355,6 +355,9 @@ public final class Config {
     public Optional<String> geminiCustomEndpoint() {
         return Codegen.stringProp("geminiCustomEndpoint").config(config).get();
     }
+    public Optional<String> geminiDataAnalyticsCustomEndpoint() {
+        return Codegen.stringProp("geminiDataAnalyticsCustomEndpoint").config(config).get();
+    }
     public Optional<String> gkeBackupCustomEndpoint() {
         return Codegen.stringProp("gkeBackupCustomEndpoint").config(config).get();
     }

@@ -1402,6 +1402,11 @@ class AgentModelSettingsArgsDict(TypedDict):
     controls the randomness of the model's responses. Lower temperatures
     produce responses that are more predictable. Higher temperatures produce
     responses that are more creative.
+    """
+    thinking_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The thinking level of the model.
+    Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
 
     <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
     """
@@ -1410,7 +1415,8 @@ class AgentModelSettingsArgsDict(TypedDict):
 class AgentModelSettingsArgs:
     def __init__(__self__, *,
                  model: pulumi.Input[Optional[_builtins.str]] = None,
-                 temperature: pulumi.Input[Optional[_builtins.float]] = None):
+                 temperature: pulumi.Input[Optional[_builtins.float]] = None,
+                 thinking_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] model: The LLM model that the agent should use.
                If not set, the agent will inherit the model from its parent agent.
@@ -1418,6 +1424,8 @@ class AgentModelSettingsArgs:
                controls the randomness of the model's responses. Lower temperatures
                produce responses that are more predictable. Higher temperatures produce
                responses that are more creative.
+        :param pulumi.Input[_builtins.str] thinking_level: The thinking level of the model.
+               Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
                
                <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
         """
@@ -1425,6 +1433,8 @@ class AgentModelSettingsArgs:
             pulumi.set(__self__, "model", model)
         if temperature is not None:
             pulumi.set(__self__, "temperature", temperature)
+        if thinking_level is not None:
+            pulumi.set(__self__, "thinking_level", thinking_level)
 
     @_builtins.property
     @pulumi.getter
@@ -1447,14 +1457,27 @@ class AgentModelSettingsArgs:
         controls the randomness of the model's responses. Lower temperatures
         produce responses that are more predictable. Higher temperatures produce
         responses that are more creative.
-
-        <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
         """
         return pulumi.get(self, "temperature")
 
     @temperature.setter
     def temperature(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "temperature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thinkingLevel")
+    def thinking_level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The thinking level of the model.
+        Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+
+        <a name="nested_remote_a2a_agent"></a>The `remote_a2a_agent` block supports:
+        """
+        return pulumi.get(self, "thinking_level")
+
+    @thinking_level.setter
+    def thinking_level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thinking_level", value)
 
 
 class AgentRemoteA2aAgentArgsDict(TypedDict):

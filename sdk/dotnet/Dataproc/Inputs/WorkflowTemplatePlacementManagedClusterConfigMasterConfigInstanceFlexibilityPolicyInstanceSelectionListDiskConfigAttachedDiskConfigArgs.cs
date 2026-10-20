@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        /// (Optional, Deprecated)
+        /// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
@@ -35,6 +36,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// </summary>
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }
+
+        /// <summary>
+        /// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs()
         {

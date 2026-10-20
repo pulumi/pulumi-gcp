@@ -69,7 +69,7 @@ import (
 //				Name:        pulumi.String("test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:     custom_test.ID(),
 //				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
 //					&compute.SubnetworkSecondaryIpRangeArgs{
 //						RangeName:   pulumi.String("tf-test-secondary-range-update1"),
@@ -110,7 +110,7 @@ import (
 //				Name:        pulumi.String("log-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:     custom_test.ID(),
 //				LogConfig: &compute.SubnetworkLogConfigArgs{
 //					AggregationInterval: pulumi.String("INTERVAL_10_MIN"),
 //					FlowSampling:        pulumi.Float64(0.5),
@@ -152,7 +152,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				Role:        pulumi.String("ACTIVE"),
-//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:     custom_test.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				Region:         pulumi.String("us-west2"),
 //				StackType:      pulumi.String("IPV4_IPV6"),
 //				Ipv6AccessType: pulumi.String("EXTERNAL"),
-//				Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:        custom_test.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -227,7 +227,7 @@ import (
 //				Region:         pulumi.String("us-west2"),
 //				StackType:      pulumi.String("IPV4_IPV6"),
 //				Ipv6AccessType: pulumi.String("INTERNAL"),
-//				Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:        custom_test.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -263,7 +263,7 @@ import (
 //				Region:      pulumi.String("us-west2"),
 //				IpCidrRange: pulumi.String("192.168.1.0/24"),
 //				Purpose:     pulumi.String("PRIVATE_NAT"),
-//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:     custom_test.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -300,7 +300,7 @@ import (
 //				IpCidrRange:       pulumi.String("10.10.0.0/24"),
 //				Purpose:           pulumi.String("PRIVATE"),
 //				ResolveSubnetMask: pulumi.String("ARP_PRIMARY_RANGE"),
-//				Network:           custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:           custom_test.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -336,7 +336,7 @@ import (
 //				Region:                       pulumi.String("us-west2"),
 //				IpCidrRange:                  pulumi.String("192.168.1.0/24"),
 //				AllowSubnetCidrRoutesOverlap: pulumi.Bool(true),
-//				Network:                      net_cidr_overlap.ID().ToIDOutput().ToStringOutput(),
+//				Network:                      net_cidr_overlap.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -372,7 +372,7 @@ import (
 //			}
 //			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("reserved"),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),
@@ -386,7 +386,7 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-internal-range", &compute.SubnetworkArgs{
 //				Name:    pulumi.String("subnetwork-reserved-internal-range"),
 //				Region:  pulumi.String("us-central1"),
-//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				Network: _default.ID(),
 //				ReservedInternalRange: reserved.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
@@ -425,7 +425,7 @@ import (
 //			}
 //			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("reserved-primary"),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),
@@ -438,7 +438,7 @@ import (
 //			}
 //			reservedSecondary, err := networkconnectivity.NewInternalRange(ctx, "reserved_secondary", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("reserved-secondary"),
-//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:      _default.ID(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(16),
@@ -452,7 +452,7 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-secondary-range", &compute.SubnetworkArgs{
 //				Name:    pulumi.String("subnetwork-reserved-secondary-range"),
 //				Region:  pulumi.String("us-central1"),
-//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				Network: _default.ID(),
 //				ReservedInternalRange: reserved.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
@@ -510,7 +510,7 @@ import (
 //				Region:       pulumi.String("us-central1"),
 //				Description:  pulumi.String("PDP in internal subnet mode"),
 //				IpCidrRange:  pulumi.String("2001:db8::/48"),
-//				ParentPrefix: ipv6Pap.ID().ToIDOutput().ToStringOutput(),
+//				ParentPrefix: ipv6Pap.ID(),
 //				Mode:         pulumi.String("DELEGATION"),
 //			})
 //			if err != nil {
@@ -520,7 +520,7 @@ import (
 //				Name:         pulumi.String("sub-pdp-for-secondary-ranges"),
 //				Region:       pulumi.String("us-central1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/56"),
-//				ParentPrefix: ipv6Pdp.ID().ToIDOutput().ToStringOutput(),
+//				ParentPrefix: ipv6Pdp.ID(),
 //				Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
 //			})
 //			if err != nil {
@@ -529,7 +529,7 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork_with_secondary_ipv6_range", &compute.SubnetworkArgs{
 //				Name:           pulumi.String("subnet-with-secondary-ranges"),
 //				Region:         pulumi.String("us-central1"),
-//				Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
+//				Network:        custom_test.ID(),
 //				StackType:      pulumi.String("IPV6_ONLY"),
 //				Ipv6AccessType: pulumi.String("INTERNAL"),
 //				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
@@ -597,7 +597,9 @@ type Subnetwork struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The range of external IPv6 addresses that are owned by this subnetwork.
+	// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+	// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+	// field at any other time forces recreation of the subnetwork.
 	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	//
@@ -616,7 +618,10 @@ type Subnetwork struct {
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 	// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-	// mode. Use one of the following formats to specify a sub-PDP when creating
+	// mode. It's immutable and can only be specified during creation or the first
+	// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+	// any other time forces recreation of the subnetwork.
+	// Use one of the following formats to specify a sub-PDP when creating
 	// a dual stack or IPv6-only subnetwork using BYOIP:
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -626,7 +631,7 @@ type Subnetwork struct {
 	IpCollection pulumi.StringPtrOutput `pulumi:"ipCollection"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-	// cannot enable direct path.
+	// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	Ipv6AccessType pulumi.StringPtrOutput `pulumi:"ipv6AccessType"`
 	// The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -768,7 +773,9 @@ type subnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
-	// The range of external IPv6 addresses that are owned by this subnetwork.
+	// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+	// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+	// field at any other time forces recreation of the subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	//
@@ -787,7 +794,10 @@ type subnetworkState struct {
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 	// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-	// mode. Use one of the following formats to specify a sub-PDP when creating
+	// mode. It's immutable and can only be specified during creation or the first
+	// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+	// any other time forces recreation of the subnetwork.
+	// Use one of the following formats to specify a sub-PDP when creating
 	// a dual stack or IPv6-only subnetwork using BYOIP:
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -797,7 +807,7 @@ type subnetworkState struct {
 	IpCollection *string `pulumi:"ipCollection"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-	// cannot enable direct path.
+	// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -907,7 +917,9 @@ type SubnetworkState struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
-	// The range of external IPv6 addresses that are owned by this subnetwork.
+	// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+	// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+	// field at any other time forces recreation of the subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during updates of this resource.
 	//
@@ -926,7 +938,10 @@ type SubnetworkState struct {
 	IpCidrRange pulumi.StringPtrInput
 	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 	// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-	// mode. Use one of the following formats to specify a sub-PDP when creating
+	// mode. It's immutable and can only be specified during creation or the first
+	// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+	// any other time forces recreation of the subnetwork.
+	// Use one of the following formats to specify a sub-PDP when creating
 	// a dual stack or IPv6-only subnetwork using BYOIP:
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -936,7 +951,7 @@ type SubnetworkState struct {
 	IpCollection pulumi.StringPtrInput
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-	// cannot enable direct path.
+	// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	Ipv6AccessType pulumi.StringPtrInput
 	// The range of internal IPv6 addresses that are owned by this subnetwork.
@@ -1048,7 +1063,9 @@ type subnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
-	// The range of external IPv6 addresses that are owned by this subnetwork.
+	// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+	// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+	// field at any other time forces recreation of the subnetwork.
 	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// The internal IPv6 address range that is assigned to this subnetwork.
 	InternalIpv6Prefix *string `pulumi:"internalIpv6Prefix"`
@@ -1060,7 +1077,10 @@ type subnetworkArgs struct {
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 	// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-	// mode. Use one of the following formats to specify a sub-PDP when creating
+	// mode. It's immutable and can only be specified during creation or the first
+	// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+	// any other time forces recreation of the subnetwork.
+	// Use one of the following formats to specify a sub-PDP when creating
 	// a dual stack or IPv6-only subnetwork using BYOIP:
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -1070,7 +1090,7 @@ type subnetworkArgs struct {
 	IpCollection *string `pulumi:"ipCollection"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-	// cannot enable direct path.
+	// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
 	// This field denotes the VPC flow logging options for this subnetwork. If
@@ -1162,7 +1182,9 @@ type SubnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
-	// The range of external IPv6 addresses that are owned by this subnetwork.
+	// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+	// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+	// field at any other time forces recreation of the subnetwork.
 	ExternalIpv6Prefix pulumi.StringPtrInput
 	// The internal IPv6 address range that is assigned to this subnetwork.
 	InternalIpv6Prefix pulumi.StringPtrInput
@@ -1174,7 +1196,10 @@ type SubnetworkArgs struct {
 	IpCidrRange pulumi.StringPtrInput
 	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 	// in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-	// mode. Use one of the following formats to specify a sub-PDP when creating
+	// mode. It's immutable and can only be specified during creation or the first
+	// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+	// any other time forces recreation of the subnetwork.
+	// Use one of the following formats to specify a sub-PDP when creating
 	// a dual stack or IPv6-only subnetwork using BYOIP:
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -1184,7 +1209,7 @@ type SubnetworkArgs struct {
 	IpCollection pulumi.StringPtrInput
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-	// cannot enable direct path.
+	// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	Ipv6AccessType pulumi.StringPtrInput
 	// This field denotes the VPC flow logging options for this subnetwork. If
@@ -1375,7 +1400,9 @@ func (o SubnetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The range of external IPv6 addresses that are owned by this subnetwork.
+// The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+// specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+// field at any other time forces recreation of the subnetwork.
 func (o SubnetworkOutput) ExternalIpv6Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
 }
@@ -1409,7 +1436,10 @@ func (o SubnetworkOutput) IpCidrRange() pulumi.StringOutput {
 
 // Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
 // in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-// mode. Use one of the following formats to specify a sub-PDP when creating
+// mode. It's immutable and can only be specified during creation or the first
+// time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+// any other time forces recreation of the subnetwork.
+// Use one of the following formats to specify a sub-PDP when creating
 // a dual stack or IPv6-only subnetwork using BYOIP:
 // Full resource URL, as in:
 //   - `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -1422,7 +1452,7 @@ func (o SubnetworkOutput) IpCollection() pulumi.StringPtrOutput {
 
 // The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 // or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
-// cannot enable direct path.
+// cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
 // Possible values are: `EXTERNAL`, `INTERNAL`.
 func (o SubnetworkOutput) Ipv6AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.Ipv6AccessType }).(pulumi.StringPtrOutput)

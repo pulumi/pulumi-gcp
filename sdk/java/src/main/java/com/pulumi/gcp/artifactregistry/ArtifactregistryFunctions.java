@@ -1361,6 +1361,54 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var mavenRepo = new Repository("mavenRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-maven-repo")
+     *             .format("MAVEN")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .groupId("com.example")
+     *             .artifactId("my-artifact")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .artifactName("my-artifact:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args) {
         return getMavenArtifact(args, InvokeOptions.Empty);
@@ -1369,6 +1417,54 @@ public final class ArtifactregistryFunctions {
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var mavenRepo = new Repository("mavenRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-maven-repo")
+     *             .format("MAVEN")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .groupId("com.example")
+     *             .artifactId("my-artifact")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .artifactName("my-artifact:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetMavenArtifactResult> getMavenArtifactPlain(GetMavenArtifactPlainArgs args) {
@@ -1379,6 +1475,54 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var mavenRepo = new Repository("mavenRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-maven-repo")
+     *             .format("MAVEN")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .groupId("com.example")
+     *             .artifactId("my-artifact")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .artifactName("my-artifact:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
@@ -1388,6 +1532,54 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var mavenRepo = new Repository("mavenRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-maven-repo")
+     *             .format("MAVEN")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .groupId("com.example")
+     *             .artifactId("my-artifact")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .artifactName("my-artifact:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetMavenArtifactResult> getMavenArtifact(GetMavenArtifactArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getMavenArtifact:getMavenArtifact", TypeShape.of(GetMavenArtifactResult.class), args, Utilities.withVersion(options));
@@ -1396,6 +1588,54 @@ public final class ArtifactregistryFunctions {
      * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.Repository;
+     * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var mavenRepo = new Repository("mavenRepo", RepositoryArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("my-maven-repo")
+     *             .format("MAVEN")
+     *             .build());
+     * 
+     *         final var latest = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .groupId("com.example")
+     *             .artifactId("my-artifact")
+     *             .build());
+     * 
+     *         final var withVersion = ArtifactregistryFunctions.getMavenArtifact(GetMavenArtifactArgs.builder()
+     *             .location(mavenRepo.location())
+     *             .repositoryId(mavenRepo.repositoryId())
+     *             .artifactName("my-artifact:1.0.0")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetMavenArtifactResult> getMavenArtifactPlain(GetMavenArtifactPlainArgs args, InvokeOptions options) {
@@ -3661,6 +3901,40 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTags = ArtifactregistryFunctions.getTags(GetTagsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .tagName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args) {
         return getTag(args, InvokeOptions.Empty);
@@ -3669,6 +3943,40 @@ public final class ArtifactregistryFunctions {
      * This data source fetches information of a tag from a provided Artifact Registry repository.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTags = ArtifactregistryFunctions.getTags(GetTagsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .tagName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args) {
@@ -3679,6 +3987,40 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTags = ArtifactregistryFunctions.getTags(GetTagsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .tagName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
@@ -3688,6 +4030,40 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTags = ArtifactregistryFunctions.getTags(GetTagsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .tagName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
@@ -3696,6 +4072,40 @@ public final class ArtifactregistryFunctions {
      * This data source fetches information of a tag from a provided Artifact Registry repository.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myTags = ArtifactregistryFunctions.getTags(GetTagsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .tagName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {
@@ -3926,6 +4336,40 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .versionName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVersionResult> getVersion(GetVersionArgs args) {
         return getVersion(args, InvokeOptions.Empty);
@@ -3934,6 +4378,40 @@ public final class ArtifactregistryFunctions {
      * This data source fetches information of a version from a provided Artifact Registry repository.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .versionName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(GetVersionPlainArgs args) {
@@ -3944,6 +4422,40 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .versionName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVersionResult> getVersion(GetVersionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
@@ -3953,6 +4465,40 @@ public final class ArtifactregistryFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .versionName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetVersionResult> getVersion(GetVersionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
@@ -3961,6 +4507,40 @@ public final class ArtifactregistryFunctions {
      * This data source fetches information of a version from a provided Artifact Registry repository.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .versionName("latest")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(GetVersionPlainArgs args, InvokeOptions options) {

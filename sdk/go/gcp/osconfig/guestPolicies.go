@@ -79,7 +79,7 @@ import (
 //				GuestPolicyId: pulumi.String("guest-policy"),
 //				Assignment: &osconfig.GuestPoliciesAssignmentArgs{
 //					Instances: pulumi.StringArray{
-//						foobar.ID().ToIDOutput().ToStringOutput(),
+//						foobar.ID(),
 //					},
 //				},
 //				Packages: osconfig.GuestPoliciesPackageArray{

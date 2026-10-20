@@ -13,6 +13,802 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RegionInstanceTemplateGuestAccelerator struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// RegionInstanceTemplateGuestAcceleratorInput is an input type that accepts RegionInstanceTemplateGuestAcceleratorArgs and RegionInstanceTemplateGuestAcceleratorOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateGuestAcceleratorInput` via:
+//
+//	RegionInstanceTemplateGuestAcceleratorArgs{...}
+type RegionInstanceTemplateGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateGuestAcceleratorOutput() RegionInstanceTemplateGuestAcceleratorOutput
+	ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(context.Context) RegionInstanceTemplateGuestAcceleratorOutput
+}
+
+type RegionInstanceTemplateGuestAcceleratorArgs struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RegionInstanceTemplateGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateGuestAcceleratorArgs) ToRegionInstanceTemplateGuestAcceleratorOutput() RegionInstanceTemplateGuestAcceleratorOutput {
+	return i.ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateGuestAcceleratorArgs) ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateGuestAcceleratorOutput)
+}
+
+// RegionInstanceTemplateGuestAcceleratorArrayInput is an input type that accepts RegionInstanceTemplateGuestAcceleratorArray and RegionInstanceTemplateGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateGuestAcceleratorArrayInput` via:
+//
+//	RegionInstanceTemplateGuestAcceleratorArray{ RegionInstanceTemplateGuestAcceleratorArgs{...} }
+type RegionInstanceTemplateGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateGuestAcceleratorArrayOutput() RegionInstanceTemplateGuestAcceleratorArrayOutput
+	ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Context) RegionInstanceTemplateGuestAcceleratorArrayOutput
+}
+
+type RegionInstanceTemplateGuestAcceleratorArray []RegionInstanceTemplateGuestAcceleratorInput
+
+func (RegionInstanceTemplateGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateGuestAcceleratorArray) ToRegionInstanceTemplateGuestAcceleratorArrayOutput() RegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return i.ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateGuestAcceleratorArray) ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateGuestAcceleratorArrayOutput)
+}
+
+type RegionInstanceTemplateGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateGuestAcceleratorOutput) ToRegionInstanceTemplateGuestAcceleratorOutput() RegionInstanceTemplateGuestAcceleratorOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateGuestAcceleratorOutput) ToRegionInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the guest accelerator cards exposed to this instance.
+func (o RegionInstanceTemplateGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o RegionInstanceTemplateGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegionInstanceTemplateGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateGuestAcceleratorArrayOutput) ToRegionInstanceTemplateGuestAcceleratorArrayOutput() RegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateGuestAcceleratorArrayOutput) ToRegionInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateGuestAccelerator {
+		return vs[0].([]RegionInstanceTemplateGuestAccelerator)[vs[1].(int)]
+	}).(RegionInstanceTemplateGuestAcceleratorOutput)
+}
+
+type RegionInstanceTemplateNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running Terraform can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be specified once per `networkInterface`. Structure documented below.
+	AccessConfigs []RegionInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// An
+	// array of alias IP ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpRanges []RegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// [Beta] An
+	// array of alias IPv6 ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpv6Ranges []RegionInstanceTemplateNetworkInterfaceAliasIpv6Range `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns *bool `pulumi:"enableVpcScopedDns"`
+	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+	IgmpQuery *string `pulumi:"igmpQuery"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength *int `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface.
+	// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+	// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+	Ipv6AccessConfigs []RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address *string `pulumi:"ipv6Address"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name *string `pulumi:"name"`
+	// The name or selfLink of the network to attach this interface to.
+	// Use `network` attribute for Legacy or Auto subnetted networks and
+	// `subnetwork` for custom subnetted networks.
+	Network *string `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+	// The private IP address to assign to the instance. If
+	// empty, the address will be automatically assigned.
+	NetworkIp *string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
+	NicType *string `pulumi:"nicType"`
+	// Name of the parent network interface of a dynamic network interface.
+	ParentNicName *string `pulumi:"parentNicName"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount *int `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId *string `pulumi:"serviceClassId"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+	StackType *string `pulumi:"stackType"`
+	// the name of the subnetwork to attach this interface
+	// to. The subnetwork must exist in the same `region` this instance will be
+	// created in. Either `network` or `subnetwork` must be provided.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// The ID of the project in which the subnetwork belongs.
+	// If it is not provided, the provider project is used.
+	SubnetworkProject *string `pulumi:"subnetworkProject"`
+	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+	Vlan *int `pulumi:"vlan"`
+}
+
+// RegionInstanceTemplateNetworkInterfaceInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceArgs and RegionInstanceTemplateNetworkInterfaceOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceArgs{...}
+type RegionInstanceTemplateNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceOutput() RegionInstanceTemplateNetworkInterfaceOutput
+	ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running Terraform can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be specified once per `networkInterface`. Structure documented below.
+	AccessConfigs RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// An
+	// array of alias IP ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpRanges RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// [Beta] An
+	// array of alias IPv6 ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpv6Ranges RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput `pulumi:"aliasIpv6Ranges"`
+	// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+	EnableVpcScopedDns pulumi.BoolPtrInput `pulumi:"enableVpcScopedDns"`
+	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+	IgmpQuery pulumi.StringPtrInput `pulumi:"igmpQuery"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface.
+	// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+	// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+	Ipv6AccessConfigs RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType pulumi.StringPtrInput `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name or selfLink of the network to attach this interface to.
+	// Use `network` attribute for Legacy or Auto subnetted networks and
+	// `subnetwork` for custom subnetted networks.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+	// The private IP address to assign to the instance. If
+	// empty, the address will be automatically assigned.
+	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	// Name of the parent network interface of a dynamic network interface.
+	ParentNicName pulumi.StringPtrInput `pulumi:"parentNicName"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId pulumi.StringPtrInput `pulumi:"serviceClassId"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringPtrInput `pulumi:"stackType"`
+	// the name of the subnetwork to attach this interface
+	// to. The subnetwork must exist in the same `region` this instance will be
+	// created in. Either `network` or `subnetwork` must be provided.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// The ID of the project in which the subnetwork belongs.
+	// If it is not provided, the provider project is used.
+	SubnetworkProject pulumi.StringPtrInput `pulumi:"subnetworkProject"`
+	// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+	Vlan pulumi.IntPtrInput `pulumi:"vlan"`
+}
+
+func (RegionInstanceTemplateNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceArgs) ToRegionInstanceTemplateNetworkInterfaceOutput() RegionInstanceTemplateNetworkInterfaceOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceArgs) ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceOutput)
+}
+
+// RegionInstanceTemplateNetworkInterfaceArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceArray and RegionInstanceTemplateNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceArrayInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceArray{ RegionInstanceTemplateNetworkInterfaceArgs{...} }
+type RegionInstanceTemplateNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceArrayOutput() RegionInstanceTemplateNetworkInterfaceArrayOutput
+	ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceArrayOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceArray []RegionInstanceTemplateNetworkInterfaceInput
+
+func (RegionInstanceTemplateNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceArray) ToRegionInstanceTemplateNetworkInterfaceArrayOutput() RegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceArray) ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceArrayOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceOutput) ToRegionInstanceTemplateNetworkInterfaceOutput() RegionInstanceTemplateNetworkInterfaceOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceOutput) ToRegionInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceOutput {
+	return o
+}
+
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Omit to ensure that the instance
+// is not accessible from the Internet (this means that ssh provisioners will
+// not work unless you are running Terraform can send traffic to the instance's
+// network (e.g. via tunnel or because it is running on another cloud instance
+// on that network). This block can be specified once per `networkInterface`. Structure documented below.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) AccessConfigs() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// An
+// array of alias IP ranges for this network interface. Can only be specified for network
+// interfaces on subnet-mode networks. Structure documented below.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAliasIpRange {
+		return v.AliasIpRanges
+	}).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// [Beta] An
+// array of alias IPv6 ranges for this network interface. Can only be specified for network
+// interfaces on subnet-mode networks. Structure documented below.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) AliasIpv6Ranges() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
+		return v.AliasIpv6Ranges
+	}).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) EnableVpcScopedDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *bool { return v.EnableVpcScopedDns }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) IgmpQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.IgmpQuery }).(pulumi.StringPtrOutput)
+}
+
+// The prefix length of the primary internal IPv6 range.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *int { return v.InternalIpv6PrefixLength }).(pulumi.IntPtrOutput)
+}
+
+// An array of IPv6 access configurations for this interface.
+// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) []RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+		return v.Ipv6AccessConfigs
+	}).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Ipv6AccessType }).(pulumi.StringPtrOutput)
+}
+
+// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance template. If you leave
+// this blank, Terraform will auto-generate a unique name.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The name or selfLink of the network to attach this interface to.
+// Use `network` attribute for Legacy or Auto subnetted networks and
+// `subnetwork` for custom subnetted networks.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address to assign to the instance. If
+// empty, the address will be automatically assigned.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the parent network interface of a dynamic network interface.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) ParentNicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.ParentNicName }).(pulumi.StringPtrOutput)
+}
+
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) ServiceClassId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.ServiceClassId }).(pulumi.StringPtrOutput)
+}
+
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.StackType }).(pulumi.StringPtrOutput)
+}
+
+// the name of the subnetwork to attach this interface
+// to. The subnetwork must exist in the same `region` this instance will be
+// created in. Either `network` or `subnetwork` must be provided.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project in which the subnetwork belongs.
+// If it is not provided, the provider project is used.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) SubnetworkProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *string { return v.SubnetworkProject }).(pulumi.StringPtrOutput)
+}
+
+// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
+func (o RegionInstanceTemplateNetworkInterfaceOutput) Vlan() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterface) *int { return v.Vlan }).(pulumi.IntPtrOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceArrayOutput) ToRegionInstanceTemplateNetworkInterfaceArrayOutput() RegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceArrayOutput) ToRegionInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterface {
+		return vs[0].([]RegionInstanceTemplateNetworkInterface)[vs[1].(int)]
+	}).(RegionInstanceTemplateNetworkInterfaceOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAccessConfig struct {
+	// The IP address that will be 1:1 mapped to the instance's
+	// network ip. If not given, one will be generated.
+	NatIp *string `pulumi:"natIp"`
+	// The service-level to be provided for IPv6 traffic when the
+	// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+	NetworkTier *string `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
+}
+
+// RegionInstanceTemplateNetworkInterfaceAccessConfigInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAccessConfigArgs and RegionInstanceTemplateNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAccessConfigInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceAccessConfigArgs{...}
+type RegionInstanceTemplateNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigOutput
+	ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceAccessConfigArgs struct {
+	// The IP address that will be 1:1 mapped to the instance's
+	// network ip. If not given, one will be generated.
+	NatIp pulumi.StringPtrInput `pulumi:"natIp"`
+	// The service-level to be provided for IPv6 traffic when the
+	// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+	NetworkTier pulumi.StringPtrInput `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
+}
+
+func (RegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAccessConfigOutput)
+}
+
+// RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAccessConfigArray and RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceAccessConfigArray{ RegionInstanceTemplateNetworkInterfaceAccessConfigArgs{...} }
+type RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
+	ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceAccessConfigArray []RegionInstanceTemplateNetworkInterfaceAccessConfigInput
+
+func (RegionInstanceTemplateNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// The IP address that will be 1:1 mapped to the instance's
+// network ip. If not given, one will be generated.
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAccessConfig) *string { return v.NatIp }).(pulumi.StringPtrOutput)
+}
+
+// The service-level to be provided for IPv6 traffic when the
+// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAccessConfig) *string { return v.NetworkTier }).(pulumi.StringPtrOutput)
+}
+
+// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceAccessConfig {
+		return vs[0].([]RegionInstanceTemplateNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(RegionInstanceTemplateNetworkInterfaceAccessConfigOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpRange struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName *string `pulumi:"subnetworkRangeName"`
+}
+
+// RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs and RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...}
+type RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName pulumi.StringPtrInput `pulumi:"subnetworkRangeName"`
+}
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+// RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray and RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{ RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...} }
+type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray []RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range. This IP CIDR range
+// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+// system or used by other network interfaces. At the time of writing only a
+// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+// error.
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range. If left unspecified, the primary range of the subnetwork will be used.
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpRange) *string { return v.SubnetworkRangeName }).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceAliasIpRange {
+		return vs[0].([]RegionInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6Range struct {
+	// The IP CIDR range represented by this alias IPv6 range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. At the time of writing only a netmask (e.g. /96) may be supplied, with a CIDR format resulting in an API error.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IPv6 range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName *string `pulumi:"subnetworkRangeName"`
+}
+
+// RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs and RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...}
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs struct {
+	// The IP CIDR range represented by this alias IPv6 range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. At the time of writing only a netmask (e.g. /96) may be supplied, with a CIDR format resulting in an API error.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IPv6 range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName pulumi.StringPtrInput `pulumi:"subnetworkRangeName"`
+}
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
+}
+
+// RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray and RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{ RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{...} }
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
+	ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray []RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IPv6 range. This IP CIDR range must belong to the specified subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. At the time of writing only a netmask (e.g. /96) may be supplied, with a CIDR format resulting in an API error.
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpv6Range) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IPv6 range. If left unspecified, the primary range of the subnetwork will be used.
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput) SubnetworkRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceAliasIpv6Range) *string { return v.SubnetworkRangeName }).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput() RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) ToRegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceAliasIpv6Range {
+		return vs[0].([]RegionInstanceTemplateNetworkInterfaceAliasIpv6Range)[vs[1].(int)]
+	}).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
+}
+
 type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
 	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
 	ExternalIpv6 *string `pulumi:"externalIpv6"`
@@ -51078,6 +51874,472 @@ func (o SnapshotParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SnapshotRecycleBinPolicyRule struct {
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots *SnapshotRecycleBinPolicyRuleStandardSnapshots `pulumi:"standardSnapshots"`
+}
+
+// SnapshotRecycleBinPolicyRuleInput is an input type that accepts SnapshotRecycleBinPolicyRuleArgs and SnapshotRecycleBinPolicyRuleOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicyRuleInput` via:
+//
+//	SnapshotRecycleBinPolicyRuleArgs{...}
+type SnapshotRecycleBinPolicyRuleInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicyRuleOutput() SnapshotRecycleBinPolicyRuleOutput
+	ToSnapshotRecycleBinPolicyRuleOutputWithContext(context.Context) SnapshotRecycleBinPolicyRuleOutput
+}
+
+type SnapshotRecycleBinPolicyRuleArgs struct {
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput `pulumi:"standardSnapshots"`
+}
+
+func (SnapshotRecycleBinPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicyRuleArgs) ToSnapshotRecycleBinPolicyRuleOutput() SnapshotRecycleBinPolicyRuleOutput {
+	return i.ToSnapshotRecycleBinPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicyRuleArgs) ToSnapshotRecycleBinPolicyRuleOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicyRuleOutput)
+}
+
+// SnapshotRecycleBinPolicyRuleArrayInput is an input type that accepts SnapshotRecycleBinPolicyRuleArray and SnapshotRecycleBinPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicyRuleArrayInput` via:
+//
+//	SnapshotRecycleBinPolicyRuleArray{ SnapshotRecycleBinPolicyRuleArgs{...} }
+type SnapshotRecycleBinPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicyRuleArrayOutput() SnapshotRecycleBinPolicyRuleArrayOutput
+	ToSnapshotRecycleBinPolicyRuleArrayOutputWithContext(context.Context) SnapshotRecycleBinPolicyRuleArrayOutput
+}
+
+type SnapshotRecycleBinPolicyRuleArray []SnapshotRecycleBinPolicyRuleInput
+
+func (SnapshotRecycleBinPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicyRuleArray) ToSnapshotRecycleBinPolicyRuleArrayOutput() SnapshotRecycleBinPolicyRuleArrayOutput {
+	return i.ToSnapshotRecycleBinPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicyRuleArray) ToSnapshotRecycleBinPolicyRuleArrayOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicyRuleArrayOutput)
+}
+
+type SnapshotRecycleBinPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicyRuleOutput) ToSnapshotRecycleBinPolicyRuleOutput() SnapshotRecycleBinPolicyRuleOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleOutput) ToSnapshotRecycleBinPolicyRuleOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o SnapshotRecycleBinPolicyRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotRecycleBinPolicyRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The rule config for standard snapshots.
+// Structure is documented below.
+func (o SnapshotRecycleBinPolicyRuleOutput) StandardSnapshots() SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o.ApplyT(func(v SnapshotRecycleBinPolicyRule) *SnapshotRecycleBinPolicyRuleStandardSnapshots {
+		return v.StandardSnapshots
+	}).(SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput)
+}
+
+type SnapshotRecycleBinPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotRecycleBinPolicyRule)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicyRuleArrayOutput) ToSnapshotRecycleBinPolicyRuleArrayOutput() SnapshotRecycleBinPolicyRuleArrayOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleArrayOutput) ToSnapshotRecycleBinPolicyRuleArrayOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleArrayOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleArrayOutput) Index(i pulumi.IntInput) SnapshotRecycleBinPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnapshotRecycleBinPolicyRule {
+		return vs[0].([]SnapshotRecycleBinPolicyRule)[vs[1].(int)]
+	}).(SnapshotRecycleBinPolicyRuleOutput)
+}
+
+type SnapshotRecycleBinPolicyRuleStandardSnapshots struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays *int `pulumi:"retentionDurationDays"`
+}
+
+// SnapshotRecycleBinPolicyRuleStandardSnapshotsInput is an input type that accepts SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs and SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicyRuleStandardSnapshotsInput` via:
+//
+//	SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{...}
+type SnapshotRecycleBinPolicyRuleStandardSnapshotsInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput
+	ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput
+}
+
+type SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays pulumi.IntPtrInput `pulumi:"retentionDurationDays"`
+}
+
+func (SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return i.ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput)
+}
+
+func (i SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return i.ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput).ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx)
+}
+
+// SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput is an input type that accepts SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs, SnapshotRecycleBinPolicyRuleStandardSnapshotsPtr and SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput` via:
+//
+//	        SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput
+	ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput
+}
+
+type snapshotRecycleBinPolicyRuleStandardSnapshotsPtrType SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs
+
+func SnapshotRecycleBinPolicyRuleStandardSnapshotsPtr(v *SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs) SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput {
+	return (*snapshotRecycleBinPolicyRuleStandardSnapshotsPtrType)(v)
+}
+
+func (*snapshotRecycleBinPolicyRuleStandardSnapshotsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (i *snapshotRecycleBinPolicyRuleStandardSnapshotsPtrType) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return i.ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotRecycleBinPolicyRuleStandardSnapshotsPtrType) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput)
+}
+
+type SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o.ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotRecycleBinPolicyRuleStandardSnapshots) *SnapshotRecycleBinPolicyRuleStandardSnapshots {
+		return &v
+	}).(SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput)
+}
+
+// The retention duration for snapshots in the recycle bin after which the
+// snapshots are automatically deleted from recycle bin.
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput) RetentionDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SnapshotRecycleBinPolicyRuleStandardSnapshots) *int { return v.RetentionDurationDays }).(pulumi.IntPtrOutput)
+}
+
+type SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotRecycleBinPolicyRuleStandardSnapshots)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput() SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) ToSnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) Elem() SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput {
+	return o.ApplyT(func(v *SnapshotRecycleBinPolicyRuleStandardSnapshots) SnapshotRecycleBinPolicyRuleStandardSnapshots {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotRecycleBinPolicyRuleStandardSnapshots
+		return ret
+	}).(SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput)
+}
+
+// The retention duration for snapshots in the recycle bin after which the
+// snapshots are automatically deleted from recycle bin.
+func (o SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput) RetentionDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SnapshotRecycleBinPolicyRuleStandardSnapshots) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDurationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type SnapshotRecycleBinPolicySystemRule struct {
+	// (Required) The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// (Output)
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots []SnapshotRecycleBinPolicySystemRuleStandardSnapshot `pulumi:"standardSnapshots"`
+}
+
+// SnapshotRecycleBinPolicySystemRuleInput is an input type that accepts SnapshotRecycleBinPolicySystemRuleArgs and SnapshotRecycleBinPolicySystemRuleOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicySystemRuleInput` via:
+//
+//	SnapshotRecycleBinPolicySystemRuleArgs{...}
+type SnapshotRecycleBinPolicySystemRuleInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicySystemRuleOutput() SnapshotRecycleBinPolicySystemRuleOutput
+	ToSnapshotRecycleBinPolicySystemRuleOutputWithContext(context.Context) SnapshotRecycleBinPolicySystemRuleOutput
+}
+
+type SnapshotRecycleBinPolicySystemRuleArgs struct {
+	// (Required) The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Output)
+	// The rule config for standard snapshots.
+	// Structure is documented below.
+	StandardSnapshots SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput `pulumi:"standardSnapshots"`
+}
+
+func (SnapshotRecycleBinPolicySystemRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleArgs) ToSnapshotRecycleBinPolicySystemRuleOutput() SnapshotRecycleBinPolicySystemRuleOutput {
+	return i.ToSnapshotRecycleBinPolicySystemRuleOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleArgs) ToSnapshotRecycleBinPolicySystemRuleOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicySystemRuleOutput)
+}
+
+// SnapshotRecycleBinPolicySystemRuleArrayInput is an input type that accepts SnapshotRecycleBinPolicySystemRuleArray and SnapshotRecycleBinPolicySystemRuleArrayOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicySystemRuleArrayInput` via:
+//
+//	SnapshotRecycleBinPolicySystemRuleArray{ SnapshotRecycleBinPolicySystemRuleArgs{...} }
+type SnapshotRecycleBinPolicySystemRuleArrayInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicySystemRuleArrayOutput() SnapshotRecycleBinPolicySystemRuleArrayOutput
+	ToSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(context.Context) SnapshotRecycleBinPolicySystemRuleArrayOutput
+}
+
+type SnapshotRecycleBinPolicySystemRuleArray []SnapshotRecycleBinPolicySystemRuleInput
+
+func (SnapshotRecycleBinPolicySystemRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleArray) ToSnapshotRecycleBinPolicySystemRuleArrayOutput() SnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return i.ToSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleArray) ToSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicySystemRuleArrayOutput)
+}
+
+type SnapshotRecycleBinPolicySystemRuleOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicySystemRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleOutput) ToSnapshotRecycleBinPolicySystemRuleOutput() SnapshotRecycleBinPolicySystemRuleOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleOutput) ToSnapshotRecycleBinPolicySystemRuleOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleOutput {
+	return o
+}
+
+// (Required) The identifier for this object. Format specified above.
+func (o SnapshotRecycleBinPolicySystemRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotRecycleBinPolicySystemRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The rule config for standard snapshots.
+// Structure is documented below.
+func (o SnapshotRecycleBinPolicySystemRuleOutput) StandardSnapshots() SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return o.ApplyT(func(v SnapshotRecycleBinPolicySystemRule) []SnapshotRecycleBinPolicySystemRuleStandardSnapshot {
+		return v.StandardSnapshots
+	}).(SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput)
+}
+
+type SnapshotRecycleBinPolicySystemRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicySystemRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotRecycleBinPolicySystemRule)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleArrayOutput) ToSnapshotRecycleBinPolicySystemRuleArrayOutput() SnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleArrayOutput) ToSnapshotRecycleBinPolicySystemRuleArrayOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleArrayOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleArrayOutput) Index(i pulumi.IntInput) SnapshotRecycleBinPolicySystemRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnapshotRecycleBinPolicySystemRule {
+		return vs[0].([]SnapshotRecycleBinPolicySystemRule)[vs[1].(int)]
+	}).(SnapshotRecycleBinPolicySystemRuleOutput)
+}
+
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshot struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays *int `pulumi:"retentionDurationDays"`
+}
+
+// SnapshotRecycleBinPolicySystemRuleStandardSnapshotInput is an input type that accepts SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs and SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicySystemRuleStandardSnapshotInput` via:
+//
+//	SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs{...}
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshotInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput() SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput
+	ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(context.Context) SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput
+}
+
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs struct {
+	// The retention duration for snapshots in the recycle bin after which the
+	// snapshots are automatically deleted from recycle bin.
+	RetentionDurationDays pulumi.IntPtrInput `pulumi:"retentionDurationDays"`
+}
+
+func (SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput() SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return i.ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput)
+}
+
+// SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput is an input type that accepts SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray and SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput values.
+// You can construct a concrete instance of `SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput` via:
+//
+//	SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray{ SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs{...} }
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput() SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput
+	ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(context.Context) SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput
+}
+
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray []SnapshotRecycleBinPolicySystemRuleStandardSnapshotInput
+
+func (SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput() SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return i.ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput)
+}
+
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput() SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return o
+}
+
+// The retention duration for snapshots in the recycle bin after which the
+// snapshots are automatically deleted from recycle bin.
+func (o SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput) RetentionDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SnapshotRecycleBinPolicySystemRuleStandardSnapshot) *int { return v.RetentionDurationDays }).(pulumi.IntPtrOutput)
+}
+
+type SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SnapshotRecycleBinPolicySystemRuleStandardSnapshot)(nil)).Elem()
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput() SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) ToSnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutputWithContext(ctx context.Context) SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput {
+	return o
+}
+
+func (o SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput) Index(i pulumi.IntInput) SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SnapshotRecycleBinPolicySystemRuleStandardSnapshot {
+		return vs[0].([]SnapshotRecycleBinPolicySystemRuleStandardSnapshot)[vs[1].(int)]
+	}).(SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput)
+}
+
 type SnapshotSettingsStorageLocation struct {
 	// When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
 	// locations listed in this field. Keys are Cloud Storage bucket locations.
@@ -54126,6 +55388,11 @@ type URLMapDefaultRouteAction struct {
 	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
 	// Structure is documented below.
 	CorsPolicy *URLMapDefaultRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy *URLMapDefaultRouteActionDynamicCompressionPolicy `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -54133,6 +55400,10 @@ type URLMapDefaultRouteAction struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy *URLMapDefaultRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -54189,6 +55460,11 @@ type URLMapDefaultRouteActionArgs struct {
 	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
 	// Structure is documented below.
 	CorsPolicy URLMapDefaultRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy URLMapDefaultRouteActionDynamicCompressionPolicyPtrInput `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -54196,6 +55472,10 @@ type URLMapDefaultRouteActionArgs struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy URLMapDefaultRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -54323,6 +55603,16 @@ func (o URLMapDefaultRouteActionOutput) CorsPolicy() URLMapDefaultRouteActionCor
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionCorsPolicy { return v.CorsPolicy }).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) DynamicCompressionPolicy() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionDynamicCompressionPolicy {
+		return v.DynamicCompressionPolicy
+	}).(URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -54333,6 +55623,15 @@ func (o URLMapDefaultRouteActionOutput) FaultInjectionPolicy() URLMapDefaultRout
 	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) ImageOptimizationPolicy() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionImageOptimizationPolicy {
+		return v.ImageOptimizationPolicy
+	}).(URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -54441,6 +55740,19 @@ func (o URLMapDefaultRouteActionPtrOutput) CorsPolicy() URLMapDefaultRouteAction
 	}).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) DynamicCompressionPolicy() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionDynamicCompressionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicCompressionPolicy
+	}).(URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -54454,6 +55766,18 @@ func (o URLMapDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapDefaultR
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) ImageOptimizationPolicy() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionImageOptimizationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ImageOptimizationPolicy
+	}).(URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -56734,6 +58058,151 @@ func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+type URLMapDefaultRouteActionDynamicCompressionPolicy struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode *string `pulumi:"compressionMode"`
+}
+
+// URLMapDefaultRouteActionDynamicCompressionPolicyInput is an input type that accepts URLMapDefaultRouteActionDynamicCompressionPolicyArgs and URLMapDefaultRouteActionDynamicCompressionPolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionDynamicCompressionPolicyInput` via:
+//
+//	URLMapDefaultRouteActionDynamicCompressionPolicyArgs{...}
+type URLMapDefaultRouteActionDynamicCompressionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionDynamicCompressionPolicyOutput() URLMapDefaultRouteActionDynamicCompressionPolicyOutput
+	ToURLMapDefaultRouteActionDynamicCompressionPolicyOutputWithContext(context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyOutput
+}
+
+type URLMapDefaultRouteActionDynamicCompressionPolicyArgs struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode pulumi.StringPtrInput `pulumi:"compressionMode"`
+}
+
+func (URLMapDefaultRouteActionDynamicCompressionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapDefaultRouteActionDynamicCompressionPolicyOutput() URLMapDefaultRouteActionDynamicCompressionPolicyOutput {
+	return i.ToURLMapDefaultRouteActionDynamicCompressionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapDefaultRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionDynamicCompressionPolicyOutput)
+}
+
+func (i URLMapDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionDynamicCompressionPolicyOutput).ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionDynamicCompressionPolicyPtrInput is an input type that accepts URLMapDefaultRouteActionDynamicCompressionPolicyArgs, URLMapDefaultRouteActionDynamicCompressionPolicyPtr and URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionDynamicCompressionPolicyPtrInput` via:
+//
+//	        URLMapDefaultRouteActionDynamicCompressionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionDynamicCompressionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput
+	ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput
+}
+
+type urlmapDefaultRouteActionDynamicCompressionPolicyPtrType URLMapDefaultRouteActionDynamicCompressionPolicyArgs
+
+func URLMapDefaultRouteActionDynamicCompressionPolicyPtr(v *URLMapDefaultRouteActionDynamicCompressionPolicyArgs) URLMapDefaultRouteActionDynamicCompressionPolicyPtrInput {
+	return (*urlmapDefaultRouteActionDynamicCompressionPolicyPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionDynamicCompressionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionDynamicCompressionPolicyPtrType) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionDynamicCompressionPolicyPtrType) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+type URLMapDefaultRouteActionDynamicCompressionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionDynamicCompressionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapDefaultRouteActionDynamicCompressionPolicyOutput() URLMapDefaultRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapDefaultRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionDynamicCompressionPolicy) *URLMapDefaultRouteActionDynamicCompressionPolicy {
+		return &v
+	}).(URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionDynamicCompressionPolicy) *string { return v.CompressionMode }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput) Elem() URLMapDefaultRouteActionDynamicCompressionPolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionDynamicCompressionPolicy) URLMapDefaultRouteActionDynamicCompressionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionDynamicCompressionPolicy
+		return ret
+	}).(URLMapDefaultRouteActionDynamicCompressionPolicyOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionDynamicCompressionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapDefaultRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	// Structure is documented below.
@@ -57393,6 +58862,155 @@ func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Se
 			return nil
 		}
 		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionImageOptimizationPolicy struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation *string `pulumi:"queryParameterInterpretation"`
+}
+
+// URLMapDefaultRouteActionImageOptimizationPolicyInput is an input type that accepts URLMapDefaultRouteActionImageOptimizationPolicyArgs and URLMapDefaultRouteActionImageOptimizationPolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionImageOptimizationPolicyInput` via:
+//
+//	URLMapDefaultRouteActionImageOptimizationPolicyArgs{...}
+type URLMapDefaultRouteActionImageOptimizationPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionImageOptimizationPolicyOutput() URLMapDefaultRouteActionImageOptimizationPolicyOutput
+	ToURLMapDefaultRouteActionImageOptimizationPolicyOutputWithContext(context.Context) URLMapDefaultRouteActionImageOptimizationPolicyOutput
+}
+
+type URLMapDefaultRouteActionImageOptimizationPolicyArgs struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation pulumi.StringPtrInput `pulumi:"queryParameterInterpretation"`
+}
+
+func (URLMapDefaultRouteActionImageOptimizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapDefaultRouteActionImageOptimizationPolicyOutput() URLMapDefaultRouteActionImageOptimizationPolicyOutput {
+	return i.ToURLMapDefaultRouteActionImageOptimizationPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapDefaultRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionImageOptimizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionImageOptimizationPolicyOutput)
+}
+
+func (i URLMapDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionImageOptimizationPolicyOutput).ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionImageOptimizationPolicyPtrInput is an input type that accepts URLMapDefaultRouteActionImageOptimizationPolicyArgs, URLMapDefaultRouteActionImageOptimizationPolicyPtr and URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionImageOptimizationPolicyPtrInput` via:
+//
+//	        URLMapDefaultRouteActionImageOptimizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionImageOptimizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput
+	ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Context) URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput
+}
+
+type urlmapDefaultRouteActionImageOptimizationPolicyPtrType URLMapDefaultRouteActionImageOptimizationPolicyArgs
+
+func URLMapDefaultRouteActionImageOptimizationPolicyPtr(v *URLMapDefaultRouteActionImageOptimizationPolicyArgs) URLMapDefaultRouteActionImageOptimizationPolicyPtrInput {
+	return (*urlmapDefaultRouteActionImageOptimizationPolicyPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionImageOptimizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionImageOptimizationPolicyPtrType) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionImageOptimizationPolicyPtrType) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+type URLMapDefaultRouteActionImageOptimizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionImageOptimizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapDefaultRouteActionImageOptimizationPolicyOutput() URLMapDefaultRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapDefaultRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionImageOptimizationPolicy) *URLMapDefaultRouteActionImageOptimizationPolicy {
+		return &v
+	}).(URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapDefaultRouteActionImageOptimizationPolicyOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionImageOptimizationPolicy) *string { return v.QueryParameterInterpretation }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput) ToURLMapDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput) Elem() URLMapDefaultRouteActionImageOptimizationPolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionImageOptimizationPolicy) URLMapDefaultRouteActionImageOptimizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionImageOptimizationPolicy
+		return ret
+	}).(URLMapDefaultRouteActionImageOptimizationPolicyOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionImageOptimizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameterInterpretation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -60593,6 +62211,11 @@ type URLMapPathMatcherDefaultRouteAction struct {
 	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
 	// Structure is documented below.
 	CorsPolicy *URLMapPathMatcherDefaultRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -60600,6 +62223,10 @@ type URLMapPathMatcherDefaultRouteAction struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -60656,6 +62283,11 @@ type URLMapPathMatcherDefaultRouteActionArgs struct {
 	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
 	// Structure is documented below.
 	CorsPolicy URLMapPathMatcherDefaultRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrInput `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -60663,6 +62295,10 @@ type URLMapPathMatcherDefaultRouteActionArgs struct {
 	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -60794,6 +62430,16 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) CorsPolicy() URLMapPathMatche
 	}).(URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapPathMatcherDefaultRouteActionOutput) DynamicCompressionPolicy() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy {
+		return v.DynamicCompressionPolicy
+	}).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -60804,6 +62450,15 @@ func (o URLMapPathMatcherDefaultRouteActionOutput) FaultInjectionPolicy() URLMap
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapPathMatcherDefaultRouteActionOutput) ImageOptimizationPolicy() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy {
+		return v.ImageOptimizationPolicy
+	}).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -60918,6 +62573,19 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) CorsPolicy() URLMapPathMat
 	}).(URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapPathMatcherDefaultRouteActionPtrOutput) DynamicCompressionPolicy() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicCompressionPolicy
+	}).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
 // As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
 // percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -60931,6 +62599,18 @@ func (o URLMapPathMatcherDefaultRouteActionPtrOutput) FaultInjectionPolicy() URL
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapPathMatcherDefaultRouteActionPtrOutput) ImageOptimizationPolicy() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteAction) *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ImageOptimizationPolicy
+	}).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -63225,6 +64905,151 @@ func (o URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
+type URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode *string `pulumi:"compressionMode"`
+}
+
+// URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyInput is an input type that accepts URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs and URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyInput` via:
+//
+//	URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs{...}
+type URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput
+	ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutputWithContext(context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput
+}
+
+type URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode pulumi.StringPtrInput `pulumi:"compressionMode"`
+}
+
+func (URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput)
+}
+
+func (i URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput).ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrInput is an input type that accepts URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs, URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtr and URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput
+	ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput
+}
+
+type urlmapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrType URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs
+
+func URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtr(v *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrInput {
+	return (*urlmapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrType) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrType) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy) *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy {
+		return &v
+	}).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy) *string { return v.CompressionMode }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput) Elem() URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy) URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy
+		return ret
+	}).(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	// Structure is documented below.
@@ -63886,6 +65711,157 @@ func (o URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPt
 			return nil
 		}
 		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation *string `pulumi:"queryParameterInterpretation"`
+}
+
+// URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyInput is an input type that accepts URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs and URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyInput` via:
+//
+//	URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs{...}
+type URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput
+	ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutputWithContext(context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput
+}
+
+type URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation pulumi.StringPtrInput `pulumi:"queryParameterInterpretation"`
+}
+
+func (URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput)
+}
+
+func (i URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput).ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput is an input type that accepts URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs, URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtr and URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput
+	ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput
+}
+
+type urlmapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrType URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs
+
+func URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtr(v *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput {
+	return (*urlmapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrType) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrType) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy) *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy {
+		return &v
+	}).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy) *string {
+		return v.QueryParameterInterpretation
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput) ToURLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput) Elem() URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy) URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy
+		return ret
+	}).(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameterInterpretation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -66888,6 +68864,11 @@ type URLMapPathMatcherPathRuleRouteAction struct {
 	// Recommendation for Cross Origin Resource Sharing
 	// Structure is documented below.
 	CorsPolicy *URLMapPathMatcherPathRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
 	// when clients send requests to a backend service, delays can be introduced by
@@ -66897,6 +68878,10 @@ type URLMapPathMatcherPathRuleRouteAction struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -66957,6 +68942,11 @@ type URLMapPathMatcherPathRuleRouteActionArgs struct {
 	// Recommendation for Cross Origin Resource Sharing
 	// Structure is documented below.
 	CorsPolicy URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrInput `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
 	// when clients send requests to a backend service, delays can be introduced by
@@ -66966,6 +68956,10 @@ type URLMapPathMatcherPathRuleRouteActionArgs struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -67101,6 +69095,16 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) CorsPolicy() URLMapPathMatch
 	}).(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) DynamicCompressionPolicy() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy {
+		return v.DynamicCompressionPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the
 // resiliency of clients to backend service failure. As part of fault injection,
 // when clients send requests to a backend service, delays can be introduced by
@@ -67113,6 +69117,15 @@ func (o URLMapPathMatcherPathRuleRouteActionOutput) FaultInjectionPolicy() URLMa
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionOutput) ImageOptimizationPolicy() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy {
+		return v.ImageOptimizationPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -67231,6 +69244,19 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) CorsPolicy() URLMapPathMa
 	}).(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) DynamicCompressionPolicy() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicCompressionPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the
 // resiliency of clients to backend service failure. As part of fault injection,
 // when clients send requests to a backend service, delays can be introduced by
@@ -67246,6 +69272,18 @@ func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) FaultInjectionPolicy() UR
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapPathMatcherPathRuleRouteActionPtrOutput) ImageOptimizationPolicy() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteAction) *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ImageOptimizationPolicy
+	}).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -69544,6 +71582,151 @@ func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+type URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode *string `pulumi:"compressionMode"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs and URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs{...}
+type URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput
+	ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode pulumi.StringPtrInput `pulumi:"compressionMode"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput).ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs, URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtr and URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrType URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs
+
+func URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtr(v *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy) *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy) *string { return v.CompressionMode }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy) URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	// Structure is documented below.
@@ -70205,6 +72388,157 @@ func (o URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayP
 			return nil
 		}
 		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation *string `pulumi:"queryParameterInterpretation"`
+}
+
+// URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs and URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyInput` via:
+//
+//	URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs{...}
+type URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput
+	ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput
+}
+
+type URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation pulumi.StringPtrInput `pulumi:"queryParameterInterpretation"`
+}
+
+func (URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput)
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput).ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput is an input type that accepts URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs, URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtr and URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput
+	ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput
+}
+
+type urlmapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrType URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs
+
+func URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtr(v *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput {
+	return (*urlmapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrType) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy) *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy {
+		return &v
+	}).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy) *string {
+		return v.QueryParameterInterpretation
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput) ToURLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput) Elem() URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy) URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy
+		return ret
+	}).(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameterInterpretation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -74585,6 +76919,11 @@ type URLMapPathMatcherRouteRuleRouteAction struct {
 	// Recommendation for Cross Origin Resource Sharing
 	// Structure is documented below.
 	CorsPolicy *URLMapPathMatcherRouteRuleRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
 	// when clients send requests to a backend service, delays can be introduced by
@@ -74594,6 +76933,10 @@ type URLMapPathMatcherRouteRuleRouteAction struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -74654,6 +76997,11 @@ type URLMapPathMatcherRouteRuleRouteActionArgs struct {
 	// Recommendation for Cross Origin Resource Sharing
 	// Structure is documented below.
 	CorsPolicy URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// (Optional, Beta)
+	// Dynamic compression policy for this URL Map's route. Available only for
+	// Global EXTERNAL_MANAGED load balancer schemes.
+	// Structure is documented below.
+	DynamicCompressionPolicy URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrInput `pulumi:"dynamicCompressionPolicy"`
 	// The specification for fault injection introduced into traffic to test the
 	// resiliency of clients to backend service failure. As part of fault injection,
 	// when clients send requests to a backend service, delays can be introduced by
@@ -74663,6 +77011,10 @@ type URLMapPathMatcherRouteRuleRouteActionArgs struct {
 	// ignored by clients that are configured with a fault_injection_policy.
 	// Structure is documented below.
 	FaultInjectionPolicy URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// (Optional, Beta)
+	// Specifies the policy for optimizing images returned in the HTTP response.
+	// Structure is documented below.
+	ImageOptimizationPolicy URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput `pulumi:"imageOptimizationPolicy"`
 	// Specifies the maximum duration (timeout) for streams on the selected route.
 	// Unlike the `Timeout` field where the timeout duration starts from the time the request
 	// has been fully processed (known as end-of-stream), the duration in this field
@@ -74798,6 +77150,16 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) CorsPolicy() URLMapPathMatc
 	}).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) DynamicCompressionPolicy() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy {
+		return v.DynamicCompressionPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the
 // resiliency of clients to backend service failure. As part of fault injection,
 // when clients send requests to a backend service, delays can be introduced by
@@ -74810,6 +77172,15 @@ func (o URLMapPathMatcherRouteRuleRouteActionOutput) FaultInjectionPolicy() URLM
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionOutput) ImageOptimizationPolicy() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy {
+		return v.ImageOptimizationPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -74928,6 +77299,19 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) CorsPolicy() URLMapPathM
 	}).(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
 }
 
+// (Optional, Beta)
+// Dynamic compression policy for this URL Map's route. Available only for
+// Global EXTERNAL_MANAGED load balancer schemes.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) DynamicCompressionPolicy() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicCompressionPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
 // The specification for fault injection introduced into traffic to test the
 // resiliency of clients to backend service failure. As part of fault injection,
 // when clients send requests to a backend service, delays can be introduced by
@@ -74943,6 +77327,18 @@ func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) FaultInjectionPolicy() U
 		}
 		return v.FaultInjectionPolicy
 	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// (Optional, Beta)
+// Specifies the policy for optimizing images returned in the HTTP response.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionPtrOutput) ImageOptimizationPolicy() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteAction) *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ImageOptimizationPolicy
+	}).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput)
 }
 
 // Specifies the maximum duration (timeout) for streams on the selected route.
@@ -77241,6 +79637,153 @@ func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) MaxAge() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+type URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode *string `pulumi:"compressionMode"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs and URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput
+	ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs struct {
+	// Compress text responses using Brotli or gzip compression, based on
+	// the client's Accept-Encoding header.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
+	CompressionMode pulumi.StringPtrInput `pulumi:"compressionMode"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput).ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs, URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtr and URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrType URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs
+
+func URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtr(v *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy) *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy) *string {
+		return v.CompressionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy) URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on
+// the client's Accept-Encoding header.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
+func (o URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput) CompressionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompressionMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy struct {
 	// The specification for how client requests are aborted as part of fault injection.
 	// Structure is documented below.
@@ -77902,6 +80445,157 @@ func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay
 			return nil
 		}
 		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation *string `pulumi:"queryParameterInterpretation"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs and URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput
+	ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs struct {
+	// Controls whether presets or control parameters specified as URL query
+	// parameters are used to optimize the image. If not specified, the default
+	// value is DISABLED.
+	// Possible values are: `DISABLED`, `ENABLED`.
+	QueryParameterInterpretation pulumi.StringPtrInput `pulumi:"queryParameterInterpretation"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput).ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs, URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtr and URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrType URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs
+
+func URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtr(v *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy) *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy) *string {
+		return v.QueryParameterInterpretation
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy) URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput)
+}
+
+// Controls whether presets or control parameters specified as URL query
+// parameters are used to optimize the image. If not specified, the default
+// value is DISABLED.
+// Possible values are: `DISABLED`, `ENABLED`.
+func (o URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput) QueryParameterInterpretation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameterInterpretation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -85471,2096 +88165,17 @@ func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) Index(i pulumi.I
 	}).(GetBackendServiceConsistentHashHttpCookyTtlOutput)
 }
 
-type GetBackendServiceCustomMetric struct {
-	// If true, the metric data is not used for load balancing.
-	DryRun bool `pulumi:"dryRun"`
-	// The name of the Backend Service.
-	//
-	// ***
-	Name string `pulumi:"name"`
-}
-
-// GetBackendServiceCustomMetricInput is an input type that accepts GetBackendServiceCustomMetricArgs and GetBackendServiceCustomMetricOutput values.
-// You can construct a concrete instance of `GetBackendServiceCustomMetricInput` via:
-//
-//	GetBackendServiceCustomMetricArgs{...}
-type GetBackendServiceCustomMetricInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceCustomMetricOutput() GetBackendServiceCustomMetricOutput
-	ToGetBackendServiceCustomMetricOutputWithContext(context.Context) GetBackendServiceCustomMetricOutput
-}
-
-type GetBackendServiceCustomMetricArgs struct {
-	// If true, the metric data is not used for load balancing.
-	DryRun pulumi.BoolInput `pulumi:"dryRun"`
-	// The name of the Backend Service.
-	//
-	// ***
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetBackendServiceCustomMetricArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceCustomMetric)(nil)).Elem()
-}
-
-func (i GetBackendServiceCustomMetricArgs) ToGetBackendServiceCustomMetricOutput() GetBackendServiceCustomMetricOutput {
-	return i.ToGetBackendServiceCustomMetricOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceCustomMetricArgs) ToGetBackendServiceCustomMetricOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCustomMetricOutput)
-}
-
-// GetBackendServiceCustomMetricArrayInput is an input type that accepts GetBackendServiceCustomMetricArray and GetBackendServiceCustomMetricArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceCustomMetricArrayInput` via:
-//
-//	GetBackendServiceCustomMetricArray{ GetBackendServiceCustomMetricArgs{...} }
-type GetBackendServiceCustomMetricArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceCustomMetricArrayOutput() GetBackendServiceCustomMetricArrayOutput
-	ToGetBackendServiceCustomMetricArrayOutputWithContext(context.Context) GetBackendServiceCustomMetricArrayOutput
-}
-
-type GetBackendServiceCustomMetricArray []GetBackendServiceCustomMetricInput
-
-func (GetBackendServiceCustomMetricArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceCustomMetric)(nil)).Elem()
-}
-
-func (i GetBackendServiceCustomMetricArray) ToGetBackendServiceCustomMetricArrayOutput() GetBackendServiceCustomMetricArrayOutput {
-	return i.ToGetBackendServiceCustomMetricArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceCustomMetricArray) ToGetBackendServiceCustomMetricArrayOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCustomMetricArrayOutput)
-}
-
-type GetBackendServiceCustomMetricOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceCustomMetricOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceCustomMetric)(nil)).Elem()
-}
-
-func (o GetBackendServiceCustomMetricOutput) ToGetBackendServiceCustomMetricOutput() GetBackendServiceCustomMetricOutput {
-	return o
-}
-
-func (o GetBackendServiceCustomMetricOutput) ToGetBackendServiceCustomMetricOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricOutput {
-	return o
-}
-
-// If true, the metric data is not used for load balancing.
-func (o GetBackendServiceCustomMetricOutput) DryRun() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetBackendServiceCustomMetric) bool { return v.DryRun }).(pulumi.BoolOutput)
-}
-
-// The name of the Backend Service.
-//
-// ***
-func (o GetBackendServiceCustomMetricOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceCustomMetric) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceCustomMetricArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceCustomMetricArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceCustomMetric)(nil)).Elem()
-}
-
-func (o GetBackendServiceCustomMetricArrayOutput) ToGetBackendServiceCustomMetricArrayOutput() GetBackendServiceCustomMetricArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceCustomMetricArrayOutput) ToGetBackendServiceCustomMetricArrayOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceCustomMetricArrayOutput) Index(i pulumi.IntInput) GetBackendServiceCustomMetricOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceCustomMetric {
-		return vs[0].([]GetBackendServiceCustomMetric)[vs[1].(int)]
-	}).(GetBackendServiceCustomMetricOutput)
-}
-
-type GetBackendServiceDynamicForwarding struct {
-	// IP:PORT based dynamic forwarding configuration.
-	IpPortSelections []GetBackendServiceDynamicForwardingIpPortSelection `pulumi:"ipPortSelections"`
-}
-
-// GetBackendServiceDynamicForwardingInput is an input type that accepts GetBackendServiceDynamicForwardingArgs and GetBackendServiceDynamicForwardingOutput values.
-// You can construct a concrete instance of `GetBackendServiceDynamicForwardingInput` via:
-//
-//	GetBackendServiceDynamicForwardingArgs{...}
-type GetBackendServiceDynamicForwardingInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceDynamicForwardingOutput() GetBackendServiceDynamicForwardingOutput
-	ToGetBackendServiceDynamicForwardingOutputWithContext(context.Context) GetBackendServiceDynamicForwardingOutput
-}
-
-type GetBackendServiceDynamicForwardingArgs struct {
-	// IP:PORT based dynamic forwarding configuration.
-	IpPortSelections GetBackendServiceDynamicForwardingIpPortSelectionArrayInput `pulumi:"ipPortSelections"`
-}
-
-func (GetBackendServiceDynamicForwardingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceDynamicForwarding)(nil)).Elem()
-}
-
-func (i GetBackendServiceDynamicForwardingArgs) ToGetBackendServiceDynamicForwardingOutput() GetBackendServiceDynamicForwardingOutput {
-	return i.ToGetBackendServiceDynamicForwardingOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceDynamicForwardingArgs) ToGetBackendServiceDynamicForwardingOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingOutput)
-}
-
-// GetBackendServiceDynamicForwardingArrayInput is an input type that accepts GetBackendServiceDynamicForwardingArray and GetBackendServiceDynamicForwardingArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceDynamicForwardingArrayInput` via:
-//
-//	GetBackendServiceDynamicForwardingArray{ GetBackendServiceDynamicForwardingArgs{...} }
-type GetBackendServiceDynamicForwardingArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceDynamicForwardingArrayOutput() GetBackendServiceDynamicForwardingArrayOutput
-	ToGetBackendServiceDynamicForwardingArrayOutputWithContext(context.Context) GetBackendServiceDynamicForwardingArrayOutput
-}
-
-type GetBackendServiceDynamicForwardingArray []GetBackendServiceDynamicForwardingInput
-
-func (GetBackendServiceDynamicForwardingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceDynamicForwarding)(nil)).Elem()
-}
-
-func (i GetBackendServiceDynamicForwardingArray) ToGetBackendServiceDynamicForwardingArrayOutput() GetBackendServiceDynamicForwardingArrayOutput {
-	return i.ToGetBackendServiceDynamicForwardingArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceDynamicForwardingArray) ToGetBackendServiceDynamicForwardingArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingArrayOutput)
-}
-
-type GetBackendServiceDynamicForwardingOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceDynamicForwardingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceDynamicForwarding)(nil)).Elem()
-}
-
-func (o GetBackendServiceDynamicForwardingOutput) ToGetBackendServiceDynamicForwardingOutput() GetBackendServiceDynamicForwardingOutput {
-	return o
-}
-
-func (o GetBackendServiceDynamicForwardingOutput) ToGetBackendServiceDynamicForwardingOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingOutput {
-	return o
-}
-
-// IP:PORT based dynamic forwarding configuration.
-func (o GetBackendServiceDynamicForwardingOutput) IpPortSelections() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceDynamicForwarding) []GetBackendServiceDynamicForwardingIpPortSelection {
-		return v.IpPortSelections
-	}).(GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput)
-}
-
-type GetBackendServiceDynamicForwardingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceDynamicForwardingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceDynamicForwarding)(nil)).Elem()
-}
-
-func (o GetBackendServiceDynamicForwardingArrayOutput) ToGetBackendServiceDynamicForwardingArrayOutput() GetBackendServiceDynamicForwardingArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceDynamicForwardingArrayOutput) ToGetBackendServiceDynamicForwardingArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceDynamicForwardingArrayOutput) Index(i pulumi.IntInput) GetBackendServiceDynamicForwardingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceDynamicForwarding {
-		return vs[0].([]GetBackendServiceDynamicForwarding)[vs[1].(int)]
-	}).(GetBackendServiceDynamicForwardingOutput)
-}
-
-type GetBackendServiceDynamicForwardingIpPortSelection struct {
-	// A boolean flag enabling IP:PORT based dynamic forwarding.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetBackendServiceDynamicForwardingIpPortSelectionInput is an input type that accepts GetBackendServiceDynamicForwardingIpPortSelectionArgs and GetBackendServiceDynamicForwardingIpPortSelectionOutput values.
-// You can construct a concrete instance of `GetBackendServiceDynamicForwardingIpPortSelectionInput` via:
-//
-//	GetBackendServiceDynamicForwardingIpPortSelectionArgs{...}
-type GetBackendServiceDynamicForwardingIpPortSelectionInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceDynamicForwardingIpPortSelectionOutput() GetBackendServiceDynamicForwardingIpPortSelectionOutput
-	ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(context.Context) GetBackendServiceDynamicForwardingIpPortSelectionOutput
-}
-
-type GetBackendServiceDynamicForwardingIpPortSelectionArgs struct {
-	// A boolean flag enabling IP:PORT based dynamic forwarding.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetBackendServiceDynamicForwardingIpPortSelectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
-}
-
-func (i GetBackendServiceDynamicForwardingIpPortSelectionArgs) ToGetBackendServiceDynamicForwardingIpPortSelectionOutput() GetBackendServiceDynamicForwardingIpPortSelectionOutput {
-	return i.ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceDynamicForwardingIpPortSelectionArgs) ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingIpPortSelectionOutput)
-}
-
-// GetBackendServiceDynamicForwardingIpPortSelectionArrayInput is an input type that accepts GetBackendServiceDynamicForwardingIpPortSelectionArray and GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceDynamicForwardingIpPortSelectionArrayInput` via:
-//
-//	GetBackendServiceDynamicForwardingIpPortSelectionArray{ GetBackendServiceDynamicForwardingIpPortSelectionArgs{...} }
-type GetBackendServiceDynamicForwardingIpPortSelectionArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput
-	ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(context.Context) GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput
-}
-
-type GetBackendServiceDynamicForwardingIpPortSelectionArray []GetBackendServiceDynamicForwardingIpPortSelectionInput
-
-func (GetBackendServiceDynamicForwardingIpPortSelectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
-}
-
-func (i GetBackendServiceDynamicForwardingIpPortSelectionArray) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
-	return i.ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceDynamicForwardingIpPortSelectionArray) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput)
-}
-
-type GetBackendServiceDynamicForwardingIpPortSelectionOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceDynamicForwardingIpPortSelectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
-}
-
-func (o GetBackendServiceDynamicForwardingIpPortSelectionOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionOutput() GetBackendServiceDynamicForwardingIpPortSelectionOutput {
-	return o
-}
-
-func (o GetBackendServiceDynamicForwardingIpPortSelectionOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionOutput {
-	return o
-}
-
-// A boolean flag enabling IP:PORT based dynamic forwarding.
-func (o GetBackendServiceDynamicForwardingIpPortSelectionOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetBackendServiceDynamicForwardingIpPortSelection) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
-}
-
-func (o GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) Index(i pulumi.IntInput) GetBackendServiceDynamicForwardingIpPortSelectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceDynamicForwardingIpPortSelection {
-		return vs[0].([]GetBackendServiceDynamicForwardingIpPortSelection)[vs[1].(int)]
-	}).(GetBackendServiceDynamicForwardingIpPortSelectionOutput)
-}
-
-type GetBackendServiceIap struct {
-	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
-	Enabled bool `pulumi:"enabled"`
-	// OAuth2 Client ID for IAP
-	Oauth2ClientId string `pulumi:"oauth2ClientId"`
-	// OAuth2 Client ID for IAP
-	Oauth2ClientIdWo string `pulumi:"oauth2ClientIdWo"`
-	// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	Oauth2ClientIdWoVersion string `pulumi:"oauth2ClientIdWoVersion"`
-	// OAuth2 Client Secret for IAP
-	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
-	// OAuth2 Client Secret SHA-256 for IAP
-	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
-	// OAuth2 Client Secret for IAP
-	Oauth2ClientSecretWo string `pulumi:"oauth2ClientSecretWo"`
-	// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	Oauth2ClientSecretWoVersion string `pulumi:"oauth2ClientSecretWoVersion"`
-}
-
-// GetBackendServiceIapInput is an input type that accepts GetBackendServiceIapArgs and GetBackendServiceIapOutput values.
-// You can construct a concrete instance of `GetBackendServiceIapInput` via:
-//
-//	GetBackendServiceIapArgs{...}
-type GetBackendServiceIapInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceIapOutput() GetBackendServiceIapOutput
-	ToGetBackendServiceIapOutputWithContext(context.Context) GetBackendServiceIapOutput
-}
-
-type GetBackendServiceIapArgs struct {
-	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// OAuth2 Client ID for IAP
-	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
-	// OAuth2 Client ID for IAP
-	Oauth2ClientIdWo pulumi.StringInput `pulumi:"oauth2ClientIdWo"`
-	// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	Oauth2ClientIdWoVersion pulumi.StringInput `pulumi:"oauth2ClientIdWoVersion"`
-	// OAuth2 Client Secret for IAP
-	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
-	// OAuth2 Client Secret SHA-256 for IAP
-	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
-	// OAuth2 Client Secret for IAP
-	Oauth2ClientSecretWo pulumi.StringInput `pulumi:"oauth2ClientSecretWo"`
-	// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-	Oauth2ClientSecretWoVersion pulumi.StringInput `pulumi:"oauth2ClientSecretWoVersion"`
-}
-
-func (GetBackendServiceIapArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceIap)(nil)).Elem()
-}
-
-func (i GetBackendServiceIapArgs) ToGetBackendServiceIapOutput() GetBackendServiceIapOutput {
-	return i.ToGetBackendServiceIapOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceIapArgs) ToGetBackendServiceIapOutputWithContext(ctx context.Context) GetBackendServiceIapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceIapOutput)
-}
-
-// GetBackendServiceIapArrayInput is an input type that accepts GetBackendServiceIapArray and GetBackendServiceIapArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceIapArrayInput` via:
-//
-//	GetBackendServiceIapArray{ GetBackendServiceIapArgs{...} }
-type GetBackendServiceIapArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceIapArrayOutput() GetBackendServiceIapArrayOutput
-	ToGetBackendServiceIapArrayOutputWithContext(context.Context) GetBackendServiceIapArrayOutput
-}
-
-type GetBackendServiceIapArray []GetBackendServiceIapInput
-
-func (GetBackendServiceIapArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceIap)(nil)).Elem()
-}
-
-func (i GetBackendServiceIapArray) ToGetBackendServiceIapArrayOutput() GetBackendServiceIapArrayOutput {
-	return i.ToGetBackendServiceIapArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceIapArray) ToGetBackendServiceIapArrayOutputWithContext(ctx context.Context) GetBackendServiceIapArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceIapArrayOutput)
-}
-
-type GetBackendServiceIapOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceIapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceIap)(nil)).Elem()
-}
-
-func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutput() GetBackendServiceIapOutput {
-	return o
-}
-
-func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutputWithContext(ctx context.Context) GetBackendServiceIapOutput {
-	return o
-}
-
-// Whether the serving infrastructure will authenticate and authorize all incoming requests.
-func (o GetBackendServiceIapOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// OAuth2 Client ID for IAP
-func (o GetBackendServiceIapOutput) Oauth2ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
-}
-
-// OAuth2 Client ID for IAP
-func (o GetBackendServiceIapOutput) Oauth2ClientIdWo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientIdWo }).(pulumi.StringOutput)
-}
-
-// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-func (o GetBackendServiceIapOutput) Oauth2ClientIdWoVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientIdWoVersion }).(pulumi.StringOutput)
-}
-
-// OAuth2 Client Secret for IAP
-func (o GetBackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
-}
-
-// OAuth2 Client Secret SHA-256 for IAP
-func (o GetBackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
-}
-
-// OAuth2 Client Secret for IAP
-func (o GetBackendServiceIapOutput) Oauth2ClientSecretWo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretWo }).(pulumi.StringOutput)
-}
-
-// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-func (o GetBackendServiceIapOutput) Oauth2ClientSecretWoVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretWoVersion }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceIapArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceIapArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceIap)(nil)).Elem()
-}
-
-func (o GetBackendServiceIapArrayOutput) ToGetBackendServiceIapArrayOutput() GetBackendServiceIapArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceIapArrayOutput) ToGetBackendServiceIapArrayOutputWithContext(ctx context.Context) GetBackendServiceIapArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceIapArrayOutput) Index(i pulumi.IntInput) GetBackendServiceIapOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceIap {
-		return vs[0].([]GetBackendServiceIap)[vs[1].(int)]
-	}).(GetBackendServiceIapOutput)
-}
-
-type GetBackendServiceLocalityLbPolicy struct {
-	// The configuration for a custom policy implemented by the user and
-	// deployed with the client.
-	CustomPolicies []GetBackendServiceLocalityLbPolicyCustomPolicy `pulumi:"customPolicies"`
-	// The configuration for a built-in load balancing policy.
-	Policies []GetBackendServiceLocalityLbPolicyPolicy `pulumi:"policies"`
-}
-
-// GetBackendServiceLocalityLbPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyArgs and GetBackendServiceLocalityLbPolicyOutput values.
-// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyInput` via:
-//
-//	GetBackendServiceLocalityLbPolicyArgs{...}
-type GetBackendServiceLocalityLbPolicyInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLocalityLbPolicyOutput() GetBackendServiceLocalityLbPolicyOutput
-	ToGetBackendServiceLocalityLbPolicyOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyOutput
-}
-
-type GetBackendServiceLocalityLbPolicyArgs struct {
-	// The configuration for a custom policy implemented by the user and
-	// deployed with the client.
-	CustomPolicies GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput `pulumi:"customPolicies"`
-	// The configuration for a built-in load balancing policy.
-	Policies GetBackendServiceLocalityLbPolicyPolicyArrayInput `pulumi:"policies"`
-}
-
-func (GetBackendServiceLocalityLbPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceLocalityLbPolicyArgs) ToGetBackendServiceLocalityLbPolicyOutput() GetBackendServiceLocalityLbPolicyOutput {
-	return i.ToGetBackendServiceLocalityLbPolicyOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLocalityLbPolicyArgs) ToGetBackendServiceLocalityLbPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyOutput)
-}
-
-// GetBackendServiceLocalityLbPolicyArrayInput is an input type that accepts GetBackendServiceLocalityLbPolicyArray and GetBackendServiceLocalityLbPolicyArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyArrayInput` via:
-//
-//	GetBackendServiceLocalityLbPolicyArray{ GetBackendServiceLocalityLbPolicyArgs{...} }
-type GetBackendServiceLocalityLbPolicyArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLocalityLbPolicyArrayOutput() GetBackendServiceLocalityLbPolicyArrayOutput
-	ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyArrayOutput
-}
-
-type GetBackendServiceLocalityLbPolicyArray []GetBackendServiceLocalityLbPolicyInput
-
-func (GetBackendServiceLocalityLbPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceLocalityLbPolicyArray) ToGetBackendServiceLocalityLbPolicyArrayOutput() GetBackendServiceLocalityLbPolicyArrayOutput {
-	return i.ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLocalityLbPolicyArray) ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyArrayOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLocalityLbPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceLocalityLbPolicyOutput) ToGetBackendServiceLocalityLbPolicyOutput() GetBackendServiceLocalityLbPolicyOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyOutput) ToGetBackendServiceLocalityLbPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyOutput {
-	return o
-}
-
-// The configuration for a custom policy implemented by the user and
-// deployed with the client.
-func (o GetBackendServiceLocalityLbPolicyOutput) CustomPolicies() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicy) []GetBackendServiceLocalityLbPolicyCustomPolicy {
-		return v.CustomPolicies
-	}).(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput)
-}
-
-// The configuration for a built-in load balancing policy.
-func (o GetBackendServiceLocalityLbPolicyOutput) Policies() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicy) []GetBackendServiceLocalityLbPolicyPolicy { return v.Policies }).(GetBackendServiceLocalityLbPolicyPolicyArrayOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLocalityLbPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceLocalityLbPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyArrayOutput() GetBackendServiceLocalityLbPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLocalityLbPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLocalityLbPolicy {
-		return vs[0].([]GetBackendServiceLocalityLbPolicy)[vs[1].(int)]
-	}).(GetBackendServiceLocalityLbPolicyOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyCustomPolicy struct {
-	// An optional, arbitrary JSON object with configuration data, understood
-	// by a locally installed custom policy implementation.
-	Data string `pulumi:"data"`
-	// The name of the Backend Service.
-	//
-	// ***
-	Name string `pulumi:"name"`
-}
-
-// GetBackendServiceLocalityLbPolicyCustomPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyCustomPolicyArgs and GetBackendServiceLocalityLbPolicyCustomPolicyOutput values.
-// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyCustomPolicyInput` via:
-//
-//	GetBackendServiceLocalityLbPolicyCustomPolicyArgs{...}
-type GetBackendServiceLocalityLbPolicyCustomPolicyInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLocalityLbPolicyCustomPolicyOutput() GetBackendServiceLocalityLbPolicyCustomPolicyOutput
-	ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyOutput
-}
-
-type GetBackendServiceLocalityLbPolicyCustomPolicyArgs struct {
-	// An optional, arbitrary JSON object with configuration data, understood
-	// by a locally installed custom policy implementation.
-	Data pulumi.StringInput `pulumi:"data"`
-	// The name of the Backend Service.
-	//
-	// ***
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetBackendServiceLocalityLbPolicyCustomPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceLocalityLbPolicyCustomPolicyArgs) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutput() GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
-	return i.ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLocalityLbPolicyCustomPolicyArgs) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyCustomPolicyOutput)
-}
-
-// GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput is an input type that accepts GetBackendServiceLocalityLbPolicyCustomPolicyArray and GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput` via:
-//
-//	GetBackendServiceLocalityLbPolicyCustomPolicyArray{ GetBackendServiceLocalityLbPolicyCustomPolicyArgs{...} }
-type GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput
-	ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput
-}
-
-type GetBackendServiceLocalityLbPolicyCustomPolicyArray []GetBackendServiceLocalityLbPolicyCustomPolicyInput
-
-func (GetBackendServiceLocalityLbPolicyCustomPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceLocalityLbPolicyCustomPolicyArray) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
-	return i.ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLocalityLbPolicyCustomPolicyArray) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyCustomPolicyOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutput() GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
-	return o
-}
-
-// An optional, arbitrary JSON object with configuration data, understood
-// by a locally installed custom policy implementation.
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Data() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Data }).(pulumi.StringOutput)
-}
-
-// The name of the Backend Service.
-//
-// ***
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLocalityLbPolicyCustomPolicy {
-		return vs[0].([]GetBackendServiceLocalityLbPolicyCustomPolicy)[vs[1].(int)]
-	}).(GetBackendServiceLocalityLbPolicyCustomPolicyOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyPolicy struct {
-	// The name of the Backend Service.
-	//
-	// ***
-	Name string `pulumi:"name"`
-}
-
-// GetBackendServiceLocalityLbPolicyPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyPolicyArgs and GetBackendServiceLocalityLbPolicyPolicyOutput values.
-// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyPolicyInput` via:
-//
-//	GetBackendServiceLocalityLbPolicyPolicyArgs{...}
-type GetBackendServiceLocalityLbPolicyPolicyInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLocalityLbPolicyPolicyOutput() GetBackendServiceLocalityLbPolicyPolicyOutput
-	ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyPolicyOutput
-}
-
-type GetBackendServiceLocalityLbPolicyPolicyArgs struct {
-	// The name of the Backend Service.
-	//
-	// ***
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetBackendServiceLocalityLbPolicyPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceLocalityLbPolicyPolicyArgs) ToGetBackendServiceLocalityLbPolicyPolicyOutput() GetBackendServiceLocalityLbPolicyPolicyOutput {
-	return i.ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLocalityLbPolicyPolicyArgs) ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyPolicyOutput)
-}
-
-// GetBackendServiceLocalityLbPolicyPolicyArrayInput is an input type that accepts GetBackendServiceLocalityLbPolicyPolicyArray and GetBackendServiceLocalityLbPolicyPolicyArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyPolicyArrayInput` via:
-//
-//	GetBackendServiceLocalityLbPolicyPolicyArray{ GetBackendServiceLocalityLbPolicyPolicyArgs{...} }
-type GetBackendServiceLocalityLbPolicyPolicyArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLocalityLbPolicyPolicyArrayOutput() GetBackendServiceLocalityLbPolicyPolicyArrayOutput
-	ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyPolicyArrayOutput
-}
-
-type GetBackendServiceLocalityLbPolicyPolicyArray []GetBackendServiceLocalityLbPolicyPolicyInput
-
-func (GetBackendServiceLocalityLbPolicyPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceLocalityLbPolicyPolicyArray) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutput() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
-	return i.ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLocalityLbPolicyPolicyArray) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyPolicyArrayOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyPolicyOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLocalityLbPolicyPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocalityLbPolicyPolicyOutput() GetBackendServiceLocalityLbPolicyPolicyOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyOutput {
-	return o
-}
-
-// The name of the Backend Service.
-//
-// ***
-func (o GetBackendServiceLocalityLbPolicyPolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyPolicy) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceLocalityLbPolicyPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLocalityLbPolicyPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutput() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLocalityLbPolicyPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLocalityLbPolicyPolicy {
-		return vs[0].([]GetBackendServiceLocalityLbPolicyPolicy)[vs[1].(int)]
-	}).(GetBackendServiceLocalityLbPolicyPolicyOutput)
-}
-
-type GetBackendServiceLogConfig struct {
-	// Whether to enable logging for the load balancer traffic served by this backend service.
-	Enable bool `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
-	// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
-	// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
-	// For example: orca_load_report, tls.protocol
-	OptionalFields []string `pulumi:"optionalFields"`
-	// Specifies the optional logging mode for the load balancer traffic.
-	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
-	OptionalMode string `pulumi:"optionalMode"`
-	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
-	RequestHeaders []GetBackendServiceLogConfigRequestHeader `pulumi:"requestHeaders"`
-	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
-	ResponseHeaders []GetBackendServiceLogConfigResponseHeader `pulumi:"responseHeaders"`
-	// This field can only be specified if logging is enabled for this backend service. The value of
-	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
-	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
-	// The default value is 1.0.
-	SampleRate float64 `pulumi:"sampleRate"`
-}
-
-// GetBackendServiceLogConfigInput is an input type that accepts GetBackendServiceLogConfigArgs and GetBackendServiceLogConfigOutput values.
-// You can construct a concrete instance of `GetBackendServiceLogConfigInput` via:
-//
-//	GetBackendServiceLogConfigArgs{...}
-type GetBackendServiceLogConfigInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLogConfigOutput() GetBackendServiceLogConfigOutput
-	ToGetBackendServiceLogConfigOutputWithContext(context.Context) GetBackendServiceLogConfigOutput
-}
-
-type GetBackendServiceLogConfigArgs struct {
-	// Whether to enable logging for the load balancer traffic served by this backend service.
-	Enable pulumi.BoolInput `pulumi:"enable"`
-	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
-	// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
-	// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
-	// For example: orca_load_report, tls.protocol
-	OptionalFields pulumi.StringArrayInput `pulumi:"optionalFields"`
-	// Specifies the optional logging mode for the load balancer traffic.
-	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
-	OptionalMode pulumi.StringInput `pulumi:"optionalMode"`
-	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
-	RequestHeaders GetBackendServiceLogConfigRequestHeaderArrayInput `pulumi:"requestHeaders"`
-	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
-	ResponseHeaders GetBackendServiceLogConfigResponseHeaderArrayInput `pulumi:"responseHeaders"`
-	// This field can only be specified if logging is enabled for this backend service. The value of
-	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
-	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
-	// The default value is 1.0.
-	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
-}
-
-func (GetBackendServiceLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLogConfig)(nil)).Elem()
-}
-
-func (i GetBackendServiceLogConfigArgs) ToGetBackendServiceLogConfigOutput() GetBackendServiceLogConfigOutput {
-	return i.ToGetBackendServiceLogConfigOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLogConfigArgs) ToGetBackendServiceLogConfigOutputWithContext(ctx context.Context) GetBackendServiceLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigOutput)
-}
-
-// GetBackendServiceLogConfigArrayInput is an input type that accepts GetBackendServiceLogConfigArray and GetBackendServiceLogConfigArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceLogConfigArrayInput` via:
-//
-//	GetBackendServiceLogConfigArray{ GetBackendServiceLogConfigArgs{...} }
-type GetBackendServiceLogConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLogConfigArrayOutput() GetBackendServiceLogConfigArrayOutput
-	ToGetBackendServiceLogConfigArrayOutputWithContext(context.Context) GetBackendServiceLogConfigArrayOutput
-}
-
-type GetBackendServiceLogConfigArray []GetBackendServiceLogConfigInput
-
-func (GetBackendServiceLogConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLogConfig)(nil)).Elem()
-}
-
-func (i GetBackendServiceLogConfigArray) ToGetBackendServiceLogConfigArrayOutput() GetBackendServiceLogConfigArrayOutput {
-	return i.ToGetBackendServiceLogConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLogConfigArray) ToGetBackendServiceLogConfigArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigArrayOutput)
-}
-
-type GetBackendServiceLogConfigOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLogConfig)(nil)).Elem()
-}
-
-func (o GetBackendServiceLogConfigOutput) ToGetBackendServiceLogConfigOutput() GetBackendServiceLogConfigOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigOutput) ToGetBackendServiceLogConfigOutputWithContext(ctx context.Context) GetBackendServiceLogConfigOutput {
-	return o
-}
-
-// Whether to enable logging for the load balancer traffic served by this backend service.
-func (o GetBackendServiceLogConfigOutput) Enable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
-}
-
-// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
-// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
-// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
-// For example: orca_load_report, tls.protocol
-func (o GetBackendServiceLogConfigOutput) OptionalFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfig) []string { return v.OptionalFields }).(pulumi.StringArrayOutput)
-}
-
-// Specifies the optional logging mode for the load balancer traffic.
-// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
-func (o GetBackendServiceLogConfigOutput) OptionalMode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfig) string { return v.OptionalMode }).(pulumi.StringOutput)
-}
-
-// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
-func (o GetBackendServiceLogConfigOutput) RequestHeaders() GetBackendServiceLogConfigRequestHeaderArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfig) []GetBackendServiceLogConfigRequestHeader { return v.RequestHeaders }).(GetBackendServiceLogConfigRequestHeaderArrayOutput)
-}
-
-// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
-func (o GetBackendServiceLogConfigOutput) ResponseHeaders() GetBackendServiceLogConfigResponseHeaderArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfig) []GetBackendServiceLogConfigResponseHeader {
-		return v.ResponseHeaders
-	}).(GetBackendServiceLogConfigResponseHeaderArrayOutput)
-}
-
-// This field can only be specified if logging is enabled for this backend service. The value of
-// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
-// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
-// The default value is 1.0.
-func (o GetBackendServiceLogConfigOutput) SampleRate() pulumi.Float64Output {
-	return o.ApplyT(func(v GetBackendServiceLogConfig) float64 { return v.SampleRate }).(pulumi.Float64Output)
-}
-
-type GetBackendServiceLogConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLogConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLogConfig)(nil)).Elem()
-}
-
-func (o GetBackendServiceLogConfigArrayOutput) ToGetBackendServiceLogConfigArrayOutput() GetBackendServiceLogConfigArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigArrayOutput) ToGetBackendServiceLogConfigArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfig {
-		return vs[0].([]GetBackendServiceLogConfig)[vs[1].(int)]
-	}).(GetBackendServiceLogConfigOutput)
-}
-
-type GetBackendServiceLogConfigRequestHeader struct {
-	// The header name to match on for logging.
-	HeaderName string `pulumi:"headerName"`
-}
-
-// GetBackendServiceLogConfigRequestHeaderInput is an input type that accepts GetBackendServiceLogConfigRequestHeaderArgs and GetBackendServiceLogConfigRequestHeaderOutput values.
-// You can construct a concrete instance of `GetBackendServiceLogConfigRequestHeaderInput` via:
-//
-//	GetBackendServiceLogConfigRequestHeaderArgs{...}
-type GetBackendServiceLogConfigRequestHeaderInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput
-	ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(context.Context) GetBackendServiceLogConfigRequestHeaderOutput
-}
-
-type GetBackendServiceLogConfigRequestHeaderArgs struct {
-	// The header name to match on for logging.
-	HeaderName pulumi.StringInput `pulumi:"headerName"`
-}
-
-func (GetBackendServiceLogConfigRequestHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
-}
-
-func (i GetBackendServiceLogConfigRequestHeaderArgs) ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput {
-	return i.ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLogConfigRequestHeaderArgs) ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigRequestHeaderOutput)
-}
-
-// GetBackendServiceLogConfigRequestHeaderArrayInput is an input type that accepts GetBackendServiceLogConfigRequestHeaderArray and GetBackendServiceLogConfigRequestHeaderArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceLogConfigRequestHeaderArrayInput` via:
-//
-//	GetBackendServiceLogConfigRequestHeaderArray{ GetBackendServiceLogConfigRequestHeaderArgs{...} }
-type GetBackendServiceLogConfigRequestHeaderArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput
-	ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput
-}
-
-type GetBackendServiceLogConfigRequestHeaderArray []GetBackendServiceLogConfigRequestHeaderInput
-
-func (GetBackendServiceLogConfigRequestHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
-}
-
-func (i GetBackendServiceLogConfigRequestHeaderArray) ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput {
-	return i.ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLogConfigRequestHeaderArray) ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigRequestHeaderArrayOutput)
-}
-
-type GetBackendServiceLogConfigRequestHeaderOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLogConfigRequestHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
-}
-
-func (o GetBackendServiceLogConfigRequestHeaderOutput) ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigRequestHeaderOutput) ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderOutput {
-	return o
-}
-
-// The header name to match on for logging.
-func (o GetBackendServiceLogConfigRequestHeaderOutput) HeaderName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfigRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceLogConfigRequestHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLogConfigRequestHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
-}
-
-func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigRequestHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfigRequestHeader {
-		return vs[0].([]GetBackendServiceLogConfigRequestHeader)[vs[1].(int)]
-	}).(GetBackendServiceLogConfigRequestHeaderOutput)
-}
-
-type GetBackendServiceLogConfigResponseHeader struct {
-	// The header name to match on for logging.
-	HeaderName string `pulumi:"headerName"`
-}
-
-// GetBackendServiceLogConfigResponseHeaderInput is an input type that accepts GetBackendServiceLogConfigResponseHeaderArgs and GetBackendServiceLogConfigResponseHeaderOutput values.
-// You can construct a concrete instance of `GetBackendServiceLogConfigResponseHeaderInput` via:
-//
-//	GetBackendServiceLogConfigResponseHeaderArgs{...}
-type GetBackendServiceLogConfigResponseHeaderInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput
-	ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(context.Context) GetBackendServiceLogConfigResponseHeaderOutput
-}
-
-type GetBackendServiceLogConfigResponseHeaderArgs struct {
-	// The header name to match on for logging.
-	HeaderName pulumi.StringInput `pulumi:"headerName"`
-}
-
-func (GetBackendServiceLogConfigResponseHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
-}
-
-func (i GetBackendServiceLogConfigResponseHeaderArgs) ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput {
-	return i.ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLogConfigResponseHeaderArgs) ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigResponseHeaderOutput)
-}
-
-// GetBackendServiceLogConfigResponseHeaderArrayInput is an input type that accepts GetBackendServiceLogConfigResponseHeaderArray and GetBackendServiceLogConfigResponseHeaderArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceLogConfigResponseHeaderArrayInput` via:
-//
-//	GetBackendServiceLogConfigResponseHeaderArray{ GetBackendServiceLogConfigResponseHeaderArgs{...} }
-type GetBackendServiceLogConfigResponseHeaderArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput
-	ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput
-}
-
-type GetBackendServiceLogConfigResponseHeaderArray []GetBackendServiceLogConfigResponseHeaderInput
-
-func (GetBackendServiceLogConfigResponseHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
-}
-
-func (i GetBackendServiceLogConfigResponseHeaderArray) ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput {
-	return i.ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceLogConfigResponseHeaderArray) ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigResponseHeaderArrayOutput)
-}
-
-type GetBackendServiceLogConfigResponseHeaderOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLogConfigResponseHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
-}
-
-func (o GetBackendServiceLogConfigResponseHeaderOutput) ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigResponseHeaderOutput) ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderOutput {
-	return o
-}
-
-// The header name to match on for logging.
-func (o GetBackendServiceLogConfigResponseHeaderOutput) HeaderName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceLogConfigResponseHeader) string { return v.HeaderName }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceLogConfigResponseHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceLogConfigResponseHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
-}
-
-func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigResponseHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfigResponseHeader {
-		return vs[0].([]GetBackendServiceLogConfigResponseHeader)[vs[1].(int)]
-	}).(GetBackendServiceLogConfigResponseHeaderOutput)
-}
-
-type GetBackendServiceMaxStreamDuration struct {
-	// Span of time that's a fraction of a second at nanosecond resolution.
-	// Durations less than one second are represented with a 0 seconds field and a positive nanos field.
-	// Must be from 0 to 999,999,999 inclusive.
-	Nanos int `pulumi:"nanos"`
-	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
-	Seconds string `pulumi:"seconds"`
-}
-
-// GetBackendServiceMaxStreamDurationInput is an input type that accepts GetBackendServiceMaxStreamDurationArgs and GetBackendServiceMaxStreamDurationOutput values.
-// You can construct a concrete instance of `GetBackendServiceMaxStreamDurationInput` via:
-//
-//	GetBackendServiceMaxStreamDurationArgs{...}
-type GetBackendServiceMaxStreamDurationInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceMaxStreamDurationOutput() GetBackendServiceMaxStreamDurationOutput
-	ToGetBackendServiceMaxStreamDurationOutputWithContext(context.Context) GetBackendServiceMaxStreamDurationOutput
-}
-
-type GetBackendServiceMaxStreamDurationArgs struct {
-	// Span of time that's a fraction of a second at nanosecond resolution.
-	// Durations less than one second are represented with a 0 seconds field and a positive nanos field.
-	// Must be from 0 to 999,999,999 inclusive.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
-	Seconds pulumi.StringInput `pulumi:"seconds"`
-}
-
-func (GetBackendServiceMaxStreamDurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceMaxStreamDuration)(nil)).Elem()
-}
-
-func (i GetBackendServiceMaxStreamDurationArgs) ToGetBackendServiceMaxStreamDurationOutput() GetBackendServiceMaxStreamDurationOutput {
-	return i.ToGetBackendServiceMaxStreamDurationOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceMaxStreamDurationArgs) ToGetBackendServiceMaxStreamDurationOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceMaxStreamDurationOutput)
-}
-
-// GetBackendServiceMaxStreamDurationArrayInput is an input type that accepts GetBackendServiceMaxStreamDurationArray and GetBackendServiceMaxStreamDurationArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceMaxStreamDurationArrayInput` via:
-//
-//	GetBackendServiceMaxStreamDurationArray{ GetBackendServiceMaxStreamDurationArgs{...} }
-type GetBackendServiceMaxStreamDurationArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceMaxStreamDurationArrayOutput() GetBackendServiceMaxStreamDurationArrayOutput
-	ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(context.Context) GetBackendServiceMaxStreamDurationArrayOutput
-}
-
-type GetBackendServiceMaxStreamDurationArray []GetBackendServiceMaxStreamDurationInput
-
-func (GetBackendServiceMaxStreamDurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceMaxStreamDuration)(nil)).Elem()
-}
-
-func (i GetBackendServiceMaxStreamDurationArray) ToGetBackendServiceMaxStreamDurationArrayOutput() GetBackendServiceMaxStreamDurationArrayOutput {
-	return i.ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceMaxStreamDurationArray) ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceMaxStreamDurationArrayOutput)
-}
-
-type GetBackendServiceMaxStreamDurationOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceMaxStreamDurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceMaxStreamDuration)(nil)).Elem()
-}
-
-func (o GetBackendServiceMaxStreamDurationOutput) ToGetBackendServiceMaxStreamDurationOutput() GetBackendServiceMaxStreamDurationOutput {
-	return o
-}
-
-func (o GetBackendServiceMaxStreamDurationOutput) ToGetBackendServiceMaxStreamDurationOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationOutput {
-	return o
-}
-
-// Span of time that's a fraction of a second at nanosecond resolution.
-// Durations less than one second are represented with a 0 seconds field and a positive nanos field.
-// Must be from 0 to 999,999,999 inclusive.
-func (o GetBackendServiceMaxStreamDurationOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceMaxStreamDuration) int { return v.Nanos }).(pulumi.IntOutput)
-}
-
-// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
-func (o GetBackendServiceMaxStreamDurationOutput) Seconds() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceMaxStreamDuration) string { return v.Seconds }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceMaxStreamDurationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceMaxStreamDurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceMaxStreamDuration)(nil)).Elem()
-}
-
-func (o GetBackendServiceMaxStreamDurationArrayOutput) ToGetBackendServiceMaxStreamDurationArrayOutput() GetBackendServiceMaxStreamDurationArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceMaxStreamDurationArrayOutput) ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceMaxStreamDurationArrayOutput) Index(i pulumi.IntInput) GetBackendServiceMaxStreamDurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceMaxStreamDuration {
-		return vs[0].([]GetBackendServiceMaxStreamDuration)[vs[1].(int)]
-	}).(GetBackendServiceMaxStreamDurationOutput)
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicy struct {
-	// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
-	ZonalAffinities []GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity `pulumi:"zonalAffinities"`
-}
-
-// GetBackendServiceNetworkPassThroughLbTrafficPolicyInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs and GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput values.
-// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyInput` via:
-//
-//	GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{...}
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs struct {
-	// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
-	ZonalAffinities GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput `pulumi:"zonalAffinities"`
-}
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
-	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput)
-}
-
-// GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyArray and GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput` via:
-//
-//	GetBackendServiceNetworkPassThroughLbTrafficPolicyArray{ GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{...} }
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyArray []GetBackendServiceNetworkPassThroughLbTrafficPolicyInput
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
-	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput)
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
-	return o
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
-	return o
-}
-
-// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ZonalAffinities() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceNetworkPassThroughLbTrafficPolicy) []GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
-		return v.ZonalAffinities
-	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput)
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceNetworkPassThroughLbTrafficPolicy {
-		return vs[0].([]GetBackendServiceNetworkPassThroughLbTrafficPolicy)[vs[1].(int)]
-	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput)
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity struct {
-	// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
-	Spillover string `pulumi:"spillover"`
-	// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
-	// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
-	// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
-	// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
-	// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
-	SpilloverRatio float64 `pulumi:"spilloverRatio"`
-}
-
-// GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs and GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput values.
-// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput` via:
-//
-//	GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{...}
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs struct {
-	// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
-	Spillover pulumi.StringInput `pulumi:"spillover"`
-	// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
-	// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
-	// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
-	// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
-	// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
-	SpilloverRatio pulumi.Float64Input `pulumi:"spilloverRatio"`
-}
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
-	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput)
-}
-
-// GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray and GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput` via:
-//
-//	GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray{ GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{...} }
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput
-	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray []GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
-	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput)
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
-	return o
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
-	return o
-}
-
-// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) Spillover() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity) string { return v.Spillover }).(pulumi.StringOutput)
-}
-
-// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
-// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
-// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
-// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
-// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) SpilloverRatio() pulumi.Float64Output {
-	return o.ApplyT(func(v GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity) float64 {
-		return v.SpilloverRatio
-	}).(pulumi.Float64Output)
-}
-
-type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) Index(i pulumi.IntInput) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
-		return vs[0].([]GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)[vs[1].(int)]
-	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput)
-}
-
-type GetBackendServiceOutlierDetection struct {
-	// The base time that a host is ejected for. The real time is equal to the base
-	// time multiplied by the number of times the host has been ejected. Defaults to
-	// 30000ms or 30s.
-	BaseEjectionTimes []GetBackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTimes"`
-	// Number of errors before a host is ejected from the connection pool. When the
-	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-	// Defaults to 5.
-	ConsecutiveErrors int `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection
-	// errors that are mapped to one of those status codes) before a consecutive
-	// gateway failure ejection occurs. Defaults to 5.
-	ConsecutiveGatewayFailure int `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier
-	// status is detected through consecutive 5xx. This setting can be used to disable
-	// ejection or to ramp it up slowly. Defaults to 100.
-	EnforcingConsecutiveErrors int `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier
-	// status is detected through consecutive gateway failures. This setting can be
-	// used to disable ejection or to ramp it up slowly. Defaults to 0.
-	EnforcingConsecutiveGatewayFailure int `pulumi:"enforcingConsecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier
-	// status is detected through success rate statistics. This setting can be used to
-	// disable ejection or to ramp it up slowly. Defaults to 100.
-	EnforcingSuccessRate int `pulumi:"enforcingSuccessRate"`
-	// Time interval between ejection sweep analysis. This can result in both new
-	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
-	Intervals []GetBackendServiceOutlierDetectionInterval `pulumi:"intervals"`
-	// Maximum percentage of hosts in the load balancing pool for the backend service
-	// that can be ejected. Defaults to 10%.
-	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
-	// The number of hosts in a cluster that must have enough request volume to detect
-	// success rate outliers. If the number of hosts is less than this setting, outlier
-	// detection via success rate statistics is not performed for any host in the
-	// cluster. Defaults to 5.
-	SuccessRateMinimumHosts int `pulumi:"successRateMinimumHosts"`
-	// The minimum number of total requests that must be collected in one interval (as
-	// defined by the interval duration above) to include this host in success rate
-	// based outlier detection. If the volume is lower than this setting, outlier
-	// detection via success rate statistics is not performed for that host. Defaults
-	// to 100.
-	SuccessRateRequestVolume int `pulumi:"successRateRequestVolume"`
-	// This factor is used to determine the ejection threshold for success rate outlier
-	// ejection. The ejection threshold is the difference between the mean success
-	// rate, and the product of this factor and the standard deviation of the mean
-	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
-	// by a thousand to get a double. That is, if the desired factor is 1.9, the
-	// runtime value should be 1900. Defaults to 1900.
-	SuccessRateStdevFactor int `pulumi:"successRateStdevFactor"`
-}
-
-// GetBackendServiceOutlierDetectionInput is an input type that accepts GetBackendServiceOutlierDetectionArgs and GetBackendServiceOutlierDetectionOutput values.
-// You can construct a concrete instance of `GetBackendServiceOutlierDetectionInput` via:
-//
-//	GetBackendServiceOutlierDetectionArgs{...}
-type GetBackendServiceOutlierDetectionInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceOutlierDetectionOutput() GetBackendServiceOutlierDetectionOutput
-	ToGetBackendServiceOutlierDetectionOutputWithContext(context.Context) GetBackendServiceOutlierDetectionOutput
-}
-
-type GetBackendServiceOutlierDetectionArgs struct {
-	// The base time that a host is ejected for. The real time is equal to the base
-	// time multiplied by the number of times the host has been ejected. Defaults to
-	// 30000ms or 30s.
-	BaseEjectionTimes GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput `pulumi:"baseEjectionTimes"`
-	// Number of errors before a host is ejected from the connection pool. When the
-	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-	// Defaults to 5.
-	ConsecutiveErrors pulumi.IntInput `pulumi:"consecutiveErrors"`
-	// The number of consecutive gateway failures (502, 503, 504 status or connection
-	// errors that are mapped to one of those status codes) before a consecutive
-	// gateway failure ejection occurs. Defaults to 5.
-	ConsecutiveGatewayFailure pulumi.IntInput `pulumi:"consecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier
-	// status is detected through consecutive 5xx. This setting can be used to disable
-	// ejection or to ramp it up slowly. Defaults to 100.
-	EnforcingConsecutiveErrors pulumi.IntInput `pulumi:"enforcingConsecutiveErrors"`
-	// The percentage chance that a host will be actually ejected when an outlier
-	// status is detected through consecutive gateway failures. This setting can be
-	// used to disable ejection or to ramp it up slowly. Defaults to 0.
-	EnforcingConsecutiveGatewayFailure pulumi.IntInput `pulumi:"enforcingConsecutiveGatewayFailure"`
-	// The percentage chance that a host will be actually ejected when an outlier
-	// status is detected through success rate statistics. This setting can be used to
-	// disable ejection or to ramp it up slowly. Defaults to 100.
-	EnforcingSuccessRate pulumi.IntInput `pulumi:"enforcingSuccessRate"`
-	// Time interval between ejection sweep analysis. This can result in both new
-	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
-	Intervals GetBackendServiceOutlierDetectionIntervalArrayInput `pulumi:"intervals"`
-	// Maximum percentage of hosts in the load balancing pool for the backend service
-	// that can be ejected. Defaults to 10%.
-	MaxEjectionPercent pulumi.IntInput `pulumi:"maxEjectionPercent"`
-	// The number of hosts in a cluster that must have enough request volume to detect
-	// success rate outliers. If the number of hosts is less than this setting, outlier
-	// detection via success rate statistics is not performed for any host in the
-	// cluster. Defaults to 5.
-	SuccessRateMinimumHosts pulumi.IntInput `pulumi:"successRateMinimumHosts"`
-	// The minimum number of total requests that must be collected in one interval (as
-	// defined by the interval duration above) to include this host in success rate
-	// based outlier detection. If the volume is lower than this setting, outlier
-	// detection via success rate statistics is not performed for that host. Defaults
-	// to 100.
-	SuccessRateRequestVolume pulumi.IntInput `pulumi:"successRateRequestVolume"`
-	// This factor is used to determine the ejection threshold for success rate outlier
-	// ejection. The ejection threshold is the difference between the mean success
-	// rate, and the product of this factor and the standard deviation of the mean
-	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
-	// by a thousand to get a double. That is, if the desired factor is 1.9, the
-	// runtime value should be 1900. Defaults to 1900.
-	SuccessRateStdevFactor pulumi.IntInput `pulumi:"successRateStdevFactor"`
-}
-
-func (GetBackendServiceOutlierDetectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceOutlierDetection)(nil)).Elem()
-}
-
-func (i GetBackendServiceOutlierDetectionArgs) ToGetBackendServiceOutlierDetectionOutput() GetBackendServiceOutlierDetectionOutput {
-	return i.ToGetBackendServiceOutlierDetectionOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceOutlierDetectionArgs) ToGetBackendServiceOutlierDetectionOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionOutput)
-}
-
-// GetBackendServiceOutlierDetectionArrayInput is an input type that accepts GetBackendServiceOutlierDetectionArray and GetBackendServiceOutlierDetectionArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceOutlierDetectionArrayInput` via:
-//
-//	GetBackendServiceOutlierDetectionArray{ GetBackendServiceOutlierDetectionArgs{...} }
-type GetBackendServiceOutlierDetectionArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceOutlierDetectionArrayOutput() GetBackendServiceOutlierDetectionArrayOutput
-	ToGetBackendServiceOutlierDetectionArrayOutputWithContext(context.Context) GetBackendServiceOutlierDetectionArrayOutput
-}
-
-type GetBackendServiceOutlierDetectionArray []GetBackendServiceOutlierDetectionInput
-
-func (GetBackendServiceOutlierDetectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceOutlierDetection)(nil)).Elem()
-}
-
-func (i GetBackendServiceOutlierDetectionArray) ToGetBackendServiceOutlierDetectionArrayOutput() GetBackendServiceOutlierDetectionArrayOutput {
-	return i.ToGetBackendServiceOutlierDetectionArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceOutlierDetectionArray) ToGetBackendServiceOutlierDetectionArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionArrayOutput)
-}
-
-type GetBackendServiceOutlierDetectionOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceOutlierDetectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceOutlierDetection)(nil)).Elem()
-}
-
-func (o GetBackendServiceOutlierDetectionOutput) ToGetBackendServiceOutlierDetectionOutput() GetBackendServiceOutlierDetectionOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionOutput) ToGetBackendServiceOutlierDetectionOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionOutput {
-	return o
-}
-
-// The base time that a host is ejected for. The real time is equal to the base
-// time multiplied by the number of times the host has been ejected. Defaults to
-// 30000ms or 30s.
-func (o GetBackendServiceOutlierDetectionOutput) BaseEjectionTimes() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) []GetBackendServiceOutlierDetectionBaseEjectionTime {
-		return v.BaseEjectionTimes
-	}).(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
-}
-
-// Number of errors before a host is ejected from the connection pool. When the
-// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
-// Defaults to 5.
-func (o GetBackendServiceOutlierDetectionOutput) ConsecutiveErrors() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.ConsecutiveErrors }).(pulumi.IntOutput)
-}
-
-// The number of consecutive gateway failures (502, 503, 504 status or connection
-// errors that are mapped to one of those status codes) before a consecutive
-// gateway failure ejection occurs. Defaults to 5.
-func (o GetBackendServiceOutlierDetectionOutput) ConsecutiveGatewayFailure() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.ConsecutiveGatewayFailure }).(pulumi.IntOutput)
-}
-
-// The percentage chance that a host will be actually ejected when an outlier
-// status is detected through consecutive 5xx. This setting can be used to disable
-// ejection or to ramp it up slowly. Defaults to 100.
-func (o GetBackendServiceOutlierDetectionOutput) EnforcingConsecutiveErrors() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveErrors }).(pulumi.IntOutput)
-}
-
-// The percentage chance that a host will be actually ejected when an outlier
-// status is detected through consecutive gateway failures. This setting can be
-// used to disable ejection or to ramp it up slowly. Defaults to 0.
-func (o GetBackendServiceOutlierDetectionOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntOutput)
-}
-
-// The percentage chance that a host will be actually ejected when an outlier
-// status is detected through success rate statistics. This setting can be used to
-// disable ejection or to ramp it up slowly. Defaults to 100.
-func (o GetBackendServiceOutlierDetectionOutput) EnforcingSuccessRate() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingSuccessRate }).(pulumi.IntOutput)
-}
-
-// Time interval between ejection sweep analysis. This can result in both new
-// ejections as well as hosts being returned to service. Defaults to 10 seconds.
-func (o GetBackendServiceOutlierDetectionOutput) Intervals() GetBackendServiceOutlierDetectionIntervalArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) []GetBackendServiceOutlierDetectionInterval {
-		return v.Intervals
-	}).(GetBackendServiceOutlierDetectionIntervalArrayOutput)
-}
-
-// Maximum percentage of hosts in the load balancing pool for the backend service
-// that can be ejected. Defaults to 10%.
-func (o GetBackendServiceOutlierDetectionOutput) MaxEjectionPercent() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
-}
-
-// The number of hosts in a cluster that must have enough request volume to detect
-// success rate outliers. If the number of hosts is less than this setting, outlier
-// detection via success rate statistics is not performed for any host in the
-// cluster. Defaults to 5.
-func (o GetBackendServiceOutlierDetectionOutput) SuccessRateMinimumHosts() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateMinimumHosts }).(pulumi.IntOutput)
-}
-
-// The minimum number of total requests that must be collected in one interval (as
-// defined by the interval duration above) to include this host in success rate
-// based outlier detection. If the volume is lower than this setting, outlier
-// detection via success rate statistics is not performed for that host. Defaults
-// to 100.
-func (o GetBackendServiceOutlierDetectionOutput) SuccessRateRequestVolume() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateRequestVolume }).(pulumi.IntOutput)
-}
-
-// This factor is used to determine the ejection threshold for success rate outlier
-// ejection. The ejection threshold is the difference between the mean success
-// rate, and the product of this factor and the standard deviation of the mean
-// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
-// by a thousand to get a double. That is, if the desired factor is 1.9, the
-// runtime value should be 1900. Defaults to 1900.
-func (o GetBackendServiceOutlierDetectionOutput) SuccessRateStdevFactor() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateStdevFactor }).(pulumi.IntOutput)
-}
-
-type GetBackendServiceOutlierDetectionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceOutlierDetectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceOutlierDetection)(nil)).Elem()
-}
-
-func (o GetBackendServiceOutlierDetectionArrayOutput) ToGetBackendServiceOutlierDetectionArrayOutput() GetBackendServiceOutlierDetectionArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionArrayOutput) ToGetBackendServiceOutlierDetectionArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionArrayOutput) Index(i pulumi.IntInput) GetBackendServiceOutlierDetectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceOutlierDetection {
-		return vs[0].([]GetBackendServiceOutlierDetection)[vs[1].(int)]
-	}).(GetBackendServiceOutlierDetectionOutput)
-}
-
-type GetBackendServiceOutlierDetectionBaseEjectionTime struct {
-	// Span of time that's a fraction of a second at nanosecond resolution. Durations
-	// less than one second are represented with a 0 'seconds' field and a positive
-	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
-	Nanos int `pulumi:"nanos"`
-	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-	// inclusive.
-	Seconds int `pulumi:"seconds"`
-}
-
-// GetBackendServiceOutlierDetectionBaseEjectionTimeInput is an input type that accepts GetBackendServiceOutlierDetectionBaseEjectionTimeArgs and GetBackendServiceOutlierDetectionBaseEjectionTimeOutput values.
-// You can construct a concrete instance of `GetBackendServiceOutlierDetectionBaseEjectionTimeInput` via:
-//
-//	GetBackendServiceOutlierDetectionBaseEjectionTimeArgs{...}
-type GetBackendServiceOutlierDetectionBaseEjectionTimeInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeOutput
-	ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput
-}
-
-type GetBackendServiceOutlierDetectionBaseEjectionTimeArgs struct {
-	// Span of time that's a fraction of a second at nanosecond resolution. Durations
-	// less than one second are represented with a 0 'seconds' field and a positive
-	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-	// inclusive.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (GetBackendServiceOutlierDetectionBaseEjectionTimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
-}
-
-func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArgs) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
-	return i.ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArgs) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionBaseEjectionTimeOutput)
-}
-
-// GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput is an input type that accepts GetBackendServiceOutlierDetectionBaseEjectionTimeArray and GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput` via:
-//
-//	GetBackendServiceOutlierDetectionBaseEjectionTimeArray{ GetBackendServiceOutlierDetectionBaseEjectionTimeArgs{...} }
-type GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput
-	ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput
-}
-
-type GetBackendServiceOutlierDetectionBaseEjectionTimeArray []GetBackendServiceOutlierDetectionBaseEjectionTimeInput
-
-func (GetBackendServiceOutlierDetectionBaseEjectionTimeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
-}
-
-func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArray) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
-	return i.ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArray) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
-}
-
-type GetBackendServiceOutlierDetectionBaseEjectionTimeOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
-}
-
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
-	return o
-}
-
-// Span of time that's a fraction of a second at nanosecond resolution. Durations
-// less than one second are represented with a 0 'seconds' field and a positive
-// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Nanos }).(pulumi.IntOutput)
-}
-
-// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-// inclusive.
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Seconds }).(pulumi.IntOutput)
-}
-
-type GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
-}
-
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) Index(i pulumi.IntInput) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceOutlierDetectionBaseEjectionTime {
-		return vs[0].([]GetBackendServiceOutlierDetectionBaseEjectionTime)[vs[1].(int)]
-	}).(GetBackendServiceOutlierDetectionBaseEjectionTimeOutput)
-}
-
-type GetBackendServiceOutlierDetectionInterval struct {
-	// Span of time that's a fraction of a second at nanosecond resolution. Durations
-	// less than one second are represented with a 0 'seconds' field and a positive
-	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
-	Nanos int `pulumi:"nanos"`
-	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-	// inclusive.
-	Seconds int `pulumi:"seconds"`
-}
-
-// GetBackendServiceOutlierDetectionIntervalInput is an input type that accepts GetBackendServiceOutlierDetectionIntervalArgs and GetBackendServiceOutlierDetectionIntervalOutput values.
-// You can construct a concrete instance of `GetBackendServiceOutlierDetectionIntervalInput` via:
-//
-//	GetBackendServiceOutlierDetectionIntervalArgs{...}
-type GetBackendServiceOutlierDetectionIntervalInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceOutlierDetectionIntervalOutput() GetBackendServiceOutlierDetectionIntervalOutput
-	ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(context.Context) GetBackendServiceOutlierDetectionIntervalOutput
-}
-
-type GetBackendServiceOutlierDetectionIntervalArgs struct {
-	// Span of time that's a fraction of a second at nanosecond resolution. Durations
-	// less than one second are represented with a 0 'seconds' field and a positive
-	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-	// inclusive.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (GetBackendServiceOutlierDetectionIntervalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
-}
-
-func (i GetBackendServiceOutlierDetectionIntervalArgs) ToGetBackendServiceOutlierDetectionIntervalOutput() GetBackendServiceOutlierDetectionIntervalOutput {
-	return i.ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceOutlierDetectionIntervalArgs) ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionIntervalOutput)
-}
-
-// GetBackendServiceOutlierDetectionIntervalArrayInput is an input type that accepts GetBackendServiceOutlierDetectionIntervalArray and GetBackendServiceOutlierDetectionIntervalArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceOutlierDetectionIntervalArrayInput` via:
-//
-//	GetBackendServiceOutlierDetectionIntervalArray{ GetBackendServiceOutlierDetectionIntervalArgs{...} }
-type GetBackendServiceOutlierDetectionIntervalArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceOutlierDetectionIntervalArrayOutput() GetBackendServiceOutlierDetectionIntervalArrayOutput
-	ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(context.Context) GetBackendServiceOutlierDetectionIntervalArrayOutput
-}
-
-type GetBackendServiceOutlierDetectionIntervalArray []GetBackendServiceOutlierDetectionIntervalInput
-
-func (GetBackendServiceOutlierDetectionIntervalArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
-}
-
-func (i GetBackendServiceOutlierDetectionIntervalArray) ToGetBackendServiceOutlierDetectionIntervalArrayOutput() GetBackendServiceOutlierDetectionIntervalArrayOutput {
-	return i.ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceOutlierDetectionIntervalArray) ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionIntervalArrayOutput)
-}
-
-type GetBackendServiceOutlierDetectionIntervalOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceOutlierDetectionIntervalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
-}
-
-func (o GetBackendServiceOutlierDetectionIntervalOutput) ToGetBackendServiceOutlierDetectionIntervalOutput() GetBackendServiceOutlierDetectionIntervalOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionIntervalOutput) ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalOutput {
-	return o
-}
-
-// Span of time that's a fraction of a second at nanosecond resolution. Durations
-// less than one second are represented with a 0 'seconds' field and a positive
-// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
-func (o GetBackendServiceOutlierDetectionIntervalOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetectionInterval) int { return v.Nanos }).(pulumi.IntOutput)
-}
-
-// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-// inclusive.
-func (o GetBackendServiceOutlierDetectionIntervalOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceOutlierDetectionInterval) int { return v.Seconds }).(pulumi.IntOutput)
-}
-
-type GetBackendServiceOutlierDetectionIntervalArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceOutlierDetectionIntervalArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
-}
-
-func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) ToGetBackendServiceOutlierDetectionIntervalArrayOutput() GetBackendServiceOutlierDetectionIntervalArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) Index(i pulumi.IntInput) GetBackendServiceOutlierDetectionIntervalOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceOutlierDetectionInterval {
-		return vs[0].([]GetBackendServiceOutlierDetectionInterval)[vs[1].(int)]
-	}).(GetBackendServiceOutlierDetectionIntervalOutput)
-}
-
-type GetBackendServiceParam struct {
-	// Resource manager tags to be bound to the backend service. Tag keys and values have the
-	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
-	// and values are in the format tagValues/456.
-	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
-}
-
-// GetBackendServiceParamInput is an input type that accepts GetBackendServiceParamArgs and GetBackendServiceParamOutput values.
-// You can construct a concrete instance of `GetBackendServiceParamInput` via:
-//
-//	GetBackendServiceParamArgs{...}
-type GetBackendServiceParamInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceParamOutput() GetBackendServiceParamOutput
-	ToGetBackendServiceParamOutputWithContext(context.Context) GetBackendServiceParamOutput
-}
-
-type GetBackendServiceParamArgs struct {
-	// Resource manager tags to be bound to the backend service. Tag keys and values have the
-	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
-	// and values are in the format tagValues/456.
-	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
-}
-
-func (GetBackendServiceParamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceParam)(nil)).Elem()
-}
-
-func (i GetBackendServiceParamArgs) ToGetBackendServiceParamOutput() GetBackendServiceParamOutput {
-	return i.ToGetBackendServiceParamOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceParamArgs) ToGetBackendServiceParamOutputWithContext(ctx context.Context) GetBackendServiceParamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceParamOutput)
-}
-
-// GetBackendServiceParamArrayInput is an input type that accepts GetBackendServiceParamArray and GetBackendServiceParamArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceParamArrayInput` via:
-//
-//	GetBackendServiceParamArray{ GetBackendServiceParamArgs{...} }
-type GetBackendServiceParamArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceParamArrayOutput() GetBackendServiceParamArrayOutput
-	ToGetBackendServiceParamArrayOutputWithContext(context.Context) GetBackendServiceParamArrayOutput
-}
-
-type GetBackendServiceParamArray []GetBackendServiceParamInput
-
-func (GetBackendServiceParamArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceParam)(nil)).Elem()
-}
-
-func (i GetBackendServiceParamArray) ToGetBackendServiceParamArrayOutput() GetBackendServiceParamArrayOutput {
-	return i.ToGetBackendServiceParamArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceParamArray) ToGetBackendServiceParamArrayOutputWithContext(ctx context.Context) GetBackendServiceParamArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceParamArrayOutput)
-}
-
-type GetBackendServiceParamOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceParamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceParam)(nil)).Elem()
-}
-
-func (o GetBackendServiceParamOutput) ToGetBackendServiceParamOutput() GetBackendServiceParamOutput {
-	return o
-}
-
-func (o GetBackendServiceParamOutput) ToGetBackendServiceParamOutputWithContext(ctx context.Context) GetBackendServiceParamOutput {
-	return o
-}
-
-// Resource manager tags to be bound to the backend service. Tag keys and values have the
-// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
-// and values are in the format tagValues/456.
-func (o GetBackendServiceParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetBackendServiceParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
-}
-
-type GetBackendServiceParamArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceParamArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceParam)(nil)).Elem()
-}
-
-func (o GetBackendServiceParamArrayOutput) ToGetBackendServiceParamArrayOutput() GetBackendServiceParamArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceParamArrayOutput) ToGetBackendServiceParamArrayOutputWithContext(ctx context.Context) GetBackendServiceParamArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceParamArrayOutput) Index(i pulumi.IntInput) GetBackendServiceParamOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceParam {
-		return vs[0].([]GetBackendServiceParam)[vs[1].(int)]
-	}).(GetBackendServiceParamOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateGuestAcceleratorInput)(nil)).Elem(), RegionInstanceTemplateGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateGuestAcceleratorArrayInput)(nil)).Elem(), RegionInstanceTemplateGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkPerformanceConfigArgs{})
@@ -88164,6 +88779,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamMemberConditionPtrInput)(nil)).Elem(), SnapshotIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotParamsInput)(nil)).Elem(), SnapshotParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotParamsPtrInput)(nil)).Elem(), SnapshotParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicyRuleInput)(nil)).Elem(), SnapshotRecycleBinPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicyRuleArrayInput)(nil)).Elem(), SnapshotRecycleBinPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicyRuleStandardSnapshotsInput)(nil)).Elem(), SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrInput)(nil)).Elem(), SnapshotRecycleBinPolicyRuleStandardSnapshotsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicySystemRuleInput)(nil)).Elem(), SnapshotRecycleBinPolicySystemRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicySystemRuleArrayInput)(nil)).Elem(), SnapshotRecycleBinPolicySystemRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicySystemRuleStandardSnapshotInput)(nil)).Elem(), SnapshotRecycleBinPolicySystemRuleStandardSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayInput)(nil)).Elem(), SnapshotRecycleBinPolicySystemRuleStandardSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSettingsStorageLocationInput)(nil)).Elem(), SnapshotSettingsStorageLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSettingsStorageLocationPtrInput)(nil)).Elem(), SnapshotSettingsStorageLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSettingsStorageLocationLocationInput)(nil)).Elem(), SnapshotSettingsStorageLocationLocationArgs{})
@@ -88216,6 +88839,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionCachePolicyServeWhileStalePtrInput)(nil)).Elem(), URLMapDefaultRouteActionCachePolicyServeWhileStaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionDynamicCompressionPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionDynamicCompressionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionDynamicCompressionPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionDynamicCompressionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs{})
@@ -88224,6 +88849,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionImageOptimizationPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionImageOptimizationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionImageOptimizationPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionImageOptimizationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapDefaultRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapDefaultRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
@@ -88280,6 +88907,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionCachePolicyServeWhileStalePtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionCachePolicyServeWhileStaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionCorsPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortArgs{})
@@ -88288,6 +88917,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{})
@@ -88342,6 +88973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCachePolicyServeWhileStalePtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionCachePolicyServeWhileStaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCorsPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs{})
@@ -88350,6 +88983,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{})
@@ -88420,6 +89055,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStalePtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{})
@@ -88428,6 +89065,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs{})
@@ -88524,40 +89163,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyArrayInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtlInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceConsistentHashHttpCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceConsistentHashHttpCookyTtlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCustomMetricInput)(nil)).Elem(), GetBackendServiceCustomMetricArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCustomMetricArrayInput)(nil)).Elem(), GetBackendServiceCustomMetricArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingInput)(nil)).Elem(), GetBackendServiceDynamicForwardingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingArrayInput)(nil)).Elem(), GetBackendServiceDynamicForwardingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelectionInput)(nil)).Elem(), GetBackendServiceDynamicForwardingIpPortSelectionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelectionArrayInput)(nil)).Elem(), GetBackendServiceDynamicForwardingIpPortSelectionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceIapInput)(nil)).Elem(), GetBackendServiceIapArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceIapArrayInput)(nil)).Elem(), GetBackendServiceIapArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicyInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyCustomPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyCustomPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicyInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigInput)(nil)).Elem(), GetBackendServiceLogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigArrayInput)(nil)).Elem(), GetBackendServiceLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigRequestHeaderInput)(nil)).Elem(), GetBackendServiceLogConfigRequestHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigRequestHeaderArrayInput)(nil)).Elem(), GetBackendServiceLogConfigRequestHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigResponseHeaderInput)(nil)).Elem(), GetBackendServiceLogConfigResponseHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigResponseHeaderArrayInput)(nil)).Elem(), GetBackendServiceLogConfigResponseHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceMaxStreamDurationInput)(nil)).Elem(), GetBackendServiceMaxStreamDurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceMaxStreamDurationArrayInput)(nil)).Elem(), GetBackendServiceMaxStreamDurationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionInput)(nil)).Elem(), GetBackendServiceOutlierDetectionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTimeInput)(nil)).Elem(), GetBackendServiceOutlierDetectionBaseEjectionTimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionBaseEjectionTimeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionIntervalInput)(nil)).Elem(), GetBackendServiceOutlierDetectionIntervalArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionIntervalArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionIntervalArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceParamInput)(nil)).Elem(), GetBackendServiceParamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceParamArrayInput)(nil)).Elem(), GetBackendServiceParamArray{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigOutput{})
@@ -89161,6 +89776,14 @@ func init() {
 	pulumi.RegisterOutputType(SnapshotIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotParamsOutput{})
 	pulumi.RegisterOutputType(SnapshotParamsPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicyRuleOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicyRuleStandardSnapshotsOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicyRuleStandardSnapshotsPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicySystemRuleOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicySystemRuleArrayOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicySystemRuleStandardSnapshotOutput{})
+	pulumi.RegisterOutputType(SnapshotRecycleBinPolicySystemRuleStandardSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(SnapshotSettingsStorageLocationOutput{})
 	pulumi.RegisterOutputType(SnapshotSettingsStorageLocationPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotSettingsStorageLocationLocationOutput{})
@@ -89213,6 +89836,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionCachePolicyServeWhileStalePtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionCorsPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionCorsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionDynamicCompressionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionDynamicCompressionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput{})
@@ -89221,6 +89846,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionImageOptimizationPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionImageOptimizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionMaxStreamDurationOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyOutput{})
@@ -89277,6 +89904,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionCachePolicyServeWhileStalePtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionCorsPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbortOutput{})
@@ -89285,6 +89914,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionImageOptimizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionMaxStreamDurationOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyOutput{})
@@ -89339,6 +89970,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionCachePolicyServeWhileStalePtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortOutput{})
@@ -89347,6 +89980,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyOutput{})
@@ -89417,6 +90052,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionCachePolicyServeWhileStalePtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput{})
@@ -89425,6 +90062,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyOutput{})
@@ -89521,38 +90160,4 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyTtlOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceConsistentHashHttpCookyTtlArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceCustomMetricOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceCustomMetricArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingIpPortSelectionOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceIapOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceIapArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyCustomPolicyOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyPolicyOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyPolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLogConfigOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLogConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLogConfigRequestHeaderOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLogConfigRequestHeaderArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLogConfigResponseHeaderOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceLogConfigResponseHeaderArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceMaxStreamDurationOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceMaxStreamDurationArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionBaseEjectionTimeOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceParamOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceParamArrayOutput{})
 }

@@ -90,7 +90,7 @@ import (
 //			_, err = accesscontextmanager.NewGcpUserAccessBinding(ctx, "gcp_user_access_binding", &accesscontextmanager.GcpUserAccessBindingArgs{
 //				OrganizationId: pulumi.String("123456789"),
 //				GroupKey: std.TrimprefixOutput(ctx, std.TrimprefixOutputArgs{
-//					Input:  group.ID().ToIDOutput().ToStringOutput(),
+//					Input:  group.ID(),
 //					Prefix: pulumi.String("groups/"),
 //				}, nil).Result(),
 //				AccessLevels: accessLevelIdForUserAccessBinding.Name,

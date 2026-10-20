@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Compute
         /// Resulting name for a `NamePrefix` &lt;= 37 characters:
         /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         /// Resulting name for a `NamePrefix` 38 - 54 characters:
-        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
+        /// `NamePrefix` + 9 random lowercase alphanumeric characters
         /// </summary>
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.Gcp.Compute
         /// Resulting name for a `NamePrefix` &lt;= 37 characters:
         /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         /// Resulting name for a `NamePrefix` 38 - 54 characters:
-        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
+        /// `NamePrefix` + 9 random lowercase alphanumeric characters
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.Compute
         /// Resulting name for a `NamePrefix` &lt;= 37 characters:
         /// `NamePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         /// Resulting name for a `NamePrefix` 38 - 54 characters:
-        /// `NamePrefix` + YYmmdd + 3 digit incremental counter
+        /// `NamePrefix` + 9 random lowercase alphanumeric characters
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }

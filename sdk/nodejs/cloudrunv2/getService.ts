@@ -75,6 +75,7 @@ export interface GetServiceResult {
     readonly effectiveLabels: {[key: string]: string};
     readonly etag: string;
     readonly expireTime: string;
+    readonly functionalType: string;
     readonly generation: string;
     readonly iapEnabled: boolean;
     /**

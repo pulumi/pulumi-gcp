@@ -9480,6 +9480,75 @@ export namespace assuredworkloads {
 }
 
 export namespace backupdisasterrecovery {
+    export interface AutoProtectionPolicyBackupPlanDetail {
+        /**
+         * The resource name of the backup plan to apply to the matching resources, in the format
+         * `projects/{project}/locations/{location}/backupPlans/{backup_plan_id}`. The backup plan
+         * must be in the same location as the auto protection policy.
+         */
+        backupPlan: string;
+        /**
+         * The type of resource that this policy automatically protects, for example
+         * `compute.googleapis.com/Instance` or `compute.googleapis.com/Disk`.
+         */
+        resourceType: string;
+    }
+
+    export interface AutoProtectionPolicyBindingSummary {
+        /**
+         * (Output)
+         * The total number of projects protected by the policy.
+         */
+        projectCount: string;
+    }
+
+    export interface AutoProtectionPolicyCriteria {
+        /**
+         * A list of matching conditions that a resource must meet to be protected by the policy.
+         * Currently, only one condition is supported.
+         * Structure is documented below.
+         */
+        matchingConditions: outputs.backupdisasterrecovery.AutoProtectionPolicyCriteriaMatchingCondition[];
+    }
+
+    export interface AutoProtectionPolicyCriteriaMatchingCondition {
+        /**
+         * A condition that matches resources based on their labels.
+         * Structure is documented below.
+         */
+        labelCondition?: outputs.backupdisasterrecovery.AutoProtectionPolicyCriteriaMatchingConditionLabelCondition;
+    }
+
+    export interface AutoProtectionPolicyCriteriaMatchingConditionLabelCondition {
+        /**
+         * The key of the label to match.
+         */
+        key: string;
+        /**
+         * The values of the label to match. A resource matches the condition if its label
+         * value is equal to any of the listed values. Currently, only one value is supported.
+         */
+        values: string[];
+    }
+
+    export interface AutoProtectionPolicyPolicyEvaluationSummary {
+        /**
+         * (Output)
+         * The number of matching resources whose protection failed during the last job run.
+         */
+        failedResourceCount: string;
+        /**
+         * (Output)
+         * The number of resources that currently match the policy's criteria.
+         */
+        matchingResourceCount: string;
+        /**
+         * (Output)
+         * The number of matching resources that are successfully protected.
+         */
+        protectedResourceCount: string;
+    }
+
     export interface BackupPlanAssociationRulesConfigInfo {
         /**
          * (Output)
@@ -15736,6 +15805,14 @@ export namespace bigqueryanalyticshub {
         listing: string;
     }
 
+    export interface QueryTemplateEncryptionConfiguration {
+        /**
+         * The KMS key used to encrypt the query template.
+         * Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+         */
+        kmsKeyName: string;
+    }
+
     export interface QueryTemplateRoutine {
         /**
          * SQL query logic.
@@ -19447,10 +19524,15 @@ export namespace ces {
          * controls the randomness of the model's responses. Lower temperatures
          * produce responses that are more predictable. Higher temperatures produce
          * responses that are more creative.
+         */
+        temperature?: number;
+        /**
+         * The thinking level of the model.
+         * Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
          *
          * <a name="nestedRemoteA2aAgent"></a>The `remoteA2aAgent` block supports:
          */
-        temperature?: number;
+        thinkingLevel?: string;
     }
 
     export interface AgentRemoteA2aAgent {
@@ -40966,6 +41048,11 @@ export namespace cloudrunv2 {
          * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
          */
         vpcAccesses: outputs.cloudrunv2.GetJobTemplateTemplateVpcAccess[];
+        /**
+         * The Task's workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+         */
+        workloadIdentityConfigs: outputs.cloudrunv2.GetJobTemplateTemplateWorkloadIdentityConfig[];
     }
 
     export interface GetJobTemplateTemplateContainer {
@@ -41322,6 +41409,24 @@ export namespace cloudrunv2 {
         tags: string[];
     }
 
+    export interface GetJobTemplateTemplateWorkloadIdentityConfig {
+        /**
+         * The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+         */
+        identity: string;
+        /**
+         * Controls whether an instance receives a managed workload identity (MWLID) certificate.
+         * Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
+         */
+        identityCertificateEnabled: boolean;
+        /**
+         * The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity
+         * and is required when the Job's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+         * cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_AGENT_IDENTITY"]
+         */
+        identityType: string;
+    }
+
     export interface GetJobTerminalCondition {
         /**
          * A reason for the execution condition.
@@ -41566,7 +41671,8 @@ export namespace cloudrunv2 {
          */
         vpcAccesses: outputs.cloudrunv2.GetServiceTemplateVpcAccess[];
         /**
-         * Workload identity settings for this Revision.
+         * The Revision's workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
          */
         workloadIdentityConfigs: outputs.cloudrunv2.GetServiceTemplateWorkloadIdentityConfig[];
     }
@@ -42214,11 +42320,14 @@ export namespace cloudrunv2 {
          */
         identity: string;
         /**
-         * Controls whether an instance receives a MWLID certificate.
+         * Controls whether an instance receives a managed workload identity (MWLID) certificate.
+         * Defaults to true when 'identity_type' is 'IDENTITY_TYPE_AGENT_IDENTITY'.
          */
         identityCertificateEnabled: boolean;
         /**
-         * The type of identity to use. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
+         * The type of identity to use. 'IDENTITY_TYPE_AGENT_IDENTITY' assigns a system-managed agent identity and
+         * is required when the Service's 'functional_type' is 'FUNCTIONAL_TYPE_AGENT'. Once set, this field
+         * cannot be changed or unset. Possible values: ["IDENTITY_TYPE_SERVICE_ACCOUNT", "IDENTITY_TYPE_WORKLOAD_IDENTITY", "IDENTITY_TYPE_AGENT_IDENTITY"]
          */
         identityType: string;
     }
@@ -43081,6 +43190,13 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         vpcAccess?: outputs.cloudrunv2.JobTemplateTemplateVpcAccess;
+        /**
+         * (Optional, Beta)
+         * The Task's workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+         * Structure is documented below.
+         */
+        workloadIdentityConfig: outputs.cloudrunv2.JobTemplateTemplateWorkloadIdentityConfig;
     }
 
     export interface JobTemplateTemplateContainer {
@@ -43457,6 +43573,25 @@ export namespace cloudrunv2 {
         tags?: string[];
     }
 
+    export interface JobTemplateTemplateWorkloadIdentityConfig {
+        /**
+         * The Task's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+         */
+        identity: string;
+        /**
+         * Controls whether an instance receives a managed workload identity (MWLID) certificate.
+         * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
+         */
+        identityCertificateEnabled: boolean;
+        /**
+         * The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity
+         * and is required when the Job's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+         * cannot be changed or unset.
+         * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_AGENT_IDENTITY`.
+         */
+        identityType: string;
+    }
+
     export interface JobTerminalCondition {
         /**
          * (Output)
@@ -43735,7 +43870,8 @@ export namespace cloudrunv2 {
          */
         vpcAccess?: outputs.cloudrunv2.ServiceTemplateVpcAccess;
         /**
-         * Workload identity settings for this Revision.
+         * The Revision's workload identity settings. Used to assign an
+         * [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
          * Structure is documented below.
          */
         workloadIdentityConfig?: outputs.cloudrunv2.ServiceTemplateWorkloadIdentityConfig;
@@ -44424,11 +44560,14 @@ export namespace cloudrunv2 {
          */
         identity?: string;
         /**
-         * Controls whether an instance receives a MWLID certificate.
+         * Controls whether an instance receives a managed workload identity (MWLID) certificate.
+         * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
          */
         identityCertificateEnabled?: boolean;
         /**
-         * The type of identity to use.
+         * The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+         * is required when the Service's `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+         * cannot be changed or unset.
          * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
          */
         identityType?: string;
@@ -45461,8 +45600,7 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
-         * Sub-parameter values.
-         * Structure is documented below.
+         * Sub-parameter values, in JSON format.
          */
         oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue;
         /**
@@ -45497,6 +45635,10 @@ export namespace cloudsecuritycompliance {
          * Represents a double value.
          */
         numberValue?: number;
+        /**
+         * Sub-parameter values, in JSON format.
+         */
+        oneofValue?: string;
         /**
          * A list of strings.
          * Structure is documented below.
@@ -45552,8 +45694,7 @@ export namespace cloudsecuritycompliance {
          */
         name: string;
         /**
-         * The parameter spec of the cloud control.
-         * Structure is documented below.
+         * The parameter spec of the cloud control, in JSON format.
          */
         subParameters?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterSubParameter[];
         /**
@@ -45625,8 +45766,7 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
-         * Sub-parameter values.
-         * Structure is documented below.
+         * Sub-parameter values, in JSON format.
          */
         oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOneofValue;
         /**
@@ -45661,6 +45801,10 @@ export namespace cloudsecuritycompliance {
          * Represents a double value.
          */
         numberValue?: number;
+        /**
+         * Sub-parameter values, in JSON format.
+         */
+        oneofValue?: string;
         /**
          * A list of strings.
          * Structure is documented below.
@@ -45715,6 +45859,10 @@ export namespace cloudsecuritycompliance {
          * The name of the parameter.
          */
         name: string;
+        /**
+         * The parameter spec of the cloud control, in JSON format.
+         */
+        subParameters?: string;
         /**
          * List of parameter substitutions.
          * Structure is documented below.
@@ -45783,6 +45931,10 @@ export namespace cloudsecuritycompliance {
          * Represents a double value.
          */
         numberValue?: number;
+        /**
+         * Sub-parameter values, in JSON format.
+         */
+        oneofValue?: string;
         /**
          * A list of strings.
          * Structure is documented below.
@@ -45908,6 +46060,10 @@ export namespace cloudsecuritycompliance {
          * Represents a double value.
          */
         numberValue?: number;
+        /**
+         * Sub-parameter values, in JSON format.
+         */
+        oneofValue?: string;
         /**
          * A list of strings.
          * Structure is documented below.
@@ -46052,8 +46208,7 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
-         * Sub-parameter values.
-         * Structure is documented below.
+         * Sub-parameter values, in JSON format.
          */
         oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOneofValue;
         /**
@@ -46088,6 +46243,10 @@ export namespace cloudsecuritycompliance {
          * Represents a double value.
          */
         numberValue?: number;
+        /**
+         * Sub-parameter values, in JSON format.
+         */
+        oneofValue?: string;
         /**
          * A list of strings.
          * Structure is documented below.
@@ -46239,8 +46398,7 @@ export namespace cloudsecuritycompliance {
          */
         numberValue?: number;
         /**
-         * Sub-parameter values.
-         * Structure is documented below.
+         * Sub-parameter values, in JSON format.
          */
         oneofValue?: outputs.cloudsecuritycompliance.CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOneofValue;
         /**
@@ -46275,6 +46433,10 @@ export namespace cloudsecuritycompliance {
          * Represents a double value.
          */
         numberValue?: number;
+        /**
+         * Sub-parameter values, in JSON format.
+         */
+        oneofValue?: string;
         /**
          * A list of strings.
          * Structure is documented below.
@@ -49432,10 +49594,30 @@ export namespace compute {
     export interface BackendServiceDynamicForwarding {
         /**
          * (Optional, Beta)
+         * Dynamic Forwarding Proxy configuration.
+         * Structure is documented below.
+         */
+        forwardProxy?: outputs.compute.BackendServiceDynamicForwardingForwardProxy;
+        /**
+         * (Optional, Beta)
          * IP:PORT based dynamic forwarding configuration.
          * Structure is documented below.
          */
         ipPortSelection?: outputs.compute.BackendServiceDynamicForwardingIpPortSelection;
+    }
+
+    export interface BackendServiceDynamicForwardingForwardProxy {
+        /**
+         * (Required, Beta)
+         * A boolean flag enabling dynamic forwarding proxy.
+         */
+        enabled: boolean;
+        /**
+         * (Required, Beta)
+         * Determines the dynamic forwarding proxy mode
+         * Possible values are: `DIRECT_FORWARDING`, `CLOUD_RUN`.
+         */
+        proxyMode: string;
     }
 
     export interface BackendServiceDynamicForwardingIpPortSelection {
@@ -51761,9 +51943,24 @@ export namespace compute {
 
     export interface GetBackendServiceDynamicForwarding {
         /**
+         * Dynamic Forwarding Proxy configuration.
+         */
+        forwardProxies: outputs.compute.GetBackendServiceDynamicForwardingForwardProxy[];
+        /**
          * IP:PORT based dynamic forwarding configuration.
          */
         ipPortSelections: outputs.compute.GetBackendServiceDynamicForwardingIpPortSelection[];
+    }
+
+    export interface GetBackendServiceDynamicForwardingForwardProxy {
+        /**
+         * A boolean flag enabling dynamic forwarding proxy.
+         */
+        enabled: boolean;
+        /**
+         * Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+         */
+        proxyMode: string;
     }
 
     export interface GetBackendServiceDynamicForwardingIpPortSelection {
@@ -53798,6 +53995,10 @@ export namespace compute {
          */
         securityPolicy: string;
         /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+         */
+        serviceClassId: string;
+        /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
@@ -54432,6 +54633,10 @@ export namespace compute {
          * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
          */
         queueCount: number;
+        /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+         */
+        serviceClassId: string;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
          */
@@ -56722,6 +56927,10 @@ export namespace compute {
          * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
          */
         queueCount: number;
+        /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+         */
+        serviceClassId: string;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
          */
@@ -61234,6 +61443,10 @@ export namespace compute {
          */
         securityPolicy: string;
         /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+         */
+        serviceClassId: string;
+        /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
@@ -61915,6 +62128,10 @@ export namespace compute {
          * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy: string;
+        /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+         */
+        serviceClassId: string;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
          */
@@ -62673,6 +62890,10 @@ export namespace compute {
          */
         securityPolicy?: string;
         /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+         */
+        serviceClassId?: string;
+        /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
@@ -62878,7 +63099,7 @@ export namespace compute {
          */
         preemptible?: boolean;
         /**
-         * Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+         * Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          */
         preemptionNoticeDuration?: outputs.compute.InstanceSchedulingPreemptionNoticeDuration;
         /**
@@ -63430,6 +63651,10 @@ export namespace compute {
          */
         queueCount?: number;
         /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+         */
+        serviceClassId?: string;
+        /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
@@ -63612,7 +63837,7 @@ export namespace compute {
          */
         preemptible?: boolean;
         /**
-         * Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+         * Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
          */
         preemptionNoticeDuration?: outputs.compute.InstanceTemplateSchedulingPreemptionNoticeDuration;
         /**
@@ -65579,6 +65804,47 @@ export namespace compute {
          * Type of the redirect action. For organization security policies, only EXTERNAL_302 is supported.
          */
         type: string;
+    }
+
+    export interface OrganizationSnapshotRecycleBinPolicyRule {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * The rule config for standard snapshots.
+         * Structure is documented below.
+         */
+        standardSnapshots?: outputs.compute.OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots;
+    }
+
+    export interface OrganizationSnapshotRecycleBinPolicyRuleStandardSnapshots {
+        /**
+         * The retention duration for snapshots in the recycle bin after which the
+         * snapshots are automatically deleted from recycle bin.
+         */
+        retentionDurationDays?: number;
+    }
+
+    export interface OrganizationSnapshotRecycleBinPolicySystemRule {
+        /**
+         * (Required) The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * (Output)
+         * The rule config for standard snapshots.
+         * Structure is documented below.
+         */
+        standardSnapshots: outputs.compute.OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot[];
+    }
+
+    export interface OrganizationSnapshotRecycleBinPolicySystemRuleStandardSnapshot {
+        /**
+         * The retention duration for snapshots in the recycle bin after which the
+         * snapshots are automatically deleted from recycle bin.
+         */
+        retentionDurationDays: number;
     }
 
     export interface PacketMirroringCollectorIlb {
@@ -68333,6 +68599,10 @@ export namespace compute {
          * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
          */
         queueCount?: number;
+        /**
+         * Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+         */
+        serviceClassId?: string;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
@@ -74913,6 +75183,47 @@ export namespace compute {
         resourceManagerTags?: {[key: string]: string};
     }
 
+    export interface SnapshotRecycleBinPolicyRule {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * The rule config for standard snapshots.
+         * Structure is documented below.
+         */
+        standardSnapshots?: outputs.compute.SnapshotRecycleBinPolicyRuleStandardSnapshots;
+    }
+
+    export interface SnapshotRecycleBinPolicyRuleStandardSnapshots {
+        /**
+         * The retention duration for snapshots in the recycle bin after which the
+         * snapshots are automatically deleted from recycle bin.
+         */
+        retentionDurationDays?: number;
+    }
+
+    export interface SnapshotRecycleBinPolicySystemRule {
+        /**
+         * (Required) The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * (Output)
+         * The rule config for standard snapshots.
+         * Structure is documented below.
+         */
+        standardSnapshots: outputs.compute.SnapshotRecycleBinPolicySystemRuleStandardSnapshot[];
+    }
+
+    export interface SnapshotRecycleBinPolicySystemRuleStandardSnapshot {
+        /**
+         * The retention duration for snapshots in the recycle bin after which the
+         * snapshots are automatically deleted from recycle bin.
+         */
+        retentionDurationDays: number;
+    }
+
     export interface SnapshotSettingsStorageLocation {
         /**
          * When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the
@@ -75342,6 +75653,13 @@ export namespace compute {
          */
         corsPolicy?: outputs.compute.URLMapDefaultRouteActionCorsPolicy;
         /**
+         * (Optional, Beta)
+         * Dynamic compression policy for this URL Map's route. Available only for
+         * Global EXTERNAL_MANAGED load balancer schemes.
+         * Structure is documented below.
+         */
+        dynamicCompressionPolicy?: outputs.compute.URLMapDefaultRouteActionDynamicCompressionPolicy;
+        /**
          * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -75350,6 +75668,12 @@ export namespace compute {
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.compute.URLMapDefaultRouteActionFaultInjectionPolicy;
+        /**
+         * (Optional, Beta)
+         * Specifies the policy for optimizing images returned in the HTTP response.
+         * Structure is documented below.
+         */
+        imageOptimizationPolicy?: outputs.compute.URLMapDefaultRouteActionImageOptimizationPolicy;
         /**
          * Specifies the maximum duration (timeout) for streams on the selected route.
          * Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -75690,6 +76014,15 @@ export namespace compute {
         maxAge?: number;
     }
 
+    export interface URLMapDefaultRouteActionDynamicCompressionPolicy {
+        /**
+         * Compress text responses using Brotli or gzip compression, based on
+         * the client's Accept-Encoding header.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
+         */
+        compressionMode?: string;
+    }
+
     export interface URLMapDefaultRouteActionFaultInjectionPolicy {
         /**
          * The specification for how client requests are aborted as part of fault injection.
@@ -75740,6 +76073,16 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds?: string;
+    }
+
+    export interface URLMapDefaultRouteActionImageOptimizationPolicy {
+        /**
+         * Controls whether presets or control parameters specified as URL query
+         * parameters are used to optimize the image. If not specified, the default
+         * value is DISABLED.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        queryParameterInterpretation?: string;
     }
 
     export interface URLMapDefaultRouteActionMaxStreamDuration {
@@ -76175,6 +76518,13 @@ export namespace compute {
          */
         corsPolicy?: outputs.compute.URLMapPathMatcherDefaultRouteActionCorsPolicy;
         /**
+         * (Optional, Beta)
+         * Dynamic compression policy for this URL Map's route. Available only for
+         * Global EXTERNAL_MANAGED load balancer schemes.
+         * Structure is documented below.
+         */
+        dynamicCompressionPolicy?: outputs.compute.URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy;
+        /**
          * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
          * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
          * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -76183,6 +76533,12 @@ export namespace compute {
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.compute.URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy;
+        /**
+         * (Optional, Beta)
+         * Specifies the policy for optimizing images returned in the HTTP response.
+         * Structure is documented below.
+         */
+        imageOptimizationPolicy?: outputs.compute.URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy;
         /**
          * Specifies the maximum duration (timeout) for streams on the selected route.
          * Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -76523,6 +76879,15 @@ export namespace compute {
         maxAge?: number;
     }
 
+    export interface URLMapPathMatcherDefaultRouteActionDynamicCompressionPolicy {
+        /**
+         * Compress text responses using Brotli or gzip compression, based on
+         * the client's Accept-Encoding header.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
+         */
+        compressionMode?: string;
+    }
+
     export interface URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
         /**
          * The specification for how client requests are aborted as part of fault injection.
@@ -76573,6 +76938,16 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds?: string;
+    }
+
+    export interface URLMapPathMatcherDefaultRouteActionImageOptimizationPolicy {
+        /**
+         * Controls whether presets or control parameters specified as URL query
+         * parameters are used to optimize the image. If not specified, the default
+         * value is DISABLED.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        queryParameterInterpretation?: string;
     }
 
     export interface URLMapPathMatcherDefaultRouteActionMaxStreamDuration {
@@ -76960,6 +77335,13 @@ export namespace compute {
          */
         corsPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionCorsPolicy;
         /**
+         * (Optional, Beta)
+         * Dynamic compression policy for this URL Map's route. Available only for
+         * Global EXTERNAL_MANAGED load balancer schemes.
+         * Structure is documented below.
+         */
+        dynamicCompressionPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy;
+        /**
          * The specification for fault injection introduced into traffic to test the
          * resiliency of clients to backend service failure. As part of fault injection,
          * when clients send requests to a backend service, delays can be introduced by
@@ -76970,6 +77352,12 @@ export namespace compute {
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
+        /**
+         * (Optional, Beta)
+         * Specifies the policy for optimizing images returned in the HTTP response.
+         * Structure is documented below.
+         */
+        imageOptimizationPolicy?: outputs.compute.URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy;
         /**
          * Specifies the maximum duration (timeout) for streams on the selected route.
          * Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -77314,6 +77702,15 @@ export namespace compute {
         maxAge?: number;
     }
 
+    export interface URLMapPathMatcherPathRuleRouteActionDynamicCompressionPolicy {
+        /**
+         * Compress text responses using Brotli or gzip compression, based on
+         * the client's Accept-Encoding header.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
+         */
+        compressionMode?: string;
+    }
+
     export interface URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
         /**
          * The specification for how client requests are aborted as part of fault injection.
@@ -77364,6 +77761,16 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
+    }
+
+    export interface URLMapPathMatcherPathRuleRouteActionImageOptimizationPolicy {
+        /**
+         * Controls whether presets or control parameters specified as URL query
+         * parameters are used to optimize the image. If not specified, the default
+         * value is DISABLED.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        queryParameterInterpretation?: string;
     }
 
     export interface URLMapPathMatcherPathRuleRouteActionMaxStreamDuration {
@@ -78017,6 +78424,13 @@ export namespace compute {
          */
         corsPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionCorsPolicy;
         /**
+         * (Optional, Beta)
+         * Dynamic compression policy for this URL Map's route. Available only for
+         * Global EXTERNAL_MANAGED load balancer schemes.
+         * Structure is documented below.
+         */
+        dynamicCompressionPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy;
+        /**
          * The specification for fault injection introduced into traffic to test the
          * resiliency of clients to backend service failure. As part of fault injection,
          * when clients send requests to a backend service, delays can be introduced by
@@ -78027,6 +78441,12 @@ export namespace compute {
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
+        /**
+         * (Optional, Beta)
+         * Specifies the policy for optimizing images returned in the HTTP response.
+         * Structure is documented below.
+         */
+        imageOptimizationPolicy?: outputs.compute.URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy;
         /**
          * Specifies the maximum duration (timeout) for streams on the selected route.
          * Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -78371,6 +78791,15 @@ export namespace compute {
         maxAge?: number;
     }
 
+    export interface URLMapPathMatcherRouteRuleRouteActionDynamicCompressionPolicy {
+        /**
+         * Compress text responses using Brotli or gzip compression, based on
+         * the client's Accept-Encoding header.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
+         */
+        compressionMode?: string;
+    }
+
     export interface URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
         /**
          * The specification for how client requests are aborted as part of fault injection.
@@ -78421,6 +78850,16 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds: string;
+    }
+
+    export interface URLMapPathMatcherRouteRuleRouteActionImageOptimizationPolicy {
+        /**
+         * Controls whether presets or control parameters specified as URL query
+         * parameters are used to optimize the image. If not specified, the default
+         * value is DISABLED.
+         * Possible values are: `DISABLED`, `ENABLED`.
+         */
+        queryParameterInterpretation?: string;
     }
 
     export interface URLMapPathMatcherRouteRuleRouteActionMaxStreamDuration {
@@ -82565,6 +83004,10 @@ export namespace container {
          */
         autoscaling?: outputs.container.ClusterNodePoolAutoscaling;
         /**
+         * Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+         */
+        bestEffortProvisioning?: outputs.container.ClusterNodePoolBestEffortProvisioning;
+        /**
          * Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
          */
         ignoreNodeCountChanges?: boolean;
@@ -82739,6 +83182,17 @@ export namespace container {
          * Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
          */
         totalMinNodeCount?: number;
+    }
+
+    export interface ClusterNodePoolBestEffortProvisioning {
+        /**
+         * When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the cluster.
+         */
+        enabled: boolean;
+        /**
+         * Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+         */
+        minProvisionNodes?: number;
     }
 
     export interface ClusterNodePoolDefaults {
@@ -86467,6 +86921,10 @@ export namespace container {
          */
         autoscalings: outputs.container.GetClusterNodePoolAutoscaling[];
         /**
+         * Specifies the configuration for best effort provisioning.
+         */
+        bestEffortProvisionings: outputs.container.GetClusterNodePoolBestEffortProvisioning[];
+        /**
          * When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managedInstanceGroupUrls in the state.
          */
         ignoreNodeCountChanges: boolean;
@@ -86612,6 +87070,17 @@ export namespace container {
          * Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
          */
         totalMinNodeCount: number;
+    }
+
+    export interface GetClusterNodePoolBestEffortProvisioning {
+        /**
+         * Whether node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible, eventually bringing up the target number of nodes.
+         */
+        enabled: boolean;
+        /**
+         * Minimum number of nodes that must be provisioned for the creation to be considered successful. Can only be set when enabled is true.
+         */
+        minProvisionNodes: number;
     }
 
     export interface GetClusterNodePoolDefault {
@@ -88294,6 +88763,17 @@ export namespace container {
          * Total size limits are supported only in 1.24.1+ clusters.
          */
         totalMinNodeCount?: number;
+    }
+
+    export interface NodePoolBestEffortProvisioning {
+        /**
+         * When enabled, node pool creation ignores non-fatal errors like stockout to provision as many nodes as possible right away, and eventually brings up the target number of nodes. Set to `false` or remove the block to disable best-effort provisioning; either change recreates the node pool.
+         */
+        enabled: boolean;
+        /**
+         * Minimum number of nodes that must be provisioned for the creation to be considered successful. The remaining nodes are provisioned gradually once the stockout issue has been resolved. Can only be set when `enabled` is `true`.
+         */
+        minProvisionNodes?: number;
     }
 
     export interface NodePoolMaintenancePolicy {
@@ -100894,6 +101374,8 @@ export namespace dataproc {
         diskSizeGb?: number;
         /**
          * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType?: string;
         /**
@@ -100904,6 +101386,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput?: number;
+        /**
+         * The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+         */
+        type?: string;
     }
 
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
@@ -100969,7 +101455,9 @@ export namespace dataproc {
          */
         diskSizeGb?: number;
         /**
-         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType?: string;
         /**
@@ -100980,6 +101468,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk.
          */
         provisionedThroughput?: number;
+        /**
+         * The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+         */
+        type?: string;
     }
 
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -101076,6 +101568,8 @@ export namespace dataproc {
         diskSizeGb?: number;
         /**
          * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType?: string;
         /**
@@ -101086,6 +101580,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput?: number;
+        /**
+         * The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+         */
+        type?: string;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
@@ -101156,6 +101654,8 @@ export namespace dataproc {
         diskSizeGb?: number;
         /**
          * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType?: string;
         /**
@@ -101166,6 +101666,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput?: number;
+        /**
+         * The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+         */
+        type?: string;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -101433,7 +101937,9 @@ export namespace dataproc {
          */
         diskSizeGb?: number;
         /**
-         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType?: string;
         /**
@@ -101444,6 +101950,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk.
          */
         provisionedThroughput?: number;
+        /**
+         * The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+         */
+        type?: string;
     }
 
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
@@ -101509,7 +102019,9 @@ export namespace dataproc {
          */
         diskSizeGb?: number;
         /**
-         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard". `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType?: string;
         /**
@@ -101520,6 +102032,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk.
          */
         provisionedThroughput?: number;
+        /**
+         * The disk type of the attached disk. Currently only supports Hyperdisks: "hyperdisk-balanced", "hyperdisk-extreme", "hyperdisk-ml", "hyperdisk-throughput".
+         */
+        type?: string;
     }
 
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -103579,7 +104095,10 @@ export namespace dataproc {
          */
         diskSizeGb: number;
         /**
-         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType: string;
         /**
@@ -103590,6 +104109,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
+        /**
+         * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         */
+        type: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicy {
@@ -103659,7 +104182,10 @@ export namespace dataproc {
          */
         diskSizeGb: number;
         /**
-         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType: string;
         /**
@@ -103670,6 +104196,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
+        /**
+         * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         */
+        type: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -103796,7 +104326,10 @@ export namespace dataproc {
          */
         diskSizeGb: number;
         /**
-         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType: string;
         /**
@@ -103807,6 +104340,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
+        /**
+         * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         */
+        type: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicy {
@@ -103880,7 +104417,10 @@ export namespace dataproc {
          */
         diskSizeGb: number;
         /**
-         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType: string;
         /**
@@ -103891,6 +104431,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
+        /**
+         * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         */
+        type: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -104120,7 +104664,10 @@ export namespace dataproc {
          */
         diskSizeGb: number;
         /**
-         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType: string;
         /**
@@ -104131,6 +104678,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
+        /**
+         * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         */
+        type: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicy {
@@ -104200,7 +104751,10 @@ export namespace dataproc {
          */
         diskSizeGb: number;
         /**
-         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         * (Optional, Deprecated)
+         * The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
+         *
+         * @deprecated `diskType` is deprecated and will be removed in a future major release. Use `type` instead.
          */
         diskType: string;
         /**
@@ -104211,6 +104765,10 @@ export namespace dataproc {
          * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
+        /**
+         * Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+         */
+        type: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -112257,6 +112815,61 @@ export namespace diagflow {
         username?: string;
     }
 
+    export interface GeneratorAgentCoachingContext {
+        /**
+         * Optional. Customized instructions for agent coaching.
+         * Structure is documented below.
+         */
+        instructions?: outputs.diagflow.GeneratorAgentCoachingContextInstruction[];
+        /**
+         * Optional. Output language code.
+         */
+        outputLanguageCode?: string;
+        /**
+         * Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+         */
+        overarchingGuidance?: string;
+        /**
+         * Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+         */
+        version: string;
+    }
+
+    export interface GeneratorAgentCoachingContextInstruction {
+        /**
+         * Optional. The action that human agent should take.
+         */
+        agentAction?: string;
+        /**
+         * Optional. The condition of the instruction.
+         */
+        condition?: string;
+        /**
+         * Optional. The detailed description of this instruction.
+         */
+        displayDetails?: string;
+        /**
+         * Optional. Display name for the instruction.
+         */
+        displayName?: string;
+        /**
+         * Optional. The action that system should take.
+         */
+        systemAction?: string;
+        /**
+         * Optional. The trigger event of the instruction.
+         * Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`, `TOOL_CALL_COMPLETION`.
+         */
+        triggeringEvent?: string;
+    }
+
+    export interface GeneratorFreeFormContext {
+        /**
+         * Optional. Free form text input to LLM.
+         */
+        text?: string;
+    }
+
     export interface GeneratorInferenceParameter {
         /**
          * Optional. Maximum number of the output tokens for the generator.
@@ -112292,7 +112905,7 @@ export namespace diagflow {
          */
         summarizationSections?: outputs.diagflow.GeneratorSummarizationContextSummarizationSection[];
         /**
-         * Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+         * Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
          */
         version: string;
     }
@@ -118338,6 +118951,430 @@ export namespace gemini {
          * Value of the configuration item.
          */
         value: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgent {
+        /**
+         * (Output)
+         * Output only. The last published context for the agent.
+         * Structure is documented below.
+         */
+        lastPublishedContexts: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext[];
+        /**
+         * Optional. The published context for the agent. This context is used by
+         * the Chat API in production.
+         * Structure is documented below.
+         */
+        publishedContext?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext;
+        /**
+         * Optional. The staging context for the agent. This context is used to
+         * test and validate changes before publishing.
+         * Structure is documented below.
+         */
+        stagingContext?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContext;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext {
+        /**
+         * Output only. Data sources that are available for answering questions.
+         */
+        datasourceReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences;
+        /**
+         * Output only. The basic entry point for data owners creating domain
+         * knowledge for the agent.
+         */
+        systemInstruction?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences {
+        /**
+         * References to BigQuery tables.
+         * Structure is documented below.
+         */
+        bq?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq {
+        /**
+         * References to BigQuery tables.
+         * Structure is documented below.
+         */
+        tableReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference {
+        /**
+         * The dataset that the table belongs to.
+         */
+        datasetId?: string;
+        /**
+         * The project that the table belongs to.
+         */
+        projectId?: string;
+        /**
+         * The table ID.
+         */
+        tableId?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext {
+        /**
+         * Required. Data sources that are available for answering questions.
+         * This Terraform resource currently supports BigQuery table references.
+         * Structure is documented below.
+         */
+        datasourceReferences: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences;
+        /**
+         * Optional. A list of example queries for BigQuery data sources.
+         * Structure is documented below.
+         */
+        exampleQueries?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery[];
+        /**
+         * Optional. Term definitions for the agent's domain.
+         * Structure is documented below.
+         */
+        glossaryTerms?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm[];
+        /**
+         * Optional. Additional options for the conversation.
+         * Structure is documented below.
+         */
+        options?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions;
+        /**
+         * Optional. Relationships between table schemas, including referencing
+         * and referenced columns.
+         * Structure is documented below.
+         */
+        schemaRelationships?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship[];
+        /**
+         * Optional. The basic entry point for data owners creating domain
+         * knowledge for the agent.
+         */
+        systemInstruction?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences {
+        /**
+         * References to BigQuery tables.
+         * Structure is documented below.
+         */
+        bq: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq {
+        /**
+         * References to BigQuery tables.
+         * Structure is documented below.
+         */
+        tableReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference {
+        /**
+         * The dataset that the table belongs to.
+         */
+        datasetId: string;
+        /**
+         * The project that the table belongs to.
+         */
+        projectId: string;
+        /**
+         * The table ID.
+         */
+        tableId: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery {
+        /**
+         * Optional. A natural language question that a user might ask.
+         */
+        naturalLanguageQuestion?: string;
+        /**
+         * Optional. The SQL query that should be generated to answer
+         * the natural language question.
+         */
+        sqlQuery?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm {
+        /**
+         * Required. The description or meaning of the term.
+         */
+        description: string;
+        /**
+         * Required. User friendly display name of the glossary term.
+         */
+        displayName: string;
+        /**
+         * Optional. A list of general purpose labels associated with this term.
+         */
+        labels?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions {
+        /**
+         * Optional. Options for analysis.
+         * Structure is documented below.
+         */
+        analysis?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis;
+        /**
+         * Optional. Options for datasource configuration.
+         * Structure is documented below.
+         */
+        datasource?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis {
+        /**
+         * Optional. Options for Python analysis.
+         * Structure is documented below.
+         */
+        python?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython {
+        /**
+         * Optional. Whether to enable Python analysis. Defaults to false.
+         */
+        enabled?: boolean;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource {
+        /**
+         * Optional. Limits the bytes billed for each BigQuery query job.
+         */
+        bigQueryMaxBilledBytes?: number;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship {
+        /**
+         * Optional. A confidence score for the suggested relationship.
+         */
+        confidenceScore?: number;
+        /**
+         * Required. An ordered list of fields for the left side of the join.
+         * Structure is documented below.
+         */
+        leftSchemaPaths: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths;
+        /**
+         * Required. An ordered list of fields for the right side of the join.
+         * Structure is documented below.
+         */
+        rightSchemaPaths: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths;
+        /**
+         * Optional. Sources which generated the schema relation edge.
+         * Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+         */
+        sources?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths {
+        /**
+         * Required. The ordered list of paths within the table schema.
+         */
+        paths: string[];
+        /**
+         * Required. The service-qualified full resource name of the table.
+         */
+        tableFqn: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths {
+        /**
+         * Required. The ordered list of paths within the table schema.
+         *
+         * <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+         */
+        paths: string[];
+        /**
+         * Required. The service-qualified full resource name of the table.
+         */
+        tableFqn: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContext {
+        /**
+         * Required. Data sources that are available for answering questions.
+         * This Terraform resource currently supports BigQuery table references.
+         * Structure is documented below.
+         */
+        datasourceReferences: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences;
+        /**
+         * Optional. A list of example queries for BigQuery data sources.
+         * Structure is documented below.
+         */
+        exampleQueries?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery[];
+        /**
+         * Optional. Term definitions for the agent's domain.
+         * Structure is documented below.
+         */
+        glossaryTerms?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm[];
+        /**
+         * Optional. Additional options for the conversation.
+         * Structure is documented below.
+         */
+        options?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions;
+        /**
+         * Optional. Relationships between table schemas, including referencing
+         * and referenced columns.
+         * Structure is documented below.
+         */
+        schemaRelationships?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship[];
+        /**
+         * Optional. The basic entry point for data owners creating domain
+         * knowledge for the agent.
+         */
+        systemInstruction?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences {
+        /**
+         * References to BigQuery tables.
+         * Structure is documented below.
+         */
+        bq: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq {
+        /**
+         * References to BigQuery tables.
+         * Structure is documented below.
+         */
+        tableReferences?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference {
+        /**
+         * The dataset that the table belongs to.
+         */
+        datasetId: string;
+        /**
+         * The project that the table belongs to.
+         */
+        projectId: string;
+        /**
+         * The table ID.
+         */
+        tableId: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery {
+        /**
+         * Optional. A natural language question that a user might ask.
+         */
+        naturalLanguageQuestion?: string;
+        /**
+         * Optional. The SQL query that should be generated to answer
+         * the natural language question.
+         */
+        sqlQuery?: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm {
+        /**
+         * Required. The description or meaning of the term.
+         */
+        description: string;
+        /**
+         * Required. User friendly display name of the glossary term.
+         */
+        displayName: string;
+        /**
+         * Optional. A list of general purpose labels associated with this term.
+         */
+        labels?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions {
+        /**
+         * Optional. Options for analysis.
+         * Structure is documented below.
+         */
+        analysis?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis;
+        /**
+         * Optional. Options for datasource configuration.
+         * Structure is documented below.
+         */
+        datasource?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis {
+        /**
+         * Optional. Options for Python analysis.
+         * Structure is documented below.
+         */
+        python?: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython {
+        /**
+         * Optional. Whether to enable Python analysis. Defaults to false.
+         */
+        enabled?: boolean;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource {
+        /**
+         * Optional. Limits the bytes billed for each BigQuery query job.
+         */
+        bigQueryMaxBilledBytes?: number;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship {
+        /**
+         * Optional. A confidence score for the suggested relationship.
+         */
+        confidenceScore?: number;
+        /**
+         * Required. An ordered list of fields for the left side of the join.
+         * Structure is documented below.
+         */
+        leftSchemaPaths: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths;
+        /**
+         * Required. An ordered list of fields for the right side of the join.
+         * Structure is documented below.
+         */
+        rightSchemaPaths: outputs.gemini.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths;
+        /**
+         * Optional. Sources which generated the schema relation edge.
+         * Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+         */
+        sources?: string[];
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths {
+        /**
+         * Required. The ordered list of paths within the table schema.
+         */
+        paths: string[];
+        /**
+         * Required. The service-qualified full resource name of the table.
+         */
+        tableFqn: string;
+    }
+
+    export interface DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths {
+        /**
+         * Required. The ordered list of paths within the table schema.
+         *
+         * <a name="nestedDataAnalyticsAgentLastPublishedContext"></a>The `lastPublishedContext` block contains:
+         */
+        paths: string[];
+        /**
+         * Required. The service-qualified full resource name of the table.
+         */
+        tableFqn: string;
+    }
+
+    export interface DataAnalyticsDataAgentIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DataAnalyticsDataAgentIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface GdaObservabilitySettingConversationalAnalyticsSetting {
@@ -133694,6 +134731,16 @@ export namespace modelarmor {
          */
         logTemplateOperations?: boolean;
         /**
+         * Specifies the modalities to scan. If empty, only text modality will be
+         * scanned. Image screening is in Preview and is only supported in the `us`
+         * and `eu` multi-regions; regional endpoints such as `us-central1` do not
+         * support it.
+         * Possible values:
+         * MODALITY_TEXT
+         * MODALITY_IMAGE
+         */
+        modalities?: string[];
+        /**
          * Metadata to enable multi language detection via template.
          * Structure is documented below.
          */
@@ -136179,6 +137226,17 @@ export namespace networkconnectivity {
         autoAcceptProjects: string[];
     }
 
+    export interface HubExportPscConfig {
+        /**
+         * Whether Private Service Connect endpoints for global Google APIs are propagated. The default value is false.
+         */
+        globalGoogleApis?: boolean;
+        /**
+         * Whether Private Service Connect endpoints for published services (regional ILBs) and regional Google APIs are propagated.
+         */
+        publishedServicesAndRegionalGoogleApis?: boolean;
+    }
+
     export interface HubIamBindingCondition {
         description?: string;
         expression: string;
@@ -137532,7 +138590,7 @@ export namespace networksecurity {
 
     export interface AuthzPolicyHttpRuleTo {
         /**
-         * Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
+         * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
          * Structure is documented below.
          */
         notOperations?: outputs.networksecurity.AuthzPolicyHttpRuleToNotOperation[];
@@ -137888,6 +138946,10 @@ export namespace networksecurity {
          * Structure is documented below.
          */
         to?: outputs.networksecurity.AuthzPolicyNetworkRuleTo;
+        /**
+         * CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+         */
+        when?: string;
     }
 
     export interface AuthzPolicyNetworkRuleFrom {
@@ -137915,6 +138977,12 @@ export namespace networksecurity {
          * Structure is documented below.
          */
         principals?: outputs.networksecurity.AuthzPolicyNetworkRuleFromNotSourcePrincipal[];
+        /**
+         * A list of resources to match against the resource of the source VM of a request.
+         * Limited to 5 resources.
+         * Structure is documented below.
+         */
+        resources?: outputs.networksecurity.AuthzPolicyNetworkRuleFromNotSourceResource[];
     }
 
     export interface AuthzPolicyNetworkRuleFromNotSourceIpBlock {
@@ -137950,6 +139018,62 @@ export namespace networksecurity {
          * * abc only matches the value abc.
          */
         exact?: string;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: boolean;
+    }
+
+    export interface AuthzPolicyNetworkRuleFromNotSourceResource {
+        /**
+         * An IAM service account to match against the source service account of the VM sending the request.
+         * Structure is documented below.
+         */
+        iamServiceAccount?: outputs.networksecurity.AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount;
+        /**
+         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+         * Structure is documented below.
+         */
+        tagValueIdSet?: outputs.networksecurity.AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet;
+    }
+
+    export interface AuthzPolicyNetworkRuleFromNotSourceResourceIamServiceAccount {
+        /**
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: string;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
+         */
+        exact?: string;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: boolean;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: string;
+        /**
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: string;
+    }
+
+    export interface AuthzPolicyNetworkRuleFromNotSourceResourceTagValueIdSet {
+        /**
+         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+         * Limited to 5 matches.
+         */
+        ids?: string[];
     }
 
     export interface AuthzPolicyNetworkRuleFromSource {
@@ -137964,6 +139088,12 @@ export namespace networksecurity {
          * Structure is documented below.
          */
         principals?: outputs.networksecurity.AuthzPolicyNetworkRuleFromSourcePrincipal[];
+        /**
+         * A list of resources to match against the resource of the source VM of a request.
+         * Limited to 5 resources.
+         * Structure is documented below.
+         */
+        resources?: outputs.networksecurity.AuthzPolicyNetworkRuleFromSourceResource[];
     }
 
     export interface AuthzPolicyNetworkRuleFromSourceIpBlock {
@@ -137999,6 +139129,62 @@ export namespace networksecurity {
          * * abc only matches the value abc.
          */
         exact?: string;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: boolean;
+    }
+
+    export interface AuthzPolicyNetworkRuleFromSourceResource {
+        /**
+         * An IAM service account to match against the source service account of the VM sending the request.
+         * Structure is documented below.
+         */
+        iamServiceAccount?: outputs.networksecurity.AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount;
+        /**
+         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
+         * Structure is documented below.
+         */
+        tagValueIdSet?: outputs.networksecurity.AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet;
+    }
+
+    export interface AuthzPolicyNetworkRuleFromSourceResourceIamServiceAccount {
+        /**
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: string;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
+         */
+        exact?: string;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: boolean;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: string;
+        /**
+         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: string;
+    }
+
+    export interface AuthzPolicyNetworkRuleFromSourceResourceTagValueIdSet {
+        /**
+         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
+         * Limited to 5 matches.
+         */
+        ids?: string[];
     }
 
     export interface AuthzPolicyNetworkRuleTo {
@@ -138006,7 +139192,50 @@ export namespace networksecurity {
          * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
          * Structure is documented below.
          */
+        notOperations?: outputs.networksecurity.AuthzPolicyNetworkRuleToNotOperation[];
+        /**
+         * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+         * Structure is documented below.
+         */
         operations?: outputs.networksecurity.AuthzPolicyNetworkRuleToOperation[];
+    }
+
+    export interface AuthzPolicyNetworkRuleToNotOperation {
+        /**
+         * Structure is documented below.
+         */
+        snis?: outputs.networksecurity.AuthzPolicyNetworkRuleToNotOperationSni[];
+    }
+
+    export interface AuthzPolicyNetworkRuleToNotOperationSni {
+        /**
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: string;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
+         */
+        exact?: string;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: boolean;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: string;
+        /**
+         * The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: string;
     }
 
     export interface AuthzPolicyNetworkRuleToOperation {
@@ -138018,9 +139247,33 @@ export namespace networksecurity {
 
     export interface AuthzPolicyNetworkRuleToOperationSni {
         /**
-         * (Optional)
+         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         */
+        contains?: string;
+        /**
+         * The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
          */
         exact?: string;
+        /**
+         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         */
+        ignoreCase?: boolean;
+        /**
+         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         */
+        prefix?: string;
+        /**
+         * The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         */
+        suffix?: string;
     }
 
     export interface AuthzPolicyTarget {
@@ -138094,9 +139347,81 @@ export namespace networksecurity {
 
     export interface FirewallEndpointEndpointSettings {
         /**
+         * (Optional, Beta)
+         * The Palo Alto Networks content cloud region of the firewall endpoint,
+         * for example `US_CENTRAL` or `CANADA`. See
+         * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#contentcloudregion)
+         * for the list of supported regions.
+         */
+        contentCloudRegion: string;
+        /**
+         * (Optional, Beta)
+         * Whether to block HTTP partial responses for the firewall endpoint.
+         * When `true`, resumption of blocked malicious HTTP file downloads is
+         * blocked by the firewall. `false` provides maximum availability, `true`
+         * provides maximum security.
+         */
+        httpPartialResponseBlocked?: boolean;
+        /**
          * Indicates whether Jumbo Frames are enabled for the firewall endpoint.
          */
         jumboFramesEnabled?: boolean;
+    }
+
+    export interface FirewallEndpointWildfireSettings {
+        /**
+         * Indicates whether WildFire is enabled for the firewall endpoint.
+         * Enabling WildFire requires accepting the WildFire end-user license
+         * agreement (EULA) for the endpoint's billing project; see
+         * [Configure WildFire](https://docs.cloud.google.com/firewall/docs/configure-wildfire).
+         */
+        enabled?: boolean;
+        /**
+         * Settings for WildFire inline cloud analysis.
+         * Structure is documented below.
+         */
+        wildfireInlineCloudAnalysisSettings: outputs.networksecurity.FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings;
+        /**
+         * The duration for which the firewall endpoint waits for a real-time
+         * signature lookup response from the WildFire cloud before taking the
+         * configured timeout action (1ms to 5000ms, default 1000ms).
+         * A duration in seconds with up to nine fractional digits, ending with 's'.
+         * Example: "1s".
+         */
+        wildfireRealtimeLookupDuration: string;
+        /**
+         * The action to take when a WildFire real-time signature lookup times out.
+         * Possible values are: `ALLOW`, `DENY`.
+         */
+        wildfireRealtimeLookupTimeoutAction: string;
+        /**
+         * The WildFire region for the firewall endpoint, for example
+         * `UNITED_STATES` or `CANADA`. See
+         * [API docs](https://docs.cloud.google.com/firewall/docs/reference/network-security/rest/v1beta1/organizations.locations.firewallEndpoints#wildfireregion)
+         * for the list of supported regions.
+         */
+        wildfireRegion: string;
+    }
+
+    export interface FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
+        /**
+         * The maximum duration for which the firewall endpoint holds a file
+         * while waiting for an inline cloud analysis verdict before taking
+         * the configured timeout action (1ms to 240000ms, default 30000ms).
+         * A duration in seconds with up to nine fractional digits, ending with 's'.
+         * Example: "30s".
+         */
+        maxAnalysisDuration: string;
+        /**
+         * Indicates whether logging is disabled when a WildFire inline cloud
+         * analysis submission times out.
+         */
+        submissionTimeoutLoggingDisabled?: boolean;
+        /**
+         * The action to take when WildFire inline cloud analysis times out.
+         * Possible values are: `ALLOW`, `DENY`.
+         */
+        timeoutAction: string;
     }
 
     export interface GetAddressGroupsAddressGroup {
@@ -138978,8 +140303,10 @@ export namespace networkservices {
         /**
          * Whenever possible, content will be fetched from origin and cached in or
          * near the specified origin. Best effort.
-         * You must specify exactly one FlexShieldingRegion.
-         * Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
+         * You must specify exactly one FlexShieldingRegion. Possible values include
+         * `AFRICA_SOUTH1`, `ME_CENTRAL1`, `EUROPE_WEST3`, and `US_EAST5`. See
+         * [FlexShieldingRegion](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#FlexShieldingRegion)
+         * for the full list of supported regions.
          */
         flexShieldingRegions?: string;
     }
@@ -142073,6 +143400,22 @@ export namespace oracledatabase {
          * Structure is documented below.
          */
         timeZone: outputs.oracledatabase.CloudVmClusterPropertiesTimeZone;
+        /**
+         * Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+         * VM_BACKUP_STORAGE_TYPE_LOCAL
+         * VM_BACKUP_STORAGE_TYPE_EXASCALE
+         */
+        vmBackupStorageType: string;
+        /**
+         * Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+         * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+         * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+         */
+        vmFileSystemStorageType: string;
     }
 
     export interface CloudVmClusterPropertiesDiagnosticsDataCollectionOptions {
@@ -144876,6 +146219,22 @@ export namespace oracledatabase {
          * [IANA Time Zone Database](https://www.iana.org/time-zones).
          */
         timeZones: outputs.oracledatabase.GetCloudVmClusterPropertyTimeZone[];
+        /**
+         * Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+         * VM_BACKUP_STORAGE_TYPE_LOCAL
+         * VM_BACKUP_STORAGE_TYPE_EXASCALE
+         */
+        vmBackupStorageType: string;
+        /**
+         * Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+         * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+         * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+         */
+        vmFileSystemStorageType: string;
     }
 
     export interface GetCloudVmClusterPropertyDiagnosticsDataCollectionOption {
@@ -145203,6 +146562,22 @@ export namespace oracledatabase {
          * [IANA Time Zone Database](https://www.iana.org/time-zones).
          */
         timeZones: outputs.oracledatabase.GetCloudVmClustersCloudVmClusterPropertyTimeZone[];
+        /**
+         * Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+         * VM_BACKUP_STORAGE_TYPE_LOCAL
+         * VM_BACKUP_STORAGE_TYPE_EXASCALE
+         */
+        vmBackupStorageType: string;
+        /**
+         * Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+         * Possible values:
+         * VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+         * VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+         * VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+         */
+        vmFileSystemStorageType: string;
     }
 
     export interface GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOption {
@@ -160894,6 +162269,60 @@ export namespace spanner {
 }
 
 export namespace sql {
+    export interface DatabaseInstanceBlueGreenDeployment {
+        /**
+         * Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+         */
+        activeEnvironment?: string;
+        /**
+         * Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`activeEnvironment = "TARGET"`). Defaults to `false`.
+         */
+        deleteOldSourceOnDestroy?: boolean;
+        /**
+         * The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+         */
+        deploymentName: string;
+        /**
+         * The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+         */
+        oldSourceInstanceConnectionName: string;
+        /**
+         * The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+         */
+        oldSourceInstanceName: string;
+        /**
+         * The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `databaseVersion`. Cannot be changed while the deployment is active.
+         */
+        targetDatabaseVersion?: string;
+        /**
+         * The connection name of the green (target) instance.
+         */
+        targetInstanceConnectionName: string;
+        /**
+         * The IP addresses assigned to the green (target) instance. Structure is documented below.
+         */
+        targetInstanceIpAddresses: outputs.sql.DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress[];
+        /**
+         * The name of the green (target) instance created for the Blue-Green Deployment.
+         */
+        targetInstanceName: string;
+    }
+
+    export interface DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+        /**
+         * The IPv4 address assigned to the target instance.
+         */
+        ipAddress: string;
+        /**
+         * The time this IP address will be retired, in RFC 3339 format.
+         */
+        timeToRetire: string;
+        /**
+         * The type of this IP address (`PRIMARY`, `OUTGOING`, or `PRIVATE`).
+         */
+        type: string;
+    }
+
     export interface DatabaseInstanceClone {
         /**
          * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -161801,6 +163230,51 @@ export namespace sql {
         sha1Fingerprint: string;
     }
 
+    export interface GetDatabaseInstanceBlueGreenDeployment {
+        /**
+         * Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+         */
+        activeEnvironment: string;
+        /**
+         * Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+         */
+        deleteOldSourceOnDestroy: boolean;
+        /**
+         * A unique identifier for the blue-green deployment within the project and region.
+         */
+        deploymentName: string;
+        /**
+         * Auth Proxy connection string for the former Blue instance post-switchover.
+         */
+        oldSourceInstanceConnectionName: string;
+        /**
+         * Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+         */
+        oldSourceInstanceName: string;
+        /**
+         * The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+         */
+        targetDatabaseVersion: string;
+        /**
+         * The Cloud SQL Auth Proxy connection string for the Green instance.
+         */
+        targetInstanceConnectionName: string;
+        /**
+         * Standard Cloud SQL IP address list for the Green instance.
+         */
+        targetInstanceIpAddresses: outputs.sql.GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress[];
+        /**
+         * The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+         */
+        targetInstanceName: string;
+    }
+
+    export interface GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+        ipAddress: string;
+        timeToRetire: string;
+        type: string;
+    }
+
     export interface GetDatabaseInstanceClone {
         /**
          * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -162610,6 +164084,10 @@ export namespace sql {
          */
         backupdrBackup: string;
         /**
+         * Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+         */
+        blueGreenDeployments: outputs.sql.GetDatabaseInstancesInstanceBlueGreenDeployment[];
+        /**
          * Configuration for creating a new instance as a clone of another instance.
          */
         clones: outputs.sql.GetDatabaseInstancesInstanceClone[];
@@ -162751,6 +164229,51 @@ export namespace sql {
          * When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
          */
         switchTransactionLogsToCloudStorageEnabled: boolean;
+    }
+
+    export interface GetDatabaseInstancesInstanceBlueGreenDeployment {
+        /**
+         * Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+         */
+        activeEnvironment: string;
+        /**
+         * Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+         */
+        deleteOldSourceOnDestroy: boolean;
+        /**
+         * A unique identifier for the blue-green deployment within the project and region.
+         */
+        deploymentName: string;
+        /**
+         * Auth Proxy connection string for the former Blue instance post-switchover.
+         */
+        oldSourceInstanceConnectionName: string;
+        /**
+         * Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+         */
+        oldSourceInstanceName: string;
+        /**
+         * The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+         */
+        targetDatabaseVersion: string;
+        /**
+         * The Cloud SQL Auth Proxy connection string for the Green instance.
+         */
+        targetInstanceConnectionName: string;
+        /**
+         * Standard Cloud SQL IP address list for the Green instance.
+         */
+        targetInstanceIpAddresses: outputs.sql.GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress[];
+        /**
+         * The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+         */
+        targetInstanceName: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+        ipAddress: string;
+        timeToRetire: string;
+        type: string;
     }
 
     export interface GetDatabaseInstancesInstanceClone {
@@ -171134,6 +172657,297 @@ export namespace vertex {
          * The disk utilization of the MetadataStore in bytes.
          */
         diskUtilizationBytes: string;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservability {
+        /**
+         * Optional log view that will be used to query logs. If empty, the
+         * project's default view (`projects/{{project_id}}`) will be used.
+         */
+        logView?: string;
+        /**
+         * Configuration for a data source following the OpenTelemetry
+         * convention. This is the convention that the data source follows.
+         * Structure is documented below.
+         */
+        openTelemetry: outputs.vertex.AiOnlineEvaluatorCloudObservabilityOpenTelemetry;
+        /**
+         * If chosen, the OnlineEvaluator will evaluate sessions matching the
+         * specified filter. A session is a group of traces with a common
+         * `gen_ai.conversation.id`. Exactly one of `traceScope` or
+         * `sessionScope` must be set.
+         * Structure is documented below.
+         */
+        sessionScope?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScope;
+        /**
+         * If chosen, the OnlineEvaluator will evaluate single traces matching
+         * the specified filter. Exactly one of `traceScope` or `sessionScope`
+         * must be set.
+         * Structure is documented below.
+         */
+        traceScope?: outputs.vertex.AiOnlineEvaluatorCloudObservabilityTraceScope;
+        /**
+         * Optional trace view that will be used to query traces. If empty, the
+         * `_AllSpans` view from the `_Trace` US bucket will be used.
+         */
+        traceView?: string;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilityOpenTelemetry {
+        /**
+         * Defines which version of the OTel Semantic Convention the data
+         * follows. Can be "1.39.0" or newer.
+         */
+        semconvVersion: string;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScope {
+        /**
+         * A list of predicates to filter sessions. Multiple predicates are
+         * combined using AND. The maximum number of predicates is 10.
+         * Structure is documented below.
+         */
+        filters?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilter[];
+        /**
+         * Session is considered ready for evaluation when there are no new
+         * traces for a specified period of inactivity.
+         * Structure is documented below.
+         */
+        inactivityTrigger?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilter {
+        /**
+         * Filter on the duration of a session (in seconds).
+         * Structure is documented below.
+         */
+        duration?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration;
+        /**
+         * Filter on the number of LLM call errors within a session.
+         * Structure is documented below.
+         */
+        modelCallErrors?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors;
+        /**
+         * Filter on the number of underlying LLM calls within a session.
+         * Structure is documented below.
+         */
+        modelCalls?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls;
+        /**
+         * Filter on the number of tool call errors within a session.
+         * Structure is documented below.
+         */
+        toolCallErrors?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors;
+        /**
+         * Filter on the number of underlying tool calls within a session.
+         * Structure is documented below.
+         */
+        toolCalls?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls;
+        /**
+         * Filter on the total token usage within a session.
+         * Structure is documented below.
+         */
+        totalTokenUsage?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage;
+        /**
+         * Filter on the number of user turns within a session.
+         * Structure is documented below.
+         */
+        userTurns?: outputs.vertex.AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDuration {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrors {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCalls {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrors {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCalls {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsage {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurns {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTrigger {
+        /**
+         * The amount of time that must pass with no new traces before a
+         * session is considered ready for evaluation. Must be a positive
+         * duration no greater than 7 days (604800 seconds), e.g. "3600s".
+         */
+        threshold: string;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilityTraceScope {
+        /**
+         * A list of predicates to filter traces. Multiple predicates are
+         * combined using AND. The maximum number of predicates is 10.
+         * Structure is documented below.
+         */
+        filters?: outputs.vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilter[];
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilityTraceScopeFilter {
+        /**
+         * Filter on the duration of a session (in seconds).
+         * Structure is documented below.
+         */
+        duration?: outputs.vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration;
+        /**
+         * Filter on the total token usage within a session.
+         * Structure is documented below.
+         */
+        totalTokenUsage?: outputs.vertex.AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDuration {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsage {
+        /**
+         * The comparison operator to apply. Possible values are:
+         * LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+         * GREATER.
+         */
+        comparisonOperator: string;
+        /**
+         * The value to compare against.
+         */
+        value: number;
+    }
+
+    export interface AiOnlineEvaluatorConfig {
+        /**
+         * The maximum number of evaluations to perform per run. If set to 0, the
+         * number is unbounded.
+         */
+        maxEvaluatedSamplesPerRun?: string;
+        /**
+         * Configuration for random sampling. This is the sampling method used to
+         * select traces for evaluation.
+         * Structure is documented below.
+         */
+        randomSampling?: outputs.vertex.AiOnlineEvaluatorConfigRandomSampling;
+    }
+
+    export interface AiOnlineEvaluatorConfigRandomSampling {
+        /**
+         * The percentage of traces to sample for evaluation. Must be an
+         * integer between 1 and 100.
+         */
+        percentage: number;
+    }
+
+    export interface AiOnlineEvaluatorMetricSource {
+        /**
+         * Inline metric config, provided as a JSON-formatted string using
+         * camelCase field names to match the API format (see the
+         * [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+         * The suggested predefined `metricSpecName` values depend on the
+         * evaluation scope configured in `cloudObservability`; a predefined
+         * metric must match the scope or the create request will be rejected:
+         */
+        metric?: string;
+        /**
+         * Resource name of a registered metric (a
+         * `gcp.vertex.AiEvaluationMetric`), e.g.
+         * projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+         */
+        metricResourceName?: string;
+    }
+
+    export interface AiOnlineEvaluatorStateDetail {
+        /**
+         * (Output)
+         * Human-readable message describing the state of the OnlineEvaluator.
+         */
+        message: string;
     }
 
     export interface AiPersistentResourceEncryptionSpec {

@@ -34,6 +34,33 @@ import * as utilities from "../utilities";
  * ```
  *
  * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as kubernetes from "@pulumi/kubernetes";
+ *
+ * const providerIdentity = gcp.organizations.getClientOpenIdUserInfo({});
+ * const provider = gcp.organizations.getClientConfig({});
+ * const myCluster = gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     zone: "us-east1-a",
+ * });
+ * const user = new kubernetes.index.ClusterRoleBinding("user", {
+ *     metadata: [{
+ *         name: "provider-user-admin",
+ *     }],
+ *     roleRef: [{
+ *         apiGroup: "rbac.authorization.k8s.io",
+ *         kind: "ClusterRole",
+ *         name: "cluster-admin",
+ *     }],
+ *     subject: [{
+ *         kind: "User",
+ *         name: providerIdentity.email,
+ *     }],
+ * });
+ * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -81,6 +108,33 @@ export interface GetClientOpenIdUserInfoResult {
  * ```
  *
  * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as kubernetes from "@pulumi/kubernetes";
+ *
+ * const providerIdentity = gcp.organizations.getClientOpenIdUserInfo({});
+ * const provider = gcp.organizations.getClientConfig({});
+ * const myCluster = gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     zone: "us-east1-a",
+ * });
+ * const user = new kubernetes.index.ClusterRoleBinding("user", {
+ *     metadata: [{
+ *         name: "provider-user-admin",
+ *     }],
+ *     roleRef: [{
+ *         apiGroup: "rbac.authorization.k8s.io",
+ *         kind: "ClusterRole",
+ *         name: "cluster-admin",
+ *     }],
+ *     subject: [{
+ *         kind: "User",
+ *         name: providerIdentity.email,
+ *     }],
+ * });
+ * ```
  */
 export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

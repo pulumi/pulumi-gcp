@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
  * This data source fetches information of a tag from a provided Artifact Registry repository.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myTags = gcp.artifactregistry.getTags({
+ *     location: "us-central1",
+ *     repositoryId: "example-repo",
+ *     packageName: "example-package",
+ *     tagName: "latest",
+ * });
+ * ```
  */
 export function getTag(args: GetTagArgs, opts?: pulumi.InvokeOptions): Promise<GetTagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -72,6 +84,18 @@ export interface GetTagResult {
  * This data source fetches information of a tag from a provided Artifact Registry repository.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myTags = gcp.artifactregistry.getTags({
+ *     location: "us-central1",
+ *     repositoryId: "example-repo",
+ *     packageName: "example-package",
+ *     tagName: "latest",
+ * });
+ * ```
  */
 export function getTagOutput(args: GetTagOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

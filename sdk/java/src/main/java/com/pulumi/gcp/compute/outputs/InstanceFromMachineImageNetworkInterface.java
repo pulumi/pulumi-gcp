@@ -110,6 +110,11 @@ public final class InstanceFromMachineImageNetworkInterface {
      */
     private @Nullable String securityPolicy;
     /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+     * 
+     */
+    private @Nullable String serviceClassId;
+    /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -259,6 +264,13 @@ public final class InstanceFromMachineImageNetworkInterface {
         return Optional.ofNullable(this.securityPolicy);
     }
     /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+     * 
+     */
+    public Optional<String> serviceClassId() {
+        return Optional.ofNullable(this.serviceClassId);
+    }
+    /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -314,6 +326,7 @@ public final class InstanceFromMachineImageNetworkInterface {
         private @Nullable String parentNicName;
         private @Nullable Integer queueCount;
         private @Nullable String securityPolicy;
+        private @Nullable String serviceClassId;
         private @Nullable String stackType;
         private @Nullable String subnetwork;
         private @Nullable String subnetworkProject;
@@ -339,6 +352,7 @@ public final class InstanceFromMachineImageNetworkInterface {
     	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.securityPolicy = defaults.securityPolicy;
+    	      this.serviceClassId = defaults.serviceClassId;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
@@ -466,6 +480,12 @@ public final class InstanceFromMachineImageNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceClassId(@Nullable String serviceClassId) {
+
+            this.serviceClassId = serviceClassId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder stackType(@Nullable String stackType) {
 
             this.stackType = stackType;
@@ -509,6 +529,7 @@ public final class InstanceFromMachineImageNetworkInterface {
             _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.securityPolicy = securityPolicy;
+            _resultValue.serviceClassId = serviceClassId;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;

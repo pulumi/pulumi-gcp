@@ -47,7 +47,7 @@ import (
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //			})
@@ -57,7 +57,7 @@ import (
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 //				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
-//				Network: net.ID().ToIDOutput().ToStringOutput(),
+//				Network: net.ID(),
 //				Bgp: &compute.RouterBgpArgs{
 //					Asn: pulumi.Int(64514),
 //				},
@@ -107,7 +107,7 @@ import (
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //			})
@@ -117,7 +117,7 @@ import (
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 //				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
-//				Network: net.ID().ToIDOutput().ToStringOutput(),
+//				Network: net.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -154,7 +154,7 @@ import (
 //				SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
 //				Subnetworks: compute.RouterNatSubnetworkArray{
 //					&compute.RouterNatSubnetworkArgs{
-//						Name: subnet.ID().ToIDOutput().ToStringOutput(),
+//						Name: subnet.ID(),
 //						SourceIpRangesToNats: pulumi.StringArray{
 //							pulumi.String("ALL_IP_RANGES"),
 //						},
@@ -206,7 +206,7 @@ import (
 //			}
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
 //				Purpose:     pulumi.String("PRIVATE_NAT"),
@@ -217,7 +217,7 @@ import (
 //			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
 //				Name:    pulumi.String("my-router"),
 //				Region:  subnet.Region,
-//				Network: net.ID().ToIDOutput().ToStringOutput(),
+//				Network: net.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -233,7 +233,7 @@ import (
 //				Name:        pulumi.String("my-spoke"),
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("vpc spoke for inter vpc nat"),
-//				Hub:         hub.ID().ToIDOutput().ToStringOutput(),
+//				Hub:         hub.ID(),
 //				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
 //					ExcludeExportRanges: pulumi.StringArray{
 //						pulumi.String("198.51.100.0/24"),
@@ -256,7 +256,7 @@ import (
 //				Type:                             pulumi.String("PRIVATE"),
 //				Subnetworks: compute.RouterNatSubnetworkArray{
 //					&compute.RouterNatSubnetworkArgs{
-//						Name: subnet.ID().ToIDOutput().ToStringOutput(),
+//						Name: subnet.ID(),
 //						SourceIpRangesToNats: pulumi.StringArray{
 //							pulumi.String("ALL_IP_RANGES"),
 //						},

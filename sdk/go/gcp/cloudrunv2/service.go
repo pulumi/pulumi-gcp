@@ -251,7 +251,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -292,7 +292,7 @@ import (
 //				Name:        pulumi.String("run-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     customTestNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     customTestNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -321,7 +321,7 @@ import (
 //						},
 //					},
 //					VpcAccess: &cloudrunv2.ServiceTemplateVpcAccessArgs{
-//						Connector: connector.ID().ToIDOutput().ToStringOutput(),
+//						Connector: connector.ID(),
 //						Egress:    pulumi.String("ALL_TRAFFIC"),
 //					},
 //				},
@@ -599,7 +599,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -868,7 +868,7 @@ import (
 //						},
 //					},
 //					ServiceMesh: &cloudrunv2.ServiceTemplateServiceMeshArgs{
-//						Mesh: mesh.ID().ToIDOutput().ToStringOutput(),
+//						Mesh: mesh.ID(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -1229,6 +1229,83 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Agent Identity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				FunctionalType:     pulumi.String("FUNCTIONAL_TYPE_AGENT"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//					WorkloadIdentityConfig: &cloudrunv2.ServiceTemplateWorkloadIdentityConfigArgs{
+//						IdentityType:               pulumi.String("IDENTITY_TYPE_AGENT_IDENTITY"),
+//						IdentityCertificateEnabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Service Mcp Server
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				FunctionalType:     pulumi.String("FUNCTIONAL_TYPE_MCP_SERVER"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//					WorkloadIdentityConfig: &cloudrunv2.ServiceTemplateWorkloadIdentityConfigArgs{
+//						IdentityType: pulumi.String("IDENTITY_TYPE_SERVICE_ACCOUNT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -1303,6 +1380,14 @@ type Service struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	// (Optional, Beta)
+	// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+	// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+	// Once set, this field cannot be changed or unset.
+	// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+	// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+	// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+	FunctionalType pulumi.StringOutput `pulumi:"functionalType"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringOutput `pulumi:"generation"`
 	// Used to enable/disable IAP for the cloud-run service.
@@ -1478,6 +1563,14 @@ type serviceState struct {
 	Etag *string `pulumi:"etag"`
 	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime *string `pulumi:"expireTime"`
+	// (Optional, Beta)
+	// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+	// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+	// Once set, this field cannot be changed or unset.
+	// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+	// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+	// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+	FunctionalType *string `pulumi:"functionalType"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation *string `pulumi:"generation"`
 	// Used to enable/disable IAP for the cloud-run service.
@@ -1613,6 +1706,14 @@ type ServiceState struct {
 	Etag pulumi.StringPtrInput
 	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime pulumi.StringPtrInput
+	// (Optional, Beta)
+	// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+	// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+	// Once set, this field cannot be changed or unset.
+	// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+	// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+	// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+	FunctionalType pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringPtrInput
 	// Used to enable/disable IAP for the cloud-run service.
@@ -1735,6 +1836,14 @@ type serviceArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
+	// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+	// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+	// Once set, this field cannot be changed or unset.
+	// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+	// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+	// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+	FunctionalType *string `pulumi:"functionalType"`
 	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled *bool `pulumi:"iapEnabled"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -1821,6 +1930,14 @@ type ServiceArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
+	// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+	// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+	// Once set, this field cannot be changed or unset.
+	// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+	// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+	// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+	FunctionalType pulumi.StringPtrInput
 	// Used to enable/disable IAP for the cloud-run service.
 	IapEnabled pulumi.BoolPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -2061,6 +2178,17 @@ func (o ServiceOutput) Etag() pulumi.StringOutput {
 // For a deleted resource, the time after which it will be permanently deleted.
 func (o ServiceOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// (Optional, Beta)
+// The functional type of the Service. Declares the primary purpose of the workload so that it can be
+// registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+// Once set, this field cannot be changed or unset.
+// A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+// to `IDENTITY_TYPE_AGENT_IDENTITY`.
+// Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+func (o ServiceOutput) FunctionalType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.FunctionalType }).(pulumi.StringOutput)
 }
 
 // A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.

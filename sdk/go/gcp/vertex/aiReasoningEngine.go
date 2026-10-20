@@ -285,7 +285,7 @@ import (
 //			}
 //			bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("requirements.txt"),
-//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: bucket.ID(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
 //			})
 //			if err != nil {
@@ -293,7 +293,7 @@ import (
 //			}
 //			bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("code.pkl"),
-//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: bucket.ID(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
 //			})
 //			if err != nil {
@@ -301,7 +301,7 @@ import (
 //			}
 //			bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("dependencies.tar.gz"),
-//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: bucket.ID(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
 //			})
 //			if err != nil {
@@ -318,7 +318,7 @@ import (
 //				Name:        pulumi.String("subnetwork"),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Network:     network.ID().ToIDOutput().ToStringOutput(),
+//				Network:     network.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -328,7 +328,7 @@ import (
 //				Region:               pulumi.String("us-central1"),
 //				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 //				Subnetworks: pulumi.StringArray{
-//					subnetwork.ID().ToIDOutput().ToStringOutput(),
+//					subnetwork.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -377,7 +377,7 @@ import (
 //					},
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 //						PscInterfaceConfig: &vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{
-//							NetworkAttachment: networkAttachment.ID().ToIDOutput().ToStringOutput(),
+//							NetworkAttachment: networkAttachment.ID(),
 //							DnsPeeringConfigs: vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray{
 //								&vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{
 //									Domain:        pulumi.String("example.com."),
@@ -444,7 +444,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
+//				Secret:     secret.ID(),
 //				SecretData: pulumi.String("test"),
 //			})
 //			if err != nil {
@@ -457,7 +457,7 @@ import (
 //				return err
 //			}
 //			secretAccess, err := secretmanager.NewSecretIamMember(ctx, "secret_access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretId: secret.ID(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   serviceAccount.Member,
 //			})
@@ -516,7 +516,7 @@ import (
 //			}
 //			bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("requirements.txt"),
-//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: bucket.ID(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
 //			})
 //			if err != nil {
@@ -524,7 +524,7 @@ import (
 //			}
 //			bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("code.pkl"),
-//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: bucket.ID(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
 //			})
 //			if err != nil {
@@ -532,7 +532,7 @@ import (
 //			}
 //			bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("dependencies.tar.gz"),
-//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
+//				Bucket: bucket.ID(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
 //			})
 //			if err != nil {

@@ -82,7 +82,7 @@ import (
 //			}
 //			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
-//				Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      basicKey.ID(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -102,7 +102,7 @@ import (
 //				},
 //				Match: &compute.NetworkFirewallPolicyRuleMatchArgs{
 //					SrcAddressGroups: pulumi.StringArray{
-//						basicGlobalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
+//						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
 //					SrcIpRanges: pulumi.StringArray{
 //						pulumi.String("10.100.0.1/32"),
@@ -118,7 +118,7 @@ import (
 //					},
 //					SrcSecureTags: compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 //						&compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
-//							Name: basicValue.ID().ToIDOutput().ToStringOutput(),
+//							Name: basicValue.ID(),
 //						},
 //					},
 //					Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
@@ -230,7 +230,7 @@ import (
 //					},
 //					SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 //					SrcNetworks: pulumi.StringArray{
-//						network.ID().ToIDOutput().ToStringOutput(),
+//						network.ID(),
 //					},
 //					Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -341,7 +341,7 @@ import (
 //					},
 //					SrcNetworkContext: pulumi.String("VPC_NETWORKS"),
 //					SrcNetworks: pulumi.StringArray{
-//						network.ID().ToIDOutput().ToStringOutput(),
+//						network.ID(),
 //					},
 //					Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -382,7 +382,7 @@ import (
 //			backend, err := compute.NewSubnetwork(ctx, "backend", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("backend-subnet"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.10.0.0/24"),
 //			})
 //			if err != nil {
@@ -391,7 +391,7 @@ import (
 //			proxy, err := compute.NewSubnetwork(ctx, "proxy", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("proxy-subnet"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     net.ID().ToIDOutput().ToStringOutput(),
+//				Network:     net.ID(),
 //				IpCidrRange: pulumi.String("10.20.0.0/24"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				Role:        pulumi.String("ACTIVE"),
@@ -414,7 +414,7 @@ import (
 //				Region:              pulumi.String("us-central1"),
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -422,7 +422,7 @@ import (
 //			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 //				Name:           pulumi.String("url-map"),
 //				Region:         pulumi.String("us-central1"),
-//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				DefaultService: defaultRegionBackendService.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -430,7 +430,7 @@ import (
 //			defaultRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 //				Name:   pulumi.String("target-http-proxy"),
 //				Region: pulumi.String("us-central1"),
-//				UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
+//				UrlMap: defaultRegionUrlMap.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -438,10 +438,10 @@ import (
 //			ilb, err := compute.NewForwardingRule(ctx, "ilb", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("forwarding-rule"),
 //				Region:              pulumi.String("us-central1"),
-//				Network:             net.ID().ToIDOutput().ToStringOutput(),
-//				Subnetwork:          backend.ID().ToIDOutput().ToStringOutput(),
+//				Network:             net.ID(),
+//				Subnetwork:          backend.ID(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				Target:              defaultRegionTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
+//				Target:              defaultRegionTargetHttpProxy.ID(),
 //				IpProtocol:          pulumi.String("TCP"),
 //				PortRange:           pulumi.String("80"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -464,7 +464,7 @@ import (
 //				Direction:      pulumi.String("INGRESS"),
 //				TargetType:     pulumi.String("INTERNAL_MANAGED_LB"),
 //				TargetForwardingRules: pulumi.StringArray{
-//					ilb.ID().ToIDOutput().ToStringOutput(),
+//					ilb.ID(),
 //				},
 //				Match: &compute.NetworkFirewallPolicyRuleMatchArgs{
 //					SrcIpRanges: pulumi.StringArray{
@@ -482,8 +482,8 @@ import (
 //			}
 //			_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "global_assoc", &compute.NetworkFirewallPolicyAssociationArgs{
 //				Name:             pulumi.String("global-policy-assoc"),
-//				FirewallPolicy:   fwPolicy.ID().ToIDOutput().ToStringOutput(),
-//				AttachmentTarget: net.ID().ToIDOutput().ToStringOutput(),
+//				FirewallPolicy:   fwPolicy.ID(),
+//				AttachmentTarget: net.ID(),
 //			})
 //			if err != nil {
 //				return err

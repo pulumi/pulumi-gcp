@@ -137,8 +137,8 @@ import (
 //				Location:          pulumi.String("global"),
 //				Description:       pulumi.String("my description"),
 //				WellKnownRoots:    pulumi.String("PUBLIC_ROOTS"),
-//				ClientCertificate: certificate.ID().ToIDOutput().ToStringOutput(),
-//				TrustConfig:       trustConfig.ID().ToIDOutput().ToStringOutput(),
+//				ClientCertificate: certificate.ID(),
+//				TrustConfig:       trustConfig.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -183,7 +183,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("HTTPS"),
 //				TlsSettings: &compute.BackendServiceTlsSettingsArgs{

@@ -14,36 +14,34 @@ ones. Upstream places its own capture below the conditional reads, so
 this patch hoists it back above them.
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index 8e551b9b61c0..73d6a08f38ed 100644
+index aaa89c158ad5..d95dbc79829d 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
-@@ -3025,10 +3025,17 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
- 		if err != nil {
- 			return err
- 		}
--		err = resourceSqlDatabaseInstanceRead(d, meta)
--		if err != nil {
--			return err
--		}
-+	}
+@@ -3116,10 +3116,15 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+ 			if err != nil {
+ 				return err
+ 			}
+-			err = resourceSqlDatabaseInstanceRead(d, meta)
+-			if err != nil {
+-				return err
+-			}
++		}
 +
-+	// Capture the planned settings before the read below. resourceSqlDatabaseInstanceRead
-+	// calls d.Set("settings", ...), and helper/schema resolves d.Get at the set level in
-+	// preference to diff, so any d.Get("settings") after the read returns remote values
-+	// rather than planned ones.
-+	desiredSetting := d.Get("settings")
++		// Capture planned settings before refreshing the remote settings version.
++		// Reads call d.Set("settings", ...), which takes precedence over the diff.
++		desiredSetting := d.Get("settings")
 +
-+	err = resourceSqlDatabaseInstanceRead(d, meta)
-+	if err != nil {
-+		return err
- 	}
- 
- 	if d.HasChange("settings.0.entraid_config") {
-@@ -3064,7 +3071,6 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
++		err = resourceSqlDatabaseInstanceRead(d, meta)
++		if err != nil {
++			return err
  		}
- 	}
  
--	desiredSetting := d.Get("settings")
- 	instance = &sqladmin.DatabaseInstance{
- 		Settings: expandSqlDatabaseInstanceSettings(desiredSetting.([]interface{}), databaseVersion),
- 	}
+ 		if d.HasChange("settings.0.entraid_config") {
+@@ -3155,7 +3160,6 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+ 			}
+ 		}
+ 
+-		desiredSetting := d.Get("settings")
+ 		instance = &sqladmin.DatabaseInstance{
+ 			Settings: expandSqlDatabaseInstanceSettings(desiredSetting.([]interface{}), databaseVersion),
+ 		}

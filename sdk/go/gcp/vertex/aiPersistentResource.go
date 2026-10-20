@@ -171,14 +171,14 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(24),
-//				Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      vertexNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Service networking connection for Vertex AI
 //			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: vertexNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					vertexRange.Name,
@@ -192,7 +192,7 @@ import (
 //				Name:        pulumi.String("psc-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Network:     vertexNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     vertexNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -203,7 +203,7 @@ import (
 //				Region:               pulumi.String("us-central1"),
 //				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 //				Subnetworks: pulumi.StringArray{
-//					pscSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//					pscSubnetwork.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -248,7 +248,7 @@ import (
 //					KmsKeyName: pulumi.String("example-key"),
 //				},
 //				PscInterfaceConfig: &vertex.AiPersistentResourcePscInterfaceConfigArgs{
-//					NetworkAttachment: pscAttachment.ID().ToIDOutput().ToStringOutput(),
+//					NetworkAttachment: pscAttachment.ID(),
 //					DnsPeeringConfigs: vertex.AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray{
 //						&vertex.AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs{
 //							Domain:        pulumi.String("example.com."),

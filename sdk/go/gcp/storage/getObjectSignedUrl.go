@@ -76,7 +76,7 @@ import (
 //				ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
 //				ContentType: pulumi.StringRef("text/plain"),
 //				Duration:    pulumi.StringRef("2d"),
-//				Credentials: pulumi.StringRef(invokeFile.Result),
+//				Credentials: pulumi.StringRef(*string(invokeFile.Result)),
 //				ExtensionHeaders: map[string]string{
 //					"x-goog-if-generation-match": "1",
 //				},

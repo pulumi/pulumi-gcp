@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,24 +17,104 @@ public final class AuthzPolicyNetworkRuleToOperationSniArgs extends com.pulumi.r
     public static final AuthzPolicyNetworkRuleToOperationSniArgs Empty = new AuthzPolicyNetworkRuleToOperationSniArgs();
 
     /**
-     * (Optional)
+     * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+     * Examples:
+     * * abc matches the value xyz.abc.def
+     * 
+     */
+    @Import(name="contains")
+    private @Nullable Output<String> contains;
+
+    /**
+     * @return The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+     * Examples:
+     * * abc matches the value xyz.abc.def
+     * 
+     */
+    public Optional<Output<String>> contains() {
+        return Optional.ofNullable(this.contains);
+    }
+
+    /**
+     * The input string must match exactly the string specified here.
+     * Examples:
+     * * abc only matches the value abc.
      * 
      */
     @Import(name="exact")
     private @Nullable Output<String> exact;
 
     /**
-     * @return (Optional)
+     * @return The input string must match exactly the string specified here.
+     * Examples:
+     * * abc only matches the value abc.
      * 
      */
     public Optional<Output<String>> exact() {
         return Optional.ofNullable(this.exact);
     }
 
+    /**
+     * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     */
+    @Import(name="ignoreCase")
+    private @Nullable Output<Boolean> ignoreCase;
+
+    /**
+     * @return If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreCase() {
+        return Optional.ofNullable(this.ignoreCase);
+    }
+
+    /**
+     * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * Examples:
+     * * abc matches the value abc.xyz
+     * 
+     */
+    @Import(name="prefix")
+    private @Nullable Output<String> prefix;
+
+    /**
+     * @return The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+     * Examples:
+     * * abc matches the value abc.xyz
+     * 
+     */
+    public Optional<Output<String>> prefix() {
+        return Optional.ofNullable(this.prefix);
+    }
+
+    /**
+     * The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+     * Examples:
+     * * abc matches the value xyz.abc
+     * 
+     */
+    @Import(name="suffix")
+    private @Nullable Output<String> suffix;
+
+    /**
+     * @return The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+     * Examples:
+     * * abc matches the value xyz.abc
+     * 
+     */
+    public Optional<Output<String>> suffix() {
+        return Optional.ofNullable(this.suffix);
+    }
+
     private AuthzPolicyNetworkRuleToOperationSniArgs() {}
 
     private AuthzPolicyNetworkRuleToOperationSniArgs(AuthzPolicyNetworkRuleToOperationSniArgs $) {
+        this.contains = $.contains;
         this.exact = $.exact;
+        this.ignoreCase = $.ignoreCase;
+        this.prefix = $.prefix;
+        this.suffix = $.suffix;
     }
 
     public static Builder builder() {
@@ -55,7 +136,34 @@ public final class AuthzPolicyNetworkRuleToOperationSniArgs extends com.pulumi.r
         }
 
         /**
-         * @param exact (Optional)
+         * @param contains The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contains(@Nullable Output<String> contains) {
+            $.contains = contains;
+            return this;
+        }
+
+        /**
+         * @param contains The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc.def
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contains(String contains) {
+            return contains(Output.of(contains));
+        }
+
+        /**
+         * @param exact The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
          * 
          * @return builder
          * 
@@ -66,13 +174,86 @@ public final class AuthzPolicyNetworkRuleToOperationSniArgs extends com.pulumi.r
         }
 
         /**
-         * @param exact (Optional)
+         * @param exact The input string must match exactly the string specified here.
+         * Examples:
+         * * abc only matches the value abc.
          * 
          * @return builder
          * 
          */
         public Builder exact(String exact) {
             return exact(Output.of(exact));
+        }
+
+        /**
+         * @param ignoreCase If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreCase(@Nullable Output<Boolean> ignoreCase) {
+            $.ignoreCase = ignoreCase;
+            return this;
+        }
+
+        /**
+         * @param ignoreCase If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreCase(Boolean ignoreCase) {
+            return ignoreCase(Output.of(ignoreCase));
+        }
+
+        /**
+         * @param prefix The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefix(@Nullable Output<String> prefix) {
+            $.prefix = prefix;
+            return this;
+        }
+
+        /**
+         * @param prefix The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value abc.xyz
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefix(String prefix) {
+            return prefix(Output.of(prefix));
+        }
+
+        /**
+         * @param suffix The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suffix(@Nullable Output<String> suffix) {
+            $.suffix = suffix;
+            return this;
+        }
+
+        /**
+         * @param suffix The input string must have the suffix specified here. Note: empty suffix is not allowed, please use regex instead.
+         * Examples:
+         * * abc matches the value xyz.abc
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suffix(String suffix) {
+            return suffix(Output.of(suffix));
         }
 
         public AuthzPolicyNetworkRuleToOperationSniArgs build() {

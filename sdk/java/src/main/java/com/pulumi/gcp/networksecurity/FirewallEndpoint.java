@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networksecurity.FirewallEndpointArgs;
 import com.pulumi.gcp.networksecurity.inputs.FirewallEndpointState;
 import com.pulumi.gcp.networksecurity.outputs.FirewallEndpointEndpointSettings;
+import com.pulumi.gcp.networksecurity.outputs.FirewallEndpointWildfireSettings;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -223,15 +224,15 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="endpointSettings", refs={FirewallEndpointEndpointSettings.class}, tree="[0]")
-    private Output</* @Nullable */ FirewallEndpointEndpointSettings> endpointSettings;
+    private Output<FirewallEndpointEndpointSettings> endpointSettings;
 
     /**
      * @return Settings for the endpoint.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<FirewallEndpointEndpointSettings>> endpointSettings() {
-        return Codegen.optional(this.endpointSettings);
+    public Output<FirewallEndpointEndpointSettings> endpointSettings() {
+        return this.endpointSettings;
     }
     /**
      * A map of key/value label pairs to assign to the resource.
@@ -368,6 +369,24 @@ public class FirewallEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="wildfireSettings", refs={FirewallEndpointWildfireSettings.class}, tree="[0]")
+    private Output<FirewallEndpointWildfireSettings> wildfireSettings;
+
+    /**
+     * @return (Optional, Beta)
+     * Settings for WildFire analysis on the firewall endpoint.
+     * Structure is documented below.
+     * 
+     */
+    public Output<FirewallEndpointWildfireSettings> wildfireSettings() {
+        return this.wildfireSettings;
     }
 
     /**

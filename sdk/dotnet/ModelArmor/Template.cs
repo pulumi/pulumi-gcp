@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.ModelArmor
     /// {
     ///     var template_template_metadata = new Gcp.ModelArmor.Template("template-template-metadata", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "us",
     ///         TemplateId = "modelarmor3",
     ///         FilterConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigArgs
     ///         {
@@ -132,6 +132,11 @@ namespace Pulumi.Gcp.ModelArmor
     ///             CustomPromptSafetyErrorMessage = "This is a custom error message for prompt",
     ///             CustomLlmResponseSafetyErrorCode = 401,
     ///             EnforcementType = "INSPECT_ONLY",
+    ///             Modalities = new[]
+    ///             {
+    ///                 "MODALITY_TEXT",
+    ///                 "MODALITY_IMAGE",
+    ///             },
     ///             FilterVersionSelector = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs
     ///             {
     ///                 Alias = "FILTER_VERSION_ALIAS_LATEST",

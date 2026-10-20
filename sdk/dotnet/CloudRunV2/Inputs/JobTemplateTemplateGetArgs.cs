@@ -90,6 +90,15 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("vpcAccess")]
         public Input<Inputs.JobTemplateTemplateVpcAccessGetArgs>? VpcAccess { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// The Task's workload identity settings. Used to assign an
+        /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workloadIdentityConfig")]
+        public Input<Inputs.JobTemplateTemplateWorkloadIdentityConfigGetArgs>? WorkloadIdentityConfig { get; set; }
+
         public JobTemplateTemplateGetArgs()
         {
         }

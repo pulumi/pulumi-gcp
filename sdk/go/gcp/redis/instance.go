@@ -185,13 +185,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      redis_network.ID().ToIDOutput().ToStringOutput(),
+//				Network:      redis_network.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-//				Network: redis_network.ID().ToIDOutput().ToStringOutput(),
+//				Network: redis_network.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -207,7 +207,7 @@ import (
 //				Region:                pulumi.String("us-west1"),
 //				LocationId:            pulumi.String("us-west1-a"),
 //				AlternativeLocationId: pulumi.String("us-west1-b"),
-//				AuthorizedNetwork:     redis_network.ID().ToIDOutput().ToStringOutput(),
+//				AuthorizedNetwork:     redis_network.ID(),
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_7_2"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -301,7 +301,7 @@ import (
 //			}
 //			redisKey, err := kms.NewCryptoKey(ctx, "redis_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("redis-key"),
-//				KeyRing: redisKeyring.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: redisKeyring.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -334,7 +334,7 @@ import (
 //					"my_key":    pulumi.String("my_val"),
 //					"other_key": pulumi.String("other_val"),
 //				},
-//				CustomerManagedKey: redisKey.ID().ToIDOutput().ToStringOutput(),
+//				CustomerManagedKey: redisKey.ID(),
 //			})
 //			if err != nil {
 //				return err

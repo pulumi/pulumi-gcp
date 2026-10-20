@@ -28,6 +28,7 @@ class QueryTemplateArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional['QueryTemplateEncryptionConfigurationArgs']] = None,
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  routine: pulumi.Input[Optional['QueryTemplateRoutineArgs']] = None,
@@ -52,6 +53,10 @@ class QueryTemplateArgs:
                new lines, carriage returns, and page breaks.
                Default value is an empty string. Max length: 2000 bytes.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the QueryTemplate.
+        :param pulumi.Input['QueryTemplateEncryptionConfigurationArgs'] encryption_configuration: Encryption configuration for the query template.
+               If set, the customer-managed KMS key is used to encrypt the query
+               template definition body.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the primary point of contact of the QueryTemplate.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -69,6 +74,8 @@ class QueryTemplateArgs:
             pulumi.set(__self__, "description", description)
         if documentation is not None:
             pulumi.set(__self__, "documentation", documentation)
+        if encryption_configuration is not None:
+            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if primary_contact is not None:
             pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
@@ -173,6 +180,21 @@ class QueryTemplateArgs:
         pulumi.set(self, "documentation", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> pulumi.Input[Optional['QueryTemplateEncryptionConfigurationArgs']]:
+        """
+        Encryption configuration for the query template.
+        If set, the customer-managed KMS key is used to encrypt the query
+        template definition body.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @encryption_configuration.setter
+    def encryption_configuration(self, value: pulumi.Input[Optional['QueryTemplateEncryptionConfigurationArgs']]):
+        pulumi.set(self, "encryption_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="primaryContact")
     def primary_contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -232,6 +254,7 @@ class _QueryTemplateState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional['QueryTemplateEncryptionConfigurationArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
@@ -260,6 +283,10 @@ class _QueryTemplateState:
                spaces ( ), ampersands (&) and can't start or end with spaces. Default
                value is an empty string.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the QueryTemplate.
+        :param pulumi.Input['QueryTemplateEncryptionConfigurationArgs'] encryption_configuration: Encryption configuration for the query template.
+               If set, the customer-managed KMS key is used to encrypt the query
+               template definition body.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange query template.
         :param pulumi.Input[_builtins.str] name: The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the primary point of contact of the QueryTemplate.
@@ -284,6 +311,8 @@ class _QueryTemplateState:
             pulumi.set(__self__, "display_name", display_name)
         if documentation is not None:
             pulumi.set(__self__, "documentation", documentation)
+        if encryption_configuration is not None:
+            pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -384,6 +413,21 @@ class _QueryTemplateState:
     @documentation.setter
     def documentation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "documentation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> pulumi.Input[Optional['QueryTemplateEncryptionConfigurationArgs']]:
+        """
+        Encryption configuration for the query template.
+        If set, the customer-managed KMS key is used to encrypt the query
+        template definition body.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
+
+    @encryption_configuration.setter
+    def encryption_configuration(self, value: pulumi.Input[Optional['QueryTemplateEncryptionConfigurationArgs']]):
+        pulumi.set(self, "encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -507,6 +551,7 @@ class QueryTemplate(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['QueryTemplateEncryptionConfigurationArgs', 'QueryTemplateEncryptionConfigurationArgsDict', 'outputs.QueryTemplateEncryptionConfiguration']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -557,6 +602,49 @@ class QueryTemplate(pulumi.CustomResource):
             },
             submit=False)
         ```
+        ### Bigquery Analyticshub Querytemplate Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        me = gcp.organizations.get_client_open_id_user_info()
+        analyticshub_sa = gcp.projects.ServiceIdentity("analyticshub_sa", service="analyticshub.googleapis.com")
+        wait_for_sa = time.Sleep("wait_for_sa", create_duration="30s",
+        opts = pulumi.ResourceOptions(depends_on=[analyticshub_sa]))
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id="projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=analyticshub_sa.member,
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_sa]))
+        wait_for_iam = time.Sleep("wait_for_iam", create_duration="30s",
+        opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
+        querytemplate = gcp.bigqueryanalyticshub.DataExchange("querytemplate",
+            display_name="My Audience Data Exchange",
+            data_exchange_id="my_data_exchange",
+            description="example of query template with cmek",
+            location="us",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
+        querytemplate_query_template = gcp.bigqueryanalyticshub.QueryTemplate("querytemplate",
+            location="us",
+            data_exchange_id=querytemplate.data_exchange_id,
+            query_template_id="my_query_template",
+            display_name="my_query_template",
+            description="example of query template with cmek",
+            primary_contact=me.email,
+            documentation="This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through.",
+            routine={
+                "routine_type": "TABLE_VALUED_FUNCTION",
+                "definition_body": "my_query_template() as (select * from t1)",
+            },
+            encryption_configuration={
+                "kms_key_name": "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_iam]))
+        ```
 
         ## Import
 
@@ -592,6 +680,10 @@ class QueryTemplate(pulumi.CustomResource):
                spaces ( ), ampersands (&) and can't start or end with spaces. Default
                value is an empty string.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the QueryTemplate.
+        :param pulumi.Input[Union['QueryTemplateEncryptionConfigurationArgs', 'QueryTemplateEncryptionConfigurationArgsDict', 'outputs.QueryTemplateEncryptionConfiguration']] encryption_configuration: Encryption configuration for the query template.
+               If set, the customer-managed KMS key is used to encrypt the query
+               template definition body.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange query template.
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the primary point of contact of the QueryTemplate.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -650,6 +742,49 @@ class QueryTemplate(pulumi.CustomResource):
             },
             submit=False)
         ```
+        ### Bigquery Analyticshub Querytemplate Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        me = gcp.organizations.get_client_open_id_user_info()
+        analyticshub_sa = gcp.projects.ServiceIdentity("analyticshub_sa", service="analyticshub.googleapis.com")
+        wait_for_sa = time.Sleep("wait_for_sa", create_duration="30s",
+        opts = pulumi.ResourceOptions(depends_on=[analyticshub_sa]))
+        crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
+            crypto_key_id="projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=analyticshub_sa.member,
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_sa]))
+        wait_for_iam = time.Sleep("wait_for_iam", create_duration="30s",
+        opts = pulumi.ResourceOptions(depends_on=[crypto_key]))
+        querytemplate = gcp.bigqueryanalyticshub.DataExchange("querytemplate",
+            display_name="My Audience Data Exchange",
+            data_exchange_id="my_data_exchange",
+            description="example of query template with cmek",
+            location="us",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
+        querytemplate_query_template = gcp.bigqueryanalyticshub.QueryTemplate("querytemplate",
+            location="us",
+            data_exchange_id=querytemplate.data_exchange_id,
+            query_template_id="my_query_template",
+            display_name="my_query_template",
+            description="example of query template with cmek",
+            primary_contact=me.email,
+            documentation="This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through.",
+            routine={
+                "routine_type": "TABLE_VALUED_FUNCTION",
+                "definition_body": "my_query_template() as (select * from t1)",
+            },
+            encryption_configuration={
+                "kms_key_name": "projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait_for_iam]))
+        ```
 
         ## Import
 
@@ -688,6 +823,7 @@ class QueryTemplate(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['QueryTemplateEncryptionConfigurationArgs', 'QueryTemplateEncryptionConfigurationArgsDict', 'outputs.QueryTemplateEncryptionConfiguration']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -712,6 +848,7 @@ class QueryTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["documentation"] = documentation
+            __props__.__dict__["encryption_configuration"] = encryption_configuration
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -742,6 +879,7 @@ class QueryTemplate(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             documentation: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['QueryTemplateEncryptionConfigurationArgs', 'QueryTemplateEncryptionConfigurationArgsDict', 'outputs.QueryTemplateEncryptionConfiguration']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             primary_contact: pulumi.Input[Optional[_builtins.str]] = None,
@@ -774,6 +912,10 @@ class QueryTemplate(pulumi.CustomResource):
                spaces ( ), ampersands (&) and can't start or end with spaces. Default
                value is an empty string.
         :param pulumi.Input[_builtins.str] documentation: Documentation describing the QueryTemplate.
+        :param pulumi.Input[Union['QueryTemplateEncryptionConfigurationArgs', 'QueryTemplateEncryptionConfigurationArgsDict', 'outputs.QueryTemplateEncryptionConfiguration']] encryption_configuration: Encryption configuration for the query template.
+               If set, the customer-managed KMS key is used to encrypt the query
+               template definition body.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The name of the location this data exchange query template.
         :param pulumi.Input[_builtins.str] name: The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
         :param pulumi.Input[_builtins.str] primary_contact: Email or URL of the primary point of contact of the QueryTemplate.
@@ -796,6 +938,7 @@ class QueryTemplate(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["documentation"] = documentation
+        __props__.__dict__["encryption_configuration"] = encryption_configuration
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["primary_contact"] = primary_contact
@@ -864,6 +1007,17 @@ class QueryTemplate(pulumi.CustomResource):
         Documentation describing the QueryTemplate.
         """
         return pulumi.get(self, "documentation")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfiguration")
+    def encryption_configuration(self) -> pulumi.Output[Optional['outputs.QueryTemplateEncryptionConfiguration']]:
+        """
+        Encryption configuration for the query template.
+        If set, the customer-managed KMS key is used to encrypt the query
+        template definition body.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_configuration")
 
     @_builtins.property
     @pulumi.getter

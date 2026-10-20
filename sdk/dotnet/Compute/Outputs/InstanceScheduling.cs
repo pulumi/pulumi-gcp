@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
-        /// Beta Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
+        /// Specifies the Metadata Service preemption notice duration before the GCE ACPI G2 Soft Off signal is triggered for Spot VMs only. If not specified, there will be no wait before the G2 Soft Off signal is triggered. Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceSchedulingPreemptionNoticeDuration? PreemptionNoticeDuration;
         /// <summary>

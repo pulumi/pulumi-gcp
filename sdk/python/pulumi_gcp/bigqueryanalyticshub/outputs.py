@@ -53,6 +53,7 @@ __all__ = [
     'ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionRetryPolicy',
     'ListingSubscriptionLinkedDatasetMap',
     'ListingSubscriptionLinkedResource',
+    'QueryTemplateEncryptionConfiguration',
     'QueryTemplateRoutine',
 ]
 
@@ -2405,6 +2406,43 @@ class ListingSubscriptionLinkedResource(dict):
         Output only. Listing for which linked resource is created.
         """
         return pulumi.get(self, "listing")
+
+
+@pulumi.output_type
+class QueryTemplateEncryptionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryTemplateEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryTemplateEncryptionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryTemplateEncryptionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: The KMS key used to encrypt the query template.
+               Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        The KMS key used to encrypt the query template.
+        Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type

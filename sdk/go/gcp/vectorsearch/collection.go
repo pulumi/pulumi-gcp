@@ -100,7 +100,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-cmek-collection"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			cryptoKeyMemberVsSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_vs_sa", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-vectorsearch.iam.gserviceaccount.com", project.Number),
 //			})
@@ -123,7 +123,7 @@ import (
 //				DisplayName:  pulumi.String("My Awesome Encrypted Collection"),
 //				Description:  pulumi.String("This collection stores important data."),
 //				EncryptionSpec: &vectorsearch.CollectionEncryptionSpecArgs{
-//					CryptoKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//					CryptoKeyName: cryptoKey.ID(),
 //				},
 //				Labels: pulumi.StringMap{
 //					"env":  pulumi.String("dev"),

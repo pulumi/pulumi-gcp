@@ -295,6 +295,21 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
     }
 
     /**
+     * Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+     * 
+     */
+    @Import(name="serviceClassId")
+    private @Nullable Output<String> serviceClassId;
+
+    /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+     * 
+     */
+    public Optional<Output<String>> serviceClassId() {
+        return Optional.ofNullable(this.serviceClassId);
+    }
+
+    /**
      * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -375,6 +390,7 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
         this.parentNicName = $.parentNicName;
         this.queueCount = $.queueCount;
         this.securityPolicy = $.securityPolicy;
+        this.serviceClassId = $.serviceClassId;
         this.stackType = $.stackType;
         this.subnetwork = $.subnetwork;
         this.subnetworkProject = $.subnetworkProject;
@@ -817,6 +833,27 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
          */
         public Builder securityPolicy(String securityPolicy) {
             return securityPolicy(Output.of(securityPolicy));
+        }
+
+        /**
+         * @param serviceClassId Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceClassId(@Nullable Output<String> serviceClassId) {
+            $.serviceClassId = serviceClassId;
+            return this;
+        }
+
+        /**
+         * @param serviceClassId Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceClassId(String serviceClassId) {
+            return serviceClassId(Output.of(serviceClassId));
         }
 
         /**

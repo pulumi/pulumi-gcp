@@ -63,7 +63,7 @@ import (
 //			_, err = chronicle.NewRetrohunt(ctx, "example", &chronicle.RetrohuntArgs{
 //				Location: pulumi.String("us"),
 //				Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				Rule:     pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+//				Rule:     pulumi.String(invokeSplit.Result[int(len([]string(invokeSplit1.Result))-1)]),
 //				ProcessInterval: &chronicle.RetrohuntProcessIntervalArgs{
 //					StartTime: pulumi.String("2025-01-01T00:00:00Z"),
 //					EndTime:   pulumi.String("2025-01-01T12:00:00Z"),

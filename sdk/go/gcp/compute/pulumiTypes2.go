@@ -13,6 +13,2212 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetBackendServiceCustomMetric struct {
+	// If true, the metric data is not used for load balancing.
+	DryRun bool `pulumi:"dryRun"`
+	// The name of the Backend Service.
+	//
+	// ***
+	Name string `pulumi:"name"`
+}
+
+// GetBackendServiceCustomMetricInput is an input type that accepts GetBackendServiceCustomMetricArgs and GetBackendServiceCustomMetricOutput values.
+// You can construct a concrete instance of `GetBackendServiceCustomMetricInput` via:
+//
+//	GetBackendServiceCustomMetricArgs{...}
+type GetBackendServiceCustomMetricInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceCustomMetricOutput() GetBackendServiceCustomMetricOutput
+	ToGetBackendServiceCustomMetricOutputWithContext(context.Context) GetBackendServiceCustomMetricOutput
+}
+
+type GetBackendServiceCustomMetricArgs struct {
+	// If true, the metric data is not used for load balancing.
+	DryRun pulumi.BoolInput `pulumi:"dryRun"`
+	// The name of the Backend Service.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetBackendServiceCustomMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (i GetBackendServiceCustomMetricArgs) ToGetBackendServiceCustomMetricOutput() GetBackendServiceCustomMetricOutput {
+	return i.ToGetBackendServiceCustomMetricOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceCustomMetricArgs) ToGetBackendServiceCustomMetricOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCustomMetricOutput)
+}
+
+// GetBackendServiceCustomMetricArrayInput is an input type that accepts GetBackendServiceCustomMetricArray and GetBackendServiceCustomMetricArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceCustomMetricArrayInput` via:
+//
+//	GetBackendServiceCustomMetricArray{ GetBackendServiceCustomMetricArgs{...} }
+type GetBackendServiceCustomMetricArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceCustomMetricArrayOutput() GetBackendServiceCustomMetricArrayOutput
+	ToGetBackendServiceCustomMetricArrayOutputWithContext(context.Context) GetBackendServiceCustomMetricArrayOutput
+}
+
+type GetBackendServiceCustomMetricArray []GetBackendServiceCustomMetricInput
+
+func (GetBackendServiceCustomMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (i GetBackendServiceCustomMetricArray) ToGetBackendServiceCustomMetricArrayOutput() GetBackendServiceCustomMetricArrayOutput {
+	return i.ToGetBackendServiceCustomMetricArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceCustomMetricArray) ToGetBackendServiceCustomMetricArrayOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCustomMetricArrayOutput)
+}
+
+type GetBackendServiceCustomMetricOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceCustomMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (o GetBackendServiceCustomMetricOutput) ToGetBackendServiceCustomMetricOutput() GetBackendServiceCustomMetricOutput {
+	return o
+}
+
+func (o GetBackendServiceCustomMetricOutput) ToGetBackendServiceCustomMetricOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricOutput {
+	return o
+}
+
+// If true, the metric data is not used for load balancing.
+func (o GetBackendServiceCustomMetricOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceCustomMetric) bool { return v.DryRun }).(pulumi.BoolOutput)
+}
+
+// The name of the Backend Service.
+//
+// ***
+func (o GetBackendServiceCustomMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceCustomMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceCustomMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceCustomMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceCustomMetric)(nil)).Elem()
+}
+
+func (o GetBackendServiceCustomMetricArrayOutput) ToGetBackendServiceCustomMetricArrayOutput() GetBackendServiceCustomMetricArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceCustomMetricArrayOutput) ToGetBackendServiceCustomMetricArrayOutputWithContext(ctx context.Context) GetBackendServiceCustomMetricArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceCustomMetricArrayOutput) Index(i pulumi.IntInput) GetBackendServiceCustomMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceCustomMetric {
+		return vs[0].([]GetBackendServiceCustomMetric)[vs[1].(int)]
+	}).(GetBackendServiceCustomMetricOutput)
+}
+
+type GetBackendServiceDynamicForwarding struct {
+	// Dynamic Forwarding Proxy configuration.
+	ForwardProxies []GetBackendServiceDynamicForwardingForwardProxy `pulumi:"forwardProxies"`
+	// IP:PORT based dynamic forwarding configuration.
+	IpPortSelections []GetBackendServiceDynamicForwardingIpPortSelection `pulumi:"ipPortSelections"`
+}
+
+// GetBackendServiceDynamicForwardingInput is an input type that accepts GetBackendServiceDynamicForwardingArgs and GetBackendServiceDynamicForwardingOutput values.
+// You can construct a concrete instance of `GetBackendServiceDynamicForwardingInput` via:
+//
+//	GetBackendServiceDynamicForwardingArgs{...}
+type GetBackendServiceDynamicForwardingInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceDynamicForwardingOutput() GetBackendServiceDynamicForwardingOutput
+	ToGetBackendServiceDynamicForwardingOutputWithContext(context.Context) GetBackendServiceDynamicForwardingOutput
+}
+
+type GetBackendServiceDynamicForwardingArgs struct {
+	// Dynamic Forwarding Proxy configuration.
+	ForwardProxies GetBackendServiceDynamicForwardingForwardProxyArrayInput `pulumi:"forwardProxies"`
+	// IP:PORT based dynamic forwarding configuration.
+	IpPortSelections GetBackendServiceDynamicForwardingIpPortSelectionArrayInput `pulumi:"ipPortSelections"`
+}
+
+func (GetBackendServiceDynamicForwardingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (i GetBackendServiceDynamicForwardingArgs) ToGetBackendServiceDynamicForwardingOutput() GetBackendServiceDynamicForwardingOutput {
+	return i.ToGetBackendServiceDynamicForwardingOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceDynamicForwardingArgs) ToGetBackendServiceDynamicForwardingOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingOutput)
+}
+
+// GetBackendServiceDynamicForwardingArrayInput is an input type that accepts GetBackendServiceDynamicForwardingArray and GetBackendServiceDynamicForwardingArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceDynamicForwardingArrayInput` via:
+//
+//	GetBackendServiceDynamicForwardingArray{ GetBackendServiceDynamicForwardingArgs{...} }
+type GetBackendServiceDynamicForwardingArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceDynamicForwardingArrayOutput() GetBackendServiceDynamicForwardingArrayOutput
+	ToGetBackendServiceDynamicForwardingArrayOutputWithContext(context.Context) GetBackendServiceDynamicForwardingArrayOutput
+}
+
+type GetBackendServiceDynamicForwardingArray []GetBackendServiceDynamicForwardingInput
+
+func (GetBackendServiceDynamicForwardingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (i GetBackendServiceDynamicForwardingArray) ToGetBackendServiceDynamicForwardingArrayOutput() GetBackendServiceDynamicForwardingArrayOutput {
+	return i.ToGetBackendServiceDynamicForwardingArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceDynamicForwardingArray) ToGetBackendServiceDynamicForwardingArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingArrayOutput)
+}
+
+type GetBackendServiceDynamicForwardingOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceDynamicForwardingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (o GetBackendServiceDynamicForwardingOutput) ToGetBackendServiceDynamicForwardingOutput() GetBackendServiceDynamicForwardingOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingOutput) ToGetBackendServiceDynamicForwardingOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingOutput {
+	return o
+}
+
+// Dynamic Forwarding Proxy configuration.
+func (o GetBackendServiceDynamicForwardingOutput) ForwardProxies() GetBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceDynamicForwarding) []GetBackendServiceDynamicForwardingForwardProxy {
+		return v.ForwardProxies
+	}).(GetBackendServiceDynamicForwardingForwardProxyArrayOutput)
+}
+
+// IP:PORT based dynamic forwarding configuration.
+func (o GetBackendServiceDynamicForwardingOutput) IpPortSelections() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceDynamicForwarding) []GetBackendServiceDynamicForwardingIpPortSelection {
+		return v.IpPortSelections
+	}).(GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput)
+}
+
+type GetBackendServiceDynamicForwardingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceDynamicForwardingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceDynamicForwarding)(nil)).Elem()
+}
+
+func (o GetBackendServiceDynamicForwardingArrayOutput) ToGetBackendServiceDynamicForwardingArrayOutput() GetBackendServiceDynamicForwardingArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingArrayOutput) ToGetBackendServiceDynamicForwardingArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingArrayOutput) Index(i pulumi.IntInput) GetBackendServiceDynamicForwardingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceDynamicForwarding {
+		return vs[0].([]GetBackendServiceDynamicForwarding)[vs[1].(int)]
+	}).(GetBackendServiceDynamicForwardingOutput)
+}
+
+type GetBackendServiceDynamicForwardingForwardProxy struct {
+	// A boolean flag enabling dynamic forwarding proxy.
+	Enabled bool `pulumi:"enabled"`
+	// Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+	ProxyMode string `pulumi:"proxyMode"`
+}
+
+// GetBackendServiceDynamicForwardingForwardProxyInput is an input type that accepts GetBackendServiceDynamicForwardingForwardProxyArgs and GetBackendServiceDynamicForwardingForwardProxyOutput values.
+// You can construct a concrete instance of `GetBackendServiceDynamicForwardingForwardProxyInput` via:
+//
+//	GetBackendServiceDynamicForwardingForwardProxyArgs{...}
+type GetBackendServiceDynamicForwardingForwardProxyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceDynamicForwardingForwardProxyOutput() GetBackendServiceDynamicForwardingForwardProxyOutput
+	ToGetBackendServiceDynamicForwardingForwardProxyOutputWithContext(context.Context) GetBackendServiceDynamicForwardingForwardProxyOutput
+}
+
+type GetBackendServiceDynamicForwardingForwardProxyArgs struct {
+	// A boolean flag enabling dynamic forwarding proxy.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+	ProxyMode pulumi.StringInput `pulumi:"proxyMode"`
+}
+
+func (GetBackendServiceDynamicForwardingForwardProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (i GetBackendServiceDynamicForwardingForwardProxyArgs) ToGetBackendServiceDynamicForwardingForwardProxyOutput() GetBackendServiceDynamicForwardingForwardProxyOutput {
+	return i.ToGetBackendServiceDynamicForwardingForwardProxyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceDynamicForwardingForwardProxyArgs) ToGetBackendServiceDynamicForwardingForwardProxyOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingForwardProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingForwardProxyOutput)
+}
+
+// GetBackendServiceDynamicForwardingForwardProxyArrayInput is an input type that accepts GetBackendServiceDynamicForwardingForwardProxyArray and GetBackendServiceDynamicForwardingForwardProxyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceDynamicForwardingForwardProxyArrayInput` via:
+//
+//	GetBackendServiceDynamicForwardingForwardProxyArray{ GetBackendServiceDynamicForwardingForwardProxyArgs{...} }
+type GetBackendServiceDynamicForwardingForwardProxyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceDynamicForwardingForwardProxyArrayOutput() GetBackendServiceDynamicForwardingForwardProxyArrayOutput
+	ToGetBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(context.Context) GetBackendServiceDynamicForwardingForwardProxyArrayOutput
+}
+
+type GetBackendServiceDynamicForwardingForwardProxyArray []GetBackendServiceDynamicForwardingForwardProxyInput
+
+func (GetBackendServiceDynamicForwardingForwardProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (i GetBackendServiceDynamicForwardingForwardProxyArray) ToGetBackendServiceDynamicForwardingForwardProxyArrayOutput() GetBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return i.ToGetBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceDynamicForwardingForwardProxyArray) ToGetBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingForwardProxyArrayOutput)
+}
+
+type GetBackendServiceDynamicForwardingForwardProxyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceDynamicForwardingForwardProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (o GetBackendServiceDynamicForwardingForwardProxyOutput) ToGetBackendServiceDynamicForwardingForwardProxyOutput() GetBackendServiceDynamicForwardingForwardProxyOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingForwardProxyOutput) ToGetBackendServiceDynamicForwardingForwardProxyOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingForwardProxyOutput {
+	return o
+}
+
+// A boolean flag enabling dynamic forwarding proxy.
+func (o GetBackendServiceDynamicForwardingForwardProxyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceDynamicForwardingForwardProxy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Determines the dynamic forwarding proxy mode Possible values: ["DIRECT_FORWARDING", "CLOUD_RUN"]
+func (o GetBackendServiceDynamicForwardingForwardProxyOutput) ProxyMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceDynamicForwardingForwardProxy) string { return v.ProxyMode }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceDynamicForwardingForwardProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceDynamicForwardingForwardProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceDynamicForwardingForwardProxy)(nil)).Elem()
+}
+
+func (o GetBackendServiceDynamicForwardingForwardProxyArrayOutput) ToGetBackendServiceDynamicForwardingForwardProxyArrayOutput() GetBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingForwardProxyArrayOutput) ToGetBackendServiceDynamicForwardingForwardProxyArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingForwardProxyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingForwardProxyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceDynamicForwardingForwardProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceDynamicForwardingForwardProxy {
+		return vs[0].([]GetBackendServiceDynamicForwardingForwardProxy)[vs[1].(int)]
+	}).(GetBackendServiceDynamicForwardingForwardProxyOutput)
+}
+
+type GetBackendServiceDynamicForwardingIpPortSelection struct {
+	// A boolean flag enabling IP:PORT based dynamic forwarding.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetBackendServiceDynamicForwardingIpPortSelectionInput is an input type that accepts GetBackendServiceDynamicForwardingIpPortSelectionArgs and GetBackendServiceDynamicForwardingIpPortSelectionOutput values.
+// You can construct a concrete instance of `GetBackendServiceDynamicForwardingIpPortSelectionInput` via:
+//
+//	GetBackendServiceDynamicForwardingIpPortSelectionArgs{...}
+type GetBackendServiceDynamicForwardingIpPortSelectionInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceDynamicForwardingIpPortSelectionOutput() GetBackendServiceDynamicForwardingIpPortSelectionOutput
+	ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(context.Context) GetBackendServiceDynamicForwardingIpPortSelectionOutput
+}
+
+type GetBackendServiceDynamicForwardingIpPortSelectionArgs struct {
+	// A boolean flag enabling IP:PORT based dynamic forwarding.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetBackendServiceDynamicForwardingIpPortSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (i GetBackendServiceDynamicForwardingIpPortSelectionArgs) ToGetBackendServiceDynamicForwardingIpPortSelectionOutput() GetBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return i.ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceDynamicForwardingIpPortSelectionArgs) ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingIpPortSelectionOutput)
+}
+
+// GetBackendServiceDynamicForwardingIpPortSelectionArrayInput is an input type that accepts GetBackendServiceDynamicForwardingIpPortSelectionArray and GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceDynamicForwardingIpPortSelectionArrayInput` via:
+//
+//	GetBackendServiceDynamicForwardingIpPortSelectionArray{ GetBackendServiceDynamicForwardingIpPortSelectionArgs{...} }
+type GetBackendServiceDynamicForwardingIpPortSelectionArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput
+	ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(context.Context) GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput
+}
+
+type GetBackendServiceDynamicForwardingIpPortSelectionArray []GetBackendServiceDynamicForwardingIpPortSelectionInput
+
+func (GetBackendServiceDynamicForwardingIpPortSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (i GetBackendServiceDynamicForwardingIpPortSelectionArray) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return i.ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceDynamicForwardingIpPortSelectionArray) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput)
+}
+
+type GetBackendServiceDynamicForwardingIpPortSelectionOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceDynamicForwardingIpPortSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (o GetBackendServiceDynamicForwardingIpPortSelectionOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionOutput() GetBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingIpPortSelectionOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return o
+}
+
+// A boolean flag enabling IP:PORT based dynamic forwarding.
+func (o GetBackendServiceDynamicForwardingIpPortSelectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceDynamicForwardingIpPortSelection) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceDynamicForwardingIpPortSelection)(nil)).Elem()
+}
+
+func (o GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutput() GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) ToGetBackendServiceDynamicForwardingIpPortSelectionArrayOutputWithContext(ctx context.Context) GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput) Index(i pulumi.IntInput) GetBackendServiceDynamicForwardingIpPortSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceDynamicForwardingIpPortSelection {
+		return vs[0].([]GetBackendServiceDynamicForwardingIpPortSelection)[vs[1].(int)]
+	}).(GetBackendServiceDynamicForwardingIpPortSelectionOutput)
+}
+
+type GetBackendServiceIap struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	Enabled bool `pulumi:"enabled"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientIdWo string `pulumi:"oauth2ClientIdWo"`
+	// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientIdWoVersion string `pulumi:"oauth2ClientIdWoVersion"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client Secret SHA-256 for IAP
+	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecretWo string `pulumi:"oauth2ClientSecretWo"`
+	// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientSecretWoVersion string `pulumi:"oauth2ClientSecretWoVersion"`
+}
+
+// GetBackendServiceIapInput is an input type that accepts GetBackendServiceIapArgs and GetBackendServiceIapOutput values.
+// You can construct a concrete instance of `GetBackendServiceIapInput` via:
+//
+//	GetBackendServiceIapArgs{...}
+type GetBackendServiceIapInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceIapOutput() GetBackendServiceIapOutput
+	ToGetBackendServiceIapOutputWithContext(context.Context) GetBackendServiceIapOutput
+}
+
+type GetBackendServiceIapArgs struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientIdWo pulumi.StringInput `pulumi:"oauth2ClientIdWo"`
+	// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientIdWoVersion pulumi.StringInput `pulumi:"oauth2ClientIdWoVersion"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client Secret SHA-256 for IAP
+	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecretWo pulumi.StringInput `pulumi:"oauth2ClientSecretWo"`
+	// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	Oauth2ClientSecretWoVersion pulumi.StringInput `pulumi:"oauth2ClientSecretWoVersion"`
+}
+
+func (GetBackendServiceIapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceIap)(nil)).Elem()
+}
+
+func (i GetBackendServiceIapArgs) ToGetBackendServiceIapOutput() GetBackendServiceIapOutput {
+	return i.ToGetBackendServiceIapOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceIapArgs) ToGetBackendServiceIapOutputWithContext(ctx context.Context) GetBackendServiceIapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceIapOutput)
+}
+
+// GetBackendServiceIapArrayInput is an input type that accepts GetBackendServiceIapArray and GetBackendServiceIapArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceIapArrayInput` via:
+//
+//	GetBackendServiceIapArray{ GetBackendServiceIapArgs{...} }
+type GetBackendServiceIapArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceIapArrayOutput() GetBackendServiceIapArrayOutput
+	ToGetBackendServiceIapArrayOutputWithContext(context.Context) GetBackendServiceIapArrayOutput
+}
+
+type GetBackendServiceIapArray []GetBackendServiceIapInput
+
+func (GetBackendServiceIapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceIap)(nil)).Elem()
+}
+
+func (i GetBackendServiceIapArray) ToGetBackendServiceIapArrayOutput() GetBackendServiceIapArrayOutput {
+	return i.ToGetBackendServiceIapArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceIapArray) ToGetBackendServiceIapArrayOutputWithContext(ctx context.Context) GetBackendServiceIapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceIapArrayOutput)
+}
+
+type GetBackendServiceIapOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceIapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceIap)(nil)).Elem()
+}
+
+func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutput() GetBackendServiceIapOutput {
+	return o
+}
+
+func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutputWithContext(ctx context.Context) GetBackendServiceIapOutput {
+	return o
+}
+
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.
+func (o GetBackendServiceIapOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// OAuth2 Client ID for IAP
+func (o GetBackendServiceIapOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+// OAuth2 Client ID for IAP
+func (o GetBackendServiceIapOutput) Oauth2ClientIdWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientIdWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of 'oauth2_client_id_wo' write-only. Increment this value when an update to 'oauth2_client_id_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetBackendServiceIapOutput) Oauth2ClientIdWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientIdWoVersion }).(pulumi.StringOutput)
+}
+
+// OAuth2 Client Secret for IAP
+func (o GetBackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+// OAuth2 Client Secret SHA-256 for IAP
+func (o GetBackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
+}
+
+// OAuth2 Client Secret for IAP
+func (o GetBackendServiceIapOutput) Oauth2ClientSecretWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of 'oauth2_client_secret_wo' write-only. Increment this value when an update to 'oauth2_client_secret_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetBackendServiceIapOutput) Oauth2ClientSecretWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretWoVersion }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceIapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceIapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceIap)(nil)).Elem()
+}
+
+func (o GetBackendServiceIapArrayOutput) ToGetBackendServiceIapArrayOutput() GetBackendServiceIapArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceIapArrayOutput) ToGetBackendServiceIapArrayOutputWithContext(ctx context.Context) GetBackendServiceIapArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceIapArrayOutput) Index(i pulumi.IntInput) GetBackendServiceIapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceIap {
+		return vs[0].([]GetBackendServiceIap)[vs[1].(int)]
+	}).(GetBackendServiceIapOutput)
+}
+
+type GetBackendServiceLocalityLbPolicy struct {
+	// The configuration for a custom policy implemented by the user and
+	// deployed with the client.
+	CustomPolicies []GetBackendServiceLocalityLbPolicyCustomPolicy `pulumi:"customPolicies"`
+	// The configuration for a built-in load balancing policy.
+	Policies []GetBackendServiceLocalityLbPolicyPolicy `pulumi:"policies"`
+}
+
+// GetBackendServiceLocalityLbPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyArgs and GetBackendServiceLocalityLbPolicyOutput values.
+// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyInput` via:
+//
+//	GetBackendServiceLocalityLbPolicyArgs{...}
+type GetBackendServiceLocalityLbPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLocalityLbPolicyOutput() GetBackendServiceLocalityLbPolicyOutput
+	ToGetBackendServiceLocalityLbPolicyOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyOutput
+}
+
+type GetBackendServiceLocalityLbPolicyArgs struct {
+	// The configuration for a custom policy implemented by the user and
+	// deployed with the client.
+	CustomPolicies GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput `pulumi:"customPolicies"`
+	// The configuration for a built-in load balancing policy.
+	Policies GetBackendServiceLocalityLbPolicyPolicyArrayInput `pulumi:"policies"`
+}
+
+func (GetBackendServiceLocalityLbPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceLocalityLbPolicyArgs) ToGetBackendServiceLocalityLbPolicyOutput() GetBackendServiceLocalityLbPolicyOutput {
+	return i.ToGetBackendServiceLocalityLbPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLocalityLbPolicyArgs) ToGetBackendServiceLocalityLbPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyOutput)
+}
+
+// GetBackendServiceLocalityLbPolicyArrayInput is an input type that accepts GetBackendServiceLocalityLbPolicyArray and GetBackendServiceLocalityLbPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyArrayInput` via:
+//
+//	GetBackendServiceLocalityLbPolicyArray{ GetBackendServiceLocalityLbPolicyArgs{...} }
+type GetBackendServiceLocalityLbPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLocalityLbPolicyArrayOutput() GetBackendServiceLocalityLbPolicyArrayOutput
+	ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyArrayOutput
+}
+
+type GetBackendServiceLocalityLbPolicyArray []GetBackendServiceLocalityLbPolicyInput
+
+func (GetBackendServiceLocalityLbPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceLocalityLbPolicyArray) ToGetBackendServiceLocalityLbPolicyArrayOutput() GetBackendServiceLocalityLbPolicyArrayOutput {
+	return i.ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLocalityLbPolicyArray) ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyArrayOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLocalityLbPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceLocalityLbPolicyOutput) ToGetBackendServiceLocalityLbPolicyOutput() GetBackendServiceLocalityLbPolicyOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyOutput) ToGetBackendServiceLocalityLbPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyOutput {
+	return o
+}
+
+// The configuration for a custom policy implemented by the user and
+// deployed with the client.
+func (o GetBackendServiceLocalityLbPolicyOutput) CustomPolicies() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicy) []GetBackendServiceLocalityLbPolicyCustomPolicy {
+		return v.CustomPolicies
+	}).(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+func (o GetBackendServiceLocalityLbPolicyOutput) Policies() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicy) []GetBackendServiceLocalityLbPolicyPolicy { return v.Policies }).(GetBackendServiceLocalityLbPolicyPolicyArrayOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLocalityLbPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceLocalityLbPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyArrayOutput() GetBackendServiceLocalityLbPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLocalityLbPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLocalityLbPolicy {
+		return vs[0].([]GetBackendServiceLocalityLbPolicy)[vs[1].(int)]
+	}).(GetBackendServiceLocalityLbPolicyOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyCustomPolicy struct {
+	// An optional, arbitrary JSON object with configuration data, understood
+	// by a locally installed custom policy implementation.
+	Data string `pulumi:"data"`
+	// The name of the Backend Service.
+	//
+	// ***
+	Name string `pulumi:"name"`
+}
+
+// GetBackendServiceLocalityLbPolicyCustomPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyCustomPolicyArgs and GetBackendServiceLocalityLbPolicyCustomPolicyOutput values.
+// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyCustomPolicyInput` via:
+//
+//	GetBackendServiceLocalityLbPolicyCustomPolicyArgs{...}
+type GetBackendServiceLocalityLbPolicyCustomPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLocalityLbPolicyCustomPolicyOutput() GetBackendServiceLocalityLbPolicyCustomPolicyOutput
+	ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyOutput
+}
+
+type GetBackendServiceLocalityLbPolicyCustomPolicyArgs struct {
+	// An optional, arbitrary JSON object with configuration data, understood
+	// by a locally installed custom policy implementation.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The name of the Backend Service.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetBackendServiceLocalityLbPolicyCustomPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceLocalityLbPolicyCustomPolicyArgs) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutput() GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
+	return i.ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLocalityLbPolicyCustomPolicyArgs) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyCustomPolicyOutput)
+}
+
+// GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput is an input type that accepts GetBackendServiceLocalityLbPolicyCustomPolicyArray and GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput` via:
+//
+//	GetBackendServiceLocalityLbPolicyCustomPolicyArray{ GetBackendServiceLocalityLbPolicyCustomPolicyArgs{...} }
+type GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput
+	ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput
+}
+
+type GetBackendServiceLocalityLbPolicyCustomPolicyArray []GetBackendServiceLocalityLbPolicyCustomPolicyInput
+
+func (GetBackendServiceLocalityLbPolicyCustomPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceLocalityLbPolicyCustomPolicyArray) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
+	return i.ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLocalityLbPolicyCustomPolicyArray) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyCustomPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutput() GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
+	return o
+}
+
+// An optional, arbitrary JSON object with configuration data, understood
+// by a locally installed custom policy implementation.
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The name of the Backend Service.
+//
+// ***
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyCustomPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyCustomPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLocalityLbPolicyCustomPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLocalityLbPolicyCustomPolicy {
+		return vs[0].([]GetBackendServiceLocalityLbPolicyCustomPolicy)[vs[1].(int)]
+	}).(GetBackendServiceLocalityLbPolicyCustomPolicyOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyPolicy struct {
+	// The name of the Backend Service.
+	//
+	// ***
+	Name string `pulumi:"name"`
+}
+
+// GetBackendServiceLocalityLbPolicyPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyPolicyArgs and GetBackendServiceLocalityLbPolicyPolicyOutput values.
+// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyPolicyInput` via:
+//
+//	GetBackendServiceLocalityLbPolicyPolicyArgs{...}
+type GetBackendServiceLocalityLbPolicyPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLocalityLbPolicyPolicyOutput() GetBackendServiceLocalityLbPolicyPolicyOutput
+	ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyPolicyOutput
+}
+
+type GetBackendServiceLocalityLbPolicyPolicyArgs struct {
+	// The name of the Backend Service.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetBackendServiceLocalityLbPolicyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceLocalityLbPolicyPolicyArgs) ToGetBackendServiceLocalityLbPolicyPolicyOutput() GetBackendServiceLocalityLbPolicyPolicyOutput {
+	return i.ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLocalityLbPolicyPolicyArgs) ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyPolicyOutput)
+}
+
+// GetBackendServiceLocalityLbPolicyPolicyArrayInput is an input type that accepts GetBackendServiceLocalityLbPolicyPolicyArray and GetBackendServiceLocalityLbPolicyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLocalityLbPolicyPolicyArrayInput` via:
+//
+//	GetBackendServiceLocalityLbPolicyPolicyArray{ GetBackendServiceLocalityLbPolicyPolicyArgs{...} }
+type GetBackendServiceLocalityLbPolicyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLocalityLbPolicyPolicyArrayOutput() GetBackendServiceLocalityLbPolicyPolicyArrayOutput
+	ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(context.Context) GetBackendServiceLocalityLbPolicyPolicyArrayOutput
+}
+
+type GetBackendServiceLocalityLbPolicyPolicyArray []GetBackendServiceLocalityLbPolicyPolicyInput
+
+func (GetBackendServiceLocalityLbPolicyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceLocalityLbPolicyPolicyArray) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutput() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
+	return i.ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLocalityLbPolicyPolicyArray) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLocalityLbPolicyPolicyArrayOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLocalityLbPolicyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocalityLbPolicyPolicyOutput() GetBackendServiceLocalityLbPolicyPolicyOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocalityLbPolicyPolicyOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyOutput {
+	return o
+}
+
+// The name of the Backend Service.
+//
+// ***
+func (o GetBackendServiceLocalityLbPolicyPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceLocalityLbPolicyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLocalityLbPolicyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLocalityLbPolicyPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutput() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) ToGetBackendServiceLocalityLbPolicyPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLocalityLbPolicyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLocalityLbPolicyPolicy {
+		return vs[0].([]GetBackendServiceLocalityLbPolicyPolicy)[vs[1].(int)]
+	}).(GetBackendServiceLocalityLbPolicyPolicyOutput)
+}
+
+type GetBackendServiceLogConfig struct {
+	// Whether to enable logging for the load balancer traffic served by this backend service.
+	Enable bool `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+	// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+	// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+	// For example: orca_load_report, tls.protocol
+	OptionalFields []string `pulumi:"optionalFields"`
+	// Specifies the optional logging mode for the load balancer traffic.
+	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+	OptionalMode string `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	RequestHeaders []GetBackendServiceLogConfigRequestHeader `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	ResponseHeaders []GetBackendServiceLogConfigResponseHeader `pulumi:"responseHeaders"`
+	// This field can only be specified if logging is enabled for this backend service. The value of
+	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+	// The default value is 1.0.
+	SampleRate float64 `pulumi:"sampleRate"`
+}
+
+// GetBackendServiceLogConfigInput is an input type that accepts GetBackendServiceLogConfigArgs and GetBackendServiceLogConfigOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigInput` via:
+//
+//	GetBackendServiceLogConfigArgs{...}
+type GetBackendServiceLogConfigInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigOutput() GetBackendServiceLogConfigOutput
+	ToGetBackendServiceLogConfigOutputWithContext(context.Context) GetBackendServiceLogConfigOutput
+}
+
+type GetBackendServiceLogConfigArgs struct {
+	// Whether to enable logging for the load balancer traffic served by this backend service.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+	// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+	// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+	// For example: orca_load_report, tls.protocol
+	OptionalFields pulumi.StringArrayInput `pulumi:"optionalFields"`
+	// Specifies the optional logging mode for the load balancer traffic.
+	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+	OptionalMode pulumi.StringInput `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	RequestHeaders GetBackendServiceLogConfigRequestHeaderArrayInput `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	ResponseHeaders GetBackendServiceLogConfigResponseHeaderArrayInput `pulumi:"responseHeaders"`
+	// This field can only be specified if logging is enabled for this backend service. The value of
+	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+	// The default value is 1.0.
+	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
+}
+
+func (GetBackendServiceLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigArgs) ToGetBackendServiceLogConfigOutput() GetBackendServiceLogConfigOutput {
+	return i.ToGetBackendServiceLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigArgs) ToGetBackendServiceLogConfigOutputWithContext(ctx context.Context) GetBackendServiceLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigOutput)
+}
+
+// GetBackendServiceLogConfigArrayInput is an input type that accepts GetBackendServiceLogConfigArray and GetBackendServiceLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigArrayInput` via:
+//
+//	GetBackendServiceLogConfigArray{ GetBackendServiceLogConfigArgs{...} }
+type GetBackendServiceLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigArrayOutput() GetBackendServiceLogConfigArrayOutput
+	ToGetBackendServiceLogConfigArrayOutputWithContext(context.Context) GetBackendServiceLogConfigArrayOutput
+}
+
+type GetBackendServiceLogConfigArray []GetBackendServiceLogConfigInput
+
+func (GetBackendServiceLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigArray) ToGetBackendServiceLogConfigArrayOutput() GetBackendServiceLogConfigArrayOutput {
+	return i.ToGetBackendServiceLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigArray) ToGetBackendServiceLogConfigArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigArrayOutput)
+}
+
+type GetBackendServiceLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigOutput) ToGetBackendServiceLogConfigOutput() GetBackendServiceLogConfigOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigOutput) ToGetBackendServiceLogConfigOutputWithContext(ctx context.Context) GetBackendServiceLogConfigOutput {
+	return o
+}
+
+// Whether to enable logging for the load balancer traffic served by this backend service.
+func (o GetBackendServiceLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
+// was set to CUSTOM. Contains a list of optional fields you want to include in the logs.
+// For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+// For example: orca_load_report, tls.protocol
+func (o GetBackendServiceLogConfigOutput) OptionalFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) []string { return v.OptionalFields }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the optional logging mode for the load balancer traffic.
+// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+func (o GetBackendServiceLogConfigOutput) OptionalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) string { return v.OptionalMode }).(pulumi.StringOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+func (o GetBackendServiceLogConfigOutput) RequestHeaders() GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) []GetBackendServiceLogConfigRequestHeader { return v.RequestHeaders }).(GetBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+func (o GetBackendServiceLogConfigOutput) ResponseHeaders() GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) []GetBackendServiceLogConfigResponseHeader {
+		return v.ResponseHeaders
+	}).(GetBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service. The value of
+// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+// The default value is 1.0.
+func (o GetBackendServiceLogConfigOutput) SampleRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) float64 { return v.SampleRate }).(pulumi.Float64Output)
+}
+
+type GetBackendServiceLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfig)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigArrayOutput) ToGetBackendServiceLogConfigArrayOutput() GetBackendServiceLogConfigArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigArrayOutput) ToGetBackendServiceLogConfigArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfig {
+		return vs[0].([]GetBackendServiceLogConfig)[vs[1].(int)]
+	}).(GetBackendServiceLogConfigOutput)
+}
+
+type GetBackendServiceLogConfigRequestHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// GetBackendServiceLogConfigRequestHeaderInput is an input type that accepts GetBackendServiceLogConfigRequestHeaderArgs and GetBackendServiceLogConfigRequestHeaderOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigRequestHeaderInput` via:
+//
+//	GetBackendServiceLogConfigRequestHeaderArgs{...}
+type GetBackendServiceLogConfigRequestHeaderInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput
+	ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(context.Context) GetBackendServiceLogConfigRequestHeaderOutput
+}
+
+type GetBackendServiceLogConfigRequestHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (GetBackendServiceLogConfigRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArgs) ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput {
+	return i.ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArgs) ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigRequestHeaderOutput)
+}
+
+// GetBackendServiceLogConfigRequestHeaderArrayInput is an input type that accepts GetBackendServiceLogConfigRequestHeaderArray and GetBackendServiceLogConfigRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigRequestHeaderArrayInput` via:
+//
+//	GetBackendServiceLogConfigRequestHeaderArray{ GetBackendServiceLogConfigRequestHeaderArgs{...} }
+type GetBackendServiceLogConfigRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput
+	ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput
+}
+
+type GetBackendServiceLogConfigRequestHeaderArray []GetBackendServiceLogConfigRequestHeaderInput
+
+func (GetBackendServiceLogConfigRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArray) ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return i.ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArray) ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+type GetBackendServiceLogConfigRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderOutput) ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderOutput) ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o GetBackendServiceLogConfigRequestHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfigRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceLogConfigRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfigRequestHeader {
+		return vs[0].([]GetBackendServiceLogConfigRequestHeader)[vs[1].(int)]
+	}).(GetBackendServiceLogConfigRequestHeaderOutput)
+}
+
+type GetBackendServiceLogConfigResponseHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// GetBackendServiceLogConfigResponseHeaderInput is an input type that accepts GetBackendServiceLogConfigResponseHeaderArgs and GetBackendServiceLogConfigResponseHeaderOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigResponseHeaderInput` via:
+//
+//	GetBackendServiceLogConfigResponseHeaderArgs{...}
+type GetBackendServiceLogConfigResponseHeaderInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput
+	ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(context.Context) GetBackendServiceLogConfigResponseHeaderOutput
+}
+
+type GetBackendServiceLogConfigResponseHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (GetBackendServiceLogConfigResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArgs) ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput {
+	return i.ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArgs) ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigResponseHeaderOutput)
+}
+
+// GetBackendServiceLogConfigResponseHeaderArrayInput is an input type that accepts GetBackendServiceLogConfigResponseHeaderArray and GetBackendServiceLogConfigResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigResponseHeaderArrayInput` via:
+//
+//	GetBackendServiceLogConfigResponseHeaderArray{ GetBackendServiceLogConfigResponseHeaderArgs{...} }
+type GetBackendServiceLogConfigResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput
+	ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput
+}
+
+type GetBackendServiceLogConfigResponseHeaderArray []GetBackendServiceLogConfigResponseHeaderInput
+
+func (GetBackendServiceLogConfigResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArray) ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return i.ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArray) ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
+type GetBackendServiceLogConfigResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderOutput) ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderOutput) ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o GetBackendServiceLogConfigResponseHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfigResponseHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceLogConfigResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfigResponseHeader {
+		return vs[0].([]GetBackendServiceLogConfigResponseHeader)[vs[1].(int)]
+	}).(GetBackendServiceLogConfigResponseHeaderOutput)
+}
+
+type GetBackendServiceMaxStreamDuration struct {
+	// Span of time that's a fraction of a second at nanosecond resolution.
+	// Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+	// Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+	Seconds string `pulumi:"seconds"`
+}
+
+// GetBackendServiceMaxStreamDurationInput is an input type that accepts GetBackendServiceMaxStreamDurationArgs and GetBackendServiceMaxStreamDurationOutput values.
+// You can construct a concrete instance of `GetBackendServiceMaxStreamDurationInput` via:
+//
+//	GetBackendServiceMaxStreamDurationArgs{...}
+type GetBackendServiceMaxStreamDurationInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceMaxStreamDurationOutput() GetBackendServiceMaxStreamDurationOutput
+	ToGetBackendServiceMaxStreamDurationOutputWithContext(context.Context) GetBackendServiceMaxStreamDurationOutput
+}
+
+type GetBackendServiceMaxStreamDurationArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution.
+	// Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+	// Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (GetBackendServiceMaxStreamDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceMaxStreamDuration)(nil)).Elem()
+}
+
+func (i GetBackendServiceMaxStreamDurationArgs) ToGetBackendServiceMaxStreamDurationOutput() GetBackendServiceMaxStreamDurationOutput {
+	return i.ToGetBackendServiceMaxStreamDurationOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceMaxStreamDurationArgs) ToGetBackendServiceMaxStreamDurationOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceMaxStreamDurationOutput)
+}
+
+// GetBackendServiceMaxStreamDurationArrayInput is an input type that accepts GetBackendServiceMaxStreamDurationArray and GetBackendServiceMaxStreamDurationArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceMaxStreamDurationArrayInput` via:
+//
+//	GetBackendServiceMaxStreamDurationArray{ GetBackendServiceMaxStreamDurationArgs{...} }
+type GetBackendServiceMaxStreamDurationArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceMaxStreamDurationArrayOutput() GetBackendServiceMaxStreamDurationArrayOutput
+	ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(context.Context) GetBackendServiceMaxStreamDurationArrayOutput
+}
+
+type GetBackendServiceMaxStreamDurationArray []GetBackendServiceMaxStreamDurationInput
+
+func (GetBackendServiceMaxStreamDurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceMaxStreamDuration)(nil)).Elem()
+}
+
+func (i GetBackendServiceMaxStreamDurationArray) ToGetBackendServiceMaxStreamDurationArrayOutput() GetBackendServiceMaxStreamDurationArrayOutput {
+	return i.ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceMaxStreamDurationArray) ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceMaxStreamDurationArrayOutput)
+}
+
+type GetBackendServiceMaxStreamDurationOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceMaxStreamDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceMaxStreamDuration)(nil)).Elem()
+}
+
+func (o GetBackendServiceMaxStreamDurationOutput) ToGetBackendServiceMaxStreamDurationOutput() GetBackendServiceMaxStreamDurationOutput {
+	return o
+}
+
+func (o GetBackendServiceMaxStreamDurationOutput) ToGetBackendServiceMaxStreamDurationOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution.
+// Durations less than one second are represented with a 0 seconds field and a positive nanos field.
+// Must be from 0 to 999,999,999 inclusive.
+func (o GetBackendServiceMaxStreamDurationOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceMaxStreamDuration) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)
+func (o GetBackendServiceMaxStreamDurationOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceMaxStreamDuration) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceMaxStreamDurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceMaxStreamDurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceMaxStreamDuration)(nil)).Elem()
+}
+
+func (o GetBackendServiceMaxStreamDurationArrayOutput) ToGetBackendServiceMaxStreamDurationArrayOutput() GetBackendServiceMaxStreamDurationArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceMaxStreamDurationArrayOutput) ToGetBackendServiceMaxStreamDurationArrayOutputWithContext(ctx context.Context) GetBackendServiceMaxStreamDurationArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceMaxStreamDurationArrayOutput) Index(i pulumi.IntInput) GetBackendServiceMaxStreamDurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceMaxStreamDuration {
+		return vs[0].([]GetBackendServiceMaxStreamDuration)[vs[1].(int)]
+	}).(GetBackendServiceMaxStreamDurationOutput)
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicy struct {
+	// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+	ZonalAffinities []GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity `pulumi:"zonalAffinities"`
+}
+
+// GetBackendServiceNetworkPassThroughLbTrafficPolicyInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs and GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput values.
+// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyInput` via:
+//
+//	GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{...}
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs struct {
+	// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+	ZonalAffinities GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput `pulumi:"zonalAffinities"`
+}
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput)
+}
+
+// GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyArray and GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput` via:
+//
+//	GetBackendServiceNetworkPassThroughLbTrafficPolicyArray{ GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{...} }
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyArray []GetBackendServiceNetworkPassThroughLbTrafficPolicyInput
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput)
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return o
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return o
+}
+
+// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput) ZonalAffinities() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceNetworkPassThroughLbTrafficPolicy) []GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
+		return v.ZonalAffinities
+	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput)
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceNetworkPassThroughLbTrafficPolicy {
+		return vs[0].([]GetBackendServiceNetworkPassThroughLbTrafficPolicy)[vs[1].(int)]
+	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput)
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity struct {
+	// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+	Spillover string `pulumi:"spillover"`
+	// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+	// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+	// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+	// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+	// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+	SpilloverRatio float64 `pulumi:"spilloverRatio"`
+}
+
+// GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs and GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput values.
+// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput` via:
+//
+//	GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{...}
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs struct {
+	// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+	Spillover pulumi.StringInput `pulumi:"spillover"`
+	// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+	// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+	// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+	// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+	// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+	SpilloverRatio pulumi.Float64Input `pulumi:"spilloverRatio"`
+}
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput)
+}
+
+// GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput is an input type that accepts GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray and GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput` via:
+//
+//	GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray{ GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{...} }
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput
+	ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray []GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return i.ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput)
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return o
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return o
+}
+
+// This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) Spillover() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity) string { return v.Spillover }).(pulumi.StringOutput)
+}
+
+// The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+// to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+// distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+// of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+// threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput) SpilloverRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity) float64 {
+		return v.SpilloverRatio
+	}).(pulumi.Float64Output)
+}
+
+type GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)(nil)).Elem()
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput() GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) ToGetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutputWithContext(ctx context.Context) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput) Index(i pulumi.IntInput) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
+		return vs[0].([]GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity)[vs[1].(int)]
+	}).(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput)
+}
+
+type GetBackendServiceOutlierDetection struct {
+	// The base time that a host is ejected for. The real time is equal to the base
+	// time multiplied by the number of times the host has been ejected. Defaults to
+	// 30000ms or 30s.
+	BaseEjectionTimes []GetBackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTimes"`
+	// Number of errors before a host is ejected from the connection pool. When the
+	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+	// Defaults to 5.
+	ConsecutiveErrors int `pulumi:"consecutiveErrors"`
+	// The number of consecutive gateway failures (502, 503, 504 status or connection
+	// errors that are mapped to one of those status codes) before a consecutive
+	// gateway failure ejection occurs. Defaults to 5.
+	ConsecutiveGatewayFailure int `pulumi:"consecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive 5xx. This setting can be used to disable
+	// ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingConsecutiveErrors int `pulumi:"enforcingConsecutiveErrors"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive gateway failures. This setting can be
+	// used to disable ejection or to ramp it up slowly. Defaults to 0.
+	EnforcingConsecutiveGatewayFailure int `pulumi:"enforcingConsecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through success rate statistics. This setting can be used to
+	// disable ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingSuccessRate int `pulumi:"enforcingSuccessRate"`
+	// Time interval between ejection sweep analysis. This can result in both new
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	Intervals []GetBackendServiceOutlierDetectionInterval `pulumi:"intervals"`
+	// Maximum percentage of hosts in the load balancing pool for the backend service
+	// that can be ejected. Defaults to 10%.
+	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
+	// The number of hosts in a cluster that must have enough request volume to detect
+	// success rate outliers. If the number of hosts is less than this setting, outlier
+	// detection via success rate statistics is not performed for any host in the
+	// cluster. Defaults to 5.
+	SuccessRateMinimumHosts int `pulumi:"successRateMinimumHosts"`
+	// The minimum number of total requests that must be collected in one interval (as
+	// defined by the interval duration above) to include this host in success rate
+	// based outlier detection. If the volume is lower than this setting, outlier
+	// detection via success rate statistics is not performed for that host. Defaults
+	// to 100.
+	SuccessRateRequestVolume int `pulumi:"successRateRequestVolume"`
+	// This factor is used to determine the ejection threshold for success rate outlier
+	// ejection. The ejection threshold is the difference between the mean success
+	// rate, and the product of this factor and the standard deviation of the mean
+	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+	// by a thousand to get a double. That is, if the desired factor is 1.9, the
+	// runtime value should be 1900. Defaults to 1900.
+	SuccessRateStdevFactor int `pulumi:"successRateStdevFactor"`
+}
+
+// GetBackendServiceOutlierDetectionInput is an input type that accepts GetBackendServiceOutlierDetectionArgs and GetBackendServiceOutlierDetectionOutput values.
+// You can construct a concrete instance of `GetBackendServiceOutlierDetectionInput` via:
+//
+//	GetBackendServiceOutlierDetectionArgs{...}
+type GetBackendServiceOutlierDetectionInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceOutlierDetectionOutput() GetBackendServiceOutlierDetectionOutput
+	ToGetBackendServiceOutlierDetectionOutputWithContext(context.Context) GetBackendServiceOutlierDetectionOutput
+}
+
+type GetBackendServiceOutlierDetectionArgs struct {
+	// The base time that a host is ejected for. The real time is equal to the base
+	// time multiplied by the number of times the host has been ejected. Defaults to
+	// 30000ms or 30s.
+	BaseEjectionTimes GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput `pulumi:"baseEjectionTimes"`
+	// Number of errors before a host is ejected from the connection pool. When the
+	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+	// Defaults to 5.
+	ConsecutiveErrors pulumi.IntInput `pulumi:"consecutiveErrors"`
+	// The number of consecutive gateway failures (502, 503, 504 status or connection
+	// errors that are mapped to one of those status codes) before a consecutive
+	// gateway failure ejection occurs. Defaults to 5.
+	ConsecutiveGatewayFailure pulumi.IntInput `pulumi:"consecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive 5xx. This setting can be used to disable
+	// ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingConsecutiveErrors pulumi.IntInput `pulumi:"enforcingConsecutiveErrors"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive gateway failures. This setting can be
+	// used to disable ejection or to ramp it up slowly. Defaults to 0.
+	EnforcingConsecutiveGatewayFailure pulumi.IntInput `pulumi:"enforcingConsecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through success rate statistics. This setting can be used to
+	// disable ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingSuccessRate pulumi.IntInput `pulumi:"enforcingSuccessRate"`
+	// Time interval between ejection sweep analysis. This can result in both new
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	Intervals GetBackendServiceOutlierDetectionIntervalArrayInput `pulumi:"intervals"`
+	// Maximum percentage of hosts in the load balancing pool for the backend service
+	// that can be ejected. Defaults to 10%.
+	MaxEjectionPercent pulumi.IntInput `pulumi:"maxEjectionPercent"`
+	// The number of hosts in a cluster that must have enough request volume to detect
+	// success rate outliers. If the number of hosts is less than this setting, outlier
+	// detection via success rate statistics is not performed for any host in the
+	// cluster. Defaults to 5.
+	SuccessRateMinimumHosts pulumi.IntInput `pulumi:"successRateMinimumHosts"`
+	// The minimum number of total requests that must be collected in one interval (as
+	// defined by the interval duration above) to include this host in success rate
+	// based outlier detection. If the volume is lower than this setting, outlier
+	// detection via success rate statistics is not performed for that host. Defaults
+	// to 100.
+	SuccessRateRequestVolume pulumi.IntInput `pulumi:"successRateRequestVolume"`
+	// This factor is used to determine the ejection threshold for success rate outlier
+	// ejection. The ejection threshold is the difference between the mean success
+	// rate, and the product of this factor and the standard deviation of the mean
+	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+	// by a thousand to get a double. That is, if the desired factor is 1.9, the
+	// runtime value should be 1900. Defaults to 1900.
+	SuccessRateStdevFactor pulumi.IntInput `pulumi:"successRateStdevFactor"`
+}
+
+func (GetBackendServiceOutlierDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (i GetBackendServiceOutlierDetectionArgs) ToGetBackendServiceOutlierDetectionOutput() GetBackendServiceOutlierDetectionOutput {
+	return i.ToGetBackendServiceOutlierDetectionOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceOutlierDetectionArgs) ToGetBackendServiceOutlierDetectionOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionOutput)
+}
+
+// GetBackendServiceOutlierDetectionArrayInput is an input type that accepts GetBackendServiceOutlierDetectionArray and GetBackendServiceOutlierDetectionArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceOutlierDetectionArrayInput` via:
+//
+//	GetBackendServiceOutlierDetectionArray{ GetBackendServiceOutlierDetectionArgs{...} }
+type GetBackendServiceOutlierDetectionArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceOutlierDetectionArrayOutput() GetBackendServiceOutlierDetectionArrayOutput
+	ToGetBackendServiceOutlierDetectionArrayOutputWithContext(context.Context) GetBackendServiceOutlierDetectionArrayOutput
+}
+
+type GetBackendServiceOutlierDetectionArray []GetBackendServiceOutlierDetectionInput
+
+func (GetBackendServiceOutlierDetectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (i GetBackendServiceOutlierDetectionArray) ToGetBackendServiceOutlierDetectionArrayOutput() GetBackendServiceOutlierDetectionArrayOutput {
+	return i.ToGetBackendServiceOutlierDetectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceOutlierDetectionArray) ToGetBackendServiceOutlierDetectionArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionArrayOutput)
+}
+
+type GetBackendServiceOutlierDetectionOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceOutlierDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (o GetBackendServiceOutlierDetectionOutput) ToGetBackendServiceOutlierDetectionOutput() GetBackendServiceOutlierDetectionOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionOutput) ToGetBackendServiceOutlierDetectionOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionOutput {
+	return o
+}
+
+// The base time that a host is ejected for. The real time is equal to the base
+// time multiplied by the number of times the host has been ejected. Defaults to
+// 30000ms or 30s.
+func (o GetBackendServiceOutlierDetectionOutput) BaseEjectionTimes() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) []GetBackendServiceOutlierDetectionBaseEjectionTime {
+		return v.BaseEjectionTimes
+	}).(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
+}
+
+// Number of errors before a host is ejected from the connection pool. When the
+// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+// Defaults to 5.
+func (o GetBackendServiceOutlierDetectionOutput) ConsecutiveErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.ConsecutiveErrors }).(pulumi.IntOutput)
+}
+
+// The number of consecutive gateway failures (502, 503, 504 status or connection
+// errors that are mapped to one of those status codes) before a consecutive
+// gateway failure ejection occurs. Defaults to 5.
+func (o GetBackendServiceOutlierDetectionOutput) ConsecutiveGatewayFailure() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.ConsecutiveGatewayFailure }).(pulumi.IntOutput)
+}
+
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through consecutive 5xx. This setting can be used to disable
+// ejection or to ramp it up slowly. Defaults to 100.
+func (o GetBackendServiceOutlierDetectionOutput) EnforcingConsecutiveErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveErrors }).(pulumi.IntOutput)
+}
+
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through consecutive gateway failures. This setting can be
+// used to disable ejection or to ramp it up slowly. Defaults to 0.
+func (o GetBackendServiceOutlierDetectionOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntOutput)
+}
+
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through success rate statistics. This setting can be used to
+// disable ejection or to ramp it up slowly. Defaults to 100.
+func (o GetBackendServiceOutlierDetectionOutput) EnforcingSuccessRate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingSuccessRate }).(pulumi.IntOutput)
+}
+
+// Time interval between ejection sweep analysis. This can result in both new
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+func (o GetBackendServiceOutlierDetectionOutput) Intervals() GetBackendServiceOutlierDetectionIntervalArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) []GetBackendServiceOutlierDetectionInterval {
+		return v.Intervals
+	}).(GetBackendServiceOutlierDetectionIntervalArrayOutput)
+}
+
+// Maximum percentage of hosts in the load balancing pool for the backend service
+// that can be ejected. Defaults to 10%.
+func (o GetBackendServiceOutlierDetectionOutput) MaxEjectionPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
+}
+
+// The number of hosts in a cluster that must have enough request volume to detect
+// success rate outliers. If the number of hosts is less than this setting, outlier
+// detection via success rate statistics is not performed for any host in the
+// cluster. Defaults to 5.
+func (o GetBackendServiceOutlierDetectionOutput) SuccessRateMinimumHosts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateMinimumHosts }).(pulumi.IntOutput)
+}
+
+// The minimum number of total requests that must be collected in one interval (as
+// defined by the interval duration above) to include this host in success rate
+// based outlier detection. If the volume is lower than this setting, outlier
+// detection via success rate statistics is not performed for that host. Defaults
+// to 100.
+func (o GetBackendServiceOutlierDetectionOutput) SuccessRateRequestVolume() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateRequestVolume }).(pulumi.IntOutput)
+}
+
+// This factor is used to determine the ejection threshold for success rate outlier
+// ejection. The ejection threshold is the difference between the mean success
+// rate, and the product of this factor and the standard deviation of the mean
+// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+// by a thousand to get a double. That is, if the desired factor is 1.9, the
+// runtime value should be 1900. Defaults to 1900.
+func (o GetBackendServiceOutlierDetectionOutput) SuccessRateStdevFactor() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateStdevFactor }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceOutlierDetectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceOutlierDetectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (o GetBackendServiceOutlierDetectionArrayOutput) ToGetBackendServiceOutlierDetectionArrayOutput() GetBackendServiceOutlierDetectionArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionArrayOutput) ToGetBackendServiceOutlierDetectionArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionArrayOutput) Index(i pulumi.IntInput) GetBackendServiceOutlierDetectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceOutlierDetection {
+		return vs[0].([]GetBackendServiceOutlierDetection)[vs[1].(int)]
+	}).(GetBackendServiceOutlierDetectionOutput)
+}
+
+type GetBackendServiceOutlierDetectionBaseEjectionTime struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetBackendServiceOutlierDetectionBaseEjectionTimeInput is an input type that accepts GetBackendServiceOutlierDetectionBaseEjectionTimeArgs and GetBackendServiceOutlierDetectionBaseEjectionTimeOutput values.
+// You can construct a concrete instance of `GetBackendServiceOutlierDetectionBaseEjectionTimeInput` via:
+//
+//	GetBackendServiceOutlierDetectionBaseEjectionTimeArgs{...}
+type GetBackendServiceOutlierDetectionBaseEjectionTimeInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeOutput
+	ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput
+}
+
+type GetBackendServiceOutlierDetectionBaseEjectionTimeArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetBackendServiceOutlierDetectionBaseEjectionTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArgs) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return i.ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArgs) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionBaseEjectionTimeOutput)
+}
+
+// GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput is an input type that accepts GetBackendServiceOutlierDetectionBaseEjectionTimeArray and GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput` via:
+//
+//	GetBackendServiceOutlierDetectionBaseEjectionTimeArray{ GetBackendServiceOutlierDetectionBaseEjectionTimeArgs{...} }
+type GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput
+	ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput
+}
+
+type GetBackendServiceOutlierDetectionBaseEjectionTimeArray []GetBackendServiceOutlierDetectionBaseEjectionTimeInput
+
+func (GetBackendServiceOutlierDetectionBaseEjectionTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArray) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return i.ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceOutlierDetectionBaseEjectionTimeArray) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
+}
+
+type GetBackendServiceOutlierDetectionBaseEjectionTimeOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations
+// less than one second are represented with a 0 'seconds' field and a positive
+// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+// inclusive.
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ToGetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) Index(i pulumi.IntInput) GetBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceOutlierDetectionBaseEjectionTime {
+		return vs[0].([]GetBackendServiceOutlierDetectionBaseEjectionTime)[vs[1].(int)]
+	}).(GetBackendServiceOutlierDetectionBaseEjectionTimeOutput)
+}
+
+type GetBackendServiceOutlierDetectionInterval struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetBackendServiceOutlierDetectionIntervalInput is an input type that accepts GetBackendServiceOutlierDetectionIntervalArgs and GetBackendServiceOutlierDetectionIntervalOutput values.
+// You can construct a concrete instance of `GetBackendServiceOutlierDetectionIntervalInput` via:
+//
+//	GetBackendServiceOutlierDetectionIntervalArgs{...}
+type GetBackendServiceOutlierDetectionIntervalInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceOutlierDetectionIntervalOutput() GetBackendServiceOutlierDetectionIntervalOutput
+	ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(context.Context) GetBackendServiceOutlierDetectionIntervalOutput
+}
+
+type GetBackendServiceOutlierDetectionIntervalArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetBackendServiceOutlierDetectionIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (i GetBackendServiceOutlierDetectionIntervalArgs) ToGetBackendServiceOutlierDetectionIntervalOutput() GetBackendServiceOutlierDetectionIntervalOutput {
+	return i.ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceOutlierDetectionIntervalArgs) ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionIntervalOutput)
+}
+
+// GetBackendServiceOutlierDetectionIntervalArrayInput is an input type that accepts GetBackendServiceOutlierDetectionIntervalArray and GetBackendServiceOutlierDetectionIntervalArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceOutlierDetectionIntervalArrayInput` via:
+//
+//	GetBackendServiceOutlierDetectionIntervalArray{ GetBackendServiceOutlierDetectionIntervalArgs{...} }
+type GetBackendServiceOutlierDetectionIntervalArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceOutlierDetectionIntervalArrayOutput() GetBackendServiceOutlierDetectionIntervalArrayOutput
+	ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(context.Context) GetBackendServiceOutlierDetectionIntervalArrayOutput
+}
+
+type GetBackendServiceOutlierDetectionIntervalArray []GetBackendServiceOutlierDetectionIntervalInput
+
+func (GetBackendServiceOutlierDetectionIntervalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (i GetBackendServiceOutlierDetectionIntervalArray) ToGetBackendServiceOutlierDetectionIntervalArrayOutput() GetBackendServiceOutlierDetectionIntervalArrayOutput {
+	return i.ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceOutlierDetectionIntervalArray) ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceOutlierDetectionIntervalArrayOutput)
+}
+
+type GetBackendServiceOutlierDetectionIntervalOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceOutlierDetectionIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (o GetBackendServiceOutlierDetectionIntervalOutput) ToGetBackendServiceOutlierDetectionIntervalOutput() GetBackendServiceOutlierDetectionIntervalOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionIntervalOutput) ToGetBackendServiceOutlierDetectionIntervalOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations
+// less than one second are represented with a 0 'seconds' field and a positive
+// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+func (o GetBackendServiceOutlierDetectionIntervalOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetectionInterval) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+// inclusive.
+func (o GetBackendServiceOutlierDetectionIntervalOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceOutlierDetectionInterval) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceOutlierDetectionIntervalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceOutlierDetectionIntervalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) ToGetBackendServiceOutlierDetectionIntervalArrayOutput() GetBackendServiceOutlierDetectionIntervalArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) ToGetBackendServiceOutlierDetectionIntervalArrayOutputWithContext(ctx context.Context) GetBackendServiceOutlierDetectionIntervalArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) Index(i pulumi.IntInput) GetBackendServiceOutlierDetectionIntervalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceOutlierDetectionInterval {
+		return vs[0].([]GetBackendServiceOutlierDetectionInterval)[vs[1].(int)]
+	}).(GetBackendServiceOutlierDetectionIntervalOutput)
+}
+
+type GetBackendServiceParam struct {
+	// Resource manager tags to be bound to the backend service. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetBackendServiceParamInput is an input type that accepts GetBackendServiceParamArgs and GetBackendServiceParamOutput values.
+// You can construct a concrete instance of `GetBackendServiceParamInput` via:
+//
+//	GetBackendServiceParamArgs{...}
+type GetBackendServiceParamInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceParamOutput() GetBackendServiceParamOutput
+	ToGetBackendServiceParamOutputWithContext(context.Context) GetBackendServiceParamOutput
+}
+
+type GetBackendServiceParamArgs struct {
+	// Resource manager tags to be bound to the backend service. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetBackendServiceParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceParam)(nil)).Elem()
+}
+
+func (i GetBackendServiceParamArgs) ToGetBackendServiceParamOutput() GetBackendServiceParamOutput {
+	return i.ToGetBackendServiceParamOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceParamArgs) ToGetBackendServiceParamOutputWithContext(ctx context.Context) GetBackendServiceParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceParamOutput)
+}
+
+// GetBackendServiceParamArrayInput is an input type that accepts GetBackendServiceParamArray and GetBackendServiceParamArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceParamArrayInput` via:
+//
+//	GetBackendServiceParamArray{ GetBackendServiceParamArgs{...} }
+type GetBackendServiceParamArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceParamArrayOutput() GetBackendServiceParamArrayOutput
+	ToGetBackendServiceParamArrayOutputWithContext(context.Context) GetBackendServiceParamArrayOutput
+}
+
+type GetBackendServiceParamArray []GetBackendServiceParamInput
+
+func (GetBackendServiceParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceParam)(nil)).Elem()
+}
+
+func (i GetBackendServiceParamArray) ToGetBackendServiceParamArrayOutput() GetBackendServiceParamArrayOutput {
+	return i.ToGetBackendServiceParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceParamArray) ToGetBackendServiceParamArrayOutputWithContext(ctx context.Context) GetBackendServiceParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceParamArrayOutput)
+}
+
+type GetBackendServiceParamOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceParam)(nil)).Elem()
+}
+
+func (o GetBackendServiceParamOutput) ToGetBackendServiceParamOutput() GetBackendServiceParamOutput {
+	return o
+}
+
+func (o GetBackendServiceParamOutput) ToGetBackendServiceParamOutputWithContext(ctx context.Context) GetBackendServiceParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the backend service. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetBackendServiceParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetBackendServiceParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetBackendServiceParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceParam)(nil)).Elem()
+}
+
+func (o GetBackendServiceParamArrayOutput) ToGetBackendServiceParamArrayOutput() GetBackendServiceParamArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceParamArrayOutput) ToGetBackendServiceParamArrayOutputWithContext(ctx context.Context) GetBackendServiceParamArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceParamArrayOutput) Index(i pulumi.IntInput) GetBackendServiceParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceParam {
+		return vs[0].([]GetBackendServiceParam)[vs[1].(int)]
+	}).(GetBackendServiceParamOutput)
+}
+
 type GetBackendServiceSecuritySetting struct {
 	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
 	// Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
@@ -9260,6 +11466,8 @@ type GetInstanceNetworkInterface struct {
 	QueueCount int `pulumi:"queueCount"`
 	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy string `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType string `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
@@ -9319,6 +11527,8 @@ type GetInstanceNetworkInterfaceArgs struct {
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
 	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId pulumi.StringInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringInput `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
@@ -9473,6 +11683,11 @@ func (o GetInstanceNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 // A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o GetInstanceNetworkInterfaceOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.SecurityPolicy }).(pulumi.StringOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+func (o GetInstanceNetworkInterfaceOutput) ServiceClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.ServiceClassId }).(pulumi.StringOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -12977,6 +15192,8 @@ type GetInstanceTemplateNetworkInterface struct {
 	ParentNicName string `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType string `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
@@ -13044,6 +15261,8 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+	ServiceClassId pulumi.StringInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringInput `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
@@ -13204,6 +15423,11 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) ParentNicName() pulumi.String
 // The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 func (o GetInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+func (o GetInstanceTemplateNetworkInterfaceOutput) ServiceClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.ServiceClassId }).(pulumi.StringOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -26978,6 +29202,8 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	ParentNicName string `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+	ServiceClassId string `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType string `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
@@ -27045,6 +29271,8 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	ParentNicName pulumi.StringInput `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+	ServiceClassId pulumi.StringInput `pulumi:"serviceClassId"`
 	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 	StackType pulumi.StringInput `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
@@ -27205,6 +29433,11 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ParentNicName() pulumi.
 // The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
+}
+
+// Producer Service's Service class Id for the region of this network interface. Can only be used with network_attachment. It is not possible to use on its own; however, networkAttachment can be used without service_class_id.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) ServiceClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.ServiceClassId }).(pulumi.StringOutput)
 }
 
 // The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -47151,6 +49384,42 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCustomMetricInput)(nil)).Elem(), GetBackendServiceCustomMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCustomMetricArrayInput)(nil)).Elem(), GetBackendServiceCustomMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingInput)(nil)).Elem(), GetBackendServiceDynamicForwardingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingArrayInput)(nil)).Elem(), GetBackendServiceDynamicForwardingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingForwardProxyInput)(nil)).Elem(), GetBackendServiceDynamicForwardingForwardProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingForwardProxyArrayInput)(nil)).Elem(), GetBackendServiceDynamicForwardingForwardProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelectionInput)(nil)).Elem(), GetBackendServiceDynamicForwardingIpPortSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceDynamicForwardingIpPortSelectionArrayInput)(nil)).Elem(), GetBackendServiceDynamicForwardingIpPortSelectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceIapInput)(nil)).Elem(), GetBackendServiceIapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceIapArrayInput)(nil)).Elem(), GetBackendServiceIapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicyInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyCustomPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicyInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigInput)(nil)).Elem(), GetBackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigArrayInput)(nil)).Elem(), GetBackendServiceLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigRequestHeaderInput)(nil)).Elem(), GetBackendServiceLogConfigRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigRequestHeaderArrayInput)(nil)).Elem(), GetBackendServiceLogConfigRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigResponseHeaderInput)(nil)).Elem(), GetBackendServiceLogConfigResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigResponseHeaderArrayInput)(nil)).Elem(), GetBackendServiceLogConfigResponseHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceMaxStreamDurationInput)(nil)).Elem(), GetBackendServiceMaxStreamDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceMaxStreamDurationArrayInput)(nil)).Elem(), GetBackendServiceMaxStreamDurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionInput)(nil)).Elem(), GetBackendServiceOutlierDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTimeInput)(nil)).Elem(), GetBackendServiceOutlierDetectionBaseEjectionTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionBaseEjectionTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionIntervalInput)(nil)).Elem(), GetBackendServiceOutlierDetectionIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionIntervalArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionIntervalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceParamInput)(nil)).Elem(), GetBackendServiceParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceParamArrayInput)(nil)).Elem(), GetBackendServiceParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingInput)(nil)).Elem(), GetBackendServiceSecuritySettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{})
@@ -47839,6 +50108,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetBackendServiceCustomMetricOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceCustomMetricArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingForwardProxyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingForwardProxyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingIpPortSelectionOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceDynamicForwardingIpPortSelectionArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceIapOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceIapArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyCustomPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigRequestHeaderOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigResponseHeaderOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigResponseHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceMaxStreamDurationOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceMaxStreamDurationArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionBaseEjectionTimeOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceParamOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceParamArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput{})

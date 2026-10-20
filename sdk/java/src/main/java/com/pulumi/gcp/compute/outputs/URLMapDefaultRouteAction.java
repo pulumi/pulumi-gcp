@@ -6,7 +6,9 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionCachePolicy;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionCorsPolicy;
+import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionDynamicCompressionPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionFaultInjectionPolicy;
+import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionImageOptimizationPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionMaxStreamDuration;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionRequestMirrorPolicy;
 import com.pulumi.gcp.compute.outputs.URLMapDefaultRouteActionRetryPolicy;
@@ -37,6 +39,14 @@ public final class URLMapDefaultRouteAction {
      */
     private @Nullable URLMapDefaultRouteActionCorsPolicy corsPolicy;
     /**
+     * @return (Optional, Beta)
+     * Dynamic compression policy for this URL Map&#39;s route. Available only for
+     * Global EXTERNAL_MANAGED load balancer schemes.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapDefaultRouteActionDynamicCompressionPolicy dynamicCompressionPolicy;
+    /**
      * @return The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
      * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
      * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -46,6 +56,13 @@ public final class URLMapDefaultRouteAction {
      * 
      */
     private @Nullable URLMapDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy;
+    /**
+     * @return (Optional, Beta)
+     * Specifies the policy for optimizing images returned in the HTTP response.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable URLMapDefaultRouteActionImageOptimizationPolicy imageOptimizationPolicy;
     /**
      * @return Specifies the maximum duration (timeout) for streams on the selected route.
      * Unlike the `Timeout` field where the timeout duration starts from the time the request
@@ -119,6 +136,16 @@ public final class URLMapDefaultRouteAction {
         return Optional.ofNullable(this.corsPolicy);
     }
     /**
+     * @return (Optional, Beta)
+     * Dynamic compression policy for this URL Map&#39;s route. Available only for
+     * Global EXTERNAL_MANAGED load balancer schemes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapDefaultRouteActionDynamicCompressionPolicy> dynamicCompressionPolicy() {
+        return Optional.ofNullable(this.dynamicCompressionPolicy);
+    }
+    /**
      * @return The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
      * As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
      * percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -129,6 +156,15 @@ public final class URLMapDefaultRouteAction {
      */
     public Optional<URLMapDefaultRouteActionFaultInjectionPolicy> faultInjectionPolicy() {
         return Optional.ofNullable(this.faultInjectionPolicy);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Specifies the policy for optimizing images returned in the HTTP response.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<URLMapDefaultRouteActionImageOptimizationPolicy> imageOptimizationPolicy() {
+        return Optional.ofNullable(this.imageOptimizationPolicy);
     }
     /**
      * @return Specifies the maximum duration (timeout) for streams on the selected route.
@@ -204,7 +240,9 @@ public final class URLMapDefaultRouteAction {
     public static final class Builder {
         private @Nullable URLMapDefaultRouteActionCachePolicy cachePolicy;
         private @Nullable URLMapDefaultRouteActionCorsPolicy corsPolicy;
+        private @Nullable URLMapDefaultRouteActionDynamicCompressionPolicy dynamicCompressionPolicy;
         private @Nullable URLMapDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy;
+        private @Nullable URLMapDefaultRouteActionImageOptimizationPolicy imageOptimizationPolicy;
         private @Nullable URLMapDefaultRouteActionMaxStreamDuration maxStreamDuration;
         private @Nullable URLMapDefaultRouteActionRequestMirrorPolicy requestMirrorPolicy;
         private @Nullable URLMapDefaultRouteActionRetryPolicy retryPolicy;
@@ -216,7 +254,9 @@ public final class URLMapDefaultRouteAction {
     	      Objects.requireNonNull(defaults);
     	      this.cachePolicy = defaults.cachePolicy;
     	      this.corsPolicy = defaults.corsPolicy;
+    	      this.dynamicCompressionPolicy = defaults.dynamicCompressionPolicy;
     	      this.faultInjectionPolicy = defaults.faultInjectionPolicy;
+    	      this.imageOptimizationPolicy = defaults.imageOptimizationPolicy;
     	      this.maxStreamDuration = defaults.maxStreamDuration;
     	      this.requestMirrorPolicy = defaults.requestMirrorPolicy;
     	      this.retryPolicy = defaults.retryPolicy;
@@ -238,9 +278,21 @@ public final class URLMapDefaultRouteAction {
             return this;
         }
         @CustomType.Setter
+        public Builder dynamicCompressionPolicy(@Nullable URLMapDefaultRouteActionDynamicCompressionPolicy dynamicCompressionPolicy) {
+
+            this.dynamicCompressionPolicy = dynamicCompressionPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable URLMapDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy) {
 
             this.faultInjectionPolicy = faultInjectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageOptimizationPolicy(@Nullable URLMapDefaultRouteActionImageOptimizationPolicy imageOptimizationPolicy) {
+
+            this.imageOptimizationPolicy = imageOptimizationPolicy;
             return this;
         }
         @CustomType.Setter
@@ -286,7 +338,9 @@ public final class URLMapDefaultRouteAction {
             final var _resultValue = new URLMapDefaultRouteAction();
             _resultValue.cachePolicy = cachePolicy;
             _resultValue.corsPolicy = corsPolicy;
+            _resultValue.dynamicCompressionPolicy = dynamicCompressionPolicy;
             _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.imageOptimizationPolicy = imageOptimizationPolicy;
             _resultValue.maxStreamDuration = maxStreamDuration;
             _resultValue.requestMirrorPolicy = requestMirrorPolicy;
             _resultValue.retryPolicy = retryPolicy;

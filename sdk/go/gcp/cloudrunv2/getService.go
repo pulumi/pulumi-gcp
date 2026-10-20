@@ -84,6 +84,7 @@ type LookupServiceResult struct {
 	EffectiveLabels      map[string]string               `pulumi:"effectiveLabels"`
 	Etag                 string                          `pulumi:"etag"`
 	ExpireTime           string                          `pulumi:"expireTime"`
+	FunctionalType       string                          `pulumi:"functionalType"`
 	Generation           string                          `pulumi:"generation"`
 	IapEnabled           bool                            `pulumi:"iapEnabled"`
 	// The provider-assigned unique ID for this managed resource.
@@ -222,6 +223,10 @@ func (o LookupServiceResultOutput) Etag() pulumi.StringOutput {
 
 func (o LookupServiceResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) FunctionalType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.FunctionalType }).(pulumi.StringOutput)
 }
 
 func (o LookupServiceResultOutput) Generation() pulumi.StringOutput {

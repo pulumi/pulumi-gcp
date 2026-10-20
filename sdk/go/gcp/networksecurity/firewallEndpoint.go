@@ -130,7 +130,7 @@ type FirewallEndpoint struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Settings for the endpoint.
 	// Structure is documented below.
-	EndpointSettings FirewallEndpointEndpointSettingsPtrOutput `pulumi:"endpointSettings"`
+	EndpointSettings FirewallEndpointEndpointSettingsOutput `pulumi:"endpointSettings"`
 	// A map of key/value label pairs to assign to the resource.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -154,6 +154,10 @@ type FirewallEndpoint struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Time the firewall endpoint was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// (Optional, Beta)
+	// Settings for WildFire analysis on the firewall endpoint.
+	// Structure is documented below.
+	WildfireSettings FirewallEndpointWildfireSettingsOutput `pulumi:"wildfireSettings"`
 }
 
 // NewFirewallEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -244,6 +248,10 @@ type firewallEndpointState struct {
 	State *string `pulumi:"state"`
 	// Time the firewall endpoint was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
+	// (Optional, Beta)
+	// Settings for WildFire analysis on the firewall endpoint.
+	// Structure is documented below.
+	WildfireSettings *FirewallEndpointWildfireSettings `pulumi:"wildfireSettings"`
 }
 
 type FirewallEndpointState struct {
@@ -294,6 +302,10 @@ type FirewallEndpointState struct {
 	State pulumi.StringPtrInput
 	// Time the firewall endpoint was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Settings for WildFire analysis on the firewall endpoint.
+	// Structure is documented below.
+	WildfireSettings FirewallEndpointWildfireSettingsPtrInput
 }
 
 func (FirewallEndpointState) ElementType() reflect.Type {
@@ -328,6 +340,10 @@ type firewallEndpointArgs struct {
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent string `pulumi:"parent"`
+	// (Optional, Beta)
+	// Settings for WildFire analysis on the firewall endpoint.
+	// Structure is documented below.
+	WildfireSettings *FirewallEndpointWildfireSettings `pulumi:"wildfireSettings"`
 }
 
 // The set of arguments for constructing a FirewallEndpoint resource.
@@ -359,6 +375,10 @@ type FirewallEndpointArgs struct {
 	// The name of the parent this firewall endpoint belongs to.
 	// Format: `organizations/{organization_id}` or `projects/{project_id}`.
 	Parent pulumi.StringInput
+	// (Optional, Beta)
+	// Settings for WildFire analysis on the firewall endpoint.
+	// Structure is documented below.
+	WildfireSettings FirewallEndpointWildfireSettingsPtrInput
 }
 
 func (FirewallEndpointArgs) ElementType() reflect.Type {
@@ -486,8 +506,8 @@ func (o FirewallEndpointOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 // Settings for the endpoint.
 // Structure is documented below.
-func (o FirewallEndpointOutput) EndpointSettings() FirewallEndpointEndpointSettingsPtrOutput {
-	return o.ApplyT(func(v *FirewallEndpoint) FirewallEndpointEndpointSettingsPtrOutput { return v.EndpointSettings }).(FirewallEndpointEndpointSettingsPtrOutput)
+func (o FirewallEndpointOutput) EndpointSettings() FirewallEndpointEndpointSettingsOutput {
+	return o.ApplyT(func(v *FirewallEndpoint) FirewallEndpointEndpointSettingsOutput { return v.EndpointSettings }).(FirewallEndpointEndpointSettingsOutput)
 }
 
 // A map of key/value label pairs to assign to the resource.
@@ -539,6 +559,13 @@ func (o FirewallEndpointOutput) State() pulumi.StringOutput {
 // Time the firewall endpoint was updated in UTC.
 func (o FirewallEndpointOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpoint) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// (Optional, Beta)
+// Settings for WildFire analysis on the firewall endpoint.
+// Structure is documented below.
+func (o FirewallEndpointOutput) WildfireSettings() FirewallEndpointWildfireSettingsOutput {
+	return o.ApplyT(func(v *FirewallEndpoint) FirewallEndpointWildfireSettingsOutput { return v.WildfireSettings }).(FirewallEndpointWildfireSettingsOutput)
 }
 
 type FirewallEndpointArrayOutput struct{ *pulumi.OutputState }

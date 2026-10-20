@@ -109,6 +109,11 @@ public final class GetInstanceNetworkInterface {
      */
     private String securityPolicy;
     /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+     * 
+     */
+    private String serviceClassId;
+    /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -258,6 +263,13 @@ public final class GetInstanceNetworkInterface {
         return this.securityPolicy;
     }
     /**
+     * @return Producer Service&#39;s Service class Id for the region of this network interface. Can only be used with `networkAttachment`. It is not possible to use on its own; however, `networkAttachment` can be used without `serviceClassId`.
+     * 
+     */
+    public String serviceClassId() {
+        return this.serviceClassId;
+    }
+    /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
      * 
      */
@@ -313,6 +325,7 @@ public final class GetInstanceNetworkInterface {
         private String parentNicName;
         private Integer queueCount;
         private String securityPolicy;
+        private String serviceClassId;
         private String stackType;
         private String subnetwork;
         private String subnetworkProject;
@@ -338,6 +351,7 @@ public final class GetInstanceNetworkInterface {
     	      this.parentNicName = defaults.parentNicName;
     	      this.queueCount = defaults.queueCount;
     	      this.securityPolicy = defaults.securityPolicy;
+    	      this.serviceClassId = defaults.serviceClassId;
     	      this.stackType = defaults.stackType;
     	      this.subnetwork = defaults.subnetwork;
     	      this.subnetworkProject = defaults.subnetworkProject;
@@ -501,6 +515,14 @@ public final class GetInstanceNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceClassId(String serviceClassId) {
+            if (serviceClassId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "serviceClassId");
+            }
+            this.serviceClassId = serviceClassId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder stackType(String stackType) {
             if (stackType == null) {
               throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "stackType");
@@ -552,6 +574,7 @@ public final class GetInstanceNetworkInterface {
             _resultValue.parentNicName = parentNicName;
             _resultValue.queueCount = queueCount;
             _resultValue.securityPolicy = securityPolicy;
+            _resultValue.serviceClassId = serviceClassId;
             _resultValue.stackType = stackType;
             _resultValue.subnetwork = subnetwork;
             _resultValue.subnetworkProject = subnetworkProject;

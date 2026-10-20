@@ -58,6 +58,16 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
         /// </summary>
         public readonly bool? LogTemplateOperations;
         /// <summary>
+        /// Specifies the modalities to scan. If empty, only text modality will be
+        /// scanned. Image screening is in Preview and is only supported in the `Us`
+        /// and `Eu` multi-regions; regional endpoints such as `us-central1` do not
+        /// support it.
+        /// Possible values:
+        /// MODALITY_TEXT
+        /// MODALITY_IMAGE
+        /// </summary>
+        public readonly ImmutableArray<string> Modalities;
+        /// <summary>
         /// Metadata to enable multi language detection via template.
         /// Structure is documented below.
         /// </summary>
@@ -83,6 +93,8 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
 
             bool? logTemplateOperations,
 
+            ImmutableArray<string> modalities,
+
             Outputs.TemplateTemplateMetadataMultiLanguageDetection? multiLanguageDetection)
         {
             CustomLlmResponseSafetyErrorCode = customLlmResponseSafetyErrorCode;
@@ -94,6 +106,7 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
             IgnorePartialInvocationFailures = ignorePartialInvocationFailures;
             LogSanitizeOperations = logSanitizeOperations;
             LogTemplateOperations = logTemplateOperations;
+            Modalities = modalities;
             MultiLanguageDetection = multiLanguageDetection;
         }
     }

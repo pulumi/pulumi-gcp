@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = container.NewNodePool(ctx, "primary_preemptible_nodes", &container.NodePoolArgs{
 //				Name:      pulumi.String("my-node-pool"),
-//				Cluster:   primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:   primary.ID(),
 //				NodeCount: pulumi.Int(1),
 //				NodeConfig: &container.NodePoolNodeConfigArgs{
 //					Preemptible:    pulumi.Bool(true),
@@ -118,7 +118,7 @@ import (
 //			}
 //			_, err = container.NewNodePool(ctx, "np", &container.NodePoolArgs{
 //				Name:    pulumi.String("my-node-pool"),
-//				Cluster: primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster: primary.ID(),
 //				NodeConfig: &container.NodePoolNodeConfigArgs{
 //					MachineType:    pulumi.String("e2-medium"),
 //					ServiceAccount: _default.Email,
@@ -157,6 +157,10 @@ type NodePool struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	BestEffortProvisioning NodePoolBestEffortProvisioningPtrOutput `pulumi:"bestEffortProvisioning"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	//
 	// ***
@@ -167,8 +171,6 @@ type NodePool struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges pulumi.BoolPtrOutput `pulumi:"ignoreNodeCountChanges"`
@@ -210,7 +212,7 @@ type NodePool struct {
 	// Resulting name for a `namePrefix` <= 14 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 15 - 31 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -290,6 +292,10 @@ type nodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	BestEffortProvisioning *NodePoolBestEffortProvisioning `pulumi:"bestEffortProvisioning"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	//
 	// ***
@@ -300,8 +306,6 @@ type nodePoolState struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges *bool `pulumi:"ignoreNodeCountChanges"`
@@ -343,7 +347,7 @@ type nodePoolState struct {
 	// Resulting name for a `namePrefix` <= 14 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 15 - 31 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -391,6 +395,10 @@ type NodePoolState struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	BestEffortProvisioning NodePoolBestEffortProvisioningPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	//
 	// ***
@@ -401,8 +409,6 @@ type NodePoolState struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy pulumi.StringPtrInput
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges pulumi.BoolPtrInput
@@ -444,7 +450,7 @@ type NodePoolState struct {
 	// Resulting name for a `namePrefix` <= 14 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 15 - 31 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -496,6 +502,10 @@ type nodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	BestEffortProvisioning *NodePoolBestEffortProvisioning `pulumi:"bestEffortProvisioning"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	//
 	// ***
@@ -506,8 +516,6 @@ type nodePoolArgs struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges *bool `pulumi:"ignoreNodeCountChanges"`
@@ -545,7 +553,7 @@ type nodePoolArgs struct {
 	// Resulting name for a `namePrefix` <= 14 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 15 - 31 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -593,6 +601,10 @@ type NodePoolArgs struct {
 	// Configuration required by cluster autoscaler to adjust
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
+	// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	BestEffortProvisioning NodePoolBestEffortProvisioningPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 	//
 	// ***
@@ -603,8 +615,6 @@ type NodePoolArgs struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	DeletionPolicy pulumi.StringPtrInput
 	// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
 	IgnoreNodeCountChanges pulumi.BoolPtrInput
@@ -642,7 +652,7 @@ type NodePoolArgs struct {
 	// Resulting name for a `namePrefix` <= 14 characters:
 	// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 	// Resulting name for a `namePrefix` 15 - 31 characters:
-	// `namePrefix` + YYmmdd + 3 digit incremental counter
+	// `namePrefix` + 9 random lowercase alphanumeric characters
 	NamePrefix pulumi.StringPtrInput
 	// The network configuration of the pool. Such as
 	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -778,6 +788,13 @@ func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolAutoscalingPtrOutput { return v.Autoscaling }).(NodePoolAutoscalingPtrOutput)
 }
 
+// Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+//
+// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+func (o NodePoolOutput) BestEffortProvisioning() NodePoolBestEffortProvisioningPtrOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolBestEffortProvisioningPtrOutput { return v.BestEffortProvisioning }).(NodePoolBestEffortProvisioningPtrOutput)
+}
+
 // The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 //
 // ***
@@ -791,8 +808,6 @@ func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 // When set to "ABANDON", the command will remove the resource from Terraform
 // management without updating or deleting the resource in the API.
 // When set to "DELETE", deleting the resource is allowed.
-//
-// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 func (o NodePoolOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
@@ -864,7 +879,7 @@ func (o NodePoolOutput) Name() pulumi.StringOutput {
 // Resulting name for a `namePrefix` <= 14 characters:
 // `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
 // Resulting name for a `namePrefix` 15 - 31 characters:
-// `namePrefix` + YYmmdd + 3 digit incremental counter
+// `namePrefix` + 9 random lowercase alphanumeric characters
 func (o NodePoolOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }

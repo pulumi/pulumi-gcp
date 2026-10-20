@@ -15,6 +15,23 @@ namespace Pulumi.Gcp.Lustre
         /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Gcp.Lustre.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-instance",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:lustre/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
@@ -23,6 +40,23 @@ namespace Pulumi.Gcp.Lustre
         /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Gcp.Lustre.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-instance",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:lustre/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
@@ -31,6 +65,23 @@ namespace Pulumi.Gcp.Lustre
         /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var instance = Gcp.Lustre.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-instance",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:lustre/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());

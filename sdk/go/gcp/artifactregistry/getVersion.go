@@ -14,6 +14,33 @@ import (
 // This data source fetches information of a version from a provided Artifact Registry repository.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.GetVersions(ctx, &artifactregistry.GetVersionsArgs{
+//				Location:     "us-central1",
+//				RepositoryId: "example-repo",
+//				PackageName:  "example-package",
+//				VersionName:  "latest",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVersion(ctx *pulumi.Context, args *GetVersionArgs, opts ...pulumi.InvokeOption) (*GetVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVersionResult

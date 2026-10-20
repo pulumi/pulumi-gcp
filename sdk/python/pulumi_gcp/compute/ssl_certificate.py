@@ -57,7 +57,7 @@ class SSLCertificateArgs:
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -162,7 +162,7 @@ class SSLCertificateArgs:
         Resulting name for a `name_prefix` <= 37 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 38 - 54 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 
@@ -274,7 +274,7 @@ class _SSLCertificateState:
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -425,7 +425,7 @@ class _SSLCertificateState:
         Resulting name for a `name_prefix` <= 37 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 38 - 54 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 
@@ -578,7 +578,7 @@ class SSLCertificate(pulumi.CustomResource):
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -739,7 +739,7 @@ class SSLCertificate(pulumi.CustomResource):
                Resulting name for a `name_prefix` <= 37 characters:
                `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
                Resulting name for a `name_prefix` 38 - 54 characters:
-               `name_prefix` + YYmmdd + 3 digit incremental counter
+               `name_prefix` + 9 random lowercase alphanumeric characters
         :param pulumi.Input[_builtins.str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -854,7 +854,7 @@ class SSLCertificate(pulumi.CustomResource):
         Resulting name for a `name_prefix` <= 37 characters:
         `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
         Resulting name for a `name_prefix` 38 - 54 characters:
-        `name_prefix` + YYmmdd + 3 digit incremental counter
+        `name_prefix` + 9 random lowercase alphanumeric characters
         """
         return pulumi.get(self, "name_prefix")
 

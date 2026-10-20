@@ -55,6 +55,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVpcAccessResult> VpcAccesses;
+        /// <summary>
+        /// The Task's workload identity settings. Used to assign an
+        /// [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features) identity to the workload.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetJobTemplateTemplateWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
 
         [OutputConstructor]
         private GetJobTemplateTemplateResult(
@@ -76,7 +81,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.GetJobTemplateTemplateVolumeResult> volumes,
 
-            ImmutableArray<Outputs.GetJobTemplateTemplateVpcAccessResult> vpcAccesses)
+            ImmutableArray<Outputs.GetJobTemplateTemplateVpcAccessResult> vpcAccesses,
+
+            ImmutableArray<Outputs.GetJobTemplateTemplateWorkloadIdentityConfigResult> workloadIdentityConfigs)
         {
             Containers = containers;
             EncryptionKey = encryptionKey;
@@ -88,6 +95,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Timeout = timeout;
             Volumes = volumes;
             VpcAccesses = vpcAccesses;
+            WorkloadIdentityConfigs = workloadIdentityConfigs;
         }
     }
 }

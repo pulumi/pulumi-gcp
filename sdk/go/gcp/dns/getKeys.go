@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			fooDnsKeys := dns.GetKeysOutput(ctx, dns.GetKeysOutputArgs{
-//				ManagedZone: foo.ID().ToIDOutput().ToStringOutput(),
+//				ManagedZone: foo.ID(),
 //			}, nil)
 //			ctx.Export("fooDnsDsRecord", fooDnsKeys.ApplyT(func(fooDnsKeys dns.GetKeysResult) (*string, error) {
 //				return fooDnsKeys.KeySigningKeys[0].DsRecord, nil

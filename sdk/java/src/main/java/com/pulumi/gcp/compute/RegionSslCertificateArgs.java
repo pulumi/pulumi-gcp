@@ -114,7 +114,7 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
      * Resulting name for a `namePrefix` &lt;= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      * 
      */
     @Import(name="namePrefix")
@@ -128,7 +128,7 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
      * Resulting name for a `namePrefix` &lt;= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -381,7 +381,7 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
          * Resulting name for a `namePrefix` &lt;= 37 characters:
          * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
          * Resulting name for a `namePrefix` 38 - 54 characters:
-         * `namePrefix` + YYmmdd + 3 digit incremental counter
+         * `namePrefix` + 9 random lowercase alphanumeric characters
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class RegionSslCertificateArgs extends com.pulumi.resources.Resourc
          * Resulting name for a `namePrefix` &lt;= 37 characters:
          * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
          * Resulting name for a `namePrefix` 38 - 54 characters:
-         * `namePrefix` + YYmmdd + 3 digit incremental counter
+         * `namePrefix` + 9 random lowercase alphanumeric characters
          * 
          * @return builder
          * 

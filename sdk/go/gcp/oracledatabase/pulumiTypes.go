@@ -5273,6 +5273,18 @@ type CloudVmClusterProperties struct {
 	// [IANA Time Zone Database](https://www.iana.org/time-zones).
 	// Structure is documented below.
 	TimeZone *CloudVmClusterPropertiesTimeZone `pulumi:"timeZone"`
+	// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+	// VM_BACKUP_STORAGE_TYPE_LOCAL
+	// VM_BACKUP_STORAGE_TYPE_EXASCALE
+	VmBackupStorageType *string `pulumi:"vmBackupStorageType"`
+	// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+	// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+	// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+	VmFileSystemStorageType *string `pulumi:"vmFileSystemStorageType"`
 }
 
 // CloudVmClusterPropertiesInput is an input type that accepts CloudVmClusterPropertiesArgs and CloudVmClusterPropertiesOutput values.
@@ -5397,6 +5409,18 @@ type CloudVmClusterPropertiesArgs struct {
 	// [IANA Time Zone Database](https://www.iana.org/time-zones).
 	// Structure is documented below.
 	TimeZone CloudVmClusterPropertiesTimeZonePtrInput `pulumi:"timeZone"`
+	// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+	// VM_BACKUP_STORAGE_TYPE_LOCAL
+	// VM_BACKUP_STORAGE_TYPE_EXASCALE
+	VmBackupStorageType pulumi.StringPtrInput `pulumi:"vmBackupStorageType"`
+	// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+	// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+	// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+	VmFileSystemStorageType pulumi.StringPtrInput `pulumi:"vmFileSystemStorageType"`
 }
 
 func (CloudVmClusterPropertiesArgs) ElementType() reflect.Type {
@@ -5685,6 +5709,24 @@ func (o CloudVmClusterPropertiesOutput) SystemVersion() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o CloudVmClusterPropertiesOutput) TimeZone() CloudVmClusterPropertiesTimeZonePtrOutput {
 	return o.ApplyT(func(v CloudVmClusterProperties) *CloudVmClusterPropertiesTimeZone { return v.TimeZone }).(CloudVmClusterPropertiesTimeZonePtrOutput)
+}
+
+// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+// VM_BACKUP_STORAGE_TYPE_LOCAL
+// VM_BACKUP_STORAGE_TYPE_EXASCALE
+func (o CloudVmClusterPropertiesOutput) VmBackupStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudVmClusterProperties) *string { return v.VmBackupStorageType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+func (o CloudVmClusterPropertiesOutput) VmFileSystemStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudVmClusterProperties) *string { return v.VmFileSystemStorageType }).(pulumi.StringPtrOutput)
 }
 
 type CloudVmClusterPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -6083,6 +6125,34 @@ func (o CloudVmClusterPropertiesPtrOutput) TimeZone() CloudVmClusterPropertiesTi
 		}
 		return v.TimeZone
 	}).(CloudVmClusterPropertiesTimeZonePtrOutput)
+}
+
+// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+// VM_BACKUP_STORAGE_TYPE_LOCAL
+// VM_BACKUP_STORAGE_TYPE_EXASCALE
+func (o CloudVmClusterPropertiesPtrOutput) VmBackupStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmBackupStorageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+func (o CloudVmClusterPropertiesPtrOutput) VmFileSystemStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmFileSystemStorageType
+	}).(pulumi.StringPtrOutput)
 }
 
 type CloudVmClusterPropertiesDiagnosticsDataCollectionOptions struct {
@@ -35501,6 +35571,18 @@ type GetCloudVmClusterProperty struct {
 	// Represents a time zone from the
 	// [IANA Time Zone Database](https://www.iana.org/time-zones).
 	TimeZones []GetCloudVmClusterPropertyTimeZone `pulumi:"timeZones"`
+	// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+	// VM_BACKUP_STORAGE_TYPE_LOCAL
+	// VM_BACKUP_STORAGE_TYPE_EXASCALE
+	VmBackupStorageType string `pulumi:"vmBackupStorageType"`
+	// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+	// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+	// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+	VmFileSystemStorageType string `pulumi:"vmFileSystemStorageType"`
 }
 
 // GetCloudVmClusterPropertyInput is an input type that accepts GetCloudVmClusterPropertyArgs and GetCloudVmClusterPropertyOutput values.
@@ -35607,6 +35689,18 @@ type GetCloudVmClusterPropertyArgs struct {
 	// Represents a time zone from the
 	// [IANA Time Zone Database](https://www.iana.org/time-zones).
 	TimeZones GetCloudVmClusterPropertyTimeZoneArrayInput `pulumi:"timeZones"`
+	// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+	// VM_BACKUP_STORAGE_TYPE_LOCAL
+	// VM_BACKUP_STORAGE_TYPE_EXASCALE
+	VmBackupStorageType pulumi.StringInput `pulumi:"vmBackupStorageType"`
+	// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+	// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+	// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+	VmFileSystemStorageType pulumi.StringInput `pulumi:"vmFileSystemStorageType"`
 }
 
 func (GetCloudVmClusterPropertyArgs) ElementType() reflect.Type {
@@ -35857,6 +35951,24 @@ func (o GetCloudVmClusterPropertyOutput) SystemVersion() pulumi.StringOutput {
 // [IANA Time Zone Database](https://www.iana.org/time-zones).
 func (o GetCloudVmClusterPropertyOutput) TimeZones() GetCloudVmClusterPropertyTimeZoneArrayOutput {
 	return o.ApplyT(func(v GetCloudVmClusterProperty) []GetCloudVmClusterPropertyTimeZone { return v.TimeZones }).(GetCloudVmClusterPropertyTimeZoneArrayOutput)
+}
+
+// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+// VM_BACKUP_STORAGE_TYPE_LOCAL
+// VM_BACKUP_STORAGE_TYPE_EXASCALE
+func (o GetCloudVmClusterPropertyOutput) VmBackupStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClusterProperty) string { return v.VmBackupStorageType }).(pulumi.StringOutput)
+}
+
+// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+func (o GetCloudVmClusterPropertyOutput) VmFileSystemStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClusterProperty) string { return v.VmFileSystemStorageType }).(pulumi.StringOutput)
 }
 
 type GetCloudVmClusterPropertyArrayOutput struct{ *pulumi.OutputState }
@@ -36708,6 +36820,18 @@ type GetCloudVmClustersCloudVmClusterProperty struct {
 	// Represents a time zone from the
 	// [IANA Time Zone Database](https://www.iana.org/time-zones).
 	TimeZones []GetCloudVmClustersCloudVmClusterPropertyTimeZone `pulumi:"timeZones"`
+	// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+	// VM_BACKUP_STORAGE_TYPE_LOCAL
+	// VM_BACKUP_STORAGE_TYPE_EXASCALE
+	VmBackupStorageType string `pulumi:"vmBackupStorageType"`
+	// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+	// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+	// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+	VmFileSystemStorageType string `pulumi:"vmFileSystemStorageType"`
 }
 
 // GetCloudVmClustersCloudVmClusterPropertyInput is an input type that accepts GetCloudVmClustersCloudVmClusterPropertyArgs and GetCloudVmClustersCloudVmClusterPropertyOutput values.
@@ -36814,6 +36938,18 @@ type GetCloudVmClustersCloudVmClusterPropertyArgs struct {
 	// Represents a time zone from the
 	// [IANA Time Zone Database](https://www.iana.org/time-zones).
 	TimeZones GetCloudVmClustersCloudVmClusterPropertyTimeZoneArrayInput `pulumi:"timeZones"`
+	// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+	// VM_BACKUP_STORAGE_TYPE_LOCAL
+	// VM_BACKUP_STORAGE_TYPE_EXASCALE
+	VmBackupStorageType pulumi.StringInput `pulumi:"vmBackupStorageType"`
+	// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+	// Possible values:
+	// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+	// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+	// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+	VmFileSystemStorageType pulumi.StringInput `pulumi:"vmFileSystemStorageType"`
 }
 
 func (GetCloudVmClustersCloudVmClusterPropertyArgs) ElementType() reflect.Type {
@@ -37066,6 +37202,24 @@ func (o GetCloudVmClustersCloudVmClusterPropertyOutput) TimeZones() GetCloudVmCl
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterProperty) []GetCloudVmClustersCloudVmClusterPropertyTimeZone {
 		return v.TimeZones
 	}).(GetCloudVmClustersCloudVmClusterPropertyTimeZoneArrayOutput)
+}
+
+// Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_BACKUP_STORAGE_TYPE_UNSPECIFIED
+// VM_BACKUP_STORAGE_TYPE_LOCAL
+// VM_BACKUP_STORAGE_TYPE_EXASCALE
+func (o GetCloudVmClustersCloudVmClusterPropertyOutput) VmBackupStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterProperty) string { return v.VmBackupStorageType }).(pulumi.StringOutput)
+}
+
+// Specifies whether VM file system storage / VM images are stored on local DB server storage or Exascale storage.
+// Possible values:
+// VM_FILE_SYSTEM_STORAGE_TYPE_UNSPECIFIED
+// VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL
+// VM_FILE_SYSTEM_STORAGE_TYPE_EXASCALE
+func (o GetCloudVmClustersCloudVmClusterPropertyOutput) VmFileSystemStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterProperty) string { return v.VmFileSystemStorageType }).(pulumi.StringOutput)
 }
 
 type GetCloudVmClustersCloudVmClusterPropertyArrayOutput struct{ *pulumi.OutputState }

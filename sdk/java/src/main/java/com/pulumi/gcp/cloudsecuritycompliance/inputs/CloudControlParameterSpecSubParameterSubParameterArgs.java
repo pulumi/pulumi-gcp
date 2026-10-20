@@ -99,6 +99,21 @@ public final class CloudControlParameterSpecSubParameterSubParameterArgs extends
     }
 
     /**
+     * The parameter spec of the cloud control, in JSON format.
+     * 
+     */
+    @Import(name="subParameters")
+    private @Nullable Output<String> subParameters;
+
+    /**
+     * @return The parameter spec of the cloud control, in JSON format.
+     * 
+     */
+    public Optional<Output<String>> subParameters() {
+        return Optional.ofNullable(this.subParameters);
+    }
+
+    /**
      * List of parameter substitutions.
      * Structure is documented below.
      * 
@@ -167,6 +182,7 @@ public final class CloudControlParameterSpecSubParameterSubParameterArgs extends
         this.displayName = $.displayName;
         this.isRequired = $.isRequired;
         this.name = $.name;
+        this.subParameters = $.subParameters;
         this.substitutionRules = $.substitutionRules;
         this.validation = $.validation;
         this.valueType = $.valueType;
@@ -295,6 +311,27 @@ public final class CloudControlParameterSpecSubParameterSubParameterArgs extends
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param subParameters The parameter spec of the cloud control, in JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subParameters(@Nullable Output<String> subParameters) {
+            $.subParameters = subParameters;
+            return this;
+        }
+
+        /**
+         * @param subParameters The parameter spec of the cloud control, in JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subParameters(String subParameters) {
+            return subParameters(Output.of(subParameters));
         }
 
         /**

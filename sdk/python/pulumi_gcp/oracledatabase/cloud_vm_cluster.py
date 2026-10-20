@@ -977,6 +977,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "cpu_core_count": 4,
                 "gi_version": "23.0.0.0",
                 "hostname_prefix": "hostname1",
+                "vm_file_system_storage_type": "VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL",
+                "vm_backup_storage_type": "VM_BACKUP_STORAGE_TYPE_LOCAL",
                 "memory_size_gb": 60,
                 "db_node_storage_size_gb": 120,
                 "db_server_ocids": [
@@ -1258,6 +1260,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "cpu_core_count": 4,
                 "gi_version": "23.0.0.0",
                 "hostname_prefix": "hostname1",
+                "vm_file_system_storage_type": "VM_FILE_SYSTEM_STORAGE_TYPE_LOCAL",
+                "vm_backup_storage_type": "VM_BACKUP_STORAGE_TYPE_LOCAL",
                 "memory_size_gb": 60,
                 "db_node_storage_size_gb": 120,
                 "db_server_ocids": [

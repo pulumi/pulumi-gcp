@@ -61,7 +61,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("basic-plan"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -114,7 +114,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "autopilot", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("autopilot-plan"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -177,14 +177,14 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("backup-key"),
-//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
+//				KeyRing: keyRing.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "cmek", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("cmek-plan"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -196,7 +196,7 @@ import (
 //						},
 //					},
 //					EncryptionKey: &gkebackup.BackupPlanBackupConfigEncryptionKeyArgs{
-//						GcpKmsEncryptionKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
+//						GcpKmsEncryptionKey: cryptoKey.ID(),
 //					},
 //				},
 //			})
@@ -247,7 +247,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "nslabels", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("nslabels-plan"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 //					IncludeVolumeData: pulumi.Bool(true),
@@ -309,7 +309,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "full", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("full-plan"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
@@ -382,7 +382,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "permissive", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("permissive-plan"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
@@ -456,7 +456,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "rpo_daily_window", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rpo-daily-window"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),
@@ -544,7 +544,7 @@ import (
 //			}
 //			_, err = gkebackup.NewBackupPlan(ctx, "rpo_weekly_window", &gkebackup.BackupPlanArgs{
 //				Name:     pulumi.String("rpo-weekly-window"),
-//				Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
+//				Cluster:  primary.ID(),
 //				Location: pulumi.String("us-east1"),
 //				RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 //					BackupDeleteLockDays: pulumi.Int(30),

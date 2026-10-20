@@ -62,7 +62,9 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
+        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+               specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+               field at any other time forces recreation of the subnetwork.
         :param pulumi.Input[_builtins.str] internal_ipv6_prefix: The internal IPv6 address range that is assigned to this subnetwork.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
@@ -71,7 +73,10 @@ class SubnetworkArgs:
                Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[_builtins.str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
                in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-               mode. Use one of the following formats to specify a sub-PDP when creating
+               mode. It's immutable and can only be specified during creation or the first
+               time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+               any other time forces recreation of the subnetwork.
+               Use one of the following formats to specify a sub-PDP when creating
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -80,7 +85,7 @@ class SubnetworkArgs:
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-               cannot enable direct path.
+               cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: This field denotes the VPC flow logging options for this subnetwork. If
                logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -244,7 +249,9 @@ class SubnetworkArgs:
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The range of external IPv6 addresses that are owned by this subnetwork.
+        The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+        specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+        field at any other time forces recreation of the subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
@@ -286,7 +293,10 @@ class SubnetworkArgs:
         """
         Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-        mode. Use one of the following formats to specify a sub-PDP when creating
+        mode. It's immutable and can only be specified during creation or the first
+        time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+        any other time forces recreation of the subnetwork.
+        Use one of the following formats to specify a sub-PDP when creating
         a dual stack or IPv6-only subnetwork using BYOIP:
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -306,7 +316,7 @@ class SubnetworkArgs:
         """
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-        cannot enable direct path.
+        cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
         Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
@@ -573,7 +583,9 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
+        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+               specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+               field at any other time forces recreation of the subnetwork.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[_builtins.str] gateway_address: The gateway address for default routes to reach destination addresses
                outside this subnetwork.
@@ -585,7 +597,10 @@ class _SubnetworkState:
                Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[_builtins.str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
                in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-               mode. Use one of the following formats to specify a sub-PDP when creating
+               mode. It's immutable and can only be specified during creation or the first
+               time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+               any other time forces recreation of the subnetwork.
+               Use one of the following formats to specify a sub-PDP when creating
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -594,7 +609,7 @@ class _SubnetworkState:
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-               cannot enable direct path.
+               cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] ipv6_gce_endpoint: Possible endpoints of this subnetwork. It can be one of the following:
@@ -791,7 +806,9 @@ class _SubnetworkState:
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The range of external IPv6 addresses that are owned by this subnetwork.
+        The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+        specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+        field at any other time forces recreation of the subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
@@ -859,7 +876,10 @@ class _SubnetworkState:
         """
         Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-        mode. Use one of the following formats to specify a sub-PDP when creating
+        mode. It's immutable and can only be specified during creation or the first
+        time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+        any other time forces recreation of the subnetwork.
+        Use one of the following formats to specify a sub-PDP when creating
         a dual stack or IPv6-only subnetwork using BYOIP:
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -879,7 +899,7 @@ class _SubnetworkState:
         """
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-        cannot enable direct path.
+        cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
         Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
@@ -1521,7 +1541,9 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
+        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+               specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+               field at any other time forces recreation of the subnetwork.
         :param pulumi.Input[_builtins.str] internal_ipv6_prefix: The internal IPv6 address range that is assigned to this subnetwork.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
@@ -1530,7 +1552,10 @@ class Subnetwork(pulumi.CustomResource):
                Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[_builtins.str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
                in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-               mode. Use one of the following formats to specify a sub-PDP when creating
+               mode. It's immutable and can only be specified during creation or the first
+               time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+               any other time forces recreation of the subnetwork.
+               Use one of the following formats to specify a sub-PDP when creating
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -1539,7 +1564,7 @@ class Subnetwork(pulumi.CustomResource):
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-               cannot enable direct path.
+               cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict', 'outputs.SubnetworkLogConfig']] log_config: This field denotes the VPC flow logging options for this subnetwork. If
                logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -2045,7 +2070,9 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
+        :param pulumi.Input[_builtins.str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+               specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+               field at any other time forces recreation of the subnetwork.
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[_builtins.str] gateway_address: The gateway address for default routes to reach destination addresses
                outside this subnetwork.
@@ -2057,7 +2084,10 @@ class Subnetwork(pulumi.CustomResource):
                Field is optional when `reserved_internal_range` is defined, otherwise required.
         :param pulumi.Input[_builtins.str] ip_collection: Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
                in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-               mode. Use one of the following formats to specify a sub-PDP when creating
+               mode. It's immutable and can only be specified during creation or the first
+               time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+               any other time forces recreation of the subnetwork.
+               Use one of the following formats to specify a sub-PDP when creating
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -2066,7 +2096,7 @@ class Subnetwork(pulumi.CustomResource):
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-               cannot enable direct path.
+               cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] ipv6_gce_endpoint: Possible endpoints of this subnetwork. It can be one of the following:
@@ -2218,7 +2248,9 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> pulumi.Output[_builtins.str]:
         """
-        The range of external IPv6 addresses that are owned by this subnetwork.
+        The range of external IPv6 addresses that are owned by this subnetwork. It's immutable and can only be
+        specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. Changing this
+        field at any other time forces recreation of the subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
@@ -2266,7 +2298,10 @@ class Subnetwork(pulumi.CustomResource):
         """
         Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
         in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
-        mode. Use one of the following formats to specify a sub-PDP when creating
+        mode. It's immutable and can only be specified during creation or the first
+        time the subnet is updated into IPV4_IPV6 dual stack. Changing this field at
+        any other time forces recreation of the subnetwork.
+        Use one of the following formats to specify a sub-PDP when creating
         a dual stack or IPv6-only subnetwork using BYOIP:
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
@@ -2282,7 +2317,7 @@ class Subnetwork(pulumi.CustomResource):
         """
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
-        cannot enable direct path.
+        cannot enable direct path. Changing this field at any other time forces recreation of the subnetwork.
         Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")

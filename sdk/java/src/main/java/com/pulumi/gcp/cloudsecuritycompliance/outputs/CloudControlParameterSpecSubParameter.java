@@ -45,8 +45,7 @@ public final class CloudControlParameterSpecSubParameter {
      */
     private String name;
     /**
-     * @return The parameter spec of the cloud control.
-     * Structure is documented below.
+     * @return The parameter spec of the cloud control, in JSON format.
      * 
      */
     private @Nullable List<CloudControlParameterSpecSubParameterSubParameter> subParameters;
@@ -112,8 +111,7 @@ public final class CloudControlParameterSpecSubParameter {
         return this.name;
     }
     /**
-     * @return The parameter spec of the cloud control.
-     * Structure is documented below.
+     * @return The parameter spec of the cloud control, in JSON format.
      * 
      */
     public List<CloudControlParameterSpecSubParameterSubParameter> subParameters() {

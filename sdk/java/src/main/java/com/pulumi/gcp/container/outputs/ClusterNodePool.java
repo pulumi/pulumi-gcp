@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoscaling;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolBestEffortProvisioning;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNetworkConfig;
@@ -28,6 +29,11 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable ClusterNodePoolAutoscaling autoscaling;
+    /**
+     * @return Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolBestEffortProvisioning bestEffortProvisioning;
     /**
      * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
      * 
@@ -146,6 +152,13 @@ public final class ClusterNodePool {
      */
     public Optional<ClusterNodePoolAutoscaling> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
+    }
+    /**
+     * @return Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolBestEffortProvisioning> bestEffortProvisioning() {
+        return Optional.ofNullable(this.bestEffortProvisioning);
     }
     /**
      * @return Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core&#39;s `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
@@ -304,6 +317,7 @@ public final class ClusterNodePool {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolAutoscaling autoscaling;
+        private @Nullable ClusterNodePoolBestEffortProvisioning bestEffortProvisioning;
         private @Nullable Boolean ignoreNodeCountChanges;
         private @Nullable Integer initialNodeCount;
         private @Nullable List<String> instanceGroupUrls;
@@ -326,6 +340,7 @@ public final class ClusterNodePool {
         public Builder(ClusterNodePool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscaling = defaults.autoscaling;
+    	      this.bestEffortProvisioning = defaults.bestEffortProvisioning;
     	      this.ignoreNodeCountChanges = defaults.ignoreNodeCountChanges;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.instanceGroupUrls = defaults.instanceGroupUrls;
@@ -350,6 +365,12 @@ public final class ClusterNodePool {
         public Builder autoscaling(@Nullable ClusterNodePoolAutoscaling autoscaling) {
 
             this.autoscaling = autoscaling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bestEffortProvisioning(@Nullable ClusterNodePoolBestEffortProvisioning bestEffortProvisioning) {
+
+            this.bestEffortProvisioning = bestEffortProvisioning;
             return this;
         }
         @CustomType.Setter
@@ -478,6 +499,7 @@ public final class ClusterNodePool {
         public ClusterNodePool build() {
             final var _resultValue = new ClusterNodePool();
             _resultValue.autoscaling = autoscaling;
+            _resultValue.bestEffortProvisioning = bestEffortProvisioning;
             _resultValue.ignoreNodeCountChanges = ignoreNodeCountChanges;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.instanceGroupUrls = instanceGroupUrls;

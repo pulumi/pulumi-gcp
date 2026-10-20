@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoscalingArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolBestEffortProvisioningArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigArgs;
@@ -40,6 +41,21 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<ClusterNodePoolAutoscalingArgs>> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
+    }
+
+    /**
+     * Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     * 
+     */
+    @Import(name="bestEffortProvisioning")
+    private @Nullable Output<ClusterNodePoolBestEffortProvisioningArgs> bestEffortProvisioning;
+
+    /**
+     * @return Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolBestEffortProvisioningArgs>> bestEffortProvisioning() {
+        return Optional.ofNullable(this.bestEffortProvisioning);
     }
 
     /**
@@ -356,6 +372,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
 
     private ClusterNodePoolArgs(ClusterNodePoolArgs $) {
         this.autoscaling = $.autoscaling;
+        this.bestEffortProvisioning = $.bestEffortProvisioning;
         this.ignoreNodeCountChanges = $.ignoreNodeCountChanges;
         this.initialNodeCount = $.initialNodeCount;
         this.instanceGroupUrls = $.instanceGroupUrls;
@@ -413,6 +430,27 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder autoscaling(ClusterNodePoolAutoscalingArgs autoscaling) {
             return autoscaling(Output.of(autoscaling));
+        }
+
+        /**
+         * @param bestEffortProvisioning Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bestEffortProvisioning(@Nullable Output<ClusterNodePoolBestEffortProvisioningArgs> bestEffortProvisioning) {
+            $.bestEffortProvisioning = bestEffortProvisioning;
+            return this;
+        }
+
+        /**
+         * @param bestEffortProvisioning Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bestEffortProvisioning(ClusterNodePoolBestEffortProvisioningArgs bestEffortProvisioning) {
+            return bestEffortProvisioning(Output.of(bestEffortProvisioning));
         }
 
         /**

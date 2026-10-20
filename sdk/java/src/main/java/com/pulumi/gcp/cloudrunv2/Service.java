@@ -1386,6 +1386,99 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Service Agent Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateWorkloadIdentityConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .functionalType("FUNCTIONAL_TYPE_AGENT")
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .build())
+ *                 .workloadIdentityConfig(ServiceTemplateWorkloadIdentityConfigArgs.builder()
+ *                     .identityType("IDENTITY_TYPE_AGENT_IDENTITY")
+ *                     .identityCertificateEnabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudrunv2 Service Mcp Server
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateWorkloadIdentityConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .functionalType("FUNCTIONAL_TYPE_MCP_SERVER")
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .build())
+ *                 .workloadIdentityConfig(ServiceTemplateWorkloadIdentityConfigArgs.builder()
+ *                     .identityType("IDENTITY_TYPE_SERVICE_ACCOUNT")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1695,6 +1788,32 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> expireTime() {
         return this.expireTime;
+    }
+    /**
+     * (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     * 
+     */
+    @Export(name="functionalType", refs={String.class}, tree="[0]")
+    private Output<String> functionalType;
+
+    /**
+     * @return (Optional, Beta)
+     * The functional type of the Service. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * A Service with `FUNCTIONAL_TYPE_AGENT` must also set `template.workload_identity_config.identity_type`
+     * to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`, `FUNCTIONAL_TYPE_MCP_SERVER`.
+     * 
+     */
+    public Output<String> functionalType() {
+        return this.functionalType;
     }
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.

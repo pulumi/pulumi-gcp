@@ -53,7 +53,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("url-map"),
-//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				DefaultService: defaultRegionBackendService.ID(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -73,13 +73,13 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//						DefaultService: defaultRegionBackendService.ID(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//								Service: defaultRegionBackendService.ID(),
 //							},
 //						},
 //					},
@@ -91,7 +91,7 @@ import (
 //			_, err = compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 //				Region: pulumi.String("us-central1"),
 //				Name:   pulumi.String("test-proxy"),
-//				UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
+//				UrlMap: defaultRegionUrlMap.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -132,7 +132,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -140,7 +140,7 @@ import (
 //			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("url-map"),
-//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				DefaultService: defaultRegionBackendService.ID(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -152,13 +152,13 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//						DefaultService: defaultRegionBackendService.ID(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//								Service: defaultRegionBackendService.ID(),
 //							},
 //						},
 //					},
@@ -171,7 +171,7 @@ import (
 //				Region:                  pulumi.String("us-central1"),
 //				Name:                    pulumi.String("test-http-keep-alive-timeout-proxy"),
 //				HttpKeepAliveTimeoutSec: pulumi.Int(600),
-//				UrlMap:                  defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
+//				UrlMap:                  defaultRegionUrlMap.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -209,7 +209,7 @@ import (
 //			_, err = compute.NewRegionTargetHttpProxy(ctx, "default", &compute.RegionTargetHttpProxyArgs{
 //				Region: pulumi.String("us-central1"),
 //				Name:   pulumi.String("test-https-redirect-proxy"),
-//				UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
+//				UrlMap: defaultRegionUrlMap.ID(),
 //			})
 //			if err != nil {
 //				return err

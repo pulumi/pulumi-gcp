@@ -19,11 +19,19 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// * abc only matches the value abc.
         /// </summary>
         public readonly string? Exact;
+        /// <summary>
+        /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
+        /// </summary>
+        public readonly bool? IgnoreCase;
 
         [OutputConstructor]
-        private AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal(string? exact)
+        private AuthzPolicyNetworkRuleFromNotSourcePrincipalPrincipal(
+            string? exact,
+
+            bool? ignoreCase)
         {
             Exact = exact;
+            IgnoreCase = ignoreCase;
         }
     }
 }

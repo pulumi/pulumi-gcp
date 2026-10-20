@@ -42,6 +42,7 @@ public final class GetServiceResult {
     private Map<String,String> effectiveLabels;
     private String etag;
     private String expireTime;
+    private String functionalType;
     private String generation;
     private Boolean iapEnabled;
     /**
@@ -129,6 +130,9 @@ public final class GetServiceResult {
     }
     public String expireTime() {
         return this.expireTime;
+    }
+    public String functionalType() {
+        return this.functionalType;
     }
     public String generation() {
         return this.generation;
@@ -246,6 +250,7 @@ public final class GetServiceResult {
         private Map<String,String> effectiveLabels;
         private String etag;
         private String expireTime;
+        private String functionalType;
         private String generation;
         private Boolean iapEnabled;
         private String id;
@@ -295,6 +300,7 @@ public final class GetServiceResult {
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
     	      this.expireTime = defaults.expireTime;
+    	      this.functionalType = defaults.functionalType;
     	      this.generation = defaults.generation;
     	      this.iapEnabled = defaults.iapEnabled;
     	      this.id = defaults.id;
@@ -479,6 +485,14 @@ public final class GetServiceResult {
               throw new MissingRequiredPropertyException("GetServiceResult", "expireTime");
             }
             this.expireTime = expireTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder functionalType(String functionalType) {
+            if (functionalType == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "functionalType");
+            }
+            this.functionalType = functionalType;
             return this;
         }
         @CustomType.Setter
@@ -742,6 +756,7 @@ public final class GetServiceResult {
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.etag = etag;
             _resultValue.expireTime = expireTime;
+            _resultValue.functionalType = functionalType;
             _resultValue.generation = generation;
             _resultValue.iapEnabled = iapEnabled;
             _resultValue.id = id;

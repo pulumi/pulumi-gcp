@@ -117,7 +117,7 @@ export class RegionSslCertificate extends pulumi.CustomResource {
      * Resulting name for a `namePrefix` <= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     declare public readonly namePrefix: pulumi.Output<string>;
     /**
@@ -262,7 +262,7 @@ export interface RegionSslCertificateState {
      * Resulting name for a `namePrefix` <= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**
@@ -342,7 +342,7 @@ export interface RegionSslCertificateArgs {
      * Resulting name for a `namePrefix` <= 37 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 38 - 54 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      */
     namePrefix?: pulumi.Input<string | undefined>;
     /**

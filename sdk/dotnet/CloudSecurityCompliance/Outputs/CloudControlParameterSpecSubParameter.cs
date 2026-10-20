@@ -35,8 +35,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The parameter spec of the cloud control.
-        /// Structure is documented below.
+        /// The parameter spec of the cloud control, in JSON format.
         /// </summary>
         public readonly ImmutableArray<Outputs.CloudControlParameterSpecSubParameterSubParameter> SubParameters;
         /// <summary>

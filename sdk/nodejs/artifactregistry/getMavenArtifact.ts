@@ -8,6 +8,28 @@ import * as utilities from "../utilities";
  * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const mavenRepo = new gcp.artifactregistry.Repository("maven_repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-maven-repo",
+ *     format: "MAVEN",
+ * });
+ * const latest = gcp.artifactregistry.getMavenArtifactOutput({
+ *     location: mavenRepo.location,
+ *     repositoryId: mavenRepo.repositoryId,
+ *     groupId: "com.example",
+ *     artifactId: "my-artifact",
+ * });
+ * const withVersion = gcp.artifactregistry.getMavenArtifactOutput({
+ *     location: mavenRepo.location,
+ *     repositoryId: mavenRepo.repositoryId,
+ *     artifactName: "my-artifact:1.0.0",
+ * });
+ * ```
  */
 export function getMavenArtifact(args: GetMavenArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetMavenArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,6 +109,28 @@ export interface GetMavenArtifactResult {
  * This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the artifact and optional version.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const mavenRepo = new gcp.artifactregistry.Repository("maven_repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-maven-repo",
+ *     format: "MAVEN",
+ * });
+ * const latest = gcp.artifactregistry.getMavenArtifactOutput({
+ *     location: mavenRepo.location,
+ *     repositoryId: mavenRepo.repositoryId,
+ *     groupId: "com.example",
+ *     artifactId: "my-artifact",
+ * });
+ * const withVersion = gcp.artifactregistry.getMavenArtifactOutput({
+ *     location: mavenRepo.location,
+ *     repositoryId: mavenRepo.repositoryId,
+ *     artifactName: "my-artifact:1.0.0",
+ * });
+ * ```
  */
 export function getMavenArtifactOutput(args: GetMavenArtifactOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMavenArtifactResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

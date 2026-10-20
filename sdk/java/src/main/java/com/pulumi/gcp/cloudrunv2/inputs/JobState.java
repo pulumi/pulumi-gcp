@@ -288,6 +288,35 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     * 
+     */
+    @Import(name="functionalType")
+    private @Nullable Output<String> functionalType;
+
+    /**
+     * @return (Optional, Beta)
+     * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+     * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+     * Once set, this field cannot be changed or unset.
+     * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+     * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+     * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+     * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+     * 
+     */
+    public Optional<Output<String>> functionalType() {
+        return Optional.ofNullable(this.functionalType);
+    }
+
+    /**
      * A number that monotonically increases every time the user modifies the desired state.
      * 
      */
@@ -615,6 +644,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.executionCount = $.executionCount;
         this.expireTime = $.expireTime;
+        this.functionalType = $.functionalType;
         this.generation = $.generation;
         this.labels = $.labels;
         this.lastModifier = $.lastModifier;
@@ -1015,6 +1045,41 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expireTime(String expireTime) {
             return expireTime(Output.of(expireTime));
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+         * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+         * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(@Nullable Output<String> functionalType) {
+            $.functionalType = functionalType;
+            return this;
+        }
+
+        /**
+         * @param functionalType (Optional, Beta)
+         * The functional type of the Job. Declares the primary purpose of the workload so that it can be
+         * registered with [Agent Platform](https://cloud.google.com/run/docs/ai/agent-platform-features).
+         * Once set, this field cannot be changed or unset.
+         * Jobs only support `FUNCTIONAL_TYPE_AGENT`; only Cloud Run services can be exposed as MCP servers.
+         * A Job with `FUNCTIONAL_TYPE_AGENT` must also set
+         * `template.template.workload_identity_config.identity_type` to `IDENTITY_TYPE_AGENT_IDENTITY`.
+         * Possible values are: `FUNCTIONAL_TYPE_AGENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionalType(String functionalType) {
+            return functionalType(Output.of(functionalType));
         }
 
         /**

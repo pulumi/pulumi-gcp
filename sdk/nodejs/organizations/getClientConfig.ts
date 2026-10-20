@@ -21,6 +21,17 @@ import * as utilities from "../utilities";
  * ```
  *
  * ### Configure Kubernetes Provider With OAuth2 Access Token
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.organizations.getClientConfig({});
+ * const myCluster = gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     zone: "us-east1-a",
+ * });
+ * ```
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +82,17 @@ export interface GetClientConfigResult {
  * ```
  *
  * ### Configure Kubernetes Provider With OAuth2 Access Token
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = gcp.organizations.getClientConfig({});
+ * const myCluster = gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     zone: "us-east1-a",
+ * });
+ * ```
  */
 export function getClientConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

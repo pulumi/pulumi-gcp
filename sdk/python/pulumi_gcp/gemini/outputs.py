@@ -18,6 +18,39 @@ from . import outputs
 __all__ = [
     'CodeToolsSettingEnabledTool',
     'CodeToolsSettingEnabledToolConfig',
+    'DataAnalyticsDataAgentDataAnalyticsAgent',
+    'DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext',
+    'DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences',
+    'DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq',
+    'DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths',
+    'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContext',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths',
+    'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths',
+    'DataAnalyticsDataAgentIamBindingCondition',
+    'DataAnalyticsDataAgentIamMemberCondition',
     'GdaObservabilitySettingConversationalAnalyticsSetting',
     'GibqObservabilitySettingConversationalAnalyticsSetting',
     'RepositoryGroupIamBindingCondition',
@@ -140,6 +173,1581 @@ class CodeToolsSettingEnabledToolConfig(dict):
         Value of the configuration item.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastPublishedContexts":
+            suggest = "last_published_contexts"
+        elif key == "publishedContext":
+            suggest = "published_context"
+        elif key == "stagingContext":
+            suggest = "staging_context"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_published_contexts: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext']] = None,
+                 published_context: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext'] = None,
+                 staging_context: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContext'] = None):
+        """
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextArgs'] last_published_contexts: (Output)
+               Output only. The last published context for the agent.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextArgs' published_context: Optional. The published context for the agent. This context is used by
+               the Chat API in production.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextArgs' staging_context: Optional. The staging context for the agent. This context is used to
+               test and validate changes before publishing.
+               Structure is documented below.
+        """
+        if last_published_contexts is not None:
+            pulumi.set(__self__, "last_published_contexts", last_published_contexts)
+        if published_context is not None:
+            pulumi.set(__self__, "published_context", published_context)
+        if staging_context is not None:
+            pulumi.set(__self__, "staging_context", staging_context)
+
+    @_builtins.property
+    @pulumi.getter(name="lastPublishedContexts")
+    def last_published_contexts(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext']]:
+        """
+        (Output)
+        Output only. The last published context for the agent.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_published_contexts")
+
+    @_builtins.property
+    @pulumi.getter(name="publishedContext")
+    def published_context(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext']:
+        """
+        Optional. The published context for the agent. This context is used by
+        the Chat API in production.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "published_context")
+
+    @_builtins.property
+    @pulumi.getter(name="stagingContext")
+    def staging_context(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContext']:
+        """
+        Optional. The staging context for the agent. This context is used to
+        test and validate changes before publishing.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "staging_context")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasourceReferences":
+            suggest = "datasource_references"
+        elif key == "systemInstruction":
+            suggest = "system_instruction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datasource_references: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences'] = None,
+                 system_instruction: Optional[_builtins.str] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesArgs' datasource_references: Output only. Data sources that are available for answering questions.
+        :param _builtins.str system_instruction: Output only. The basic entry point for data owners creating domain
+               knowledge for the agent.
+        """
+        if datasource_references is not None:
+            pulumi.set(__self__, "datasource_references", datasource_references)
+        if system_instruction is not None:
+            pulumi.set(__self__, "system_instruction", system_instruction)
+
+    @_builtins.property
+    @pulumi.getter(name="datasourceReferences")
+    def datasource_references(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences']:
+        """
+        Output only. Data sources that are available for answering questions.
+        """
+        return pulumi.get(self, "datasource_references")
+
+    @_builtins.property
+    @pulumi.getter(name="systemInstruction")
+    def system_instruction(self) -> Optional[_builtins.str]:
+        """
+        Output only. The basic entry point for data owners creating domain
+        knowledge for the agent.
+        """
+        return pulumi.get(self, "system_instruction")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferences(dict):
+    def __init__(__self__, *,
+                 bq: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq'] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqArgs' bq: References to BigQuery tables.
+               Structure is documented below.
+        """
+        if bq is not None:
+            pulumi.set(__self__, "bq", bq)
+
+    @_builtins.property
+    @pulumi.getter
+    def bq(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq']:
+        """
+        References to BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bq")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableReferences":
+            suggest = "table_references"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBq.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table_references: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference']] = None):
+        """
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReferenceArgs'] table_references: References to BigQuery tables.
+               Structure is documented below.
+        """
+        if table_references is not None:
+            pulumi.set(__self__, "table_references", table_references)
+
+    @_builtins.property
+    @pulumi.getter(name="tableReferences")
+    def table_references(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference']]:
+        """
+        References to BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_references")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentLastPublishedContextDatasourceReferencesBqTableReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
+                 table_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dataset_id: The dataset that the table belongs to.
+        :param _builtins.str project_id: The project that the table belongs to.
+        :param _builtins.str table_id: The table ID.
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[_builtins.str]:
+        """
+        The dataset that the table belongs to.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        The project that the table belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[_builtins.str]:
+        """
+        The table ID.
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasourceReferences":
+            suggest = "datasource_references"
+        elif key == "exampleQueries":
+            suggest = "example_queries"
+        elif key == "glossaryTerms":
+            suggest = "glossary_terms"
+        elif key == "schemaRelationships":
+            suggest = "schema_relationships"
+        elif key == "systemInstruction":
+            suggest = "system_instruction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datasource_references: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences',
+                 example_queries: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery']] = None,
+                 glossary_terms: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm']] = None,
+                 options: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions'] = None,
+                 schema_relationships: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship']] = None,
+                 system_instruction: Optional[_builtins.str] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesArgs' datasource_references: Required. Data sources that are available for answering questions.
+               This Terraform resource currently supports BigQuery table references.
+               Structure is documented below.
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQueryArgs'] example_queries: Optional. A list of example queries for BigQuery data sources.
+               Structure is documented below.
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTermArgs'] glossary_terms: Optional. Term definitions for the agent's domain.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsArgs' options: Optional. Additional options for the conversation.
+               Structure is documented below.
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipArgs'] schema_relationships: Optional. Relationships between table schemas, including referencing
+               and referenced columns.
+               Structure is documented below.
+        :param _builtins.str system_instruction: Optional. The basic entry point for data owners creating domain
+               knowledge for the agent.
+        """
+        pulumi.set(__self__, "datasource_references", datasource_references)
+        if example_queries is not None:
+            pulumi.set(__self__, "example_queries", example_queries)
+        if glossary_terms is not None:
+            pulumi.set(__self__, "glossary_terms", glossary_terms)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if schema_relationships is not None:
+            pulumi.set(__self__, "schema_relationships", schema_relationships)
+        if system_instruction is not None:
+            pulumi.set(__self__, "system_instruction", system_instruction)
+
+    @_builtins.property
+    @pulumi.getter(name="datasourceReferences")
+    def datasource_references(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences':
+        """
+        Required. Data sources that are available for answering questions.
+        This Terraform resource currently supports BigQuery table references.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datasource_references")
+
+    @_builtins.property
+    @pulumi.getter(name="exampleQueries")
+    def example_queries(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery']]:
+        """
+        Optional. A list of example queries for BigQuery data sources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "example_queries")
+
+    @_builtins.property
+    @pulumi.getter(name="glossaryTerms")
+    def glossary_terms(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm']]:
+        """
+        Optional. Term definitions for the agent's domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "glossary_terms")
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions']:
+        """
+        Optional. Additional options for the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "options")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRelationships")
+    def schema_relationships(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship']]:
+        """
+        Optional. Relationships between table schemas, including referencing
+        and referenced columns.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_relationships")
+
+    @_builtins.property
+    @pulumi.getter(name="systemInstruction")
+    def system_instruction(self) -> Optional[_builtins.str]:
+        """
+        Optional. The basic entry point for data owners creating domain
+        knowledge for the agent.
+        """
+        return pulumi.get(self, "system_instruction")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferences(dict):
+    def __init__(__self__, *,
+                 bq: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq'):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqArgs' bq: References to BigQuery tables.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bq", bq)
+
+    @_builtins.property
+    @pulumi.getter
+    def bq(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq':
+        """
+        References to BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bq")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableReferences":
+            suggest = "table_references"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBq.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table_references: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference']] = None):
+        """
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReferenceArgs'] table_references: References to BigQuery tables.
+               Structure is documented below.
+        """
+        if table_references is not None:
+            pulumi.set(__self__, "table_references", table_references)
+
+    @_builtins.property
+    @pulumi.getter(name="tableReferences")
+    def table_references(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference']]:
+        """
+        References to BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_references")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextDatasourceReferencesBqTableReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: _builtins.str,
+                 project_id: _builtins.str,
+                 table_id: _builtins.str):
+        """
+        :param _builtins.str dataset_id: The dataset that the table belongs to.
+        :param _builtins.str project_id: The project that the table belongs to.
+        :param _builtins.str table_id: The table ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> _builtins.str:
+        """
+        The dataset that the table belongs to.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        The project that the table belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> _builtins.str:
+        """
+        The table ID.
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "naturalLanguageQuestion":
+            suggest = "natural_language_question"
+        elif key == "sqlQuery":
+            suggest = "sql_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextExampleQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 natural_language_question: Optional[_builtins.str] = None,
+                 sql_query: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str natural_language_question: Optional. A natural language question that a user might ask.
+        :param _builtins.str sql_query: Optional. The SQL query that should be generated to answer
+               the natural language question.
+        """
+        if natural_language_question is not None:
+            pulumi.set(__self__, "natural_language_question", natural_language_question)
+        if sql_query is not None:
+            pulumi.set(__self__, "sql_query", sql_query)
+
+    @_builtins.property
+    @pulumi.getter(name="naturalLanguageQuestion")
+    def natural_language_question(self) -> Optional[_builtins.str]:
+        """
+        Optional. A natural language question that a user might ask.
+        """
+        return pulumi.get(self, "natural_language_question")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlQuery")
+    def sql_query(self) -> Optional[_builtins.str]:
+        """
+        Optional. The SQL query that should be generated to answer
+        the natural language question.
+        """
+        return pulumi.get(self, "sql_query")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextGlossaryTerm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 labels: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str description: Required. The description or meaning of the term.
+        :param _builtins.str display_name: Required. User friendly display name of the glossary term.
+        :param Sequence[_builtins.str] labels: Optional. A list of general purpose labels associated with this term.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Required. The description or meaning of the term.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Required. User friendly display name of the glossary term.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. A list of general purpose labels associated with this term.
+        """
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptions(dict):
+    def __init__(__self__, *,
+                 analysis: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis'] = None,
+                 datasource: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource'] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisArgs' analysis: Optional. Options for analysis.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasourceArgs' datasource: Optional. Options for datasource configuration.
+               Structure is documented below.
+        """
+        if analysis is not None:
+            pulumi.set(__self__, "analysis", analysis)
+        if datasource is not None:
+            pulumi.set(__self__, "datasource", datasource)
+
+    @_builtins.property
+    @pulumi.getter
+    def analysis(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis']:
+        """
+        Optional. Options for analysis.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "analysis")
+
+    @_builtins.property
+    @pulumi.getter
+    def datasource(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource']:
+        """
+        Optional. Options for datasource configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datasource")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysis(dict):
+    def __init__(__self__, *,
+                 python: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython'] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPythonArgs' python: Optional. Options for Python analysis.
+               Structure is documented below.
+        """
+        if python is not None:
+            pulumi.set(__self__, "python", python)
+
+    @_builtins.property
+    @pulumi.getter
+    def python(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython']:
+        """
+        Optional. Options for Python analysis.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsAnalysisPython(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Optional. Whether to enable Python analysis. Defaults to false.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Optional. Whether to enable Python analysis. Defaults to false.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryMaxBilledBytes":
+            suggest = "big_query_max_billed_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextOptionsDatasource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 big_query_max_billed_bytes: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int big_query_max_billed_bytes: Optional. Limits the bytes billed for each BigQuery query job.
+        """
+        if big_query_max_billed_bytes is not None:
+            pulumi.set(__self__, "big_query_max_billed_bytes", big_query_max_billed_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="bigQueryMaxBilledBytes")
+    def big_query_max_billed_bytes(self) -> Optional[_builtins.int]:
+        """
+        Optional. Limits the bytes billed for each BigQuery query job.
+        """
+        return pulumi.get(self, "big_query_max_billed_bytes")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leftSchemaPaths":
+            suggest = "left_schema_paths"
+        elif key == "rightSchemaPaths":
+            suggest = "right_schema_paths"
+        elif key == "confidenceScore":
+            suggest = "confidence_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationship.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 left_schema_paths: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths',
+                 right_schema_paths: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths',
+                 confidence_score: Optional[_builtins.float] = None,
+                 sources: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPathsArgs' left_schema_paths: Required. An ordered list of fields for the left side of the join.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPathsArgs' right_schema_paths: Required. An ordered list of fields for the right side of the join.
+               Structure is documented below.
+        :param _builtins.float confidence_score: Optional. A confidence score for the suggested relationship.
+        :param Sequence[_builtins.str] sources: Optional. Sources which generated the schema relation edge.
+               Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+        """
+        pulumi.set(__self__, "left_schema_paths", left_schema_paths)
+        pulumi.set(__self__, "right_schema_paths", right_schema_paths)
+        if confidence_score is not None:
+            pulumi.set(__self__, "confidence_score", confidence_score)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+
+    @_builtins.property
+    @pulumi.getter(name="leftSchemaPaths")
+    def left_schema_paths(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths':
+        """
+        Required. An ordered list of fields for the left side of the join.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "left_schema_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="rightSchemaPaths")
+    def right_schema_paths(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths':
+        """
+        Required. An ordered list of fields for the right side of the join.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "right_schema_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="confidenceScore")
+    def confidence_score(self) -> Optional[_builtins.float]:
+        """
+        Optional. A confidence score for the suggested relationship.
+        """
+        return pulumi.get(self, "confidence_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. Sources which generated the schema relation edge.
+        Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableFqn":
+            suggest = "table_fqn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipLeftSchemaPaths.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Sequence[_builtins.str],
+                 table_fqn: _builtins.str):
+        """
+        :param Sequence[_builtins.str] paths: Required. The ordered list of paths within the table schema.
+        :param _builtins.str table_fqn: Required. The service-qualified full resource name of the table.
+        """
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "table_fqn", table_fqn)
+
+    @_builtins.property
+    @pulumi.getter
+    def paths(self) -> Sequence[_builtins.str]:
+        """
+        Required. The ordered list of paths within the table schema.
+        """
+        return pulumi.get(self, "paths")
+
+    @_builtins.property
+    @pulumi.getter(name="tableFqn")
+    def table_fqn(self) -> _builtins.str:
+        """
+        Required. The service-qualified full resource name of the table.
+        """
+        return pulumi.get(self, "table_fqn")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableFqn":
+            suggest = "table_fqn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentPublishedContextSchemaRelationshipRightSchemaPaths.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Sequence[_builtins.str],
+                 table_fqn: _builtins.str):
+        """
+        :param Sequence[_builtins.str] paths: Required. The ordered list of paths within the table schema.
+               
+               <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        :param _builtins.str table_fqn: Required. The service-qualified full resource name of the table.
+        """
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "table_fqn", table_fqn)
+
+    @_builtins.property
+    @pulumi.getter
+    def paths(self) -> Sequence[_builtins.str]:
+        """
+        Required. The ordered list of paths within the table schema.
+
+        <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        """
+        return pulumi.get(self, "paths")
+
+    @_builtins.property
+    @pulumi.getter(name="tableFqn")
+    def table_fqn(self) -> _builtins.str:
+        """
+        Required. The service-qualified full resource name of the table.
+        """
+        return pulumi.get(self, "table_fqn")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasourceReferences":
+            suggest = "datasource_references"
+        elif key == "exampleQueries":
+            suggest = "example_queries"
+        elif key == "glossaryTerms":
+            suggest = "glossary_terms"
+        elif key == "schemaRelationships":
+            suggest = "schema_relationships"
+        elif key == "systemInstruction":
+            suggest = "system_instruction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datasource_references: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences',
+                 example_queries: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery']] = None,
+                 glossary_terms: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm']] = None,
+                 options: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions'] = None,
+                 schema_relationships: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship']] = None,
+                 system_instruction: Optional[_builtins.str] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesArgs' datasource_references: Required. Data sources that are available for answering questions.
+               This Terraform resource currently supports BigQuery table references.
+               Structure is documented below.
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQueryArgs'] example_queries: Optional. A list of example queries for BigQuery data sources.
+               Structure is documented below.
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTermArgs'] glossary_terms: Optional. Term definitions for the agent's domain.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsArgs' options: Optional. Additional options for the conversation.
+               Structure is documented below.
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipArgs'] schema_relationships: Optional. Relationships between table schemas, including referencing
+               and referenced columns.
+               Structure is documented below.
+        :param _builtins.str system_instruction: Optional. The basic entry point for data owners creating domain
+               knowledge for the agent.
+        """
+        pulumi.set(__self__, "datasource_references", datasource_references)
+        if example_queries is not None:
+            pulumi.set(__self__, "example_queries", example_queries)
+        if glossary_terms is not None:
+            pulumi.set(__self__, "glossary_terms", glossary_terms)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if schema_relationships is not None:
+            pulumi.set(__self__, "schema_relationships", schema_relationships)
+        if system_instruction is not None:
+            pulumi.set(__self__, "system_instruction", system_instruction)
+
+    @_builtins.property
+    @pulumi.getter(name="datasourceReferences")
+    def datasource_references(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences':
+        """
+        Required. Data sources that are available for answering questions.
+        This Terraform resource currently supports BigQuery table references.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datasource_references")
+
+    @_builtins.property
+    @pulumi.getter(name="exampleQueries")
+    def example_queries(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery']]:
+        """
+        Optional. A list of example queries for BigQuery data sources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "example_queries")
+
+    @_builtins.property
+    @pulumi.getter(name="glossaryTerms")
+    def glossary_terms(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm']]:
+        """
+        Optional. Term definitions for the agent's domain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "glossary_terms")
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions']:
+        """
+        Optional. Additional options for the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "options")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaRelationships")
+    def schema_relationships(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship']]:
+        """
+        Optional. Relationships between table schemas, including referencing
+        and referenced columns.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_relationships")
+
+    @_builtins.property
+    @pulumi.getter(name="systemInstruction")
+    def system_instruction(self) -> Optional[_builtins.str]:
+        """
+        Optional. The basic entry point for data owners creating domain
+        knowledge for the agent.
+        """
+        return pulumi.get(self, "system_instruction")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferences(dict):
+    def __init__(__self__, *,
+                 bq: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq'):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqArgs' bq: References to BigQuery tables.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bq", bq)
+
+    @_builtins.property
+    @pulumi.getter
+    def bq(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq':
+        """
+        References to BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bq")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableReferences":
+            suggest = "table_references"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBq.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 table_references: Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference']] = None):
+        """
+        :param Sequence['DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReferenceArgs'] table_references: References to BigQuery tables.
+               Structure is documented below.
+        """
+        if table_references is not None:
+            pulumi.set(__self__, "table_references", table_references)
+
+    @_builtins.property
+    @pulumi.getter(name="tableReferences")
+    def table_references(self) -> Optional[Sequence['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference']]:
+        """
+        References to BigQuery tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_references")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextDatasourceReferencesBqTableReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: _builtins.str,
+                 project_id: _builtins.str,
+                 table_id: _builtins.str):
+        """
+        :param _builtins.str dataset_id: The dataset that the table belongs to.
+        :param _builtins.str project_id: The project that the table belongs to.
+        :param _builtins.str table_id: The table ID.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> _builtins.str:
+        """
+        The dataset that the table belongs to.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        The project that the table belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> _builtins.str:
+        """
+        The table ID.
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "naturalLanguageQuestion":
+            suggest = "natural_language_question"
+        elif key == "sqlQuery":
+            suggest = "sql_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextExampleQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 natural_language_question: Optional[_builtins.str] = None,
+                 sql_query: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str natural_language_question: Optional. A natural language question that a user might ask.
+        :param _builtins.str sql_query: Optional. The SQL query that should be generated to answer
+               the natural language question.
+        """
+        if natural_language_question is not None:
+            pulumi.set(__self__, "natural_language_question", natural_language_question)
+        if sql_query is not None:
+            pulumi.set(__self__, "sql_query", sql_query)
+
+    @_builtins.property
+    @pulumi.getter(name="naturalLanguageQuestion")
+    def natural_language_question(self) -> Optional[_builtins.str]:
+        """
+        Optional. A natural language question that a user might ask.
+        """
+        return pulumi.get(self, "natural_language_question")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlQuery")
+    def sql_query(self) -> Optional[_builtins.str]:
+        """
+        Optional. The SQL query that should be generated to answer
+        the natural language question.
+        """
+        return pulumi.get(self, "sql_query")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextGlossaryTerm.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 labels: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str description: Required. The description or meaning of the term.
+        :param _builtins.str display_name: Required. User friendly display name of the glossary term.
+        :param Sequence[_builtins.str] labels: Optional. A list of general purpose labels associated with this term.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Required. The description or meaning of the term.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Required. User friendly display name of the glossary term.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. A list of general purpose labels associated with this term.
+        """
+        return pulumi.get(self, "labels")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptions(dict):
+    def __init__(__self__, *,
+                 analysis: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis'] = None,
+                 datasource: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource'] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisArgs' analysis: Optional. Options for analysis.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasourceArgs' datasource: Optional. Options for datasource configuration.
+               Structure is documented below.
+        """
+        if analysis is not None:
+            pulumi.set(__self__, "analysis", analysis)
+        if datasource is not None:
+            pulumi.set(__self__, "datasource", datasource)
+
+    @_builtins.property
+    @pulumi.getter
+    def analysis(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis']:
+        """
+        Optional. Options for analysis.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "analysis")
+
+    @_builtins.property
+    @pulumi.getter
+    def datasource(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource']:
+        """
+        Optional. Options for datasource configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "datasource")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysis(dict):
+    def __init__(__self__, *,
+                 python: Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython'] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPythonArgs' python: Optional. Options for Python analysis.
+               Structure is documented below.
+        """
+        if python is not None:
+            pulumi.set(__self__, "python", python)
+
+    @_builtins.property
+    @pulumi.getter
+    def python(self) -> Optional['outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython']:
+        """
+        Optional. Options for Python analysis.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsAnalysisPython(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Optional. Whether to enable Python analysis. Defaults to false.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Optional. Whether to enable Python analysis. Defaults to false.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryMaxBilledBytes":
+            suggest = "big_query_max_billed_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextOptionsDatasource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 big_query_max_billed_bytes: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int big_query_max_billed_bytes: Optional. Limits the bytes billed for each BigQuery query job.
+        """
+        if big_query_max_billed_bytes is not None:
+            pulumi.set(__self__, "big_query_max_billed_bytes", big_query_max_billed_bytes)
+
+    @_builtins.property
+    @pulumi.getter(name="bigQueryMaxBilledBytes")
+    def big_query_max_billed_bytes(self) -> Optional[_builtins.int]:
+        """
+        Optional. Limits the bytes billed for each BigQuery query job.
+        """
+        return pulumi.get(self, "big_query_max_billed_bytes")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leftSchemaPaths":
+            suggest = "left_schema_paths"
+        elif key == "rightSchemaPaths":
+            suggest = "right_schema_paths"
+        elif key == "confidenceScore":
+            suggest = "confidence_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationship.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 left_schema_paths: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths',
+                 right_schema_paths: 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths',
+                 confidence_score: Optional[_builtins.float] = None,
+                 sources: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPathsArgs' left_schema_paths: Required. An ordered list of fields for the left side of the join.
+               Structure is documented below.
+        :param 'DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPathsArgs' right_schema_paths: Required. An ordered list of fields for the right side of the join.
+               Structure is documented below.
+        :param _builtins.float confidence_score: Optional. A confidence score for the suggested relationship.
+        :param Sequence[_builtins.str] sources: Optional. Sources which generated the schema relation edge.
+               Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+        """
+        pulumi.set(__self__, "left_schema_paths", left_schema_paths)
+        pulumi.set(__self__, "right_schema_paths", right_schema_paths)
+        if confidence_score is not None:
+            pulumi.set(__self__, "confidence_score", confidence_score)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+
+    @_builtins.property
+    @pulumi.getter(name="leftSchemaPaths")
+    def left_schema_paths(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths':
+        """
+        Required. An ordered list of fields for the left side of the join.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "left_schema_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="rightSchemaPaths")
+    def right_schema_paths(self) -> 'outputs.DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths':
+        """
+        Required. An ordered list of fields for the right side of the join.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "right_schema_paths")
+
+    @_builtins.property
+    @pulumi.getter(name="confidenceScore")
+    def confidence_score(self) -> Optional[_builtins.float]:
+        """
+        Optional. A confidence score for the suggested relationship.
+        """
+        return pulumi.get(self, "confidence_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def sources(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. Sources which generated the schema relation edge.
+        Possible values: BIGQUERY_JOB_HISTORY, LLM_SUGGESTED, BIGQUERY_TABLE_CONSTRAINTS.
+        """
+        return pulumi.get(self, "sources")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableFqn":
+            suggest = "table_fqn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipLeftSchemaPaths.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Sequence[_builtins.str],
+                 table_fqn: _builtins.str):
+        """
+        :param Sequence[_builtins.str] paths: Required. The ordered list of paths within the table schema.
+        :param _builtins.str table_fqn: Required. The service-qualified full resource name of the table.
+        """
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "table_fqn", table_fqn)
+
+    @_builtins.property
+    @pulumi.getter
+    def paths(self) -> Sequence[_builtins.str]:
+        """
+        Required. The ordered list of paths within the table schema.
+        """
+        return pulumi.get(self, "paths")
+
+    @_builtins.property
+    @pulumi.getter(name="tableFqn")
+    def table_fqn(self) -> _builtins.str:
+        """
+        Required. The service-qualified full resource name of the table.
+        """
+        return pulumi.get(self, "table_fqn")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableFqn":
+            suggest = "table_fqn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAnalyticsDataAgentDataAnalyticsAgentStagingContextSchemaRelationshipRightSchemaPaths.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 paths: Sequence[_builtins.str],
+                 table_fqn: _builtins.str):
+        """
+        :param Sequence[_builtins.str] paths: Required. The ordered list of paths within the table schema.
+               
+               <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        :param _builtins.str table_fqn: Required. The service-qualified full resource name of the table.
+        """
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "table_fqn", table_fqn)
+
+    @_builtins.property
+    @pulumi.getter
+    def paths(self) -> Sequence[_builtins.str]:
+        """
+        Required. The ordered list of paths within the table schema.
+
+        <a name="nested_data_analytics_agent_last_published_context"></a>The `last_published_context` block contains:
+        """
+        return pulumi.get(self, "paths")
+
+    @_builtins.property
+    @pulumi.getter(name="tableFqn")
+    def table_fqn(self) -> _builtins.str:
+        """
+        Required. The service-qualified full resource name of the table.
+        """
+        return pulumi.get(self, "table_fqn")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DataAnalyticsDataAgentIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str,
+                 title: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> _builtins.str:
+        return pulumi.get(self, "title")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

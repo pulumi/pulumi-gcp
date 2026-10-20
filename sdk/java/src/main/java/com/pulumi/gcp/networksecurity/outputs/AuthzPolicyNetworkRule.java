@@ -6,6 +6,7 @@ package com.pulumi.gcp.networksecurity.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleFrom;
 import com.pulumi.gcp.networksecurity.outputs.AuthzPolicyNetworkRuleTo;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,11 @@ public final class AuthzPolicyNetworkRule {
      * 
      */
     private @Nullable AuthzPolicyNetworkRuleTo to;
+    /**
+     * @return CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+     * 
+     */
+    private @Nullable String when;
 
     private AuthzPolicyNetworkRule() {}
     /**
@@ -42,6 +48,13 @@ public final class AuthzPolicyNetworkRule {
     public Optional<AuthzPolicyNetworkRuleTo> to() {
         return Optional.ofNullable(this.to);
     }
+    /**
+     * @return CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
+     * 
+     */
+    public Optional<String> when() {
+        return Optional.ofNullable(this.when);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +67,13 @@ public final class AuthzPolicyNetworkRule {
     public static final class Builder {
         private @Nullable AuthzPolicyNetworkRuleFrom from;
         private @Nullable AuthzPolicyNetworkRuleTo to;
+        private @Nullable String when;
         public Builder() {}
         public Builder(AuthzPolicyNetworkRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.from = defaults.from;
     	      this.to = defaults.to;
+    	      this.when = defaults.when;
         }
 
         @CustomType.Setter
@@ -73,10 +88,17 @@ public final class AuthzPolicyNetworkRule {
             this.to = to;
             return this;
         }
+        @CustomType.Setter
+        public Builder when(@Nullable String when) {
+
+            this.when = when;
+            return this;
+        }
         public AuthzPolicyNetworkRule build() {
             final var _resultValue = new AuthzPolicyNetworkRule();
             _resultValue.from = from;
             _resultValue.to = to;
+            _resultValue.when = when;
             return _resultValue;
         }
     }

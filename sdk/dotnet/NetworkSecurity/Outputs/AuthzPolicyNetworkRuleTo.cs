@@ -17,11 +17,20 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
         /// Structure is documented below.
         /// </summary>
+        public readonly ImmutableArray<Outputs.AuthzPolicyNetworkRuleToNotOperation> NotOperations;
+        /// <summary>
+        /// Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AuthzPolicyNetworkRuleToOperation> Operations;
 
         [OutputConstructor]
-        private AuthzPolicyNetworkRuleTo(ImmutableArray<Outputs.AuthzPolicyNetworkRuleToOperation> operations)
+        private AuthzPolicyNetworkRuleTo(
+            ImmutableArray<Outputs.AuthzPolicyNetworkRuleToNotOperation> notOperations,
+
+            ImmutableArray<Outputs.AuthzPolicyNetworkRuleToOperation> operations)
         {
+            NotOperations = notOperations;
             Operations = operations;
         }
     }

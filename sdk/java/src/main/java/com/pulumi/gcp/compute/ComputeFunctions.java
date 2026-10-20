@@ -13609,6 +13609,53 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(Arrays.asList(            
+     *                 "us-central1-a",
+     *                 "us-central1-f"))
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(diskGoogleComputeDisk.get("selfLink"))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args) {
         return getRegionDisk(args, InvokeOptions.Empty);
@@ -13619,6 +13666,53 @@ public final class ComputeFunctions {
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(Arrays.asList(            
+     *                 "us-central1-a",
+     *                 "us-central1-f"))
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(diskGoogleComputeDisk.get("selfLink"))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRegionDiskResult> getRegionDiskPlain(GetRegionDiskPlainArgs args) {
@@ -13631,6 +13725,53 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(Arrays.asList(            
+     *                 "us-central1-a",
+     *                 "us-central1-f"))
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(diskGoogleComputeDisk.get("selfLink"))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionDisk:getRegionDisk", TypeShape.of(GetRegionDiskResult.class), args, Utilities.withVersion(options));
@@ -13642,6 +13783,53 @@ public final class ComputeFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(Arrays.asList(            
+     *                 "us-central1-a",
+     *                 "us-central1-f"))
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(diskGoogleComputeDisk.get("selfLink"))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionDisk:getRegionDisk", TypeShape.of(GetRegionDiskResult.class), args, Utilities.withVersion(options));
@@ -13652,6 +13840,53 @@ public final class ComputeFunctions {
      * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name("persistent-regional-disk")
+     *             .project("example")
+     *             .region("us-central1")
+     *             .type("pd-ssd")
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(Arrays.asList(            
+     *                 "us-central1-a",
+     *                 "us-central1-f"))
+     *             .build());
+     * 
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(diskGoogleComputeDisk.get("selfLink"))
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRegionDiskResult> getRegionDiskPlain(GetRegionDiskPlainArgs args, InvokeOptions options) {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.NodePoolAutoscalingArgs;
+import com.pulumi.gcp.container.inputs.NodePoolBestEffortProvisioningArgs;
 import com.pulumi.gcp.container.inputs.NodePoolMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.NodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigArgs;
@@ -46,6 +47,25 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    @Import(name="bestEffortProvisioning")
+    private @Nullable Output<NodePoolBestEffortProvisioningArgs> bestEffortProvisioning;
+
+    /**
+     * @return Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    public Optional<Output<NodePoolBestEffortProvisioningArgs>> bestEffortProvisioning() {
+        return Optional.ofNullable(this.bestEffortProvisioning);
+    }
+
+    /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      * 
      * ***
@@ -72,8 +92,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * management without updating or deleting the resource in the API.
      * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
-     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-     * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
@@ -85,8 +103,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
      * management without updating or deleting the resource in the API.
      * When set to &#34;DELETE&#34;, deleting the resource is allowed.
-     * 
-     * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -235,7 +251,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * Resulting name for a `namePrefix` &lt;= 14 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 15 - 31 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      * 
      */
     @Import(name="namePrefix")
@@ -250,7 +266,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * Resulting name for a `namePrefix` &lt;= 14 characters:
      * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
      * Resulting name for a `namePrefix` 15 - 31 characters:
-     * `namePrefix` + YYmmdd + 3 digit incremental counter
+     * `namePrefix` + 9 random lowercase alphanumeric characters
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -449,6 +465,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     private NodePoolArgs(NodePoolArgs $) {
         this.autoscaling = $.autoscaling;
+        this.bestEffortProvisioning = $.bestEffortProvisioning;
         this.cluster = $.cluster;
         this.deletionPolicy = $.deletionPolicy;
         this.ignoreNodeCountChanges = $.ignoreNodeCountChanges;
@@ -513,6 +530,31 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bestEffortProvisioning Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+         * 
+         * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bestEffortProvisioning(@Nullable Output<NodePoolBestEffortProvisioningArgs> bestEffortProvisioning) {
+            $.bestEffortProvisioning = bestEffortProvisioning;
+            return this;
+        }
+
+        /**
+         * @param bestEffortProvisioning Best-effort provisioning allows node pool creations to automatically ignore stockout errors once the minimum number of nodes have been provisioned. Structure is documented below.
+         * 
+         * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bestEffortProvisioning(NodePoolBestEffortProvisioningArgs bestEffortProvisioning) {
+            return bestEffortProvisioning(Output.of(bestEffortProvisioning));
+        }
+
+        /**
          * @param cluster The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
          * 
          * ***
@@ -545,8 +587,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * management without updating or deleting the resource in the API.
          * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
-         * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-         * 
          * @return builder
          * 
          */
@@ -562,8 +602,6 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
          * management without updating or deleting the resource in the API.
          * When set to &#34;DELETE&#34;, deleting the resource is allowed.
-         * 
-         * &lt;a name=&#34;nestedAutoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -766,7 +804,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * Resulting name for a `namePrefix` &lt;= 14 characters:
          * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
          * Resulting name for a `namePrefix` 15 - 31 characters:
-         * `namePrefix` + YYmmdd + 3 digit incremental counter
+         * `namePrefix` + 9 random lowercase alphanumeric characters
          * 
          * @return builder
          * 
@@ -785,7 +823,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * Resulting name for a `namePrefix` &lt;= 14 characters:
          * `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
          * Resulting name for a `namePrefix` 15 - 31 characters:
-         * `namePrefix` + YYmmdd + 3 digit incremental counter
+         * `namePrefix` + 9 random lowercase alphanumeric characters
          * 
          * @return builder
          * 

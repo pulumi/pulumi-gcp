@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var template_template_metadata = new Template("template-template-metadata", TemplateArgs.builder()
- *             .location("us-central1")
+ *             .location("us")
  *             .templateId("modelarmor3")
  *             .filterConfig(TemplateFilterConfigArgs.builder()
  *                 .raiSettings(TemplateFilterConfigRaiSettingsArgs.builder()
@@ -183,6 +183,9 @@ import javax.annotation.Nullable;
  *                 .customPromptSafetyErrorMessage("This is a custom error message for prompt")
  *                 .customLlmResponseSafetyErrorCode(401)
  *                 .enforcementType("INSPECT_ONLY")
+ *                 .modalities(                
+ *                     "MODALITY_TEXT",
+ *                     "MODALITY_IMAGE")
  *                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
  *                     .alias("FILTER_VERSION_ALIAS_LATEST")
  *                     .build())

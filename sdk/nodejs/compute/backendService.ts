@@ -547,6 +547,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     protocol: "HTTP2",
+ *     dynamicForwarding: {
+ *         forwardProxy: {
+ *             enabled: true,
+ *             proxyMode: "CLOUD_RUN",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     protocol: "HTTP2",
+ *     dynamicForwarding: {
+ *         forwardProxy: {
+ *             enabled: true,
+ *             proxyMode: "DIRECT_FORWARDING",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

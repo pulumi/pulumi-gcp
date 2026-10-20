@@ -113,7 +113,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := modelarmor.NewTemplate(ctx, "template-template-metadata", &modelarmor.TemplateArgs{
-//				Location:   pulumi.String("us-central1"),
+//				Location:   pulumi.String("us"),
 //				TemplateId: pulumi.String("modelarmor3"),
 //				FilterConfig: &modelarmor.TemplateFilterConfigArgs{
 //					RaiSettings: &modelarmor.TemplateFilterConfigRaiSettingsArgs{
@@ -137,6 +137,10 @@ import (
 //					CustomPromptSafetyErrorMessage:   pulumi.String("This is a custom error message for prompt"),
 //					CustomLlmResponseSafetyErrorCode: pulumi.Int(401),
 //					EnforcementType:                  pulumi.String("INSPECT_ONLY"),
+//					Modalities: pulumi.StringArray{
+//						pulumi.String("MODALITY_TEXT"),
+//						pulumi.String("MODALITY_IMAGE"),
+//					},
 //					FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
 //						Alias: pulumi.String("FILTER_VERSION_ALIAS_LATEST"),
 //					},

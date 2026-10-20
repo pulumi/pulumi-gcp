@@ -13,6 +13,412 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DatabaseInstanceBlueGreenDeployment struct {
+	// Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+	ActiveEnvironment *string `pulumi:"activeEnvironment"`
+	// Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`activeEnvironment = "TARGET"`). Defaults to `false`.
+	DeleteOldSourceOnDestroy *bool `pulumi:"deleteOldSourceOnDestroy"`
+	// The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+	DeploymentName string `pulumi:"deploymentName"`
+	// The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+	OldSourceInstanceConnectionName *string `pulumi:"oldSourceInstanceConnectionName"`
+	// The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+	OldSourceInstanceName *string `pulumi:"oldSourceInstanceName"`
+	// The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `databaseVersion`. Cannot be changed while the deployment is active.
+	TargetDatabaseVersion *string `pulumi:"targetDatabaseVersion"`
+	// The connection name of the green (target) instance.
+	TargetInstanceConnectionName *string `pulumi:"targetInstanceConnectionName"`
+	// The IP addresses assigned to the green (target) instance. Structure is documented below.
+	TargetInstanceIpAddresses []DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress `pulumi:"targetInstanceIpAddresses"`
+	// The name of the green (target) instance created for the Blue-Green Deployment.
+	TargetInstanceName *string `pulumi:"targetInstanceName"`
+}
+
+// DatabaseInstanceBlueGreenDeploymentInput is an input type that accepts DatabaseInstanceBlueGreenDeploymentArgs and DatabaseInstanceBlueGreenDeploymentOutput values.
+// You can construct a concrete instance of `DatabaseInstanceBlueGreenDeploymentInput` via:
+//
+//	DatabaseInstanceBlueGreenDeploymentArgs{...}
+type DatabaseInstanceBlueGreenDeploymentInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceBlueGreenDeploymentOutput() DatabaseInstanceBlueGreenDeploymentOutput
+	ToDatabaseInstanceBlueGreenDeploymentOutputWithContext(context.Context) DatabaseInstanceBlueGreenDeploymentOutput
+}
+
+type DatabaseInstanceBlueGreenDeploymentArgs struct {
+	// Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+	ActiveEnvironment pulumi.StringPtrInput `pulumi:"activeEnvironment"`
+	// Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`activeEnvironment = "TARGET"`). Defaults to `false`.
+	DeleteOldSourceOnDestroy pulumi.BoolPtrInput `pulumi:"deleteOldSourceOnDestroy"`
+	// The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+	OldSourceInstanceConnectionName pulumi.StringPtrInput `pulumi:"oldSourceInstanceConnectionName"`
+	// The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+	OldSourceInstanceName pulumi.StringPtrInput `pulumi:"oldSourceInstanceName"`
+	// The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `databaseVersion`. Cannot be changed while the deployment is active.
+	TargetDatabaseVersion pulumi.StringPtrInput `pulumi:"targetDatabaseVersion"`
+	// The connection name of the green (target) instance.
+	TargetInstanceConnectionName pulumi.StringPtrInput `pulumi:"targetInstanceConnectionName"`
+	// The IP addresses assigned to the green (target) instance. Structure is documented below.
+	TargetInstanceIpAddresses DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput `pulumi:"targetInstanceIpAddresses"`
+	// The name of the green (target) instance created for the Blue-Green Deployment.
+	TargetInstanceName pulumi.StringPtrInput `pulumi:"targetInstanceName"`
+}
+
+func (DatabaseInstanceBlueGreenDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentArgs) ToDatabaseInstanceBlueGreenDeploymentOutput() DatabaseInstanceBlueGreenDeploymentOutput {
+	return i.ToDatabaseInstanceBlueGreenDeploymentOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentArgs) ToDatabaseInstanceBlueGreenDeploymentOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceBlueGreenDeploymentOutput)
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentArgs) ToDatabaseInstanceBlueGreenDeploymentPtrOutput() DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return i.ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentArgs) ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceBlueGreenDeploymentOutput).ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceBlueGreenDeploymentPtrInput is an input type that accepts DatabaseInstanceBlueGreenDeploymentArgs, DatabaseInstanceBlueGreenDeploymentPtr and DatabaseInstanceBlueGreenDeploymentPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceBlueGreenDeploymentPtrInput` via:
+//
+//	        DatabaseInstanceBlueGreenDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceBlueGreenDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceBlueGreenDeploymentPtrOutput() DatabaseInstanceBlueGreenDeploymentPtrOutput
+	ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(context.Context) DatabaseInstanceBlueGreenDeploymentPtrOutput
+}
+
+type databaseInstanceBlueGreenDeploymentPtrType DatabaseInstanceBlueGreenDeploymentArgs
+
+func DatabaseInstanceBlueGreenDeploymentPtr(v *DatabaseInstanceBlueGreenDeploymentArgs) DatabaseInstanceBlueGreenDeploymentPtrInput {
+	return (*databaseInstanceBlueGreenDeploymentPtrType)(v)
+}
+
+func (*databaseInstanceBlueGreenDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (i *databaseInstanceBlueGreenDeploymentPtrType) ToDatabaseInstanceBlueGreenDeploymentPtrOutput() DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return i.ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceBlueGreenDeploymentPtrType) ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceBlueGreenDeploymentPtrOutput)
+}
+
+type DatabaseInstanceBlueGreenDeploymentOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceBlueGreenDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentOutput) ToDatabaseInstanceBlueGreenDeploymentOutput() DatabaseInstanceBlueGreenDeploymentOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentOutput) ToDatabaseInstanceBlueGreenDeploymentOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentOutput) ToDatabaseInstanceBlueGreenDeploymentPtrOutput() DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return o.ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentOutput) ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceBlueGreenDeployment) *DatabaseInstanceBlueGreenDeployment {
+		return &v
+	}).(DatabaseInstanceBlueGreenDeploymentPtrOutput)
+}
+
+// Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) ActiveEnvironment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.ActiveEnvironment }).(pulumi.StringPtrOutput)
+}
+
+// Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`activeEnvironment = "TARGET"`). Defaults to `false`.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) DeleteOldSourceOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *bool { return v.DeleteOldSourceOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) DeploymentName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) string { return v.DeploymentName }).(pulumi.StringOutput)
+}
+
+// The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+func (o DatabaseInstanceBlueGreenDeploymentOutput) OldSourceInstanceConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.OldSourceInstanceConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+func (o DatabaseInstanceBlueGreenDeploymentOutput) OldSourceInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.OldSourceInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `databaseVersion`. Cannot be changed while the deployment is active.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) TargetDatabaseVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.TargetDatabaseVersion }).(pulumi.StringPtrOutput)
+}
+
+// The connection name of the green (target) instance.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) TargetInstanceConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.TargetInstanceConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses assigned to the green (target) instance. Structure is documented below.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) TargetInstanceIpAddresses() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) []DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		return v.TargetInstanceIpAddresses
+	}).(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+// The name of the green (target) instance created for the Blue-Green Deployment.
+func (o DatabaseInstanceBlueGreenDeploymentOutput) TargetInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeployment) *string { return v.TargetInstanceName }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceBlueGreenDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceBlueGreenDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) ToDatabaseInstanceBlueGreenDeploymentPtrOutput() DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) ToDatabaseInstanceBlueGreenDeploymentPtrOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) Elem() DatabaseInstanceBlueGreenDeploymentOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) DatabaseInstanceBlueGreenDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceBlueGreenDeployment
+		return ret
+	}).(DatabaseInstanceBlueGreenDeploymentOutput)
+}
+
+// Controls which environment is currently serving primary traffic. Valid values are `SOURCE` and `TARGET`. Defaults to `SOURCE`. Must be `SOURCE` when first creating a Blue-Green Deployment; changing this field from `SOURCE` to `TARGET` triggers the Blue-Green Deployment switchover.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) ActiveEnvironment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveEnvironment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to also delete the old source (blue) instance when deleting the Blue-Green Deployment after a switchover (`activeEnvironment = "TARGET"`). Defaults to `false`.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) DeleteOldSourceOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOldSourceOnDestroy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The user-defined name for the Blue-Green Deployment. Must be 1-63 characters, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens. Cannot be changed while the deployment is active.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) DeploymentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) OldSourceInstanceConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OldSourceInstanceConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the old source (blue) instance, populated after switchover (`activeEnvironment = "TARGET"`).
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) OldSourceInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OldSourceInstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target database version for the green environment (for example, `MYSQL_8_0` or `POSTGRES_16`). If omitted, the green environment inherits the source instance's `databaseVersion`. Cannot be changed while the deployment is active.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) TargetDatabaseVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetDatabaseVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The connection name of the green (target) instance.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) TargetInstanceConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetInstanceConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP addresses assigned to the green (target) instance. Structure is documented below.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) TargetInstanceIpAddresses() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) []DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		if v == nil {
+			return nil
+		}
+		return v.TargetInstanceIpAddresses
+	}).(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+// The name of the green (target) instance created for the Blue-Green Deployment.
+func (o DatabaseInstanceBlueGreenDeploymentPtrOutput) TargetInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceBlueGreenDeployment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetInstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress struct {
+	// The IPv4 address assigned to the target instance.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The time this IP address will be retired, in RFC 3339 format.
+	TimeToRetire *string `pulumi:"timeToRetire"`
+	// The type of this IP address (`PRIMARY`, `OUTGOING`, or `PRIVATE`).
+	Type *string `pulumi:"type"`
+}
+
+// DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput is an input type that accepts DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs and DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput values.
+// You can construct a concrete instance of `DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput` via:
+//
+//	DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{...}
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput
+	ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(context.Context) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput
+}
+
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs struct {
+	// The IPv4 address assigned to the target instance.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// The time this IP address will be retired, in RFC 3339 format.
+	TimeToRetire pulumi.StringPtrInput `pulumi:"timeToRetire"`
+	// The type of this IP address (`PRIMARY`, `OUTGOING`, or `PRIVATE`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return i.ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput)
+}
+
+// DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput is an input type that accepts DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray and DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput` via:
+//
+//	DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray{ DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{...} }
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput
+	ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(context.Context) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput
+}
+
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray []DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput
+
+func (DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return i.ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return o
+}
+
+// The IPv4 address assigned to the target instance.
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The time this IP address will be retired, in RFC 3339 format.
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) TimeToRetire() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress) *string { return v.TimeToRetire }).(pulumi.StringPtrOutput)
+}
+
+// The type of this IP address (`PRIMARY`, `OUTGOING`, or `PRIVATE`).
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ToDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(ctx context.Context) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		return vs[0].([]DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)[vs[1].(int)]
+	}).(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput)
+}
+
 type DatabaseInstanceClone struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
@@ -7513,6 +7919,283 @@ func (o GetCaCertsCertArrayOutput) Index(i pulumi.IntInput) GetCaCertsCertOutput
 	}).(GetCaCertsCertOutput)
 }
 
+type GetDatabaseInstanceBlueGreenDeployment struct {
+	// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+	ActiveEnvironment string `pulumi:"activeEnvironment"`
+	// Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+	DeleteOldSourceOnDestroy bool `pulumi:"deleteOldSourceOnDestroy"`
+	// A unique identifier for the blue-green deployment within the project and region.
+	DeploymentName string `pulumi:"deploymentName"`
+	// Auth Proxy connection string for the former Blue instance post-switchover.
+	OldSourceInstanceConnectionName string `pulumi:"oldSourceInstanceConnectionName"`
+	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+	OldSourceInstanceName string `pulumi:"oldSourceInstanceName"`
+	// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+	TargetDatabaseVersion string `pulumi:"targetDatabaseVersion"`
+	// The Cloud SQL Auth Proxy connection string for the Green instance.
+	TargetInstanceConnectionName string `pulumi:"targetInstanceConnectionName"`
+	// Standard Cloud SQL IP address list for the Green instance.
+	TargetInstanceIpAddresses []GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress `pulumi:"targetInstanceIpAddresses"`
+	// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+	TargetInstanceName string `pulumi:"targetInstanceName"`
+}
+
+// GetDatabaseInstanceBlueGreenDeploymentInput is an input type that accepts GetDatabaseInstanceBlueGreenDeploymentArgs and GetDatabaseInstanceBlueGreenDeploymentOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceBlueGreenDeploymentInput` via:
+//
+//	GetDatabaseInstanceBlueGreenDeploymentArgs{...}
+type GetDatabaseInstanceBlueGreenDeploymentInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceBlueGreenDeploymentOutput() GetDatabaseInstanceBlueGreenDeploymentOutput
+	ToGetDatabaseInstanceBlueGreenDeploymentOutputWithContext(context.Context) GetDatabaseInstanceBlueGreenDeploymentOutput
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentArgs struct {
+	// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+	ActiveEnvironment pulumi.StringInput `pulumi:"activeEnvironment"`
+	// Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+	DeleteOldSourceOnDestroy pulumi.BoolInput `pulumi:"deleteOldSourceOnDestroy"`
+	// A unique identifier for the blue-green deployment within the project and region.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// Auth Proxy connection string for the former Blue instance post-switchover.
+	OldSourceInstanceConnectionName pulumi.StringInput `pulumi:"oldSourceInstanceConnectionName"`
+	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+	OldSourceInstanceName pulumi.StringInput `pulumi:"oldSourceInstanceName"`
+	// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+	TargetDatabaseVersion pulumi.StringInput `pulumi:"targetDatabaseVersion"`
+	// The Cloud SQL Auth Proxy connection string for the Green instance.
+	TargetInstanceConnectionName pulumi.StringInput `pulumi:"targetInstanceConnectionName"`
+	// Standard Cloud SQL IP address list for the Green instance.
+	TargetInstanceIpAddresses GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput `pulumi:"targetInstanceIpAddresses"`
+	// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+	TargetInstanceName pulumi.StringInput `pulumi:"targetInstanceName"`
+}
+
+func (GetDatabaseInstanceBlueGreenDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentArgs) ToGetDatabaseInstanceBlueGreenDeploymentOutput() GetDatabaseInstanceBlueGreenDeploymentOutput {
+	return i.ToGetDatabaseInstanceBlueGreenDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentArgs) ToGetDatabaseInstanceBlueGreenDeploymentOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceBlueGreenDeploymentOutput)
+}
+
+// GetDatabaseInstanceBlueGreenDeploymentArrayInput is an input type that accepts GetDatabaseInstanceBlueGreenDeploymentArray and GetDatabaseInstanceBlueGreenDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceBlueGreenDeploymentArrayInput` via:
+//
+//	GetDatabaseInstanceBlueGreenDeploymentArray{ GetDatabaseInstanceBlueGreenDeploymentArgs{...} }
+type GetDatabaseInstanceBlueGreenDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceBlueGreenDeploymentArrayOutput() GetDatabaseInstanceBlueGreenDeploymentArrayOutput
+	ToGetDatabaseInstanceBlueGreenDeploymentArrayOutputWithContext(context.Context) GetDatabaseInstanceBlueGreenDeploymentArrayOutput
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentArray []GetDatabaseInstanceBlueGreenDeploymentInput
+
+func (GetDatabaseInstanceBlueGreenDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentArray) ToGetDatabaseInstanceBlueGreenDeploymentArrayOutput() GetDatabaseInstanceBlueGreenDeploymentArrayOutput {
+	return i.ToGetDatabaseInstanceBlueGreenDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentArray) ToGetDatabaseInstanceBlueGreenDeploymentArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceBlueGreenDeploymentArrayOutput)
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceBlueGreenDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) ToGetDatabaseInstanceBlueGreenDeploymentOutput() GetDatabaseInstanceBlueGreenDeploymentOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) ToGetDatabaseInstanceBlueGreenDeploymentOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentOutput {
+	return o
+}
+
+// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) ActiveEnvironment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.ActiveEnvironment }).(pulumi.StringOutput)
+}
+
+// Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) DeleteOldSourceOnDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) bool { return v.DeleteOldSourceOnDestroy }).(pulumi.BoolOutput)
+}
+
+// A unique identifier for the blue-green deployment within the project and region.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) DeploymentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.DeploymentName }).(pulumi.StringOutput)
+}
+
+// Auth Proxy connection string for the former Blue instance post-switchover.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) OldSourceInstanceConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.OldSourceInstanceConnectionName }).(pulumi.StringOutput)
+}
+
+// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) OldSourceInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.OldSourceInstanceName }).(pulumi.StringOutput)
+}
+
+// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) TargetDatabaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.TargetDatabaseVersion }).(pulumi.StringOutput)
+}
+
+// The Cloud SQL Auth Proxy connection string for the Green instance.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) TargetInstanceConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.TargetInstanceConnectionName }).(pulumi.StringOutput)
+}
+
+// Standard Cloud SQL IP address list for the Green instance.
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) TargetInstanceIpAddresses() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) []GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		return v.TargetInstanceIpAddresses
+	}).(GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+func (o GetDatabaseInstanceBlueGreenDeploymentOutput) TargetInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeployment) string { return v.TargetInstanceName }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceBlueGreenDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentArrayOutput) ToGetDatabaseInstanceBlueGreenDeploymentArrayOutput() GetDatabaseInstanceBlueGreenDeploymentArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentArrayOutput) ToGetDatabaseInstanceBlueGreenDeploymentArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceBlueGreenDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceBlueGreenDeployment {
+		return vs[0].([]GetDatabaseInstanceBlueGreenDeployment)[vs[1].(int)]
+	}).(GetDatabaseInstanceBlueGreenDeploymentOutput)
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress struct {
+	IpAddress    string `pulumi:"ipAddress"`
+	TimeToRetire string `pulumi:"timeToRetire"`
+	Type         string `pulumi:"type"`
+}
+
+// GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput is an input type that accepts GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs and GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput` via:
+//
+//	GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{...}
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput
+	ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(context.Context) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs struct {
+	IpAddress    pulumi.StringInput `pulumi:"ipAddress"`
+	TimeToRetire pulumi.StringInput `pulumi:"timeToRetire"`
+	Type         pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return i.ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput)
+}
+
+// GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput is an input type that accepts GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray and GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput` via:
+//
+//	GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray{ GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{...} }
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput
+	ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(context.Context) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray []GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput
+
+func (GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return i.ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) TimeToRetire() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress) string { return v.TimeToRetire }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ToGetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		return vs[0].([]GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddress)[vs[1].(int)]
+	}).(GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput)
+}
+
 type GetDatabaseInstanceClone struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange string `pulumi:"allocatedIpRange"`
@@ -12064,6 +12747,8 @@ type GetDatabaseInstancesInstance struct {
 	AvailableMaintenanceVersions []string `pulumi:"availableMaintenanceVersions"`
 	// The name of the BackupDR backup to restore from.
 	BackupdrBackup string `pulumi:"backupdrBackup"`
+	// Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+	BlueGreenDeployments []GetDatabaseInstancesInstanceBlueGreenDeployment `pulumi:"blueGreenDeployments"`
 	// Configuration for creating a new instance as a clone of another instance.
 	Clones []GetDatabaseInstancesInstanceClone `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
@@ -12158,6 +12843,8 @@ type GetDatabaseInstancesInstanceArgs struct {
 	AvailableMaintenanceVersions pulumi.StringArrayInput `pulumi:"availableMaintenanceVersions"`
 	// The name of the BackupDR backup to restore from.
 	BackupdrBackup pulumi.StringInput `pulumi:"backupdrBackup"`
+	// Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+	BlueGreenDeployments GetDatabaseInstancesInstanceBlueGreenDeploymentArrayInput `pulumi:"blueGreenDeployments"`
 	// Configuration for creating a new instance as a clone of another instance.
 	Clones GetDatabaseInstancesInstanceCloneArrayInput `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
@@ -12295,6 +12982,13 @@ func (o GetDatabaseInstancesInstanceOutput) AvailableMaintenanceVersions() pulum
 // The name of the BackupDR backup to restore from.
 func (o GetDatabaseInstancesInstanceOutput) BackupdrBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.BackupdrBackup }).(pulumi.StringOutput)
+}
+
+// Configuration for Blue-Green Deployment to perform near-zero downtime major version upgrades.
+func (o GetDatabaseInstancesInstanceOutput) BlueGreenDeployments() GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceBlueGreenDeployment {
+		return v.BlueGreenDeployments
+	}).(GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput)
 }
 
 // Configuration for creating a new instance as a clone of another instance.
@@ -12513,6 +13207,289 @@ func (o GetDatabaseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstance {
 		return vs[0].([]GetDatabaseInstancesInstance)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceOutput)
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeployment struct {
+	// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+	ActiveEnvironment string `pulumi:"activeEnvironment"`
+	// Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+	DeleteOldSourceOnDestroy bool `pulumi:"deleteOldSourceOnDestroy"`
+	// A unique identifier for the blue-green deployment within the project and region.
+	DeploymentName string `pulumi:"deploymentName"`
+	// Auth Proxy connection string for the former Blue instance post-switchover.
+	OldSourceInstanceConnectionName string `pulumi:"oldSourceInstanceConnectionName"`
+	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+	OldSourceInstanceName string `pulumi:"oldSourceInstanceName"`
+	// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+	TargetDatabaseVersion string `pulumi:"targetDatabaseVersion"`
+	// The Cloud SQL Auth Proxy connection string for the Green instance.
+	TargetInstanceConnectionName string `pulumi:"targetInstanceConnectionName"`
+	// Standard Cloud SQL IP address list for the Green instance.
+	TargetInstanceIpAddresses []GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress `pulumi:"targetInstanceIpAddresses"`
+	// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+	TargetInstanceName string `pulumi:"targetInstanceName"`
+}
+
+// GetDatabaseInstancesInstanceBlueGreenDeploymentInput is an input type that accepts GetDatabaseInstancesInstanceBlueGreenDeploymentArgs and GetDatabaseInstancesInstanceBlueGreenDeploymentOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceBlueGreenDeploymentInput` via:
+//
+//	GetDatabaseInstancesInstanceBlueGreenDeploymentArgs{...}
+type GetDatabaseInstancesInstanceBlueGreenDeploymentInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentOutput
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutputWithContext(context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentOutput
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentArgs struct {
+	// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+	ActiveEnvironment pulumi.StringInput `pulumi:"activeEnvironment"`
+	// Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+	DeleteOldSourceOnDestroy pulumi.BoolInput `pulumi:"deleteOldSourceOnDestroy"`
+	// A unique identifier for the blue-green deployment within the project and region.
+	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
+	// Auth Proxy connection string for the former Blue instance post-switchover.
+	OldSourceInstanceConnectionName pulumi.StringInput `pulumi:"oldSourceInstanceConnectionName"`
+	// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+	OldSourceInstanceName pulumi.StringInput `pulumi:"oldSourceInstanceName"`
+	// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+	TargetDatabaseVersion pulumi.StringInput `pulumi:"targetDatabaseVersion"`
+	// The Cloud SQL Auth Proxy connection string for the Green instance.
+	TargetInstanceConnectionName pulumi.StringInput `pulumi:"targetInstanceConnectionName"`
+	// Standard Cloud SQL IP address list for the Green instance.
+	TargetInstanceIpAddresses GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput `pulumi:"targetInstanceIpAddresses"`
+	// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+	TargetInstanceName pulumi.StringInput `pulumi:"targetInstanceName"`
+}
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentArgs) ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentOutput {
+	return i.ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentArgs) ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceBlueGreenDeploymentOutput)
+}
+
+// GetDatabaseInstancesInstanceBlueGreenDeploymentArrayInput is an input type that accepts GetDatabaseInstancesInstanceBlueGreenDeploymentArray and GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceBlueGreenDeploymentArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceBlueGreenDeploymentArray{ GetDatabaseInstancesInstanceBlueGreenDeploymentArgs{...} }
+type GetDatabaseInstancesInstanceBlueGreenDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentArray []GetDatabaseInstancesInstanceBlueGreenDeploymentInput
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentArray) ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentArray) ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentOutput {
+	return o
+}
+
+// Permissible values: "SOURCE" (default) or "TARGET". Changing to "TARGET" triggers the atomic switchover.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) ActiveEnvironment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.ActiveEnvironment }).(pulumi.StringOutput)
+}
+
+// Defaults to false. If true, removing the blueGreenDeployment block after switchover automatically deletes the former Blue (Source) instance from GCP.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) DeleteOldSourceOnDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) bool { return v.DeleteOldSourceOnDestroy }).(pulumi.BoolOutput)
+}
+
+// A unique identifier for the blue-green deployment within the project and region.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) DeploymentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.DeploymentName }).(pulumi.StringOutput)
+}
+
+// Auth Proxy connection string for the former Blue instance post-switchover.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) OldSourceInstanceConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string {
+		return v.OldSourceInstanceConnectionName
+	}).(pulumi.StringOutput)
+}
+
+// Renamed GCP identifier of the former Blue (Source) instance post-switchover.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) OldSourceInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.OldSourceInstanceName }).(pulumi.StringOutput)
+}
+
+// The target database version for Major Version Upgrades (e.g., MYSQL_8_4 or POSTGRES_15).
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) TargetDatabaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.TargetDatabaseVersion }).(pulumi.StringOutput)
+}
+
+// The Cloud SQL Auth Proxy connection string for the Green instance.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) TargetInstanceConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.TargetInstanceConnectionName }).(pulumi.StringOutput)
+}
+
+// Standard Cloud SQL IP address list for the Green instance.
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) TargetInstanceIpAddresses() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) []GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		return v.TargetInstanceIpAddresses
+	}).(GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+// The auto-generated name of the Green instance (e.g., my-prod-mysql-target-xxxx).
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentOutput) TargetInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeployment) string { return v.TargetInstanceName }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceBlueGreenDeployment)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceBlueGreenDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceBlueGreenDeployment {
+		return vs[0].([]GetDatabaseInstancesInstanceBlueGreenDeployment)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceBlueGreenDeploymentOutput)
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress struct {
+	IpAddress    string `pulumi:"ipAddress"`
+	TimeToRetire string `pulumi:"timeToRetire"`
+	Type         string `pulumi:"type"`
+}
+
+// GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressInput is an input type that accepts GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs and GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressInput` via:
+//
+//	GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{...}
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs struct {
+	IpAddress    pulumi.StringInput `pulumi:"ipAddress"`
+	TimeToRetire pulumi.StringInput `pulumi:"timeToRetire"`
+	Type         pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return i.ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput)
+}
+
+// GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput is an input type that accepts GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray and GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray{ GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{...} }
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput
+	ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray []GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressInput
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress) string {
+		return v.IpAddress
+	}).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) TimeToRetire() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress) string {
+		return v.TimeToRetire
+	}).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput() GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) ToGetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress {
+		return vs[0].([]GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddress)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput)
 }
 
 type GetDatabaseInstancesInstanceClone struct {
@@ -17430,6 +18407,10 @@ func (o GetTiersTierArrayOutput) Index(i pulumi.IntInput) GetTiersTierOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceBlueGreenDeploymentInput)(nil)).Elem(), DatabaseInstanceBlueGreenDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceBlueGreenDeploymentPtrInput)(nil)).Elem(), DatabaseInstanceBlueGreenDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput)(nil)).Elem(), DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput)(nil)).Elem(), DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceDnsNameInput)(nil)).Elem(), DatabaseInstanceDnsNameArgs{})
@@ -17502,6 +18483,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSqlServerUserDetailArrayInput)(nil)).Elem(), UserSqlServerUserDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertInput)(nil)).Elem(), GetCaCertsCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCaCertsCertArrayInput)(nil)).Elem(), GetCaCertsCertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeploymentInput)(nil)).Elem(), GetDatabaseInstanceBlueGreenDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeploymentArrayInput)(nil)).Elem(), GetDatabaseInstanceBlueGreenDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneInput)(nil)).Elem(), GetDatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstanceCloneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceDnsNameInput)(nil)).Elem(), GetDatabaseInstanceDnsNameArgs{})
@@ -17568,6 +18553,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceInput)(nil)).Elem(), GetDatabaseInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeploymentInput)(nil)).Elem(), GetDatabaseInstancesInstanceBlueGreenDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeploymentArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceBlueGreenDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressInput)(nil)).Elem(), GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceCloneArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceCloneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceDnsNameInput)(nil)).Elem(), GetDatabaseInstancesInstanceDnsNameArgs{})
@@ -17636,6 +18625,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTiersTierInput)(nil)).Elem(), GetTiersTierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTiersTierArrayInput)(nil)).Elem(), GetTiersTierArray{})
+	pulumi.RegisterOutputType(DatabaseInstanceBlueGreenDeploymentOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceBlueGreenDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceDnsNameOutput{})
@@ -17708,6 +18701,10 @@ func init() {
 	pulumi.RegisterOutputType(UserSqlServerUserDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceBlueGreenDeploymentOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceBlueGreenDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceCloneArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceDnsNameOutput{})
@@ -17774,6 +18771,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingSqlServerAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceBlueGreenDeploymentOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceBlueGreenDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceBlueGreenDeploymentTargetInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceCloneArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceDnsNameOutput{})

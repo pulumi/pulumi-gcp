@@ -3380,6 +3380,14 @@ type TemplateTemplateMetadata struct {
 	LogSanitizeOperations *bool `pulumi:"logSanitizeOperations"`
 	// If true, log template crud operations.
 	LogTemplateOperations *bool `pulumi:"logTemplateOperations"`
+	// Specifies the modalities to scan. If empty, only text modality will be
+	// scanned. Image screening is in Preview and is only supported in the `us`
+	// and `eu` multi-regions; regional endpoints such as `us-central1` do not
+	// support it.
+	// Possible values:
+	// MODALITY_TEXT
+	// MODALITY_IMAGE
+	Modalities []string `pulumi:"modalities"`
 	// Metadata to enable multi language detection via template.
 	// Structure is documented below.
 	MultiLanguageDetection *TemplateTemplateMetadataMultiLanguageDetection `pulumi:"multiLanguageDetection"`
@@ -3423,6 +3431,14 @@ type TemplateTemplateMetadataArgs struct {
 	LogSanitizeOperations pulumi.BoolPtrInput `pulumi:"logSanitizeOperations"`
 	// If true, log template crud operations.
 	LogTemplateOperations pulumi.BoolPtrInput `pulumi:"logTemplateOperations"`
+	// Specifies the modalities to scan. If empty, only text modality will be
+	// scanned. Image screening is in Preview and is only supported in the `us`
+	// and `eu` multi-regions; regional endpoints such as `us-central1` do not
+	// support it.
+	// Possible values:
+	// MODALITY_TEXT
+	// MODALITY_IMAGE
+	Modalities pulumi.StringArrayInput `pulumi:"modalities"`
 	// Metadata to enable multi language detection via template.
 	// Structure is documented below.
 	MultiLanguageDetection TemplateTemplateMetadataMultiLanguageDetectionPtrInput `pulumi:"multiLanguageDetection"`
@@ -3560,6 +3576,17 @@ func (o TemplateTemplateMetadataOutput) LogTemplateOperations() pulumi.BoolPtrOu
 	return o.ApplyT(func(v TemplateTemplateMetadata) *bool { return v.LogTemplateOperations }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the modalities to scan. If empty, only text modality will be
+// scanned. Image screening is in Preview and is only supported in the `us`
+// and `eu` multi-regions; regional endpoints such as `us-central1` do not
+// support it.
+// Possible values:
+// MODALITY_TEXT
+// MODALITY_IMAGE
+func (o TemplateTemplateMetadataOutput) Modalities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TemplateTemplateMetadata) []string { return v.Modalities }).(pulumi.StringArrayOutput)
+}
+
 // Metadata to enable multi language detection via template.
 // Structure is documented below.
 func (o TemplateTemplateMetadataOutput) MultiLanguageDetection() TemplateTemplateMetadataMultiLanguageDetectionPtrOutput {
@@ -3688,6 +3715,22 @@ func (o TemplateTemplateMetadataPtrOutput) LogTemplateOperations() pulumi.BoolPt
 		}
 		return v.LogTemplateOperations
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the modalities to scan. If empty, only text modality will be
+// scanned. Image screening is in Preview and is only supported in the `us`
+// and `eu` multi-regions; regional endpoints such as `us-central1` do not
+// support it.
+// Possible values:
+// MODALITY_TEXT
+// MODALITY_IMAGE
+func (o TemplateTemplateMetadataPtrOutput) Modalities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TemplateTemplateMetadata) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Modalities
+	}).(pulumi.StringArrayOutput)
 }
 
 // Metadata to enable multi language detection via template.

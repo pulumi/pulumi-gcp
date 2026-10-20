@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const template_template_metadata = new gcp.modelarmor.Template("template-template-metadata", {
- *     location: "us-central1",
+ *     location: "us",
  *     templateId: "modelarmor3",
  *     filterConfig: {
  *         raiSettings: {
@@ -90,6 +90,10 @@ import * as utilities from "../utilities";
  *         customPromptSafetyErrorMessage: "This is a custom error message for prompt",
  *         customLlmResponseSafetyErrorCode: 401,
  *         enforcementType: "INSPECT_ONLY",
+ *         modalities: [
+ *             "MODALITY_TEXT",
+ *             "MODALITY_IMAGE",
+ *         ],
  *         filterVersionSelector: {
  *             alias: "FILTER_VERSION_ALIAS_LATEST",
  *         },

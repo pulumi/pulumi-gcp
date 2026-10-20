@@ -27,7 +27,8 @@ class FirewallEndpointArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_settings: pulumi.Input[Optional['FirewallEndpointEndpointSettingsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_settings: pulumi.Input[Optional['FirewallEndpointWildfireSettingsArgs']] = None):
         """
         The set of arguments for constructing a FirewallEndpoint resource.
 
@@ -51,6 +52,9 @@ class FirewallEndpointArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The name of the firewall endpoint resource.
+        :param pulumi.Input['FirewallEndpointWildfireSettingsArgs'] wildfire_settings: (Optional, Beta)
+               Settings for WildFire analysis on the firewall endpoint.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
@@ -64,6 +68,8 @@ class FirewallEndpointArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if wildfire_settings is not None:
+            pulumi.set(__self__, "wildfire_settings", wildfire_settings)
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +168,20 @@ class FirewallEndpointArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="wildfireSettings")
+    def wildfire_settings(self) -> pulumi.Input[Optional['FirewallEndpointWildfireSettingsArgs']]:
+        """
+        (Optional, Beta)
+        Settings for WildFire analysis on the firewall endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_settings")
+
+    @wildfire_settings.setter
+    def wildfire_settings(self, value: pulumi.Input[Optional['FirewallEndpointWildfireSettingsArgs']]):
+        pulumi.set(self, "wildfire_settings", value)
+
 
 @pulumi.input_type
 class _FirewallEndpointState:
@@ -180,7 +200,8 @@ class _FirewallEndpointState:
                  reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
-                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_settings: pulumi.Input[Optional['FirewallEndpointWildfireSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering FirewallEndpoint resources.
 
@@ -216,6 +237,9 @@ class _FirewallEndpointState:
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
         :param pulumi.Input[_builtins.str] update_time: Time the firewall endpoint was updated in UTC.
+        :param pulumi.Input['FirewallEndpointWildfireSettingsArgs'] wildfire_settings: (Optional, Beta)
+               Settings for WildFire analysis on the firewall endpoint.
+               Structure is documented below.
         """
         if associated_networks is not None:
             pulumi.set(__self__, "associated_networks", associated_networks)
@@ -247,6 +271,8 @@ class _FirewallEndpointState:
             pulumi.set(__self__, "state", state)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if wildfire_settings is not None:
+            pulumi.set(__self__, "wildfire_settings", wildfire_settings)
 
     @_builtins.property
     @pulumi.getter(name="associatedNetworks")
@@ -445,6 +471,20 @@ class _FirewallEndpointState:
     def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
+    @_builtins.property
+    @pulumi.getter(name="wildfireSettings")
+    def wildfire_settings(self) -> pulumi.Input[Optional['FirewallEndpointWildfireSettingsArgs']]:
+        """
+        (Optional, Beta)
+        Settings for WildFire analysis on the firewall endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_settings")
+
+    @wildfire_settings.setter
+    def wildfire_settings(self, value: pulumi.Input[Optional['FirewallEndpointWildfireSettingsArgs']]):
+        pulumi.set(self, "wildfire_settings", value)
+
 
 @pulumi.type_token("gcp:networksecurity/firewallEndpoint:FirewallEndpoint")
 class FirewallEndpoint(pulumi.CustomResource):
@@ -459,6 +499,7 @@ class FirewallEndpoint(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_settings: pulumi.Input[Optional[Union['FirewallEndpointWildfireSettingsArgs', 'FirewallEndpointWildfireSettingsArgsDict', 'outputs.FirewallEndpointWildfireSettings']]] = None,
                  __props__=None):
         """
         A Firewall endpoint is a Cloud Firewall resource that enables
@@ -545,6 +586,9 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the firewall endpoint resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this firewall endpoint belongs to.
                Format: `organizations/{organization_id}` or `projects/{project_id}`.
+        :param pulumi.Input[Union['FirewallEndpointWildfireSettingsArgs', 'FirewallEndpointWildfireSettingsArgsDict', 'outputs.FirewallEndpointWildfireSettings']] wildfire_settings: (Optional, Beta)
+               Settings for WildFire analysis on the firewall endpoint.
+               Structure is documented below.
         """
         ...
     @overload
@@ -637,6 +681,7 @@ class FirewallEndpoint(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildfire_settings: pulumi.Input[Optional[Union['FirewallEndpointWildfireSettingsArgs', 'FirewallEndpointWildfireSettingsArgsDict', 'outputs.FirewallEndpointWildfireSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -657,6 +702,7 @@ class FirewallEndpoint(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["wildfire_settings"] = wildfire_settings
             __props__.__dict__["associated_networks"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -691,7 +737,8 @@ class FirewallEndpoint(pulumi.CustomResource):
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallEndpoint':
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            wildfire_settings: pulumi.Input[Optional[Union['FirewallEndpointWildfireSettingsArgs', 'FirewallEndpointWildfireSettingsArgsDict', 'outputs.FirewallEndpointWildfireSettings']]] = None) -> 'FirewallEndpoint':
         """
         Get an existing FirewallEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -731,6 +778,9 @@ class FirewallEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[_builtins.str] state: The current state of the endpoint.
         :param pulumi.Input[_builtins.str] update_time: Time the firewall endpoint was updated in UTC.
+        :param pulumi.Input[Union['FirewallEndpointWildfireSettingsArgs', 'FirewallEndpointWildfireSettingsArgsDict', 'outputs.FirewallEndpointWildfireSettings']] wildfire_settings: (Optional, Beta)
+               Settings for WildFire analysis on the firewall endpoint.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -751,6 +801,7 @@ class FirewallEndpoint(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["state"] = state
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["wildfire_settings"] = wildfire_settings
         return FirewallEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -806,7 +857,7 @@ class FirewallEndpoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="endpointSettings")
-    def endpoint_settings(self) -> pulumi.Output[Optional['outputs.FirewallEndpointEndpointSettings']]:
+    def endpoint_settings(self) -> pulumi.Output['outputs.FirewallEndpointEndpointSettings']:
         """
         Settings for the endpoint.
         Structure is documented below.
@@ -889,4 +940,14 @@ class FirewallEndpoint(pulumi.CustomResource):
         Time the firewall endpoint was updated in UTC.
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="wildfireSettings")
+    def wildfire_settings(self) -> pulumi.Output['outputs.FirewallEndpointWildfireSettings']:
+        """
+        (Optional, Beta)
+        Settings for WildFire analysis on the firewall endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "wildfire_settings")
 

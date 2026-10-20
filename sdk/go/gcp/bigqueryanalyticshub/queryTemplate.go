@@ -78,6 +78,98 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Querytemplate Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := organizations.GetClientOpenIdUserInfo(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			analyticshubSa, err := projects.NewServiceIdentity(ctx, "analyticshub_sa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("analyticshub.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			waitForSa, err := time.NewSleep(ctx, "wait_for_sa", &time.SleepArgs{
+//				CreateDuration: pulumi.String("30s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				analyticshubSa,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      analyticshubSa.Member,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForSa,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			waitForIam, err := time.NewSleep(ctx, "wait_for_iam", &time.SleepArgs{
+//				CreateDuration: pulumi.String("30s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKey,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			querytemplate, err := bigqueryanalyticshub.NewDataExchange(ctx, "querytemplate", &bigqueryanalyticshub.DataExchangeArgs{
+//				DisplayName:    pulumi.String("My Audience Data Exchange"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example of query template with cmek"),
+//				Location:       pulumi.String("us"),
+//				SharingEnvironmentConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigArgs{
+//					DcrExchangeConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewQueryTemplate(ctx, "querytemplate", &bigqueryanalyticshub.QueryTemplateArgs{
+//				Location:        pulumi.String("us"),
+//				DataExchangeId:  querytemplate.DataExchangeId,
+//				QueryTemplateId: pulumi.String("my_query_template"),
+//				DisplayName:     pulumi.String("my_query_template"),
+//				Description:     pulumi.String("example of query template with cmek"),
+//				PrimaryContact:  pulumi.String(me.Email),
+//				Documentation:   pulumi.String("This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through."),
+//				Routine: &bigqueryanalyticshub.QueryTemplateRoutineArgs{
+//					RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//					DefinitionBody: pulumi.String("my_query_template() as (select * from t1)"),
+//				},
+//				EncryptionConfiguration: &bigqueryanalyticshub.QueryTemplateEncryptionConfigurationArgs{
+//					KmsKeyName: pulumi.String("projects/keys-project/locations/us/keyRings/key-ring/cryptoKeys/crypto-key"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForIam,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -119,6 +211,11 @@ type QueryTemplate struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation describing the QueryTemplate.
 	Documentation pulumi.StringPtrOutput `pulumi:"documentation"`
+	// Encryption configuration for the query template.
+	// If set, the customer-managed KMS key is used to encrypt the query
+	// template definition body.
+	// Structure is documented below.
+	EncryptionConfiguration QueryTemplateEncryptionConfigurationPtrOutput `pulumi:"encryptionConfiguration"`
 	// The name of the location this data exchange query template.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
@@ -205,6 +302,11 @@ type queryTemplateState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation describing the QueryTemplate.
 	Documentation *string `pulumi:"documentation"`
+	// Encryption configuration for the query template.
+	// If set, the customer-managed KMS key is used to encrypt the query
+	// template definition body.
+	// Structure is documented below.
+	EncryptionConfiguration *QueryTemplateEncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	// The name of the location this data exchange query template.
 	Location *string `pulumi:"location"`
 	// The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
@@ -250,6 +352,11 @@ type QueryTemplateState struct {
 	DisplayName pulumi.StringPtrInput
 	// Documentation describing the QueryTemplate.
 	Documentation pulumi.StringPtrInput
+	// Encryption configuration for the query template.
+	// If set, the customer-managed KMS key is used to encrypt the query
+	// template definition body.
+	// Structure is documented below.
+	EncryptionConfiguration QueryTemplateEncryptionConfigurationPtrInput
 	// The name of the location this data exchange query template.
 	Location pulumi.StringPtrInput
 	// The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
@@ -297,6 +404,11 @@ type queryTemplateArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Documentation describing the QueryTemplate.
 	Documentation *string `pulumi:"documentation"`
+	// Encryption configuration for the query template.
+	// If set, the customer-managed KMS key is used to encrypt the query
+	// template definition body.
+	// Structure is documented below.
+	EncryptionConfiguration *QueryTemplateEncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	// The name of the location this data exchange query template.
 	Location string `pulumi:"location"`
 	// Email or URL of the primary point of contact of the QueryTemplate.
@@ -335,6 +447,11 @@ type QueryTemplateArgs struct {
 	DisplayName pulumi.StringInput
 	// Documentation describing the QueryTemplate.
 	Documentation pulumi.StringPtrInput
+	// Encryption configuration for the query template.
+	// If set, the customer-managed KMS key is used to encrypt the query
+	// template definition body.
+	// Structure is documented below.
+	EncryptionConfiguration QueryTemplateEncryptionConfigurationPtrInput
 	// The name of the location this data exchange query template.
 	Location pulumi.StringInput
 	// Email or URL of the primary point of contact of the QueryTemplate.
@@ -476,6 +593,14 @@ func (o QueryTemplateOutput) DisplayName() pulumi.StringOutput {
 // Documentation describing the QueryTemplate.
 func (o QueryTemplateOutput) Documentation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueryTemplate) pulumi.StringPtrOutput { return v.Documentation }).(pulumi.StringPtrOutput)
+}
+
+// Encryption configuration for the query template.
+// If set, the customer-managed KMS key is used to encrypt the query
+// template definition body.
+// Structure is documented below.
+func (o QueryTemplateOutput) EncryptionConfiguration() QueryTemplateEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *QueryTemplate) QueryTemplateEncryptionConfigurationPtrOutput { return v.EncryptionConfiguration }).(QueryTemplateEncryptionConfigurationPtrOutput)
 }
 
 // The name of the location this data exchange query template.

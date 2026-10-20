@@ -153,7 +153,7 @@ import (
 //				MembershipId: pulumi.String("basic"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-//						ResourceLink: primary.ID().ToIDOutput().ToStringOutput(),
+//						ResourceLink: primary.ID(),
 //					},
 //				},
 //				Authority: &gkehub.MembershipAuthorityArgs{

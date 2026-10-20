@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -130,7 +130,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID(),
 //				EnableCdn:    pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 //					SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
@@ -250,7 +250,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID(),
 //				EnableCdn:    pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 //					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -297,7 +297,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
-//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks: defaultHealthCheck.ID(),
 //				EnableCdn:    pulumi.Bool(true),
 //				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
 //					CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
@@ -349,7 +349,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        healthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 //				LocalityLbPolicy:    pulumi.String("ROUND_ROBIN"),
 //			})
@@ -386,7 +386,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        healthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 //				LocalityLbPolicy:    pulumi.String("RING_HASH"),
 //				SessionAffinity:     pulumi.String("HTTP_COOKIE"),
@@ -447,7 +447,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        healthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				LocalityLbPolicy:    pulumi.String("RING_HASH"),
 //				SessionAffinity:     pulumi.String("STRONG_COOKIE_AFFINITY"),
@@ -492,7 +492,7 @@ import (
 //				return err
 //			}
 //			proxy, err := compute.NewGlobalNetworkEndpoint(ctx, "proxy", &compute.GlobalNetworkEndpointArgs{
-//				GlobalNetworkEndpointGroup: externalProxy.ID().ToIDOutput().ToStringOutput(),
+//				GlobalNetworkEndpointGroup: externalProxy.ID(),
 //				Fqdn:                       pulumi.String("test.example.com"),
 //				Port:                       externalProxy.DefaultPort,
 //			})
@@ -514,7 +514,7 @@ import (
 //				},
 //				Backends: compute.BackendServiceBackendArray{
 //					&compute.BackendServiceBackendArgs{
-//						Group: externalProxy.ID().ToIDOutput().ToStringOutput(),
+//						Group: externalProxy.ID(),
 //					},
 //				},
 //			})
@@ -551,7 +551,7 @@ import (
 //				Name:        pulumi.String("custom-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     custom.ID().ToIDOutput().ToStringOutput(),
+//				Network:     custom.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -568,8 +568,8 @@ import (
 //				},
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 //					&compute.InstanceTemplateNetworkInterfaceArgs{
-//						Network:    custom.ID().ToIDOutput().ToStringOutput(),
-//						Subnetwork: _default.ID().ToIDOutput().ToStringOutput(),
+//						Network:    custom.ID(),
+//						Subnetwork: _default.ID(),
 //					},
 //				},
 //				Metadata: pulumi.StringMap{
@@ -592,7 +592,7 @@ import (
 //				Region:           pulumi.String("us-central1"),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: defaultInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//						InstanceTemplate: defaultInstanceTemplate.ID(),
 //					},
 //				},
 //				TargetSize: pulumi.Int(1),
@@ -658,7 +658,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("H2C"),
 //			})
@@ -720,7 +720,7 @@ import (
 //			// Zonal NEG with GCE_VM_IP_PORT
 //			defaultNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "default", &compute.NetworkEndpointGroupArgs{
 //				Name:                pulumi.String("network-endpoint"),
-//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:             _default.ID(),
 //				DefaultPort:         pulumi.Int(90),
 //				Zone:                pulumi.String("us-central1-a"),
 //				NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
@@ -741,7 +741,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				LocalityLbPolicy:    pulumi.String("WEIGHTED_ROUND_ROBIN"),
 //				CustomMetrics: compute.BackendServiceCustomMetricArray{
@@ -752,7 +752,7 @@ import (
 //				},
 //				Backends: compute.BackendServiceBackendArray{
 //					&compute.BackendServiceBackendArgs{
-//						Group:         defaultNetworkEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//						Group:         defaultNetworkEndpointGroup.ID(),
 //						BalancingMode: pulumi.String("CUSTOM_METRICS"),
 //						CustomMetrics: compute.BackendServiceBackendCustomMetricArray{
 //							&compute.BackendServiceBackendCustomMetricArgs{
@@ -819,7 +819,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("HTTPS"),
 //				TlsSettings: &compute.BackendServiceTlsSettingsArgs{
@@ -870,7 +870,7 @@ import (
 //			}
 //			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("backend-service"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("HTTPS"),
 //				TlsSettings: &compute.BackendServiceTlsSettingsArgs{
@@ -906,6 +906,72 @@ import (
 //				DynamicForwarding: &compute.BackendServiceDynamicForwardingArgs{
 //					IpPortSelection: &compute.BackendServiceDynamicForwardingIpPortSelectionArgs{
 //						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("HTTP2"),
+//				DynamicForwarding: &compute.BackendServiceDynamicForwardingArgs{
+//					ForwardProxy: &compute.BackendServiceDynamicForwardingForwardProxyArgs{
+//						Enabled:   pulumi.Bool(true),
+//						ProxyMode: pulumi.String("CLOUD_RUN"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Protocol:            pulumi.String("HTTP2"),
+//				DynamicForwarding: &compute.BackendServiceDynamicForwardingArgs{
+//					ForwardProxy: &compute.BackendServiceDynamicForwardingForwardProxyArgs{
+//						Enabled:   pulumi.Bool(true),
+//						ProxyMode: pulumi.String("DIRECT_FORWARDING"),
 //					},
 //				},
 //			})

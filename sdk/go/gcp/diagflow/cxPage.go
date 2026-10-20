@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
+//				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -659,7 +659,7 @@ import (
 //										Event: pulumi.String("sys.no-match-1"),
 //										TriggerFulfillment: &diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs{
 //											ReturnPartialResponses: pulumi.Bool(true),
-//											Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
+//											Webhook:                myWebhook.ID(),
 //											Tag:                    pulumi.String("some-tag"),
 //											Messages: diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray{
 //												&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs{
@@ -731,7 +731,7 @@ import (
 //									},
 //									&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs{
 //										Event:      pulumi.String("sys.no-match-3"),
-//										TargetPage: myPage2.ID().ToIDOutput().ToStringOutput(),
+//										TargetPage: myPage2.ID(),
 //									},
 //								},
 //							},
@@ -814,7 +814,7 @@ import (
 //								},
 //							},
 //						},
-//						TargetPage: myPage2.ID().ToIDOutput().ToStringOutput(),
+//						TargetPage: myPage2.ID(),
 //					},
 //				},
 //				AdvancedSettings: &diagflow.CxPageAdvancedSettingsArgs{
@@ -874,7 +874,7 @@ import (
 //								},
 //							},
 //						},
-//						Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
+//						Webhook:                myWebhook.ID(),
 //						ReturnPartialResponses: pulumi.Bool(true),
 //						Tag:                    pulumi.String("some-tag"),
 //						SetParameterActions: diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{
@@ -923,7 +923,7 @@ import (
 //							DocumentProcessingMode: pulumi.String("CHUNKS"),
 //						},
 //					},
-//					TargetPage: myPage2.ID().ToIDOutput().ToStringOutput(),
+//					TargetPage: myPage2.ID(),
 //				},
 //			})
 //			if err != nil {

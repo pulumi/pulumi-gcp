@@ -665,6 +665,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> geminiCustomEndpoint() {
         return Codegen.optional(this.geminiCustomEndpoint);
     }
+    @Export(name="geminiDataAnalyticsCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> geminiDataAnalyticsCustomEndpoint;
+
+    public Output<Optional<String>> geminiDataAnalyticsCustomEndpoint() {
+        return Codegen.optional(this.geminiDataAnalyticsCustomEndpoint);
+    }
     @Export(name="gkeBackupCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gkeBackupCustomEndpoint;
 

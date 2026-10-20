@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.HubArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.HubState;
+import com.pulumi.gcp.networkconnectivity.outputs.HubExportPscConfig;
 import com.pulumi.gcp.networkconnectivity.outputs.HubRoutingVpc;
 import java.lang.Boolean;
 import java.lang.String;
@@ -91,6 +92,45 @@ import javax.annotation.Nullable;
  *             .name("basic")
  *             .description("A sample hub with Private Service Connect transitivity is enabled")
  *             .exportPsc(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Network Connectivity Hub With Export Psc Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.HubExportPscConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Hub("primary", HubArgs.builder()
+ *             .name("psc-config")
+ *             .description("A sample hub that propagates Private Service Connect endpoints for global Google APIs only")
+ *             .exportPsc(true)
+ *             .exportPscConfig(HubExportPscConfigArgs.builder()
+ *                 .publishedServicesAndRegionalGoogleApis(false)
+ *                 .globalGoogleApis(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -301,6 +341,26 @@ public class Hub extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> exportPsc() {
         return this.exportPsc;
+    }
+    /**
+     * (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="exportPscConfig", refs={HubExportPscConfig.class}, tree="[0]")
+    private Output<HubExportPscConfig> exportPscConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Config for more granular control of Private Service Connect transitivity. Only takes effect when `exportPsc` is true.
+     * If `exportPsc` is true, at least one of `publishedServicesAndRegionalGoogleApis` and `globalGoogleApis` must be true.
+     * Structure is documented below.
+     * 
+     */
+    public Output<HubExportPscConfig> exportPscConfig() {
+        return this.exportPscConfig;
     }
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).

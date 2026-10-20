@@ -97,7 +97,7 @@ import (
 //				ReplicationSchedule: pulumi.String("EVERY_10_MINUTES"),
 //				Description:         pulumi.String("This is a replication resource"),
 //				DestinationVolumeParameters: &netapp.VolumeReplicationDestinationVolumeParametersArgs{
-//					StoragePool: destinationPool.ID().ToIDOutput().ToStringOutput(),
+//					StoragePool: destinationPool.ID(),
 //					VolumeId:    pulumi.String("destination-volume"),
 //					ShareName:   pulumi.String("source-volume"),
 //					Description: pulumi.String("This is a replicated volume"),

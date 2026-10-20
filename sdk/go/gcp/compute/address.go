@@ -83,14 +83,14 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				Network:     _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewAddress(ctx, "internal_with_subnet_and_address", &compute.AddressArgs{
 //				Name:        pulumi.String("my-internal-address"),
-//				Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:  defaultSubnetwork.ID(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Address:     pulumi.String("10.0.42.42"),
 //				Region:      pulumi.String("us-central1"),

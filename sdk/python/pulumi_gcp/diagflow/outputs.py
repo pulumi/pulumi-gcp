@@ -299,6 +299,9 @@ __all__ = [
     'EnvironmentTextToSpeechSettingsSynthesizeSpeechConfigVoice',
     'FulfillmentFeature',
     'FulfillmentGenericWebService',
+    'GeneratorAgentCoachingContext',
+    'GeneratorAgentCoachingContextInstruction',
+    'GeneratorFreeFormContext',
     'GeneratorInferenceParameter',
     'GeneratorSummarizationContext',
     'GeneratorSummarizationContextFewShotExample',
@@ -17670,6 +17673,207 @@ class FulfillmentGenericWebService(dict):
 
 
 @pulumi.output_type
+class GeneratorAgentCoachingContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputLanguageCode":
+            suggest = "output_language_code"
+        elif key == "overarchingGuidance":
+            suggest = "overarching_guidance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorAgentCoachingContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorAgentCoachingContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorAgentCoachingContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instructions: Optional[Sequence['outputs.GeneratorAgentCoachingContextInstruction']] = None,
+                 output_language_code: Optional[_builtins.str] = None,
+                 overarching_guidance: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GeneratorAgentCoachingContextInstructionArgs'] instructions: Optional. Customized instructions for agent coaching.
+               Structure is documented below.
+        :param _builtins.str output_language_code: Optional. Output language code.
+        :param _builtins.str overarching_guidance: Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+        :param _builtins.str version: Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+        """
+        if instructions is not None:
+            pulumi.set(__self__, "instructions", instructions)
+        if output_language_code is not None:
+            pulumi.set(__self__, "output_language_code", output_language_code)
+        if overarching_guidance is not None:
+            pulumi.set(__self__, "overarching_guidance", overarching_guidance)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def instructions(self) -> Optional[Sequence['outputs.GeneratorAgentCoachingContextInstruction']]:
+        """
+        Optional. Customized instructions for agent coaching.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "instructions")
+
+    @_builtins.property
+    @pulumi.getter(name="outputLanguageCode")
+    def output_language_code(self) -> Optional[_builtins.str]:
+        """
+        Optional. Output language code.
+        """
+        return pulumi.get(self, "output_language_code")
+
+    @_builtins.property
+    @pulumi.getter(name="overarchingGuidance")
+    def overarching_guidance(self) -> Optional[_builtins.str]:
+        """
+        Optional. The overarching guidance for the agent coaching. This should be set only for v1.5 and later versions.
+        """
+        return pulumi.get(self, "overarching_guidance")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["2.5"].
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GeneratorAgentCoachingContextInstruction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "agentAction":
+            suggest = "agent_action"
+        elif key == "displayDetails":
+            suggest = "display_details"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "systemAction":
+            suggest = "system_action"
+        elif key == "triggeringEvent":
+            suggest = "triggering_event"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorAgentCoachingContextInstruction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorAgentCoachingContextInstruction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorAgentCoachingContextInstruction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 agent_action: Optional[_builtins.str] = None,
+                 condition: Optional[_builtins.str] = None,
+                 display_details: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 system_action: Optional[_builtins.str] = None,
+                 triggering_event: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str agent_action: Optional. The action that human agent should take.
+        :param _builtins.str condition: Optional. The condition of the instruction.
+        :param _builtins.str display_details: Optional. The detailed description of this instruction.
+        :param _builtins.str display_name: Optional. Display name for the instruction.
+        :param _builtins.str system_action: Optional. The action that system should take.
+        :param _builtins.str triggering_event: Optional. The trigger event of the instruction.
+               Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`, `TOOL_CALL_COMPLETION`.
+        """
+        if agent_action is not None:
+            pulumi.set(__self__, "agent_action", agent_action)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if display_details is not None:
+            pulumi.set(__self__, "display_details", display_details)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if system_action is not None:
+            pulumi.set(__self__, "system_action", system_action)
+        if triggering_event is not None:
+            pulumi.set(__self__, "triggering_event", triggering_event)
+
+    @_builtins.property
+    @pulumi.getter(name="agentAction")
+    def agent_action(self) -> Optional[_builtins.str]:
+        """
+        Optional. The action that human agent should take.
+        """
+        return pulumi.get(self, "agent_action")
+
+    @_builtins.property
+    @pulumi.getter
+    def condition(self) -> Optional[_builtins.str]:
+        """
+        Optional. The condition of the instruction.
+        """
+        return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="displayDetails")
+    def display_details(self) -> Optional[_builtins.str]:
+        """
+        Optional. The detailed description of this instruction.
+        """
+        return pulumi.get(self, "display_details")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Optional. Display name for the instruction.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="systemAction")
+    def system_action(self) -> Optional[_builtins.str]:
+        """
+        Optional. The action that system should take.
+        """
+        return pulumi.get(self, "system_action")
+
+    @_builtins.property
+    @pulumi.getter(name="triggeringEvent")
+    def triggering_event(self) -> Optional[_builtins.str]:
+        """
+        Optional. The trigger event of the instruction.
+        Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`, `TOOL_CALL_COMPLETION`.
+        """
+        return pulumi.get(self, "triggering_event")
+
+
+@pulumi.output_type
+class GeneratorFreeFormContext(dict):
+    def __init__(__self__, *,
+                 text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str text: Optional. Free form text input to LLM.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Optional. Free form text input to LLM.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
 class GeneratorInferenceParameter(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17779,7 +17983,7 @@ class GeneratorSummarizationContext(dict):
         :param _builtins.str output_language_code: Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
         :param Sequence['GeneratorSummarizationContextSummarizationSectionArgs'] summarization_sections: Optional. List of sections. Note it contains both predefined section sand customer defined sections.
                Structure is documented below.
-        :param _builtins.str version: Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        :param _builtins.str version: Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
         """
         if few_shot_examples is not None:
             pulumi.set(__self__, "few_shot_examples", few_shot_examples)
@@ -17820,7 +18024,7 @@ class GeneratorSummarizationContext(dict):
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
         """
-        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["5.0", "6.0"].
         """
         return pulumi.get(self, "version")
 

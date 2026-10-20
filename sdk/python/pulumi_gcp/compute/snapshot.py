@@ -78,6 +78,8 @@ class SnapshotArgs:
                If you do not provide an encryption key when creating the snapshot,
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
                Possible values are: `ARCHIVE`, `STANDARD`.
@@ -252,6 +254,8 @@ class SnapshotArgs:
         If you do not provide an encryption key when creating the snapshot,
         then the snapshot will be encrypted using an automatically generated
         key and you do not need to provide a key to use the snapshot later.
+        ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+        done in place; other changes to this block recreate the snapshot.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_encryption_key")
@@ -418,6 +422,8 @@ class _SnapshotState:
                If you do not provide an encryption key when creating the snapshot,
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
@@ -703,6 +709,8 @@ class _SnapshotState:
         If you do not provide an encryption key when creating the snapshot,
         then the snapshot will be encrypted using an automatically generated
         key and you do not need to provide a key to use the snapshot later.
+        ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+        done in place; other changes to this block recreate the snapshot.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_encryption_key")
@@ -1015,6 +1023,8 @@ class Snapshot(pulumi.CustomResource):
                If you do not provide an encryption key when creating the snapshot,
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
                Possible values are: `ARCHIVE`, `STANDARD`.
@@ -1328,6 +1338,8 @@ class Snapshot(pulumi.CustomResource):
                If you do not provide an encryption key when creating the snapshot,
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
+               ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+               done in place; other changes to this block recreate the snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
@@ -1534,6 +1546,8 @@ class Snapshot(pulumi.CustomResource):
         If you do not provide an encryption key when creating the snapshot,
         then the snapshot will be encrypted using an automatically generated
         key and you do not need to provide a key to use the snapshot later.
+        ~>**NOTE** Only changing `kms_key_self_link` between Cloud KMS keys is
+        done in place; other changes to this block recreate the snapshot.
         Structure is documented below.
         """
         return pulumi.get(self, "snapshot_encryption_key")

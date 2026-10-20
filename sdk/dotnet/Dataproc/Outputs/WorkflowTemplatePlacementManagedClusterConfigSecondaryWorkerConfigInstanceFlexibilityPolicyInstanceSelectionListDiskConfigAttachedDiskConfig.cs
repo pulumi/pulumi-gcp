@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly int? DiskSizeGb;
         /// <summary>
-        /// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        /// (Optional, Deprecated)
+        /// The disk type of the attached disk. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`. `DiskType` is deprecated and will be removed in a future major release. Use `Type` instead.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
@@ -29,6 +30,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         /// </summary>
         public readonly int? ProvisionedThroughput;
+        /// <summary>
+        /// Attached disk type. Currently only supports Hyperdisks: `hyperdisk-balanced`, `hyperdisk-extreme`, `hyperdisk-ml`, `hyperdisk-throughput`.
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
         private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig(
@@ -38,12 +43,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             int? provisionedIops,
 
-            int? provisionedThroughput)
+            int? provisionedThroughput,
+
+            string? type)
         {
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
+            Type = type;
         }
     }
 }

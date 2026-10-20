@@ -43,8 +43,96 @@ namespace Pulumi.Gcp.Diagflow
     ///         },
     ///         SummarizationContext = new Gcp.Diagflow.Inputs.GeneratorSummarizationContextArgs
     ///         {
-    ///             Version = "4.0",
+    ///             Version = "6.0",
     ///             OutputLanguageCode = "en",
+    ///         },
+    ///         TriggerEvent = "MANUAL_CALL",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dialogflow Generator Agent Coaching
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agentCoachingGenerator = new Gcp.Diagflow.Generator("agent_coaching_generator", new()
+    ///     {
+    ///         Location = "global",
+    ///         Description = "An agent coaching generator.",
+    ///         AgentCoachingContext = new Gcp.Diagflow.Inputs.GeneratorAgentCoachingContextArgs
+    ///         {
+    ///             Version = "2.5",
+    ///             OverarchingGuidance = "Be helpful and polite.",
+    ///             OutputLanguageCode = "en",
+    ///             Instructions = new[]
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.GeneratorAgentCoachingContextInstructionArgs
+    ///                 {
+    ///                     DisplayName = "Greeting",
+    ///                     DisplayDetails = "Greet the customer warmly",
+    ///                     Condition = "Customer starts the conversation",
+    ///                     AgentAction = "Say hello and ask how to help",
+    ///                     SystemAction = "Log greeting event",
+    ///                     TriggeringEvent = "END_OF_UTTERANCE",
+    ///                 },
+    ///             },
+    ///         },
+    ///         TriggerEvent = "END_OF_UTTERANCE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dialogflow Generator With Tools
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testTool = new Gcp.Diagflow.Tool("test_tool", new()
+    ///     {
+    ///         Location = "global",
+    ///         ToolKey = "generator_tool_key",
+    ///         DisplayName = "test-tool",
+    ///         Description = "A test tool",
+    ///         OpenApiSpec = new Gcp.Diagflow.Inputs.ToolOpenApiSpecArgs
+    ///         {
+    ///             TextSchema = @"openapi: 3.0.0
+    /// info:
+    ///   title: generator_tool_key
+    ///   version: 1.0.0
+    /// paths:
+    ///   /search:
+    ///     get:
+    ///       summary: Search function
+    ///       operationId: searchAction
+    ///       responses:
+    ///         '200':
+    ///           description: OK
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    ///     var generatorWithTools = new Gcp.Diagflow.Generator("generator_with_tools", new()
+    ///     {
+    ///         Location = "global",
+    ///         Description = "A generator with tools and free form context.",
+    ///         Tools = new[]
+    ///         {
+    ///             testTool.Name,
+    ///         },
+    ///         FreeFormContext = new Gcp.Diagflow.Inputs.GeneratorFreeFormContextArgs
+    ///         {
+    ///             Text = "Use the search tool to answer the user's query.",
     ///         },
     ///         TriggerEvent = "MANUAL_CALL",
     ///     });
@@ -72,6 +160,13 @@ namespace Pulumi.Gcp.Diagflow
     public partial class Generator : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Input of prebuilt Agent Coaching feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("agentCoachingContext")]
+        public Output<Outputs.GeneratorAgentCoachingContext?> AgentCoachingContext { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -87,6 +182,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Input of free form generator to LLM.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("freeFormContext")]
+        public Output<Outputs.GeneratorFreeFormContext?> FreeFormContext { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -131,7 +233,13 @@ namespace Pulumi.Gcp.Diagflow
         /// Structure is documented below.
         /// </summary>
         [Output("summarizationContext")]
-        public Output<Outputs.GeneratorSummarizationContext> SummarizationContext { get; private set; } = null!;
+        public Output<Outputs.GeneratorSummarizationContext?> SummarizationContext { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+        /// </summary>
+        [Output("tools")]
+        public Output<ImmutableArray<string>> Tools { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
@@ -187,6 +295,13 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class GeneratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Input of prebuilt Agent Coaching feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentCoachingContext")]
+        public Input<Inputs.GeneratorAgentCoachingContextArgs>? AgentCoachingContext { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -202,6 +317,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Input of free form generator to LLM.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("freeFormContext")]
+        public Input<Inputs.GeneratorFreeFormContextArgs>? FreeFormContext { get; set; }
 
         /// <summary>
         /// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -239,8 +361,20 @@ namespace Pulumi.Gcp.Diagflow
         /// Input of prebuilt Summarization feature.
         /// Structure is documented below.
         /// </summary>
-        [Input("summarizationContext", required: true)]
-        public Input<Inputs.GeneratorSummarizationContextArgs> SummarizationContext { get; set; } = null!;
+        [Input("summarizationContext")]
+        public Input<Inputs.GeneratorSummarizationContextArgs>? SummarizationContext { get; set; }
+
+        [Input("tools")]
+        private InputList<string>? _tools;
+
+        /// <summary>
+        /// Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+        /// </summary>
+        public InputList<string> Tools
+        {
+            get => _tools ?? (_tools = new InputList<string>());
+            set => _tools = value;
+        }
 
         /// <summary>
         /// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
@@ -258,6 +392,13 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class GeneratorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Input of prebuilt Agent Coaching feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentCoachingContext")]
+        public Input<Inputs.GeneratorAgentCoachingContextGetArgs>? AgentCoachingContext { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
         /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
         /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -273,6 +414,13 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Input of free form generator to LLM.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("freeFormContext")]
+        public Input<Inputs.GeneratorFreeFormContextGetArgs>? FreeFormContext { get; set; }
 
         /// <summary>
         /// Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
@@ -318,6 +466,18 @@ namespace Pulumi.Gcp.Diagflow
         /// </summary>
         [Input("summarizationContext")]
         public Input<Inputs.GeneratorSummarizationContextGetArgs>? SummarizationContext { get; set; }
+
+        [Input("tools")]
+        private InputList<string>? _tools;
+
+        /// <summary>
+        /// Optional. Resource names of the tools that the generator can choose from. Format: `projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/tools/&lt;tool ID&gt;`.
+        /// </summary>
+        public InputList<string> Tools
+        {
+            get => _tools ?? (_tools = new InputList<string>());
+            set => _tools = value;
+        }
 
         /// <summary>
         /// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.

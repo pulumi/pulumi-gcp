@@ -142,13 +142,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:      vpcNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network: vpcNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -171,7 +171,7 @@ import (
 //				Username: pulumi.String("test"),
 //				ApiKey:   pulumi.String("<api-key>"),
 //				PeeredNetwork: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
-//					Text:    vpcNetwork.ID().ToIDOutput().ToStringOutput(),
+//					Text:    vpcNetwork.ID(),
 //					Search:  pulumi.String(project.Name),
 //					Replace: pulumi.String(project.Number),
 //				}, nil).Result(),

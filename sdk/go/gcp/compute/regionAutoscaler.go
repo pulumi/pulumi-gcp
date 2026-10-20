@@ -85,12 +85,12 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: foobarInstanceTemplate.ID().ToIDOutput().ToStringOutput(),
+//						InstanceTemplate: foobarInstanceTemplate.ID(),
 //						Name:             pulumi.String("primary"),
 //					},
 //				},
 //				TargetPools: pulumi.StringArray{
-//					foobarTargetPool.ID().ToIDOutput().ToStringOutput(),
+//					foobarTargetPool.ID(),
 //				},
 //				BaseInstanceName: pulumi.String("foobar"),
 //			})
@@ -100,7 +100,7 @@ import (
 //			_, err = compute.NewRegionAutoscaler(ctx, "foobar", &compute.RegionAutoscalerArgs{
 //				Name:   pulumi.String("my-region-autoscaler"),
 //				Region: pulumi.String("us-central1"),
-//				Target: foobarRegionInstanceGroupManager.ID().ToIDOutput().ToStringOutput(),
+//				Target: foobarRegionInstanceGroupManager.ID(),
 //				AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{
 //					MaxReplicas:         pulumi.Int(5),
 //					MinReplicas:         pulumi.Int(1),

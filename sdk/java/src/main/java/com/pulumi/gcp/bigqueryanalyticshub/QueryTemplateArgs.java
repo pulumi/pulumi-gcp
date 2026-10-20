@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigqueryanalyticshub;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.QueryTemplateEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.QueryTemplateRoutineArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -114,6 +115,27 @@ public final class QueryTemplateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfiguration")
+    private @Nullable Output<QueryTemplateEncryptionConfigurationArgs> encryptionConfiguration;
+
+    /**
+     * @return Encryption configuration for the query template.
+     * If set, the customer-managed KMS key is used to encrypt the query
+     * template definition body.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<QueryTemplateEncryptionConfigurationArgs>> encryptionConfiguration() {
+        return Optional.ofNullable(this.encryptionConfiguration);
+    }
+
+    /**
      * The name of the location this data exchange query template.
      * 
      */
@@ -215,6 +237,7 @@ public final class QueryTemplateArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.displayName = $.displayName;
         this.documentation = $.documentation;
+        this.encryptionConfiguration = $.encryptionConfiguration;
         this.location = $.location;
         this.primaryContact = $.primaryContact;
         this.project = $.project;
@@ -364,6 +387,33 @@ public final class QueryTemplateArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder documentation(String documentation) {
             return documentation(Output.of(documentation));
+        }
+
+        /**
+         * @param encryptionConfiguration Encryption configuration for the query template.
+         * If set, the customer-managed KMS key is used to encrypt the query
+         * template definition body.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfiguration(@Nullable Output<QueryTemplateEncryptionConfigurationArgs> encryptionConfiguration) {
+            $.encryptionConfiguration = encryptionConfiguration;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfiguration Encryption configuration for the query template.
+         * If set, the customer-managed KMS key is used to encrypt the query
+         * template definition body.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfiguration(QueryTemplateEncryptionConfigurationArgs encryptionConfiguration) {
+            return encryptionConfiguration(Output.of(encryptionConfiguration));
         }
 
         /**

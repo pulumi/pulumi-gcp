@@ -221,6 +221,46 @@ __all__ = [
     'AiMetadataStoreEncryptionSpecArgsDict',
     'AiMetadataStoreStateArgs',
     'AiMetadataStoreStateArgsDict',
+    'AiOnlineEvaluatorCloudObservabilityArgs',
+    'AiOnlineEvaluatorCloudObservabilityArgsDict',
+    'AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs',
+    'AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgsDict',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs',
+    'AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgsDict',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeArgs',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeArgsDict',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgsDict',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgsDict',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs',
+    'AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgsDict',
+    'AiOnlineEvaluatorConfigArgs',
+    'AiOnlineEvaluatorConfigArgsDict',
+    'AiOnlineEvaluatorConfigRandomSamplingArgs',
+    'AiOnlineEvaluatorConfigRandomSamplingArgsDict',
+    'AiOnlineEvaluatorMetricSourceArgs',
+    'AiOnlineEvaluatorMetricSourceArgsDict',
+    'AiOnlineEvaluatorStateDetailArgs',
+    'AiOnlineEvaluatorStateDetailArgsDict',
     'AiPersistentResourceEncryptionSpecArgs',
     'AiPersistentResourceEncryptionSpecArgsDict',
     'AiPersistentResourceErrorArgs',
@@ -8419,6 +8459,1201 @@ class AiMetadataStoreStateArgs:
     @disk_utilization_bytes.setter
     def disk_utilization_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_utilization_bytes", value)
+
+
+class AiOnlineEvaluatorCloudObservabilityArgsDict(TypedDict):
+    open_telemetry: pulumi.Input['AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgsDict']
+    """
+    Configuration for a data source following the OpenTelemetry
+    convention. This is the convention that the data source follows.
+    Structure is documented below.
+    """
+    log_view: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional log view that will be used to query logs. If empty, the
+    project's default view (`projects/{{project_id}}`) will be used.
+    """
+    session_scope: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeArgsDict']]]
+    """
+    If chosen, the OnlineEvaluator will evaluate sessions matching the
+    specified filter. A session is a group of traces with a common
+    `gen_ai.conversation.id`. Exactly one of `trace_scope` or
+    `session_scope` must be set.
+    Structure is documented below.
+    """
+    trace_scope: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeArgsDict']]]
+    """
+    If chosen, the OnlineEvaluator will evaluate single traces matching
+    the specified filter. Exactly one of `trace_scope` or `session_scope`
+    must be set.
+    Structure is documented below.
+    """
+    trace_view: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional trace view that will be used to query traces. If empty, the
+    `_AllSpans` view from the `_Trace` US bucket will be used.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilityArgs:
+    def __init__(__self__, *,
+                 open_telemetry: pulumi.Input['AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs'],
+                 log_view: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_scope: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeArgs']] = None,
+                 trace_scope: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeArgs']] = None,
+                 trace_view: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs'] open_telemetry: Configuration for a data source following the OpenTelemetry
+               convention. This is the convention that the data source follows.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] log_view: Optional log view that will be used to query logs. If empty, the
+               project's default view (`projects/{{project_id}}`) will be used.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeArgs'] session_scope: If chosen, the OnlineEvaluator will evaluate sessions matching the
+               specified filter. A session is a group of traces with a common
+               `gen_ai.conversation.id`. Exactly one of `trace_scope` or
+               `session_scope` must be set.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeArgs'] trace_scope: If chosen, the OnlineEvaluator will evaluate single traces matching
+               the specified filter. Exactly one of `trace_scope` or `session_scope`
+               must be set.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] trace_view: Optional trace view that will be used to query traces. If empty, the
+               `_AllSpans` view from the `_Trace` US bucket will be used.
+        """
+        pulumi.set(__self__, "open_telemetry", open_telemetry)
+        if log_view is not None:
+            pulumi.set(__self__, "log_view", log_view)
+        if session_scope is not None:
+            pulumi.set(__self__, "session_scope", session_scope)
+        if trace_scope is not None:
+            pulumi.set(__self__, "trace_scope", trace_scope)
+        if trace_view is not None:
+            pulumi.set(__self__, "trace_view", trace_view)
+
+    @_builtins.property
+    @pulumi.getter(name="openTelemetry")
+    def open_telemetry(self) -> pulumi.Input['AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs']:
+        """
+        Configuration for a data source following the OpenTelemetry
+        convention. This is the convention that the data source follows.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "open_telemetry")
+
+    @open_telemetry.setter
+    def open_telemetry(self, value: pulumi.Input['AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs']):
+        pulumi.set(self, "open_telemetry", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logView")
+    def log_view(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional log view that will be used to query logs. If empty, the
+        project's default view (`projects/{{project_id}}`) will be used.
+        """
+        return pulumi.get(self, "log_view")
+
+    @log_view.setter
+    def log_view(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "log_view", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sessionScope")
+    def session_scope(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeArgs']]:
+        """
+        If chosen, the OnlineEvaluator will evaluate sessions matching the
+        specified filter. A session is a group of traces with a common
+        `gen_ai.conversation.id`. Exactly one of `trace_scope` or
+        `session_scope` must be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "session_scope")
+
+    @session_scope.setter
+    def session_scope(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeArgs']]):
+        pulumi.set(self, "session_scope", value)
+
+    @_builtins.property
+    @pulumi.getter(name="traceScope")
+    def trace_scope(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeArgs']]:
+        """
+        If chosen, the OnlineEvaluator will evaluate single traces matching
+        the specified filter. Exactly one of `trace_scope` or `session_scope`
+        must be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trace_scope")
+
+    @trace_scope.setter
+    def trace_scope(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeArgs']]):
+        pulumi.set(self, "trace_scope", value)
+
+    @_builtins.property
+    @pulumi.getter(name="traceView")
+    def trace_view(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional trace view that will be used to query traces. If empty, the
+        `_AllSpans` view from the `_Trace` US bucket will be used.
+        """
+        return pulumi.get(self, "trace_view")
+
+    @trace_view.setter
+    def trace_view(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "trace_view", value)
+
+
+class AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgsDict(TypedDict):
+    semconv_version: pulumi.Input[_builtins.str]
+    """
+    Defines which version of the OTel Semantic Convention the data
+    follows. Can be "1.39.0" or newer.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilityOpenTelemetryArgs:
+    def __init__(__self__, *,
+                 semconv_version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] semconv_version: Defines which version of the OTel Semantic Convention the data
+               follows. Can be "1.39.0" or newer.
+        """
+        pulumi.set(__self__, "semconv_version", semconv_version)
+
+    @_builtins.property
+    @pulumi.getter(name="semconvVersion")
+    def semconv_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        Defines which version of the OTel Semantic Convention the data
+        follows. Can be "1.39.0" or newer.
+        """
+        return pulumi.get(self, "semconv_version")
+
+    @semconv_version.setter
+    def semconv_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "semconv_version", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeArgsDict(TypedDict):
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgsDict']]]]]
+    """
+    A list of predicates to filter sessions. Multiple predicates are
+    combined using AND. The maximum number of predicates is 10.
+    Structure is documented below.
+    """
+    inactivity_trigger: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgsDict']]]
+    """
+    Session is considered ready for evaluation when there are no new
+    traces for a specified period of inactivity.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeArgs:
+    def __init__(__self__, *,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs']]]] = None,
+                 inactivity_trigger: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs']]] filters: A list of predicates to filter sessions. Multiple predicates are
+               combined using AND. The maximum number of predicates is 10.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs'] inactivity_trigger: Session is considered ready for evaluation when there are no new
+               traces for a specified period of inactivity.
+               Structure is documented below.
+        """
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if inactivity_trigger is not None:
+            pulumi.set(__self__, "inactivity_trigger", inactivity_trigger)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs']]]]:
+        """
+        A list of predicates to filter sessions. Multiple predicates are
+        combined using AND. The maximum number of predicates is 10.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inactivityTrigger")
+    def inactivity_trigger(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs']]:
+        """
+        Session is considered ready for evaluation when there are no new
+        traces for a specified period of inactivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inactivity_trigger")
+
+    @inactivity_trigger.setter
+    def inactivity_trigger(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs']]):
+        pulumi.set(self, "inactivity_trigger", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgsDict(TypedDict):
+    duration: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgsDict']]]
+    """
+    Filter on the duration of a session (in seconds).
+    Structure is documented below.
+    """
+    model_call_errors: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgsDict']]]
+    """
+    Filter on the number of LLM call errors within a session.
+    Structure is documented below.
+    """
+    model_calls: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgsDict']]]
+    """
+    Filter on the number of underlying LLM calls within a session.
+    Structure is documented below.
+    """
+    tool_call_errors: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgsDict']]]
+    """
+    Filter on the number of tool call errors within a session.
+    Structure is documented below.
+    """
+    tool_calls: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgsDict']]]
+    """
+    Filter on the number of underlying tool calls within a session.
+    Structure is documented below.
+    """
+    total_token_usage: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgsDict']]]
+    """
+    Filter on the total token usage within a session.
+    Structure is documented below.
+    """
+    user_turns: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgsDict']]]
+    """
+    Filter on the number of user turns within a session.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs']] = None,
+                 model_call_errors: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs']] = None,
+                 model_calls: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs']] = None,
+                 tool_call_errors: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs']] = None,
+                 tool_calls: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs']] = None,
+                 total_token_usage: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs']] = None,
+                 user_turns: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs']] = None):
+        """
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs'] duration: Filter on the duration of a session (in seconds).
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs'] model_call_errors: Filter on the number of LLM call errors within a session.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs'] model_calls: Filter on the number of underlying LLM calls within a session.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs'] tool_call_errors: Filter on the number of tool call errors within a session.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs'] tool_calls: Filter on the number of underlying tool calls within a session.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs'] total_token_usage: Filter on the total token usage within a session.
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs'] user_turns: Filter on the number of user turns within a session.
+               Structure is documented below.
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if model_call_errors is not None:
+            pulumi.set(__self__, "model_call_errors", model_call_errors)
+        if model_calls is not None:
+            pulumi.set(__self__, "model_calls", model_calls)
+        if tool_call_errors is not None:
+            pulumi.set(__self__, "tool_call_errors", tool_call_errors)
+        if tool_calls is not None:
+            pulumi.set(__self__, "tool_calls", tool_calls)
+        if total_token_usage is not None:
+            pulumi.set(__self__, "total_token_usage", total_token_usage)
+        if user_turns is not None:
+            pulumi.set(__self__, "user_turns", user_turns)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs']]:
+        """
+        Filter on the duration of a session (in seconds).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs']]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelCallErrors")
+    def model_call_errors(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs']]:
+        """
+        Filter on the number of LLM call errors within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_call_errors")
+
+    @model_call_errors.setter
+    def model_call_errors(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs']]):
+        pulumi.set(self, "model_call_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelCalls")
+    def model_calls(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs']]:
+        """
+        Filter on the number of underlying LLM calls within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "model_calls")
+
+    @model_calls.setter
+    def model_calls(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs']]):
+        pulumi.set(self, "model_calls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolCallErrors")
+    def tool_call_errors(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs']]:
+        """
+        Filter on the number of tool call errors within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_call_errors")
+
+    @tool_call_errors.setter
+    def tool_call_errors(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs']]):
+        pulumi.set(self, "tool_call_errors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="toolCalls")
+    def tool_calls(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs']]:
+        """
+        Filter on the number of underlying tool calls within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tool_calls")
+
+    @tool_calls.setter
+    def tool_calls(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs']]):
+        pulumi.set(self, "tool_calls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalTokenUsage")
+    def total_token_usage(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs']]:
+        """
+        Filter on the total token usage within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "total_token_usage")
+
+    @total_token_usage.setter
+    def total_token_usage(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs']]):
+        pulumi.set(self, "total_token_usage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userTurns")
+    def user_turns(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs']]:
+        """
+        Filter on the number of user turns within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_turns")
+
+    @user_turns.setter
+    def user_turns(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs']]):
+        pulumi.set(self, "user_turns", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterDurationArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallErrorsArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterModelCallsArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallErrorsArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterToolCallsArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterTotalTokenUsageArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeFilterUserTurnsArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgsDict(TypedDict):
+    threshold: pulumi.Input[_builtins.str]
+    """
+    The amount of time that must pass with no new traces before a
+    session is considered ready for evaluation. Must be a positive
+    duration no greater than 7 days (604800 seconds), e.g. "3600s".
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilitySessionScopeInactivityTriggerArgs:
+    def __init__(__self__, *,
+                 threshold: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] threshold: The amount of time that must pass with no new traces before a
+               session is considered ready for evaluation. Must be a positive
+               duration no greater than 7 days (604800 seconds), e.g. "3600s".
+        """
+        pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[_builtins.str]:
+        """
+        The amount of time that must pass with no new traces before a
+        session is considered ready for evaluation. Must be a positive
+        duration no greater than 7 days (604800 seconds), e.g. "3600s".
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "threshold", value)
+
+
+class AiOnlineEvaluatorCloudObservabilityTraceScopeArgsDict(TypedDict):
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgsDict']]]]]
+    """
+    A list of predicates to filter traces. Multiple predicates are
+    combined using AND. The maximum number of predicates is 10.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeArgs:
+    def __init__(__self__, *,
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs']]] filters: A list of predicates to filter traces. Multiple predicates are
+               combined using AND. The maximum number of predicates is 10.
+               Structure is documented below.
+        """
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+
+    @_builtins.property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs']]]]:
+        """
+        A list of predicates to filter traces. Multiple predicates are
+        combined using AND. The maximum number of predicates is 10.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgsDict(TypedDict):
+    duration: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgsDict']]]
+    """
+    Filter on the duration of a session (in seconds).
+    Structure is documented below.
+    """
+    total_token_usage: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgsDict']]]
+    """
+    Filter on the total token usage within a session.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterArgs:
+    def __init__(__self__, *,
+                 duration: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs']] = None,
+                 total_token_usage: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs']] = None):
+        """
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs'] duration: Filter on the duration of a session (in seconds).
+               Structure is documented below.
+        :param pulumi.Input['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs'] total_token_usage: Filter on the total token usage within a session.
+               Structure is documented below.
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if total_token_usage is not None:
+            pulumi.set(__self__, "total_token_usage", total_token_usage)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs']]:
+        """
+        Filter on the duration of a session (in seconds).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs']]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalTokenUsage")
+    def total_token_usage(self) -> pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs']]:
+        """
+        Filter on the total token usage within a session.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "total_token_usage")
+
+    @total_token_usage.setter
+    def total_token_usage(self, value: pulumi.Input[Optional['AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs']]):
+        pulumi.set(self, "total_token_usage", value)
+
+
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterDurationArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgsDict(TypedDict):
+    comparison_operator: pulumi.Input[_builtins.str]
+    """
+    The comparison operator to apply. Possible values are:
+    LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+    GREATER.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The value to compare against.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorCloudObservabilityTraceScopeFilterTotalTokenUsageArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.float]):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator to apply. Possible values are:
+               LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+               GREATER.
+        :param pulumi.Input[_builtins.float] value: The value to compare against.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The comparison operator to apply. Possible values are:
+        LESS, LESS_OR_EQUAL, EQUAL, NOT_EQUAL, GREATER_OR_EQUAL,
+        GREATER.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.float]:
+        """
+        The value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.float]):
+        pulumi.set(self, "value", value)
+
+
+class AiOnlineEvaluatorConfigArgsDict(TypedDict):
+    max_evaluated_samples_per_run: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The maximum number of evaluations to perform per run. If set to 0, the
+    number is unbounded.
+    """
+    random_sampling: NotRequired[pulumi.Input[Optional['AiOnlineEvaluatorConfigRandomSamplingArgsDict']]]
+    """
+    Configuration for random sampling. This is the sampling method used to
+    select traces for evaluation.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorConfigArgs:
+    def __init__(__self__, *,
+                 max_evaluated_samples_per_run: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_sampling: pulumi.Input[Optional['AiOnlineEvaluatorConfigRandomSamplingArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] max_evaluated_samples_per_run: The maximum number of evaluations to perform per run. If set to 0, the
+               number is unbounded.
+        :param pulumi.Input['AiOnlineEvaluatorConfigRandomSamplingArgs'] random_sampling: Configuration for random sampling. This is the sampling method used to
+               select traces for evaluation.
+               Structure is documented below.
+        """
+        if max_evaluated_samples_per_run is not None:
+            pulumi.set(__self__, "max_evaluated_samples_per_run", max_evaluated_samples_per_run)
+        if random_sampling is not None:
+            pulumi.set(__self__, "random_sampling", random_sampling)
+
+    @_builtins.property
+    @pulumi.getter(name="maxEvaluatedSamplesPerRun")
+    def max_evaluated_samples_per_run(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The maximum number of evaluations to perform per run. If set to 0, the
+        number is unbounded.
+        """
+        return pulumi.get(self, "max_evaluated_samples_per_run")
+
+    @max_evaluated_samples_per_run.setter
+    def max_evaluated_samples_per_run(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "max_evaluated_samples_per_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="randomSampling")
+    def random_sampling(self) -> pulumi.Input[Optional['AiOnlineEvaluatorConfigRandomSamplingArgs']]:
+        """
+        Configuration for random sampling. This is the sampling method used to
+        select traces for evaluation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "random_sampling")
+
+    @random_sampling.setter
+    def random_sampling(self, value: pulumi.Input[Optional['AiOnlineEvaluatorConfigRandomSamplingArgs']]):
+        pulumi.set(self, "random_sampling", value)
+
+
+class AiOnlineEvaluatorConfigRandomSamplingArgsDict(TypedDict):
+    percentage: pulumi.Input[_builtins.int]
+    """
+    The percentage of traces to sample for evaluation. Must be an
+    integer between 1 and 100.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorConfigRandomSamplingArgs:
+    def __init__(__self__, *,
+                 percentage: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] percentage: The percentage of traces to sample for evaluation. Must be an
+               integer between 1 and 100.
+        """
+        pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[_builtins.int]:
+        """
+        The percentage of traces to sample for evaluation. Must be an
+        integer between 1 and 100.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "percentage", value)
+
+
+class AiOnlineEvaluatorMetricSourceArgsDict(TypedDict):
+    metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Inline metric config, provided as a JSON-formatted string using
+    camelCase field names to match the API format (see the
+    [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+    The suggested predefined `metricSpecName` values depend on the
+    evaluation scope configured in `cloud_observability`; a predefined
+    metric must match the scope or the create request will be rejected:
+    """
+    metric_resource_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Resource name of a registered metric (a
+    `vertex.AiEvaluationMetric`), e.g.
+    projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorMetricSourceArgs:
+    def __init__(__self__, *,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_resource_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] metric: Inline metric config, provided as a JSON-formatted string using
+               camelCase field names to match the API format (see the
+               [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+               The suggested predefined `metricSpecName` values depend on the
+               evaluation scope configured in `cloud_observability`; a predefined
+               metric must match the scope or the create request will be rejected:
+        :param pulumi.Input[_builtins.str] metric_resource_name: Resource name of a registered metric (a
+               `vertex.AiEvaluationMetric`), e.g.
+               projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+        """
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if metric_resource_name is not None:
+            pulumi.set(__self__, "metric_resource_name", metric_resource_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Inline metric config, provided as a JSON-formatted string using
+        camelCase field names to match the API format (see the
+        [Metric API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/Metric)).
+        The suggested predefined `metricSpecName` values depend on the
+        evaluation scope configured in `cloud_observability`; a predefined
+        metric must match the scope or the create request will be rejected:
+        """
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricResourceName")
+    def metric_resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource name of a registered metric (a
+        `vertex.AiEvaluationMetric`), e.g.
+        projects/{{project}}/locations/{{region}}/evaluationMetrics/{{id}}.
+        """
+        return pulumi.get(self, "metric_resource_name")
+
+    @metric_resource_name.setter
+    def metric_resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric_resource_name", value)
+
+
+class AiOnlineEvaluatorStateDetailArgsDict(TypedDict):
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    Human-readable message describing the state of the OnlineEvaluator.
+    """
+
+@pulumi.input_type
+class AiOnlineEvaluatorStateDetailArgs:
+    def __init__(__self__, *,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message: (Output)
+               Human-readable message describing the state of the OnlineEvaluator.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        Human-readable message describing the state of the OnlineEvaluator.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
 
 
 class AiPersistentResourceEncryptionSpecArgsDict(TypedDict):

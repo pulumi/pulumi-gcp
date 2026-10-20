@@ -15,6 +15,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information of a tag from a provided Artifact Registry repository.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myTags = Gcp.ArtifactRegistry.GetTags.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "example-repo",
+        ///         PackageName = "example-package",
+        ///         TagName = "latest",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTagResult> InvokeAsync(GetTagArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagResult>("gcp:artifactregistry/getTag:getTag", args ?? new GetTagArgs(), options.WithDefaults());
@@ -23,6 +42,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information of a tag from a provided Artifact Registry repository.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myTags = Gcp.ArtifactRegistry.GetTags.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "example-repo",
+        ///         PackageName = "example-package",
+        ///         TagName = "latest",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("gcp:artifactregistry/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());
@@ -31,6 +69,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// This data source fetches information of a tag from a provided Artifact Registry repository.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myTags = Gcp.ArtifactRegistry.GetTags.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "example-repo",
+        ///         PackageName = "example-package",
+        ///         TagName = "latest",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTagResult> Invoke(GetTagInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagResult>("gcp:artifactregistry/getTag:getTag", args ?? new GetTagInvokeArgs(), options.WithDefaults());

@@ -910,6 +910,11 @@ export type OrganizationSecurityPolicyRule = import("./organizationSecurityPolic
 export const OrganizationSecurityPolicyRule: typeof import("./organizationSecurityPolicyRule").OrganizationSecurityPolicyRule = null as any;
 utilities.lazyLoad(exports, ["OrganizationSecurityPolicyRule"], () => require("./organizationSecurityPolicyRule"));
 
+export { OrganizationSnapshotRecycleBinPolicyArgs, OrganizationSnapshotRecycleBinPolicyState } from "./organizationSnapshotRecycleBinPolicy";
+export type OrganizationSnapshotRecycleBinPolicy = import("./organizationSnapshotRecycleBinPolicy").OrganizationSnapshotRecycleBinPolicy;
+export const OrganizationSnapshotRecycleBinPolicy: typeof import("./organizationSnapshotRecycleBinPolicy").OrganizationSnapshotRecycleBinPolicy = null as any;
+utilities.lazyLoad(exports, ["OrganizationSnapshotRecycleBinPolicy"], () => require("./organizationSnapshotRecycleBinPolicy"));
+
 export { PacketMirroringArgs, PacketMirroringState } from "./packetMirroring";
 export type PacketMirroring = import("./packetMirroring").PacketMirroring;
 export const PacketMirroring: typeof import("./packetMirroring").PacketMirroring = null as any;
@@ -1305,6 +1310,11 @@ export type SnapshotIamPolicy = import("./snapshotIamPolicy").SnapshotIamPolicy;
 export const SnapshotIamPolicy: typeof import("./snapshotIamPolicy").SnapshotIamPolicy = null as any;
 utilities.lazyLoad(exports, ["SnapshotIamPolicy"], () => require("./snapshotIamPolicy"));
 
+export { SnapshotRecycleBinPolicyArgs, SnapshotRecycleBinPolicyState } from "./snapshotRecycleBinPolicy";
+export type SnapshotRecycleBinPolicy = import("./snapshotRecycleBinPolicy").SnapshotRecycleBinPolicy;
+export const SnapshotRecycleBinPolicy: typeof import("./snapshotRecycleBinPolicy").SnapshotRecycleBinPolicy = null as any;
+utilities.lazyLoad(exports, ["SnapshotRecycleBinPolicy"], () => require("./snapshotRecycleBinPolicy"));
+
 export { SnapshotSettingsArgs, SnapshotSettingsState } from "./snapshotSettings";
 export type SnapshotSettings = import("./snapshotSettings").SnapshotSettings;
 export const SnapshotSettings: typeof import("./snapshotSettings").SnapshotSettings = null as any;
@@ -1617,6 +1627,8 @@ const _module = {
                 return new OrganizationSecurityPolicyAssociation(name, <any>undefined, { urn })
             case "gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule":
                 return new OrganizationSecurityPolicyRule(name, <any>undefined, { urn })
+            case "gcp:compute/organizationSnapshotRecycleBinPolicy:OrganizationSnapshotRecycleBinPolicy":
+                return new OrganizationSnapshotRecycleBinPolicy(name, <any>undefined, { urn })
             case "gcp:compute/packetMirroring:PacketMirroring":
                 return new PacketMirroring(name, <any>undefined, { urn })
             case "gcp:compute/perInstanceConfig:PerInstanceConfig":
@@ -1777,6 +1789,8 @@ const _module = {
                 return new SnapshotIamMember(name, <any>undefined, { urn })
             case "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/snapshotRecycleBinPolicy:SnapshotRecycleBinPolicy":
+                return new SnapshotRecycleBinPolicy(name, <any>undefined, { urn })
             case "gcp:compute/snapshotSettings:SnapshotSettings":
                 return new SnapshotSettings(name, <any>undefined, { urn })
             case "gcp:compute/storagePool:StoragePool":
@@ -1920,6 +1934,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/nodeTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicyAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/organizationSecurityPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/organizationSnapshotRecycleBinPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/packetMirroring", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/perInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/previewFeature", _module)
@@ -2000,6 +2015,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/snapshot", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/snapshotRecycleBinPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/storagePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/storagePoolIamBinding", _module)

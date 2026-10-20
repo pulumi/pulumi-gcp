@@ -44,6 +44,11 @@ public final class CloudControlParameterSpecSubParameterSubParameter {
      */
     private String name;
     /**
+     * @return The parameter spec of the cloud control, in JSON format.
+     * 
+     */
+    private @Nullable String subParameters;
+    /**
      * @return List of parameter substitutions.
      * Structure is documented below.
      * 
@@ -105,6 +110,13 @@ public final class CloudControlParameterSpecSubParameterSubParameter {
         return this.name;
     }
     /**
+     * @return The parameter spec of the cloud control, in JSON format.
+     * 
+     */
+    public Optional<String> subParameters() {
+        return Optional.ofNullable(this.subParameters);
+    }
+    /**
      * @return List of parameter substitutions.
      * Structure is documented below.
      * 
@@ -148,6 +160,7 @@ public final class CloudControlParameterSpecSubParameterSubParameter {
         private @Nullable String displayName;
         private Boolean isRequired;
         private String name;
+        private @Nullable String subParameters;
         private @Nullable List<CloudControlParameterSpecSubParameterSubParameterSubstitutionRule> substitutionRules;
         private @Nullable CloudControlParameterSpecSubParameterSubParameterValidation validation;
         private String valueType;
@@ -159,6 +172,7 @@ public final class CloudControlParameterSpecSubParameterSubParameter {
     	      this.displayName = defaults.displayName;
     	      this.isRequired = defaults.isRequired;
     	      this.name = defaults.name;
+    	      this.subParameters = defaults.subParameters;
     	      this.substitutionRules = defaults.substitutionRules;
     	      this.validation = defaults.validation;
     	      this.valueType = defaults.valueType;
@@ -199,6 +213,12 @@ public final class CloudControlParameterSpecSubParameterSubParameter {
             return this;
         }
         @CustomType.Setter
+        public Builder subParameters(@Nullable String subParameters) {
+
+            this.subParameters = subParameters;
+            return this;
+        }
+        @CustomType.Setter
         public Builder substitutionRules(@Nullable List<CloudControlParameterSpecSubParameterSubParameterSubstitutionRule> substitutionRules) {
 
             this.substitutionRules = substitutionRules;
@@ -228,6 +248,7 @@ public final class CloudControlParameterSpecSubParameterSubParameter {
             _resultValue.displayName = displayName;
             _resultValue.isRequired = isRequired;
             _resultValue.name = name;
+            _resultValue.subParameters = subParameters;
             _resultValue.substitutionRules = substitutionRules;
             _resultValue.validation = validation;
             _resultValue.valueType = valueType;

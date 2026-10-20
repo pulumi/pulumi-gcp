@@ -85,6 +85,30 @@ def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) ->
     ```
 
     ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_kubernetes as kubernetes
+
+    provider_identity = gcp.organizations.get_client_open_id_user_info()
+    provider = gcp.organizations.get_client_config()
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        zone="us-east1-a")
+    user = kubernetes.ClusterRoleBinding("user",
+        metadata=[{
+            name: provider-user-admin,
+        }],
+        role_ref=[{
+            apiGroup: rbac.authorization.k8s.io,
+            kind: ClusterRole,
+            name: cluster-admin,
+        }],
+        subject=[{
+            kind: User,
+            name: provider_identity.email,
+        }])
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -120,6 +144,30 @@ def get_client_open_id_user_info_output(opts: Optional[Union[pulumi.InvokeOption
     ```
 
     ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+    import pulumi_kubernetes as kubernetes
+
+    provider_identity = gcp.organizations.get_client_open_id_user_info()
+    provider = gcp.organizations.get_client_config()
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        zone="us-east1-a")
+    user = kubernetes.ClusterRoleBinding("user",
+        metadata=[{
+            name: provider-user-admin,
+        }],
+        role_ref=[{
+            apiGroup: rbac.authorization.k8s.io,
+            kind: ClusterRole,
+            name: cluster-admin,
+        }],
+        subject=[{
+            kind: User,
+            name: provider_identity.email,
+        }])
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

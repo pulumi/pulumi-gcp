@@ -2519,6 +2519,40 @@ class BackendService(pulumi.CustomResource):
                 },
             })
         ```
+        ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "CLOUD_RUN",
+                },
+            })
+        ```
+        ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "DIRECT_FORWARDING",
+                },
+            })
+        ```
 
         ## Import
 
@@ -3240,6 +3274,40 @@ class BackendService(pulumi.CustomResource):
             dynamic_forwarding={
                 "ip_port_selection": {
                     "enabled": True,
+                },
+            })
+        ```
+        ### Backend Service Dynamic Forwarding Forward Proxy Cloud Run
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "CLOUD_RUN",
+                },
+            })
+        ```
+        ### Backend Service Dynamic Forwarding Forward Proxy Direct Forwarding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            protocol="HTTP2",
+            dynamic_forwarding={
+                "forward_proxy": {
+                    "enabled": True,
+                    "proxy_mode": "DIRECT_FORWARDING",
                 },
             })
         ```

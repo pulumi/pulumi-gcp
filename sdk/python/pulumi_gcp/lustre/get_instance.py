@@ -329,6 +329,14 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    instance = gcp.lustre.get_instance(name="my-instance",
+        zone="us-central1-a")
+    ```
+
 
     :param _builtins.str instance_id: The instance id of the Lustre instance.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -381,6 +389,14 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
     Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    instance = gcp.lustre.get_instance(name="my-instance",
+        zone="us-central1-a")
+    ```
 
 
     :param _builtins.str instance_id: The instance id of the Lustre instance.

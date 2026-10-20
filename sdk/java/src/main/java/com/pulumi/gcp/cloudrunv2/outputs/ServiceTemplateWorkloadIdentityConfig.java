@@ -18,12 +18,15 @@ public final class ServiceTemplateWorkloadIdentityConfig {
      */
     private @Nullable String identity;
     /**
-     * @return Controls whether an instance receives a MWLID certificate.
+     * @return Controls whether an instance receives a managed workload identity (MWLID) certificate.
+     * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
     private @Nullable Boolean identityCertificateEnabled;
     /**
-     * @return The type of identity to use.
+     * @return The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+     * is required when the Service&#39;s `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+     * cannot be changed or unset.
      * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
@@ -38,14 +41,17 @@ public final class ServiceTemplateWorkloadIdentityConfig {
         return Optional.ofNullable(this.identity);
     }
     /**
-     * @return Controls whether an instance receives a MWLID certificate.
+     * @return Controls whether an instance receives a managed workload identity (MWLID) certificate.
+     * Defaults to true when `identityType` is `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */
     public Optional<Boolean> identityCertificateEnabled() {
         return Optional.ofNullable(this.identityCertificateEnabled);
     }
     /**
-     * @return The type of identity to use.
+     * @return The type of identity to use. `IDENTITY_TYPE_AGENT_IDENTITY` assigns a system-managed agent identity and
+     * is required when the Service&#39;s `functionalType` is `FUNCTIONAL_TYPE_AGENT`. Once set, this field
+     * cannot be changed or unset.
      * Possible values are: `IDENTITY_TYPE_SERVICE_ACCOUNT`, `IDENTITY_TYPE_WORKLOAD_IDENTITY`, `IDENTITY_TYPE_AGENT_IDENTITY`.
      * 
      */

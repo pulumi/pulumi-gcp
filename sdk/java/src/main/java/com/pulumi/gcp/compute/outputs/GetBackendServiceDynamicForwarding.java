@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceDynamicForwardingForwardProxy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceDynamicForwardingIpPortSelection;
 import java.util.List;
 import java.util.Objects;
@@ -12,12 +13,24 @@ import java.util.Objects;
 @CustomType
 public final class GetBackendServiceDynamicForwarding {
     /**
+     * @return Dynamic Forwarding Proxy configuration.
+     * 
+     */
+    private List<GetBackendServiceDynamicForwardingForwardProxy> forwardProxies;
+    /**
      * @return IP:PORT based dynamic forwarding configuration.
      * 
      */
     private List<GetBackendServiceDynamicForwardingIpPortSelection> ipPortSelections;
 
     private GetBackendServiceDynamicForwarding() {}
+    /**
+     * @return Dynamic Forwarding Proxy configuration.
+     * 
+     */
+    public List<GetBackendServiceDynamicForwardingForwardProxy> forwardProxies() {
+        return this.forwardProxies;
+    }
     /**
      * @return IP:PORT based dynamic forwarding configuration.
      * 
@@ -35,13 +48,26 @@ public final class GetBackendServiceDynamicForwarding {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetBackendServiceDynamicForwardingForwardProxy> forwardProxies;
         private List<GetBackendServiceDynamicForwardingIpPortSelection> ipPortSelections;
         public Builder() {}
         public Builder(GetBackendServiceDynamicForwarding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.forwardProxies = defaults.forwardProxies;
     	      this.ipPortSelections = defaults.ipPortSelections;
         }
 
+        @CustomType.Setter
+        public Builder forwardProxies(List<GetBackendServiceDynamicForwardingForwardProxy> forwardProxies) {
+            if (forwardProxies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceDynamicForwarding", "forwardProxies");
+            }
+            this.forwardProxies = forwardProxies;
+            return this;
+        }
+        public Builder forwardProxies(GetBackendServiceDynamicForwardingForwardProxy... forwardProxies) {
+            return forwardProxies(List.of(forwardProxies));
+        }
         @CustomType.Setter
         public Builder ipPortSelections(List<GetBackendServiceDynamicForwardingIpPortSelection> ipPortSelections) {
             if (ipPortSelections == null) {
@@ -55,6 +81,7 @@ public final class GetBackendServiceDynamicForwarding {
         }
         public GetBackendServiceDynamicForwarding build() {
             final var _resultValue = new GetBackendServiceDynamicForwarding();
+            _resultValue.forwardProxies = forwardProxies;
             _resultValue.ipPortSelections = ipPortSelections;
             return _resultValue;
         }

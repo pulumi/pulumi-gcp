@@ -24,15 +24,24 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AuthzPolicyNetworkRuleFromNotSourcePrincipal> Principals;
+        /// <summary>
+        /// A list of resources to match against the resource of the source VM of a request.
+        /// Limited to 5 resources.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AuthzPolicyNetworkRuleFromNotSourceResource> Resources;
 
         [OutputConstructor]
         private AuthzPolicyNetworkRuleFromNotSource(
             ImmutableArray<Outputs.AuthzPolicyNetworkRuleFromNotSourceIpBlock> ipBlocks,
 
-            ImmutableArray<Outputs.AuthzPolicyNetworkRuleFromNotSourcePrincipal> principals)
+            ImmutableArray<Outputs.AuthzPolicyNetworkRuleFromNotSourcePrincipal> principals,
+
+            ImmutableArray<Outputs.AuthzPolicyNetworkRuleFromNotSourceResource> resources)
         {
             IpBlocks = ipBlocks;
             Principals = principals;
+            Resources = resources;
         }
     }
 }

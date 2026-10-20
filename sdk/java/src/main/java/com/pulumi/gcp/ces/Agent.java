@@ -199,6 +199,7 @@ import javax.annotation.Nullable;
  *             .modelSettings(AgentModelSettingsArgs.builder()
  *                 .model("gemini-3.0-flash-001")
  *                 .temperature(0.5)
+ *                 .thinkingLevel("LOW")
  *                 .build())
  *             .beforeAgentCallbacks(AgentBeforeAgentCallbackArgs.builder()
  *                 .description("Example callback")

@@ -22,8 +22,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
         /// </summary>
         public readonly double? NumberValue;
         /// <summary>
-        /// Sub-parameter values.
-        /// Structure is documented below.
+        /// Sub-parameter values, in JSON format.
         /// </summary>
         public readonly Outputs.CloudControlParameterSpecDefaultValueOneofValueParameterValueOneofValue? OneofValue;
         /// <summary>

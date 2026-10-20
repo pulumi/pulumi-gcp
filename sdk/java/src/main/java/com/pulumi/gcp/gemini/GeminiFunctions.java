@@ -9,12 +9,225 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyArgs;
+import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyPlainArgs;
 import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
 import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyPlainArgs;
+import com.pulumi.gcp.gemini.outputs.GetDataAnalyticsDataAgentIamPolicyResult;
 import com.pulumi.gcp.gemini.outputs.GetRepositoryGroupIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class GeminiFunctions {
+    /**
+     * Retrieves the current IAM policy data for dataagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs.builder()
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataAgentId(example.get("dataAgentId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataAnalyticsDataAgentIamPolicyResult> getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs args) {
+        return getDataAnalyticsDataAgentIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for dataagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs.builder()
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataAgentId(example.get("dataAgentId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataAnalyticsDataAgentIamPolicyResult> getDataAnalyticsDataAgentIamPolicyPlain(GetDataAnalyticsDataAgentIamPolicyPlainArgs args) {
+        return getDataAnalyticsDataAgentIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for dataagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs.builder()
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataAgentId(example.get("dataAgentId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataAnalyticsDataAgentIamPolicyResult> getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:gemini/getDataAnalyticsDataAgentIamPolicy:getDataAnalyticsDataAgentIamPolicy", TypeShape.of(GetDataAnalyticsDataAgentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for dataagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs.builder()
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataAgentId(example.get("dataAgentId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDataAnalyticsDataAgentIamPolicyResult> getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:gemini/getDataAnalyticsDataAgentIamPolicy:getDataAnalyticsDataAgentIamPolicy", TypeShape.of(GetDataAnalyticsDataAgentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for dataagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetDataAnalyticsDataAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getDataAnalyticsDataAgentIamPolicy(GetDataAnalyticsDataAgentIamPolicyArgs.builder()
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataAgentId(example.get("dataAgentId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDataAnalyticsDataAgentIamPolicyResult> getDataAnalyticsDataAgentIamPolicyPlain(GetDataAnalyticsDataAgentIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:gemini/getDataAnalyticsDataAgentIamPolicy:getDataAnalyticsDataAgentIamPolicy", TypeShape.of(GetDataAnalyticsDataAgentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for repositorygroup
      * 

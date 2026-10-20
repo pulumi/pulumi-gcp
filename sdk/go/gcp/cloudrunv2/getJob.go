@@ -81,6 +81,7 @@ type LookupJobResult struct {
 	Etag                 string                      `pulumi:"etag"`
 	ExecutionCount       int                         `pulumi:"executionCount"`
 	ExpireTime           string                      `pulumi:"expireTime"`
+	FunctionalType       string                      `pulumi:"functionalType"`
 	Generation           string                      `pulumi:"generation"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                         `pulumi:"id"`
@@ -198,6 +199,10 @@ func (o LookupJobResultOutput) ExecutionCount() pulumi.IntOutput {
 
 func (o LookupJobResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+func (o LookupJobResultOutput) FunctionalType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.FunctionalType }).(pulumi.StringOutput)
 }
 
 func (o LookupJobResultOutput) Generation() pulumi.StringOutput {

@@ -58,6 +58,25 @@ public final class AgentConnectivityTemplateArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     * 
+     */
+    @Import(name="agentCompute")
+    private @Nullable Output<String> agentCompute;
+
+    /**
+     * @return The compute environment where the agent is hosted.
+     * Exactly one type of compute must be chosen.
+     * Possible values are: `GKE`, `CLOUD_RUN`.
+     * 
+     */
+    public Optional<Output<String>> agentCompute() {
+        return Optional.ofNullable(this.agentCompute);
+    }
+
+    /**
      * Short name of the AgentConnectivityTemplate resource.
      * 
      */
@@ -95,6 +114,23 @@ public final class AgentConnectivityTemplateArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     * 
+     */
+    @Import(name="deploymentModel")
+    private @Nullable Output<String> deploymentModel;
+
+    /**
+     * @return The deployment model for the gateway.
+     * Possible values are: `CENTRALIZED`, `AMBIENT`.
+     * 
+     */
+    public Optional<Output<String>> deploymentModel() {
+        return Optional.ofNullable(this.deploymentModel);
     }
 
     /**
@@ -187,8 +223,10 @@ public final class AgentConnectivityTemplateArgs extends com.pulumi.resources.Re
     private AgentConnectivityTemplateArgs(AgentConnectivityTemplateArgs $) {
         this.accessPath = $.accessPath;
         this.accessTypes = $.accessTypes;
+        this.agentCompute = $.agentCompute;
         this.agentConnectivityTemplateId = $.agentConnectivityTemplateId;
         this.deletionPolicy = $.deletionPolicy;
+        this.deploymentModel = $.deploymentModel;
         this.description = $.description;
         this.egressNetworkConfig = $.egressNetworkConfig;
         this.labels = $.labels;
@@ -277,6 +315,31 @@ public final class AgentConnectivityTemplateArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param agentCompute The compute environment where the agent is hosted.
+         * Exactly one type of compute must be chosen.
+         * Possible values are: `GKE`, `CLOUD_RUN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentCompute(@Nullable Output<String> agentCompute) {
+            $.agentCompute = agentCompute;
+            return this;
+        }
+
+        /**
+         * @param agentCompute The compute environment where the agent is hosted.
+         * Exactly one type of compute must be chosen.
+         * Possible values are: `GKE`, `CLOUD_RUN`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentCompute(String agentCompute) {
+            return agentCompute(Output.of(agentCompute));
+        }
+
+        /**
          * @param agentConnectivityTemplateId Short name of the AgentConnectivityTemplate resource.
          * 
          * @return builder
@@ -326,6 +389,29 @@ public final class AgentConnectivityTemplateArgs extends com.pulumi.resources.Re
          */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param deploymentModel The deployment model for the gateway.
+         * Possible values are: `CENTRALIZED`, `AMBIENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentModel(@Nullable Output<String> deploymentModel) {
+            $.deploymentModel = deploymentModel;
+            return this;
+        }
+
+        /**
+         * @param deploymentModel The deployment model for the gateway.
+         * Possible values are: `CENTRALIZED`, `AMBIENT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentModel(String deploymentModel) {
+            return deploymentModel(Output.of(deploymentModel));
         }
 
         /**

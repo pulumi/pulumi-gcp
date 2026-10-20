@@ -72,7 +72,7 @@ import (
 //			_, err = dataform.NewFolder(ctx, "dataform_folder_full", &dataform.FolderArgs{
 //				Region:           pulumi.String("us-central1"),
 //				DisplayName:      pulumi.String("Nested Folder-_76044"),
-//				ContainingFolder: dataformFolderRoot.ID().ToIDOutput().ToStringOutput(),
+//				ContainingFolder: dataformFolderRoot.ID(),
 //			})
 //			if err != nil {
 //				return err

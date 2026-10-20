@@ -49,7 +49,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +71,7 @@ import (
 //						Action: &networkservices.TcpRouteRuleActionArgs{
 //							Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 //								&networkservices.TcpRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+//									ServiceName: _default.ID(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},
@@ -115,7 +115,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +131,7 @@ import (
 //						Action: &networkservices.TcpRouteRuleActionArgs{
 //							Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 //								&networkservices.TcpRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+//									ServiceName: _default.ID(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},
@@ -176,7 +176,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -198,7 +198,7 @@ import (
 //				},
 //				Description: pulumi.String("my description"),
 //				Meshes: pulumi.StringArray{
-//					defaultMesh.ID().ToIDOutput().ToStringOutput(),
+//					defaultMesh.ID(),
 //				},
 //				Rules: networkservices.TcpRouteRuleArray{
 //					&networkservices.TcpRouteRuleArgs{
@@ -211,7 +211,7 @@ import (
 //						Action: &networkservices.TcpRouteRuleActionArgs{
 //							Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 //								&networkservices.TcpRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+//									ServiceName: _default.ID(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},
@@ -255,7 +255,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
+//				HealthChecks:        defaultHealthCheck.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -282,7 +282,7 @@ import (
 //				},
 //				Description: pulumi.String("my description"),
 //				Gateways: pulumi.StringArray{
-//					defaultGateway.ID().ToIDOutput().ToStringOutput(),
+//					defaultGateway.ID(),
 //				},
 //				Rules: networkservices.TcpRouteRuleArray{
 //					&networkservices.TcpRouteRuleArgs{
@@ -295,7 +295,7 @@ import (
 //						Action: &networkservices.TcpRouteRuleActionArgs{
 //							Destinations: networkservices.TcpRouteRuleActionDestinationArray{
 //								&networkservices.TcpRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
+//									ServiceName: _default.ID(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},

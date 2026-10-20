@@ -68,14 +68,14 @@ public final class GeneratorSummarizationContextArgs extends com.pulumi.resource
     }
 
     /**
-     * Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;1.0&#34;].
+     * Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;5.0&#34;, &#34;6.0&#34;].
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;1.0&#34;].
+     * @return Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;5.0&#34;, &#34;6.0&#34;].
      * 
      */
     public Optional<Output<String>> version() {
@@ -199,7 +199,7 @@ public final class GeneratorSummarizationContextArgs extends com.pulumi.resource
         }
 
         /**
-         * @param version Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;1.0&#34;].
+         * @param version Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;5.0&#34;, &#34;6.0&#34;].
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class GeneratorSummarizationContextArgs extends com.pulumi.resource
         }
 
         /**
-         * @param version Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;1.0&#34;].
+         * @param version Optional. Version of the feature. If not set, default to latest version. Current candidates are [&#34;5.0&#34;, &#34;6.0&#34;].
          * 
          * @return builder
          * 

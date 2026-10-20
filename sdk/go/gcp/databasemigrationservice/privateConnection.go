@@ -117,7 +117,7 @@ import (
 //				Name:        pulumi.String("my-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-west1"),
-//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Network:     defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
