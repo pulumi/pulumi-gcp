@@ -1,4 +1,5 @@
 [tools]
+gh = "2.97.0" # Used by scripts/new_resources.
 golangci-lint = "2.9.0"
 "vfox-pulumi:pulumi/pulumi-random" = "4.18.5"
 "vfox-pulumi:pulumi/pulumi-kubernetes" = "4.24.1"
