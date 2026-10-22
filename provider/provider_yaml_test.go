@@ -582,7 +582,7 @@ func TestCheckConfigNoCredentials(t *testing.T) {
         }
     },
     "errors": [
-        "failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t$gcloud auth application-default login$\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: Attempted to load application default credentials since neither $credentials$ nor $access_token$ was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"
+        "failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t$gcloud auth application-default login$\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nYou can also use Pulumi ESC to get short-lived GCP credentials through OIDC. To set it up, run $pulumi env setup gcp$.\nLearn more: https://www.pulumi.com/registry/packages/gcp/installation-configuration/#authenticate-with-dynamically-generated-credentials\nExpanded error message: Attempted to load application default credentials since neither $credentials$ nor $access_token$ was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"
     ],
     "metadata": {
         "kind": "resource",
