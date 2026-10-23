@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.ServiceUsage
     public partial class V2ConsumerPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        /// (Optional) Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Output("checkUsageOnRemove")]
         public Output<bool?> CheckUsageOnRemove { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.ServiceUsage
     public sealed class V2ConsumerPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        /// (Optional) Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Input("checkUsageOnRemove")]
         public Input<bool>? CheckUsageOnRemove { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.ServiceUsage
     public sealed class V2ConsumerPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Default value is false. If true, the usage of the service to be removed will be checked. If the service has been used within the past 30 days or was enabled in the last 3 days, an error will be thrown.
+        /// (Optional) Default value is false. This field is deprecated and has no effect.
         /// </summary>
         [Input("checkUsageOnRemove")]
         public Input<bool>? CheckUsageOnRemove { get; set; }

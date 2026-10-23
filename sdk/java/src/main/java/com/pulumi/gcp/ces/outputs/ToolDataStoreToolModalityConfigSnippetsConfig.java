@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,12 @@ public final class ToolDataStoreToolModalityConfigSnippetsConfig {
      * 
      */
     private @Nullable Boolean enableSnippets;
+    /**
+     * @return Number of snippets to return per query.
+     * If unset, returns all snippets from the service by default.
+     * 
+     */
+    private @Nullable Integer maxSnippets;
 
     private ToolDataStoreToolModalityConfigSnippetsConfig() {}
     /**
@@ -24,6 +31,14 @@ public final class ToolDataStoreToolModalityConfigSnippetsConfig {
      */
     public Optional<Boolean> enableSnippets() {
         return Optional.ofNullable(this.enableSnippets);
+    }
+    /**
+     * @return Number of snippets to return per query.
+     * If unset, returns all snippets from the service by default.
+     * 
+     */
+    public Optional<Integer> maxSnippets() {
+        return Optional.ofNullable(this.maxSnippets);
     }
 
     public static Builder builder() {
@@ -36,10 +51,12 @@ public final class ToolDataStoreToolModalityConfigSnippetsConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableSnippets;
+        private @Nullable Integer maxSnippets;
         public Builder() {}
         public Builder(ToolDataStoreToolModalityConfigSnippetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableSnippets = defaults.enableSnippets;
+    	      this.maxSnippets = defaults.maxSnippets;
         }
 
         @CustomType.Setter
@@ -48,9 +65,16 @@ public final class ToolDataStoreToolModalityConfigSnippetsConfig {
             this.enableSnippets = enableSnippets;
             return this;
         }
+        @CustomType.Setter
+        public Builder maxSnippets(@Nullable Integer maxSnippets) {
+
+            this.maxSnippets = maxSnippets;
+            return this;
+        }
         public ToolDataStoreToolModalityConfigSnippetsConfig build() {
             final var _resultValue = new ToolDataStoreToolModalityConfigSnippetsConfig();
             _resultValue.enableSnippets = enableSnippets;
+            _resultValue.maxSnippets = maxSnippets;
             return _resultValue;
         }
     }

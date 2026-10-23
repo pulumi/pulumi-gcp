@@ -91,7 +91,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<ImmutableArray<string>> AdvertisedRoutes { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         /// </summary>
         [Output("autoAccept")]
@@ -133,7 +132,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> GeneratedActivationKey { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         /// </summary>
         [Output("hub")]
@@ -185,7 +183,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string?> ProvidedActivationKey { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         /// </summary>
         [Output("pscRoutingEnabled")]
@@ -301,7 +298,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         /// </summary>
         [Input("autoAccept")]
@@ -331,7 +327,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         /// </summary>
         [Input("hub")]
@@ -383,7 +378,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? ProvidedActivationKey { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         /// </summary>
         [Input("pscRoutingEnabled")]
@@ -443,7 +437,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         /// </summary>
         [Input("autoAccept")]
@@ -495,7 +488,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? GeneratedActivationKey { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         /// </summary>
         [Input("hub")]
@@ -553,7 +545,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? ProvidedActivationKey { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         /// </summary>
         [Input("pscRoutingEnabled")]

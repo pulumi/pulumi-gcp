@@ -335,16 +335,18 @@ import (
 //							ModalityType: pulumi.String("TEXT"),
 //							RewriterConfig: &ces.ToolDataStoreToolModalityConfigRewriterConfigArgs{
 //								ModelSettings: &ces.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{
-//									Model:       pulumi.String("gemini-3.0-flash-001"),
-//									Temperature: pulumi.Float64(1),
+//									Model:         pulumi.String("gemini-3.0-flash-001"),
+//									Temperature:   pulumi.Float64(1),
+//									ThinkingLevel: pulumi.String("LOW"),
 //								},
 //								Prompt:   pulumi.String("example-prompt"),
 //								Disabled: pulumi.Bool(false),
 //							},
 //							SummarizationConfig: &ces.ToolDataStoreToolModalityConfigSummarizationConfigArgs{
 //								ModelSettings: &ces.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{
-//									Model:       pulumi.String("gemini-3.0-flash-001"),
-//									Temperature: pulumi.Float64(1),
+//									Model:         pulumi.String("gemini-3.0-flash-001"),
+//									Temperature:   pulumi.Float64(1),
+//									ThinkingLevel: pulumi.String("LOW"),
 //								},
 //								Prompt:   pulumi.String("example-prompt"),
 //								Disabled: pulumi.Bool(false),
@@ -352,6 +354,10 @@ import (
 //							GroundingConfig: &ces.ToolDataStoreToolModalityConfigGroundingConfigArgs{
 //								GroundingLevel: pulumi.Float64(3),
 //								Disabled:       pulumi.Bool(false),
+//							},
+//							SnippetsConfig: &ces.ToolDataStoreToolModalityConfigSnippetsConfigArgs{
+//								EnableSnippets: pulumi.Bool(true),
+//								MaxSnippets:    pulumi.Int(5),
 //							},
 //						},
 //					},

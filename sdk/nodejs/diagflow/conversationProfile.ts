@@ -40,6 +40,16 @@ import * as utilities from "../utilities";
  *             enableSentimentAnalysis: true,
  *         },
  *     },
+ *     sttConfig: {
+ *         useGeminiAsr: true,
+ *         geminiAsrConfig: {
+ *             modelId: "gemini-3-flash-lite-asr-preview",
+ *             silenceDurationMs: 1000,
+ *             prefixPaddingMs: 500,
+ *             startOfSpeechSensitivity: "START_SENSITIVITY_LOW",
+ *             endOfSpeechSensitivity: "END_SENSITIVITY_LOW",
+ *         },
+ *     },
  * });
  * ```
  * ### Dialogflow Conversation Profile Recognition Result Notification

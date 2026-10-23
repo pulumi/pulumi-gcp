@@ -6,12 +6,17 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_instance_iam_policy import *
 from .get_job import *
 from .get_job_iam_policy import *
 from .get_service import *
 from .get_service_iam_policy import *
 from .get_worker_pool import *
 from .get_worker_pool_iam_policy import *
+from .instance import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
+from .instance_iam_policy import *
 from .job import *
 from .job_iam_binding import *
 from .job_iam_member import *

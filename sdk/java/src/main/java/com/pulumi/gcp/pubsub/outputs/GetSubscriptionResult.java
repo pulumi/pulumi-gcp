@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionBigqueryConfig;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionBigtableConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionExpirationPolicy;
@@ -25,6 +26,7 @@ import javax.annotation.Nullable;
 public final class GetSubscriptionResult {
     private Integer ackDeadlineSeconds;
     private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
+    private List<GetSubscriptionBigtableConfig> bigtableConfigs;
     private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
     private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
     private String deletionPolicy;
@@ -56,6 +58,9 @@ public final class GetSubscriptionResult {
     }
     public List<GetSubscriptionBigqueryConfig> bigqueryConfigs() {
         return this.bigqueryConfigs;
+    }
+    public List<GetSubscriptionBigtableConfig> bigtableConfigs() {
+        return this.bigtableConfigs;
     }
     public List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs() {
         return this.cloudStorageConfigs;
@@ -133,6 +138,7 @@ public final class GetSubscriptionResult {
     public static final class Builder {
         private Integer ackDeadlineSeconds;
         private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
+        private List<GetSubscriptionBigtableConfig> bigtableConfigs;
         private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
         private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
         private String deletionPolicy;
@@ -158,6 +164,7 @@ public final class GetSubscriptionResult {
     	      Objects.requireNonNull(defaults);
     	      this.ackDeadlineSeconds = defaults.ackDeadlineSeconds;
     	      this.bigqueryConfigs = defaults.bigqueryConfigs;
+    	      this.bigtableConfigs = defaults.bigtableConfigs;
     	      this.cloudStorageConfigs = defaults.cloudStorageConfigs;
     	      this.deadLetterPolicies = defaults.deadLetterPolicies;
     	      this.deletionPolicy = defaults.deletionPolicy;
@@ -198,6 +205,17 @@ public final class GetSubscriptionResult {
         }
         public Builder bigqueryConfigs(GetSubscriptionBigqueryConfig... bigqueryConfigs) {
             return bigqueryConfigs(List.of(bigqueryConfigs));
+        }
+        @CustomType.Setter
+        public Builder bigtableConfigs(List<GetSubscriptionBigtableConfig> bigtableConfigs) {
+            if (bigtableConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "bigtableConfigs");
+            }
+            this.bigtableConfigs = bigtableConfigs;
+            return this;
+        }
+        public Builder bigtableConfigs(GetSubscriptionBigtableConfig... bigtableConfigs) {
+            return bigtableConfigs(List.of(bigtableConfigs));
         }
         @CustomType.Setter
         public Builder cloudStorageConfigs(List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs) {
@@ -379,6 +397,7 @@ public final class GetSubscriptionResult {
             final var _resultValue = new GetSubscriptionResult();
             _resultValue.ackDeadlineSeconds = ackDeadlineSeconds;
             _resultValue.bigqueryConfigs = bigqueryConfigs;
+            _resultValue.bigtableConfigs = bigtableConfigs;
             _resultValue.cloudStorageConfigs = cloudStorageConfigs;
             _resultValue.deadLetterPolicies = deadLetterPolicies;
             _resultValue.deletionPolicy = deletionPolicy;

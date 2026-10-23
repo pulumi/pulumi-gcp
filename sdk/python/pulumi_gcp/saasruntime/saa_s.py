@@ -24,6 +24,7 @@ class SaaSArgs:
                  location: pulumi.Input[_builtins.str],
                  saas_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_template: pulumi.Input[Optional['SaaSApplicationTemplateArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  locations: pulumi.Input[Optional[Sequence[pulumi.Input['SaaSLocationArgs']]]] = None,
@@ -39,6 +40,31 @@ class SaaSArgs:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['SaaSApplicationTemplateArgs'] application_template: Reference to a composite Application Design Center ApplicationTemplate.
+               When `revision` is set, the service imports the template components into
+               equivalent UnitKind, Release and Blueprint resources. Create waits for
+               the import to finish. Update waits when the template changes or when the
+               Saas was failed, running, or not yet started. Both fail if `state`
+               becomes `STATE_FAILED`.
+               * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+                 their Releases, and copies the Saas, the UnitKinds and the Releases to
+                 `global` and to the other `locations`. Terraform doesn't manage or
+                 delete any of them, including when this field changes. Before
+                 destroying or replacing the Saas (including `pulumi up -replace`
+                 and recreating a tainted Saas), delete the imported UnitKinds and
+                 Releases in every location: the API rejects the deletion of a Saas
+                 that still has UnitKinds.
+               * After a failed import, fix the template and change `revision`. Any
+                 apply that changes a failed Saas restarts the import, and the provider
+                 waits for the restarted import to finish or fail again.
+               * While an import is running, the provider retries template or revision
+                 updates and DELETE until it finishes, within the resource timeouts.
+               * Don't create Terraform-managed UnitKinds whose
+                 `application_template_component` matches a component of this
+                 template: the import adopts them and overwrites their fields.
+               * Set this field only on the source-region Saas, not on the copies in
+                 `global` or other `locations`.
+                 Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -59,6 +85,8 @@ class SaaSArgs:
         pulumi.set(__self__, "saas_id", saas_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if application_template is not None:
+            pulumi.set(__self__, "application_template", application_template)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if labels is not None:
@@ -108,6 +136,42 @@ class SaaSArgs:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplate")
+    def application_template(self) -> pulumi.Input[Optional['SaaSApplicationTemplateArgs']]:
+        """
+        Reference to a composite Application Design Center ApplicationTemplate.
+        When `revision` is set, the service imports the template components into
+        equivalent UnitKind, Release and Blueprint resources. Create waits for
+        the import to finish. Update waits when the template changes or when the
+        Saas was failed, running, or not yet started. Both fail if `state`
+        becomes `STATE_FAILED`.
+        * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+          their Releases, and copies the Saas, the UnitKinds and the Releases to
+          `global` and to the other `locations`. Terraform doesn't manage or
+          delete any of them, including when this field changes. Before
+          destroying or replacing the Saas (including `pulumi up -replace`
+          and recreating a tainted Saas), delete the imported UnitKinds and
+          Releases in every location: the API rejects the deletion of a Saas
+          that still has UnitKinds.
+        * After a failed import, fix the template and change `revision`. Any
+          apply that changes a failed Saas restarts the import, and the provider
+          waits for the restarted import to finish or fail again.
+        * While an import is running, the provider retries template or revision
+          updates and DELETE until it finishes, within the resource timeouts.
+        * Don't create Terraform-managed UnitKinds whose
+          `application_template_component` matches a component of this
+          template: the import adopts them and overwrites their fields.
+        * Set this field only on the source-region Saas, not on the copies in
+          `global` or other `locations`.
+          Structure is documented below.
+        """
+        return pulumi.get(self, "application_template")
+
+    @application_template.setter
+    def application_template(self, value: pulumi.Input[Optional['SaaSApplicationTemplateArgs']]):
+        pulumi.set(self, "application_template", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -173,10 +237,14 @@ class SaaSArgs:
 class _SaaSState:
     def __init__(__self__, *,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_template: pulumi.Input[Optional['SaaSApplicationTemplateArgs']] = None,
+                 blueprint_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['SaaSConditionArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['SaaSErrorArgs']]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -185,6 +253,7 @@ class _SaaSState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  saas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -196,6 +265,36 @@ class _SaaSState:
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['SaaSApplicationTemplateArgs'] application_template: Reference to a composite Application Design Center ApplicationTemplate.
+               When `revision` is set, the service imports the template components into
+               equivalent UnitKind, Release and Blueprint resources. Create waits for
+               the import to finish. Update waits when the template changes or when the
+               Saas was failed, running, or not yet started. Both fail if `state`
+               becomes `STATE_FAILED`.
+               * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+                 their Releases, and copies the Saas, the UnitKinds and the Releases to
+                 `global` and to the other `locations`. Terraform doesn't manage or
+                 delete any of them, including when this field changes. Before
+                 destroying or replacing the Saas (including `pulumi up -replace`
+                 and recreating a tainted Saas), delete the imported UnitKinds and
+                 Releases in every location: the API rejects the deletion of a Saas
+                 that still has UnitKinds.
+               * After a failed import, fix the template and change `revision`. Any
+                 apply that changes a failed Saas restarts the import, and the provider
+                 waits for the restarted import to finish or fail again.
+               * While an import is running, the provider retries template or revision
+                 updates and DELETE until it finishes, within the resource timeouts.
+               * Don't create Terraform-managed UnitKinds whose
+                 `application_template_component` matches a component of this
+                 template: the import adopts them and overwrites their fields.
+               * Set this field only on the source-region Saas, not on the copies in
+                 `global` or other `locations`.
+                 Structure is documented below.
+        :param pulumi.Input[_builtins.str] blueprint_repo: Name of the repository in Artifact Registry for system-generated
+               Blueprints, for example the Blueprints of imported ApplicationTemplates.
+        :param pulumi.Input[Sequence[pulumi.Input['SaaSConditionArgs']]] conditions: A set of conditions which indicate the various conditions this resource can
+               have.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -205,6 +304,8 @@ class _SaaSState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input['SaaSErrorArgs']]] errors: If the state is `STATE_FAILED`, the corresponding error code and message.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
                and server agree on the ordering of a resource being written.
@@ -224,6 +325,14 @@ class _SaaSState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas_id: The ID value for the new saas.
+        :param pulumi.Input[_builtins.str] state: State of the Saas. It is always `STATE_ACTIVE` if
+               `application_template.revision` is empty.
+               Possible values:
+               STATE_UNSPECIFIED
+               STATE_TYPE_UNSPECIFIED
+               STATE_ACTIVE
+               STATE_RUNNING
+               STATE_FAILED
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
                typically generated by the server on successful creation of a resource
@@ -235,6 +344,12 @@ class _SaaSState:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if application_template is not None:
+            pulumi.set(__self__, "application_template", application_template)
+        if blueprint_repo is not None:
+            pulumi.set(__self__, "blueprint_repo", blueprint_repo)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
@@ -243,6 +358,8 @@ class _SaaSState:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -259,6 +376,8 @@ class _SaaSState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if saas_id is not None:
             pulumi.set(__self__, "saas_id", saas_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -280,6 +399,69 @@ class _SaaSState:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplate")
+    def application_template(self) -> pulumi.Input[Optional['SaaSApplicationTemplateArgs']]:
+        """
+        Reference to a composite Application Design Center ApplicationTemplate.
+        When `revision` is set, the service imports the template components into
+        equivalent UnitKind, Release and Blueprint resources. Create waits for
+        the import to finish. Update waits when the template changes or when the
+        Saas was failed, running, or not yet started. Both fail if `state`
+        becomes `STATE_FAILED`.
+        * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+          their Releases, and copies the Saas, the UnitKinds and the Releases to
+          `global` and to the other `locations`. Terraform doesn't manage or
+          delete any of them, including when this field changes. Before
+          destroying or replacing the Saas (including `pulumi up -replace`
+          and recreating a tainted Saas), delete the imported UnitKinds and
+          Releases in every location: the API rejects the deletion of a Saas
+          that still has UnitKinds.
+        * After a failed import, fix the template and change `revision`. Any
+          apply that changes a failed Saas restarts the import, and the provider
+          waits for the restarted import to finish or fail again.
+        * While an import is running, the provider retries template or revision
+          updates and DELETE until it finishes, within the resource timeouts.
+        * Don't create Terraform-managed UnitKinds whose
+          `application_template_component` matches a component of this
+          template: the import adopts them and overwrites their fields.
+        * Set this field only on the source-region Saas, not on the copies in
+          `global` or other `locations`.
+          Structure is documented below.
+        """
+        return pulumi.get(self, "application_template")
+
+    @application_template.setter
+    def application_template(self, value: pulumi.Input[Optional['SaaSApplicationTemplateArgs']]):
+        pulumi.set(self, "application_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="blueprintRepo")
+    def blueprint_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the repository in Artifact Registry for system-generated
+        Blueprints, for example the Blueprints of imported ApplicationTemplates.
+        """
+        return pulumi.get(self, "blueprint_repo")
+
+    @blueprint_repo.setter
+    def blueprint_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "blueprint_repo", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SaaSConditionArgs']]]]:
+        """
+        A set of conditions which indicate the various conditions this resource can
+        have.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SaaSConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -333,6 +515,19 @@ class _SaaSState:
     @effective_labels.setter
     def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SaaSErrorArgs']]]]:
+        """
+        If the state is `STATE_FAILED`, the corresponding error code and message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SaaSErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter
@@ -443,6 +638,25 @@ class _SaaSState:
 
     @_builtins.property
     @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        State of the Saas. It is always `STATE_ACTIVE` if
+        `application_template.revision` is empty.
+        Possible values:
+        STATE_UNSPECIFIED
+        STATE_TYPE_UNSPECIFIED
+        STATE_ACTIVE
+        STATE_RUNNING
+        STATE_FAILED
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the resource. UID is unique in the time
@@ -479,6 +693,7 @@ class SaaS(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_template: pulumi.Input[Optional[Union['SaaSApplicationTemplateArgs', 'SaaSApplicationTemplateArgsDict', 'outputs.SaaSApplicationTemplate']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -512,6 +727,23 @@ class SaaS(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Saas Runtime Saas Application Template
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.saasruntime.SaaS("example",
+            saas_id="example-saas",
+            location="us-central1",
+            locations=[{
+                "name": "us-central1",
+            }],
+            application_template={
+                "application_template": "projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite",
+                "revision": "projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite/revisions/r-1",
+            })
+        ```
 
         ## Import
 
@@ -538,6 +770,31 @@ class SaaS(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['SaaSApplicationTemplateArgs', 'SaaSApplicationTemplateArgsDict', 'outputs.SaaSApplicationTemplate']] application_template: Reference to a composite Application Design Center ApplicationTemplate.
+               When `revision` is set, the service imports the template components into
+               equivalent UnitKind, Release and Blueprint resources. Create waits for
+               the import to finish. Update waits when the template changes or when the
+               Saas was failed, running, or not yet started. Both fail if `state`
+               becomes `STATE_FAILED`.
+               * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+                 their Releases, and copies the Saas, the UnitKinds and the Releases to
+                 `global` and to the other `locations`. Terraform doesn't manage or
+                 delete any of them, including when this field changes. Before
+                 destroying or replacing the Saas (including `pulumi up -replace`
+                 and recreating a tainted Saas), delete the imported UnitKinds and
+                 Releases in every location: the API rejects the deletion of a Saas
+                 that still has UnitKinds.
+               * After a failed import, fix the template and change `revision`. Any
+                 apply that changes a failed Saas restarts the import, and the provider
+                 waits for the restarted import to finish or fail again.
+               * While an import is running, the provider retries template or revision
+                 updates and DELETE until it finishes, within the resource timeouts.
+               * Don't create Terraform-managed UnitKinds whose
+                 `application_template_component` matches a component of this
+                 template: the import adopts them and overwrites their fields.
+               * Set this field only on the source-region Saas, not on the copies in
+                 `global` or other `locations`.
+                 Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -588,6 +845,23 @@ class SaaS(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Saas Runtime Saas Application Template
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.saasruntime.SaaS("example",
+            saas_id="example-saas",
+            location="us-central1",
+            locations=[{
+                "name": "us-central1",
+            }],
+            application_template={
+                "application_template": "projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite",
+                "revision": "projects/my-project-name/locations/us-central1/spaces/my-space/applicationTemplates/my-composite/revisions/r-1",
+            })
+        ```
 
         ## Import
 
@@ -622,6 +896,7 @@ class SaaS(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 application_template: pulumi.Input[Optional[Union['SaaSApplicationTemplateArgs', 'SaaSApplicationTemplateArgsDict', 'outputs.SaaSApplicationTemplate']]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,6 +913,7 @@ class SaaS(pulumi.CustomResource):
             __props__ = SaaSArgs.__new__(SaaSArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["application_template"] = application_template
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -648,12 +924,16 @@ class SaaS(pulumi.CustomResource):
             if saas_id is None and not opts.urn:
                 raise TypeError("Missing required property 'saas_id'")
             __props__.__dict__["saas_id"] = saas_id
+            __props__.__dict__["blueprint_repo"] = None
+            __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["errors"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -669,10 +949,14 @@ class SaaS(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application_template: pulumi.Input[Optional[Union['SaaSApplicationTemplateArgs', 'SaaSApplicationTemplateArgsDict', 'outputs.SaaSApplicationTemplate']]] = None,
+            blueprint_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SaaSConditionArgs', 'SaaSConditionArgsDict', 'outputs.SaaSCondition']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SaaSErrorArgs', 'SaaSErrorArgsDict', 'outputs.SaaSError']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,6 +965,7 @@ class SaaS(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             saas_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SaaS':
         """
@@ -696,6 +981,36 @@ class SaaS(pulumi.CustomResource):
                More info: https://kubernetes.io/docs/user-guide/annotations
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[Union['SaaSApplicationTemplateArgs', 'SaaSApplicationTemplateArgsDict', 'outputs.SaaSApplicationTemplate']] application_template: Reference to a composite Application Design Center ApplicationTemplate.
+               When `revision` is set, the service imports the template components into
+               equivalent UnitKind, Release and Blueprint resources. Create waits for
+               the import to finish. Update waits when the template changes or when the
+               Saas was failed, running, or not yet started. Both fail if `state`
+               becomes `STATE_FAILED`.
+               * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+                 their Releases, and copies the Saas, the UnitKinds and the Releases to
+                 `global` and to the other `locations`. Terraform doesn't manage or
+                 delete any of them, including when this field changes. Before
+                 destroying or replacing the Saas (including `pulumi up -replace`
+                 and recreating a tainted Saas), delete the imported UnitKinds and
+                 Releases in every location: the API rejects the deletion of a Saas
+                 that still has UnitKinds.
+               * After a failed import, fix the template and change `revision`. Any
+                 apply that changes a failed Saas restarts the import, and the provider
+                 waits for the restarted import to finish or fail again.
+               * While an import is running, the provider retries template or revision
+                 updates and DELETE until it finishes, within the resource timeouts.
+               * Don't create Terraform-managed UnitKinds whose
+                 `application_template_component` matches a component of this
+                 template: the import adopts them and overwrites their fields.
+               * Set this field only on the source-region Saas, not on the copies in
+                 `global` or other `locations`.
+                 Structure is documented below.
+        :param pulumi.Input[_builtins.str] blueprint_repo: Name of the repository in Artifact Registry for system-generated
+               Blueprints, for example the Blueprints of imported ApplicationTemplates.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SaaSConditionArgs', 'SaaSConditionArgsDict', 'outputs.SaaSCondition']]]] conditions: A set of conditions which indicate the various conditions this resource can
+               have.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -705,6 +1020,8 @@ class SaaS(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SaaSErrorArgs', 'SaaSErrorArgsDict', 'outputs.SaaSError']]]] errors: If the state is `STATE_FAILED`, the corresponding error code and message.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: An opaque value that uniquely identifies a version or
                generation of a resource. It can be used to confirm that the client
                and server agree on the ordering of a resource being written.
@@ -724,6 +1041,14 @@ class SaaS(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] saas_id: The ID value for the new saas.
+        :param pulumi.Input[_builtins.str] state: State of the Saas. It is always `STATE_ACTIVE` if
+               `application_template.revision` is empty.
+               Possible values:
+               STATE_UNSPECIFIED
+               STATE_TYPE_UNSPECIFIED
+               STATE_ACTIVE
+               STATE_RUNNING
+               STATE_FAILED
         :param pulumi.Input[_builtins.str] uid: The unique identifier of the resource. UID is unique in the time
                and space for this resource within the scope of the service. It is
                typically generated by the server on successful creation of a resource
@@ -738,10 +1063,14 @@ class SaaS(pulumi.CustomResource):
         __props__ = _SaaSState.__new__(_SaaSState)
 
         __props__.__dict__["annotations"] = annotations
+        __props__.__dict__["application_template"] = application_template
+        __props__.__dict__["blueprint_repo"] = blueprint_repo
+        __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["errors"] = errors
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -750,6 +1079,7 @@ class SaaS(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["saas_id"] = saas_id
+        __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return SaaS(resource_name, opts=opts, __props__=__props__)
@@ -766,6 +1096,57 @@ class SaaS(pulumi.CustomResource):
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationTemplate")
+    def application_template(self) -> pulumi.Output[Optional['outputs.SaaSApplicationTemplate']]:
+        """
+        Reference to a composite Application Design Center ApplicationTemplate.
+        When `revision` is set, the service imports the template components into
+        equivalent UnitKind, Release and Blueprint resources. Create waits for
+        the import to finish. Update waits when the template changes or when the
+        Saas was failed, running, or not yet started. Both fail if `state`
+        becomes `STATE_FAILED`.
+        * The import creates UnitKinds (named `u-<rootModuleId>-<6 chars>`) and
+          their Releases, and copies the Saas, the UnitKinds and the Releases to
+          `global` and to the other `locations`. Terraform doesn't manage or
+          delete any of them, including when this field changes. Before
+          destroying or replacing the Saas (including `pulumi up -replace`
+          and recreating a tainted Saas), delete the imported UnitKinds and
+          Releases in every location: the API rejects the deletion of a Saas
+          that still has UnitKinds.
+        * After a failed import, fix the template and change `revision`. Any
+          apply that changes a failed Saas restarts the import, and the provider
+          waits for the restarted import to finish or fail again.
+        * While an import is running, the provider retries template or revision
+          updates and DELETE until it finishes, within the resource timeouts.
+        * Don't create Terraform-managed UnitKinds whose
+          `application_template_component` matches a component of this
+          template: the import adopts them and overwrites their fields.
+        * Set this field only on the source-region Saas, not on the copies in
+          `global` or other `locations`.
+          Structure is documented below.
+        """
+        return pulumi.get(self, "application_template")
+
+    @_builtins.property
+    @pulumi.getter(name="blueprintRepo")
+    def blueprint_repo(self) -> pulumi.Output[_builtins.str]:
+        """
+        Name of the repository in Artifact Registry for system-generated
+        Blueprints, for example the Blueprints of imported ApplicationTemplates.
+        """
+        return pulumi.get(self, "blueprint_repo")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Output[Sequence['outputs.SaaSCondition']]:
+        """
+        A set of conditions which indicate the various conditions this resource can
+        have.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -803,6 +1184,15 @@ class SaaS(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> pulumi.Output[Sequence['outputs.SaaSError']]:
+        """
+        If the state is `STATE_FAILED`, the corresponding error code and message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
 
     @_builtins.property
     @pulumi.getter
@@ -878,6 +1268,21 @@ class SaaS(pulumi.CustomResource):
         The ID value for the new saas.
         """
         return pulumi.get(self, "saas_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        State of the Saas. It is always `STATE_ACTIVE` if
+        `application_template.revision` is empty.
+        Possible values:
+        STATE_UNSPECIFIED
+        STATE_TYPE_UNSPECIFIED
+        STATE_ACTIVE
+        STATE_RUNNING
+        STATE_FAILED
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter

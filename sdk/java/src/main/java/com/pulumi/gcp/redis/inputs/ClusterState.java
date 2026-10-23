@@ -52,7 +52,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      * 
      */
     @Import(name="authorizationMode")
@@ -61,7 +61,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
      * Default value is `AUTH_MODE_DISABLED`.
-     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
      * 
      */
     public Optional<Output<String>> authorizationMode() {
@@ -847,7 +847,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param authorizationMode Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
          * Default value is `AUTH_MODE_DISABLED`.
-         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
          * 
          * @return builder
          * 
@@ -860,7 +860,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param authorizationMode Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
          * Default value is `AUTH_MODE_DISABLED`.
-         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`, `AUTH_MODE_TOKEN_AUTH`.
          * 
          * @return builder
          * 

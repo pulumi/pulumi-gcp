@@ -46,6 +46,31 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
+    /// ### Looker Instance Force Delete
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
+    ///         Region = "us-central1",
+    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+    ///         {
+    ///             ClientId = "my-client-id",
+    ///             ClientSecret = "my-client-secret",
+    ///         },
+    ///         DeletionPolicy = "FORCE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Looker Instance Full
     /// 
     /// ```csharp
@@ -108,32 +133,11 @@ namespace Pulumi.Gcp.Looker
     ///             ClientId = "my-client-id",
     ///             ClientSecret = "my-client-secret",
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Looker Instance Fips
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
-    ///     {
-    ///         Name = "my-instance-fips",
-    ///         PlatformEdition = "LOOKER_CORE_ENTERPRISE_ANNUAL",
-    ///         Region = "us-central1",
-    ///         PublicIpEnabled = true,
-    ///         FipsEnabled = true,
-    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+    ///         CustomDomain = new Gcp.Looker.Inputs.InstanceCustomDomainArgs
     ///         {
-    ///             ClientId = "my-client-id",
-    ///             ClientSecret = "my-client-secret",
+    ///             Domain = "my-custom-domain.com",
     ///         },
+    ///         DeletionPolicy = "FORCE",
     ///     });
     /// 
     /// });
@@ -250,34 +254,6 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
-    /// ### Looker Instance Custom Domain
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
-    ///     {
-    ///         Name = "my-instance",
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
-    ///         Region = "us-central1",
-    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
-    ///         {
-    ///             ClientId = "my-client-id",
-    ///             ClientSecret = "my-client-secret",
-    ///         },
-    ///         CustomDomain = new Gcp.Looker.Inputs.InstanceCustomDomainArgs
-    ///         {
-    ///             Domain = "my-custom-domain.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Looker Instance Psc
     /// 
     /// ```csharp
@@ -308,31 +284,6 @@ namespace Pulumi.Gcp.Looker
     ///                 "projects/test-project/global/networks/test",
     ///             },
     ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Looker Instance Force Delete
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
-    ///     {
-    ///         Name = "my-instance",
-    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
-    ///         Region = "us-central1",
-    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
-    ///         {
-    ///             ClientId = "my-client-id",
-    ///             ClientSecret = "my-client-secret",
-    ///         },
-    ///         DeletionPolicy = "FORCE",
     ///     });
     /// 
     /// });

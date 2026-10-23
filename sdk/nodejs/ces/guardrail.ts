@@ -145,6 +145,7 @@ import * as utilities from "../utilities";
  *             modelSettings: {
  *                 model: "gemini-3.0-flash-001",
  *                 temperature: 50,
+ *                 thinkingLevel: "LOW",
  *             },
  *             prompt: "example_prompt",
  *             policyScope: "USER_QUERY",
@@ -342,6 +343,7 @@ import * as utilities from "../utilities";
  *         modelSettings: {
  *             model: "gemini-3.0-flash-001",
  *             temperature: 50,
+ *             thinkingLevel: "LOW",
  *         },
  *         prompt: "example_prompt",
  *         policyScope: "USER_QUERY",

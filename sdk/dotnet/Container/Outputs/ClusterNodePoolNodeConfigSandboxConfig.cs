@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Accepted values are:
         /// 
         /// * `"GVISOR"`: Pods run within a gVisor sandbox.
+        /// * `"MICROVM"`: Pods run within a microVM sandbox.
         /// </summary>
         public readonly string? Type;
 

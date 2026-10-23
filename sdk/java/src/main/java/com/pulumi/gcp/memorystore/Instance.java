@@ -681,20 +681,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclPolicy);
     }
     /**
-     * Optional. Immutable. Authorization mode of the instance. Possible values:
+     * Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      * 
      */
     @Export(name="authorizationMode", refs={String.class}, tree="[0]")
     private Output<String> authorizationMode;
 
     /**
-     * @return Optional. Immutable. Authorization mode of the instance. Possible values:
+     * @return Optional. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH.
-     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
+     * IAM_AUTH
+     * TOKEN_AUTH
      * 
      */
     public Output<String> authorizationMode() {

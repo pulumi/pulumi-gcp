@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.ServiceUsage.Inputs
 
     public sealed class V2ConsumerPolicyEnableRuleArgs : global::Pulumi.ResourceArgs
     {
+        [Input("catalogs")]
+        private InputList<string>? _catalogs;
+
+        /// <summary>
+        /// List of service catalog names to be enabled in the format of catalogs/&lt;catalog_name&gt;, for example catalogs/default-cloud-services.
+        /// </summary>
+        public InputList<string> Catalogs
+        {
+            get => _catalogs ?? (_catalogs = new InputList<string>());
+            set => _catalogs = value;
+        }
+
         [Input("services")]
         private InputList<string>? _services;
 

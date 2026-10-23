@@ -27,8 +27,10 @@ class ServicePerimeterDryRunResourceArgs:
 
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -58,8 +60,10 @@ class ServicePerimeterDryRunResourceArgs:
     def resource(self) -> pulumi.Input[_builtins.str]:
         """
         A GCP resource that is inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resource")
 
@@ -106,8 +110,10 @@ class _ServicePerimeterDryRunResourceState:
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         if access_policy_id is not None:
             pulumi.set(__self__, "access_policy_id", access_policy_id)
@@ -178,8 +184,10 @@ class _ServicePerimeterDryRunResourceState:
     def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A GCP resource that is inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resource")
 
@@ -268,8 +276,10 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         ...
     @overload
@@ -405,8 +415,10 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
-               Currently only projects are allowed.
-               Format: projects/{project_number}
+               Projects, folders, and VPC networks are allowed.
+               Project format: `projects/{project_number}`
+               Folder format: `folders/{folder_number}`
+               VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -461,8 +473,10 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
     def resource(self) -> pulumi.Output[_builtins.str]:
         """
         A GCP resource that is inside of the service perimeter.
-        Currently only projects are allowed.
-        Format: projects/{project_number}
+        Projects, folders, and VPC networks are allowed.
+        Project format: `projects/{project_number}`
+        Folder format: `folders/{folder_number}`
+        VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
         """
         return pulumi.get(self, "resource")
 

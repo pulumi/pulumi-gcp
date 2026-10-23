@@ -185,6 +185,11 @@ export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
 utilities.lazyLoad(exports, ["AiMetadataStore"], () => require("./aiMetadataStore"));
 
+export { AiModelDevelopmentClusterArgs, AiModelDevelopmentClusterState } from "./aiModelDevelopmentCluster";
+export type AiModelDevelopmentCluster = import("./aiModelDevelopmentCluster").AiModelDevelopmentCluster;
+export const AiModelDevelopmentCluster: typeof import("./aiModelDevelopmentCluster").AiModelDevelopmentCluster = null as any;
+utilities.lazyLoad(exports, ["AiModelDevelopmentCluster"], () => require("./aiModelDevelopmentCluster"));
+
 export { AiModelGardenEnableModelArgs, AiModelGardenEnableModelState } from "./aiModelGardenEnableModel";
 export type AiModelGardenEnableModel = import("./aiModelGardenEnableModel").AiModelGardenEnableModel;
 export const AiModelGardenEnableModel: typeof import("./aiModelGardenEnableModel").AiModelGardenEnableModel = null as any;
@@ -377,6 +382,8 @@ const _module = {
                 return new AiIndexEndpointDeployedIndex(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
+            case "gcp:vertex/aiModelDevelopmentCluster:AiModelDevelopmentCluster":
+                return new AiModelDevelopmentCluster(name, <any>undefined, { urn })
             case "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel":
                 return new AiModelGardenEnableModel(name, <any>undefined, { urn })
             case "gcp:vertex/aiOnlineEvaluator:AiOnlineEvaluator":
@@ -446,6 +453,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpointDeployedIndex", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelDevelopmentCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiModelGardenEnableModel", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiOnlineEvaluator", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiPersistentResource", _module)

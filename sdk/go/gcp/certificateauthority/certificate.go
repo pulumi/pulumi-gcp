@@ -790,6 +790,164 @@ import (
 //	}
 //
 // ```
+// ### Privateca Certificate With Requested Not Before Time
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := certificateauthority.NewCaPool(ctx, "default", &certificateauthority.CaPoolArgs{
+//				Location: pulumi.String("us-central1"),
+//				Name:     pulumi.String("my-pool"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
+//					AllowRequesterSpecifiedNotBeforeTime: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "default", &certificateauthority.AuthorityArgs{
+//				Location:               pulumi.String("us-central1"),
+//				Pool:                   _default.Name,
+//				CertificateAuthorityId: pulumi.String("my-authority"),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("HashiCorp"),
+//							CommonName:   pulumi.String("my-certificate-authority"),
+//						},
+//						SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+//							DnsNames: pulumi.StringArray{
+//								pulumi.String("hashicorp.com"),
+//							},
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "test-fixtures/rsa_public.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificateauthority.NewCertificate(ctx, "default", &certificateauthority.CertificateArgs{
+//				Location:               pulumi.String("us-central1"),
+//				Pool:                   _default.Name,
+//				CertificateAuthority:   defaultAuthority.CertificateAuthorityId,
+//				Lifetime:               pulumi.String("86000s"),
+//				Name:                   pulumi.String("my-certificate"),
+//				RequestedNotBeforeTime: defaultAuthority.UpdateTime,
+//				Config: &certificateauthority.CertificateConfigArgs{
+//					SubjectConfig: &certificateauthority.CertificateConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.CertificateConfigSubjectConfigSubjectArgs{
+//							CommonName:         pulumi.String("san1.example.com"),
+//							CountryCode:        pulumi.String("us"),
+//							Organization:       pulumi.String("google"),
+//							OrganizationalUnit: pulumi.String("enterprise"),
+//							Locality:           pulumi.String("mountain view"),
+//							Province:           pulumi.String("california"),
+//							StreetAddress:      pulumi.String("1600 amphitheatre parkway"),
+//						},
+//						SubjectAltName: &certificateauthority.CertificateConfigSubjectConfigSubjectAltNameArgs{
+//							EmailAddresses: pulumi.StringArray{
+//								pulumi.String("email@example.com"),
+//							},
+//							IpAddresses: pulumi.StringArray{
+//								pulumi.String("127.0.0.1"),
+//							},
+//							Uris: pulumi.StringArray{
+//								pulumi.String("http://www.ietf.org/rfc/rfc3986.txt"),
+//							},
+//						},
+//					},
+//					X509Config: &certificateauthority.CertificateConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.CertificateConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CrlSign:      pulumi.Bool(false),
+//								DecipherOnly: pulumi.Bool(false),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(false),
+//							},
+//						},
+//						NameConstraints: &certificateauthority.CertificateConfigX509ConfigNameConstraintsArgs{
+//							Critical: pulumi.Bool(true),
+//							PermittedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.example.com"),
+//							},
+//							ExcludedDnsNames: pulumi.StringArray{
+//								pulumi.String("*.deny.example.com"),
+//							},
+//							PermittedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/8"),
+//							},
+//							ExcludedIpRanges: pulumi.StringArray{
+//								pulumi.String("10.1.1.0/24"),
+//							},
+//							PermittedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".example.com"),
+//							},
+//							ExcludedEmailAddresses: pulumi.StringArray{
+//								pulumi.String(".deny.example.com"),
+//							},
+//							PermittedUris: pulumi.StringArray{
+//								pulumi.String(".example.com"),
+//							},
+//							ExcludedUris: pulumi.StringArray{
+//								pulumi.String(".deny.example.com"),
+//							},
+//						},
+//					},
+//					PublicKey: &certificateauthority.CertificateConfigPublicKeyArgs{
+//						Format: pulumi.String("PEM"),
+//						Key:    pulumi.String(invokeFilebase64.Result),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -868,6 +1026,10 @@ type Certificate struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The requested notBeforeTime of this Certificate. This field may only be set
+	// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+	// issuing CaPool.
+	RequestedNotBeforeTime pulumi.StringPtrOutput `pulumi:"requestedNotBeforeTime"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
@@ -977,6 +1139,10 @@ type certificateState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The requested notBeforeTime of this Certificate. This field may only be set
+	// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+	// issuing CaPool.
+	RequestedNotBeforeTime *string `pulumi:"requestedNotBeforeTime"`
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
@@ -1046,6 +1212,10 @@ type CertificateState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The requested notBeforeTime of this Certificate. This field may only be set
+	// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+	// issuing CaPool.
+	RequestedNotBeforeTime pulumi.StringPtrInput
 	// Output only. Details regarding the revocation of this Certificate. This Certificate is
 	// considered revoked if and only if this field is present.
 	// Structure is documented below.
@@ -1102,6 +1272,10 @@ type certificateArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The requested notBeforeTime of this Certificate. This field may only be set
+	// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+	// issuing CaPool.
+	RequestedNotBeforeTime *string `pulumi:"requestedNotBeforeTime"`
 }
 
 // The set of arguments for constructing a Certificate resource.
@@ -1148,6 +1322,10 @@ type CertificateArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The requested notBeforeTime of this Certificate. This field may only be set
+	// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+	// issuing CaPool.
+	RequestedNotBeforeTime pulumi.StringPtrInput
 }
 
 func (CertificateArgs) ElementType() reflect.Type {
@@ -1349,6 +1527,13 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The requested notBeforeTime of this Certificate. This field may only be set
+// if the allowRequesterSpecifiedNotBeforeTime field is set to true for the
+// issuing CaPool.
+func (o CertificateOutput) RequestedNotBeforeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.RequestedNotBeforeTime }).(pulumi.StringPtrOutput)
 }
 
 // Output only. Details regarding the revocation of this Certificate. This Certificate is

@@ -56,7 +56,6 @@ namespace Pulumi.Gcp.ManagedKafka
     ///         {
     ///             { "key", "value" },
     ///         },
-    ///         KafkaVersion = "3.7.x",
     ///     });
     /// 
     /// });
@@ -296,7 +295,9 @@ namespace Pulumi.Gcp.ManagedKafka
         public Output<Outputs.ClusterGcpConfig> GcpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        /// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+        /// If not specified during cluster creation, defaults to `3.7.x`.
+        /// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
         /// </summary>
         [Output("kafkaVersion")]
         public Output<string> KafkaVersion { get; private set; } = null!;
@@ -458,7 +459,9 @@ namespace Pulumi.Gcp.ManagedKafka
         public Input<Inputs.ClusterGcpConfigArgs> GcpConfig { get; set; } = null!;
 
         /// <summary>
-        /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        /// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+        /// If not specified during cluster creation, defaults to `3.7.x`.
+        /// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
         /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }
@@ -579,7 +582,9 @@ namespace Pulumi.Gcp.ManagedKafka
         public Input<Inputs.ClusterGcpConfigGetArgs>? GcpConfig { get; set; }
 
         /// <summary>
-        /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+        /// The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+        /// If not specified during cluster creation, defaults to `3.7.x`.
+        /// If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
         /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }

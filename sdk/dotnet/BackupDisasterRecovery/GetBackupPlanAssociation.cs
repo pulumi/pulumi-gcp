@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [OutputType]
     public sealed class GetBackupPlanAssociationResult
     {
+        public readonly string AutoProtectionPolicyBinding;
         public readonly string BackupPlan;
         public readonly string BackupPlanAssociationId;
         public readonly string CreateTime;
@@ -161,6 +162,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         [OutputConstructor]
         private GetBackupPlanAssociationResult(
+            string autoProtectionPolicyBinding,
+
             string backupPlan,
 
             string backupPlanAssociationId,
@@ -187,6 +190,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string updateTime)
         {
+            AutoProtectionPolicyBinding = autoProtectionPolicyBinding;
             BackupPlan = backupPlan;
             BackupPlanAssociationId = backupPlanAssociationId;
             CreateTime = createTime;

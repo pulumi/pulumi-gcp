@@ -6,6 +6,7 @@ package com.pulumi.gcp.securitycenter;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,6 +49,21 @@ public final class V2OrganizationSccBigQueryExportsArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> dataset() {
         return Optional.ofNullable(this.dataset);
+    }
+
+    /**
+     * Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    @Import(name="deletionNotificationsEnabled")
+    private @Nullable Output<Boolean> deletionNotificationsEnabled;
+
+    /**
+     * @return Indicates whether the notifications will be sent for deleted findings.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionNotificationsEnabled() {
+        return Optional.ofNullable(this.deletionNotificationsEnabled);
     }
 
     /**
@@ -197,6 +213,7 @@ public final class V2OrganizationSccBigQueryExportsArgs extends com.pulumi.resou
     private V2OrganizationSccBigQueryExportsArgs(V2OrganizationSccBigQueryExportsArgs $) {
         this.bigQueryExportId = $.bigQueryExportId;
         this.dataset = $.dataset;
+        this.deletionNotificationsEnabled = $.deletionNotificationsEnabled;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.filter = $.filter;
@@ -267,6 +284,27 @@ public final class V2OrganizationSccBigQueryExportsArgs extends com.pulumi.resou
          */
         public Builder dataset(String dataset) {
             return dataset(Output.of(dataset));
+        }
+
+        /**
+         * @param deletionNotificationsEnabled Indicates whether the notifications will be sent for deleted findings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionNotificationsEnabled(@Nullable Output<Boolean> deletionNotificationsEnabled) {
+            $.deletionNotificationsEnabled = deletionNotificationsEnabled;
+            return this;
+        }
+
+        /**
+         * @param deletionNotificationsEnabled Indicates whether the notifications will be sent for deleted findings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionNotificationsEnabled(Boolean deletionNotificationsEnabled) {
+            return deletionNotificationsEnabled(Output.of(deletionNotificationsEnabled));
         }
 
         /**

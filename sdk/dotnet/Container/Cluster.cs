@@ -610,7 +610,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterManagedMachineLearningDiagnosticsConfig> ManagedMachineLearningDiagnosticsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         /// </summary>
         [Output("managedOpentelemetryConfig")]
         public Output<Outputs.ClusterManagedOpentelemetryConfig> ManagedOpentelemetryConfig { get; private set; } = null!;
@@ -902,6 +902,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("rollbackSafeUpgrade")]
         public Output<Outputs.ClusterRollbackSafeUpgrade?> RollbackSafeUpgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// )
+        /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        /// </summary>
+        [Output("scheduleUpgradeConfig")]
+        public Output<Outputs.ClusterScheduleUpgradeConfig> ScheduleUpgradeConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for the
@@ -1417,7 +1424,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         /// </summary>
         [Input("managedOpentelemetryConfig")]
         public Input<Inputs.ClusterManagedOpentelemetryConfigArgs>? ManagedOpentelemetryConfig { get; set; }
@@ -1710,6 +1717,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("rollbackSafeUpgrade")]
         public Input<Inputs.ClusterRollbackSafeUpgradeArgs>? RollbackSafeUpgrade { get; set; }
+
+        /// <summary>
+        /// )
+        /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        /// </summary>
+        [Input("scheduleUpgradeConfig")]
+        public Input<Inputs.ClusterScheduleUpgradeConfigArgs>? ScheduleUpgradeConfig { get; set; }
 
         /// <summary>
         /// Configuration for the
@@ -2193,7 +2207,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigGetArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         /// </summary>
         [Input("managedOpentelemetryConfig")]
         public Input<Inputs.ClusterManagedOpentelemetryConfigGetArgs>? ManagedOpentelemetryConfig { get; set; }
@@ -2513,6 +2527,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("rollbackSafeUpgrade")]
         public Input<Inputs.ClusterRollbackSafeUpgradeGetArgs>? RollbackSafeUpgrade { get; set; }
+
+        /// <summary>
+        /// )
+        /// Configuration for [scheduled upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#scheduled_upgrades). Structure is documented below.
+        /// </summary>
+        [Input("scheduleUpgradeConfig")]
+        public Input<Inputs.ClusterScheduleUpgradeConfigGetArgs>? ScheduleUpgradeConfig { get; set; }
 
         /// <summary>
         /// Configuration for the

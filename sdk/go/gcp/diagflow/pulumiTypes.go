@@ -6043,6 +6043,9 @@ type ConversationProfileSttConfig struct {
 	AudioEncoding *string `pulumi:"audioEncoding"`
 	// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
 	EnableWordInfo *bool `pulumi:"enableWordInfo"`
+	// Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+	// Structure is documented below.
+	GeminiAsrConfig *ConversationProfileSttConfigGeminiAsrConfig `pulumi:"geminiAsrConfig"`
 	// The language of the supplied audio.
 	LanguageCode *string `pulumi:"languageCode"`
 	// Which Speech model to select.
@@ -6053,6 +6056,8 @@ type ConversationProfileSttConfig struct {
 	// The speech model used in speech to text.
 	// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
 	SpeechModelVariant *string `pulumi:"speechModelVariant"`
+	// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+	UseGeminiAsr *bool `pulumi:"useGeminiAsr"`
 	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
 }
@@ -6074,6 +6079,9 @@ type ConversationProfileSttConfigArgs struct {
 	AudioEncoding pulumi.StringPtrInput `pulumi:"audioEncoding"`
 	// If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
 	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
+	// Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+	// Structure is documented below.
+	GeminiAsrConfig ConversationProfileSttConfigGeminiAsrConfigPtrInput `pulumi:"geminiAsrConfig"`
 	// The language of the supplied audio.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 	// Which Speech model to select.
@@ -6084,6 +6092,8 @@ type ConversationProfileSttConfigArgs struct {
 	// The speech model used in speech to text.
 	// Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
 	SpeechModelVariant pulumi.StringPtrInput `pulumi:"speechModelVariant"`
+	// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+	UseGeminiAsr pulumi.BoolPtrInput `pulumi:"useGeminiAsr"`
 	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
 }
@@ -6176,6 +6186,14 @@ func (o ConversationProfileSttConfigOutput) EnableWordInfo() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v ConversationProfileSttConfig) *bool { return v.EnableWordInfo }).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+// Structure is documented below.
+func (o ConversationProfileSttConfigOutput) GeminiAsrConfig() ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *ConversationProfileSttConfigGeminiAsrConfig {
+		return v.GeminiAsrConfig
+	}).(ConversationProfileSttConfigGeminiAsrConfigPtrOutput)
+}
+
 // The language of the supplied audio.
 func (o ConversationProfileSttConfigOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
@@ -6196,6 +6214,11 @@ func (o ConversationProfileSttConfigOutput) SampleRateHertz() pulumi.IntPtrOutpu
 // Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
 func (o ConversationProfileSttConfigOutput) SpeechModelVariant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConversationProfileSttConfig) *string { return v.SpeechModelVariant }).(pulumi.StringPtrOutput)
+}
+
+// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+func (o ConversationProfileSttConfigOutput) UseGeminiAsr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfig) *bool { return v.UseGeminiAsr }).(pulumi.BoolPtrOutput)
 }
 
 // Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
@@ -6248,6 +6271,17 @@ func (o ConversationProfileSttConfigPtrOutput) EnableWordInfo() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+// Structure is documented below.
+func (o ConversationProfileSttConfigPtrOutput) GeminiAsrConfig() ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *ConversationProfileSttConfigGeminiAsrConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GeminiAsrConfig
+	}).(ConversationProfileSttConfigGeminiAsrConfigPtrOutput)
+}
+
 // The language of the supplied audio.
 func (o ConversationProfileSttConfigPtrOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileSttConfig) *string {
@@ -6290,6 +6324,16 @@ func (o ConversationProfileSttConfigPtrOutput) SpeechModelVariant() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+func (o ConversationProfileSttConfigPtrOutput) UseGeminiAsr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseGeminiAsr
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 func (o ConversationProfileSttConfigPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConversationProfileSttConfig) *bool {
@@ -6298,6 +6342,227 @@ func (o ConversationProfileSttConfigPtrOutput) UseTimeoutBasedEndpointing() pulu
 		}
 		return v.UseTimeoutBasedEndpointing
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ConversationProfileSttConfigGeminiAsrConfig struct {
+	// End of speech sensitivity.
+	// Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+	EndOfSpeechSensitivity *string `pulumi:"endOfSpeechSensitivity"`
+	// The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+	ModelId *string `pulumi:"modelId"`
+	// The required duration of detected speech before start-of-speech is committed.
+	PrefixPaddingMs *int `pulumi:"prefixPaddingMs"`
+	// The required duration of detected silence (or non-speech) before end-of-speech is committed.
+	SilenceDurationMs *int `pulumi:"silenceDurationMs"`
+	// Start of speech sensitivity.
+	// Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+	StartOfSpeechSensitivity *string `pulumi:"startOfSpeechSensitivity"`
+}
+
+// ConversationProfileSttConfigGeminiAsrConfigInput is an input type that accepts ConversationProfileSttConfigGeminiAsrConfigArgs and ConversationProfileSttConfigGeminiAsrConfigOutput values.
+// You can construct a concrete instance of `ConversationProfileSttConfigGeminiAsrConfigInput` via:
+//
+//	ConversationProfileSttConfigGeminiAsrConfigArgs{...}
+type ConversationProfileSttConfigGeminiAsrConfigInput interface {
+	pulumi.Input
+
+	ToConversationProfileSttConfigGeminiAsrConfigOutput() ConversationProfileSttConfigGeminiAsrConfigOutput
+	ToConversationProfileSttConfigGeminiAsrConfigOutputWithContext(context.Context) ConversationProfileSttConfigGeminiAsrConfigOutput
+}
+
+type ConversationProfileSttConfigGeminiAsrConfigArgs struct {
+	// End of speech sensitivity.
+	// Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+	EndOfSpeechSensitivity pulumi.StringPtrInput `pulumi:"endOfSpeechSensitivity"`
+	// The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+	ModelId pulumi.StringPtrInput `pulumi:"modelId"`
+	// The required duration of detected speech before start-of-speech is committed.
+	PrefixPaddingMs pulumi.IntPtrInput `pulumi:"prefixPaddingMs"`
+	// The required duration of detected silence (or non-speech) before end-of-speech is committed.
+	SilenceDurationMs pulumi.IntPtrInput `pulumi:"silenceDurationMs"`
+	// Start of speech sensitivity.
+	// Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+	StartOfSpeechSensitivity pulumi.StringPtrInput `pulumi:"startOfSpeechSensitivity"`
+}
+
+func (ConversationProfileSttConfigGeminiAsrConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileSttConfigGeminiAsrConfig)(nil)).Elem()
+}
+
+func (i ConversationProfileSttConfigGeminiAsrConfigArgs) ToConversationProfileSttConfigGeminiAsrConfigOutput() ConversationProfileSttConfigGeminiAsrConfigOutput {
+	return i.ToConversationProfileSttConfigGeminiAsrConfigOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileSttConfigGeminiAsrConfigArgs) ToConversationProfileSttConfigGeminiAsrConfigOutputWithContext(ctx context.Context) ConversationProfileSttConfigGeminiAsrConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSttConfigGeminiAsrConfigOutput)
+}
+
+func (i ConversationProfileSttConfigGeminiAsrConfigArgs) ToConversationProfileSttConfigGeminiAsrConfigPtrOutput() ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return i.ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConversationProfileSttConfigGeminiAsrConfigArgs) ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSttConfigGeminiAsrConfigOutput).ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(ctx)
+}
+
+// ConversationProfileSttConfigGeminiAsrConfigPtrInput is an input type that accepts ConversationProfileSttConfigGeminiAsrConfigArgs, ConversationProfileSttConfigGeminiAsrConfigPtr and ConversationProfileSttConfigGeminiAsrConfigPtrOutput values.
+// You can construct a concrete instance of `ConversationProfileSttConfigGeminiAsrConfigPtrInput` via:
+//
+//	        ConversationProfileSttConfigGeminiAsrConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversationProfileSttConfigGeminiAsrConfigPtrInput interface {
+	pulumi.Input
+
+	ToConversationProfileSttConfigGeminiAsrConfigPtrOutput() ConversationProfileSttConfigGeminiAsrConfigPtrOutput
+	ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(context.Context) ConversationProfileSttConfigGeminiAsrConfigPtrOutput
+}
+
+type conversationProfileSttConfigGeminiAsrConfigPtrType ConversationProfileSttConfigGeminiAsrConfigArgs
+
+func ConversationProfileSttConfigGeminiAsrConfigPtr(v *ConversationProfileSttConfigGeminiAsrConfigArgs) ConversationProfileSttConfigGeminiAsrConfigPtrInput {
+	return (*conversationProfileSttConfigGeminiAsrConfigPtrType)(v)
+}
+
+func (*conversationProfileSttConfigGeminiAsrConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileSttConfigGeminiAsrConfig)(nil)).Elem()
+}
+
+func (i *conversationProfileSttConfigGeminiAsrConfigPtrType) ToConversationProfileSttConfigGeminiAsrConfigPtrOutput() ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return i.ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *conversationProfileSttConfigGeminiAsrConfigPtrType) ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversationProfileSttConfigGeminiAsrConfigPtrOutput)
+}
+
+type ConversationProfileSttConfigGeminiAsrConfigOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileSttConfigGeminiAsrConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversationProfileSttConfigGeminiAsrConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) ToConversationProfileSttConfigGeminiAsrConfigOutput() ConversationProfileSttConfigGeminiAsrConfigOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) ToConversationProfileSttConfigGeminiAsrConfigOutputWithContext(ctx context.Context) ConversationProfileSttConfigGeminiAsrConfigOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) ToConversationProfileSttConfigGeminiAsrConfigPtrOutput() ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return o.ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversationProfileSttConfigGeminiAsrConfig) *ConversationProfileSttConfigGeminiAsrConfig {
+		return &v
+	}).(ConversationProfileSttConfigGeminiAsrConfigPtrOutput)
+}
+
+// End of speech sensitivity.
+// Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) EndOfSpeechSensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfigGeminiAsrConfig) *string { return v.EndOfSpeechSensitivity }).(pulumi.StringPtrOutput)
+}
+
+// The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfigGeminiAsrConfig) *string { return v.ModelId }).(pulumi.StringPtrOutput)
+}
+
+// The required duration of detected speech before start-of-speech is committed.
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) PrefixPaddingMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfigGeminiAsrConfig) *int { return v.PrefixPaddingMs }).(pulumi.IntPtrOutput)
+}
+
+// The required duration of detected silence (or non-speech) before end-of-speech is committed.
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) SilenceDurationMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfigGeminiAsrConfig) *int { return v.SilenceDurationMs }).(pulumi.IntPtrOutput)
+}
+
+// Start of speech sensitivity.
+// Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+func (o ConversationProfileSttConfigGeminiAsrConfigOutput) StartOfSpeechSensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversationProfileSttConfigGeminiAsrConfig) *string { return v.StartOfSpeechSensitivity }).(pulumi.StringPtrOutput)
+}
+
+type ConversationProfileSttConfigGeminiAsrConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversationProfileSttConfigGeminiAsrConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversationProfileSttConfigGeminiAsrConfig)(nil)).Elem()
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) ToConversationProfileSttConfigGeminiAsrConfigPtrOutput() ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) ToConversationProfileSttConfigGeminiAsrConfigPtrOutputWithContext(ctx context.Context) ConversationProfileSttConfigGeminiAsrConfigPtrOutput {
+	return o
+}
+
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) Elem() ConversationProfileSttConfigGeminiAsrConfigOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfigGeminiAsrConfig) ConversationProfileSttConfigGeminiAsrConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConversationProfileSttConfigGeminiAsrConfig
+		return ret
+	}).(ConversationProfileSttConfigGeminiAsrConfigOutput)
+}
+
+// End of speech sensitivity.
+// Possible values are: `END_SENSITIVITY_HIGH`, `END_SENSITIVITY_LOW`.
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) EndOfSpeechSensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfigGeminiAsrConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndOfSpeechSensitivity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Gemini ASR model ID used for transcription. This value overrides the default model ID configured on the server.
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) ModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfigGeminiAsrConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The required duration of detected speech before start-of-speech is committed.
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) PrefixPaddingMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfigGeminiAsrConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixPaddingMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The required duration of detected silence (or non-speech) before end-of-speech is committed.
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) SilenceDurationMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfigGeminiAsrConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SilenceDurationMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start of speech sensitivity.
+// Possible values are: `START_SENSITIVITY_HIGH`, `START_SENSITIVITY_LOW`.
+func (o ConversationProfileSttConfigGeminiAsrConfigPtrOutput) StartOfSpeechSensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversationProfileSttConfigGeminiAsrConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartOfSpeechSensitivity
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConversationProfileTtsConfig struct {
@@ -52784,6 +53049,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSipConfigPtrInput)(nil)).Elem(), ConversationProfileSipConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigPtrInput)(nil)).Elem(), ConversationProfileSttConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigGeminiAsrConfigInput)(nil)).Elem(), ConversationProfileSttConfigGeminiAsrConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileSttConfigGeminiAsrConfigPtrInput)(nil)).Elem(), ConversationProfileSttConfigGeminiAsrConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigInput)(nil)).Elem(), ConversationProfileTtsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigPtrInput)(nil)).Elem(), ConversationProfileTtsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileTtsConfigVoiceInput)(nil)).Elem(), ConversationProfileTtsConfigVoiceArgs{})
@@ -53415,6 +53682,8 @@ func init() {
 	pulumi.RegisterOutputType(ConversationProfileSipConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileSttConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileSttConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConversationProfileSttConfigGeminiAsrConfigOutput{})
+	pulumi.RegisterOutputType(ConversationProfileSttConfigGeminiAsrConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileTtsConfigOutput{})
 	pulumi.RegisterOutputType(ConversationProfileTtsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConversationProfileTtsConfigVoiceOutput{})

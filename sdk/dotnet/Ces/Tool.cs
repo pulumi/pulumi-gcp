@@ -294,6 +294,7 @@ namespace Pulumi.Gcp.Ces
     ///                         {
     ///                             Model = "gemini-3.0-flash-001",
     ///                             Temperature = 1.0,
+    ///                             ThinkingLevel = "LOW",
     ///                         },
     ///                         Prompt = "example-prompt",
     ///                         Disabled = false,
@@ -304,6 +305,7 @@ namespace Pulumi.Gcp.Ces
     ///                         {
     ///                             Model = "gemini-3.0-flash-001",
     ///                             Temperature = 1.0,
+    ///                             ThinkingLevel = "LOW",
     ///                         },
     ///                         Prompt = "example-prompt",
     ///                         Disabled = false,
@@ -312,6 +314,11 @@ namespace Pulumi.Gcp.Ces
     ///                     {
     ///                         GroundingLevel = 3.0,
     ///                         Disabled = false,
+    ///                     },
+    ///                     SnippetsConfig = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigSnippetsConfigArgs
+    ///                     {
+    ///                         EnableSnippets = true,
+    ///                         MaxSnippets = 5,
     ///                     },
     ///                 },
     ///             },
