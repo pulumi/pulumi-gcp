@@ -114,14 +114,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      * 
      */
     @Import(name="kafkaVersion")
     private @Nullable Output<String> kafkaVersion;
 
     /**
-     * @return The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * @return The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      * 
      */
     public Optional<Output<String>> kafkaVersion() {
@@ -369,7 +373,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaVersion The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+         * @param kafkaVersion The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+         * If not specified during cluster creation, defaults to `3.7.x`.
+         * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
          * 
          * @return builder
          * 
@@ -380,7 +386,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkaVersion The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+         * @param kafkaVersion The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+         * If not specified during cluster creation, defaults to `3.7.x`.
+         * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
          * 
          * @return builder
          * 

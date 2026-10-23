@@ -787,6 +787,7 @@ class Guardrail(pulumi.CustomResource):
                     "model_settings": {
                         "model": "gemini-3.0-flash-001",
                         "temperature": float(50),
+                        "thinking_level": "LOW",
                     },
                     "prompt": "example_prompt",
                     "policy_scope": "USER_QUERY",
@@ -976,6 +977,7 @@ class Guardrail(pulumi.CustomResource):
                 "model_settings": {
                     "model": "gemini-3.0-flash-001",
                     "temperature": float(50),
+                    "thinking_level": "LOW",
                 },
                 "prompt": "example_prompt",
                 "policy_scope": "USER_QUERY",
@@ -1181,6 +1183,7 @@ class Guardrail(pulumi.CustomResource):
                     "model_settings": {
                         "model": "gemini-3.0-flash-001",
                         "temperature": float(50),
+                        "thinking_level": "LOW",
                     },
                     "prompt": "example_prompt",
                     "policy_scope": "USER_QUERY",
@@ -1370,6 +1373,7 @@ class Guardrail(pulumi.CustomResource):
                 "model_settings": {
                     "model": "gemini-3.0-flash-001",
                     "temperature": float(50),
+                    "thinking_level": "LOW",
                 },
                 "prompt": "example_prompt",
                 "policy_scope": "USER_QUERY",

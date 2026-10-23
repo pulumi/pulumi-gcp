@@ -27,7 +27,10 @@ public final class ServicePerimeterSpecIngressPolicyIngressFromSource {
     /**
      * @return A Google Cloud resource that is allowed to egress the perimeter.
      * Requests from these resources are allowed to access data outside the perimeter.
-     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * Projects, folders, and organizations are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * Organization format: `organizations/{organization_number}`
      * The resource may be in any Google Cloud organization, not just the
      * organization that the perimeter is defined in. `*` is not allowed, the
      * case of allowing all Google Cloud resources only is not supported.
@@ -55,7 +58,10 @@ public final class ServicePerimeterSpecIngressPolicyIngressFromSource {
     /**
      * @return A Google Cloud resource that is allowed to egress the perimeter.
      * Requests from these resources are allowed to access data outside the perimeter.
-     * Currently only projects are allowed. Project format: `projects/{project_number}`.
+     * Projects, folders, and organizations are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * Organization format: `organizations/{organization_number}`
      * The resource may be in any Google Cloud organization, not just the
      * organization that the perimeter is defined in. `*` is not allowed, the
      * case of allowing all Google Cloud resources only is not supported.

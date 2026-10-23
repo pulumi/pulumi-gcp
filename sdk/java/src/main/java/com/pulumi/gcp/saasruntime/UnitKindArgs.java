@@ -6,6 +6,8 @@ package com.pulumi.gcp.saasruntime;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.saasruntime.inputs.UnitKindAppParamsArgs;
+import com.pulumi.gcp.saasruntime.inputs.UnitKindApplicationTemplateComponentArgs;
 import com.pulumi.gcp.saasruntime.inputs.UnitKindDependencyArgs;
 import com.pulumi.gcp.saasruntime.inputs.UnitKindInputVariableMappingArgs;
 import com.pulumi.gcp.saasruntime.inputs.UnitKindOutputVariableMappingArgs;
@@ -44,6 +46,44 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
+    }
+
+    /**
+     * Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="appParams")
+    private @Nullable Output<UnitKindAppParamsArgs> appParams;
+
+    /**
+     * @return Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<UnitKindAppParamsArgs>> appParams() {
+        return Optional.ofNullable(this.appParams);
+    }
+
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="applicationTemplateComponent")
+    private @Nullable Output<UnitKindApplicationTemplateComponentArgs> applicationTemplateComponent;
+
+    /**
+     * @return Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<UnitKindApplicationTemplateComponentArgs>> applicationTemplateComponent() {
+        return Optional.ofNullable(this.applicationTemplateComponent);
     }
 
     /**
@@ -242,6 +282,8 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
 
     private UnitKindArgs(UnitKindArgs $) {
         this.annotations = $.annotations;
+        this.appParams = $.appParams;
+        this.applicationTemplateComponent = $.applicationTemplateComponent;
         this.defaultRelease = $.defaultRelease;
         this.deletionPolicy = $.deletionPolicy;
         this.dependencies = $.dependencies;
@@ -301,6 +343,56 @@ public final class UnitKindArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param appParams Parameters for creating an App Hub Application for the Units of this
+         * UnitKind.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appParams(@Nullable Output<UnitKindAppParamsArgs> appParams) {
+            $.appParams = appParams;
+            return this;
+        }
+
+        /**
+         * @param appParams Parameters for creating an App Hub Application for the Units of this
+         * UnitKind.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appParams(UnitKindAppParamsArgs appParams) {
+            return appParams(Output.of(appParams));
+        }
+
+        /**
+         * @param applicationTemplateComponent Reference to a component and revision in a composite Application Design
+         * Center ApplicationTemplate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplateComponent(@Nullable Output<UnitKindApplicationTemplateComponentArgs> applicationTemplateComponent) {
+            $.applicationTemplateComponent = applicationTemplateComponent;
+            return this;
+        }
+
+        /**
+         * @param applicationTemplateComponent Reference to a component and revision in a composite Application Design
+         * Center ApplicationTemplate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationTemplateComponent(UnitKindApplicationTemplateComponentArgs applicationTemplateComponent) {
+            return applicationTemplateComponent(Output.of(applicationTemplateComponent));
         }
 
         /**

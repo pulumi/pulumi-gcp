@@ -49,6 +49,29 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     * 
+     */
+    @Import(name="application")
+    private @Nullable Output<String> application;
+
+    /**
+     * @return Reference to the App Hub Application this Unit belongs to, in the format
+     * `projects/{project}/locations/{location}/applications/{application}`.
+     * All resources deployed in this Unit are associated with the specified
+     * Application. If empty, the service sets it during any UnitOperation
+     * when the UnitKind has `app_params.group` and App Hub is enabled.
+     * 
+     */
+    public Optional<Output<String>> application() {
+        return Optional.ofNullable(this.application);
+    }
+
+    /**
      * A set of conditions which indicate the various conditions this resource can
      * have.
      * Structure is documented below.
@@ -574,6 +597,7 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
 
     private UnitState(UnitState $) {
         this.annotations = $.annotations;
+        this.application = $.application;
         this.conditions = $.conditions;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
@@ -651,6 +675,35 @@ public final class UnitState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param application Reference to the App Hub Application this Unit belongs to, in the format
+         * `projects/{project}/locations/{location}/applications/{application}`.
+         * All resources deployed in this Unit are associated with the specified
+         * Application. If empty, the service sets it during any UnitOperation
+         * when the UnitKind has `app_params.group` and App Hub is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder application(@Nullable Output<String> application) {
+            $.application = application;
+            return this;
+        }
+
+        /**
+         * @param application Reference to the App Hub Application this Unit belongs to, in the format
+         * `projects/{project}/locations/{location}/applications/{application}`.
+         * All resources deployed in this Unit are associated with the specified
+         * Application. If empty, the service sets it during any UnitOperation
+         * when the UnitKind has `app_params.group` and App Hub is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder application(String application) {
+            return application(Output.of(application));
         }
 
         /**

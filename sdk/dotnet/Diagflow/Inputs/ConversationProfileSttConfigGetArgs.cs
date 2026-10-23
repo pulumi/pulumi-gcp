@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public Input<bool>? EnableWordInfo { get; set; }
 
         /// <summary>
+        /// Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `UseGeminiAsr` is true.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("geminiAsrConfig")]
+        public Input<Inputs.ConversationProfileSttConfigGeminiAsrConfigGetArgs>? GeminiAsrConfig { get; set; }
+
+        /// <summary>
         /// The language of the supplied audio.
         /// </summary>
         [Input("languageCode")]
@@ -50,6 +57,12 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// </summary>
         [Input("speechModelVariant")]
         public Input<string>? SpeechModelVariant { get; set; }
+
+        /// <summary>
+        /// If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+        /// </summary>
+        [Input("useGeminiAsr")]
+        public Input<bool>? UseGeminiAsr { get; set; }
 
         /// <summary>
         /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.

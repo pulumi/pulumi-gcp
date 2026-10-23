@@ -17,11 +17,20 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Whether snippets are enabled.
         /// </summary>
         public readonly bool? EnableSnippets;
+        /// <summary>
+        /// Number of snippets to return per query.
+        /// If unset, returns all snippets from the service by default.
+        /// </summary>
+        public readonly int? MaxSnippets;
 
         [OutputConstructor]
-        private ToolDataStoreToolModalityConfigSnippetsConfig(bool? enableSnippets)
+        private ToolDataStoreToolModalityConfigSnippetsConfig(
+            bool? enableSnippets,
+
+            int? maxSnippets)
         {
             EnableSnippets = enableSnippets;
+            MaxSnippets = maxSnippets;
         }
     }
 }

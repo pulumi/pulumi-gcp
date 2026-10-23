@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionBigtableConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionDeadLetterPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionExpirationPolicyArgs;
@@ -72,8 +73,8 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -82,8 +83,8 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -92,9 +93,30 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If delivery to Bigtable is used with this subscription, this field is used to configure it.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bigtableConfig")
+    private @Nullable Output<SubscriptionBigtableConfigArgs> bigtableConfig;
+
+    /**
+     * @return If delivery to Bigtable is used with this subscription, this field is used to configure it.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubscriptionBigtableConfigArgs>> bigtableConfig() {
+        return Optional.ofNullable(this.bigtableConfig);
+    }
+
+    /**
      * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -103,8 +125,8 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+     * If none of them are set, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -477,6 +499,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     private SubscriptionArgs(SubscriptionArgs $) {
         this.ackDeadlineSeconds = $.ackDeadlineSeconds;
         this.bigqueryConfig = $.bigqueryConfig;
+        this.bigtableConfig = $.bigtableConfig;
         this.cloudStorageConfig = $.cloudStorageConfig;
         this.deadLetterPolicy = $.deadLetterPolicy;
         this.deletionPolicy = $.deletionPolicy;
@@ -565,8 +588,8 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryConfig If delivery to BigQuery is used with this subscription, this field is used to configure it.
-         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-         * If all three are empty, then the subscriber will pull and ack messages using API methods.
+         * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+         * If none of them are set, then the subscriber will pull and ack messages using API methods.
          * Structure is documented below.
          * 
          * @return builder
@@ -579,8 +602,8 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryConfig If delivery to BigQuery is used with this subscription, this field is used to configure it.
-         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-         * If all three are empty, then the subscriber will pull and ack messages using API methods.
+         * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+         * If none of them are set, then the subscriber will pull and ack messages using API methods.
          * Structure is documented below.
          * 
          * @return builder
@@ -591,9 +614,36 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bigtableConfig If delivery to Bigtable is used with this subscription, this field is used to configure it.
+         * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+         * If none of them are set, then the subscriber will pull and ack messages using API methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigtableConfig(@Nullable Output<SubscriptionBigtableConfigArgs> bigtableConfig) {
+            $.bigtableConfig = bigtableConfig;
+            return this;
+        }
+
+        /**
+         * @param bigtableConfig If delivery to Bigtable is used with this subscription, this field is used to configure it.
+         * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+         * If none of them are set, then the subscriber will pull and ack messages using API methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bigtableConfig(SubscriptionBigtableConfigArgs bigtableConfig) {
+            return bigtableConfig(Output.of(bigtableConfig));
+        }
+
+        /**
          * @param cloudStorageConfig If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-         * If all three are empty, then the subscriber will pull and ack messages using API methods.
+         * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+         * If none of them are set, then the subscriber will pull and ack messages using API methods.
          * Structure is documented below.
          * 
          * @return builder
@@ -606,8 +656,8 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cloudStorageConfig If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-         * If all three are empty, then the subscriber will pull and ack messages using API methods.
+         * Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+         * If none of them are set, then the subscriber will pull and ack messages using API methods.
          * Structure is documented below.
          * 
          * @return builder

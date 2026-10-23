@@ -9738,6 +9738,9 @@ type AppModelSettings struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
 }
 
 // AppModelSettingsInput is an input type that accepts AppModelSettingsArgs and AppModelSettingsOutput values.
@@ -9760,6 +9763,9 @@ type AppModelSettingsArgs struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
 }
 
 func (AppModelSettingsArgs) ElementType() reflect.Type {
@@ -9853,6 +9859,12 @@ func (o AppModelSettingsOutput) Temperature() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AppModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
 }
 
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o AppModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppModelSettings) *string { return v.ThinkingLevel }).(pulumi.StringPtrOutput)
+}
+
 type AppModelSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (AppModelSettingsPtrOutput) ElementType() reflect.Type {
@@ -9899,6 +9911,17 @@ func (o AppModelSettingsPtrOutput) Temperature() pulumi.Float64PtrOutput {
 		}
 		return v.Temperature
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o AppModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppTimeZoneSettings struct {
@@ -43196,6 +43219,9 @@ type GuardrailLlmPolicyModelSettings struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
 }
 
 // GuardrailLlmPolicyModelSettingsInput is an input type that accepts GuardrailLlmPolicyModelSettingsArgs and GuardrailLlmPolicyModelSettingsOutput values.
@@ -43218,6 +43244,9 @@ type GuardrailLlmPolicyModelSettingsArgs struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
 }
 
 func (GuardrailLlmPolicyModelSettingsArgs) ElementType() reflect.Type {
@@ -43311,6 +43340,12 @@ func (o GuardrailLlmPolicyModelSettingsOutput) Temperature() pulumi.Float64PtrOu
 	return o.ApplyT(func(v GuardrailLlmPolicyModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
 }
 
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o GuardrailLlmPolicyModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPolicyModelSettings) *string { return v.ThinkingLevel }).(pulumi.StringPtrOutput)
+}
+
 type GuardrailLlmPolicyModelSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (GuardrailLlmPolicyModelSettingsPtrOutput) ElementType() reflect.Type {
@@ -43357,6 +43392,17 @@ func (o GuardrailLlmPolicyModelSettingsPtrOutput) Temperature() pulumi.Float64Pt
 		}
 		return v.Temperature
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o GuardrailLlmPolicyModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPolicyModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type GuardrailLlmPromptSecurity struct {
@@ -43859,6 +43905,9 @@ type GuardrailLlmPromptSecurityCustomPolicyModelSettings struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
 }
 
 // GuardrailLlmPromptSecurityCustomPolicyModelSettingsInput is an input type that accepts GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs and GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput values.
@@ -43881,6 +43930,9 @@ type GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
 }
 
 func (GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs) ElementType() reflect.Type {
@@ -43974,6 +44026,12 @@ func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) Temperature()
 	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicyModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
 }
 
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuardrailLlmPromptSecurityCustomPolicyModelSettings) *string { return v.ThinkingLevel }).(pulumi.StringPtrOutput)
+}
+
 type GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) ElementType() reflect.Type {
@@ -44020,6 +44078,17 @@ func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) Temperatur
 		}
 		return v.Temperature
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o GuardrailLlmPromptSecurityCustomPolicyModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuardrailLlmPromptSecurityCustomPolicyModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type GuardrailLlmPromptSecurityDefaultSettings struct {
@@ -49641,6 +49710,14 @@ type ToolDataStoreToolModalityConfigRewriterConfigModelSettings struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values:
+	// DEFAULT
+	// LOW
+	// MEDIUM
+	// HIGH
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
 }
 
 // ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput is an input type that accepts ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs and ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput values.
@@ -49663,6 +49740,14 @@ type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values:
+	// DEFAULT
+	// LOW
+	// MEDIUM
+	// HIGH
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
 }
 
 func (ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs) ElementType() reflect.Type {
@@ -49756,6 +49841,17 @@ func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) Temper
 	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
 }
 
+// The thinking level of the model.
+// Possible values:
+// DEFAULT
+// LOW
+// MEDIUM
+// HIGH
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *string { return v.ThinkingLevel }).(pulumi.StringPtrOutput)
+}
+
 type ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) ElementType() reflect.Type {
@@ -49804,9 +49900,28 @@ func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) Tem
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The thinking level of the model.
+// Possible values:
+// DEFAULT
+// LOW
+// MEDIUM
+// HIGH
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigRewriterConfigModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
+}
+
 type ToolDataStoreToolModalityConfigSnippetsConfig struct {
 	// Whether snippets are enabled.
 	EnableSnippets *bool `pulumi:"enableSnippets"`
+	// Number of snippets to return per query.
+	// If unset, returns all snippets from the service by default.
+	MaxSnippets *int `pulumi:"maxSnippets"`
 }
 
 // ToolDataStoreToolModalityConfigSnippetsConfigInput is an input type that accepts ToolDataStoreToolModalityConfigSnippetsConfigArgs and ToolDataStoreToolModalityConfigSnippetsConfigOutput values.
@@ -49823,6 +49938,9 @@ type ToolDataStoreToolModalityConfigSnippetsConfigInput interface {
 type ToolDataStoreToolModalityConfigSnippetsConfigArgs struct {
 	// Whether snippets are enabled.
 	EnableSnippets pulumi.BoolPtrInput `pulumi:"enableSnippets"`
+	// Number of snippets to return per query.
+	// If unset, returns all snippets from the service by default.
+	MaxSnippets pulumi.IntPtrInput `pulumi:"maxSnippets"`
 }
 
 func (ToolDataStoreToolModalityConfigSnippetsConfigArgs) ElementType() reflect.Type {
@@ -49907,6 +50025,12 @@ func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) EnableSnippets() pu
 	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSnippetsConfig) *bool { return v.EnableSnippets }).(pulumi.BoolPtrOutput)
 }
 
+// Number of snippets to return per query.
+// If unset, returns all snippets from the service by default.
+func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) MaxSnippets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSnippetsConfig) *int { return v.MaxSnippets }).(pulumi.IntPtrOutput)
+}
+
 type ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) ElementType() reflect.Type {
@@ -49939,6 +50063,17 @@ func (o ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) EnableSnippets()
 		}
 		return v.EnableSnippets
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of snippets to return per query.
+// If unset, returns all snippets from the service by default.
+func (o ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) MaxSnippets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSnippetsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSnippets
+	}).(pulumi.IntPtrOutput)
 }
 
 type ToolDataStoreToolModalityConfigSummarizationConfig struct {
@@ -50131,6 +50266,14 @@ type ToolDataStoreToolModalityConfigSummarizationConfigModelSettings struct {
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature *float64 `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values:
+	// DEFAULT
+	// LOW
+	// MEDIUM
+	// HIGH
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel *string `pulumi:"thinkingLevel"`
 }
 
 // ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput is an input type that accepts ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs and ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput values.
@@ -50153,6 +50296,14 @@ type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs struct 
 	// produce responses that are more predictable. Higher temperatures produce
 	// responses that are more creative.
 	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// The thinking level of the model.
+	// Possible values:
+	// DEFAULT
+	// LOW
+	// MEDIUM
+	// HIGH
+	// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+	ThinkingLevel pulumi.StringPtrInput `pulumi:"thinkingLevel"`
 }
 
 func (ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs) ElementType() reflect.Type {
@@ -50246,6 +50397,19 @@ func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) T
 	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
 }
 
+// The thinking level of the model.
+// Possible values:
+// DEFAULT
+// LOW
+// MEDIUM
+// HIGH
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *string {
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
+}
+
 type ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) ElementType() reflect.Type {
@@ -50292,6 +50456,22 @@ func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput
 		}
 		return v.Temperature
 	}).(pulumi.Float64PtrOutput)
+}
+
+// The thinking level of the model.
+// Possible values:
+// DEFAULT
+// LOW
+// MEDIUM
+// HIGH
+// Possible values are: `DEFAULT`, `LOW`, `MEDIUM`, `HIGH`.
+func (o ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsPtrOutput) ThinkingLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSummarizationConfigModelSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThinkingLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type ToolFileSearchTool struct {
@@ -54098,8 +54278,20 @@ type ToolRemoteAgentTool struct {
 	// The description of the system tool.
 	Description *string `pulumi:"description"`
 	// (Output)
+	// Mapping of input variable names of remote agent to GECX variable names.
+	InputVariableMapping map[string]string `pulumi:"inputVariableMapping"`
+	// (Output)
 	// The name of the system tool.
 	Name *string `pulumi:"name"`
+	// (Output)
+	// Mapping of output variable names of remote agent to GECX variable names.
+	OutputVariableMapping map[string]string `pulumi:"outputVariableMapping"`
+	// (Output)
+	// When enabled, the interaction between the CXAS app and the remote agent
+	// will share the same context. If the remote agent returns a context_id, it
+	// will be persisted for the entirety of the session for this remote agent
+	// tool.
+	StatefulAgent *bool `pulumi:"statefulAgent"`
 }
 
 // ToolRemoteAgentToolInput is an input type that accepts ToolRemoteAgentToolArgs and ToolRemoteAgentToolOutput values.
@@ -54126,8 +54318,20 @@ type ToolRemoteAgentToolArgs struct {
 	// The description of the system tool.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
+	// Mapping of input variable names of remote agent to GECX variable names.
+	InputVariableMapping pulumi.StringMapInput `pulumi:"inputVariableMapping"`
+	// (Output)
 	// The name of the system tool.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// Mapping of output variable names of remote agent to GECX variable names.
+	OutputVariableMapping pulumi.StringMapInput `pulumi:"outputVariableMapping"`
+	// (Output)
+	// When enabled, the interaction between the CXAS app and the remote agent
+	// will share the same context. If the remote agent returns a context_id, it
+	// will be persisted for the entirety of the session for this remote agent
+	// tool.
+	StatefulAgent pulumi.BoolPtrInput `pulumi:"statefulAgent"`
 }
 
 func (ToolRemoteAgentToolArgs) ElementType() reflect.Type {
@@ -54202,9 +54406,30 @@ func (o ToolRemoteAgentToolOutput) Description() pulumi.StringPtrOutput {
 }
 
 // (Output)
+// Mapping of input variable names of remote agent to GECX variable names.
+func (o ToolRemoteAgentToolOutput) InputVariableMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) map[string]string { return v.InputVariableMapping }).(pulumi.StringMapOutput)
+}
+
+// (Output)
 // The name of the system tool.
 func (o ToolRemoteAgentToolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolRemoteAgentTool) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Mapping of output variable names of remote agent to GECX variable names.
+func (o ToolRemoteAgentToolOutput) OutputVariableMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) map[string]string { return v.OutputVariableMapping }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// When enabled, the interaction between the CXAS app and the remote agent
+// will share the same context. If the remote agent returns a context_id, it
+// will be persisted for the entirety of the session for this remote agent
+// tool.
+func (o ToolRemoteAgentToolOutput) StatefulAgent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolRemoteAgentTool) *bool { return v.StatefulAgent }).(pulumi.BoolPtrOutput)
 }
 
 type ToolRemoteAgentToolArrayOutput struct{ *pulumi.OutputState }

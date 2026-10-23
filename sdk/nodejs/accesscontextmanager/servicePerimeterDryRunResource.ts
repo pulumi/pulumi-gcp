@@ -117,8 +117,10 @@ export class ServicePerimeterDryRunResource extends pulumi.CustomResource {
     declare public readonly perimeterName: pulumi.Output<string>;
     /**
      * A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      */
     declare public readonly resource: pulumi.Output<string>;
 
@@ -186,8 +188,10 @@ export interface ServicePerimeterDryRunResourceState {
     perimeterName?: pulumi.Input<string | undefined>;
     /**
      * A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      */
     resource?: pulumi.Input<string | undefined>;
 }
@@ -211,8 +215,10 @@ export interface ServicePerimeterDryRunResourceArgs {
     perimeterName: pulumi.Input<string>;
     /**
      * A GCP resource that is inside of the service perimeter.
-     * Currently only projects are allowed.
-     * Format: projects/{project_number}
+     * Projects, folders, and VPC networks are allowed.
+     * Project format: `projects/{project_number}`
+     * Folder format: `folders/{folder_number}`
+     * VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`
      */
     resource: pulumi.Input<string>;
 }

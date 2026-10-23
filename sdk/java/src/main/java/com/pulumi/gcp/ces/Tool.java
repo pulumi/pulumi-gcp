@@ -229,6 +229,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigGroundingConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSnippetsConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceDataStoreSourceArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs;
@@ -306,6 +307,7 @@ import javax.annotation.Nullable;
  *                         .modelSettings(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs.builder()
  *                             .model("gemini-3.0-flash-001")
  *                             .temperature(1.0)
+ *                             .thinkingLevel("LOW")
  *                             .build())
  *                         .prompt("example-prompt")
  *                         .disabled(false)
@@ -314,6 +316,7 @@ import javax.annotation.Nullable;
  *                         .modelSettings(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs.builder()
  *                             .model("gemini-3.0-flash-001")
  *                             .temperature(1.0)
+ *                             .thinkingLevel("LOW")
  *                             .build())
  *                         .prompt("example-prompt")
  *                         .disabled(false)
@@ -321,6 +324,10 @@ import javax.annotation.Nullable;
  *                     .groundingConfig(ToolDataStoreToolModalityConfigGroundingConfigArgs.builder()
  *                         .groundingLevel(3.0)
  *                         .disabled(false)
+ *                         .build())
+ *                     .snippetsConfig(ToolDataStoreToolModalityConfigSnippetsConfigArgs.builder()
+ *                         .enableSnippets(true)
+ *                         .maxSnippets(5)
  *                         .build())
  *                     .build())
  *                 .engineSource(ToolDataStoreToolEngineSourceArgs.builder()

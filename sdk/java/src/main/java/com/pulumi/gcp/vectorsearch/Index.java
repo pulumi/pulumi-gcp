@@ -12,6 +12,7 @@ import com.pulumi.gcp.vectorsearch.IndexArgs;
 import com.pulumi.gcp.vectorsearch.inputs.IndexState;
 import com.pulumi.gcp.vectorsearch.outputs.IndexDedicatedInfrastructure;
 import com.pulumi.gcp.vectorsearch.outputs.IndexDenseScann;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -203,6 +204,91 @@ import javax.annotation.Nullable;
  *                     .maxReplicaCount(5)
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Vectorsearch Index Skip Wait
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vectorsearch.Collection;
+ * import com.pulumi.gcp.vectorsearch.CollectionArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaDenseVectorArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs;
+ * import com.pulumi.gcp.vectorsearch.Index;
+ * import com.pulumi.gcp.vectorsearch.IndexArgs;
+ * import com.pulumi.gcp.vectorsearch.inputs.IndexDenseScannArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Building an ANN index over a Vector Search 2.0 (Agent Retrieval) collection
+ *         // can take many hours; setting skip_wait = true returns as soon as the create
+ *         // request has been accepted so short-lived credentials in your Pulumi runner
+ *         // do not have to be extended to the full build duration. The index continues to
+ *         // build asynchronously on the backend; subsequent pulumi up invocations
+ *         // refresh state from the API.
+ *         var parent = new Collection("parent", CollectionArgs.builder()
+ *             .location("us-central1")
+ *             .collectionId("example-skip-wait-collection")
+ *             .displayName("Collection for a skip_wait ANN index")
+ *             .description("Parent collection for the skip_wait index example.")
+ *             .dataSchema("""
+ * }{{@code
+ *   \"type\": \"object\",
+ *   \"properties\": }{{@code
+ *     \"title\": }{{@code
+ *       \"type\": \"string\"
+ *     }}{@code ,
+ *     \"plot\": }{{@code
+ *       \"type\": \"string\"
+ *     }}{@code
+ *   }}{@code
+ * }}{@code
+ *             """)
+ *             .vectorSchemas(CollectionVectorSchemaArgs.builder()
+ *                 .fieldName("text_embedding")
+ *                 .denseVector(CollectionVectorSchemaDenseVectorArgs.builder()
+ *                     .dimensions(768)
+ *                     .vertexEmbeddingConfig(CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs.builder()
+ *                         .modelId("textembedding-gecko}{@literal @}{@code 003")
+ *                         .taskType("RETRIEVAL_DOCUMENT")
+ *                         .textTemplate("Title: }{{@code title}}{@code  ---- Plot: }{{@code plot}}{@code ")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var example_skip_wait_index = new Index("example-skip-wait-index", IndexArgs.builder()
+ *             .location("us-central1")
+ *             .collectionId(parent.collectionId())
+ *             .indexId("example-skip-wait-index")
+ *             .displayName("Skip-wait ANN index")
+ *             .description("ScaNN index over text_embedding, created without waiting for the build to finish.")
+ *             .indexField("text_embedding")
+ *             .distanceMetric("DOT_PRODUCT")
+ *             .denseScann(IndexDenseScannArgs.builder()
+ *                 .featureNormType("UNIT_L2_NORM")
+ *                 .build())
+ *             .skipWait(true)
  *             .build());
  * 
  *     }}{@code
@@ -510,6 +596,36 @@ public class Index extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     * 
+     */
+    @Export(name="skipWait", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipWait;
+
+    /**
+     * @return Whether to skip waiting for the index to be created. Building an ANN
+     * index over a large collection can take several hours; setting `skipWait`
+     * to `true` causes Terraform to return as soon as the creation request is
+     * accepted rather than blocking until the long-running build completes
+     * (which can exceed CI/CD timeouts or short-lived Terraform runner
+     * credentials). Leave this set to `false` (the default) if downstream
+     * resources or workloads depend on the index being ready to serve queries
+     * immediately after `pulumi up`, or if you want Terraform to fail
+     * synchronously when an asynchronous index build fails.
+     * 
+     */
+    public Output<Optional<Boolean>> skipWait() {
+        return Codegen.optional(this.skipWait);
     }
     /**
      * The fields to push into the index to enable inline data retrieval.

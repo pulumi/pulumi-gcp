@@ -182,6 +182,11 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
     }
 
     /**
+     * (Beta)
+     * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+     */
+    declare public /*out*/ readonly autoProtectionPolicyBinding: pulumi.Output<string>;
+    /**
      * The BP with which resource needs to be created
      * Note:
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
@@ -256,6 +261,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupPlanAssociationState | undefined;
+            resourceInputs["autoProtectionPolicyBinding"] = state?.autoProtectionPolicyBinding;
             resourceInputs["backupPlan"] = state?.backupPlan;
             resourceInputs["backupPlanAssociationId"] = state?.backupPlanAssociationId;
             resourceInputs["createTime"] = state?.createTime;
@@ -292,6 +298,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["resource"] = args?.resource;
             resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["autoProtectionPolicyBinding"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -307,6 +314,11 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackupPlanAssociation resources.
  */
 export interface BackupPlanAssociationState {
+    /**
+     * (Beta)
+     * The resource name of the auto protection policy binding that manages this backup plan association, if any.
+     */
+    autoProtectionPolicyBinding?: pulumi.Input<string | undefined>;
     /**
      * The BP with which resource needs to be created
      * Note:

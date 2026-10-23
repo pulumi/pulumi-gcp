@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class ManagedZoneForwardingConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("outboundEndpoints")]
+        private InputList<Inputs.ManagedZoneForwardingConfigOutboundEndpointArgs>? _outboundEndpoints;
+
+        /// <summary>
+        /// The list of outbound endpoints to use for queries.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ManagedZoneForwardingConfigOutboundEndpointArgs> OutboundEndpoints
+        {
+            get => _outboundEndpoints ?? (_outboundEndpoints = new InputList<Inputs.ManagedZoneForwardingConfigOutboundEndpointArgs>());
+            set => _outboundEndpoints = value;
+        }
+
         [Input("targetNameServers", required: true)]
         private InputList<Inputs.ManagedZoneForwardingConfigTargetNameServerArgs>? _targetNameServers;
 

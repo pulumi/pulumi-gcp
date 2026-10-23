@@ -598,6 +598,90 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Subscription Push Bigtable
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.BigTable.Instance("example", new()
+    ///     {
+    ///         Name = "example-bt",
+    ///         Clusters = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "example-bt",
+    ///                 Zone = "us-central1-b",
+    ///                 NumNodes = 1,
+    ///             },
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var exampleAppProfile = new Gcp.BigTable.AppProfile("example", new()
+    ///     {
+    ///         Instance = example.Name,
+    ///         AppProfileId = "example-profile",
+    ///         SingleClusterRouting = new Gcp.BigTable.Inputs.AppProfileSingleClusterRoutingArgs
+    ///         {
+    ///             ClusterId = "example-bt",
+    ///         },
+    ///         IgnoreWarnings = true,
+    ///     });
+    /// 
+    ///     var exampleTable = new Gcp.BigTable.Table("example", new()
+    ///     {
+    ///         Name = "example-table",
+    ///         InstanceName = example.Name,
+    ///         ColumnFamilies = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "data",
+    ///             },
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "pubsub_metadata",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleTopic = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///     });
+    /// 
+    ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
+    ///     {
+    ///         Name = "example-subscription",
+    ///         Topic = exampleTopic.Id,
+    ///         BigtableConfig = new Gcp.PubSub.Inputs.SubscriptionBigtableConfigArgs
+    ///         {
+    ///             Table = exampleTable.Id,
+    ///             AppProfileId = exampleAppProfile.AppProfileId,
+    ///             WriteMetadata = true,
+    ///             ColumnFamilyMapping = new Gcp.PubSub.Inputs.SubscriptionBigtableConfigColumnFamilyMappingArgs
+    ///             {
+    ///                 DelimitedKey = new Gcp.PubSub.Inputs.SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs
+    ///                 {
+    ///                     KeyFields = new[]
+    ///                     {
+    ///                         "user_id",
+    ///                         "event_id",
+    ///                     },
+    ///                     Delimiter = "Iw==",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Pubsub Subscription Single Smt
     /// 
     /// ```csharp
@@ -862,17 +946,26 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Output("bigqueryConfig")]
         public Output<Outputs.SubscriptionBigqueryConfig?> BigqueryConfig { get; private set; } = null!;
 
         /// <summary>
+        /// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("bigtableConfig")]
+        public Output<Outputs.SubscriptionBigtableConfig?> BigtableConfig { get; private set; } = null!;
+
+        /// <summary>
         /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Output("cloudStorageConfig")]
@@ -1120,17 +1213,26 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Input("bigqueryConfig")]
         public Input<Inputs.SubscriptionBigqueryConfigArgs>? BigqueryConfig { get; set; }
 
         /// <summary>
+        /// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bigtableConfig")]
+        public Input<Inputs.SubscriptionBigtableConfigArgs>? BigtableConfig { get; set; }
+
+        /// <summary>
         /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudStorageConfig")]
@@ -1340,17 +1442,26 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Input("bigqueryConfig")]
         public Input<Inputs.SubscriptionBigqueryConfigGetArgs>? BigqueryConfig { get; set; }
 
         /// <summary>
+        /// If delivery to Bigtable is used with this subscription, this field is used to configure it.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("bigtableConfig")]
+        public Input<Inputs.SubscriptionBigtableConfigGetArgs>? BigtableConfig { get; set; }
+
+        /// <summary>
         /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
-        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
-        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Only one of pushConfig, bigqueryConfig, cloudStorageConfig, or bigtableConfig can be set.
+        /// If none of them are set, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Input("cloudStorageConfig")]

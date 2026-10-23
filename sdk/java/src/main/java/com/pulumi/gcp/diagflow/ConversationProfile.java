@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.ConversationProfileAutomatedAgentConfigArgs;
  * import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConfigArgs;
  * import com.pulumi.gcp.diagflow.inputs.ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs;
+ * import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigArgs;
+ * import com.pulumi.gcp.diagflow.inputs.ConversationProfileSttConfigGeminiAsrConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -81,6 +83,16 @@ import javax.annotation.Nullable;
  *                 .messageAnalysisConfig(ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs.builder()
  *                     .enableEntityExtraction(true)
  *                     .enableSentimentAnalysis(true)
+ *                     .build())
+ *                 .build())
+ *             .sttConfig(ConversationProfileSttConfigArgs.builder()
+ *                 .useGeminiAsr(true)
+ *                 .geminiAsrConfig(ConversationProfileSttConfigGeminiAsrConfigArgs.builder()
+ *                     .modelId("gemini-3-flash-lite-asr-preview")
+ *                     .silenceDurationMs(1000)
+ *                     .prefixPaddingMs(500)
+ *                     .startOfSpeechSensitivity("START_SENSITIVITY_LOW")
+ *                     .endOfSpeechSensitivity("END_SENSITIVITY_LOW")
  *                     .build())
  *                 .build())
  *             .build());

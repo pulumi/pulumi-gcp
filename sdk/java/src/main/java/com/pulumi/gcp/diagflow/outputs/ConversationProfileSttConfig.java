@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.diagflow.outputs.ConversationProfileSttConfigGeminiAsrConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -24,6 +25,12 @@ public final class ConversationProfileSttConfig {
      * 
      */
     private @Nullable Boolean enableWordInfo;
+    /**
+     * @return Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ConversationProfileSttConfigGeminiAsrConfig geminiAsrConfig;
     /**
      * @return The language of the supplied audio.
      * 
@@ -47,6 +54,11 @@ public final class ConversationProfileSttConfig {
      */
     private @Nullable String speechModelVariant;
     /**
+     * @return If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+     * 
+     */
+    private @Nullable Boolean useGeminiAsr;
+    /**
      * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
@@ -67,6 +79,14 @@ public final class ConversationProfileSttConfig {
      */
     public Optional<Boolean> enableWordInfo() {
         return Optional.ofNullable(this.enableWordInfo);
+    }
+    /**
+     * @return Configuration for using Gemini ASR models served via Vertex AI, overriding the default Gemini ASR model or providing additional advanced parameters. This field is only used when `useGeminiAsr` is true.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ConversationProfileSttConfigGeminiAsrConfig> geminiAsrConfig() {
+        return Optional.ofNullable(this.geminiAsrConfig);
     }
     /**
      * @return The language of the supplied audio.
@@ -99,6 +119,13 @@ public final class ConversationProfileSttConfig {
         return Optional.ofNullable(this.speechModelVariant);
     }
     /**
+     * @return If true, Gemini ASR will be used for transcription instead of Cloud Speech-to-Text.
+     * 
+     */
+    public Optional<Boolean> useGeminiAsr() {
+        return Optional.ofNullable(this.useGeminiAsr);
+    }
+    /**
      * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
@@ -117,20 +144,24 @@ public final class ConversationProfileSttConfig {
     public static final class Builder {
         private @Nullable String audioEncoding;
         private @Nullable Boolean enableWordInfo;
+        private @Nullable ConversationProfileSttConfigGeminiAsrConfig geminiAsrConfig;
         private @Nullable String languageCode;
         private @Nullable String model;
         private @Nullable Integer sampleRateHertz;
         private @Nullable String speechModelVariant;
+        private @Nullable Boolean useGeminiAsr;
         private @Nullable Boolean useTimeoutBasedEndpointing;
         public Builder() {}
         public Builder(ConversationProfileSttConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audioEncoding = defaults.audioEncoding;
     	      this.enableWordInfo = defaults.enableWordInfo;
+    	      this.geminiAsrConfig = defaults.geminiAsrConfig;
     	      this.languageCode = defaults.languageCode;
     	      this.model = defaults.model;
     	      this.sampleRateHertz = defaults.sampleRateHertz;
     	      this.speechModelVariant = defaults.speechModelVariant;
+    	      this.useGeminiAsr = defaults.useGeminiAsr;
     	      this.useTimeoutBasedEndpointing = defaults.useTimeoutBasedEndpointing;
         }
 
@@ -144,6 +175,12 @@ public final class ConversationProfileSttConfig {
         public Builder enableWordInfo(@Nullable Boolean enableWordInfo) {
 
             this.enableWordInfo = enableWordInfo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder geminiAsrConfig(@Nullable ConversationProfileSttConfigGeminiAsrConfig geminiAsrConfig) {
+
+            this.geminiAsrConfig = geminiAsrConfig;
             return this;
         }
         @CustomType.Setter
@@ -171,6 +208,12 @@ public final class ConversationProfileSttConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder useGeminiAsr(@Nullable Boolean useGeminiAsr) {
+
+            this.useGeminiAsr = useGeminiAsr;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useTimeoutBasedEndpointing(@Nullable Boolean useTimeoutBasedEndpointing) {
 
             this.useTimeoutBasedEndpointing = useTimeoutBasedEndpointing;
@@ -180,10 +223,12 @@ public final class ConversationProfileSttConfig {
             final var _resultValue = new ConversationProfileSttConfig();
             _resultValue.audioEncoding = audioEncoding;
             _resultValue.enableWordInfo = enableWordInfo;
+            _resultValue.geminiAsrConfig = geminiAsrConfig;
             _resultValue.languageCode = languageCode;
             _resultValue.model = model;
             _resultValue.sampleRateHertz = sampleRateHertz;
             _resultValue.speechModelVariant = speechModelVariant;
+            _resultValue.useGeminiAsr = useGeminiAsr;
             _resultValue.useTimeoutBasedEndpointing = useTimeoutBasedEndpointing;
             return _resultValue;
         }

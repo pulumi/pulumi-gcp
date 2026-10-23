@@ -1369,6 +1369,774 @@ func (o SubscriptionBigqueryConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type SubscriptionBigtableConfig struct {
+	// The app profile to use for the Bigtable writes. If not specified, the "default" application
+	// profile will be used. The app profile must use single-cluster routing.
+	AppProfileId *string `pulumi:"appProfileId"`
+	// Configuration that allows writing row keys and/or columns based on fields in the input message.
+	// The input message format must be JSON if this field is set.
+	// If this field is set, top-level message fields are written to the `data` column family with
+	// the field name as the column qualifier by default, or to an existing column family whose name
+	// matches the field name. The cell timestamp is the message publish time.
+	// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+	// and message ID delimited by `#`, and the message bytes are written to the `data` column family
+	// with an empty-string column qualifier.
+	// Structure is documented below.
+	ColumnFamilyMapping *SubscriptionBigtableConfigColumnFamilyMapping `pulumi:"columnFamilyMapping"`
+	// The service account to use to write to Bigtable. The subscription creator or updater that
+	// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+	// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// (Output)
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State *string `pulumi:"state"`
+	// The unique name of the table to write messages to, of the form
+	// `projects/{project}/instances/{instance}/tables/{table}`.
+	Table string `pulumi:"table"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+	// additional columns in the table under the `pubsubMetadata` column family. The subscription name,
+	// messageId, and publishTime fields are put in their own columns while all other message properties
+	// (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// SubscriptionBigtableConfigInput is an input type that accepts SubscriptionBigtableConfigArgs and SubscriptionBigtableConfigOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigInput` via:
+//
+//	SubscriptionBigtableConfigArgs{...}
+type SubscriptionBigtableConfigInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigOutput() SubscriptionBigtableConfigOutput
+	ToSubscriptionBigtableConfigOutputWithContext(context.Context) SubscriptionBigtableConfigOutput
+}
+
+type SubscriptionBigtableConfigArgs struct {
+	// The app profile to use for the Bigtable writes. If not specified, the "default" application
+	// profile will be used. The app profile must use single-cluster routing.
+	AppProfileId pulumi.StringPtrInput `pulumi:"appProfileId"`
+	// Configuration that allows writing row keys and/or columns based on fields in the input message.
+	// The input message format must be JSON if this field is set.
+	// If this field is set, top-level message fields are written to the `data` column family with
+	// the field name as the column qualifier by default, or to an existing column family whose name
+	// matches the field name. The cell timestamp is the message publish time.
+	// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+	// and message ID delimited by `#`, and the message bytes are written to the `data` column family
+	// with an empty-string column qualifier.
+	// Structure is documented below.
+	ColumnFamilyMapping SubscriptionBigtableConfigColumnFamilyMappingPtrInput `pulumi:"columnFamilyMapping"`
+	// The service account to use to write to Bigtable. The subscription creator or updater that
+	// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+	// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// (Output)
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The unique name of the table to write messages to, of the form
+	// `projects/{project}/instances/{instance}/tables/{table}`.
+	Table pulumi.StringInput `pulumi:"table"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+	// additional columns in the table under the `pubsubMetadata` column family. The subscription name,
+	// messageId, and publishTime fields are put in their own columns while all other message properties
+	// (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (SubscriptionBigtableConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (i SubscriptionBigtableConfigArgs) ToSubscriptionBigtableConfigOutput() SubscriptionBigtableConfigOutput {
+	return i.ToSubscriptionBigtableConfigOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigArgs) ToSubscriptionBigtableConfigOutputWithContext(ctx context.Context) SubscriptionBigtableConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigOutput)
+}
+
+func (i SubscriptionBigtableConfigArgs) ToSubscriptionBigtableConfigPtrOutput() SubscriptionBigtableConfigPtrOutput {
+	return i.ToSubscriptionBigtableConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigArgs) ToSubscriptionBigtableConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigOutput).ToSubscriptionBigtableConfigPtrOutputWithContext(ctx)
+}
+
+// SubscriptionBigtableConfigPtrInput is an input type that accepts SubscriptionBigtableConfigArgs, SubscriptionBigtableConfigPtr and SubscriptionBigtableConfigPtrOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigPtrInput` via:
+//
+//	        SubscriptionBigtableConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionBigtableConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigPtrOutput() SubscriptionBigtableConfigPtrOutput
+	ToSubscriptionBigtableConfigPtrOutputWithContext(context.Context) SubscriptionBigtableConfigPtrOutput
+}
+
+type subscriptionBigtableConfigPtrType SubscriptionBigtableConfigArgs
+
+func SubscriptionBigtableConfigPtr(v *SubscriptionBigtableConfigArgs) SubscriptionBigtableConfigPtrInput {
+	return (*subscriptionBigtableConfigPtrType)(v)
+}
+
+func (*subscriptionBigtableConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (i *subscriptionBigtableConfigPtrType) ToSubscriptionBigtableConfigPtrOutput() SubscriptionBigtableConfigPtrOutput {
+	return i.ToSubscriptionBigtableConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionBigtableConfigPtrType) ToSubscriptionBigtableConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigPtrOutput)
+}
+
+type SubscriptionBigtableConfigOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigOutput) ToSubscriptionBigtableConfigOutput() SubscriptionBigtableConfigOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigOutput) ToSubscriptionBigtableConfigOutputWithContext(ctx context.Context) SubscriptionBigtableConfigOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigOutput) ToSubscriptionBigtableConfigPtrOutput() SubscriptionBigtableConfigPtrOutput {
+	return o.ToSubscriptionBigtableConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionBigtableConfigOutput) ToSubscriptionBigtableConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionBigtableConfig) *SubscriptionBigtableConfig {
+		return &v
+	}).(SubscriptionBigtableConfigPtrOutput)
+}
+
+// The app profile to use for the Bigtable writes. If not specified, the "default" application
+// profile will be used. The app profile must use single-cluster routing.
+func (o SubscriptionBigtableConfigOutput) AppProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfig) *string { return v.AppProfileId }).(pulumi.StringPtrOutput)
+}
+
+// Configuration that allows writing row keys and/or columns based on fields in the input message.
+// The input message format must be JSON if this field is set.
+// If this field is set, top-level message fields are written to the `data` column family with
+// the field name as the column qualifier by default, or to an existing column family whose name
+// matches the field name. The cell timestamp is the message publish time.
+// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+// and message ID delimited by `#`, and the message bytes are written to the `data` column family
+// with an empty-string column qualifier.
+// Structure is documented below.
+func (o SubscriptionBigtableConfigOutput) ColumnFamilyMapping() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfig) *SubscriptionBigtableConfigColumnFamilyMapping {
+		return v.ColumnFamilyMapping
+	}).(SubscriptionBigtableConfigColumnFamilyMappingPtrOutput)
+}
+
+// The service account to use to write to Bigtable. The subscription creator or updater that
+// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o SubscriptionBigtableConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o SubscriptionBigtableConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The unique name of the table to write messages to, of the form
+// `projects/{project}/instances/{instance}/tables/{table}`.
+func (o SubscriptionBigtableConfigOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfig) string { return v.Table }).(pulumi.StringOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+// additional columns in the table under the `pubsubMetadata` column family. The subscription name,
+// messageId, and publishTime fields are put in their own columns while all other message properties
+// (other than data) are written to a JSON object in the attributes column.
+func (o SubscriptionBigtableConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type SubscriptionBigtableConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigPtrOutput) ToSubscriptionBigtableConfigPtrOutput() SubscriptionBigtableConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigPtrOutput) ToSubscriptionBigtableConfigPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigPtrOutput) Elem() SubscriptionBigtableConfigOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) SubscriptionBigtableConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionBigtableConfig
+		return ret
+	}).(SubscriptionBigtableConfigOutput)
+}
+
+// The app profile to use for the Bigtable writes. If not specified, the "default" application
+// profile will be used. The app profile must use single-cluster routing.
+func (o SubscriptionBigtableConfigPtrOutput) AppProfileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppProfileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration that allows writing row keys and/or columns based on fields in the input message.
+// The input message format must be JSON if this field is set.
+// If this field is set, top-level message fields are written to the `data` column family with
+// the field name as the column qualifier by default, or to an existing column family whose name
+// matches the field name. The cell timestamp is the message publish time.
+// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+// and message ID delimited by `#`, and the message bytes are written to the `data` column family
+// with an empty-string column qualifier.
+// Structure is documented below.
+func (o SubscriptionBigtableConfigPtrOutput) ColumnFamilyMapping() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) *SubscriptionBigtableConfigColumnFamilyMapping {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnFamilyMapping
+	}).(SubscriptionBigtableConfigColumnFamilyMappingPtrOutput)
+}
+
+// The service account to use to write to Bigtable. The subscription creator or updater that
+// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
+// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o SubscriptionBigtableConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o SubscriptionBigtableConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique name of the table to write messages to, of the form
+// `projects/{project}/instances/{instance}/tables/{table}`.
+func (o SubscriptionBigtableConfigPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+// additional columns in the table under the `pubsubMetadata` column family. The subscription name,
+// messageId, and publishTime fields are put in their own columns while all other message properties
+// (other than data) are written to a JSON object in the attributes column.
+func (o SubscriptionBigtableConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMapping struct {
+	// If set, the row key is constructed from the given key fields and delimiter. All key fields
+	// must be present in the message; otherwise, the message remains in the subscription backlog.
+	// Structure is documented below.
+	DelimitedKey *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey `pulumi:"delimitedKey"`
+	// If set, the row key is constructed from the field names of the table's
+	// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+	// If a field is nullable in the structured row key, it need not be present in the message;
+	// null will be used instead.
+	RowKeySchema *SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema `pulumi:"rowKeySchema"`
+}
+
+// SubscriptionBigtableConfigColumnFamilyMappingInput is an input type that accepts SubscriptionBigtableConfigColumnFamilyMappingArgs and SubscriptionBigtableConfigColumnFamilyMappingOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigColumnFamilyMappingInput` via:
+//
+//	SubscriptionBigtableConfigColumnFamilyMappingArgs{...}
+type SubscriptionBigtableConfigColumnFamilyMappingInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigColumnFamilyMappingOutput() SubscriptionBigtableConfigColumnFamilyMappingOutput
+	ToSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(context.Context) SubscriptionBigtableConfigColumnFamilyMappingOutput
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingArgs struct {
+	// If set, the row key is constructed from the given key fields and delimiter. All key fields
+	// must be present in the message; otherwise, the message remains in the subscription backlog.
+	// Structure is documented below.
+	DelimitedKey SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrInput `pulumi:"delimitedKey"`
+	// If set, the row key is constructed from the field names of the table's
+	// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+	// If a field is nullable in the structured row key, it need not be present in the message;
+	// null will be used instead.
+	RowKeySchema SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrInput `pulumi:"rowKeySchema"`
+}
+
+func (SubscriptionBigtableConfigColumnFamilyMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingArgs) ToSubscriptionBigtableConfigColumnFamilyMappingOutput() SubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingArgs) ToSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingOutput)
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingArgs) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingArgs) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingOutput).ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(ctx)
+}
+
+// SubscriptionBigtableConfigColumnFamilyMappingPtrInput is an input type that accepts SubscriptionBigtableConfigColumnFamilyMappingArgs, SubscriptionBigtableConfigColumnFamilyMappingPtr and SubscriptionBigtableConfigColumnFamilyMappingPtrOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigColumnFamilyMappingPtrInput` via:
+//
+//	        SubscriptionBigtableConfigColumnFamilyMappingArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionBigtableConfigColumnFamilyMappingPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput
+	ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(context.Context) SubscriptionBigtableConfigColumnFamilyMappingPtrOutput
+}
+
+type subscriptionBigtableConfigColumnFamilyMappingPtrType SubscriptionBigtableConfigColumnFamilyMappingArgs
+
+func SubscriptionBigtableConfigColumnFamilyMappingPtr(v *SubscriptionBigtableConfigColumnFamilyMappingArgs) SubscriptionBigtableConfigColumnFamilyMappingPtrInput {
+	return (*subscriptionBigtableConfigColumnFamilyMappingPtrType)(v)
+}
+
+func (*subscriptionBigtableConfigColumnFamilyMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (i *subscriptionBigtableConfigColumnFamilyMappingPtrType) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionBigtableConfigColumnFamilyMappingPtrType) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigColumnFamilyMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingOutput) ToSubscriptionBigtableConfigColumnFamilyMappingOutput() SubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingOutput) ToSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingOutput) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return o.ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingOutput) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionBigtableConfigColumnFamilyMapping) *SubscriptionBigtableConfigColumnFamilyMapping {
+		return &v
+	}).(SubscriptionBigtableConfigColumnFamilyMappingPtrOutput)
+}
+
+// If set, the row key is constructed from the given key fields and delimiter. All key fields
+// must be present in the message; otherwise, the message remains in the subscription backlog.
+// Structure is documented below.
+func (o SubscriptionBigtableConfigColumnFamilyMappingOutput) DelimitedKey() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfigColumnFamilyMapping) *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+		return v.DelimitedKey
+	}).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput)
+}
+
+// If set, the row key is constructed from the field names of the table's
+// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+// If a field is nullable in the structured row key, it need not be present in the message;
+// null will be used instead.
+func (o SubscriptionBigtableConfigColumnFamilyMappingOutput) RowKeySchema() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfigColumnFamilyMapping) *SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+		return v.RowKeySchema
+	}).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigColumnFamilyMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingPtrOutput) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingPtrOutput) ToSubscriptionBigtableConfigColumnFamilyMappingPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingPtrOutput) Elem() SubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMapping) SubscriptionBigtableConfigColumnFamilyMapping {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionBigtableConfigColumnFamilyMapping
+		return ret
+	}).(SubscriptionBigtableConfigColumnFamilyMappingOutput)
+}
+
+// If set, the row key is constructed from the given key fields and delimiter. All key fields
+// must be present in the message; otherwise, the message remains in the subscription backlog.
+// Structure is documented below.
+func (o SubscriptionBigtableConfigColumnFamilyMappingPtrOutput) DelimitedKey() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMapping) *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+		if v == nil {
+			return nil
+		}
+		return v.DelimitedKey
+	}).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput)
+}
+
+// If set, the row key is constructed from the field names of the table's
+// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+// If a field is nullable in the structured row key, it need not be present in the message;
+// null will be used instead.
+func (o SubscriptionBigtableConfigColumnFamilyMappingPtrOutput) RowKeySchema() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMapping) *SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+		if v == nil {
+			return nil
+		}
+		return v.RowKeySchema
+	}).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey struct {
+	// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+	// (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+	// delimiter must contain at least 1 character and at most 50 characters.
+	Delimiter *string `pulumi:"delimiter"`
+	// The key fields to construct the row key from. The fields must be present in the message
+	// as top-level fields; JSON path expressions will not traverse into nested objects.
+	KeyFields []string `pulumi:"keyFields"`
+}
+
+// SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput is an input type that accepts SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs and SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput` via:
+//
+//	SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{...}
+type SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput
+	ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs struct {
+	// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+	// (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+	// delimiter must contain at least 1 character and at most 50 characters.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// The key fields to construct the row key from. The fields must be present in the message
+	// as top-level fields; JSON path expressions will not traverse into nested objects.
+	KeyFields pulumi.StringArrayInput `pulumi:"keyFields"`
+}
+
+func (SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput)
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput).ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(ctx)
+}
+
+// SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrInput is an input type that accepts SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs, SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtr and SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrInput` via:
+//
+//	        SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput
+	ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput
+}
+
+type subscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrType SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs
+
+func SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtr(v *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrInput {
+	return (*subscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrType)(v)
+}
+
+func (*subscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (i *subscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrType) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrType) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return o.ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+		return &v
+	}).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput)
+}
+
+// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+// (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+// delimiter must contain at least 1 character and at most 50 characters.
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// The key fields to construct the row key from. The fields must be present in the message
+// as top-level fields; JSON path expressions will not traverse into nested objects.
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) KeyFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) []string { return v.KeyFields }).(pulumi.StringArrayOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput) ToSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput) Elem() SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey
+		return ret
+	}).(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput)
+}
+
+// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+// (for example, `Iw==` for `#`). Must be specified if multiple key fields are used. The
+// delimiter must contain at least 1 character and at most 50 characters.
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key fields to construct the row key from. The fields must be present in the message
+// as top-level fields; JSON path expressions will not traverse into nested objects.
+func (o SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput) KeyFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyFields
+	}).(pulumi.StringArrayOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema struct {
+}
+
+// SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput is an input type that accepts SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs and SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput` via:
+//
+//	SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{...}
+type SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput
+	ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs struct {
+}
+
+func (SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput)
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput).ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(ctx)
+}
+
+// SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrInput is an input type that accepts SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs, SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtr and SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput values.
+// You can construct a concrete instance of `SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrInput` via:
+//
+//	        SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput
+	ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput
+}
+
+type subscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrType SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs
+
+func SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtr(v *SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrInput {
+	return (*subscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrType)(v)
+}
+
+func (*subscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (i *subscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrType) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return i.ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrType) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return o.ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema) *SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+		return &v
+	}).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput)
+}
+
+type SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput) ToSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutputWithContext(ctx context.Context) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput {
+	return o
+}
+
+func (o SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput) Elem() SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return o.ApplyT(func(v *SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema) SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionBigtableConfigColumnFamilyMappingRowKeySchema
+		return ret
+	}).(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput)
+}
+
 type SubscriptionCloudStorageConfig struct {
 	// If set, message data will be written to Cloud Storage in Avro format.
 	// Structure is documented below.
@@ -7670,6 +8438,526 @@ func (o GetSubscriptionBigqueryConfigArrayOutput) Index(i pulumi.IntInput) GetSu
 	}).(GetSubscriptionBigqueryConfigOutput)
 }
 
+type GetSubscriptionBigtableConfig struct {
+	// The app profile to use for the Bigtable writes. If not specified, the "default" application
+	// profile will be used. The app profile must use single-cluster routing.
+	AppProfileId string `pulumi:"appProfileId"`
+	// Configuration that allows writing row keys and/or columns based on fields in the input message.
+	// The input message format must be JSON if this field is set.
+	//
+	// If this field is set, top-level message fields are written to the 'data' column family with
+	// the field name as the column qualifier by default, or to an existing column family whose name
+	// matches the field name. The cell timestamp is the message publish time.
+	//
+	// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+	// and message ID delimited by '#', and the message bytes are written to the 'data' column family
+	// with an empty-string column qualifier.
+	ColumnFamilyMappings []GetSubscriptionBigtableConfigColumnFamilyMapping `pulumi:"columnFamilyMappings"`
+	// The service account to use to write to Bigtable. The subscription creator or updater that
+	// specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+	// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State string `pulumi:"state"`
+	// The unique name of the table to write messages to, of the form
+	// 'projects/{project}/instances/{instance}/tables/{table}'.
+	Table string `pulumi:"table"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+	// additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+	// messageId, and publishTime fields are put in their own columns while all other message properties
+	// (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// GetSubscriptionBigtableConfigInput is an input type that accepts GetSubscriptionBigtableConfigArgs and GetSubscriptionBigtableConfigOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigInput` via:
+//
+//	GetSubscriptionBigtableConfigArgs{...}
+type GetSubscriptionBigtableConfigInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigOutput() GetSubscriptionBigtableConfigOutput
+	ToGetSubscriptionBigtableConfigOutputWithContext(context.Context) GetSubscriptionBigtableConfigOutput
+}
+
+type GetSubscriptionBigtableConfigArgs struct {
+	// The app profile to use for the Bigtable writes. If not specified, the "default" application
+	// profile will be used. The app profile must use single-cluster routing.
+	AppProfileId pulumi.StringInput `pulumi:"appProfileId"`
+	// Configuration that allows writing row keys and/or columns based on fields in the input message.
+	// The input message format must be JSON if this field is set.
+	//
+	// If this field is set, top-level message fields are written to the 'data' column family with
+	// the field name as the column qualifier by default, or to an existing column family whose name
+	// matches the field name. The cell timestamp is the message publish time.
+	//
+	// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+	// and message ID delimited by '#', and the message bytes are written to the 'data' column family
+	// with an empty-string column qualifier.
+	ColumnFamilyMappings GetSubscriptionBigtableConfigColumnFamilyMappingArrayInput `pulumi:"columnFamilyMappings"`
+	// The service account to use to write to Bigtable. The subscription creator or updater that
+	// specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+	// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State pulumi.StringInput `pulumi:"state"`
+	// The unique name of the table to write messages to, of the form
+	// 'projects/{project}/instances/{instance}/tables/{table}'.
+	Table pulumi.StringInput `pulumi:"table"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+	// additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+	// messageId, and publishTime fields are put in their own columns while all other message properties
+	// (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
+}
+
+func (GetSubscriptionBigtableConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigArgs) ToGetSubscriptionBigtableConfigOutput() GetSubscriptionBigtableConfigOutput {
+	return i.ToGetSubscriptionBigtableConfigOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigArgs) ToGetSubscriptionBigtableConfigOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigOutput)
+}
+
+// GetSubscriptionBigtableConfigArrayInput is an input type that accepts GetSubscriptionBigtableConfigArray and GetSubscriptionBigtableConfigArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigArrayInput` via:
+//
+//	GetSubscriptionBigtableConfigArray{ GetSubscriptionBigtableConfigArgs{...} }
+type GetSubscriptionBigtableConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigArrayOutput() GetSubscriptionBigtableConfigArrayOutput
+	ToGetSubscriptionBigtableConfigArrayOutputWithContext(context.Context) GetSubscriptionBigtableConfigArrayOutput
+}
+
+type GetSubscriptionBigtableConfigArray []GetSubscriptionBigtableConfigInput
+
+func (GetSubscriptionBigtableConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigArray) ToGetSubscriptionBigtableConfigArrayOutput() GetSubscriptionBigtableConfigArrayOutput {
+	return i.ToGetSubscriptionBigtableConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigArray) ToGetSubscriptionBigtableConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigArrayOutput)
+}
+
+type GetSubscriptionBigtableConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigOutput) ToGetSubscriptionBigtableConfigOutput() GetSubscriptionBigtableConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigOutput) ToGetSubscriptionBigtableConfigOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigOutput {
+	return o
+}
+
+// The app profile to use for the Bigtable writes. If not specified, the "default" application
+// profile will be used. The app profile must use single-cluster routing.
+func (o GetSubscriptionBigtableConfigOutput) AppProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfig) string { return v.AppProfileId }).(pulumi.StringOutput)
+}
+
+// Configuration that allows writing row keys and/or columns based on fields in the input message.
+// The input message format must be JSON if this field is set.
+//
+// If this field is set, top-level message fields are written to the 'data' column family with
+// the field name as the column qualifier by default, or to an existing column family whose name
+// matches the field name. The cell timestamp is the message publish time.
+//
+// If this field is not set, the row key is constructed from the subscription name, message ID hash,
+// and message ID delimited by '#', and the message bytes are written to the 'data' column family
+// with an empty-string column qualifier.
+func (o GetSubscriptionBigtableConfigOutput) ColumnFamilyMappings() GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfig) []GetSubscriptionBigtableConfigColumnFamilyMapping {
+		return v.ColumnFamilyMappings
+	}).(GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput)
+}
+
+// The service account to use to write to Bigtable. The subscription creator or updater that
+// specifies this field must have 'iam.serviceAccounts.actAs' permission on the service account.
+// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+func (o GetSubscriptionBigtableConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfig) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o GetSubscriptionBigtableConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfig) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The unique name of the table to write messages to, of the form
+// 'projects/{project}/instances/{instance}/tables/{table}'.
+func (o GetSubscriptionBigtableConfigOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfig) string { return v.Table }).(pulumi.StringOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to
+// additional columns in the table under the 'pubsub_metadata' column family. The subscription name,
+// messageId, and publishTime fields are put in their own columns while all other message properties
+// (other than data) are written to a JSON object in the attributes column.
+func (o GetSubscriptionBigtableConfigOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfig) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
+type GetSubscriptionBigtableConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigArrayOutput) ToGetSubscriptionBigtableConfigArrayOutput() GetSubscriptionBigtableConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigArrayOutput) ToGetSubscriptionBigtableConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigArrayOutput) Index(i pulumi.IntInput) GetSubscriptionBigtableConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionBigtableConfig {
+		return vs[0].([]GetSubscriptionBigtableConfig)[vs[1].(int)]
+	}).(GetSubscriptionBigtableConfigOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMapping struct {
+	// If set, the row key is constructed from the given key fields and delimiter. All key fields
+	// must be present in the message; otherwise, the message remains in the subscription backlog.
+	DelimitedKeys []GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey `pulumi:"delimitedKeys"`
+	// If set, the row key is constructed from the field names of the table's
+	// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+	// If a field is nullable in the structured row key, it need not be present in the message;
+	// null will be used instead.
+	RowKeySchemas []GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema `pulumi:"rowKeySchemas"`
+}
+
+// GetSubscriptionBigtableConfigColumnFamilyMappingInput is an input type that accepts GetSubscriptionBigtableConfigColumnFamilyMappingArgs and GetSubscriptionBigtableConfigColumnFamilyMappingOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigColumnFamilyMappingInput` via:
+//
+//	GetSubscriptionBigtableConfigColumnFamilyMappingArgs{...}
+type GetSubscriptionBigtableConfigColumnFamilyMappingInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingOutput() GetSubscriptionBigtableConfigColumnFamilyMappingOutput
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingOutput
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingArgs struct {
+	// If set, the row key is constructed from the given key fields and delimiter. All key fields
+	// must be present in the message; otherwise, the message remains in the subscription backlog.
+	DelimitedKeys GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayInput `pulumi:"delimitedKeys"`
+	// If set, the row key is constructed from the field names of the table's
+	// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+	// If a field is nullable in the structured row key, it need not be present in the message;
+	// null will be used instead.
+	RowKeySchemas GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayInput `pulumi:"rowKeySchemas"`
+}
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingArgs) ToGetSubscriptionBigtableConfigColumnFamilyMappingOutput() GetSubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return i.ToGetSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingArgs) ToGetSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigColumnFamilyMappingOutput)
+}
+
+// GetSubscriptionBigtableConfigColumnFamilyMappingArrayInput is an input type that accepts GetSubscriptionBigtableConfigColumnFamilyMappingArray and GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigColumnFamilyMappingArrayInput` via:
+//
+//	GetSubscriptionBigtableConfigColumnFamilyMappingArray{ GetSubscriptionBigtableConfigColumnFamilyMappingArgs{...} }
+type GetSubscriptionBigtableConfigColumnFamilyMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutputWithContext(context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingArray []GetSubscriptionBigtableConfigColumnFamilyMappingInput
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingArray) ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput {
+	return i.ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingArray) ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingOutput() GetSubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return o
+}
+
+// If set, the row key is constructed from the given key fields and delimiter. All key fields
+// must be present in the message; otherwise, the message remains in the subscription backlog.
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingOutput) DelimitedKeys() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfigColumnFamilyMapping) []GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+		return v.DelimitedKeys
+	}).(GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput)
+}
+
+// If set, the row key is constructed from the field names of the table's
+// [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas).
+// If a field is nullable in the structured row key, it need not be present in the message;
+// null will be used instead.
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingOutput) RowKeySchemas() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfigColumnFamilyMapping) []GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+		return v.RowKeySchemas
+	}).(GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfigColumnFamilyMapping)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput) Index(i pulumi.IntInput) GetSubscriptionBigtableConfigColumnFamilyMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionBigtableConfigColumnFamilyMapping {
+		return vs[0].([]GetSubscriptionBigtableConfigColumnFamilyMapping)[vs[1].(int)]
+	}).(GetSubscriptionBigtableConfigColumnFamilyMappingOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey struct {
+	// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+	// (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+	// delimiter must contain at least 1 character and at most 50 characters.
+	Delimiter string `pulumi:"delimiter"`
+	// The key fields to construct the row key from. The fields must be present in the message
+	// as top-level fields; JSON path expressions will not traverse into nested objects.
+	KeyFields []string `pulumi:"keyFields"`
+}
+
+// GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput is an input type that accepts GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs and GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput` via:
+//
+//	GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{...}
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs struct {
+	// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+	// (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+	// delimiter must contain at least 1 character and at most 50 characters.
+	Delimiter pulumi.StringInput `pulumi:"delimiter"`
+	// The key fields to construct the row key from. The fields must be present in the message
+	// as top-level fields; JSON path expressions will not traverse into nested objects.
+	KeyFields pulumi.StringArrayInput `pulumi:"keyFields"`
+}
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return i.ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput)
+}
+
+// GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayInput is an input type that accepts GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray and GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayInput` via:
+//
+//	GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray{ GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{...} }
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutputWithContext(context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray []GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput {
+	return i.ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return o
+}
+
+// The byte sequence used to delimit concatenated key fields, as a base64-encoded string
+// (for example, 'Iw==' for '#'). Must be specified if multiple key fields are used. The
+// delimiter must contain at least 1 character and at most 50 characters.
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) Delimiter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) string { return v.Delimiter }).(pulumi.StringOutput)
+}
+
+// The key fields to construct the row key from. The fields must be present in the message
+// as top-level fields; JSON path expressions will not traverse into nested objects.
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput) KeyFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey) []string { return v.KeyFields }).(pulumi.StringArrayOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput) Index(i pulumi.IntInput) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey {
+		return vs[0].([]GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKey)[vs[1].(int)]
+	}).(GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema struct {
+}
+
+// GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput is an input type that accepts GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs and GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput` via:
+//
+//	GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{...}
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs struct {
+}
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return i.ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput)
+}
+
+// GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayInput is an input type that accepts GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray and GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayInput` via:
+//
+//	GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray{ GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{...} }
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput
+	ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutputWithContext(context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray []GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput {
+	return i.ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput)
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return o
+}
+
+type GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)(nil)).Elem()
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput() GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput) ToGetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutputWithContext(ctx context.Context) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput) Index(i pulumi.IntInput) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema {
+		return vs[0].([]GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchema)[vs[1].(int)]
+	}).(GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput)
+}
+
 type GetSubscriptionCloudStorageConfig struct {
 	// If set, message data will be written to Cloud Storage in Avro format.
 	AvroConfigs []GetSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfigs"`
@@ -11571,6 +12859,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaIamMemberConditionPtrInput)(nil)).Elem(), SchemaIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigqueryConfigInput)(nil)).Elem(), SubscriptionBigqueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigqueryConfigPtrInput)(nil)).Elem(), SubscriptionBigqueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigInput)(nil)).Elem(), SubscriptionBigtableConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigPtrInput)(nil)).Elem(), SubscriptionBigtableConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingInput)(nil)).Elem(), SubscriptionBigtableConfigColumnFamilyMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingPtrInput)(nil)).Elem(), SubscriptionBigtableConfigColumnFamilyMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput)(nil)).Elem(), SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrInput)(nil)).Elem(), SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput)(nil)).Elem(), SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrInput)(nil)).Elem(), SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigInput)(nil)).Elem(), SubscriptionCloudStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigPtrInput)(nil)).Elem(), SubscriptionCloudStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), SubscriptionCloudStorageConfigAvroConfigArgs{})
@@ -11639,6 +12935,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsPtrInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigqueryConfigInput)(nil)).Elem(), GetSubscriptionBigqueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigqueryConfigArrayInput)(nil)).Elem(), GetSubscriptionBigqueryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigInput)(nil)).Elem(), GetSubscriptionBigtableConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigArrayInput)(nil)).Elem(), GetSubscriptionBigtableConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingInput)(nil)).Elem(), GetSubscriptionBigtableConfigColumnFamilyMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingArrayInput)(nil)).Elem(), GetSubscriptionBigtableConfigColumnFamilyMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyInput)(nil)).Elem(), GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayInput)(nil)).Elem(), GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaInput)(nil)).Elem(), GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayInput)(nil)).Elem(), GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigArrayInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigAvroConfigArgs{})
@@ -11713,6 +13017,14 @@ func init() {
 	pulumi.RegisterOutputType(SchemaIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionBigqueryConfigOutput{})
 	pulumi.RegisterOutputType(SubscriptionBigqueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigColumnFamilyMappingOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigColumnFamilyMappingPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput{})
+	pulumi.RegisterOutputType(SubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigOutput{})
 	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigAvroConfigOutput{})
@@ -11781,6 +13093,14 @@ func init() {
 	pulumi.RegisterOutputType(TopicSchemaSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionBigqueryConfigOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionBigqueryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigColumnFamilyMappingOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigColumnFamilyMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigColumnFamilyMappingDelimitedKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionBigtableConfigColumnFamilyMappingRowKeySchemaArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigAvroConfigOutput{})

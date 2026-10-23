@@ -106,6 +106,18 @@ export class UnitKind extends pulumi.CustomResource {
      */
     declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     */
+    declare public readonly appParams: pulumi.Output<outputs.saasruntime.UnitKindAppParams | undefined>;
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     */
+    declare public readonly applicationTemplateComponent: pulumi.Output<outputs.saasruntime.UnitKindApplicationTemplateComponent | undefined>;
+    /**
      * The timestamp when the resource was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -224,6 +236,8 @@ export class UnitKind extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UnitKindState | undefined;
             resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["appParams"] = state?.appParams;
+            resourceInputs["applicationTemplateComponent"] = state?.applicationTemplateComponent;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["defaultRelease"] = state?.defaultRelease;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -254,6 +268,8 @@ export class UnitKind extends pulumi.CustomResource {
                 throw new Error("Missing required property 'unitKindId'");
             }
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["appParams"] = args?.appParams;
+            resourceInputs["applicationTemplateComponent"] = args?.applicationTemplateComponent;
             resourceInputs["defaultRelease"] = args?.defaultRelease;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["dependencies"] = args?.dependencies;
@@ -293,6 +309,18 @@ export interface UnitKindState {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     */
+    appParams?: pulumi.Input<inputs.saasruntime.UnitKindAppParams | undefined>;
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     */
+    applicationTemplateComponent?: pulumi.Input<inputs.saasruntime.UnitKindApplicationTemplateComponent | undefined>;
     /**
      * The timestamp when the resource was created.
      */
@@ -412,6 +440,18 @@ export interface UnitKindArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Parameters for creating an App Hub Application for the Units of this
+     * UnitKind.
+     * Structure is documented below.
+     */
+    appParams?: pulumi.Input<inputs.saasruntime.UnitKindAppParams | undefined>;
+    /**
+     * Reference to a component and revision in a composite Application Design
+     * Center ApplicationTemplate.
+     * Structure is documented below.
+     */
+    applicationTemplateComponent?: pulumi.Input<inputs.saasruntime.UnitKindApplicationTemplateComponent | undefined>;
     /**
      * A reference to the Release object to use as default for creating new units
      * of this UnitKind.

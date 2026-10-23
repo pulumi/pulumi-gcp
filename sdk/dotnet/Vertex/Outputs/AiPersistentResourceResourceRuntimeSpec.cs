@@ -14,14 +14,23 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiPersistentResourceResourceRuntimeSpec
     {
         /// <summary>
+        /// Configuration information for the Ray cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiPersistentResourceResourceRuntimeSpecRaySpec? RaySpec;
+        /// <summary>
         /// Configuration for the use of custom service account to run the workloads.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec? ServiceAccountSpec;
 
         [OutputConstructor]
-        private AiPersistentResourceResourceRuntimeSpec(Outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec? serviceAccountSpec)
+        private AiPersistentResourceResourceRuntimeSpec(
+            Outputs.AiPersistentResourceResourceRuntimeSpecRaySpec? raySpec,
+
+            Outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec? serviceAccountSpec)
         {
+            RaySpec = raySpec;
             ServiceAccountSpec = serviceAccountSpec;
         }
     }

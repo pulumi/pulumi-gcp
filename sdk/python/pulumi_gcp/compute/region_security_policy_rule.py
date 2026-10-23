@@ -796,7 +796,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="backendpolicy",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "source_image": "projects/debian-cloud/global/images/family/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])
@@ -1190,7 +1190,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             name="backendpolicy",
             machine_type="e2-micro",
             disks=[{
-                "source_image": "projects/debian-cloud/global/images/family/debian-11",
+                "source_image": "projects/debian-cloud/global/images/family/debian-13",
                 "auto_delete": True,
                 "boot": True,
             }])

@@ -52,7 +52,6 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
@@ -60,8 +59,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> autoAccept;
 
     /**
-     * @return (Optional, Beta)
-     * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+     * @return Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      * 
      */
     public Optional<Output<Boolean>> autoAccept() {
@@ -154,7 +152,6 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
@@ -162,8 +159,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> hub;
 
     /**
-     * @return (Optional, Beta)
-     * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+     * @return The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      * 
      */
     public Optional<Output<String>> hub() {
@@ -282,7 +278,6 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
@@ -290,8 +285,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> pscRoutingEnabled;
 
     /**
-     * @return (Optional, Beta)
-     * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+     * @return Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      * 
      */
     public Optional<Output<Boolean>> pscRoutingEnabled() {
@@ -495,8 +489,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoAccept (Optional, Beta)
-         * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+         * @param autoAccept Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
          * 
          * @return builder
          * 
@@ -507,8 +500,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoAccept (Optional, Beta)
-         * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
+         * @param autoAccept Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
          * 
          * @return builder
          * 
@@ -633,8 +625,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hub (Optional, Beta)
-         * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+         * @param hub The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
          * 
          * @return builder
          * 
@@ -645,8 +636,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hub (Optional, Beta)
-         * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
+         * @param hub The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
          * 
          * @return builder
          * 
@@ -809,8 +799,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pscRoutingEnabled (Optional, Beta)
-         * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+         * @param pscRoutingEnabled Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
          * 
          * @return builder
          * 
@@ -821,8 +810,7 @@ public final class TransportState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pscRoutingEnabled (Optional, Beta)
-         * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+         * @param pscRoutingEnabled Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
          * 
          * @return builder
          * 

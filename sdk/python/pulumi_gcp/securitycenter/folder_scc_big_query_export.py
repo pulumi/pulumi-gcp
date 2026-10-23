@@ -24,6 +24,7 @@ class FolderSccBigQueryExportArgs:
                  description: pulumi.Input[_builtins.str],
                  filter: pulumi.Input[_builtins.str],
                  folder: pulumi.Input[_builtins.str],
+                 deletion_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderSccBigQueryExport resource.
@@ -54,6 +55,7 @@ class FolderSccBigQueryExportArgs:
                  for information on how to write a filter.
         :param pulumi.Input[_builtins.str] folder: The folder where Cloud Security Command Center Big Query Export
                Config lives in.
+        :param pulumi.Input[_builtins.bool] deletion_notifications_enabled: Indicates whether the notifications will be sent for deleted findings.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -66,6 +68,8 @@ class FolderSccBigQueryExportArgs:
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "folder", folder)
+        if deletion_notifications_enabled is not None:
+            pulumi.set(__self__, "deletion_notifications_enabled", deletion_notifications_enabled)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
 
@@ -151,6 +155,18 @@ class FolderSccBigQueryExportArgs:
         pulumi.set(self, "folder", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionNotificationsEnabled")
+    def deletion_notifications_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the notifications will be sent for deleted findings.
+        """
+        return pulumi.get(self, "deletion_notifications_enabled")
+
+    @deletion_notifications_enabled.setter
+    def deletion_notifications_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deletion_notifications_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -174,6 +190,7 @@ class _FolderSccBigQueryExportState:
                  big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -192,6 +209,7 @@ class _FolderSccBigQueryExportState:
         :param pulumi.Input[_builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
                BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
+        :param pulumi.Input[_builtins.bool] deletion_notifications_enabled: Indicates whether the notifications will be sent for deleted findings.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -235,6 +253,8 @@ class _FolderSccBigQueryExportState:
             pulumi.set(__self__, "create_time", create_time)
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
+        if deletion_notifications_enabled is not None:
+            pulumi.set(__self__, "deletion_notifications_enabled", deletion_notifications_enabled)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -291,6 +311,18 @@ class _FolderSccBigQueryExportState:
     @dataset.setter
     def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionNotificationsEnabled")
+    def deletion_notifications_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the notifications will be sent for deleted findings.
+        """
+        return pulumi.get(self, "deletion_notifications_enabled")
+
+    @deletion_notifications_enabled.setter
+    def deletion_notifications_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "deletion_notifications_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -425,6 +457,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -496,6 +529,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
                BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
+        :param pulumi.Input[_builtins.bool] deletion_notifications_enabled: Indicates whether the notifications will be sent for deleted findings.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -608,6 +642,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -627,6 +662,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__.__dict__["dataset"] = dataset
+            __props__.__dict__["deletion_notifications_enabled"] = deletion_notifications_enabled
             __props__.__dict__["deletion_policy"] = deletion_policy
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -655,6 +691,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
             big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_notifications_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,6 +714,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dataset: The dataset to write findings' updates to.
                Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
                BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
+        :param pulumi.Input[_builtins.bool] deletion_notifications_enabled: Indicates whether the notifications will be sent for deleted findings.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -721,6 +759,7 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
         __props__.__dict__["big_query_export_id"] = big_query_export_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["deletion_notifications_enabled"] = deletion_notifications_enabled
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["filter"] = filter
@@ -758,6 +797,14 @@ class FolderSccBigQueryExport(pulumi.CustomResource):
         BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
         """
         return pulumi.get(self, "dataset")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionNotificationsEnabled")
+    def deletion_notifications_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates whether the notifications will be sent for deleted findings.
+        """
+        return pulumi.get(self, "deletion_notifications_enabled")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")

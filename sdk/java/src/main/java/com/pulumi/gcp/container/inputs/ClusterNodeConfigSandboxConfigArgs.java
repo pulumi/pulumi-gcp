@@ -49,6 +49,7 @@ public final class ClusterNodeConfigSandboxConfigArgs extends com.pulumi.resourc
      * Accepted values are:
      * 
      * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+     * * `&#34;MICROVM&#34;`: Pods run within a microVM sandbox.
      * 
      */
     @Import(name="type")
@@ -59,6 +60,7 @@ public final class ClusterNodeConfigSandboxConfigArgs extends com.pulumi.resourc
      * Accepted values are:
      * 
      * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+     * * `&#34;MICROVM&#34;`: Pods run within a microVM sandbox.
      * 
      */
     public Optional<Output<String>> type() {
@@ -130,6 +132,7 @@ public final class ClusterNodeConfigSandboxConfigArgs extends com.pulumi.resourc
          * Accepted values are:
          * 
          * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+         * * `&#34;MICROVM&#34;`: Pods run within a microVM sandbox.
          * 
          * @return builder
          * 
@@ -144,6 +147,7 @@ public final class ClusterNodeConfigSandboxConfigArgs extends com.pulumi.resourc
          * Accepted values are:
          * 
          * * `&#34;GVISOR&#34;`: Pods run within a gVisor sandbox.
+         * * `&#34;MICROVM&#34;`: Pods run within a microVM sandbox.
          * 
          * @return builder
          * 

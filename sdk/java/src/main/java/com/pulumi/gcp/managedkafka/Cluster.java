@@ -79,7 +79,6 @@ import javax.annotation.Nullable;
  *                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
  *                 .build())
  *             .labels(Map.of("key", "value"))
- *             .kafkaVersion("3.7.x")
  *             .build());
  * 
  *     }
@@ -434,14 +433,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.gcpConfig;
     }
     /**
-     * The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      * 
      */
     @Export(name="kafkaVersion", refs={String.class}, tree="[0]")
     private Output<String> kafkaVersion;
 
     /**
-     * @return The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+     * @return The Apache Kafka version of the cluster. Specifically, this value is the finalized metadata version.
+     * If not specified during cluster creation, defaults to `3.7.x`.
+     * If you manage Kafka versions outside of Terraform, leave this field unset to avoid a permanent diff.
      * 
      */
     public Output<String> kafkaVersion() {
